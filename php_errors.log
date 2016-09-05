@@ -5037,3 +5037,41 @@ Stack trace:
 [05-Sep-2016 14:38:43 America/Sao_Paulo] PHP  11. Admin\Controller\AbstractAdminController->onDispatch($e = *uninitialized*) R:\ambiente\php\projetos\up\app\vendor\zendframework\zend-eventmanager\src\EventManager.php:490
 [05-Sep-2016 14:38:43 America/Sao_Paulo] PHP  12. Admin\Controller\PageController->updateAction($id = *uninitialized*, $data = *uninitialized*) R:\ambiente\php\projetos\up\app\module\Admin\src\Admin\Controller\AbstractAdminController.php:189
 [05-Sep-2016 14:38:43 America/Sao_Paulo] PHP  13. Admin\Controller\PageController->persist($data = *uninitialized*, $id = *uninitialized*) R:\ambiente\php\projetos\up\app\module\Admin\src\Admin\Controller\PageController.php:55
+[05-Sep-2016 16:06:26 America/Sao_Paulo] PHP Notice:  Undefined offset: 0 in R:\ambiente\php\projetos\up\app\module\Application\src\Application\View\Helper\YoutubeEmbed.php on line 32
+[05-Sep-2016 16:06:26 America/Sao_Paulo] PHP Stack trace:
+[05-Sep-2016 16:06:26 America/Sao_Paulo] PHP   1. {main}() R:\ambiente\php\projetos\up\app\public\index.php:0
+[05-Sep-2016 16:06:26 America/Sao_Paulo] PHP   2. Zend\Mvc\Application->run() R:\ambiente\php\projetos\up\app\public\index.php:30
+[05-Sep-2016 16:06:26 America/Sao_Paulo] PHP   3. Zend\Mvc\Application->completeRequest($event = *uninitialized*) R:\ambiente\php\projetos\up\app\vendor\zendframework\zend-mvc\src\Application.php:356
+[05-Sep-2016 16:06:26 America/Sao_Paulo] PHP   4. Zend\EventManager\EventManager->triggerEvent($event = *uninitialized*) R:\ambiente\php\projetos\up\app\vendor\zendframework\zend-mvc\src\Application.php:384
+[05-Sep-2016 16:06:26 America/Sao_Paulo] PHP   5. Zend\EventManager\EventManager->triggerListeners($event = *uninitialized*, $e = *uninitialized*, $callback = *uninitialized*) R:\ambiente\php\projetos\up\app\vendor\zendframework\zend-eventmanager\src\EventManager.php:251
+[05-Sep-2016 16:06:26 America/Sao_Paulo] PHP   6. call_user_func:{R:\ambiente\php\projetos\up\app\vendor\zendframework\zend-eventmanager\src\EventManager.php:490}(*uninitialized*, *uninitialized*) R:\ambiente\php\projetos\up\app\vendor\zendframework\zend-eventmanager\src\EventManager.php:490
+[05-Sep-2016 16:06:26 America/Sao_Paulo] PHP   7. Zend\Mvc\View\Http\DefaultRenderingStrategy->render($e = *uninitialized*) R:\ambiente\php\projetos\up\app\vendor\zendframework\zend-eventmanager\src\EventManager.php:490
+[05-Sep-2016 16:06:26 America/Sao_Paulo] PHP   8. Zend\View\View->render($model = *uninitialized*) R:\ambiente\php\projetos\up\app\vendor\zendframework\zend-mvc\src\View\Http\DefaultRenderingStrategy.php:105
+[05-Sep-2016 16:06:26 America/Sao_Paulo] PHP   9. Zend\View\View->renderChildren($model = *uninitialized*) R:\ambiente\php\projetos\up\app\vendor\zendframework\zend-view\src\View.php:200
+[05-Sep-2016 16:06:26 America/Sao_Paulo] PHP  10. Zend\View\View->render($model = *uninitialized*) R:\ambiente\php\projetos\up\app\vendor\zendframework\zend-view\src\View.php:236
+[05-Sep-2016 16:06:26 America/Sao_Paulo] PHP  11. Zend\View\Renderer\PhpRenderer->render($nameOrModel = *uninitialized*, $values = *uninitialized*) R:\ambiente\php\projetos\up\app\vendor\zendframework\zend-view\src\View.php:207
+[05-Sep-2016 16:06:26 America/Sao_Paulo] PHP  12. include() R:\ambiente\php\projetos\up\app\vendor\zendframework\zend-view\src\Renderer\PhpRenderer.php:502
+[05-Sep-2016 16:06:26 America/Sao_Paulo] PHP  13. Zend\View\Renderer\PhpRenderer->youtubeEmbed(*uninitialized*) R:\ambiente\php\projetos\up\app\module\Cineop\view\cineop\index\index.phtml:152
+[05-Sep-2016 16:06:26 America/Sao_Paulo] PHP  14. Zend\View\Renderer\PhpRenderer->__call($method = *uninitialized*, $argv = *uninitialized*) R:\ambiente\php\projetos\up\app\module\Cineop\view\cineop\index\index.phtml:152
+[05-Sep-2016 16:06:26 America/Sao_Paulo] PHP  15. call_user_func_array:{R:\ambiente\php\projetos\up\app\vendor\zendframework\zend-view\src\Renderer\PhpRenderer.php:394}(*uninitialized*, *uninitialized*) R:\ambiente\php\projetos\up\app\vendor\zendframework\zend-view\src\Renderer\PhpRenderer.php:394
+[05-Sep-2016 16:06:26 America/Sao_Paulo] PHP  16. Application\View\Helper\YoutubeEmbed->__invoke($url = *uninitialized*) R:\ambiente\php\projetos\up\app\vendor\zendframework\zend-view\src\Renderer\PhpRenderer.php:394
+[05-Sep-2016 16:06:26 America/Sao_Paulo] PHP  17. Application\View\Helper\YoutubeEmbed->getIdFromUrl($url = *uninitialized*) R:\ambiente\php\projetos\up\app\module\Application\src\Application\View\Helper\YoutubeEmbed.php:10
+[05-Sep-2016 16:06:27 America/Sao_Paulo] PHP Notice:  Undefined offset: 0 in R:\ambiente\php\projetos\up\app\module\Application\src\Application\View\Helper\YoutubeEmbed.php on line 32
+[05-Sep-2016 16:06:27 America/Sao_Paulo] PHP Stack trace:
+[05-Sep-2016 16:06:27 America/Sao_Paulo] PHP   1. {main}() R:\ambiente\php\projetos\up\app\public\index.php:0
+[05-Sep-2016 16:06:27 America/Sao_Paulo] PHP   2. Zend\Mvc\Application->run() R:\ambiente\php\projetos\up\app\public\index.php:30
+[05-Sep-2016 16:06:27 America/Sao_Paulo] PHP   3. Zend\Mvc\Application->completeRequest($event = *uninitialized*) R:\ambiente\php\projetos\up\app\vendor\zendframework\zend-mvc\src\Application.php:356
+[05-Sep-2016 16:06:27 America/Sao_Paulo] PHP   4. Zend\EventManager\EventManager->triggerEvent($event = *uninitialized*) R:\ambiente\php\projetos\up\app\vendor\zendframework\zend-mvc\src\Application.php:384
+[05-Sep-2016 16:06:27 America/Sao_Paulo] PHP   5. Zend\EventManager\EventManager->triggerListeners($event = *uninitialized*, $e = *uninitialized*, $callback = *uninitialized*) R:\ambiente\php\projetos\up\app\vendor\zendframework\zend-eventmanager\src\EventManager.php:251
+[05-Sep-2016 16:06:27 America/Sao_Paulo] PHP   6. call_user_func:{R:\ambiente\php\projetos\up\app\vendor\zendframework\zend-eventmanager\src\EventManager.php:490}(*uninitialized*, *uninitialized*) R:\ambiente\php\projetos\up\app\vendor\zendframework\zend-eventmanager\src\EventManager.php:490
+[05-Sep-2016 16:06:27 America/Sao_Paulo] PHP   7. Zend\Mvc\View\Http\DefaultRenderingStrategy->render($e = *uninitialized*) R:\ambiente\php\projetos\up\app\vendor\zendframework\zend-eventmanager\src\EventManager.php:490
+[05-Sep-2016 16:06:27 America/Sao_Paulo] PHP   8. Zend\View\View->render($model = *uninitialized*) R:\ambiente\php\projetos\up\app\vendor\zendframework\zend-mvc\src\View\Http\DefaultRenderingStrategy.php:105
+[05-Sep-2016 16:06:27 America/Sao_Paulo] PHP   9. Zend\View\View->renderChildren($model = *uninitialized*) R:\ambiente\php\projetos\up\app\vendor\zendframework\zend-view\src\View.php:200
+[05-Sep-2016 16:06:27 America/Sao_Paulo] PHP  10. Zend\View\View->render($model = *uninitialized*) R:\ambiente\php\projetos\up\app\vendor\zendframework\zend-view\src\View.php:236
+[05-Sep-2016 16:06:27 America/Sao_Paulo] PHP  11. Zend\View\Renderer\PhpRenderer->render($nameOrModel = *uninitialized*, $values = *uninitialized*) R:\ambiente\php\projetos\up\app\vendor\zendframework\zend-view\src\View.php:207
+[05-Sep-2016 16:06:27 America/Sao_Paulo] PHP  12. include() R:\ambiente\php\projetos\up\app\vendor\zendframework\zend-view\src\Renderer\PhpRenderer.php:502
+[05-Sep-2016 16:06:27 America/Sao_Paulo] PHP  13. Zend\View\Renderer\PhpRenderer->youtubeEmbed(*uninitialized*) R:\ambiente\php\projetos\up\app\module\Cineop\view\cineop\index\index.phtml:152
+[05-Sep-2016 16:06:27 America/Sao_Paulo] PHP  14. Zend\View\Renderer\PhpRenderer->__call($method = *uninitialized*, $argv = *uninitialized*) R:\ambiente\php\projetos\up\app\module\Cineop\view\cineop\index\index.phtml:152
+[05-Sep-2016 16:06:27 America/Sao_Paulo] PHP  15. call_user_func_array:{R:\ambiente\php\projetos\up\app\vendor\zendframework\zend-view\src\Renderer\PhpRenderer.php:394}(*uninitialized*, *uninitialized*) R:\ambiente\php\projetos\up\app\vendor\zendframework\zend-view\src\Renderer\PhpRenderer.php:394
+[05-Sep-2016 16:06:27 America/Sao_Paulo] PHP  16. Application\View\Helper\YoutubeEmbed->__invoke($url = *uninitialized*) R:\ambiente\php\projetos\up\app\vendor\zendframework\zend-view\src\Renderer\PhpRenderer.php:394
+[05-Sep-2016 16:06:27 America/Sao_Paulo] PHP  17. Application\View\Helper\YoutubeEmbed->getIdFromUrl($url = *uninitialized*) R:\ambiente\php\projetos\up\app\module\Application\src\Application\View\Helper\YoutubeEmbed.php:10

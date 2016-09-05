@@ -138,19 +138,27 @@
         visibility: visible
         background-color: $color-pallete-3
         text-align: center
-      .banner__text
-        left: 50%
-        transform: translate(-50%, -50%)
       .banner__title
         color: $color-pallete-11
         letter-spacing: 3px
         text-align: right
         line-height: 1
         letter-spacing: -.05em
+        +trailer(0.5)
       .banner__subtitle
         text-align: right
-        text-transform: uppercase
         letter-spacing: -.05em
+        +adjust-font-size-to(14px)
+        &:last-of-type
+          +leader(4)
+        strong
+          text-transform: uppercase
+          font-weight: 700
+      .banner__brand
+        width: 100%
+        +trailer(5)
+        &-img
+          width: 100%
 
   &__content
     z-index: -100
