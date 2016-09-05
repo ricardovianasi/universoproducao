@@ -11,7 +11,7 @@ return array(
             'cineop' => array(
                 'type'    => Hostname::class,
                 'options' => array(
-                    'route'    => 'cineop',
+                    'route'    => '[www.]cineop.com.br',
                     'defaults' => array(
                         '__NAMESPACE__' => 'Cineop\Controller',
                         'controller' => 'Index',
