@@ -29,6 +29,9 @@ return [
         'Admin\Controller\Site' 	=> Controller\Factory\SiteControllerFactory::class,
         'Admin\Controller\Banner'	=> Controller\Factory\BannerControllerFactory::class,
         'Admin\Controller\Gallery'	=> Controller\Factory\GalleryControllerFactory::class,
-        'Admin\Controller\Menu'		=> Controller\Factory\MenuControllerFactory::class
+        'Admin\Controller\Menu'		=> Controller\Factory\MenuControllerFactory::class,
+        'Admin\Controller\Guide'    => Controller\Factory\GuideControllerFactory::class,
+        'Admin\Controller\Tv'               => Controller\Factory\TvControllerFactory::class,
+        'Admin\Controller\Programation'     => Controller\Factory\ProgramationControllerFactory::class,
     ]
 ];

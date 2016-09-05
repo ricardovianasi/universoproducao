@@ -1,17 +1,23 @@
 <?php
 $env = getenv('APPLICATION_ENV') ?: 'production';
+
+$modules = [
+    'TwbBundle',
+    'DoctrineModule',
+    'DoctrineORMModule',
+    'Util',
+    'Admin',
+    'Application',
+    'Arquivoemcartaz',
+    'Cineop'
+];
+
+if($env == 'development') {
+    $modules[] = 'ZendDeveloperTools';
+}
+
 return array(
-    'modules' => array(
-        'ZendDeveloperTools',
-        'TwbBundle',
-        'DoctrineModule',
-        'DoctrineORMModule',
-        'Util',
-        'Admin',
-        'Application',
-        'Arquivoemcartaz',
-        'Cineop',
-    ),
+    'modules' => $modules,
     'module_listener_options' => array(
         'module_paths' => array(
             './module',
