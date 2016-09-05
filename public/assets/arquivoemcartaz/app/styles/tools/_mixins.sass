@@ -1,0 +1,78 @@
+//------------------------------------*\
+//    #MIXINS
+//------------------------------------*/
+
+//
+// Aditional mixins
+//
+=pointer-events($type: none)
+  $type: unquote($type)
+  +experimental(pointer-events, $type, -moz, -webkit, not -o, not -ms, -khtml, official)
+
+=touch-callout($type: none)
+  $type: unquote($type)
+  +experimental(touch-callout, $type, not -moz, -webkit, not -o, not -ms, not -khtml, official)
+
+=user-select($select)
+  $select: unquote($select)
+  +experimental(user-select, $select, -moz, -webkit, not -o, not -ms, -khtml, official)
+
+=selection($color_bg, $color_txt)
+  ::-moz-selection
+    background: $color_bg
+    color: $color_txt
+    text-shadow: none
+  ::selection
+    background: $color_bg
+    color: $color_txt
+    text-shadow: none
+
+=truncate($width: 100%)
+  width: $width
+  white-space: nowrap
+  overflow: hidden
+  text-overflow: ellipsis
+
+=expand
+  width: 100vw
+  position: relative
+  margin-left: -50vw
+  left: 50%
+  text-align: center
+
+=corner-border($color, $inside: false)
+  $x: -3px
+  $y: -10px
+  @if $inside == true
+    $x: 0px
+    $y: 0px
+
+  &:before,
+  &:after,
+  > :first-child::before,
+  > :first-child::after
+    position: absolute
+    width: 8px
+    height: 8px
+    border-color: $color
+    /* or whatever colour
+    border-style: solid
+    /* or whatever style
+    content: ' '
+  &:before
+    top: $x
+    left: $y
+    border-width: 5px 0 0 5px
+  &:after
+    top: $x
+    right: $y
+    border-width: 5px 5px 0 0
+  > :first-child
+    &:before
+      bottom: $x
+      right: $y
+      border-width: 0 5px 5px 0
+    &:after
+      bottom: $x
+      left: $y
+      border-width: 0 0 5px 5px

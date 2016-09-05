@@ -1,0 +1,208 @@
+.footer
+	+cf
+	+expand
+	background-color: $grayF4F
+
+	&__wrapper
+		+center($full-site, 30px)
+		text-align: left
+
+	.newsletter
+		+padding-trailer(2)
+		&__title
+			width: 100%
+			+inline-block
+			+adjust-font-size-to(24px, 1)
+			+leader(2)
+			+trailer(1)
+			font-weight: 900
+			text-transform: uppercase
+			color: $gray4a4
+
+		&__form
+			+cf
+
+			.form__input,
+			.form__button
+				+box-sizing(border-box)
+				+col(1/6, $cycle:4, $uncycle:2)
+
+				&--big
+					+col(2/6)
+
+				+adjust-font-size-to(18px)
+				+apply-side-rhythm-border(all, 1px, 0.5, 18px, solid $main-color)
+				font-weight: 900
+				outline: none
+				color: $grayB9B
+				text-transform: uppercase
+
+			.form__input
+				background-color: $grayF4F
+				&::-webkit-input-placeholder
+					color: $grayB9B
+
+				&:-moz-placeholder
+					color: $grayB9B
+
+				&::-moz-placeholder
+					color: $grayB9B
+
+				&:-ms-input-placeholder
+					color: $grayB9B
+
+			.form__button
+				color: #fff
+				background-color: $main-color
+				border: $main-color
+				text-align: center
+
+	.sitemap
+		+padding-trailer(3)
+
+		&__items
+			list-style: none
+			+inline-block
+
+		&__item
+			+col(1/5)
+
+			// Dropdown
+			.sitemap__items
+
+				.sitemap__item
+					width: 100%
+
+					> .sitemap__link
+						+adjust-font-size-to(13px)
+						color: $gray4a4
+						font-weight: 700
+						display: block
+						transition: $transition-default
+
+						&:hover
+							color: $main-color
+
+					.sitemap__items
+						padding-left: 35px
+
+						.sitemap__link
+							font-weight: normal
+
+		&__link
+			position: relative
+			display: block
+			letter-spacing: .05em
+			+padding-leader(.5)
+			+padding-trailer(.5)
+			+transition($transition-default)
+			//+adjust-font-size-to(17px, 0.5)
+			//color: $blue1C7
+			//text-transform: uppercase
+
+			&--level-1
+				+adjust-font-size-to(17px, 0.5)
+				color: $blue1C7
+				text-transform: uppercase
+
+
+			span
+				+transition($transition-default)
+
+	.contact
+		+expand
+		margin-top: 94px
+		background-color: $gray343
+		box-shadow: 0 -9px 0 0 $grayF4F, 0 -26px 0 0 $gray343, 0 -35px 0 0 $grayF4F, 0 -52px 0 0 $gray343, 0 -61px 0 0 $grayF4F, 0 -78px 0 0 $gray343, 0 -87px 0 0 $grayF4F, 0 -94px 0 0 $gray343
+
+		&__wrapper
+			+center($full-site, 30px)
+			text-align: left
+
+		&__col
+			+col(1/2, $cycle: 2)
+
+		&__title
+			+adjust-font-size-to(24px, 1)
+			+leader(1.5, 24px)
+			+padding-trailer(1, 24px)
+			font-weight: 900
+			text-transform: uppercase
+			color: #fff
+
+		&__brand
+			display: block
+			float: left
+			padding-left: 45px
+
+		&__add
+			p
+				+adjust-font-size-to(12px, 0.3)
+				color: $gray838
+				text-transform: uppercase
+
+		&__social
+			.social__item
+				+col(1/5, $cycle:5)
+
+			.social__link
+				color: $gray838
+				+adjust-font-size-to(42px)
+				+transition($transition-default)
+
+				&:hover
+					color: #fff
+
+		.copy
+			+cf
+			display: inline-block
+			width: 100%
+			text-align: center
+			border-top: 1px solid #fff
+			+trailer(1)
+			+leader(2)
+			+padding-leader(1)
+
+			p
+				+adjust-font-size-to(12px, 0.5)
+				text-transform: uppercase
+				color: #fff
+
++media('<tablet')
+	.footer
+		text-align: center
+	.footer .newsletter__form .form__input,
+	.footer .newsletter__form .form__button
+		width: 100%
+		margin-left: 0
+		margin-right: 0
+		+trailer(.5)
+
+	.footer .sitemap
+		display: none
+
+
+	.footer .contact .contact__title
+		text-align: center
+
+	.footer .contact .contact__wrapper .contact__col
+		display: block
+		width: 100%
+	.footer .contact .contact__brand,
+	.footer .contact .contact__add
+		display: block
+		padding-left: 0
+		padding-right: 0
+		float: none
+		text-align: center
+		margin-right: auto
+		margin-left: auto
+
+	.footer .contact .contact__brand
+		+trailer(1)
+
+	.footer .contact__social
+		display: inline-block
+		width: 100%
+		text-align: center
+

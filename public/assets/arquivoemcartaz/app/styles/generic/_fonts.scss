@@ -1,0 +1,84 @@
+//------------------------------------*\
+//    #TRICKS
+//------------------------------------*/
+//
+// Font Icons
+//
+@font-face {
+  font-family: 'UniversoProducao';
+  src:  url('../fonts/UniversoProducao.eot?hp69lo');
+  src:  url('../fonts/UniversoProducao.eot?hp69lo#iefix') format('embedded-opentype'),
+  url('../fonts/UniversoProducao.ttf?hp69lo') format('truetype'),
+  url('../fonts/UniversoProducao.woff?hp69lo') format('woff'),
+  url('../fonts/UniversoProducao.svg?hp69lo#UniversoProducao') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'UniversoProducao' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-universo-brand:before {
+  content: "\e903";
+}
+.icon-brand:before {
+  content: "\e902";
+}
+.icon-youtube:before {
+  content: "\e900";
+}
+.icon-search:before {
+  content: "\e901";
+}
+.icon-search3:before {
+  content: "\eb36";
+}
+.icon-menu7:before {
+  content: "\ec71";
+}
+.icon-plus2:before {
+  content: "\ed5b";
+}
+.icon-cross2:before {
+  content: "\ed6d";
+}
+.icon-arrow-right:before {
+  content: "\edbb";
+}
+.icon-arrow-left:before {
+  content: "\edc3";
+}
+.icon-arrow-left7:before {
+  content: "\edda";
+}
+.icon-arrow-right8:before {
+  content: "\edde";
+}
+.icon-facebook:before {
+  content: "\eeef";
+}
+.icon-instagram:before {
+  content: "\eef1";
+}
+.icon-twitter:before {
+  content: "\eef5";
+}
+.icon-flickr:before {
+  content: "\ef02";
+}
+.icon-brand2:before {
+  content: "\e904";
+}
+

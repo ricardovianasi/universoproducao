@@ -1,0 +1,81 @@
+.listafilme
+	li
+		+trailer(1)
+		a
+			strong
+				color: $gray4a4
+
+
+.filmedetalhe
+	.sinopse
+		+leader(1)
+		+trailer(1)
+
+.seminarioslist
+	p
+		margin-bottom: 0
+	h2
+		+trailer(1)
+
+.pontHor
+	display: block
+	width: 100%
+	height: 1px
+	border-top: 2px solid $main-color
+	+padding-trailer(1)
+	+leader(1)
+
+.form-filtro
+	display: inline-block
+	width: 100%
+	+trailer(1)
+
+	.form__input,
+	.form__button
+		+box-sizing(border-box)
+		+col(1/6, $cycle:4, $uncycle:2)
+
+		&--big
+			+col(2/6)
+
+		+adjust-font-size-to(18px)
+		+apply-side-rhythm-border(all, 1px, 0.5, 18px, solid $main-color)
+		font-weight: 700
+		outline: none
+		color: $grayB9B
+
+	.form__input
+		background-color: $grayF4F
+		&::-webkit-input-placeholder
+			color: $grayB9B
+
+		&:-moz-placeholder
+			color: $grayB9B
+
+		&::-moz-placeholder
+			color: $grayB9B
+
+		&:-ms-input-placeholder
+			color: $grayB9B
+
+	.form__button
+		color: #fff
+		background-color: $main-color
+		border: $main-color
+		text-align: center
+
+#menuProgramacao
+	+leader(1)
+	.form__button
+		color: #fff
+		background-color: $main-color
+		border: $main-color
+		text-align: center
+
+		+adjust-font-size-to(18px)
+		+apply-side-rhythm-border(all, 1px, 0.5, 18px, solid $main-color)
+		font-weight: 700
+		outline: none
+
+.cxAlta
+	text-transform: uppercase

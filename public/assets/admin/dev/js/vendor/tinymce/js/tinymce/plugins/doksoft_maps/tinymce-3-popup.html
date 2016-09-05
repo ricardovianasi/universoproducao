@@ -1,0 +1,132 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title></title>
+	<script type="text/javascript" src="spinner/jquery-1.9.1.js"></script>
+	<script type="text/javascript" src="../../tiny_mce_popup.js"></script>
+	<script type="text/javascript" src="../../utils/mctabs.js"></script>
+</head>
+<body role="application" style="position:absolute;top:0;bottom:0;left:0;right:0;">
+  <div style="position:relative;height:100%;">
+<form onsubmit="updateMap()" action="#" style="position:absolute;top:0;bottom:40px;left:0;right:0;">
+    <!--
+	<div class="tabs">
+		<ul>
+			<li id="general_tab" class="current" aria-controls="general_panel"><span><a href="javascript:mcTabs.displayTab('general_tab','general_panel');" onmousedown="return false;">{#doksoft_maps_dlg.insert_title}</a></span></li>
+		</ul>
+    </div>-->
+
+
+			<iframe id="mapIframe" style="border:1px solid #919B9C;overflow:visible;min-height:520px;padding:0;margin:0;background-color:white;" width="100%" height="100%" src="popup.html"></iframe>
+	
+
+	<div class="mceActionPanel">
+		<input type="submit" id="insert" name="insert" value="{#doksoft_maps.Insert}" />
+		<input type="button" id="cancel" name="cancel" value="{#doksoft_maps.Cancel}" onclick="tinyMCEPopup.close();" />
+	</div>
+</form>
+</div>
+<script type="text/javascript">
+    function getPreviewImageForMap(params){
+        return tinymce.DOM.createHTML('img', {
+            id: params.id,
+            'data-mce-object': "doksoft_map",
+            src: params.url, 
+            'class': "doksoft_map mceItem",
+            'data-options': escape(params.options),
+            'data-html': escape(params.html)
+        });
+    }
+
+    function generateMapStaticUrl(code){
+        function makeUrlParams(params){
+            var result = [];
+
+            for(var i in params){
+                result.push(i + '=' + escape(params[i]));
+            }
+
+            return result.join('&');
+        }
+
+        function markersToStatic(){
+            var result = [];
+
+            for(var i=0;i < code.objects.Marker.length;i++){
+                result.push(code.objects.Marker[i].slice(0, 2).join(','));
+            }
+
+            return result.join('|');
+        }
+
+        var params = {
+            center: code.lat + ',' + code.lng,
+            zoom: code.zoom,
+            size: code.width + 'x' + code.height,
+            maptype: code.type,
+            markers: markersToStatic(),
+            sensor: false
+        };
+        return 'http://maps.googleapis.com/maps/api/staticmap?' + makeUrlParams(params);
+    }
+
+    function updateMap(){
+        var ed = tinyMCEPopup.editor;
+        var mapIframe = document.getElementById('mapIframe');
+        var map = mapIframe.contentWindow.map;
+
+        var mapCode = map.generateCodeMap();
+        var html = getPreviewImageForMap({
+            id: map.getNewMapId(),
+            url: generateMapStaticUrl(mapCode),
+            options: tinymce.util.JSON.serialize(mapCode),
+            html: map.getHtmlCode()
+        });
+
+        ed.execCommand("mceInsertContent", false, html);
+
+        tinyMCEPopup.close();
+    }
+
+    function initMap(editor){
+        var node = editor.selection.getNode();
+        var isMap = typeof(node)!='undefined' && node != null && node.nodeName == 'IMG' && node.className.match('doksoft_map');
+        var iframe = document.getElementById('mapIframe');
+
+        if(isMap){
+            top.dataForLoadIntoMap = tinymce.util.JSON.parse(unescape(node.getAttribute('data-options')));
+            document.getElementById('insert').value = editor.getLang('doksoft_maps.update_button');
+        }else{
+            top.dataForLoadIntoMap = null;
+        }
+
+        $(top.document).find('.mceTop span').html(
+             editor.getLang(!top.dataForLoadIntoMap ? 'doksoft_maps.dialog_insert_title' : 'doksoft_maps.dialog_edit_title')
+        );
+
+        var center;
+
+        iframe.onload = function(){
+            setTimeout(function(){
+                iframe.contentWindow.redRectangle.updatePositions();
+
+                center = iframe.contentWindow.map.map.getCenter();
+
+                iframe.contentWindow.google.maps.event.addListener(iframe.contentWindow.map.map, "dragend", function (){
+                    center = this.getCenter();
+                });
+            }, 100);
+        };
+
+        $(window).resize(function(){
+            iframe.contentWindow.updateMapHeight();
+            iframe.contentWindow.map.map.panTo(center);
+            iframe.contentWindow.redRectangle.updatePositions();
+        });
+    }
+
+    tinyMCEPopup.requireLangPack();
+    tinyMCEPopup.onInit.add(initMap, this);
+</script>
+</body>
+</html>

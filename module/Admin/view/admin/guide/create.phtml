@@ -1,0 +1,55 @@
+<?php $form = $this->form; ?>
+<div class="row post guide">
+<div class="col-md-12">
+	<?php $form->prepare(); echo $this->form(null, null)->openTag($form) ?>
+
+	<div class="portlet light portlet-fit bordered">
+		<div class="portlet-title">
+			<div class="caption">
+				<?php if($this->guide->getId()): ?>
+				<i class="fa fa-edit"></i>
+				Editar Guia
+				<?php else: ?>
+				<i class="fa fa-file-o"></i>
+				Novo Guia
+				<?php endif; ?>
+			</div>
+			<div class="actions">
+				<a href="<?php echo $this->url('admin/guide', ['site'=>$this->site]); ?>"
+				   class="btn btn-default">
+					<i class="icon-action-undo"></i>
+					<span class="hidden-xs"> Voltar </span>
+				</a>
+			</div>
+		</div>
+		<div class="portlet-body">
+			<div class="row">
+				<div class="col-md-9">
+					<div class="portlet">
+						<div class="portlet-body form">
+							<div class="">
+								<?php
+								echo $this->formRow($form->get('title'));
+								echo $this->formRow($form->get('subtitle'));
+								echo $this->formRow($form->get('content'));
+								?>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-3">
+
+					<?php echo $this->partial('admin/partials/_post-sidebar.phtml', [
+						'returnUrl' => $this->url('admin/guide', array('site'=>$this->site)),
+						'site' => $this->thumb,
+						'form' => $this->form,
+						'post' => $this->guide,
+						'thumb' => true
+					]) ?>
+				</div>
+			</div>
+		</div>
+	</div>
+	<?php echo $this->form()->closeTag() ?>
+</div>
+</div>

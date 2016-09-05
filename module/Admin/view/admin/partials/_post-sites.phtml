@@ -1,0 +1,46 @@
+<div class="portlet light portlet-fit bordered post-sites" data-url="<?php echo $this->url('admin/site_add_item'); ?>">
+	<div class="portlet-title">
+		<div class="caption">
+			<i class="icon-star"></i>
+			<span class="caption-subject"><?php echo $title; ?></span>
+		</div>
+		<div class="actions">
+			<?php
+				echo $this->formElement($form->get('publish_all_sites'));
+				echo $this->formElement($form->get('publish_highlight_all_sites'));
+			?>
+		</div>
+	</div>
+
+	<div class="portlet-body post-site-options" style="<?php echo $post->getPublishAllSites() ? "display: none;" : ""; ?>">
+		<div class="row">
+			<div class="col-md-7 margin-bottom-10">
+				<div class="form-inline post-site-form">
+					<div class="form-group">
+						<div class="input-group select2-bootstrap-prepend">
+					<span class="input-group-btn">
+						<button class="btn btn-default" type="button" data-select2-open="sites-enabled">
+							<span class="fa fa-search"></span>
+						</button>
+					</span>
+							<?php echo $this->formElement($form->get('sites-enabled')) ?>
+						</div>
+					</div>
+
+					<div class="checkbox">
+						<label for="site-highlight">
+							<input type="checkbox" class="icheck" name="site-highlight" value="1"> Destaque
+						</label>
+					</div>
+
+					<button type="submit" class="btn blue action add">Adicionar</button>
+				</div>
+
+			</div>
+
+			<div class="col-md-5 ">
+				<?php echo $this->adminPostSiteView($post->getSites()); ?>
+			</div>
+		</div>
+	</div>
+</div>

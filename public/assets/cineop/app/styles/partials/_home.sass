@@ -1,0 +1,1121 @@
+.home
+	.main
+		&__header
+			&--block
+				&:before
+					content: ''
+					display: block
+					padding-top: 100%
+
+				.main__header-wrapper
+					+stretch
+
+					background-color: $grayD6E
+					background: linear-gradient(to right, $main-color 50%, $grayD6E 50%)
+					background-size: 200% 100%
+					background-position: right bottom
+					transition: all 0.5s ease
+
+					&:hover
+						background-position: left bottom
+
+						.main__title
+							color: #fff
+						.main__title-small
+							color: #fff
+
+					&--bgmain
+						background-color: $main-color
+						background: linear-gradient(to right, $grayD6E 50%, $main-color 50%)
+						background-size: 200% 100%
+						background-position: right bottom
+						&:hover
+							background-position: left bottom
+							.main__title
+								color: $main-color
+							.main__title-small
+								color: $main-color
+
+
+				.main__title
+					position: absolute
+					top: 50%
+					left: calc(100% - 28px)
+					transform: translate(-100%, -50%)
+		section
+			+trailer(2)
+
+
+
+%box
+	background-color: $main-color
+	box-shadow: 0 $base-line-height/2 0 0 $grayD6E, 0 $base-line-height*2.5 0 0 $gray343
+
+.home-slider
+	&__box
+		+span(4/6)
+
+		@extend %box
+		min-height: 504px
+		+trailer(6)
+		position: relative
+
+		&:before
+			content: ""
+			position: absolute
+			display: block
+			left: -100%
+			top: 0
+			width: 100%
+			height: 100%
+			@extend %box
+			transform-origin: 100% 0
+			transform: matrix(2, -1, 0, 1, 1, 0)
+			z-index: -99999
+
+	&__container
+		position: absolute
+		left: 0
+		width: 100%
+
+	&__list
+		+center($full-site)
+
+	&__title
+		+span(2/6)
+		+leader(1, 34px)
+		+trailer(1, 34px)
+		+adjust-font-size-to(34px, 2)
+		color: #fff
+		font-weight: 900
+		text-transform: uppercase
+		letter-spacing: .05em
+		position: absolute
+		top: 50%
+		transform: translate(0, -50%)
+
+		.home-slider__link
+			color: #fff
+			transition: $transition-default
+
+			&:hover
+				color: $gray343
+
+		.home-slider__date
+			display: block
+			+adjust-font-size-to(24px, 1, 34px)
+			+leader(1.5, 34px)
+			font:
+				weight: 300
+				style: italic
+			text-transform: uppercase
+			letter-spacing: 0
+
+	&__image
+		+span(4/6)
+		+leader(1)
+		float: right
+		z-index: 99
+		img
+			width: 100%
+
+	&__caption
+		position: absolute
+		bottom: 0
+		right: 0
+		+adjust-font-size-to(8px, .5, 12px)
+		z-index: 9999
+		color: #fff
+		font-weight: 300
+		font-style: italic
+		padding: 5px
+		background-color: rgba(0,0,0,0.5)
+
+	&__markers
+		//+grid(2, 3, ('grid_parent': true))
+		width: 100%
+		height: 50%
+		position: absolute
+		left: calc(50% - 56px)
+		list-style: none inside
+		bottom: -$base-line-height * 2.5
+		padding-right: 56px
+		text-align: right
+		z-index: -1
+
+		li
+			display: inline-block
+			//text-indent: 9999px
+			width: 25px
+			margin-left: 24px
+			height: 100%
+			transition: $transition-lazy
+			&.slick-active
+				height: 80%
+
+			button
+				background-color: $gray918
+				border: none
+				display: block
+				width: 100%
+				height: 100%
+				text-indent: -999px
+
+.news
+	+custom-clearfix
+	+cf
+	clear: both
+	position: relative
+
+	&__header,
+	&__item
+		display: inline
+		position: relative
+		box-sizing: border-box
+
+		+trailer(0.5)
+
+
+	&__header,
+	&__item--top
+		+col(2/6)
+		margin-right: 0
+
+	&__header
+		+shift(2/3)
+
+	&__item
+		&--left,
+		&--right
+			+col(4/6)
+
+			.news__item-header,
+			.news__item-thumb
+				+col(3/6)
+
+		&--right
+			.news__item-thumb
+				margin-right: 0
+				+shift(1/2)
+			.news__item-header
+				+shift(-1/2, $gutter:-$jeet-gutter)
+				text-align: right
+
+			.news__item
+				&-intro
+					&:before
+						position: relative
+						left: 70%
+
+	&__item--left
+		+shift(-1/3, $gutter:-($jeet-gutter*2))
+
+	&__wrapper
+		+stretch
+		img
+			max-width: 100%
+
+		&:before
+			content: ''
+
+	.news__item
+		&-thumb
+			line-height: 0
+			overflow: hidden
+			img
+				transition: $transition-default
+				width: 100%
+
+		&-title
+			+adjust-font-size-to(24px, 1)
+			+leader(1, 24px)
+			+trailer(1, 24px)
+			color: #000
+			transition: $transition-default
+			&--top
+				+leader(.5)
+				+trailer(.5)
+
+
+		&-intro
+			+adjust-font-size-to(18px)
+			+trailer(.5)
+			color: $gray4a4
+			transition: $transition-default
+			&:before
+				content: ''
+				display: block
+				width: 30%
+				+trailer(.5)
+				height: 1px
+				border:
+					top: 1px solid $main-color
+
+		&-date
+			+adjust-font-size-to(14px, 1)
+			font-weight: 300
+			font-style: italic
+			color: $main-color
+			text-transform: uppercase
+
+		&-link
+			transition: $transition-default
+			&:hover
+				.news__item-thumb
+					img
+						transform: $scale-img-default
+
+				.news__item-title,
+				.news__item-intro
+					color: $main-color
+	&__read-more
+		+col(1.5/6)
+		position: absolute
+		left: 0
+		bottom: 0
+
+		&:before
+			content: "\66"
+			+adjust-font-size-to(22px)
+			font-family: "Universo Icons" !important
+			font-style: normal !important
+			font-weight: normal !important
+			font-variant: normal !important
+			text-transform: none !important
+			speak: none
+			line-height: 1
+			-webkit-font-smoothing: antialiased
+			-moz-osx-font-smoothing: grayscale
+
+			position: absolute
+			left: 100%
+			top: 50%
+
+	&__read-more-link
+		+adjust-font-size-to(16px, 1)
+		font-weight: 700
+		text-transform: uppercase
+		color: #000
+		transition: $transition-default
+		&:hover
+			color: $main-color
+
+
+.program
+	+cf
+
+	&__left
+		+col(2/6, $cycle:2)
+
+	&__right
+		+col(4/6)
+
+	&__header
+		text-align: right
+		+leader(4)
+		+trailer(2.5)
+
+		.program__header-title
+			+adjust-font-size-to(46px, 2)
+
+
+	&__highlight
+		&--home
+
+			.program__item
+				z-index: 1
+
+			display: inline-block
+			width: 100%
+			position: relative
+
+			.program__figure
+				float: right
+				height: 648px
+				width: 746px
+				+trailer(0)
+
+				&:before
+					content: ""
+					position: absolute
+					top: 0
+					bottom: 0
+					//left: -100%
+					width: 746px
+					right: 0
+					background-color: rgba(212,56,41,0.4)
+					z-index: 1
+
+
+	&__items
+		list-style: none inside
+		box-sizing: border-box
+		padding-right: $gutter*2
+		padding-left: $gutter*2
+		background-color: $grayD6E
+		position: relative
+		+inline-block
+		width: 100%
+
+		&:after
+			content: ""
+			position: absolute
+			display: block
+			left: 100%
+			top: 0
+			width: 100%
+			height: 100%
+			background-color: $grayD6E
+			transform-origin: 0 100%
+			transform: matrix(2, 1, 0, 1, 0, 0)
+			z-index: -99999
+
+
+	&__item
+		+col(2/4, $cycle:2)
+		+leader(1.5)
+		+trailer(1.5)
+		height: 246px
+		overflow: hidden
+
+		&--highlight
+			height: auto
+			position: absolute
+			bottom: 0
+			left: 0
+			right: 0
+			margin: 0
+			width: $jeet-max-width
+			+trailer(2)
+
+			.program__date
+				//text-align: right
+				//padding-right: 20px
+				+col(2/6, $cycle:2)
+
+			.program__details
+				+col(4/6)
+				position: relative
+
+				.program__details-title
+					float: left
+					width: 70%
+					padding-right: 50px
+					border-right: 2px solid $main-color
+					box-sizing: border-box
+
+				.program__details-place
+					float: left
+					width: 30%
+					box-sizing: border-box
+					padding-left: 16px
+					position: absolute
+					right: 0
+					bottom: 0
+
+				.program__place
+					color: $main-color
+
+				.program__title
+					+adjust-font-size-to(32px, 1.5)
+					+trailer(0)
+					+leader(0)
+					text-transform: uppercase
+					color: $main-color
+
+				.program__subtitle
+					+adjust-font-size-to(18px, 1)
+					color: $main-color
+
+
+			.program__date-day
+				+adjust-font-size-to(150px, 5)
+				color: #fff
+				padding-right: 27px
+				vertical-align: top
+
+			.program__date-month,
+			.program__date-year
+				+adjust-font-size-to(54px, 2.5)
+				color: #fff
+
+
+
+	&__date-day,
+	&__date-month-year
+		display: inline-block
+
+	&__date-day
+		+adjust-font-size-to(72px, 2.5)
+		padding-right: $gutter
+		color: $main-color
+
+	&__date-month,
+	&__date-year
+		+adjust-font-size-to(24px, 1.3)
+		color: $gray4a4
+		text-transform: uppercase
+		display: block
+
+	&__title
+		+adjust-font-size-to(24px, 1)
+		+leader(1, 24px)
+		+trailer(.5, 24px)
+		text-transform: uppercase
+		color: #000
+
+	&__subtitle
+		+adjust-font-size-to(18px, 1)
+		color: #000
+		+trailer(0)
+
+	&__place
+		+adjust-font-size-to(18px, 1)
+		color: $gray4a4
+		+trailer(0)
+
+	&__time
+		+adjust-font-size-to(14px, 1)
+		+trailer(0)
+		font-weight: 300
+		font-style: italic
+		color: $main-color
+
+.tv
+	+cf
+	+custom-clearfix
+	+expand
+
+	background-color: $grayF4F
+	overflow: hidden
+
+	&__wrapper
+		+center($full-site, 30px)
+		+trailer(2)
+		text-align: left
+
+
+	&__header
+		//+col(2/6)
+		+leader(1.5)
+
+		.tv__header-title
+			display: inline-block
+			.main__title-small
+				text-align: right
+
+	&__content
+		+col(6/6)
+
+	&__days
+		+col(1/6)
+		+leader(3)
+		+trailer(2.5)
+		text-align: center
+		text-transform: uppercase
+
+		&-title
+			+adjust-font-size-to(24px, 1)
+			+trailer(2, 24px)
+			font-weight: 700
+			color: $gray4a4
+
+		&-items
+			list-style: none inside
+
+		&-item
+			+adjust-font-size-to(18px, 1)
+			+trailer(1)
+
+		&-link
+			+adjust-font-size-to(18px, 1)
+			color: $gray4a4
+
+	&__video
+		+col(4/6)
+
+	&__video-content
+		position: relative
+		z-index: 999
+		//&:before
+		//	content: ''
+		//	display: block
+		//	width: 100%
+		//	height: 100%
+		//	position: absolute
+		//	border: 24px solid $main-color
+		//	top: -25%
+		//	left: 25%
+		//	box-sizing: border-box
+		//	z-index: -999
+
+	&__title
+		+adjust-font-size-to(18px, 1)
+		font-weight: 700
+		color: $gray4a4
+
+	&__date
+		+adjust-font-size-to(14px, 1, 18px)
+		font-weight: 300
+		font-style: italic
+		text-transform: uppercase
+
+.gallery
+	+inline-block
+	&__item
+		+col(2/6)
+		+trailer(0.5)
+		line-height: 0
+
+		&--big
+			+col(4/6)
+
+		&--header
+			position: relative
+			margin-right: 0
+			float: right
+
+			.header__wrapper
+				+stretch
+
+			&:before
+				content: ''
+				display: block
+				padding-top: 93.93939393939394% !important
+
+		&--main,
+		&--flicker
+			.center__title
+				position: absolute
+				top: 50%
+				transform: translate(-100%, -50%)
+				left: calc(100% - 28px)
+				width: 60%
+
+
+		&--main
+			background-color: $main-color
+
+			.header__title
+				color: #fff
+				.header__title-link
+					color: #fff
+
+		&--flicker
+			background-color: #fff
+			text-align: right
+
+			.header__title
+				+adjust-font-size-to(24px, 1)
+				text-transform: none
+				color: #000
+				font-weight: 400
+				transition: $transition-default
+
+			.header__icon
+				color: #000
+				+adjust-font-size-to(24px, 1)
+				+inline-block
+				transition: $transition-default
+				font:
+					weight: 900
+					style: normal
+				.icon-flicker
+					display: block
+					+adjust-font-size-to(45px, 0.5)
+
+			.icon-arrow-right
+				+adjust-font-size-to(28px, 2.5)
+				+inline-block
+				transition: $transition-default
+				margin-left: 15px
+
+			.gallery__link
+				&:hover
+					.header__title,
+					.header__icon,
+					.icon-arrow-right
+						color: $main-color
+
+
+
+
+
+	&__link
+		display: block
+		overflow: hidden
+		&:hover
+			.gallery__img
+				filter: none
+
+	&__img
+		width: 100%
+		height: 100%
+		filter: grayscale(100%)
+		transition: $transition-default
+
+.guide
+	+cf
+	+expand
+
+	&__wrapper
+		+center($full-site, 30px)
+		text-align: left
+
+	&__header--wrapper
+		+span(4/6)
+
+	&__header
+		+col(3/6)
+		+inline-block
+		text-align: left
+
+		.main__title
+			color: #000
+
+		.guide__intro
+			+adjust-font-size-to(18px, 1)
+			+leader(1)
+			font-family: 'Ubuntu'
+			color: $gray4a4
+
+
+	&__item
+		+col(2/6)
+		+trailer(0.5)
+
+		.guide__header
+			width: 100%
+			+trailer(0)
+
+		&:first-of-type
+			+col(3/6)
+			margin-right: 0
+			.guide__thumb
+				float: right
+				margin-right: 0
+
+	&__thumb
+		overflow: hidden
+		line-height: 0
+		+trailer(0)
+
+	&__img
+		transition: $transition-default
+
+	&__link
+		position: relative
+		&:hover
+			.guide__title
+				color: $gray4a4
+
+			.guide__img
+				transform: $scale-img-default
+
+	&__title
+		+adjust-font-size-to(24px, 1)
+		+leader(1, 24px)
+		transition: $transition-default
+		font-weight: 700
+		color: $main-color
+		width: 50%
+		.icon
+			margin-left: 10px
+			vertical-align: sub
+
+
+.sponsor
+	+cf
+	//text-align: center
+
+	&__block
+		+span(2/3)
+		+trailer(1.5)
+		box-sizing: border-box
+
+		&--full
+			width: 100%
+			margin-left: auto
+			margin-right: auto
+
+		&--1
+			+span(1.4/6)
+
+		&--2
+			+span(1.7/6)
+
+		&--3
+			+span(2.8/6)
+
+		&--help
+			clear: both
+
+	&__title
+		+adjust-font-size-to(14px, 0.3)
+		//color: $grayB9B
+		color: #000
+		font-weight: 700
+		text-transform: uppercase
+		text-align: left
+
+	&__list
+		list-style: none
+		text-align: center
+		+inline-block
+		+padding-leader(1)
+		border-top: 1px solid #000
+
+		&--no-border
+			border: none
+
+	&__item
+		+trailer(1.5)
+		+inline-block
+		margin:
+			left: 20px
+			right: 20px
+
+		&:first-child
+			margin-left: 0
+		//
+		&:last-child
+			margin:
+				right: 0
+	.mobile-show
+		display: none
+
++media('<desktop')
+	.home .main__header--block .main__header-wrapper
+		position: relative
+		display: block
+		background-color: transparent
+		background: none
+		background-size: auto
+		&:hover
+			.main__title,
+			.main__title-small
+				color: $gray4a4
+
+	.home .main__header--block .main__title
+		position: relative
+		top: 0
+		left: 0
+		transform: none
+
+	.home .main__header--block .main__title-small
+		position: relative
+		display: inline-block
+
+
+	.home .main section
+		+trailer(1)
+
+	.home .home-slider
+		+trailer(3.5)
+
+	.home .home-slider__box
+		display: none
+
+	.home .home-slider__container
+		+expand
+		background: $main-color
+		box-shadow: 0 $base-line-height/2 0 0 $grayD6E, 0 $base-line-height*2.5 0 0 $gray343
+
+	.home .home-slider__list
+		width: 100%
+		padding-left: 0
+		padding-right: 0
+
+	.home-slider__image,
+	.home-slider__title
+		width: 100%
+		margin-left: 0
+		margin-right: 0
+		margin-top: 0
+
+	.home-slider__title
+		+center($full-site, 30px)
+		+leader(1)
+		+trailer(1)
+		float: left
+		text-align: left
+		position: relative
+		top: auto
+		transform: none
+
+	.home-slider__image
+		img
+			width: 100%
+
+	.home .news .news__item,
+	.home .news .news__item--left,
+	.home .news .news__item--right,
+	.home .news .news__item--top,
+	.home .news .news__header
+		width: 100%
+		display: block
+		left: 0
+		margin-left: 0
+		margin-right: 0
+		&:before
+			padding-top: 0
+
+	.home .news .news__item-header,
+	.home .news .news__item-thumb
+		+col(3/6)
+		left: 0
+
+	.home .news .news__item--right .news__item-intro:before
+		left: 0
+
+	.home .news .news__read-more
+		+leader(1)
+		width: 50%
+		position: relative
+		left: 0
+		bottom: 0
+		&:before
+			content: "\66"
+			+adjust-font-size-to(22px)
+			font-family: "Universo Icons" !important
+			font-style: normal !important
+			font-weight: normal !important
+			font-variant: normal !important
+			text-transform: none !important
+			speak: none
+			line-height: 1
+			-webkit-font-smoothing: antialiased
+			-moz-osx-font-smoothing: grayscale
+			position: absolute
+			left: 100%
+			top: 50%
+
+	.home .program__items
+		&:after
+			display: none
+			position: relative
+			width: 0
+	.home .tv
+		margin-bottom: 0
+
+	.home .tv__wrapper
+		+trailer(0)
+		+leader(0)
+	.home .tv .tv__header
+		+trailer(0)
+		+leader(0)
+	.home .tv .tv__header .tv__header-title
+		display: block
+	.home .tv .tv__header .tv__header-title .main__title-small
+		display: inline-block
+
+	.home .guide .guide__header
+		width: 100%
+	.home .guide .guide__item
+		float: none
+		display: block
+		width: 100%
+	.home .guide .guide__item .guide__thumb
+		float: left
+		width: 50%
+		img
+			width: 100%
+	.home .guide .guide__title
+		float: right
+		width: 50%
+		text-align: right
+	.home .guide .guide__wrapper
+		margin-bottom: 0
+
+	.sponsor .sponsor__block
+		width: 100%
+		margin-right: 0
+		margin-left: 0
+
++media('<tablet')
+	.main__title-small
+		margin-bottom: 0
+
+	.home .home-slider__title
+		+adjust-font-size-to(24px, 1)
+
+	.home .news
+		&:before
+			content: ''
+			position: absolute
+			width: 100%
+			height: 100%
+	.home .news .news__item-header,
+	.home .news .news__item-thumb
+		width: 100%
+		left: 0
+
+	.home .news .news__read-more
+		width: 100%
+
+	.home .program__items
+		&:after
+			display: none
+			position: relative
+			width: 0
+	.home .program__left,
+	.home .program__right,
+	.home .program__header
+		float: none
+		width: 100%
+		display: block
+		text-align: left
+
+	.program__item
+		display: block
+		width: 100%
+		float: none
+		height: auto
+		+trailer(.5)
+		+leader(.5)
+
+	.home .program__header
+		+trailer(0)
+		+leader(0)
+
+	.home .program__highlight--home .program__figure
+		+expand
+		float: none
+		height: auto
+		img
+			width: 100%
+
+	.home .program__item--highlight
+		position: relative
+		width: 100%
+		+trailer(.5)
+		margin-top: -100px
+
+	.home .program__item--highlight .program__date,
+	.home .program__item--highlight .program__details
+		display: block
+		width: 100%
+		margin-left: 0
+		margin-right: 0
+
+	.home .program__item--highlight .program__date-month-year
+		vertical-align: bottom
+
+	.home .program__item--highlight .program__date-day
+		+adjust-font-size-to(100px, 4)
+
+	.home .program__item--highlight .program__date-month,
+	.home .program__item--highlight .program__date-year
+		+adjust-font-size-to(36px, 2)
+
+	.home .program__item--highlight .program__date
+		text-align: center
+		+trailer(1)
+
+	.home .program__item--highlight .program__details .program__details-title
+		width: 100%
+		border-right: none
+		padding-right: 0
+		border-bottom: 2px solid $main-color
+		float: none
+		display: block
+		+padding-trailer(1)
+		+adjust-font-size-to(12px, 1)
+
+	.home .program__item--highlight .program__details .program__details-place
+		float: none
+		//width: 100%
+		position: relative
+		padding-left: 0
+		+leader(1)
+
+	.home .program__right
+		+expand
+	.home .program__items
+		+center($full-site, 30px)
+		text-align: left
+	.home .program__right .program__items .program__item .program__date
+		margin-right: 32px
+	.home .program__right .program__items .program__item .program__date,
+	.home .program__right .program__items .program__item .program__details
+		display: inline-block
+		float: left
+	.home .program__right .program__items .program__item .program__details .program__title
+		+leader(0)
+
+	.home .tv
+		background-color: #fff
+
+	.home .tv .tv__video-content
+		+expand
+	.home .tv .tv__days
+		display: none
+	.home .tv .tv__video
+		width: 100%
+
+	.home .gallery
+		+expand
+	.home .gallery .gallery__item
+		width: 50%
+		margin-left: 0
+		margin-right: 0
+		&:nth-child(3)
+
+		&:last-child
+			display: none
+	.home .gallery .gallery__item--header
+		+center($full-site, 30px)
+		+trailer(0)
+		+leader(0)
+		text-align: left
+		box-sizing: border-box
+
+	.home .gallery .gallery__item--header,
+	.home .gallery .gallery__item--big
+		display: block
+		float: left
+		width: 100%
+		&:before
+			padding-top: 0
+			display: none
+
+	.home .gallery .gallery__item--flicker
+		display: none
+
+	.home .guide .guide__header--wrapper
+		width: 100%
+
+	.home .guide .guide__item
+		width: 100%
+		display: block
+		margin-right: 0
+		margin-left: 0
+		+trailer(1)
+	.home .guide .guide__item .guide__thumb
+		width: 100%
+		float: none
+		img
+			width: 100%
+	.home .guide .guide__title
+		float: none
+		width: 100%
+		text-align: left
+
+	.home .sponsor .sponsor__block--1,
+	.home .sponsor .sponsor__block--2,
+	.home .sponsor .sponsor__block--3
+		width: 100%
+	.home .sponsor .sponsor__block--help
+		display: none
+	.home .sponsor .sponsor__list
+		width: 100%
+		text-align: left
+	.home .sponsor .sponsor__item
+		margin-left: 0
+		margin-right: 40px
+
+	.home .mobile-show
+		display: inline-block
+		margin-left: 0
+	.home .mobile-hide
+		display: none

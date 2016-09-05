@@ -1,0 +1,119 @@
+<?php $tabActive = $this->tabActive ? $this->tabActive : 'tab_form' ?>
+
+<div class="row post page">
+<div class="col-md-12">
+	<div class="portlet light bordered">
+		<div class="portlet-title">
+			<div class="caption">
+				<i class="fa fa-file-o"></i>Editar Usuário
+			</div>
+			<div class="actions">
+				<a href="<?php echo $this->url('admin/default', ['controller'=>'user']); ?>"
+				   class="btn btn-default">
+					<i class="icon-action-undo"></i>
+					<span class="hidden-xs"> Voltar </span>
+				</a>
+			</div>
+		</div>
+		<div class="portlet-body">
+
+			<?php if($user->getChangePasswordRequired()): ?>
+
+				<div class="note note-warning">
+					<h4>Atençao</h4>
+					<p>Atualização de senha obrigatória está pendente</p>
+				</div>
+			<?php endif; ?>
+
+			<div class="tabbable-bordered">
+				<ul class="nav nav-tabs">
+					<li class="<?php echo $tabActive == 'tab_form' ? 'active' : '' ?>">
+						<a href="#tab_form" data-toggle="tab" aria-expanded="<?php echo $tabActive == 'tab_form' ? 'true' : 'false' ?>"> Cadastro </a>
+					</li>
+
+					<li class="<?php echo $tabActive == 'tab_pass' ? 'active' : '' ?>">
+						<a href="#tab_pass" data-toggle="tab" aria-expanded="<?php echo $tabActive == 'tab_pass' ? 'true' : 'false' ?>"> Senha </a>
+					</li>
+					<li class="<?php echo $tabActive == 'tab_history' ? 'active' : '' ?>">
+						<a href="#tab_history" data-toggle="tab" aria-expanded="<?php echo $tabActive == 'tab_history' ? 'true' : 'false' ?>"> Log </a>
+					</li>
+				</ul>
+				<div class="tab-content">
+					<div class="tab-pane <?php echo $tabActive == 'tab_form' ? 'active' : '' ?>" id="tab_form">
+						<div class="portlet">
+							<div class="portlet-body form">
+								<?php echo $this->partial('admin/user/_form.phtml', ['form' => $this->form, 'user'=>$this->user]); ?>
+							</div>
+						</div>
+					</div>
+
+					<div class="tab-pane <?php echo $tabActive == 'tab_pass' ? 'active' : '' ?>" id="tab_pass">
+						<div class="portlet">
+							<div class="portlet-body form">
+								<?php
+									$passForm = $this->resetPassForm;
+									$passForm->setAttribute(
+										'action',
+										$this->url('admin/default', [
+											'controller'=>'user',
+											'action' => 'reset-password',
+											'id' => $this->user->getId()
+										])
+									);
+									$passForm->prepare();
+									echo $this->form(null, null)->openTag($passForm);
+								?>
+								<div class="form-body">
+									<h4 class="form-section">Alterar Senha</h4>
+									<div class="note">
+										<p>O usuário será obrigado a alterar a senha quando efetuar o login. Sem a
+										atualização da senha, o mesmo ficará impossibilitado de acessar o sistema.</p>
+										<p>Uma notificação será enviado ao email cadastrado informando sobre essa modificação.</p>
+									</div>
+
+									<div class="row">
+										<div class="col-md-6 password-generator" data-input="input[name='temp_password']" data-url="<?php echo $this->url('util_password'); ?>">
+											<?php echo $this->formRow($passForm->get('temp_password')); ?>
+										</div>
+									</div>
+								</div>
+
+								<div class="form-actions">
+									<button type="submit" class="btn blue btn-lg" value="Salvar">
+										<span class="fa fa-fa fa-check"></span> Salvar
+									</button>
+								</div>
+
+								<?php echo $this->form()->closeTag() ?>
+
+							</div>
+						</div>
+					</div>
+
+					<div class="tab-pane <?php echo $tabActive == 'tab_history' ? 'active' : '' ?>" id="tab_history">
+						<div class="portlet">
+							<div class="portlet-body">
+
+								<h4 class="form-section">Logs</h4>
+								<div class="table-scrollable">
+									<table class="table table-hover">
+										<thead>
+										<tr>
+											<th width="15%"> # </th>
+											<th> Mensagem </th>
+										</tr>
+										</thead>
+										<tbody>
+
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</div>

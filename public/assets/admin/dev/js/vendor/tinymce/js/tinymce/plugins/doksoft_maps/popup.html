@@ -1,0 +1,377 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr">
+<head>
+  <link rel="stylesheet" type="text/css" href="spinner/jquery-ui.css"/>
+  <link rel="stylesheet" type="text/css" href="default.css"/>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places,geometry,weather"></script>
+  <script type="text/javascript" src="spinner/jquery-1.9.1.js"></script>
+  <script type="text/javascript" src="spinner/jquery-ui.js"></script>
+  <script type="text/javascript" src="spinner/jquery.mousewheel.js"></script>
+	<script class="doksoft_maps_google" src="http://google-maps-utility-library-v3.googlecode.com/svn/trunk/markerwithlabel/src/markerwithlabel_packed.js"></script>
+</head>
+<body>
+    <script type="text/javascript">
+        function tinymce3translate(str){
+            var key = 'doksoft_maps.' + str;
+            var result = top.tinyMCE.activeEditor.translate(key);
+
+            return key == result ? top.tinyMCE.activeEditor.translate(str) : result;
+        }
+
+        function tr(str){
+            return top.tinyMCE.majorVersion == '4' ? top.tinyMCE.translate(str) : tinymce3translate(str);
+        }
+
+        function t(str){
+            document.write(tr(str));
+        }
+        window.t = t;
+
+        function format(str, args){
+            for(var i=0;i<args.length;i++){
+                str = str.replace('%s', args[i]);
+            }
+
+            return str;
+        }
+
+        function fmt(str){
+            for(var i=1;i<arguments.length;i++){
+                str = str.replace('%s', arguments[i]);
+            }
+
+            return str;
+        }
+    </script>
+<script type="text/javascript" src="jquery.json-2.4.js"></script>
+<script type="text/javascript" src="map-popup-code.js"></script>
+	<div>
+		<div id="dialog_box" class="box">
+			<div class="wrapper">
+				<div class="table">
+					<div class="row">
+						<div style="width:85px; border-right:1px solid #aaa;" class="cell setting">
+							<div class="wrapper" style="padding-right:10px;position:relative;">
+								<div class="overlay dummy" style="position: absolute; z-index: 2; display: none;"></div>
+								<div class="size">
+                                    <label><script type="text/javascript">t('Width');</script></label>
+                  <input id="map-width" name="width" class="spinner" size="4"/>
+									&nbsp;<span class="measure">px</span>
+								</div>
+								<div class="size">
+									<label><script type="text/javascript">t('Height');</script></label>
+                  <input id="map-height" name="height" class="spinner" size="4"/>
+									&nbsp;<span class="measure">px</span>
+								</div>
+								<div class="size">
+									<label><script type="text/javascript">t('Zoom');</script></label>
+                  <input size="2" id="map-zoom" name="zoom" class="spinner"/>
+								</div>
+								<button onclick="settingsDialog.open()" class="radio big" id="settings" value="settings"><img src="images/settings.png"><div><script type="text/javascript">t('Settings');</script></div></button>
+								<button onclick="map.doNextMapType()" class="radio big" id="maptype" value="Roadmap"><img id="maptype_img" src="images/roadmap.png"><div id="maptype_title"><script type="text/javascript">t('Roadmap');</script></div></button>
+								<button onclick="layersDialog.open()" class="radio big" id="layers" value="layers"><img src="images/layers.png"><div><script type="text/javascript">t('Layers');</script></div></button>
+								
+                                <script type="text/javascript">
+                                    var buttons = '<button class="radio small object" id="Marker" value="Marker" title="%s"><img src="images/marker_mini.png"></button>'
+                                        + "\n"
+                                        + '<button class="radio small object" id="Text" value="Text" title="%s"><img src="images/text_mini.png"></button>'
+                                        + "\n"
+                                        + '<button class="radio small object" id="Circle" value="Circle" title="%s"><img src="images/circle_mini.png"></button>'
+                                        + "\n"
+								        + '<button class="radio small object" id="Rectangle" value="Rectangle" title="%s"><img src="images/rect_mini.png"></button>'
+                                        + "\n"
+								        + '<button class="radio small object" id="Polyline" value="Polyline" title="%s"><img src="images/line_mini.png"></button>'
+                                        + "\n"
+								        + '<button class="radio small object" id="Polygon" value="Polygon" title="%s"><img src="images/area_mini.png"></button>';						
+
+								    var arr = ['Marker', 'Text', 'Circle', 'Rectangle', 'Line', 'Area'];
+								    for (var i=0; i<arr.length; i++)
+								    	arr[i] = tr(arr[i]);
+								    var str = format(buttons, arr);
+                                    document.write(str);
+                                </script>
+							</div>
+						</div>
+						<div class="cell">
+							<div class="wrapper" style="padding-left:10px;position:relative;">
+								<div class="overlay dummy" style="position: absolute; z-index: 2; width: 10px; display: none;"></div>
+								<div style="position:relative;padding:3px 0px;" id="map-search-field">
+									<div class="overlay dummy" style="position: absolute; z-index: 2; display: none;"></div>
+									<table cellspacing="0" cellpadding="0" border="0" style="width:100%;vertical-align:middle;">
+										<tbody><tr>
+											<td style="width:32px;"><img src="images/search.png"></td>
+											<td>
+												<div id="target_box">
+                                                    <script type="text/javascript">
+													    document.write(fmt('<input id="target" type="text" placeholder="%s" autocomplete="off">', tr('Search')));
+                                                    </script>
+												</div>
+											</td>
+										</tr>
+									</tbody></table>
+								</div>
+								<div style="height: 475px; position: relative; background-color: rgb(229, 227, 223); overflow: hidden; -webkit-transform: translateZ(0);" id="map-canvas"></div>
+
+								<div style="position:absolute;margin-top:-40px;margin-left:5px;width:90%;">
+									<div id="finish_path" style="display:none;float:left;">
+                                        <script type="text/javascript">
+                                            document.write(fmt('<input onclick="insertButtons.finishInsertingShape()" type="button" value="%s">', tr('Finish')));
+                                        </script>
+										&nbsp;
+                                        <script type="text/javascript">
+                                            document.write(fmt('<input onclick="insertButtons.cancelInsertingShape()" type="button" value="%s">', tr('Cancel')));
+                                        </script>
+									</div>
+                                    <div id="delete_path" style="display:none;float:left;">
+                                        <script type="text/javascript">
+                                                document.write(fmt('<input onclick="insertButtons.cancelInsertingShape()" type="button" value="%s">', tr('Delete')));
+                                        </script>
+										
+									</div>
+									<div id="colorChooser" style="display:none;float:left;padding-top:6px;padding-left:10px;">
+										<div class="color-item with-color-red" style="background-color:red;"></div>
+										<div class="color-item with-color-yellow" style="background-color:yellow;"></div>
+										<div class="color-item with-color-green" style="background-color:green;"></div>
+										<div class="color-item with-color-#00FFFF" style="background-color:#00FFFF;"></div>
+										<div class="color-item with-color-blue" style="background-color:blue;"></div>
+										<div class="color-item with-color-#FF00FF" style="background-color:#FF00FF;"></div>
+										<div class="color-item with-color-black" style="background-color:black;"></div>
+										<div class="color-item with-color-white" style="background-color:white;"></div>
+									</div>
+									<div id="fontChooser" style="display:none;font-size:12px;text-align:center;padding-top:5px;">
+										<div style="float:left">
+											Font-size:&nbsp;
+										</div>
+										<div class="font-item">8</div>
+										<div class="font-item">12</div>
+										<div class="font-item">16</div>
+										<div class="font-item">20</div>
+										<div class="font-item">24</div>
+										<div class="font-item">36</div>
+										<div class="font-item">72</div>
+									</div>
+								</div>
+						</div>
+					</div>
+				</div>	
+			</div>
+		</div>
+	</div>
+
+    <script type="text/javascript">
+        document.write(fmt('<div id="layers-form" title="%s">', tr('Edit layers settings')));
+    </script>
+	<form>
+        <label for="traffic_layer">
+            <input type="checkbox" id="traffic_layer" name="traffic_layer"/>
+            <script type="text/javascript">t('Traffic layer');</script></label>
+        <br/>
+        <label for="weather_layer">
+            <input type="checkbox" id="weather_layer" name="weather_layer"/>
+            <script type="text/javascript">t('Weather layer');</script></label>
+	</form>
+    </div>
+
+    <script type="text/javascript">
+        document.write(fmt('<div id="settings-form" title="%s">', tr('Edit map settings')));
+    </script>
+        <form>
+            <label for="show_map_type">
+                <input type="checkbox" id="show_map_type" name="mapTypeControl"/>
+                <script type="text/javascript">t('Show map type control');</script></label>
+            <br/>
+            <label for="show_zoom">
+                <input type="checkbox" id="show_zoom" name="zoomControl"/>
+                <script type="text/javascript">t('Show zoom control');</script></label>
+            <br/>
+            <label for="show_rotate">
+                <input type="checkbox" id="show_rotate" name="rotateControl"/>
+                <script type="text/javascript">t('Show rotate control');</script></label>
+            <br/>
+            <label for="show_scale">
+                <input type="checkbox" id="show_scale" name="scaleControl"/>
+                <script type="text/javascript">t('Show scale control');</script></label>
+            <br/>
+            <label for="show_street_view">
+                <input type="checkbox" id="show_street_view" name="streetViewControl"/>
+                <script type="text/javascript">t('Show street view control');</script></label>
+            <br/>
+            <label for="show_pan">
+                <input type="checkbox" id="show_pan" name="panControl"/>
+                <script type="text/javascript">t('Show pan control');</script></label>
+            <br/>
+            <label for="show_map_overview">
+                <input type="checkbox" id="show_map_overview" name="overviewMapControl"/>
+                <script type="text/javascript">t('Show map overview control');</script></label>
+            <br/>
+            <label for="dragging_enabled">
+                <input type="checkbox" id="dragging_enabled" name="draggable"/>
+                <script type="text/javascript">t('Map dragging is enabled');</script></label>
+            <br/>
+            <label for="disable_dblclick_zoom">
+                <input type="checkbox" id="disable_dblclick_zoom" name="disableDoubleClickZoom"/>
+                <script type="text/javascript">t('Disable double click zoom');</script></label>
+        </form>
+    </div>
+    <div id="codeContainer" style="visibility:hidden"><!-- This code should be commented, it is needed in such form
+<script>
+_loadmap = function (id, json) {
+
+    var canva = document.getElementById(id);
+    canva.style.width = json.width + "px";
+    canva.style.height = json.height + "px";
+    var map = new google.maps.Map(canva, {
+        zoom: parseInt(json.zoom),
+        center: new google.maps.LatLng(parseFloat(json.lat), parseFloat(json.lng)),
+        mapTypeId: json.type
+    });
+    if (json.settings) {
+        for (var id in json.settings) map.set(id, json.settings[id] ? true : false);
+    };
+		if(json.settings.weather_layer){
+				object = new google.maps.weather.WeatherLayer({
+                    temperatureUnits: json.settings.weather_in_celsius 
+                        ? google.maps.weather.TemperatureUnit.CELSIUS 
+                        : google.maps.weather.TemperatureUnit.FAHRENHEIT
+				});
+				object.setMap(map);
+		}
+		if(json.settings.traffic_layer){
+				object = new google.maps.TrafficLayer();
+				object.setMap(map);
+		}
+    if (json.objects)
+        for (var type in json.objects) {
+            for (var i in json.objects[type]) {
+                var object = 0;
+                switch (type) {
+                case 'Marker':
+										var pinColor = json.objects[type][i][3];
+										var colorsTransforms = {
+												'red': 'FF0000',
+												'yellow': 'FFFF00',
+												'green': '008000',
+												'blue': '0000FF',
+												'black': '000000',
+												'white': 'FFFFFF'
+										};
+										pinColor = colorsTransforms[pinColor] || pinColor || 'red';
+										var pinImage = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + pinColor,
+												new google.maps.Size(21, 34),
+												new google.maps.Point(0,0),
+												new google.maps.Point(10, 34));
+										var pinShadow = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_shadow",
+												new google.maps.Size(40, 37),
+												new google.maps.Point(0, 0),
+												new google.maps.Point(12, 35));
+
+                    object = new google.maps.Marker({
+                        position: new google.maps.LatLng(json.objects[type][i][0], json.objects[type][i][1]),
+                        map: map,
+												icon: pinImage,
+												shadow: pinShadow,
+                        title: json.objects[type][i][2]
+                    });
+                    (function (txt) {
+                        google.maps.event.addListener(object, 'click', function () {
+                            (new google.maps.InfoWindow({
+                                content: txt
+                            })).open(map, object);
+                        });
+                    })(json.objects[type][i][2]);
+                    break;
+                case 'Rectangle':
+                    object = new google.maps.Rectangle({
+                        bounds: new google.maps.LatLngBounds(new google.maps.LatLng(json.objects[type][i][1][0], json.objects[type][i][1][1]), new google.maps.LatLng(json.objects[type][i][2][0], json.objects[type][i][2][1])),
+                        map: map,
+                        strokeColor: json.objects[type][i][0]
+                    });
+                    break;
+                case 'Polygon':
+                case 'Polyline':
+                    var path = json.objects[type][i],
+                        array_path = [];
+
+                    for (var j=1;j<path.length;j++) array_path.push(new google.maps.LatLng(path[j][0], path[j][1]));
+                    object = new google.maps[type]({
+                        path: array_path,
+                        map: map,
+                        strokeColor: path[0]
+                    });
+                    break;
+                case 'Text':
+                    object = new MarkerWithLabel({
+                        position: new google.maps.LatLng(json.objects[type][i][0], json.objects[type][i][1]),
+                        map: map,
+                        labelContent: json.objects[type][i][2],
+                        labelAnchor: new google.maps.Point(22, 0),
+                        labelClass: "labels",
+                        labelStyle: {
+                            opacity: 1.0,
+                            minWidth: '200px',
+														textAlign: 'left',
+														color: json.objects[type][i][4],
+														fontSize: json.objects[type][i][3]
+                        },
+                        icon: {}
+                    });
+                    break;
+                case 'Circle':
+                    object = new google.maps.Circle({
+                        radius: json.objects[type][i][3],
+                        center: new google.maps.LatLng(json.objects[type][i][1], json.objects[type][i][2]),
+                        map: map,
+                        strokeColor: json.objects[type][i][0]
+                    });
+                    break;
+                }
+            }
+        }
+};
+</script>
+<div id="{{map-id}}"></div>
+<script class="doksoft_maps">
+  function sourceScript(src, doc, complete){
+    var script = doc.createElement('script');
+    script.type="text/javascript";
+    script.src = src;
+    script.onload = complete;
+    script.onreadystatechange = function(scr){
+      if(script.readyState=='loaded' || script.readyState=='completed' || script.readyState == 'complete'){
+        complete();
+      }
+    };
+    var head = doc.head || doc.getElementsByTagName("head")[0];
+    head.appendChild(script);
+  }
+
+  window.maps || (window.maps = []);
+  window.maps.push(["{{map-id}}", {{map-json}}]);
+
+  function initMap(){
+    sourceScript("http://google-maps-utility-library-v3.googlecode.com/svn/trunk/markerwithlabel/src/markerwithlabel_packed.js", document, function(){ 
+      for(var i=0;i<window.maps.length;i++){
+        _loadmap(window.maps[i][0], window.maps[i][1]);
+      }
+    });
+  }
+
+  function addEvent(element, event, fn) {
+    if (element.addEventListener)
+    element.addEventListener(event, fn, false);
+    else if (element.attachEvent)
+    element.attachEvent('on' + event, fn);
+  }
+  addEvent(window, 'load', function(){
+    if(window.mapsLoaded){
+      return;
+    }
+    window.mapsLoaded = true;
+
+    sourceScript("http://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places,weather&callback=initMap", document, function(){ });
+  });
+</script>
+--></div>
+</body>
+</html>

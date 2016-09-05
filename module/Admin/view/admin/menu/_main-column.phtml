@@ -1,0 +1,30 @@
+<div class="portlet light bordered admin-menu-items">
+	<div class="portlet-title">
+		<div class="caption"><span class="caption-subject font-grey-mint bold">Estrutura do Menu</span></div>
+		<div class="actions">
+
+			<button class="btn blue btn-lg">Salvar Menu</button>
+
+		</div>
+	</div>
+	<div class="portlet-body form">
+
+		<div class="form-body">
+			<h4>Arraste os itens para colocá-los na ordem desejada. Clique na seta à direita do item para mostrar opções de configuração adicionais.</h4>
+		</div>
+
+		<div class="menu-items">
+			<?php echo $this->adminMenu($this->items); ?>
+		</div>
+
+
+		<div class="form">
+			<div class="form-body"></div>
+			<div class="form-actions">
+				<button class="btn blue btn-lg pull-right action-save">Salvar Menu</button>
+			</div>
+		</div>
+
+
+	</div>
+</div>

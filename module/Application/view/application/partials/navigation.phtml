@@ -1,0 +1,23 @@
+<ul class="mainmenu__list">
+    <?php foreach ($this->container as $page):
+        /** @var Zend\Navigation\Page\AbstractPage $page */ ?>
+        <li class="mainmenu__item">
+            <?php $href = $page->hasPages() ? "#" : $page->getHref(); ?>
+            <a class="mainmenu__link" href="<?php echo $href ?>" target="<?php echo $page->getTarget() ?>">
+                <span><?php echo $page->getLabel() ?></span>
+            </a>
+            <?php if ($page->hasPages()): ?>
+                <ul class="mainmenu__list mainmenu__list--sub">
+                    <?php foreach ($page->getPages() as $child):
+                        /** @var Zend\Navigation\Page\AbstractPage $child */ ?>
+                        <li class="mainmenu__item">
+                            <a class="mainmenu__link" href="<?php echo $child->getHref(); ?>">
+                                <span><?php echo $child->getLabel() ?></span>
+                            </a>
+                        </li>
+                    <?php endforeach; ?>
+                </ul>
+            <?php endif; ?>
+        </li>
+    <?php endforeach; ?>
+</ul>

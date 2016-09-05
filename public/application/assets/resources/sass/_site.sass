@@ -1,0 +1,121 @@
+@import "compass"
+@import "compass/layout"
+@import "compass/reset"
+@import "variables"
+@import "settings"
+@import "fonts"
+@import "font-awesome"
+@import "helpers"
+
++establish-baseline
+
+html, body
+	height: 100%
+
+body
+	background-color: white
+	font:
+		family: "Open Sans", Arial, Helvetica, sans-serif
+		weight: 400
+		-webkit-font-smoothing: antialiased
+		-moz-osx-font-smoothing: grayscale
+
+a
+	text-decoration: none
+	outline: none !important
+
+input
+	outline: none !important
+
+.invisibles
+	position: fixed
+	width: 0
+	height: 0
+	overflow: hidden
+	opacity: 0
+
+p
+	+trailer(1)
+	+adjust-leading-to(1)
+
+.clear
+	+clear
+.none
+	display: none
+
+@import "sprite"
+@import "vegas"
+@import "header"
+@import "menu"
+@import "minha"
+@import "search"
+@import "breadcrumbs"
+@import "form"
+
+strong, b
+	font-weight: 700
+h2
+	color: $cor-principal
+h3
+	color: #414042
+h2, h3
+	+adjust-font-size-to(24px)
+	+trailer(1, 24px)
+	font-weight: 700
+h4
+	+adjust-font-size-to(20px)
+	+trailer(1, 20px)
+	font-weight: 300
+
+.site-wrapper
+	margin-left: auto
+	margin-right: auto
+	max-width: 1200px
+	width: 96%
+	position: relative
+	padding-left: 8px
+	padding-right: 8px
+	margin-top: 85px
+
+.main
+	a
+		color: #ef3f4a
+		text-decoration: underline
+		.hub &
+			text-decoration: none
+.main-header
+	h1
+		+adjust-font-size-to(40px)
+		+leader(2, 40px)
+		+trailer(2, 40px)
+		color: #000
+		font-weight: 700
+		letter-spacing: -.04em
+		.hub &
+			+leader(1, 60px)
+			+trailer(0, 60px)
+.main-wrapper
+	+leader(2)
+	.contents
+		ul
+			li 
+				list-style-type:  disc
+
+
+div.backgorund
+	height: calc(100% - 68px)
+
+
+footer
+	position: relative
+	z-index: 99999
+	.content
+		text-align: center
+		margin: 0 auto
+		background-color: $cor-principal
+		padding-top: 10px
+		padding-bottom: 10px
+		+opacity(0.7)
+		span
+			display: block
+			color: #fff

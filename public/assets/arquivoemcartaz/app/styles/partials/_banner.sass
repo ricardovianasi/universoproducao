@@ -1,0 +1,188 @@
+.banner
+  +clearfix
+  +trailer(2)
+  width: 100%
+  display: inline-block
+
+  +media('>=desktop')
+    height: $base-line-height * 30
+
+  +media('<desktop')
+    height: ($base-line-height * 20) + ($base-line-height * 8)
+
+  &__items
+    position: relative
+    width: 100%
+    perspective: 800px
+
+    +media('>=desktop')
+      height: $base-line-height * 30
+    +media('<desktop')
+      height: ($base-line-height * 20)
+
+  &__covers
+    position: absolute
+    width: 100%
+    height: $base-line-height * 30
+    perspective: 200px
+
+  &__cover
+    margin: 0
+    right: auto
+    bottom: 0
+    position: absolute
+    left: 0
+    top: 0
+    width: 100%
+    +media('>=desktop')
+      height: $base-line-height * 30
+    +media('<desktop')
+      height: ($base-line-height * 20)
+    background-position: 50%
+    background-repeat: no-repeat
+    background-size: cover
+    transition: all .6s cubic-bezier(.29,1.48,.24,.96) .4s
+    opacity: 0
+    transform: translateZ(20px)
+
+    &[data-state="none"]
+      opacity: 0
+      transform: translateZ(20px)
+
+    &[data-state="active"]
+      opacity: 1
+      transform: translateZ(0)
+
+      +media('<desktop')
+        .banner__content-cover
+          position: absolute
+          visibility: visible
+          background: $color-pallete-1 !important
+          opacity: 1
+          bottom: -$base-line-height * 8
+          left: 0
+
+    > .banner__content-cover
+      opacity: 0
+      z-index: -100
+      overflow: hidden
+      transform: translate3d(0px, 0px, 0px)
+      visibility: hidden
+      position: relative
+      width: 100%
+      height: $base-line-height * 8
+
+  &__item
+    position: relative
+    float: left
+    box-sizing: border-box
+    height: 100%
+
+    +media('>=desktop')
+      width: 16%
+    +media('<desktop')
+      width: 20%
+
+    overflow-x: hidden
+    overflow-y: hidden
+    transition-property: transform,opacity,background,-webkit-transform
+    transition-duration: .4s
+    transition-timing-function: ease-out
+    transition-delay: 0s
+    background: transparent
+    opacity: 1
+    transform: translateZ(0)
+
+    &:nth-of-type(1)
+      transition-delay: 0s
+    &:nth-of-type(2)
+      transition-delay: .1s
+    &:nth-of-type(3)
+      transition-delay: .2s
+    &:nth-of-type(4)
+      transition-delay: .3s
+    &:nth-of-type(5)
+      transition-delay: .4s
+    &:nth-of-type(6)
+      transition-delay: .5s
+
+    &[data-state="none"]
+      opacity: 1
+      transform: translateZ(0)
+
+    &[data-state="hidden"]
+      opacity: 0
+      transform: translateZ(-30px)
+
+    &[data-state="active"]
+      +media('>=desktop')
+        background: $color-pallete-1 !important
+        opacity: 1
+        transform: translateZ(0)
+        transition-delay: 0s
+        .banner__content
+          visibility: visible
+      +media('<desktop')
+        opacity: 0
+
+    &--intro
+      +media('>=desktop')
+        width: 20%
+      +media('<desktop')
+        width: 100% !important
+        position: absolute
+        top: $base-line-height * 20
+        height: $base-line-height * 8
+
+      .banner__content
+        visibility: visible
+        background-color: $color-pallete-3
+        text-align: center
+      .banner__text
+        left: 50%
+        transform: translate(-50%, -50%)
+      .banner__title
+        color: $color-pallete-11
+        letter-spacing: 3px
+        text-align: right
+        line-height: 1
+        letter-spacing: -.05em
+      .banner__subtitle
+        text-align: right
+        text-transform: uppercase
+        letter-spacing: -.05em
+
+  &__content
+    z-index: -100
+    overflow: hidden
+    transform: translate3d(0px, 0px, 0px)
+    visibility: hidden
+    position: relative
+    width: 100%
+    height: 100%
+
+  &__text
+    position: absolute
+    top: 50%
+    transform: translateY(-50%)
+    box-sizing: border-box
+    padding: 16px
+
+  &__title
+    +adjust-font-size-to(24px, 1)
+    font-weight: 800
+    text-transform: uppercase
+    color: $color-pallete-3
+    strong
+      display: block
+      +adjust-font-size-to(36px)
+      font-weight: 800
+
+  &__subtitle
+    +adjust-font-size-to(16px)
+
+  &__brand
+    +trailer(1.5)
+    span
+      font-size: 70px
+      color: $color-pallete-11

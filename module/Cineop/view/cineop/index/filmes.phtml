@@ -1,0 +1,327 @@
+<!--<div class="breadcrumbs">-->
+<!--	<ul class="breadcrumbs__list">-->
+<!--		<li class="breadcrumbs__list-item"><a class="breadcrumbs__link" href="--><?php //echo $this->url('cineop') ?><!--">Página Inicial</a></li>-->
+<!--		<li class="breadcrumbs__list-item"><a class="breadcrumbs__link" href="">Notícias</a></li>-->
+<!--	</ul>-->
+<!--</div>-->
+<div class="breadcrumbs"></div>
+<header class="main__header">
+	<h1 class="main__title">Filmes</h1>
+	<!--<time class="main__date">28 Jan 2015</time>-->
+</header>
+
+<!--<div class="main__bg">-->
+<!--	<figure>-->
+<!--		<img class="main__bg-img" src="images/main-bg.jpg" alt="">-->
+<!--		<figcaption>Apresentação Sons & Imagens com a Associação Francesa Double Cadence</figcaption>-->
+<!--	</figure>-->
+<!--</div>-->
+
+<div class="main__wrapper">
+	<?php
+	$dbh=mysql_connect ("162.243.253.29", "ricardo", "ag51www");
+	//$dbh=mysql_connect ("127.0.0.1", "root", "");
+	if (!$dbh) {
+		echo "Não foi possível conectar ao banco de dados: " . mysql_error();
+		exit;
+	}
+	if (!mysql_select_db("universoproducao")) {
+		echo "Não foi possível selecionar universoproducao: " . mysql_error();
+		exit;
+	}
+	function databr($valor)
+	{
+		$valor = substr($valor,8,2) . "/" . substr($valor,5,2) . "/" . substr($valor,0,4);
+		return $valor;
+	}
+
+	function databr2($valor)
+	{
+		$valor = substr($valor,8,2) . "." . substr($valor,5,2) . "." . substr($valor,0,4);
+		return $valor;
+	}
+
+	function data_USA($valor1){
+		$valor1 = substr($valor1,6,4) . "-" . substr($valor1,3,2) . "-" . substr($valor1,0,2);
+		return $valor1;
+	}
+	function hora($valor)
+	{
+		if ($valor == '00:00:00') {
+			$texto = "";
+		} else {
+			$texto = date('H:i', strtotime($valor));
+			$texto = str_replace(':','h',$texto);
+			$texto = str_replace('h00','h',$texto);
+		}
+		return $texto;
+	}
+	function formata_data_extenso($strDate)
+	{
+		// Array com os dia da semana em português;
+		$arrDaysOfWeek = array('domingo', 'segunda', 'terça', 'quarta', 'quinta', 'sexta', 'sábado');
+		// Array com os meses do ano em português;
+		$arrMonthsOfYear = array(1 => '01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12');
+		// Descobre o dia da semana
+		$intDayOfWeek = date('w',strtotime($strDate));
+		// Descobre o dia do mês
+		$intDayOfMonth = date('d',strtotime($strDate));
+		// Descobre o mês
+		$intMonthOfYear = date('n',strtotime($strDate));
+		// Descobre o ano
+		$intYear = date('Y',strtotime($strDate));
+		// Formato a ser retornado
+		return $arrDaysOfWeek[$intDayOfWeek];
+	}
+	function is_utf8($str)
+	{
+		$c=0; $b=0;
+		$bits=0;
+		$len=strlen($str);
+		for($i=0; $i<$len; $i++)
+		{
+			$c=ord($str[$i]);
+			if($c > 128)
+			{
+				if(($c >= 254)) return false;
+				elseif($c >= 252) $bits=6;
+				elseif($c >= 248) $bits=5;
+				elseif($c >= 240) $bits=4;
+				elseif($c >= 224) $bits=3;
+				elseif($c >= 192) $bits=2;
+				else return false;
+				if(($i+$bits) > $len) return false;
+				while($bits > 1)
+				{
+					$i++;
+					$b=ord($str[$i]);
+					if($b < 128 || $b > 191) return false;
+					$bits--;
+				}
+			}
+		}
+		return true;
+	}
+
+	function utf8($string)
+	{
+		if (is_utf8($string))
+		{
+			return $string;
+		} else {
+			return utf8_encode($string);
+		}
+	}
+
+	$mostra = 1068;
+	$lg = '';
+	$url = '';
+	$fc = $fl = $sub = $subMostra = $fSub1 = $fSub2 = $fSub3 = '';
+	//$limitCurta = 0;
+	$Dir = "Direção";
+?>
+
+	<?php
+	$nomeTipoFilme = "";
+	$tipoFilme = isset($_POST['tipoFilme']) ? $_POST['tipoFilme'] : "";
+	if($tipoFilme != "") {
+		$tiposFilme = array(
+			'1' => 'Longa',
+			'2' => 'Media',
+			'3' => 'Curta'
+		);
+		$nomeTipoFilme = $tiposFilme[$tipoFilme];
+	}
+
+
+	$nomeSubMostra = "";
+	$descSubMostra = "";
+	$codSubMostra = isset($_POST['subMostra']) ? $_POST['subMostra'] : "";
+	if($codSubMostra != "") {
+		$resultNomeSubMostra = mysql_query("select * from tb_cat_filme where CodCat = $codSubMostra");
+		$nomeSubMostra = mysql_result($resultNomeSubMostra,0,"NomeHom".$lg);
+		$descSubMostra = mysql_result($resultNomeSubMostra,0,"DescHom".$lg);
+
+		$nomeSubMostra = mb_convert_encoding($nomeSubMostra, "UTF-8", "ISO-8859-1");
+	}
+
+	$sqlPesquisa  = "select distinct OB.codObra, OB.TituloObra, OB.TituloObraIng, OB.classeObra, OB.DirecaoObra ";
+	$sqlPesquisa .= "from tb_obras OB, tb_filmemostra FI ";
+
+	$sqlPesquisa .= "where ( FI.CodMostra = $mostra AND FI.Selecionado = 1 AND FI.CodFilme = OB.codObra ";
+	if($tipoFilme != "") {
+		$sqlPesquisa .= "AND OB.classeObra = $tipoFilme ";
+	}
+
+	if($codSubMostra != "") {
+		$sqlPesquisa .= " AND FI.SubMostra=" . $codSubMostra;
+	}
+
+	$sqlPesquisa .= " AND OB.codObra <> 15745 ) ";
+
+	$sqlPesquisa .= "|| ( OB.EdicaoMostra = 1068 AND OB.FilmeConvidado = 1 AND OB.codObra <> 15745 ";
+	if($tipoFilme != "") {
+
+		$tiposFilme = array(
+			'1' => 'Longa',
+			'2' => 'Media',
+			'3' => 'Curta'
+		);
+
+		$sqlPesquisa .= "AND OB.CategoriaConvidado='" . $tiposFilme[$tipoFilme] . "' ";
+	}
+
+	if($codSubMostra != "") {
+		$sqlPesquisa .= " AND OB.SubMostra=" . $codSubMostra;
+	}
+	$sqlPesquisa .= " ) ";
+
+	$sqlPesquisa .= " ORDER BY OB.TituloObra ";
+
+
+	?>
+
+	<form class="form-filtro" action="" method="post">
+		<select class="form__input" class="form__input" name="tipoFilme" id="tipoFilme" style="width: 40%">
+			<?php
+			if ($lg == 'Ing') {
+				?>
+				<option <?php echo $tipoFilme == "" ? "selected='selected'" : "";?> value="">&nbsp;&nbsp;-- CATEGORY --&nbsp;&nbsp;</option>
+				<option <?php echo $tipoFilme == "" ? "selected='selected'" : "";?> value="">&nbsp;&nbsp;-- ALL --&nbsp;&nbsp;</option>
+				<option <?php echo $tipoFilme == "1" ? "selected='selected'" : "";?> value="1">FEATURES</option>
+				<option <?php echo $tipoFilme == "3" ? "selected='selected'" : "";?> value="3">SHORTS</option>
+
+				<?php
+			} else {
+				?>
+				<option <?php echo $tipoFilme == "" ? "selected='selected'" : "";?> value="">CATEGORIA</option>
+				<option value="">TODOS</option>
+				<option <?php echo $tipoFilme == "1" ? "selected='selected'" : "";?> value="1">LONGAS</option>
+				<option <?php echo $tipoFilme == "2" ? "selected='selected'" : "";?> value="2">MÉDIAS</option>
+				<option <?php echo $tipoFilme == "3" ? "selected='selected'" : "";?> value="3">CURTAS</option>
+				<?php
+			}
+			?>
+		</select>
+
+		<?php
+		$sqlSubMostra = "SELECT * FROM tb_cat_filme CA WHERE CA.CodMostra = $mostra ORDER BY CA.posicao";
+		$resultSubMostra = mysql_query($sqlSubMostra);
+		?>
+
+		<select class="form__input"  name="subMostra" id="subMostra" style="width: 40%">
+			<?php
+			if ($lg == 'Ing') {
+				?>
+				<option value="">SUB-MOSTRA</option>
+				<option value="">ALL</option>
+				<?php
+				while ($subMostra = mysql_fetch_object($resultSubMostra)) {
+
+					if($subMostra->NomeHomIng != "") {
+						?>
+						<option <?php echo $codSubMostra == $subMostra->CodCat ? "selected='selected'" : "";?>
+							value="<?php echo $subMostra->CodCat;?>"><?php echo $subMostra->NomeHomIng?></option>
+						<?php
+					}
+				}
+			}
+			else {
+				?>
+				<option value="">SUB-MOSTRA</option>
+				<option value="">TODOS</option>
+				<?php
+				while ($subMostra = mysql_fetch_object($resultSubMostra)) {
+					?>
+
+					<option <?php echo $codSubMostra == $subMostra->CodCat ? "selected='selected'" : "";?>
+						value="<?php echo $subMostra->CodCat;?>"><?php echo utf8($subMostra->NomeHom);?></option>
+
+					<?php
+				}
+			}
+			?>
+		</select>
+			<button type="submit" class="form__button" style="width: 15%" class="form__button">Filtrar</button>
+	</form>
+
+	<br />
+	<br />
+
+	<?php
+
+
+	#echo "<!-- SQL: ".$sqlPesquisa." -->";
+	mysql_query("SET SQL_BIG_SELECTS=1"); # AMÉM
+	$result = mysql_query($sqlPesquisa);
+	?>
+
+	<?php
+	if($descSubMostra != "" && $nomeSubMostra != "") {
+		?>
+		<h2><?=$nomeTipoFilme != "" ? " $nomeTipoFilme • " : "";?>  <?=$nomeSubMostra;?></h2>
+
+		<div class="txtSubMostra">
+			<?=$descSubMostra;?>
+
+		</div>
+
+
+		<?php
+	}
+	?>
+
+
+	<ul class="listafilme" <?=$descSubMostra != "" && $nomeSubMostra != "" ? " style='width: 290px; float: right;'" : "";?>>
+		<?php
+		if(mysql_num_rows($result) > 0) {
+			while( $row = mysql_fetch_object($result) ) {
+
+				$CodFilme = $row->codObra;
+				//$TitObra = $lg=='Ing' ? "TituloObraIng" : "TituloObra";
+				$diretor = utf8_encode($row->DirecaoObra);
+
+				if ($lg=='Ing') {
+					$diretor = str_replace(' e ',' and ',$diretor);
+
+					if($row->TituloObraIng != "") {
+						$tituloObra = $row->TituloObraIng;
+					} else {
+						$tituloObra = $row->TituloObra;
+					}
+				} else {
+					$tituloObra = $row->TituloObra;
+				}
+
+				?>
+				<li class="cxAlta">
+					<a href="<?php echo $this->url('cineop'); ?>filmes/<?php echo $CodFilme; ?>">
+						<strong>
+							<?php
+
+							?>
+							<?php echo utf8_encode($tituloObra)?>
+							<?php
+							if($CodFilme == 13085) echo " - Filme de Abertura";
+							?>
+						</strong><br />
+
+				<span class="subItemListaMenor" style="font-size: 10px; font-style: italic;">
+	        		<?php echo $Dir?>: <?php echo $diretor?>
+	        	</span>
+					</a>
+				</li>
+				<?php
+			}
+		} else {
+			?>
+			<li class="cxAlta">Nenhum filme encontrado</li>
+			<?php
+		}
+		?>
+		<br class="clearfloat" />
+	</ul>
+
+
+
+</div>

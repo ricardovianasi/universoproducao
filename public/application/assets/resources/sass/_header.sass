@@ -1,0 +1,73 @@
+.header
+    position: relative
+    color: white
+    a
+        color: white
+
+.header .header-fixed
+    height: 72px
+
+.header-fixed
+    background-color: $cor-principal
+    position: fixed
+    width: 100%
+    top: 0
+    left: 0
+    z-index: 1000
+
+.header-left, .header-right, .header-center
+    +box-sizing(border-box)
+
+.header-left
+    width: 25%
+.header-right
+    width: 25%
+.header-center
+    width: 50%
+
+.header-left
+    float: left
+    .brand
+        +trailer(0)
+        vertical-align: middle
+    .brand-link
+        +inline-block
+    .brand-logo
+        display: block
+        float: left
+        width: 72px
+        font-size: 48px
+        text-align: center
+        line-height: 3 * $base-line-height
+        font-family: 'logo'
+        &.full
+            font-size: 72px
+            width: 144px
+    .brand-name
+        +inline-block
+        float: left
+        font-size: 18px
+        line-height: $base-line-height
+        margin: (.5 * $base-line-height) 0
+        padding-left: 20px
+        border-left: 2px solid rgba(255,255,255,0.3)
+        font:
+            weight: 700
+
+.header-right
+    float: left
+    text-align: right
+
+.header-center
+    float: left
+    .content
+        height: 72px
+        text-align: center
+        padding-top: 10px
+        span
+            display: block
+            
+
+.back-to-top-link
+    z-index: 800
+    top: 11px

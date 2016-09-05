@@ -1,0 +1,99 @@
+<?php $form = $this->form; ?>
+<div class="row post guide">
+<div class="col-md-12">
+	<?php $form->prepare(); echo $this->form(null, null)->openTag($form) ?>
+
+	<div class="portlet light portlet-fit bordered">
+		<div class="portlet-title">
+			<div class="caption">
+				<?php if($this->prog->getId()): ?>
+				<i class="fa fa-edit"></i>
+				Editar Destaque
+				<?php else: ?>
+				<i class="fa fa-file-o"></i>
+				Novo Destaque
+				<?php endif; ?>
+			</div>
+			<div class="actions">
+				<a href="<?php echo $this->url('admin/programation', ['site'=>$this->site]); ?>"
+				   class="btn btn-default">
+					<i class="icon-action-undo"></i>
+					<span class="hidden-xs"> Voltar </span>
+				</a>
+			</div>
+		</div>
+		<div class="portlet-body">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="portlet-body form">
+						<div class="">
+							<?php
+								echo $this->formRow($form->get('title'));
+								echo $this->formRow($form->get('subtitle'));
+
+							?>
+							<div class="row">
+								<div class="form-group col-md-4">
+									<?php echo $this->formLabel($form->get('date')); ?>
+									<div class="input-group date date-picker" data-date-format="dd/mm/yyyy">
+										<?php echo $this->formelement($form->get('date')); ?>
+										<span class="input-group-btn">
+											<button class="btn btn-sm default" type="button">
+												<i class="fa fa-calendar"></i>
+											</button>
+										</span>
+									</div>
+								</div>
+								<div class="col-md-4">
+									<?php echo $this->formRow($form->get('hour')); ?>
+								</div>
+							</div>
+							<?php
+								echo $this->formRow($form->get('place'));
+								echo $this->formRow($form->get('url'));
+							?>
+							<div class="row">
+								<div class="col-md-4">
+									<?php echo $this->formRow($form->get('position')); ?>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-3">
+									<?php echo $this->formRow($form->get('is_highlight')); ?>
+								</div>
+								<div class="form-group col-md-6">
+									<div class="form-group">
+										<?php echo $this->formLabel($form->get('photo')); ?>
+										<div class="input-group input-group-lg">
+											<?php echo $this->formElement($form->get('photo')); ?>
+											<span class="input-group-btn">
+												<a href="#"
+												   data-toggle="modal"
+												   data-target="#modal-responsivefilemanager"
+												   data-url="/filemanager/dialog.php?type=1&field_id=photo"
+												   class="btn btn-success responsivefilemanager">Selecionar uma Imagem</a>
+											</span>
+										</div>
+										<!-- /input-group -->
+									</div>
+								</div>
+							</div>
+
+						</div>
+					</div>
+
+					<div class="form">
+						<div class="form-body"></div>
+						<div class="form-actions">
+							<button type="submit" class="btn blue btn-lg pull-right action-save">Salvar</button>
+							<a href="<?php echo $this->url('admin/programation', ['site'=>$this->site]); ?>" class="btn red btn-lg pull-right action cancel">Descartar</a>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+	<?php echo $this->form()->closeTag() ?>
+</div>
+</div>

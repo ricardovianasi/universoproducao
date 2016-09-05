@@ -1,0 +1,38 @@
+.search-wrapper
+  display: block
+  overflow: hidden
+  position: fixed
+  left: 0
+  top: 72px //setado pelo js, era 72px
+  height: 120px
+  width: 100%
+  background-color: #fff
+  z-index: 996
+  .site-wrapper &
+    display: none
+  .search-form
+    display: block
+    width: 100%
+    height: 100%
+    .search-input
+      +box-sizing(border-box)
+      width: 100%
+      height: 100%
+      padding-left: 5%
+      padding-right: 5%
+      background-color: #fff
+      border: 1px solid #ccc
+      outline: none
+      font:
+        family: 'Open Sans', Arial, Helvetica, sans-serif
+        style: italic
+        size: $base-line-height*2
+      color: $cor-escura
+      &::-webkit-input-placeholder
+        color: #ddd
+      &:-moz-placeholder
+        color: #ddd
+      &::-moz-placeholder
+        color: #ddd
+      &:-ms-input-placeholder
+        color: #ddd

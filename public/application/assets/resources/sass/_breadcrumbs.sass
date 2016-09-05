@@ -1,0 +1,27 @@
+.breadcrumbs
+	float: left
+	background-color: #fff
+	width: 100%
+	.breadcrumbs-wrapper
+		+adjust-font-size-to(12px, 1.5)
+		font-weight: 700
+		color: #818285
+		+clearfix
+		.breadcrumbs-list
+			list-style: none inside
+		.breadcrumbs-list-item
+			text-transform: uppercase
+			float: left
+			&:after
+				padding-left: 5px
+				padding-right: 5px
+				content: ">"
+			&:last-child:after
+				padding: 0 !important
+				display: none !important
+				content: "" !important
+			&:last-child
+				.breadcrumbs-link
+					color: $cor-escura
+	.breadcrumbs-link
+		color: #818285

@@ -1,0 +1,483 @@
+.home
+  .main
+    &__title
+      +adjust-font-size-to(60px)
+
+  .news
+    +clearfix
+    +trailer(2)
+    &__title
+      color: $color-pallete-2
+    &__list
+      +clearfix
+    &__item
+      position: relative
+      height: $base-line-height*17
+      +grid(1, 4, $cycle: 2)
+      +corner-border(#000, true)
+      +trailer(1)
+      &--highlight
+        +grid(3, 4, $cycle: 2)
+        .news__item-content
+          box-sizing: border-box
+          float: left
+          width: 33.3333333333%
+          padding-right: $gutter/2
+        .news__item-figure
+          box-sizing: border-box
+          width: 66.66666666666667%
+          padding-left: $gutter/2
+      &-wrapper
+        padding: 16px
+      &-figure
+        img
+          width: 100%
+      &-title
+        font-weight: 700
+        +trailer(.5)
+      &-text
+        +adjust-font-size-to(18px)
+      &-link
+        display: inline-block
+        width: 24px
+        height: 24px
+        border-radius: 50%
+        color: #fff
+        +adjust-font-size-to(14px)
+        background-color: #000
+        text-align: center
+        float: right
+    .readmore
+      text-align: right
+
+  .programation
+    +clearfix
+    +trailer(2)
+    &__title
+      color: $color-pallete-2
+
+    &__wrapper
+      +expand
+
+    &__parallax
+      +trailer(1)
+      min-height: 480px
+      width: 100%
+      position: relative
+
+    &__items
+      +container(1120px)
+      padding-right: 30px
+      padding-left: 30px
+
+    &__item
+      +clearfix
+      +trailer(1)
+      +padding-trailer(1)
+      border-bottom: 2px solid $color-pallete-12
+      &-wrapper
+        +container(960px)
+        position: relative
+        text-align: left
+      &-date
+        +grid(1, 4)
+      &-desc
+        +grid(3, 4)
+      &-day,
+      &-year,
+      &-title,
+      &-subtitle
+        font-weight: 800
+        color: $color-pallete-13
+        text-transform: uppercase
+        +trailer(0)
+
+      &-day
+        +adjust-font-size-to(40px, 2)
+
+      &-year
+        +adjust-font-size-to(22px, 1)
+      &-title
+        +adjust-font-size-to(30px, 2)
+
+      &--highlight
+        border-bottom: 4px solid #000
+        .programation__item-day,
+        .programation__item-year,
+        .programation__item-title,
+        .programation__item-subtitle
+          color: $color-pallete-1
+
+        .programation__item-day
+          +adjust-font-size-to(64px)
+        .programation__item-year
+          +adjust-font-size-to(36px)
+
+        .programation__item-title
+          +adjust-font-size-to(35px)
+          +trailer(.5)
+        .programation__item-subtitle
+          +adjust-font-size-to(24px)
+
+    .readmore
+      text-align: right
+
+  .gallery
+    position: relative
+    +clearfix
+    +trailer(2)
+
+    &__header
+      position: absolute
+      top: 50%
+      transform: translateY(-50%)
+      height: $base-line-height * 12
+      width: calc(50% + 100px)
+      z-index: 999
+      &-wrapper
+        position: absolute
+        width: 100vw
+        top: -($base-line-height*4)
+      .gallery__title
+        +trailer(0)
+        +container(960px)
+        text-align: left
+      .readmore
+        +trailer(0)
+        position: absolute
+        bottom: -$base-line-height * 2
+        right: $gutter + 100px
+    &__wrapper
+      +expand
+
+    &__list
+      display: inline-block
+      width: 100%
+      position: relative
+
+    &__item
+      display: inline-block
+      width: 100%
+      position: relative
+
+    &__desc
+      width: calc(50% + 100px)
+      float: left
+      position: absolute
+      top: 50%
+      transform: translateY(-50%)
+      background-color: $color-pallete-2
+      height: $base-line-height * 12
+
+      &-wrapper
+        position: absolute
+        width: 100vw
+        top: 50%
+        transform: translateY(-50%)
+
+      &-text
+        text-align: left
+        +container($full-site)
+        padding-left: 30px
+        padding-right: 30px
+        p
+          box-sizing: border-box
+          width: 50%
+      &-title
+        +adjust-font-size-to(30px)
+        font-weight: 800
+        color: #000
+        text-transform: uppercase
+      &-author
+        +adjust-font-size-to(16px)
+        color: #000
+
+    &__figure
+      width: 50%
+      float: right
+      img
+        width: 100%
+
+    .owl-nav
+      position: absolute
+      width: calc(50% - 100px)
+      top: 50%
+      right: 0
+      transform: translateY(-50%)
+      padding-left: 20px
+      padding-right: 20px
+      box-sizing: border-box
+      z-index: 1000
+      .disabled
+        display: none
+    &__arrow
+      background-color: transparent
+      border: none
+      color: #fff
+      font-size: 40px
+      outline: 0
+      cursor: pointer
+      &--left
+        float: left
+      &--right
+        float: right
+    > .readmore
+      text-align: right
+      display: none
+
+  .place
+    +clearfix
+    +trailer(2)
+    &__title
+      color: $color-pallete-2
+      text-transform: uppercase
+    &__figure,
+    &__desc
+      +grid(2, 4)
+    &__figure
+      position: relative
+      height: 288px
+      img
+        width: 100%
+      &-overlay
+        position: absolute
+        width: 100%
+        z-index: 99999
+        opacity: 1
+    &__desc
+      position: relative
+      height: 288px
+      +corner-border(#000, true)
+      &-wrapper
+        padding: 16px
+      &-title
+        +adjust-font-size-to(24px, 1)
+        text-transform: uppercase
+        font-weight: 700
+    &__items
+      display: inline-block
+      width: 100%
+      +leader(2)
+    &__item
+      +grid(1, 4)
+      +trailer(1)
+      position: relative
+      &:before
+        content: ""
+        position: absolute
+        bottom: -9px
+        left: 0
+        width: 30%
+        height: 4px
+        background: $color-pallete-2
+      &:hover,
+      &--active
+        &:before
+          background: $color-pallete-1
+        .place__link
+          color: $color-pallete-1
+        
+    &__link
+
+      font-weight: 800
+      text-transform: uppercase
+      color: $color-pallete-2
+      position: relative
+
+  .sponsor
+    +leader(1)
+    +padding-leader(2)
+    +trailer(2)
+    border-top: 4px solid $color-txt
+    &__block
+      +grid(2, 4, $cycle: 2)
+      +trailer(2)
+      &:first-child
+        .sponor__list
+          float: right
+          margin-right: 80px
+          +leader(1.5)
+
+      &--full
+        +grid(4, 4)
+
+
+    &__title
+      text-align: left
+      text-transform: uppercase
+      font-weight: 800
+      border-bottom: 1px solid #000
+      +trailer(1.5)
+      +padding-trailer(.5)
+
+
+    &__item
+      display: inline-block
+      margin-left: 40px
+      margin-right: 40px
+      +trailer(1)
+      &:first-child
+        margin-left: 0
+      &:last-child
+        margin-right: 0
+
++media("<960px")
+  .home
+    .news
+      &__item
+        display: block
+        width: 100%
+        height: auto
+
+        &:last-of-type
+          .news__item-figure
+            float: left
+            margin-right: 16px
+
+    .programation
+      .programation__item-day
+        +adjust-font-size-to(36px, 1.5)
+      .programation__item-year
+        +adjust-font-size-to(20px, 1)
+      .programation__item-title
+        +adjust-font-size-to(18px, 1)
+      .programation__item-subtitle
+        +adjust-font-size-to(14px, .5)
+      .programation__item--highlight
+        .programation__item-day
+          +adjust-font-size-to(42px, 2)
+        .programation__item-year
+          +adjust-font-size-to(24px, 1)
+        .programation__item-title
+          +adjust-font-size-to(24px, 1)
+          +trailer(.5)
+        .programation__item-subtitle
+          +adjust-font-size-to(18px, 1)
+
+    .gallery
+      > .readmore
+        display: block
+        +leader(1)
+      &__header
+        position: relative
+        top: 0
+        transform: translate(0)
+        height: auto
+        width: 100%
+        &-wrapper
+          width: auto
+          +container(960px)
+          position: relative
+          top: 0
+          padding-left: 30px
+          padding-right: 30px
+        .gallery__title
+          +trailer(.5)
+          width: auto
+        .readmore
+          display: none
+
+      &__list,
+      &__item,
+      &__desc,
+      &__figure
+        display: block
+        float: none
+        position: relative
+      &__figure
+        width: 100%
+      &__desc
+        width: 100%
+        height: 100%
+        transform: translate(0)
+        top: 0
+        +padding-trailer(.5)
+        +padding-leader(.5)
+        &-wrapper
+          width: 100%
+          position: relative
+          top: 0
+          transform: translate(0)
+        &-text > p
+          width: 100%
+      .owl-nav
+        width: 100%
+
++media("<tablet")
+  .home
+
+    .programation
+
+      &__item
+        &-date
+          +grid(1.5, 4)
+          +trailer(1)
+        &-desc
+          +grid(2.5, 4)
+    .place
+      &__figure,
+      &__desc
+        width: 100%
+        height: 100%
+        margin-left: 0
+        margin-right: 0
+        float: none
+      &__figure
+        +trailer(1)
+      &__desc
+        height: auto
+      &__item
+        +grid(1,1)
+        text-align: center
+        &:before
+          display: none
+
++media("<600px")
+  .home
+    .main
+      &__title
+        +adjust-font-size-to(36px)
+
+    .news
+      .news__item--highlight
+        .news__item-figure,
+        .news__item-content
+          width: 100%
+
+    .programation
+      .programation__item--highlight
+        .programation__item-day
+          +adjust-font-size-to(36px, 1.5)
+        .programation__item-year
+          +adjust-font-size-to(20px, 1)
+        .programation__item-title
+          +adjust-font-size-to(18px, 1)
+        .programation__item-subtitle
+          +adjust-font-size-to(14px, .5)
+    .gallery
+      .gallery__desc-title
+        +adjust-font-size-to(18px)
+
+    .sponsor
+      &__block
+        +grid(1, 1, $cycle: 0)
+
+        &:first-child
+          .sponor__list
+            float: none
+            margin-right: 0
+      &__item
+        display: block
+        margin-right: 0
+        margin-left: 0
+
+
++media("<phone")
+  .main
+    &__title
+      +adjust-font-size-to(24px)
+
+  .news
+    .news__item-figure,
+    .news__item-content
+      width: 100%

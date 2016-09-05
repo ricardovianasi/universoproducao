@@ -1,0 +1,77 @@
+<div class="row">
+	<div class="col-md-12 page-500">
+		<div class=" number font-red"> 500 </div>
+		<div class=" details">
+			<h3>Oops! Ocorreu um erro!</h3>
+			<p><?php echo $this->message; ?></p>
+			<p><a href="index.html" class="btn red btn-outline"> Return home </a><br></p>
+		</div>
+	</div>
+
+	<?php if(isset($this->exception) && $this->exception instanceof Exception): ?>
+
+	<div class="col-md-12">
+		<div class="portlet light bordered">
+			<div class="portlet-title">
+				<div class="caption">
+					<i class="icon-settings font-green"></i>
+					<span class="caption-subject font-green sbold uppercase">Informações adicionais</span>
+				</div>
+				<div class="tools">
+					<a href="javascript:;" class="collapse" data-original-title="" title=""> </a>
+				</div>
+			</div>
+			<div class="portlet-body">
+				<h3><?php echo get_class($this->exception); ?></h3>
+				<dl>
+					<dt><?php echo $this->translate('File') ?>:</dt>
+					<dd>
+						<pre class="prettyprint linenums"><?php echo $this->exception->getFile() ?>:<?php echo $this->exception->getLine() ?></pre>
+					</dd>
+					<dt><?php echo $this->translate('Message') ?>:</dt>
+					<dd>
+						<pre class="prettyprint linenums"><?php echo $this->escapeHtml($this->exception->getMessage()) ?></pre>
+					</dd>
+					<dt><?php echo $this->translate('Stack trace') ?>:</dt>
+					<dd>
+						<pre class="prettyprint linenums"><?php echo $this->escapeHtml($this->exception->getTraceAsString()) ?></pre>
+					</dd>
+				</dl>
+				<?php
+				$e = $this->exception->getPrevious();
+				if ($e) :
+					?>
+					<hr/>
+					<h2><?php echo $this->translate('Previous exceptions') ?>:</h2>
+					<ul class="unstyled">
+						<?php while($e) : ?>
+							<li>
+								<h3><?php echo get_class($e); ?></h3>
+								<dl>
+									<dt><?php echo $this->translate('File') ?>:</dt>
+									<dd>
+										<pre class="prettyprint linenums"><?php echo $e->getFile() ?>:<?php echo $e->getLine() ?></pre>
+									</dd>
+									<dt><?php echo $this->translate('Message') ?>:</dt>
+									<dd>
+										<pre class="prettyprint linenums"><?php echo $this->escapeHtml($e->getMessage()) ?></pre>
+									</dd>
+									<dt><?php echo $this->translate('Stack trace') ?>:</dt>
+									<dd>
+										<pre class="prettyprint linenums"><?php echo $this->escapeHtml($e->getTraceAsString()) ?></pre>
+									</dd>
+								</dl>
+							</li>
+							<?php
+							$e = $e->getPrevious();
+						endwhile;
+						?>
+					</ul>
+				<?php endif; ?>
+			</div>
+		</div>
+	</div>
+
+	<?php endif ?>
+
+</div>

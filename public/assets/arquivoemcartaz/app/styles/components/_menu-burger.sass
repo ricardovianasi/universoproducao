@@ -1,0 +1,45 @@
+.menu-button
+  width: 48px
+  height: 48px
+  border-radius: 50%
+  background-color: #000
+  text-align: center
+  position: relative
+  display: inline-block
+  cursor: pointer
+  transition: .5s ease-in-out
+  .burger
+    width: 20px
+    height: 15px
+    transform: rotate(0deg)
+    transition: .5s ease-in-out
+    position: absolute
+    top: 50%
+    left: 50%
+    margin-left: -10px
+    margin-top: -7.5px
+    .b, b
+      display: block
+      position: absolute
+      height: 3px
+      width: 100%
+      background: #fff
+      opacity: 1
+      left: 0
+      transform: rotate(0deg)
+      transition: .25s ease-in-out
+
+      &:nth-child(1)
+        top: 0
+
+      &:nth-child(2),
+      &:nth-child(3)
+        top: 6px
+
+      &:nth-child(4)
+        top: 12px
+
+
+.menu-button
+  &:hover
+    background-color: $color-pallete-2

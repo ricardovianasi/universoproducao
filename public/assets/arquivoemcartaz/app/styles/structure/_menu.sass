@@ -1,0 +1,91 @@
+.mainmenu
+  &-modal
+    position: fixed
+    top: 0
+    bottom: 0
+    left: 0
+    right: 0
+    width: 100%
+    height: 0
+    visibility: hidden
+    overflow: hidden
+    background: url(../images/menubackground.jpg) no-repeat center center fixed
+    background-size: cover
+    z-index: 10
+    transition: opacity .35s, visibility .35s, height .35s
+
+  &-bgc
+    width: 100%
+    height: 100%
+    background-color: rgba(255, 255, 255, .8)
+
+  &__wrapper
+    +padding-leader(5)
+    +box-sizing(border-box)
+    width: 100%
+    padding-right: 178px
+    padding-left: 178px
+    text-align: right
+
+  &__list
+    display: inline-block
+    &--sub
+      display: none
+      transition: opacity .35s, visibility .35s, height .35s
+      +leader(1)
+      .mainmenu__item
+        +trailer(.5)
+      .mainmenu__link
+        +adjust-font-size-to(18px)
+        color: $color-pallete-3
+        &:hover
+          &:before
+            content: ""
+            position: absolute
+            bottom: -3px
+            left: 0
+            width: 50%
+            height: 3px
+            background: $color-pallete-3
+
+  &__item
+    +trailer(1)
+    transition: .5s ease-in-out
+    &:hover
+      .mainmenu__list--sub
+        display: block
+
+    &--active
+      .mainmenu__link
+        +corner-border($color-pallete-1)
+        color: $color-pallete-1
+        &:hover
+          +corner-border($color-pallete-2)
+          &:before
+            background: none
+
+
+
+  &__link
+    +adjust-font-size-to(36px, 2)
+    font-weight: 800
+    text-transform: uppercase
+    color: $color-pallete-2
+    position: relative
+    &:hover
+      &:before
+        content: ""
+        position: absolute
+        bottom: 0
+        left: 0
+        width: 50%
+        height: 5px
+        background: $color-pallete-2
+
+.mainmenu-active
+  top: 0
+  position: fixed
+  .mainmenu-modal
+    opacity: 1
+    visibility: visible
+    height: 100%

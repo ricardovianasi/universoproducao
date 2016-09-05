@@ -1,0 +1,135 @@
+.minha-bar
+	display: block
+	position: fixed
+	right: 0
+	top: 72px // setar com js, era 72px
+	bottom: 0
+	width: 310px
+	padding-left: 17px
+	padding-right: 17px
+	background-color: $cor-escura
+	color: #fff
+	z-index: 998
+	text-align: left
+	.invisibles &
+		display: none
+	hr
+		display: block
+		width: 100%
+		height: 0
+		border: 0
+		border-top: 1px solid #404040
+		margin:
+			top: $base-line-height - 1
+			bottom: $base-line-height
+		padding: 0
+	a
+		color: #e0e0e0
+		a
+	.minha-input-wrapper
+		position: relative
+		margin-bottom: $base-line-height / 2
+		.sprite
+			right: 10px
+			display: block
+	.minha-button
+		display: block
+		background-color: $cor-principal
+		color: #fff
+		font:
+			size: 15px
+			weight: 700
+		letter-spacing: -.02em
+		border: none
+		width: 100%
+		cursor: pointer
+		text-align: center
+		+border-radius(3px)
+		.no-touch &:hover
+			background-color: darken($cor-principal, 20%)
+	// ##### DESLOGADO #####
+	&.guest
+		a
+			color: #fff
+		.minha-header
+			h1
+				letter-spacing: -.04em
+				text-transform: uppercase
+				text-align: center
+				+adjust-font-size-to(21px, 1.5)
+				+leader(1, 21px)
+				+trailer(.5, 21px)
+				font-weight: 300
+				span
+					font-weight: 700
+		//Forms
+		.minha-input-text
+			color: #58585a
+			background-color: #fff
+			font:
+				size: 16px
+				weight: 700
+			height: $base-line-height * 2
+			width: 100%
+			border: none
+			padding:
+				left: 20px
+				right: 30px
+			+box-sizing(border-box)
+			+border-radius(3px)
+		.minha-label
+			position: relative
+			//+adjust-font-size-to(15px, 2)
+			display: block
+			font-size: 15px
+			line-height: $base-line-height * 2
+			margin-bottom: $base-line-height / 2
+			&.small
+				margin-bottom: 0
+		.minha-input-checkbox
+			vertical-align: text-bottom
+		.minha-button
+			height: $base-line-height * 2
+	// ##### LOGADO #####
+	&.logged
+		.minha-user-header
+			h1
+				+adjust-font-size-to(18px)
+				+leader(1.5, 18px)
+				+trailer(.5, 18px)
+				text-align: center
+				img
+					margin-bottom: $base-line-height / 2
+		.minha-button
+			height: $base-line-height * 1.5
+			line-height: $base-line-height * 1.5
+		.minha-alerts-header
+			h1
+				position: relative
+				+adjust-font-size-to(14px, 1.5)
+				font-weight: 700
+				padding-left: 40px
+				.sprite
+					left: 0
+		.minha-alert
+			time
+				+adjust-font-size-to(12px)
+				color: #888
+			h1
+				+adjust-font-size-to(14px)
+		.minha-alert-link
+			text-decoration: underline
+			position: relative
+			padding-left: 20px
+			+adjust-font-size-to(12px)
+			color: #888
+			.sprite
+				left: 0
+		.minha-options-list
+			list-style: none inside
+			.minha-options-list-item
+				float: none
+			.minha-options-link
+				+adjust-font-size-to(14px, 1)
+				font-weight: 700
+				color: #fff

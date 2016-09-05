@@ -1,0 +1,35 @@
+<div class="portlet light bordered select-image <?php echo !empty($form->get('cover')->getValue()) ? "select-image-has-image" : "" ?>">
+	<div class="portlet-title">
+		<div class="caption"><i class="fa fa-cogs"></i>Imagem de Capa</div>
+		<div class="tools">
+			<a href="javascript:;" class="collapse" data-original-title="" title=""> </a>
+		</div>
+	</div>
+
+	<div class="portlet-body">
+		<div class="vertical-top heding-actions margin-bottom-15">
+			<div class="row">
+				<div class="col-md-6">
+					<?php echo $this->formRow($form->get('cover_caption')); ?>
+				</div>
+				<div class="col-md-6">
+					<div class="pull-right">
+						<a href="#" class="btn red select-image-remove">Remover</a>
+						<a href="#"
+						   data-toggle="modal"
+						   data-target="#modal-responsivefilemanager"
+						   data-url="/filemanager/dialog.php?type=1&field_id=returnselectimage"
+						   class="btn btn-default responsivefilemanager post-sidebar-thumb-action-add">
+							<i class="fa fa-plus"></i> Selecionar</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<?php echo $this->formElement($form->get('cover')); ?>
+		<div class="mt-card-avatar select-image-container">
+			<?php if(!empty($form->get('cover')->getValue())): ?>
+				<img width='100%' height="200px" src="<?php echo $form->get('cover')->getValue(); ?>" alt="">
+			<?php endif; ?>
+		</div>
+	</div>
+</div>

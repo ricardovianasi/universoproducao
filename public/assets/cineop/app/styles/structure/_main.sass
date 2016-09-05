@@ -1,0 +1,86 @@
+.main
+	clear: both
+	+center($full-site, 30px)
+	
+	&__title,
+	&__title-small,
+	&__title-small > a
+		color: $main-color
+		text-transform: uppercase
+		
+	&__title--negative
+		color: #fff
+		.main__title-small
+			color: #fff
+		
+	&__title
+		+adjust-font-size-to(48px, 2.5)
+		+trailer(1, 48px)
+		+leader(1, 48px)
+		font-weight: 900
+		letter-spacing: .05em
+		transition: all 0.7s ease
+
+	&__title-small
+		+adjust-font-size-to(14px, .6, 48px)
+		transition: all 0.7s ease
+		color: $main-color
+		text-align: right
+		letter-spacing: normal
+		font:
+			weight: 300
+
+		.icon
+			+adjust-font-size-to(28px, 1)
+			vertical-align: text-top
+			margin-left: 15px
+
+	&__date
+		+adjust-font-size-to(24px, 1)
+		+trailer(1.5, 24px)
+		display: block
+		font-weight: 300
+		font-style: italic
+		color: $gray4a4
+		text-transform: uppercase
+
+	&__bg
+		width: 100%
+		+trailer(2)
+
+
+	&__wrapper
+		+center(808px, 16px)
+		+leader(1)
+		+trailer(1)
+
+
+	.breadcrumbs
+		border-top: 3px solid $main-color
+		position: relative
+		
+		&:before
+			content: ""
+			position: absolute
+			display: block
+			left: -100%
+			top: 0
+			width: 100%
+			height: 100%
+			border-top: 3px solid $main-color
+			transform-origin: 100% 0
+			transform: matrix(2, -1, 0, -1, 0, 0)
+			z-index: -99999
+
+
++media('<tablet')
+	.main__title
+		+adjust-font-size-to(32px, 1.5)
+		+trailer(1, 36px)
+		+leader(1, 36px)
+
++media('<=tablet')
+	.main__title
+		+adjust-font-size-to(26px, 1)
+		+trailer(1, 26px)
+		+leader(1, 26px)

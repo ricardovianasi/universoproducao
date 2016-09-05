@@ -1,0 +1,104 @@
+<?php $form = $this->form; ?>
+<div class="portlet">
+	<div class="portlet-body form">
+		<?php $form->prepare(); echo $this->form(null, null)->openTag($form) ?>
+
+		<div class="form-body">
+			<?php $messageHide = count($form->getMessages()) ? '' : 'display-hide';
+				echo $this->messages(null)
+				->danger(
+					'Alguns erros foram encontrados. Por favor, efetue a correção.',
+					'Atenção!',
+					['class'=>"$messageHide alert-form-errors"]); ?>
+
+			<h4 class="form-section">Informações Pessoais</h4>
+			<div class="row">
+				<div class="col-md-6"><?php echo $this->formRow($form->get('first_name')); ?></div>
+				<div class="col-md-6"><?php echo $this->formRow($form->get('last_name')); ?></div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-4"><?php echo $this->formRow($form->get('cpf')); ?></div>
+				<div class="col-md-4"><?php echo $this->formRow($form->get('email')); ?></div>
+				<div class="col-md-4">
+
+					<div class="form-group ">
+						<label class="control-label">
+							<?php echo $form->get('birth_date')->getLabel();  ?>
+							<span class="required"> * </span>
+						</label>
+						<div class="input-group date date-picker" data-date-format="dd/mm/yyyy">
+							<?php echo $this->formElement($form->get('birth_date'));?>
+							<span class="input-group-btn">
+								<button type="button" name="btn-date" class="btn default">
+									<span class="fa fa-fa fa-calendar"></span>
+								</button>
+							</span>
+						</div>
+						<?php echo $this->formElementErrors($form->get('birth_date')); ?>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-4"><?php echo $this->formRow($form->get('fixed_phone')); ?></div>
+				<div class="col-md-4"><?php echo $this->formRow($form->get('mobile_phone')); ?></div>
+			</div>
+
+			<h4 class="form-section">Endereço</h4>
+			<div class="row">
+				<div class="col-md-4">
+				<div class="form-group <?php echo $form->get('cep')->getMessages() ? "has-error" : ""; ?>">
+						<label class="control-label" for=""><?php echo $form->get('cep')->getLabel();  ?><span class="required"> * </span></label>
+						<div class="input-group cep"
+							 data-url-cep="<?php echo $this->url('util_cep'); ?>"
+							 data-form=".user-form">
+							<?php echo $this->formElement($form->get('cep')); ?>
+							<span class="input-group-btn">
+								<button id="searchcep" class="btn btn-success " type="button">
+									<i class="fa fa fa-search fa-fw"></i> Buscar</button>
+							</span>
+						</div>
+						<?php echo $this->formElementErrors($form->get('cep')); ?>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-6"><?php echo $this->formRow($form->get('address')); ?></div>
+				<div class="col-md-2"><?php echo $this->formRow($form->get('number')); ?></div>
+				<div class="col-md-4"><?php echo $this->formRow($form->get('district')); ?></div>
+			</div>
+			<div class="row state-cities"
+				 data-url="<?php echo $this->url('util_cities'); ?>"
+				 data-state-element="#state"
+				 data-city-element="#city">
+				<div class="col-md-4"><?php echo $this->formRow($form->get('state')); ?></div>
+				<div class="col-md-4"><?php echo $this->formRow($form->get('city')); ?></div>
+				<div class="col-md-4"><?php echo $this->formRow($form->get('complement')); ?></div>
+			</div>
+
+			<h4 class="form-section">Outros</h4>
+			<div class="row">
+				<div class="col-md-12"><?php echo $this->formRow($form->get('site')); ?></div>
+			</div>
+			<div class="row">
+				<div class="col-md-6"><?php echo $this->formRow($form->get('facebook')); ?></div>
+				<div class="col-md-6"><?php echo $this->formRow($form->get('twitter')); ?></div>
+			</div>
+
+		</div>
+		<div class="form-actions">
+			<div class="btn-set pull-right">
+				<button type="submit" name="save" class="btn blue btn-lg" id="save" value="Salvar">
+					<span class="fa fa-fa fa-check"></span> Salvar
+				</button>
+				<?php
+				$urlCancel = empty($this->user->getId())
+					? $this->url('admin/default', ['controller'=>'external-user', 'action'=>'create'])
+					: $this->url('admin/default', ['controller'=>'external-user', 'action'=>'update', 'id'=>$this->user->getId()]) ?>
+				<a href="<?php echo $urlCancel ?>" class="btn red btn-lg form-action-cancel">Cancelar</a>
+			</div>
+		</div>
+		<?php echo $this->form()->closeTag() ?>
+	</div>
+</div>

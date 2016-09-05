@@ -1,0 +1,48 @@
+<div class="portlet light bordered page-gallery"
+	 data-url="<?php echo $this->url('admin/gallery', ['site'=>$site, 'action'=>'add-item' ]); ?>"
+	 data-input="#returnResponsivefilemanager">
+	<div class="portlet-title">
+		<div class="caption">
+			<i class="fa fa-edit"></i>
+			Galeria
+		</div>
+
+		<div class="actions">
+			<a href="#" class="btn btn-default">
+				<i class="icon-action-undo"></i>
+				<span class="hidden-xs"> Voltar </span>
+			</a>
+		</div>
+	</div>
+	<div class="portlet-body">
+		<input type="hidden" id="returnResponsivefilemanager" name="returnResponsivefilemanager">
+		<form action="" method="post" class="default-form-actions">
+			<div class="gallery">
+				<div id="tab_images_uploader_container" class="text-align-reverse margin-bottom-10">
+					<a href="#"
+					   data-toggle="modal"
+					   data-target="#modal-responsivefilemanager"
+					   data-url="/filemanager/dialog.php?type=1&field_id=returnResponsivefilemanager"
+					   class="btn btn-success responsivefilemanager">
+						<i class="fa fa-plus"></i> Selecionar uma Imagem
+					</a>
+				</div>
+
+				<div class="table gallery-table">
+					<?php echo $this->adminGallery($this->items); ?>
+				</div>
+
+			</div>
+
+			<div class="form">
+				<div class="form-body"></div>
+				<div class="form-actions">
+					<button type="submit" class="btn blue btn-lg pull-right action-save">Salvar</button>
+				</div>
+			</div>
+		</form>
+
+	</div>
+</div>
+
+

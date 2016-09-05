@@ -1,0 +1,32 @@
+.userlogin
+	position: absolute
+	top: 0
+	bottom: 0
+	left: 0
+	right: 0
+	width: 100%
+	z-index: 999
+
+	&__wrapper
+		position: absolute
+		width: 300px
+		top: 50%
+		transform: translateY(-50%)
+		left: 50%
+		margin-left: -150px
+		text-align: center
+
+	&__title
+		+adjust-font-size-to(24px, 1)
+		color: #fff
+		font-weight: 900
+		text-transform: uppercase
+		span
+			font-weight: 300
+
+	&__input,
+	&__submit
+		width: 100%
+
+	&__submit
+		background-color: $main-color

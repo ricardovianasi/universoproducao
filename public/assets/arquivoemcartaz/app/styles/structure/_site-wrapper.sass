@@ -1,0 +1,36 @@
+.site__wrapper
+  width: 100%
+  position: relative
+
+.site__cover
+  width: 100%
+  +trailer(0)
+  line-height: 0
+  image
+    width: 100%
+    line-height: 0
+
+.site__breadcrumbs
+  width: 100%
+  background-color: $color-pallete-2
+  +padding-trailer(1)
+  +padding-leader(1)
+  +trailer(1)
+  .breadcrumb
+    list-style: none inside
+    display: inline-block
+    &__item
+      text-transform: uppercase
+      color: #fff
+      float: left
+      &:after
+        padding-left: 10px
+        padding-right: 10px
+        content: ">"
+      &:last-child:after
+        padding: 0 !important
+        display: none !important
+        content: "" !important
+    &__link
+      color: #fff
+      font-weight: 800

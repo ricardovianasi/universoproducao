@@ -1,0 +1,123 @@
+
+<div class="portlet light bordered grey-cararra post-sidebar">
+	<div class="portlet-title">
+		<div class="caption"><i class="fa fa-cogs"></i>Configurações</div>
+	</div>
+	<div class="portlet-body form">
+		<div class="form-body">
+			<div data-slugTarget="#text"
+				data-slugUrlValidation="<?php echo $this->url('admin/slug', ['site'=>$this->site]); ?>"
+				data-slugEscapeId = ""
+				class="slug-container"><?php echo $this->formRow($form->get('slug')) ?></div>
+
+			<?php
+			echo $this->formRow($form->get('tags'));
+
+			if($form->has('parent')) {
+				echo $this->formRow($form->get('parent'));
+			}
+
+			if($form->has('meta[custom_post_template]') && count($form->get('meta[custom_post_template]')->getValueOptions())) {
+				echo $this->formRow($form->get('meta[custom_post_template]'));
+			} ?>
+		</div>
+	</div>
+</div>
+
+<?php if($this->thumb): ?>
+	<?php echo $this->partial('admin/partials/_post-thumb.phtml'); ?>
+<?php endif; ?>
+
+<div class="portlet light bordered grey-cararra post-sidebar post-sidebar-options">
+	<div class="portlet-title">
+		<div class="caption"><i class="fa fa-cogs"></i>Opções de Publicação</div>
+	</div>
+	<div class="portlet-body form">
+		<div class="vertical-top heding-actions">
+			<a href="#" class="btn btn-default action save-draft">Salvar como rascunho</a>
+			<a href="#" class="btn btn-default action visualize pull-right"><i class="fa fa-search"></i> Visualizar</a>
+		</div>
+
+		<div class="form-body">
+
+			<div class="item author">
+				<div class="title"><i class="fa fa-user"></i> Author:</div>
+				<span><strong><?php echo $this->post->getAuthor()->getName(); ?></strong></span>
+			</div>
+
+			<div class="item status">
+				<div class="title"><i class="fa fa-key"></i> Status:</div>
+				<span><strong><?php echo \Application\Entity\Post\PostStatus::get($form->get('status')->getValue()) ?></strong></span>
+				<a href="#" class="action edit">Editar</a>
+
+				<div class="options" style="display: none;">
+					<div class="form-group ">
+						<div class="input-group ">
+							<?php echo  $this->formElement($form->get('status')); ?>
+							<span class="input-group-btn">
+								<button type="button" class="btn blue action ok" value="">
+									<span class="fa fa-check"></span>
+								</button>
+							</span>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+			<div class="item post-date">
+				<?php
+				$postDate = $form->get('post_date');
+
+				if( $postDate->getValue()) {
+					if($postDate->getValue() instanceof \DateTime) {
+						$date = $postDate->getValue();
+						$postDate->setValue($date->format('d/m/Y H:i'));
+					} else {
+						$date = \DateTime::createFromFormat('d/m/Y H:i', $postDate->getValue());
+					}
+				} else {
+					$date = new \DateTime();
+					$date->add(new \DateInterval('PT3H'));
+				}
+
+				echo  $this->formElement($postDate);
+				?>
+
+				<div class="title"><i class="fa fa-calendar"></i> Data de Postagem:</div>
+				<span>
+					<strong><?php echo !empty($postDate->getValue()) ? $postDate->getValue() : 'Agora'; ?></strong>
+				</span>
+				<a href="#" class="action edit">Editar</a>
+
+				<div class="options" style="display: none;">
+					<div class="form-group ">
+						<div class="input-group ">
+							<span class="input-group-btn">
+								<button class="btn default" type="button"><i class="fa fa-calendar"></i></button>
+							</span>
+							<input type='text' class="form-control date-picker" name="date" value="<?php echo $date->format('d/m/Y'); ?>" data-date-format="dd/mm/yyyy"/>
+
+							<span class="input-group-btn">
+								<button class="btn default" type="button"><i class="fa fa-clock-o"></i></button>
+							</span>
+							<input type="text" class="form-control time-picker" name="hour" value="<?php echo $date->format('H:i'); ?>">
+
+							<span class="input-group-btn">
+								<button type="button" class="btn blue action ok" value="">
+									<span class="fa fa-check"></span>
+								</button>
+							</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="form-actions">
+			<!--<button type="submit" class="btn blue btn-lg action publish">  Publicar</button>-->
+			<?php echo  $this->formElement($form->get('publish')); ?>
+			<a href="<?php echo $this->returnUrl; ?>" class="btn red btn-lg pull-right action cancel">Descartar</a>
+		</div>
+	</div>
+</div>

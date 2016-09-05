@@ -1,0 +1,39 @@
+<!--<div class="breadcrumbs">-->
+<!--	<ul class="breadcrumbs__list">-->
+<!--		<li class="breadcrumbs__list-item"><a class="breadcrumbs__link" href="--><?php //echo $this->url('cineop') ?><!--">Página Inicial</a></li>-->
+<!--		<li class="breadcrumbs__list-item"><a class="breadcrumbs__link" href="">Notícias</a></li>-->
+<!--	</ul>-->
+<!--</div>-->
+<div class="breadcrumbs"></div>
+<header class="main__header">
+	<h1 class="main__title"><?php echo $this->post->getTitle(); ?></h1>
+	<!--<time class="main__date">28 Jan 2015</time>-->
+</header>
+
+<!--<div class="main__bg">-->
+<!--	<figure>-->
+<!--		<img class="main__bg-img" src="images/main-bg.jpg" alt="">-->
+<!--		<figcaption>Apresentação Sons & Imagens com a Associação Francesa Double Cadence</figcaption>-->
+<!--	</figure>-->
+<!--</div>-->
+
+<div class="main__wrapper">
+	<?php echo $this->post->getContent();  ?>
+
+	<?php if(!empty($this->edicoes)): ?>
+		<div class="news__list">
+			<?php foreach($this->edicoes as $ed): ?>
+			<article class="news__item" style="display: block; width: 100%;">
+				<a class="news__link" href="<?php echo $this->url('cineop')?>edicoes-anteriores/<?php echo $ed->getEdition(); ?>">
+					<header class="news__item-header">
+						<h1 class="news__item-title"><?php echo $ed->getFullname(); ?></h1>
+						<time class="news__item-date"><?php echo $ed->getStartDate()->format('d/m/Y'); ?> a <?php echo $ed->getEndDate()->format('d/m/Y'); ?></time>
+					</header>
+				</a>
+			</article>
+			<?php endforeach; ?>
+		</div>
+	<?php endif; ?>
+
+
+</div>

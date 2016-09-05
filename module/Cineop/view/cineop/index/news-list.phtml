@@ -1,0 +1,45 @@
+<!--<div class="breadcrumbs">-->
+<!--	<ul class="breadcrumbs__list">-->
+<!--		<li class="breadcrumbs__list-item"><a class="breadcrumbs__link" href="--><?php //echo $this->url('cineop') ?><!--">Página Inicial</a></li>-->
+<!--		<li class="breadcrumbs__list-item"><a class="breadcrumbs__link" href="">Notícias</a></li>-->
+<!--	</ul>-->
+<!--</div>-->
+<div class="breadcrumbs"></div>
+<header class="main__header">
+	<h1 class="main__title"><?php echo $this->post->getTitle(); ?></h1>
+	<!--<time class="main__date">28 Jan 2015</time>-->
+</header>
+
+<!--<div class="main__bg">-->
+<!--	<figure>-->
+<!--		<img class="main__bg-img" src="images/main-bg.jpg" alt="">-->
+<!--		<figcaption>Apresentação Sons & Imagens com a Associação Francesa Double Cadence</figcaption>-->
+<!--	</figure>-->
+<!--</div>-->
+
+<div class="main__wrapper">
+	<?php echo $this->post->getContent();  ?>
+
+	<?php if(!empty($this->listNews)): ?>
+		<div class="news__list">
+			<?php foreach($this->listNews as $n): ?>
+			<article class="news__item">
+				<a class="news__link" href="<?php echo $this->url('cineop'); ?>noticia/<?php echo $n->getSlug(); ?>">
+					<?php if(!empty($n->getThumb())): ?>
+					<div class="news__item-thumb">
+						<img src="<?php echo  $this->thumbor()->url($n->getThumb())->resize(396, 396); ?>" alt="">
+					</div>
+					<?php endif; ?>
+					<header class="news__item-header">
+						<h1 class="news__item-title"><?php echo $n->getTitle(); ?></h1>
+						<?php if(!empty($n->getSubtitle())): ?><p class="news__item-intro"><?php echo $n->getSubtitle(); ?></p><?php endif; ?>
+						<time class="news__item-date"><?php echo $n->getPostdate()->format('d m Y'); ?></time>
+					</header>
+				</a>
+			</article>
+			<?php endforeach; ?>
+		</div>
+	<?php endif; ?>
+
+
+</div>

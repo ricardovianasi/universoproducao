@@ -1,0 +1,123 @@
+<?php $form = $this->form; $form->prepare();?>
+<div class="row post guide">
+	<div class="col-md-12">
+		<div class="portlet light portlet-fit bordered">
+			<div class="portlet-title">
+				<div class="caption">
+					<?php if($banner->getId()): ?>
+					<i class="fa fa-edit"></i>
+					Editar Banner
+					<?php else: ?>
+					<i class="fa fa-file-o"></i>
+					Novo Banner
+					<?php endif; ?>
+				</div>
+				<div class="actions">
+					<a href="<?php echo $this->url('admin/banner', ['site'=>$this->site]); ?>"
+					   class="btn btn-default">
+						<i class="icon-action-undo"></i>
+						<span class="hidden-xs"> Voltar </span>
+					</a>
+				</div>
+			</div>
+			<div class="portlet-body">
+
+				<div class="portlet">
+					<div class="portlet-body form">
+						<?php echo $this->form(null, null)->openTag($form); ?>
+						<div class="row">
+							<div class="col-md-9">
+								<div class="form-group">
+									<label class="control-label">Imagem</label>
+									<div class="input-group ">
+										<div class="fileinput <?php echo $this->banner->getFile() ? "fileinput-exist" : ""; ?>">
+											<div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">
+												<img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image" alt="" /> </div>
+											<div class="fileinput-preview thumbnail" style="max-width: 200px; max-height: 150px;">
+												<?php if($this->banner->getFile()): ?>
+													<img width="100%" src="<?php echo $this->banner->getFile() ?>" alt="" />
+												<?php endif; ?>
+											</div>
+											<div>
+												<a href="#"
+												   data-toggle="modal"
+												   data-target="#modal-responsivefilemanager"
+												   data-url="/filemanager/dialog.php?type=1&field_id=file"
+												   class="btn btn-success responsivefilemanager fileinput-add"><i class="fa fa-plus"></i> Selecionar uma Imagem</a>
+												<a class="btn red fileinput-remove"> Remover </a>
+												<input type="hidden" id="file" name="file" value="<?php echo $this->banner->getFile() ?>">
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-md-10"><?php echo $this->formRow($form->get('title')); ?></div>
+						</div>
+
+						<div class="row">
+							<div class="col-md-10">
+								<div class="form-group">
+									<?php echo $this->formLabel($form->get('link')); ?>
+									<div class="input-group ">
+										<?php echo $this->formElement($form->get('link')); ?>
+										<span class="input-group-addon">
+											<label style="margin-bottom: 0" for="">Abrir link em nova página</label>
+											<?php echo $this->formElement($form->get('target_blank')); ?>
+										</span>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-md-3">
+								<div class="form-group ">
+									<?php echo $this->formLabel($form->get('start_date')); ?>
+									<div class="input-group date date-picker" data-date-format="dd/mm/yyyy">
+										<?php echo $this->formElement($form->get('start_date'));?>
+										<span class="input-group-btn">
+											<button type="button" name="btn-date" class="btn default">
+												<span class="fa fa-fa fa-calendar"></span>
+											</button>
+										</span>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-3">
+								<div class="form-group ">
+									<?php echo $this->formLabel($form->get('end_date')); ?>
+									<div class="input-group date date-picker" data-date-format="dd/mm/yyyy">
+										<?php echo $this->formElement($form->get('end_date'));?>
+										<span class="input-group-btn">
+											<button type="button" name="btn-date" class="btn default">
+												<span class="fa fa-fa fa-calendar"></span>
+											</button>
+										</span>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-md-6"><?php echo $this->formRow($form->get('description')); ?></div>
+						</div>
+
+						<div class="form-actions">
+							<div class="btn-set pull-right">
+								<button type="submit" name="save" class="btn blue btn-lg" id="save" value="Salvar">
+									<span class="fa fa-fa fa-check"></span> Salvar
+								</button>
+								<a href="<?php echo $this->url('admin/banner', ['site'=>$this->site]); ?>" class="btn red btn-lg action cancel">Descartar</a>
+							</div>
+						</div>
+						<?php echo $this->form()->closeTag() ?>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>

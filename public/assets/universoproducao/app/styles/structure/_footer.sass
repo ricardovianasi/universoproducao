@@ -1,0 +1,113 @@
+.footer
+	+cf
+	+expand
+	background-color: #f4f4f4
+
+	&__wrapper
+		+center($full-site, 16px)
+		text-align: left
+
+	.newsletter
+		+padding-leader(2)
+		+trailer(2)
+		&__title
+			width: 100%
+			+inline-block
+			+adjust-font-size-to(24px, 1)
+			font-weight: 900
+			text-transform: uppercase
+			color: #4a4a4a
+		&__form
+			+cf
+
+			.form__input,
+			.form__button
+				+box-sizing(border-box)
+				+col(1/6)
+
+				&--big
+					+col(2/6)
+
+				+adjust-font-size-to(18px)
+				+apply-side-rhythm-border(all, 1px, 0.5, 18px, solid $main-color)
+				font-weight: 900
+				outline: none
+				color: #b9b9b9
+				text-transform: uppercase
+
+			.form__input
+				background-color: #f4f4f4
+				&::-webkit-input-placeholder
+					color: #b9b9b9
+
+				&:-moz-placeholder
+					color: #b9b9b9
+
+				&::-moz-placeholder
+					color: #b9b9b9
+
+				&:-ms-input-placeholder
+					color: #b9b9b9
+
+			.form__button
+				color: #fff
+				background-color: $main-color
+				border: $main-color
+				text-align: center
+
+	.contact
+		+expand
+		background-color: #343233
+		&__wrapper
+			+center($full-site, 16px)
+			text-align: left
+			+padding-leader(2)
+
+		&__col
+			+col(1/2, $cycle: 2)
+
+		&__title
+			+adjust-font-size-to(24px, 1)
+
+
+			font-weight: 900
+			text-transform: uppercase
+			color: #fff
+
+		&__brand
+			display: block
+			float: left
+			padding-left: 45px
+
+		&__add
+			p
+				+adjust-font-size-to(12px, 0.3)
+				//color: $gray838
+				text-transform: uppercase
+
+		&__social
+			.social__item
+				+col(1/5, $cycle:5)
+
+			.social__link
+				color: #838383
+				+adjust-font-size-to(42px)
+				+transition($transition-default)
+
+				&:hover
+					color: #fff
+
+		.copy
+			+cf
+			display: inline-block
+			width: 100%
+			text-align: center
+			border-top: 1px solid #fff
+			+trailer(1)
+			+leader(2)
+			+padding-leader(1)
+
+			p
+				+adjust-font-size-to(12px, 0.5)
+				text-transform: uppercase
+				color: #fff

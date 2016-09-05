@@ -1,0 +1,116 @@
+.home
+	.header
+		padding-left: 36px
+		padding-right: 36px
+		border: none
+
+		&__left
+			.brand
+				&-logo,
+				&-name
+					color: #fff
+
+		&__right
+			.usermenu
+				&__link
+					color: #fff
+
+.home
+	.site__wrapper
+		position: relative
+		width: 100%
+		max-width: 100%
+		padding-left: 0
+		padding-right: 0
+
+
+.fullslider
+	position: absolute
+	max-width: initial
+	width: 100%
+	height: 100%
+	top: 0
+	right: 0
+	bottom: 0
+	left: 0
+	overflow: hidden
+	z-index: 10
+
+.home-slider
+	display: inline-block
+	width: 100%
+	height: 100%
+
+	&__slide
+		display: inline-block
+		width: 100%
+		height: 100%
+		&--img
+			background-repeat: no-repeat
+			background-position: 0 0
+			background-size: cover
+
+			&:before
+				content: ""
+				position: absolute
+				top: 0
+				bottom: 0
+				//left: -100%
+				width: 100%
+				right: 0
+				background-color: rgba(0,0,0,0.3)
+				z-index: 1
+
+	&__text
+		position: absolute
+		top: 50%
+		z-index: 10
+		width: 100%
+		margin: 0 auto
+
+	&__title
+		&--title-1,
+		&--title-2
+			text-transform: uppercase
+			color: #fff
+			width: 600px
+			text-align: center
+			margin: 0 auto
+
+		&--title-1
+			+adjust-font-size-to(48px)
+			font-weight: 900
+			letter-spacing: .1em
+
+
+.home-slider-dots
+	position: absolute
+	bottom: 0
+	width: 100%
+	text-align: center
+	margin: 0 auto
+	+trailer(2)
+	z-index: 20
+
+	li
+		display: inline-block
+		margin-right: 8px
+		margin-left: 8px
+		&.slick-active
+			button
+				border: 2px solid $main-color
+
+		button
+			display: block
+			width: 24px
+			height: 24px
+			border-radius: 50%
+			border: 2px solid #fff
+			background-color: transparent
+			outline: 0
+			text-indent: -99999px
+			cursor: pointer
+
+			&:focus
+				outline: 0
+

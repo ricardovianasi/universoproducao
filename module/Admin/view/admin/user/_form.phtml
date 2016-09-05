@@ -1,0 +1,52 @@
+<?php
+	$form = $this->form;
+	$form->prepare();
+	echo $this->form(null, null)->openTag($form) ?>
+<div class="">
+    <?php $messageHide = count($form->getMessages()) ? '' : 'display-hide';
+    echo $this->messages(null)
+        ->danger(
+            'Alguns erros foram encontrados. Por favor, efetue a correção.',
+            'Atenção!',
+            ['class'=>"$messageHide alert-form-errors"]); ?>
+
+    <h4 class="form-section">Informações Pessoais</h4>
+
+    <div class="row">
+        <div class="col-md-6"><?php echo $this->formRow($form->get('email')); ?></div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-8"><?php echo $this->formRow($form->get('name')); ?></div>
+        <div class="col-md-4"><?php echo $this->formRow($form->get('alias')); ?></div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6"><?php echo $this->formRow($form->get('occupation')); ?></div>
+        <div class="col-md-6"><?php echo $this->formRow($form->get('phone')); ?></div>
+    </div>
+
+    <h4 class="form-section">Perfil de Acesso</h4>
+
+    <div class="row">
+        <div class="col-md-5"><?php echo $this->formRow($form->get('is_administrator')); ?></div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-5"><?php echo $this->formRow($form->get('profile')); ?></div>
+    </div>
+
+</div>
+<div class="form-actions">
+    <div class="btn-set pull-right">
+        <button type="submit" name="save" class="btn blue btn-lg" id="save" value="Salvar">
+            <span class="fa fa-fa fa-check"></span> Salvar
+        </button>
+        <?php
+        $urlCancel = empty($this->user->getId())
+            ? $this->url('admin/default', ['controller'=>'user', 'action'=>'create'])
+            : $this->url('admin/default', ['controller'=>'user', 'action'=>'update', 'id'=>$this->user->getId()]) ?>
+        <a href="<?php echo $urlCancel ?>" class="btn red btn-lg form-action-cancel">Cancelar</a>
+    </div>
+</div>
+<?php echo $this->form()->closeTag() ?>

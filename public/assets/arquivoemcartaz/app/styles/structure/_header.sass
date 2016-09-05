@@ -1,0 +1,120 @@
+.header
+  width: 100%
+  padding-left: 30px
+  padding-right: 30px
+  position: relative
+  +box-sizing(border-box)
+  display: inline-block
+  z-index: 100
+
+  &-left,
+  &-right
+    +box-sizing(border-box)
+
+
+  &-left
+    float: left
+    .brand
+      +leader(1)
+      +trailer(1)
+      height: 72px
+
+      &-link
+        +inline-block
+        font-size: 72px
+        color: #000
+      &-logo
+        display: inline-block
+        overflow: hidden
+        text-indent: -99999px
+        &:before
+          text-indent: 0
+          float: left
+
+  &-right
+    float: right
+    text-align: right
+    .search
+      float: right
+      +trailer(1)
+      +leader(1)
+      margin-right: 50px
+      &-form
+        width: auto
+      &-input
+        width: auto
+        font-weight: 700
+        +adjust-font-size-to(24px)
+        +apply-side-rhythm-border(all, 1px, .5, 24px, solid transparent)
+        +trailer(0)
+        background-color: transparent
+        text-align: right
+        letter-spacing: 2px
+        width: 200px
+      &-link
+        display: inline-block
+        +adjust-font-size-to(30px, 1)
+        +trailer(.5)
+        +leader(.5)
+
+
+
+    .menu
+      float: right
+      line-height: 0
+      +trailer(1.5)
+      +leader(1.5)
+
+.mainmenu-active
+  .header
+    &-left
+      .brand
+        &-logo
+          color: $color-pallete-2
+
+    &-right
+      .search
+        &-icon
+          color: $color-pallete-2
+
+      .menu
+        .menu-button
+          background-color: transparent
+          .burger
+            width: 48px
+            margin-left: -24px
+            .b,b
+              background-color: $color-pallete-2
+              &:nth-child(1)
+                top: 9px
+                width: 0%
+                left: 50%
+
+              &:nth-child(2)
+                transform: rotate(45deg)
+
+              &:nth-child(3)
+                transform: rotate(-45deg)
+
+              &:nth-child(4)
+                top: 9px
+                width: 0%
+                left: 50%
+
++media("<tablet")
+  .header
+    .search-form
+      display: none
+
++media("<600px")
+  .header
+    .header-left,
+    .header-right
+      width: 100%
+      text-align: center
+
+    .header-right
+      .search
+        float: left
+      
+        

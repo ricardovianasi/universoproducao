@@ -1,0 +1,59 @@
+<?php $this->route_options = $this->route_options ? $this->route_options : []; ?>
+<?php if ($this->pageCount): ?>
+<div class="row">
+
+	<div class="col-md-4">
+		<p>Exibindo <?php echo $this->firstItemNumber; ?> a <?php echo $this->lastItemNumber; ?> de <?php echo $this->totalItemCount; ?> registros</p>
+	</div>
+
+	 <div class="col-md-6 pull-right">
+		 <ul class="pagination pull-right">
+			 <!-- Previous page link -->
+			 <?php if (isset($this->previous)): ?>
+				 <li>
+					 <a href="<?php echo $this->url($this->route, $this->route_options); ?>?page=<?php echo $this->previous; ?>">
+						 <<
+					 </a>
+				 </li>
+			 <?php else: ?>
+				 <li class="disabled">
+					 <a href="#">
+						 <<
+					 </a>
+				 </li>
+			 <?php endif; ?>
+
+			 <!-- Numbered page links -->
+			 <?php foreach ($this->pagesInRange as $page): ?>
+				 <?php if ($page != $this->current): ?>
+					 <li>
+						 <a href="<?php echo $this->url($this->route, $this->route_options);?>?page=<?php echo $page; ?>">
+							 <?php echo $page; ?>
+						 </a>
+					 </li>
+				 <?php else: ?>
+					 <li class="active">
+						 <a href="#"><?php echo $page; ?></a>
+					 </li>
+				 <?php endif; ?>
+			 <?php endforeach; ?>
+
+			 <!-- Next page link -->
+			 <?php if (isset($this->next)): ?>
+				 <li>
+					 <a href="<?php echo $this->url($this->route, $this->route_options); ?>?page=<?php echo $this->next; ?>">
+						 >>
+					 </a>
+				 </li>
+			 <?php else: ?>
+				 <li class="disabled">
+					 <a href="#">
+						 >>
+					 </a>
+				 </li>
+			 <?php endif; ?>
+		 </ul>
+	 </div>
+</div>
+<?php endif; ?>
+

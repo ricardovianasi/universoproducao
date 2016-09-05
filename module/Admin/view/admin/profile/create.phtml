@@ -1,0 +1,83 @@
+<div class="row post page">
+	<div class="col-md-12">
+		<div class="portlet light bordered">
+			<div class="portlet-title">
+				<div class="caption">
+					<?php if($this->profile->getId()): ?>
+						<i class="fa fa-edit"></i>
+						Editar Perfil
+					<?php else: ?>
+						<i class="fa fa-file-o"></i>
+						Cadastrar Perfil
+					<?php endif; ?>
+				</div>
+				<div class="actions">
+					<a href="<?php echo $this->url('admin/default', ['controller'=>'profile']); ?>"
+					   class="btn btn-default">
+						<i class="icon-action-undo"></i>
+						<span class="hidden-xs"> Voltar </span>
+					</a>
+				</div>
+			</div>
+			<div class="portlet-body form portlet-empty">
+				<div class="form">
+					<?php $form->prepare(); echo $this->form(null, null)->openTag($form) ?>
+
+					<div class="form-body">
+						<div class="row">
+							<div class="col-md-6"><?php echo $this->formRow($form->get('name')); ?></div>
+						</div>
+
+						<div class="form-group">
+							<h4 class="form-section">Módulos</h4>
+							<div class="action">
+								<button class="btn btn-default enable-all">Selecionar todos</button>
+								<button class="btn btn-default disable-all">Desmarcar todos</button>
+							</div>
+						</div>
+
+						<?php $count=0; foreach($this->modules as $key => $module) {
+							$count++;
+							if($count == 1) echo '<div class="row">'; ?>
+							<div class="col-md-4">
+								<div class="form-group">
+									<label><?php echo $module->getLabel(); ?></label>
+									<div class="input-group">
+										<div class="icheck-list">
+											<?php foreach($module->getActions() as $action): $checked = $this->profile->getActions()->contains($action) ? 'checked' : ''; ?>
+												<label>
+													<input name="actions[<?php echo $action->getId() ?>]" class="icheck" <?php echo $checked; ?> type="checkbox" value="<?php echo $action->getId() ?>">
+													<?php echo $action->getLabel() ?></label>
+											<?php endforeach; ?>
+										</div>
+									</div>
+								</div>
+							</div>
+
+						<?php
+							if($count == 3) {
+								$count = 0;
+								echo '</div>';
+								continue;
+							}
+
+							if($key == (count($this->modules) - 1)) {
+								echo '</div>';
+							}
+						}
+						?>
+					</div>
+					<div class="form-actions">
+						<div class="btn-set pull-right">
+							<button type="submit" name="save" class="btn blue btn-lg" id="save" value="Salvar">
+								<span class="fa fa-fa fa-check"></span> Salvar
+							</button>
+							<a href="#" class="btn red btn-lg form-action-cancel">Cancelar</a>
+						</div>
+					</div>
+					<?php echo $this->form()->closeTag() ?>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

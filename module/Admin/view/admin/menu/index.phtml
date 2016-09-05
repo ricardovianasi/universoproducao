@@ -1,0 +1,33 @@
+<div class="portlet light bordered admin-menu"
+	 id="admin-menu"
+	 data-url="<?php echo $this->url('admin/menu', ['site' => $this->site]); ?>"
+	 data-url-item="<?php echo $this->url('admin/menu', ['action'=>'create-item', 'site'=>$this->site]); ?>"
+	 data-url-page="<?php echo $this->url('admin/menu', ['action'=>'search-page', 'site'=>$this->site]); ?>">
+	<div class="portlet-title">
+		<div class="caption">
+			<i class="fa fa-edit"></i>
+			Gerenciar Menu
+		</div>
+
+		<div class="actions">
+			<a href="<?php echo $this->url('admin/default', ['controller'=>'user']); ?>"
+			   class="btn btn-default">
+				<i class="icon-action-undo"></i>
+				<span class="hidden-xs"> Voltar </span>
+			</a>
+		</div>
+	</div>
+	<div class="portlet-body">
+		<div class="row">
+			<div class="col-md-4">
+				<?php echo $this->partial('admin/menu/_left-column.phtml', ['pages'=>$this->pages]); ?>
+			</div> <!-- Final coluna col-md-8 -->
+
+			<div class="col-md-8">
+				<?php echo $this->partial('admin/menu/_main-column.phtml', ['items'=>$this->items]); ?>
+			</div>
+		</div>
+
+	</div>
+</div>
+

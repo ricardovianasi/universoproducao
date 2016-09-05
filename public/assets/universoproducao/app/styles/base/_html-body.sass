@@ -1,0 +1,18 @@
+html, body
+	height: 100%
+
++establish-baseline
+
+body
+	@if $debug
+		+baseline-grid-background
+	overflow-y: scroll !important
+	min-height: 100vh
+	background-color: #fff
+	font:
+		family: $font-family-base
+		weight: 400
+	-webkit-font-smoothing: antialiased
+	-moz-osx-font-smoothing: grayscale
+
++selection($color-palette-1, #fff)

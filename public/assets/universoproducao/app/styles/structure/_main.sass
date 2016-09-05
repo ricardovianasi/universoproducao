@@ -1,0 +1,53 @@
+.main
+	&__header
+		+trailer(1, 24px)
+
+	&__title
+		+adjust-font-size-to(48px, 2)
+		+trailer(1, 24px)
+		font-weight: 900
+		text-transform: uppercase
+		color: $main-color
+
+	&__cover
+		img
+			width: 100%
+			height: 500px
+
+	&__wrapper
+		+center(747px, 16px)
+		+trailer(2)
+
+	&__share
+		border-top: 1px solid #b9b9b9
+		+padding-leader(1)
+
+		&-list
+			text-align: right
+
+		&-item
+			display: inline-block
+			vertical-align: middle
+			margin-left: 16px
+			margin-right: 16px
+			&:last-child
+				margin-right: 0
+
+			> .text
+				+adjust-font-size-to(24px)
+				color: #b9b9b9
+				font:
+					family: "Ubuntu", Arial, Helvetica, sans-serif
+					weight: 300
+					style: italic
+
+		&-link
+			display: block
+			position: relative
+			text-align: center
+			+adjust-font-size-to(36px, 1)
+
+			&--facebook
+				color: $color-facebook
+			&--twitter
+				color: $color-twitter

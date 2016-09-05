@@ -1,0 +1,9 @@
+/* Tinymce 4 icon */
+.mce-i-doksoft_maps {
+	background: url(./icons/doksoft_maps.png) no-repeat 0px 0px !important;
+}
+
+/* Tinymce 3 icon */
+.mce_doksoft_maps {
+	background: url(./icons/doksoft_maps_3.png) no-repeat 2px 3px !important;
+}

@@ -1,0 +1,14 @@
+//Sprites
+$icons: sprite-map("social/*.png", $layout: vertical, $spacing: 10px)
+
+.sprite
+    background: $icons
+    overflow: hidden
+    text-indent: -9999px
+    display: inline-block
+
+@each $i in sprite_names($icons)
+    .sprite-#{$i}
+        background-position: sprite-position($icons, $i)
+        +sprite-dimensions($icons, $i)
+        
