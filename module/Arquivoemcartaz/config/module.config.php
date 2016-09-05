@@ -9,10 +9,21 @@ use Zend\Mvc\Router\Http\Segment;
 return array(
     'router' => array(
         'routes' => array(
+            'arquivoemcartaz_home' => array(
+                'type' => Literal::class,
+                'options' => array(
+                    'route' => '/arquivoemcartaz',
+                    'defaults' => array(
+                        'controller'    => Controller\IndexController::class,
+                        'action'        => 'index',
+                    ),
+                ),
+                'priority' => 9999
+            ),
             'arquivoemcartaz' => array(
                 'type'    => Hostname::class,
                 'options' => array(
-                    'route'    => 'arquivoemcartaz',
+                    'route'    => '[www.]arquivoemcartaz.com.br',
                     'defaults' => array(
                         'controller'    => Controller\IndexController::class,
                         'action'        => 'index',
@@ -23,8 +34,6 @@ return array(
                     'default' => array(
                         'type'    => Segment::class,
                         'options' => array(
-//                            'regex'    => '(?<slug>.+)',
-//                            'spec' => '%slug%',
                             'route'    => '/:slug',
                             'constraints' => array(
                                 'slug' => '.+'
