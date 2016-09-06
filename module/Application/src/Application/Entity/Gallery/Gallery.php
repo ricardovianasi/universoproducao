@@ -29,6 +29,9 @@ class Gallery extends AbstractEntity
 	/** @ORM\Column(name="description", type="string") */
 	private $description;
 
+	/** @ORM\Column(name="credits", type="string") */
+	private $credits;
+
 	/** @ORM\Column(name="`order`", type="integer") */
 	private $order;
 
@@ -149,4 +152,20 @@ class Gallery extends AbstractEntity
 	{
 		$this->order = $order;
 	}
+
+    /**
+     * @return mixed
+     */
+    public function getCredits()
+    {
+        return $this->credits;
+    }
+
+    /**
+     * @param mixed $credits
+     */
+    public function setCredits($credits)
+    {
+        $this->credits = $credits;
+    }
 }

@@ -25,6 +25,7 @@ class AdminGallery extends AbstractHelper implements ServiceLocatorAwareInterfac
 				<tr role="row" class="heading">
 					<th width="8%%"> Imagem </th>
 					<th width="40%%"> Descrição </th>
+					<th width="20%%"> Créditos </th>
 					<th width="8%%"> </th>
 				</tr>
 			</thead>
@@ -66,6 +67,7 @@ class AdminGallery extends AbstractHelper implements ServiceLocatorAwareInterfac
 		$data = [
 			$this->renderthumbColumn($item->getId(), $item->getFile()),
 			$this->renderTextColumn($item->getId(), $item->getDescription()),
+			$this->renderCreditsColumn($item->getId(), $item->getCredits()),
 			$this->columnAction
 		];
 
@@ -85,8 +87,14 @@ class AdminGallery extends AbstractHelper implements ServiceLocatorAwareInterfac
 	
 	protected function renderTextColumn($id, $value="")
 	{
-		return '<textarea name="gallery['.$id.'][description]" rows="2" placeholder="Descrição da Imagem" class="form-control">'.
+		return '<textarea name="gallery['.$id.'][description]" rows="4" placeholder="Descrição da Imagem" class="form-control">'.
 			$value.'</textarea>';
+	}
+
+	protected function renderCreditsColumn($id, $value="")
+	{
+		return '<input type="text" name="gallery['.$id.'][credits]" placeholder="Créditos" class="form-control">'.
+			$value.'</input>';
 	}
 
 	/**

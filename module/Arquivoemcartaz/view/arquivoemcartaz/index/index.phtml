@@ -148,7 +148,9 @@
                             <div class="gallery__desc-wrapper">
                                 <div class="gallery__desc-text">
                                     <p class="gallery__desc-title"><?php echo $img->getDescription(); ?></p>
-                                    <!--<p class="gallery__desc-author">Foto: Leo Lara/Universo Produção</p>-->
+                                    <?php if($img->getCredits()): ?>
+                                    <p class="gallery__desc-author"><?php echo $img->getCredits(); ?></p>
+                                    <?php endif; ?>
                                 </div>
                             </div>
                         </div>
