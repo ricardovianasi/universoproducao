@@ -21,7 +21,8 @@ class PostController extends SiteController
 
         $post = $this->getRepository(Post::class)->findOneBy([
             'status' => PostStatus::PUBLISHED,
-            'slug' => end($slug)
+            'slug' => end($slug),
+            'site' => self::SITE_ID
         ]);
 
         if(!$post) {
