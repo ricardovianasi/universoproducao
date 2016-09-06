@@ -5948,3 +5948,59 @@ Stack trace:
 [06-Sep-2016 20:14:01 America/Sao_Paulo] PHP  10. Zend\View\View->render() R:\ambiente\php\projetos\up\app\vendor\zendframework\zend-view\src\View.php:236
 [06-Sep-2016 20:14:01 America/Sao_Paulo] PHP  11. Zend\View\Renderer\PhpRenderer->render() R:\ambiente\php\projetos\up\app\vendor\zendframework\zend-view\src\View.php:207
 [06-Sep-2016 20:14:01 America/Sao_Paulo] PHP  12. include() R:\ambiente\php\projetos\up\app\vendor\zendframework\zend-view\src\Renderer\PhpRenderer.php:502
+[06-Sep-2016 20:21:09 America/Sao_Paulo] PHP Fatal error:  Call to undefined method Application\Entity\Gallery\Gallery::getTitle() in R:\ambiente\php\projetos\up\app\module\Arquivoemcartaz\view\arquivoemcartaz\index\index.phtml on line 150
+[06-Sep-2016 20:21:09 America/Sao_Paulo] PHP Stack trace:
+[06-Sep-2016 20:21:09 America/Sao_Paulo] PHP   1. {main}() R:\ambiente\php\projetos\up\app\public\index.php:0
+[06-Sep-2016 20:21:09 America/Sao_Paulo] PHP   2. Zend\Mvc\Application->run() R:\ambiente\php\projetos\up\app\public\index.php:30
+[06-Sep-2016 20:21:09 America/Sao_Paulo] PHP   3. Zend\Mvc\Application->completeRequest() R:\ambiente\php\projetos\up\app\vendor\zendframework\zend-mvc\src\Application.php:356
+[06-Sep-2016 20:21:09 America/Sao_Paulo] PHP   4. Zend\EventManager\EventManager->triggerEvent() R:\ambiente\php\projetos\up\app\vendor\zendframework\zend-mvc\src\Application.php:384
+[06-Sep-2016 20:21:09 America/Sao_Paulo] PHP   5. Zend\EventManager\EventManager->triggerListeners() R:\ambiente\php\projetos\up\app\vendor\zendframework\zend-eventmanager\src\EventManager.php:251
+[06-Sep-2016 20:21:09 America/Sao_Paulo] PHP   6. call_user_func:{R:\ambiente\php\projetos\up\app\vendor\zendframework\zend-eventmanager\src\EventManager.php:490}() R:\ambiente\php\projetos\up\app\vendor\zendframework\zend-eventmanager\src\EventManager.php:490
+[06-Sep-2016 20:21:09 America/Sao_Paulo] PHP   7. Zend\Mvc\View\Http\DefaultRenderingStrategy->render() R:\ambiente\php\projetos\up\app\vendor\zendframework\zend-eventmanager\src\EventManager.php:490
+[06-Sep-2016 20:21:09 America/Sao_Paulo] PHP   8. Zend\View\View->render() R:\ambiente\php\projetos\up\app\vendor\zendframework\zend-mvc\src\View\Http\DefaultRenderingStrategy.php:105
+[06-Sep-2016 20:21:09 America/Sao_Paulo] PHP   9. Zend\View\View->renderChildren() R:\ambiente\php\projetos\up\app\vendor\zendframework\zend-view\src\View.php:200
+[06-Sep-2016 20:21:09 America/Sao_Paulo] PHP  10. Zend\View\View->render() R:\ambiente\php\projetos\up\app\vendor\zendframework\zend-view\src\View.php:236
+[06-Sep-2016 20:21:09 America/Sao_Paulo] PHP  11. Zend\View\Renderer\PhpRenderer->render() R:\ambiente\php\projetos\up\app\vendor\zendframework\zend-view\src\View.php:207
+[06-Sep-2016 20:21:09 America/Sao_Paulo] PHP  12. include() R:\ambiente\php\projetos\up\app\vendor\zendframework\zend-view\src\Renderer\PhpRenderer.php:502
+[06-Sep-2016 20:21:11 America/Sao_Paulo] PHP Fatal error:  Call to a member function getCover() on null in R:\ambiente\php\projetos\up\app\module\Arquivoemcartaz\view\arquivoemcartaz\post\index.phtml on line 1
+[06-Sep-2016 20:21:11 America/Sao_Paulo] PHP Stack trace:
+[06-Sep-2016 20:21:11 America/Sao_Paulo] PHP   1. {main}() R:\ambiente\php\projetos\up\app\public\index.php:0
+[06-Sep-2016 20:21:11 America/Sao_Paulo] PHP   2. Zend\Mvc\Application->run() R:\ambiente\php\projetos\up\app\public\index.php:30
+[06-Sep-2016 20:21:11 America/Sao_Paulo] PHP   3. Zend\Mvc\Application->completeRequest() R:\ambiente\php\projetos\up\app\vendor\zendframework\zend-mvc\src\Application.php:356
+[06-Sep-2016 20:21:11 America/Sao_Paulo] PHP   4. Zend\EventManager\EventManager->triggerEvent() R:\ambiente\php\projetos\up\app\vendor\zendframework\zend-mvc\src\Application.php:384
+[06-Sep-2016 20:21:11 America/Sao_Paulo] PHP   5. Zend\EventManager\EventManager->triggerListeners() R:\ambiente\php\projetos\up\app\vendor\zendframework\zend-eventmanager\src\EventManager.php:251
+[06-Sep-2016 20:21:11 America/Sao_Paulo] PHP   6. call_user_func:{R:\ambiente\php\projetos\up\app\vendor\zendframework\zend-eventmanager\src\EventManager.php:490}() R:\ambiente\php\projetos\up\app\vendor\zendframework\zend-eventmanager\src\EventManager.php:490
+[06-Sep-2016 20:21:11 America/Sao_Paulo] PHP   7. Zend\Mvc\View\Http\DefaultRenderingStrategy->render() R:\ambiente\php\projetos\up\app\vendor\zendframework\zend-eventmanager\src\EventManager.php:490
+[06-Sep-2016 20:21:11 America/Sao_Paulo] PHP   8. Zend\View\View->render() R:\ambiente\php\projetos\up\app\vendor\zendframework\zend-mvc\src\View\Http\DefaultRenderingStrategy.php:105
+[06-Sep-2016 20:21:11 America/Sao_Paulo] PHP   9. Zend\View\View->renderChildren() R:\ambiente\php\projetos\up\app\vendor\zendframework\zend-view\src\View.php:200
+[06-Sep-2016 20:21:11 America/Sao_Paulo] PHP  10. Zend\View\View->render() R:\ambiente\php\projetos\up\app\vendor\zendframework\zend-view\src\View.php:236
+[06-Sep-2016 20:21:11 America/Sao_Paulo] PHP  11. Zend\View\Renderer\PhpRenderer->render() R:\ambiente\php\projetos\up\app\vendor\zendframework\zend-view\src\View.php:207
+[06-Sep-2016 20:21:11 America/Sao_Paulo] PHP  12. include() R:\ambiente\php\projetos\up\app\vendor\zendframework\zend-view\src\Renderer\PhpRenderer.php:502
+[06-Sep-2016 20:22:07 America/Sao_Paulo] PHP Notice:  Indirect modification of overloaded property Zend\View\Renderer\PhpRenderer::$guides has no effect in R:\ambiente\php\projetos\up\app\module\Arquivoemcartaz\view\arquivoemcartaz\index\index.phtml on line 168
+[06-Sep-2016 20:22:07 America/Sao_Paulo] PHP Stack trace:
+[06-Sep-2016 20:22:07 America/Sao_Paulo] PHP   1. {main}() R:\ambiente\php\projetos\up\app\public\index.php:0
+[06-Sep-2016 20:22:07 America/Sao_Paulo] PHP   2. Zend\Mvc\Application->run() R:\ambiente\php\projetos\up\app\public\index.php:30
+[06-Sep-2016 20:22:07 America/Sao_Paulo] PHP   3. Zend\Mvc\Application->completeRequest() R:\ambiente\php\projetos\up\app\vendor\zendframework\zend-mvc\src\Application.php:356
+[06-Sep-2016 20:22:07 America/Sao_Paulo] PHP   4. Zend\EventManager\EventManager->triggerEvent() R:\ambiente\php\projetos\up\app\vendor\zendframework\zend-mvc\src\Application.php:384
+[06-Sep-2016 20:22:07 America/Sao_Paulo] PHP   5. Zend\EventManager\EventManager->triggerListeners() R:\ambiente\php\projetos\up\app\vendor\zendframework\zend-eventmanager\src\EventManager.php:251
+[06-Sep-2016 20:22:07 America/Sao_Paulo] PHP   6. call_user_func:{R:\ambiente\php\projetos\up\app\vendor\zendframework\zend-eventmanager\src\EventManager.php:490}() R:\ambiente\php\projetos\up\app\vendor\zendframework\zend-eventmanager\src\EventManager.php:490
+[06-Sep-2016 20:22:07 America/Sao_Paulo] PHP   7. Zend\Mvc\View\Http\DefaultRenderingStrategy->render() R:\ambiente\php\projetos\up\app\vendor\zendframework\zend-eventmanager\src\EventManager.php:490
+[06-Sep-2016 20:22:07 America/Sao_Paulo] PHP   8. Zend\View\View->render() R:\ambiente\php\projetos\up\app\vendor\zendframework\zend-mvc\src\View\Http\DefaultRenderingStrategy.php:105
+[06-Sep-2016 20:22:07 America/Sao_Paulo] PHP   9. Zend\View\View->renderChildren() R:\ambiente\php\projetos\up\app\vendor\zendframework\zend-view\src\View.php:200
+[06-Sep-2016 20:22:07 America/Sao_Paulo] PHP  10. Zend\View\View->render() R:\ambiente\php\projetos\up\app\vendor\zendframework\zend-view\src\View.php:236
+[06-Sep-2016 20:22:07 America/Sao_Paulo] PHP  11. Zend\View\Renderer\PhpRenderer->render() R:\ambiente\php\projetos\up\app\vendor\zendframework\zend-view\src\View.php:207
+[06-Sep-2016 20:22:07 America/Sao_Paulo] PHP  12. include() R:\ambiente\php\projetos\up\app\vendor\zendframework\zend-view\src\Renderer\PhpRenderer.php:502
+[06-Sep-2016 20:22:10 America/Sao_Paulo] PHP Fatal error:  Call to a member function getCover() on null in R:\ambiente\php\projetos\up\app\module\Arquivoemcartaz\view\arquivoemcartaz\post\index.phtml on line 1
+[06-Sep-2016 20:22:10 America/Sao_Paulo] PHP Stack trace:
+[06-Sep-2016 20:22:10 America/Sao_Paulo] PHP   1. {main}() R:\ambiente\php\projetos\up\app\public\index.php:0
+[06-Sep-2016 20:22:10 America/Sao_Paulo] PHP   2. Zend\Mvc\Application->run() R:\ambiente\php\projetos\up\app\public\index.php:30
+[06-Sep-2016 20:22:10 America/Sao_Paulo] PHP   3. Zend\Mvc\Application->completeRequest() R:\ambiente\php\projetos\up\app\vendor\zendframework\zend-mvc\src\Application.php:356
+[06-Sep-2016 20:22:10 America/Sao_Paulo] PHP   4. Zend\EventManager\EventManager->triggerEvent() R:\ambiente\php\projetos\up\app\vendor\zendframework\zend-mvc\src\Application.php:384
+[06-Sep-2016 20:22:10 America/Sao_Paulo] PHP   5. Zend\EventManager\EventManager->triggerListeners() R:\ambiente\php\projetos\up\app\vendor\zendframework\zend-eventmanager\src\EventManager.php:251
+[06-Sep-2016 20:22:10 America/Sao_Paulo] PHP   6. call_user_func:{R:\ambiente\php\projetos\up\app\vendor\zendframework\zend-eventmanager\src\EventManager.php:490}() R:\ambiente\php\projetos\up\app\vendor\zendframework\zend-eventmanager\src\EventManager.php:490
+[06-Sep-2016 20:22:10 America/Sao_Paulo] PHP   7. Zend\Mvc\View\Http\DefaultRenderingStrategy->render() R:\ambiente\php\projetos\up\app\vendor\zendframework\zend-eventmanager\src\EventManager.php:490
+[06-Sep-2016 20:22:10 America/Sao_Paulo] PHP   8. Zend\View\View->render() R:\ambiente\php\projetos\up\app\vendor\zendframework\zend-mvc\src\View\Http\DefaultRenderingStrategy.php:105
+[06-Sep-2016 20:22:10 America/Sao_Paulo] PHP   9. Zend\View\View->renderChildren() R:\ambiente\php\projetos\up\app\vendor\zendframework\zend-view\src\View.php:200
+[06-Sep-2016 20:22:10 America/Sao_Paulo] PHP  10. Zend\View\View->render() R:\ambiente\php\projetos\up\app\vendor\zendframework\zend-view\src\View.php:236
+[06-Sep-2016 20:22:10 America/Sao_Paulo] PHP  11. Zend\View\Renderer\PhpRenderer->render() R:\ambiente\php\projetos\up\app\vendor\zendframework\zend-view\src\View.php:207
+[06-Sep-2016 20:22:10 America/Sao_Paulo] PHP  12. include() R:\ambiente\php\projetos\up\app\vendor\zendframework\zend-view\src\Renderer\PhpRenderer.php:502
