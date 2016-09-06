@@ -37,7 +37,6 @@
             <header class="news__header">
                 <h1 class="news__title main__title">Notícias</h1>
             </header>
-
             <div class="news__list">
                 <?php $count=1; foreach ($this->news as $news): ?>
                 <article class="news__item">
@@ -49,11 +48,19 @@
                         </figure>
                         <div class="news__item-content">
                             <p class="news__item-title"><?php echo $news->getTitle(); ?></p>
-                            <p class="news__item-text"><?php echo $news->getSubtitle(); ?><a href="<?php echo $this->url('arquivoemcartaz/news', ['slug' => $news->getSlug()]) ?>" class="news__item-link"><span class="icon icon-arrow-right8"></span></a></p>
+                            <p class="news__item-text">
+                                <?php
+                                    $count == 1 ? $truncateLenght = 200 : $truncateLenght = 56;
+                                    echo $this->truncate($news->getContent(), $truncateLenght);
+                                ?>
+                                <a href="<?php echo $this->url('arquivoemcartaz/news', ['slug' => $news->getSlug()]) ?>" class="news__item-link">
+                                    <span class="icon icon-arrow-right8"></span>
+                                </a>
+                            </p>
                         </div>
                     </div>
                 </article>
-                <?php endforeach; ?>
+                <?php $count++; endforeach; ?>
             </div>
             <p class="readmore"><a class="readmore__link" href="">Mais Notícias<span class="icon icon-plus2"></span></a></p>
         </section>
@@ -165,12 +172,21 @@
             <div class="place__desc">
                 <div class="place__desc-wrapper">
                     <p class="place__desc-title"><?php echo $firstGuide->getTitle(); ?></p>
-                    <p class="place__desc-text"><?php echo $firstGuide->getContent(); ?></p>
+                    <p class="place__desc-text">
+                        <?php echo $this->truncate($firstGuide->getContent(), 300); ?>
+                        <a href="<?php echo $this->url('arquivoemcartaz/default', ['slug'=>$firstGuide->getRelativeUrl()]); ?>" class="news__item-link">
+                            <span class="icon icon-arrow-right8"></span>
+                        </a>
+                    </p>
                 </div>
             </div>
             <ul class="place__items">
                 <?php foreach ($this->guides as $guide): ?>
-                <li class="place__item <?php echo $firstGuide->getId()==$guide->getId() ? "place__item--active" : ""; ?>" data-image="<?php echo $guide->getThumb(); ?>" data-title="<?php echo $guide->getTitle(); ?>" data-link="" data-desc="<?php echo $guide->getContent(); ?>"><a class="place__link" href=""><?php echo $guide->getTitle(); ?></a></li>
+                <li class="place__item <?php echo $firstGuide->getId()==$guide->getId() ? "place__item--active" : ""; ?>"
+                    data-image="<?php echo $guide->getThumb(); ?>"
+                    data-title="<?php echo $guide->getTitle(); ?>"
+                    data-link="<?php echo $this->url('arquivoemcartaz/default', ['slug'=>$guide->getRelativeUrl()]); ?>"
+                    data-desc="<?php echo $guide->getContent(); ?>"><a class="place__link" href=""><?php echo $guide->getTitle(); ?></a></li>
                 <?php endforeach; ?>
             </ul>
         </section>
