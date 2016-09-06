@@ -66,7 +66,7 @@
                 <div class="contact">
                     <div class="contact__brand "><span class="icon icon-universo-brand"></span></div>
                     <div class="contact__add">
-                        <p>+ 55 31 3282-2366</p>
+                        <p>+ 55 31 3282-2366</p>zf2 site
                         <p>up@universoproducao.com.br</p>
                         <p>Rua Pirapetinga, 567 - Serra</p>
                         <p>30220-150, Belo Horizonte | MG</p>
@@ -75,7 +75,16 @@
             </div>
 
             <div class="sitemap">
-                <ul class="sitemap__items">
+                <?php $this
+                    ->navigation('ArquivoemcartazNavigation')
+                    ->menu()->setPartial("application/partials/sitemap.phtml");
+
+                echo $this
+                    ->navigation('ArquivoemcartazNavigation')
+                    ->menu()
+                    ->render(); ?>
+
+                <!--<ul class="sitemap__items">
                     <li class="sitemap__item">
                         <a href="" class="sitemap__link">O Festival</a>
                         <ul class="sitemap__items--sub">
@@ -114,7 +123,7 @@
                             <li class="sitemap__item"><a href="" class="sitemap__link">Saiu na Imprensa</a></li>
                         </ul>
                     </li>
-                </ul>
+                </ul>-->
             </div>
         </div>
         <div class="footer__end">

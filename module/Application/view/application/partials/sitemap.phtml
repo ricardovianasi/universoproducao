@@ -1,0 +1,22 @@
+<ul class="sitemap__items">
+    <?php foreach ($this->container as $page):
+        /** @var Zend\Navigation\Page\AbstractPage $page */ ?>
+        <li class="sitemap__item">
+            <?php $href = $page->hasPages() ? "#" : $page->getHref(); ?>
+            <a class="sitemap__link" href="<?php echo $href ?>" target="<?php echo $page->getTarget() ?>"><?php echo $page->getLabel() ?>
+            </a>
+            <?php if ($page->hasPages()): ?>
+                <ul class="sitemap__items--sub">
+                    <?php foreach ($page->getPages() as $child):
+                        /** @var Zend\Navigation\Page\AbstractPage $child */ ?>
+                        <li class="sitemap__item">
+                            <a class="sitemap__link" href="<?php echo $child->getHref(); ?>">
+                               <?php echo $child->getLabel() ?>
+                            </a>
+                        </li>
+                    <?php endforeach; ?>
+                </ul>
+            <?php endif; ?>
+        </li>
+    <?php endforeach; ?>
+</ul>
