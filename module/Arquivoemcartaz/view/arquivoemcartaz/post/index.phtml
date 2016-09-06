@@ -1,0 +1,26 @@
+<?php if($post->getCover()): ?>
+<div class="site__cover">
+    <img src="<?php echo $post->getCover() ?>" alt="">
+</div>
+<?php endif; ?>
+
+<div class="site__breadcrumbs">
+    <div class="site__breadcrumbs-wrapper">
+        <ul class="breadcrumb">
+            <li class="breadcrumb__item"><a class="breadcrumb__link" href="">Inicio</a></li>
+            <li class="breadcrumb__item"><a class="breadcrumb__link" href="">Inicio</a></li>
+        </ul>
+    </div>
+</div>
+
+<main class="main">
+    <div class="main__wrapper">
+        <section class="main__section">
+            <header class="main__header">
+                <h1 class="main__title"><?php echo $post->getTitle(); ?></h1>
+            </header>
+            <h2 class="main__subtitle"><?php echo $post->getSubtitle(); ?></h2>
+            <?php echo $post->getContent(); ?>
+        </section>
+    </div>
+</main>

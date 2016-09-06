@@ -35,7 +35,8 @@ return array(
                         'options' => array(
                             'regex'    => '(?<content>.+)',
                             'defaults' => array(
-                                'controller' => Controller\IndexController::class
+                                'controller' => Controller\PostController::class,
+                                'action'     => 'index',
                             ),
                             'spec' => '%content%',
                         ),

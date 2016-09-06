@@ -1,119 +1,72 @@
 <div class="banner">
     <div class="banner__covers"></div>
     <div class="banner__items" style="opacity: 1">
-        <div class="banner__item" style="background-image: url(<?php echo $this->basePath('assets/arquivoemcartaz/dist/images/banner/1.jpg') ?>)">
-            <div class="banner__content">
-                <div class="banner__text">
-                    <p class="banner__title">ELIS E ADONIRANA</p>
-                    <p class="banner__subtitle">O ano é 1978 e o bairro não poderia ser outro a não ser o Bexiga.
-                        Um encontro mais que especial de Adoniran Barbosa com Elis
-                        Regina cantando as músicas "Iracema" e "Um samba no Bexiga"</p>
-                    <a href="" class="banner__link circle-link"><span class="icon icon-arrow-right8"></span></a>
+        <?php $count=1; foreach ($this->bannerImages as $banner): ?>
+            <?php if($count == 4): ?>
+                <div class="banner__item banner__item--intro ignore" data-ignore="true">
+                    <div class="banner__content">
+                        <div class="banner__text">
+                            <p class="banner__brand"><img class="banner__brand-img" src="<?php echo $this->basePath("assets/arquivoemcartaz/dist/images/brand1.png") ?>" alt=""></p>
+                            <p class="banner__title"><strong>07-16</strong>NOV / 2016</p>
+                            <p class="banner__subtitle">Arquivo Nacional  •  Espaço Cultural BNDES // Rio de Janeiro<br>
+                                Cine Arte UFF // Niterói</p>
+                            <p class="banner__subtitle"><strong>Programação Gratuita</strong></p>
+                        </div>
+                    </div>
+                </div>
+            <?php endif; ?>
+            <div class="banner__item" style="background-image: url(<?php echo $banner->getFile(); ?>)">
+                <div class="banner__content">
+                    <div class="banner__text">
+                        <p class="banner__title"><?php echo $banner->getTitle(); ?></p>
+                        <p class="banner__subtitle"><?php echo $banner->getDescription(); ?></p>
+                        <?php if($banner->getLink()): ?>
+                        <a href="<?php echo $banner->getLink(); ?>" class="banner__link circle-link"><span class="icon icon-arrow-right8"></span></a>
+                        <?php endif; ?>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="banner__item" style="background-image: url(<?php echo $this->basePath('assets/arquivoemcartaz/dist/images/banner/2.jpg') ?>)">
-            <div class="banner__content">
-                <div class="banner__text">
-                    <p class="banner__title">ELIS E ADONIRAN</p>
-                    <p class="banner__subtitle">O ano é 1978 e o bairro não poderia ser outro a não ser o Bexiga.
-                        Um encontro mais que especial de Adoniran Barbosa com Elis
-                        Regina cantando as músicas "Iracema" e "Um samba no Bexiga"</p>
-                    <a href="" class="banner__link circle-link"><span class="icon icon-arrow-right8"></span></a>
-                </div>
-            </div>
-        </div>
-        <div class="banner__item" style="background-image: url(<?php echo $this->basePath('assets/arquivoemcartaz/dist/images/banner/3.jpg') ?>)">
-            <div class="banner__content">
-                <div class="banner__text">
-                    <p class="banner__title">ELIS E ADONIRAN</p>
-                    <p class="banner__subtitle">O ano é 1978 e o bairro não poderia ser outro a não ser o Bexiga.
-                        Um encontro mais que especial de Adoniran Barbosa com Elis
-                        Regina cantando as músicas "Iracema" e "Um samba no Bexiga"</p>
-                    <a href="" class="banner__link circle-link"><span class="icon icon-arrow-right8"></span></a>
-                </div>
-            </div>
-        </div>
-        <div class="banner__item" style="background-image: url(<?php echo $this->basePath('assets/arquivoemcartaz/dist/images/banner/4.jpg') ?>)">
-            <div class="banner__content">
-                <div class="banner__text">
-                    <p class="banner__title">ELIS E ADONIRAN</p>
-                    <p class="banner__subtitle">O ano é 1978 e o bairro não poderia ser outro a não ser o Bexiga.
-                        Um encontro mais que especial de Adoniran Barbosa com Elis
-                        Regina cantando as músicas "Iracema" e "Um samba no Bexiga"</p>
-                    <a href="" class="banner__link circle-link"><span class="icon icon-arrow-right8"></span></a>
-                </div>
-            </div>
-        </div>
-        <div class="banner__item banner__item--intro ignore" data-ignore="true">
-            <div class="banner__content">
-                <div class="banner__text">
-                    <p class="banner__brand"><img class="banner__brand-img" src="<?php echo $this->basePath("assets/arquivoemcartaz/dist/images/brand1.png") ?>" alt=""></p>
-                    <p class="banner__title"><strong>07-16</strong>NOV / 2016</p>
-                    <p class="banner__subtitle">Arquivo Nacional  •  Espaço Cultural BNDES // Rio de Janeiro<br>
-                        Cine Arte UFF // Niterói</p>
-                    <p class="banner__subtitle"><strong>Programação Gratuita</strong></p>
-                </div>
-            </div>
-        </div>
-        <div class="banner__item" style="background-image: url(<?php echo $this->basePath('assets/arquivoemcartaz/dist/images/banner/5.jpg') ?>)">
-            <div class="banner__content">
-                <div class="banner__text">
-                    <p class="banner__title">ELIS E ADONIRAN</p>
-                    <p class="banner__subtitle">O ano é 1978 e o bairro não poderia ser outro a não ser o Bexiga.
-                        Um encontro mais que especial de Adoniran Barbosa com Elis
-                        Regina cantando as músicas "Iracema" e "Um samba no Bexiga"</p>
-                    <a href="" class="banner__link circle-link"><span class="icon icon-arrow-right8"></span></a>
-                </div>
-            </div>
-        </div>
+        <?php $count++; endforeach; ?>
     </div>
 </div>
 
 <main class="main home">
     <div class="main__wrapper">
+        <?php if(count($this->news)): ?>
         <section class="main__section news">
             <header class="news__header">
                 <h1 class="news__title main__title">Notícias</h1>
             </header>
 
             <div class="news__list">
-                <article class="news__item news__item--highlight">
-                    <div class="news__item-wrapper">
-                        <figure class="news__item-figure">
-                            <img src="<?php echo $this->basePath('assets/arquivoemcartaz/dist/images/noticia1.jpg') ?>" alt="" class="news__item-img">
-                        </figure>
-                        <div class="news__item-content">
-                            <p class="news__item-title">2015 Sundance Film Festival Predictions: Jaffe Zinn’s Children</p>
-                            <p class="news__item-text">Along with her numerous contributions to American indie film plus supporting parts in Drake Doremus’ Equals and television’s House of Along with her numerous contributions to American indie film plus  (...) <a href="" class="news__item-link"><span class="icon icon-arrow-right8"></span></a></p>
-                        </div>
-                    </div>
-                </article>
-
+                <?php $count=1; foreach ($this->news as $news): ?>
                 <article class="news__item">
                     <div class="news__item-wrapper">
                         <figure class="news__item-figure">
-                            <img src="<?php echo $this->basePath('assets/arquivoemcartaz/dist/images/noticia2.jpg') ?>" alt="" class="news__item-img">
+                            <?php if($news->getThumb()): ?>
+                            <img src="<?php echo  $this->thumbor()->url($news->getThumb())->resize(450, 350); ?>" alt="" class="news__item-img">
+                            <?php endif; ?>
                         </figure>
                         <div class="news__item-content">
-                            <p class="news__item-title">2015 Sundance Film Festival Predictions: Jaffe Zinn’s Children</p>
-                            <p class="news__item-text">Along with her numerous contributions to American indie (...) <a href="" class="news__item-link"><span class="icon icon-arrow-right8"></span></a></p>
-
+                            <p class="news__item-title"><?php echo $news->getTitle(); ?></p>
+                            <p class="news__item-text"><?php echo $news->getSubtitle(); ?><a href="<?php echo $this->url('arquivoemcartaz/news', ['slug' => $news->getSlug()]) ?>" class="news__item-link"><span class="icon icon-arrow-right8"></span></a></p>
                         </div>
                     </div>
                 </article>
+                <?php endforeach; ?>
             </div>
             <p class="readmore"><a class="readmore__link" href="">Mais Notícias<span class="icon icon-plus2"></span></a></p>
         </section>
+        <?php endif; ?>
 
-        <section class="main__section programation">
+        <!--<section class="main__section programation">
             <header class="news__header">
                 <h1 class="programation__title main__title">Programação</h1>
             </header>
             <div class="programation__wrapper">
 
 
-                <div class="programation__parallax" style="background-image: url(<?php echo $this->basePath('assets/arquivoemcartaz/dist/images/programation.jpg') ?>)" data-stellar-background-ratio="0.5"></div>
+                <div class="programation__parallax" style="background-image: url(<?php /*echo $this->basePath('assets/arquivoemcartaz/dist/images/programation.jpg') */?>)" data-stellar-background-ratio="0.5"></div>
 
                 <div class="programation__items">
                     <article class="programation__item programation__item--highlight">
@@ -167,8 +120,9 @@
                 </div>
             </div>
             <p class="readmore"><a class="readmore__link" href="">Programação Completa<span class="icon icon-plus2"></span></a></p>
-        </section>
+        </section>-->
 
+        <?php if(count($this->gallery)): ?>
         <section class="main__section gallery">
             <div class="gallery__wrapper">
                 <header class="gallery__header">
@@ -178,68 +132,46 @@
                     <p class="readmore"><a class="readmore__link" href="">Galeria Completa<span class="icon icon-plus2"></span></a></p>
                 </header>
                 <div class="gallery__list owl-carousel">
+                    <?php foreach ($this->gallery as $img): ?>
                     <div class="gallery__item">
                         <div class="gallery__figure">
-                            <img src="<?php echo $this->basePath('assets/arquivoemcartaz/dist/images/galeria1.jpg') ?>" alt="">
+                            <img src="<?php echo $this->thumbor()->url($img->getFile())->resize(952, 624); ?>" alt="">
                         </div>
                         <div class="gallery__desc">
                             <div class="gallery__desc-wrapper">
                                 <div class="gallery__desc-text">
-                                    <p class="gallery__desc-title">OURO PRETO/MG - 23.06.2016 - 11ª CINEOP - MOSTRA DE CINEMA DE OURO PRETO.</p>
-                                    <p class="gallery__desc-author">Foto: Leo Lara/Universo Produção</p>
+                                    <p class="gallery__desc-title"><?php echo $img->getTitle(); ?></p>
+                                    <!--<p class="gallery__desc-author">Foto: Leo Lara/Universo Produção</p>-->
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="gallery__item">
-                        <div class="gallery__figure">
-                            <img src="<?php echo $this->basePath('assets/arquivoemcartaz/dist/images/galeria2.jpg') ?>" alt="">
-                        </div>
-                        <div class="gallery__desc">
-                            <div class="gallery__desc-wrapper">
-                                <div class="gallery__desc-text">
-                                    <p class="gallery__desc-title">OURO PRETO/MG - 23.06.2016 - 11ª CINEOP - MOSTRA DE CINEMA DE OURO PRETO.</p>
-                                    <p class="gallery__desc-author">Foto: Leo Lara/Universo Produção</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="gallery__item">
-                        <div class="gallery__figure">
-                            <img src="http://placehold.it/952x624/2200CC/ffffff" alt="">
-                        </div>
-                        <div class="gallery__desc">
-                            <div class="gallery__desc-wrapper">
-                                <div class="gallery__desc-text">
-                                    <p class="gallery__desc-title">OURO PRETO/MG - 23.06.2016 - 11ª CINEOP - MOSTRA DE CINEMA DE OURO PRETO.</p>
-                                    <p class="gallery__desc-author">Foto: Leo Lara/Universo Produção</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <?php endforeach; ?>
                 </div>
             </div>
             <p class="readmore"><a class="readmore__link" href="">Galeria Completa<span class="icon icon-plus2"></span></a></p>
         </section>
+        <?php endif; ?>
 
+        <?php if(count($this->guides)): ?>
         <section class="main__section place">
             <header class="place__header">
                 <h1 class="place__title main__title">Locais</h1>
             </header>
+            <?php $firstGuide = current($this->guides);?>
             <div class="place__figure">
-                <img class="place__image" src="images/place-rio.jpg" alt="">
+                <img class="place__image" src="<?php echo $firstGuide->getThumb(); ?>" alt="">
             </div>
             <div class="place__desc">
                 <div class="place__desc-wrapper">
-                    <p class="place__desc-title">Rio de Janeiro</p>
-                    <p class="place__desc-text">A Cidade Maravilhosa abre alas para o Festival Arquivo em Cartaz, tendo o samba como tema principal  em mais uma edição.Serão três os locais, sendo Centro e Niterói, onde haverão esposições, mostras, debates e muito do melhor do Cinema de Arquivo do país.</p>
+                    <p class="place__desc-title"><?php echo $firstGuide->getTitle(); ?></p>
+                    <p class="place__desc-text"><?php echo $firstGuide->getContent(); ?></p>
                 </div>
             </div>
             <ul class="place__items">
-                <li class="place__item place__item--active" data-image="images/place-rio.jpg" data-title="Rio de Janeiro" data-link="" data-desc="A Cidade Maravilhosa abre alas para o Festival Arquivo em Cartaz, tendo o samba como tema principal em mais uma edição.Serão três os locais, sendo Centro e Niterói, onde haverão esposições, mostras, debates e muito do melhor do Cinema de Arquivo do país."><a class="place__link" href="">Rio de Janeiro</a></li>
-                <li class="place__item" data-image="images/arquivonacional.jpg" data-title="ArquivoNacional" data-link="" data-desc="A Cidade Maravilhosa abre alas para o Festival Arquivo em Cartaz, tendo o samba como tema principal em mais uma edição.Serão três os locais, sendo Centro e Niterói, onde haverão esposições, mostras, debates e muito do melhor do Cinema de Arquivo do país."><a class="place__link" href="">Arquivo Nacional</a></li>
-                <li class="place__item" data-image="images/bndes.jpg" data-title="Espaço BNDES" data-link="" data-desc="A Cidade Maravilhosa abre alas para o Festival Arquivo em Cartaz, tendo o samba como tema principal em mais uma edição.Serão três os locais, sendo Centro e Niterói, onde haverão esposições, mostras, debates e muito do melhor do Cinema de Arquivo do país."><a class="place__link" href="">Espaço BNDES</a></li>
-                <li class="place__item" data-image="images/cineart.jpg" data-title="Rio Cine Arte UFF" data-link="" data-desc="A Cidade Maravilhosa abre alas para o Festival Arquivo em Cartaz, tendo o samba como tema principal em mais uma edição.Serão três os locais, sendo Centro e Niterói, onde haverão esposições, mostras, debates e muito do melhor do Cinema de Arquivo do país."><a class="place__link" href="">Rio Cine Arte UFF</a></li>
+                <?php foreach ($this->guides as $guide): ?>
+                <li class="place__item <?php echo $firstGuide->getId()==$guide->getId() ? "place__item--active" : ""; ?>" data-image="<?php echo $guide->getThumb(); ?>" data-title="<?php echo $guide->getTitle(); ?>" data-link="" data-desc="<?php echo $guide->getContent(); ?>"><a class="place__link" href=""><?php echo $guide->getTitle(); ?></a></li>
+                <?php endforeach; ?>
             </ul>
         </section>
 
@@ -267,5 +199,6 @@
                 </ul>
             </div>
         </section>
+        <?php endif; ?>
     </div>
 </main>
