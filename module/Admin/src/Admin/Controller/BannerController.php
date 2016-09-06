@@ -83,86 +83,12 @@ class BannerController extends AbstractAdminController implements CrudInterface
 
     public function deleteAction($id)
     {
+        $banner = $this->getRepository(Banner::class)->find($id);
+        $this->getEntityManager()->remove($banner);
+        $this->getEntityManager()->flush();
+
+        $this->messages()->flashSuccess('Banner excluído com sucesso.');
+
+        return $this->redirect()->toRoute('admin/banner', ['site' => $this->getSiteIdFromUri()]);
     }
-
-    /*protected $adminBannerHelper;
-       /*public function indexAction()
-    {
-        $items = $this->getRepository(Banner::class)->findBy([
-            'site' => $this->getSiteIdFromUri(),
-        ], ['order'=>'ASC']);
-
-        $request = $this->getRequest();
-        if($request->isPost()) {
-            foreach ($items as $item) {
-                $this->getEntityManager()->remove($item);
-            }
-
-            $items = new ArrayCollection();
-            $order = 1;
-            $data = $this->processBodyContent($this->getRequest());
-
-            if(empty($data['banner'])) {
-                $data['banner'] = [];
-            }
-
-            foreach ($data['banner'] as $item) {
-                $bannerItem = new Banner();
-                $bannerItem->setData($item);
-                $bannerItem->setOrder($order++);
-                $bannerItem->setSite($this->getCurrentSite());
-
-                $this->getEntityManager()->persist($bannerItem);
-                $items->add($bannerItem);
-            }
-
-            $this->getEntityManager()->flush();
-            $this->messages()->success('Banner atualizado com sucesso');
-        }
-
-        return $this->getViewModel()->setVariables([
-            'site' => $this->getSiteIdFromUri(),
-            'items' => $items
-        ]);
-    }*/
-
-	public function addItemAction()
-	{
-		$jsonModel = new JsonModel();
-		$jsonModel->setTerminal(true);
-
-		$adminbannerHelper = $this->getAdminBannerHelper();
-
-		try {
-			$media = $this->params()->fromPost('media');
-
-			$banner = new Banner();
-			$banner->setId(time());
-			$banner->setFile($media);
-
-			$markup = $adminbannerHelper->renderRow($banner);
-			$jsonModel->item = $markup;
-		} catch(\Exception $e) {
-			$jsonModel->error = $e->getMessage();
-		}
-
-		return $jsonModel;
-
-	}
-
-	/**
-	 * @return mixed
-	 */
-	public function getAdminBannerHelper()
-	{
-		return $this->adminBannerHelper;
-	}
-
-	/**
-	 * @param mixed $adminBannerHelper
-	 */
-	public function setAdminBannerHelper($adminBannerHelper)
-	{
-		$this->adminBannerHelper = $adminBannerHelper;
-	}
 }

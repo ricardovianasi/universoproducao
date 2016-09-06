@@ -4,13 +4,14 @@
 	<div class="portlet-title">
 		<div class="caption">
 			<i class="fa fa-edit"></i>
-			Imagens Destaque
+			Banner
 		</div>
 
 		<div class="actions">
-			<a href="#" class="btn btn-default">
-				<i class="icon-action-undo"></i>
-				<span class="hidden-xs"> Voltar </span>
+			<a href="<?php echo $this->url('admin/banner', ['action'=>'create', 'site'=>$site]); ?>"
+			   class="btn blue btn-lg">
+				<i class="fa fa-plus"></i>
+				<span class="hidden-xs"> Cadastrar banner </span>
 			</a>
 		</div>
 	</div>

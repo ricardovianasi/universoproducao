@@ -186,7 +186,7 @@
                     data-image="<?php echo $guide->getThumb(); ?>"
                     data-title="<?php echo $guide->getTitle(); ?>"
                     data-link="<?php echo $this->url('arquivoemcartaz/default', ['slug'=>$guide->getRelativeUrl()]); ?>"
-                    data-desc="<?php echo $guide->getContent(); ?>"><a class="place__link" href=""><?php echo $guide->getTitle(); ?></a></li>
+                    data-desc=" <?php echo $this->truncate($guide->getContent(), 300); ?>"><a class="place__link" href=""><?php echo $guide->getTitle(); ?></a></li>
                 <?php endforeach; ?>
             </ul>
         </section>
