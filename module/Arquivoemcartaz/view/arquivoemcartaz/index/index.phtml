@@ -167,7 +167,7 @@
             </header>
             <?php $firstGuide = current($this->guides);?>
             <div class="place__figure">
-                <img class="place__image" src="<?php echo $firstGuide->getThumb(); ?>" alt="">
+                <img class="place__image" src="<?php echo $this->thumbor()->url($firstGuide->getThumb())->resize(472, 280); ?>" alt="">
             </div>
             <div class="place__desc">
                 <div class="place__desc-wrapper">
@@ -183,7 +183,7 @@
             <ul class="place__items">
                 <?php foreach ($this->guides as $guide): ?>
                 <li class="place__item <?php echo $firstGuide->getId()==$guide->getId() ? "place__item--active" : ""; ?>"
-                    data-image="<?php echo $guide->getThumb(); ?>"
+                    data-image="<?php echo $this->thumbor()->url($guide->getThumb())->resize(472, 280); ?>"
                     data-title="<?php echo $guide->getTitle(); ?>"
                     data-link="<?php echo $this->url('arquivoemcartaz/default', ['slug'=>$guide->getRelativeUrl()]); ?>"
                     data-desc=" <?php echo $this->truncate($guide->getContent(), 300); ?>"><a class="place__link" href=""><?php echo $guide->getTitle(); ?></a></li>
