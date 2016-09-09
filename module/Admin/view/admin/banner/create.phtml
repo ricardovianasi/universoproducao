@@ -26,7 +26,7 @@
 					<div class="portlet-body form">
 						<?php echo $this->form(null, null)->openTag($form); ?>
 						<div class="row">
-							<div class="col-md-9">
+							<div class="col-md-4">
 								<div class="form-group">
 									<label class="control-label">Imagem</label>
 									<div class="input-group ">
@@ -100,6 +100,10 @@
 								</div>
 							</div>
 						</div>
+
+                        <div class="row">
+                            <div class="col-md-4"><?php echo $this->formRow($form->get('credits')); ?></div>
+                        </div>
 
 						<div class="row">
 							<div class="col-md-6"><?php echo $this->formRow($form->get('description')); ?></div>
