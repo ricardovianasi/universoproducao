@@ -65,8 +65,7 @@ return array(
         'invokables' => array (
             'cpf' 			=> View\Helper\Cpf::class,
             'youtubeEmbed' 	=> View\Helper\YoutubeEmbed::class,
-            'truncate'      => View\Helper\Truncate::class,
-            'head'          => View\Helper\Head::class
+            'truncate'      => View\Helper\Truncate::class
         ),
         'factories' => [
             'thumbor' => function($e) {

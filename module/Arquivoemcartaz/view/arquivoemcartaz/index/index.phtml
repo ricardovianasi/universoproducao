@@ -20,6 +20,7 @@
                     <div class="banner__text">
                         <p class="banner__title"><?php echo $banner->getTitle(); ?></p>
                         <p class="banner__subtitle"><?php echo $banner->getDescription(); ?></p>
+                        <p class="banner__author"><?php echo $banner->getCredits(); ?></p>
                         <?php if($banner->getLink()): ?>
                         <a <?php echo $banner->getTargetBlank() ? "target='_blank'" : ""; ?> href="<?php echo $banner->getLink(); ?>" class="banner__link circle-link"><span class="icon icon-arrow-right8"></span></a>
                         <?php endif; ?>
@@ -163,35 +164,36 @@
         <?php endif; ?>
 
         <?php if(count($this->guides)): ?>
-        <section class="main__section place">
-            <header class="place__header">
-                <h1 class="place__title main__title">Locais</h1>
-            </header>
-            <?php $firstGuide = current($this->guides);?>
-            <div class="place__figure">
-                <img class="place__image" src="<?php echo $this->thumbor()->url($firstGuide->getThumb())->resize(472, 280); ?>" alt="">
-            </div>
-            <div class="place__desc">
-                <div class="place__desc-wrapper">
-                    <p class="place__desc-title"><?php echo $firstGuide->getTitle(); ?></p>
-                    <p class="place__desc-text">
-                        <?php echo $this->truncate($firstGuide->getContent(), 300); ?>
-                        <a href="<?php echo $this->url('arquivoemcartaz/default', ['slug'=>$firstGuide->getRelativeUrl()]); ?>" class="news__item-link">
-                            <span class="icon icon-arrow-right8"></span>
-                        </a>
-                    </p>
+            <section class="main__section place">
+                <header class="place__header">
+                    <h1 class="place__title main__title">Locais</h1>
+                </header>
+                <?php $firstGuide = current($this->guides);?>
+                <div class="place__figure">
+                    <img class="place__image" src="<?php echo $this->thumbor()->url($firstGuide->getThumb())->resize(472, 280); ?>" alt="">
                 </div>
-            </div>
-            <ul class="place__items">
-                <?php foreach ($this->guides as $guide): ?>
-                <li class="place__item <?php echo $firstGuide->getId()==$guide->getId() ? "place__item--active" : ""; ?>"
-                    data-image="<?php echo $this->thumbor()->url($guide->getThumb())->resize(472, 280); ?>"
-                    data-title="<?php echo $guide->getTitle(); ?>"
-                    data-link="<?php echo $this->url('arquivoemcartaz/default', ['slug'=>$guide->getRelativeUrl()]); ?>"
-                    data-desc=" <?php echo $this->truncate($guide->getContent(), 300); ?>"><a class="place__link" href=""><?php echo $guide->getTitle(); ?></a></li>
-                <?php endforeach; ?>
-            </ul>
-        </section>
+                <div class="place__desc">
+                    <div class="place__desc-wrapper">
+                        <p class="place__desc-title"><?php echo $firstGuide->getTitle(); ?></p>
+                        <p class="place__desc-text">
+                            <?php echo $this->truncate($firstGuide->getContent(), 300); ?>
+                            <a href="<?php echo $this->url('arquivoemcartaz/default', ['slug'=>$firstGuide->getRelativeUrl()]); ?>" class="news__item-link">
+                                <span class="icon icon-arrow-right8"></span>
+                            </a>
+                        </p>
+                    </div>
+                </div>
+                <ul class="place__items">
+                    <?php foreach ($this->guides as $guide): ?>
+                    <li class="place__item <?php echo $firstGuide->getId()==$guide->getId() ? "place__item--active" : ""; ?>"
+                        data-image="<?php echo $this->thumbor()->url($guide->getThumb())->resize(472, 280); ?>"
+                        data-title="<?php echo $guide->getTitle(); ?>"
+                        data-link="<?php echo $this->url('arquivoemcartaz/default', ['slug'=>$guide->getRelativeUrl()]); ?>"
+                        data-desc=" <?php echo $this->truncate($guide->getContent(), 300); ?>"><a class="place__link" href=""><?php echo $guide->getTitle(); ?></a></li>
+                    <?php endforeach; ?>
+                </ul>
+            </section>
+        <?php endif; ?>
 
         <section class="main__section sponsor">
             <div class="sponsor__block">
@@ -217,6 +219,5 @@
                 </ul>
             </div>
         </section>
-        <?php endif; ?>
     </div>
-</main
+</main>
