@@ -21,7 +21,7 @@
                         <p class="banner__title"><?php echo $banner->getTitle(); ?></p>
                         <p class="banner__subtitle"><?php echo $banner->getDescription(); ?></p>
                         <?php if($banner->getLink()): ?>
-                        <a <?php $banner->getTargetBlank() ? "target='_blank'" : ""; ?> href="<?php echo $banner->getLink(); ?>" class="banner__link circle-link"><span class="icon icon-arrow-right8"></span></a>
+                        <a <?php echo $banner->getTargetBlank() ? "target='_blank'" : ""; ?> href="<?php echo $banner->getLink(); ?>" class="banner__link circle-link"><span class="icon icon-arrow-right8"></span></a>
                         <?php endif; ?>
                     </div>
                 </div>
