@@ -46,6 +46,7 @@ class BannerController extends AbstractAdminController implements CrudInterface
             $banner = $this->getRepository(Banner::class)->find($id);
         } else {
             $banner = new Banner();
+            $banner->setSite($this->getCurrentSite());
         }
 
         if($this->getRequest()->isPost()) {

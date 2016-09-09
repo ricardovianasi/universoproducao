@@ -6931,3 +6931,45 @@ Stack trace:
 [09-Sep-2016 09:38:11 America/Sao_Paulo] PHP  10. call_user_func:{R:\ambiente\php\projetos\up\app\vendor\zendframework\zend-eventmanager\src\EventManager.php:490}() R:\ambiente\php\projetos\up\app\vendor\zendframework\zend-eventmanager\src\EventManager.php:490
 [09-Sep-2016 09:38:11 America/Sao_Paulo] PHP  11. Zend\Mvc\Controller\AbstractActionController->onDispatch() R:\ambiente\php\projetos\up\app\vendor\zendframework\zend-eventmanager\src\EventManager.php:490
 [09-Sep-2016 09:38:11 America/Sao_Paulo] PHP  12. Arquivoemcartaz\Controller\PostController->indexAction() R:\ambiente\php\projetos\up\app\vendor\zendframework\zend-mvc\src\Controller\AbstractActionController.php:82
+[09-Sep-2016 09:48:21 America/Sao_Paulo] PHP Notice:  Indirect modification of overloaded property Zend\View\Renderer\PhpRenderer::$guides has no effect in R:\ambiente\php\projetos\up\app\module\Arquivoemcartaz\view\arquivoemcartaz\index\index.phtml on line 170
+[09-Sep-2016 09:48:21 America/Sao_Paulo] PHP Stack trace:
+[09-Sep-2016 09:48:21 America/Sao_Paulo] PHP   1. {main}() R:\ambiente\php\projetos\up\app\public\index.php:0
+[09-Sep-2016 09:48:21 America/Sao_Paulo] PHP   2. Zend\Mvc\Application->run() R:\ambiente\php\projetos\up\app\public\index.php:30
+[09-Sep-2016 09:48:21 America/Sao_Paulo] PHP   3. Zend\Mvc\Application->completeRequest() R:\ambiente\php\projetos\up\app\vendor\zendframework\zend-mvc\src\Application.php:356
+[09-Sep-2016 09:48:21 America/Sao_Paulo] PHP   4. Zend\EventManager\EventManager->triggerEvent() R:\ambiente\php\projetos\up\app\vendor\zendframework\zend-mvc\src\Application.php:384
+[09-Sep-2016 09:48:21 America/Sao_Paulo] PHP   5. Zend\EventManager\EventManager->triggerListeners() R:\ambiente\php\projetos\up\app\vendor\zendframework\zend-eventmanager\src\EventManager.php:251
+[09-Sep-2016 09:48:21 America/Sao_Paulo] PHP   6. call_user_func:{R:\ambiente\php\projetos\up\app\vendor\zendframework\zend-eventmanager\src\EventManager.php:490}() R:\ambiente\php\projetos\up\app\vendor\zendframework\zend-eventmanager\src\EventManager.php:490
+[09-Sep-2016 09:48:21 America/Sao_Paulo] PHP   7. Zend\Mvc\View\Http\DefaultRenderingStrategy->render() R:\ambiente\php\projetos\up\app\vendor\zendframework\zend-eventmanager\src\EventManager.php:490
+[09-Sep-2016 09:48:21 America/Sao_Paulo] PHP   8. Zend\View\View->render() R:\ambiente\php\projetos\up\app\vendor\zendframework\zend-mvc\src\View\Http\DefaultRenderingStrategy.php:105
+[09-Sep-2016 09:48:21 America/Sao_Paulo] PHP   9. Zend\View\View->renderChildren() R:\ambiente\php\projetos\up\app\vendor\zendframework\zend-view\src\View.php:200
+[09-Sep-2016 09:48:21 America/Sao_Paulo] PHP  10. Zend\View\View->render() R:\ambiente\php\projetos\up\app\vendor\zendframework\zend-view\src\View.php:236
+[09-Sep-2016 09:48:21 America/Sao_Paulo] PHP  11. Zend\View\Renderer\PhpRenderer->render() R:\ambiente\php\projetos\up\app\vendor\zendframework\zend-view\src\View.php:207
+[09-Sep-2016 09:48:21 America/Sao_Paulo] PHP  12. include() R:\ambiente\php\projetos\up\app\vendor\zendframework\zend-view\src\Renderer\PhpRenderer.php:502
+[09-Sep-2016 09:48:24 America/Sao_Paulo] PHP Notice:  Indirect modification of overloaded property Zend\View\Renderer\PhpRenderer::$guides has no effect in R:\ambiente\php\projetos\up\app\module\Arquivoemcartaz\view\arquivoemcartaz\index\index.phtml on line 170
+[09-Sep-2016 09:48:24 America/Sao_Paulo] PHP Stack trace:
+[09-Sep-2016 09:48:24 America/Sao_Paulo] PHP   1. {main}() R:\ambiente\php\projetos\up\app\public\index.php:0
+[09-Sep-2016 09:48:24 America/Sao_Paulo] PHP   2. Zend\Mvc\Application->run() R:\ambiente\php\projetos\up\app\public\index.php:30
+[09-Sep-2016 09:48:24 America/Sao_Paulo] PHP   3. Zend\Mvc\Application->completeRequest() R:\ambiente\php\projetos\up\app\vendor\zendframework\zend-mvc\src\Application.php:356
+[09-Sep-2016 09:48:24 America/Sao_Paulo] PHP   4. Zend\EventManager\EventManager->triggerEvent() R:\ambiente\php\projetos\up\app\vendor\zendframework\zend-mvc\src\Application.php:384
+[09-Sep-2016 09:48:24 America/Sao_Paulo] PHP   5. Zend\EventManager\EventManager->triggerListeners() R:\ambiente\php\projetos\up\app\vendor\zendframework\zend-eventmanager\src\EventManager.php:251
+[09-Sep-2016 09:48:24 America/Sao_Paulo] PHP   6. call_user_func:{R:\ambiente\php\projetos\up\app\vendor\zendframework\zend-eventmanager\src\EventManager.php:490}() R:\ambiente\php\projetos\up\app\vendor\zendframework\zend-eventmanager\src\EventManager.php:490
+[09-Sep-2016 09:48:24 America/Sao_Paulo] PHP   7. Zend\Mvc\View\Http\DefaultRenderingStrategy->render() R:\ambiente\php\projetos\up\app\vendor\zendframework\zend-eventmanager\src\EventManager.php:490
+[09-Sep-2016 09:48:24 America/Sao_Paulo] PHP   8. Zend\View\View->render() R:\ambiente\php\projetos\up\app\vendor\zendframework\zend-mvc\src\View\Http\DefaultRenderingStrategy.php:105
+[09-Sep-2016 09:48:24 America/Sao_Paulo] PHP   9. Zend\View\View->renderChildren() R:\ambiente\php\projetos\up\app\vendor\zendframework\zend-view\src\View.php:200
+[09-Sep-2016 09:48:24 America/Sao_Paulo] PHP  10. Zend\View\View->render() R:\ambiente\php\projetos\up\app\vendor\zendframework\zend-view\src\View.php:236
+[09-Sep-2016 09:48:24 America/Sao_Paulo] PHP  11. Zend\View\Renderer\PhpRenderer->render() R:\ambiente\php\projetos\up\app\vendor\zendframework\zend-view\src\View.php:207
+[09-Sep-2016 09:48:24 America/Sao_Paulo] PHP  12. include() R:\ambiente\php\projetos\up\app\vendor\zendframework\zend-view\src\Renderer\PhpRenderer.php:502
+[09-Sep-2016 09:48:26 America/Sao_Paulo] PHP Fatal error:  Call to a member function hasMeta() on null in R:\ambiente\php\projetos\up\app\module\Arquivoemcartaz\src\Arquivoemcartaz\Controller\PostController.php on line 34
+[09-Sep-2016 09:48:26 America/Sao_Paulo] PHP Stack trace:
+[09-Sep-2016 09:48:26 America/Sao_Paulo] PHP   1. {main}() R:\ambiente\php\projetos\up\app\public\index.php:0
+[09-Sep-2016 09:48:26 America/Sao_Paulo] PHP   2. Zend\Mvc\Application->run() R:\ambiente\php\projetos\up\app\public\index.php:30
+[09-Sep-2016 09:48:26 America/Sao_Paulo] PHP   3. Zend\EventManager\EventManager->triggerEventUntil() R:\ambiente\php\projetos\up\app\vendor\zendframework\zend-mvc\src\Application.php:340
+[09-Sep-2016 09:48:26 America/Sao_Paulo] PHP   4. Zend\EventManager\EventManager->triggerListeners() R:\ambiente\php\projetos\up\app\vendor\zendframework\zend-eventmanager\src\EventManager.php:263
+[09-Sep-2016 09:48:26 America/Sao_Paulo] PHP   5. call_user_func:{R:\ambiente\php\projetos\up\app\vendor\zendframework\zend-eventmanager\src\EventManager.php:490}() R:\ambiente\php\projetos\up\app\vendor\zendframework\zend-eventmanager\src\EventManager.php:490
+[09-Sep-2016 09:48:26 America/Sao_Paulo] PHP   6. Zend\Mvc\DispatchListener->onDispatch() R:\ambiente\php\projetos\up\app\vendor\zendframework\zend-eventmanager\src\EventManager.php:490
+[09-Sep-2016 09:48:26 America/Sao_Paulo] PHP   7. Zend\Mvc\Controller\AbstractController->dispatch() R:\ambiente\php\projetos\up\app\vendor\zendframework\zend-mvc\src\DispatchListener.php:118
+[09-Sep-2016 09:48:26 America/Sao_Paulo] PHP   8. Zend\EventManager\EventManager->triggerEventUntil() R:\ambiente\php\projetos\up\app\vendor\zendframework\zend-mvc\src\Controller\AbstractController.php:118
+[09-Sep-2016 09:48:26 America/Sao_Paulo] PHP   9. Zend\EventManager\EventManager->triggerListeners() R:\ambiente\php\projetos\up\app\vendor\zendframework\zend-eventmanager\src\EventManager.php:263
+[09-Sep-2016 09:48:26 America/Sao_Paulo] PHP  10. call_user_func:{R:\ambiente\php\projetos\up\app\vendor\zendframework\zend-eventmanager\src\EventManager.php:490}() R:\ambiente\php\projetos\up\app\vendor\zendframework\zend-eventmanager\src\EventManager.php:490
+[09-Sep-2016 09:48:26 America/Sao_Paulo] PHP  11. Zend\Mvc\Controller\AbstractActionController->onDispatch() R:\ambiente\php\projetos\up\app\vendor\zendframework\zend-eventmanager\src\EventManager.php:490
+[09-Sep-2016 09:48:26 America/Sao_Paulo] PHP  12. Arquivoemcartaz\Controller\PostController->indexAction() R:\ambiente\php\projetos\up\app\vendor\zendframework\zend-mvc\src\Controller\AbstractActionController.php:82
