@@ -41,7 +41,6 @@ class NewsController extends SiteController
 
     public function newsAction()
     {
-
         $slug = $this->params()->fromRoute('slug');
         if(!$slug) {
             //erro, slug não definido
@@ -57,10 +56,8 @@ class NewsController extends SiteController
             //não achou a notícia
         }
 
-        $view = new ViewModel([
+        return new ViewModel([
             'post' => $news
         ]);
-        $view->setTemplate('arquivoemcartaz/post/index.phtml');
-        return $view;
     }
 }
