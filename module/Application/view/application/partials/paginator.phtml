@@ -7,7 +7,7 @@
              <!-- First page link -->
              <?php if (isset($this->previous)): ?>
                  <li class="pagination__item">
-                     <a class="pagination__link" href="<?php echo $this->url($this->route, $this->route_options); ?>?page=<?php echo $this->first; ?>">
+                     <a class="pagination__link" href="<?php echo $this->url($this->route, $this->route_options); ?>?pagina=<?php echo $this->first; ?>">
                          <span class="icon icon-first2"></span>
                      </a>
                  </li>
@@ -22,7 +22,7 @@
 			 <!-- Previous page link -->
 			 <?php if (isset($this->previous)): ?>
 				 <li class="pagination__item">
-					 <a class="pagination__link" href="<?php echo $this->url($this->route, $this->route_options); ?>?page=<?php echo $this->previous; ?>">
+					 <a class="pagination__link" href="<?php echo $this->url($this->route, $this->route_options); ?>?pagina=<?php echo $this->previous; ?>">
                          <span class="icon icon-arrow-left"></span>
 					 </a>
 				 </li>
@@ -38,7 +38,7 @@
 			 <?php foreach ($this->pagesInRange as $page): ?>
 				 <?php if ($page != $this->current): ?>
 					 <li class="pagination__item">
-						 <a class="pagination__link" href="<?php echo $this->url($this->route, $this->route_options);?>?page=<?php echo $page; ?>">
+						 <a class="pagination__link" href="<?php echo $this->url($this->route, $this->route_options);?>?pagina=<?php echo $page; ?>">
 							 <span><?php echo $page; ?></span>
 						 </a>
 					 </li>
@@ -54,7 +54,7 @@
 			 <!-- Next page link -->
 			 <?php if (isset($this->next)): ?>
                  <li class="pagination__item">
-					 <a class="pagination__link" href="<?php echo $this->url($this->route, $this->route_options); ?>?page=<?php echo $this->next; ?>">
+					 <a class="pagination__link" href="<?php echo $this->url($this->route, $this->route_options); ?>?pagina=<?php echo $this->next; ?>">
                          <span class="icon icon-arrow-right"></span>
 					 </a>
 				 </li>
@@ -69,7 +69,7 @@
              <!-- Last page link -->
              <?php if (isset($this->next)): ?>
                  <li class="pagination__item">
-                     <a class="pagination__link" href="<?php echo $this->url($this->route, $this->route_options); ?>?page=<?php echo $this->last; ?>">
+                     <a class="pagination__link" href="<?php echo $this->url($this->route, $this->route_options); ?>?pagina=<?php echo $this->last; ?>">
                          <span class="icon icon-last2"></span>
                      </a>
                  </li>
