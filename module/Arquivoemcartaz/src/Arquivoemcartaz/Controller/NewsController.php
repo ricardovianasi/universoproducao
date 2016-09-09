@@ -17,7 +17,7 @@ class NewsController extends SiteController
     public function indexAction()
     {
         $post = $this->params('post');
-        $page = $this->params('pagina', 1);
+        $page = $this->params()->fromQuery('pagina', 1);
 
         $qb = $this->getRepository(Post::class)->createQueryBuilder('p');
         $qb->andWhere('p.status = :status')
