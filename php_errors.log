@@ -6973,3 +6973,17 @@ Stack trace:
 [09-Sep-2016 09:48:26 America/Sao_Paulo] PHP  10. call_user_func:{R:\ambiente\php\projetos\up\app\vendor\zendframework\zend-eventmanager\src\EventManager.php:490}() R:\ambiente\php\projetos\up\app\vendor\zendframework\zend-eventmanager\src\EventManager.php:490
 [09-Sep-2016 09:48:26 America/Sao_Paulo] PHP  11. Zend\Mvc\Controller\AbstractActionController->onDispatch() R:\ambiente\php\projetos\up\app\vendor\zendframework\zend-eventmanager\src\EventManager.php:490
 [09-Sep-2016 09:48:26 America/Sao_Paulo] PHP  12. Arquivoemcartaz\Controller\PostController->indexAction() R:\ambiente\php\projetos\up\app\vendor\zendframework\zend-mvc\src\Controller\AbstractActionController.php:82
+[09-Sep-2016 09:59:33 America/Sao_Paulo] PHP Fatal error:  Call to a member function hasMeta() on null in R:\ambiente\php\projetos\up\app\module\Arquivoemcartaz\src\Arquivoemcartaz\Controller\PostController.php on line 34
+[09-Sep-2016 09:59:33 America/Sao_Paulo] PHP Stack trace:
+[09-Sep-2016 09:59:33 America/Sao_Paulo] PHP   1. {main}() R:\ambiente\php\projetos\up\app\public\index.php:0
+[09-Sep-2016 09:59:33 America/Sao_Paulo] PHP   2. Zend\Mvc\Application->run() R:\ambiente\php\projetos\up\app\public\index.php:30
+[09-Sep-2016 09:59:33 America/Sao_Paulo] PHP   3. Zend\EventManager\EventManager->triggerEventUntil() R:\ambiente\php\projetos\up\app\vendor\zendframework\zend-mvc\src\Application.php:340
+[09-Sep-2016 09:59:33 America/Sao_Paulo] PHP   4. Zend\EventManager\EventManager->triggerListeners() R:\ambiente\php\projetos\up\app\vendor\zendframework\zend-eventmanager\src\EventManager.php:263
+[09-Sep-2016 09:59:33 America/Sao_Paulo] PHP   5. call_user_func:{R:\ambiente\php\projetos\up\app\vendor\zendframework\zend-eventmanager\src\EventManager.php:490}() R:\ambiente\php\projetos\up\app\vendor\zendframework\zend-eventmanager\src\EventManager.php:490
+[09-Sep-2016 09:59:33 America/Sao_Paulo] PHP   6. Zend\Mvc\DispatchListener->onDispatch() R:\ambiente\php\projetos\up\app\vendor\zendframework\zend-eventmanager\src\EventManager.php:490
+[09-Sep-2016 09:59:33 America/Sao_Paulo] PHP   7. Zend\Mvc\Controller\AbstractController->dispatch() R:\ambiente\php\projetos\up\app\vendor\zendframework\zend-mvc\src\DispatchListener.php:118
+[09-Sep-2016 09:59:33 America/Sao_Paulo] PHP   8. Zend\EventManager\EventManager->triggerEventUntil() R:\ambiente\php\projetos\up\app\vendor\zendframework\zend-mvc\src\Controller\AbstractController.php:118
+[09-Sep-2016 09:59:33 America/Sao_Paulo] PHP   9. Zend\EventManager\EventManager->triggerListeners() R:\ambiente\php\projetos\up\app\vendor\zendframework\zend-eventmanager\src\EventManager.php:263
+[09-Sep-2016 09:59:33 America/Sao_Paulo] PHP  10. call_user_func:{R:\ambiente\php\projetos\up\app\vendor\zendframework\zend-eventmanager\src\EventManager.php:490}() R:\ambiente\php\projetos\up\app\vendor\zendframework\zend-eventmanager\src\EventManager.php:490
+[09-Sep-2016 09:59:33 America/Sao_Paulo] PHP  11. Zend\Mvc\Controller\AbstractActionController->onDispatch() R:\ambiente\php\projetos\up\app\vendor\zendframework\zend-eventmanager\src\EventManager.php:490
+[09-Sep-2016 09:59:33 America/Sao_Paulo] PHP  12. Arquivoemcartaz\Controller\PostController->indexAction() R:\ambiente\php\projetos\up\app\vendor\zendframework\zend-mvc\src\Controller\AbstractActionController.php:82
