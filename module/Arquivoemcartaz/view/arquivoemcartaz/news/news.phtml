@@ -1,3 +1,12 @@
+<?php
+    $this->headMeta()->setProperty('og:title', $post->getTitle());
+    if($post->getThumb()) {
+        $this->headMeta()->setProperty('og:image', $post->getThumb());
+    }
+
+?>
+
+
 <?php if($post->getCover()): ?>
     <div class="site__cover">
         <img src="<?php echo $post->getCover() ?>" alt="">
@@ -24,19 +33,7 @@
 
             <?php echo $post->getContent(); ?>
 
-            <div class="share">
-                <ul class="share__list">
-                    <li class="share__item share__item--title">
-                        <span>Compartilhe</span>
-                    </li>
-                    <li class="share__item">
-                        <a class="share__link" href=""><span class="icon icon-facebook"></span></a>
-                    </li>
-                    <li class="share__item">
-                        <a class="share__link" href=""><span class="icon icon-twitter"></span></a>
-                    </li>
-                </ul>
-            </div>
+            <?php echo $this->partial("application/partials/share.phtml", ['title'=>$post->getTitle()]); ?>
 
         </section>
     </div>

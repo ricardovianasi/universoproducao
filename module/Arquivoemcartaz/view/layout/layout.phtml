@@ -3,8 +3,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="description" content="">
+    <meta name="keywords" content="arquivo em cartaz, festival, cinema, arquivo, universo produção">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Arquivo em Cartaz 2016</title>
+
+    <?php echo $this->headTitle("Arquivo em Cartaz 2016")->setSeparator(' - '); ?>
 
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <!-- Place favicon.ico in the root directory -->
@@ -17,6 +19,18 @@
     <!-- build:js scripts/vendor/modernizr.js -->
     <script src="<?php echo $this->basePath('assets/arquivoemcartaz/dist/scripts/vendor/modernizr.js') ?>"></script>
     <!-- endbuild -->
+
+    <!--Facebook-->
+    <meta property="og:url" content="<?php echo $this->serverUrl(true) ?>">
+    <meta property="og:type" content="website" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@universoprod" />
+    <meta name="twitter:creator" content="@universoprod" />
+
+    <?php echo $this->headMeta(); ?>
+
 </head>
 <body>
 <div class="site__wrapper">
