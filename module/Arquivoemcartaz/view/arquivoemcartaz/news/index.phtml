@@ -26,7 +26,7 @@
                         <a class="news__link" href="">
                             <header class="news__header"><h1 class="news__title"><?php echo $news->getTitle(); ?></h1></header>
                             <?php if($news->getThumb()): ?>
-                                <figure class="news__figure"><img src="<?php echo $news->getThumb(); ?>" alt=""></figure>
+                                <figure class="news__figure"><img src="<?php echo $this->thumbor()->url($news->getThumb())->resize(240, 160); ?>" alt=""></figure>
                             <?php endif; ?>
                             <div class="news__content">
                                 <p class="news__intro">
