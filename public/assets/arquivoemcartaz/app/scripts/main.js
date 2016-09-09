@@ -31,6 +31,8 @@ $(document).ready(function () {
         $("body").toggleClass("mainmenu-active");
     });
 
-
+    $('.customer.share').on("click", function(e) {
+        $(this).customerPopup(e);
+    });
 
 });
