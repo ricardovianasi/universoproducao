@@ -5,6 +5,7 @@ use Application\Controller\SiteController;
 use Application\Entity\Post\Post;
 use Application\Entity\Post\PostStatus;
 use Application\Entity\Post\PostType;
+use Application\Entity\Site\SiteMeta;
 use Zend\View\Model\ViewModel;
 
 class PostController extends SiteController
@@ -27,6 +28,17 @@ class PostController extends SiteController
 
         if(!$post) {
             //tela de erro 404
+        }
+
+        //Custon Action
+        if($post->hasMeta(SiteMeta::CUSTOM_POST_ACTION)) {
+            $customAction = $post->getMeta(SiteMeta::CUSTOM_POST_ACTION);
+            $customAction = explode(':', $customAction);
+
+            return $this->forward()->dispatch($customAction[0], [
+                'action' => $customAction[1],
+                'post' => $post
+            ]);
         }
 
         $viewModel->post = $post;

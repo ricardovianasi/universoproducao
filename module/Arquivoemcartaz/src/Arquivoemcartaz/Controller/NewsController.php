@@ -6,6 +6,9 @@ use Application\Entity\Post\Post;
 use Application\Entity\Post\PostStatus;
 use Application\Entity\Post\PostType;
 use Zend\View\Model\ViewModel;
+use DoctrineORMModule\Paginator\Adapter\DoctrinePaginator;
+use Doctrine\ORM\Tools\Pagination\Paginator as ORMPaginator;
+use Zend\Paginator\Paginator;
 
 class NewsController extends SiteController
 {
@@ -13,7 +16,27 @@ class NewsController extends SiteController
 
     public function indexAction()
     {
-        return [];
+        $post = $this->params('post');
+        $page = $this->params('pagina', 1);
+
+        $qb = $this->getRepository(Post::class)->createQueryBuilder('p');
+        $qb->andWhere('p.status = :status')
+            ->andWhere('p.type = :type')
+            ->orderBy('p.postDate', 'DESC')
+            ->setParameters([
+                'status' => PostStatus::PUBLISHED,
+                'type' => PostType::NEWS
+            ]);
+
+        $adapter = new DoctrinePaginator(new ORMPaginator($qb));
+        $paginator = new Paginator($adapter);
+        $paginator->setDefaultItemCountPerPage(10);
+        $paginator->setCurrentPageNumber($page);
+
+        return new ViewModel([
+            'newsList' => $paginator,
+            'post' => $post
+        ]);
     }
 
     public function newsAction()

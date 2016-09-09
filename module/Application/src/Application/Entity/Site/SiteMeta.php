@@ -11,6 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
 class SiteMeta extends AbstractEntity
 {
 	const CUSTOM_POST_TEMPLATE = 'custom_post_template';
+    const CUSTOM_POST_ACTION = 'custom_post_action';
 
 	/**
 	 * @ORM\Id @ORM\Column(name="id", type="integer", nullable=false)

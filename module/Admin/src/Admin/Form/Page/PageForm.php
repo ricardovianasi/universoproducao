@@ -23,7 +23,7 @@ class PageForm extends PostForm
 		]);
 
 		$this->add([
-			'name' => 'meta['.SiteMeta::CUSTOM_POST_TEMPLATE.']',
+			'name' => 'meta['.SiteMeta::CUSTOM_POST_ACTION.']',
 			'type' => 'Select',
 			'options' => [
 				'label' => 'Template',
@@ -80,7 +80,7 @@ class PageForm extends PostForm
 			->andWhere('p.key = :metakey')
 			->setParameters([
 				'siteId' => $siteId,
-				'metakey' => SiteMeta::CUSTOM_POST_TEMPLATE
+				'metakey' => SiteMeta::CUSTOM_POST_ACTION
 			])
 			->getQuery()
 			->getResult();
@@ -90,7 +90,7 @@ class PageForm extends PostForm
 			$meta[$mVal->getValue()] = $mVal->getAlias();
 		}
 
-		$this->get('meta['.SiteMeta::CUSTOM_POST_TEMPLATE.']')->setValueOptions($meta);
+		$this->get('meta['.SiteMeta::CUSTOM_POST_ACTION.']')->setValueOptions($meta);
 	}
 
 	public function setData($data)

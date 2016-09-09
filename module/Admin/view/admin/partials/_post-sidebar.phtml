@@ -17,8 +17,8 @@
 				echo $this->formRow($form->get('parent'));
 			}
 
-			if($form->has('meta[custom_post_template]') && count($form->get('meta[custom_post_template]')->getValueOptions())) {
-				echo $this->formRow($form->get('meta[custom_post_template]'));
+			if($form->has('meta[custom_post_action]') && count($form->get('meta[custom_post_action]')->getValueOptions())) {
+				echo $this->formRow($form->get('meta[custom_post_action]'));
 			} ?>
 		</div>
 	</div>

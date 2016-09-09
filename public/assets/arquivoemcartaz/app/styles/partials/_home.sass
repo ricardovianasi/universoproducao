@@ -16,6 +16,8 @@
       +grid(1, 4, $cycle: 2)
       +corner-border(#000, true)
       +trailer(1)
+      +padding-trailer(0)
+      border: none
       &:first-of-type
         +grid(3, 4, $cycle: 2)
         .news__item-content
@@ -197,6 +199,7 @@
       float: right
       img
         width: 100%
+        filter: grayscale(100%)
 
     .owl-nav
       position: absolute

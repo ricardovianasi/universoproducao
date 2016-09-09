@@ -13,7 +13,7 @@ use Zend\View\Helper\AbstractHelper;
 
 class Truncate extends AbstractHelper
 {
-    public function __invoke($str, $length = 100, $exact=false, $ending='(...)', $stripTags=true)
+    public function __invoke($str, $length = 100, $exact=false, $ending='...', $stripTags=true)
     {
         if($stripTags) {
             $str = strip_tags($str);

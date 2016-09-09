@@ -18,3 +18,5 @@ public/assets/admin/node_modules
 config/autoload/local.php
 config/autoload/*.local.php
 .htaccess
+php_errors.log
+php_errors.log

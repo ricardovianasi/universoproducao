@@ -472,9 +472,18 @@ class Post extends AbstractEntity
 	/**
 	 * @return mixed
 	 */
-	public function getMeta()
+	public function getMeta($metaKey=null)
 	{
-		return $this->meta;
+	    if(!$metaKey)
+		    return $this->meta;
+
+        foreach ($this->meta as $meta) {
+            if($meta->getKey() == $metaKey) {
+                return $meta->getValue();
+            }
+        }
+
+        return null;
 	}
 
 	/**
@@ -495,4 +504,15 @@ class Post extends AbstractEntity
 
 		return $this;
 	}
+
+	public function hasMeta($metaKey)
+    {
+	    foreach ($this->getMeta() as $meta) {
+	        if($meta->getKey() == $metaKey) {
+	            return true;
+            }
+        }
+
+        return false;
+    }
 }
