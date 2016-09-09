@@ -1,4 +1,6 @@
 <?php
+/*header('Content-type: text/html; charset=utf-8');
+setlocale( LC_ALL, 'pt_BR.utf-8', 'pt_BR', 'Portuguese_Brazil');*/
 date_default_timezone_set('America/Sao_Paulo');
 
 defined('APPLICATION_ENV') || define('APPLICATION_ENV', (getenv('APPLICATION_ENV') ? getenv('APPLICATION_ENV') : 'production'));
