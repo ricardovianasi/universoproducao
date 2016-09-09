@@ -126,7 +126,15 @@
 					</table>
 
 					<div class="table-paginator">
-						<?php echo $this->paginationcontrol($this->news, 'sliding', 'admin/partials/paginator.phtml'); ?>
+						<?php echo $this->paginationcontrol(
+                            $this->news,
+                            'sliding',
+                            'admin/partials/paginator.phtml',
+                            array(
+                                'route'=>'admin/news',
+                                'route_options' => array('site'=>$this->site)
+                            ));
+						?>
 					</div>
 
 				</div>
