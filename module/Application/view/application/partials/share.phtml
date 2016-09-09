@@ -1,0 +1,17 @@
+<div class="share">
+    <ul class="share__list">
+        <li class="share__item share__item--title">
+            <span>Compartilhe</span>
+        </li>
+        <li class="share__item">
+            <a class="share__link" href="http://www.facebook.com/share.php?u=<?php echo $this->serverUrl(true) ?>&title=<?php echo $title ?>" target="_blank">
+                <span class="icon icon-facebook"></span>
+            </a>
+        </li>
+        <li class="share__item">
+            <a class="share__link" href="https://twitter.com/intent/tweet?status=<?php echo $title ?>+<?php echo $this->serverUrl(true) ?>" target="_blank">
+                <span class="icon icon-twitter"></span>
+            </a>
+        </li>
+    </ul>
+</div>
