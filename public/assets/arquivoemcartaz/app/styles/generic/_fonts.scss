@@ -6,11 +6,11 @@
 //
 @font-face {
   font-family: 'UniversoProducao';
-  src:  url('../fonts/UniversoProducao.eot?hp69lo');
-  src:  url('../fonts/UniversoProducao.eot?hp69lo#iefix') format('embedded-opentype'),
-  url('../fonts/UniversoProducao.ttf?hp69lo') format('truetype'),
-  url('../fonts/UniversoProducao.woff?hp69lo') format('woff'),
-  url('../fonts/UniversoProducao.svg?hp69lo#UniversoProducao') format('svg');
+  src:  url('../fonts/UniversoProducao.eot?anos1m');
+  src:  url('../fonts/UniversoProducao.eot?anos1m#iefix') format('embedded-opentype'),
+  url('../fonts/UniversoProducao.ttf?anos1m') format('truetype'),
+  url('../fonts/UniversoProducao.woff?anos1m') format('woff'),
+  url('../fonts/UniversoProducao.svg?anos1m#UniversoProducao') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -80,5 +80,11 @@
 }
 .icon-brand2:before {
   content: "\e904";
+}
+.icon-first2:before {
+  content: "\edb5";
+}
+.icon-last2:before {
+  content: "\edb6";
 }
 

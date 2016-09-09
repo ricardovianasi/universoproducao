@@ -1,0 +1,86 @@
+<?php $this->route_options = $this->route_options ? $this->route_options : []; ?>
+<?php if ($this->pageCount): ?>
+<div class="pagination">
+	 <div class="pagination__wrapper">
+		 <ul class="pagination__list">
+
+             <!-- First page link -->
+             <?php if (isset($this->previous)): ?>
+                 <li class="pagination__item">
+                     <a class="pagination__link" href="<?php echo $this->url($this->route, $this->route_options); ?>?page=<?php echo $this->first; ?>">
+                         <span class="icon icon-first2"></span>
+                     </a>
+                 </li>
+             <?php else: ?>
+                 <li class="pagination__item disabled">
+                     <a class="pagination__link" href="#">
+                         <span class="icon icon-first2"></span>
+                     </a>
+                 </li>
+             <?php endif; ?>
+
+			 <!-- Previous page link -->
+			 <?php if (isset($this->previous)): ?>
+				 <li class="pagination__item">
+					 <a class="pagination__link" href="<?php echo $this->url($this->route, $this->route_options); ?>?page=<?php echo $this->previous; ?>">
+                         <span class="icon icon-arrow-left"></span>
+					 </a>
+				 </li>
+			 <?php else: ?>
+				 <li class="pagination__item disabled">
+					 <a class="pagination__link" href="#">
+                         <span class="icon icon-arrow-left"></span>
+					 </a>
+				 </li>
+			 <?php endif; ?>
+
+			 <!-- Numbered page links -->
+			 <?php foreach ($this->pagesInRange as $page): ?>
+				 <?php if ($page != $this->current): ?>
+					 <li class="pagination__item">
+						 <a class="pagination__link" href="<?php echo $this->url($this->route, $this->route_options);?>?page=<?php echo $page; ?>">
+							 <span><?php echo $page; ?></span>
+						 </a>
+					 </li>
+				 <?php else: ?>
+					 <li class="pagination__item active">
+						 <a class="pagination__link" href="#">
+                             <span><?php echo $page; ?></span>
+                         </a>
+					 </li>
+				 <?php endif; ?>
+			 <?php endforeach; ?>
+
+			 <!-- Next page link -->
+			 <?php if (isset($this->next)): ?>
+                 <li class="pagination__item">
+					 <a class="pagination__link" href="<?php echo $this->url($this->route, $this->route_options); ?>?page=<?php echo $this->next; ?>">
+                         <span class="icon icon-arrow-right"></span>
+					 </a>
+				 </li>
+			 <?php else: ?>
+				 <li class="pagination__item disabled">
+					 <a class="pagination__link" href="#">
+                         <span class="icon icon-arrow-right"></span>
+					 </a>
+				 </li>
+			 <?php endif; ?>
+
+             <!-- Last page link -->
+             <?php if (isset($this->next)): ?>
+                 <li class="pagination__item">
+                     <a class="pagination__link" href="<?php echo $this->url($this->route, $this->route_options); ?>?page=<?php echo $this->last; ?>">
+                         <span class="icon icon-last2"></span>
+                     </a>
+                 </li>
+             <?php else: ?>
+             <li class="pagination__item disabled">
+                 <a class="pagination__link" href="#">
+                     <span class="icon icon-last2"></span>
+                 </a>
+             </li>
+             <?php endif; ?>
+		 </ul>
+	 </div>
+</div>
+<?php endif; ?>

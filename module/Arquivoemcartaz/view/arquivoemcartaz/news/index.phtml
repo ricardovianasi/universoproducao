@@ -32,13 +32,22 @@
                                 <p class="news__intro">
                                     <?php  echo $this->truncate($news->getContent(), 350); ?>
                                     <a href="<?php echo $this->url('arquivoemcartaz/news', ['slug'=>$news->getSlug()]) ?>" class="circle-link"><span class="icon icon-arrow-right8"></span></a></p>
-
                             </div>
                         </a>
                     </article>
-
                 <?php endforeach; ?>
             </div>
+
+            <?php echo $this->paginationcontrol(
+                $this->newsList,
+                'sliding',
+                'application/partials/paginator.phtml',
+                array(
+                    'route'=>'arquivoemcartaz/default',
+                    'route_options' => array('slug'=>'noticias')
+                )
+            ); ?>
+
         </section>
     </div>
 </main>
