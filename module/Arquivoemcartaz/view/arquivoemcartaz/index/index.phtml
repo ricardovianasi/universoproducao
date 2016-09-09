@@ -15,13 +15,13 @@
                     </div>
                 </div>
             <?php endif; ?>
-            <div class="banner__item" style="background-image: url(<?php echo $banner->getFile(); ?>)">
+            <div class="banner__item" style="background-image: url(<?php echo $this->getThumbor()->url($banner->getFile())->resize(2000, 720);; ?>)">
                 <div class="banner__content">
                     <div class="banner__text">
                         <p class="banner__title"><?php echo $banner->getTitle(); ?></p>
                         <p class="banner__subtitle"><?php echo $banner->getDescription(); ?></p>
                         <?php if($banner->getLink()): ?>
-                        <a href="<?php echo $banner->getLink(); ?>" class="banner__link circle-link"><span class="icon icon-arrow-right8"></span></a>
+                        <a <?php $banner->getTargetBlank() ? "target='_blank'" : ""; ?> href="<?php echo $banner->getLink(); ?>" class="banner__link circle-link"><span class="icon icon-arrow-right8"></span></a>
                         <?php endif; ?>
                     </div>
                 </div>
@@ -158,7 +158,7 @@
                     <?php endforeach; ?>
                 </div>
             </div>
-            <p class="readmore"><a class="readmore__link" href="">Galeria Completa<span class="icon icon-plus2"></span></a></p>
+            <p class="readmore"><a class="readmore__link" target="_blank" href="https://www.flickr.com/photos/universoproducao/">Galeria Completa<span class="icon icon-plus2"></span></a></p>
         </section>
         <?php endif; ?>
 
@@ -219,4 +219,4 @@
         </section>
         <?php endif; ?>
     </div>
-</main>
+</main

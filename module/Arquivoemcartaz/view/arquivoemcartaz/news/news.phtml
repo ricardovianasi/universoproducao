@@ -23,7 +23,6 @@
     <div class="main__wrapper">
         <section class="main__section">
             <header class="main__header">
-                <!--<time class="main__time"><?php /*echo strftime('%A, %d de %B de %Y, às %Hh%M', $post->getPostDate()->getTimestamp()); */?></time>-->
                 <time class="main__time"><?php echo $this->dateFormat($post->getPostDate(), null, null, "pt_BR", "cccc, d 'de' MMMM Y', às' HH'h'mm"); ?></time>
                 <h1 class="main__title"><?php echo $post->getTitle(); ?></h1>
             </header>
