@@ -2,10 +2,7 @@
     $this->headMeta()->setProperty('og:title', $post->getTitle());
     if($post->getThumb()) {
         $this->headMeta()->setProperty('og:image', $post->getThumb());
-    }
-
-?>
-
+    } ?>
 
 <?php if($post->getCover()): ?>
     <div class="site__cover">
