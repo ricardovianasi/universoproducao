@@ -47,4 +47,13 @@ class PostController extends SiteController
         $viewModel->post = $post;
         return $viewModel;
     }
+
+    public function newsletterAction()
+    {
+        return [
+            'breadcrumbs' => [
+                ['newsletter' => 'Newsletter']
+            ]
+        ];
+    }
 }
