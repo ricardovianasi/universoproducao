@@ -23,8 +23,21 @@ class Post extends AbstractRepository
 		return $qb->getQuery()->getResult();
 	}
 
-	public function findNews()
+	public function findNewsQb($siteId)
     {
-        
+        $qb = $this->createQueryBuilder('n');
+        $qb->select('n')
+            ->andWhere('n.type = :type')
+            ->andWhere('n.status = :status')
+            ->leftJoin('Application\Entity\Post\PostSite', 's')
+            ->andWhere("(n.publishAllSites = :allSite OR s.site = :siteId)")
+            ->setParameters([
+                'type' => PostType::NEWS,
+                'status' => PostStatus::PUBLISHED,
+                'allSite' => true,
+                'siteId' => $siteId
+            ]);
+
+        return $qb;
     }
 }
