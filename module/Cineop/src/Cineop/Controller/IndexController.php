@@ -24,10 +24,13 @@ class IndexController extends AbstractController
 			'site' => 2
 		], ['order'=>'ASC']);
 
-		$news = $this->getRepository(Post::class)->findBy([
+		/*$news = $this->getRepository(Post::class)->findBy([
 			'type' => PostType::NEWS,
 			'status' => PostStatus::PUBLISHED
-		], ['postDate'=>'DESC'], 3);
+		], ['postDate'=>'DESC'], 3);*/
+
+        $news = $this->getRepository(Post::class)->findNewsQb(2);
+        $news->orderBy("n.postDate", "desc")->setMaxResults(3);
 
 		$guides = $this->getRepository(Post::class)->findBy([
 			'type' => PostType::GUIDE,
@@ -317,10 +320,7 @@ class IndexController extends AbstractController
 
 		} elseif(end($slug) == 'noticias') {
 			$viewModel->setTemplate('cineop/index/news-list.phtml');
-			$newsList = $this->getRepository(Post::class)->findBy([
-				'status' => PostStatus::PUBLISHED,
-				'type' => PostType::NEWS
-			]);
+			$newsList = $this->getRepository(Post::class)->findNewsQb(2);
 			$viewModel->listNews = $newsList;
 		} elseif (end($slug) == 'programacao') {
 			$viewModel->setTemplate('cineop/index/programacao.phtml');
