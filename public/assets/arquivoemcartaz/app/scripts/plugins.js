@@ -17,11 +17,14 @@
 
             if(!$item.hasClass("ignore")) {
                 var bannercontent = $item.find(".banner__content").clone();
+                var figCaption = $("<span>").addClass('banner__caption').text($item.attr('data-caption'));
                 $coversContainer.append(
                     $("<figure class='banner__cover'>")
                         .css({"background-image": $item.css("background-image")})
                         .attr("data-index", count)
-                        .attr("data-state", "none").append(bannercontent.removeClass("banner__content").addClass("banner__content-cover"))
+                        .attr("data-state", "none")
+                        .append(figCaption)
+                        .append(bannercontent.removeClass("banner__content").addClass("banner__content-cover"))
                 );
 
                 $item.on("mouseenter", function(e) {

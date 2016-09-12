@@ -15,12 +15,11 @@
                     </div>
                 </div>
             <?php endif; ?>
-            <div class="banner__item" style="background-image: url(<?php echo $this->thumbor()->url($banner->getFile())->resize(2000, 720);; ?>)">
+            <div class="banner__item" style="background-image: url(<?php echo $this->thumbor()->url($banner->getFile())->resize(2000, 720);; ?>)" data-caption="<?php echo $banner->getCredits(); ?>">
                 <div class="banner__content">
                     <div class="banner__text">
                         <p class="banner__title"><?php echo $banner->getTitle(); ?></p>
                         <p class="banner__subtitle"><?php echo $banner->getDescription(); ?></p>
-                        <p class="banner__author"><?php echo $banner->getCredits(); ?></p>
                         <?php if($banner->getLink()): ?>
                         <a <?php echo $banner->getTargetBlank() ? "target='_blank'" : ""; ?> href="<?php echo $banner->getLink(); ?>" class="banner__link circle-link"><span class="icon icon-arrow-right8"></span></a>
                         <?php endif; ?>
@@ -144,14 +143,14 @@
                     <div class="gallery__item">
                         <div class="gallery__figure">
                             <img src="<?php echo $this->thumbor()->url($img->getFile())->resize(952, 624); ?>" alt="">
+                            <?php if($img->getCredits()): ?>
+                                <span class="gallery__caption"><?php echo $img->getCredits(); ?></span>
+                            <?php endif; ?>
                         </div>
                         <div class="gallery__desc">
                             <div class="gallery__desc-wrapper">
                                 <div class="gallery__desc-text">
                                     <p class="gallery__desc-title"><?php echo $img->getDescription(); ?></p>
-                                    <?php if($img->getCredits()): ?>
-                                    <p class="gallery__desc-author"><?php echo $img->getCredits(); ?></p>
-                                    <?php endif; ?>
                                 </div>
                             </div>
                         </div>
