@@ -31,6 +31,7 @@ class IndexController extends AbstractController
 
         $news = $this->getRepository(Post::class)->findNewsQb(2);
         $news->orderBy("n.postDate", "desc")->setMaxResults(3);
+        $news = $news->getQuery()->getResult();
 
 		$guides = $this->getRepository(Post::class)->findBy([
 			'type' => PostType::GUIDE,
@@ -321,7 +322,7 @@ class IndexController extends AbstractController
 		} elseif(end($slug) == 'noticias') {
 			$viewModel->setTemplate('cineop/index/news-list.phtml');
 			$newsList = $this->getRepository(Post::class)->findNewsQb(2);
-			$viewModel->listNews = $newsList;
+			$viewModel->listNews = $newsList->getQuery()->getResult();
 		} elseif (end($slug) == 'programacao') {
 			$viewModel->setTemplate('cineop/index/programacao.phtml');
 		} elseif(end($slug) == 'filmes') {
