@@ -50,6 +50,10 @@
         var $this = $(this)
         return $this.find(options.items).each(function () {
             var $item = $(this);
+
+            var img = new Image();
+            img.src = $item.attr("data-image");
+
             $item.on("click", function(e) {
                 e.preventDefault();
                 var onClick = $(this);
@@ -58,7 +62,10 @@
                 onClick.addClass("place__item--active");
 
                 $this.find(".place__desc-title").text(onClick.attr("data-title"));
-                $this.find(".place__desc-text").text(onClick.attr("data-desc"));
+                $this.find(".place__desc-text")
+                    .text(onClick.attr("data-desc"))
+                    .append($("<a class='news__item-link'>").attr("href", onClick.attr("data-link")).html("<span class='icon icon-arrow-right8'></span>"));
+
                 $this.find(".place__image").fadeOut(400, function() {
                     $this.find(".place__image").attr("src", onClick.attr("data-image"));
                 }).fadeIn(400);

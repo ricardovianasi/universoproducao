@@ -22,4 +22,9 @@ class Post extends AbstractRepository
 
 		return $qb->getQuery()->getResult();
 	}
+
+	public function findNews()
+    {
+        
+    }
 }

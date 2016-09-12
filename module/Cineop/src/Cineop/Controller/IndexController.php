@@ -31,7 +31,8 @@ class IndexController extends AbstractController
 
 		$guides = $this->getRepository(Post::class)->findBy([
 			'type' => PostType::GUIDE,
-			'status' => PostStatus::PUBLISHED
+			'status' => PostStatus::PUBLISHED,
+            'site' => 2
 		], ['order'=>'ASC'], 4);
 
 		$gallery = $this->getRepository(Gallery::class)->findBy([
@@ -83,7 +84,8 @@ class IndexController extends AbstractController
 
 		$post = $this->getRepository(Post::class)->findOneBy([
 			'status' => PostStatus::PUBLISHED,
-			'slug' => end($slug)
+			'slug' => end($slug),
+            'site' => 2
 		]);
 
 		if(!$post) {
