@@ -12,6 +12,8 @@ class PostController extends SiteController
 {
     const SITE_ID = 3;
 
+    protected $breadcrumbs = [];
+
     public function indexAction()
     {
         $viewModel = new ViewModel();
@@ -41,6 +43,7 @@ class PostController extends SiteController
             ]);
         }
 
+        $viewModel->breadcrumbs = $post->getBreadcrumbs();
         $viewModel->post = $post;
         return $viewModel;
     }

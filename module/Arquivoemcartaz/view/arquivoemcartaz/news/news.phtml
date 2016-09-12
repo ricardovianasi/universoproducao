@@ -10,14 +10,9 @@
     </div>
 <?php endif; ?>
 
-<div class="site__breadcrumbs">
-    <div class="site__breadcrumbs-wrapper">
-        <ul class="breadcrumb">
-            <li class="breadcrumb__item"><a class="breadcrumb__link" href="">Inicio</a></li>
-            <li class="breadcrumb__item"><a class="breadcrumb__link" href="">Inicio</a></li>
-        </ul>
-    </div>
-</div>
+<?php if($this->breadcrumbs): ?>
+    <?php echo $this->partial('arquivoemcartaz/partials/_breadcrumbs.phtml', ['breadcrumbs'=>$this->breadcrumbs]); ?>
+<?php endif; ?>
 
 <main class="main">
     <div class="main__wrapper">

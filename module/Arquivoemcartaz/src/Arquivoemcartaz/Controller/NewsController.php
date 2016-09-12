@@ -28,7 +28,8 @@ class NewsController extends SiteController
 
         return new ViewModel([
             'newsList' => $paginator,
-            'post' => $post
+            'post' => $post,
+            'breadcrumbs' => $post->getBreadcrumbs()
         ]);
     }
 
@@ -49,8 +50,14 @@ class NewsController extends SiteController
             //não achou a notícia
         }
 
+        $breadcrumbs = [
+            ['noticias' => 'Notícias'],
+            [$news->getSlug() => $news->getTitle()]
+        ];
+
         return new ViewModel([
-            'post' => $news
+            'post' => $news,
+            'breadcrumbs' => $breadcrumbs
         ]);
     }
 }
