@@ -24,7 +24,7 @@ class TagsInput extends Text
 			$coll = $value->toArray();
 			$value = [];
 			foreach($coll as $c) {
-				$value[$c->getName()];
+				$value[] = $c->getName();
 			}
 		} else {
 			$value = (array) $value;

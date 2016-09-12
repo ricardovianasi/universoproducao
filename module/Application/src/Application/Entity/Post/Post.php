@@ -66,7 +66,7 @@ class Post extends AbstractEntity
 	private $status = PostStatus::DRAFT;
 
 	/**
-	 * @ORM\ManyToMany(targetEntity="Application\Entity\Tag", cascade={"persist"})
+	 * @ORM\ManyToMany(targetEntity="Application\Entity\Tag", cascade={"all"})
 	 * @ORM\JoinTable(name="tag_has_post",
 	 *   joinColumns={@ORM\JoinColumn(name="post_id", referencedColumnName="id")},
 	 *   inverseJoinColumns={@ORM\JoinColumn(name="tag_id", referencedColumnName="id")}
@@ -267,6 +267,11 @@ class Post extends AbstractEntity
 	{
 		return $this->tags;
 	}
+
+	public function setTags($tags)
+    {
+        $this->tags = $tags;
+    }
 
 	public function addTag($tag)
 	{

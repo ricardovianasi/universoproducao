@@ -109,7 +109,9 @@ class PageController extends AbstractAdminController
 		if($this->getRequest()->isPost()) {
 			$form->setData($data);
 			if($form->isValid()) {
-				$page->setData($this->prepareDataPost(Post::class, $data, $page));
+				$newData = $this->prepareDataPost(Post::class, $data, $page);
+                $page->setData($newData);
+
 				$this->getEntityManager()->persist($page);
 				$this->getEntityManager()->flush();
 
