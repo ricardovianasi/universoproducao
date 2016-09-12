@@ -20,7 +20,7 @@ class NewsController extends SiteController
         $page = $this->params()->fromQuery('pagina', 1);
 
         $qb = $this->getRepository(Post::class)->findNewsQb(self::SITE_ID);
-        $qb->orderBy('p.postDate', 'DESC');
+        $qb->orderBy('n.postDate', 'DESC');
         $adapter = new DoctrinePaginator(new ORMPaginator($qb));
         $paginator = new Paginator($adapter);
         $paginator->setDefaultItemCountPerPage(10);

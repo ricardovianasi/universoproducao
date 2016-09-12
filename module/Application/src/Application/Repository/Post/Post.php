@@ -30,7 +30,7 @@ class Post extends AbstractRepository
             ->andWhere('n.type = :type')
             ->andWhere('n.status = :status')
             ->leftJoin('Application\Entity\Post\PostSite', 's')
-            ->andWhere("(n.publishAllSites = :allSite OR s.site = :siteId)")
+            ->andWhere("n.publishAllSites = :allSite OR s.site = :siteId")
             ->setParameters([
                 'type' => PostType::NEWS,
                 'status' => PostStatus::PUBLISHED,
