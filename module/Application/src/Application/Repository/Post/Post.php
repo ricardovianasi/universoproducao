@@ -29,7 +29,7 @@ class Post extends AbstractRepository
         $qb->select('n')
             ->andWhere('n.type = :type')
             ->andWhere('n.status = :status')
-            ->leftJoin('Application\Entity\Post\PostSite', 's')
+            ->leftJoin('n.sites', 's')
             ->andWhere("(n.publishAllSites = :allSite OR s.site = :siteId)")
             ->setParameters([
                 'type' => PostType::NEWS,
