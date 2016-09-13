@@ -378,9 +378,15 @@ abstract class AbstractAdminController extends AbstractController
 					$metaColl->add($meta);
 				}
 			}
-
 			$data['meta'] = $metaColl;
 		}
+        if(method_exists($post, 'getMeta')) {
+            foreach ($post->getMeta() as $meta) {
+                $this->getEntityManager()->remove($meta);
+            }
+            $post->getMeta()->clear();
+        }
+
 
 		if(isset($data['slug'])) {
 			$slug = !empty($data['slug']) ? $data['slug'] : 'sem-titulo';
