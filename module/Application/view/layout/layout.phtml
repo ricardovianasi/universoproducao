@@ -61,7 +61,16 @@
             <a id="mainmenu-close" class="mainmenu-close" href=""><span class="icon-cross2"></span></a>
         </div>
         <div class="mainmenu__wrapper">
-            <ul class="mainmenu__list">
+            <?php $this
+                ->navigation('UniversoproducaoNavigation')
+                ->menu()->setPartial("application/partials/navigation.phtml");
+
+            echo $this
+                ->navigation('UniversoproducaoNavigation')
+                ->menu()
+                ->render(); ?>
+
+            <!--<ul class="mainmenu__list">
                 <li class="mainmenu__item">
                     <a href="#" class="mainmenu__link  mainmenu__link" title="">A Universo</a>
                 </li>
@@ -136,7 +145,7 @@
                 <li class="mainmenu__item">
                     <a href="#" class="mainmenu__link  mainmenu__link" title="">Fale Conosco</a>
                 </li>
-            </ul>
+            </ul>-->
         </div>
     </div>
     <div class="userlogin modal" id="userlogin-modal">

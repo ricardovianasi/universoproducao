@@ -13,7 +13,7 @@ return array(
             'universoproducao_home' => array(
                 'type' => Literal::class,
                 'options' => [
-                    'route' => '/',
+                    'route' => '/universoproducao',
                     'defaults' => array(
                         'controller'    => Controller\IndexController::class,
                         'action'        => 'index',
