@@ -1,55 +1,3 @@
-.menu-button
-	.burger
-		width: 32px
-		height: 22px
-		position: relative
-		transform: rotate(0deg)
-		transition: .5s ease-in-out
-		cursor: pointer
-		text-align: center
-		margin: 0 auto
-
-		.b, b
-			display: block
-			position: absolute
-			height: 3px
-			width: 100%
-			background: $main-color
-			opacity: 1
-			left: 0
-			transform: rotate(0deg)
-			transition: .25s ease-in-out
-
-			&:nth-child(1)
-				top: 0
-
-			&:nth-child(2),
-			&:nth-child(3)
-				top: 9px
-
-			&:nth-child(4)
-				top: 18px
-
-.mainmenu-modal-active
-	.menu-button
-		.burger
-			.b,b
-				&:nth-child(1)
-					top: 9px
-					width: 0%
-					left: 50%
-
-				&:nth-child(2)
-					transform: rotate(45deg)
-
-				&:nth-child(3)
-					transform: rotate(-45deg)
-
-				&:nth-child(4)
-					top: 9px
-					width: 0%
-					left: 50%
-
 .mainmenu
 	position: absolute
 	top: 0
@@ -58,6 +6,7 @@
 	right: 0
 	width: 100%
 	z-index: 999
+	background-color: $color-bg-1
 
 	&__wrapper
 		+center($full-site, 16px)
@@ -80,76 +29,23 @@
 				.mainmenu__link
 					+adjust-font-size-to(18px)
 					+trailer(.5)
-					color: #8BABB5
+					color: #fff
 					text-transform: none
 					font-weight: 400
-
-
 	&__link
 		position: relative
 		display: block
-		+adjust-font-size-to(24px, 1)
+		+adjust-font-size-to(26px, 1)
 		+trailer(1)
-		color: #6F95A1
+		color: $color-palette-6
 		text-transform: uppercase
 		font-weight: 900
 		transition: $transition-default
 
-	&__close
-		position: absolute
-		top: 0
-		right: 0
-		padding-right: 36px
-		+leader(2, 24px)
-		a
-			color: #fff
-			display: block
-			position: relative
-			+adjust-font-size-to(36px, 2)
-			+padding-leader(.5, 36px)
-			+padding-trailer(.5, 36px)
-			//width: 72px
-			text-align: center
-			text-decoration: none
-
-
-.mainmenu-footer
-	position: absolute
-	bottom: 2 * $base-line-height
-	left: 0
-	right: 0
-	width: 100%
-	z-index: 999
-	text-align: center
-	margin: 0 auto
-
-	.social__item,
-	.phone-email__item
-		display: inline-block
-		vertical-align: middle
-
-	.social
-		+trailer(1)
-
-		&__link
-			width: 72px
-			display: block
-			+padding-leader(.5, 32px)
-			+padding-trailer(.5, 32px)
-			+adjust-font-size-to(32px)
-			color: #8BABB5
-
-	.phone-email
-		+trailer(1)
-		&__item
-			color: #8BABB5
-			margin: 0 36px
-			.phone-email__icon
-				+adjust-font-size-to(24px, 1)
-				margin-right: 12px
-
-	.address,
-	.phone-email__item > .text
-		+adjust-font-size-to(18px)
-		font-family: 'Ubuntu'
-		color: #8BABB5
+.mainmenu-active
+	top: 0
+	position: fixed
+	.mainmenu.modal
+		opacity: 1
+		visibility: visible
+		height: 100%

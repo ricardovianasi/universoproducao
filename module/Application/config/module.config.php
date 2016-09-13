@@ -5,11 +5,12 @@ use Util\Security\Crypt;
 use Zend\Mvc\Router\Http\Hostname;
 use Zend\Mvc\Router\Http\Literal;
 use Zend\Mvc\Router\Http\Regex;
+use Zend\Mvc\Router\Http\Segment;
 
 return array(
     'router' => array(
         'routes' => array(
-            'home' => array(
+            'universoproducao_home' => array(
                 'type' => Literal::class,
                 'options' => [
                     'route' => '/',
@@ -17,12 +18,13 @@ return array(
                         'controller'    => Controller\IndexController::class,
                         'action'        => 'index',
                     ),
-                ]
+                ],
+                'priority' => 9999
             ),
-            'application' => array(
+            'universoproducao' => array(
                 'type'    => Hostname::class,
                 'options' => array(
-                    'route'    => 'universoproducao',
+                    'route'    => '[www.]universoproducao.com.br',
                     'defaults' => array(
                         'controller'    => Controller\IndexController::class,
                         'action'        => 'index',
@@ -31,14 +33,16 @@ return array(
                 'may_terminate' => true,
                 'child_routes' => array(
                     'default' => array(
-                        'type'    => Regex::class,
+                        'type'    => Segment::class,
                         'options' => array(
-                            'regex'    => '(?<content>.+)',
+                            'route'    => '/:slug',
+                            'constraints' => array(
+                                'slug' => '.+'
+                            ),
                             'defaults' => array(
                                 'controller' => Controller\PostController::class,
-                                'action'     => 'index',
+                                'action' => 'index',
                             ),
-                            'spec' => '%content%',
                         ),
                     ),
                 ),

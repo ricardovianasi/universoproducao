@@ -5,7 +5,7 @@
 //
 // Base fonts app
 //
-@import url(https://fonts.googleapis.com/css?family=Lato:400,900,700,300,300italic,400italic);
+@import url(https://fonts.googleapis.com/css?family=Lato:400,900,700,700italic,300,300italic,400italic);
 @import url(https://fonts.googleapis.com/css?family=Ubuntu:400,300,300italic,700);
 
 
@@ -14,11 +14,11 @@
 //
 @font-face {
   font-family: 'Universo-fonticons';
-  src:    url('../fonts/Universo-fonticons.eot?6fu7lz');
-  src:    url('../fonts/Universo-fonticons.eot?6fu7lz#iefix') format('embedded-opentype'),
-  url('../fonts/Universo-fonticons.ttf?6fu7lz') format('truetype'),
-  url('../fonts/Universo-fonticons.woff?6fu7lz') format('woff'),
-  url('../fonts/Universo-fonticons.svg?6fu7lz#Universo-fonticons') format('svg');
+  src:    url('../fonts/Universo-fonticons.eot?p19aaq');
+  src:    url('../fonts/Universo-fonticons.eot?p19aaq#iefix') format('embedded-opentype'),
+  url('../fonts/Universo-fonticons.ttf?p19aaq') format('truetype'),
+  url('../fonts/Universo-fonticons.woff?p19aaq') format('woff'),
+  url('../fonts/Universo-fonticons.svg?p19aaq#Universo-fonticons') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -38,6 +38,9 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-universo-producao:before {
+  content: "\e904";
+}
 .icon-brand-universo:before {
   content: "\e900";
 }
@@ -74,9 +77,16 @@
 .icon-cross2:before {
   content: "\ed6d";
 }
+.icon-arrow-up:before {
+  content: "\edb7";
+}
+.icon-arrow-up2:before {
+  content: "\edb8";
+}
 .icon-instagram:before {
   content: "\eef1";
 }
 .icon-flickr:before {
   content: "\ef02";
 }
+

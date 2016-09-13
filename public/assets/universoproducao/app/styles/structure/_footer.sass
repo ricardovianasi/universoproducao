@@ -1,11 +1,20 @@
 .footer
-	+cf
 	+expand
-	background-color: #f4f4f4
+	background-color: $color-palette-3
 
 	&__wrapper
 		+center($full-site, 16px)
 		text-align: left
+		position: relative
+		z-index: 9999
+		zoom: 1
+		&:before,
+		&:after
+			content: ''
+			display: table
+
+		&:after
+			clear: both
 
 	.newsletter
 		+padding-leader(2)
@@ -16,7 +25,7 @@
 			+adjust-font-size-to(24px, 1)
 			font-weight: 900
 			text-transform: uppercase
-			color: #4a4a4a
+			color: $color-txt
 		&__form
 			+cf
 
@@ -24,30 +33,23 @@
 			.form__button
 				+box-sizing(border-box)
 				+col(1/6)
-
+				border-color: $main-color
 				&--big
 					+col(2/6)
 
-				+adjust-font-size-to(18px)
-				+apply-side-rhythm-border(all, 1px, 0.5, 18px, solid $main-color)
-				font-weight: 900
-				outline: none
-				color: #b9b9b9
-				text-transform: uppercase
-
 			.form__input
-				background-color: #f4f4f4
+				background-color: $color-palette-3
 				&::-webkit-input-placeholder
-					color: #b9b9b9
+					color: $color-palette-1
 
 				&:-moz-placeholder
-					color: #b9b9b9
+					color: $color-palette-1
 
 				&::-moz-placeholder
-					color: #b9b9b9
+					color: $color-palette-1
 
 				&:-ms-input-placeholder
-					color: #b9b9b9
+					color: $color-palette-1
 
 			.form__button
 				color: #fff
@@ -56,58 +58,116 @@
 				text-align: center
 
 	.contact
-		+expand
-		background-color: #343233
-		&__wrapper
-			+center($full-site, 16px)
-			text-align: left
-			+padding-leader(2)
+		background: url("../images/universo320.jpg") no-repeat no-repeat
+		background-size: cover
+		position: relative
+		width: 100%
+		&:before
+			content: ""
+			position: absolute
+			top: 0
+			bottom: 0
+			left: -100%
+			right: 0
+			background-color: rgba(0,0,0,0.7)
+			z-index: 1
 
-		&__col
-			+col(1/2, $cycle: 2)
+		&__links
+			+col(1/5)
+			+leader(1)
 
-		&__title
-			+adjust-font-size-to(24px, 1)
-
-
-			font-weight: 900
-			text-transform: uppercase
+		&__link
 			color: #fff
-
-		&__brand
+			font-weight: 700
+			text-transform: uppercase
+			box-sizing: border-box
 			display: block
-			float: left
-			padding-left: 45px
-
-		&__add
-			p
-				+adjust-font-size-to(12px, 0.3)
-				//color: $gray838
-				text-transform: uppercase
-
-		&__social
-			.social__item
-				+col(1/5, $cycle:5)
-
-			.social__link
-				color: #838383
-				+adjust-font-size-to(42px)
-				+transition($transition-default)
-
-				&:hover
-					color: #fff
-
-		.copy
-			+cf
-			display: inline-block
-			width: 100%
-			text-align: center
-			border-top: 1px solid #fff
 			+trailer(1)
-			+leader(2)
-			+padding-leader(1)
+			cursor: pointer
+			transition: $transition-default
+			&:hover
+				color: $main-color
 
-			p
-				+adjust-font-size-to(12px, 0.5)
-				text-transform: uppercase
-				color: #fff
+			&-icon
+				text-align: center
+				display: inline-block
+				vertical-align: middle
+				+adjust-font-size-to(24px, 1)
+				+padding-leader(.5, 24px)
+				+padding-trailer(.5, 24px)
+				width: 48px
+				height: 48px
+				border: 1px solid #fff
+				box-sizing: border-box
+				transition: $transition-default
+			&-text
+				padding-left: 18px
+
+		&__address
+			+col(4/5)
+			+leader(1.5)
+			+trailer(1.5)
+			position: relative
+			&:before
+				content: ''
+				position: absolute
+				top: 0
+				right: 0
+				width: calc(100% - #{$base-line-height*2})
+				height: calc(100% - #{$base-line-height*4})
+				+leader(2)
+				+trailer(2)
+				border: 3px solid $main-color
+				box-sizing: border-box
+
+			&-map
+				+span(3/5)
+				overflow: hidden
+				iframe
+					width: 100%
+					height: 13 * $base-line-height
+
+			&-text
+				+span(2/5)
+				+leader(3.5)
+				p
+					box-sizing: border-box
+					padding-left: 16px
+					padding-right: 16px
+					color: #fff
+					font-weight: 300
+
+				.contact__address-title
+					color: $main-color
+					font-weight: 700
+					text-transform: uppercase
+
+	.copy
+		+padding-leader(1)
+		background-color: $color-palette-7
+
+		&__text,
+		.back-to-top
+			+adjust-font-size-to(12px)
+			text-transform: uppercase
+
+		&__text
+			font-family: "Ubuntu", Arial, Helvetica, sans-serif
+			color: $color-palette-8
+			display: inline-block
+
+		.back-to-top
+			display: inline-block
+			float: right
+			text-align: right
+			color: $main-color
+			&:hover
+				color: $color-palette-8
+			span
+				display: inline-block
+				vertical-align: middle
+				padding-left: 10px
+
+				&:first-of-type
+					font-style: italic
+					letter-spacing: .2em

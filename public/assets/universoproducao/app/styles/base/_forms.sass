@@ -12,20 +12,25 @@
 		outline: none
 
 	&__input
-		color: #b9b9b9
+		color: $color-palette-1
 		width: 100%
 		+trailer(.5, 18px)
-		+apply-side-rhythm-border(all, 1px, .5, 18px, solid #414042)
-		+border-radius(4px)
-
+		+apply-side-rhythm-border(all, 1px, .5, 18px, solid #fff)
 		+input-placeholder
 			font-style: italic
+
+	&__text
+		position: relative
+		margin-bottom: 0
+		+display-flex()
+		.form__input:focus
+			outline: none
+			+apply-side-rhythm-border(all, 2px, .5, 18px, solid #fff)
 
 	&__button,
 	&__submit
 		float: right
-		padding: 12px 100px
-		+border-radius(5px)
+		padding: 12px 50px
 		border: none
 		color: #fff
 		+inline-block
@@ -33,11 +38,10 @@
 		cursor: pointer
 		text-align: center
 		font-weight: bold
-		+border-radius(2px)
 		+adjust-font-size-to(18px)
-		+margin-trailer(1, 18px)
+		//+margin-trailer(1, 18px)
 		//&:hover
-		//	background-color: lighten($blue058, 5%)
+		//	background-color: lighten(#000, 5%)
 
 	&__select
 		@extend .form__input

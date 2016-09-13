@@ -61,22 +61,22 @@ gulp.task('lint', lint('app/scripts/**/*.js'));
 gulp.task('lint:test', lint('test/spec/**/*.js', testLintOptions));
 
 gulp.task('html', ['styles:dist', 'scripts'], () => {
-  return gulp.src('app/*.html')ll
+  return gulp.src('app/*.html')
     .pipe($.useref({searchPath: ['.tmp', 'app', '.']}))
-    /*.pipe($.if('*.js', $.uglify({
+    .pipe($.if('*.js', $.uglify({
       mangle: true,
       compress: true
-    })))*/
-    /*.pipe($.if('*.css', $.cssnano({
+    })))
+    .pipe($.if('*.css', $.cssnano({
       mergeIdents: false,
       reduceIdents: false
-    })))*/
-    /*.pipe($.if('*.html', $.htmlmin({
+    })))
+    .pipe($.if('*.html', $.htmlmin({
       collapseWhitespace: false,
       removeComments: true,
       removeAttributeQuotes: false,
       removeRedundantAttributes: true
-    })))*/
+    })))
     .pipe(gulp.dest('dist'));
 });
 
@@ -173,7 +173,7 @@ gulp.task('serve:test', ['scripts'], () => {
 
   gulp.watch('app/scripts/**/*.js', ['scripts']);
   gulp.watch('test/spec/**/*.js').on('change', reload);
-  // gulp.watch('test/spec/**/*.js', ['lint:test']);
+  gulp.watch('test/spec/**/*.js', ['lint:test']);
 });
 
 // inject bower components

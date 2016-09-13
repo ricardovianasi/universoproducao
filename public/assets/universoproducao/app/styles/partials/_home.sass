@@ -3,6 +3,7 @@
 		padding-left: 36px
 		padding-right: 36px
 		border: none
+		padding-bottom: 0
 
 		&__left
 			.brand
@@ -49,7 +50,6 @@
 			background-repeat: no-repeat
 			background-position: 0 0
 			background-size: cover
-
 			&:before
 				content: ""
 				position: absolute
@@ -58,30 +58,110 @@
 				//left: -100%
 				width: 100%
 				right: 0
-				background-color: rgba(0,0,0,0.3)
+				background-color: rgba(0,0,0,0.1)
 				z-index: 1
 
 	&__text
 		position: absolute
-		top: 50%
 		z-index: 10
-		width: 100%
-		margin: 0 auto
+		max-width: 700px
+
+		//top
+		&.left-top
+			top: $base-line-height * 7
+			left: 36px
+			.home-slider__title,
+			.home-slider__subtitle
+				float: left
+				text-align: left
+				clear: both
+		&.right-top
+			top: $base-line-height * 7
+			right: 36px
+			.home-slider__title,
+			.home-slider__subtitle
+				float: right
+				text-align: right
+				clear: both
+		&.center-top
+			top: $base-line-height * 7
+			text-align: center
+			left: 50%
+			transform: translateX(-50%)
+			.home-slider__title,
+			.home-slider__subtitle
+				text-align: center
+
+		//center
+		&.left-center
+			top: 50%
+			left: 36px
+			transform: translateY(-50%)
+			.home-slider__title,
+			.home-slider__subtitle
+				float: left
+				text-align: left
+				clear: both
+		&.right-center
+			top: 50%
+			right: 36px
+			transform: translateY(-50%)
+			.home-slider__title,
+			.home-slider__subtitle
+				float: right
+				text-align: right
+				clear: both
+		&.center-center
+			text-align: center
+			left: 50%
+			top: 50%
+			transform: translate(-50%, 50%)
+			.home-slider__title,
+			.home-slider__subtitle
+				text-align: center
+
+		//bottom
+		&.left-bottom
+			bottom: $base-line-height * 5
+			left: 36px
+			.home-slider__title,
+			.home-slider__subtitle
+				float: left
+				text-align: left
+				clear: both
+		&.right-bottom
+			bottom: $base-line-height * 5
+			right: 36px
+			transform: translateY(-50%)
+			.home-slider__title,
+			.home-slider__subtitle
+				float: right
+				text-align: right
+				clear: both
+		&.center-bottom
+			text-align: center
+			left: 50%
+			bottom: $base-line-height * 5
+			transform: translateX(-50%)
+			.home-slider__title,
+			.home-slider__subtitle
+				text-align: center
 
 	&__title
-		&--title-1,
-		&--title-2
-			text-transform: uppercase
-			color: #fff
-			width: 600px
-			text-align: center
-			margin: 0 auto
+		+adjust-font-size-to(48px, 2)
+		font-weight: 900
+		background-color: $main-color
+		color: #fff
+		display: inline-block
+		padding: 8px
 
-		&--title-1
-			+adjust-font-size-to(48px)
-			font-weight: 900
-			letter-spacing: .1em
-
+	&__subtitle
+		+adjust-font-size-to(24px, 1)
+		font-weight: 400
+		background-color: #fff
+		color: $color-txt
+		padding: 8px
+		margin-top: 10px
 
 .home-slider-dots
 	position: absolute

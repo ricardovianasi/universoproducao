@@ -370,12 +370,14 @@ abstract class AbstractAdminController extends AbstractController
 			$metaColl = new ArrayCollection();
 			if(!empty($data['meta'])) {
 				foreach ($data['meta'] as $metaKey=>$metaVal) {
-					$meta = new PostMeta();
-					$meta->setPost($post);
-					$meta->setKey($metaKey);
-					$meta->setValue($metaVal);
+				    if(!empty($metaVal)) {
+                        $meta = new PostMeta();
+                        $meta->setPost($post);
+                        $meta->setKey($metaKey);
+                        $meta->setValue($metaVal);
 
-					$metaColl->add($meta);
+                        $metaColl->add($meta);
+                    }
 				}
 			}
 			$data['meta'] = $metaColl;

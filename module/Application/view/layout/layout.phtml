@@ -1,15 +1,196 @@
 <!doctype html>
-<html lang="en">
+<html class="no-js" lang="">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Universo Produção</title>
+
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <!-- Place favicon.ico in the root directory -->
+
+    <link rel="stylesheet" href="<?php echo $this->basePath("assets/universoproducao/dist/styles/vendor.css"); ?>">
+    <link rel="stylesheet" href="<?php echo $this->basePath("assets/universoproducao/dist/styles/main.css"); ?>">
+
+    <!-- build:js scripts/vendor/modernizr.js -->
+    <script src="<?php echo $this->basePath("assets/universoproducao/dist/scripts/vendor/modernizr.js"); ?>"></script>
+    <!-- endbuild -->
 </head>
-<body>
 
-<?php echo $this->content; ?>
+<body class="home">
+    <div class="site__wrapper">
+        <header class="header">
+            <div class="header__wrapper">
+                <div class="header__left">
+                    <h1 class="brand">
+                        <a href="" class="brand-link">
+                            <span class="brand-logo"><span class="icon icon-brand-universo"></span></span>
+                            <span class="brand-name">Universo<br />Produção</span>
+                        </a>
+                    </h1>
+                </div>
+                <div class="header__right">
+                    <ul class="usermenu__list">
+                        <li class="usermenu__item">
+                            <a class="usermenu__link" href="" id="usermenu-access">
+                                <span class="icon-user"></span>
+                            </a>
+                        </li>
+                        <li class="usermenu__item">
+                            <a class="usermenu__link" href="" id="contact-access">
+                                <span class="icon-phone"></span>
+                            </a>
+                        </li>
+                        <li class="usermenu__item">
+                            <a class="usermenu__link" href="" id="mainmenu-access">
+                                <span class="icon-menu7"></span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+        <div class="main">
+            <?php echo $this->content;?>
+        </div>
+    </div>
 
+    <!-- Invisibles -->
+    <div class="mainmenu modal" id="mainmenu-modal">
+        <div class="modal-close">
+            <a id="mainmenu-close" class="mainmenu-close" href=""><span class="icon-cross2"></span></a>
+        </div>
+        <div class="mainmenu__wrapper">
+            <ul class="mainmenu__list">
+                <li class="mainmenu__item">
+                    <a href="#" class="mainmenu__link  mainmenu__link" title="">A Universo</a>
+                </li>
+                <li class="mainmenu__item">
+                    <a href="#" class="mainmenu__link  mainmenu__link" title="">Atuação</a>
+                    <ul class="mainmenu__list mainmenu__list--sub">
+                        <li class="mainmenu__item">
+                            <a href="#" class="mainmenu__link  mainmenu__link" title="">Comunicação Empresarial</a>
+                        </li>
+                        <li class="mainmenu__item">
+                            <a href="#" class="mainmenu__link  mainmenu__link" title="">Marketing, Projetos e Eventos</a>
+                        </li>
+                        <li class="mainmenu__item">
+                            <a href="#" class="mainmenu__link  mainmenu__link" title="">Produção Cultural</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="mainmenu__item">
+                    <a href="#" class="mainmenu__link  mainmenu__link" title="">Cinema</a>
+                    <ul class="mainmenu__list mainmenu__list--sub">
+                        <li class="mainmenu__item">
+                            <a href="#" class="mainmenu__link  mainmenu__link" title="">Cine Concerto</a>
+                        </li>
+                        <li class="mainmenu__item">
+                            <a href="#" class="mainmenu__link  mainmenu__link" title="">Cine Escola</a>
+                        </li>
+                        <li class="mainmenu__item">
+                            <a href="#" class="mainmenu__link  mainmenu__link" title="">Cine na Cidade</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="mainmenu__item">
+                    <a href="#" class="mainmenu__link  mainmenu__link" title="">Música</a>
+                </li>
+                <li class="mainmenu__item">
+                    <a href="#" class="mainmenu__link  mainmenu__link" title="">Teatro</a>
+                    <ul class="mainmenu__list mainmenu__list--sub">
+                        <li class="mainmenu__item">
+                            <a href="#" class="mainmenu__link  mainmenu__link" title="">Cine Concerto</a>
+                        </li>
+                        <li class="mainmenu__item">
+                            <a href="#" class="mainmenu__link  mainmenu__link" title="">Cine Escola</a>
+                        </li>
+                        <li class="mainmenu__item">
+                            <a href="#" class="mainmenu__link  mainmenu__link" title="">Cine na Cidade</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="mainmenu__item">
+                    <a href="#" class="mainmenu__link  mainmenu__link" title="">Empresarial</a>
+                </li>
+                <li class="mainmenu__item">
+                    <a href="#" class="mainmenu__link  mainmenu__link" title="">Cidadania</a>
+                    <ul class="mainmenu__list mainmenu__list--sub">
+                        <li class="mainmenu__item">
+                            <a href="#" class="mainmenu__link  mainmenu__link" title="">Cine Concerto</a>
+                        </li>
+                        <li class="mainmenu__item">
+                            <a href="#" class="mainmenu__link  mainmenu__link" title="">Cine Escola</a>
+                        </li>
+                        <li class="mainmenu__item">
+                            <a href="#" class="mainmenu__link  mainmenu__link" title="">Cine na Cidade</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="mainmenu__item">
+                    <a href="#" class="mainmenu__link  mainmenu__link" title="">Notícias</a>
+                </li>
+                <li class="mainmenu__item">
+                    <a href="#" class="mainmenu__link  mainmenu__link" title="">Inscrições</a>
+                </li>
+                <li class="mainmenu__item">
+                    <a href="#" class="mainmenu__link  mainmenu__link" title="">Fale Conosco</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="userlogin modal" id="userlogin-modal">
+        <div class="modal-close">
+            <a class="mainmenu-close" id="userlogin-close" href=""><span class="icon-cross2"></span></a>
+        </div>
+
+        <div class="userlogin__wrapper modal__wrapper">
+            <p class="userlogin__title modal__title">Meu<span>Universo</span></p>
+            <form action="" class="userlogin__form form">
+                <input class="userlogin__input form__input" type="text" placeholder="Login, email ou CPF">
+                <input class="userlogin__input form__input" type="text" placeholder="Senha">
+                <button class="userlogin__submit form__submit modal__submit">Entrar</button>
+            </form>
+            <div class="userlogin__tricks">
+                <p class="userlogin__tricks-item"><a class="userlogin__tricks-text" href="#">Esqueci minha senha</a></p>
+                <p class="userlogin__tricks-item"><a class="userlogin__tricks-text" href="#">Quero me cadastrar</a></p>
+                <p class="userlogin__tricks-item userlogin__tricks-item--facebook"><span class="userlogin__tricks-text">ou</span></p>
+
+                <buttom class="userlogin__tricks-facebook-button">Entrar com o Facebook</buttom>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="contact modal" id="contact-modal">
+        <div class="modal-close">
+            <a class="mainmenu-close" id="contact-close" href=""><span class="icon-cross2"></span></a>
+        </div>
+        <div class="contact__wrapper modal__wrapper">
+            <p class="contact__title modal__title">Fale<span>Conosco</span></p>
+            <form action="" class="contact__form form">
+                <input class="contact__input form__input" type="text" placeholder="Nome">
+                <input class="contact__input form__input" type="text" placeholder="Email">
+                <textarea  class="contact__input form__input" name="" rows="4" placeholder="Sua mensagem"></textarea>
+                <button class="contact__submit form__submit modal__submit">Enviar</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="/bower_components/jquery/dist/jquery.min.js"><\/script>')</script>
+
+    <script src="<?php echo $this->basePath("assets/universoproducao/dist/scripts/vendor.js"); ?>"></script>
+    <script src="<?php echo $this->basePath("assets/universoproducao/dist/scripts/main.js"); ?>"></script>
+
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+    <script>
+        (function(c,u,s,t,o,m){c.GoogleAnalyticsObject=t;c[t]||(c[t]=
+                function(){(c[t].q=c[t].q||[]).push(arguments)});c[t].l=+new Date;
+            o=u.createElement(s);m=u.getElementsByTagName(s)[0];
+            o.src='https://www.google-analytics.com/analytics.js';
+            m.parentNode.insertBefore(o,m)}(window,document,'script','ga'));
+        ga('create','UA-XXXXX-X');ga('send','pageview');
+    </script>
 </body>
 </html>

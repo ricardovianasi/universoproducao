@@ -1,4 +1,4 @@
-# http_path = "/"
+http_path = "/"
 css_dir = "dist/styles/"
 sass_dir = "app/styles/"
 images_dir = "app/images/"
@@ -6,7 +6,7 @@ images_path = "images/"
 fonts_dir = "dist/fonts/"
 javascripts_dir = "./dist/scripts/"
 # http_images_dir = "./dist/assets/img/"
-sprite_load_path = "./app/sprites/"
+sprite_load_path = "app/sprites/"
 
 # You can select your preferred output style here (can be overridden via the command line):
 # output_style = :expanded or :nested or :compact or :compressed

@@ -1,7 +1,6 @@
 //------------------------------------*\
 //    #SPRITES
 //------------------------------------*/
-
 $icons: sprite-map("icons/*.png", $layout: vertical, $spacing: 10px)
 
 .sprite
@@ -14,17 +13,3 @@ $icons: sprite-map("icons/*.png", $layout: vertical, $spacing: 10px)
 	.sprite-#{$i}
 		background-position: sprite-position($icons, $i)
 		+sprite-dimensions($icons, $i)
-
-		&.va, &.ha
-			position: absolute
-
-		&.fva, &.fha
-			position: fixed
-
-		&.va, &.fva
-			top: 50%
-			margin-top: -(image-height(sprite-file($icons, $i)) / 2)
-
-		&.ha, &.fha
-			left: 50%
-			margin-left: -(image-width(sprite-file($icons, $i)) / 2)

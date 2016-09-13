@@ -23,21 +23,18 @@ $(document).ready(function () {
         $('.home-slider .home-slider__slide--img').height($(window).height());
     });
 
-    activateOverlay.setWrapper('.site__wrapper');
-    activateOverlay.registerAllowedModal('#mainmenu-modal')
-
-    $(document).on("click", "#mainmenu-acces,#mainmenu-close,#mainmenu-access-active", function (e) {
+    $(document).on("click", "#mainmenu-access, #mainmenu-close", function (e) {
         e.preventDefault();
-        var _this = this,
-            $this = $(_this);
-
-        activateOverlay.intelligentToggle($this, '#mainmenu-modal', function(e) {
-            $("#mainmenu-modal").perfectScrollbar();
-            $('body').addClass("mainmenu-modal-active");
-        });
+        $("body").toggleClass("mainmenu-active");
     });
 
-    $(document).on('keydown', null, 'esc', function () {
-        $(".overlay").length > 0 && activateOverlay.forceRemove();
+    $(document).on("click", "#usermenu-access, #userlogin-close", function (e) {
+        e.preventDefault();
+        $("body").toggleClass("usermenu-active");
+    });
+
+    $(document).on("click", "#contact-access, #contact-close", function (e) {
+        e.preventDefault();
+        $("body").toggleClass("contact-active");
     });
 });
