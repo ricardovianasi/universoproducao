@@ -17,7 +17,7 @@
     <!-- endbuild -->
 </head>
 
-<body class="home">
+<body class="<?php echo !empty((string)$this->placeholder("is_home")) ? "home" : "" ?>">
     <div class="site__wrapper">
         <header class="header">
             <div class="header__wrapper">
@@ -53,6 +53,72 @@
         <div class="main">
             <?php echo $this->content;?>
         </div>
+        <?php if(empty((string)$this->placeholder("is_home"))): ?>
+            <footer class="footer">
+                <div class="footer__wrapper">
+                    <div class="newsletter">
+                        <p class="newsletter__title">Receba nossos informativos</p>
+                        <form action="" class="newsletter__form">
+                            <input type="text" class="form__input form__input--big" placeholder="Nome">
+                            <input type="text" class="form__input form__input--big" placeholder="Email">
+                            <select name="" id="" class="form__input">
+                                <option value="" selected>Estado</option>
+                            </select>
+                            <button class="form__button">Cadastrar</button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="contact">
+                    <div class="footer__wrapper">
+                        <div class="contact__links">
+                            <a class="contact__link" href="#">
+                                <span class="contact__link-icon icon-facebook"></span>
+                                <span class="contact__link-text">Facebook</span>
+                            </a>
+                            <a class="contact__link" href="#">
+                                <span class="contact__link-icon icon-twitter"></span>
+                                <span class="contact__link-text">Twitter</span>
+                            </a>
+                            <a class="contact__link" href="#">
+                                <span class="contact__link-icon icon-instagram"></span>
+                                <span class="contact__link-text">Instagram</span>
+                            </a>
+                            <a class="contact__link" href="#">
+                                <span class="contact__link-icon icon-flickr"></span>
+                                <span class="contact__link-text">Flickr</span>
+                            </a>
+                            <a class="contact__link" href="#">
+                                <span class="contact__link-icon icon-youtube"></span>
+                                <span class="contact__link-text">Youtube</span>
+                            </a>
+                        </div>
+
+                        <div class="contact__address">
+                            <div class="contact__address-map">
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3750.509869768598!2d-43.9216554!3d-19.9450487!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xa699b77efaa79b%3A0x983641dd32982bfd!2zVW5pdmVyc28gUHJvZHXDp8Ojbw!5e0!3m2!1spt-BR!2sbr!4v1467588834062" width="100%" frameborder="0" style="border:0" allowfullscreen></iframe>
+                            </div>
+                            <div class="contact__address-text">
+                                <p class="contact__address-title">Endereço</p>
+                                <p>+ 55 31 3282-2366 <br />
+                                    up@universoproducao.com.br<br />
+                                    Rua Pirapetinga, 567 - Serra<br />
+                                    30220-150, Belo Horizonte | MG</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="copy">
+                    <div class="footer__wrapper">
+                        <p class="copy__text">Copyright © 2016. Universo Produção - Todos os direitos reservados.</p>
+                        <a href="" class="back-to-top">
+                            <span class="">Voltar ao início</span>
+                            <span class="icon-arrow-up2"></span>
+                        </a>
+                    </div>
+                </div>
+            </footer>
+        <?php endif; ?>
     </div>
 
     <!-- Invisibles -->

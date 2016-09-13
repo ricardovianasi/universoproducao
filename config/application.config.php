@@ -11,10 +11,10 @@ $modules = [
     'Arquivoemcartaz',
     'Cineop'
 ];
-//
-//if($env == 'development') {
-//    $modules[] = 'ZendDeveloperTools';
-//}
+
+if($env == 'development') {
+    $modules[] = 'ZendDeveloperTools';
+}
 
 return array(
     'modules' => $modules,

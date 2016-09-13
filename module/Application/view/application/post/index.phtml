@@ -1,0 +1,16 @@
+<section>
+    <header class="main__header">
+        <h1 class="main__title"><?php echo $post->getTitle(); ?></h1>
+        <?php if($post->getCover()): ?>
+        <figure class="main__cover">
+            <img src="<?php echo $post->getCover() ?>" alt="">
+            <!--<figcaption class="main__cover-caption">Créditos: Lero Lara</figcaption>-->
+        </figure>
+        <?php endif; ?>
+    </header>
+    <div class="main__wrapper">
+        <article class="main__article">
+            <?php echo $post->getContent(); ?>
+        </article>
+    </div>
+</section>

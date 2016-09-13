@@ -41,10 +41,10 @@ class PostController extends SiteController
                 'action' => $customAction[1],
                 'post' => $post
             ]);
-        }
+        }*/
 
         $viewModel->breadcrumbs = $post->getBreadcrumbs();
-        $viewModel->post = $post;*/
+        $viewModel->post = $post;
         return $viewModel;
     }
 
