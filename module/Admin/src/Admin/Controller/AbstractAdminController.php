@@ -389,7 +389,6 @@ abstract class AbstractAdminController extends AbstractController
             $post->getMeta()->clear();
         }
 
-
 		if(isset($data['slug'])) {
 			$slug = !empty($data['slug']) ? $data['slug'] : 'sem-titulo';
 			$slug = $this->slugify()->create($slug, true, $entity, $postId);
