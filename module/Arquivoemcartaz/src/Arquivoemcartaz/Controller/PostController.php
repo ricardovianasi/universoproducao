@@ -19,7 +19,7 @@ class PostController extends SiteController
         $viewModel = new ViewModel();
 
         $slug = $this->params()->fromRoute('slug');
-        $slug = rtrim($slug, '/');
+        $slug = trim($slug, '/');
         $slug = explode('/', $slug);
 
         $post = $this->getRepository(Post::class)->findOneBy([
