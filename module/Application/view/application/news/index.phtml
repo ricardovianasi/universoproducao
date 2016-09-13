@@ -12,7 +12,7 @@
         <div class="news__list">
             <?php $count = 1; foreach ($this->newsList as $news): ?>
                 <div class="news__item <?php echo $count <= 2 ? "news__item--highlight" : "" ?>">
-                    <a class="news__link" href="">
+                    <a class="news__link" href="<?php echo $this->url("universoproducao/news", ['slug'=>$news->getSlug()]) ?>">
                         <?php if($count <= 2): ?>
                         <figure class="news__figure">
                             <img src="<?php echo $this->thumbor()->url($news->getThumb())->resize(370, 280); ?>" alt="">

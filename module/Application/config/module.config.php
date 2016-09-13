@@ -37,7 +37,7 @@ return array(
                     'news' => array(
                         'type' => Segment::class,
                         'options' => array(
-                            'route' => '/noticia/:slug',
+                            'route' => 'noticia/:slug',
                             'constraints' => [
                                 'slug' => '[a-zA-Z0-9_-]*',
                             ],
