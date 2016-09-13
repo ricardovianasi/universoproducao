@@ -1,16 +1,18 @@
 <?php $this->placeholder("is_home")->set(true); ?>
 <div class="fullslider">
     <div class="home-slider">
-        <div class="home-slider__slide home-slider__slide--img" style="background-image: url('<?php echo $this->basePath("assets/universoproducao/dist/images/slider1.jpg") ?>')">
-            <div class="home-slider__text center-bottom">
-                <a href="">
-                    <h2 class="home-slider__title">Cortejo da Arte</h2>
-                    <p class="home-slider__subtitle">Mostra Tiradentes - Espetáculo: Sonho de uma noite de verão</p>
-                </a>
+        <?php foreach ($this->bannerImages as $banner): ?>
+            <div class="home-slider__slide home-slider__slide--img" style="background-image: url('<?php echo $banner->getFile()?>')">
+                <?php if($banner->getTitle()): ?>
+                    <div class="home-slider__text center-bottom">
+                        <a href="">
+                            <h2 class="home-slider__title"><?php echo $banner->getTitle(); ?></h2>
+                            <p class="home-slider__subtitle"><?php echo $banner->getDescription(); ?></p>
+                        </a>
+                    </div>
+                <?php endif; ?>
             </div>
-        </div>
-        <div class="home-slider__slide home-slider__slide--img" style="background-image: url('images/slider2.jpg')"></div>
-        <div class="home-slider__slide home-slider__slide--img" style="background-image: url('images/slider3.jpg')"></div>
+        <?php endforeach; ?>
     </div>
     <div class="home-slider-dots">
     </div>
