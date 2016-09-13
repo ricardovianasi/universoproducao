@@ -1,0 +1,28 @@
+<header class="main__header">
+    <h1 class="main__title"><?php echo $post->getTitle(); ?></h1>
+    <?php if($post->getCover()): ?>
+        <figure class="main__cover">
+            <img src="<?php echo $post->getCover() ?>" alt="">
+            <!--<figcaption class="main__cover-caption">Créditos: Lero Lara</figcaption>-->
+        </figure>
+    <?php endif; ?>
+</header>
+<div class="main__wrapper">
+    <div class="news">
+        <div class="news__list">
+            <?php $count = 1; foreach ($this->newsList as $news): ?>
+                <div class="news__item <?php echo $count <= 2 ? "news__item--highlight" : "" ?>">
+                    <a class="news__link" href="">
+                        <?php if($count <= 2): ?>
+                        <figure class="news__figure">
+                            <img src="<?php echo $this->thumbor()->url($news->getThumb())->resize(370, 280); ?>" alt="">
+                        </figure>
+                        <?php endif; ?>
+                        <p class="news__title"><?php echo $news->getTitle(); ?></p>
+                        <time class="news__time"><?php echo $this->dateFormat($news->getPostDate(), null, null, "pt_BR", "d MM Y"); ?></time>
+                    </a>
+                </div>
+            <?php $count++; endforeach; ?>
+        </div>
+    </div>
+</div>

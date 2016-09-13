@@ -33,7 +33,7 @@ class PostController extends SiteController
         }
 
         //Custon Action
-        /*if($post->hasMeta(SiteMeta::CUSTOM_POST_ACTION)) {
+        if($post->hasMeta(SiteMeta::CUSTOM_POST_ACTION)) {
             $customAction = $post->getMeta(SiteMeta::CUSTOM_POST_ACTION);
             $customAction = explode(':', $customAction);
 
@@ -41,7 +41,7 @@ class PostController extends SiteController
                 'action' => $customAction[1],
                 'post' => $post
             ]);
-        }*/
+        }
 
         $viewModel->breadcrumbs = $post->getBreadcrumbs();
         $viewModel->post = $post;

@@ -34,6 +34,20 @@ return array(
                             ),
                         ),
                     ),
+                    'news' => array(
+                        'type' => Segment::class,
+                        'options' => array(
+                            'route' => '/noticia/:slug',
+                            'constraints' => [
+                                'slug' => '[a-zA-Z0-9_-]*',
+                            ],
+                            'defaults' => array(
+                                'controller' => Controller\NewsController::class,
+                                'action' => 'news',
+                            ),
+                        ),
+                        'priority' => '99999'
+                    ),
                 ),
             ),
         ),
