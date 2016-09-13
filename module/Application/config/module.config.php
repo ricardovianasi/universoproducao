@@ -10,17 +10,6 @@ use Zend\Mvc\Router\Http\Segment;
 return array(
     'router' => array(
         'routes' => array(
-            'universoproducao_home' => array(
-                'type' => Literal::class,
-                'options' => [
-                    'route' => '/',
-                    'defaults' => array(
-                        'controller'    => Controller\IndexController::class,
-                        'action'        => 'index',
-                    ),
-                ],
-                'priority' => 9999
-            ),
             'universoproducao' => array(
                 'type'    => Hostname::class,
                 'options' => array(
@@ -35,7 +24,7 @@ return array(
                     'default' => array(
                         'type'    => Segment::class,
                         'options' => array(
-                            'route'    => '/:slug',
+                            'route'    => ':slug',
                             'constraints' => array(
                                 'slug' => '.+'
                             ),
