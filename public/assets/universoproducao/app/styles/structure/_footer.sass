@@ -35,7 +35,7 @@
 				+col(1/6)
 				border-color: $main-color
 				&--big
-					+col(2/6)
+					+col(2.5/6)
 
 			.form__input
 				background-color: $color-palette-3
@@ -146,28 +146,9 @@
 		+padding-leader(1)
 		background-color: $color-palette-7
 
-		&__text,
-		.back-to-top
+		&__text
 			+adjust-font-size-to(12px)
 			text-transform: uppercase
-
-		&__text
 			font-family: "Ubuntu", Arial, Helvetica, sans-serif
 			color: $color-palette-8
-			display: inline-block
-
-		.back-to-top
-			display: inline-block
-			float: right
-			text-align: right
-			color: $main-color
-			&:hover
-				color: $color-palette-8
-			span
-				display: inline-block
-				vertical-align: middle
-				padding-left: 10px
-
-				&:first-of-type
-					font-style: italic
-					letter-spacing: .2em
+			text-align: center
