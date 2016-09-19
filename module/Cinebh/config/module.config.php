@@ -23,7 +23,7 @@ return array(
             'cinebh' => array(
                 'type'    => Hostname::class,
                 'options' => array(
-                    'route'    => '[www.]cinebh.com.br',
+                    'route'    => 'cinebh',
                     'defaults' => array(
                         'controller'    => Controller\IndexController::class,
                         'action'        => 'index',
