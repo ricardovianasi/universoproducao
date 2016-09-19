@@ -20,11 +20,10 @@ class IndexController extends SiteController
         $bannerImages = $this->getRepository(Banner::class)->findBy(['site' => self::SITE_ID], ['order'=>'ASC'], 5);
 
         //news
-        $news = $this->getRepository(Post::class)->findBy(
-            ['type'=>PostType::NEWS, 'status'=>PostStatus::PUBLISHED],
-            ['postDate'=>'DESC'],
-            2
-        );
+        $qb = $this->getRepository(Post::class)->findNewsQb(self::SITE_ID);
+        $qb->orderBy('n.postDate', 'DESC');
+        $qb->setMaxResults(2);
+        $news = $qb->getQuery()->getResult();
 
         //programation
         $program = $this->getRepository(Programation\Highlight::class)->findBy(
