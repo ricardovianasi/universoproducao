@@ -8,31 +8,34 @@
     </div>
 </section>
 
-<section class="news">
-    <header class="main__header main__header--bgc">
-        <div class="header__wrapper">
-            <h1 class="main__title">Notícias</h1>
-            <p class="readmore"><a class="readmore__link" href="<?php echo $this->url("cinebh/default", ['slug'=>'noticias']); ?>">Todas as Notícias<span class="icon icon-plus2"></span></a></p>
-        </div>
-    </header>
-    <div class="news__list news__list--highlight">
-        <?php foreach ($this->news as $news): ?>
-            <div class="news__item">
-                <figure class="news__figure">
-                    <?php if($news->getThumb()): ?>
-                        <img src="<?php echo  $this->thumbor()->url($news->getThumb())->resize(960, 468); ?>" alt="">
-                    <?php endif; ?>
-                </figure>
-                <div class="news__desc">
-                    <p class="news__title"><?php echo $news->getTitle(); ?></p>
-                    <p class="news__text"><?php echo $this->truncate($news->getContent(), 150); ?></p>
-                    <p class="news__button"><a class="news__link" href="<?php echo $this->url("cinebh/news", ['slug'=>$news->getSlug()]) ?>">Leia Mais</a></p>
-                </div>
+<?php if(count($this->news)): ?>
+    <section class="news">
+        <header class="main__header main__header--bgc">
+            <div class="header__wrapper">
+                <h1 class="main__title">Notícias</h1>
+                <p class="readmore"><a class="readmore__link" href="<?php echo $this->url("cinebh/default", ['slug'=>'noticias']); ?>">Todas as Notícias<span class="icon icon-plus2"></span></a></p>
             </div>
-        <?php endforeach; ?>
-    </div>
-</section>
+        </header>
+        <div class="news__list news__list--highlight">
+            <?php foreach ($this->news as $news): ?>
+                <div class="news__item">
+                    <figure class="news__figure">
+                        <?php if($news->getThumb()): ?>
+                            <img src="<?php echo  $this->thumbor()->url($news->getThumb())->resize(960, 468); ?>" alt="">
+                        <?php endif; ?>
+                    </figure>
+                    <div class="news__desc">
+                        <p class="news__title"><?php echo $news->getTitle(); ?></p>
+                        <p class="news__text"><?php echo $this->truncate($news->getContent(), 150); ?></p>
+                        <p class="news__button"><a class="news__link" href="<?php echo $this->url("cinebh/news", ['slug'=>$news->getSlug()]) ?>">Leia Mais</a></p>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        </div>
+    </section>
+<?php endif; ?>
 
+<?php if(count($this->gallery)): ?>
 <section class="gallery">
     <header class="main__header main__header--bgc">
         <div class="header__wrapper">
@@ -55,6 +58,7 @@
         <?php endforeach; ?>
     </div>
 </section>
+<?php endif; ?>
 
 <section class="institutional">
     <div class="institutional__wrapper">
