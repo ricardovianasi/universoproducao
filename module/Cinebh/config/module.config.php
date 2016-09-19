@@ -21,9 +21,9 @@ return array(
                 'priority' => 9999
             ),
             'cinebh' => array(
-                'type'    => Hostname::class,
+                'type'    => Literal::class,
                 'options' => array(
-                    'route'    => 'cinebh',
+                    'route'    => '/cinebh',
                     'defaults' => array(
                         'controller'    => Controller\IndexController::class,
                         'action'        => 'index',
