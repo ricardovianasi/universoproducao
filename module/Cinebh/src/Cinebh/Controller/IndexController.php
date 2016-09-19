@@ -23,7 +23,7 @@ class IndexController extends SiteController
         $news = $this->getRepository(Post::class)->findBy(
             ['type'=>PostType::NEWS, 'status'=>PostStatus::PUBLISHED],
             ['postDate'=>'DESC'],
-            self::SITE_ID
+            2
         );
 
         //programation
