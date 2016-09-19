@@ -9,6 +9,17 @@ use Zend\Mvc\Router\Http\Segment;
 return array(
     'router' => array(
         'routes' => array(
+            'cinebh_home' => array(
+                'type' => Literal::class,
+                'options' => array(
+                    'route' => '/cinebh',
+                    'defaults' => array(
+                        'controller'    => Controller\IndexController::class,
+                        'action'        => 'index',
+                    ),
+                ),
+                'priority' => 9999
+            ),
             'cinebh' => array(
                 'type'    => Hostname::class,
                 'options' => array(
