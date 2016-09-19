@@ -47,7 +47,7 @@ $(document).ready(function () {
 
     $(".gallery__list").owlCarousel({
         items: 1,
-        autoWidth:true,
+        autoWidth: true,
         nav: true,
         navText: [
             "<button class='gallery__arrow gallery__arrow--left'><span class='icon icon-arrow-left4'></span></button>",
@@ -59,7 +59,8 @@ $(document).ready(function () {
         center: true,
         autoplay: false,
         autoplayTimeout: 7000,
-        lazyLoad: false
+        lazyLoad: false,
+        loop: true
     });
 
     $("#mainmenu-access, .mainmenu-close").on("click", function(e) {
