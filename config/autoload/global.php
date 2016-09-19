@@ -32,5 +32,15 @@ return array(
     ),
     'thumbor' => array(
         'url' => 'http://162.243.253.29:8888'
+    ),
+    'router' => array(
+        'routes' => array(
+            'cinebh' => array(
+                'type' => 'Literal',
+                'options' => array(
+                    'route'    => '/cinebh',
+                )
+            ),
+        )
     )
 );
