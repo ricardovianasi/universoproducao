@@ -9,7 +9,8 @@ $modules = [
     'Admin',
     'Application',
     'Arquivoemcartaz',
-    'Cineop'
+    'Cineop',
+    'Cinebh',
 ];
 
 if($env == 'development') {

@@ -26,6 +26,9 @@ class Gallery extends AbstractEntity
 	/** @ORM\Column(name="file", type="string") */
 	private $file;
 
+    /** @ORM\Column(name="title", type="string") */
+    private $title;
+
 	/** @ORM\Column(name="description", type="string") */
 	private $description;
 
@@ -167,5 +170,21 @@ class Gallery extends AbstractEntity
     public function setCredits($credits)
     {
         $this->credits = $credits;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    /**
+     * @param mixed $title
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
     }
 }

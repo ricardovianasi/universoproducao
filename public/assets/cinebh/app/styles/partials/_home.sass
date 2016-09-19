@@ -1,0 +1,657 @@
+.home
+  .header__left
+    height: 912px
+  .main__header--bgc
+    width: 100%
+    background-color: $color-palette-7
+    .main__title
+      display: inline-block
+      +adjust-font-size-to(48px, 2.5)
+      +trailer(1.5, 48px)
+      +leader(1.5, 48px)
+      color: #fff
+    .readmore
+      float: right
+      +leader(2)
+      +trailer(2)
+      &__link
+        color: #fff
+
+  .header__wrapper
+    +container(1566px)
+    padding-left: 30px
+    padding-right: 30px
+
+  section
+    line-height: 0
+
+  figure
+    margin-bottom: 0
+
+
+  .banner
+    position: relative
+    &__item
+      width: 100%
+      background-repeat: no-repeat
+      height: 912px
+    .owl-dots
+      position: absolute
+      text-align: center
+      bottom: 90px
+      left: 50%
+      transform: translateX(-50%)
+    .owl-dot
+      display: inline-block
+      zoom: 1
+    .owl-dots .owl-dot span
+      display: block
+      width: 16px
+      height: 16px
+      border-radius: 50%
+      margin: 0 12px
+      background-color: $color-palette-6
+    .owl-dots .owl-dot.active span, .owl-dots .owl-dot:hover span
+      background-color: $color-palette-7
+
+  .programation
+    &__list
+      display: inline-block
+      width: 100%
+
+    &__item
+      +grid(1, 4, $gutter:0)
+      position: relative
+      &--highlight
+        background-color: $color-palette-9
+        +grid(1, 1, $gutter:0)
+        .programation__figure
+          +grid(3, 4, $gutter:0)
+          img
+            filter: none
+          &:before
+            background: none
+        .programation__desc
+          position: absolute
+          +grid(1, 4, $gutter:0)
+          transform: translate(0, -50%)
+          left: inherit
+          right: 0
+          padding: 60px
+          box-sizing: border-box
+        .programation__date
+          +adjust-font-size-to(160px)
+        .programation__day
+          +adjust-font-size-to(48px, 2)
+        .programation__title
+          +adjust-font-size-to(24px, 1)
+          strong
+            +adjust-font-size-to(36px, 1.5)
+            color: $color-palette-12
+        .programation__subtitle
+          +adjust-font-size-to(18px, 1)
+          color: $color-palette-13
+
+
+    &__figure
+      line-height: 0
+      position: relative
+      &:before
+        content: ""
+        position: absolute
+        top: 0
+        bottom: 0
+        right: 0
+        width: 100%
+        height: 100%
+        background: rgba(0,0,0,.6)
+      img
+        width: 100%
+        filter: grayscale(100%)
+
+    &__desc
+      position: absolute
+      top: 50%
+      left: 50%
+      transform: translate(-50%, -50%)
+
+    &__date,
+    &__day,
+    &__title,
+    &__subtitle
+      color: #fff
+      font-family: 'Fjalla One', sans-serif
+
+    &__day,
+    &__date
+      text-transform: uppercase
+
+    &__date
+      +adjust-font-size-to(100px, 4.5)
+      +trailer(.5, 100px)
+
+    &__day
+      +adjust-font-size-to(36px, 1.5)
+
+
+  .news
+    overflow: hidden
+    &__list
+      display: inline-block
+      width: 100%
+
+    &__item
+      +grid(1, 2, $gutter:0)
+      position: relative
+
+      &:nth-child(1)
+        .news__desc
+          background-color: rgba(33,176,136,.8)
+          &:before
+            background-color: rgba(33,176,136,.8)
+
+      &:nth-child(2)
+        .news__desc
+          background-color: rgba(137,52,51,.8)
+          &:before
+            background-color: rgba(137,52,51,.8)
+
+    &__figure
+      img
+        width: 100%
+
+    &__desc
+      position: absolute
+      width: 50%
+      height: 100%
+      top: 0
+      right: 0
+      padding-left: 40px
+      padding-right: 40px
+      &:before
+        content: ""
+        position: absolute
+        width: 100%
+        height: 100%
+        transform-origin: 100% 0
+        transform: matrix(1, -3, 0, 1, 0, 0)
+        left: -100%
+
+    &__title
+      +adjust-font-size-to(24px, 1)
+      font-weight: 700
+      color: #fff
+      +trailer(1)
+      +leader(1.5)
+
+    &__text
+      +adjust-font-size-to(24px, 1)
+      color: #fff
+      +trailer(1.5)
+
+    &__link
+      +adjust-font-size-to(18px, 1)
+      color: #fff
+      font-family: 'Fjalla One', sans-serif
+      text-transform: uppercase
+      padding: 5px 10px
+      border: 1px solid #fff
+
+    &__button
+      +adjust-font-size-to(18px, 2)
+      text-align: right
+
+  .gallery
+    position: relative
+    &__list
+      display: inline-block
+      width: 100%
+      position: relative
+
+    &__item
+      display: inline-block
+      width: 100%
+      position: relative
+
+    &__desc
+      height: 168px
+      background-color: $color-palette-7
+      padding-left: 36px
+      padding-right: 36px
+
+    &__title
+      +adjust-font-size-to(24px, 1)
+      +trailer(0)
+      +padding-leader(1.5)
+      font-family: 'Fjalla One', sans-serif
+      text-transform: uppercase
+      color: #fff
+    &__subtitle
+      +adjust-font-size-to(18px)
+      color: #fff
+    &__credits
+      +adjust-font-size-to(16px)
+      +leader(1)
+      font-style: italic
+      color: #fff
+
+    .owl-item
+      &:nth-child(2n+1)
+        .gallery__desc
+          background-color: $color-palette-10 !important
+      .gallery__desc
+        text-indent: -100%
+        white-space: nowrap
+        overflow: hidden
+      &:before
+        content: ""
+        position: absolute
+        width: 100%
+        height: 100%
+        top: 0
+        left: 0
+        bottom: 0
+        background: rgba(0, 0, 0, .6)
+        z-index: 9
+    .center
+      .gallery__desc
+        text-indent: inherit
+        white-space: inherit
+        overflow: inherit
+      &:before
+        background: rgba(0, 0, 0, 0)
+
+    .owl-nav
+      position: absolute
+      bottom: 168px
+      top: 50%
+      transform: translateY(-50%)
+      width: 100%
+
+    .owl-prev,
+    .owl-next
+      position: absolute
+    .owl-prev
+      left: 45px
+    .owl-next
+      right: 45px
+
+    &__arrow
+      background-color: transparent
+      border: none
+      outline: 0
+      cursor: pointer
+      color: #fff
+      font-size: 72px
+
+  .institutional
+    +padding-leader(5)
+    +padding-trailer(3)
+    width: 100%
+    background: url("../images/pattern.png") repeat
+    &__wrapper
+      +container(1468px)
+      padding-left: 30px
+      padding-right: 30px
+      text-align: center
+
+    &__title
+      +adjust-font-size-to(60px)
+      font-family: 'Fjalla One', sans-serif
+      color: $color-palette-11
+      text-transform: uppercase
+      text-shadow: 4px 0px 0px rgba(220, 55, 51, 1), -4px 0px 0px rgba(19, 187, 180, 1)
+      letter-spacing: .05em
+
+    &__video
+      max-width: 953px
+      margin-left: auto
+      margin-right: auto
+      text-align: left
+    &__desc
+      +adjust-font-size-to(24px)
+      font-family: 'Fjalla One', sans-serif
+      text-transform: uppercase
+
+  .tv
+    display: inline-block
+    position: relative
+    width: 100%
+    height: 100%
+    +trailer(2)
+    overflow: hidden
+    &__last,
+    &__header
+      +grid(1, 2, $gutter:0)
+      position: relative
+      box-sizing: border-box
+
+    &__figure
+      line-height: 0
+      img
+        //width: 100%
+
+    &__last
+      position: relative
+      &:before
+        content: ''
+        position: absolute
+        width: 100%
+        height: 100%
+        top: 0
+        bottom: 0
+        right: 0
+        left: 0
+        background: rgba(158, 51, 53, .6)
+
+      &-desc
+        position: absolute
+        top: 50%
+        transform: translateY(-50%)
+        width: 100%
+        padding-left: 100px
+        padding-right: 80px
+        z-index: 999
+
+      &-title
+        display: inline-block
+        +adjust-font-size-to(24px, 1)
+        font-weight: 700
+        text-transform: uppercase
+        color: #fff
+        max-width: 320px
+        vertical-align: middle
+        +trailer(0)
+      &-play
+        display: inline-block
+        width: 94px
+        height: 94px
+        border: 1px solid #fff
+        border-radius: 50%
+        color: #fff
+        font-size: 48px
+        line-height: 94px
+        text-align: center
+        vertical-align: middle
+        margin-left: 20px
+
+    &__header
+      background: $color-palette-7
+      position: absolute
+      right: 0
+      height: 100%
+      padding-right: 100px
+      padding-left: 80px
+      &:before
+        content: ""
+        position: absolute
+        width: 100%
+        height: 100%
+        transform-origin: 100% 0
+        transform: matrix(1, -3, 0, 1, 0, 0)
+        left: -100%
+        background-color: $color-palette-7
+    &__title
+      +adjust-font-size-to(48px,2)
+      +trailer(1.5, 48px)
+      +leader(3, 48px)
+      font-family: 'Fjalla One', sans-serif
+      text-transform: uppercase
+      color: #fff
+    &__subtitle
+      +adjust-font-size-to(24px, 1)
+      font-weight: 700
+      color: #fff
+      strong
+        +adjust-font-size-to(30px, 1.5, 30px)
+        text-transform: uppercase
+        font-weight: 700
+    &__day
+      +adjust-font-size-to(18px)
+      font-weight: 700
+      color: #fff
+      text-transform: uppercase
+
+    &__item
+      display: inline-block
+      border: 1px solid $color-palette-9
+      width: 35px
+      margin-right: 20px
+    &__link
+      +adjust-font-size-to(18px, 1)
+      +padding-trailer(.2)
+      +padding-leader(.2)
+      font-family: 'Fjalla One', sans-serif
+      display: block
+      text-align: center
+      vertical-align: middle
+      color: $color-palette-9
+    .readmore
+      text-align: right
+      &__link
+        color: #fff
+
+  .guide
+    +container(1664px)
+    padding-left: 30px
+    padding-right: 30px
+    +trailer(8)
+
+    &__highlight
+      +adjust-font-size-to(100px)
+      +leader(2, 100px)
+      +trailer(4, 100px)
+      font-family: 'Fjalla One', sans-serif
+      color: $color-palette-11
+      text-transform: uppercase
+      text-shadow: 6px 0px 0px rgba(220, 55, 51, 1), -6px 0px 0px rgba(19, 187, 180, 1)
+      text-align: center
+      letter-spacing: .05em
+
+    &__list
+      width: 100%
+      display: inline-block
+      text-align: center
+    &__item
+      +grid(1, 4, $cycle:4)
+      img
+        height: 80px
+    &__link
+      display: inline-block
+      width: 100%
+      span
+        +adjust-font-size-to(30px, 1.5)
+        +leader(1, 30px)
+        font-family: 'Fjalla One', sans-serif
+        color: $color-palette-7
+        text-transform: uppercase
+        display: block
+        width: 50%
+        margin-left: auto
+        margin-right: auto
+
+  .contact
+    display: inline-block
+    width: 100%
+    position: relative
+    //background: url("../images/forms2.svg") no-repeat top left
+    //background-size: cover
+    &:before
+      content: ""
+      position: absolute
+      background: url("../images/forms2.svg") no-repeat top left
+      background-size: cover
+      width: 100%
+      height: 100%
+      transform: skewY(-6deg)
+      z-index: -9
+    &__wrapper
+      +container(1468px)
+      padding-left: 30px
+      padding-right: 30px
+      text-align: center
+
+    .newsletter
+      +padding-leader(6)
+      +trailer(4)
+      &__title
+        +adjust-font-size-to(36px, 1.5)
+        +trailer(2.5, 36px)
+        font-family: 'Fjalla One', sans-serif
+        text-transform: uppercase
+        color: #fff
+      &__form
+        +container(1210px)
+        display: inline-block
+        width: 100%
+      &__input,
+      &__submit
+        box-sizing: border-box
+        +adjust-font-size-to(18px, 1)
+        font-family: 'Fjalla One', sans-serif
+        outline: none
+        text-transform: uppercase
+        background-color: transparent
+        color: #fff
+        +apply-side-rhythm-border(all, 1px, .5, 18px, solid #fff)
+
+      &__input
+        +grid(2, 5, $gutter:0)
+        +trailer(.5, 18px)
+        border-right: none
+        &::-webkit-input-placeholder
+          color: #fff
+        &::-moz-placeholder
+          color: #fff
+        &:-ms-input-placeholder
+          color: #fff
+        &:-moz-placeholder
+          color: #fff
+      &__submit
+        +grid(1, 5, $gutter:0)
+
+    .social
+      +trailer(10)
+      +container(1210px)
+      &__title
+        +adjust-font-size-to(24px, 1)
+        +trailer(2.5, 24px)
+        font-family: 'Fjalla One', sans-serif
+        text-transform: uppercase
+        color: #fff
+
+      &__items
+        text-align: center
+        width: 100%
+        display: inline-block
+      &__item
+        +grid(1,5, $gutter:30px)
+        &:first-child
+          margin-left: 0
+        &:last-child
+          margin-right: 0
+      &__link
+        color: #fff
+        +adjust-font-size-to(48px, 1.5)
+
+  .sitemap
+    display: inline-block
+    width: 100%
+
+    position: relative
+    &:before
+      content: ""
+      position: absolute
+      background-color: $color-palette-10
+      width: 100%
+      height: 100%
+      transform: skewY(-6deg)
+      z-index: -99
+    &__wrapper
+      +container(1210px)
+      padding-left: 30px
+      padding-right: 30px
+      text-align: center
+    &__items
+      width: 100%
+      display: inline-block
+      +leader(7.5)
+      +trailer(5)
+    &__item
+      +grid(1, 5)
+    &__link
+      +adjust-font-size-to(18px, 1)
+      font-family: 'Fjalla One', sans-serif
+      text-transform: uppercase
+      color: #fff
+
+    &__high
+      width: 500px
+      +adjust-font-size-to(60px, 2.5)
+      +trailer(4, 60px)
+      font-family: 'Fjalla One', sans-serif
+      text-transform: uppercase
+      text-align: left
+      color: #fff
+      margin-left: auto
+      margin-right: auto
+
+    &__contact
+      +adjust-font-size-to(18px, 1)
+      +trailer(2.5)
+      font-family: 'Fjalla One', sans-serif
+      text-transform: uppercase
+      color: #fff
+
+    &__add
+      +adjust-font-size-to(14px, .9)
+      text-transform: uppercase
+      color: #fff
+      +trailer(6)
+      span
+        text-align: left
+        display: inline-block
+        vertical-align: middle
+      .icon
+        font-size: 90px
+        margin-right: 40px
+
+  .sponsor
+    +leader(8)
+    &__wrapper
+      +container(1210px)
+      padding-left: 30px
+      padding-right: 30px
+    &__list
+      display: inline-block
+      width: 100%
+    &__block
+      +grid(1, 2, $gutter:0)
+      +trailer(2)
+      &--full
+        width: 100%
+    &__title
+      +adjust-font-size-to(18px, 1.5)
+      font-family: 'Fjalla One', sans-serif
+      text-transform: uppercase
+      color: $color-palette-7
+      border-bottom: 1px solid $color-palette-7
+    &__subtitle
+      +adjust-font-size-to(12px, 1.5)
+      font-weight: 700
+      font-family: Arial
+    &__item
+      display: inline-block
+      margin-right: 15%
+      box-sizing: border-box
+      span
+        font-size: 48px
+      .icon-mercantil
+        font-size: 36px
+      .icon-contax
+        font-size: 23px
+      .icon-universo-brand
+        font-size: 100px
+      &:last-child
+        margin-right: 0
+

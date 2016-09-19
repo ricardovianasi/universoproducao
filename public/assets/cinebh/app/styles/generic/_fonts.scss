@@ -1,0 +1,118 @@
+//------------------------------------*\
+//    #FONTS
+//------------------------------------*/
+
+@import 'https://fonts.googleapis.com/css?family=Fjalla+One';
+@import 'https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700';
+
+@font-face {
+  font-family: 'Cinebh';
+  src:  url('../fonts/Cinebh.eot?66uyeo');
+  src:  url('../fonts/Cinebh.eot?66uyeo#iefix') format('embedded-opentype'),
+  url('../fonts/Cinebh.ttf?66uyeo') format('truetype'),
+  url('../fonts/Cinebh.woff?66uyeo') format('woff'),
+  url('../fonts/Cinebh.svg?66uyeo#Cinebh') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'Cinebh' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-play4:before {
+  content: "\ed85";
+}
+.icon-arrow-right4:before {
+  content: "\edbe";
+}
+.icon-arrow-left4:before {
+  content: "\edc6";
+}
+.icon-universo-brand-min:before {
+  content: "\e90c";
+}
+.icon-contax:before {
+  content: "\e904";
+}
+.icon-cultura-bh:before {
+  content: "\e905";
+}
+.icon-fundacao-clovis:before {
+  content: "\e906";
+}
+.icon-fundacaocultura:before {
+  content: "\e907";
+}
+.icon-mercantil:before {
+  content: "\e908";
+}
+.icon-minasgerais:before {
+  content: "\e909";
+}
+.icon-pbh:before {
+  content: "\e90a";
+}
+.icon-sebrae:before {
+  content: "\e90b";
+}
+.icon-cinebh:before {
+  content: "\e902";
+}
+.icon-youtube:before {
+  content: "\e900";
+}
+.icon-search:before {
+  content: "\e901";
+}
+.icon-universo-brand:before {
+  content: "\e903";
+}
+.icon-search3:before {
+  content: "\eb36";
+}
+.icon-menu7:before {
+  content: "\ec71";
+}
+.icon-plus2:before {
+  content: "\ed5b";
+}
+.icon-cross2:before {
+  content: "\ed6d";
+}
+.icon-arrow-right:before {
+  content: "\edbb";
+}
+.icon-arrow-left:before {
+  content: "\edc3";
+}
+.icon-arrow-left7:before {
+  content: "\edda";
+}
+.icon-arrow-right8:before {
+  content: "\edde";
+}
+.icon-facebook:before {
+  content: "\eeef";
+}
+.icon-instagram:before {
+  content: "\eef1";
+}
+.icon-twitter:before {
+  content: "\eef5";
+}
+.icon-flickr:before {
+  content: "\ef02";
+}
+

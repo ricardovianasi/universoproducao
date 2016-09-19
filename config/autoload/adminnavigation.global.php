@@ -125,7 +125,71 @@ return [
 						]
 					],
 				]
-			],[
+			],
+            [
+                'label' => 'CineBH',
+                'uri' => '#',
+                'icon' => ' icon-globe',
+                'pages' => [
+                    [
+                        'label' => 'Páginas',
+                        'route' => 'admin/page',
+                        'icon' => 'icon-doc',
+                        'params' => [
+                            'site' => 4
+                        ]
+                    ],
+                    [
+                        'label' => 'Guia',
+                        'route' => 'admin/guide',
+                        'icon' => 'icon-doc',
+                        'params' => [
+                            'site' => 4
+                        ]
+                    ],
+                    [
+                        'label' => 'Menu',
+                        'route' => 'admin/menu',
+                        'icon' => 'icon-list',
+                        'params' => [
+                            'site' => 4
+                        ]
+                    ],
+                    [
+                        'label' => 'Banner',
+                        'route' => 'admin/banner',
+                        'icon' => 'fa fa-image',
+                        'params' => [
+                            'site' => 4
+                        ]
+                    ],
+                    [
+                        'label' => 'Galeria',
+                        'route' => 'admin/gallery',
+                        'icon' => 'fa fa-image',
+                        'params' => [
+                            'site' => 4
+                        ]
+                    ],
+                    [
+                        'label' => 'TV',
+                        'route' => 'admin/tv',
+                        'icon' => 'fa fa-image',
+                        'params' => [
+                            'site' => 4
+                        ]
+                    ],
+                    [
+                        'label' => 'Programação',
+                        'route' => 'admin/programation',
+                        'icon' => 'fa fa-image',
+                        'params' => [
+                            'site' => 4
+                        ]
+                    ],
+                ]
+            ],
+            [
                 'label' => 'Arquivo em Cartaz',
                 'uri' => '#',
                 'icon' => ' icon-globe',

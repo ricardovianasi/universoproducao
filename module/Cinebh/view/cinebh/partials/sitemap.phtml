@@ -1,0 +1,8 @@
+<ul class="sitemap__items">
+    <?php foreach ($this->container as $page):
+        /** @var Zend\Navigation\Page\AbstractPage $page */ ?>
+        <li class="sitemap__item">
+            <a class="sitemap__link" href="<?php echo $page->hasPages() ?>" target="<?php echo $page->getTarget() ?>"><?php echo $page->getLabel() ?></a>
+        </li>
+    <?php endforeach; ?>
+</ul>

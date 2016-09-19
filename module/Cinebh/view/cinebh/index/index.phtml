@@ -1,0 +1,188 @@
+<?php $this->placeholder("home-class")->set("home"); ?>
+
+<section class="banner">
+    <div class="banner__items owl-carousel">
+        <?php foreach ($this->bannerImages as $banner): ?>
+            <div class="banner__item item" style="background-image: url('<?php echo $this->thumbor()->url($banner->getFile())->resize(2000, 912); ?>'); background-size: cover"></div>
+        <?php endforeach; ?>
+    </div>
+</section>
+
+<section class="news">
+    <header class="main__header main__header--bgc">
+        <div class="header__wrapper">
+            <h1 class="main__title">Notícias</h1>
+            <p class="readmore"><a class="readmore__link" href="<?php echo $this->url("cinebh/default", ['slug'=>'noticias']); ?>">Todas as Notícias<span class="icon icon-plus2"></span></a></p>
+        </div>
+    </header>
+    <div class="news__list news__list--highlight">
+        <?php foreach ($this->news as $news): ?>
+            <div class="news__item">
+                <figure class="news__figure">
+                    <?php if($news->getThumb()): ?>
+                        <img src="<?php echo  $this->thumbor()->url($news->getThumb())->resize(960, 468); ?>" alt="">
+                    <?php endif; ?>
+                </figure>
+                <div class="news__desc">
+                    <p class="news__title"><?php echo $news->getTitle(); ?></p>
+                    <p class="news__text"><?php echo $this->truncate($news->getContent(), 150); ?></p>
+                    <p class="news__button"><a class="news__link" href="<?php echo $this->url("cinebh/news", ['slug'=>$news->getSlug()]) ?>">Leia Mais</a></p>
+                </div>
+            </div>
+        <?php endforeach; ?>
+    </div>
+</section>
+
+<section class="gallery">
+    <header class="main__header main__header--bgc">
+        <div class="header__wrapper">
+            <h1 class="main__title">Galeria</h1>
+            <p class="readmore"><a class="readmore__link" href="">Galeria Completa<span class="icon icon-plus2"></span></a></p>
+        </div>
+    </header>
+    <div class="gallery__list owl-carousel">
+        <?php foreach ($this->gallery as $img): ?>
+            <div class="gallery__item">
+                <figure class="gallery__figure">
+                    <img src="<?php echo $this->thumbor()->url($img->getFile())->resize(960, 480); ?>" alt="">
+                </figure>
+                <div class="gallery__desc">
+                    <p class="gallery__title"><?php echo $img->getTitle(); ?></p>
+                    <p class="gallery__subtitle"><?php echo $img->getDescription(); ?></p>
+                    <p class="gallery__credits"><?php echo $img->getCredits(); ?></p>
+                </div>
+            </div>
+        <?php endforeach; ?>
+    </div>
+</section>
+
+<section class="institutional">
+    <div class="institutional__wrapper">
+        <p class="institutional__title">Belo Horizonte em Conexão com o mundo</p>
+        <div class="institutional__video">
+            <iframe width="100%" height="540px" src="https://www.youtube.com/embed/2ssmwjkUdcs?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+            <p class="institutional__desc">VÍDEO DE DIVULGAÇÃO 10º CINEBH</p>
+        </div>
+    </div>
+</section>
+
+<section class="tv">
+    <div class="tv__last">
+        <figure class="tv__figure">
+            <img src="images/tv1.jpg" alt="">
+        </figure>
+        <div class="tv__last-desc">
+            <p class="tv__last-title">Rodrigo santoro fala ao TV mostra como foi  interpretar Marcos, no longa Meu país</p>
+            <a href="" class="tv__last-play"><span class="icon icon-play4"></span></a>
+        </div>
+    </div>
+    <div class="tv__header">
+        <p class="tv__title">Tv Mostra</p>
+        <p class="tv__subtitle">Acesse o conteúdo exclusivo em vídeo dos principais momentos da 10ª CineBH</p>
+        <p class="tv__subtitle"><strong>Uma década de história</strong></p>
+        <p class="tv__day">Dias</p>
+        <ul class="tv__items">
+            <li class="tv__item"><a class="tv__link" href="">1</a></li>
+            <li class="tv__item"><a class="tv__link" href="">2</a></li>
+            <li class="tv__item"><a class="tv__link" href="">3</a></li>
+        </ul>
+        <p class="readmore"><a class="readmore__link" href="">Veja Todos os Vídeos<span class="icon icon-plus2"></span></a></p>
+    </div>
+</section>
+
+<section class="contact">
+    <div class="contact__wrapper">
+        <div class="newsletter">
+            <p class="newsletter__title">Receba nossos informativos</p>
+            <form action="" class="newsletter__form">
+                <input type="text" class="newsletter__input" placeholder="Nome">
+                <input type="text" class="newsletter__input" placeholder="Email">
+                <button type="submit" class="newsletter__submit">Cadastrar</button>
+            </form>
+        </div>
+        <div class="social">
+            <p class="social__title">Siga-nos:</p>
+            <ul class="social__items">
+                <li class="social__item">
+                    <a href="" class="social__link"><span class="icon icon-instagram"></span></a>
+                </li>
+                <li class="social__item">
+                    <a href="" class="social__link"><span class="icon icon-twitter"></span></a>
+                </li>
+                <li class="social__item">
+                    <a href="" class="social__link"><span class="icon icon-facebook"></span></a>
+                </li>
+                <li class="social__item">
+                    <a href="" class="social__link"><span class="icon icon-youtube"></span></a>
+                </li>
+                <li class="social__item">
+                    <a href="" class="social__link"><span class="icon icon-flickr"></span></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<section class="sitemap">
+    <div class="sitemap__wrapper">
+        <?php $this
+            ->navigation('CinebhNavigation')
+            ->menu()->setPartial("cinebh/partials/sitemap.phtml");
+
+        echo $this
+            ->navigation('CinebhNavigation')
+            ->menu()
+            ->render(); ?>
+        <p class="sitemap__high">o futuro nasce da história,<br />da cultura nasce<br />a arte e dela<br />o cinema</p>
+        <p class="sitemap__contact">Contate-nos</p>
+        <p class="sitemap__add">
+            <span class="icon icon-universo-brand"></span>
+            <span>+ 55 31 3282-2366<br />
+                CINEBH@universoproducao.com.br<br />
+                Rua Pirapetinga, 567 - Serra<br />
+                30220-150, Belo Horizonte | MG</span>
+        </p>
+    </div>
+</section>
+
+<section class="sponsor">
+    <div class="sponsor__wrapper">
+        <ul class="sponsor__list">
+            <li class="sponsor__block">
+                <p class="sponsor__title">Patrocínio</p>
+                <ul class="sponsor__items">
+                    <li class="sponsor__item"><span class="icon icon-mercantil"></span></li>
+                    <li class="sponsor__item"><span class="icon icon-contax"></span></li>
+                </ul>
+            </li>
+            <li class="sponsor__block">
+                <p class="sponsor__title">Incentivo</p>
+                <ul class="sponsor__items">
+                    <li class="sponsor__item"><span class="icon icon-cultura-bh"></span></li>
+                    <li class="sponsor__item"><span class="icon icon-fundacaocultura"></span></li>
+                    <li class="sponsor__item"><span class="icon icon-pbh"></span></li>
+                </ul>
+                <p class="sponsor__subtitle">Realizado com os benefícions da Lei Municipal de Incentivo à Cultura de Belo Horizonte</p>
+            </li>
+            <li class="sponsor__block">
+                <p class="sponsor__title">Apoio Brasil Cinemundi</p>
+                <ul class="sponsor__items">
+                    <li class="sponsor__item"><span class="icon icon-sebrae"></span></li>
+                </ul>
+            </li>
+            <li class="sponsor__block">
+                <p class="sponsor__title">Apoio Brasil Cinemundi</p>
+                <ul class="sponsor__items">
+                    <li class="sponsor__item"><span class="icon icon-fundacao-clovis"></span></li>
+                    <li class="sponsor__item"><span class="icon icon-minasgerais"></span></li>
+                </ul>
+            </li>
+            <li class="sponsor__block sponsor__block--full">
+                <p class="sponsor__title">Realização</p>
+                <ul class="sponsor__items">
+                    <li class="sponsor__item"><span class="icon icon-universo-brand"></span></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</section>

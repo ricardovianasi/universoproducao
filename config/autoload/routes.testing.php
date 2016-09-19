@@ -13,7 +13,13 @@ return [
                 'options' => array(
                     'route'    => '/',
                 )
-            )
+            ),
+            'cinebh' => array(
+                'type' => 'Literal',
+                'options' => array(
+                    'route'    => '/cinebh',
+                )
+            ),
         )
     )
 ];

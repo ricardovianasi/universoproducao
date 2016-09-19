@@ -1,0 +1,15 @@
+<div class="site__breadcrumbs">
+    <div class="site__breadcrumbs-wrapper">
+        <ul class="breadcrumb">
+            <li class="breadcrumb__item"><a class="breadcrumb__link" href="<?php echo $this->url("arquivoemcartaz/home"); ?>">Inicio</a></li>
+            <?php $relativeSlug=""; foreach($this->breadcrumbs as $slug): ?>
+                <?php $relativeSlug.= "/" . key($slug); ?>
+                <li class="breadcrumb__item">
+                    <a class="breadcrumb__link" href="<?php echo $this->url("arquivoemcartaz/default", ['slug' => trim($relativeSlug, "/")]); ?>">
+                        <?php echo current($slug); ?>
+                    </a>
+                </li>
+            <?php endforeach; ?>
+        </ul>
+    </div>
+</div>

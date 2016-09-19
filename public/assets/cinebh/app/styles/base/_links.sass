@@ -1,0 +1,27 @@
+a
+  text-decoration: none
+  transition: $transition-default
+
+.readmore
+  &__link
+    font-family: 'Fjalla One', sans-serif
+    text-transform: uppercase
+    +adjust-font-size-to(24px, 1.5)
+    span
+      color: #000
+      margin-left: 10px
+
+.readmore-2
+  display: inline-block
+  +adjust-font-size-to(18px, 1)
+  +padding-trailer(.3, 18px)
+  +padding-leader(.3, 18px)
+  padding-right: 18px
+  padding-left: 18px
+  font-family: 'Fjalla One', sans-serif
+  text-transform: uppercase
+  color: $color-txt
+  border: 1px solid $color-txt
+  &:hover
+    border-color: $color-palette-7
+    color: $color-palette-7
