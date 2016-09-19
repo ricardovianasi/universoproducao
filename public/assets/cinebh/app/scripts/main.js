@@ -40,4 +40,8 @@ $(document).ready(function () {
         e.preventDefault();
         $("body").toggleClass("mainmenu-active");
     });
+
+    $(".customer-share").on("click", function(e) {
+        $(this).customerPopup(e);
+    });
 });

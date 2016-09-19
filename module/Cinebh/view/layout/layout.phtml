@@ -6,29 +6,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>10 CineBH</title>
 
+    <!--Facebook-->
+    <meta property="og:url" content="<?php echo $this->serverUrl(true) ?>">
+    <meta property="og:type" content="website" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@universoprod" />
+    <meta name="twitter:creator" content="@universoprod" />
+
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
-    <!-- Place favicon.ico in the root directory -->
-
-    <!-- build:css styles/main.css -->
     <link rel="stylesheet" href="<?php echo $this->basePath("assets/cinebh/dist") ?>/styles/main.css">
-    <!-- endbuild -->
-
-    <!-- build:css styles/vendor.css -->
-    <!-- bower:css -->
-    <!-- endbower -->
-    <!-- endbuild -->
-
-
-    <!-- build:js scripts/vendor/modernizr.js -->
     <script src="<?php echo $this->basePath("assets/cinebh/dist") ?>/scripts/vendor/modernizr.js"></script>
-    <!-- endbuild -->
 </head>
 <body class="<?php echo $this->placeholder("home-class") ?>">
 <div class="site__wrapper">
     <header class="header">
         <div class="header__left">
-            <h1 class="header__brand"><a class="header__link" href=""></a></h1>
-            <!--<img class="header__letteringform" src="images/lettering-form.svg" alt="">-->
+            <h1 class="header__brand"><a class="header__link" href="<?php echo $this->url("arquivoemcartaz/home") ?>"></a></h1>
         </div>
         <div class="header__right">
             <div class="menu">
@@ -61,7 +56,7 @@
         <div class="mainmenu__header">
             <div class="mainmenu__header-left">
                 <div class="brand">
-                    <a class="brand__link" href=""><span class="icon icon-cinebh"></span></a>
+                    <a class="brand__link" href="<?php echo $this->url("arquivoemcartaz/home") ?>"><span class="icon icon-cinebh"></span></a>
                 </div>
             </div>
             <div class="mainmenu__header-right">
