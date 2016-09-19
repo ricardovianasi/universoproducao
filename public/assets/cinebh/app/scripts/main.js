@@ -1,3 +1,28 @@
+(function($) {
+    /**
+     * jQuery function to prevent default anchor event and take the href * and the title to make a share pupup
+     *
+     * @param  {[object]} e           [Mouse event]
+     * @param  {[integer]} intWidth   [Popup width defalut 500]
+     * @param  {[integer]} intHeight  [Popup height defalut 400]
+     * @param  {[boolean]} blnResize  [Is popup resizeabel default true]
+     */
+    $.fn.customerPopup = function (e, intWidth, intHeight, blnResize) {
+
+        // Prevent default anchor event
+        e.preventDefault();
+
+        // Set values for window
+        intWidth = intWidth || '500';
+        intHeight = intHeight || '400';
+        var strResize = (blnResize ? 'yes' : 'no');
+
+        // Set title and open popup with focus on it
+        var strTitle = ((typeof this.attr('title') !== 'undefined') ? this.attr('title') : 'Social Share'),
+            strParam = 'width=' + intWidth + ',height=' + intHeight + ',resizable=' + strResize,
+            objWindow = window.open(this.attr('href'), strTitle, strParam).focus();
+    }
+})(jQuery);
 $(document).ready(function () {
     $("body").on("click", "a[href='']", function (e) {
         e.preventDefault();
