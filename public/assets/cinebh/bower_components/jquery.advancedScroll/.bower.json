@@ -1,0 +1,34 @@
+{
+  "name": "jquery.advancedScroll",
+  "version": "0.0.1",
+  "homepage": "https://github.com/luizgamabh/jquery.advancedScroll",
+  "authors": [
+    "Luiz Gustavo Freire Gama <luizgamabh@gmail.com>"
+  ],
+  "description": "Trigger new scroll events like (scrollup, scrolldown, scrollleft and scrollright)",
+  "main": "jquery.advancedScroll.js",
+  "keywords": [
+    "advanced",
+    "scroll",
+    "scrollbars",
+    "scroll",
+    "direction"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "_release": "0.0.1",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.0.1",
+    "commit": "89136e13346ee8c08ba6c7dc1bebc2939896b85b"
+  },
+  "_source": "git://github.com/luizgamabh/jquery.advancedScroll.git",
+  "_target": "~0.0.1",
+  "_originalSource": "luizgamabh/jquery.advancedScroll"
+}

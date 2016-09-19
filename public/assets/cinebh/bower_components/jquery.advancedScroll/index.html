@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Teste</title>
+	<style>
+		html, body {
+			height: 200%;
+		}
+		div#result {
+			display: block;
+			background-color: #ebebeb;
+			position: fixed;
+			top: 10px;
+			left: 50%;
+			margin-left: -150px;
+			width: 300px;
+			text-align: center;
+			font: normal normal normal 18px/24px Arial, Helvetica, sans-serif;
+			padding: 20px;
+			box-sizing: border-box;
+		}
+	</style>
+</head>
+<body>
+	<div id="result"><p>Rolar na página para obter o resultado.</p></div>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script src="jquery.advancedScroll.js"></script>
+	<script>
+	var result = $("#result");
+	$(window).advancedScroll();
+	$(window).on({
+		scrollup: function(event, pos) {
+			result.html("<p>Rolando para cima, atualmente na posição "+pos+"</p>");
+		},
+		scrolldown: function(event, pos) {
+			result.html("<p>Rolando para baixo, atualmente na posição "+pos+"</p>");
+		}
+	});
+	// or: $(window).advancedScroll().on({...});
+	</script>
+</body>
+</html>
