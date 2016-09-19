@@ -5,7 +5,7 @@
             <?php $relativeSlug=""; foreach($this->breadcrumbs as $slug): ?>
                 <?php $relativeSlug.= "/" . key($slug); ?>
                 <li class="breadcrumbs__item">
-                    <a href="<?php echo $this->url("cinebh/default", ['slug' => trim($relativeSlug, "/")]); ?>" class="breadcrumbs__link"><?php echo current($slug); ?></a>
+                    <a href="<?php echo rawurldecode($this->url("cinebh/default", ['slug' => trim($relativeSlug, "/")])); ?>" class="breadcrumbs__link"><?php echo current($slug); ?></a>
                 </li>
             <?php endforeach; ?>
         </ul>
