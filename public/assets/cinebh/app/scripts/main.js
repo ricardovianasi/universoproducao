@@ -37,7 +37,7 @@ $(document).ready(function () {
         ],
         dots: true,
         mouseDrag: false,
-        lazyLoad: true,
+        lazyLoad: false,
         loop: true,
         center: true,
         autoplay: true,
@@ -58,7 +58,8 @@ $(document).ready(function () {
         loop: true,
         center: true,
         autoplay: false,
-        autoplayTimeout: 7000
+        autoplayTimeout: 7000,
+        lazyLoad: false
     });
 
     $("#mainmenu-access, .mainmenu-close").on("click", function(e) {

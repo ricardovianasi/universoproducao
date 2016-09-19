@@ -65,7 +65,7 @@
         <p class="institutional__title">Belo Horizonte em Conexão com o mundo</p>
         <div class="institutional__video">
             <iframe width="100%" height="540px" src="https://www.youtube.com/embed/YeMJyeOXtY0?rel=0&controls=0&showinfo=0" frameborder="0" allowfullscreen></iframe>
-            <p class="institutional__desc">VÍDEO DE DIVULGAÇÃO 10º CINEBH</p>
+            <p class="institutional__desc">Vídeo institucional CineBH e Brasil CineMundi</p>
         </div>
     </div>
 </section>
@@ -77,10 +77,10 @@
         </header>
         <p class="guide__highlight">A cidade em movimento</p>
         <ul class="guide__list">
-            <li class="guide__item"><a href="" class="guide__link"><img src="<?php echo $this->basePath("assets/cinebh/dist") ?>/images/guide-place.svg"><span>Locais</span></a></li>
-            <li class="guide__item"><a href="" class="guide__link"><img src="<?php echo $this->basePath("assets/cinebh/dist") ?>/images/guide-tur.svg"><span>Turismo e Informações</span></a></li>
-            <li class="guide__item"><a href="" class="guide__link"><img src="<?php echo $this->basePath("assets/cinebh/dist") ?>/images/guide-res.svg"><span>Restaurantes</span></a></li>
-            <li class="guide__item"><a href="" class="guide__link"><img src="<?php echo $this->basePath("assets/cinebh/dist") ?>/images/guide-hot.svg"><span>Hoteis e Acomodações</span></a></li>
+            <li class="guide__item"><a href="<?php echo $this->url("cinebh/default", ['slug'=>'locais']) ?>" class="guide__link"><img src="<?php echo $this->basePath("assets/cinebh/dist") ?>/images/guide-place.svg"><span>Locais</span></a></li>
+            <li class="guide__item"><a href="<?php echo $this->url("cinebh/default", ['slug'=>'turismo-e-infomacoes']) ?>" class="guide__link"><img src="<?php echo $this->basePath("assets/cinebh/dist") ?>/images/guide-tur.svg"><span>Turismo e Informações</span></a></li>
+            <li class="guide__item"><a href="<?php echo $this->url("cinebh/default", ['slug'=>'restaurantes']) ?>" class="guide__link"><img src="<?php echo $this->basePath("assets/cinebh/dist") ?>/images/guide-res.svg"><span>Restaurantes</span></a></li>
+            <li class="guide__item"><a href="<?php echo $this->url("cinebh/default", ['slug'=>'hoteis-e-acomodacoes']) ?>" class="guide__link"><img src="<?php echo $this->basePath("assets/cinebh/dist") ?>/images/guide-hot.svg"><span>Hoteis e Acomodações</span></a></li>
         </ul>
 
     </div>
@@ -113,7 +113,7 @@
     <div class="contact__wrapper">
         <div class="newsletter">
             <p class="newsletter__title">Receba nossos informativos</p>
-            <form action="" class="newsletter__form">
+            <form action="<?php echo $this->url("cinebh/newsletter") ?>" class="newsletter__form">
                 <input type="text" class="newsletter__input" placeholder="Nome">
                 <input type="text" class="newsletter__input" placeholder="Email">
                 <button type="submit" class="newsletter__submit">Cadastrar</button>
@@ -123,19 +123,19 @@
             <p class="social__title">Siga-nos:</p>
             <ul class="social__items">
                 <li class="social__item">
-                    <a href="" class="social__link"><span class="icon icon-instagram"></span></a>
+                    <a href="https://www.instagram.com/universoproducao/" target="_blank" class="social__link"><span class="icon icon-instagram"></span></a>
                 </li>
                 <li class="social__item">
-                    <a href="" class="social__link"><span class="icon icon-twitter"></span></a>
+                    <a href="" target="_blank" class="social__link"><span class="icon icon-twitter"></span></a>
                 </li>
                 <li class="social__item">
-                    <a href="" class="social__link"><span class="icon icon-facebook"></span></a>
+                    <a href="https://www.facebook.com/universoproducao" target="_blank" class="social__link"><span class="icon icon-facebook"></span></a>
                 </li>
                 <li class="social__item">
-                    <a href="" class="social__link"><span class="icon icon-youtube"></span></a>
+                    <a href="https://www.youtube.com/user/universoproducao" target="_blank" class="social__link"><span class="icon icon-youtube"></span></a>
                 </li>
                 <li class="social__item">
-                    <a href="" class="social__link"><span class="icon icon-flickr"></span></a>
+                    <a href="https://www.flickr.com/photos/universoproducao/" target="_blank" class="social__link"><span class="icon icon-flickr"></span></a>
                 </li>
             </ul>
         </div>
@@ -167,7 +167,7 @@
 <section class="sponsor">
     <div class="sponsor__wrapper">
         <ul class="sponsor__list">
-            <li class="sponsor__block">
+            <!--<li class="sponsor__block">
                 <p class="sponsor__title">Patrocínio</p>
                 <ul class="sponsor__items">
                     <li class="sponsor__item"><span class="icon icon-mercantil"></span></li>
@@ -195,7 +195,7 @@
                     <li class="sponsor__item"><span class="icon icon-fundacao-clovis"></span></li>
                     <li class="sponsor__item"><span class="icon icon-minasgerais"></span></li>
                 </ul>
-            </li>
+            </li>-->
             <li class="sponsor__block sponsor__block--full">
                 <p class="sponsor__title">Realização</p>
                 <ul class="sponsor__items">
