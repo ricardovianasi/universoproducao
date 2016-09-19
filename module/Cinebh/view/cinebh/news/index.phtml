@@ -2,15 +2,9 @@
     <img src="<?php echo $this->basePath("assets/cinebh/dist") ?>/images/internal.jpg" alt="">
 </div>
 
-<div class="breadcrumbs">
-    <div class="breadcrumbs__wrapper">
-        <ul class="breadcrumbs__list">
-            <li class="breadcrumbs__item"><a href="" class="breadcrumbs__link">Início</a></li>
-            <li class="breadcrumbs__item"><a href="" class="breadcrumbs__link">Notícias</a></li>
-            <li class="breadcrumbs__item"><a href="" class="breadcrumbs__link">No domingo, penultimo dia bla bla...</a></li>
-        </ul>
-    </div>
-</div>
+<?php if($this->breadcrumbs): ?>
+    <?php echo $this->partial('cinebh/partials/_breadcrumbs.phtml', ['breadcrumbs'=>$this->breadcrumbs]); ?>
+<?php endif; ?>
 
 <section class="main__wrapper">
     <header class="main__header">

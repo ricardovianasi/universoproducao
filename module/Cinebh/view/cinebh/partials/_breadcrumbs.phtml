@@ -1,13 +1,11 @@
-<div class="site__breadcrumbs">
-    <div class="site__breadcrumbs-wrapper">
-        <ul class="breadcrumb">
-            <li class="breadcrumb__item"><a class="breadcrumb__link" href="<?php echo $this->url("arquivoemcartaz/home"); ?>">Inicio</a></li>
+<div class="breadcrumbs">
+    <div class="breadcrumbs__wrapper">
+        <ul class="breadcrumbs__list">
+            <li class="breadcrumbs__item"><a href="<?php echo $this->url("cinebh/home") ?>" class="breadcrumbs__link">Início</a></li>
             <?php $relativeSlug=""; foreach($this->breadcrumbs as $slug): ?>
                 <?php $relativeSlug.= "/" . key($slug); ?>
-                <li class="breadcrumb__item">
-                    <a class="breadcrumb__link" href="<?php echo $this->url("arquivoemcartaz/default", ['slug' => trim($relativeSlug, "/")]); ?>">
-                        <?php echo current($slug); ?>
-                    </a>
+                <li class="breadcrumbs__item">
+                    <a href="<?php echo $this->url("cinebh/default", ['slug' => trim($relativeSlug, "/")]); ?>" class="breadcrumbs__link"><?php echo current($slug); ?></a>
                 </li>
             <?php endforeach; ?>
         </ul>
