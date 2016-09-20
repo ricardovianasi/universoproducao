@@ -33,10 +33,13 @@
 
   .banner
     position: relative
+    right: 0
     &__item
-      width: 100%
+      width: calc(100% - 545px)
       background-repeat: no-repeat
+      background-position: center center
       height: 912px
+      float: right
     .owl-dots
       position: absolute
       text-align: center
@@ -155,7 +158,6 @@
           background-color: rgba(33,176,136,.8)
           &:before
             background-color: rgba(33,176,136,.8)
-
       &:nth-child(2)
         .news__desc
           background-color: rgba(137,52,51,.8)
@@ -207,7 +209,7 @@
       border: 1px solid #fff
       &:hover
         color: $color-txt
-        border-color: $color-txt
+        background-color: #fff
 
     &__button
       +adjust-font-size-to(18px, 2)
@@ -441,8 +443,7 @@
       text-align: right
       &__link
         color: #fff
-        &:hover
-          color: $color-palette-10
+
 
   .guide
     +container(1664px)
@@ -567,6 +568,8 @@
       &__link
         color: #fff
         +adjust-font-size-to(48px, 1.5)
+        &:hover
+          color: $color-palette-10
 
   .sitemap
     display: inline-block
