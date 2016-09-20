@@ -74,7 +74,7 @@
     display: inline-block
 
   &__item
-    +trailer(1)
+    +trailer(.5)
     +grid(1, 6, $cycle:6)
     >.mainmenu__list
       +leader(1)
@@ -84,21 +84,18 @@
         .mainmenu__link
           color: $color-palette-8
           text-transform: none
-          border-color: $color-palette-8
-
-
+          &:hover
+            border-color: $color-palette-8
   &__link
     font-family: 'Fjalla One', sans-serif
     text-transform: uppercase
     color: #fff
-    border-color: #fff
     padding: 7px
-
+    border: 1px solid $color-palette-7
+    box-sizing: border-box
+    display: inline-block
     &:hover
-      border: 1px solid
-
-
-
+      border-color: #fff
 
 .mainmenu-active
   top: 0
