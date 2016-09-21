@@ -29,6 +29,7 @@
     <meta name="twitter:site" content="@universoprod" />
     <meta name="twitter:creator" content="@universoprod" />
 
+    <?php echo $this->headScript() ?>
 </head>
 <body>
 <div class="site__wrapper">
@@ -53,8 +54,8 @@
                 </div>
             </div>
             <div class="search">
-                <form action="" class="search-form form">
-                    <input class="search-input form__input" type="text" placeholder="BUSCAR">
+                <form action="<?php echo $this->url("arquivoemcartaz/search") ?>" method="get" class="search-form form">
+                    <input name="q" class="search-input form__input" type="text" placeholder="BUSCAR">
                 </form>
                 <a href="" class="search-link"><span class="search-icon icon icon-search"></span></a>
             </div>

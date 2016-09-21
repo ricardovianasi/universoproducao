@@ -56,4 +56,16 @@ class PostController extends SiteController
             ]
         ];
     }
+
+    public function searchAction()
+    {
+        $post = new Post();
+        $post->setTitle("Busca");
+        return [
+            'breadcrumbs' => [
+                ['busca' => 'Busca']
+            ],
+            'post' => $post
+        ];
+    }
 }
