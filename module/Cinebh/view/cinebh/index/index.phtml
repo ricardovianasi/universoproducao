@@ -3,7 +3,9 @@
 <section class="banner">
     <div class="banner__items owl-carousel">
         <?php foreach ($this->bannerImages as $banner): ?>
-            <div class="banner__item item" style="background-image: url('<?php echo $this->thumbor()->url($banner->getFile())->resize(1358, 912); ?>'); background-size: cover"></div>
+            <div class="banner__item item" style="background-image: url('<?php echo $this->thumbor()->url($banner->getFile())->resize(1358, 912); ?>'); background-size: cover">
+                <p class="banner__caption"><?php echo $banner->getCredits(); ?></p>
+            </div>
         <?php endforeach; ?>
     </div>
 </section>
@@ -65,7 +67,7 @@
         <p class="institutional__title">Belo Horizonte em Conexão com o mundo</p>
         <div class="institutional__video">
             <iframe width="100%" height="540px" src="https://www.youtube.com/embed/YeMJyeOXtY0?rel=0&controls=0&showinfo=0" frameborder="0" allowfullscreen></iframe>
-            <p class="institutional__desc">Vídeo institucional CineBH e Brasil CineMundi</p>
+            <p class="institutional__desc">VT CineBh e Brasil CineMundi</p>
         </div>
     </div>
 </section>
@@ -126,10 +128,10 @@
                     <a href="https://www.instagram.com/universoproducao/" target="_blank" class="social__link"><span class="icon icon-instagram"></span></a>
                 </li>
                 <li class="social__item">
-                    <a href="" target="_blank" class="social__link"><span class="icon icon-twitter"></span></a>
+                    <a href="https://twitter.com/universoprod" target="_blank" class="social__link"><span class="icon icon-twitter"></span></a>
                 </li>
                 <li class="social__item">
-                    <a href="https://www.facebook.com/universoproducao" target="_blank" class="social__link"><span class="icon icon-facebook"></span></a>
+                    <a href="https://www.facebook.com/cinebh/" target="_blank" class="social__link"><span class="icon icon-facebook"></span></a>
                 </li>
                 <li class="social__item">
                     <a href="https://www.youtube.com/user/universoproducao" target="_blank" class="social__link"><span class="icon icon-youtube"></span></a>

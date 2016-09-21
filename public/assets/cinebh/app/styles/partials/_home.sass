@@ -30,10 +30,19 @@
   figure
     margin-bottom: 0
 
-
   .banner
     position: relative
     right: 0
+    &__caption
+      position: absolute
+      bottom: 0
+      right: 0
+      color: #fff
+      padding: 10px
+      font-style: italic
+      background-color: rgba(0,0,0,.6)
+      margin-bottom: 0
+      +adjust-font-size-to(12px, .5)
     &__item
       width: calc(100% - 545px)
       background-repeat: no-repeat
@@ -312,7 +321,7 @@
     &__title
       +adjust-font-size-to(60px)
       font-family: 'Fjalla One', sans-serif
-      color: $color-palette-11
+      color: $color-palette-7
       text-transform: uppercase
       //text-shadow: 4px 0px 0px rgba(220, 55, 51, 1), -4px 0px 0px rgba(19, 187, 180, 1)
       letter-spacing: .05em
