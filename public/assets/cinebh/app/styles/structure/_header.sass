@@ -4,7 +4,6 @@
   &__left
     position: absolute
     width: 685px
-    //width: 36%
     height: 492px
     z-index: 99
     overflow: hidden
@@ -17,6 +16,21 @@
       height: 100%
       background: url("../images/lettering-form.png") no-repeat top left
       background-size: cover
+    +media("<=1500px")
+      width: 535px
+    +media("<=desktop")
+      width: 438px
+    +media("<=tablet")
+      width: 330px
+    +media("<=570px")
+      position: relative
+      height: auto !important
+      width: 100%
+      padding: 16px
+      box-sizing: border-box
+      &:before
+        position: relative
+        background: none
   &__right
     position: absolute
     top: 0
@@ -24,6 +38,13 @@
     margin-top: 44px
     margin-right: 44px
     z-index: 999
+    text-align: center
+    +media("<=570px")
+      position: relative
+      width: 100%
+      margin-top: 0
+      margin: 0
+      margin-bottom: 20px
 
   &__brand
     position: absolute
@@ -34,6 +55,14 @@
     width: 100%
     height: 458px
     z-index: 999
+    +media("<=570px")
+      background: url("../images/lettering-min.svg") no-repeat top left
+      background-size: contain
+      position: relative
+      height: 150px
+      top: 0
+      left: 0
+
 
   &__link
     display: inline-block

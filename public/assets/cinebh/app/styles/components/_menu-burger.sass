@@ -43,3 +43,24 @@
   &:hover
     .b, b
       background-color: #fff
+
++media("<=phone")
+  .menu-button
+    width: 40px
+    height: 40px
+    .burger
+      width: 20px
+      height: 17px
+      margin-left: -10px
+      margin-top: -8.5px
+      .b, b
+        height: 3px
+        &:nth-child(1)
+          top: 0
+
+        &:nth-child(2),
+        &:nth-child(3)
+          top: 7px
+
+        &:nth-child(4)
+          top: 14px

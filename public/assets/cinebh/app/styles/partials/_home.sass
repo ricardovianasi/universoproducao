@@ -1,21 +1,41 @@
 .home
   .header__left
     height: 912px
+    +media("<=1500px")
+      height: 712px
+    +media("<=desktop")
+      height: 512px
+    +media("<=tablet")
+      height: 312px
   .main__header--bgc
     width: 100%
     background-color: $color-palette-7
     .main__title
       display: inline-block
-      +adjust-font-size-to(48px, 2.5)
-      +trailer(1.5, 48px)
-      +leader(1.5, 48px)
       color: #fff
+      +media(">=tablet")
+        +adjust-font-size-to(48px, 2.5)
+        +trailer(1.5, 48px)
+        +leader(1.5, 48px)
+      +media("<tablet")
+        +adjust-font-size-to(36px, 1.5)
+        +trailer(1, 36px)
+        +leader(1, 36px)
     .readmore
       float: right
       +leader(2)
       +trailer(2)
+      +media("<tablet")
+        +leader(1)
+        +trailer(1)
+      +media("<=570px")
+        float: none
+        +leader(0)
+        +trailer(0)
       &__link
         color: #fff
+        +media("<tablet")
+          +adjust-font-size-to(18px, 1.5)
         &:hover
           color: $color-palette-10
 
@@ -45,9 +65,20 @@
       +adjust-font-size-to(12px, .5)
     &__item
       width: calc(100% - 545px)
+      height: 912px
+      +media("<=1500px")
+        width: calc(100% - 345px)
+        height: 712px
+      +media("<=desktop")
+        height: 512px
+      +media("<=tablet")
+        width: calc(100% - 260px)
+        height: 312px
+      +media("<=570px")
+        width: 100%
+        float: none
       background-repeat: no-repeat
       background-position: center center
-      height: 912px
       float: right
     .owl-dots
       position: absolute
@@ -75,12 +106,16 @@
 
     &__item
       +grid(1, 4, $gutter:0)
+      +media("<tablet")
+        +grid(2, 4, $gutter:0)
       position: relative
       &--highlight
         background-color: $color-palette-9
         +grid(1, 1, $gutter:0)
         .programation__figure
           +grid(3, 4, $gutter:0)
+          +media("<tablet")
+            +grid(2, 4, $gutter:0)
           img
             filter: none
           &:before
@@ -88,13 +123,18 @@
         .programation__desc
           position: absolute
           +grid(1, 4, $gutter:0)
+          +media("<tablet")
+            +grid(2, 4, $gutter:0)
           transform: translate(0, -50%)
           left: inherit
           right: 0
-          padding: 60px
+          padding: 30px
           box-sizing: border-box
         .programation__date
-          +adjust-font-size-to(160px)
+          +media('>=1600px')
+            +adjust-font-size-to(160px)
+          +media('<1600px')
+            +adjust-font-size-to(100px)
         .programation__day
           +adjust-font-size-to(48px, 2)
         .programation__title
@@ -102,9 +142,30 @@
           strong
             +adjust-font-size-to(36px, 1.5)
             color: $color-palette-12
+            +media('<1600px')
+              +adjust-font-size-to(24px, 1)
         .programation__subtitle
           +adjust-font-size-to(18px, 1)
           color: $color-palette-13
+
+    +media("<=desktop")
+      .programation__item--highlight
+        .programation__date,
+        .programation__day,
+        .programation__title,
+        .programation__title strong,
+        .programation__subtitle
+          +adjust-font-size-to(18px, 1)
+      .programation__date,
+      .programation__day
+        +adjust-font-size-to(18px, 1)
+
+    +media("<=tablet")
+      .programation__title,
+      .programation__subtitle
+        display: none
+      .programation__figure
+        width: 100%
 
 
     &__figure
@@ -155,24 +216,30 @@
       width: 100%
 
     &__item
-      +grid(1, 2, $gutter:0)
       position: relative
       border: none
       clear: none
       padding: 0
       margin: 0
-
-      &:nth-child(1)
-        .news__desc
-          background-color: rgba(33,176,136,.8)
-          &:before
+      +media(">=tablet")
+        +grid(1, 2, $gutter:0)
+        &:nth-child(1)
+          .news__desc
             background-color: rgba(33,176,136,.8)
-      &:nth-child(2)
-        .news__desc
-          background-color: rgba(137,52,51,.8)
-          &:before
+            &:before
+              background-color: rgba(33,176,136,.8)
+        &:nth-child(2)
+          .news__desc
             background-color: rgba(137,52,51,.8)
-
+            &:before
+              background-color: rgba(137,52,51,.8)
+      +media("<tablet")
+        display: inline-block
+        width: 100%
+        &:nth-child(1)
+          background-color: $color-palette-7
+        &:nth-child(2)
+          background-color: $color-palette-10
     &__figure
       padding: 0
       margin: 0
@@ -180,21 +247,24 @@
         width: 100%
 
     &__desc
-      position: absolute
-      width: 50%
-      height: 100%
-      top: 0
-      right: 0
       padding-left: 40px
       padding-right: 40px
-      &:before
-        content: ""
+      +media(">=tablet")
         position: absolute
-        width: 100%
+        width: 50%
         height: 100%
-        transform-origin: 100% 0
-        transform: matrix(1, -3, 0, 1, 0, 0)
-        left: -100%
+        top: 0
+        right: 0
+        &:before
+          content: ""
+          position: absolute
+          width: 100%
+          height: 100%
+          transform-origin: 100% 0
+          transform: matrix(1, -3, 0, 1, 0, 0)
+          left: -100%
+      +media("<tablet")
+        padding-top: 40px
 
     &__title
       +adjust-font-size-to(24px, 1)
@@ -224,6 +294,20 @@
       +adjust-font-size-to(18px, 2)
       text-align: right
 
+    +media("<=1500px")
+      .news__desc
+        +adjust-font-size-to(18px, 1)
+    +media("<=1200px")
+      .news__title
+        +adjust-font-size-to(18px, 1)
+        +trailer(.5, 18px)
+        +leader(.5, 18px)
+      .news__text
+        +adjust-font-size-to(14px, .6)
+        +trailer(1, 14px)
+
+    +media("<=desktop")
+
   .gallery
     position: relative
     &__list
@@ -234,6 +318,8 @@
     &__item
       display: inline-block
       width: 953px
+      +media("<tablet")
+        width: 500px
       position: relative
 
     &__desc
@@ -258,6 +344,16 @@
       font-style: italic
       color: #fff
 
+    +media("<tablet")
+      .gallery__title
+        +adjust-font-size-to(18px, 1)
+        +padding-leader(1, 18px)
+      .gallery__subtitle
+        +adjust-font-size-to(16px)
+      .gallery__credits
+        +adjust-font-size-to(14px)
+      .gallery__desc
+        height: 100%
     .owl-item
       &:nth-child(2n+1)
         .gallery__desc
@@ -306,17 +402,26 @@
       cursor: pointer
       color: #fff
       font-size: 72px
+      +media("<tablet")
+        font-size: 36px
 
   .institutional
     +padding-leader(5)
     +padding-trailer(3)
     width: 100%
     background: url("../images/pattern.png") repeat
+    +media("<tablet")
+      +padding-leader(2.5)
+      +padding-trailer(2)
     &__wrapper
       +container(1468px)
       padding-left: 30px
       padding-right: 30px
       text-align: center
+      +media("<=570px")
+        width: 100%
+        padding-left: 0
+        padding-right: 0
 
     &__title
       +adjust-font-size-to(60px)
@@ -325,6 +430,13 @@
       text-transform: uppercase
       //text-shadow: 4px 0px 0px rgba(220, 55, 51, 1), -4px 0px 0px rgba(19, 187, 180, 1)
       letter-spacing: .05em
+      +media("<tablet")
+        +adjust-font-size-to(48px, 2)
+      +media("<=570px")
+        width: 100%
+        padding-left: 30px
+        padding-right: 30px
+        box-sizing: border-box
 
     &__video
       max-width: 953px
@@ -335,6 +447,9 @@
       +adjust-font-size-to(24px)
       font-family: 'Fjalla One', sans-serif
       text-transform: uppercase
+      +media("<=570px")
+        padding-left: 30px
+        padding-right: 30px
 
   .tv
     display: inline-block
@@ -347,6 +462,13 @@
       +grid(1, 2, $gutter:0)
       position: relative
       box-sizing: border-box
+
+    +media("<tablet")
+      .tv__last,
+      .tv__header
+        +grid(1, 1, $gutter:0)
+        float: none
+        display: block
 
     &__figure
       line-height: 0
@@ -399,24 +521,25 @@
 
     &__header
       background: $color-palette-7
-      position: absolute
-      right: 0
       height: 100%
       padding-right: 100px
       padding-left: 80px
-      &:before
-        content: ""
+      +media(">=tablet")
         position: absolute
-        width: 100%
-        height: 100%
-        transform-origin: 100% 0
-        transform: matrix(1, -3, 0, 1, 0, 0)
-        left: -100%
-        background-color: $color-palette-7
+        right: 0
+        &:before
+          content: ""
+          position: absolute
+          width: 100%
+          height: 100%
+          transform-origin: 100% 0
+          transform: matrix(1, -3, 0, 1, 0, 0)
+          left: -100%
+          background-color: $color-palette-7
     &__title
       +adjust-font-size-to(48px,2)
       +trailer(1.5, 48px)
-      +leader(3, 48px)
+      +padding-leader(3, 48px)
       font-family: 'Fjalla One', sans-serif
       text-transform: uppercase
       color: #fff
@@ -453,7 +576,6 @@
       &__link
         color: #fff
 
-
   .guide
     +container(1664px)
     padding-left: 30px
@@ -471,6 +593,10 @@
       text-shadow: 6px 0px 0px rgba(220, 55, 51, 1), -6px 0px 0px rgba(19, 187, 180, 1)
       text-align: center
       letter-spacing: .05em
+      +media("<tablet")
+        +adjust-font-size-to(60px)
+        +leader(1.5, 60px)
+        +trailer(2, 60px)
 
     &__list
       width: 100%
@@ -478,8 +604,14 @@
       text-align: center
     &__item
       +grid(1, 4, $cycle:4)
+      +media("<tablet")
+        +grid(2, 4, $cycle:2)
+        +trailer(1)
+
       img
         height: 80px
+        +media("<=570px")
+          height: 50px
     &__link
       display: inline-block
       width: 100%
@@ -493,6 +625,9 @@
         width: 50%
         margin-left: auto
         margin-right: auto
+        +media("<=570px")
+          +adjust-font-size-to(18px, 1)
+          +leader(1, 18px)
 
   .contact
     display: inline-block
@@ -541,7 +676,6 @@
 
       &__input
         +grid(2, 5, $gutter:0)
-        +trailer(.5, 18px)
         border-right: none
         &::-webkit-input-placeholder
           color: #fff
@@ -553,10 +687,26 @@
           color: #fff
       &__submit
         +grid(1, 5, $gutter:0)
+        transition: $transition-default
+        cursor: pointer
+        &:hover
+          background-color: #fff
+          color: $color-palette-7
+
+      +media("<tablet")
+        .newsletter__submit,
+        .newsletter__input
+          float: none
+          width: 100%
+        .newsletter__input
+          border-right: 1px solid #fff
+          border-bottom: none
 
     .social
-      +trailer(10)
       +container(1210px)
+      +trailer(10)
+      +media("<tablet")
+        +trailer(5)
       &__title
         +adjust-font-size-to(24px, 1)
         +trailer(2.5, 24px)
@@ -570,6 +720,10 @@
         display: inline-block
       &__item
         +grid(1,5, $gutter:30px)
+        +media("<=570px")
+          +grid(2,5, $gutter:16px, $cycle:2)
+          +trailer(1)
+          text-align: center
         &:first-child
           margin-left: 0
         &:last-child
@@ -583,7 +737,6 @@
   .sitemap
     display: inline-block
     width: 100%
-
     position: relative
     &:before
       content: ""
@@ -603,8 +756,14 @@
       display: inline-block
       +leader(7.5)
       +trailer(5)
+      +media("<tablet")
+        +leader(4.5)
+        +trailer(3)
     &__item
       +grid(1, 5)
+      +media("<tablet")
+        +grid(1, 1)
+        +trailer(1)
     &__link
       +adjust-font-size-to(18px, 1)
       font-family: 'Fjalla One', sans-serif
@@ -612,7 +771,9 @@
       color: #fff
 
     &__high
-      width: 500px
+      width: 100%
+      +media(">500px")
+        width: 500px
       +adjust-font-size-to(60px, 2.5)
       +trailer(4, 60px)
       font-family: 'Fjalla One', sans-serif
@@ -621,6 +782,9 @@
       color: #fff
       margin-left: auto
       margin-right: auto
+      +media("<tablet")
+        +adjust-font-size-to(48px, 2)
+        +trailer(2, 48px)
 
     &__contact
       +adjust-font-size-to(18px, 1)
@@ -654,6 +818,8 @@
     &__block
       +grid(1, 2, $gutter:0)
       +trailer(2)
+      +media("<=570px")
+        width: 100%
       &--full
         width: 100%
     &__title
@@ -663,7 +829,7 @@
       color: $color-palette-7
       border-bottom: 1px solid $color-palette-7
     &__subtitle
-      +adjust-font-size-to(12px, 1.5)
+      +adjust-font-size-to(12px, 1)
       font-weight: 700
       font-family: Arial
     &__item
