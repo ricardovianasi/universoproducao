@@ -37,10 +37,14 @@
     &-left
       width: 60%
       float: left
+      +media("<=tablet")
+        display: none
     &-right
       width: 40%
       float: left
       text-align: right
+      +media("<=tablet")
+        width: 100%
     .brand
       margin-left: 48px
       +trailer(2)
@@ -56,6 +60,13 @@
         +trailer(3)
         +leader(3)
         margin-right: 72px
+        +media("<=tablet")
+          text-align: center
+          margin: 0
+          padding-left: 16px
+          padding-right: 16px
+          +trailer(1)
+          +leader(1)
       &__item
         display: inline-block
 
@@ -72,12 +83,18 @@
 
   &__list
     display: inline-block
+    > .mainmenu__item
+      +grid(1, 6, $cycle:6)
+      +media("<=tablet")
+        +grid(1, 1, $cycle:0)
+        text-align: center
 
   &__item
     +trailer(.5)
-    +grid(1, 6, $cycle:6)
     >.mainmenu__list
       +leader(1)
+      +media("<=tablet")
+        display: none
       .mainmenu__item
         width: 100%
         float: none
@@ -86,6 +103,11 @@
           text-transform: none
           &:hover
             border-color: $color-palette-8
+    +media("<=tablet")
+      &:hover
+        .mainmenu__list
+          display: block
+
   &__link
     font-family: 'Fjalla One', sans-serif
     text-transform: uppercase
