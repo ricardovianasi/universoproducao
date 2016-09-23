@@ -72,7 +72,8 @@ return array(
         'invokables' => array (
             'cpf' 			=> View\Helper\Cpf::class,
             'youtubeEmbed' 	=> View\Helper\YoutubeEmbed::class,
-            'truncate'      => View\Helper\Truncate::class
+            'truncate'      => View\Helper\Truncate::class,
+            'thumborize'    => View\Helper\Thumborize::class
         ),
         'factories' => [
             'thumbor' => function($e) {

@@ -12,10 +12,14 @@ class Thumborize extends AbstractHelper
 
         $domDocument = new \DOMDocument();
         $domDocument->loadHTML($content);
-
         $images = $domDocument->getElementsByTagName('img');
         foreach ($images as $img) {
+            $src = $img->getAttribute('src');
+            $width = $img->getAttribute('width');
+            $height = $img->getAttribute('height');
 
+            $thumborize  = $this->generateThumborUrl($src, $width, $height);
+            $content = str_replace($src, $thumborize, $content);
         }
 
         return $content;
@@ -30,6 +34,6 @@ class Thumborize extends AbstractHelper
             $url->resize($width, $height);
         }
 
-        return $url;
+        return (string) $url;
     }
 }

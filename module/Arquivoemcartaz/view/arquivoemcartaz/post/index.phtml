@@ -15,7 +15,7 @@
                 <h1 class="main__title"><?php echo $post->getTitle(); ?></h1>
             </header>
             <h2 class="main__subtitle"><?php echo $post->getSubtitle(); ?></h2>
-            <?php echo $post->getContent(); ?>
+            <?php echo $this->thumborize($post->getContent()); ?>
         </section>
     </div>
 </main>
