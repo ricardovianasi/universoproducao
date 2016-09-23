@@ -3,9 +3,11 @@
 <section class="banner">
     <div class="banner__items owl-carousel">
         <?php foreach ($this->bannerImages as $banner): ?>
-            <div class="banner__item item" style="background-image: url('<?php echo $this->thumbor()->url($banner->getFile())->resize(1358, 912); ?>'); background-size: cover">
-                <p class="banner__caption"><?php echo $banner->getCredits(); ?></p>
-            </div>
+            <a href="<?php echo $banner->getLink() ?>" <?php echo $banner->getTargetBlank() ? "target='_blank'" : ""; ?> >
+                <div class="banner__item item" style="background-image: url('<?php echo $this->thumbor()->url($banner->getFile())->resize(1358, 912); ?>'); background-size: cover">
+                    <p class="banner__caption"><?php echo $banner->getCredits(); ?></p>
+                </div>
+            </a>
         <?php endforeach; ?>
     </div>
 </section>
@@ -42,7 +44,7 @@
     <header class="main__header main__header--bgc">
         <div class="header__wrapper">
             <h1 class="main__title">Galeria</h1>
-            <p class="readmore"><a class="readmore__link" href="">Galeria Completa<span class="icon icon-plus2"></span></a></p>
+            <p class="readmore"><a class="readmore__link" target="_blank" href="https://www.flickr.com/photos/universoproducao/">Galeria Completa<span class="icon icon-plus2"></span></a></p>
         </div>
     </header>
     <div class="gallery__list owl-carousel">

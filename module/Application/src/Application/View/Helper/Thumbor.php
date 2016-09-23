@@ -5,9 +5,9 @@ use Zend\View\Helper\AbstractHelper;
 
 class Thumbor extends AbstractHelper
 {
-
+    /** @var  url thumbor server */
 	private $thumborServer;
-
+	/** @var  thumbor object */
 	private $thumbor;
 
 	public function __construct($thumborServer)
