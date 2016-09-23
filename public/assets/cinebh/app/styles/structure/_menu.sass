@@ -69,7 +69,7 @@
           +leader(1)
       &__item
         display: inline-block
-
+        vertical-align: middle
       &__link
         font-size: 36px
         line-height: 48px
@@ -79,7 +79,6 @@
         text-align: center
         +trailer(.5)
         +leader(.5)
-
 
   &__list
     display: inline-block
@@ -118,6 +117,19 @@
     display: inline-block
     &:hover
       border-color: #fff
+
+  &__search
+    display: none
+    .search__input
+      box-sizing: border-box
+      +adjust-font-size-to(18px, 1)
+      font-family: 'Fjalla One', sans-serif
+      outline: none
+      text-transform: uppercase
+      background-color: #fff
+      +apply-side-rhythm-border(all, 1px, .5, 18px, solid #fff)
+    &.active
+      display: block
 
 .mainmenu-active
   top: 0

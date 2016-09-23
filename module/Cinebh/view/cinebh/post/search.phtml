@@ -1,3 +1,15 @@
+<?php $this->headScript()->captureStart() ?>
+(function() {
+var cx = '004056108255715595582:l6tudq71ici';
+var gcse = document.createElement('script');
+gcse.type = 'text/javascript';
+gcse.async = true;
+gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+var s = document.getElementsByTagName('script')[0];
+s.parentNode.insertBefore(gcse, s);
+})();
+<?php $this->headScript()->captureEnd() ?>
+
 <div class="main__figure">
     <img src="<?php echo $this->basePath("assets/cinebh/dist") ?>/images/internal.jpg" alt="">
 </div>
@@ -10,5 +22,5 @@
     <header class="main__header">
         <h1 class="main__title"><?php echo $this->post->getTitle(); ?></h1>
     </header>
-    <?php echo $this->thumborize($post->getContent()); ?>
+    <gcse:searchresults-only></gcse:searchresults-only>
 </section>

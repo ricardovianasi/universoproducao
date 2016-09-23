@@ -65,4 +65,16 @@ class PostController extends SiteController
         $viewModel->setTemplate(null);
         return $viewModel;
     }
+
+    public function searchAction()
+    {
+        $post = new Post();
+        $post->setTitle("Busca");
+        return [
+            'breadcrumbs' => [
+                ['busca' => 'Busca']
+            ],
+            'post' => $post
+        ];
+    }
 }

@@ -73,4 +73,9 @@ $(document).ready(function () {
     });
 
     $(".mainmenu-bgc").perfectScrollbar();
+
+    $("#usermenu__search").on('click', function(e) {
+        e.preventDefault();
+        $(".mainmenu__search").toggleClass("active");
+    });
 });
