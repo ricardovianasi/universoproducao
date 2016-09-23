@@ -23,7 +23,7 @@
             </header>
             <h2 class="main__subtitle"><?php echo $post->getSubtitle(); ?></h2>
 
-            <?php echo $post->getContent(); ?>
+            <?php echo $this->thumborize($post->getContent()); ?>
 
             <?php echo $this->partial("application/partials/share.phtml", ['title'=>$post->getTitle()]); ?>
 
