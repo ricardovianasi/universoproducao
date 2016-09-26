@@ -27,14 +27,9 @@ class Post extends AbstractEntity
 
 	/**
 	 * @ORM\ManyToOne(targetEntity="Application\Entity\Site\Site")
-	 * @ORM\JoinColumn(name="site_version_id", referencedColumnName="id")
+	 * @ORM\JoinColumn(name="site_id", referencedColumnName="id")
 	 */
 	private $site;
-
-	/**
-	 * @ORM\OneToMany(targetEntity="PostSite", mappedBy="post", cascade={"persist"})
-	 */
-	private $sites;
 
 	/**
 	 * @ORM\ManyToOne(targetEntity="Post", inversedBy="children")
@@ -74,21 +69,6 @@ class Post extends AbstractEntity
 	 */
 	private $tags;
 
-	/** @ORM\Column(name="publish_all_sites", type="boolean", nullable=false) */
-	private $publishAllSites;
-
-	/** @ORM\Column(name="publish_highlight_all_sites", type="boolean", nullable=false) */
-	private $publishHighlightAllSites;
-
-	/** @ORM\Column(name="thumb", type="string", nullable=false) */
-	private $thumb;
-
-	/** @ORM\Column(name="cover", type="string", nullable=false) */
-	private $cover;
-
-	/** @ORM\Column(name="cover_caption", type="string", nullable=false) */
-	private $coverCaption;
-
 	/** @ORM\Column(name="`order`", type="integer", nullable=false) */
 	private $order;
 
@@ -110,7 +90,6 @@ class Post extends AbstractEntity
 	{
 		$this->tags = new ArrayCollection();
 		$this->children = new ArrayCollection();
-		$this->sites = new ArrayCollection();
 		$this->meta = new ArrayCollection();
 	}
 
@@ -309,113 +288,6 @@ class Post extends AbstractEntity
 	{
 		if($this->children->count() > 0) return true;
 		else return false;
-	}
-
-	/**
-	 * @return mixed
-	 */
-	public function getSites()
-	{
-		return $this->sites;
-	}
-
-	/**
-	 * @param mixed $sites
-	 */
-	public function setSites($sites)
-	{
-		$this->sites = $sites;
-	}
-
-	public function addSite(PostSite $siteVersion)
-	{
-		$siteVersion->setPost($this);
-
-		if(!$this->sites->contains($siteVersion)) {
-			$this->sites->add($siteVersion);
-		}
-
-		return $this;
-	}
-
-	/**
-	 * @return mixed
-	 */
-	public function getPublishAllSites()
-	{
-		return $this->publishAllSites;
-	}
-
-	/**
-	 * @param mixed $publishAllSites
-	 */
-	public function setPublishAllSites($publishAllSites)
-	{
-		$this->publishAllSites = $publishAllSites;
-	}
-
-	/**
-	 * @return mixed
-	 */
-	public function getPublishHighlightAllSites()
-	{
-		return $this->publishHighlightAllSites;
-	}
-
-	/**
-	 * @param mixed $publishHighlightAllSites
-	 */
-	public function setPublishHighlightAllSites($publishHighlightAllSites)
-	{
-		$this->publishHighlightAllSites = $publishHighlightAllSites;
-	}
-
-	/**
-	 * @return mixed
-	 */
-	public function getThumb()
-	{
-		return $this->thumb;
-	}
-
-	/**
-	 * @param mixed $thumb
-	 */
-	public function setThumb($thumb)
-	{
-		$this->thumb = $thumb;
-	}
-
-	/**
-	 * @return mixed
-	 */
-	public function getCover()
-	{
-		return $this->cover;
-	}
-
-	/**
-	 * @param mixed $cover
-	 */
-	public function setCover($cover)
-	{
-		$this->cover = $cover;
-	}
-
-	/**
-	 * @return mixed
-	 */
-	public function getCoverCaption()
-	{
-		return $this->coverCaption;
-	}
-
-	/**
-	 * @param mixed $coverCaption
-	 */
-	public function setCoverCaption($coverCaption)
-	{
-		$this->coverCaption = $coverCaption;
 	}
 	
 	/**

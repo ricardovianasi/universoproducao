@@ -4,25 +4,19 @@
 			<i class="icon-star"></i>
 			<span class="caption-subject"><?php echo $title; ?></span>
 		</div>
-		<div class="actions">
-			<?php
-				echo $this->formElement($form->get('publish_all_sites'));
-				echo $this->formElement($form->get('publish_highlight_all_sites'));
-			?>
-		</div>
 	</div>
 
-	<div class="portlet-body post-site-options" style="<?php echo $post->getPublishAllSites() ? "display: none;" : ""; ?>">
+	<div class="portlet-body post-site-options">
 		<div class="row">
 			<div class="col-md-7 margin-bottom-10">
 				<div class="form-inline post-site-form">
 					<div class="form-group">
 						<div class="input-group select2-bootstrap-prepend">
-					<span class="input-group-btn">
-						<button class="btn btn-default" type="button" data-select2-open="sites-enabled">
-							<span class="fa fa-search"></span>
-						</button>
-					</span>
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="button" data-select2-open="sites-enabled">
+                                    <span class="fa fa-search"></span>
+                                </button>
+                            </span>
 							<?php echo $this->formElement($form->get('sites-enabled')) ?>
 						</div>
 					</div>
@@ -39,7 +33,7 @@
 			</div>
 
 			<div class="col-md-5 ">
-				<?php echo $this->adminPostSiteView($post->getSites()); ?>
+                <?php //echo $this->adminPostSiteView($post->getSites()); ?>
 			</div>
 		</div>
 	</div>

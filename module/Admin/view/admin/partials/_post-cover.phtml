@@ -1,4 +1,4 @@
-<div class="portlet light bordered select-image <?php echo !empty($form->get('cover')->getValue()) ? "select-image-has-image" : "" ?>">
+<div class="portlet light bordered select-image <?php echo !empty($form->get('meta[_cover]')->getValue()) ? "select-image-has-image" : "" ?>">
 	<div class="portlet-title">
 		<div class="caption"><i class="fa fa-cogs"></i>Imagem de Capa</div>
 		<div class="tools">
@@ -9,9 +9,6 @@
 	<div class="portlet-body">
 		<div class="vertical-top heding-actions margin-bottom-15">
 			<div class="row">
-				<div class="col-md-6">
-					<?php echo $this->formRow($form->get('cover_caption')); ?>
-				</div>
 				<div class="col-md-6">
 					<div class="pull-right">
 						<a href="#" class="btn red select-image-remove">Remover</a>
@@ -25,10 +22,10 @@
 				</div>
 			</div>
 		</div>
-		<?php echo $this->formElement($form->get('cover')); ?>
+		<?php echo $this->formElement($form->get('meta[_cover]')); ?>
 		<div class="mt-card-avatar select-image-container">
-			<?php if(!empty($form->get('cover')->getValue())): ?>
-				<img width='100%' height="200px" src="<?php echo $form->get('cover')->getValue(); ?>" alt="">
+			<?php if(!empty($form->get('meta[_cover]')->getValue())): ?>
+				<img width='100%' height="200px" src="<?php echo $form->get('meta[_cover]')->getValue(); ?>" alt="">
 			<?php endif; ?>
 		</div>
 	</div>
