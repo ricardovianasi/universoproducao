@@ -14,7 +14,7 @@
 
     <?php if($this->credenciamento): ?>
         <h2 class="main__subtitle">Cadastro realizado com sucesso!</h2>
-    <?php endif; ?>
+    <?php else: ?>
 
     <form action="" class="form" method="POST">
         <table width="100%" border="0" cellspacing="0" class="tabelaForm">
@@ -211,5 +211,6 @@
             </tr>
         </table>
     </form>
+    <?php endif; ?>
 
 </section>
