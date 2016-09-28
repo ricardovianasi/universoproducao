@@ -29,7 +29,7 @@ jQuery(document).ready(function() {
                 '//fast.fonts.net/cssapi/e6dc9b99-64fe-4292-ad98-6974f93cd2a2.css',
                 '//www.tinymce.com/css/codepen.min.css'
             ],
-            relative_urls: false,
+            relative_urls: true,
             external_filemanager_path:"/filemanager/",
             filemanager_title:"Responsive Filemanager" ,
             external_plugins: {"filemanager" : "/filemanager/plugin.min.js"}

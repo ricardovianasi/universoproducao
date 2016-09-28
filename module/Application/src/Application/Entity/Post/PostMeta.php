@@ -27,12 +27,7 @@ class PostMeta extends AbstractEntity
     /**
      * Meta Key for post sites - JSON VALUE
      *
-     * site:highlight
-     *
-     * {sites: "all:true"}
-     * {sites: "all:false"}
      * {sites: [1:true, 2:false, 3:false]}
-     *
      */
     const SITES = '_sites';
 

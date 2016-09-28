@@ -33,6 +33,7 @@
 									echo $this->partial('admin/partials/_post-sites.phtml', [
 										'form' => $this->form,
 										'post' => $this->news,
+                                        'sites' => $this->sites,
 										'title' => 'Visibilidade da notícia'
 									]);
 									echo $this->formRow($form->get('content'));

@@ -366,6 +366,14 @@ abstract class AbstractAdminController extends AbstractController
 			$data['tags'] = $tagsColl;
 		}
 
+        if(isset($data['sites'])) {
+            $sites = [];
+            foreach ($data['sites'] as $site) {
+                array_push($sites, [$site['id'] => $site['highlight']]);
+            }
+            $data['meta'][PostMeta::SITES] = json_encode($sites, JSON_OBJECT_AS_ARRAY);
+        }
+
 		if(isset($data['meta'])) {
 			$metaColl = new ArrayCollection();
 			if(!empty($data['meta'])) {
@@ -410,41 +418,6 @@ abstract class AbstractAdminController extends AbstractController
 			} else {
 				$data['parent'] = null;
 			}
-		}
-
-		if(method_exists($post, 'getSites')) {
-			foreach ($post->getSites() as $site) {
-				$this->getEntityManager()->remove($site);
-			}
-			$post->getSites()->clear();
-		}
-
-		if(isset($data['publish_all_sites'])) {
-			$data['publish_all_sites'] = (bool) $data['publish_all_sites'];
-			if($data['publish_all_sites']) {
-				unset($data['sites']);
-			} else {
-				$data['publish_highlight_all_sites'] = false;
-			}
-		}
-
-		if(isset($data['publish_highlight_all_sites'])) {
-			$data['publish_highlight_all_sites'] = (bool) $data['publish_highlight_all_sites'];
-		}
-
-		if(isset($data['sites'])) {
-			$sites = new ArrayCollection();
-			if(!empty($data['sites'])) {
-				foreach ($data['sites'] as $s) {
-					$postSite = new PostSite();
-					$postSite->setSite($this->getRepository(Site::class)->find($s['id']));
-					$postSite->setHighlight($s['highlight']);
-					$postSite->setPost($post);
-
-					$sites->add($postSite);
-				}
-			}
-			$data['sites'] = $sites;
 		}
 
 		return $data;
