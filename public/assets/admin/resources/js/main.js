@@ -30,6 +30,7 @@ jQuery(document).ready(function() {
                 '//www.tinymce.com/css/codepen.min.css'
             ],
             relative_urls: false,
+            remove_script_host : false,
             external_filemanager_path:"/filemanager/",
             filemanager_title:"Responsive Filemanager" ,
             external_plugins: {"filemanager" : "/filemanager/plugin.min.js"}
