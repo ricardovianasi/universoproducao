@@ -14,11 +14,12 @@ class GalleryControllerFactory implements FactoryInterface
 
 		$viewHelper = $sm->get('ViewHelperManager');
 		$adminGalleryViewHelper = $viewHelper->get('adminGallery');
-
+        $authenticationService = $sm->get('authentication');
 		$doctrineEntityManager = $sm->get('Doctrine\ORM\EntityManager');
 
 		$controller = new GalleryController();
 		$controller->setAdminGalleryHelper($adminGalleryViewHelper);
+		$controller->setAuthenticationService($authenticationService);
 		$controller->setEntityManager($doctrineEntityManager);
 
 		return $controller;

@@ -17,19 +17,13 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class PostMeta extends AbstractEntity
 {
-
-    /** Meta Key for post thumb file */
-    const THUMB = '_thumb';
-
-    /** Meta Key for post cover file */
-    const COVER = '_cover';
-
-    /**
-     * Meta Key for post sites - JSON VALUE
-     *
-     * {sites: [1:true, 2:false, 3:false]}
-     */
-    const SITES = '_sites';
+    const THUMB         = '_thumb';
+    const COVER         = '_cover';
+    const SITES         = '_sites';
+    const IMAGE         = '_image';
+    const CREDITS       = '_credits';
+    const LINK          = '_link';
+    const TARGET_BLANK  = '_target_blank';
 
 	/**
 	 * @ORM\Id @ORM\Column(name="id", type="integer", nullable=false)
@@ -49,7 +43,18 @@ class PostMeta extends AbstractEntity
 	/** @ORM\Column(name="`value`", type="text", nullable=false) */
 	private $value;
 
-	/**
+	public function __construct($key=null, $value=null)
+    {
+        if ($key)
+            $this->key = $key;
+
+        if($value)
+            $this->value = $value;
+
+        return $this;
+    }
+
+    /**
 	 * @return mixed
 	 */
 	public function getId()

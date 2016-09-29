@@ -16,6 +16,9 @@
 		<div class="mt-card-item">
 			<?php echo $this->formElement($form->get('meta[_thumb]'));  ?>
 			<div class="mt-card-avatar post-sidebar-thumb-img" style="height: 200px; width: 200px;">
+                <?php if($form->get('meta[_thumb]')->getValue()): ?>
+                    <img src="<?php echo $this->thumbor()->url($form->get('meta[_thumb]')->getValue())->resize(200, 200); ?>" alt="">
+                <?php endif; ?>
 			</div>
 
 			<a style="display: none" class="post-sidebar-thumb-action-remove" href="#">Remover</a>

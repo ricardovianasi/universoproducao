@@ -9,21 +9,15 @@
 namespace Admin\Form;
 
 
+use Application\Entity\Post\PostMeta;
 use Zend\Form\Form;
+use Zend\InputFilter\InputFilter;
 
 class BannerForm extends Form
 {
 	public function __construct()
 	{
 		parent::__construct();
-        $this->setAttributes([
-//            'class' => 'form-horizontal'
-        ]);
-
-        $this->add([
-            'name' => 'file',
-            'type' => 'hidden'
-        ]);
 
 		$this->add([
 			'name' => 'title',
@@ -36,7 +30,7 @@ class BannerForm extends Form
 		]);
 
         $this->add([
-            'name' => 'description',
+            'name' => 'content',
             'type' => 'textarea',
             'attributes' => [
                 'rows' => 3,
@@ -48,7 +42,7 @@ class BannerForm extends Form
         ]);
 
 		$this->add([
-			'name' => 'link',
+			'name' => 'meta['.PostMeta::LINK.']',
 			'attributes' => [
 				'placeholder' => 'http://'
 			],
@@ -58,36 +52,14 @@ class BannerForm extends Form
 		]);
 
 		$this->add([
-			'name' => 'credits',
+			'name' => 'subtitle',
             'options' => [
                 'label' => 'Créditos'
             ]
 		]);
 
 		$this->add([
-			'name' => 'start_date',
-			'type' => 'TwbBundle\Form\Element\DatePicker',
-			'attributes' => [
-				''
-			],
-            'options' => [
-                'label' => 'Data de início'
-            ]
-		]);
-
-		$this->add([
-			'name' => 'end_date',
-			'type' => 'TwbBundle\Form\Element\DatePicker',
-			'attributes' => [
-				''
-			],
-            'options' => [
-                'label' => 'Data de Término'
-            ]
-		]);
-
-		$this->add([
-			'name' => 'target_blank',
+			'name' => 'meta['.PostMeta::TARGET_BLANK.']',
 			'type' => 'checkbox',
 			'options' => [
 				'checked_value' => 1,
@@ -99,4 +71,28 @@ class BannerForm extends Form
 		]);
 	}
 
+	public function setData($data)
+    {
+        if(!empty($data['meta'][PostMeta::TARGET_BLANK])) {
+            $this->get('meta['.PostMeta::TARGET_BLANK.']')->setValue($data['meta'][PostMeta::TARGET_BLANK]);
+        }
+
+        if(!empty($data['meta'][PostMeta::LINK])) {
+            $this->get('meta['.PostMeta::LINK.']')->setValue($data['meta'][PostMeta::LINK]);
+        }
+
+        parent::setData($data);
+    }
+
+    public function getInputFilter()
+    {
+        if (!$this->inputFilter) {
+            $inputFilter = new InputFilter();
+
+            $inputFilter->add(array(
+                'name' => 'meta['.PostMeta::TARGET_BLANK.']',
+                'required' => false,
+            ));
+        }
+    }
 }

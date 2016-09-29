@@ -83,7 +83,7 @@ class Post extends AbstractEntity
 
 	public $breadcrumbs;
 
-	/** @ORM\OneToMany(targetEntity="PostMeta", mappedBy="post", cascade={"persist"}) */
+	/** @ORM\OneToMany(targetEntity="PostMeta", mappedBy="post", cascade={"ALL"}) */
 	public $meta;
 
 	public function __construct()
