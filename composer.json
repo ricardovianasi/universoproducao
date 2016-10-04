@@ -13,7 +13,8 @@
         "doctrine/doctrine-orm-module": "^1.0",
         "99designs/phumbor": "^1.2",
         "beberlei/DoctrineExtensions": "^1.0",
-        "zendframework/zftool": "dev-master"
+        "zendframework/zftool": "dev-master",
+        "syslogic/doctrine-json-functions": "dev-master"
     },
     "require-dev": {
         "zendframework/zend-developer-tools": "^1.1"

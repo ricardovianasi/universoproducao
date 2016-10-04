@@ -6,6 +6,7 @@ use Zend\Mvc\Router\Http\Hostname;
 use Zend\Mvc\Router\Http\Literal;
 use Zend\Mvc\Router\Http\Regex;
 use Zend\Mvc\Router\Http\Segment;
+use Syslogic\DoctrineJsonFunctions\Query\AST\Functions\Mysql;
 
 return array(
     'router' => array(
@@ -106,9 +107,10 @@ return array(
         'configuration' => array (
             'orm_default' => array (
                 'datetime_functions' => array (
-                    'YEAR'   => 'DoctrineExtensions\Query\Mysql\Year',
-                    'MONTH'  => 'DoctrineExtensions\Query\Mysql\Month',
-                    'DAY'    => 'DoctrineExtensions\Query\Mysql\Day'
+                    'YEAR'          => 'DoctrineExtensions\Query\Mysql\Year',
+                    'MONTH'         => 'DoctrineExtensions\Query\Mysql\Month',
+                    'DAY'           => 'DoctrineExtensions\Query\Mysql\Day',
+                    'JSON_CONTAINS' =>  'Syslogic\DoctrineJsonFunctions\Query\AST\Functions\Mysql\JsonContains'
                 )
             ),
         ),

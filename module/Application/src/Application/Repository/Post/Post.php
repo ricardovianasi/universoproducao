@@ -1,6 +1,7 @@
 <?php
 namespace Application\Repository\Post;
 
+use Application\Entity\Post\PostMeta;
 use Application\Entity\Post\PostStatus;
 use Application\Entity\Post\PostType;
 use Util\Repository\AbstractRepository;
@@ -27,15 +28,16 @@ class Post extends AbstractRepository
     {
         $qb = $this->createQueryBuilder('n');
         $qb->select('n')
+            ->leftJoin('n.meta', 'm')
             ->andWhere('n.type = :type')
             ->andWhere('n.status = :status')
-            ->leftJoin('n.sites', 's')
-            ->andWhere("(n.publishAllSites = :allSite OR s.site = :siteId)")
+            ->andWhere('m.key = :key')
+            ->andWhere('JSON_CONTAINS(m.value, :site) = 1')
             ->setParameters([
                 'type' => PostType::NEWS,
                 'status' => PostStatus::PUBLISHED,
-                'allSite' => true,
-                'siteId' => $siteId
+                'key' => PostMeta::SITES,
+                'site' => '{"'.$siteId.'":"false"}'
             ]);
 
         return $qb;

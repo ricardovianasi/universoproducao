@@ -17,7 +17,12 @@ class IndexController extends SiteController
     public function indexAction()
     {
         //banner
-        $bannerImages = $this->getRepository(Banner::class)->findBy(['site' => self::SITE_ID], ['order'=>'ASC'], 5);
+        $bannerImages = $this->getRepository(Post::class)->findBy(
+            [
+                'site' => self::SITE_ID,
+                'type' => PostType::BANNER,
+            ],
+            ['order'=>'ASC'], 5);
 
         //news
         $qb = $this->getRepository(Post::class)->findNewsQb(self::SITE_ID);
@@ -35,8 +40,11 @@ class IndexController extends SiteController
         );
 
         //gallery
-        $gallery = $this->getRepository(Gallery::class)->findBy(
-            ['site' => self::SITE_ID],
+        $gallery = $this->getRepository(Post::class)->findBy(
+            [
+                'site' => self::SITE_ID,
+                'type' => PostType::GALLERY
+            ],
             ['order'=>'ASC']
         );
 
