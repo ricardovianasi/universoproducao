@@ -1,6 +1,6 @@
 <?php if($post->getCover()): ?>
     <div class="site__cover">
-        <img src="<?php echo $post->getCover() ?>" alt="">
+        <img src="<?php echo $post->getMeta('_cover') ?>" alt="">
     </div>
 <?php endif; ?>
 
@@ -21,8 +21,8 @@
                     <article class="news__item">
                         <a class="news__link" href="<?php echo $url; ?>">
                             <header class="news__header"><h1 class="news__title"><?php echo $news->getTitle(); ?></h1></header>
-                            <?php if($news->getThumb()): ?>
-                                <figure class="news__figure"><img src="<?php echo $this->thumbor()->url($news->getThumb())->resize(240, 160); ?>" alt=""></figure>
+                            <?php if($news->getMeta('_thumb')): ?>
+                                <figure class="news__figure"><img src="<?php echo $this->getMeta('_thumb')->url($news->getThumb())->resize(240, 160); ?>" alt=""></figure>
                             <?php endif; ?>
                             <div class="news__content">
                                 <time class="main__time"><?php echo $this->dateFormat($news->getPostDate(), null, null, "pt_BR", "cccc, d 'de' MMMM Y', às' HH'h'mm"); ?></time>

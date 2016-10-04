@@ -1,6 +1,6 @@
 <div class="main__figure">
-    <?php if($post->getCover()): ?>
-        <img src="<?php echo $this->thumbor()->url($post->getCover())->resize(1920, 492); ?>" alt="">
+    <?php if($post->getMeta('_cover')): ?>
+        <img src="<?php echo $this->thumbor()->url($post->getMeta('_cover'))->resize(1920, 492); ?>" alt="">
     <?php else: ?>
         <img src="<?php echo $this->basePath("assets/cinebh/dist") ?>/images/internal.jpg" alt="">
     <?php endif; ?>
@@ -21,8 +21,8 @@
                 <header class="news__header">
                     <h1 class="news__title"><?php  echo $news->getTitle(); ?></h1>
                 </header>
-                <?php if($news->getThumb()): ?>
-                    <figure class="news__figure"><img src="<?php echo $this->thumbor()->url($news->getThumb())->resize(270, 180); ?>" alt=""></figure>
+                <?php if($news->getMeta('_thumb')): ?>
+                    <figure class="news__figure"><img src="<?php echo $this->thumbor()->url($news->getMeta('_thumb'))->resize(270, 180); ?>" alt=""></figure>
                 <?php endif; ?>
                 <p class="news__desc"><?php  echo $this->truncate($news->getContent(), 350); ?></p>
                 <a href="<?php echo $this->url("cinebh/news", ['slug'=>$news->getSlug()]) ?>" class="news__link readmore-2">Leia a notícia completa</a>
