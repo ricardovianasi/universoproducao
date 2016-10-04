@@ -12,7 +12,6 @@ namespace Admin\Controller;
 use Admin\Form\BannerForm;
 use Application\Entity\Banner\Banner;
 use Application\Entity\Post\Post;
-use Application\Entity\Post\PostMeta;
 use Application\Entity\Post\PostType;
 
 class BannerController extends AbstractAdminController implements CrudInterface

@@ -15,7 +15,7 @@
                     </div>
                 </div>
             <?php endif; ?>
-            <div class="banner__item" style="background-image: url(<?php echo $this->thumbor()->url($banner->getMeta('_image'))->resize(2000, 720); ?>)" data-caption="<?php echo $banner->getMeta('_credits'); ?>">
+            <div class="banner__item" style="background-image: url(<?php echo $this->thumbor()->url($banner->getMeta('_image'))->resize(2000, 720); ?>)" data-caption="<?php echo $banner->getSubtitle(); ?>">
                 <div class="banner__content">
                     <div class="banner__text">
                         <p class="banner__title"><?php echo $banner->getTitle(); ?></p>

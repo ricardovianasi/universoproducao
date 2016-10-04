@@ -12,7 +12,7 @@
 					<div class="home-slider__image">
 						<img src="<?php echo $this->thumbor()->url($b->getMeta('_image'))->resize(808, 456); ?>">
 						<?php if($b->getMeta('_credits')): ?>
-							<span class="home-slider__caption"><?php echo $b->getMeta('_credits'); ?></span>
+							<span class="home-slider__caption"><?php echo $b->getSubtitle(); ?></span>
 						<?php endif; ?>
 					</div>
 					<p class="home-slider__title">

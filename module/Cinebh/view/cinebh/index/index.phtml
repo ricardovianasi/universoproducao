@@ -5,7 +5,7 @@
         <?php foreach ($this->bannerImages as $banner): ?>
             <a href="<?php echo $banner->getMeta('_link') ?>" <?php echo $banner->getMeta('_target_blank') ? "target='_blank'" : ""; ?> >
                 <div class="banner__item item" style="background-image: url('<?php echo $this->thumbor()->url($banner->getMeta('_image'))->resize(1358, 912); ?>'); background-size: cover">
-                    <p class="banner__caption"><?php echo $banner->getMeta('_credits'); ?></p>
+                    <p class="banner__caption"><?php echo $banner->getSubtitle(); ?></p>
                 </div>
             </a>
         <?php endforeach; ?>
