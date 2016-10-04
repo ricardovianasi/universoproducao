@@ -54,7 +54,7 @@ class BannerController extends AbstractAdminController implements CrudInterface
 
         if($this->getRequest()->isPost()) {
             $form->setData($data);
-            if($form->isValid()) {
+//            if($form->isValid()) {
                 $validData = $form->getData();
 
                 $banner->setData($this->prepareDataPost(Post::class, $validData));
@@ -72,7 +72,7 @@ class BannerController extends AbstractAdminController implements CrudInterface
                         'site' => $this->getSiteIdFromUri()
                     ]);
                 }
-            }
+//            }
         } else {
             $form->setData($banner->toArray());
         }

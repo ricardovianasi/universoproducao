@@ -83,16 +83,4 @@ class BannerForm extends Form
 
         parent::setData($data);
     }
-
-    public function getInputFilter()
-    {
-        if (!$this->inputFilter) {
-            $inputFilter = new InputFilter();
-
-            $inputFilter->add(array(
-                'name' => 'meta['.PostMeta::TARGET_BLANK.']',
-                'required' => false,
-            ));
-        }
-    }
 }
