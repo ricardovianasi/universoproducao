@@ -11,6 +11,7 @@ namespace Admin\Form;
 
 use Application\Entity\Post\PostMeta;
 use Zend\Form\Form;
+use Zend\InputFilter\Input;
 use Zend\InputFilter\InputFilter;
 
 class BannerForm extends Form
@@ -69,6 +70,14 @@ class BannerForm extends Form
 				'class' => 'icheck'
 			]
 		]);
+
+        $inputFilter = new InputFilter();
+
+		$metaTarget = new Input('meta['.PostMeta::TARGET_BLANK.']');
+		$metaTarget->setRequired(false);
+		$inputFilter->add($metaTarget);
+
+		$this->setInputFilter($inputFilter);
 	}
 
 	public function setData($data)
