@@ -99,7 +99,7 @@ class GuideController extends AbstractAdminController
 		if($this->getRequest()->isPost()) {
 			$form->setData($data);
 			if($form->isValid()) {
-				$guide->setData($this->prepareDataPost(Post::class, $data));
+				$guide->setData($this->prepareDataPost(Post::class, $data, $guide));
 				$this->getEntityManager()->persist($guide);
 				$this->getEntityManager()->flush();
 
