@@ -45,7 +45,7 @@
 												   data-url="/filemanager/dialog.php?type=1&field_id=file"
 												   class="btn btn-success responsivefilemanager fileinput-add"><i class="fa fa-plus"></i> Selecionar uma Imagem</a>
 												<a class="btn red fileinput-remove"> Remover </a>
-												<input type="hidden" id="file" name="meta[_image]" value="<?php echo $this->banner->getMeta('_image') ?>">
+												<?php echo $this->formElement($form->get('meta[_image]')); ?>
 											</div>
 										</div>
 									</div>

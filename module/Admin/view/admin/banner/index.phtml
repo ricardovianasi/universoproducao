@@ -23,7 +23,6 @@
 					<th width="2%">#</th>
 					<th width="8%">Imagem</th>
 					<th width="30%">Título</th>
-					<th width="15%">Data de Exibição</th>
 					<th width="10%">Ações</th>
 				</tr>
 				</thead>
@@ -43,14 +42,9 @@
 					<tr>
 						<td></td>
 						<td>
-							<a href="<?php echo $item->getFile(); ?>" class="fancybox-button" data-rel="fancybox-button"><img width="150px" class="img-responsive" src="<?php echo str_replace('source', 'thumbs', $item->getFile()) ?>"</a>
+							<a href="<?php echo $item->getMeta('_image'); ?>" class="fancybox-button" data-rel="fancybox-button"><img width="150px" class="img-responsive" src="<?php echo str_replace('source', 'thumbs', $item->getMeta('_image')) ?>"</a>
 						</td>
 						<td><a href="<?php echo $updateUrl; ?>"><?php echo $item->getTitle(); ?></a></td>
-						<td>
-							<?php echo $item->getStartDate()
-								? $item->getStartDate()->format('d/m/Y') : "(...)" ?> à
-							<?php echo $item->getEndDate()
-								? $item->getEndDate()->format('d/m/Y') : "(...)" ?>
 						<td>
 							<a href="<?php echo  $updateUrl; ?>" class="btn btn-sm btn-default">
 								<i class="fa fa-edit"></i> Editar

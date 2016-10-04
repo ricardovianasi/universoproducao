@@ -20,6 +20,14 @@ class BannerForm extends Form
 	{
 		parent::__construct();
 
+        $this->add([
+            'name' => 'meta['.PostMeta::IMAGE.']',
+            'type' => 'hidden',
+            'attributes' => [
+                'id' => 'file'
+            ],
+        ]);
+
 		$this->add([
 			'name' => 'title',
 			'attributes' => [
@@ -82,12 +90,15 @@ class BannerForm extends Form
 
 	public function setData($data)
     {
-        if(!empty($data['meta'][PostMeta::TARGET_BLANK])) {
-            $this->get('meta['.PostMeta::TARGET_BLANK.']')->setValue($data['meta'][PostMeta::TARGET_BLANK]);
-        }
+        if(!empty($data['meta'])) {
+            foreach ($data['meta'] as $key=>$meta) {
 
-        if(!empty($data['meta'][PostMeta::LINK])) {
-            $this->get('meta['.PostMeta::LINK.']')->setValue($data['meta'][PostMeta::LINK]);
+                if(is_object($meta)) {
+                    $data['meta['.$meta->getKey().']'] = $meta->getValue();
+                } else {
+                    $data['meta['.$key.']'] = $meta;
+                }
+            }
         }
 
         parent::setData($data);

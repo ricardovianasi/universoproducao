@@ -12,6 +12,7 @@ namespace Admin\Controller;
 use Admin\Form\BannerForm;
 use Application\Entity\Banner\Banner;
 use Application\Entity\Post\Post;
+use Application\Entity\Post\PostMeta;
 use Application\Entity\Post\PostType;
 
 class BannerController extends AbstractAdminController implements CrudInterface
@@ -55,10 +56,7 @@ class BannerController extends AbstractAdminController implements CrudInterface
         if($this->getRequest()->isPost()) {
             $form->setData($data);
             if($form->isValid()) {
-                $validData = $form->getData();
-
-                $banner->setData($this->prepareDataPost(Post::class, $validData));
-
+                $banner->setData($this->prepareDataPost(Post::class, $data, $banner));
                 $this->getEntityManager()->persist($banner);
                 $this->getEntityManager()->flush();
 
