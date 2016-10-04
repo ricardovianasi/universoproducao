@@ -78,7 +78,7 @@ abstract class AbstractRepository extends EntityRepository
 	{
 		$queryBuilder = $this->prepareSearch($criteria, $orderBy);
 
-		$adapter = new DoctrinePaginator(new ORMPaginator($queryBuilder));
+		$adapter = new DoctrinePaginator(new ORMPaginator($queryBuilder, false));
 		$paginator = new Paginator($adapter);
 		$paginator->setDefaultItemCountPerPage($this->defaultPageSize);
 		$paginator->setCurrentPageNumber($currentPage);
