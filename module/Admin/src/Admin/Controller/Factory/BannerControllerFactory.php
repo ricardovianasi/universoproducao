@@ -12,9 +12,11 @@ class BannerControllerFactory implements FactoryInterface
 	{
 		$sm = $serviceLocator->getServiceLocator();
 		$doctrineEntityManager = $sm->get('Doctrine\ORM\EntityManager');
+        $authenticationService = $sm->get('authentication');
 
 		$controller = new BannerController();
 		$controller->setEntityManager($doctrineEntityManager);
+		$controller->setAuthenticationService($authenticationService);
 
 		return $controller;
 	}

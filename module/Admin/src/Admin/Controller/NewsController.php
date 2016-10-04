@@ -9,8 +9,10 @@ namespace Admin\Controller;
 
 use Admin\Form\PostSearchForm;
 use Application\Entity\Post\Post;
+use Application\Entity\Post\PostMeta;
 use Application\Entity\Post\PostStatus;
 use Application\Entity\Post\PostType;
+use Application\Entity\Site\Site;
 
 class NewsController extends AbstractAdminController
 	implements CrudInterface, PostInterface
@@ -125,9 +127,24 @@ class NewsController extends AbstractAdminController
 			$form->setData($news->toArray());
 		}
 
+		$selectSiteNews = [];
+		if($metaSites = $news->getMeta(PostMeta::SITES)) {
+		    $metaSites = json_decode($metaSites);
+		    foreach ($metaSites as $mS) {
+                $mS = (array) $mS;
+                $site = $this->getRepository(Site::class)->find(key($mS));
+                $selectSiteNews[] = [
+                    'id' => $site->getId(),
+                    'title' => $site->getName(),
+                    'highlight' => current($mS)
+                ];
+            }
+        }
+
 		return $this->getViewModel()->setVariables([
 			'form' => $form,
-			'news' => $news
+			'news' => $news,
+            'sites' => $selectSiteNews
 		]);
 	}
 }

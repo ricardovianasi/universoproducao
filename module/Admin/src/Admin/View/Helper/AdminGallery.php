@@ -61,15 +61,15 @@ class AdminGallery extends AbstractHelper implements ServiceLocatorAwareInterfac
 		return sprintf($this->tableFormat, $markup);
 	}
 
-	public function renderRow(Gallery $item)
+	public function renderRow($item)
 	{
 		$markup = '';
 
 		$data = [
-			$this->renderthumbColumn($item->getId(), $item->getFile()),
-			$this->renderTitleColumn($item->getId(), $item->getTitle()),
-			$this->renderTextColumn($item->getId(), $item->getDescription()),
-			$this->renderCreditsColumn($item->getId(), $item->getCredits()),
+			$this->renderthumbColumn($item['id'], $item['image']),
+			$this->renderTitleColumn($item['id'], $item['title']),
+			$this->renderTextColumn($item['id'], $item['description']),
+			$this->renderCreditsColumn($item['id'], $item['credits']),
 			$this->columnAction
 		];
 
@@ -89,19 +89,18 @@ class AdminGallery extends AbstractHelper implements ServiceLocatorAwareInterfac
 	
 	protected function renderTextColumn($id, $value="")
 	{
-		return '<textarea name="gallery['.$id.'][description]" rows="4" placeholder="Descrição da Imagem" class="form-control">'.
+		return '<textarea name="gallery['.$id.'][description]" rows="3" placeholder="Descrição da Imagem" class="form-control">'.
 			$value.'</textarea>';
 	}
 
 	protected function renderCreditsColumn($id, $value="")
 	{
-		return '<input type="text" name="gallery['.$id.'][credits]" placeholder="Créditos" class="form-control">'.
-			$value.'</input>';
+		return "<input type='text' name='gallery[$id][credits]' placeholder='Créditos' class='form-control' value='$value' />";
 	}
 
     protected function renderTitleColumn($id, $value="")
     {
-        return "<input type='text' name='gallery[$id][title]' placeholder='Título' class='form-control'>$value</input>";
+        return "<input type='text' name='gallery[$id][title]' placeholder='Título' class='form-control' value='$value' />";
     }
 
 	/**

@@ -17,6 +17,14 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class PostMeta extends AbstractEntity
 {
+    const THUMB         = '_thumb';
+    const COVER         = '_cover';
+    const SITES         = '_sites';
+    const IMAGE         = '_image';
+    const CREDITS       = '_credits';
+    const LINK          = '_link';
+    const TARGET_BLANK  = '_target_blank';
+
 	/**
 	 * @ORM\Id @ORM\Column(name="id", type="integer", nullable=false)
 	 * @ORM\GeneratedValue(strategy="IDENTITY")
@@ -35,10 +43,18 @@ class PostMeta extends AbstractEntity
 	/** @ORM\Column(name="`value`", type="text", nullable=false) */
 	private $value;
 
-	/** @ORM\Column(type="string", nullable=false) */
-	private $alias;
+	public function __construct($key=null, $value=null)
+    {
+        if ($key)
+            $this->key = $key;
 
-	/**
+        if($value)
+            $this->value = $value;
+
+        return $this;
+    }
+
+    /**
 	 * @return mixed
 	 */
 	public function getId()
@@ -100,21 +116,5 @@ class PostMeta extends AbstractEntity
 	public function setValue($value)
 	{
 		$this->value = $value;
-	}
-
-	/**
-	 * @return mixed
-	 */
-	public function getAlias()
-	{
-		return $this->alias;
-	}
-
-	/**
-	 * @param mixed $alias
-	 */
-	public function setAlias($alias)
-	{
-		$this->alias = $alias;
 	}
 }

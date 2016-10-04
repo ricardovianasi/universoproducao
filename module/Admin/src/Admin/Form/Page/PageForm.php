@@ -108,17 +108,6 @@ class PageForm extends PostForm
 			$data['parent'] = $parent->getId();
 		}
 
-		if(!empty($data['meta'])) {
-			foreach ($data['meta'] as $key=>$meta) {
-
-			    if(is_object($meta)) {
-                    $data['meta['.$meta->getKey().']'] = $meta->getValue();
-                } else {
-                    $data['meta['.$key.']'] = $meta;
-                }
-			}
-		}
-
 		return parent::setData($data);
 	}
 }

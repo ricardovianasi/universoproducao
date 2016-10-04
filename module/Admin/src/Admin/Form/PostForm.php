@@ -1,6 +1,7 @@
 <?php
 namespace Admin\Form;
 
+use Application\Entity\Post\PostMeta;
 use Application\Entity\Post\PostStatus;
 use Application\Entity\Site\Site;
 use TwbBundle\Form\Element\TagsInput;
@@ -67,25 +68,19 @@ class PostForm extends Form
 		$content->setAttribute('id', 'tinymce');
 		$this->add($content);
 
-		$thumb = new Hidden('thumb');
+		$thumb = new Hidden('meta['.PostMeta::THUMB.']');
 		$thumb->setAttributes([
 			'id' => 'returnResponsivefilemanager'
 		]);
 		$this->add($thumb);
 
-		$cover = new Hidden('cover');
+		$cover = new Hidden('meta['.PostMeta::COVER.']');
 		$cover->setAttributes([
 			'id' => 'returnselectimage',
 			'class' => 'select-image-input'
 		]);
 		$this->add($cover);
 
-		$coverCaption = new Text('cover_caption');
-		$coverCaption->setAttributes([
-			'class' => 'select-image-input-caption',
-			'placeholder' => 'Legenda'
-		]);
-		$this->add($coverCaption);
 
 		$submitButtom = new Button('publish');
 		$submitButtom->setValue('Publicar');
@@ -96,61 +91,7 @@ class PostForm extends Form
 		$submitButtom->setOption('fontAwesome', 'fa fa-check');
 		$this->add($submitButtom);
 
-		$this->add([
-			'type' => 'select',
-			'name' => 'sites-enabled',
-			'options' => [
-				'label' => 'Selecione onde a notícia vai aparecer',
-				'value_options' => $this->populateSite(),
-				'empty_option' => 'Selecione',
-			],
-			'attributes' => [
-				'type'=>'select',
-				'class' => 'select2',
-			]
-		]);
 
-		$this->add([
-			'name' => 'publish_all_sites',
-			'type' => 'checkbox',
-			'options' => [
-				'label' => 'Exibir em todos os sites',
-				'checked_value' => 1,
-				'unchecked_value' => 0,
-			],
-			'attributes' => [
-				'class' => 'icheck'
-			]
-		]);
-
-		$this->add([
-			'name' => 'publish_highlight_all_sites',
-			'type' => 'checkbox',
-			'options' => [
-				'label' => 'Destacar em todos os sites',
-				'checked_value' => 1,
-				'unchecked_value' => 0
-			],
-			'attributes' => [
-				'class' => 'icheck',
-				'disabled' => 'disabled'
-			]
-		]);
-
-		$this->getInputFilter()->add([
-			'name' => 'publish_highlight_all_sites',
-			'required' => false
-		]);
-
-		$this->getInputFilter()->add([
-			'name' => 'publish_all_sites',
-			'required' => false
-		]);
-
-		$this->getInputFilter()->add([
-			'name' => 'sites-enabled',
-			'required' => false
-		]);
 	}
 
 	public function populateSite()
@@ -167,7 +108,7 @@ class PostForm extends Form
 
 	public function setData($data)
 	{
-		unset($data['sites-enabled']);
+		/*unset($data['sites-enabled']);
 
 		$publish_all_sites = empty($data['publish_all_sites'])
 			? 0
@@ -180,8 +121,19 @@ class PostForm extends Form
 
 		$data['publish_highlight_all_sites'] = empty($data['publish_highlight_all_sites'])
 			? 0
-			: (int) $data['publish_highlight_all_sites'];
+			: (int) $data['publish_highlight_all_sites'];*/
 
+
+        if(!empty($data['meta'])) {
+            foreach ($data['meta'] as $key=>$meta) {
+
+                if(is_object($meta)) {
+                    $data['meta['.$meta->getKey().']'] = $meta->getValue();
+                } else {
+                    $data['meta['.$key.']'] = $meta;
+                }
+            }
+        }
 
 		parent::setData($data);
 	}

@@ -2,9 +2,7 @@
 namespace Admin\Controller\Factory;
 
 use Admin\Controller\NewsController;
-use Admin\Controller\PageController;
-use Admin\Form\Page\PageForm;
-use Admin\Form\PostForm;
+use Admin\Form\News\NewsForm;
 use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 
@@ -15,7 +13,7 @@ class NewsControllerFactory implements FactoryInterface
 		$sm = $serviceLocator->getServiceLocator();
 		$authenticationService = $sm->get('authentication');
 		$doctrineEntityManager = $sm->get('Doctrine\ORM\EntityManager');
-		$postForm = $sm->get(PostForm::class);
+		$postForm = $sm->get(NewsForm::class);
 
 		$pageController = new NewsController();
 		$pageController

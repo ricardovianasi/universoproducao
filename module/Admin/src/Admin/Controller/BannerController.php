@@ -11,14 +11,15 @@ namespace Admin\Controller;
 
 use Admin\Form\BannerForm;
 use Application\Entity\Banner\Banner;
-use Zend\View\Model\JsonModel;
+use Application\Entity\Post\Post;
+use Application\Entity\Post\PostType;
 
 class BannerController extends AbstractAdminController implements CrudInterface
 {
 
     public function indexAction()
     {
-        $items = $this->search(Banner::class, ['site' => $this->getSiteIdFromUri()]);
+        $items = $this->search(Post::class, ['site' => $this->getSiteIdFromUri(), 'type'=>PostType::BANNER]);
         $this->getViewModel()->setVariables([
             'items' => $items,
             'site' => $this->getSiteIdFromUri()
@@ -43,10 +44,12 @@ class BannerController extends AbstractAdminController implements CrudInterface
     {
         $form = new BannerForm();
         if($id) {
-            $banner = $this->getRepository(Banner::class)->find($id);
+            $banner = $this->getRepository(Post::class)->find($id);
         } else {
-            $banner = new Banner();
+            $banner = new Post();
             $banner->setSite($this->getCurrentSite());
+            $banner->setType(PostType::BANNER);
+            $banner->setAuthor($this->getAuthenticationService()->getIdentity());
         }
 
         if($this->getRequest()->isPost()) {
@@ -54,7 +57,7 @@ class BannerController extends AbstractAdminController implements CrudInterface
             if($form->isValid()) {
                 $validData = $form->getData();
 
-                $banner->setData($this->prepareDataPost(Banner::class, $validData));
+                $banner->setData($this->prepareDataPost(Post::class, $validData));
 
                 $this->getEntityManager()->persist($banner);
                 $this->getEntityManager()->flush();

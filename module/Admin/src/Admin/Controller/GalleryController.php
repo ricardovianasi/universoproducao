@@ -10,6 +10,9 @@ namespace Admin\Controller;
 
 use Application\Entity\Banner\Banner;
 use Application\Entity\Gallery\Gallery;
+use Application\Entity\Post\Post;
+use Application\Entity\Post\PostMeta;
+use Application\Entity\Post\PostType;
 use Application\Entity\Site\Menu\Item;
 use Doctrine\Common\Collections\ArrayCollection;
 use Zend\View\Model\JsonModel;
@@ -20,7 +23,8 @@ class GalleryController extends AbstractAdminController
 
 	public function indexAction()
 	{
-		$items = $this->getRepository(Gallery::class)->findBy([
+		$items = $this->getRepository(Post::class)->findBy([
+		    'type' => PostType::GALLERY,
 			'site' => $this->getSiteIdFromUri(),
 		], ['order'=>'ASC']);
 
@@ -39,8 +43,15 @@ class GalleryController extends AbstractAdminController
 			}
 
 			foreach ($data['gallery'] as $item) {
-				$galleryItem = new Gallery();
-				$galleryItem->setData($item);
+				$galleryItem = new Post();
+				$galleryItem->setType(PostType::GALLERY);
+                $galleryItem->setAuthor($this->getAuthenticationService()->getIdentity());
+                $galleryItem->setTitle($item['title']);
+                $galleryItem->setContent($item['description']);
+                $galleryItem->addMeta(new PostMeta(PostMeta::IMAGE, $item['file']));
+                if($item['credits']) {
+                    $galleryItem->addMeta(new PostMeta(PostMeta::CREDITS, $item['credits']));
+                }
 				$galleryItem->setOrder($order++);
 				$galleryItem->setSite($this->getCurrentSite());
 
@@ -52,9 +63,21 @@ class GalleryController extends AbstractAdminController
 			$this->messages()->success('Galeria atualizada com sucesso!');
 		}
 
+		//prepare items
+        $prepareItems = [];
+        foreach ($items as $item) {
+            $prepareItems[] = [
+                'id' => $item->getId(),
+                'title' => $item->getTitle(),
+                'description' => $item->getContent(),
+                'image' => $item->getMeta(PostMeta::IMAGE),
+                'credits' => $item->getMeta(PostMeta::CREDITS),
+            ];
+        }
+
 		return $this->getViewModel()->setVariables([
 			'site' => $this->getSiteIdFromUri(),
-			'items' => $items
+			'items' => $prepareItems
 		]);
 	}
 
@@ -67,12 +90,14 @@ class GalleryController extends AbstractAdminController
 
 		try {
 			$media = $this->params()->fromPost('media');
-
-			$gallery = new Gallery();
-			$gallery->setId(time());
-			$gallery->setFile($media);
-
-			$markup = $adminGalleryHelper->renderRow($gallery);
+			$item = [
+                'id' => time(),
+                'title' => '',
+                'description' => '',
+                'image' => $media,
+                'credits' => ''
+            ];
+			$markup = $adminGalleryHelper->renderRow($item);
 			$jsonModel->item = $markup;
 		} catch(\Exception $e) {
 			$jsonModel->error = $e->getMessage();
