@@ -1,6 +1,6 @@
 <div class="main__figure">
-    <?php if($post->getCover()): ?>
-        <img src="<?php echo $this->thumbor()->url($post->getCover())->resize(1920, 492); ?>" alt="">
+    <?php if($post->getMeta('_cover')): ?>
+        <img src="<?php echo $this->thumbor()->url($post->getMeta('_cover'))->resize(1920, 492); ?>" alt="">
     <?php else: ?>
         <img src="<?php echo $this->basePath("assets/cinebh/dist") ?>/images/internal.jpg" alt="">
     <?php endif; ?>
