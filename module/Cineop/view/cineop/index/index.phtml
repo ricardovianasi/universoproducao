@@ -10,18 +10,13 @@
 			<?php foreach ($this->banners as $b): ?>
 				<li class="home-slider__list-item">
 					<div class="home-slider__image">
-						<img src="<?php echo $this->thumbor()->url($b->getFile())->resize(808, 456); ?>">
-						<?php if($b->getCredits()): ?>
-							<span class="home-slider__caption"><?php echo $b->getCredits(); ?></span>
+						<img src="<?php echo $this->thumbor()->url($b->getMeta('_image'))->resize(808, 456); ?>">
+						<?php if($b->getMeta('_credits')): ?>
+							<span class="home-slider__caption"><?php echo $b->getMeta('_credits'); ?></span>
 						<?php endif; ?>
 					</div>
 					<p class="home-slider__title">
 						<a class="home-slider__link" href=""><?php echo $b->getTitle(); ?></a>
-						<!--<time class="home-slider__date">
-							<?php /*if($b->getStartDate()): */?>
-								<?php /*echo $b->getStartDate()->format('d m Y') */?>
-							<?php /*endif; */?>
-						</time>-->
 					</p>
 				</li>
 			<?php endforeach; ?>
@@ -49,7 +44,7 @@
 		<article class="news__item news__item<?php echo $newsPosition; ?>">
 			<a href="<?php echo $this->url('cineop'); ?>noticia/<?php echo $n->getSlug(); ?>" class="news__item-link">
 				<div class="news__item-thumb">
-					<img src="<?php echo  $this->thumbor()->url($n->getThumb())->resize(396, 396); ?>" alt="">
+					<img src="<?php echo  $this->thumbor()->url($n->getMeta('_thumb'))->resize(396, 396); ?>" alt="">
 				</div>
 				<header class="news__item-header">
 					<h1 class="news__item-title"><?php echo $n->getTitle(); ?></h1>
@@ -182,7 +177,7 @@
 		?>
 		<div class="gallery__item <?php echo $class; ?>">
 			<a class="gallery__link" href="#">
-				<img class="gallery__img" src="<?php echo  $this->thumbor()->url($gall->getFile())->resize($width, $height); ?>" alt="<?php echo $gall->getDescription(); ?>">
+				<img class="gallery__img" src="<?php echo  $this->thumbor()->url($gall->getMeta('_image'))->resize($width, $height); ?>" alt="<?php echo $gall->getTitle(); ?>">
 			</a>
 		</div>
 		<?php if($cont == 3): ?>
@@ -217,7 +212,7 @@
 			<header class="guide__header">
 				<a class="guide__link" href="<?php echo $this->url('cineop'); ?>guia/<?php echo $guide->getSlug(); ?>">
 					<figure class="guide__thumb">
-						<img class="guide__img" src="<?php echo  $this->thumbor()->url($guide->getThumb())->resize(396, 396); ?>" alt="">
+						<img class="guide__img" src="<?php echo  $this->thumbor()->url($guide->getMeta('_thumb'))->resize(396, 396); ?>" alt="">
 					</figure>
 					<h1 class="guide__title"><?php echo $guide->getTitle(); ?><span class="icon icon-arrow-right"></span></h1>
 				</a>

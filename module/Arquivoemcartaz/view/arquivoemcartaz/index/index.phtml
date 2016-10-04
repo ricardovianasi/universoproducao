@@ -15,13 +15,13 @@
                     </div>
                 </div>
             <?php endif; ?>
-            <div class="banner__item" style="background-image: url(<?php echo $this->thumbor()->url($banner->getFile())->resize(2000, 720); ?>)" data-caption="<?php echo $banner->getCredits(); ?>">
+            <div class="banner__item" style="background-image: url(<?php echo $this->thumbor()->url($banner->getMeta('_image'))->resize(2000, 720); ?>)" data-caption="<?php echo $banner->getMeta('_credits'); ?>">
                 <div class="banner__content">
                     <div class="banner__text">
                         <p class="banner__title"><?php echo $banner->getTitle(); ?></p>
-                        <p class="banner__subtitle"><?php echo $banner->getDescription(); ?></p>
-                        <?php if($banner->getLink()): ?>
-                        <a <?php echo $banner->getTargetBlank() ? "target='_blank'" : ""; ?> href="<?php echo $banner->getLink(); ?>" class="banner__link circle-link"><span class="icon icon-arrow-right8"></span></a>
+                        <p class="banner__subtitle"><?php echo $banner->getContent(); ?></p>
+                        <?php if($banner->getMeta('_link')): ?>
+                        <a <?php echo $banner->getMeta('_target_blank') ? "target='_blank'" : ""; ?> href="<?php echo $banner->getMeta('_link'); ?>" class="banner__link circle-link"><span class="icon icon-arrow-right8"></span></a>
                         <?php endif; ?>
                     </div>
                 </div>
@@ -42,8 +42,8 @@
                 <article class="news__item">
                     <div class="news__item-wrapper">
                         <figure class="news__item-figure">
-                            <?php if($news->getThumb()): ?>
-                            <img src="<?php echo  $this->thumbor()->url($news->getThumb())->resize(450, 350); ?>" alt="" class="news__item-img">
+                            <?php if($news->getMeta('_thumb')): ?>
+                            <img src="<?php echo  $this->thumbor()->url($news->getMeta('_thumb'))->resize(450, 350); ?>" alt="" class="news__item-img">
                             <?php endif; ?>
                         </figure>
                         <div class="news__item-content">
@@ -142,15 +142,15 @@
                     <?php foreach ($this->gallery as $img): ?>
                     <div class="gallery__item">
                         <div class="gallery__figure">
-                            <img src="<?php echo $this->thumbor()->url($img->getFile())->resize(952, 624); ?>" alt="">
-                            <?php if($img->getCredits()): ?>
-                                <span class="gallery__caption"><?php echo $img->getCredits(); ?></span>
+                            <img src="<?php echo $this->thumbor()->url($img->getMeta('_image'))->resize(952, 624); ?>" alt="">
+                            <?php if($img->getMeta('_credits')): ?>
+                                <span class="gallery__caption"><?php echo $img->getMeta('_credits'); ?></span>
                             <?php endif; ?>
                         </div>
                         <div class="gallery__desc">
                             <div class="gallery__desc-wrapper">
                                 <div class="gallery__desc-text">
-                                    <p class="gallery__desc-title"><?php echo $img->getDescription(); ?></p>
+                                    <p class="gallery__desc-title"><?php echo $img->getTitle(); ?></p>
                                 </div>
                             </div>
                         </div>
@@ -169,7 +169,7 @@
                 </header>
                 <?php $firstGuide = current($this->guides);?>
                 <div class="place__figure">
-                    <img class="place__image" src="<?php echo $this->thumbor()->url($firstGuide->getThumb())->resize(472, 280); ?>" alt="">
+                    <img class="place__image" src="<?php echo $this->thumbor()->url($firstGuide->getMeta('_thumb'))->resize(472, 280); ?>" alt="">
                 </div>
                 <div class="place__desc">
                     <div class="place__desc-wrapper">
@@ -185,7 +185,7 @@
                 <ul class="place__items">
                     <?php foreach ($this->guides as $guide): ?>
                     <li class="place__item <?php echo $firstGuide->getId()==$guide->getId() ? "place__item--active" : ""; ?>"
-                        data-image="<?php echo $this->thumbor()->url($guide->getThumb())->resize(472, 280); ?>"
+                        data-image="<?php echo $this->thumbor()->url($guide->getMeta('_thumb'))->resize(472, 280); ?>"
                         data-title="<?php echo $guide->getTitle(); ?>"
                         data-link="<?php echo $this->url('arquivoemcartaz/default', ['slug'=>$guide->getRelativeUrl()]); ?>"
                         data-desc=" <?php echo $this->truncate($guide->getContent(), 300); ?>"><a class="place__link" href=""><?php echo $guide->getTitle(); ?></a></li>

@@ -20,14 +20,12 @@ class IndexController extends AbstractController
 {
 	public function indexAction()
 	{
-		$banners = $this->getRepository(Banner::class)->findBy([
-			'site' => 2
-		], ['order'=>'ASC']);
-
-		/*$news = $this->getRepository(Post::class)->findBy([
-			'type' => PostType::NEWS,
-			'status' => PostStatus::PUBLISHED
-		], ['postDate'=>'DESC'], 3);*/
+		$banners = $this->getRepository(Post::class)->findBy(
+		    [
+			    'site' => 2,
+                'type' => PostType::BANNER,
+		    ],
+            ['order'=>'ASC']);
 
         $news = $this->getRepository(Post::class)->findNewsQb(2);
         $news->orderBy("n.postDate", "desc")->setMaxResults(3);
@@ -39,8 +37,9 @@ class IndexController extends AbstractController
             'site' => 2
 		], ['order'=>'ASC'], 4);
 
-		$gallery = $this->getRepository(Gallery::class)->findBy([
-			'site' => 2
+		$gallery = $this->getRepository(Post::class)->findBy([
+			'site' => 2,
+            'type' => PostType::GALLERY,
 		], ['order'=>'ASC'], 5);
 
 		$video = $this->getRepository(Tv::class)->findOneBy(['site' => 2], [

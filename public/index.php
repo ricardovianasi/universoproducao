@@ -5,8 +5,7 @@ date_default_timezone_set('America/Sao_Paulo');
 
 defined('APPLICATION_ENV') || define('APPLICATION_ENV', (getenv('APPLICATION_ENV') ? getenv('APPLICATION_ENV') : 'production'));
 $env = getenv('APPLICATION_ENV');
-ini_set("display_errors", 1);
-error_reporting(E_ALL);
+
 if ($env == 'development') {
     ini_set("display_errors", 1);
     error_reporting(E_ALL);
