@@ -6,6 +6,8 @@ use Application\Entity\Post\Post;
 use Application\Entity\Post\PostStatus;
 use Application\Entity\Post\PostType;
 use Application\Entity\Site\SiteMeta;
+use Zend\InputFilter\Input;
+use Zend\InputFilter\InputFilter;
 
 class PageForm extends PostForm
 {
@@ -31,13 +33,21 @@ class PageForm extends PostForm
 			]
 		]);
 
+//        $inputFilter = new InputFilter();
+//
+//        $metaTarget = new Input('meta['.PostMeta::TARGET_BLANK.']');
+//        $metaTarget->setRequired(false);
+//        $inputFilter->add($metaTarget);
+//
+//        $this->setInputFilter($inputFilter);
+
 		$this->getInputFilter()
 			->add([
 				'name' => 'parent',
 				'required'   => false
 			])
 			->add([
-				'name' => SiteMeta::CUSTOM_POST_ACTION,
+				'name' => 'meta['.SiteMeta::CUSTOM_POST_ACTION.']',
 				'required'   => false
 			]);
 	}
