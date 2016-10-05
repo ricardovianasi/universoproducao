@@ -559,7 +559,7 @@
                     $catIng = "Short Film Session";
                 }
                 //$url = "filme-detalhe.php?menu=programacao&item=filmes&cat=$cat&mostrinha=1&CodFilme=$rowProg->CodItemProg";
-                $url = $this->url('cienbh') . "programacao/filmes/".$rowProg->CodItemProg."?item=filmes&cat=$cat&mostrinha=1";
+                $url = $this->url('cienebh') . "programacao/filmes/".$rowProg->CodItemProg."?item=filmes&cat=$cat&mostrinha=1";
 
                 if ($lg=='Ing'){
                     switch($cat){
@@ -606,7 +606,7 @@
                 @$cat = utf8(mysql_result($resultCat,0,"TitCatArte"));
                 $categoria = $lg=='Ing' ? "ART" : "ARTE • ".$cat;
                 //$url = "arte-detalhe.php?menu=programacao&item=arte&CodArte=$rowProg->CodItemProg";
-                $url = $this->url('cienbh') . 'arte/'.$rowProg->CodItemProg.'?CodArte='.$rowProg->CodItemProg;
+                $url = $this->url('cinebh') . 'arte/'.$rowProg->CodItemProg.'?CodArte='.$rowProg->CodItemProg;
                 $preEstreia = "";
                 break;
             case 'AB': $categoria = "ABERTURA";

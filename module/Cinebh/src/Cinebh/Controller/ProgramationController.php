@@ -23,7 +23,7 @@ class ProgramationController extends SiteController
         ]);
     }
 
-    public function movieAction()
+    public function filmesAction()
     {
     }
 
