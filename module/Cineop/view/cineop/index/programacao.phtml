@@ -19,16 +19,16 @@
 
 <div class="main__wrapper">
 	<?php
-	$dbh=mysql_connect ("162.243.253.29", "ricardo", "ag51www");
-	//$dbh=mysql_connect ("127.0.0.1", "root", "");
-	if (!$dbh) {
-		echo "Não foi possível conectar ao banco de dados: " . mysql_error();
-		exit;
-	}
-	if (!mysql_select_db("universoproducao")) {
-		echo "Não foi possível selecionar universoproducao: " . mysql_error();
-		exit;
-	}
+    $dbh=mysql_connect ("universoprod2.mysql.dbaas.com.br", "universoprod2", "ag51www");
+    //$dbh=mysql_connect ("127.0.0.1", "root", "");
+    if (!$dbh) {
+        echo "Não foi possível conectar ao banco de dados: " . mysql_error();
+        exit;
+    }
+    if (!mysql_select_db("universoprod2")) {
+        echo "Não foi possível selecionar universoproducao: " . mysql_error();
+        exit;
+    }
 	function databr($valor)
 	{
 		$valor = substr($valor,8,2) . "/" . substr($valor,5,2) . "/" . substr($valor,0,4);
