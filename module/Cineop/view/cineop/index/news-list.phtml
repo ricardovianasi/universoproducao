@@ -25,9 +25,9 @@
 			<?php foreach($this->listNews as $n): ?>
 			<article class="news__item">
 				<a class="news__link" href="<?php echo $this->url('cineop'); ?>noticia/<?php echo $n->getSlug(); ?>">
-					<?php if(!empty($n->getThumb())): ?>
+					<?php if(!empty($n->getMeta('_thumb'))): ?>
 					<div class="news__item-thumb">
-						<img src="<?php echo  $this->thumbor()->url($n->getThumb())->resize(396, 396); ?>" alt="">
+						<img src="<?php echo  $this->thumbor()->url($n->getMeta('_thumb'))->resize(396, 396); ?>" alt="">
 					</div>
 					<?php endif; ?>
 					<header class="news__item-header">
