@@ -188,7 +188,7 @@
             $data2 = explode("/", $data);
             $dia = $data2[0];
             ?>
-            <a class="form__button" href="<?php echo $this->url('cineop')?>programacao?fd=<?php echo $Dado["Data"]?>"><?php echo $lg=='Ing' ? "" : "DIA"; ?> <?php echo $dia ?><?php echo $lg=='Ing' ? "TH" : ""; ?></a>
+            <a class="form__button" href="<?php echo $this->url('cinebh')?>programacao/programacao-completa?fd=<?php echo $Dado["Data"]?>"><?php echo $lg=='Ing' ? "" : "DIA"; ?> <?php echo $dia ?><?php echo $lg=='Ing' ? "TH" : ""; ?></a>
         <?php } ?>
 
     </div>
@@ -266,7 +266,7 @@
     <?php
     if (isset($_GET['fd']) || isset($_GET['fc']) || isset($_GET['fl'])  ) {
         ?>
-        <h4 style="font-size: 12px; margin: 7px 0;"><a href="<?php echo $this->url('cineop')?>programacao">&gt; <?php echo $lg=='Ing' ? "SHOW ENTIRE PROGRAM" : "EXIBIR TODA A PROGRAMAÇÃO"; ?></a></h4>
+        <h4 style="font-size: 12px; margin: 7px 0;"><a href="<?php echo $this->url('cinebh')?>programacao/programacao-completa">&gt; <?php echo $lg=='Ing' ? "SHOW ENTIRE PROGRAM" : "EXIBIR TODA A PROGRAMAÇÃO"; ?></a></h4>
     <?php } ?>
 
 
@@ -481,7 +481,7 @@
                     $catIng = "Short Film Session";
                 }
 
-                $url = $this->url('cineop') . "filmes/".$rowProg->CodItemProg."?item=filmes&cat=$cat&mostrinha=0";
+                $url = $this->url('cinebh') . "programacao/filmes/".$rowProg->CodItemProg."?item=filmes&cat=$cat&mostrinha=0";
 
                 if ($lg=='Ing'){
                     switch($cat){
@@ -527,7 +527,7 @@
                         $faixaEtaria1	= $r["FaixaEtaria1"];
                         $faixaEtaria2	= $r["FaixaEtaria2"];
                         //$url = "cine-escola-detalhe.php?menu=prog&sub=cinescol&cat=$categoria&CodFilme=$linhaSess->idFilme";
-                        $url = $this->url('cineop') . "filmes/".$linhaSess->idFilme."?menu=prog&sub=cinescol&cat=$categoria&CodFilme=".$linhaSess->idFilme;
+                        $url = $this->url('cinebh') . "programacao/filmes/".$linhaSess->idFilme."?menu=prog&sub=cinescol&cat=$categoria&CodFilme=".$linhaSess->idFilme;
                     }
                 }
 
@@ -559,7 +559,7 @@
                     $catIng = "Short Film Session";
                 }
                 //$url = "filme-detalhe.php?menu=programacao&item=filmes&cat=$cat&mostrinha=1&CodFilme=$rowProg->CodItemProg";
-                $url = $this->url('cineop') . "filmes/".$rowProg->CodItemProg."?item=filmes&cat=$cat&mostrinha=1";
+                $url = $this->url('cienbh') . "programacao/filmes/".$rowProg->CodItemProg."?item=filmes&cat=$cat&mostrinha=1";
 
                 if ($lg=='Ing'){
                     switch($cat){
@@ -596,7 +596,7 @@
                 }
 
                 //$url = "seminario-detalhe.php?menu=programacao&item=seminario&CodSem=$rowProg->CodItemProg";
-                $url = $this->url('cineop') . 'seminarios/'.$rowProg->CodItemProg.'?CodSem='.$rowProg->CodItemProg;
+                $url = $this->url('cinebh') . 'seminarios/'.$rowProg->CodItemProg.'?CodSem='.$rowProg->CodItemProg;
                 break;
             case 'AR': $SqlTit = "select TitArte, TitArteIng, CodCatArte from tb_arte where CodArte = $rowProg->CodItemProg";
                 $resultTit  = mysql_query($SqlTit);
@@ -606,7 +606,7 @@
                 @$cat = utf8(mysql_result($resultCat,0,"TitCatArte"));
                 $categoria = $lg=='Ing' ? "ART" : "ARTE • ".$cat;
                 //$url = "arte-detalhe.php?menu=programacao&item=arte&CodArte=$rowProg->CodItemProg";
-                $url = $this->url('cineop') . 'arte/'.$rowProg->CodItemProg.'?CodArte='.$rowProg->CodItemProg;
+                $url = $this->url('cienbh') . 'arte/'.$rowProg->CodItemProg.'?CodArte='.$rowProg->CodItemProg;
                 $preEstreia = "";
                 break;
             case 'AB': $categoria = "ABERTURA";
@@ -616,14 +616,14 @@
                 $resultTit  = mysql_query($SqlTit);
                 $titulo	= mysql_result($resultTit,0,"TitAbertura".$lg."");
                 $descricao	= mysql_result($resultTit,0,"DescAbertura".$lg."");
-                $url = $this->url('cineop') . 'abertura/';
+                $url = $this->url('cinebh') . 'abertura/';
                 break;
             case 'EX': $categoria = "EXPOSIÇÃO";
                 $categoria = $lg=='Ing' ? "EXPOSITION" : "EXPOSIÇÃO";
                 $SqlTit = "select TitExpo, TitExpoIng from tb_exposicao where CodExpo = $rowProg->CodItemProg";
                 $resultTit  = mysql_query($SqlTit);
                 $titulo	= mysql_result($resultTit,0,"TitExpo".$lg."");
-                $url = $this->url('cineop') . 'exposicao/';
+                $url = $this->url('cinebh') . 'exposicao/';
                 $preEstreia = "";
                 break;
             case 'EN': $categoria = "ENCERRAMENTO";
@@ -635,7 +635,7 @@
                 $titulo	= mysql_result($resultTit,0,"TitEnc".$lg."");
 
                 $descricao	= mysql_result($resultTit,0,"DescEnc".$lg."");
-                $url = $this->url('cineop') . 'encerramento/';
+                $url = $this->url('cinebh') . 'encerramento/';
                 $preEstreia = "";
                 break;
         }
@@ -697,7 +697,7 @@
                 </th>
                 <td valign="top">
                     <h5 >CREDENCIAMENTO </h5>
-                    <h6><a href='<?php echo $url = $this->url('cineop') . 'seminarios' ?>'><strong>ENCONTRO DE ARQUIVOS E ENCONTRO DA EDUCAÇÃO</strong></a></h6>
+                    <h6><a href='<?php echo $url = $this->url('cinebh') . 'seminarios' ?>'><strong>ENCONTRO DE ARQUIVOS E ENCONTRO DA EDUCAÇÃO</strong></a></h6>
                 </td>
             </tr>
             <tr style="">
@@ -707,7 +707,7 @@
                 </th>
                 <td valign="top">
                     <h5 >OFICINAS</h5>
-                    <h6><a href='<?php echo $this->url('cineop') . 'oficinas' ?>'><strong>Início das Oficinas</strong></a></h6>
+                    <h6><a href='<?php echo $this->url('cinebh') . 'oficinas' ?>'><strong>Início das Oficinas</strong></a></h6>
                 </td>
             </tr>
             <?php
