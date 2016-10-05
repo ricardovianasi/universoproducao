@@ -37,7 +37,7 @@ class PageForm extends PostForm
 				'required'   => false
 			])
 			->add([
-				'name' => 'meta_template',
+				'name' => SiteMeta::CUSTOM_POST_ACTION,
 				'required'   => false
 			]);
 	}
