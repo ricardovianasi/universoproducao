@@ -68,6 +68,20 @@ return array(
                         ),
                         'priority' => '99999'
                     ),
+                    'movie' => array(
+                        'type' => Segment::class,
+                        'options' => array(
+                            'route' => '/programacao/filme/:id',
+                            'constraints' => [
+                                'id' => '[a-zA-Z0-9_-]*',
+                            ],
+                            'defaults' => array(
+                                'controller' => Controller\ProgramationController::class,
+                                'action' => 'movie',
+                            ),
+                        ),
+                        'priority' => '99999'
+                    ),
                     'newsletter' => array(
                         'type' => Literal::class,
                         'options' => array(

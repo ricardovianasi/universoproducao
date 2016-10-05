@@ -25,6 +25,25 @@ class ProgramationController extends SiteController
 
     public function filmesAction()
     {
+        $post = $this->params('post');
+        return new ViewModel([
+            'post' => $post,
+            'breadcrumbs' => $post->getBreadcrumbs()
+        ]);
+    }
+
+    public function movieAction()
+    {
+        $filmeId = $this->params('id');
+
+        $breadcrumbs = [
+            ['programacao' => 'Programação'],
+            ['filmes' => 'Filmes']
+        ];
+        return new ViewModel([
+            'breadcrumbs' => $breadcrumbs,
+            'idMovie' => $filmeId
+        ]);
     }
 
     public function seminarioAction()
