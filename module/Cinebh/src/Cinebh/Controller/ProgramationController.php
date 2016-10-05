@@ -46,6 +46,29 @@ class ProgramationController extends SiteController
         ]);
     }
 
+    public function seminariosAction()
+    {
+        $post = $this->params('post');
+        return new ViewModel([
+            'post' => $post,
+            'breadcrumbs' => $post->getBreadcrumbs()
+        ]);
+    }
+
+    public function seminarAction()
+    {
+        $seminarId = $this->params('id');
+
+        $breadcrumbs = [
+            ['programacao' => 'Programação'],
+            ['filmes' => 'Seminários']
+        ];
+        return new ViewModel([
+            'breadcrumbs' => $breadcrumbs,
+            'seminarId' => $seminarId
+        ]);
+    }
+
     public function seminarioAction()
     {
     }

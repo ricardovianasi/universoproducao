@@ -82,6 +82,20 @@ return array(
                         ),
                         'priority' => '99999'
                     ),
+                    'seminar' => array(
+                        'type' => Segment::class,
+                        'options' => array(
+                            'route' => '/programacao/seminario/:id',
+                            'constraints' => [
+                                'id' => '[a-zA-Z0-9_-]*',
+                            ],
+                            'defaults' => array(
+                                'controller' => Controller\ProgramationController::class,
+                                'action' => 'seminar',
+                            ),
+                        ),
+                        'priority' => '99999'
+                    ),
                     'newsletter' => array(
                         'type' => Literal::class,
                         'options' => array(
