@@ -273,12 +273,12 @@
     <!-- LISTA DE FILMES -->
 
     <?php
-//    $sqlProg = "select PR.CodProgEvento, PR.CodItemProg, PR.CategoriaProg, PR.Local, PR.order, PR.Data, PR.HoraManhaInicial, PR.HoraManhaFinal,
-//        PR.HoraTardeInicial, PR.HoraTardeFinal, PR.HoraNoiteInicial, PR.HoraNoiteFinal, PR.status, PR.mostraClassificacao, PR.preNacional, PR.preMundial, PR.infoAdicional $fSub1
-//        from tb_programacaoevento PR $fSub2
-//        where PR.CodMostra = $mostra AND (PR.CategoriaProg <> 'OF' && PR.CategoriaProg <> 'CE') $filtroDia $filtroCat $filtroLoc $fSub3
-//        order by Data, HoraManhaInicial, HoraManhaFinal, HoraTardeInicial, HoraTardeFinal, PR.order asc, HoraNoiteInicial, HoraNoiteFinal, status";
-    if(isset($_GET["fc"]) && $_GET["fc"] == "SE" && empty($_GET['subMostra']))
+    $sqlProg = "select PR.CodProgEvento, PR.CodItemProg, PR.CategoriaProg, PR.Local, PR.order, PR.Data, PR.HoraManhaInicial, PR.HoraManhaFinal,
+        PR.HoraTardeInicial, PR.HoraTardeFinal, PR.HoraNoiteInicial, PR.HoraNoiteFinal, PR.status, PR.mostraClassificacao, PR.preNacional, PR.preMundial, PR.infoAdicional $fSub1
+        from tb_programacaoevento PR $fSub2
+        where PR.CodMostra = $mostra AND (PR.CategoriaProg <> 'OF' && PR.CategoriaProg <> 'CE') $filtroDia $filtroCat $filtroLoc $fSub3
+        order by Data, HoraManhaInicial, HoraManhaFinal, HoraTardeInicial, HoraTardeFinal, PR.order asc, HoraNoiteInicial, HoraNoiteFinal, status";
+    /*if(isset($_GET["fc"]) && $_GET["fc"] == "SE" && empty($_GET['subMostra']))
     {
         $sqlProg = "(select PR.CodItemProg, PR.CodProgEvento, PR.CategoriaProg, PR.Local, PR.Data, PR.HoraManhaInicial, PR.HoraManhaFinal, 
         PR.HoraTardeInicial, PR.HoraTardeFinal, PR.HoraNoiteInicial, PR.HoraNoiteFinal, PR.status, PR.mostraClassificacao, PR.preNacional, PR.preMundial, PR.infoAdicional 
@@ -301,7 +301,7 @@
         $filtroSub 
         where PR.CodMostra = $mostra AND PR.CategoriaProg <> 'OF' AND PR.CategoriaProg <> 'CE' AND PR.SessCurtas <> 999 $filtroDia $filtroCat $filtroLoc 
         order by Data, HoraManhaInicial, HoraManhaFinal, HoraTardeInicial, HoraTardeFinal, HoraNoiteInicial, HoraNoiteFinal, status";
-    }
+    }*/
 
 
     //echo "<p>SQL: ".$sqlProg."</p>";
