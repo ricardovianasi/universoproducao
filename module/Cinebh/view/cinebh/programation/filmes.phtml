@@ -142,21 +142,27 @@
         $nomeSubMostra = mb_convert_encoding($nomeSubMostra, "UTF-8", "ISO-8859-1");
     }
 
-    $sqlPesquisa  = "select distinct OB.codObra, OB.TituloObra, OB.TituloObraIng, OB.classeObra, OB.DirecaoObra ";
-    $sqlPesquisa .= "from tb_obras OB, tb_filmemostra FI ";
-
-    $sqlPesquisa .= "where ( FI.CodMostra = $mostra AND FI.Selecionado = 1 AND FI.CodFilme = OB.codObra ";
+    $sqlTipoFilmeSql1 = $sqlTipoFilmeSql2 = $sqlSubMostraSql1 = $sqlSubMostraSql2  = "";
     if($tipoFilme != "") {
-        $sqlPesquisa .= "AND OB.classeObra = $tipoFilme ";
+        $sqlTipoFilmeSql1 = " AND O.CategoriaConvidado = $tipoFilme ";
+        $sqlTipoFilmeSql2 = " AND O.classeObra = $tipoFilme ";
     }
-
     if($codSubMostra != "") {
-        $sqlPesquisa .= " AND FI.SubMostra=" . $codSubMostra;
+        $sqlSubMostraSql1 .= " AND O.SubMostra = ".$codSubMostra;
+        $sqlSubMostraSql2 .= " AND FI.SubMostra = ".$codSubMostra;
     }
 
-//    $sqlPesquisa .= " AND OB.codObra <> 15745 ) ";
-//
-//    $sqlPesquisa .= "|| ( OB.EdicaoMostra = 1068 AND OB.FilmeConvidado = 1 AND OB.codObra <> 15745 ";
+    $sql1 = "select 1 as Rank, O.codObra, O.TituloObra, O.TituloObraIng, O.classeObra, O.DirecaoObra 
+      from tb_obras O 
+      where O.EdicaoMostra = 1073 AND O.FilmeConvidado = 1 AND O.ProgramacaoOficial = 1 $sqlTipoFilmeSql1 $sqlSubMostraSql1";
+
+    $sql12 = "select 2 as RANK,  O.codObra, O.TituloObra, O.TituloObraIng, O.classeObra, O.DirecaoObra 
+      from tb_obras O inner join tb_filmemostra FI ON FI.CodFilme = O.codObra 
+      where FI.CodMostra = 1073 AND FI.Selecionado = 1 $sqlTipoFilmeSql2 $sqlSubMostraSql2";
+
+    $sqlPesquisa = "select * from ($sql1 UNION ALL $sql12) a ORDER BY TituloObra";
+
+
     if($tipoFilme != "") {
 
         $tiposFilme = array(
@@ -165,16 +171,7 @@
             '3' => 'Curta'
         );
 
-//        $sqlPesquisa .= "AND OB.CategoriaConvidado='" . $tiposFilme[$tipoFilme] . "' ";
     }
-
-    /*if($codSubMostra != "") {
-        $sqlPesquisa .= " AND OB.SubMostra=" . $codSubMostra;
-    }*/
-    $sqlPesquisa .= " ) ";
-
-    $sqlPesquisa .= " ORDER BY OB.TituloObra ";
-
 
     ?>
 
