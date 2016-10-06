@@ -168,9 +168,9 @@
 //        $sqlPesquisa .= "AND OB.CategoriaConvidado='" . $tiposFilme[$tipoFilme] . "' ";
     }
 
-    if($codSubMostra != "") {
+    /*if($codSubMostra != "") {
         $sqlPesquisa .= " AND OB.SubMostra=" . $codSubMostra;
-    }
+    }*/
     $sqlPesquisa .= " ) ";
 
     $sqlPesquisa .= " ORDER BY OB.TituloObra ";
