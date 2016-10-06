@@ -154,9 +154,9 @@
         $sqlPesquisa .= " AND FI.SubMostra=" . $codSubMostra;
     }
 
-    $sqlPesquisa .= " AND OB.codObra <> 15745 ) ";
-
-    $sqlPesquisa .= "|| ( OB.EdicaoMostra = 1068 AND OB.FilmeConvidado = 1 AND OB.codObra <> 15745 ";
+//    $sqlPesquisa .= " AND OB.codObra <> 15745 ) ";
+//
+//    $sqlPesquisa .= "|| ( OB.EdicaoMostra = 1068 AND OB.FilmeConvidado = 1 AND OB.codObra <> 15745 ";
     if($tipoFilme != "") {
 
         $tiposFilme = array(
@@ -165,7 +165,7 @@
             '3' => 'Curta'
         );
 
-        $sqlPesquisa .= "AND OB.CategoriaConvidado='" . $tiposFilme[$tipoFilme] . "' ";
+//        $sqlPesquisa .= "AND OB.CategoriaConvidado='" . $tiposFilme[$tipoFilme] . "' ";
     }
 
     if($codSubMostra != "") {
@@ -248,7 +248,7 @@
     <?php
 
 
-    #echo "<!-- SQL: ".$sqlPesquisa." -->";
+    echo "<!-- SQL: ".$sqlPesquisa." -->";
     mysql_query("SET SQL_BIG_SELECTS=1"); # AMÉM
     $result = mysql_query($sqlPesquisa);
     ?>
