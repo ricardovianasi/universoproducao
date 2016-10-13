@@ -3,16 +3,28 @@ namespace Admin\Controller;
 
 
 use Admin\Form\Event\EventForm;
+use Admin\Form\Event\EventSearchForm;
 use Application\Entity\Event\Event;
 
 class EventController extends AbstractAdminController implements CrudInterface
 {
 	public function indexAction()
 	{
-		$events = $this->search(Event::class, []);
+        $searchForm = new EventSearchForm();
+        $dataAttr = $this->params()->fromQuery();
+        $searchForm->setData($dataAttr);
+
+        if(!$searchForm->isValid()) {
+            $teste = $searchForm->getMessages();
+        }
+
+        $data = $searchForm->getData();
+
+		$events = $this->search(Event::class, $data);
 
 		$this->getViewModel()->setVariables([
-			'events' => $events
+			'events' => $events,
+            'searchForm' => $searchForm,
 		]);
 
 		return $this->getViewModel();
