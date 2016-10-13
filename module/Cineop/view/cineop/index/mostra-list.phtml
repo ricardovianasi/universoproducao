@@ -24,7 +24,7 @@
 		<div class="news__list">
 			<?php foreach($this->edicoes as $ed): ?>
 			<article class="news__item" style="display: block; width: 100%;">
-				<a class="news__link" href="<?php echo $this->url('cineop')?>edicoes-anteriores/<?php echo $ed->getEdition(); ?>">
+				<a class="news__link" href="<?php echo $this->url('cineop')?>edicoes-anteriores/<?php echo $ed->getId(); ?>">
 					<header class="news__item-header">
 						<h1 class="news__item-title"><?php echo $ed->getFullname(); ?></h1>
 						<time class="news__item-date"><?php echo $ed->getStartDate()->format('d/m/Y'); ?> a <?php echo $ed->getEndDate()->format('d/m/Y'); ?></time>

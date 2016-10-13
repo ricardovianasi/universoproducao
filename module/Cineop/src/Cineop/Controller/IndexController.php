@@ -82,7 +82,7 @@ class IndexController extends AbstractController
 		$viewModel = new ViewModel();
 
 		$slug = $this->params()->fromRoute('slug');
-		$slug = rtrim($slug, '/');
+		$slug = trim($slug, '/');
 		$slug = explode('/', $slug);
 
 		$post = $this->getRepository(Post::class)->findOneBy([
@@ -342,16 +342,16 @@ class IndexController extends AbstractController
 		} elseif($slug[0] == 'edicoes-anteriores' && is_numeric(end($slug))) {
 			//$viewModel->setTemplate('cineop/index/filmedetalhe.phtml');
 			$mostra = $this->getRepository(Event::class)->findOneBy([
-				'edition' => end($slug)
+				'id' => end($slug),
+                'type' => 'cineop'
 			]);
-
 			$post = new Post();
 			$post->setTitle($mostra->getFullName());
 			$post->setContent($mostra->getDescription());
 		} elseif(end($slug) == 'edicoes-anteriores') {
 			$mostras = $this->getRepository(Event::class)->findBy([
 				'type' => 'cineop'
-			]);
+			], ['edition'=>'DESC']);
 			$viewModel->setTemplate('cineop/index/mostra-list.phtml');
 			$viewModel->edicoes = $mostras;
 		} elseif((end($slug) == 'tv-mostra') || ($slug['0'] == 'tv-mostra' && !empty(end($slug)))) {
