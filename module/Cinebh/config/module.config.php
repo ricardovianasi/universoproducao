@@ -129,6 +129,20 @@ return array(
                         ),
                         'priority' => '99999'
                     ),
+                    'edition' => array(
+                        'type' => Segment::class,
+                        'options' => array(
+                            'route' => '/a-mostra/edicoes-anteriores/:id',
+                            'constraints' => [
+                                'id' => '[a-zA-Z0-9_-]*',
+                            ],
+                            'defaults' => array(
+                                'controller' => Controller\PreviousEditionsController::class,
+                                'action' => 'edition',
+                            ),
+                        ),
+                        'priority' => '99999'
+                    ),
                 ),
             ),
         ),

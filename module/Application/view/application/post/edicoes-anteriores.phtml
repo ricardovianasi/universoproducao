@@ -1,0 +1,24 @@
+<section>
+    <header class="main__header">
+        <h1 class="main__title"><?php echo $post->getTitle(); ?></h1>
+        <?php if($post->getCover()): ?>
+            <figure class="main__cover">
+                <img src="<?php echo $post->getCover() ?>" alt="">
+            </figure>
+        <?php endif; ?>
+    </header>
+    <div class="main__wrapper">
+        <article class="main__article">
+            <div class="news__list">
+                <?php foreach ($this->events as $event): ?>
+                    <article class="news__item">
+                        <header class="news__header">
+                            <h1 class="news__title"><?php echo $event->getFullName(); ?></h1>
+                        </header>
+                        <a href="#" class="news__link readmore-2">Leia mais</a>
+                    </article>
+                <?php endforeach; ?>
+            </div>
+        </article>
+    </div>
+</section>

@@ -9,5 +9,6 @@ return [
         Controller\NewsController::class            => InvokableFactory::class,
         Controller\PostController::class            => InvokableFactory::class,
         Controller\ProgramationController::class    => InvokableFactory::class,
+        Controller\PreviousEditionsController::class    => InvokableFactory::class,
     ]
 ];

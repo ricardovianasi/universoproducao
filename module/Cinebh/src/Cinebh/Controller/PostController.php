@@ -2,6 +2,7 @@
 namespace Cinebh\Controller;
 
 use Application\Controller\SiteController;
+use Application\Entity\Event\Event;
 use Application\Entity\Post\Post;
 use Application\Entity\Post\PostStatus;
 use Application\Entity\Site\SiteMeta;
@@ -307,6 +308,22 @@ class PostController extends SiteController
 
         $viewModel->post = $post;
         $viewModel->breadcrumbs = $post->getBreadcrumbs();
+
+        return $viewModel;
+    }
+
+    public function edicoesAnterioresAction()
+    {
+        $viewModel = new ViewModel();
+        $post = $this->params('post');
+
+        $events = $this->getRepository(Event::class)->findBy([
+            'type' => 'cinebh'
+        ], ['edition' => 'DESC']);
+
+        $viewModel->post = $post;
+        $viewModel->breadcrumbs = $post->getBreadcrumbs();
+        $viewModel->events = $events;
 
         return $viewModel;
     }
