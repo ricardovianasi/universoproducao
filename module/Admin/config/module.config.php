@@ -221,6 +221,12 @@ return array(
             'adminGallery'				=> 'Admin\View\Helper\AdminGallery'
         ),
         'factories' => [
+            'adminTranslate' => function($helpers) {
+                $services = $helpers->getServiceLocator();
+                $app = $services->get('Application');
+                $em = $services->get('Doctrine\ORM\EntityManager');
+                return new View\Helper\AdminTranslate($app->getRequest(), $app->getMvcEvent(), $em);
+            }
         ]
     ),
 

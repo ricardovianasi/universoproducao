@@ -6,6 +6,7 @@ use Application\Entity\Post\Post;
 use Application\Entity\Post\PostMeta;
 use Application\Entity\Post\PostSite;
 use Application\Entity\Post\PostType;
+use Application\Entity\Site\Language;
 use Application\Entity\User\Profile;
 use Application\Entity\Tag;
 use Application\Entity\City;
@@ -419,6 +420,11 @@ abstract class AbstractAdminController extends AbstractController
 				$data['parent'] = null;
 			}
 		}
+
+		if(!empty($data['language'])) {
+		    $language = $this->getRepository(Language::class)->find($data['language']);
+		    $data['language'] = $language;
+        }
 
 		return $data;
 	}

@@ -17,13 +17,14 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class PostMeta extends AbstractEntity
 {
-    const THUMB         = '_thumb';
-    const COVER         = '_cover';
-    const SITES         = '_sites';
-    const IMAGE         = '_image';
-    const CREDITS       = '_credits';
-    const LINK          = '_link';
-    const TARGET_BLANK  = '_target_blank';
+    const THUMB             = '_thumb';
+    const COVER             = '_cover';
+    const SITES             = '_sites';
+    const IMAGE             = '_image';
+    const CREDITS           = '_credits';
+    const LINK              = '_link';
+    const TARGET_BLANK      = '_target_blank';
+    const TRANSLATE_FROM    = '_translate_from';
 
 	/**
 	 * @ORM\Id @ORM\Column(name="id", type="integer", nullable=false)

@@ -822,6 +822,16 @@
         width: 100%
       &--full
         width: 100%
+      &--1
+        +grid(1, 6, $gutter:0)
+      &--2
+        +grid(2, 6, $gutter:0)
+      &--3
+        +grid(3, 6, $gutter:0)
+      &--4
+        +grid(4, 6, $gutter:0)
+      &--5
+        +grid(5, 6, $gutter:0)
     &__title
       +adjust-font-size-to(18px, 1.5)
       font-family: 'Fjalla One', sans-serif
@@ -830,12 +840,20 @@
       border-bottom: 1px solid $color-palette-7
     &__subtitle
       +adjust-font-size-to(12px, 1)
+      +leader(.5)
       font-weight: 700
       font-family: Arial
     &__item
       display: inline-block
-      margin-right: 15%
+      margin-left: 25px
+      margin-right: 25px
       box-sizing: border-box
+      vertical-align: middle
+      +trailer(.5)
+      &:first-child
+        margin-left: 0px
+      &:last-child
+        margin-right: 0px
       span
         font-size: 48px
         color: #000
@@ -847,4 +865,3 @@
         font-size: 100px
       &:last-child
         margin-right: 0
-

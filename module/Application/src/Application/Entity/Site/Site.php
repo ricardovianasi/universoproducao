@@ -48,6 +48,15 @@ class Site extends AbstractEntity
 	/** @ORM\OneToMany(targetEntity="SiteMeta", mappedBy="site", cascade={"ALL"}) */
 	public $meta;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="Application\Entity\Site\Language")
+     * @ORM\JoinTable(name="site_has_languages",
+     *   joinColumns={@ORM\JoinColumn(name="site_id", referencedColumnName="id")},
+     *   inverseJoinColumns={@ORM\JoinColumn(name="language_id", referencedColumnName="id")}
+     * )
+     */
+	public $languages;
+
 	/**
 	 * @ORM\Column(name="updated_at", type="datetime", nullable=true)
 	 */
@@ -61,6 +70,7 @@ class Site extends AbstractEntity
 	public function __construct()
 	{
 		$this->meta = new ArrayCollection();
+		$this->languages = new ArrayCollection();
 	}
 
 	/**
@@ -217,4 +227,25 @@ class Site extends AbstractEntity
 
 		return $this;
 	}
+
+    /**
+     * @return mixed
+     */
+    public function getLanguages()
+    {
+        return $this->languages;
+    }
+
+    /**
+     * @param mixed $languages
+     */
+    public function setLanguages($languages)
+    {
+        $this->languages = $languages;
+    }
+
+	public function hasLanguages()
+    {
+        return $this->languages->count();
+    }
 }

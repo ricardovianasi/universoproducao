@@ -1,4 +1,3 @@
-
 <div class="portlet light bordered grey-cararra post-sidebar">
 	<div class="portlet-title">
 		<div class="caption"><i class="fa fa-cogs"></i>Configurações</div>
@@ -23,6 +22,8 @@
 		</div>
 	</div>
 </div>
+
+<?php echo $this->adminTranslate($this->site, $this->post, $this->route); ?>
 
 <?php if($this->thumb): ?>
 	<?php echo $this->partial('admin/partials/_post-thumb.phtml'); ?>

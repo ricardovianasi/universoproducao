@@ -72,6 +72,12 @@ class Post extends AbstractEntity
 	/** @ORM\Column(name="`order`", type="integer", nullable=false) */
 	private $order;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Application\Entity\Site\Language")
+     * @ORM\JoinColumn(name="language_code", referencedColumnName="id")
+     */
+	private $language;
+
 	/** @ORM\Column(name="created_at", type="datetime", nullable=true) */
 	private $createdAt;
 
@@ -391,5 +397,21 @@ class Post extends AbstractEntity
         }
 
         return false;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLanguage()
+    {
+        return $this->language;
+    }
+
+    /**
+     * @param mixed $language
+     */
+    public function setLanguage($language)
+    {
+        $this->language = $language;
     }
 }

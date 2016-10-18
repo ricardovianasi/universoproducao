@@ -47,6 +47,10 @@
 
 					<?php echo $this->partial('admin/partials/_post-sidebar.phtml', [
 						'returnUrl' => $this->url('admin/page', array('site'=>$this->site)),
+                        'createUrl' => $this->url('admin/page', array('action'=>'create', 'site'=>$this->site)),
+                        'updateUrl' => $this->url('admin/page', array('action'=>'update', 'site'=>$this->site, 'id'=>$this->page->getId())),
+                        'route'=>'admin/page',
+                        'route_options' => array('site'=>$this->site),
 						'site' => $this->site,
 						'form' => $this->form,
 						'post' => $this->page
