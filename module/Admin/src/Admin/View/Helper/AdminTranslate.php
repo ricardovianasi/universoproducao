@@ -81,10 +81,10 @@ class AdminTranslate extends AbstractHelper
                     <input type='hidden' name='meta[_translate_from]' value='" . $translateFrom->getId() . "'>
                 </div>";
             }
+        } else {
+            $body.="<hr /><h4>Traduções</h4>";
+            $body.= $this->renderTranslateOptions($site->getLanguages(), $translateLang);
         }
-
-        $body.="<hr /><h4>Traduções</h4>";
-        $body.= $this->renderTranslateOptions($site->getLanguages(), $translateLang);
 
         return '<div class="portlet light bordered grey-cararra post-sidebar post-sidebar-translate">
                     <div class="portlet-title">

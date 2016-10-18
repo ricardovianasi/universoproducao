@@ -37,7 +37,7 @@ class PageController extends AbstractAdminController
 		$pages = $this->search(Post::class, $search);
 
 		$this->getViewModel()->setVariables([
-
+            'searchForm' => $searchForm,
 			'pages' => $pages,
 			'site' => $this->getSiteIdFromUri()
 		]);
