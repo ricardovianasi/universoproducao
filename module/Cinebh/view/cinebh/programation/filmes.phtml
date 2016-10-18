@@ -144,7 +144,18 @@
 
     $sqlTipoFilmeSql1 = $sqlTipoFilmeSql2 = $sqlSubMostraSql1 = $sqlSubMostraSql2  = "";
     if($tipoFilme != "") {
-        $sqlTipoFilmeSql1 = " AND O.CategoriaConvidado = $tipoFilme ";
+        switch ($tipoFilme) {
+            case 1:
+                $tipoFilmeName = 'Longa';
+                break;
+            case 2:
+                $tipoFilmeName = 'Media';
+                break;
+            case 3:
+                $tipoFilmeName = 'Curta';
+                break;
+        }
+        $sqlTipoFilmeSql1 = " AND O.CategoriaConvidado = '$tipoFilmeName' ";
         $sqlTipoFilmeSql2 = " AND O.classeObra = $tipoFilme ";
     }
     if($codSubMostra != "") {
@@ -161,6 +172,7 @@
       where FI.CodMostra = 1073 AND FI.Selecionado = 1 $sqlTipoFilmeSql2 $sqlSubMostraSql2";
 
     $sqlPesquisa = "select * from ($sql1 UNION ALL $sql12) a ORDER BY TituloObra";
+//    echo $sqlPesquisa;
 
 
     if($tipoFilme != "") {
