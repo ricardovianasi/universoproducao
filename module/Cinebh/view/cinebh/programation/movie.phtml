@@ -235,30 +235,16 @@ if ($Cor == "0") {
         <h1 class="main__title"><?php echo $TituloFilme; ?></h1>
     </header>
     <div class="filmedetalhe">
-
-        <!--<div class="main__bg">-->
-        <!--	<figure>-->
-        <!--		<img class="main__bg-img" src="images/main-bg.jpg" alt="">-->
-        <!--		<figcaption>Apresentação Sons & Imagens com a Associação Francesa Double Cadence</figcaption>-->
-        <!--	</figure>-->
-        <!--</div>-->
-        <!--<h1><?php /*echo $TituloFilme*/?><br />-->
-        <span class="subItemLista">
-    <span style="font-size: 14px;">Direção: <?php echo $Direcao?></span><br />
-            <?php echo $Genero1?><?php echo $Cor?><?php echo $Formato?><?php echo $Duracao?><?php echo $AnoProducao?><?php echo $UfProducao?><?php echo $PaisProducao?><br /><br />
-
-            <?php
+        <p class=""><strong>Direção: <?php echo $Direcao?></strong></p>
+        <p style="font-size: 16px"><?php echo $Genero1?><?php echo $Cor?><?php echo $Formato?><?php echo $Duracao?><?php echo $AnoProducao?><?php echo $UfProducao?><?php echo $PaisProducao?></p>
+        <?php
             $Faixa1 = $faixaEtaria1;
             $Faixa2 = $faixaEtaria2;
-
-
             if ($ClassificacaoObra == "livre") {
                 $Class = $ClassificacaoObra;
             } else {
                 $Class = $ClassificacaoObra." anos";
             }
-
-
             if (($Faixa1 == 0) && ($Faixa2 == 0)) {
                 $FaixaEtaria = $Class;
             } else if (($Faixa1 == 0) && ($Faixa2 != 0)) {
@@ -268,35 +254,30 @@ if ($Cor == "0") {
             } else if (($Faixa1 != 0) && ($Faixa2 != 0)) {
                 $FaixaEtaria = "".$Faixa1." a ".$Faixa2." anos.";
             }
-            ?>
-            Faixa etária sugerida: <?php echo $FaixaEtaria?>
-    </span>
-        </h1>
+        ?>
+        <p style="font-size: 16px">Faixa etária sugerida: <?php echo $FaixaEtaria?></p>
         <?php
-        if ($Foto != "") { ?>
-
-            <div class="fotoFilme">
-                <div class="imgFoto">
-                    <img src="<?php echo $caminhoFoto1?>" width="625" alt="<?php echo $TituloFilme?>" border="0" />
-                </div>
-                <?php if ($CreditoFoto != "") { ?>
-                    <div class="creditoFoto"><?php echo $CreditoFoto?></div>
-                <?php } ?>
-            </div>
-
-        <?php } ?>
+        if ($Foto != ""): ?>
+            <figure>
+                <img src="<?php echo $caminhoFoto1?>" width="625" alt="<?php echo $TituloFilme?>" border="0" />
+                <?php if ($CreditoFoto != ""): ?>
+                    <figcaption>Foto: <?php echo $CreditoFoto?></figcaption>
+                <?php endif; ?>
+            </figure>
+        <?php endif; ?>
 
         <div class="sinopse">
+            <p><h2><strong>Sinopse:</strong></h2></p>
 
-            <h2><strong>Sinopse</strong></h2>
+            <p><?php echo $Sinopse?></p>
 
-            <?php echo $Sinopse?>
+            <?php if($elencoObra): ?>
+                <p>Elenco: <?php echo utf8_decode($elencoObra)  ?></p>
+            <?php endif; ?>
 
-            <p>
-                <?php echo $elencoObra != "" ? "ELENCO: $elencoObra <br /><br />" : ""; ?>
-                <?php echo $empresaProdutoraObra != "" ? "EMPRESA PRODUTORA: $empresaProdutoraObra" : ""; ?>
-            </p>
-
+            <?php if($empresaProdutoraObra): ?>
+                <p>Empresa Produtora: <?php echo $empresaProdutoraObra?></p>
+            <?php endif; ?>
         </div>
         <?php
 
@@ -330,7 +311,7 @@ if ($Cor == "0") {
                     }
                 }
                 ?>
-                <h5>EXIBIÇÃO</h5>
+                <p><h2><strong>EXIBIÇÃO</strong></h2></p>
                 <p>
                     <?php echo $dataFinal?> | <?php echo $diaSemana?> • <?php echo $hora?><br />
                     <?php echo $local?>
