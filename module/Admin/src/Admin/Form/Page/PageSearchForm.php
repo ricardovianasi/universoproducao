@@ -44,5 +44,11 @@ class PageSearchForm extends Form
 		$author = new Text('author');
 		$author->setAttribute('class', 'input-sm');
 		$this->add($author);
+
+		$language = new Select('language');
+        $language->setEmptyOption('Todos');
+        $language->setAttribute('class', 'input-sm');
+        $this->add($language);
+
 	}
 }

@@ -24,6 +24,12 @@ class Menu extends AbstractEntity
 	 */
 	private $site;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Application\Entity\Site\Language")
+     * @ORM\JoinColumn(name="language_id", referencedColumnName="id")
+     */
+    private $language;
+
 	/**
 	 * @ORM\OneToMany(targetEntity="Item", mappedBy="menu", cascade={"persist"}, fetch="EAGER")
 	 */
@@ -91,4 +97,20 @@ class Menu extends AbstractEntity
 
 		return $this;
 	}
+
+    /**
+     * @return mixed
+     */
+    public function getLanguage()
+    {
+        return $this->language;
+    }
+
+    /**
+     * @param mixed $language
+     */
+    public function setLanguage($language)
+    {
+        $this->language = $language;
+    }
 }

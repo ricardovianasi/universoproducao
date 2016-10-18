@@ -55,7 +55,7 @@ class AdminTranslate extends AbstractHelper
         $translateLang = $this->fromQuery('lang');
         if(!$translateLang && $post->getLanguage()) {
             $translateLang = $post->getLanguage()->getId();
-        } else {
+        } elseif(!$translateLang) {
             $translateLang = 'pt';
         }
 
@@ -75,9 +75,17 @@ class AdminTranslate extends AbstractHelper
         if($this->translateFromPostId) {
             $translateFrom = $this->getEntityManager()->getRepository(Post::class)->find($this->translateFromPostId);
             if ($translateFrom) {
+
+                $urlTranslateFromPost = $this->view->url($this->routeName, ['action'=>'update', 'site'=>$this->siteId, 'id'=>$this->translateFromPostId]);
+
                 $body .= "<div class='form-group'>
                     <label>Esta é uma tradução de</label>
-                    <input type='text' name='translate-for' readonly='readonly' class='form-control' value='" . $translateFrom->getTitle() . "'>
+                    <div class='input-group'> 
+                        <input type='text' name='translate-for' readonly='readonly' class='form-control' value='" . $translateFrom->getTitle() . "'>
+                        <span class='input-group-btn'><a target='_blank' href='$urlTranslateFromPost' class='btn blue btn-default'>
+                            <span class='fa fa-fa fa-search'></span>
+                        </a></span>
+                    </div>
                     <input type='hidden' name='meta[_translate_from]' value='" . $translateFrom->getId() . "'>
                 </div>";
             }
@@ -122,8 +130,8 @@ class AdminTranslate extends AbstractHelper
                 continue;
             }
 
-            if($this->hasTranslatedPost($lang->getId())) {
-                $actionUrl = $this->view->url($this->routeName, ['action'=>'update', 'site'=>$this->siteId, 'id'=>$this->translateFromPostId]);
+            if($translatedPostId = $this->hasTranslatedPost($lang->getId())) {
+                $actionUrl = $this->view->url($this->routeName, ['action'=>'update', 'site'=>$this->siteId, 'id'=>$translatedPostId->getId()]);
                 $classIcon = "fa fa-pencil";
             } else {
                 $queryParans = [
@@ -185,19 +193,17 @@ class AdminTranslate extends AbstractHelper
     protected function hasTranslatedPost($lang)
     {
         $qb = $this->getEntityManager()->getRepository(Post::class)->createQueryBuilder('q');
-        $qb->select('COUNT(q.id)')
-            ->leftJoin('q.meta', 'm')
+        $qb->leftJoin('q.meta', 'm')
             ->andWhere('q.site = :idSite')
             ->andWhere('q.language = :lang')
-            ->andWhere('((m.key = :metaKey and m.value = :metaValue) OR q.id = :id)')
+            ->andWhere('m.key = :metaKey and m.value = :metaValue')
             ->setParameters([
                 'idSite' => $this->siteId,
-                'id' => $this->translateFromPostId,
                 'lang' => $lang,
                 'metaKey' => PostMeta::TRANSLATE_FROM,
-                'metaValue' => $this->translateFromPostId
+                'metaValue' => $this->postId
             ]);
 
-        return $qb->getQuery()->getSingleScalarResult();
+        return $qb->getQuery()->getOneOrNullResult();
     }
 }
