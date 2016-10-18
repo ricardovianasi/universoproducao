@@ -145,18 +145,15 @@
             $Descricao	= utf8($row->$DescAr);
 
             $ImgArte = $row->ImgArte;
-            $caminhoFoto = "../../admin/mostra_tiradentes/imagens/artes/".$ImgArte;
+            $caminhoFoto = "http://www.universoproducao.com.br/admin/mostra_tiradentes/imagens/artes/".$ImgArte;
 
             ?>
-            <h2><strong><?php echo $TitArte?></strong></h2>
+            <p><h2><strong><?php echo $TitArte?></strong></h2></p>
 
             <?php if ($ImgArte != "") { ?>
-                <div class="fotoRight">
-                    <div class="imgFoto">
-                        <img src="show_image_full.php?filename=<?php echo $caminhoFoto?>&width=200&height=200" alt="<?php echo utf8($NomeOp)?>" border="0" />
-
-                    </div>
-                </div>
+               <figure>
+                   <img src="<?php echo $caminhoFoto ?>" alt="">
+               </figure>
             <?php } ?>
 
             <?php echo $Descricao?>
