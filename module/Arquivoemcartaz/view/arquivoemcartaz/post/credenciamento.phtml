@@ -1,6 +1,6 @@
-<?php if($post->getCover()): ?>
+<?php if($post->hasMeta('_cover')): ?>
     <div class="site__cover">
-        <img src="<?php echo $post->getCover() ?>" alt="">
+        <img src="<?php echo $post->getMeta('_cover') ?>" alt="">
     </div>
 <?php endif; ?>
 

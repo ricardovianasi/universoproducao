@@ -1,7 +1,7 @@
-<?php if($post->getCover()): ?>
-<div class="site__cover">
-    <img src="<?php echo $post->getCover() ?>" alt="">
-</div>
+<?php if($post->hasMeta('_cover')): ?>
+    <div class="site__cover">
+        <img src="<?php echo $post->getMeta('_cover') ?>" alt="">
+    </div>
 <?php endif; ?>
 
 <?php if($this->breadcrumbs): ?>
