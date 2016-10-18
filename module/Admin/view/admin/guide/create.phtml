@@ -41,7 +41,9 @@
 
 					<?php echo $this->partial('admin/partials/_post-sidebar.phtml', [
 						'returnUrl' => $this->url('admin/guide', array('site'=>$this->site)),
-						'site' => $this->thumb,
+                        'route'=>'admin/guide',
+                        'route_options' => array('site'=>$this->site),
+						'site' => $this->site,
 						'form' => $this->form,
 						'post' => $this->guide,
 						'thumb' => true
