@@ -188,7 +188,7 @@
     ?>
 
     <form class="form-filtro" action="" method="post">
-        <select class="form__input" class="form__input" name="tipoFilme" id="tipoFilme" style="width: 40%">
+        <select class="form__input" class="form__input" name="tipoFilme" id="tipoFilme">
             <?php
             if ($lg == 'Ing') {
                 ?>
@@ -215,7 +215,7 @@
         $resultSubMostra = mysql_query($sqlSubMostra);
         ?>
 
-        <select class="form__input"  name="subMostra" id="subMostra" style="width: 40%">
+        <select class="form__input"  name="subMostra" id="subMostra" >
             <?php
             if ($lg == 'Ing') {
                 ?>
@@ -248,7 +248,7 @@
             }
             ?>
         </select>
-        <button type="submit" class="form__button" style="width: 15%" class="form__button">Filtrar</button>
+        <button type="submit" class="form__button" class="form__button">Filtrar</button>
     </form>
 
     <br />
