@@ -32,6 +32,15 @@ class ProgramationController extends SiteController
         ]);
     }
 
+    public function artesAction()
+    {
+        $post = $this->params('post');
+        return new ViewModel([
+            'post' => $post,
+            'breadcrumbs' => $post->getBreadcrumbs()
+        ]);
+    }
+
     public function movieAction()
     {
         $filmeId = $this->params('id');
