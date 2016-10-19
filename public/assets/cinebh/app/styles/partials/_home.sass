@@ -816,37 +816,42 @@
       display: inline-block
       width: 100%
     &__block
-      +grid(1, 3, $gutter:0)
+      float: left
       +trailer(2)
+      box-sizing: border-box
+      padding-right: 20px
+      padding-left: 20px
       +media("<=570px")
         width: 100%
       &--full
         width: 100%
+        padding-left: 0
+        padding-right: 0
       &--1
-        +grid(1, 6, $gutter:0)
+        width: 20%
       &--2
-        +grid(2, 6, $gutter:0)
-      &--3
-        +grid(3, 6, $gutter:0)
+        width: 30%
       &--4
-        +grid(4, 6, $gutter:0)
+        width: 70%
       &--5
-        +grid(5, 6, $gutter:0)
+        width: 80%
     &__title
-      +adjust-font-size-to(18px, 1.5)
+      +adjust-font-size-to(16px, 1.5)
       font-family: 'Fjalla One', sans-serif
       text-transform: uppercase
-      color: $color-palette-7
-      border-bottom: 1px solid $color-palette-7
+      color: #000
+      border-bottom: 1px solid #000
     &__subtitle
       +adjust-font-size-to(12px, 1)
       +leader(.5)
       font-weight: 700
+      border-top: 1px solid #000
+      color: #000
       font-family: Arial
     &__item
       display: inline-block
-      margin-left: 25px
-      margin-right: 25px
+      margin-left: 26px
+      margin-right: 26px
       box-sizing: border-box
       vertical-align: middle
       +trailer(.5)
