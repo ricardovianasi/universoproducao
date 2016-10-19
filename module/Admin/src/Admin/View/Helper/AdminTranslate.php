@@ -42,8 +42,12 @@ class AdminTranslate extends AbstractHelper
         $this->em = $em;
     }
 
-    public function __invoke($siteId, $post, $routeName=null)
+    public function __invoke($siteId=null, $post=null, $routeName=null)
     {
+        if(!$siteId) {
+            return '';
+        }
+
         $site = $this->getSite($siteId);
         if(!($site && $site->hasLanguages())) {
             return "";
@@ -75,8 +79,14 @@ class AdminTranslate extends AbstractHelper
         if($this->translateFromPostId) {
             $translateFrom = $this->getEntityManager()->getRepository(Post::class)->find($this->translateFromPostId);
             if ($translateFrom) {
-
-                $urlTranslateFromPost = $this->view->url($this->routeName, ['action'=>'update', 'site'=>$this->siteId, 'id'=>$this->translateFromPostId]);
+                $urlOptions = [
+                    'action' => 'update',
+                    'id' => $this->translateFromPostId
+                ];
+                if($this->siteId) {
+                    $urlOptions['site'] = $this->siteId;
+                }
+                $urlTranslateFromPost = $this->view->url($this->routeName, $urlOptions);
 
                 $body .= "<div class='form-group'>
                     <label>Esta é uma tradução de</label>
@@ -108,7 +118,7 @@ class AdminTranslate extends AbstractHelper
      * @param $id
      * @return null|Site
      */
-    protected function getSite($id)
+    protected function getSite($id=null)
     {
         return $this->getEntityManager()->getRepository(Site::class)->find($id);
     }

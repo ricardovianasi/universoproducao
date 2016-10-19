@@ -47,6 +47,7 @@
 					<?php echo $this->partial('admin/partials/_post-sidebar.phtml', [
 						'returnUrl' => $this->url('admin/default', array('controller'=>'news')),
 						'site' => null,
+                        'route'=>'admin/page',
 						'form' => $this->form,
 						'post' => $this->news,
 						'thumb' => true
