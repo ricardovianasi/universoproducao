@@ -16,16 +16,20 @@ class SiteNavigation extends DefaultNavigationFactory
     /** @var Route Name */
     private $routeName;
 
+    private $language;
+
     /** @var EntityManager */
     private $em;
 
-    public function __construct($siteId, $routeName)
+    public function __construct($siteId, $routeName, $language='pt')
     {
         if($siteId)
             $this->siteId = $siteId;
 
         if($routeName)
             $this->routeName = $routeName;
+
+        $this->language = $language;
     }
 
     public function createService(ServiceLocatorInterface $container, $name = null, $requestedName = null)
@@ -73,6 +77,7 @@ class SiteNavigation extends DefaultNavigationFactory
     {
         $qb = $this->getEntityManager()->getRepository(Menu::class)->createQueryBuilder('p');
         $qb->andWhere("p.site = :siteId")
+            ->andWhere('p.language = :lang')->setParameter('lang', $this->language)
             ->setParameter('siteId', $this->siteId);
 
         $result = $qb->getQuery()->getOneOrNullResult();
