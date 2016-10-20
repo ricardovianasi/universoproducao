@@ -20,7 +20,11 @@
 	<div class="portlet-body">
 		<div class="row">
 			<div class="col-md-4">
-				<?php echo $this->partial('admin/menu/_left-column.phtml', ['pages'=>$this->pages]); ?>
+				<?php echo $this->partial('admin/menu/_left-column.phtml', [
+                    'pages'=>$this->pages,
+                    'site' => $this->site,
+                    'current_language' => $this->current_language,
+                    'languages'=>$this->languages]); ?>
 			</div> <!-- Final coluna col-md-8 -->
 
 			<div class="col-md-8">

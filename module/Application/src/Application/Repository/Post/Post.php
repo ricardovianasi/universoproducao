@@ -8,10 +8,11 @@ use Util\Repository\AbstractRepository;
 
 class Post extends AbstractRepository
 {
-	public function findByStr($str, $siteId)
+	public function findByStr($str, $siteId, $language='pt')
 	{
 		$qb = $this->createQueryBuilder('p');
 		$qb->select('p')
+            ->andWhere('p.language = :lang')->setParameter('lang', $language)
 			->andWhere('p.title like :title')->setParameter('title', "%$str%")
 			->andWhere('p.site = :siteId')->setParameter('siteId', $siteId)
 			->andWhere('p.status = :status')->setParameter('status', PostStatus::PUBLISHED)

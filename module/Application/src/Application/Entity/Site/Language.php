@@ -10,6 +10,9 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Language extends AbstractEntity
 {
+    const QUERY_PARAM_LANG = 'lang';
+    const QUERY_PARAM_TRANSLATE_FROM = 'translate_from';
+
 	/**
 	 * @ORM\Id @ORM\Column(name="id", type="string", nullable=false)
 	 */

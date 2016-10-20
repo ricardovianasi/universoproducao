@@ -577,10 +577,10 @@ jQuery(document).ready(function() {
             });
             _that.$element.find(".admin-menu-add .search-page-action").on("click", function(e) {
                 e.preventDefault();
-                var str = _that.$element.find('.admin-menu-add input[name="str-search-page"]').val();
-                if (!str) {
+                if (!_that.$element.find('#tab_search_pages .form-search input[name="search"]').val()) {
                     return;
                 }
+                var form = _that.$element.find("#tab_search_pages .form-search :input").serialize();
                 App.blockUI({
                     cenrerY: true,
                     animate: true
@@ -588,7 +588,7 @@ jQuery(document).ready(function() {
                 $.ajax({
                     type: "GET",
                     url: _that.config.urlPage,
-                    data: "search=" + str,
+                    data: form,
                     success: function(data) {
                         if (data.error) {
                             alert(data.error);

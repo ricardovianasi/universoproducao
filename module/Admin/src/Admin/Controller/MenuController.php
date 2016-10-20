@@ -8,6 +8,7 @@
 
 namespace Admin\Controller;
 
+use Application\Entity\Site\Language;
 use Application\Entity\Site\Menu\Item;
 use Application\Entity\Site\Menu\Menu;
 use Application\Entity\Post\Post;
@@ -23,10 +24,18 @@ class MenuController extends AbstractAdminController
 
 	public function indexAction()
 	{
+	    //Linguagem atual
+	    $langCode = $this->params()->fromQuery(Language::QUERY_PARAM_LANG, 'pt');
+	    $lang = $this->getRepository(Language::class)->find($langCode);
+
+	    //Linguagens do site
+        $languages = $this->getCurrentSite()->getLanguages();
+
 		$pages = $this->getRepository(Post::class)->findBy([
 			'type' => PostType::PAGE,
 			'status' => PostStatus::PUBLISHED,
 			'site' => $this->getSiteIdFromUri(),
+            'language' => $langCode,
 			'parent' => null
 		], ['postDate'=>'ASC']);
 
@@ -36,9 +45,13 @@ class MenuController extends AbstractAdminController
 		$pageHome->setId('home');
 		array_unshift($pages, $pageHome);
 
-		$menu = $this->getRepository(Menu::class)->findOneBy(['site'=>$this->getSiteIdFromUri()]);
+		$menu = $this->getRepository(Menu::class)->findOneBy([
+		    'site'=>$this->getSiteIdFromUri(),
+            'language' => $langCode
+        ]);
 		if(!$menu) {
 			$menu = new Menu();
+			$menu->setLanguage($lang);
 			$menu->setSite($this->getCurrentSite());
 
 			$this->getEntityManager()->persist($menu);
@@ -68,7 +81,9 @@ class MenuController extends AbstractAdminController
 		return $this->getViewModel()->setVariables([
 			'pages' => $pages,
 			'site' => $this->getSiteIdFromUri(),
-			'items' => $menuItems
+			'items' => $menuItems,
+            'current_language' => $lang,
+            'languages' => $languages
 		]);
 	}
 
@@ -158,11 +173,12 @@ class MenuController extends AbstractAdminController
 		$jsonModel->setTerminal(true);
 
 		$str = $this->params()->fromQuery('search');
+		$language = $this->params()->fromQuery('language', 'pt');
 		if(empty($str)) {
 			return $jsonModel;
 		}
 
-		$posts = $this->getRepository(Post::class)->findByStr($str, $this->getSiteIdFromUri());
+		$posts = $this->getRepository(Post::class)->findByStr($str, $this->getSiteIdFromUri(), $language);
 
 		$helper = $this->getAdminMenuPagesViewHelper();
 		$markup = $helper($posts, true);
