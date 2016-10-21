@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Cinebh\n"
-"POT-Creation-Date: 2016-10-20 14:16-0200\n"
-"PO-Revision-Date: 2016-10-20 14:27-0200\n"
+"POT-Creation-Date: 2016-10-21 12:49-0200\n"
+"PO-Revision-Date: 2016-10-21 12:50-0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en_US\n"
@@ -18,7 +18,7 @@ msgstr ""
 
 #: cinebh/index/index.phtml:19
 msgid "Notícias"
-msgstr ""
+msgstr "News"
 
 #: cinebh/index/index.phtml:20
 msgid "Todas as Notícias"
@@ -92,8 +92,7 @@ msgstr "Follow us"
 msgid ""
 "o futuro nasce da história,<br />da cultura nasce<br />a arte e dela<br />o "
 "cinema"
-msgstr ""
-"the future born of history,<br />culture born of art<br />and her film"
+msgstr "the future born of history,<br />culture born of art<br />and her film"
 
 #: cinebh/index/index.phtml:160
 msgid "Contate-nos"
@@ -123,10 +122,14 @@ msgstr "Support Brasilcinemundi"
 msgid "Realização"
 msgstr "realization"
 
+#: cinebh/partials/navigation.phtml:4
+msgid "Início"
+msgstr "Home"
+
 #: layout/layout.phtml:7
 msgid "10 Mostra de Cinema de Belo Horizonte"
 msgstr "10 Cinebh International Film Festival"
 
-#: layout/layout.phtml:65
+#: layout/layout.phtml:68
 msgid "Todos os direitos reservados"
 msgstr "All rights reserved"

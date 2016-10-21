@@ -1,7 +1,7 @@
 <div class="breadcrumbs">
     <div class="breadcrumbs__wrapper">
         <ul class="breadcrumbs__list">
-            <li class="breadcrumbs__item"><a href="<?php echo $this->url("cinebh/home") ?>" class="breadcrumbs__link">Início</a></li>
+            <li class="breadcrumbs__item"><a href="<?php echo $this->url("cinebh/home", ['locale'=>$this->locale]) ?>" class="breadcrumbs__link"><?php echo $this->translate("Início") ?></a></li>
             <?php $relativeSlug=""; foreach($this->breadcrumbs as $slug): ?>
                 <?php $relativeSlug.= "/" . key($slug); ?>
                 <li class="breadcrumbs__item">
