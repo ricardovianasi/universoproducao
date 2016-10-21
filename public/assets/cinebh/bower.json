@@ -9,7 +9,8 @@
     "include-media": "~1.4.2",
     "jquery-easing-original": "~1.3.2",
     "jquery.advancedScroll": "luizgamabh/jquery.advancedScroll#~0.0.1",
-    "owl.carousel": "^2.1.6"
+    "owl.carousel": "^2.1.6",
+    "lity": "~2.2.0"
   },
   "overrides": {
     "modernizr": {
@@ -26,6 +27,12 @@
     "jquery-easing-original": {
       "main": [
         "jquery.easing.min.js"
+      ]
+    },
+    "lity": {
+      "main": [
+        "dist/lity.css",
+        "dist/lity.js"
       ]
     }
   },

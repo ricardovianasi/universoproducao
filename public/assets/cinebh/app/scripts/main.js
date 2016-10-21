@@ -23,6 +23,7 @@
             objWindow = window.open(this.attr('href'), strTitle, strParam).focus();
     }
 })(jQuery);
+
 $(document).ready(function () {
     $("body").on("click", "a[href='']", function (e) {
         e.preventDefault();
@@ -78,4 +79,6 @@ $(document).ready(function () {
         e.preventDefault();
         $(".mainmenu__search").toggleClass("active");
     });
+
+
 });
