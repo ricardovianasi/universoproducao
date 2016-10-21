@@ -16,6 +16,8 @@ class IndexController extends SiteController
 
     public function indexAction()
     {
+        $locale = $this->params('locale','pt');
+
         //banner
         $bannerImages = $this->getRepository(Post::class)->findBy(
             [
@@ -26,6 +28,7 @@ class IndexController extends SiteController
 
         //news
         $qb = $this->getRepository(Post::class)->findNewsQb(self::SITE_ID);
+        $qb->andWhere('n.language = :language')->setParameter('language', $locale);
         $qb->orderBy('n.postDate', 'DESC');
         $qb->setMaxResults(2);
         $news = $qb->getQuery()->getResult();
