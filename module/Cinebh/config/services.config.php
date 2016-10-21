@@ -4,8 +4,16 @@ use Application\Navigation;
 return [
     'factories' => [
         'CinebhNavigation' => function($e) {
-            $navigation = new Navigation\SiteNavigation(4, 'cinebh/default');
+            $request = $e->get('Request');
+            $router = $e->get('Router');
+
+            $locale = $router->match($request)->getParam('locale');
+
+            $navigation = new Navigation\SiteNavigation(4, 'cinebh/default', $locale);
             return $navigation->createService($e);
-        }
-    ]
+        },
+    ],
+    'aliases' => [
+        'translator' => 'mvctranslator',
+    ],
 ];

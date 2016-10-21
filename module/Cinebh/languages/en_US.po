@@ -1,0 +1,132 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Cinebh\n"
+"POT-Creation-Date: 2016-10-20 14:16-0200\n"
+"PO-Revision-Date: 2016-10-20 14:27-0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.8\n"
+"X-Poedit-Basepath: ../view\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-KeywordsList: translate\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: cinebh/index/index.phtml:19
+msgid "Notícias"
+msgstr ""
+
+#: cinebh/index/index.phtml:20
+msgid "Todas as Notícias"
+msgstr "All News"
+
+#: cinebh/index/index.phtml:34
+msgid "Leia Mais"
+msgstr "Read More"
+
+#: cinebh/index/index.phtml:46
+msgid "Galeria"
+msgstr "Gallery"
+
+#: cinebh/index/index.phtml:47
+msgid "Galeria Completa"
+msgstr "Full Gallery"
+
+#: cinebh/index/index.phtml:69
+msgid "Belo Horizonte em Conexão com o mundo"
+msgstr "Belo Horizonte in Connection with the world"
+
+#: cinebh/index/index.phtml:72
+msgid "VT CineBh e Brasil CineMundi"
+msgstr "VT CineBh and Brazil CineMundi"
+
+#: cinebh/index/index.phtml:80
+msgid "Guia"
+msgstr "Guide"
+
+#: cinebh/index/index.phtml:82
+msgid "A cidade em movimento"
+msgstr "The city in motion"
+
+#: cinebh/index/index.phtml:84
+msgid "Locais"
+msgstr "Places"
+
+#: cinebh/index/index.phtml:85
+msgid "Turismo e Informações"
+msgstr "Tourism and Information"
+
+#: cinebh/index/index.phtml:86
+msgid "Restaurantes"
+msgstr "Restaurants"
+
+#: cinebh/index/index.phtml:87
+msgid "Hoteis e Acomodações"
+msgstr "Hotels and Accommodations"
+
+#: cinebh/index/index.phtml:119
+msgid "Receba nossos informativos"
+msgstr "Receive our newsletter"
+
+#: cinebh/index/index.phtml:121
+msgid "Nome"
+msgstr "Name"
+
+#: cinebh/index/index.phtml:122
+msgid "Email"
+msgstr "Email"
+
+#: cinebh/index/index.phtml:123
+msgid "Cadastrar"
+msgstr "Register"
+
+#: cinebh/index/index.phtml:127
+msgid "Siga-nos"
+msgstr "Follow us"
+
+#: cinebh/index/index.phtml:159
+msgid ""
+"o futuro nasce da história,<br />da cultura nasce<br />a arte e dela<br />o "
+"cinema"
+msgstr ""
+"the future born of history,<br />culture born of art<br />and her film"
+
+#: cinebh/index/index.phtml:160
+msgid "Contate-nos"
+msgstr "Contact Us"
+
+#: cinebh/index/index.phtml:180
+msgid "Patrocínio"
+msgstr "Sponsorship"
+
+#: cinebh/index/index.phtml:189
+msgid "Apoio"
+msgstr "Support"
+
+#: cinebh/index/index.phtml:201
+msgid "Patrocínio Brasilcinemundi"
+msgstr "Sponsorship Brasilcinemundi"
+
+#: cinebh/index/index.phtml:207
+msgid "COOPERAÇÃO BRASIL CINEMUNDI"
+msgstr "Cooperation Brasilcinemundi"
+
+#: cinebh/index/index.phtml:216
+msgid "APOIO BRASILCINEMUNDI"
+msgstr "Support Brasilcinemundi"
+
+#: cinebh/index/index.phtml:231
+msgid "Realização"
+msgstr "realization"
+
+#: layout/layout.phtml:7
+msgid "10 Mostra de Cinema de Belo Horizonte"
+msgstr "10 Cinebh International Film Festival"
+
+#: layout/layout.phtml:65
+msgid "Todos os direitos reservados"
+msgstr "All rights reserved"

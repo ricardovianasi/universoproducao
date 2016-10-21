@@ -100,7 +100,8 @@ class SiteNavigation extends DefaultNavigationFactory
             } else {
                 $navigation[$item->getId()]['route'] = $this->routeName;
                 $navigation[$item->getId()]['params'] = [
-                    'slug' => $item->getPost()->getRelativeUrl()
+                    'slug' => $item->getPost()->getRelativeUrl(),
+                    'locale' => $this->language
                 ];
             }
 

@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>10 Mostra de Cinema de Belo Horizonte</title>
+    <title><?php echo $this->translate("10 Mostra de Cinema de Belo Horizonte"); ?></title>
 
     <!--Facebook-->
     <meta property="og:url" content="<?php echo $this->serverUrl(true) ?>">
@@ -38,10 +38,13 @@
 <div class="site__wrapper">
     <header class="header">
         <div class="header__left">
-            <h1 class="header__brand"><a class="header__link" href="<?php echo $this->url("cinebh/home") ?>"></a></h1>
+            <h1 class="header__brand"><a class="header__link" href="<?php echo $this->url("cinebh/home", ['locale'=>$this->locale]) ?>"></a></h1>
         </div>
         <div class="header__right">
             <div class="menu">
+                <?php if($this->locale == 'pt'): ?>
+                    <div class="translate"><a class="translate__link" href="<?php echo $this->url("cinebh/home", ['locale'=>'en']) ?>">English</a></div>
+                <?php endif; ?>
                 <div class="menu-button" id="mainmenu-access">
                     <div class="burger">
                         <span class="b"></span>
@@ -62,7 +65,7 @@
         <div class="footer__brand">
             <span class="icon icon-universo-brand-min"></span>
         </div>
-        <p class="footer__copy">Copyright © 2015. Universo Produção - Todos os direitos reservados.</p>
+        <p class="footer__copy">Copyright © 2015. Universo Produção - <?php echo $this->translate("Todos os direitos reservados") ?>.</p>
     </footer>
 </div>
 

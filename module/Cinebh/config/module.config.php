@@ -8,25 +8,16 @@ use Zend\Mvc\Router\Http\Segment;
 
 return array(
     'router' => array(
+        'router_class' => 'Zend\Mvc\Router\Http\TranslatorAwareTreeRouteStack',
         'routes' => array(
-            'cinebh_home' => array(
-                'type' => Literal::class,
-                'options' => array(
-                    'route' => '/cinebh',
-                    'defaults' => array(
-                        'controller'    => Controller\IndexController::class,
-                        'action'        => 'index',
-                    ),
-                ),
-                'priority' => 9999
-            ),
             'cinebh' => array(
                 'type'    => Hostname::class,
                 'options' => array(
-                    'route'    => '[www.]cinebh.com.br',
+                    'route'    => '[www.][:locale.]cinebh.com.br',
                     'defaults' => array(
                         'controller'    => Controller\IndexController::class,
                         'action'        => 'index',
+                        'locale'        => 'pt'
                     ),
                 ),
                 'may_terminate' => true,
@@ -158,4 +149,15 @@ return array(
     'module_layouts' => [
         __NAMESPACE__ => 'cinebh/layout'
     ],
+
+    'translator' => [
+        'locale' => 'en_US',
+        'translation_file_patterns' => [
+            [
+                'base_dir' => __DIR__ . '/../languages',
+                'type'     => 'gettext',
+                'pattern'  => '%s.mo',
+            ],
+        ]
+    ]
 );
