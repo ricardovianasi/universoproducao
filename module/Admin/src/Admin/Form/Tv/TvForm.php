@@ -39,6 +39,14 @@ class TvForm extends Form
 				''
 			]
 		]);
+
+        $this->add([
+            'name' => 'thumb',
+            'type' => 'hidden',
+            'attributes' => [
+                'id' => 'file'
+            ],
+        ]);
 	}
 
 }

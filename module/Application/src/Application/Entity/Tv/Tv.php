@@ -38,6 +38,9 @@ class Tv extends AbstractEntity
 	/** @ORM\Column(name="youtube", type="string") */
 	private $youtube;
 
+    /** @ORM\Column(name="thumb", type="string") */
+    private $thumb;
+
 	/** @ORM\Column(name="highlight", type="boolean") */
 	private $highlight;
 
@@ -190,4 +193,20 @@ class Tv extends AbstractEntity
 	{
 		$this->updatedAt = $updatedAt;
 	}
+
+    /**
+     * @return mixed
+     */
+    public function getThumb()
+    {
+        return $this->thumb;
+    }
+
+    /**
+     * @param mixed $thumb
+     */
+    public function setThumb($thumb)
+    {
+        $this->thumb = $thumb;
+    }
 }
