@@ -84,7 +84,7 @@ class BannerController extends AbstractAdminController implements CrudInterface
 
     public function deleteAction($id)
     {
-        $banner = $this->getRepository(Banner::class)->find($id);
+        $banner = $this->getRepository(Post::class)->find($id);
         $this->getEntityManager()->remove($banner);
         $this->getEntityManager()->flush();
 

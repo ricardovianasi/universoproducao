@@ -8,6 +8,7 @@ use Application\Entity\Post\Post;
 use Application\Entity\Post\PostStatus;
 use Application\Entity\Post\PostType;
 use Application\Entity\Programation;
+use Application\Entity\Tv\Tv;
 use Zend\View\Model\ViewModel;
 
 class IndexController extends SiteController
@@ -28,7 +29,6 @@ class IndexController extends SiteController
 
         //news
         $qb = $this->getRepository(Post::class)->findNewsQb(self::SITE_ID);
-        $qb->andWhere('n.language = :language')->setParameter('language', $locale);
         $qb->orderBy('n.postDate', 'DESC');
         $qb->setMaxResults(2);
         $news = $qb->getQuery()->getResult();
@@ -51,11 +51,16 @@ class IndexController extends SiteController
             ['order'=>'ASC']
         );
 
+        $video = $this->getRepository(Tv::class)->findBy(['site' => self::SITE_ID], [
+            'date' => 'DESC'
+        ]);
+
         $guides = $this->getRepository(Post::class)->findBy(
             [
                 'site' => self::SITE_ID,
                 'type' => PostType::GUIDE,
-                'status' => PostStatus::PUBLISHED
+                'status' => PostStatus::PUBLISHED,
+                'language' => $locale
             ],
             ['order'=>'ASC']
         );
@@ -66,7 +71,8 @@ class IndexController extends SiteController
 //            'programHighlight' => $programHighlight,
 //            'program' => $program,
             'gallery' => $gallery,
-            'guides' => $guides
+            'guides' => $guides,
+            'videos' => $video
         ]);
     }
 }
