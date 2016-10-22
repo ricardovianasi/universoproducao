@@ -46,7 +46,7 @@
                 </figure>
                 <div class="programation__desc">
                     <p class="programation__date"><?php echo $p->getDate()->format('d/m') ?></p>
-                    <p class="programation__day"><?php echo $this->dateFormat($p->getDate(), null, null, "pt_BR", "cccc"); ?></p>
+                    <p class="programation__day"><?php echo $this->dateFormat($p->getDate(), null, null, "pt_BR", "cccc"); ?> <?php echo $p->getHour() ? " - ".$p->getHour() : ""; ?></p>
                     <p class="programation__title"><?php echo $p->getTitle(); ?></p>
                 </div>
             </div>
