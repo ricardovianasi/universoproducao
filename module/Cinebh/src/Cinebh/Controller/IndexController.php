@@ -34,13 +34,13 @@ class IndexController extends SiteController
         $news = $qb->getQuery()->getResult();
 
         //programation
-        /*$program = $this->getRepository(Programation\Highlight::class)->findBy(
+        $program = $this->getRepository(Programation\Highlight::class)->findBy(
             ['site' => self::SITE_ID, 'isHighlight' => 0],
             ['position'=>'ASC']
         );
         $programHighlight = $this->getRepository(Programation\Highlight::class)->findOneBy(
             ['site' => self::SITE_ID, 'isHighlight' => 1]
-        );*/
+        );
 
         //gallery
         $gallery = $this->getRepository(Post::class)->findBy(
@@ -68,8 +68,8 @@ class IndexController extends SiteController
         return new ViewModel([
             'bannerImages' => $bannerImages,
             'news' => $news,
-//            'programHighlight' => $programHighlight,
-//            'program' => $program,
+            'programHighlight' => $programHighlight,
+            'program' => $program,
             'gallery' => $gallery,
             'guides' => $guides,
             'videos' => $videos

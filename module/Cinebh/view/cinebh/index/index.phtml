@@ -12,6 +12,48 @@
     </div>
 </section>
 
+<section class="programation">
+    <header class="main__header main__header--bgc">
+        <div class="header__wrapper">
+            <h1 class="main__title">Programação</h1>
+            <p class="readmore"><a class="readmore__link" href="<?php echo $this->url("cinebh/default", ['slug'=>'programacao']) ?>">Programação Completa<span class="icon icon-plus2"></span></a></p>
+        </div>
+    </header>
+
+    <div class="programation__list">
+        <?php if($this->programHighlight): ?>
+            <div class="programation__item programation__item--highlight">
+                <figure class="programation__figure">
+<!--                    <img src="--><?php //echo $this->basePath("assets/cinebh/dist") ?><!--/images/prog1.jpg" alt="">-->
+                    <img src="<?php echo  $this->thumbor()->url($this->programHighlight->getPhoto())->resize(1427, 833); ?>" alt="">
+                </figure>
+                <div class="programation__desc">
+                    <p class="programation__date"><?php echo $this->programHighlight->getDate()->format('d/m') ?></p>
+                    <p class="programation__day"><?php echo $this->dateFormat($this->programHighlight->getDate(), null, null, "pt_BR", "cccc"); ?></p>
+                    <p class="programation__title"><strong><?php echo $this->programHighlight->getTitle(); ?></strong></p>
+                    <p class="programation__title"><?php echo $this->programHighlight->getSubtitle(); ?></p>
+    <!--                <p class="programation__title">Direção: Yun Jung-hee (Coréia)</p>-->
+                    <p class="programation__subtitle"><?php echo $this->programHighlight->getPlace(); ?><br>
+                        <?php echo $this->programHighlight->getHour(); ?></p>
+                </div>
+            </div>
+        <?php endif; ?>
+        <?php foreach ($this->program as $p): ?>
+            <div class="programation__item">
+                <figure class="programation__figure">
+<!--                    <img src="--><?php //echo $this->basePath("assets/cinebh/dist") ?><!--/images/prog2.jpg" alt="">-->
+                    <img src="<?php echo  $this->thumbor()->url($this->programHighlight->getPhoto())->resize(480, 480); ?>" alt="">
+                </figure>
+                <div class="programation__desc">
+                    <p class="programation__date"><?php echo $p->getDate()->format('d/m') ?></p>
+                    <p class="programation__day"><?php echo $this->dateFormat($p->getDate(), null, null, "pt_BR", "cccc"); ?></p>
+                    <p class="programation__title"><strong><?php echo $p->getTitle(); ?></strong></p>
+                </div>
+            </div>
+        <?php endforeach; ?>
+    </div>
+</section>
+
 <?php if(count($this->news)): ?>
     <section class="news">
         <header class="main__header main__header--bgc">
