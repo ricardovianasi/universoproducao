@@ -120,7 +120,7 @@
     ?>
 
     <?php
-    $consulta ="select CodArte, TitArte, TitArteIng, CodCatArte, DescArte, DescArteIng, ImgArte,
+    $consulta ="select DISTINCT CodArte, TitArte, TitArteIng, CodCatArte, DescArte, DescArteIng, ImgArte,
 			CodItemProg, CategoriaProg, Local, Data, HoraManhaInicial 
 			from tb_arte 
 			Left Join tb_programacaoevento On tb_programacaoevento.CodItemProg = tb_arte.CodArte
