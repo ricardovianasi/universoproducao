@@ -122,8 +122,9 @@
     <?php
     $consulta ="select CodArte, TitArte, TitArteIng, CodCatArte, DescArte, DescArteIng, ImgArte,
 			CodItemProg, CategoriaProg, Local, Data, HoraManhaInicial 
-			from tb_arte Left Join tb_programacaoevento On tb_programacaoevento.CodItemProg = tb_arte.CodArte
-			where tb_arte.CodMostra = $mostra AND tb_programacaoevento.CategoriaProg = 'AR' order by Data asc, HoraManhaInicial asc";
+			from tb_arte 
+			Left Join tb_programacaoevento On tb_programacaoevento.CodItemProg = tb_arte.CodArte
+			where tb_arte.CodMostra = $mostra order by Data asc, HoraManhaInicial asc";
     $result = mysql_query($consulta);
     if (!$result) {
         echo "Não foi possível executar a consulta ($sql) no banco de dados:<br /> " . mysql_error();
@@ -151,8 +152,8 @@
             <p><h2><strong><?php echo $TitArte?></strong></h2></p>
 
             <?php if ($ImgArte != "") { ?>
-               <figure>
-                   <img src="<?php echo $caminhoFoto ?>" alt="">
+               <figure style="max-width: 500px">
+                   <img style="width: 100%" src="<?php echo $caminhoFoto ?>" alt="">
                </figure>
             <?php } ?>
 
