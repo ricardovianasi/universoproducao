@@ -4,8 +4,11 @@ namespace Arquivoemcartaz\Controller;
 use Application\Controller\SiteController;
 use Application\Entity\Post\Post;
 use Application\Entity\Post\PostStatus;
-use Application\Entity\Post\PostType;
 use Application\Entity\Site\SiteMeta;
+use Zend\Mail\Message;
+use Zend\Mail\Transport\Smtp;
+use Zend\Mail\Transport\SmtpOptions;
+use Zend\Mime\Part;
 use Zend\View\Model\ViewModel;
 
 class PostController extends SiteController
