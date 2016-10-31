@@ -1,7 +1,7 @@
 <?php
     $this->headMeta()->setProperty('og:title', $post->getTitle());
-    if($post->getThumb()) {
-        $this->headMeta()->setProperty('og:image', $post->getThumb());
+    if($post->hasMeta('_thumb')) {
+        $this->headMeta()->setProperty('og:image', $post->getMeta('_thumb'));
     } ?>
 
 <?php if($post->hasMeta('_cover')): ?>
