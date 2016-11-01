@@ -8,5 +8,6 @@ return [
         Controller\IndexController::class => InvokableFactory::class,
         Controller\NewsController::class => InvokableFactory::class,
         Controller\PostController::class => InvokableFactory::class,
+        Controller\ProgramationController::class => InvokableFactory::class
     ]
 ];
