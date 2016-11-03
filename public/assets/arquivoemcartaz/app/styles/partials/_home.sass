@@ -304,7 +304,6 @@
     +trailer(2)
     border-top: 4px solid $color-txt
     &__block
-      +grid(2, 4, $cycle: 2)
       +trailer(2)
       &:first-child
         .sponor__list
@@ -314,13 +313,18 @@
 
       &--full
         +grid(4, 4)
+      &--1
+        +grid(1, 4, $cycle: 2)
+      &--3
+        +grid(3, 4, $cycle: 2)
+
 
 
     &__title
       text-align: left
       text-transform: uppercase
-      font-weight: 800
       border-bottom: 1px solid #000
+      +adjust-font-size-to(16px, 1)
       +trailer(1.5)
       +padding-trailer(.5)
 
@@ -329,6 +333,7 @@
       display: inline-block
       margin-left: 40px
       margin-right: 40px
+      vertical-align: middle
       +trailer(1)
       &:first-child
         margin-left: 0
