@@ -421,10 +421,11 @@ abstract class AbstractAdminController extends AbstractController
 			}
 		}
 
-		if(!empty($data['language'])) {
-		    $language = $this->getRepository(Language::class)->find($data['language']);
-		    $data['language'] = $language;
+		if(empty($data['language'])) {
+		    $data['language'] = 'pt';
         }
+        $language = $this->getRepository(Language::class)->find($data['language']);
+        $data['language'] = $language;
 
 		return $data;
 	}

@@ -1,0 +1,58 @@
+.header
+  position: relative
+  width: 100%
+
+  &-bgc
+    background: url("../images/header-bg.jpg") no-repeat top left
+    background-size: 100% 100%
+
+  &-wrapper
+    +center
+    text-align: center
+
+  .brand,
+  .name,
+  .social
+    display: inline-block
+    padding-left: 4%
+    padding-right: 4%
+
+  .brand
+    vertical-align: middle
+    +trailer(2)
+    +leader(2)
+    &-link
+      color: white
+    .icon-brand
+      display: block
+      float: left
+      font-size: 144px
+
+  .name
+    +adjust-font-size-to(54px, 3)
+    font-weight: 700
+    text-transform: uppercase
+    color: white
+    +trailer(0)
+    vertical-align: middle
+    & > span
+      +adjust-font-size-to(37px, 1.7, 54px)
+      display: block
+      font-weight: normal !important
+    
+  .social
+    &-item
+      display: inline-block
+      margin-right: 19px
+      &:last-child
+        margin-right: 0
+
+    &-link
+      display: block
+      width: 36px
+      height: 36px
+      border-radius: 50%
+      background-color: white
+      +adjust-font-size-to(18px, 2)
+      span
+        color: $color-palette-4

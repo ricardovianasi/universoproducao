@@ -31,13 +31,17 @@ class MenuController extends AbstractAdminController
 	    //Linguagens do site
         $languages = $this->getCurrentSite()->getLanguages();
 
-		$pages = $this->getRepository(Post::class)->findBy([
-			'type' => PostType::PAGE,
-			'status' => PostStatus::PUBLISHED,
-			'site' => $this->getSiteIdFromUri(),
-            'language' => $langCode,
-			'parent' => null
-		], ['postDate'=>'ASC']);
+        $pageOptions = [
+            'type' => PostType::PAGE,
+            'status' => PostStatus::PUBLISHED,
+            'site' => $this->getSiteIdFromUri(),
+            'parent' => null
+        ];
+        if($lang) {
+            $pageOptions['language'] = $langCode;
+        }
+
+		$pages = $this->getRepository(Post::class)->findBy($pageOptions, ['postDate'=>'ASC']);
 
 		//Add page home
 		$pageHome = new Post();

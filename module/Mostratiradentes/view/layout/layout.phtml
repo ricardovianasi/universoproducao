@@ -1,0 +1,99 @@
+<!doctype html>
+<html class="no-js" lang="">
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>20ª Mostra de Cinema de Tiradentes</title>
+
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <!-- Place favicon.ico in the root directory -->
+
+    <link rel="stylesheet" href="<?php echo $this->basePath('assets/mostratiradentes/dist') ?>/styles/main.css">
+    <link rel="stylesheet" href="<?php echo $this->basePath('assets/mostratiradentes/dist') ?>/styles/vendor.css">
+
+    <!-- build:js scripts/vendor/modernizr.js -->
+    <script src="<?php echo $this->basePath('assets/mostratiradentes/dist') ?>/scripts/modernizr/modernizr.js"></script>
+    <!-- endbuild -->
+</head>
+<body>
+
+<div class="site__wrapper">
+    <header class="header">
+        <div class="header-bgc">
+            <div class="header-wrapper">
+                <h1 class="brand">
+                    <a href="<?php echo $this->url("mostratiradentes"); ?>" class="brand-link">
+                        <span class="icon icon-brand"></span>
+                    </a>
+                </h1>
+                <p class="name">20 - 28 Janeiro<span>Programação Gratuita</span></p>
+                <ul class="social">
+                    <li class="social-item"><a class="social-link" href=""><span class="icon icon-facebook"></span></a></li>
+                    <li class="social-item"><a class="social-link" href=""><span class="icon icon-youtube"></span></a></li>
+                    <li class="social-item"><a class="social-link" href=""><span class="icon icon-instagram"></span></a></li>
+                    <li class="social-item"><a class="social-link" href=""><span class="icon icon-flickr"></span></a></li>
+                </ul>
+            </div>
+        </div>
+
+        <nav class="menu">
+            <?php $this
+                ->navigation('MostratiradentesNavigation')
+                ->menu()->setPartial("mostratiradentes/partials/navigation.phtml");
+
+            echo $this
+                ->navigation('MostratiradentesNavigation')
+                ->menu()
+                ->render(); ?>
+        </nav>
+    </header>
+
+    <main class="main <?php echo $this->placeholder("home-class") ?>">
+        <?php echo $this->content; ?>
+    </main>
+    <footer class="footer">
+        <div class="footer-wrapper">
+            <div class="footer-contact">
+                <p class="footer-title">Contate-nos:</p>
+                <span class="icon icon-universo-brand"></span>
+                <span class="footer-add">+ 55 31 3282-2366<br />
+                        up@universoproducao.com.br<br />
+                        Rua Pirapetinga, 567 - Serra<br />
+                        30220-150, Belo Horizonte | MG</span>
+
+            </div>
+            <div class="footer-social">
+                <p class="footer-title">Siga-nos:</p>
+                <ul>
+                    <li class="footer-socialitem"><a class="footer-socialink" href=""><span class="icon icon-facebook"></span></a></li>
+                    <li class="footer-socialitem"><a class="footer-socialink" href=""><span class="icon icon-twitter"></span></a></li>
+                    <li class="footer-socialitem"><a class="footer-socialink" href=""><span class="icon icon-instagram"></span></a></li>
+                    <li class="footer-socialitem"><a class="footer-socialink" href=""><span class="icon icon-flickr"></span></a></li>
+                    <li class="footer-socialitem"><a class="footer-socialink" href=""><span class="icon icon-youtube"></span></a></li>
+                </ul>
+            </div>
+            <p class="footer-title footer-copy">Copyright © 2015. Universo Produção - Todos os direitos reservados.</p>
+        </div>
+    </footer>
+</div>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="/bower_components/jquery/dist/jquery.min.js"><\/script>')</script>
+
+<script src="<?php echo $this->basePath('assets/mostratiradentes/dist') ?>/scripts/main.js"></script>
+<script src="<?php echo $this->basePath('assets/mostratiradentes/dist') ?>/scripts/vendor.js"></script>
+
+
+<!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+<script>
+    (function(c,u,s,t,o,m){c.GoogleAnalyticsObject=t;c[t]||(c[t]=
+        function(){(c[t].q=c[t].q||[]).push(arguments)});c[t].l=+new Date;
+        o=u.createElement(s);m=u.getElementsByTagName(s)[0];
+        o.src='https://www.google-analytics.com/analytics.js';
+        m.parentNode.insertBefore(o,m)}(window,document,'script','ga'));
+    ga('create','UA-XXXXX-X');ga('send','pageview');
+</script>
+<!-- endbuild -->
+</body>
+</html>

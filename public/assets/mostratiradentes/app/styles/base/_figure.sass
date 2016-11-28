@@ -1,0 +1,32 @@
+figure
+  line-height: 0
+  position: relative
+  figcaption
+    position: absolute
+    bottom: 0
+    left: 0
+    +adjust-font-size-to(14px, 1)
+    +padding-trailer(1, 14px)
+    +padding-leader(1, 14px)
+    box-sizing: border-box
+    font-style: italic
+    color: $color-txt
+    padding-left: 19px
+    padding-right: 19px
+    background-color: rgba(255,255,255,.7)
+    width: 100%
+    strong
+      +adjust-font-size-to(18px, 1)
+      font-style: normal
+      font-weight: 700
+      display: block
+    p
+      +trailer(0)
+
+.image
+  &.align-left
+    float: left
+    padding: 0 30px 30px 0
+  &.align-right
+    float: right
+    padding: 0 0 30px 30px

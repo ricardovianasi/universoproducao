@@ -27,6 +27,12 @@ return [
 				'controller' => 'news',
 				'icon' => 'icon-book-open'
 			],
+            [
+                'label' => 'Eu Faço a Mostra',
+                'route' => 'admin/default',
+                'controller' => 'eufaco',
+                'icon' => 'icon-book-open'
+            ],
 			[
 				'label' => 'Portais',
 				'uri' => '#',
@@ -248,6 +254,69 @@ return [
                         'icon' => 'fa fa-image',
                         'params' => [
                             'site' => 3
+                        ]
+                    ],
+                ]
+            ],
+            [
+                'label' => 'Mostra Tiradentes',
+                'uri' => '#',
+                'icon' => ' icon-globe',
+                'pages' => [
+                    [
+                        'label' => 'Páginas',
+                        'route' => 'admin/page',
+                        'icon' => 'icon-doc',
+                        'params' => [
+                            'site' => 5
+                        ]
+                    ],
+                    [
+                        'label' => 'Guia',
+                        'route' => 'admin/guide',
+                        'icon' => 'icon-doc',
+                        'params' => [
+                            'site' => 5
+                        ]
+                    ],
+                    [
+                        'label' => 'Menu',
+                        'route' => 'admin/menu',
+                        'icon' => 'icon-list',
+                        'params' => [
+                            'site' => 5
+                        ]
+                    ],
+                    [
+                        'label' => 'Banner',
+                        'route' => 'admin/banner',
+                        'icon' => 'fa fa-image',
+                        'params' => [
+                            'site' => 5
+                        ]
+                    ],
+                    [
+                        'label' => 'Galeria',
+                        'route' => 'admin/gallery',
+                        'icon' => 'fa fa-image',
+                        'params' => [
+                            'site' => 5
+                        ]
+                    ],
+                    [
+                        'label' => 'TV',
+                        'route' => 'admin/tv',
+                        'icon' => 'fa fa-image',
+                        'params' => [
+                            'site' => 5
+                        ]
+                    ],
+                    [
+                        'label' => 'Programação',
+                        'route' => 'admin/programation',
+                        'icon' => 'fa fa-image',
+                        'params' => [
+                            'site' => 5
                         ]
                     ],
                 ]

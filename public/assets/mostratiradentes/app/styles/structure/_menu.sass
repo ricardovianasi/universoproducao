@@ -1,0 +1,44 @@
+.menu
+  position: relative
+  &-container
+    background-color: $color-palette-1
+    width: 100vw
+    position: relative
+    margin-left: -50vw
+    left: 50%
+
+  &-list
+    +center
+    text-align: center
+
+  &-item
+    +column(1/4, $gutter: 0)
+    & >.menu-container
+      display: none
+      position: absolute
+      z-index: 999
+      background-color: $color-palette-2
+      .menu-item
+        width: auto
+        padding-left: 30px
+        padding-right: 30px
+        &:first-child
+          padding-left: 0
+        &:last-child
+          padding-right: 0
+    &:hover
+      >.menu-link
+        color: white
+        text-decoration: underline
+        background-color: $color-palette-2
+      >.menu-container
+        display: block
+
+  &-link
+    display: block
+    +adjust-font-size-to(18px, 2)
+    +padding-leader(1)
+    +padding-trailer(1)
+    font-weight: 700
+    text-transform: uppercase
+    color: black

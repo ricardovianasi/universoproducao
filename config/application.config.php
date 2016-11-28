@@ -11,6 +11,7 @@ $modules = [
     'Arquivoemcartaz',
     'Cineop',
     'Cinebh',
+    'Mostratiradentes',
 ];
 
 if($env == 'development') {
