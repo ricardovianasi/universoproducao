@@ -1,5 +1,4 @@
 .home
-
   .section
     &-title
       +adjust-font-size-to(28px, 1.5)
@@ -144,6 +143,8 @@
     &-item
       +column(1/4, $cycle:4)
       +trailer(1)
+      +padding-trailer(0)
+      border: none
       +media("<1124px")
         +column(2/4, $cycle:2)
 
@@ -155,6 +156,9 @@
 
     &-figure
       overflow: hidden
+      float: none
+      padding: 0
+      margin: 0
       img
         width: 100%
         transition: $transition-default
