@@ -62,5 +62,19 @@ $(document).ready(function () {
         autoplayTimeout: 7000,
         lazyLoad: false
     }, 'loop', true));
+
+    $(".fancybox").fancybox({
+        padding: 0,
+        openEffect: 'elastic',
+        maxWidth: 700,
+        maxHeight: 700,
+        width: '100%',
+        height: '100%',
+        helpers: {
+            overlay: {
+                locked: false
+            }
+        }
+    });
 });
 //# sourceMappingURL=main.js.map
