@@ -13,14 +13,9 @@
         e.preventDefault();
 
         // Set values for window
-        intWidth = intWidth || '500';
-        intHeight = intHeight || '400';
-        var strResize = (blnResize ? 'yes' : 'no');
-
-        // Set title and open popup with focus on it
-        var strTitle = ((typeof this.attr('title') !== 'undefined') ? this.attr('title') : 'Social Share'),
-            strParam = 'width=' + intWidth + ',height=' + intHeight + ',resizable=' + strResize,
-            objWindow = window.open(this.attr('href'), strTitle, strParam).focus();
+        intWidth = intWidth || "500";
+        intHeight = intHeight || "400";
+        var strResize = (blnResize ? "yes" : "no");
     }
 })(jQuery);
 

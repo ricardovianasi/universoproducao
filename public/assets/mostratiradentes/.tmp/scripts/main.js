@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
@@ -17,14 +17,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         e.preventDefault();
 
         // Set values for window
-        intWidth = intWidth || '500';
-        intHeight = intHeight || '400';
-        var strResize = blnResize ? 'yes' : 'no';
-
-        // Set title and open popup with focus on it
-        var strTitle = typeof this.attr('title') !== 'undefined' ? this.attr('title') : 'Social Share',
-            strParam = 'width=' + intWidth + ',height=' + intHeight + ',resizable=' + strResize,
-            objWindow = window.open(this.attr('href'), strTitle, strParam).focus();
+        intWidth = intWidth || "500";
+        intHeight = intHeight || "400";
+        var strResize = blnResize ? "yes" : "no";
     };
 })(jQuery);
 
@@ -61,7 +56,7 @@ $(document).ready(function () {
         autoplay: false,
         autoplayTimeout: 7000,
         lazyLoad: false
-    }, 'loop', true));
+    }, "loop", true));
 
     $(".fancybox").fancybox({
         padding: 0,

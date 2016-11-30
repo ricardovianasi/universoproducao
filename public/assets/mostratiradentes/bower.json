@@ -21,6 +21,12 @@
         "js/perfect-scrollbar.jquery.js",
         "src/css/main.scss"
       ]
+    },
+    "fancyBox": {
+      "main": [
+        "source/jquery.fancybox.css",
+        "source/jquery.fancybox.pack.js"
+      ]
     }
   },
   "devDependencies": {

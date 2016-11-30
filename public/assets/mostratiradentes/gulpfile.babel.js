@@ -65,10 +65,10 @@ gulp.task('lint:test', lint('test/spec/**/*.js', testLintOptions));
 gulp.task('html', ['styles:dist', 'scripts'], () => {
   return gulp.src('app/*.html')
     .pipe($.useref({searchPath: ['.tmp', 'app', '.']}))
-    //.pipe($.if('*.js', $.uglify({
-    //  mangle: true,
-    //  compress: true
-    //})))
+    .pipe($.if('*.js', $.uglify({
+      mangle: true,
+      compress: true
+    })))
     .pipe($.if('*.css', $.cssnano({
       mergeIdents: false,
       reduceIdents: false
