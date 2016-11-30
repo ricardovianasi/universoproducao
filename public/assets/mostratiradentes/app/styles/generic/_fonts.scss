@@ -12,11 +12,11 @@
 /* Font icons */
 @font-face {
   font-family: 'mostratiradentes';
-  src:  url('../fonts/mostratiradentes.eot?7hrag7');
-  src:  url('../fonts/mostratiradentes.eot?7hrag7#iefix') format('embedded-opentype'),
-  url('../fonts/mostratiradentes.ttf?7hrag7') format('truetype'),
-  url('../fonts/mostratiradentes.woff?7hrag7') format('woff'),
-  url('../fonts/mostratiradentes.svg?7hrag7#mostratiradentes') format('svg');
+  src:  url('../fonts/mostratiradentes.eot?q2ppc0');
+  src:  url('../fonts/mostratiradentes.eot?q2ppc0#iefix') format('embedded-opentype'),
+  url('../fonts/mostratiradentes.ttf?q2ppc0') format('truetype'),
+  url('../fonts/mostratiradentes.woff?q2ppc0') format('woff'),
+  url('../fonts/mostratiradentes.svg?q2ppc0#mostratiradentes') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -95,6 +95,9 @@
 }
 .icon-universo-brand:before {
   content: "\e903";
+}
+.icon-plus3:before {
+  content: "\ed5d";
 }
 .icon-plus-circle:before {
   content: "\ed5f";

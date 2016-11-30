@@ -16,8 +16,7 @@ return array(
                     'route'    => '[www.]mostratiradentes.com.br',
                     'defaults' => array(
                         'controller'    => Controller\IndexController::class,
-                        'action'        => 'index',
-                        'locale'        => 'pt'
+                        'action'        => 'index'
                     ),
                 ),
                 'may_terminate' => true,
@@ -140,7 +139,7 @@ return array(
     ),
     'view_manager' => array(
         'template_map' => array(
-            'cinebh/layout' => __DIR__ . '/../view/layout/layout.phtml',
+            'mostratiradentes/layout' => __DIR__ . '/../view/layout/layout.phtml',
         ),
         'template_path_stack' => array(
             __DIR__ . '/../view',
