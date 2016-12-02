@@ -147,16 +147,5 @@ return array(
     ),
     'module_layouts' => [
         __NAMESPACE__ => 'mostratiradentes/layout'
-    ],
-
-    'translator' => [
-        'locale' => 'en_US',
-        'translation_file_patterns' => [
-            [
-                'base_dir' => __DIR__ . '/../languages',
-                'type'     => 'gettext',
-                'pattern'  => '%s.mo',
-            ],
-        ]
     ]
 );
