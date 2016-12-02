@@ -146,7 +146,7 @@ return array(
         ),
     ),
     'module_layouts' => [
-        __NAMESPACE__ => 'cinebh/layout'
+        __NAMESPACE__ => 'mostratiradentes/layout'
     ],
 
     'translator' => [

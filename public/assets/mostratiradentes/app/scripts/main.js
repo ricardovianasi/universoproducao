@@ -58,7 +58,39 @@ $(document).ready(function () {
         autoplay: false,
         autoplayTimeout: 7000,
         lazyLoad: false,
-        loop: true
+    });
+
+    var timeline = $(".events").owlCarousel({
+        items: 3,
+        center: false,
+        autoWidth: true,
+        autoHeight:true,
+        nav: true,
+        navContainer: ".timeline-navigation",
+        navText: [
+            "<a href='' class='circle-button'><i class='icon icon-arrow-left4'></i></a>",
+            "<a href='' class='circle-button'><i class='icon icon-arrow-right4'></i></a>"
+        ],
+        dots: false,
+        mouseDrag: true,
+        autoplay: false,
+        lazyLoad: false,
+        loop: false,
+        stageElement: "ol",
+        itemElement: "li"
+    });
+
+    timeline.on("translate.owl.carousel", function (e) {
+        if(e.item.index == 0) {
+            $(".timeline").removeClass("stage2").addClass("active stage1");
+        } else if(e.item.index > 0) {
+            $(".timeline").removeClass("stage1").addClass("active stage2");
+        }
+    })
+
+    $("#timeline-active").on("click", function (e) {
+        e.preventDefault();
+        $(".timeline").toggleClass("active stage1");
     });
 
     $(".fancybox").fancybox({
@@ -74,4 +106,5 @@ $(document).ready(function () {
             }
         }
     });
+
 });

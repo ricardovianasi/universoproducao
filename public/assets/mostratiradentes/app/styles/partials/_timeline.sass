@@ -1,0 +1,305 @@
+.timeline.active
+  .timeline-navigation
+    display: block
+  &.stage1
+    &:before
+      transform: translateX(-60%) !important
+      background: url("../images/tenda.jpg")
+
+    .timeline-header
+      text-indent: -100%
+      max-width: 500px
+      left: 40%
+
+    .timeline-container
+      position: relative
+      left: -150px
+      transform: translateX(40%) !important
+
+  &.stage2
+    &:before
+      transform: translateX(-100%) !important
+    .timeline-header
+      display: none
+    .timeline-container
+      transform: translateX(0) !important
+
+.timeline
+  position: relative
+  width: 100%
+  height: 702px
+  background: black
+  &:before
+    transition: $transition-default
+    content: ""
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+    background: url("../images/tenda-grayscale.jpg")
+    background-repeat: no-repeat
+    background-size: cover
+    background-position: center
+
+  &-header
+    max-width: 1140px
+    width: 100%
+    min-height: 360px
+    display: inline-block
+    +padding-leader(4)
+    +padding-trailer(4)
+    padding-left: 40px
+    padding-right: 40px
+    box-sizing: border-box
+    background: #73007a
+    background: linear-gradient(120deg, rgba(115,0,122,.4), rgba(140,24,104,.4), rgba(191,73,69,.4), rgba(244,123,32,.4))
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+    h1
+      width: 50%
+      display: inline-block
+      padding-right: 30px
+      margin-right: 30px
+      +adjust-font-size-to(56px)
+      text-transform: uppercase
+      color: white
+    p
+      +adjust-font-size-to(18px, 1.5)
+      +trailer(0)
+      width: 30%
+      display: inline-block
+      color: white
+      strong
+        display: block
+        font-weight: 700
+        +leader(2.5)
+    .timeline-button
+      float: left
+      position: absolute
+      right: 40px
+      top: 50%
+      transform: translateY(-50%)
+      a
+        background-color: rgba(59,1,62,.5)
+        &:hover
+          background-color: rgba(59,1,62,1)
+
+  &-container
+    //display: block
+    padding: 0 40px
+    transform: translateX(100%)
+
+  &-body
+    width: 100%
+    max-width: 100%
+    height: 702px
+    position: relative
+    box-sizing: border-box
+    margin: 0 auto
+
+  &-wrapper
+    position: relative
+    height: 100%
+    margin: 0 100px
+    overflow: hidden
+
+  &-navigation
+    //position: absolute
+    display: none
+    .owl-next,
+    .owl-prev
+      position: absolute
+      top: 0
+      width: 300px
+      height: 100%
+      z-index: 999
+    .owl-next
+      right: 0
+      background: linear-gradient(to left, #000, #000, rgba(0,0,0,0))
+    .owl-prev
+      background: linear-gradient(to right, #000, #000, rgba(0,0,0,0))
+
+    .disabled
+      display: none
+
+    a
+      position: absolute
+      top: 50%
+      left: 50%
+      transform: translate(-50%, -50%)
+      background: rgba(58,1,62,.6)
+
+  &-events
+    z-index: 1
+    position: absolute
+    left: 0
+    top: 50%
+    transform: translateY(-50%)
+    height: 2px
+    background-color: $color-palette-1
+
+  .event
+    width: 300px
+    float: left
+    position: relative
+    margin-left: 94px
+    margin-right: 94px
+    &:before
+      content: ""
+      position: absolute
+      width: 20px
+      height: 20px
+      left: 50%
+      top: -10px
+      transform: translateX(-50%)
+      border-radius: 100%
+      background-color: $color-palette-1
+
+    &-figure
+      position: relative
+
+    &-actions
+      position: absolute
+      top: 50%
+      right: -40px
+      transform: translateY(-50%)
+      li
+        margin-bottom: 15px
+        margin-top: 15px
+        &:first-child
+          margin-top: 0
+        &:last-child
+          margin-bottom: 0
+      .circle-button
+        width: 30px
+        height: 30px
+        border: 1px solid $color-palette-1
+        color: $color-palette-1
+        font-size: 14px
+        line-height: 30px
+        &.plus
+          border: 1px solid #d8127c
+          color: #d8127c
+
+    &-content
+      color: white
+      text-align: left
+      +trailer(1.5)
+      +leader(1.5)
+      ul
+        +leader(1.5)
+        li
+          display: inline-block
+          margin-right: 20px
+          position: relative
+          &:after
+            content: ""
+            position: absolute
+            width: 6px
+            height: 6px
+            border-radius: 100%
+            background-color: white
+            top: 50%
+            transform: translateY(-50%)
+            right: -15px
+          &:last-child
+            &:after
+              position: relative
+
+    &-year
+      +adjust-font-size-to(63px, 3.5)
+      +trailer(1.5, 63px)
+      +leader(1.5, 63px)
+      color: $color-palette-1
+      text-align: center
+
+    &-title
+      +adjust-font-size-to(28px)
+      +trailer(1, 28px)
+      font-weight: 700
+      text-transform: uppercase
+    &-subtitle
+      +adjust-font-size-to(20px)
+      +trailer(0)
+      font-weight: 700
+      text-transform: uppercase
+    &-audience
+      +leader(1)
+      +trailer(0)
+      color: white
+      span
+        font-size: 30px
+        color: $color-palette-1
+      i
+        color: $color-palette-1
+        font-size: 23px
+        margin-left: 10px
+
+  .owl-stage
+    .owl-item
+      //opacity: .2
+      &.center
+        opacity: 1
+      &:first-child
+        .event
+          margin-left: 0
+          width: 600px
+          .event-content
+            max-width: 300px
+            position: absolute
+            right: 0
+            top: -106%
+          .event-year
+            position: absolute
+            bottom: 100%
+            margin-left: 30px
+          .event-title
+            +adjust-font-size-to(48px)
+            +leader(1.5, 48px)
+            margin-left: 30px
+            font-weight: 700
+            color: white
+          .event-text
+            p
+              width: 80%
+              display: inline-block
+            .event-actions
+              +leader(0)
+              display: inline-block
+              position: relative
+              top: auto
+              left: auto
+              right: auto
+              transform: translate(0)
+              vertical-align: top
+
+          &:before
+            left: 0
+            transform: translateX(0)
+
+
+      &:nth-child(2n+2)
+        .event
+          .event-year,
+          .event-figure
+            position: absolute
+            left: 50%
+            transform: translateX(-50%)
+
+          .event-year
+            bottom: 100%
+
+          .event-figure
+            top: -$base-line-height*16.5
+
+      &:nth-child(2n+3)
+        .event
+          .event-content
+            position: absolute
+            bottom: 100%
+
+.squere-font
+  font-family: "SquareFont", "Share Tech Mono", monospace
