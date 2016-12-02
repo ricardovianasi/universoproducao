@@ -726,7 +726,7 @@
             <div class="eufacoamostra-item <?php echo !empty($eu->getVideo) ? "eufacoamostra-item--video" : ""; ?>">
                 <?php $href = $eu->getVideo() ? $this->youtubeEmbed($eu->getVideo()) : $this->thumbor()->url($eu->getThumb())->resize(700, 700); ?>
                 <a rel="eufacoamostra" href="<?php echo $href ?>" class="eufacoamostra-link fancybox <?php echo !empty($eu->getVideo) ? "fancybox.iframe" : ""; ?>">
-                    <figure class="eufacoamostra-figure"><img class="<?php echo empty($eu->getVideo) ? "grayscale grayscale-fade" : ""; ?> src="<?php echo $this->thumbor()->url($eu->getThumb())->resize(700, 700); ?>" alt=""></figure></a></div>
+                    <figure class="eufacoamostra-figure"><img src="<?php echo $this->thumbor()->url($eu->getThumb())->resize(700, 700); ?>" alt=""></figure></a></div>
         <?php endforeach; ?>
     </div>
     <p class="news-all"><a href="" class="button-readmore">Veja Mais Galerias</a></p>
