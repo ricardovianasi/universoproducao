@@ -277,6 +277,13 @@
 
   .gallery
     position: relative
+    width: 100%
+    background-color: black
+    +padding-trailer(3)
+
+    &-all
+      +leader(2)
+      text-align: center
 
     &-desc
       position: relative
@@ -433,7 +440,7 @@
     background-color: $color-palette-2
     +padding-leader(3)
     +padding-trailer(3)
-    +trailer(4)
+    //+trailer(4)
 
     &-header
       text-align: center
