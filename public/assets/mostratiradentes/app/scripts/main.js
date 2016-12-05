@@ -103,6 +103,9 @@ $(document).ready(function () {
         helpers: {
             overlay: {
                 locked: false
+            },
+            title	: {
+                type: 'outside'
             }
         }
     });
