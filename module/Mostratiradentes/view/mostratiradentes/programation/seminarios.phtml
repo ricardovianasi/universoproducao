@@ -1,18 +1,6 @@
-<div class="main__figure">
-    <?php if($post->getMeta('_cover')): ?>
-        <img src="<?php echo $this->thumbor()->url($post->getMeta('_cover'))->resize(1920, 492); ?>" alt="">
-    <?php else: ?>
-        <img src="<?php echo $this->basePath("assets/cinebh/dist") ?>/images/internal.jpg" alt="">
-    <?php endif; ?>
-</div>
-
-<?php if($this->breadcrumbs): ?>
-    <?php echo $this->partial('cinebh/partials/_breadcrumbs.phtml', ['breadcrumbs'=>$this->breadcrumbs]); ?>
-<?php endif; ?>
-
-<section class="main__wrapper">
-    <header class="main__header">
-        <h1 class="main__title"><?php echo $this->post->getTitle(); ?></h1>
+<section class="main-wrapper main-content">
+    <header class="main-header">
+        <h1 class="main-title"><?php echo $this->post->getTitle(); ?></h1>
     </header>
 
 
@@ -113,7 +101,7 @@
             }
         }
 
-        $mostra = 1073;
+        $mostra = 1075;
         $lg = '';
         $url = '';
         $fc = $fl = $sub = $subMostra = $fSub1 = $fSub2 = $fSub3 = '';

@@ -2,7 +2,7 @@
     <?php foreach ($this->container as $page):
         /** @var Zend\Navigation\Page\AbstractPage $page */ ?>
         <li class="sitemap-item">
-            <a class="sitemap-link" href="<?php echo $page->getHref() ?>" target="<?php echo $page->getTarget() ?>"><?php echo $page->getLabel() ?></a>
+            <a class="sitemap-link" href="" target="<?php echo $page->getTarget() ?>"><?php echo $page->getLabel() ?></a>
             <?php if ($page->hasPages()): ?>
                 <ul class="sitemap-items">
                     <?php foreach ($page->getPages() as $child):
