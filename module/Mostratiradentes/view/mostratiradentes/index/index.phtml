@@ -738,10 +738,10 @@
         <header class="newsletter-header">
             <h1>Receba Nossos Informativos</h1>
         </header>
-        <form action="" class="newsletter-form">
+        <form action="<?php echo $this->url("mostratiradentes/newsletter") ?>" method="post" class="newsletter-form">
             <input required type="text" class="newsletter-input" placeholder="Nome">
             <input required type="text" class="newsletter-input" placeholder="Email">
-            <button onclick="alert('Cadastro efetuado com sucesso!')" type="submit" class="newsletter-submit">Cadastrar</button>
+            <button type="submit" class="newsletter-submit">Cadastrar</button>
         </form>
     </div>
 </section>
