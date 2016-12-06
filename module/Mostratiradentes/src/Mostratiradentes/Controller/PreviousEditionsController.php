@@ -24,7 +24,7 @@ class PreviousEditionsController extends SiteController
         $post = $this->params('post');
 
         $events = $this->getRepository(Event::class)->findBy([
-            'type' => 'cinebh'
+            'type' => 'mostratiradentes'
         ], ['edition' => 'DESC']);
 
         $viewModel->post = $post;
