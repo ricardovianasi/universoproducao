@@ -45,7 +45,7 @@ $(document).ready(function () {
     $(".gallery-list").owlCarousel({
         items: 1,
         autoWidth: true,
-        autoHeight:false,
+        autoHeight:true,
         nav: true,
         navText: [
             "<button class='owl-prev'><span class='icon icon-arrow-left4'></span></button>",
