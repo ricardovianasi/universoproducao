@@ -53,7 +53,7 @@ $(document).ready(function () {
         center: true,
         autoplay: false,
         autoplayTimeout: 7000,
-        lazyLoad: false
+        lazyLoad: true
     });
 
     var timeline = $(".events").owlCarousel({
