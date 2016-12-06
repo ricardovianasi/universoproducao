@@ -1,21 +1,22 @@
 .header
   position: relative
   width: 100%
-
-  &-bgc
-    background: url("../images/header-bg.jpg") no-repeat top left
-    background-size: 100% 100%
+  background-color: black
+  //&-bgc
+  //  background: url("../images/header-bg.jpg") no-repeat top left
+  //  background-size: 100% 100%
 
   &-wrapper
     +center
-    text-align: center
+    background: url("../images/header-bg-wrapper.png") no-repeat center center
 
   .brand,
-  .name,
-  .social
-    display: inline-block
-    padding-left: 4%
-    padding-right: 4%
+  .brand-right
+    float: left
+    width: 50%
+    padding-left: 10%
+    padding-right: 10%
+    box-sizing: border-box
 
   .brand
     vertical-align: middle
@@ -28,22 +29,30 @@
       float: left
       font-size: 144px
 
+  .brand-right
+    vertical-align: middle
+    text-align: right
+    +trailer(3)
+    +leader(3)
+
   .name
-    +adjust-font-size-to(54px, 3)
+    +adjust-font-size-to(30px, 1.5)
     font-weight: 700
     text-transform: uppercase
     color: white
-    +trailer(0)
     vertical-align: middle
     & > span
-      +adjust-font-size-to(37px, 1.7, 54px)
+      +adjust-font-size-to(22px, 1, 30px)
+      +leader(.5, 22px)
       display: block
       font-weight: normal !important
     
   .social
+    +leader(1)
     &-item
       display: inline-block
       margin-right: 19px
+      text-align: center
       &:last-child
         margin-right: 0
 
