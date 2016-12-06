@@ -41,7 +41,7 @@ class PreviousEditionsController extends SiteController
         $idEdition = $this->params('id');
         $edition = $this->getRepository(Event::class)->findOneBy([
             'id' => $idEdition,
-            'type' => 'cinebh'
+            'type' => 'mostratiradentes'
         ]);
 
         $post->setTitle($edition->getFullName());
