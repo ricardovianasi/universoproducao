@@ -303,3 +303,24 @@
 
 .squere-font
   font-family: "SquareFont", "Share Tech Mono", monospace
+
+
+.event-winners
+  background-color: black
+  padding: 20px
+  overflow: hidden
+  p
+    color: white
+    +adjust-font-size-to(16px, 1)
+    +trailer(1.5, 16px)
+    span
+      font-weight: 700
+      text-transform: uppercase
+      color: $color-palette-1
+    strong
+      +adjust-font-size-to(18px, 1, 16px)
+      display: block
+      font-weight: 700
+      text-transform: uppercase
+      color: $color-palette-1
+

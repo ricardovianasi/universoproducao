@@ -102,5 +102,15 @@ $(document).ready(function () {
             }
         }
     });
+
+    $("a[href$='.jpg'],a[href$='.jpeg'],a[href$='.png'],a[href$='.gif'],a.winners").fancybox({
+        padding: 0,
+        openEffect: 'elastic',
+        helpers: {
+            overlay: {
+                locked: false
+            }
+        }
+    });
 });
 //# sourceMappingURL=main.js.map
