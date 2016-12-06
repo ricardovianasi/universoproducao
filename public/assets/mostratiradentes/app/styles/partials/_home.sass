@@ -153,6 +153,7 @@
       +trailer(0)
       color: white
       text-transform: uppercase
+      letter-spacing: .05em
       +leader(1)
 
     &-figure
@@ -299,6 +300,12 @@
         font-style: italic
         display: block
 
+    &-figure
+      img
+        display: block
+        width: 100%
+        height: auto
+        max-height: 505px !important
 
     .owl-item
       .gallery-desc
@@ -362,6 +369,7 @@
       color: $color-palette-3
       text-transform: uppercase
       +leader(1)
+      letter-spacing: .05em
 
     .sprite
       display: inline-block
@@ -384,6 +392,7 @@
         +trailer(2, 56px)
       p
         +adjust-font-size-to(18px, 2)
+        letter-spacing: .05em
         color: $color-palette-1
 
     &-items
@@ -462,6 +471,7 @@
       text-transform: uppercase
       font-family: "Share", cursive, Arial, Helvetica, sans-serif
       +apply-side-rhythm-border(all, 1px, 1, 18px, solid #fff)
+      letter-spacing: .05em
 
     &-input
       width: 40%
@@ -551,6 +561,7 @@
       font-weight: 700
       +adjust-font-size-to(18px, 1)
       +trailer(2)
+      letter-spacing: .05em
       &:hover
         text-decoration: underline
         color: $color-palette-1
