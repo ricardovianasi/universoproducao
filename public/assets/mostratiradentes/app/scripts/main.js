@@ -44,7 +44,8 @@ $(document).ready(function () {
 
     $(".gallery-list").owlCarousel({
         items: 1,
-        autoWidth: true,
+
+
         autoHeight:true,
         nav: true,
         navText: [
