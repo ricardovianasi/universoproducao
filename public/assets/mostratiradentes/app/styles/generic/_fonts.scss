@@ -13,11 +13,11 @@
 /* Font icons */
 @font-face {
   font-family: 'mostratiradentes';
-  src:  url('../fonts/mostratiradentes.eot?pxi2qw');
-  src:  url('../fonts/mostratiradentes.eot?pxi2qw#iefix') format('embedded-opentype'),
-  url('../fonts/mostratiradentes.ttf?pxi2qw') format('truetype'),
-  url('../fonts/mostratiradentes.woff?pxi2qw') format('woff'),
-  url('../fonts/mostratiradentes.svg?pxi2qw#mostratiradentes') format('svg');
+  src:  url('../fonts/mostratiradentes.eot?9nse07');
+  src:  url('../fonts/mostratiradentes.eot?9nse07#iefix') format('embedded-opentype'),
+  url('../fonts/mostratiradentes.ttf?9nse07') format('truetype'),
+  url('../fonts/mostratiradentes.woff?9nse07') format('woff'),
+  url('../fonts/mostratiradentes.svg?9nse07#mostratiradentes') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -37,14 +37,14 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-eufacoamostra:before {
+  content: "\e904";
+}
 .icon-people:before {
   content: "\e906";
 }
 .icon-trophy:before {
   content: "\e905";
-}
-.icon-eufacoamostra:before {
-  content: "\e904";
 }
 .icon-brand:before {
   content: "\e900";
