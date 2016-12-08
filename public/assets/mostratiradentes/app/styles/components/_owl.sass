@@ -10,15 +10,18 @@
     zoom: 1
     span
       display: block
-      width: 16px
-      height: 16px
+      width: 20px
+      height: 20px
       border:
         radius: 50%
         color: $color-palette-1
-        width: 1px
+        width: 2px
         style: solid
       margin-left: 12px
       margin-right: 12px
+    &.active
+      span
+        background-color: $color-palette-1
 
 .owl-nav
   .owl-prev,

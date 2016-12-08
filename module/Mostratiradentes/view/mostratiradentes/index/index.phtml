@@ -4,7 +4,12 @@
 <section class="banner">
     <div class="banner-items owl-carousel">
         <?php foreach ($this->bannerImages as $banner): ?>
-            <div class="banner-item"><img src="<?php echo $this->thumbor()->url($banner->getMeta('_image'))->resize(1920, 648); ?>" alt=""></div>
+            <div class="banner-item">
+                <a target="_blank" href="<?php echo $banner->getMeta('_link') ?>">
+                    <img src="<?php echo $this->thumbor()->url($banner->getMeta('_image'))->resize(1920, 648); ?>" alt="">
+                    <p class="banner-caption"><?php echo $banner->getSubtitle(); ?></p>
+                </a>
+            </div>
         <?php endforeach; ?>
     </div>
 </section>
@@ -199,7 +204,7 @@
 
 <section class="timeline">
     <div class="timeline-header">
-        <h1>Mostra Tiradentes, 20 anos de cinema, arte e cultura</h1>
+        <h1>Mostra Tiradentes, <br>20 anos de história</h1>
         <p>Há 20 anos, temos o prazer de celebrar o maior festival de cinema de Minas Gerais e um dos mais relevantes do Brasil,
             20 anos de orgulho, história e emoção! <strong>Clique e conheça a nossa trajetória</strong></p>
         <div class="timeline-button">
