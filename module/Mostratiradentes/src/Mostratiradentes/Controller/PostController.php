@@ -143,8 +143,8 @@ class PostController extends SiteController
             $msgConfirmacaoCadastro .= "Qualquer dúvida, estamos à disposição pelo telefone (31) 3282 2366 ou e-mail imprensa@universoproducao.com.br";
             $msgConfirmacaoCadastro .= "<br /><br />";
             $msgConfirmacaoCadastro .= "Atenciosamente,<br />";
-            $msgConfirmacaoCadastro .= "Equipe Imprensa – CineOP<br />";
-            $msgConfirmacaoCadastro .= "www.cinebh.com.br<br />";
+            $msgConfirmacaoCadastro .= "Equipe Imprensa<br />";
+            $msgConfirmacaoCadastro .= "www.mostratiradentes.com.br<br />";
 
             $htmlMessage = new Part($msgConfirmacaoCadastro);
             $htmlMessage->type = 'text/html';
