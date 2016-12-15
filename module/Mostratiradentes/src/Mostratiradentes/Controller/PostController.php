@@ -295,7 +295,7 @@ class PostController extends SiteController
             $mail->setBody($miniMessage);
             $mail->setFrom('no-reply@universoproducao.com.br', 'Universo Producao');
             $mail->setTo('imprensa@universoproducao.com.br');
-            $mail->addBcc('ricardovianasi@gmail.com');
+//            $mail->addBcc('ricardovianasi@gmail.com');
             $mail->setSubject('Credenciamento de Imprensa - CineBH');
 
             try {
