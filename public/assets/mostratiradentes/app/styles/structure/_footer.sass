@@ -6,12 +6,18 @@
     +center($pad:8px)
 
   &-contact
-    width: 60%
-    float: left
+    +media(">=tablet")
+      width: 60%
+      float: left
+    +media("<tablet")
+      width: 100%
 
   &-social
-    width: 40%
-    float: left
+    +media(">=tablet")
+      width: 40%
+      float: left
+    +media("<tablet")
+      width: 100%
 
   &-copy
     clear: both
@@ -38,9 +44,12 @@
     color: white
     text-transform: uppercase
     letter-spacing: 0.1em
-    display: inline-block
     vertical-align: top
-    margin-left: 40px
+    +media(">=480px")
+      margin-left: 40px
+      display: inline-block
+    +media("<480px")
+      display: block
 
   &-socialitem
     +column(1/5)

@@ -17,12 +17,15 @@
     padding-left: 10%
     padding-right: 10%
     box-sizing: border-box
+    +media("<tablet")
+      float: none
+      width: 100%
 
   .brand
     vertical-align: middle
     padding-left: 20%
-    +trailer(2)
-    +leader(2)
+    +padding-trailer(2)
+    +padding-leader(2)
     &-link
       color: white
     .icon-brand
@@ -30,11 +33,25 @@
       float: left
       font-size: 144px
 
+    +media("<tablet")
+      text-align: center
+      +padding-leader(1)
+      +padding-trailer(1)
+      .brand-link
+        float: none
+        display: inline-block
+      .icon-brand
+        font-size: 100px
+
   .brand-right
     vertical-align: middle
     text-align: right
     +trailer(3)
     +leader(3)
+    +media("<tablet")
+      text-align: center
+      +leader(1)
+      +trailer(1)
 
   .name
     +adjust-font-size-to(30px, 1.5)

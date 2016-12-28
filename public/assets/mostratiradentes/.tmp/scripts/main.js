@@ -111,5 +111,10 @@ $(document).ready(function () {
             }
         }
     });
+
+    $("#menu-button").on("click", function (e) {
+        e.preventDefault();
+        $(".menu").toggleClass("menu-open");
+    });
 });
 //# sourceMappingURL=main.js.map

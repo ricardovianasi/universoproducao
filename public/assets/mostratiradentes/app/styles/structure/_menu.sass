@@ -1,5 +1,19 @@
 .menu
   position: relative
+  &-button
+    font-size: 36px
+    line-height: inherit
+    +padding-leader(.5)
+    +padding-trailer(.5)
+    text-align: center
+    cursor: pointer
+    color: black
+    box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.3)
+    +media(">tablet")
+      display: none
+    +media("<=tablet")
+      display: block
+
   &-container
     background-color: $color-palette-1
     width: 100vw
@@ -10,6 +24,21 @@
   &-list
     +center
     text-align: center
+
+  &-bar
+    transition: $transition-default
+    +media("<=tablet")
+      display: none
+
+  &-open
+    .menu-bar
+      display: block
+    .menu-item, .menu-item>.menu-container .menu-item
+      width: 100%
+      float: none
+      display: block
+      padding-left: 0
+      padding-right: 0
 
   &-item
     +column(1/5, $gutter: 0)
