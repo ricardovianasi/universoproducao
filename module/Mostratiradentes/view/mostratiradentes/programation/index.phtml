@@ -1,3 +1,4 @@
+<?php error_reporting(0); ?>
 <section class="main-wrapper main-content">
     <header class="main-header">
         <h1 class="main-title"><?php echo $this->post->getTitle(); ?></h1>
@@ -248,12 +249,12 @@
         <input name="sub" type="hidden" value="pc" />
 
     </form>
-    <p><a href="<?php echo $this->basePath("assets/cinebh/programacao-completa.pdf") ?>" target="_blank">Faça o download da programação</a></p>
+    <!--<p><a href="<?php /*echo $this->basePath("assets/cinebh/programacao-completa.pdf") */?>" target="_blank">Faça o download da programação</a></p>-->
 
     <?php
     if (isset($_GET['fd']) || isset($_GET['fc']) || isset($_GET['fl'])  ) {
         ?>
-        <h4 style="font-size: 12px; margin: 7px 0;"><a href="<?php echo $this->url('cinebh')?>programacao/programacao-completa">&gt; <?php echo $lg=='Ing' ? "SHOW ENTIRE PROGRAM" : "EXIBIR TODA A PROGRAMAÇÃO"; ?></a></h4>
+        <h4 style="font-size: 12px; margin: 7px 0;"><a href="<?php echo $this->url('mostratiradentes')?>programacao/programacao-completa">&gt; <?php echo $lg=='Ing' ? "SHOW ENTIRE PROGRAM" : "EXIBIR TODA A PROGRAMAÇÃO"; ?></a></h4>
     <?php } ?>
 
 
@@ -472,7 +473,7 @@
                     $catIng = "Short Film Session";
                 }
 
-                $url = $this->url('cinebh/movie', ['id'=>$rowProg->CodItemProg]);
+                $url = $this->url('mostratiradentes/movie', ['id'=>$rowProg->CodItemProg]);
 
                 if ($lg=='Ing'){
                     switch($cat){
@@ -518,7 +519,7 @@
                         $faixaEtaria1	= $r["FaixaEtaria1"];
                         $faixaEtaria2	= $r["FaixaEtaria2"];
                         //$url = "cine-escola-detalhe.php?menu=prog&sub=cinescol&cat=$categoria&CodFilme=$linhaSess->idFilme";
-                        $url = $this->url('cinebh/movie', ['id'=>$linhaSess->idFilme]);
+                        $url = $this->url('mostratiradentes/movie', ['id'=>$linhaSess->idFilme]);
                     }
                 }
 
@@ -550,7 +551,7 @@
                     $catIng = "Short Film Session";
                 }
                 //$url = "filme-detalhe.php?menu=programacao&item=filmes&cat=$cat&mostrinha=1&CodFilme=$rowProg->CodItemProg";
-                $url = $this->url('cinebh/movie', ['id'=>$rowProg->CodItemProg]);
+                $url = $this->url('mostratiradentes/movie', ['id'=>$rowProg->CodItemProg]);
 
                 if ($lg=='Ing'){
                     switch($cat){
@@ -587,7 +588,7 @@
                 }
 
                 //$url = "seminario-detalhe.php?menu=programacao&item=seminario&CodSem=$rowProg->CodItemProg";
-                $url = $this->url('cinebh/seminar', ['id'=>$rowProg->CodItemProg]);
+                $url = $this->url('mostratiradentes/seminar', ['id'=>$rowProg->CodItemProg]);
                 break;
             case 'AR': $SqlTit = "select TitArte, TitArteIng, CodCatArte from tb_arte where CodArte = $rowProg->CodItemProg";
                 $resultTit  = mysql_query($SqlTit);
@@ -597,7 +598,7 @@
                 @$cat = utf8(mysql_result($resultCat,0,"TitCatArte"));
                 $categoria = $lg=='Ing' ? "ART" : "ARTE • ".$cat;
                 //$url = "arte-detalhe.php?menu=programacao&item=arte&CodArte=$rowProg->CodItemProg";
-                $url = $this->url('cinebh') . 'arte/'.$rowProg->CodItemProg.'?CodArte='.$rowProg->CodItemProg;
+                $url = $this->url('mostratiradentes') . 'arte/'.$rowProg->CodItemProg.'?CodArte='.$rowProg->CodItemProg;
                 $preEstreia = "";
                 break;
             case 'AB': $categoria = "ABERTURA";
@@ -607,14 +608,14 @@
                 $resultTit  = mysql_query($SqlTit);
                 $titulo	= mysql_result($resultTit,0,"TitAbertura".$lg."");
                 $descricao	= mysql_result($resultTit,0,"DescAbertura".$lg."");
-                $url = $this->url('cinebh') . 'abertura/';
+                $url = $this->url('mostratiradentes') . 'abertura/';
                 break;
             case 'EX': $categoria = "EXPOSIÇÃO";
                 $categoria = $lg=='Ing' ? "EXPOSITION" : "EXPOSIÇÃO";
                 $SqlTit = "select TitExpo, TitExpoIng from tb_exposicao where CodExpo = $rowProg->CodItemProg";
                 $resultTit  = mysql_query($SqlTit);
                 $titulo	= mysql_result($resultTit,0,"TitExpo".$lg."");
-                $url = $this->url('cinebh') . 'exposicao/';
+                $url = $this->url('mostratiradentes') . 'exposicao/';
                 $preEstreia = "";
                 break;
             case 'EN': $categoria = "ENCERRAMENTO";
@@ -626,7 +627,7 @@
                 $titulo	= mysql_result($resultTit,0,"TitEnc".$lg."");
 
                 $descricao	= mysql_result($resultTit,0,"DescEnc".$lg."");
-                $url = $this->url('cinebh') . 'encerramento/';
+                $url = $this->url('mostratiradentes') . 'encerramento/';
                 $preEstreia = "";
                 break;
         }
@@ -675,35 +676,6 @@
             <?php
             $dataAnterior = $dataFinal;
         }
-
-
-
-        if($dataFinal == '23/06' && !$dia23) {
-            $dia23 = true;
-            ?>
-            <tr style="">
-                <th valign="top">
-                    <h5> 13h às 15h</h5>
-                    <span style="font-size: 9px;">Hall de convivência – Secretaria - Centro de Convenções</span>
-                </th>
-                <td valign="top">
-                    <h5 >CREDENCIAMENTO </h5>
-                    <h6><a href='<?php echo $url = $this->url('cinebh') . 'seminarios' ?>'><strong>ENCONTRO DE ARQUIVOS E ENCONTRO DA EDUCAÇÃO</strong></a></h6>
-                </td>
-            </tr>
-            <tr style="">
-                <th valign="top">
-                    <h5> 14h </h5>
-                    <span style="font-size: 9px;">Centro de Convenções</span>
-                </th>
-                <td valign="top">
-                    <h5 >OFICINAS</h5>
-                    <h6><a href='<?php echo $this->url('cinebh') . 'oficinas' ?>'><strong>Início das Oficinas</strong></a></h6>
-                </td>
-            </tr>
-            <?php
-        }
-
         ?>
 
 
@@ -719,39 +691,49 @@
         }
 
 
-        if ($dataFinal == '21/10' && $horario == '13h') {
-            $limitCurta = 4;
-        }elseif ($dataFinal == '21/10' && $horario == '21h'){
+        if ($dataFinal == '21/01' && $horario == '16h30') {
+            $limitCurta = 5;
+        } elseif ($dataFinal == '21/01' && $horario == '18h30'){
             $limitCurta = 3;
-        }elseif ($dataFinal == '22/10' && $horario == '14h'){
-
-            if($rowProg->CodItemProg == 19963) {
-                $countCurta = 1;
-            } else {
-                $countCurta = 2;
-            }
-            $limitCurta = 2;
-        }elseif ($dataFinal == '22/10' && $horario == '19h' && $rowProg->CodItemProg == 19944) {
-            $limitCurta =3;
+        } elseif ($dataFinal == '21/01' && $horario == '22h' && $rowProg->CodItemProg == 20802){
             $countCurta = 1;
-        } elseif ($dataFinal == '22/10' && $horario == '19h' && $rowProg->CodItemProg == 19772) {
+            $limitCurta = 2;
+        } elseif ($dataFinal == '22/01' && $horario == '15h30'){
             $limitCurta = 4;
-            $countCurta = 1;
-        }elseif ($dataFinal == '25/10' && $horario == '08h' && $rowProg->CodItemProg == 907123156404){
-            $limitCurta = 2;
-            $countCurta = 1;
-        } elseif ($dataFinal == '25/10' && $horario == '14h' && $rowProg->CodItemProg == 907123156404){
-            $limitCurta = 2;
-            $countCurta = 1;
-        } elseif ($dataFinal == '25/10' && $horario == '14h' && $rowProg->CodItemProg == 562217309931){
-            $limitCurta = 2;
-            $countCurta = 1;
-        } elseif ($dataFinal == '25/10' && $horario == '19h'){
+        }  elseif ($dataFinal == '22/01' && $horario == '17h'){
+            $limitCurta = 5;
+        } elseif ($dataFinal == '22/01' && $horario == '18h30'){
+            $limitCurta = 8;
+        } elseif ($dataFinal == '23/01' && $horario == '16h30'){
             $limitCurta = 4;
-        } elseif ($dataFinal == '26/10' && $horario == '08h'){
+        } elseif ($dataFinal == '23/01' && $horario == '21h'){
+            $limitCurta = 3;
+        } elseif ($dataFinal == '23/01' && $horario == '22h30'){
+            $limitCurta = 7;
+        }elseif ($dataFinal == '24/01' && $horario == '21h'){
+            $limitCurta = 3;
+        } elseif ($dataFinal == '24/01' && $horario == '22h30'){
+            $limitCurta = 7;
+        } elseif ($dataFinal == '25/01' && $horario == '16h30'){
+            $limitCurta = 15;
+        }elseif ($dataFinal == '25/01' && $horario == '17h30'){
+            $limitCurta = 19;
+        } elseif ($dataFinal == '25/01' && $horario == '21h'){
+            $limitCurta = 3;
+        } elseif ($dataFinal == '25/01' && $horario == '22h30'){
             $limitCurta = 6;
-        } elseif ($dataFinal == '26/10' && $horario == '14h'){
-
+        } elseif ($dataFinal == '26/01' && $horario == '16h30'){
+            $limitCurta = 13;
+        }elseif ($dataFinal == '27/01' && $horario == '16h30'){
+            $limitCurta = 3;
+        }elseif ($dataFinal == '28/01' && $horario == '10h30'){
+            $limitCurta = 5;
+        }elseif ($dataFinal == '28/01' && $horario == '15h'){
+            $limitCurta = 11;
+        }elseif ($dataFinal == '28/01' && $horario == '17h40'){
+            $limitCurta = 1;
+        }elseif ($dataFinal == '28/01' && $horario == '18h'){
+            $limitCurta = 5;
         }
 
         /*elseif ($dataFinal == '25/06' && $horario == '16h'){
@@ -834,7 +816,7 @@
                     }
                     ?>
                 </h5>
-                <span style="font-size: 9px;">
+                <span style="font-size: 12px;">
 
                 <?php if (($horaAnterior != $horario || $localAnterior != $local) || $rowProg->CodItemProg == 13028 || $rowProg->CodItemProg == 71 || $rowProg->CategoriaProg == "EN") { ?>
                     <?php if ($rowProg->CodItemProg != 18177) { ?>
