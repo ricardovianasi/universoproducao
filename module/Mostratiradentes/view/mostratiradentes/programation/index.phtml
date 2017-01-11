@@ -691,41 +691,68 @@
         }
 
 
-        if ($dataFinal == '21/01' && $horario == '16h30') {
+        if ($dataFinal == '21/01' && $horario == '16h30' && $rowProg->CodItemProg == 237){
+            $countCurta = 1;
+            $limitCurta = 2;
+        }elseif ($dataFinal == '21/01' && $horario == '16h30') {
             $limitCurta = 5;
+        } elseif ($dataFinal == '21/01' && $horario == '16h30' && $rowProg->CodItemProg == 237){
+            $countCurta = 1;
+            $limitCurta = 2;
         } elseif ($dataFinal == '21/01' && $horario == '18h30'){
             $limitCurta = 3;
         } elseif ($dataFinal == '21/01' && $horario == '22h' && $rowProg->CodItemProg == 20802){
             $countCurta = 1;
             $limitCurta = 2;
+        } elseif ($dataFinal == '22/01' && ($rowProg->CodItemProg == 254 || $rowProg->CodItemProg == 255 || $rowProg->CodItemProg == 256) ){
+            $limitCurta = 2;
+            $countCurta = 1;
         } elseif ($dataFinal == '22/01' && $horario == '15h30'){
             $limitCurta = 4;
         }  elseif ($dataFinal == '22/01' && $horario == '17h'){
             $limitCurta = 5;
         } elseif ($dataFinal == '22/01' && $horario == '18h30'){
             $limitCurta = 8;
-        } elseif ($dataFinal == '23/01' && $horario == '16h30'){
+        } elseif ($dataFinal == '23/01' && ($rowProg->CodItemProg == 254 || $rowProg->CodItemProg == 255 || $rowProg->CodItemProg == 256 || $rowProg->CodItemProg == 253) ){
+            $limitCurta = 2;
+            $countCurta = 1;
+        }elseif ($dataFinal == '23/01' && $horario == '16h30'){
             $limitCurta = 4;
         } elseif ($dataFinal == '23/01' && $horario == '21h'){
             $limitCurta = 3;
         } elseif ($dataFinal == '23/01' && $horario == '22h30'){
             $limitCurta = 7;
+        }elseif ($dataFinal == '24/01' && ( $rowProg->CodItemProg == 255 || $rowProg->CodItemProg == 256 ) ){
+            $limitCurta = 2;
+            $countCurta = 1;
         }elseif ($dataFinal == '24/01' && $horario == '21h'){
             $limitCurta = 3;
         } elseif ($dataFinal == '24/01' && $horario == '22h30'){
             $limitCurta = 7;
-        } elseif ($dataFinal == '25/01' && $horario == '16h30'){
-            $limitCurta = 15;
+        } elseif ($dataFinal == '25/01' && ($rowProg->CodItemProg == 254 || $rowProg->CodItemProg == 255 || $rowProg->CodItemProg == 256 || $rowProg->CodItemProg == 253) ){
+            $limitCurta = 2;
+            $countCurta = 1;
+        }elseif ($dataFinal == '25/01' && $horario == '16h30'){
+            $limitCurta = 4;
         }elseif ($dataFinal == '25/01' && $horario == '17h30'){
-            $limitCurta = 19;
+            $limitCurta = 8;
         } elseif ($dataFinal == '25/01' && $horario == '21h'){
             $limitCurta = 3;
         } elseif ($dataFinal == '25/01' && $horario == '22h30'){
             $limitCurta = 6;
-        } elseif ($dataFinal == '26/01' && $horario == '16h30'){
-            $limitCurta = 13;
+        } elseif ($dataFinal == '25/01' && ($rowProg->CodItemProg == 254 || $rowProg->CodItemProg == 255 || $rowProg->CodItemProg == 256) ){
+            $limitCurta = 2;
+            $countCurta = 1;
+        }elseif ($dataFinal == '26/01' && $horario == '16h30'){
+            $limitCurta = 3;
+        }elseif ($dataFinal == '27/01' && ($rowProg->CodItemProg == 254 || $rowProg->CodItemProg == 255 || $rowProg->CodItemProg == 256) ){
+            $limitCurta = 2;
+            $countCurta = 1;
         }elseif ($dataFinal == '27/01' && $horario == '16h30'){
             $limitCurta = 3;
+        }elseif ($dataFinal == '28/01' && ($rowProg->CodItemProg == 254 || $rowProg->CodItemProg == 255 || $rowProg->CodItemProg == 256) ){
+            $limitCurta = 2;
+            $countCurta = 1;
         }elseif ($dataFinal == '28/01' && $horario == '10h30'){
             $limitCurta = 5;
         }elseif ($dataFinal == '28/01' && $horario == '15h'){
@@ -786,7 +813,6 @@
             <?php
             if( ($countCurta > 0 && $countCurta < $limitCurta)
                 ||($rowProg->CategoriaProg == "AB")
-                //||($rowProg->CodProgEvento == 3090)
                 //||($rowProg->CodProgEvento == 3108)
                 //||($rowProg->CodProgEvento == 3132)
 
