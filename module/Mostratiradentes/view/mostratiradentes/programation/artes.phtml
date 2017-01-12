@@ -112,7 +112,7 @@
 			CodItemProg, CategoriaProg, Local, Data, HoraManhaInicial 
 			from tb_arte 
 			Left Join tb_programacaoevento On tb_programacaoevento.CodItemProg = tb_arte.CodArte
-			where tb_arte.CodMostra = $mostra order by Data asc, HoraManhaInicial asc";
+			where tb_arte.CodMostra = $mostra group by CodArte order by Data asc, HoraManhaInicial asc";
     $result = mysql_query($consulta);
     if (!$result) {
         echo "Não foi possível executar a consulta ($sql) no banco de dados:<br /> " . mysql_error();
@@ -190,7 +190,7 @@
                         }
                     }
                     ?>
-                    <p>&nbsp;</p>
+                    <p>&nbsp;
                     <?php echo $dataFinal?> | <?php echo $diaSemana?><br />
                     <?php echo $hora?><br />
                     <?php echo $local?>
