@@ -701,9 +701,6 @@
             $limitCurta = 2;
         } elseif ($dataFinal == '21/01' && $horario == '18h30'){
             $limitCurta = 3;
-        } elseif ($dataFinal == '21/01' && $horario == '22h' && $rowProg->CodItemProg == 20802){
-            $countCurta = 1;
-            $limitCurta = 2;
         } elseif ($dataFinal == '22/01' && ($rowProg->CodItemProg == 254 || $rowProg->CodItemProg == 255 || $rowProg->CodItemProg == 256) ){
             $limitCurta = 2;
             $countCurta = 1;
@@ -721,14 +718,14 @@
         } elseif ($dataFinal == '23/01' && $horario == '21h'){
             $limitCurta = 3;
         } elseif ($dataFinal == '23/01' && $horario == '22h30'){
-            $limitCurta = 7;
+            $limitCurta = 4;
         }elseif ($dataFinal == '24/01' && ( $rowProg->CodItemProg == 255 || $rowProg->CodItemProg == 256 ) ){
             $limitCurta = 2;
             $countCurta = 1;
         }elseif ($dataFinal == '24/01' && $horario == '21h'){
             $limitCurta = 3;
         } elseif ($dataFinal == '24/01' && $horario == '22h30'){
-            $limitCurta = 7;
+            $limitCurta = 4;
         } elseif ($dataFinal == '25/01' && ($rowProg->CodItemProg == 254 || $rowProg->CodItemProg == 255 || $rowProg->CodItemProg == 256 || $rowProg->CodItemProg == 253) ){
             $limitCurta = 2;
             $countCurta = 1;
@@ -756,11 +753,14 @@
         }elseif ($dataFinal == '28/01' && $horario == '10h30'){
             $limitCurta = 5;
         }elseif ($dataFinal == '28/01' && $horario == '15h'){
-            $limitCurta = 11;
+            $limitCurta = 4;
         }elseif ($dataFinal == '28/01' && $horario == '17h40'){
             $limitCurta = 1;
         }elseif ($dataFinal == '28/01' && $horario == '18h'){
             $limitCurta = 5;
+        } elseif ($dataFinal == '28/01' && $horario == '22h30'){
+            $limitCurta = 1;
+            $countCurta = 1;
         }
 
         /*elseif ($dataFinal == '25/06' && $horario == '16h'){
@@ -813,13 +813,13 @@
             <?php
             if( ($countCurta > 0 && $countCurta < $limitCurta)
                 ||($rowProg->CategoriaProg == "AB")
-                //||($rowProg->CodProgEvento == 3108)
+                ||($rowProg->CodProgEvento == 5341)
                 //||($rowProg->CodProgEvento == 3132)
 
                 /*||($rowProg->CodItemProg == 13028)
                 ||($rowProg->CodItemProg == 12638)
                 ||($rowProg->CodItemProg == 13136 && $local=="CINE SANTA TEREZA") */
-                ||($rowProg->CategoriaProg == "EN")
+                //||($rowProg->CategoriaProg == "EN")
                 //||($rowProg->CategoriaProg == "EX" && $rowProg->CodItemProg == 13 && $dataFinal == '01/10' && $horario == '10h')
             )
             {
@@ -832,19 +832,21 @@
             <th valign="top">
                 <h5>
                     <?php //if($rowProg->CodProgEvento == 18177){$horarioImp = ""; $horarioFimImp="";}?>
-                    <?php if (($horaAnterior != $horario || $localAnterior != $local) || $rowProg->CategoriaProg == "EN" ) { ?>
-
-                        <?php if ($rowProg->CodItemProg != 18177) { ?>
-                            <?php echo $horarioImp?><?php echo $horarioFimImp?>
-                        <?php } ?>
-                        <?php
-
-                    }
+                    <?php
+                        if (($horaAnterior != $horario || $localAnterior != $local) || $rowProg->CategoriaProg == "EN" || $rowProg->CodProgEvento == 5360 || $rowProg->CodProgEvento == 5367 || $rowProg->CodProgEvento == 5375) {
+                            if($rowProg->CodProgEvento == 5358) {
+                                echo "01h50";
+                            } elseif($rowProg->CodProgEvento == 5335) {
+                                echo "01h30";
+                            } else {
+                                echo $horarioImp;echo $horarioFimImp;
+                            }
+                        }
                     ?>
                 </h5>
                 <span style="font-size: 12px;">
 
-                <?php if (($horaAnterior != $horario || $localAnterior != $local) || $rowProg->CodItemProg == 13028 || $rowProg->CodItemProg == 71 || $rowProg->CategoriaProg == "EN") { ?>
+                <?php if (($horaAnterior != $horario || $localAnterior != $local) || $rowProg->CategoriaProg == "EN" || $rowProg->CodProgEvento == 5360 || $rowProg->CodProgEvento == 5367 || $rowProg->CodProgEvento == 5375) { ?>
                     <?php if ($rowProg->CodItemProg != 18177) { ?>
                         <?php echo $localImp?>
                     <?php } ?>
@@ -951,7 +953,6 @@
                             if($direc != ""){
                                 ?>
                                 <span class="subItemListaMenor" style="font-size: 10px;"><?php echo isset($Dir) ? $Dir : '' ?>: <?php echo utf8($direc)?></span><br /><br />
-
                             <?php }
                         }
                         unset($titulo);
