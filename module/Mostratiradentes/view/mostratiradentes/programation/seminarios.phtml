@@ -165,7 +165,6 @@ order by Data, HoraManhaInicial, tituloSeminario";
                     $diaSemana = utf8(formata_data_extenso(".$dataOrig."));
                 }
 
-
                 $local = $row->Local;
                 if ($local != "") {
                     $SqlLoc = "SELECT TitLocal, TitLocalIng FROM tb_local WHERE CodLocal = $local";
