@@ -110,7 +110,27 @@
         ?>
 
         <?php
-        $consulta ="select codSeminario, tituloSeminario, tituloSeminarioIng, descricaoSeminario, descricaoSeminarioIng, tipoSeminario, tematica, codTematica, titTematica, CodItemProg, CategoriaProg, Local, Data, HoraManhaInicial, HoraManhaFinal from tb_seminarios, tb_programacaoevento, tb_tematica where tb_seminarios.codMostra = $mostra and tb_seminarios.codSeminario = tb_programacaoevento.CodItemProg and tb_programacaoevento.CategoriaProg = 'SE' and tb_tematica.codTematica = tb_seminarios.tematica order by Data, HoraManhaInicial, tituloSeminario";
+        $consulta ="select codSeminario, 
+   tituloSeminario, 
+   tituloSeminarioIng, 
+   descricaoSeminario, 
+   descricaoSeminarioIng, 
+   tipoSeminario, 
+   tematica, 
+   codTematica, 
+   titTematica, 
+   CodItemProg, 
+   CategoriaProg, 
+   Local, 
+   Data, 
+   HoraManhaInicial, 
+   HoraManhaFinal 
+from tb_seminarios
+inner join tb_programacaoevento on tb_seminarios.codSeminario = tb_programacaoevento.CodItemProg
+left join tb_tematica on tb_tematica.codTematica = tb_seminarios.tematica 
+where tb_seminarios.codMostra = 1075
+ and tb_programacaoevento.CategoriaProg = 'SE' 
+order by Data, HoraManhaInicial, tituloSeminario";
         $result = mysql_query($consulta);
         if (!$result) {
             echo "Não foi possível executar a consulta ($sql) no banco de dados:<br /> " . mysql_error();
