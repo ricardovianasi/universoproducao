@@ -101,7 +101,7 @@ function utf8($string)
 	}
 }
 
-$mostra = 1068;
+$mostra = 1075;
 $lg = '';
 $url = '';
 $fc = $fl = $sub = $subMostra = $fSub1 = $fSub2 = $fSub3 = '';
@@ -125,22 +125,12 @@ $titPagInt = "Arte > ".$TituloArte;
 
 ?>
 
-<div class="breadcrumbs"></div>
-<header class="main__header">
-	<h1 class="main__title"><?php echo $titPagInt; ?></h1>
-	<!--<time class="main__date">28 Jan 2015</time>-->
-</header>
 
-<!--<div class="main__bg">-->
-<!--	<figure>-->
-<!--		<img class="main__bg-img" src="images/main-bg.jpg" alt="">-->
-<!--		<figcaption>Apresentação Sons & Imagens com a Associação Francesa Double Cadence</figcaption>-->
-<!--	</figure>-->
-<!--</div>-->
+<section class="main-wrapper main-content">
 
-<div class="main__wrapper">
-
-	<h2><?php echo $TituloArte?></h2><br />
+    <header class="main-header">
+        <h1 class="main-title"><?php echo $TituloArte?></h1>
+    </header>
 
 	<?php if ($ImgArte != "") { ?>
 		<div class="fotoRight">
@@ -249,4 +239,4 @@ $titPagInt = "Arte > ".$TituloArte;
 	</ul>
 	<br class="clearfloat" />
 
-</div>
+</section>

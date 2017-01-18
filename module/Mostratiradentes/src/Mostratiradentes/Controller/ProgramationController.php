@@ -78,7 +78,17 @@ class ProgramationController extends SiteController
         ]);
     }
 
-    public function seminarioAction()
+    public function arteAction()
     {
+        $arteId = $this->params('id');
+
+        $breadcrumbs = [
+            ['programacao' => 'Programação'],
+            ['filmes' => 'Seminários']
+        ];
+        return new ViewModel([
+            'breadcrumbs' => $breadcrumbs,
+            'arteId' => $arteId
+        ]);
     }
 }

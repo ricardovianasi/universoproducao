@@ -86,6 +86,20 @@ return array(
                         ),
                         'priority' => '99999'
                     ),
+                    'arte' => array(
+                        'type' => Segment::class,
+                        'options' => array(
+                            'route' => '/programacao/arte/:id',
+                            'constraints' => [
+                                'id' => '[a-zA-Z0-9_-]*',
+                            ],
+                            'defaults' => array(
+                                'controller' => Controller\ProgramationController::class,
+                                'action' => 'arte',
+                            ),
+                        ),
+                        'priority' => '99999'
+                    ),
                     'newsletter' => array(
                         'type' => Literal::class,
                         'options' => array(
