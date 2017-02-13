@@ -12,6 +12,7 @@ $modules = [
     'Cineop',
     'Cinebh',
     'Mostratiradentes',
+    'MostratiradentesSp',
 ];
 
 if($env == 'development') {

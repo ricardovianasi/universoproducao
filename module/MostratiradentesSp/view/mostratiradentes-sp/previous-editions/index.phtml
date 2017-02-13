@@ -1,0 +1,15 @@
+<section class="main-wrapper main-content">
+    <header class="main-header">
+        <h1 class="main-title"><?php echo $this->post->getTitle(); ?></h1>
+    </header>
+    <div class="news-list">
+        <?php foreach ($this->events as $event): ?>
+            <article class="news-item">
+                <header class="news-header">
+                    <h1 class="news-title"><?php echo $event->getFullName(); ?></h1>
+                </header>
+                <a href="<?php echo $this->url("mostratiradentessp/edition", ['id'=>$event->getId()]) ?>" class="button-readmore readmore-2">Leia mais</a>
+            </article>
+        <?php endforeach; ?>
+    </div>
+</section>

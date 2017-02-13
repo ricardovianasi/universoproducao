@@ -1,0 +1,21 @@
+.main
+  &-wrapper
+    +center($pad:8px)
+
+  &-content
+    +trailer(3)
+    figure
+      display: inline-block
+      +trailer(1)
+
+    p
+      letter-spacing: .06em
+      color: #4a4a4a
+
+  &-title
+    +adjust-font-size-to(36px)
+    font-weight: 700
+    text-transform: uppercase
+    color: $color-txt
+    +leader(2, 36px)
+    +trailer(2, 36px)

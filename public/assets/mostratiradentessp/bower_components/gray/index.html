@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Gray</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans">
+  <link rel="stylesheet" href="css/gray.min.css">
+</head>
+<body>
+
+  <div class="container">
+    <h1>Gray <small>by Karl Horky</small></h1>
+
+    <p>Make an image gray in all browsers.</p>
+
+    <iframe src="https://ghbtns.com/github-btn.html?user=karlhorky&repo=gray&type=star&count=true&size=large" frameborder="0" scrolling="0" width="130" height="30"></iframe>
+
+    <div class="row">
+      <div class="col-half">
+        <h2>Color</h2>
+      </div>
+      <div class="col-half">
+        <h2>Gray</h2>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <h3 id="img">
+        <a href="#img">
+          &lt;img&gt; tag
+        </a>
+      </h3>
+
+      <div class="col-half" data-label="Color">
+        <img src="img/color.jpg">
+      </div>
+      <div class="col-half" data-label="Gray">
+        <img src="img/color.jpg" class="grayscale">
+      </div>
+    </div>
+
+    <div class="row">
+      <div>
+        <pre><code>&lt;img src="img/color.jpg" class="grayscale"&gt;</code></pre>
+      </div>
+    </div>
+
+    <div class="row">
+      <h3 id="img-transition">
+        <a href="#img-transition">
+          &lt;img&gt; tag with transition
+        </a>
+      </h3>
+
+      <div class="col-half" data-label="Color">
+        <img src="img/color.jpg">
+      </div>
+      <div class="col-half" data-label="Gray">
+        <img src="img/color.jpg" class="grayscale grayscale-fade">
+      </div>
+    </div>
+
+    <div class="row">
+      <div>
+        <pre><code>&lt;img src="img/color.jpg" class="grayscale grayscale-fade"&gt;</code></pre>
+      </div>
+    </div>
+
+    <div class="row">
+      <h3 id="img-alt">
+        <a href="#img-alt">
+          &lt;img&gt; tag with alt
+        </a>
+      </h3>
+
+      <div class="col-half" data-label="Color">
+        <img src="img/color.jpg" alt="Decorative lights">
+      </div>
+      <div class="col-half" data-label="Gray">
+        <img src="img/color.jpg" class="grayscale" alt="Decorative lights">
+      </div>
+    </div>
+
+    <div class="row">
+      <div>
+        <pre><code>&lt;img src="img/color.jpg" class="grayscale" alt="Decorative lights"&gt;</code></pre>
+      </div>
+    </div>
+
+    <div class="row">
+      <h3 id="img-styles">
+        <a href="#img-styles">
+          &lt;img&gt; tag with styles
+        </a>
+      </h3>
+
+      <div class="col-half" data-label="Color">
+        <img src="img/color.jpg" style="
+          position  : absolute;
+          top       : 0;
+          left      : 50%;
+          margin    : 0 0 0 -90px;
+          padding   : 5px;
+          border    : 1px solid #ddd;
+        ">
+      </div>
+      <div class="col-half" data-label="Gray">
+        <img src="img/color.jpg" class="grayscale" style="
+          position  : absolute;
+          top       : 0;
+          left      : 50%;
+          margin    : 0 0 0 -90px;
+          padding   : 5px;
+          border    : 1px solid #ddd;
+        ">
+      </div>
+    </div>
+
+    <div class="row">
+      <div>
+        <pre><code>&lt;img src="img/color.jpg" class="grayscale" style="
+  position  : absolute;
+  top       : 0;
+  left      : 50%;
+  margin    : 0 0 0 -90px;
+  padding   : 5px;
+  border    : 1px solid #ddd;
+"&gt;</code></pre>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <h3 id="css-background">
+        <a href="#css-background">
+          CSS background
+        </a>
+      </h3>
+
+      <div class="col-half" data-label="Color">
+        <div style="
+        background-image: url(img/color.jpg);
+        display         : inline-block;
+        width           : 180px;
+        height          : 72px;
+        "></div>
+      </div>
+      <div class="col-half" data-label="Gray">
+        <div style="
+        background-image: url(img/color.jpg);
+        display         : inline-block;
+        width           : 180px;
+        height          : 72px;
+        " class="grayscale"></div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div>
+        <pre><code>&lt;div style="
+  background-image: url(img/color.jpg);
+  display         : inline-block;
+  width           : 180px;
+  height          : 72px;
+" class="grayscale"&gt;&lt;/div&gt;</code></pre>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <h3 id="css-sprite-background">
+        <a href="#css-sprite-background">
+          CSS sprite background
+        </a>
+      </h3>
+
+      <div class="col-half" data-label="Color">
+        <div style="
+        background-image   : url(img/color-sprite.jpg);
+        background-position: -180px 0;
+        display            : inline-block;
+        width              : 180px;
+        height             : 72px;
+        "></div>
+      </div>
+      <div class="col-half" data-label="Gray">
+        <div style="
+        background-image   : url(img/color-sprite.jpg);
+        background-position: -180px 0;
+        display            : inline-block;
+        width              : 180px;
+        height             : 72px;
+        " class="grayscale"></div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div>
+        <pre><code>&lt;div style="
+  background-image   : url(img/color-sprite.jpg);
+  background-position: -180px 0;
+  display            : inline-block;
+  width              : 180px;
+  height             : 72px;
+" class="grayscale"&gt;&lt;/div&gt;</code></pre>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <h3 id="css-sprite-background-with-background-size">
+        <a href="#css-sprite-background-with-background-size">
+          CSS sprite background with background-size
+        </a>
+      </h3>
+
+      <div class="col-half" data-label="Color">
+        <div style="
+        background-image   : url(img/color-sprite-lg.jpg);
+        background-size    : auto 72px;
+        background-position: -180px 0;
+        display            : inline-block;
+        width              : 180px;
+        height             : 72px;
+        "></div>
+      </div>
+      <div class="col-half" data-label="Gray">
+        <div style="
+        background-image   : url(img/color-sprite-lg.jpg);
+        background-size    : auto 72px;
+        background-position: -180px 0;
+        display            : inline-block;
+        width              : 180px;
+        height             : 72px;
+        " class="grayscale"></div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div>
+        <pre><code>&lt;div style="
+  background-image   : url(img/color-sprite-lg.jpg);
+  background-size    : auto 72px;
+  background-position: -180px 0;
+  display            : inline-block;
+  width              : 180px;
+  height             : 72px;
+" class="grayscale"&gt;&lt;/div&gt;</code></pre>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <h3 id="toggle">
+        <a href="#toggle">
+          Toggling Grayscale
+        </a>
+      </h3>
+
+      <button onclick="$('.grayscale').toggleClass('grayscale-off')">Toggle Grayscale</button>
+    </div>
+
+    <div class="row">
+      <div>
+        <pre><code>$('.grayscale').toggleClass('grayscale-off');</code></pre>
+      </div>
+    </div>
+  </div>
+
+  <a href="https://github.com/karlhorky/gray"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
+
+  <!--[if lt IE 9]>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+  <![endif]-->
+  <!--[if !(IE)|(gte IE 9)]><!-->
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+  <!--<![endif]-->
+  <script src="js/jquery.gray.min.js"></script>
+</body>
+</html>

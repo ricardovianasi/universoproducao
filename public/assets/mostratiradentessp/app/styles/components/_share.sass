@@ -1,0 +1,26 @@
+.share
+  +leader(3)
+  +padding-leader(1)
+  border-top: 1px solid $color-palette-7
+  &__list
+    display: inline-block
+    float: right
+
+  &__item
+    display: inline-block
+    &--title
+      span
+        +adjust-font-size-to(18px)
+        font-weight: 700
+        font-style: italic
+        color: $color-palette-7
+
+  &__link
+    display: block
+    width: 38px
+    font-size: 28px
+    text-align: center
+    .icon-facebook
+      color: #3c5a98
+    .icon-twitter
+      color: #55acee

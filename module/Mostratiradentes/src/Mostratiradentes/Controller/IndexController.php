@@ -79,4 +79,13 @@ class IndexController extends SiteController
             'eufacoamostra' => $eufacoamostra
         ]);
     }
+
+    public function indexSpAction()
+    {
+        $viewModel = new ViewModel();
+        $viewModel->setVariables(array('key' => 'value'))
+            ->setTerminal(true);
+
+        return $viewModel;
+    }
 }

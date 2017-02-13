@@ -1,0 +1,36 @@
+#contact-modal
+	+absolute-expand($color-bg-1)
+
+.contact
+	&__form
+		+trailer(2, 24px)
+
+	&__place
+		+expand
+		display: inline-block
+		background: url("../images/universo320.jpg") no-repeat no-repeat
+		background-size: cover
+		//height: 360px
+		&:before
+			content: ""
+			position: absolute
+			top: 0
+			bottom: 0
+			left: -100%
+			right: 0
+			background-color: rgba(0,0,0,0.5)
+			z-index: 1
+
+		&-wrapper
+			+center($full-site, 16px)
+			position: relative
+			z-index: 9999
+			text-align: left
+
+.contact-active
+	top: 0
+	position: fixed
+	.contact.modal
+		opacity: 1
+		visibility: visible
+		height: 100%

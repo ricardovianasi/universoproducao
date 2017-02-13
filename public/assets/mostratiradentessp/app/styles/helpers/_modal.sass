@@ -1,0 +1,30 @@
+.modal
+	&__wrapper
+		position: absolute
+		max-width: 500px
+		width: 100%
+		top: 50%
+		transform: translateY(-50%)
+		left: 50%
+		margin-left: -250px
+		text-align: center
+		box-sizing: border-box
+		padding-left: $gutter
+		padding-right: $gutter
+
+	&__title
+		+adjust-font-size-to(24px, 1)
+		color: #fff
+		font-weight: 900
+		text-transform: uppercase
+		span
+			font-weight: 300
+
+	&__input,
+	&__submit
+		width: 100%
+
+	&__submit
+		background-color: darken($main-color, 10%)
+		&:hover
+			background-color: darken($main-color, 20%)

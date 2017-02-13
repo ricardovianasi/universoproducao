@@ -321,6 +321,69 @@ return [
                     ],
                 ]
             ],
+            [
+                'label' => 'Mostra Tiradentes SP',
+                'uri' => '#',
+                'icon' => ' icon-globe',
+                'pages' => [
+                    [
+                        'label' => 'Páginas',
+                        'route' => 'admin/page',
+                        'icon' => 'icon-doc',
+                        'params' => [
+                            'site' => 6
+                        ]
+                    ],
+                    [
+                        'label' => 'Guia',
+                        'route' => 'admin/guide',
+                        'icon' => 'icon-doc',
+                        'params' => [
+                            'site' => 6
+                        ]
+                    ],
+                    [
+                        'label' => 'Menu',
+                        'route' => 'admin/menu',
+                        'icon' => 'icon-list',
+                        'params' => [
+                            'site' => 6
+                        ]
+                    ],
+                    [
+                        'label' => 'Banner',
+                        'route' => 'admin/banner',
+                        'icon' => 'fa fa-image',
+                        'params' => [
+                            'site' => 6
+                        ]
+                    ],
+                    [
+                        'label' => 'Galeria',
+                        'route' => 'admin/gallery',
+                        'icon' => 'fa fa-image',
+                        'params' => [
+                            'site' => 6
+                        ]
+                    ],
+                    [
+                        'label' => 'TV',
+                        'route' => 'admin/tv',
+                        'icon' => 'fa fa-image',
+                        'params' => [
+                            'site' => 6
+                        ]
+                    ],
+                    [
+                        'label' => 'Programação',
+                        'route' => 'admin/programation',
+                        'icon' => 'fa fa-image',
+                        'params' => [
+                            'site' => 6
+                        ]
+                    ],
+                ]
+            ],
 			[
 				'label' => 'Configurações',
 				'uri' => '#',

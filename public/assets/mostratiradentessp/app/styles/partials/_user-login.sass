@@ -1,0 +1,78 @@
+.userlogin
+	position: absolute
+	top: 0
+	bottom: 0
+	left: 0
+	right: 0
+	width: 100%
+	z-index: 9999
+	background-color: $color-bg-1
+
+	&__wrapper
+		position: absolute
+		max-width: 318px
+		width: 100%
+		top: 50%
+		transform: translateY(-50%)
+		left: 50%
+		margin-left: -159px
+		text-align: center
+		box-sizing: border-box
+		padding-left: $gutter
+		padding-right: $gutter
+
+	&__form,
+	&__tricks
+		+trailer(2)
+
+	&__tricks
+		&-item
+			text-align: left
+			+trailer(1, 24px)
+
+			&--facebook
+				text-align: center
+				+leader(2, 24px)
+				overflow: hidden
+				.userlogin__tricks-text
+					position: relative
+					font-style: normal
+					&:after,
+					&:before
+						content: ""
+						position: absolute
+						border-bottom: 1px solid #fff
+						width: 100vh
+						top: 50%
+
+					&:before
+						right: 100%
+						margin-right: 15px
+
+					&:after
+						left: 100%
+						margin-left: 15px
+
+		&-text
+			color: #fff
+			font:
+				family: "Ubuntu", Arial, Helvetica, sans-serif
+				weight: 300
+				style: italic
+
+		&-facebook-button
+			@extend .form__button
+			width: 100%
+			background-color: $color-facebook
+			transition: $transition-default
+			&:hover
+				background-color: darken($color-facebook, 10%)
+
+
+.usermenu-active
+	top: 0
+	position: fixed
+	.userlogin.modal
+		opacity: 1
+		visibility: visible
+		height: 100%
