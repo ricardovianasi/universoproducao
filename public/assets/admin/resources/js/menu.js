@@ -116,10 +116,12 @@
 					animate: true
 				});
 
-				$('<form method="POST">')
+				var form = $('<form method="POST">')
 					//.attr('action', _that.config.url)
-					.append($('<input name="menu">').val(JSON.stringify(menuSerialize)))
-					.submit();
+					.append($('<input name="menu">').val(JSON.stringify(menuSerialize)));
+
+				document.body.appendChild(form);
+				form.submit();
 				
 			});
 

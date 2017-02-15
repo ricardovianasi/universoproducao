@@ -44,7 +44,7 @@ class EufacoController extends AbstractAdminController
 
 		$this->getEntityManager()->flush();
 
-		return $this->redirect()->toRoute('admin/default', ['controller'=>'eufaco']);
+		return $this->redirect()->toRoute('admin/eufacoamostra', ['site'=>$this->getSiteIdFromUri()]);
 	}
 
 	public function persist($data, $id = null)
