@@ -13,7 +13,7 @@ class EufacoController extends AbstractAdminController
 {
 	public function indexAction()
 	{
-		$items = $this->search(Eufacoamostra::class);
+		$items = $this->search(Eufacoamostra::class, ['site' => $this->getSiteIdFromUri()]);
 		$this->getViewModel()->setVariables([
 			'items' => $items,
 		]);
@@ -54,6 +54,7 @@ class EufacoController extends AbstractAdminController
 			$item = $this->getRepository(Eufacoamostra::class)->find($id);
 		} else {
 			$item = new Eufacoamostra();
+			$item->setSite($this->getCurrentSite());
 		}
 
 		if($this->getRequest()->isPost()) {

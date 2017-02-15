@@ -27,12 +27,6 @@ return [
 				'controller' => 'news',
 				'icon' => 'icon-book-open'
 			],
-            [
-                'label' => 'Eu Faço a Mostra',
-                'route' => 'admin/default',
-                'controller' => 'eufaco',
-                'icon' => 'icon-book-open'
-            ],
 			[
 				'label' => 'Portais',
 				'uri' => '#',
@@ -264,6 +258,15 @@ return [
                 'icon' => ' icon-globe',
                 'pages' => [
                     [
+                        'label' => 'Eu Faço a Mostra',
+                        'route' => 'admin/eufacoamostra',
+                        'controller' => 'eufaco',
+                        'icon' => 'icon-book-open',
+                        'params' => [
+                            'site' => 5
+                        ]
+                    ],
+                    [
                         'label' => 'Páginas',
                         'route' => 'admin/page',
                         'icon' => 'icon-doc',
@@ -326,6 +329,15 @@ return [
                 'uri' => '#',
                 'icon' => ' icon-globe',
                 'pages' => [
+                    [
+                        'label' => 'Eu Faço a Mostra',
+                        'route' => 'admin/eufacoamostra',
+                        'controller' => 'eufaco',
+                        'icon' => 'icon-book-open',
+                        'params' => [
+                            'site' => 6
+                        ]
+                    ],
                     [
                         'label' => 'Páginas',
                         'route' => 'admin/page',

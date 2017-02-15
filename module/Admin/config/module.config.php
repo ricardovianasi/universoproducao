@@ -77,6 +77,20 @@ return array(
                         ),
                         'priority' => 999
                     ),
+                    'eufacoamostra' => array(
+                        'type' => 'Segment',
+                        'options' => array(
+                            'route'    => '/site/:site/eufaco[/:action[/:id]]',
+                            'constraints' => array(
+
+                            ),
+                            'defaults' => array(
+                                'controller'   => 'Eufaco',
+                                'action'       => 'index'
+                            ),
+                        ),
+                        'priority' => 999
+                    ),
                     'event' => array(
                         'type' => 'Segment',
                         'options' => array(

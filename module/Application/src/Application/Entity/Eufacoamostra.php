@@ -32,6 +32,12 @@ class Eufacoamostra extends AbstractEntity
     private $video;
 
     /**
+     * @ORM\ManyToOne(targetEntity="Application\Entity\Site\Site")
+     * @ORM\JoinColumn(name="site_id", referencedColumnName="id")
+     */
+    private $site;
+
+    /**
      * @return mixed
      */
     public function getId()
@@ -109,5 +115,21 @@ class Eufacoamostra extends AbstractEntity
     public function setVideo($video)
     {
         $this->video = $video;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSite()
+    {
+        return $this->site;
+    }
+
+    /**
+     * @param mixed $site
+     */
+    public function setSite($site)
+    {
+        $this->site = $site;
     }
 }
