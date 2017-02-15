@@ -55,7 +55,10 @@
 			</table>
 
 			<div class="table-paginator">
-				<?php echo $this->paginationcontrol($this->items, 'sliding', 'admin/partials/paginator.phtml'); ?>
+				<?php echo $this->paginationcontrol($this->items, 'sliding', 'admin/partials/paginator.phtml', array(
+                    'route'=>'admin/eufacoamostra',
+                    'route_options' => array('site'=>$this->site)
+                )); ?>
 			</div>
 		</div>
 	</div>
