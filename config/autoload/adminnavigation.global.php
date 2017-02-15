@@ -260,7 +260,6 @@ return [
                     [
                         'label' => 'Eu Faço a Mostra',
                         'route' => 'admin/eufacoamostra',
-                        'controller' => 'eufaco',
                         'icon' => 'icon-book-open',
                         'params' => [
                             'site' => 5
@@ -332,7 +331,6 @@ return [
                     [
                         'label' => 'Eu Faço a Mostra',
                         'route' => 'admin/eufacoamostra',
-                        'controller' => 'eufaco',
                         'icon' => 'icon-book-open',
                         'params' => [
                             'site' => 6
