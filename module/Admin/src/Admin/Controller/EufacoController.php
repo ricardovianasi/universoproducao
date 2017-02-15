@@ -69,10 +69,10 @@ class EufacoController extends AbstractAdminController
 					$this->messages()->success("Item atualizado com sucesso!");
 				} else {
 					$this->messages()->flashSuccess("Item criado com sucesso!");
-					return $this->redirect()->toRoute('admin/default', [
+					return $this->redirect()->toRoute('admin/eufacoamostra', [
 						'action' => 'update',
-                        'controller' => 'eufaco',
-						'id' => $item->getId()
+						'id' => $item->getId(),
+                        'site' => $this->getSiteIdFromUri()
 					]);
 				}
 			}
