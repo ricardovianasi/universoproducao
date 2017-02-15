@@ -13,7 +13,7 @@
 					<?php endif; ?>
 				</div>
 				<div class="actions">
-					<a href="<?php echo $this->url('admin/default', ['controller'=>'eufaco']); ?>"
+					<a href="<?php echo $this->url('admin/eufacoamostra', ['controller'=>'eufaco', 'site'=>$this->site]); ?>"
 					   class="btn btn-default">
 						<i class="icon-action-undo"></i>
 						<span class="hidden-xs"> Voltar </span>
@@ -67,7 +67,7 @@
 								<button type="submit" name="save" class="btn blue btn-lg" id="save" value="Salvar">
 									<span class="fa fa-fa fa-check"></span> Salvar
 								</button>
-								<a href="<?php echo $this->url('admin/default', ['controller'=>'eufaco']); ?>" class="btn red btn-lg action cancel">Descartar</a>
+								<a href="<?php echo $this->url('admin/eufacoamostra', ['controller'=>'eufaco', 'site'=>$this->site]); ?>" class="btn red btn-lg action cancel">Descartar</a>
 							</div>
 						</div>
 						<?php echo $this->form()->closeTag() ?>

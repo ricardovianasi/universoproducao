@@ -6,7 +6,7 @@
 		</div>
 
 		<div class="actions">
-			<a href="<?php echo $this->url('admin/default', ['action'=>'create', 'controller'=>'eufaco']); ?>"
+			<a href="<?php echo $this->url('admin/eufacoamostra', ['action'=>'create', 'site'=>$this->site]); ?>"
 			   class="btn blue btn-lg">
 				<i class="fa fa-plus"></i>
 				<span class="hidden-xs"> Cadastrar item </span>
@@ -26,15 +26,15 @@
 				</thead>
 				<tbody>
 				<?php foreach ($this->items as $item):
-					$updateUrl = $this->url('admin/default', [
-                        'controller' => 'eufaco',
+					$updateUrl = $this->url('admin/eufacoamostra', [
 						'action'=>'update',
-						'id'=>$item->getId()
+						'id'=>$item->getId(),
+                        'site' => $this->site
 					]);
 					$removeUrl = $this->url('admin/default', [
-                        'controller' => 'eufaco',
 						'action'=>'delete',
-						'id'=>$item->getId()
+						'id'=>$item->getId(),
+                        'site' => $this->site
 					]);
 					?>
 					<tr>

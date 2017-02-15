@@ -16,6 +16,7 @@ class EufacoController extends AbstractAdminController
 		$items = $this->search(Eufacoamostra::class, ['site' => $this->getSiteIdFromUri()]);
 		$this->getViewModel()->setVariables([
 			'items' => $items,
+            'site' => $this->getSiteIdFromUri()
 		]);
 
 		return $this->getViewModel();
@@ -81,7 +82,8 @@ class EufacoController extends AbstractAdminController
 
 		return $this->getViewModel()->setVariables([
 			'form' => $form,
-			'item' => $item
+			'item' => $item,
+            'site' => $this->getSiteIdFromUri()
 		]);
 	}
 
