@@ -615,7 +615,7 @@ jQuery(document).ready(function() {
                     animate: true
                 });
                 var form = $('<form method="POST">').append($('<input name="menu">').val(JSON.stringify(menuSerialize)));
-                document.body.appendChild(form);
+                $(document.body).append(form);
                 form.submit();
             });
         },

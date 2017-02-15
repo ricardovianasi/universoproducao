@@ -120,7 +120,7 @@
 					//.attr('action', _that.config.url)
 					.append($('<input name="menu">').val(JSON.stringify(menuSerialize)));
 
-				document.body.appendChild(form);
+				$(document.body).append(form);
 				form.submit();
 				
 			});
