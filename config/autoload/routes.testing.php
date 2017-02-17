@@ -8,12 +8,12 @@ return [
                     'route'    => '/',
                 )
             ),
-            'mostratiradentessp' => array(
-                'type' => 'Literal',
-                'options' => array(
-                    'route'    => '/mostratiradentes-sp',
-                )
-            ),
+//            'mostratiradentessp' => array(
+//                'type' => 'Literal',
+//                'options' => array(
+//                    'route'    => '/mostratiradentes-sp',
+//                )
+//            ),
         )
     )
 ];
