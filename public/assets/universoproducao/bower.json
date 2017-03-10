@@ -8,12 +8,19 @@
     "jeet": "^7.1.0",
     "owl.carousel": "^2.2.0",
     "slick-carousel": "^1.6.0",
-    "jquery.scrollTo": "^2.1.2"
+    "jquery.scrollTo": "^2.1.2",
+    "fancyBox": "^3.0.39"
   },
   "overrides": {
     "modernizr": {
       "main": [
         "modernizr.js"
+      ]
+    },
+    "fancyBox": {
+      "main": [
+        "dist/jquery.fancyBox.css",
+        "dist/jquery.fancyBox.js"
       ]
     }
   },
