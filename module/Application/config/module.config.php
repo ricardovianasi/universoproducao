@@ -18,7 +18,6 @@ return array(
                     'defaults' => array(
                         'controller'    => Controller\IndexController::class,
                         'action'        => 'index',
-                        'locale'        => 'pt'
                     ),
                 ),
                 'may_terminate' => true,
@@ -36,20 +35,10 @@ return array(
                             ),
                         ),
                     ),
-                    'home' => array(
-                        'type' => Literal::class,
-                        'options' => array(
-                            'route' => '/',
-                            'defaults' => array(
-                                'controller'    => Controller\IndexController::class,
-                                'action'        => 'index',
-                            ),
-                        )
-                    ),
                     'news' => array(
                         'type' => Segment::class,
                         'options' => array(
-                            'route' => 'noticia/:slug',
+                            'route' => '/noticia/:slug',
                             'constraints' => [
                                 'slug' => '[a-zA-Z0-9_-]*',
                             ],
