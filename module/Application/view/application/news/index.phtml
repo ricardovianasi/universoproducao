@@ -35,11 +35,6 @@
                     <?php foreach ($this->newsList as $news): ?>
                         <li class="news-item">
                             <a href="<?php echo $this->url('universoproducao/news', ['slug'=>$news->getSlug()])?>" class="news-link">
-                                <?php if($news->hasMeta('_thumb')): ?>
-                                    <figure class="news-figure">
-                                        <img src="<?php echo  $this->thumbor()->url($news->getMeta('_thumb'))->resize(384, 288); ?>" alt="">
-                                    </figure>
-                                <?php endif; ?>
                                 <article class="news-article">
                                     <header class="news-header">
                                         <h1><?php echo $news->getTitle(); ?></h1>
