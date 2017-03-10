@@ -1,28 +1,26 @@
-<header class="main__header">
-    <h1 class="main__title"><?php echo $post->getTitle(); ?></h1>
-    <?php if($post->getCover()): ?>
-        <figure class="main__cover">
-            <img src="<?php echo $post->getCover() ?>" alt="">
-            <!--<figcaption class="main__cover-caption">Créditos: Lero Lara</figcaption>-->
-        </figure>
-    <?php endif; ?>
-</header>
-<div class="main__wrapper">
-    <div class="news">
-        <div class="news__list">
-            <?php $count = 1; foreach ($this->newsList as $news): ?>
-                <div class="news__item <?php echo $count <= 2 ? "news__item--highlight" : "" ?>">
-                    <a class="news__link" href="<?php echo $this->url("universoproducao/news", ['slug'=>$news->getSlug()]) ?>">
-                        <?php if($count <= 2): ?>
-                        <figure class="news__figure">
-                            <img src="<?php echo $this->thumbor()->url($news->getThumb())->resize(370, 280); ?>" alt="">
-                        </figure>
-                        <?php endif; ?>
-                        <p class="news__title"><?php echo $news->getTitle(); ?></p>
-                        <time class="news__time"><?php echo $this->dateFormat($news->getPostDate(), null, null, "pt_BR", "d MM Y"); ?></time>
-                    </a>
-                </div>
-            <?php $count++; endforeach; ?>
+<div class="<?php echo $post->getMeta('_cover') ? 'main-bg' : 'main-no-bg'; ?>"
+     style="<?php echo $post->getMeta('_cover') ? 'background-image:url('.$post->getMeta('_cover').')' : ''; ?>">
+    <header class="main-header">
+        <div class="main-wrapper">
+            <h1 class="main-title"><?php echo $post->getTitle(); ?></h1>
+        </div>
+    </header>
+</div>
+
+<section class="main-section">
+    <div class="main-wrapper">
+        <div class="main-content">
+            <?php echo $post->getContent(); ?>
+
+            <div class="share">
+                <span class="share-title">Compartilhe:</span>
+                <ul class="share-items">
+                    <li class="share-item"><a href="" class="share-link"><span class="icon-facebook"></span></a></li>
+                    <li class="share-item"><a href="" class="share-link"><span class="icon-twitter"></span></a></li>
+                </ul>
+            </div>
+
+            <div class="main-separator"></div>
         </div>
     </div>
-</div>
+</section>

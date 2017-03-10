@@ -1,16 +1,26 @@
-<section>
-    <header class="main__header">
-        <h1 class="main__title"><?php echo $post->getTitle(); ?></h1>
-        <?php if($post->getCover()): ?>
-        <figure class="main__cover">
-            <img src="<?php echo $post->getCover() ?>" alt="">
-            <!--<figcaption class="main__cover-caption">Créditos: Lero Lara</figcaption>-->
-        </figure>
-        <?php endif; ?>
+<div class="<?php echo $post->getMeta('_cover') ? 'main-bg' : 'main-no-bg'; ?>"
+    style="<?php echo $post->getMeta('_cover') ? 'background-image:url('.$post->getMeta('_cover').')' : ''; ?>">
+    <header class="main-header">
+        <div class="main-wrapper">
+            <h1 class="main-title"><?php echo $post->getTitle(); ?></h1>
+        </div>
     </header>
-    <div class="main__wrapper">
-        <article class="main__article">
+</div>
+
+<section class="main-section">
+    <div class="main-wrapper">
+        <div class="main-content">
             <?php echo $post->getContent(); ?>
-        </article>
+
+            <div class="share">
+                <span class="share-title">Compartilhe:</span>
+                <ul class="share-items">
+                    <li class="share-item"><a href="" class="share-link"><span class="icon-facebook"></span></a></li>
+                    <li class="share-item"><a href="" class="share-link"><span class="icon-twitter"></span></a></li>
+                </ul>
+            </div>
+
+            <div class="main-separator"></div>
+        </div>
     </div>
 </section>
