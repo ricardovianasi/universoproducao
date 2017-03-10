@@ -9,5 +9,11 @@ return [
                 )
             ),
         )
-    )
+    ),
+    'universoproducao' => array(
+        'type' => 'Literal',
+        'options' => array(
+            'route'    => '/up',
+        )
+    ),
 ];
