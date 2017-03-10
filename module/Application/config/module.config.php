@@ -15,7 +15,7 @@ return array(
             'universoproducao' => array(
                 'type'    => Hostname::class,
                 'options' => array(
-                    'route'    => '[www.]universoproducao.com.br',
+                    'route'    => '/',
                     'defaults' => array(
                         'controller'    => Controller\IndexController::class,
                         'action'        => 'index',
@@ -26,7 +26,7 @@ return array(
                     'default' => array(
                         'type'    => Segment::class,
                         'options' => array(
-                            'route'    => '/:slug',
+                            'route'    => ':slug',
                             'constraints' => array(
                                 'slug' => '.+'
                             ),
@@ -39,7 +39,7 @@ return array(
                     'home' => array(
                         'type' => Literal::class,
                         'options' => array(
-                            'route' => '/',
+                            'route' => '',
                             'defaults' => array(
                                 'controller'    => Controller\IndexController::class,
                                 'action'        => 'index',
