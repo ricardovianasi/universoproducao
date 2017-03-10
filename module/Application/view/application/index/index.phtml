@@ -57,12 +57,12 @@
 <?php if(!empty($this->gallery)): ?>
     <section class="gallery">
         <div class="gallery-items">
-            <div class="row">
+            <div class="gallery-row">
                 <div class="col">
                     <?php foreach (array_slice($this->gallery, 0, 4) as $img): ?>
                         <div class="gallery-item">
                             <a href="" class="gallery-link">
-                                <img src="<?php echo $this->thumbor()->url($img->getMeta('_image'))->resize(469, 310); ?>" alt="" class="gallery-img">
+                                <img src="<?php echo $this->thumbor()->url($img->getMeta('_image'))->resize(479, 310); ?>" alt="" class="gallery-img">
                             </a>
                         </div>
                     <?php endforeach; ?>
@@ -76,11 +76,11 @@
                     </header>
                 </div>
             </div>
-            <div class="row">
+            <div class="gallery-row">
                 <?php foreach (array_slice($this->gallery, 3, 4) as $img): ?>
-                    <div class="gallery-item">
+                    <div class="ygaller-item">
                         <a href="" class="gallery-link">
-                            <img src="<?php echo $this->thumbor()->url($img->getMeta('_image'))->resize(469, 310); ?>" alt="" class="gallery-img">
+                            <img src="<?php echo $this->thumbor()->url($img->getMeta('_image'))->resize(479, 310); ?>" alt="" class="gallery-img">
                         </a>
                     </div>
                 <?php endforeach; ?>
