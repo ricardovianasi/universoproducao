@@ -1,6 +1,6 @@
 <?php
 return [
-    'router' => array(
+    /*'router' => array(
         'routes' => array(
             'cinebh' => array(
                 'type' => 'Literal',
@@ -9,7 +9,7 @@ return [
                 )
             ),
         )
-    ),
+    ),*/
     'universoproducao' => array(
         'type' => 'Literal',
         'options' => array(
