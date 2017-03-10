@@ -5,7 +5,7 @@ return [
             'universoproducao' => array(
                 'type' => 'Literal',
                 'options' => array(
-                    'route'    => '/universoproducao',
+                    'route'    => '/',
                 )
             ),
 //            'mostratiradentessp' => array(
