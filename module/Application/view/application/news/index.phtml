@@ -9,18 +9,57 @@
 
 <section class="main-section">
     <div class="main-wrapper">
-        <div class="main-content">
-            <?php echo $post->getContent(); ?>
 
-            <div class="share">
-                <span class="share-title">Compartilhe:</span>
-                <ul class="share-items">
-                    <li class="share-item"><a href="" class="share-link"><span class="icon-facebook"></span></a></li>
-                    <li class="share-item"><a href="" class="share-link"><span class="icon-twitter"></span></a></li>
+        <div class="news">
+            <ul class="news-list news-list--highlight">
+                <?php foreach ($this->newsList as $news): ?>
+                    <li class="news-item">
+                        <a href="<?php echo $this->url('universoproducao/news', ['slug'=>$news->getSlug()])?>" class="news-link">
+                            <?php if($news->hasMeta('_thumb')): ?>
+                                <figure class="news-figure">
+                                    <img src="<?php echo  $this->thumbor()->url($news->getMeta('_thumb'))->resize(384, 288); ?>" alt="">
+                                </figure>
+                            <?php endif; ?>
+                            <article class="news-article">
+                                <header class="news-header">
+                                    <h1><?php echo $news->getTitle(); ?></h1>
+                                </header>
+                            </article>
+                        </a>
+                    </li>
+                <?php endforeach; ?>
+            </ul>
+
+            <div class="main-content">
+                <ul class="news-list">
+                    <?php foreach ($this->newsList as $news): ?>
+                        <li class="news-item">
+                            <a href="<?php echo $this->url('universoproducao/news', ['slug'=>$news->getSlug()])?>" class="news-link">
+                                <?php if($news->hasMeta('_thumb')): ?>
+                                    <figure class="news-figure">
+                                        <img src="<?php echo  $this->thumbor()->url($news->getMeta('_thumb'))->resize(384, 288); ?>" alt="">
+                                    </figure>
+                                <?php endif; ?>
+                                <article class="news-article">
+                                    <header class="news-header">
+                                        <h1><?php echo $news->getTitle(); ?></h1>
+                                    </header>
+                                </article>
+                            </a>
+                        </li>
+                    <?php endforeach; ?>
                 </ul>
             </div>
-
-            <div class="main-separator"></div>
         </div>
+
+        <div class="share">
+            <span class="share-title">Compartilhe:</span>
+            <ul class="share-items">
+                <li class="share-item"><a href="" class="share-link"><span class="icon-facebook"></span></a></li>
+                <li class="share-item"><a href="" class="share-link"><span class="icon-twitter"></span></a></li>
+            </ul>
+        </div>
+
+        <div class="main-separator"></div>
     </div>
 </section>

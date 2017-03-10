@@ -6,7 +6,7 @@
                 <div class="banner-slide owl-slide" style="background-image: url('<?php echo $this->thumbor()->url($banner->getMeta('_image'))->resize(1920, 1080); ?>')">
                     <div class="banner-content">
                         <div class="banner-wrapper">
-                            <p class="banner-title"><?php echo $banner->getSubtitle(); ?></p>
+                            <p class="banner-title"><?php echo $banner->getTitle(); ?></p>
                         </div>
                     </div>
                 </div>
@@ -33,7 +33,7 @@
         <ul class="news-list news-list--highlight">
             <?php foreach ($this->news as $news): ?>
                 <li class="news-item">
-                    <a href="#" class="news-link">
+                    <a href="<?php echo $this->url('universoproducao/news', ['slug'=>$news->getSlug()])?>" class="news-link">
                         <?php if($news->hasMeta('_thumb')): ?>
                             <figure class="news-figure">
                                 <img src="<?php echo  $this->thumbor()->url($news->getMeta('_thumb'))->resize(384, 288); ?>" alt="">
