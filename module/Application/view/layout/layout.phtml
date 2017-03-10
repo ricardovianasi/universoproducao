@@ -15,7 +15,8 @@
 
     <script src="<?php echo $this->basePath('assets/universoproducao/dist')?>/scripts/vendor/modernizr.js"></script>
 </head>
-<body class="<?php echo !empty((string)$this->placeholder("is_home")) ? "home" : "" ?> header-dark">
+<body class="<?php echo !empty((string)$this->placeholder("is_home")) ? "home" : "" ?>
+                <?php echo !empty((string)$this->placeholder("is_header_dark")) ? "header-dark" : "" ?>">
 <!--[if lt IE 10]>
 <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 <![endif]-->

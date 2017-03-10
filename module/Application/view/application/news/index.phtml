@@ -1,3 +1,5 @@
+<?php if($post->getMeta('_cover')) $this->placeholder("is_header_dark")->set(true); ?>
+
 <div class="<?php echo $post->getMeta('_cover') ? 'main-bg' : 'main-no-bg'; ?>"
      style="<?php echo $post->getMeta('_cover') ? 'background-image:url('.$post->getMeta('_cover').')' : ''; ?>">
     <header class="main-header">
