@@ -15,9 +15,9 @@ $modules = [
     'Application',
 ];
 
-//if($env == 'development') {
+if($env == 'development') {
     $modules[] = 'ZendDeveloperTools';
-//}
+}
 
 return array(
     'modules' => $modules,
