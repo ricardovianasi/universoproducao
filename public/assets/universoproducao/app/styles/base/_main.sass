@@ -1,0 +1,46 @@
+.main
+  display: inline-block
+  width: 100%
+
+  &-separator
+    +leader(3)
+    border-bottom: 1px solid $color-palette-5
+
+  &-wrapper
+    +center($pad: 16px)
+
+  &-content
+    +center(916px, $pad: 16px)
+
+    p
+      +adjust-font-size-to(18px, 1.5)
+      font-family: 'Open Sans', sans-serif
+      +trailer(1)
+
+    .share
+      +leader(3)
+      text-align: center
+
+  &-title
+    +adjust-font-size-to(60px)
+    +trailer(2, 60px)
+    font-weight: 900
+    color: black
+
+  &-bg
+    background-size: cover
+    background-position: center center
+    overflow: hidden
+    position: relative
+    +trailer(3)
+
+    .main-header
+      position: relative
+      +leader(20.5)
+
+    .main-title
+      color: white
+
+  &-no-bg
+    .main-header
+      +leader(10.5)

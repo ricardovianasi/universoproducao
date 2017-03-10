@@ -1,0 +1,116 @@
+.channel
+
+  &-row
+    padding: 0 60px
+    display: block
+    +trailer(2.5)
+
+  &-item
+    position: relative
+    width: 100%
+
+  &-image
+    width: 100%
+    img
+      width: 100%
+
+  &-content
+    position: absolute
+    width: 100%
+    height: 100%
+    top: 0
+    left: 0
+    z-index: 99999
+    opacity: 0
+    transition: opacity .2s ease
+
+    .wrapper
+      padding: 30px
+      position: absolute
+      top: 50%
+      transform: translateY(-50%)
+
+    .play
+      display: block
+      width: 70px
+      padding-top: 15px
+      padding-bottom: 15px
+      margin-left: auto
+      margin-right: auto
+      border: 3px solid white
+      border-radius: 100%
+      text-align: center
+      text-decoration: none
+      color: white
+      +trailer(1.5)
+      opacity: .4
+      transition: $transition-default
+      &:hover
+        opacity: 1
+        color: $color-palette-4
+      span
+        font-size: 40px
+        height: 40px
+        vertical-align: middle
+
+
+    .title
+      +adjust-font-size-to(20px, 1)
+      +trailer(.5, 20px)
+      color: white
+      font-weight: 900
+
+    .resume
+      color: white
+      +trailer(.5)
+
+    .date
+      color: white
+      font-style: italic
+
+
+  &-overlay
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+    background-size: cover
+    background-repeat: no-repeat
+    background-position: center
+    z-index: -1
+    &:before
+      position: absolute
+      content: " "
+      width: 100%
+      height: 100%
+      background-color: rgba(0,0,0,.6)
+
+  .owl-carousel
+    .owl-stage-outer
+      overflow: visible
+    .owl-nav
+      .owl-next, .owl-prev
+        position: absolute
+        display: block
+        width: 60px
+        height: 100%
+        top: 0
+        text-align: center
+        cursor: pointer
+        &.disabled
+          visibility: hidden
+        button
+          width: 100%
+          height: 100%
+          background-color: rgba(0, 0, 0, .6)
+          color: $color-palette-2
+          font-size: 36px
+          border: none
+          outline: none
+          cursor: pointer
+      .owl-next
+        right: -60px
+
+      .owl-prev
+        left: -60px

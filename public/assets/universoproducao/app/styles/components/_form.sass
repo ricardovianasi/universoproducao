@@ -1,0 +1,22 @@
+.input,
+.submit
+  box-sizing: border-box
+  outline: none
+  font-family: $font-family-base
+  background-color: transparent
+  +adjust-font-size-to(18px, 1)
+  +apply-side-rhythm-border(all, 1px, .5, 18px, solid #000)
+
+.input
+  &::-webkit-input-placeholder
+    font-style: italic
+  &::-moz-placeholder
+    font-style: italic
+  &:-ms-input-placeholder
+    font-style: italic
+  &:-moz-placeholder
+    font-style: italic
+
+.submit
+  cursor: pointer
+  transition: $transition-default

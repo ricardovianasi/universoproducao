@@ -1,0 +1,106 @@
+.footer
+  +padding-leader(3)
+
+  &-wrapper
+    +center($pad: 16px)
+
+  .newsletter
+    display: block
+    +trailer(3)
+    &-title
+      +adjust-font-size-to(36px)
+      +trailer(2, 36px)
+      font-weight: 900
+      color: black
+      text-align: center
+
+    &-form
+      display: block
+      overflow: hidden
+
+    .input,
+    .submit
+      float: left
+      box-sizing: border-box
+
+    .input
+      width: 40%
+      &:first-of-type
+        border-right: none
+      &::-webkit-input-placeholder
+        color: black
+        font-style: italic
+      &::-moz-placeholder
+        color: black
+        font-style: italic
+      &:-ms-input-placeholder
+        color: black
+        font-style: italic
+      &:-moz-placeholder
+        color: black
+        font-style: italic
+
+    .submit
+      width: 20%
+      background-color: $color-palette-4
+      border-color: $color-palette-4
+      color: white
+      &:hover
+        background-color: $color-palette-1
+
+  &-contact
+    background-color: $color-palette-3
+    +padding-leader(2)
+    +padding-trailer(1.5)
+
+    .contact, .social
+      float: left
+
+    &-title
+      +adjust-font-size-to(18px, 1)
+      +trailer(2)
+      color: white
+      font-weight: 900
+      text-transform: uppercase
+
+    .contact
+      width: 60%
+      &-icon
+        font-size: 90px
+        color: $color-palette-2
+        display: inline-block
+        vertical-align: top
+      &-add
+        +adjust-font-size-to(16px, 1)
+        color: $color-palette-2
+        display: inline-block
+        vertical-align: top
+        margin-left: 40px
+        letter-spacing: .05em
+
+    .social
+      width: 40%
+
+      &-items
+        +leader(1)
+
+      &-item
+        +column(1/5)
+
+      &-link
+        +adjust-font-size-to(36px)
+        color: $color-palette-2
+        text-decoration: none
+
+    .copy
+      display: inline-block
+      width: 100%
+      clear: both
+      +padding-leader(2)
+      +leader(2)
+      border-top: 1px solid white
+      p
+        +adjust-font-size-to(14px)
+        text-transform: uppercase
+        text-align: center
+        color: white

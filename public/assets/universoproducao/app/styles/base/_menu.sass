@@ -1,0 +1,93 @@
+#mainmenu-access,#mainmenu-close
+  +adjust-font-size-to(32px, 2)
+  +padding-leader(1.25, 32px)
+  +padding-trailer(1.25, 32px)
+  transition: $transition-default
+  .icon
+    transition: $transition-default
+    display: inline-block
+    width: 48px
+    height: 48px
+    border-radius: 100%
+    i
+      color: $color-palette-1
+  .title-menu
+    font-size: 18px
+    line-height: inherit
+    font-weight: 900
+    letter-spacing: .05em
+    vertical-align: bottom
+    transition: $transition-default
+
+  &:hover
+    .title-menu
+      opacity: 0
+    .icon
+      width: 48px
+      height: 48px
+      background-color: $color-palette-1
+      i
+        color: white
+
+.mainmenu
+
+  &-wrapper
+    +center($pad:16px)
+
+  &-button
+    +padding-leader(2.5)
+    +padding-trailer(2.5)
+    width: 100%
+    text-align: right
+
+  &-list
+    &--sub
+      opacity: 0
+      vertical-align: bottom
+      float: left
+      padding-left: 10px
+      border-bottom: 2px solid $color-palette-1
+      transition: $transition-default
+      position: relative
+      &:before
+        content: "\edde"
+        font-family: 'Universoproducao' !important
+        line-height: 1
+        font-size: 14px
+        color: $color-palette-1
+        padding-right: 10px
+
+      .mainmenu-item--sub
+        +trailer(0)
+        display: inline-block
+        vertical-align: middle
+        margin-right: 12px
+        &:last-child
+          margin-right: 0
+      .mainmenu-link
+        +adjust-font-size-to(18px)
+        color: $color-palette-2
+        border: none
+        transition: $transition-default
+        &:hover
+          color: $color-palette-1
+  &-item
+    overflow: hidden
+    clear: both
+    +trailer(1)
+    &:hover
+      & >.mainmenu-link
+        padding-left: 20px
+        border-bottom: 2px solid $color-palette-1
+      .mainmenu-list--sub
+        opacity: 1
+
+  &-link
+    +adjust-font-size-to(24px, 1)
+    color: white
+    font-weight: 900
+    text-decoration: none
+    letter-spacing: .05em
+    float: left
+    border-bottom: 2px solid transparent
+    transition: $transition-default

@@ -61,6 +61,14 @@ return [
 							'site' => 1
 						]
 					],
+                    [
+                        'label' => 'Galeria',
+                        'route' => 'admin/gallery',
+                        'icon' => 'fa fa-image',
+                        'params' => [
+                            'site' => 1
+                        ]
+                    ],
 				]
 			],
 			[

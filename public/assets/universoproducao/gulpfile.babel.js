@@ -1,4 +1,4 @@
-// generated on 2016-06-28 using generator-custom2 1.0.8
+// generated on 2017-02-15 using generator-custom2 1.0.8
 import gulp from 'gulp';
 import gulpLoadPlugins from 'gulp-load-plugins';
 import browserSync from 'browser-sync';
@@ -7,15 +7,17 @@ import {stream as wiredep} from 'wiredep';
 
 const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
+// const gutil = require('gulp-util');
 
 var styles_func = function(dist) {
   dist = dist || false;
-  var cf = './config'+(dist?'-dist':'')+'.rb';
+  var cf = './config.rb';
   return gulp.src(['app/styles/**/*.{sass,scss}', '!app/styles/**/_*.*'])
     .pipe($.plumber())
     .pipe($.sourcemaps.init())
     .pipe($.compass({
       config_file: cf,
+      relative: false,
       sass: 'app/styles',
       css: 'dist/styles'
     }).on('error', function (error) {
@@ -33,7 +35,7 @@ gulp.task('styles', () => styles_func());
 gulp.task('styles:dist', () => styles_func(true));
 
 gulp.task('scripts', () => {
-  return gulp.src(['app/scripts/**/*.js', 'app/scripts/main.js', 'app/scripts/app.js'])
+  return gulp.src(['app/scripts/**/*.js', 'app/scripts/main.js', 'app/scripts/plugins.js', 'app/scripts/app.js'])
     .pipe($.plumber())
     .pipe($.sourcemaps.init())
     .pipe($.babel())
@@ -136,6 +138,10 @@ gulp.task('serve', ['styles', 'scripts', 'fonts'], () => {
   ]).on('change', reload);
 
   gulp.watch('app/styles/**/*.{sass,scss}', ['styles']);
+  gulp.watch(['gulpfile.babel.js', 'config.rb']).on('change', function(event) {
+    reload();
+    gulp.start('styles');
+  });
   gulp.watch('app/scripts/**/*.js', ['scripts']);
   gulp.watch('app/scripts/**/*.js', function(event) {
     // Fires wiredep when a new script is added
@@ -171,6 +177,7 @@ gulp.task('serve:test', ['scripts'], () => {
     }
   });
 
+  gulp.watch(['gulpfile.babel.js', 'config.rb']).on('change', reload);
   gulp.watch('app/scripts/**/*.js', ['scripts']);
   gulp.watch('test/spec/**/*.js').on('change', reload);
   gulp.watch('test/spec/**/*.js', ['lint:test']);
@@ -198,7 +205,7 @@ gulp.task('wiredep', ['styles', 'scripts', 'fonts'], () => {
     .pipe(gulp.dest('app'));
 });
 
-gulp.task('build', ['html', 'images', 'fonts', 'extras'], () => {
+gulp.task('build', ['lint', 'html', 'images', 'fonts', 'extras'], () => {
   return gulp.src('dist/**/*').pipe($.size({title: 'build', gzip: true}));
 });
 

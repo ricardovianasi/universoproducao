@@ -156,7 +156,7 @@
         <?php foreach ($this->gallery as $img): ?>
             <div class="gallery-item">
                 <figure class="gallery-figure">
-                    <img src="<?php echo $this->thumbor()->url($img->getMeta('_image'))->resize(780, 505); ?>" alt="">
+                    <img src="<?php echo $this->thumbor()->url($img->getMeta('_image'))->resize(479, 310); ?>" alt="">
                 </figure>
                 <div class="gallery-desc">
                     <p class="gallery-title"><?php echo $img->getTitle(); ?>

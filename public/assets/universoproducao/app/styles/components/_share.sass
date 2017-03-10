@@ -1,0 +1,27 @@
+.share
+  text-align: center
+  &-title
+    +adjust-font-size-to(20px)
+    font-weight: 900
+    font-style: italic
+    color: $color-palette-5
+    margin-right: 10px
+
+
+  &-title,
+  &-items
+    display: inline-block
+
+  &-item
+    display: inline-block
+    &:first-child
+      margin-right: 18px
+
+  &-link
+    font-size: 24px
+    line-height: 24px
+    text-decoration: none
+    .icon-facebook
+      color: #30487a
+    .icon-twitter
+      color: #448abe

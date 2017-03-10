@@ -10,6 +10,7 @@ use Syslogic\DoctrineJsonFunctions\Query\AST\Functions\Mysql;
 
 return array(
     'router' => array(
+        'router_class' => 'Zend\Mvc\Router\Http\TranslatorAwareTreeRouteStack',
         'routes' => array(
             'universoproducao' => array(
                 'type'    => Hostname::class,
@@ -25,7 +26,7 @@ return array(
                     'default' => array(
                         'type'    => Segment::class,
                         'options' => array(
-                            'route'    => ':slug',
+                            'route'    => '/:slug',
                             'constraints' => array(
                                 'slug' => '.+'
                             ),
@@ -35,10 +36,20 @@ return array(
                             ),
                         ),
                     ),
+                    'home' => array(
+                        'type' => Literal::class,
+                        'options' => array(
+                            'route' => '/',
+                            'defaults' => array(
+                                'controller'    => Controller\IndexController::class,
+                                'action'        => 'index',
+                            ),
+                        )
+                    ),
                     'news' => array(
                         'type' => Segment::class,
                         'options' => array(
-                            'route' => 'noticia/:slug',
+                            'route' => '/noticia/:slug',
                             'constraints' => [
                                 'slug' => '[a-zA-Z0-9_-]*',
                             ],

@@ -1,197 +1,184 @@
 .home
-	.header
-		padding-left: 36px
-		padding-right: 36px
-		border: none
-		padding-bottom: 0
+  .main
+    height: 100%
 
-		&__left
-			.brand
-				&-logo,
-				&-name
-					color: #fff
+  .banner
+    position: relative
+    top: 0
+    width: 100%
+    height: 100%
+    -webkit-tap-highlight-color: transparent
+    z-index: 1
 
-		&__right
-			.usermenu
-				&__link
-					color: #fff
+    .owl-carousel
+      height: 100%
+      width: 100%
 
-.home
-	.site__wrapper
-		position: relative
-		width: 100%
-		max-width: 100%
-		padding-left: 0
-		padding-right: 0
+    .owl-stage-outer,
+    .owl-stage,
+    .owl-item,
+    .owl-slide
+      height: 100%
+
+    &-slide
+      background-size: cover
+      background-repeat: no-repeat
+      background-position: center
+
+    &-content
+      width: 100%
+      position: absolute
+      bottom: 0
+      &:before
+        position: absolute
+        display: block
+        content: ""
+        top: 0
+        left: 0
+        width: 100%
+        height: 100%
+        background: linear-gradient(to bottom,rgba(0,0,0,0) 30%, rgb(0,0,0))
+
+    &-wrapper
+      +center($pad:116px)
+
+    &-title
+      position: relative
+      +adjust-font-size-to(36px)
+      +trailer(3)
+      +leader(4)
+      font-weight: 900
+      color: white
+      letter-spacing: .04em
+      z-index: 1000
+
+    .mouse-bottom
+      position: absolute
+      +adjust-font-size-to(24px)
+      color: white
+      text-decoration: none
+      z-index: 99999
+      +trailer(1, 24px)
+      bottom: 0
+      left: 50%
+      transform: translateX(-50%)
+
+  .news
+    background-color: black
+    +padding-leader(3)
+    +padding-trailer(3)
+
+    &-wrapper
+      +center($pad: 16px)
+
+    &-title
+      +adjust-font-size-to(48px, 2)
+      color: $color-palette-1
+      font-weight: 300
+      text-align: center
+
+    &-header
+      &--home
+        +trailer(3)
+      h1
+        color: white
+
+    &-readmore
+      text-align: right
+      a
+        color: $color-palette-4
+        &:hover
+          color: white
 
 
-.fullslider
-	position: absolute
-	max-width: initial
-	width: 100%
-	height: 100%
-	top: 0
-	right: 0
-	bottom: 0
-	left: 0
-	overflow: hidden
-	z-index: 10
-	background-color: $color-palette-1
+  .channel
+    background-color: $color-palette-3
+    +padding-leader(3)
+    +padding-trailer(3)
 
-.home-slider
-	display: inline-block
-	width: 100%
-	height: 100%
+    &-header
+      +trailer(2)
+      padding-right: 60px
+      padding-left: 60px
 
-	&__slide
-		display: inline-block
-		width: 100%
-		height: 100%
-		&--img
-			background-repeat: no-repeat
-			background-position: 0 0
-			background-size: cover
-			&:before
-				content: ""
-				position: absolute
-				top: 0
-				bottom: 0
-				//left: -100%
-				width: 100%
-				right: 0
-				background-color: rgba(0,0,0,0.3)
-				z-index: 1
+    &-title
+      +adjust-font-size-to(48px)
+      color: $color-palette-2
+      font-weight: 900
 
-	&__text
-		position: absolute
-		z-index: 10
-		max-width: 700px
+    &-readmore
+      text-align: right
+      a
+        color: $color-palette-4
+        &:hover
+          color: white
 
-		//top
-		&.left-top
-			top: $base-line-height * 7
-			left: 36px
-			.home-slider__title,
-			.home-slider__subtitle
-				float: left
-				text-align: left
-				clear: both
-		&.right-top
-			top: $base-line-height * 7
-			right: 36px
-			.home-slider__title,
-			.home-slider__subtitle
-				float: right
-				text-align: right
-				clear: both
-		&.center-top
-			top: $base-line-height * 7
-			text-align: center
-			left: 50%
-			transform: translateX(-50%)
-			.home-slider__title,
-			.home-slider__subtitle
-				text-align: center
+  .gallery
+    &-row
+      position: relative
+      display: block
+      clear: both
+      overflow: hidden
+      .col
+        width: 50%
+        float: left
+        .gallery-item
+          width: 50%
 
-		//center
-		&.left-center
-			top: 50%
-			left: 36px
-			transform: translateY(-50%)
-			.home-slider__title,
-			.home-slider__subtitle
-				float: left
-				text-align: left
-				clear: both
-		&.right-center
-			top: 50%
-			right: 36px
-			transform: translateY(-50%)
-			.home-slider__title,
-			.home-slider__subtitle
-				float: right
-				text-align: right
-				clear: both
-		&.center-center
-			text-align: center
-			left: 50%
-			top: 50%
-			transform: translate(-50%, 50%)
-			.home-slider__title,
-			.home-slider__subtitle
-				text-align: center
+    &-item
+      display: block
+      position: relative
+      overflow: hidden
+      width: 25%
+      float: left
+      margin: 0
+      line-height: 0
 
-		//bottom
-		&.left-bottom
-			bottom: $base-line-height * 5
-			left: 36px
-			.home-slider__title,
-			.home-slider__subtitle
-				float: left
-				text-align: left
-				clear: both
-		&.right-bottom
-			bottom: $base-line-height * 5
-			right: 36px
-			transform: translateY(-50%)
-			.home-slider__title,
-			.home-slider__subtitle
-				float: right
-				text-align: right
-				clear: both
-		&.center-bottom
-			text-align: center
-			left: 50%
-			bottom: $base-line-height * 5
-			transform: translateX(-50%)
-			.home-slider__title,
-			.home-slider__subtitle
-				text-align: center
+    &-link
+      display: block
+      width: 100%
+      outline: 0
 
-	&__title
-		+adjust-font-size-to(48px, 2)
-		font-weight: 900
-		background-color: $main-color
-		color: #fff
-		display: inline-block
-		padding: 8px
+    &-img
+      width: 100%
 
-	&__subtitle
-		+adjust-font-size-to(24px, 1)
-		font-weight: 400
-		background-color: #fff
-		color: $color-txt
-		padding: 8px
-		margin-top: 10px
+    &-header
+      .wrapper
+        text-align: right
+        padding: 60px
+        box-sizing: border-box
+        position: absolute
+        right: 0
+        top: 50%
+        transform: translateY(-50%)
 
-.home-slider-dots
-	position: absolute
-	bottom: 0
-	width: 100%
-	text-align: center
-	margin: 0 auto
-	+trailer(2)
-	z-index: 20
+    &-title
+      +adjust-font-size-to(48px, 2.5)
+      +trailer(3.5, 48px)
+      font-weight: 900
+      color: black
+      letter-spacing: .110em
+      text-transform: uppercase
 
-	li
-		display: inline-block
-		margin-right: 8px
-		margin-left: 8px
-		&.slick-active
-			button
-				border: 2px solid $main-color
+    &-subtitle
+      +adjust-font-size-to(36px)
+      color: black
+      letter-spacing: .01em
+      text-decoration: none
+      &>span
+        display: inline-block
+        vertical-align: middle
+        margin-left: 10px
+        .name, .icon
+          display: block
+          text-align: center
 
-		button
-			display: block
-			width: 24px
-			height: 24px
-			border-radius: 50%
-			border: 2px solid #fff
-			background-color: transparent
-			outline: 0
-			text-indent: -99999px
-			cursor: pointer
+        .icon
+          font-size: 45px
+          line-height: inherit
 
-			&:focus
-				outline: 0
+        .name
+          font-size: 22px
+          line-height: 22px
+          font-weight: 900
 

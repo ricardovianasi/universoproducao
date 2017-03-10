@@ -1,19 +1,90 @@
 <?php $this->placeholder("is_home")->set(true); ?>
-<div class="fullslider">
-    <div class="home-slider">
-        <?php foreach ($this->bannerImages as $banner): ?>
-            <div class="home-slider__slide home-slider__slide--img" style="background-image: url('<?php echo $banner->getFile()?>')">
-                <?php if($banner->getTitle()): ?>
-                    <div class="home-slider__text center-bottom">
-                        <a href="">
-                            <h2 class="home-slider__title"><?php echo $banner->getTitle(); ?></h2>
-                            <p class="home-slider__subtitle"><?php echo $banner->getDescription(); ?></p>
+<section class="banner">
+    <div class="owl-carousel" id="banner-home">
+        <?php if(count($this->bannerImages) > 0):
+            foreach ($this->bannerImages as $banner): ?>
+                <div class="banner-slide owl-slide" style="background-image: url('<?php echo $this->thumbor()->url($banner->getMeta('_image'))->resize(1920, 1080); ?>')">
+                    <div class="banner-content">
+                        <div class="banner-wrapper">
+                            <p class="banner-title"><?php echo $banner->getSubtitle(); ?></p>
+                        </div>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        <?php else: ?>
+            <div class="banner-slide owl-slide" style="background-image: url('<?php echo $this->basePath('assets/universoproducao/dist') ?>/images/banner-1.jpg')">
+                <div class="banner-content">
+                    <div class="banner-wrapper">
+                        <p class="banner-title">&nbsp;</p>
+                    </div>
+                </div>
+            </div>
+        <?php endif; ?>
+    </div>
+    <a class="mouse-bottom" id="mouse-bottom" href="#"><span class="icon-mouse-bottom"></span></a>
+</section>
+
+<section class="news" id="news">
+    <div class="news-wrapper">
+        <header class="news-header--home">
+            <h1 class="news-title">Acompanhe tudo que acontece na <br>Universo Produção</h1>
+        </header>
+
+        <ul class="news-list news-list--highlight">
+            <?php foreach ($this->news as $news): ?>
+                <li class="news-item">
+                    <a href="#" class="news-link">
+                        <?php if($news->hasMeta('_thumb')): ?>
+                            <figure class="news-figure">
+                                <img src="<?php echo  $this->thumbor()->url($news->getMeta('_thumb'))->resize(384, 288); ?>" alt="">
+                            </figure>
+                        <?php endif; ?>
+                        <article class="news-article">
+                            <header class="news-header">
+                                <h1><?php echo $news->getTitle(); ?></h1>
+                            </header>
+                        </article>
+                    </a>
+                </li>
+            <?php endforeach; ?>
+        </ul>
+        <p class="news-readmore">
+            <a href="#" class="link-readmore">Veja mais notícias <span class="icon-plus3"></span></a>
+        </p>
+    </div>
+</section>
+
+<?php if(!empty($this->gallery)): ?>
+    <section class="gallery">
+        <div class="gallery-items">
+            <div class="row">
+                <div class="col">
+                    <?php foreach (array_slice($this->gallery, 0, 4) as $img): ?>
+                        <div class="gallery-item">
+                            <a href="" class="gallery-link">
+                                <img src="<?php echo $this->thumbor()->url($img->getMeta('_image'))->resize(780, 505); ?>" alt="" class="gallery-img">
+                            </a>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+                <div class="col">
+                    <header class="gallery-header">
+                        <div class="wrapper">
+                            <h1 class="gallery-title">O universo da<br>produção</h1>
+                            <a class="gallery-subtitle" href="">Veja mais fotos no <span><i class="icon icon-flickr"></i><span class="name">flickr</span></span></a>
+                        </div>
+                    </header>
+                </div>
+            </div>
+            <div class="row">
+                <?php foreach (array_slice($this->gallery, 3, 4) as $img): ?>
+                    <div class="gallery-item">
+                        <a href="" class="gallery-link">
+                            <img src="<?php echo $this->thumbor()->url($img->getMeta('_image'))->resize(780, 505); ?>" alt="" class="gallery-img">
                         </a>
                     </div>
-                <?php endif; ?>
+                <?php endforeach; ?>
             </div>
-        <?php endforeach; ?>
-    </div>
-    <div class="home-slider-dots">
-    </div>
-</div>
+        </div>
+    </section>
+<?php endif; ?>

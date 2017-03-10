@@ -1,0 +1,84 @@
+.userlogin
+  &-wrapper
+    max-width: 318px
+    width: 100%
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translateY(-50%)
+    margin-left: -159px
+    box-sizing: border-box
+    padding-left: 16px
+    padding-left: 16px
+
+  &-title
+    +adjust-font-size-to(24px)
+    +trailer(1)
+    color: white
+    text-transform: uppercase
+    text-align: center
+    font-weight: 300
+    strong
+      font-weight: 900 !important
+
+  &-form
+    .input,.submit
+      width: 100%
+      +trailer(.5)
+      border: none
+
+    .input
+      background-color: white
+
+    .submit
+      background-color: $color-palette-4
+      color: white
+      font-weight: 900
+      letter-spacing: .05em
+      &:hover
+        background-color: $color-palette-1
+
+  &-tricks
+    +leader(1.5)
+
+    .tricks-item
+      +trailer(1)
+      color: white
+
+      &--separator
+        text-align: center
+        overflow: hidden
+        +leader(1)
+        span
+          position: relative
+          &:before, &:after
+            content: ""
+            position: absolute
+            border-bottom: 1px solid white
+            width: 100vh
+            top: 50%
+          &:before
+            right: 100%
+            margin-right: 15px
+
+          &:after
+            left: 100%
+            margin-left: 15px
+
+    .tricks-link
+      color: white
+      font-weight: 300
+      font-style: italic
+      text-decoration: none
+      &--facebook
+        display: block
+        width: 100%
+        background-color: #3c5a98
+        color: white
+        font-weight: 900
+        text-align: center
+        letter-spacing: .05em
+        border: none
+        &:hover
+          background-color: #2e4473
+

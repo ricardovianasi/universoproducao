@@ -16,41 +16,38 @@
 
 
 /* ==========================================================================
+   Vendor
+   ========================================================================== */
+
+//@import "vendor/"
+@import "../../bower_components/include-media/dist/include-media"
+@import "../../bower_components/jeet/jeet"
+@import "../../bower_components/owl.carousel/dist/assets/owl.carousel.css"
+@import "../../bower_components/slick-carousel/slick/slick"
+
+/* ==========================================================================
    Setup
    ========================================================================== */
 
 @import "settings/variables"
 @import "settings/settings"
 
-/* ==========================================================================
-   Vendor
-   ========================================================================== */
-
-//@import "vendor/"
-@import "../../bower_components/include-media/dist/include-media"
-@import "../../bower_components/perfect-scrollbar/src/css/main"
-@import "../../bower_components/slick-carousel/slick/slick.scss"
-@import "../../bower_components/jeet/scss/jeet/jeet"
 
 /* ==========================================================================
    Tools
    ========================================================================== */
 
+@import "tools/verticalrhythm"
 @import "tools/mixins"
 
 
 /* ==========================================================================
-   Helpers
+   Generic
    ========================================================================== */
 
-//@import "helpers/sprites"
-@import "helpers/modal"
-
-/* ==========================================================================
-   Components
-   ========================================================================== */
-
-@import "components/modal-close"
+@import "generic/tricks"
+@import "generic/fonts"
+@import "generic/sprites"
 
 
 /* ==========================================================================
@@ -58,23 +55,20 @@
    ========================================================================== */
 
 @import "base/html-body"
-@import "base/links"
-@import "base/fonts"
-@import "base/text"
-@import "base/figures"
-@import "base/forms"
+@import "base/header"
+@import "base/menu"
+@import "base/main"
+@import "base/footer"
+
 
 /* ==========================================================================
-   Estructure
+   Components
    ========================================================================== */
 
-@import "structure/invisibles"
-@import "structure/overlay"
-@import "structure/site-wrapper"
-@import "structure/header"
-@import "structure/menu"
-@import "structure/main"
-@import "structure/footer"
+@import "components/links"
+@import "components/form"
+@import "components/share"
+@import "components/modal"
 
 
 /* ==========================================================================
@@ -82,6 +76,7 @@
    ========================================================================== */
 
 @import "partials/home"
-@import "partials/user-login"
-@import "partials/contact"
 @import "partials/news"
+@import "partials/channel"
+
+@import "partials/user/login"

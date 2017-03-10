@@ -6,47 +6,29 @@
 // Aditional mixins
 //
 =pointer-events($type: none)
-	$type: unquote($type)
-	+experimental(pointer-events, $type, -moz, -webkit, not -o, not -ms, -khtml, official)
+  $type: unquote($type)
+  +experimental(pointer-events, $type, -moz, -webkit, not -o, not -ms, -khtml, official)
 
 =touch-callout($type: none)
-	$type: unquote($type)
-	+experimental(touch-callout, $type, not -moz, -webkit, not -o, not -ms, not -khtml, official)
+  $type: unquote($type)
+  +experimental(touch-callout, $type, not -moz, -webkit, not -o, not -ms, not -khtml, official)
 
 =user-select($select)
-	$select: unquote($select)
-	+experimental(user-select, $select, -moz, -webkit, not -o, not -ms, -khtml, official)
+  $select: unquote($select)
+  +experimental(user-select, $select, -moz, -webkit, not -o, not -ms, -khtml, official)
 
 =selection($color_bg, $color_txt)
-	::-moz-selection
-		background: $color_bg
-		color: $color_txt
-		text-shadow: none
-	::selection
-		background: $color_bg
-		color: $color_txt
-		text-shadow: none
+  ::-moz-selection
+    background: $color_bg
+    color: $color_txt
+    text-shadow: none
+  ::selection
+    background: $color_bg
+    color: $color_txt
+    text-shadow: none
 
 =truncate($width: 100%)
-	width: $width
-	white-space: nowrap
-	overflow: hidden
-	text-overflow: ellipsis
-
-=expand
-	width: 100vw
-	position: relative
-	margin-left: -50vw
-	left: 50%
-	text-align: center
-
-=absolute-expand($background: #fff, $z-index: 9999)
-	position: absolute
-	top: 0
-	left: 0
-	right: 0
-	bottom: 0
-	width: 100%
-	background-color: $background
-	z-index: $z-index
-	overflow: hidden
+  width: $width
+  white-space: nowrap
+  overflow: hidden
+  text-overflow: ellipsis
