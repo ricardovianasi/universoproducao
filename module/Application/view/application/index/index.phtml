@@ -62,7 +62,7 @@
                     <?php foreach (array_slice($this->gallery, 0, 4) as $img): ?>
                         <div class="gallery-item">
                             <a href="" class="gallery-link">
-                                <img src="<?php echo $this->thumbor()->url($img->getMeta('_image'))->resize(780, 505); ?>" alt="" class="gallery-img">
+                                <img src="<?php echo $this->thumbor()->url($img->getMeta('_image'))->resize(469, 310); ?>" alt="" class="gallery-img">
                             </a>
                         </div>
                     <?php endforeach; ?>
@@ -80,7 +80,7 @@
                 <?php foreach (array_slice($this->gallery, 3, 4) as $img): ?>
                     <div class="gallery-item">
                         <a href="" class="gallery-link">
-                            <img src="<?php echo $this->thumbor()->url($img->getMeta('_image'))->resize(780, 505); ?>" alt="" class="gallery-img">
+                            <img src="<?php echo $this->thumbor()->url($img->getMeta('_image'))->resize(469, 310); ?>" alt="" class="gallery-img">
                         </a>
                     </div>
                 <?php endforeach; ?>
