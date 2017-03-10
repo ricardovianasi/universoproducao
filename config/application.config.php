@@ -7,12 +7,12 @@ $modules = [
     'DoctrineORMModule',
     'Util',
     'Admin',
+    'Application',
     'Arquivoemcartaz',
     'Cineop',
     'Cinebh',
     'Mostratiradentes',
     'MostratiradentesSp',
-    'Application',
 ];
 
 if($env == 'development') {
