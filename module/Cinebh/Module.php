@@ -24,7 +24,7 @@ class Module
             $httplanguages = $_SERVER['HTTP_ACCEPT_LANGUAGE'];
         }
 
-        $langCode = $e->getRouter()->match($e->getRequest())->getParam('locale');
+        $langCode = $e->getRouter()->match($e->getRequest()) ?  $e->getRouter()->match($e->getRequest())->getParam('locale') : null;
         if($langCode == 'en')
             $translatorLocale = 'en_US';
         elseif($langCode == 'pt')
