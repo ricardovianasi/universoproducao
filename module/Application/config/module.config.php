@@ -14,7 +14,7 @@ return array(
             'universoproducao' => array(
                 'type'    => Literal::class,
                 'options' => array(
-                    'route'    => '',
+                    'route'    => '/',
                     'defaults' => array(
                         'controller'    => Controller\IndexController::class,
                         'action'        => 'index',
