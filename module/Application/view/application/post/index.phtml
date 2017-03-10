@@ -16,8 +16,8 @@
             <div class="share">
                 <span class="share-title">Compartilhe:</span>
                 <ul class="share-items">
-                    <li class="share-item"><a href="" class="share-link"><span class="icon-facebook"></span></a></li>
-                    <li class="share-item"><a href="" class="share-link"><span class="icon-twitter"></span></a></li>
+                    <li class="share-item"><a href="http://www.facebook.com/share.php?u=<?php echo $this->serverUrl(true) ?>&display=popup&title=<?php echo $post->getTitle(); ?>" class="share-link"><span class="icon-facebook"></span></a></li>
+                    <li class="share-item"><a href="https://twitter.com/intent/tweet?status=<?php echo $post->getTitle(); ?>+<?php echo $this->serverUrl(true) ?>" class="share-link"><span class="icon-twitter"></span></a></li>
                 </ul>
             </div>
 
