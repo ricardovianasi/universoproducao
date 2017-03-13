@@ -1,6 +1,6 @@
 $(document).ready(function() {
     $('#banner-home').owlCarousel({
-        navigation: false,
+        navigation: true,
         singleItem: true,
         autoHeight: false,
         items: 1

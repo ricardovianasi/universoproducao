@@ -27,6 +27,26 @@ return [
 				'controller' => 'news',
 				'icon' => 'icon-book-open'
 			],
+            [
+                'label' => 'Canal Universo',
+                'uri' => '#',
+                'icon' => 'icon-book-open',
+                'pages' => [
+                    [
+                        'label' => 'Videos',
+                        'route' => 'admin/default',
+                        'controller' => 'channel',
+                        'icon' => 'icon-doc',
+
+                    ],
+                    [
+                        'label' => 'Categorias',
+                        'route' => 'admin/default',
+                        'controller' => 'channel-category',
+                        'icon' => 'icon-doc',
+                    ],
+                ]
+            ],
 			[
 				'label' => 'Portais',
 				'uri' => '#',
