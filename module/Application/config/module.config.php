@@ -52,7 +52,7 @@ return array(
                     'newsletter' => array(
                         'type' => Literal::class,
                         'options' => array(
-                            'route' => '/newsletter',
+                            'route' => 'newsletter',
                             'defaults' => array(
                                 'controller' => Controller\PostController::class,
                                 'action' => 'newsletter',
