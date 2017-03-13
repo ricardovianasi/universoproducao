@@ -14,7 +14,7 @@
 
         <div class="news">
             <ul class="news-list news-list--highlight">
-                <?php foreach (array_slice($this->newsList, 0, 3) as $key=>$news): ?>
+                <?php $newsColl = $this->newsList;  foreach (array_slice($newsColl, 0, 3) as $key=>$news): ?>
                     <li class="news-item">
                         <a href="<?php echo $this->url('universoproducao/news', ['slug'=>$news->getSlug()])?>" class="news-link">
                             <?php if($news->hasMeta('_thumb')): ?>
@@ -29,12 +29,12 @@
                             </article>
                         </a>
                     </li>
-                <?php unset($this->newsList[$key]); endforeach; ?>
+                <?php unset($newsColl[$key]); endforeach; ?>
             </ul>
 
             <div class="main-content">
                 <ul class="news-list">
-                    <?php foreach ($this->newsList as $news): ?>
+                    <?php foreach ($newsColl as $news): ?>
                         <li class="news-item">
                             <a href="<?php echo $this->url('universoproducao/news', ['slug'=>$news->getSlug()])?>" class="news-link">
                                 <article class="news-article">
