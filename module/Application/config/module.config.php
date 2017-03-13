@@ -49,6 +49,17 @@ return array(
                         ),
                         'priority' => '99999'
                     ),
+                    'newsletter' => array(
+                        'type' => Literal::class,
+                        'options' => array(
+                            'route' => '/newsletter',
+                            'defaults' => array(
+                                'controller' => Controller\PostController::class,
+                                'action' => 'newsletter',
+                            ),
+                        ),
+                        'priority' => '99999'
+                    ),
                 ),
             ),
         ),

@@ -65,9 +65,9 @@
                 <h1 class="newsletter-title">Fique por dentro das nossas novidades</h1>
             </header>
 
-            <form action="" class="newsletter-form">
-                <input class="input" placeholder="Nome">
-                <input class="input" placeholder="Email">
+            <form action="<?php echo $this->url('universoproducao/newsletter'); ?>" class="newsletter-form">
+                <input required="required" class="input" placeholder="Nome">
+                <input required="required" class="input" placeholder="Email">
                 <button class="submit" type="submit">Cadastrar</button>
             </form>
         </section>
