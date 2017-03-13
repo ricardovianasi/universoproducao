@@ -3,7 +3,13 @@ $(document).ready(function() {
         navigation: true,
         singleItem: true,
         autoHeight: false,
-        items: 1
+        items: 1,
+        center: true,
+        loop: true,
+        autoplay: true,
+        animateOut: 'fadeOut',
+        mouseDrag: false,
+        autoplaySpeed: 8000
     });
 
     $('.channel-slider').owlCarousel({
