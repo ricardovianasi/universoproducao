@@ -14,7 +14,7 @@
 
         <div class="news">
             <ul class="news-list news-list--highlight">
-                <?php foreach ($this->newsList as $news): ?>
+                <?php foreach (array_slice($this->newsList, 0, 3) as $news): ?>
                     <li class="news-item">
                         <a href="<?php echo $this->url('universoproducao/news', ['slug'=>$news->getSlug()])?>" class="news-link">
                             <?php if($news->hasMeta('_thumb')): ?>
