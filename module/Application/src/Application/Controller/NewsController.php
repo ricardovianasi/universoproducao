@@ -24,7 +24,7 @@ class NewsController extends SiteController
 
         $adapter = new DoctrinePaginator(new ORMPaginator($qb));
         $paginator = new Paginator($adapter);
-        $paginator->setDefaultItemCountPerPage(10);
+        $paginator->setDefaultItemCountPerPage(9);
         $paginator->setCurrentPageNumber($page);
 
         return new ViewModel([
