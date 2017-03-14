@@ -22,13 +22,13 @@ class NewsController extends SiteController
         $qb = $this->getRepository(Post::class)->findNewsQb(self::SITE_ID);
         $qb->orderBy('n.postDate', 'DESC');
 
-        /*$adapter = new DoctrinePaginator(new ORMPaginator($qb));
+        $adapter = new DoctrinePaginator(new ORMPaginator($qb));
         $paginator = new Paginator($adapter);
         $paginator->setDefaultItemCountPerPage(10);
-        $paginator->setCurrentPageNumber($page);*/
+        $paginator->setCurrentPageNumber($page);
 
         return new ViewModel([
-            'newsList' => $qb->getQuery()->getResult(),
+            'newsList' => $paginator,
             'post' => $post,
             'breadcrumbs' => $post->getBreadcrumbs()
         ]);

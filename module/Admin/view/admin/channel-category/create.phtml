@@ -1,0 +1,46 @@
+<?php $form = $this->form; $form->prepare();?>
+<div class="row post guide">
+	<div class="col-md-12">
+		<div class="portlet light portlet-fit bordered">
+			<div class="portlet-title">
+				<div class="caption">
+					<?php if($item->getId()): ?>
+					<i class="fa fa-edit"></i>
+					Editar Item
+					<?php else: ?>
+					<i class="fa fa-file-o"></i>
+					Novo Item
+					<?php endif; ?>
+				</div>
+				<div class="actions">
+					<a href="<?php echo $this->url('admin/default', ['controller'=>'channel-category']); ?>"
+					   class="btn btn-default">
+						<i class="icon-action-undo"></i>
+						<span class="hidden-xs"> Voltar </span>
+					</a>
+				</div>
+			</div>
+			<div class="portlet-body">
+
+				<div class="portlet">
+					<div class="portlet-body form">
+						<?php echo $this->form(null, null)->openTag($form); ?>
+
+                        <?php echo $this->formRow($form->get('name')); ?>
+
+						<div class="form-actions">
+							<div class="btn-set pull-right">
+								<button type="submit" name="save" class="btn blue btn-lg" id="save" value="Salvar">
+									<span class="fa fa-fa fa-check"></span> Salvar
+								</button>
+								<a href="<?php echo $this->url('admin/default', ['controller'=>'channel-category']); ?>" class="btn red btn-lg action cancel">Descartar</a>
+							</div>
+						</div>
+						<?php echo $this->form()->closeTag() ?>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>

@@ -1,6 +1,4 @@
-<?php if($post->getMeta('_cover')) $this->placeholder("is_header_dark")->set(true); ?>
-<div class="<?php echo $post->getMeta('_cover') ? 'main-bg' : 'main-no-bg'; ?>"
-     style="<?php echo $post->getMeta('_cover') ? 'background-image:url('.$post->getMeta('_cover').')' : ''; ?>">
+<div class="main-no-bg">
     <header class="main-header">
         <div class="main-wrapper">
             <h1 class="main-title">Newsletter</h1>
@@ -12,7 +10,6 @@
     <div class="main-wrapper">
         <div class="main-content">
             <p>Cadastro realizado com sucesso!</p>
-
             <div class="main-separator"></div>
         </div>
     </div>

@@ -1,0 +1,28 @@
+.pagination
+  display: inline-block
+  width: 100%
+  text-align: center
+  +trailer(2)
+
+  &__item
+    display: inline-block
+    &.active
+      .pagination__link
+        background-color: $color-palette-4
+        color: #fff
+        border-radius: 50%
+        cursor: default
+
+    &.disabled
+      .pagination__link
+        cursor: default
+        color: $color-palette-5
+
+  &__link
+    display: table-cell
+    vertical-align: middle
+    text-align: center
+    text-decoration: none
+    width: 36px
+    height: 36px
+    font-weight: 700

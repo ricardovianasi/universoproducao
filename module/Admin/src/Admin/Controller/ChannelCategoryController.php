@@ -1,13 +1,9 @@
 <?php
 namespace Admin\Controller;
 
-use Admin\Form\EufacoForm;
-use Admin\Form\PostSearchForm;
+use Admin\Form\Channel\CategoryForm;
 use Application\Entity\Channel\Category;
 use Application\Entity\Eufacoamostra;
-use Application\Entity\Post\PostStatus;
-use Application\Entity\Post\PostType;
-use Application\Entity\Post\Post;
 
 class ChannelCategoryController extends AbstractAdminController
 	implements CrudInterface, PostInterface
@@ -30,38 +26,37 @@ class ChannelCategoryController extends AbstractAdminController
 	public function updateAction($id, $data)
 	{
 		$result = $this->persist($data, $id);
-		$result->setTemplate('admin/eufaco/create.phtml');
+		$result->setTemplate('admin/channel-category/create.phtml');
 
 		return $result;
 	}
 
 	public function deleteAction($id)
 	{
-		$item = $this->getRepository(Eufacoamostra::class)->find($id);
+		$item = $this->getRepository(Category::class)->find($id);
 
         $this->getEntityManager()->remove($item);
         $this->messages()->flashSuccess('Item excluído com sucesso.');
 
 		$this->getEntityManager()->flush();
 
-		return $this->redirect()->toRoute('admin/eufacoamostra', ['site'=>$this->getSiteIdFromUri()]);
+		return $this->redirect()->toRoute('admin/default', ['controller'=>'channel-category']);
 	}
 
 	public function persist($data, $id = null)
 	{
-		$form = new EufacoForm();
+		$form = new CategoryForm();
 
 		if($id) {
-			$item = $this->getRepository(Eufacoamostra::class)->find($id);
+			$item = $this->getRepository(Category::class)->find($id);
 		} else {
-			$item = new Eufacoamostra();
-			$item->setSite($this->getCurrentSite());
+			$item = new Category();
 		}
 
 		if($this->getRequest()->isPost()) {
 			$form->setData($data);
 			if($form->isValid()) {
-				$item->setData($this->prepareDataPost(Eufacoamostra::class, $data, $item));
+				$item->setData($this->prepareDataPost(Category::class, $data, $item));
 				$this->getEntityManager()->persist($item);
 				$this->getEntityManager()->flush();
 
@@ -69,10 +64,10 @@ class ChannelCategoryController extends AbstractAdminController
 					$this->messages()->success("Item atualizado com sucesso!");
 				} else {
 					$this->messages()->flashSuccess("Item criado com sucesso!");
-					return $this->redirect()->toRoute('admin/eufacoamostra', [
+					return $this->redirect()->toRoute('admin/default', [
+					    'controller' => 'channel-category',
 						'action' => 'update',
 						'id' => $item->getId(),
-                        'site' => $this->getSiteIdFromUri()
 					]);
 				}
 			}
@@ -82,8 +77,7 @@ class ChannelCategoryController extends AbstractAdminController
 
 		return $this->getViewModel()->setVariables([
 			'form' => $form,
-			'item' => $item,
-            'site' => $this->getSiteIdFromUri()
+			'item' => $item
 		]);
 	}
 

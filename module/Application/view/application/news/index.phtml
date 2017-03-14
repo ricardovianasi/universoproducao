@@ -14,7 +14,7 @@
 
         <div class="news">
             <ul class="news-list news-list--highlight">
-                <?php $newsColl = $this->newsList;  foreach (array_slice($newsColl, 0, 3) as $key=>$news): ?>
+                <?php foreach ($this->newsList as $news): ?>
                     <li class="news-item">
                         <a href="<?php echo $this->url('universoproducao/news', ['slug'=>$news->getSlug()])?>" class="news-link">
                             <?php if($news->hasMeta('_thumb')): ?>
@@ -29,31 +29,25 @@
                             </article>
                         </a>
                     </li>
-                <?php unset($newsColl[$key]); endforeach; ?>
+                <?php endforeach; ?>
             </ul>
-
-            <div class="main-content">
-                <ul class="news-list">
-                    <?php foreach ($newsColl as $news): ?>
-                        <li class="news-item">
-                            <a href="<?php echo $this->url('universoproducao/news', ['slug'=>$news->getSlug()])?>" class="news-link">
-                                <article class="news-article">
-                                    <header class="news-header">
-                                        <h1><?php echo $news->getTitle(); ?></h1>
-                                    </header>
-                                </article>
-                            </a>
-                        </li>
-                    <?php endforeach; ?>
-                </ul>
-            </div>
         </div>
+
+        <?php echo $this->paginationcontrol(
+            $this->newsList,
+            'sliding',
+            'application/partials/paginator.phtml',
+            array(
+                'route'=>'universoproducao/default',
+                'route_options' => array('slug'=>'noticias'))); ?>
 
         <div class="share">
             <span class="share-title">Compartilhe:</span>
             <ul class="share-items">
-                <li class="share-item"><a href="" class="share-link"><span class="icon-facebook"></span></a></li>
-                <li class="share-item"><a href="" class="share-link"><span class="icon-twitter"></span></a></li>
+                <ul class="share-items">
+                    <li class="share-item"><a target="_blank" href="http://www.facebook.com/share.php?u=<?php echo $this->serverUrl(true) ?>&display=popup&title=<?php echo $post->getTitle(); ?>" class="share-link"><span class="icon-facebook"></span></a></li>
+                    <li class="share-item"><a target="_blank" href="https://twitter.com/intent/tweet?status=<?php echo $post->getTitle(); ?>+<?php echo $this->serverUrl(true) ?>" class="share-link"><span class="icon-twitter"></span></a></li>
+                </ul>
             </ul>
         </div>
 

@@ -20,6 +20,26 @@
     .owl-slide
       height: 100%
 
+    .owl-dots
+      position: absolute
+      +trailer(2)
+      bottom: 0
+      left: 50%
+      transform: translateX(-50%)
+      z-index: 99999
+      opacity: .2
+      .owl-dot
+        display: block
+        width: 15px
+        height: 15px
+        margin: 0 8px
+        float: left
+        border: 1px solid white
+        border-radius: 100%
+        transition: $transition-default
+        &.active
+          background-color: white
+
     &-slide
       background-size: cover
       background-repeat: no-repeat
@@ -52,16 +72,16 @@
       letter-spacing: .04em
       z-index: 1000
 
-    .mouse-bottom
+    &-copy
       position: absolute
-      +adjust-font-size-to(24px)
-      color: white
-      text-decoration: none
-      z-index: 99999
-      +trailer(1, 24px)
       bottom: 0
-      left: 50%
-      transform: translateX(-50%)
+      right: 0
+      +adjust-font-size-to(14px)
+      font-style: italic
+      color: $color-palette-5
+      padding: 10px
+      z-index: 9000
+      opacity: .3
 
   .news
     background-color: black
