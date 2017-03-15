@@ -13,7 +13,7 @@
 					<?php endif; ?>
 				</div>
 				<div class="actions">
-					<a href="<?php echo $this->url('admin/eufacoamostra', ['controller'=>'eufaco', 'site'=>$this->site]); ?>"
+					<a href="<?php echo $this->url('admin/default', ['controller'=>'channel']); ?>"
 					   class="btn btn-default">
 						<i class="icon-action-undo"></i>
 						<span class="hidden-xs"> Voltar </span>
@@ -25,41 +25,64 @@
 				<div class="portlet">
 					<div class="portlet-body form">
 						<?php echo $this->form(null, null)->openTag($form); ?>
-						<div class="row">
-							<div class="col-md-4">
-								<div class="form-group">
-									<label class="control-label">Imagem</label>
-									<div class="input-group ">
-										<div class="fileinput <?php echo $this->item->getThumb() ? "fileinput-exist" : ""; ?>">
-											<div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">
-												<img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image" alt="" /> </div>
-											<div class="fileinput-preview thumbnail" style="max-width: 200px; max-height: 150px;">
-												<?php if($this->item->getThumb()): ?>
-													<img width="100%" src="<?php echo $this->item->getThumb() ?>" alt="" />
-												<?php endif; ?>
-											</div>
-											<div>
-												<a href="#"
-												   data-toggle="modal"
-												   data-target="#modal-responsivefilemanager"
-												   data-url="/filemanager/dialog.php?type=1&field_id=file"
-												   class="btn btn-success responsivefilemanager fileinput-add"><i class="fa fa-plus"></i> Selecionar uma Imagem</a>
-												<a class="btn red fileinput-remove"> Remover </a>
-												<?php echo $this->formElement($form->get('thumb')); ?>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
 
 						<div class="row">
-							<div class="col-md-10"><?php echo $this->formRow($form->get('description')); ?></div>
+							<div class="col-md-10"><?php echo $this->formRow($form->get('title')); ?></div>
 						</div>
 
 
                         <div class="row">
-                            <div class="col-md-10"><?php echo $this->formRow($form->get('video')); ?></div>
+                            <div class="col-md-10"><?php echo $this->formRow($form->get('description')); ?></div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-10"><?php echo $this->formRow($form->get('streaming_url')); ?></div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-10"><?php echo $this->formRow($form->get('categories')); ?></div>
+                        </div>
+
+                        <div class="row">
+                            <div class="form-group col-md-3">
+                                <?php echo $this->formLabel($form->get('date')); ?>
+                                <div class="input-group date date-picker" data-date-format="dd/mm/yyyy">
+                                    <?php echo $this->formelement($form->get('date')); ?>
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-sm default" type="button">
+                                            <i class="fa fa-calendar"></i>
+                                        </button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="control-label">Capa</label>
+                                    <div class="input-group ">
+                                        <div class="fileinput <?php echo $this->item->getCover() ? "fileinput-exist" : ""; ?>">
+                                            <div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">
+                                                <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image" alt="" /> </div>
+                                            <div class="fileinput-preview thumbnail" style="max-width: 200px; max-height: 150px;">
+                                                <?php if($this->item->getCover()): ?>
+                                                    <img width="100%" src="<?php echo $this->item->getCover() ?>" alt="" />
+                                                <?php endif; ?>
+                                            </div>
+                                            <div>
+                                                <a href="#"
+                                                   data-toggle="modal"
+                                                   data-target="#modal-responsivefilemanager"
+                                                   data-url="/filemanager/dialog.php?type=1&field_id=file"
+                                                   class="btn btn-success responsivefilemanager fileinput-add"><i class="fa fa-plus"></i> Selecionar uma Imagem</a>
+                                                <a class="btn red fileinput-remove"> Remover </a>
+                                                <?php echo $this->formElement($form->get('cover')); ?>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
 						<div class="form-actions">
@@ -67,7 +90,7 @@
 								<button type="submit" name="save" class="btn blue btn-lg" id="save" value="Salvar">
 									<span class="fa fa-fa fa-check"></span> Salvar
 								</button>
-								<a href="<?php echo $this->url('admin/eufacoamostra', ['controller'=>'eufaco', 'site'=>$this->site]); ?>" class="btn red btn-lg action cancel">Descartar</a>
+								<a href="<?php echo $this->url('admin/default', ['controller'=>'channel']); ?>" class="btn red btn-lg action cancel">Descartar</a>
 							</div>
 						</div>
 						<?php echo $this->form()->closeTag() ?>

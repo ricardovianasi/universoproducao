@@ -20,7 +20,7 @@ class Post extends AbstractEntity
 	private $id;
 
 	/**
-	 * @ORM\ManyToOne(targetEntity="Application\Entity\User\User")
+	 * @ORM\ManyToOne(targetEntity="Application\Entity\AdminUser\User")
 	 * @ORM\JoinColumn(name="author_id", referencedColumnName="id")
 	 */
 	private $author;
@@ -126,7 +126,7 @@ class Post extends AbstractEntity
 	}
 
 	/**
-	 * @return \Application\Entity\User\User
+	 * @return \Application\Entity\AdminUser\User
 	 */
 	public function getAuthor()
 	{

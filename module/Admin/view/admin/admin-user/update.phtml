@@ -8,7 +8,7 @@
 				<i class="fa fa-file-o"></i>Editar Usuário
 			</div>
 			<div class="actions">
-				<a href="<?php echo $this->url('admin/default', ['controller'=>'user']); ?>"
+				<a href="<?php echo $this->url('admin/default', ['controller'=>'admin-user']); ?>"
 				   class="btn btn-default">
 					<i class="icon-action-undo"></i>
 					<span class="hidden-xs"> Voltar </span>
@@ -55,7 +55,7 @@
 									$passForm->setAttribute(
 										'action',
 										$this->url('admin/default', [
-											'controller'=>'user',
+											'controller'=>'admin-user',
 											'action' => 'reset-password',
 											'id' => $this->user->getId()
 										])

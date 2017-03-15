@@ -8,9 +8,8 @@
 
 namespace Admin\Form\User;
 
-
 use Admin\Form\Account\AccountInfoForm;
-use Application\Entity\User\Profile;
+use Application\Entity\AdminUser\Profile;
 
 class UserForm extends AccountInfoForm
 {

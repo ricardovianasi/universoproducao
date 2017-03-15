@@ -128,7 +128,7 @@ return array(
         'authentication' => array(
             'orm_default' => array(
                 'object_manager' => 'Doctrine\ORM\EntityManager',
-                'identity_class' => 'Application\Entity\User\User',
+                'identity_class' => 'Application\Entity\AdminUser\User',
                 'identity_property' => 'email',
                 'credential_property' => 'password',
                 'credential_callable' => function($user, $passwordGiven) {

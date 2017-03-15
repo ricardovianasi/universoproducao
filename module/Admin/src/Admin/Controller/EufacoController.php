@@ -2,11 +2,7 @@
 namespace Admin\Controller;
 
 use Admin\Form\EufacoForm;
-use Admin\Form\PostSearchForm;
 use Application\Entity\Eufacoamostra;
-use Application\Entity\Post\PostStatus;
-use Application\Entity\Post\PostType;
-use Application\Entity\Post\Post;
 
 class EufacoController extends AbstractAdminController
 	implements CrudInterface, PostInterface

@@ -14,7 +14,7 @@
 
 
 				<div class="actions">
-					<a href="<?php echo $this->url('admin/default', ['controller'=>'user']); ?>"
+					<a href="<?php echo $this->url('admin/default', ['controller'=>'admin-user']); ?>"
 					   class="btn btn-default">
 						<i class="icon-action-undo"></i>
 						<span class="hidden-xs"> Voltar </span>
@@ -22,7 +22,7 @@
 				</div>
 			</div>
 			<div class="portlet-body form">
-				<?php echo $this->partial('admin/user/_form.phtml', ['form' => $this->form, 'user'=>$this->user]); ?>
+				<?php echo $this->partial('admin/admin-user/_form.phtml', ['form' => $this->form, 'user'=>$this->user]); ?>
 			</div>
 		</div>
 	</div>

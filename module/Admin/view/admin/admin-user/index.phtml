@@ -9,7 +9,7 @@
 					Lista de Usuários
 				</div>
 				<div class="actions">
-					<a href="<?php echo $this->url('admin/default', ['controller'=>'user', 'action'=>'create']); ?>"
+					<a href="<?php echo $this->url('admin/default', ['controller'=>'admin-user', 'action'=>'create']); ?>"
 					   class="btn blue btn-lg">
 						<i class="fa fa-plus"></i>
 						<span class="hidden-xs"> Inserir Usuário </span>
@@ -59,12 +59,12 @@
 						<tbody>
 						<?php foreach ($this->users as $user):
 							$updateUrl = $this->url('admin/default', [
-								'controller' => 'user',
+								'controller' => 'admin-user',
 								'action'=>'update',
 								'id'=>$user->getId()
 							]);
 
-							$removeUrl = $this->url('admin/default', [
+							$removeUrl = $this->url('admin-admin/default', [
 								'controller' => 'user',
 								'action'=>'delete',
 								'id'=>$user->getId(),

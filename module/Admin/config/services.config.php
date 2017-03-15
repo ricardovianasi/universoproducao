@@ -26,6 +26,10 @@ return [
             $em = $e->get('Doctrine\ORM\EntityManager');
             return new Form\News\NewsForm($em);
         },
+        'Admin\Form\Channel\VideoForm' => function ($e) {
+            $em = $e->get('Doctrine\ORM\EntityManager');
+            return new Form\Channel\VideoForm($em);
+        },
         'navigation' => 'Zend\Navigation\Service\DefaultNavigationFactory',
 
     ],

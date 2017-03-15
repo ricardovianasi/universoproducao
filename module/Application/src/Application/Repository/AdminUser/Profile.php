@@ -3,14 +3,15 @@
  * Created by PhpStorm.
  * User: Ricardo Viana
  * Date: 22/02/2016
- * Time: 12:22
+ * Time: 11:42
  */
 
-namespace Application\Repository\User;
+namespace Application\Repository\AdminUser;
+
 
 use Util\Repository\AbstractRepository;
 
-class User extends AbstractRepository
+class Profile extends AbstractRepository
 {
 
 }

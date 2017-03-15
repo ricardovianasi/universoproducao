@@ -1,6 +1,6 @@
 <?php
 
-namespace Application\Entity\User;
+namespace Application\Entity\AdminUser;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
@@ -13,8 +13,8 @@ use Zend\InputFilter\InputFilterInterface;
 /**
  * User
  *
- * @ORM\Table(name="user")
- * @ORM\Entity(repositoryClass="Application\Repository\User\User")
+ * @ORM\Table(name="admin_user")
+ * @ORM\Entity(repositoryClass="Application\Repository\AdminUser\User")
  */
 class User extends AbstractEntity
 	implements InputFilterAwareInterface

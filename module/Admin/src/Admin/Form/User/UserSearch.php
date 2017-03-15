@@ -8,7 +8,6 @@
 
 namespace Admin\Form\User;
 
-
 use Zend\Form\Form;
 
 class UserSearch extends Form

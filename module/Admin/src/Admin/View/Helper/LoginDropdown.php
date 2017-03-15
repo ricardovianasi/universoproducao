@@ -9,7 +9,7 @@
 namespace Admin\View\Helper;
 
 use Admin\Auth\Identity\AuthenticatedIdentity;
-use Application\Entity\User\User;
+use Application\Entity\AdminUser\User;
 use Zend\ServiceManager\ServiceLocatorAwareInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 use Zend\View\Helper\AbstractHelper;

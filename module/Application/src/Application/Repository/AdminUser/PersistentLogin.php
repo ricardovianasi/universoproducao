@@ -12,7 +12,7 @@ class PersistentLogin extends AbstractRepository {
 		$this->removeAllByUser($identity->getId());
 
 		//Cria um novo
-		$entity = new \Application\Entity\User\PersistentLogin(array(
+		$entity = new \Application\Entity\AdminUser\PersistentLogin(array(
 			'serialIdentifier' => Crypt::generateRandomToken(),
 			'token' => Crypt::generateRandomToken(),
 			'user' => $identity
@@ -23,7 +23,7 @@ class PersistentLogin extends AbstractRepository {
 		return $entity;
 	}
 
-	public function update(\Application\Entity\User\PersistentLogin $cookieEntity) {
+	public function update(\Application\Entity\AdminUser\PersistentLogin $cookieEntity) {
 		$cookieEntity->setToken(Crypt::generateRandomToken());
 		$this->update($cookieEntity);
 		return $cookieEntity;
@@ -31,7 +31,7 @@ class PersistentLogin extends AbstractRepository {
 
 	public function removeAllByUser($idUser) {
 		$qb = $this->createQueryBuilder('p');
-		$qb->delete('Application\Entity\User\PersistentLogin', 'p')
+		$qb->delete('Application\Entity\AdminUser\PersistentLogin', 'p')
 			->where('p.user = :idUser')
 			->setParameter('idUser', $idUser);
 

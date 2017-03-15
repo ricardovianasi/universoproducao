@@ -28,7 +28,8 @@ class PostForm extends Form
 		$title = new Text('title');
 		$title->setLabel('Título')
 			->setAttributes([
-				'id' => 'text'
+				'id' => 'text',
+                'class' => 'input-lg'
 			]);
 		$this->add($title);
 

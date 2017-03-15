@@ -7,7 +7,7 @@ use Application\Entity\Post\PostMeta;
 use Application\Entity\Post\PostSite;
 use Application\Entity\Post\PostType;
 use Application\Entity\Site\Language;
-use Application\Entity\User\Profile;
+use Application\Entity\AdminUser\Profile;
 use Application\Entity\Tag;
 use Application\Entity\City;
 use Application\Entity\Site\Site;
@@ -458,7 +458,7 @@ abstract class AbstractAdminController extends AbstractController
 	}
 
 	/**
-	 * @return \Application\Entity\User\User|null
+	 * @return \Application\Entity\AdminUser\User|null
 	 */
 	public function getCurrentUser()
 	{

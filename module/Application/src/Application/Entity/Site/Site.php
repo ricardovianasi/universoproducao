@@ -19,7 +19,7 @@ class Site extends AbstractEntity
 	private $id;
 
 	/**
-	 * @ORM\ManyToOne(targetEntity="Application\Entity\User\User")
+	 * @ORM\ManyToOne(targetEntity="Application\Entity\AdminUser\User")
 	 * @ORM\JoinColumn(name="id_user", referencedColumnName="id")
 	 */
 	private $author;

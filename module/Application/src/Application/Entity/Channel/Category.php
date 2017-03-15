@@ -31,14 +31,6 @@ class Category extends AbstractEntity
     /** @ORM\Column(name="slug", type="string", nullable=true) */
     private $slug;
 
-    /** @ORM\ManyToMany(targetEntity="Video", mappedBy="categories", fetch="EXTRA_LAZY")  */
-    private $videos;
-
-    public function __construct()
-    {
-        $this->videos = new ArrayCollection();
-    }
-
     /**
      * @return mixed
      */

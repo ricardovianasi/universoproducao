@@ -1,13 +1,10 @@
 <?php
 namespace Admin\Controller;
 
-use Admin\Form\EufacoForm;
-use Admin\Form\PostSearchForm;
+use Admin\Form\Channel\VideoForm;
 use Application\Entity\Channel\Video;
-use Application\Entity\Eufacoamostra;
-use Application\Entity\Post\PostStatus;
-use Application\Entity\Post\PostType;
-use Application\Entity\Post\Post;
+use Application\Entity\Channel\Category;
+use Doctrine\Common\Collections\ArrayCollection;
 
 class ChannelController extends AbstractAdminController
 	implements CrudInterface, PostInterface
@@ -30,38 +27,47 @@ class ChannelController extends AbstractAdminController
 	public function updateAction($id, $data)
 	{
 		$result = $this->persist($data, $id);
-		$result->setTemplate('admin/eufaco/create.phtml');
+		$result->setTemplate('admin/channel/create.phtml');
 
 		return $result;
 	}
 
 	public function deleteAction($id)
 	{
-		$item = $this->getRepository(Eufacoamostra::class)->find($id);
+		$item = $this->getRepository(Video::class)->find($id);
 
         $this->getEntityManager()->remove($item);
         $this->messages()->flashSuccess('Item excluído com sucesso.');
 
 		$this->getEntityManager()->flush();
 
-		return $this->redirect()->toRoute('admin/eufacoamostra', ['site'=>$this->getSiteIdFromUri()]);
+		return $this->redirect()->toRoute('admin/default', ['controller'=>'channel']);
 	}
 
 	public function persist($data, $id = null)
 	{
-		$form = new EufacoForm();
+		$form = new VideoForm($this->getEntityManager());
 
 		if($id) {
-			$item = $this->getRepository(Eufacoamostra::class)->find($id);
+			$item = $this->getRepository(Video::class)->find($id);
 		} else {
-			$item = new Eufacoamostra();
-			$item->setSite($this->getCurrentSite());
+			$item = new Video();
 		}
 
 		if($this->getRequest()->isPost()) {
 			$form->setData($data);
 			if($form->isValid()) {
-				$item->setData($this->prepareDataPost(Eufacoamostra::class, $data, $item));
+
+			    $categories = new ArrayCollection();
+			    foreach ($data['categories'] as $catId) {
+			        $cat = $this->getRepository(Category::class)->find($catId);
+			        $categories->add($cat);
+                }
+                $item->setCategories($categories);
+                unset($data['categories']);
+
+                $item->setData($this->prepareDataPost(Video::class, $data, $item));
+
 				$this->getEntityManager()->persist($item);
 				$this->getEntityManager()->flush();
 
@@ -69,10 +75,10 @@ class ChannelController extends AbstractAdminController
 					$this->messages()->success("Item atualizado com sucesso!");
 				} else {
 					$this->messages()->flashSuccess("Item criado com sucesso!");
-					return $this->redirect()->toRoute('admin/eufacoamostra', [
+					return $this->redirect()->toRoute('admin/default', [
+                        'controller'=>'channel',
 						'action' => 'update',
 						'id' => $item->getId(),
-                        'site' => $this->getSiteIdFromUri()
 					]);
 				}
 			}
@@ -82,8 +88,7 @@ class ChannelController extends AbstractAdminController
 
 		return $this->getViewModel()->setVariables([
 			'form' => $form,
-			'item' => $item,
-            'site' => $this->getSiteIdFromUri()
+			'item' => $item
 		]);
 	}
 

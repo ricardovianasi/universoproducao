@@ -20,7 +20,7 @@ class LoginForm extends Form
 		$userName = new Text('email');
 		$userName->setLabel('Email')
 			->setAttributes([
-				'autocomplete' => 'off',
+				'autocomplete' => 'true',
 				'placeholder' => 'Login',
 				'class' => 'form-control placeholder-no-fix'
 			]);

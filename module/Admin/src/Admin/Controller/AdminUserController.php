@@ -11,10 +11,10 @@ namespace Admin\Controller;
 use Admin\Form\User\ResetPasswordForm;
 use Admin\Form\User\UserForm;
 use Admin\Form\User\UserSearch;
-use Application\Entity\User\User;
+use Application\Entity\AdminUser\User;
 use Util\Security\Crypt;
 
-class UserController extends AbstractAdminController
+class AdminUserController extends AbstractAdminController
 	implements CrudInterface
 
 {
@@ -54,7 +54,7 @@ class UserController extends AbstractAdminController
 
 		$this->messages()->flashSuccess('O usuário foi excluído com sucesso.');
 
-		return $this->redirect()->toRoute('admin/default', ['controller'=>'external-user']);
+		return $this->redirect()->toRoute('admin/default', ['controller'=>'admin-user']);
 	}
 
 	public function persist($data, $id = null)
@@ -94,7 +94,7 @@ class UserController extends AbstractAdminController
 				} else {
 					$this->messages()->flashSuccess("Usuário criado com sucesso!");
 					return $this->redirect()->toRoute('admin/default', [
-						'controller' => 'user',
+						'controller' => 'admin-user',
 						'action' => 'update',
 						'id' => $user->getId()
 					]);
@@ -136,13 +136,13 @@ class UserController extends AbstractAdminController
 				$this->messages()->success("A senha foi resetada com sucesso!");
 
 				return $this->redirect()->toRoute('admin/default', [
-					'controller' => 'user',
+					'controller' => 'admin-user',
 					'action' => 'update',
 					'id' => $user->getId()], ['query'=>['tab'=>'tab_pass']]);
 			}
 		}
 
-		$this->getViewModel()->setTemplate('admin/user/update.phtml');
+		$this->getViewModel()->setTemplate('admin/admin-user/update.phtml');
 		$form->setData($user->toArray());
 		$resetPassForm->setData($user->toArray());
 

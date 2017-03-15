@@ -1,6 +1,6 @@
 <?php
 
-namespace Application\Entity\User;
+namespace Application\Entity\AdminUser;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
@@ -10,7 +10,7 @@ use Util\Entity\AbstractEntity;
  * Profile
  *
  * @ORM\Table(name="profile")
- * @ORM\Entity(repositoryClass="Application\Repository\User\Profile")
+ * @ORM\Entity(repositoryClass="Application\Repository\AdminUser\Profile")
  */
 class Profile extends AbstractEntity
 {

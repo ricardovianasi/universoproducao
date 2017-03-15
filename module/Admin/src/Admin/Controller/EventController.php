@@ -1,7 +1,6 @@
 <?php
 namespace Admin\Controller;
 
-
 use Admin\Form\Event\EventForm;
 use Admin\Form\Event\EventSearchForm;
 use Application\Entity\Event\Event;

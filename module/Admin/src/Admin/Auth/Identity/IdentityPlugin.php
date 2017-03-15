@@ -5,7 +5,6 @@ namespace Admin\Auth\Identity;
 use Zend\Mvc\Controller\Plugin\AbstractPlugin;
 use Zend\Mvc\InjectApplicationEventInterface;
 
-
 class IdentityPlugin extends AbstractPlugin
 {
 	public function __invoke()
