@@ -12,7 +12,7 @@
 					<?php endif; ?>
 				</div>
 				<div class="actions">
-					<a href="<?php echo $this->url('admin/default', ['controller'=>'external-user']); ?>"
+					<a href="<?php echo $this->url('admin/default', ['controller'=>'user']); ?>"
 					   class="btn btn-default">
 						<i class="icon-action-undo"></i>
 						<span class="hidden-xs"> Voltar </span>
@@ -20,7 +20,7 @@
 				</div>
 			</div>
 			<div class="portlet-body">
-				<?php echo $this->partial('admin/external-user/_form.phtml', ['form' => $this->form, 'user'=>$this->user]); ?>
+				<?php echo $this->partial('admin/user/_form.phtml', ['form' => $this->form, 'user'=>$this->user]); ?>
 			</div>
 		</div>
 	</div>

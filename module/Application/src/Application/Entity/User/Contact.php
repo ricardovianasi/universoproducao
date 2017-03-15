@@ -6,7 +6,7 @@
  * Time: 14:20
  */
 
-namespace Application\Entity\ExternalUser;
+namespace Application\Entity\User;
 
 
 use Util\Entity\AbstractEntity;

@@ -11,10 +11,10 @@ namespace Admin\Controller;
 use Admin\Form\ExternalUser\ChangePassForm;
 use Admin\Form\ExternalUser\UserForm;
 use Admin\Form\ExternalUser\UserSearch;
-use Application\Entity\ExternalUser\User;
+use Application\Entity\User\User;
 use Util\Security\Crypt;
 
-class ExternalUserController extends AbstractAdminController implements CrudInterface
+class UserController extends AbstractAdminController implements CrudInterface
 {
 	public function indexAction()
 	{
@@ -77,7 +77,7 @@ class ExternalUserController extends AbstractAdminController implements CrudInte
 				} else {
 					$this->messages()->flashSuccess("Usuário criada com sucesso!");
 					return $this->redirect()->toRoute('admin/default', [
-						'controller' => 'external-user',
+						'controller' => 'user',
 						'action' => 'update',
 						'id' => $user->getId()
 					]);
@@ -105,7 +105,7 @@ class ExternalUserController extends AbstractAdminController implements CrudInte
 
 		$this->messages()->flashSuccess('O usuário foi excluído com sucesso.');
 
-		return $this->redirect()->toRoute('admin/default', ['controller'=>'external-user']);
+		return $this->redirect()->toRoute('admin/default', ['controller'=>'user']);
 	}
 
 	public function changePasswordAction()
@@ -115,7 +115,7 @@ class ExternalUserController extends AbstractAdminController implements CrudInte
 		if(!$user) {
 			$this->messages()->flashError("Usuário não encontrado!");
 			return $this->redirect()->toRoute('admin/default', [
-				'controller' => 'external-user',
+				'controller' => 'user',
 				'action' => 'indeex'
 			]);
 		}
@@ -129,7 +129,7 @@ class ExternalUserController extends AbstractAdminController implements CrudInte
 
 		$this->messages()->flashSuccess("A senha do usuário foi alterada com sucesso.");
 		return $this->redirect()->toRoute('admin/default', [
-			'controller' => 'external-user',
+			'controller' => 'user',
 			'action' => 'update',
 			'id' => $user->getId()
 		]);

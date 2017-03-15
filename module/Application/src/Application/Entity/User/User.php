@@ -1,5 +1,5 @@
 <?php
-namespace Application\Entity\ExternalUser;
+namespace Application\Entity\User;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
@@ -13,8 +13,8 @@ use Zend\InputFilter\InputFilterInterface;
 /**
  * User
  *
- * @ORM\Table(name="external_user")
- * @ORM\Entity(repositoryClass="Application\Repository\ExternalUser\User")
+ * @ORM\Table(name="user")
+ * @ORM\Entity(repositoryClass="Application\Repository\User\User")
  */
 class User extends AbstractEntity implements InputFilterAwareInterface
 {
@@ -77,12 +77,6 @@ class User extends AbstractEntity implements InputFilterAwareInterface
 
 	/** @ORM\Column(name="old_login", type="string") */
 	private $oldLogin;
-
-	/** @ORM\Column(name="fixed_phone", type="string") */
-	private $fixedPhone;
-
-	/** @ORM\Column(name="mobile_phone", type="string") */
-	private $MobilePhone;
 
 	/** @ORM\Column(name="facebook", type="string") */
 	private $facebook;
@@ -334,38 +328,6 @@ class User extends AbstractEntity implements InputFilterAwareInterface
 	public function setUpdatedAt($updatedAt)
 	{
 		$this->updatedAt = $updatedAt;
-	}
-
-	/**
-	 * @return mixed
-	 */
-	public function getFixedPhone()
-	{
-		return $this->fixedPhone;
-	}
-
-	/**
-	 * @param mixed $fixedPhone
-	 */
-	public function setFixedPhone($fixedPhone)
-	{
-		$this->fixedPhone = $fixedPhone;
-	}
-
-	/**
-	 * @return mixed
-	 */
-	public function getMobilePhone()
-	{
-		return $this->MobilePhone;
-	}
-
-	/**
-	 * @param mixed $MobilePhone
-	 */
-	public function setMobilePhone($MobilePhone)
-	{
-		$this->MobilePhone = $MobilePhone;
 	}
 
 	/**

@@ -6,7 +6,7 @@
 				<i class="fa fa-file-o"></i>Editar Usuário
 			</div>
 			<div class="actions">
-				<a href="<?php echo $this->url('admin/default', ['controller'=>'external-user']); ?>"
+				<a href="<?php echo $this->url('admin/default', ['controller'=>'user']); ?>"
 				   class="btn btn-default">
 					<i class="icon-action-undo"></i>
 					<span class="hidden-xs"> Voltar </span>
@@ -44,7 +44,7 @@
 				</ul>
 				<div class="tab-content">
 					<div class="tab-pane active" id="tab_form">
-						<?php echo $this->partial('admin/external-user/_form.phtml', ['form' => $this->form, 'user'=>$this->user]); ?>
+						<?php echo $this->partial('admin/user/_form.phtml', ['form' => $this->form, 'user'=>$this->user]); ?>
 					</div>
 
 					<div class="tab-pane" id="tab_pass">
@@ -55,7 +55,7 @@
 									$passForm->setAttribute(
 										'action',
 										$this->url('admin/default', [
-											'controller'=>'external-user',
+											'controller'=>'user',
 											'action' => 'change-password',
 											'id' => $this->user->getId()
 										])
@@ -96,7 +96,6 @@
 								</div>
 
 								<?php echo $this->form()->closeTag() ?>
-
 
 							</div>
 						</div>
