@@ -43,25 +43,14 @@
   &-list
     &--sub
       opacity: 0
-      vertical-align: bottom
-      float: left
-      padding-left: 10px
-      border-bottom: 2px solid $color-palette-1
+      position: absolute
       transition: $transition-default
-      position: relative
-      &:before
-        content: "\edde"
-        font-family: 'Universoproducao' !important
-        line-height: 1
-        font-size: 14px
-        color: $color-palette-1
-        padding-right: 10px
-
+      +padding-leader(2)
       .mainmenu-item--sub
-        +trailer(0)
-        display: inline-block
-        vertical-align: middle
+        +trailer(.5)
         margin-right: 12px
+        display: block
+        overflow: hidden
         &:last-child
           margin-right: 0
       .mainmenu-link
@@ -72,11 +61,18 @@
         &:hover
           color: $color-palette-1
   &-item
-    overflow: hidden
-    clear: both
+    display: inline-block
+    vertical-align: top
+    margin-right: 15px
+    margin-left: 15px
     +trailer(1)
+    &:first-child
+      margin-left: 0
+    &:last-child
+      margin-right: 0
     &:hover
       & >.mainmenu-link
+        color: $color-palette-1
         padding-left: 20px
         border-bottom: 2px solid $color-palette-1
       .mainmenu-list--sub
