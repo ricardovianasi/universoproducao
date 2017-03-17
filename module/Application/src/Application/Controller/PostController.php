@@ -30,6 +30,8 @@ class PostController extends SiteController
 
         if(!$post) {
             //tela de erro 404
+            $this->getResponse()->setStatusCode(404);
+            return;
         }
 
         //Custon Action
