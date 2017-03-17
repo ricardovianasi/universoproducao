@@ -133,7 +133,8 @@ class PageController extends AbstractAdminController
 		return $this->getViewModel()->setVariables([
 			'form' => $form,
 			'site' => $this->getSiteIdFromUri(),
-			'page' => $page
+			'page' => $page,
+            'site_route' => ($this->getSiteIdFromUri()==1) ? 'universoproducao/default' : null
 		]);
 	}
 

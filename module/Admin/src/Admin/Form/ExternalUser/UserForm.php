@@ -83,24 +83,6 @@ class UserForm extends Form
 		]);
 
 		$this->add([
-			'name' => 'fixed_phone',
-			'required' => false,
-			'type' => 'text',
-			'options' => [
-				'label' => 'Telefone Fixo',
-			]
-		]);
-
-		$this->add([
-			'name' => 'mobile_phone',
-			'required' => false,
-			'type' => 'text',
-			'options' => [
-				'label' => 'Celular',
-			]
-		]);
-
-		$this->add([
 			'name' => 'site',
 			'required' => false,
 			'type' => 'text',
@@ -224,6 +206,32 @@ class UserForm extends Form
 				'label' => 'Twitter',
 			],
 		]);
+
+        $this->add([
+            'type' => 'select',
+            'name' => 'gender',
+            'options' => [
+                'label' => 'Sexo',
+                'empty_option' => 'Selecione',
+                'value_options' => [
+                    'm' => 'Masculino',
+                    'f' => 'Feminino'
+                ]
+            ],
+            'attributes' => [
+                'required' => 'required'
+            ]
+        ]);
+
+		$this->add([
+		    'type' => 'hidden',
+            'name' => 'phones'
+        ]);
+
+        $this->add([
+            'type' => 'hidden',
+            'name' => 'dependents'
+        ]);
 
 		$confirmedRegister = new Checkbox('confirmed_register');
 		$confirmedRegister->setLabel('Confirmar o cadastro do usuário')

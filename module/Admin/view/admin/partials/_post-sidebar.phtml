@@ -9,6 +9,22 @@
 				data-slugEscapeId = ""
 				class="slug-container"><?php echo $this->formRow($form->get('slug')) ?></div>
 
+            <?php if($this->site_route): ?>
+            <div class="form-group ">
+                <label for="url">Url</label>
+                <div class="input-group ">
+                    <input type="text" name="url" readonly="readonly" id="post-url" class="form-control"
+                           value="<?php echo rawurldecode($this->url($this->site_route, ['slug'=>$this->post->getRelativeUrl()])) ; ?>">
+                    <span class="input-group-btn">
+                        <button id="post-url-btn" type="button" name="slug-edit" class="btn blue btn-default" value="">
+                            <span class="fa fa-fa fa-copy"></span>
+                        </button>
+                    </span>
+                </div>
+            </div>
+            <?php endif; ?>
+
+
 			<?php
 			echo $this->formRow($form->get('tags'));
 

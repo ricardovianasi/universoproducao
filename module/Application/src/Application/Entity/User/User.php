@@ -72,6 +72,9 @@ class User extends AbstractEntity implements InputFilterAwareInterface
 	 */
 	private $city;
 
+    /** @ORM\Column(name="gender", type="string") */
+	private $gender;
+
 	/** @ORM\Column(name="old_pass", type="string") */
 	private $oldPass;
 
@@ -90,6 +93,27 @@ class User extends AbstractEntity implements InputFilterAwareInterface
 	/** @ORM\Column(name="change_password_required", type="boolean") */
 	private $changePasswordRequired = false;
 
+    /**
+     * @ORM\OneToOne(targetEntity="Company")
+     * @ORM\JoinColumn(name="company_id", referencedColumnName="id")
+     */
+	private $company;
+
+    /**
+     * Many User have Many Phonenumbers.
+     * @ORM\ManyToMany(targetEntity="Application\Entity\Phone\Phone", fetch="EAGER", cascade="ALL")
+     * @ORM\JoinTable(name="user_phones",
+     *      joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="phone_id", referencedColumnName="id")}
+     *      )
+     */
+	private $phones;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Dependent", mappedBy="user", cascade="ALL")
+     */
+	private $dependents;
+
 	/**
 	 * @ORM\OneToMany(targetEntity="Log", mappedBy="user")
 	 */
@@ -104,6 +128,8 @@ class User extends AbstractEntity implements InputFilterAwareInterface
 	public function __construct()
 	{
 		$this->logs = new ArrayCollection();
+		$this->phones = new ArrayCollection();
+		$this->dependents = new ArrayCollection();
 	}
 
 	/**
@@ -496,6 +522,70 @@ class User extends AbstractEntity implements InputFilterAwareInterface
 		throw new \Exception("Not used");
 	}
 
+    /**
+     * @return mixed
+     */
+    public function getCompany()
+    {
+        return $this->company;
+    }
+
+    /**
+     * @param mixed $company
+     */
+    public function setCompany($company)
+    {
+        $this->company = $company;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPhones()
+    {
+        return $this->phones;
+    }
+
+    /**
+     * @param mixed $phones
+     */
+    public function setPhones($phones)
+    {
+        $this->phones = $phones;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDependents()
+    {
+        return $this->dependents;
+    }
+
+    /**
+     * @param mixed $dependents
+     */
+    public function setDependents($dependents)
+    {
+        $this->dependents = $dependents;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getGender()
+    {
+        return $this->gender;
+    }
+
+    /**
+     * @param mixed $gender
+     */
+    public function setGender($gender)
+    {
+        $this->gender = $gender;
+    }
+
 	public function getInputFilter()
 	{
 		if(!$this->inputFilter) {
@@ -564,7 +654,14 @@ class User extends AbstractEntity implements InputFilterAwareInterface
 				'filters'  => $this->getDefaultInputFilters()
 			]));
 
-			$inputFilter->add($factory->createInput([
+            $inputFilter->add($factory->createInput([
+                'name' => 'gender',
+                'required' => true,
+                'filters'  => $this->getDefaultInputFilters()
+            ]));
+
+
+            $inputFilter->add($factory->createInput([
 				'name' => 'confirmed_register',
 				'required' => false
 			]));

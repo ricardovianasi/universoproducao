@@ -18,7 +18,7 @@ return [
 			[
 				'label' => 'Usuários',
 				'route' => 'admin/default',
-				'controller'=>'external-user',
+				'controller'=>'user',
 				'icon' => 'icon-users'
 			],
 			[
@@ -447,7 +447,7 @@ return [
 					[
 						'label' => 'Usuários',
 						'route' => 'admin/default',
-						'controller' => 'user',
+						'controller' => 'admin-user',
 						'icon' => 'icon-users'
 					],
 				]

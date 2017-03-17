@@ -238,6 +238,68 @@ jQuery(document).ready(function() {
 })(window, jQuery);
 
 (function(window, $) {
+    var AdminDependents = function(element, options) {
+        this.element = element;
+        this.$element = $(element);
+        this.options = options;
+    };
+    AdminDependents.prototype = {
+        defaults: {},
+        init: function() {
+            this.config = $.extend({}, this.defaults, this.options);
+            var _that = this;
+            _that.$element.find('input[data-required="required"], select[data-required="required"]').each(function() {
+                $(this).on("change", function(e) {
+                    if ($(this).val() != "") {
+                        $(this).css({
+                            border: ""
+                        });
+                    }
+                });
+            });
+            _that.$element.find(".user-dependents-add").on("click", function(e) {
+                e.preventDefault();
+                var valid = true;
+                _that.$element.find('input[data-required="required"], select[data-required="required"]').each(function() {
+                    if ($(this).val() == "") {
+                        $(this).css({
+                            border: "1px solid red"
+                        });
+                        valid = false;
+                    }
+                });
+                if (!valid) {
+                    return;
+                }
+                var id = Math.floor(Date.now() / 1e3), name = _that.$element.find('input[name*="name"]'), email = _that.$element.find('input[name*="email"]'), birth = _that.$element.find('input[name*="birth_date"]');
+                identifier = _that.$element.find('input[name*="identifier"]');
+                gender = _that.$element.find('select[name*="gender"]');
+                _that.$element.find("tbody > tr:last").before($('<tr data-row="' + id + '"></tr>').append("<td>" + name.val() + "</td>").append("<td>" + email.val() + "</td>").append("<td>" + birth.val() + "</td>").append("<td>" + identifier.val() + "</td>").append("<td>" + gender.find("option:selected").text() + "</td>").append($("<td></td>").append('<a href="#" class="btn btn-sm btn-default user-dependents-remove" data-remove="' + id + '"><i class="fa fa-close"></i></a>').append('<input type="hidden" name="dependents[' + id + '][name]" value="' + name.val() + '">').append('<input type="hidden" name="dependents[' + id + '][email]" value="' + email.val() + '">').append('<input type="hidden" name="dependents[' + id + '][birth_date]" value="' + birth.val() + '">').append('<input type="hidden" name="dependents[' + id + '][identifier]" value="' + identifier.val() + '">').append('<input type="hidden" name="dependents[' + id + '][gender]" value="' + gender.val() + '">')));
+                name.val("");
+                email.val("");
+                birth.val("");
+                identifier.val("");
+                gender.val("");
+            });
+            $(document).on("click", ".user-dependents-remove", function(e) {
+                e.preventDefault();
+                var row = $(document).find('tr[data-row="' + $(this).data("remove") + '"]');
+                row.fadeOut("slow", function() {
+                    row.remove();
+                });
+            });
+        }
+    };
+    AdminDependents.defaults = AdminDependents.prototype.defaults;
+    $.fn.adminDependents = function(options) {
+        return this.each(function() {
+            new AdminDependents(this, options).init();
+        });
+    };
+    window.AdminDependents = Plugin;
+})(window, jQuery);
+
+(function(window, $) {
     var FileInput = function(element, options) {
         this.element = element;
         this.$element = $(element);
@@ -526,7 +588,53 @@ jQuery(document).ready(function() {
     $(".page-gallery").banner();
     $("div#admin-menu").menu();
     $(".fileinput").fileInput();
+    $("#admin-phone").adminPhone();
+    $("#user-dependents").adminDependents();
+    $("#post-url-btn").on("click", function(e) {
+        e.preventDefault();
+        copyToClipboard(document.getElementById("post-url"));
+    });
 });
+
+function copyToClipboard(elem) {
+    var targetId = "_hiddenCopyText_";
+    var isInput = elem.tagName === "INPUT" || elem.tagName === "TEXTAREA";
+    var origSelectionStart, origSelectionEnd;
+    if (isInput) {
+        target = elem;
+        origSelectionStart = elem.selectionStart;
+        origSelectionEnd = elem.selectionEnd;
+    } else {
+        target = document.getElementById(targetId);
+        if (!target) {
+            var target = document.createElement("textarea");
+            target.style.position = "absolute";
+            target.style.left = "-9999px";
+            target.style.top = "0";
+            target.id = targetId;
+            document.body.appendChild(target);
+        }
+        target.textContent = elem.textContent;
+    }
+    var currentFocus = document.activeElement;
+    target.focus();
+    target.setSelectionRange(0, target.value.length);
+    var succeed;
+    try {
+        succeed = document.execCommand("copy");
+    } catch (e) {
+        succeed = false;
+    }
+    if (currentFocus && typeof currentFocus.focus === "function") {
+        currentFocus.focus();
+    }
+    if (isInput) {
+        elem.setSelectionRange(origSelectionStart, origSelectionEnd);
+    } else {
+        target.textContent = "";
+    }
+    return succeed;
+}
 
 (function(window, $) {
     var Menu = function(element, options) {
@@ -787,6 +895,52 @@ function responsive_filemanager_callback(field_id) {
         });
     };
     window.PasswordGenerator = Plugin;
+})(window, jQuery);
+
+(function(window, $) {
+    var AdminPhone = function(element, options) {
+        this.element = element;
+        this.$element = $(element);
+        this.options = options;
+    };
+    AdminPhone.prototype = {
+        defaults: {},
+        init: function() {
+            this.config = $.extend({}, this.defaults, this.options);
+            var _that = this;
+            $(".admin-phone-add").on("click", function(e) {
+                e.preventDefault();
+                var ddd = _that.$element.find("#admin-phone-ddd");
+                var number = _that.$element.find("#admin-phone-number");
+                var name = _that.$element.find("#admin-phone-contact_name");
+                var tipo = _that.$element.find("#admin-phone-type");
+                if (ddd.val() == "" || number.val() == "") {
+                    return;
+                }
+                var id = Math.floor(Date.now() / 1e3);
+                var newLine = $('<tr data-row="' + id + '"></tr>').append("<td>" + ddd.val() + "</td>").append("<td>" + number.val() + "</td>").append("<td>" + name.val() + "</td>").append("<td>" + tipo.find("option:selected").text() + "</td>").append($("<td></td>").append('<a href="#" class="btn btn-sm btn-default admin-phone-remove" data-remove="' + id + '"><i class="fa fa-close"></i></a>').append('<input type="hidden" name="phones[' + id + '][ddd]" value="' + ddd.val() + '">').append('<input type="hidden" name="phones[' + id + '][number]" value="' + number.val() + '">').append('<input type="hidden" name="phones[' + id + '][contact_name]" value="' + name.val() + '">').append('<input type="hidden" name="phones[' + id + '][type]" value="' + tipo.val() + '">'));
+                _that.$element.find("tbody > tr:last").before(newLine);
+                ddd.val("");
+                number.val("");
+                name.val("");
+                tipo.val("");
+            });
+            $(document).on("click", ".admin-phone-remove", function(e) {
+                e.preventDefault();
+                var row = $(document).find('tr[data-row="' + $(this).data("remove") + '"]');
+                row.fadeOut("slow", function() {
+                    row.remove();
+                });
+            });
+        }
+    };
+    AdminPhone.defaults = AdminPhone.prototype.defaults;
+    $.fn.adminPhone = function(options) {
+        return this.each(function() {
+            new AdminPhone(this, options).init();
+        });
+    };
+    window.AdminPhone = Plugin;
 })(window, jQuery);
 
 (function(window, $) {

@@ -15,6 +15,7 @@ return [
 	'view_helpers' => [
 		'invokables' => [
 			'cpf'	=> 'Util\View\Helper\Cpf',
+			'cpf'	=> 'Util\View\Helper\Cnpj',
 			'note'	=> 'Util\View\Helper\Note'
 		],
 		'factories' => [

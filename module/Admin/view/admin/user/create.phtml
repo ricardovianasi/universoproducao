@@ -20,7 +20,13 @@
 				</div>
 			</div>
 			<div class="portlet-body">
-				<?php echo $this->partial('admin/user/_form.phtml', ['form' => $this->form, 'user'=>$this->user]); ?>
+				<?php echo $this->partial('admin/user/_form.phtml', [
+                    'form' => $this->form,
+                    'user'=>$this->user,
+                    'phoneForm'=>$this->phoneForm,
+                    'dependentForm' => $this->dependentForm,
+                    'companyForm' => $this->companyForm
+                ]); ?>
 			</div>
 		</div>
 	</div>

@@ -44,7 +44,13 @@
 				</ul>
 				<div class="tab-content">
 					<div class="tab-pane active" id="tab_form">
-						<?php echo $this->partial('admin/user/_form.phtml', ['form' => $this->form, 'user'=>$this->user]); ?>
+						<?php echo $this->partial('admin/user/_form.phtml', [
+                            'form' => $this->form,
+                            'user'=>$this->user,
+                            'phoneForm'=>$this->phoneForm,
+                            'dependentForm' => $this->dependentForm,
+                            'companyForm' => $this->companyForm
+                        ]); ?>
 					</div>
 
 					<div class="tab-pane" id="tab_pass">

@@ -19,6 +19,7 @@ return array(
             'date_time_picker'	=> 'formDateTimePicker',
             'tinymce'			=> 'formTinymce',
             'cpf'				=> 'formCpf',
+            'cnpj'				=> 'formCnpj',
             'cep'				=> 'formCep'
         ),
         'class_map' => array(
@@ -28,6 +29,7 @@ return array(
             'TwbBundle\Form\Element\TagsInput'		=> 'formTagsInput',
             'TwbBundle\Form\Element\DateTimePicker'	=> 'formDateTimePicker',
             'TwbBundle\Form\Element\Cpf'			=> 'formCpf',
+            'TwbBundle\Form\Element\Cnpj'			=> 'formCpf',
             'TwbBundle\Form\Element\Cep'			=> 'formCep'
         ),
     ),
@@ -75,7 +77,8 @@ return array(
         ),
         'factories' => array (
             'formElement'   => 'TwbBundle\Form\View\Helper\Factory\TwbBundleFormElementFactory',
-            'formCpf'       => 'TwbBundle\Form\View\Helper\Factory\TwbBundleFormCpfFactory'
+            'formCpf'       => 'TwbBundle\Form\View\Helper\Factory\TwbBundleFormCpfFactory',
+            'formCnpj'       => 'TwbBundle\Form\View\Helper\Factory\TwbBundleFormCnpjFactory'
         )
     ),
 );

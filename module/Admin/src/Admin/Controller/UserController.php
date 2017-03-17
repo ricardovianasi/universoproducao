@@ -9,9 +9,15 @@
 namespace Admin\Controller;
 
 use Admin\Form\ExternalUser\ChangePassForm;
+use Admin\Form\ExternalUser\CompanyForm;
+use Admin\Form\ExternalUser\DependentForm;
+use Admin\Form\ExternalUser\PhoneForm;
 use Admin\Form\ExternalUser\UserForm;
 use Admin\Form\ExternalUser\UserSearch;
+use Application\Entity\Phone\Phone;
+use Application\Entity\User\Dependent;
 use Application\Entity\User\User;
+use Doctrine\Common\Collections\ArrayCollection;
 use Util\Security\Crypt;
 
 class UserController extends AbstractAdminController implements CrudInterface
@@ -45,8 +51,11 @@ class UserController extends AbstractAdminController implements CrudInterface
 
 	public function persist($data, $id = null)
 	{
-		$form = $this->getServiceLocator()->get(UserForm::class);
+		$form = new UserForm($this->getEntityManager());
 		$passForm = new ChangePassForm();
+		$phoneForm = new PhoneForm();
+		$dependentForm = new DependentForm();
+		$companyForm = new CompanyForm();
 
 		if($id) {
 			$user = $this->getRepository(User::class)->find($id);
@@ -66,6 +75,37 @@ class UserController extends AbstractAdminController implements CrudInterface
 			$form->setData($data);
 			if($form->isValid()) {
 				$validData = $form->getData();
+
+				$phones = new ArrayCollection();
+				foreach ($user->getPhones() as $ph) {
+				    $this->getEntityManager()->remove($ph);
+                }
+				if(!empty($validData['phones'])) {
+                    foreach ($validData['phones'] as $ph) {
+                        $phone = new Phone($ph);
+                        $phones->add($phone);
+                    }
+                }
+                unset($validData['phones']);
+                $user->setPhones($phones);
+
+                $dependents = new ArrayCollection();
+                foreach ($user->getDependents() as $de) {
+                    $this->getEntityManager()->remove($de);
+                }
+                if(!empty($validData['dependents'])) {
+                    foreach ($validData['dependents'] as $d) {
+                        if(isset($d['id'])) {
+                            $dep = $this->getRepository(Dependent::class)->find($d['id']);
+                        } else {
+                            $dep = new Dependent($d);
+                            $dep->setUser($user);
+                        }
+                        $dependents->add($dep);
+                    }
+                    unset($validData['dependents']);
+                }
+                $user->setDependents($dependents);
 
 				$user->setData($this->prepareDataPost(User::class, $validData));
 
@@ -92,6 +132,9 @@ class UserController extends AbstractAdminController implements CrudInterface
 		return $this->getViewModel()->setVariables([
 			'form' => $form,
 			'passForm' => $passForm,
+            'phoneForm' => $phoneForm,
+			'dependentForm' => $dependentForm,
+			'companyForm' => $companyForm,
 			'user' => $user
 		]);
 	}

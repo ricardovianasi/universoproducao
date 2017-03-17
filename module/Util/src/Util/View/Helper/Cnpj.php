@@ -10,7 +10,7 @@ namespace Util\View\Helper;
 
 use Zend\View\Helper\AbstractHelper;
 
-class Cpf extends AbstractHelper
+class Cnpj extends AbstractHelper
 {
 	public function __invoke($value=null)
 	{
@@ -21,16 +21,16 @@ class Cpf extends AbstractHelper
         $value = preg_replace('/[^0-9]/', '', $value);
 
 		return $this->render($value);
-
 	}
 
 	public function render($value)
 	{
-		return sprintf('%s.%s.%s-%s',
-			substr($value, 0, 3),
-			substr($value, 3, 3),
-			substr($value, 6, 3),
-			substr($value, 9, 2)
+		return sprintf('%s.%s.%s/%s-%s',
+			substr($value, 0, 2),
+			substr($value, 2, 3),
+			substr($value, 5, 3),
+			substr($value, 8, 4),
+			substr($value, 12, 2)
 		);
 	}
 

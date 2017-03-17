@@ -4,9 +4,7 @@ namespace Application;
 use Util\Security\Crypt;
 use Zend\Mvc\Router\Http\Hostname;
 use Zend\Mvc\Router\Http\Literal;
-use Zend\Mvc\Router\Http\Regex;
 use Zend\Mvc\Router\Http\Segment;
-use Syslogic\DoctrineJsonFunctions\Query\AST\Functions\Mysql;
 
 return array(
     'router' => array(
@@ -85,7 +83,8 @@ return array(
             'cpf' 			=> View\Helper\Cpf::class,
             'youtubeEmbed' 	=> View\Helper\YoutubeEmbed::class,
             'truncate'      => View\Helper\Truncate::class,
-            'thumborize'    => View\Helper\Thumborize::class
+            'thumborize'    => View\Helper\Thumborize::class,
+            'gender'        => View\Helper\Gender::class
         ),
         'factories' => [
             'thumbor' => function($e) {

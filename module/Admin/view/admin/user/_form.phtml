@@ -1,4 +1,15 @@
-<?php $form = $this->form; ?>
+<?php
+    $form = $this->form;
+
+    $phoneForm = $this->phoneForm;
+    $phoneForm->prepare();
+
+    $dependentForm = $this->dependentForm;
+    $dependentForm->prepare();
+
+    $companyForm = $this->companyForm;
+    $companyForm->prepare();
+?>
 <div class="portlet">
 	<div class="portlet-body form">
 		<?php $form->prepare(); echo $this->form(null, null)->openTag($form) ?>
@@ -18,10 +29,9 @@
 			</div>
 
 			<div class="row">
-				<div class="col-md-4"><?php echo $this->formRow($form->get('cpf')); ?></div>
-				<div class="col-md-4"><?php echo $this->formRow($form->get('email')); ?></div>
-				<div class="col-md-4">
-
+				<div class="col-md-3"><?php echo $this->formRow($form->get('cpf')); ?></div>
+				<div class="col-md-3"><?php echo $this->formRow($form->get('email')); ?></div>
+				<div class="col-md-3">
 					<div class="form-group ">
 						<label class="control-label">
 							<?php echo $form->get('birth_date')->getLabel();  ?>
@@ -38,11 +48,7 @@
 						<?php echo $this->formElementErrors($form->get('birth_date')); ?>
 					</div>
 				</div>
-			</div>
-
-			<div class="row">
-				<div class="col-md-4"><?php echo $this->formRow($form->get('fixed_phone')); ?></div>
-				<div class="col-md-4"><?php echo $this->formRow($form->get('mobile_phone')); ?></div>
+                <div class="col-md-3"><?php echo $this->formRow($form->get('gender')); ?></div>
 			</div>
 
 			<h4 class="form-section">Endereço</h4>
@@ -77,6 +83,118 @@
 				<div class="col-md-4"><?php echo $this->formRow($form->get('complement')); ?></div>
 			</div>
 
+            <h4 class="form-section">Contatos</h4>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <table class="table table-hover table-light" id="admin-phone">
+                        <thead>
+                            <tr>
+                                <th width="8%">DDD</th>
+                                <th>Número</th>
+                                <th>Nome do Contato</th>
+                                <th>Tipo</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($this->user->getPhones() as $phone): ?>
+                                <tr data-row="<?php echo $phone->getId(); ?>">
+                                    <td><?php echo $phone->getDDD(); ?></td>
+                                    <td><?php echo $phone->getNumber(); ?></td>
+                                    <td><?php echo $phone->getContactName(); ?></td>
+                                    <td><?php echo \Application\Entity\Phone\PhoneType::get($phone->getType()); ?></td>
+                                    <td>
+                                        <a href="#" class="btn btn-sm btn-default admin-phone-remove" data-remove="<?php echo $phone->getId(); ?>">
+                                            <i class="fa fa-close"></i>
+                                        </a>
+                                        <input type="hidden" name="phones[<?php echo $phone->getId() ?>][ddd]" value="<?php echo $phone->getDDD(); ?>">
+                                        <input type="hidden" name="phones[<?php echo $phone->getId() ?>][number]" value="<?php echo $phone->getNumber(); ?>">
+                                        <input type="hidden" name="phones[<?php echo $phone->getId() ?>][contact_name]" value="<?php echo $phone->getContactName(); ?>">
+                                        <input type="hidden" name="phones[<?php echo $phone->getId() ?>][type]" value="<?php echo $phone->getType(); ?>">
+
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
+                            <tr id="admin-phone-form">
+                                <td><?php echo $this->formElement($phoneForm->get('phone[ddd]')); ?></td>
+                                <td><?php echo $this->formElement($phoneForm->get('phone[number]')); ?></td>
+                                <td><?php echo $this->formElement($phoneForm->get('phone[contact_name]')); ?></td>
+                                <td><?php echo $this->formElement($phoneForm->get('phone[type]')); ?></td>
+                                <td><button class="btn btn-sm btn-success admin-phone-add" type="button">
+                                        <i class="fa fa-plus"></i> Adicionar</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <h4 class="form-section">Dependentes</h4>
+            <div class="row">
+                <div class="col-md-12">
+                    <table class="table table-hover table-light" id="user-dependents">
+                        <thead>
+                        <tr>
+                            <th width="20%">Nome</th>
+                            <th width="20%">Email</th>
+                            <th width="15%">Data Nascimento</th>
+                            <th width="15%">CPF ou Identidade</th>
+                            <th width="15%">Sexo</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($this->user->getDependents() as $dep): ?>
+                            <tr data-row="<?php echo $dep->getId(); ?>">
+                                <td><?php echo $dep->getName() ?></td>
+                                <td><?php echo $dep->getEmail() ?></td>
+                                <td><?php echo $dep->getBirthDate() ? $dep->getBirthDate()->format('d/m/Y') : ""; ?></td>
+                                <td><?php echo $dep->getIdentifier() ?></td>
+                                <td><?php echo $this->gender($dep->getGender()); ?></td>
+                                <td>
+                                    <a href="#" class="btn btn-sm btn-default user-dependents-remove" data-remove="<?php echo $dep->getId(); ?>">
+                                        <i class="fa fa-close"></i>
+                                    </a>
+                                    <input type="hidden" name="dependents[<?php echo $dep->getId() ?>][id]" value="<?php echo $dep->getId(); ?>">
+                                    <input type="hidden" name="dependents[<?php echo $dep->getId() ?>][name]" value="<?php echo $dep->getName(); ?>">
+                                    <input type="hidden" name="dependents[<?php echo $dep->getId() ?>][email]" value="<?php echo $dep->getEmail(); ?>">
+                                    <input type="hidden" name="dependents[<?php echo $dep->getId() ?>][birth_date]" value="<?php echo $dep->getBirthDate()->format('Y-m-d'); ?>">
+                                    <input type="hidden" name="dependents[<?php echo $dep->getId() ?>][identifier]" value="<?php echo $dep->getIdentifier(); ?>">
+                                    <input type="hidden" name="dependents[<?php echo $dep->getId() ?>][gender]" value="<?php echo $dep->getGender(); ?>">
+                                </td>
+                            </tr>
+                            <?php endforeach; ?>
+                            <tr id="user-dependents-form">
+                                <td><?php echo $this->formElement($dependentForm->get('dependent[name]')); ?></td>
+                                <td><?php echo $this->formElement($dependentForm->get('dependent[email]')); ?></td>
+                                <td>
+                                    <div class="input-group date date-picker" data-date-format="dd/mm/yyyy">
+                                        <?php echo $this->formElement($dependentForm->get('dependent[birth_date]'));?>
+                                        <span class="input-group-btn">
+                                            <button type="button" name="btn-date" class="btn default">
+                                                <span class="fa fa-fa fa-calendar"></span>
+                                            </button>
+                                        </span>
+                                    </div>
+                                </td>
+                                <td><?php echo $this->formElement($dependentForm->get('dependent[identifier]')); ?></td>
+                                <td><?php echo $this->formElement($dependentForm->get('dependent[gender]')); ?></td>
+                                <td><button class="btn btn-sm btn-success user-dependents-add" type="button">
+                                        <i class="fa fa-plus"></i> Adicionar</button></td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <h4 class="form-section">Empresa</h4>
+            <div class="row">
+                <div class="col-md-4"><?php echo $this->formRow($companyForm->get('company[cnpj]')); ?></div>
+                <div class="col-md-4"><?php echo $this->formRow($companyForm->get('company[name]')); ?></div>
+                <div class="col-md-4"><?php echo $this->formRow($companyForm->get('company[social_reason]')); ?></div>
+            </div>
+
 			<h4 class="form-section">Outros</h4>
 			<div class="row">
 				<div class="col-md-12"><?php echo $this->formRow($form->get('site')); ?></div>
@@ -94,8 +212,8 @@
 				</button>
 				<?php
 				$urlCancel = empty($this->user->getId())
-					? $this->url('admin/default', ['controller'=>'external-user', 'action'=>'create'])
-					: $this->url('admin/default', ['controller'=>'external-user', 'action'=>'update', 'id'=>$this->user->getId()]) ?>
+					? $this->url('admin/default', ['controller'=>'user', 'action'=>'create'])
+					: $this->url('admin/default', ['controller'=>'user', 'action'=>'update', 'id'=>$this->user->getId()]) ?>
 				<a href="<?php echo $urlCancel ?>" class="btn red btn-lg form-action-cancel">Cancelar</a>
 			</div>
 		</div>
