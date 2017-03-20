@@ -55,7 +55,7 @@ class UserController extends AbstractAdminController implements CrudInterface
 		$passForm = new ChangePassForm();
 		$phoneForm = new PhoneForm();
 		$dependentForm = new DependentForm();
-		$companyForm = new CompanyForm();
+		$companyForm = new CompanyForm($this->getEntityManager());
 
 		if($id) {
 			$user = $this->getRepository(User::class)->find($id);

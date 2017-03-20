@@ -35,6 +35,9 @@
 					<li class="active">
 						<a href="#tab_form" data-toggle="tab" aria-expanded="true"> Cadastro </a>
 					</li>
+                    <li class="">
+                        <a href="#tab_company" data-toggle="tab" aria-expanded="false"> Empresa </a>
+                    </li>
 					<li class="">
 						<a href="#tab_pass" data-toggle="tab" aria-expanded="false"> Senha </a>
 					</li>
@@ -52,6 +55,14 @@
                             'companyForm' => $this->companyForm
                         ]); ?>
 					</div>
+
+                    <div class="tab-pane" id="tab_company">
+                        <?php echo $this->partial('admin/user/_form-company.phtml', [
+                            'user'=>$this->user,
+                            'phoneForm'=>$this->phoneForm,
+                            'companyForm' => $this->companyForm
+                        ]); ?>
+                    </div>
 
 					<div class="tab-pane" id="tab_pass">
 						<div class="portlet">

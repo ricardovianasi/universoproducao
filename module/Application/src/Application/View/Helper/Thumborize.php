@@ -11,7 +11,7 @@ class Thumborize extends AbstractHelper
             return $content;
 
         $domDocument = new \DOMDocument();
-        $domDocument->loadHTML($content);
+        @$domDocument->loadHTML($content);
         $images = $domDocument->getElementsByTagName('img');
         foreach ($images as $img) {
             $src = $img->getAttribute('src');

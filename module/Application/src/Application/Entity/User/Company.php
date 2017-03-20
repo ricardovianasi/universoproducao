@@ -70,8 +70,6 @@ class Company extends AbstractEntity
     /** @ORM\Column(name="site", type="string") */
     private $site;
 
-    private $ownerUser;
-
     /** @ORM\Column(name="relationship", type="string") */
     private $relationship;
 
@@ -288,22 +286,6 @@ class Company extends AbstractEntity
     public function getOwnerUser()
     {
         return $this->ownerUser;
-    }
-
-    /**
-     * @param mixed $ownerUser
-     */
-    public function setOwnerUser($ownerUser)
-    {
-        $this->ownerUser = $ownerUser;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getRelationship()
-    {
-        return $this->relationship;
     }
 
     /**

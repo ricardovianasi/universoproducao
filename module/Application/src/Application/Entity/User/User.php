@@ -94,7 +94,7 @@ class User extends AbstractEntity implements InputFilterAwareInterface
 	private $changePasswordRequired = false;
 
     /**
-     * @ORM\OneToOne(targetEntity="Company")
+     * @ORM\OneToOne(targetEntity="Company", cascade="ALL")
      * @ORM\JoinColumn(name="company_id", referencedColumnName="id")
      */
 	private $company;

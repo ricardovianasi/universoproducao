@@ -130,13 +130,15 @@ jQuery(document).ready(function() {
 
     $('.fileinput').fileInput();
 
-    $('#admin-phone').adminPhone();
+    $('.admin-phone').adminPhone();
 
     $('#user-dependents').adminDependents();
 
     $('#post-url-btn').on('click', function(e) {
         e.preventDefault();
-        copyToClipboard(document.getElementById("post-url"));
+        if(copyToClipboard(document.getElementById("post-url"))) {
+
+        }
     })
 });
 
