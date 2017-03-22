@@ -23,7 +23,7 @@
                     <ul class="project-list">
                     <?php foreach ($this->projects as $p): ?>
                         <li class="project-item">
-                            <a href="<?php echo $this->url('universoproducao/default', ['slug'=>$p->getRelativeUrl()]) ?>" class="project-link">
+                            <a href="<?php echo rawurldecode($this->url('universoproducao/default', ['slug'=>$p->getRelativeUrl()])) ?>" class="project-link">
                                 <?php if($p->hasMeta('_thumb')): ?>
                                     <figure class="news-figure">
                                         <img src="<?php echo  $this->thumbor()->url($p->getMeta('_thumb'))->resize(384, 288); ?>" alt="">
