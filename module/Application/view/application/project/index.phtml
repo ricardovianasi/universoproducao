@@ -22,7 +22,7 @@
     <?php if($this->projects): $css = count($this->projects)>3 ? 'project--caroucel' : 'project--no-caroucel'; ?>
         <div class="project <?php echo $css ?>">
             <div class="project-wrapper">
-                <h2 class="project-title">Projetos</h2>
+                <div class="project-header"><h2 class="project-title">Projetos</h2></div>
                 <div class="project-list <?php echo $css=='project--caroucel' ? 'owl-carousel' : ''; ?>">
                     <?php foreach ($this->projects as $p): ?>
                     <div class="project-item">
