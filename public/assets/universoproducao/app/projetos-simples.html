@@ -3,18 +3,28 @@
   <head>
     <meta charset="utf-8">
     <meta name="description" content="">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>generator custom2</title>
 
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
-    
+    <!-- Place favicon.ico in the root directory -->
 
+    <!-- build:css styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
+    <!-- endbuild -->
 
-    <link rel="stylesheet" href="styles/vendor.css">
+    <!-- build:css styles/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="/bower_components/owl.carousel/dist/assets/owl.carousel.css" />
+    <link rel="stylesheet" href="/bower_components/owl.carousel/dist/assets/owl.theme.default.css" />
+    <link rel="stylesheet" href="/bower_components/fancyBox/dist/jquery.fancyBox.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
 
 
-    <script src="scripts/vendor/modernizr.js"></script>
+    <!-- build:js scripts/vendor/modernizr.js -->
+    <script src="/bower_components/modernizr/modernizr.js"></script>
+    <!-- endbuild -->
   </head>
   <body>
     <!--[if lt IE 10]>
@@ -26,7 +36,7 @@
         <div class="header-left">
           <h1 class="brand">
             <a class="brand-link" href="#"><span class="icon-universo-producao"></span></a>
-            <span>Universo Produção</span>
+            <span >Universo Produção</span>
           </h1>
         </div>
         <div class="header-right">
@@ -62,11 +72,12 @@
           </div>
         </div>
 
-        <div class="project project--caroucel">
+        <div class="project project--no-caroucel">
           <div class="project-wrapper">
             <div class="project-header"><h2 class="">Projetos</h2></div>
-            
-            <div class="project-list owl-carousel">
+
+            <!--<div class="project-list project-list&#45;&#45;caroucel owl-carousel">-->
+            <div class="project-list">
               <div class="project-item">
                 <a href="#" class="project-link">
                   <img src="images/projeto.jpg" alt="">
@@ -119,7 +130,6 @@
           </div>
         </div>
       </section>
-
     </main>
 
     <footer class="footer">
@@ -130,8 +140,8 @@
           </header>
 
           <form action="" class="newsletter-form">
-            <input class="input" placeholder="Nome">
-            <input class="input" placeholder="Email">
+            <input class="input" type="text" placeholder="Nome">
+            <input class="input" type="text" placeholder="Email">
             <button class="submit" type="submit">Cadastrar</button>
           </form>
         </section>
@@ -142,9 +152,9 @@
           <div class="contact">
             <p class="footer-contact-title">Contato</p>
             <span class="contact-icon icon-universo-producao"></span>
-            <span class="contact-add">+ 55 31 3282-2366<br>
-              up@universoproducao.com.br<br>
-              Rua Pirapetinga, 567 - Serra<br>
+            <span class="contact-add">+ 55 31 3282-2366<br />
+              up@universoproducao.com.br<br />
+              Rua Pirapetinga, 567 - Serra<br />
               30220-150, Belo Horizonte | MG</span>
           </div>
 
@@ -205,8 +215,8 @@
         <div class="userlogin-wrapper">
           <p class="userlogin-title"><strong>Meu</strong>Universo</p>
           <form action="" class="userlogin-form">
-            <input class="input" name="login" placeholder="Login, e-mail ou CPF">
-            <input class="input" name="password" placeholder="Senha">
+            <input class="input" type="text" name="login" placeholder="Login, e-mail ou CPF">
+            <input class="input" type="text" name="password" placeholder="Senha">
             <button class="submit" class="userlogin-submit">Entrar</button>
           </form>
           <div class="userlogin-tricks">
@@ -222,7 +232,28 @@
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="/bower_components/jquery/dist/jquery.min.js"><\/script>')</script>
 
-    <script src="scripts/vendor.js"></script>
+    <!-- build:js scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="/bower_components/owl.carousel/dist/owl.carousel.js"></script>
+    <script src="/bower_components/jquery.scrollTo/jquery.scrollTo.js"></script>
+    <script src="/bower_components/fancyBox/dist/jquery.fancyBox.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:js scripts/main.js -->
+    <!-- inject:js -->
     <script src="scripts/main.js"></script>
+    <!-- endinject -->
+    <!-- Place inline scripts here -->
+
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+    <script>
+      (function(c,u,s,t,o,m){c.GoogleAnalyticsObject=t;c[t]||(c[t]=
+      function(){(c[t].q=c[t].q||[]).push(arguments)});c[t].l=+new Date;
+      o=u.createElement(s);m=u.getElementsByTagName(s)[0];
+      o.src='https://www.google-analytics.com/analytics.js';
+      m.parentNode.insertBefore(o,m)}(window,document,'script','ga'));
+      ga('create','UA-XXXXX-X');ga('send','pageview');
+    </script>
+    <!-- endbuild -->
   </body>
 </html>

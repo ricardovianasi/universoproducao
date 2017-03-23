@@ -11,36 +11,35 @@
 
 <section class="main-section">
     <div class="main-wrapper">
-        <div class="main-content">
-            <?php if(!empty($post->getContent())): ?>
+        <?php if(!empty($post->getContent())): ?>
+            <div class="main-content">
                 <?php echo $post->getContent(); ?>
                 <div class="main-separator"></div>
-            <?php endif; ?>
+            </div>
+        <?php endif; ?>
 
-            <?php if($this->projects): ?>
-                <div class="project">
+        <?php if($this->projects): $css = count($this->projects)>3 ? 'project--caroucel' : 'project--no-caroucel'; ?>
+            <div class="project <?php echo $css ?>">
+                <div class="project-wrapper">
                     <h2 class="project-title">Projetos</h2>
-                    <ul class="project-list">
-                    <?php foreach ($this->projects as $p): ?>
-                        <li class="project-item">
+                    <div class="project-list <?php echo $css=='project--caroucel' ? 'owl-carousel' : ''; ?>">
+                        <?php foreach ($this->projects as $p): ?>
+                        <div class="project-item">
                             <a href="<?php echo rawurldecode($this->url('universoproducao/default', ['slug'=>$p->getRelativeUrl()])) ?>" class="project-link">
                                 <?php if($p->hasMeta('_thumb')): ?>
-                                    <figure class="news-figure">
-                                        <img src="<?php echo  $this->thumbor()->url($p->getMeta('_thumb'))->resize(384, 288); ?>" alt="">
-                                    </figure>
+                                    <img src="<?php echo  $this->thumbor()->url($p->getMeta('_thumb'))->resize(384, 288); ?>" alt="">
                                 <?php endif; ?>
-                                <article class="project-article">
-                                    <header class="project-header">
-                                        <h1><?php echo $p->getTitle(); ?></h1>
-                                    </header>
-                                </article>
+                                <div class="project-desc">
+                                    <p><?php echo $p->getTitle(); ?></p>
+                                </div>
                             </a>
-                        </li>
-                    <?php endforeach; ?>
-                    </ul>
+                        </div>
+                        <?php endforeach; ?>
+                    </div>
                 </div>
-            <?php endif; ?>
-        </div>
+            </div>
+        <?php endif; ?>
+
 
         <div class="share">
             <span class="share-title">Compartilhe:</span>
