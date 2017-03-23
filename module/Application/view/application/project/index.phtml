@@ -28,7 +28,7 @@
                     <div class="project-item">
                         <a href="<?php echo rawurldecode($this->url('universoproducao/default', ['slug'=>$p->getRelativeUrl()])) ?>" class="project-link">
                             <?php if($p->hasMeta('_thumb')): ?>
-                                <img src="<?php echo  $this->thumbor()->url($p->getMeta('_thumb'))->resize(384, 288); ?>" alt="">
+                                <img src="<?php echo  $this->thumbor()->url($p->getMeta('_thumb'))->resize(640, 427); ?>" alt="">
                             <?php endif; ?>
                             <div class="project-desc">
                                 <p><?php echo $p->getTitle(); ?></p>
