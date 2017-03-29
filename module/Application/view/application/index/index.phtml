@@ -55,6 +55,32 @@
     </div>
 </section>
 
+<?php if(!empty($this->videos)): ?>
+    <section class="channel channel--home">
+        <header class="channel-header">
+          <h1 class="channel-title">Canal Universo</h1>
+        </header>
+        <div class="channel-row">
+            <div class="channel-slider--home owl-carousel">
+                <?php foreach ($this->video as $v): ?>
+                    <div class="channel-item">
+                        <a class="channel-link" href="<?php echo $this->url('universoproducao/channel', ['id'=>$v->getId()]) ?>">
+                            <div class="channel-image">
+                                <img src="<?php echo  $this->thumbor()->url($v->getCover())->resize(612, 390); ?>" alt="">
+                            </div>
+                            <span class="channel-play"><span class="play-icon icon-play4"></span></span>
+                            <div class="channel-content">
+                                <p class="title"><?php echo $v->getTitle(); ?></p>
+                                <p class="date"><?php echo ucfirst($this->dateFormat($v->getDate(), null, null, "pt_BR", "MMM Y")); ?></p>
+                            </div>
+                        </a>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+        </div>
+    </section>
+<?php endif; ?>
+
 <?php if(!empty($this->gallery)): ?>
     <section class="gallery">
         <div class="gallery-items">

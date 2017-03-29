@@ -2,6 +2,7 @@
 namespace Application\Controller;
 
 use Application\Entity\Banner\Banner;
+use Application\Entity\Channel\Video;
 use Application\Entity\Post\Post;
 use Application\Entity\Post\PostType;
 use Zend\View\Model\ViewModel;
@@ -34,10 +35,13 @@ class IndexController extends SiteController
             ['order'=>'ASC'], 8
         );
 
+        $videos = $this->getRepository(Video::class)->findBy([], ['date'=>'desc', 10]);
+
         return new ViewModel([
             'bannerImages' => $bannerImages,
             'news' => $news,
             'gallery' => $gallery,
+            'videos' => $videos
         ]);
     }
 }
