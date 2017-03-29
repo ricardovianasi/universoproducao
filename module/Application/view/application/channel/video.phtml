@@ -12,7 +12,7 @@
             <p class="cat">
                 <strong>Categorias:</strong>
                 <?php foreach ($this->video->getCategories() as $cat): ?>
-                    <a href=""><?php echo $cat->getName(); ?></a>
+                    <a href="<?php echo $this->url('universoproducao/channel', ['id'=>$cat->getId()]) ?>"><?php echo $cat->getName(); ?></a>
                 <?php endforeach; ?>
             </p>
         </div>
