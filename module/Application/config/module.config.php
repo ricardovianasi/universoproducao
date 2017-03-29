@@ -47,6 +47,34 @@ return array(
                         ),
                         'priority' => '99999'
                     ),
+                    'channel' => array(
+                        'type' => Segment::class,
+                        'options' => array(
+                            'route' => 'canal-universo/video/:id',
+                            'constraints' => [
+                                'id' => '[a-zA-Z0-9_-]*'
+                            ],
+                            'defaults' => array(
+                                'controller' => Controller\ChannelController::class,
+                                'action' => 'video',
+                            ),
+                        ),
+                        'priority' => '999999'
+                    ),
+                    'channel_categories' => array(
+                        'type' => Segment::class,
+                        'options' => array(
+                            'route' => 'canal-universo/:slug',
+                            'constraints' => [
+                                'slug' => '[a-zA-Z0-9_-]*'
+                            ],
+                            'defaults' => array(
+                                'controller' => Controller\ChannelController::class,
+                                'action' => 'category',
+                            ),
+                        ),
+                        'priority' => '999999'
+                    ),
                     'newsletter' => array(
                         'type' => Literal::class,
                         'options' => array(

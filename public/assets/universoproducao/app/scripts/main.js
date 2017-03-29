@@ -37,10 +37,10 @@ $(document).ready(function() {
         }
     });
 
-    $('.channel-slider').owlCarousel({
+    $('.channel-slider--home').owlCarousel({
         nav: true,
         dots: false,
-        margin: 4,
+        margin: 8,
         navText: [
             '<button><span class="icon icon-arrow-left4"></span></button>',
             '<button><span class="icon icon-arrow-right4"></span></button>'
@@ -68,52 +68,32 @@ $(document).ready(function() {
         }
     });
 
-    $('.modal').modal();
-
-    $('.channel-item').channelSlide();
-
-    /*$(".channel-item").hover(function() {
-        var $this = $(this),
-            $container = $this.find('.channel-content'),
-            offset = $this.offset(),
-            width = 45, //im percent
-            height: 45; //im percent
-
-        if(!$container.hasClass('visible')) {
-            $container.addClass('visible').css({
-                width: '190%',
-                height: '190%',
-                visibility: 'visible',
-                top: '-45%',
-                left: function() {
-                    if(($this.offset().left-(($container.width()*45)/100)) > 0) {
-                        return '-45%'
-                    } else {
-                        return 0;
-                    }
-                },
-                opacity: 0
-            }).animate({
-                opacity: 1
-            }, 300)
+    $('.channel-slider').owlCarousel({
+        nav: true,
+        dots: false,
+        margin: 8,
+        navText: [
+            '<button><span class="icon icon-arrow-left4"></span></button>',
+            '<button><span class="icon icon-arrow-right4"></span></button>'
+        ],
+        mouseDrag: false,
+        responsive: {
+            0: {
+                items: 1,
+            },
+            320: {
+                items: 2
+            },
+            768: {
+                items: 3
+            },
+            1024: {
+                items: 5
+            }
         }
     });
 
-    $('.channel-content').hover(function(){}, function() {
-        var $this = $(this);
-
-        $this.removeClass('visible').animate({
-            opacity: 0
-        }, 300, function() {
-            $this.css({
-                width: '',
-                height: '',
-                visibility: '',
-                top: '',
-                left: ''
-            })
-        })
-    });*/
+    $('.modal').modal();
 });
 
 (function(window, $) {
@@ -181,47 +161,4 @@ $(document).ready(function() {
 
     window.Modal = Plugin;
 
-})(window, jQuery);
-
-(function(window, $) {
-    var ChannelSlide = function(element, options) {
-        this.slide = element;
-        this.$slide = $(element);
-        this.$content = this.$slide.find('.channel-content'),
-        this.$trick = this.$slide.find('.trick'),
-        this.options = options;
-    };
-
-    ChannelSlide.prototype = {
-        defaults: {
-            scaling: 1.80
-        },
-
-        init: function() {
-            this.config = $.extend({}, this.defaults, this.options, this.$slide.data());
-
-            var _that = this;
-            /*var windowWidth = $(window).width();
-            var slideWidth = _that.$slide.width();
-            var slideHeight = _that.$slide.height();*/
-
-            _that.$slide.mouseover(function () {
-               console.log('hover');
-
-               //O conteúdo está ativo
-               _that.$slide.addClass('hover');
-
-            });
-        },
-    }
-
-    ChannelSlide.defaults = ChannelSlide.prototype.defaults;
-
-    $.fn.channelSlide = function(options) {
-        return this.each(function () {
-            new ChannelSlide(this, options).init();
-        });
-    };
-
-    window.ChannelSlide = Plugin;
 })(window, jQuery);

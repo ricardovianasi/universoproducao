@@ -31,6 +31,19 @@ class Category extends AbstractEntity
     /** @ORM\Column(name="slug", type="string", nullable=true) */
     private $slug;
 
+    /** @ORM\Column(name="is_visible", type="boolean", nullable=true) */
+    private $isVisible = true;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Video", mappedBy="categories", fetch="EXTRA_LAZY")
+     */
+    private $videos;
+
+    public function __construct()
+    {
+        $this->videos = new ArrayCollection();
+    }
+
     /**
      * @return mixed
      */
@@ -77,5 +90,21 @@ class Category extends AbstractEntity
     public function setSlug($slug)
     {
         $this->slug = $slug;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getIsVisible()
+    {
+        return $this->isVisible;
+    }
+
+    /**
+     * @param mixed $isVisible
+     */
+    public function setIsVisible($isVisible)
+    {
+        $this->isVisible = $isVisible;
     }
 }

@@ -35,7 +35,7 @@ class Video extends AbstractEntity
     private $date;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Application\Entity\Channel\Category")
+     * @ORM\ManyToMany(targetEntity="Category", inversedBy="videos")
      * @ORM\JoinTable(name="channel_categories",
      *   joinColumns={@ORM\JoinColumn(name="channel_id", referencedColumnName="id")},
      *   inverseJoinColumns={@ORM\JoinColumn(name="category_id", referencedColumnName="id")}

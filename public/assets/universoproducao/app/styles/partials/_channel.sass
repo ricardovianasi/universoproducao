@@ -1,101 +1,130 @@
 .channel
+  &--play
+    .channel-video
+      +padding-leader(9.5)
+
+    .channel-content
+      position: relative
+      +leader(1)
+      +trailer(3)
+      .title
+        +adjust-font-size-to(24px, 1)
+        +trailer(1, 24px)
+      .date
+        +adjust-font-size-to(18px)
+        +trailer(1)
+      .desc
+        p
+          +trailer(1)
+          color: black
+      .cat
+        strong
+          font-weight: 700
+          color: black
+        a
+          +adjust-font-size-to(14px)
+          display: inline-block
+          background-color: $color-palette-4
+          padding: 3px 6px
+          border-radius: 3px
+          text-decoration: none
+          font-weight: 700
+          color: white
+          transition: $transition-default
+          margin-right: 5px
+          &:hover
+            background-color: $color-palette-1
 
   &-row
-    padding: 0 60px
+    padding: 0 30px
     display: block
-    +trailer(2.5)
+    +trailer(2)
+
+  &-list
+    display: block
+    overflow: hidden
+    .channel-item
+      +column(1/4, $cycle:4)
+      +trailer(3)
+
+  &-category
+    +adjust-font-size-to(24px, 1)
+    +trailer(1, 36px)
+    color: black
+    font-weight: 900
+
+  &-catlink
+    +adjust-font-size-to(16px, 1, 24px)
+    text-decoration: none
+    margin-left: 5px
+    color: $color-palette-1
+    font-weight: 700
+    float: right
 
   &-item
     position: relative
     width: 100%
 
+  &-link
+    text-decoration: none
+    &:hover
+      .channel-play
+        visibility: visible
+        opacity: .5
+
   &-image
     width: 100%
+    position: relative
     img
       width: 100%
 
+  &-play
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+    display: block
+    width: 70px
+    padding-top: 15px
+    padding-bottom: 15px
+    margin-left: auto
+    margin-right: auto
+    border: 3px solid white
+    border-radius: 100%
+    text-align: center
+    text-decoration: none
+    color: white
+    opacity: 0
+    visibility: hidden
+    transition: $transition-default
+    span
+      font-size: 40px
+      height: 40px
+      vertical-align: middle
+
   &-content
     position: absolute
-    width: 100%
-    height: 100%
-    top: 0
-    left: 0
-    z-index: 99999
-    opacity: 0
-    transition: opacity .2s ease
-
-    .wrapper
-      padding: 30px
-      position: absolute
-      top: 50%
-      transform: translateY(-50%)
-
-    .play
-      display: block
-      width: 70px
-      padding-top: 15px
-      padding-bottom: 15px
-      margin-left: auto
-      margin-right: auto
-      border: 3px solid white
-      border-radius: 100%
-      text-align: center
-      text-decoration: none
-      color: white
-      +trailer(1.5)
-      opacity: .4
-      transition: $transition-default
-      &:hover
-        opacity: 1
-        color: $color-palette-4
-      span
-        font-size: 40px
-        height: 40px
-        vertical-align: middle
-
-
     .title
-      +adjust-font-size-to(20px, 1)
-      +trailer(.5, 20px)
-      color: white
-      font-weight: 900
-
-    .resume
-      color: white
-      +trailer(.5)
+      +adjust-font-size-to(16px)
+      color: black
+      font-weight: 700
+      letter-spacing: .05em
 
     .date
-      color: white
-      font-style: italic
-
-
-  &-overlay
-    position: absolute
-    top: 0
-    left: 0
-    width: 100%
-    height: 100%
-    background-size: cover
-    background-repeat: no-repeat
-    background-position: center
-    z-index: -1
-    &:before
-      position: absolute
-      content: " "
-      width: 100%
-      height: 100%
-      background-color: rgba(0,0,0,.6)
+      +adjust-font-size-to(15px)
+      color: black
 
   .owl-carousel
     .owl-stage-outer
-      overflow: visible
+      padding-bottom: 80px
     .owl-nav
       .owl-next, .owl-prev
         position: absolute
         display: block
-        width: 60px
-        height: 100%
-        top: 0
+        width: 30px
+        top: 50%
+        transform: translateY(-50%)
+        margin-top: -40px
         text-align: center
         cursor: pointer
         &.disabled
@@ -103,14 +132,18 @@
         button
           width: 100%
           height: 100%
-          background-color: rgba(0, 0, 0, .6)
+          //background-color: rgba(0, 0, 0, .6)
+          background-color: white
           color: $color-palette-2
-          font-size: 36px
+          font-size: 21px
           border: none
           outline: none
           cursor: pointer
+          opacity: .5
+          &:hover
+            opacity: 1
       .owl-next
-        right: -60px
+        right: -30px
 
       .owl-prev
-        left: -60px
+        left: -30px

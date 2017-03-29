@@ -26,7 +26,17 @@
 					<div class="portlet-body form">
 						<?php echo $this->form(null, null)->openTag($form); ?>
 
-                        <?php echo $this->formRow($form->get('name')); ?>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <?php echo $this->formRow($form->get('name')); ?>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <?php echo $this->formRow($form->get('is_visible')); ?>
+                            </div>
+                        </div>
 
 						<div class="form-actions">
 							<div class="btn-set pull-right">

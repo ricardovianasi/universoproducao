@@ -56,7 +56,13 @@ class ChannelCategoryController extends AbstractAdminController
 		if($this->getRequest()->isPost()) {
 			$form->setData($data);
 			if($form->isValid()) {
-				$item->setData($this->prepareDataPost(Category::class, $data, $item));
+
+			    $slug = $data['name'];
+                $slug = $this->slugify()->create($slug, true, Category::class, null, $item->getId());
+
+                $data['slug'] = $slug;
+
+                $item->setData($data);
 				$this->getEntityManager()->persist($item);
 				$this->getEntityManager()->flush();
 

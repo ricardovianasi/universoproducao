@@ -19,7 +19,7 @@
 					<th width="2%">#</th>
 					<th width="30%">Título</th>
                     <th width="30%">Categorias</th>
-                    <th width="30%">Data</th>
+                    <th width="10%">Data</th>
 					<th width="10%">Ações</th>
 				</tr>
 				</thead>
@@ -39,7 +39,12 @@
 					<tr>
 						<td></td>
 						<td><?php echo $item->getTitle() ?></td>
-						<td></td>
+						<td>
+                            <?php foreach ($item->getCategories() as $cat): ?>
+                                <span class="label label-sm label-info"><?php echo $cat->getName(); ?></span>
+                            <?php endforeach; ?>
+                        </td>
+                        <td><?php echo $item->getDate() ? $item->getDate()->format('d/mY') : ""; ?></td>
 						<td>
 							<a href="<?php echo  $updateUrl; ?>" class="btn btn-sm btn-default">
 								<i class="fa fa-edit"></i> Editar

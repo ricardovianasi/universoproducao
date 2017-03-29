@@ -109,7 +109,7 @@
     &-readmore
       text-align: right
       a
-        color: $color-palette-4
+        color: $color-palette-1
         &:hover
           color: white
 
@@ -118,6 +118,9 @@
     background-color: $color-palette-3
     +padding-leader(3)
     +padding-trailer(3)
+
+    &-row
+      padding: 0 60px
 
     &-header
       +trailer(2)
@@ -129,12 +132,40 @@
       color: $color-palette-2
       font-weight: 900
 
+    &-content
+      .title, .date
+        color: $color-palette-5
+
     &-readmore
       text-align: right
+      width: 100%
+      display: inline-block
+      +leader(4)
       a
-        color: $color-palette-4
+        color: $color-palette-1
         &:hover
           color: white
+
+    .owl-carousel
+      .owl-stage-outer
+        overflow: visible
+        padding-bottom: 0
+
+      .owl-nav
+        .owl-next, .owl-prev
+          width: 60px
+          height: 100%
+          top: 0
+          margin-top: 0
+          transform: none
+          button
+            background-color: rgba(0, 0, 0, .6)
+            font-size: 36px
+        .owl-next
+          right: -60px
+
+        .owl-prev
+          left: -60px
 
   .gallery
     &-row

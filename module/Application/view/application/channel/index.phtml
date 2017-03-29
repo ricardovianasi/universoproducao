@@ -1,0 +1,51 @@
+<?php if($post->getMeta('_cover')) $this->placeholder("is_header_dark")->set(true); ?>
+
+<div class="<?php echo $post->getMeta('_cover') ? 'main-bg' : 'main-no-bg'; ?>"
+     style="<?php echo $post->getMeta('_cover') ? 'background-image:url('.$post->getMeta('_cover').')' : ''; ?>">
+    <header class="main-header">
+        <div class="main-wrapper">
+            <h1 class="main-title"><?php echo $post->getTitle(); ?></h1>
+        </div>
+    </header>
+</div>
+
+<section class="main-section">
+    <div class="main-wrapper">
+        <div class="channel">
+            <?php foreach ($this->categories as $cat): ?>
+            <div class="channel-row">
+                <div class="channel-header">
+                    <p class="channel-category"><?php echo $cat['name'] ?><a class="channel-catlink" href="<?php echo $this->url("universoproducao/channel_categories", ['slug'=>$cat['slug']]); ?>">Mostrar mais</a></p>
+                </div>
+                <div class="channel-slider owl-carousel">
+                    <?php foreach ($cat['videos'] as $v): ?>
+                        <div class="channel-item">
+                            <a class="channel-link" href="<?php echo $this->url('universoproducao/channel', ['id'=>$v->getId()]) ?>">
+                                <div class="channel-image">
+                                    <img src="<?php echo  $this->thumbor()->url($v->getCover())->resize(612, 390); ?>" alt="">
+                                </div>
+                                <span class="channel-play"><span class="play-icon icon-play4"></span></span>
+                                <div class="channel-content">
+                                    <p class="title"><?php echo $v->getTitle(); ?></p>
+                                    <p class="date"><?php echo ucfirst($this->dateFormat($v->getDate(), null, null, "pt_BR", "MMM Y")); ?></p>
+                                </div>
+                            </a>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+            <?php endforeach; ?>
+        </div>
+
+        <div class="share">
+            <span class="share-title">Compartilhe:</span>
+            <ul class="share-items">
+                <li class="share-item"><a target="_blank" href="http://www.facebook.com/share.php?u=<?php echo $this->serverUrl(true) ?>&display=popup&title=<?php echo $this->video->getTitle(); ?>" class="share-link"><span class="icon-facebook"></span></a></li>
+                <li class="share-item"><a target="_blank" href="https://twitter.com/intent/tweet?status=<?php echo $this->video->getTitle(); ?>+<?php echo $this->serverUrl(true) ?>" class="share-link"><span class="icon-twitter"></span></a></li>
+            </ul>
+        </div>
+
+        <div class="main-separator"></div>
+
+    </div>
+</section>

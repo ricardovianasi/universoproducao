@@ -1,0 +1,41 @@
+<div class="main-no-bg">
+    <header class="main-header">
+        <div class="main-wrapper">
+            <h1 class="main-title"><?php echo $this->category->getName(); ?></h1>
+        </div>
+    </header>
+</div>
+
+<section class="main-section">
+    <div class="main-wrapper">
+        <div class="channel">
+            <div class="channel-list">
+                <?php foreach ($this->videos as $v): ?>
+                    <div class="channel-item">
+                        <a class="channel-link" href="<?php echo $this->url('universoproducao/channel', ['id'=>$v->getId()]) ?>">
+                            <div class="channel-image">
+                                <img src="<?php echo  $this->thumbor()->url($v->getCover())->resize(612, 390); ?>" alt="">
+                            </div>
+                            <span class="channel-play"><span class="play-icon icon-play4"></span></span>
+                            <div class="channel-content">
+                                <p class="title"><?php echo $v->getTitle(); ?></p>
+                                <p class="date"><?php echo ucfirst($this->dateFormat($v->getDate(), null, null, "pt_BR", "MMM Y")); ?></p>
+                            </div>
+                        </a>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+        </div>
+
+        <div class="share">
+            <span class="share-title">Compartilhe:</span>
+            <ul class="share-items">
+                <li class="share-item"><a target="_blank" href="http://www.facebook.com/share.php?u=<?php echo $this->serverUrl(true) ?>&display=popup&title=<?php echo $this->category->getName(); ?>" class="share-link"><span class="icon-facebook"></span></a></li>
+                <li class="share-item"><a target="_blank" href="https://twitter.com/intent/tweet?status=<?php echo $this->category->getName(); ?>+<?php echo $this->serverUrl(true) ?>" class="share-link"><span class="icon-twitter"></span></a></li>
+            </ul>
+        </div>
+
+        <div class="main-separator"></div>
+
+    </div>
+</section>
