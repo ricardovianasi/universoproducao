@@ -35,7 +35,7 @@ class IndexController extends SiteController
             ['order'=>'ASC'], 8
         );
 
-        $videos = $this->getRepository(Video::class)->findBy([], ['date'=>'desc', 10]);
+        $videos = $this->getRepository(Video::class)->findBy([], ['date'=>'desc'], 10);
 
         return new ViewModel([
             'bannerImages' => $bannerImages,
