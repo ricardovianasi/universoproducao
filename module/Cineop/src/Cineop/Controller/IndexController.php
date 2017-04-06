@@ -18,6 +18,15 @@ use Zend\View\Model\ViewModel;
 
 class IndexController extends AbstractController
 {
+    public function hotsiteAction()
+    {
+        $viewModel = new ViewModel();
+        $viewModel->setTemplate(false);
+        $viewModel->setTerminal(true);
+
+        return $viewModel;
+    }
+
 	public function indexAction()
 	{
 		$banners = $this->getRepository(Post::class)->findBy(

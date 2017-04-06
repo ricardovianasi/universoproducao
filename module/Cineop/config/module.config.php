@@ -4,6 +4,7 @@ namespace Cineop;
 use Zend\Mvc\Router\Http\Hostname;
 use Zend\Mvc\Router\Http\Literal;
 use Zend\Mvc\Router\Http\Regex;
+use Zend\Mvc\Router\Http\Segment;
 
 return array(
     'router' => array(
@@ -15,16 +16,18 @@ return array(
                     'defaults' => array(
                         '__NAMESPACE__' => 'Cineop\Controller',
                         'controller' => 'Index',
-                        'action' => 'index',
+                        'action' => 'hotsite',
                     ),
                 ),
                 'may_terminate' => true,
                 'child_routes' => array(
                     'default' => array(
-                        'type'    => Regex::class,
+                        'type'    => Segment::class,
                         'options' => array(
-                            'regex'    => '(?<slug>.+)',
-                            'spec' => '%slug%',
+                            'route'    => '/:slug',
+                            'constraints' => array(
+                                'slug' => '.+'
+                            ),
                             'defaults' => array(
                                 '__NAMESPACE__' => 'Cineop\Controller',
                                 'controller' => 'Index',
@@ -37,6 +40,20 @@ return array(
                         'options' => array(
                             'route' => '/',
                             'defaults' => array(
+                                '__NAMESPACE__' => 'Cineop\Controller',
+                                'controller' => 'Index',
+                                'action' => 'hotsite',
+                            ),
+                        )
+                    ),
+                    'index' => array(
+                        'type' => Literal::class,
+                        'options' => array(
+                            'route' => '/inicio',
+                            'defaults' => array(
+                                '__NAMESPACE__' => 'Cineop\Controller',
+                                'controller' => 'Index',
+                                'action'        => 'index',
                             ),
                         )
                     ),
