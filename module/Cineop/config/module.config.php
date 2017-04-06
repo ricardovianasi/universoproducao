@@ -16,7 +16,7 @@ return array(
                     'defaults' => array(
                         '__NAMESPACE__' => 'Cineop\Controller',
                         'controller' => 'Index',
-                        'action' => 'hotsite',
+                        'action' => 'index',
                     ),
                 ),
                 'may_terminate' => true,
