@@ -16,7 +16,7 @@ return array(
                     'route'    => '[www.][:locale.]cinebh.com.br',
                     'defaults' => array(
                         'controller'    => Controller\IndexController::class,
-                        'action'        => 'index',
+                        'action'        => 'hotsite',
                         'locale'        => 'pt'
                     ),
                 ),
@@ -41,6 +41,16 @@ return array(
                             'route' => '/',
                             'defaults' => array(
                                 'controller'    => Controller\IndexController::class,
+                                'action'        => 'hotsite',
+                            ),
+                        )
+                    ),
+                    'index' => array(
+                        'type' => Literal::class,
+                        'options' => array(
+                            'route' => '/inicio',
+                            'defaults' => array(
+                                '__NAMESPACE__' => Controller\IndexController::class,
                                 'action'        => 'index',
                             ),
                         )

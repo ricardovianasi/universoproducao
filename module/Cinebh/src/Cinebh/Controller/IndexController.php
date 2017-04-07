@@ -75,4 +75,13 @@ class IndexController extends SiteController
             'videos' => $videos
         ]);
     }
+
+    public function hotsiteAction()
+    {
+        $viewModel = new ViewModel();
+        $viewModel->setTemplate(false);
+        $viewModel->setTerminal(true);
+
+        return $viewModel;
+    }
 }
