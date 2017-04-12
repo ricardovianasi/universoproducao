@@ -1,42 +1,69 @@
 <!doctype html>
-<html lang="pt-br">
+<html lang="">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>CineBH 2017</title>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Mostra CineBH 2017</title>
 
-    <style>
-        html {
-            height: 100%;
-        }
-        body {
-            background-color: #fff;
-            overflow: hidden;
-            min-height: 100vh;
-        }
-        .bgc {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            -ms-transform: translate(-50%, -50%); /* IE 9 */
-            -webkit-transform: translate(-50%, -50%); /* Safari */
-        }
-    </style>
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+
+    <link rel="stylesheet" href="<?php echo $this->basePath('assets/cinebh_hotsite/dist') ?>/styles/main.css">
+
+
+
 
 </head>
 <body>
-    <div class="bgc">
-        <img id="Image-Maps-Com-image-maps-2017-04-07-152742" src="<?php echo $this->basePath("assets/cinebh/dist/images/cinebh_hotsite.jpg"); ?>" border="0" width="1024" height="512" orgWidth="1024" orgHeight="512" usemap="#image-maps-2017-04-07-152742" alt="" />
-        <map name="image-maps-2017-04-07-152742" id="ImageMapsCom-image-maps-2017-04-07-152742">
-            <area  alt="" title="" href="http://www.universoproducao.com.br/site/inscricoes.php?menu=ins" shape="rect" coords="80,308,460,448" style="outline:none;" target="_self"     />
-            <area  alt="" title="" href="http://www.universoproducao.com.br/site/inscricoes.php?menu=ins/" shape="rect" coords="642,312,991,440" style="outline:none;" target="_self"     />
-            <area shape="rect" coords="1022,510,1024,512" alt="Image Map" style="outline:none;" title="Image Map" href="http://www.image-maps.com/index.php?aff=mapped_users_0" />
-        </map>
+<!--[if lt IE 10]>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<![endif]-->
 
+<div class="home">
+    <div class="content">
 
+        <div class="row">
+            <div class="col col--left">
+                <div class="figure">
+                    <img class="cinebh" src="<?php echo $this->basePath('assets/cinebh_hotsite/dist') ?>/images/cinebh.png" alt="">
+                </div>
+            </div>
+            <div class="col col--right">
+                <div class="figure">
+                    <img class="brasilcinemundi" src="<?php echo $this->basePath('assets/cinebh_hotsite/dist') ?>/images/brasilcinemundi.png" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="box-date">
+            <span>22-27 Agosto 2017</span>
+        </div>
+        <div class="row row--without-padding">
+            <div class="col col--left">
+                <div class="desc">
+                    <h1 class="title">Filmes</h1>
+                    <p class="subtitle">Inscrições abertas e gratuitas <strong>Até 12 de Abril</strong></p>
+                    <p class="min">(Até 21h, horário de Brasília)</p>
+                    <a target="_blank" href="http://www.universoproducao.com.br/site/inscricoes.php?menu=ins" class="link">Clique aqui</a>
+                </div>
+            </div>
+            <div class="col col--right">
+                <div class="desc">
+                    <h1 class="title">Projetos</h1>
+                    <p class="subtitle">Inscrições abertas e gratuitas <strong>Até 10 de Maio</strong></p>
+                    <p class="min">(Até 21h, horário de Brasília)</p>
+                    <a target="_blank" href="http://www.universoproducao.com.br/site/inscricoes.php?menu=ins" class="link link--margin">Clique aqui</a>
+                </div>
+            </div>
+        </div>
     </div>
+</div>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="/bower_components/jquery/dist/jquery.min.js"><\/script>')</script>
+
+
+<script src="<?php echo $this->basePath('assets/cinebh_hotsite/dist') ?>/scripts/vendor.js"></script>
+<script src="<?php echo $this->basePath('assets/cinebh_hotsite/dist') ?>/scripts/main.js"></script>
 </body>
 </html>
