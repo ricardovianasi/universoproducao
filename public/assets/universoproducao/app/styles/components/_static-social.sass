@@ -1,0 +1,21 @@
+.static-social
+  position: fixed
+  top: 50%
+  right: 0
+  transform: translateY(-50%)
+  z-index: 100000
+  opacity: .6
+
+  &-items
+    background-color: black
+    padding: 10px
+  &-item
+    display: block
+    margin-bottom: 10px
+    &:last-child
+      margin-bottom: 0
+  &-link
+    text-decoration: none
+    color: white
+    font-size: 24px
+    transition: $transition-default
