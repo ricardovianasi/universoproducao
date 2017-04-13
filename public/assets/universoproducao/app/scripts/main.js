@@ -6,10 +6,10 @@ $(document).ready(function() {
         items: 1,
         center: true,
         loop: true,
-        autoplay: false,
+        autoplay: true,
         animateOut: 'fadeOut',
         mouseDrag: false,
-        autoplaySpeed: 8000
+        autoplaySpeed: 6000
     });
 
     $('.project--caroucel .owl-carousel').owlCarousel({
@@ -94,6 +94,20 @@ $(document).ready(function() {
     });
 
     $('.modal').modal();
+
+    function mouse_bottom() {
+        $('#mouse-bottom').animate({
+            'bottom': '0'
+        }, 400).animate({
+            'bottom': '-5px'
+        }, 800, mouse_bottom);
+
+        $('#mouse-bottom').on('click', function(e) {
+            e.preventDefault();
+            $(window).scrollTo( $('#news'), {duration: 200});
+        });
+    }
+    mouse_bottom();
 });
 
 (function(window, $) {

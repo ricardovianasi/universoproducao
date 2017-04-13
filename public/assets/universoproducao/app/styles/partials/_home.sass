@@ -22,7 +22,7 @@
 
     .owl-dots
       position: absolute
-      +trailer(2)
+      +trailer(4)
       bottom: 0
       left: 50%
       transform: translateX(-50%)
@@ -64,13 +64,18 @@
 
     &-title
       position: relative
-      +adjust-font-size-to(36px)
+      +adjust-font-size-to(30px, 1.5)
+      +adjust-font-size-to(30px, 1.5)
       +trailer(3)
       +leader(4)
       font-weight: 900
       color: white
       letter-spacing: .04em
       z-index: 1000
+
+    &-link
+      text-decoration: none
+      color: inherit
 
     &-copy
       position: absolute
@@ -83,6 +88,28 @@
       z-index: 9000
       opacity: .3
 
+    .mouse-bottom
+      position: absolute
+      font-size: 20px
+      line-height: 20px
+      text-align: center
+      padding-top: 6px
+      padding-bottom: 6px
+      width: 36px
+      //height: 36px
+      border: 1px solid white
+      border-radius: 100%
+      color: white
+      text-decoration: none
+      z-index: 99999
+      +trailer(.5, 24px)
+      bottom: 0
+      left: 50%
+      opacity: .3
+      transform: translateX(-50%)
+      &:hover
+        opacity: 1
+
   .news
     background-color: black
     +padding-leader(3)
@@ -93,6 +120,8 @@
 
     &-title
       +adjust-font-size-to(48px, 2)
+      +trailer(1, 48px)
+      +leader(1, 48px)
       color: $color-palette-1
       font-weight: 300
       text-align: center
@@ -133,7 +162,8 @@
       font-weight: 900
 
     &-content
-      .title, .date
+      .title,
+      .date
         color: $color-palette-5
 
     &-readmore

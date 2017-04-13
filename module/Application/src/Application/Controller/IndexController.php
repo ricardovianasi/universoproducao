@@ -32,7 +32,7 @@ class IndexController extends SiteController
                 'site' => self::SITE_ID,
                 'type' => PostType::GALLERY
             ],
-            ['order'=>'ASC'], 8
+            ['order'=>'asc'], 8
         );
 
         $videos = $this->getRepository(Video::class)->findBy([], ['date'=>'desc'], 10);

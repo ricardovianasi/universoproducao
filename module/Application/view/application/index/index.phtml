@@ -7,7 +7,11 @@
                 <div class="banner-slide owl-slide" style="background-image: url('<?php echo $this->thumbor()->url($banner->getMeta('_image'))->resize(1920, 1080); ?>')">
                     <div class="banner-content">
                         <div class="banner-wrapper">
-                            <p class="banner-title"><?php echo $banner->getTitle(); ?></p>
+                            <p class="banner-title">
+                                <a class="banner-link" target="_blank" href="<?php echo $banner->getMeta('_link') ?>">
+                                    <?php echo $banner->getTitle(); ?>
+                                </a>
+                            </p>
                             <span class="banner-copy"><?php echo $banner->getSubtitle(); ?></span>
                         </div>
                     </div>
@@ -23,6 +27,7 @@
             </div>
         <?php endif; ?>
     </div>
+    <a class="mouse-bottom" id="mouse-bottom" href="#"><span class="icon-arrow-down4"></span></a>
 </section>
 
 <section class="news" id="news">
@@ -111,7 +116,7 @@
                 </div>
             </div>
             <div class="gallery-row">
-                <?php foreach (array_slice($this->gallery, 3, 4) as $img): ?>
+                <?php foreach (array_slice($this->gallery, 4, 4) as $img): ?>
                     <div class="gallery-item">
                         <a data-fancybox data-caption="<?php echo $img->getTitle() . $img->getMeta('_credits'); ?>" href="<?php echo $this->thumbor()->url($img->getMeta('_image'))->resize(958, 620); ?>" class="gallery-link">
                             <img src="<?php echo $this->thumbor()->url($img->getMeta('_image'))->resize(479, 310); ?>" alt="" class="gallery-img">

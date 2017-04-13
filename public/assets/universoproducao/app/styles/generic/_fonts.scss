@@ -8,11 +8,11 @@
 
 @font-face {
   font-family: 'Universoproducao';
-  src:  url('../fonts/Universoproducao.eot?7gubnj');
-  src:  url('../fonts/Universoproducao.eot?7gubnj#iefix') format('embedded-opentype'),
-  url('../fonts/Universoproducao.ttf?7gubnj') format('truetype'),
-  url('../fonts/Universoproducao.woff?7gubnj') format('woff'),
-  url('../fonts/Universoproducao.svg?7gubnj#Universoproducao') format('svg');
+  src:  url('../fonts/Universoproducao.eot?6bb8oj');
+  src:  url('../fonts/Universoproducao.eot?6bb8oj#iefix') format('embedded-opentype'),
+  url('../fonts/Universoproducao.ttf?6bb8oj') format('truetype'),
+  url('../fonts/Universoproducao.woff?6bb8oj') format('woff'),
+  url('../fonts/Universoproducao.svg?6bb8oj#Universoproducao') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -101,6 +101,9 @@
 .icon-user2:before {
   content: "\e905";
 }
+.icon-circle-down:before {
+  content: "\ea43";
+}
 .icon-instagram2:before {
   content: "\ea92";
 }
@@ -119,3 +122,16 @@
 .icon-plus-circle:before {
   content: "\ed5f";
 }
+.icon-arrow-down2:before {
+  content: "\edc0";
+}
+.icon-arrow-down4:before {
+  content: "\edc2";
+}
+.icon-arrow-down7:before {
+  content: "\edd8";
+}
+.icon-circle-down6:before {
+  content: "\ee31";
+}
+

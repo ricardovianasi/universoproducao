@@ -11,6 +11,11 @@
 <section class="main-section">
     <div class="main-wrapper">
         <div class="main-content">
+
+            <?php if($post->getSubtitle()): ?>
+                <h2><?php echo $post->getSubtitle(); ?></h2>
+            <?php endif; ?>
+
             <?php echo $post->getContent(); ?>
 
             <div class="share">
