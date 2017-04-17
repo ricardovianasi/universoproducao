@@ -235,7 +235,7 @@
         opacity: 0
 
         .gallery-title
-          +leader(2)
+          +leader(1.5)
           text-align: center
 
         .gallery-subtitle
@@ -326,3 +326,9 @@
     .banner
       &-wrapper
         +center($pad:16px)
+
+    .news
+      &-title
+        +adjust-font-size-to(36px, 1.5)
+        +trailer(1, 36px)
+        +leader(1, 36px)
