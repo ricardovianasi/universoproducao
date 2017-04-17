@@ -95,6 +95,9 @@
 
 <?php if(!empty($this->gallery)): ?>
     <section class="gallery">
+        <div class="gallery-header gallery-header--mobile">
+            <h1 class="gallery-title">O universo da produção</h1>
+        </div>
         <div class="gallery-items">
             <div class="gallery-row">
                 <div class="col">
@@ -106,7 +109,7 @@
                         </div>
                     <?php endforeach; ?>
                 </div>
-                <div class="col">
+                <div class="col col--header">
                     <header class="gallery-header">
                         <div class="wrapper">
                             <h1 class="gallery-title">O universo da<br>produção</h1>
@@ -124,6 +127,9 @@
                     </div>
                 <?php endforeach; ?>
             </div>
+        </div>
+        <div class="gallery-header gallery-header--mobile">
+            <a class="gallery-subtitle" target="_blank" href="http://www.flickr.com/photos/universoproducao">Veja mais fotos no <span><i class="icon icon-flickr"></i><span class="name">flickr</span></span></a>
         </div>
     </section>
 <?php endif; ?>

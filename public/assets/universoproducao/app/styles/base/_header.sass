@@ -83,3 +83,22 @@
         vertical-align: middle
         i
           line-height: inherit
+
+  +media("<=600px")
+
+    +padding-leader(1)
+    +padding-trailer(1)
+
+    .header-left,
+    .header-right
+      width: 100%
+      float: none
+      text-align: center
+
+    .brand
+      &-link
+        font-size: 90px
+        line-height: 90px
+        text-decoration: none
+        line-height: inherit
+        color: black

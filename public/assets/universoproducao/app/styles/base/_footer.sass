@@ -26,7 +26,7 @@
     .input
       width: 40%
       &:first-of-type
-        border-right: none
+        border-right-color: white
       &::-webkit-input-placeholder
         color: black
         font-style: italic
@@ -104,3 +104,24 @@
         text-transform: uppercase
         text-align: center
         color: white
+
+
+  +media("<=768px")
+    .newsletter-form
+      .input,
+      .submit
+        display: block
+        width: 100%
+
+      .input
+        +trailer(.5)
+        &:first-of-type
+          border-right-color: black
+
+    .contact, .social
+      float: none
+      display: block
+      width: 100%
+
+    .contact
+      +trailer(1)

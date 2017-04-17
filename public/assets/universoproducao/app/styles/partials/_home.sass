@@ -227,6 +227,21 @@
       width: 100%
 
     &-header
+      &--mobile
+        padding-left: 16px
+        padding-right: 16px
+        display: none
+        visibility: hidden
+        opacity: 0
+
+        .gallery-title
+          +leader(2)
+          text-align: center
+
+        .gallery-subtitle
+          display: block
+          text-align: right
+
       .wrapper
         text-align: right
         padding: 60px
@@ -266,3 +281,48 @@
           line-height: 22px
           font-weight: 900
 
+
+  +media("<=1024px")
+    .gallery
+      .wrapper
+        padding: 20px
+      .gallery-title
+        +adjust-font-size-to(36px)
+        letter-spacing: 0
+
+      .gallery-subtitle
+        +adjust-font-size-to(24px)
+
+
+  +media("<=768px")
+    .gallery
+      .gallery-header
+        &--mobile
+          display: block
+          visibility: visible
+          opacity: 1
+
+      .col
+        display: block
+        width: 100%
+        float: none
+        overflow: hidden
+        &--header
+          display: none
+        .gallery-item
+          width: 50%
+
+      .gallery-item
+        width: 50%
+
+      .wrapper
+        padding: 0
+        position: relative
+        transform: none
+        bottom: 0
+        top: auto
+
+  +media("<=600px")
+    .banner
+      &-wrapper
+        +center($pad:16px)

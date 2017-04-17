@@ -48,3 +48,9 @@
     font-weight: 900
     +leader(.5)
 
+
+  +media("<=600px")
+    .news-list
+      &--highlight
+        .news-item
+          +column(1/1, $cycle: 1)

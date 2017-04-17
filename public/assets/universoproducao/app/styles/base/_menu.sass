@@ -29,6 +29,10 @@
       i
         color: white
 
+  +media("<=600px")
+    +padding-leader(1, 32px)
+    +padding-trailer(1, 32px)
+
 .mainmenu
 
   &-wrapper
@@ -89,3 +93,22 @@
     float: left
     border-bottom: 2px solid transparent
     transition: $transition-default
+
+  +media("<=600px")
+    .mainmenu-item
+      display: inline-block
+      width: 100%
+      margin-right: 16px
+      margin-left: 16px
+      &:hover
+        .mainmenu-list--sub
+          opacity: 1
+          display: block
+
+
+    .mainmenu-list
+      &--sub
+        width: 80%
+        position: relative
+        opacity: 1
+        display: none
