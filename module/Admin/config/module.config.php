@@ -17,7 +17,7 @@ return array(
             'admin' => array(
                 'type'    => Literal::class,
                 'options' => array(
-                    'route'    => '/admin',
+                    'route'    => '/novo-admin',
                     'defaults' => array(
                         '__NAMESPACE__' => 'Admin\Controller',
                         'controller'    => 'Index',
