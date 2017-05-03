@@ -95,6 +95,12 @@ $(document).ready(function() {
 
     $('.modal').modal();
 
+    $('#search-btn').on('click', function (e) {
+        e.preventDefault();
+        console.log('hello');
+        $('.search').toggleClass('search-active');
+    })
+
     function mouse_bottom() {
         $('#mouse-bottom').animate({
             'bottom': '0'

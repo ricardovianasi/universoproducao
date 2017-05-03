@@ -1,0 +1,40 @@
+.search
+  position: absolute
+  width: 100%
+  left: 0
+  top: 100%
+  opacity: 0
+  visibility: hidden
+
+  transition: $transition-default
+  z-index: 999
+
+  background-color: white
+
+  &-active
+    opacity: 1 !important
+    visibility: visible !important
+
+  &-form
+    +center($pad: 16px)
+
+  &-input
+    background-color: white
+    border: none
+    width: 100%
+    margin: 0
+
+    +adjust-font-size-to(28px)
+    +padding-trailer(.5)
+    +padding-leader(.5)
+
+    outline: none
+
+    &::-webkit-input-placeholder
+      font-style: italic
+    &::-moz-placeholder
+      font-style: italic
+    &:-ms-input-placeholder
+      font-style: italic
+    &:-moz-placeholder
+      font-style: italic

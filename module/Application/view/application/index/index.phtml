@@ -4,17 +4,17 @@
     <div class="owl-carousel" id="banner-home">
         <?php if(count($this->bannerImages) > 0):
             foreach ($this->bannerImages as $banner): ?>
-                <div class="banner-slide owl-slide" style="background-image: url('<?php echo $this->thumbor()->url($banner->getMeta('_image'))->resize(1920, 1080); ?>')">
-                    <div class="banner-content">
+                <div class="banner-slide owl-slide" style="background-image: url('<?php echo $this->thumbor()->url($banner->getMeta('_image'))->resize(1920, 746); ?>')">
+                    <!--<div class="banner-content">
                         <div class="banner-wrapper">
                             <p class="banner-title">
-                                <a class="banner-link" target="_blank" href="<?php echo $banner->getMeta('_link') ?>">
-                                    <?php echo $banner->getTitle(); ?>
+                                <a class="banner-link" target="_blank" href="<?php /*echo $banner->getMeta('_link') */?>">
+                                    <?php /*echo $banner->getTitle(); */?>
                                 </a>
                             </p>
-                            <span class="banner-copy"><?php echo $banner->getSubtitle(); ?></span>
+                            <span class="banner-copy"><?php /*echo $banner->getSubtitle(); */?></span>
                         </div>
-                    </div>
+                    </div>-->
                 </div>
             <?php endforeach; ?>
         <?php else: ?>

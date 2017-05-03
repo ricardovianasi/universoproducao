@@ -1,0 +1,104 @@
+.header-dark
+  .header
+    &:before
+      position: absolute
+      display: block
+      content: ""
+      top: 0
+      left: 0
+      width: 100%
+      height: 100%
+      background: linear-gradient(to top,rgba(0,0,0,0) 30%, rgba(0,0,0,.5))
+
+    .brand-link
+      color: white
+
+    .headermenu-link
+      color: white
+
+    #userlogin-access
+      color: white
+
+    #mainmenu-access .title-menu
+      color: white
+
+.header
+  +padding-leader(2.5)
+  +padding-trailer(2.5)
+  position: absolute
+  top: 0
+  left: 0
+  right: 0
+  width: 100%
+  padding:
+    right: 60px
+    left: 60px
+  box-sizing: border-box
+  z-index: 100
+
+  &-wrapper
+    overflow: hidden
+    position: relative
+
+  &-left,
+  &-right
+    box-sizing: border-box
+    position: relative
+
+  &-left
+    width: 60%
+    float: left
+
+  .brand
+    &> span
+      display: none
+
+    &-link
+      font-size: 108px
+      line-height: 108px
+      text-decoration: none
+      line-height: inherit
+      color: black
+
+  &-right
+    width: 40%
+    float: left
+    text-align: right
+
+  .headermenu
+    &-link
+      display: inline-block
+      vertical-align: middle
+      position: relative
+      height: 48px
+      +adjust-font-size-to(28px, 2)
+      +padding-leader(1.25, 28px)
+      +padding-trailer(1.25, 28px)
+      min-width: 72px
+      text-decoration: none
+      text-align: center
+      color: black
+      .icon
+        display: block
+        vertical-align: middle
+        i
+          line-height: inherit
+
+  +media("<=600px")
+
+    +padding-leader(1)
+    +padding-trailer(1)
+
+    .header-left,
+    .header-right
+      width: 100%
+      float: none
+      text-align: center
+
+    .brand
+      &-link
+        font-size: 90px
+        line-height: 90px
+        text-decoration: none
+        line-height: inherit
+        color: black

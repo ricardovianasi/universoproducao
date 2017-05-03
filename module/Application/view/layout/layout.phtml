@@ -32,13 +32,14 @@
 
 <header class="header">
     <div class="header-wrapper">
-        <div class="header-left">
-            <h1 class="brand">
-                <a class="brand-link" href="<?php echo $this->url('universoproducao') ?>"><span class="icon-universo-producao"></span></a>
-                <span>Universo Produção</span>
-            </h1>
-        </div>
-        <div class="header-right">
+
+        <h1 class="brand">
+            <a class="brand-link" href="<?php echo $this->url('universoproducao') ?>"><span class="icon icon-universo-producao"></span></a>
+            <span>Universo Produção</span>
+        </h1>
+
+
+        <!--<div class="header-right">
             <a class="headermenu-link" target="_blank" id="" href="http://universoproducao.com.br/site/inscricoes.php">
             <span class="icon">
               <i class="icon-user42"></i>
@@ -50,7 +51,28 @@
             </span>
                 <span class="title-menu">Menu</span>
             </a>
-        </div>
+        </div>-->
+
+        <ul class="links">
+            <li class="links-item" id="manu-btn"><a class="links-action" href="#"><i class="icon-menu"></i></a></li>
+<!--            <li class="links-item" id="search-btn"><a class="links-action" href="#"><i class="icon-search"></i></a></li>-->
+        </ul>
+
+        <nav class="mainmenu">
+            <?php $this
+                ->navigation('UniversoproducaoNavigation')
+                ->menu()->setPartial("application/partials/navigation.phtml");
+
+            echo $this
+                ->navigation('UniversoproducaoNavigation')
+                ->menu()
+                ->render(); ?>
+        </nav>
+    </div>
+    <div class="search">
+        <form class="search-form" action="">
+            <input type="text" class="search-input" placeholder="Buscar no site">
+        </form>
     </div>
 </header>
 
@@ -118,16 +140,6 @@
         <a href="#" class="modal-action modal-close">
             <span class="icon icon-cross2"></span>
         </a>
-    </div>
-    <div class="mainmenu-wrapper">
-        <?php $this
-            ->navigation('UniversoproducaoNavigation')
-            ->menu()->setPartial("application/partials/navigation.phtml");
-
-        echo $this
-            ->navigation('UniversoproducaoNavigation')
-            ->menu()
-            ->render(); ?>
     </div>
 </nav>
 

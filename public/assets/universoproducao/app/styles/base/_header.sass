@@ -1,104 +1,140 @@
-.header-dark
-  .header
-    &:before
-      position: absolute
-      display: block
-      content: ""
-      top: 0
-      left: 0
-      width: 100%
-      height: 100%
-      background: linear-gradient(to top,rgba(0,0,0,0) 30%, rgba(0,0,0,.5))
-
-    .brand-link
-      color: white
-
-    .headermenu-link
-      color: white
-
-    #userlogin-access
-      color: white
-
-    #mainmenu-access .title-menu
-      color: white
-
 .header
-  +padding-leader(2.5)
-  +padding-trailer(2.5)
-  position: absolute
-  top: 0
-  left: 0
-  right: 0
+  display: block
+  position: relative
   width: 100%
-  padding:
-    right: 60px
-    left: 60px
-  box-sizing: border-box
+  background-color: black
+  height: 84px
+
+  //position: absolute
+  //top: 0
+  //left: 0
+
   z-index: 100
 
   &-wrapper
-    overflow: hidden
-    position: relative
-
-  &-left,
-  &-right
-    box-sizing: border-box
-    position: relative
-
-  &-left
-    width: 60%
-    float: left
+    +center($pad: 16px)
+    //text-align: center
 
   .brand
-    &> span
+    vertical-align: middle
+    display: inline-block
+    margin-right: 18px
+    width: 100px
+    &>span
       display: none
 
     &-link
-      font-size: 108px
-      line-height: 108px
-      text-decoration: none
-      line-height: inherit
-      color: black
-
-  &-right
-    width: 40%
-    float: left
-    text-align: right
-
-  .headermenu
-    &-link
       display: inline-block
-      vertical-align: middle
-      position: relative
-      height: 48px
-      +adjust-font-size-to(28px, 2)
-      +padding-leader(1.25, 28px)
-      +padding-trailer(1.25, 28px)
-      min-width: 72px
+      color: white
       text-decoration: none
-      text-align: center
-      color: black
       .icon
         display: block
-        vertical-align: middle
-        i
-          line-height: inherit
+        font-size: 60px
+        line-height: 84px
 
-  +media("<=600px")
 
-    +padding-leader(1)
-    +padding-trailer(1)
+  .mainmenu
+    display: inline-block
+    margin-left: 10px
 
-    .header-left,
-    .header-right
-      width: 100%
-      float: none
+
+    &-list
+      &--sub
+        display: none
+        width: 100%
+        position: absolute
+        top: 100%
+        left: 0
+        background-color: rgba(241,90,34, .7)
+        transform: $transition-default
+        z-index: 9999
+        ul
+          +center($pad: 16px)
+          &:before
+            display: inline-block
+            content: " "
+            position: relative
+            width: 130px
+            height: 100%
+
+    &-item
+      display: inline-block
+      +padding-leader(1.25)
+      +padding-trailer(1.25)
+      transition: $transition-default
+      &:hover
+        background-color: $color-palette-1
+        .mainmenu-list--sub
+          display: block
+
+    &-link
+      display: block
+      +adjust-font-size-to(14px, 1, 18px)
+      color: white
+      text-decoration: none
+      text-transform: uppercase
+      font-family: "Open Sans"
+      font-weight: 700
+      letter-spacing: .04em
+      margin-right: 8px
+      margin-left: 8px
+
+  .links
+    display: inline-block
+    margin-left: 10px
+    float: right
+    &-item
+      display: inline-block
+      width: 84px
       text-align: center
+      +padding-leader(1.25)
+      +padding-trailer(1.25)
+      transition: $transition-default
+      &:hover
+        background-color: $color-palette-1
+
+    &-action
+      +adjust-font-size-to(18px)
+      display: block
+      color: white
+      text-decoration: none
+
+
+  +media(">768px")
+    #manu-btn
+      display: none
+
+  +media("<=768px")
 
     .brand
-      &-link
-        font-size: 90px
-        line-height: 90px
-        text-decoration: none
-        line-height: inherit
-        color: black
+      float: left
+
+    .mainmenu
+      position: absolute
+      width: 100%
+      top: 100%
+      left: 0
+      margin: 0
+      text-align: center
+      background-color: $color-palette-1
+      display: none
+
+      &-list
+        &--sub
+          position: relative
+          background-color: #8C241B
+
+      &-item
+        display: block
+        +padding-leader(.5)
+        +padding-trailer(.5)
+
+    #manu-btn
+      display: inline-block
+      &:hover
+        .mainmenu
+          display: block
+
+
+    .links
+      float: right
