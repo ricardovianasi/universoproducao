@@ -70,4 +70,13 @@ class PostController extends SiteController
             'post' => $post
         ];
     }
+
+    public function sitemapAction()
+    {
+        $this->layout("layout/xml");
+        $viewModel = new ViewModel();
+        $viewModel->setTerminal(true);
+        $viewModel->setTemplate(null);
+        return $viewModel;
+    }
 }

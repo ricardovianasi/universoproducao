@@ -97,6 +97,17 @@ return array(
                         ),
                         'priority' => '99999'
                     ),
+                    'sitemap' => array(
+                        'type' => Literal::class,
+                        'options' => array(
+                            'route' => 'sitemap.xml',
+                            'defaults' => array(
+                                'controller' => Controller\PostController::class,
+                                'action' => 'sitemap',
+                            ),
+                        ),
+                        'priority' => '99999'
+                    ),
                 ),
             ),
         ),
