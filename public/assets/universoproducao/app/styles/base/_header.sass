@@ -118,11 +118,20 @@
       text-align: center
       background-color: $color-palette-1
       display: none
+      transition: $transition-default
+
+      &-active
+        display: block
 
       &-list
+        padding-right: 0
+        padding-left: 0
         &--sub
           position: relative
           background-color: #8C241B
+          ul
+            padding-right: 0
+            padding-left: 0
 
       &-item
         display: block

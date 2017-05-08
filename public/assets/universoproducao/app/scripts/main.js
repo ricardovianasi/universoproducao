@@ -99,7 +99,12 @@ $(document).ready(function() {
         e.preventDefault();
         console.log('hello');
         $('.search').toggleClass('search-active');
-    })
+    });
+
+    $('#manu-btn').on('click', function(e) {
+       e.preventDefault();
+       $('.mainmenu').toggleClass('mainmenu-active');
+    });
 
     function mouse_bottom() {
         $('#mouse-bottom').animate({
