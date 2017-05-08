@@ -86,6 +86,17 @@ return array(
                         ),
                         'priority' => '99999'
                     ),
+                    'search' => array(
+                        'type' => Literal::class,
+                        'options' => array(
+                            'route' => 'busca',
+                            'defaults' => array(
+                                'controller' => Controller\PostController::class,
+                                'action' => 'search',
+                            ),
+                        ),
+                        'priority' => '99999'
+                    ),
                 ),
             ),
         ),

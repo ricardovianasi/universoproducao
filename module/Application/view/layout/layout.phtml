@@ -55,7 +55,7 @@
 
         <ul class="links">
             <li class="links-item" id="manu-btn"><a class="links-action" href="#"><i class="icon-menu"></i></a></li>
-<!--            <li class="links-item" id="search-btn"><a class="links-action" href="#"><i class="icon-search"></i></a></li>-->
+            <li class="links-item" id="search-btn"><a class="links-action" href="#"><i class="icon-search"></i></a></li>
         </ul>
 
         <nav class="mainmenu">
@@ -70,8 +70,8 @@
         </nav>
     </div>
     <div class="search">
-        <form class="search-form" action="">
-            <input type="text" class="search-input" placeholder="Buscar no site">
+        <form class="search-form" action="<?php echo $this->url('universoproducao/search') ?>">
+            <input type="text" class="search-input" placeholder="Buscar no site" name="q">
         </form>
     </div>
 </header>
