@@ -1,4 +1,4 @@
-<?php $this->headScript()->captureStart() ?>
+<script>
     (function() {
         var cx = '004056108255715595582:2tdxvhzvtcg';
         var gcse = document.createElement('script');
@@ -8,7 +8,9 @@
         var s = document.getElementsByTagName('script')[0];
         s.parentNode.insertBefore(gcse, s);
     })();
-<?php $this->headScript()->captureEnd() ?>
+</script>
+
+
 
 <?php if($post->getMeta('_cover')) $this->placeholder("is_header_dark")->set(true); ?>
 <div class="<?php echo $post->getMeta('_cover') ? 'main-bg' : 'main-no-bg'; ?>"
@@ -23,7 +25,9 @@
 <section class="main-section">
     <div class="main-wrapper">
         <div class="main-content">
-            <gcse:searchr></gcse:searchr>
+
+            <gcse:search></gcse:search>
+
             <div class="share">
                 <span class="share-title">Compartilhe:</span>
                 <ul class="share-items">
