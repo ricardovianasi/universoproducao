@@ -1,9 +1,10 @@
 <ul class="mainmenu-list">
     <li class="mainmenu-item"><a href="<?php echo $this->url('universoproducao')?>" class="mainmenu-link">Início</a></li>
     <?php foreach ($this->container as $page):
-        /** @var Zend\Navigation\Page\AbstractPage $page */ ?>
+        /** @var Zend\Navigation\Page\AbstractPage $page */
+        $url = $page->hasPages() ? '#' : rawurldecode($page->getHref()); ?>
         <li class="mainmenu-item">
-            <a class="mainmenu-link" href="<?php echo rawurldecode($page->getHref()) ?>" target="<?php echo $page->getTarget() ?>">
+            <a class="mainmenu-link" href="<?php echo $url; ?>" target="<?php echo $page->getTarget() ?>">
                 <?php echo $page->getLabel() ?>
             </a>
             <?php if ($page->hasPages()): ?>
