@@ -10,8 +10,6 @@
     })();
 </script>
 
-
-
 <?php if($post->getMeta('_cover')) $this->placeholder("is_header_dark")->set(true); ?>
 <div class="<?php echo $post->getMeta('_cover') ? 'main-bg' : 'main-no-bg'; ?>"
      style="<?php echo $post->getMeta('_cover') ? 'background-image:url('.$post->getMeta('_cover').')' : ''; ?>">
@@ -26,7 +24,7 @@
     <div class="main-wrapper">
         <div class="main-content">
 
-            <gcse:search></gcse:search>
+            <gcse:searchresults-only></gcse:searchresults-only>
 
             <div class="share">
                 <span class="share-title">Compartilhe:</span>
