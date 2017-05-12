@@ -50,10 +50,11 @@ return array(
                         'options' => array(
                             'route' => '/inicio',
                             'defaults' => array(
-                                '__NAMESPACE__' => Controller\IndexController::class,
+                                'controller'    => Controller\IndexController::class,
                                 'action'        => 'index',
                             ),
-                        )
+                        ),
+                        'priority' => '99999'
                     ),
                     'news' => array(
                         'type' => Segment::class,
