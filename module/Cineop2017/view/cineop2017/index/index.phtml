@@ -1,0 +1,191 @@
+<main class="main home">
+
+    <?php if(count($this->bannerImages)): ?>
+        <section class="banner">
+            <div class="owl-carousel" id="banner-home">
+            <?php foreach ($this->bannerImages as $banner): ?>
+                <div class="banner-item">
+                    <a target="_blank" href="<?php echo $banner->getMeta('_link') ?>">
+                        <img src="<?php echo $this->thumbor()->url($banner->getMeta('_image'))->resize(1920, 630); ?>" alt="">
+                        <p class="banner-caption"><?php echo $banner->getSubtitle(); ?></p>
+                    </a>
+                </div>
+            <?php endforeach; ?>
+            </div>
+        </section>
+    <?php endif; ?>
+
+    <?php if(count($this->program)): ?>
+    <section class="programation">
+        <header class="main-header">
+            <h1 class="main-title">Programação</h1>
+        </header>
+
+        <div class="programation-highlights">
+            <article class="programation-featured">
+            <?php foreach ($this->program as $p): ?>
+                <div class="bgc" style="background-image: url('<?php echo  $this->thumbor()->url($p->getPhoto())->resize(480, 460); ?>')">
+                    <a href="<?php echo $p->getUrl(); ?>">
+                        <div class="wrapper">
+                            <p class="date"><?php echo $p->getDate()->format('d/m') ?></p>
+                            <p class="title"><?php echo $p->getTitle(); ?></p>
+                            <p class="place"><?php echo $p->getPlace(); ?></p>
+                        </div>
+                    </a>
+                </div>
+            </article>
+            <?php endforeach; ?>
+        </div>
+    </section>
+    <?php endif; ?>
+
+    <section class="news">
+        <div class="main-wrapper">
+            <header class="main-header">
+                <h1 class="main-title">Notícias</h1>
+            </header>
+            <div class="news-highlight">
+                <?php foreach ($this->news as $news): ?>
+                    <article class="news-featured">
+                        <div class="news-wrapper">
+                            <a href="<?php echo $this->url("cineop2017/news", ['slug'=>$news->getSlug()]) ?>" class="news-link">
+                                <div class="news-bg">
+                                    <figure class="news-figure">
+                                        <img src="<?php echo  $this->thumbor()->url($news->getMeta('_thumb'))->resize(532, 331); ?>" alt="">
+                                    </figure>
+                                </div>
+                                <p class="news-title"><?php echo $news->getTitle(); ?></p>
+                                <p class="news-subtitle"><?php echo $news->getSubtitle(); ?></p>
+                                <p class="news-seemore">Veja +</p>
+                            </a>
+                        </div>
+                    </article>
+                <?php endforeach; ?>
+            </div>
+        </div>
+    </section>
+
+    <section class="tv">
+        <div class="main-wrapper">
+            <header class="main-header">
+                <h1 class="main-title">Vídeos</h1>
+            </header>
+            <div class="tv-wrapper">
+                <div class="tv-highlight">
+                    <div class="tv-featured">
+                        <div class="tv-bg" style="background-image: url('images/tv1.jpg')">
+                            <a class="tv-link" href="#"><span class="icon-play4"></span></a>
+                        </div>
+                        <div class="tv-content">
+                            <p class="tv-title">Estreia do longa comboio de sal</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <?php if(count($this->gallery)>0): ?>
+    <section class="gallery">
+        <header class="main-header">
+            <h1 class="main-title">Galeria de imagens</h1>
+        </header>
+        <div class="gallery-items owl-carousel" id="gallery">
+            <?php foreach ($this->gallery as $img): ?>
+                <div class="gallery-item">
+                    <img src="<?php echo $this->thumbor()->url($img->getMeta('_image'))->resize(781, 504); ?>" alt="">
+                    <div class="gallery-content">
+                        <p class="gallery-title"><?php echo $img->getTitle(); ?></p>
+                        <p class="gallery-subtitle"><?php echo $img->getMeta('_credits'); ?></p>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        </div>
+        <div class="main-wrapper">
+            <p class="gallery-readmore">
+                <a href="#" class="btn"><span>Ver mais fotos no Flickr</span></a>
+            </p>
+        </div>
+    </section>
+    <?php endif; ?>
+
+    <section class="guide">
+        <div class="main-wrapper">
+            <header class="main-header">
+                <h1 class="main-title">Descubra ouro preto</h1>
+            </header>
+
+            <div class="guide-items">
+                <div class="guide-item">
+                    <a class="guide-link" href="">
+                        <span class="sprite sprite-como-chegar"></span>
+                        <span class="guide-title">Como chegar</span>
+                    </a>
+                </div>
+                <div class="guide-item">
+                    <a class="guide-link" href="">
+                        <span class="sprite sprite-restaurantes"></span>
+                        <span class="guide-title">Restaurantes</span>
+                    </a>
+                </div>
+                <div class="guide-item">
+                    <a class="guide-link" href="">
+                        <span class="sprite sprite-hoteis"></span>
+                        <span class="guide-title">Hoteis e Acomodações</span>
+                    </a>
+                </div>
+                <div class="guide-item">
+                    <a class="guide-link" href="">
+                        <span class="sprite sprite-turismo"></span>
+                        <span class="guide-title">Turismo e informações</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <?php if(count($this->eufacoamostra)>0): ?>
+    <section class="eufacoamostra">
+        <header class="main-header">
+            <h1 class="main-title"><span class="icon-eufacoamostra"></span></h1>
+            <p>Compartilhe e publique suas imagens usando a #eufaçoaMostra</p>
+        </header>
+        <ul class="eufacoamostra-items">
+            <?php foreach ($this->eufacoamostra as $eu): ?>
+                <li class="eufacoamostra-item">
+                    <?php $href = $eu->getVideo() ? $this->youtubeEmbed($eu->getVideo()) : $this->thumbor()->url($eu->getThumb())->resize(700, 700); ?>
+                    <a title="<?php echo $eu->getDescription(); ?>" href="$href" rel="eufacoamostra" class="eufacoamostra-link video fancybox fancybox.iframe">
+                        <img src="<?php echo $this->thumbor()->url($eu->getThumb())->resize(700, 700); ?>" alt="" class="grayscale grayscale-fade">
+                    </a>
+                </li>
+            <?php endforeach; ?>
+        </ul>
+    </section>
+    <?php endif; ?>
+
+    <section class="newsletter">
+        <div class="main-wrapper">
+            <header class="newsletter-header">
+                <h1>Receba Nossos Informativos</h1>
+            </header>
+            <form action="<?php echo $this->url("cineop2017/newsletter") ?>" method="post" class="newsletter-form">
+                <input required type="text" class="newsletter-input" placeholder="Nome">
+                <input required type="text" class="newsletter-input" placeholder="Email">
+                <button type="submit" class="newsletter-submit">Cadastrar</button>
+            </form>
+        </div>
+    </section>
+
+    <section class="sitemap">
+        <div class="main-wrapper">
+            <?php $this
+                ->navigation('Cineop2017Navigation')
+                ->menu()->setPartial("cineop2017/partials/sitemap.phtml");
+
+            echo $this
+                ->navigation('Cineop2017Navigation')
+                ->menu()
+                ->render(); ?>
+        </div>
+    </section>
+</main>

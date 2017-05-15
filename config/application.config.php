@@ -10,6 +10,7 @@ $modules = [
     'Application',
     'Arquivoemcartaz',
     'Cineop',
+    'Cineop2017',
     'Cinebh',
     'Mostratiradentes',
     'MostratiradentesSp',

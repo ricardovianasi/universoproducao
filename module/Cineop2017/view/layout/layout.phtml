@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="">
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>12 CineOP</title>
+
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <link rel="stylesheet" href="<?php echo $this->basePath('assets/cineop2017/dist') ?>/styles/main.css">
+
+
+</head>
+<body>
+<!--[if lt IE 10]>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<![endif]-->
+
+<header class="header">
+    <div class="header-top">
+        <div class="header-wrapper">
+            <div class="header-col">
+                <p class="header-date">
+                    21 - 27 Junho
+                    <span>Programação Gratuita</span>
+                </p>
+            </div>
+            <div class="header-col">
+                <h1 class="header-brand">
+                    <span class="brand-icon icon-cineop2017"></span>
+                    <span class="brand-slogan">Cinema patrimônio </span>
+                </h1>
+            </div>
+            <div class="header-col">
+                <div class="social">
+                    <ul class="social-list">
+                        <li class="social-item"><a href="#" class="social-link"><i class="icon-facebook"></i></a></li>
+                        <li class="social-item"><a href="#" class="social-link"><i class="icon-twitter"></i></a></li>
+                        <li class="social-item"><a href="#" class="social-link"><i class="icon-youtube"></i></a></li>
+                        <li class="social-item"><a href="#" class="social-link"><i class="icon-instagram"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <nav class="header-navigation">
+        <?php $this
+            ->navigation('Cineop2017Navigation')
+            ->menu()->setPartial("cineop2017/partials/navigation.phtml");
+
+        echo $this
+            ->navigation('Cineop2017Navigation')
+            ->menu()
+            ->render(); ?>
+    </nav>
+
+</header>
+
+<main class="main home">
+    <?php echo $this->content; ?>
+</main>
+
+<footer class="footer">
+    <div class="footer-wrapper">
+        <div class="footer-clear">
+            <div class="footer-contact">
+                <p class="footer-title">Contate-nos:</p>
+                <span class="icon icon-universo-producao"></span>
+                <span class="footer-add">+ 55 31 3282-2366<br>
+                            up@universoproducao.com.br<br>
+                            Rua Pirapetinga, 567 - Serra<br>
+                            30220-150, Belo Horizonte | MG</span>
+            </div>
+            <div class="footer-social">
+                <p class="footer-title">Siga-nos:</p>
+                <ul class="footer-socialitems">
+                    <li class="footer-socialitem"><a class="footer-socialink" href=""><span class="icon icon-facebook"></span></a></li>
+                    <li class="footer-socialitem"><a class="footer-socialink" href=""><span class="icon icon-twitter"></span></a></li>
+                    <li class="footer-socialitem"><a class="footer-socialink" href=""><span class="icon icon-instagram"></span></a></li>
+                    <li class="footer-socialitem"><a class="footer-socialink" href=""><span class="icon icon-flickr"></span></a></li>
+                    <li class="footer-socialitem"><a class="footer-socialink" href=""><span class="icon icon-youtube"></span></a></li>
+                </ul>
+            </div>
+        </div>
+        <p class="footer-title footer-copy">Copyright © 2017. Universo Produção - Todos os direitos reservados.</p>
+    </div>
+</footer>
+
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="/bower_components/jquery/dist/jquery.min.js"><\/script>')</script>
+
+<script src="<?php echo $this->basePath('assets/cineop2017/dist') ?>/scripts/vendor.js"></script>
+<script src="<?php echo $this->basePath('assets/cineop2017/dist') ?>/scripts/main.js"></script>
+</body>
+</html>

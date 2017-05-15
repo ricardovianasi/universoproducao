@@ -5,15 +5,15 @@ return [
             'universoproducao' => array(
                 'type' => 'Literal',
                 'options' => array(
-                    'route'    => '/',
+                    'route'    => '/up',
                 )
             ),
-//            'mostratiradentessp' => array(
-//                'type' => 'Literal',
-//                'options' => array(
-//                    'route'    => '/mostratiradentes-sp',
-//                )
-//            ),
+            'cineop2017' => array(
+                'type' => 'Literal',
+                'options' => array(
+                    'route'    => '/cineop',
+                )
+            ),
         )
     )
 ];

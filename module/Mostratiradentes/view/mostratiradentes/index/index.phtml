@@ -100,7 +100,7 @@
             <?php foreach ($this->news as $news): ?>
             <article class="news-item">
                 <a href="<?php echo $this->url("mostratiradentes/news", ['slug'=>$news->getSlug()]) ?>" class="news-link">
-                    <figure class="news-figure"><img src="<?php echo  $this->thumbor()->url($news->getMeta('_thumb'))->resize(532, 331); ?>" alt=""></figure>
+                    <figure class="news-figure"><img src="<?php echo  $this->thumbor()->url($news->getMeta('_thumb'))->resize(240, 331); ?>" alt=""></figure>
                     <p class="news-title"><?php echo $news->getTitle(); ?></p>
                 </a>
             </article>
