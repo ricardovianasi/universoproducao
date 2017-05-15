@@ -51,7 +51,7 @@
                             <a href="<?php echo $this->url("cineop2017/news", ['slug'=>$news->getSlug()]) ?>" class="news-link">
                                 <div class="news-bg">
                                     <figure class="news-figure">
-                                        <img src="<?php echo  $this->thumbor()->url($news->getMeta('_thumb'))->resize(532, 331); ?>" alt="">
+                                        <img src="<?php echo  $this->thumbor()->url($news->getMeta('_thumb'))->resize(240, 240); ?>" alt="">
                                     </figure>
                                 </div>
                                 <p class="news-title"><?php echo $news->getTitle(); ?></p>
@@ -62,6 +62,9 @@
                     </article>
                 <?php endforeach; ?>
             </div>
+            <p class="news-readmore">
+                <a href="<?php echo $this->url("cineop2017/default", ['slug'=>'noticias']); ?>" class="btn"><span>Ver todas as notícias</span></a>
+            </p>
         </div>
     </section>
 
