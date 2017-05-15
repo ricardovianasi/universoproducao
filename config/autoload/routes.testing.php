@@ -2,12 +2,12 @@
 return [
     'router' => array(
         'routes' => array(
-            /*'universoproducao' => array(
+            'universoproducao' => array(
                 'type' => 'Literal',
                 'options' => array(
-                    'route'    => '/up',
+                    'route'    => '/',
                 )
-            ),*/
+            ),
             'cineop2017' => array(
                 'type' => 'Literal',
                 'options' => array(
