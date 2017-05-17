@@ -3,7 +3,7 @@
         /** @var Zend\Navigation\Page\AbstractPage $page */
         ?>
         <li class="mainmenu-item <?php echo $page->hasPages() ? "has-submenu" : "" ?>">
-            <a class="mainmenu-link" href="<?php echo rawurldecode($page->getHref()); ?>" target="<?php echo $page->getTarget() ?>">
+            <a class="mainmenu-link" href="<?php echo !$page->hasPages() ? rawurldecode($page->getHref()) : ""; ?>" target="<?php echo $page->getTarget() ?>">
                 <?php echo $page->getLabel() ?>
             </a>
             <?php if ($page->hasPages()): ?>
@@ -20,4 +20,4 @@
             <?php endif; ?>
         </li>
     <?php endforeach; ?>
-</ul>
+</ul>a
