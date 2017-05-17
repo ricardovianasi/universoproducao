@@ -17,7 +17,6 @@
     },
     "fancyBox": {
       "main": [
-        "source/jquery.fancybox.css",
         "source/jquery.fancybox.pack.js"
       ]
     }
