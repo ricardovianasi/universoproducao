@@ -94,7 +94,7 @@
         <header class="main-header">
             <h1 class="main-title">Galeria de imagens</h1>
         </header>
-        <div class="gallery-items owl-carousel" id="gallery">
+        <div class="gallery-items owl-carousel owl-theme" id="gallery">
             <?php foreach ($this->gallery as $img): ?>
                 <div class="gallery-item">
                     <img src="<?php echo $this->thumbor()->url($img->getMeta('_image'))->resize(781, 504); ?>" alt="">
@@ -158,7 +158,7 @@
             <?php foreach ($this->eufacoamostra as $eu): ?>
                 <li class="eufacoamostra-item">
                     <?php $href = $eu->getVideo() ? $this->youtubeEmbed($eu->getVideo()) : $this->thumbor()->url($eu->getThumb())->resize(700, 700); ?>
-                    <a title="<?php echo $eu->getDescription(); ?>" href="$href" rel="eufacoamostra" class="eufacoamostra-link video fancybox fancybox.iframe">
+                    <a title="<?php echo $eu->getDescription(); ?>" href="<?php echo $href; ?>" rel="eufacoamostra" class="eufacoamostra-link <?php echo $eu->getVideo() ? "video" : ""; ?>" data-fancybox="gallery">
                         <img src="<?php echo $this->thumbor()->url($eu->getThumb())->resize(700, 700); ?>" alt="" class="grayscale grayscale-fade">
                     </a>
                 </li>
