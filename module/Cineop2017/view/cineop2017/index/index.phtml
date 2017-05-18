@@ -72,13 +72,13 @@
                 <h1 class="main-title">Vídeos</h1>
             </header>
             <div class="tv-wrapper">
-                <div class="tv-highlight">
+                <div class="tv-highlight center">
                     <div class="tv-featured">
-                        <div class="tv-bg" style="background-image: url('images/tv1.jpg')">
-                            <a class="tv-link" href="#"><span class="icon-play4"></span></a>
+                        <div class="tv-bg" style="background-image: url('<?php echo $this->basePath('assets/cineop2017/dist') ?>/images/tv.jpg')">
+                            <a data-fancybox class="tv-link" href="https://youtu.be/psosmUReirQ?list=PLJXNiEFr2795dvx17SSnCYCo4UOrFpxBn"><span class="icon-play4"></span></a>
                         </div>
                         <div class="tv-content">
-                            <p class="tv-title">Estreia do longa comboio de sal</p>
+                            <p class="tv-title"></p>
                         </div>
                     </div>
                 </div>
@@ -118,25 +118,25 @@
 
             <div class="guide-items">
                 <div class="guide-item">
-                    <a class="guide-link" href="">
+                    <a class="guide-link" href="<?php echo $this->url('cineop2017/default', ['slug'=>'como-chegar']) ?>">
                         <span class="sprite sprite-como-chegar"></span>
                         <span class="guide-title">Como chegar</span>
                     </a>
                 </div>
                 <div class="guide-item">
-                    <a class="guide-link" href="">
+                    <a class="guide-link" href="<?php echo $this->url('cineop2017/default', ['slug'=>'restaurantes']) ?>">
                         <span class="sprite sprite-restaurantes"></span>
                         <span class="guide-title">Restaurantes</span>
                     </a>
                 </div>
                 <div class="guide-item">
-                    <a class="guide-link" href="">
+                    <a class="guide-link" href="<?php echo $this->url('cineop2017/default', ['slug'=>'pousadas']) ?>">
                         <span class="sprite sprite-hoteis"></span>
                         <span class="guide-title">Hoteis e Acomodações</span>
                     </a>
                 </div>
                 <div class="guide-item">
-                    <a class="guide-link" href="">
+                    <a class="guide-link" href="<?php echo $this->url('cineop2017/default', ['slug'=>'informacoes-e-turismo']) ?>">
                         <span class="sprite sprite-turismo"></span>
                         <span class="guide-title">Turismo e informações</span>
                     </a>
