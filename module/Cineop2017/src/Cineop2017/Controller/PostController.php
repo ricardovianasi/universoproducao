@@ -90,13 +90,12 @@ class PostController extends SiteController
         if($this->getRequest()->isPost()) {
             $transport = new Smtp();
             $options   = new SmtpOptions(array(
-                'name' => 'smtp.universoproducao.com.br',
                 'host' => 'smtp.universoproducao.com.br',
                 'port'	=> '587',
                 'connection_class'  => 'login',
                 'connection_config' => array(
-                    'username' => 'no-reply@universoproducao.com.br',
-                    'password' => 'no-reply@universo'
+                    'username' => 'webmaster@universoproducao.com.br',
+                    'password' => 'un!v3r$o@n0v0_emai!'
                 ),
             ));
             $transport->setOptions($options);
@@ -293,10 +292,10 @@ class PostController extends SiteController
 
             $mail = new Message();
             $mail->setBody($miniMessage);
-            $mail->setFrom('no-reply@universoproducao.com.br', 'Universo Producao');
+            $mail->setFrom('no-reply@universoproducao.com.br', 'Universo Produção');
             $mail->setTo('imprensa@universoproducao.com.br');
 //            $mail->addBcc('ricardovianasi@gmail.com');
-            $mail->setSubject('Credenciamento de Imprensa - Mostra Tiradentes');
+            $mail->setSubject('Credenciamento de Imprensa - 12ª CineOP');
 
             try {
                 $transport->send($mail);
@@ -318,7 +317,7 @@ class PostController extends SiteController
         $post = $this->params('post');
 
         $events = $this->getRepository(Event::class)->findBy([
-            'type' => 'cinebh'
+            'type' => 'cineop'
         ], ['edition' => 'DESC']);
 
         $viewModel->post = $post;
