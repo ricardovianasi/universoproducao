@@ -9,7 +9,6 @@ $modules = [
     'Admin',
     'Application',
     'Arquivoemcartaz',
-    'Cineop',
     'Cineop2017',
     'Cinebh',
     'Mostratiradentes',
