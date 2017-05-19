@@ -8,12 +8,12 @@ return [
                     'route'    => '/',
                 )
             ),
-            'cineop2017' => array(
+            /*'cineop2017' => array(
                 'type' => 'Literal',
                 'options' => array(
                     'route'    => '/cineop',
                 )
-            ),
+            ),*/
         )
     )
 ];
