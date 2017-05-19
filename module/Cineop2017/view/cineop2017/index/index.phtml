@@ -172,9 +172,9 @@
             <header class="main-header">
                 <h1>Receba Nossos Informativos</h1>
             </header>
-            <form action="" class="newsletter-form">
-                <input type="text" class="newsletter-input" placeholder="Nome">
-                <input type="text" class="newsletter-input" placeholder="Email">
+            <form action="<?php echo $this->url('cineop2017/newsletter') ?>" class="newsletter-form">
+                <input type="text" class="newsletter-input" placeholder="Nome" required>
+                <input type="text" class="newsletter-input" placeholder="Email" required>
                 <button type="submit" class="newsletter-submit">Cadastrar</button>
             </form>
         </div>
