@@ -11,8 +11,9 @@
 
             <?php if($this->credenciamento): ?>
                         <h2 class="main-subtitle">Cadastro realizado com sucesso!</h2>
+                    <?php elseif(!empty($this->error)): ?>
+                        <h2><?php echo $this->error; ?></h2>
                     <?php else: ?>
-
                         <form action="" class="form" method="POST">
                             <table width="100%" border="0" cellspacing="0" class="tabelaForm">
                                 <tr>

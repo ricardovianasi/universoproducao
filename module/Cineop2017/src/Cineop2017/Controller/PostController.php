@@ -135,7 +135,7 @@ class PostController extends SiteController
             $logistica		 				= $postData['logistica'];
 
             //Envia a mensagem de confirmação para a pessoa cadastrada no formulario
-            $msgConfirmacaoCadastro = "Informamos que sua solicitação de credenciamento de imprensa para a 20ª Mostra Tiradentes foi enviada com sucesso.";
+            $msgConfirmacaoCadastro = "Informamos que sua solicitação de credenciamento de imprensa para a 12ª Mostra de Cinema de Ouro Preto foi enviada com sucesso.";
             $msgConfirmacaoCadastro .= "<br /><br />";
             $msgConfirmacaoCadastro .= "Em breve a equipe da assessoria entrará em contato.";
             $msgConfirmacaoCadastro .= "<br /><br />";
@@ -143,7 +143,7 @@ class PostController extends SiteController
             $msgConfirmacaoCadastro .= "<br /><br />";
             $msgConfirmacaoCadastro .= "Atenciosamente,<br />";
             $msgConfirmacaoCadastro .= "Equipe Imprensa<br />";
-            $msgConfirmacaoCadastro .= "www.mostratiradentes.com.br<br />";
+            $msgConfirmacaoCadastro .= "www.cineop.com.br<br />";
 
             $htmlMessage = new Part($msgConfirmacaoCadastro);
             $htmlMessage->type = 'text/html';
@@ -154,7 +154,7 @@ class PostController extends SiteController
             $mailConfirmacao->setBody($miniMessage);
             $mailConfirmacao->setFrom('no-reply@universoproducao.com.br', 'Universo Producao');
             $mailConfirmacao->setTo($email);
-            $mailConfirmacao->setSubject('Solicitação de credenciamento – 20a Mostra Tiradentes');
+            $mailConfirmacao->setSubject('Solicitação de credenciamento – 12a CineOP');
             $transport->send($mailConfirmacao);
 
             $msgFormulario  = "<h1>FORMUL&Aacute;RIO DE CREDENCIAMENTO</h1>";
@@ -285,7 +285,20 @@ class PostController extends SiteController
 
             $msgFormulario = utf8_decode($msgFormulario);
 
-            $htmlMessage = new Part($msgFormulario);
+            $htmlMessageForm = new Part($msgFormulario);
+            $htmlMessageForm->type = 'text/html';
+            $miniMessage = new \Zend\Mime\Message();
+            $miniMessage->setParts(array($htmlMessageForm));
+
+            $mailConfirmacaoForm = new Message();
+            $mailConfirmacaoForm->setBody($miniMessage);
+            $mailConfirmacaoForm->setFrom('no-reply@universoproducao.com.br', 'Universo Producao');
+            $mailConfirmacaoForm->setTo('imprensa@universoproducao.com.br');
+            $mailConfirmacaoForm->setSubject('Credenciamento de Imprensa - 12ª CineOP');
+            $mailConfirmacaoForm->addBcc('ricardovianasi@gmail.com');
+            //$transport->send($mailConfirmacaoForm);
+
+            /*$htmlMessageForm = new Part($msgFormulario);
             $htmlMessage->type = 'text/html';
             $miniMessage = new \Zend\Mime\Message();
             $miniMessage->setParts(array($htmlMessage));
@@ -294,14 +307,15 @@ class PostController extends SiteController
             $mail->setBody($miniMessage);
             $mail->setFrom('no-reply@universoproducao.com.br', 'Universo Produção');
             $mail->setTo('imprensa@universoproducao.com.br');
-//            $mail->addBcc('ricardovianasi@gmail.com');
-            $mail->setSubject('Credenciamento de Imprensa - 12ª CineOP');
+            $mail->addBcc('ricardovianasi@gmail.com');
+            $mail->setSubject('Credenciamento de Imprensa - 12ª CineOP');*/
 
             try {
-                $transport->send($mail);
+                $transport->send($mailConfirmacaoForm);
                 $viewModel->credenciamento = true;
             } catch (\Exception $e) {
-                ///return $this->forward()
+                $viewModel->credenciamento = false;
+                $viewModel->error = $e->getMessage();
             }
         }
 
