@@ -18,9 +18,15 @@
         <header class="main-header">
             <h1 class="main-title">Programação</h1>
         </header>
-
-        <div class="programation-highlights">
-            <article class="programation-featured">
+        <header class="header-mobile">
+            <h1 class="brand"><span class="icon-cineop2017"></span></h1>
+            <p class="header-date">
+                21 - 27 Junho
+                <span>Programação Gratuita</span>
+            </p>
+        </header>
+        <div class="programation-highlights owl-carousel" id="programation-highlights">
+            <div class="programation-featured">
             <?php foreach ($this->program as $p): ?>
                 <div class="bgc" style="background-image: url('<?php echo  $this->thumbor()->url($p->getPhoto())->resize(480, 460); ?>')">
                     <a href="<?php echo $p->getUrl(); ?>">
@@ -31,9 +37,19 @@
                         </div>
                     </a>
                 </div>
-            </article>
+            </div>
             <?php endforeach; ?>
         </div>
+    </section>
+    <?php else: ?>
+    <section class="programation">
+        <header class="header-mobile">
+            <h1 class="brand"><span class="icon-cineop2017"></span></h1>
+            <p class="header-date">
+                21 - 27 Junho
+                <span>Programação Gratuita</span>
+            </p>
+        </header>
     </section>
     <?php endif; ?>
 
@@ -42,9 +58,9 @@
             <header class="main-header">
                 <h1 class="main-title">Notícias</h1>
             </header>
-            <div class="news-highlight">
+            <div class="news-highlight owl-carousel" id="news-highlight">
                 <?php foreach ($this->news as $news): ?>
-                    <article class="news-featured">
+                    <div class="news-featured">
                         <div class="news-wrapper">
                             <a href="<?php echo $this->url("cineop2017/news", ['slug'=>$news->getSlug()]) ?>" class="news-link">
                                 <div class="news-bg">
@@ -57,7 +73,7 @@
                                 <p class="news-seemore">Veja +</p>
                             </a>
                         </div>
-                    </article>
+                    </div>
                 <?php endforeach; ?>
             </div>
             <p class="news-readmore">
