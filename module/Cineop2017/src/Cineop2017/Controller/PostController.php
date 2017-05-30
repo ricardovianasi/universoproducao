@@ -295,7 +295,7 @@ class PostController extends SiteController
             $mailConfirmacaoForm->setFrom('no-reply@universoproducao.com.br', 'Universo Producao');
             $mailConfirmacaoForm->setTo('imprensa@universoproducao.com.br');
             $mailConfirmacaoForm->setSubject('Credenciamento de Imprensa - 12ª CineOP');
-            $mailConfirmacaoForm->addBcc('ricardovianasi@gmail.com');
+//            $mailConfirmacaoForm->addBcc('ricardovianasi@gmail.com');
             //$transport->send($mailConfirmacaoForm);
 
             /*$htmlMessageForm = new Part($msgFormulario);
