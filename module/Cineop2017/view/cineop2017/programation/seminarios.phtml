@@ -127,7 +127,7 @@
         from tb_seminarios
         inner join tb_programacaoevento on tb_seminarios.codSeminario = tb_programacaoevento.CodItemProg
         left join tb_tematica on tb_tematica.codTematica = tb_seminarios.tematica 
-        where tb_seminarios.codMostra = 1075
+        where tb_seminarios.codMostra = 1076
          and tb_programacaoevento.CategoriaProg = 'SE' 
         order by Data, HoraManhaInicial, tituloSeminario";
                 $result = $pdo->query($consulta);
