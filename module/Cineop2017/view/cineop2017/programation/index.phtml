@@ -907,7 +907,7 @@ ini_set("display_errors", 1);
 
                                     if($direc != ""){
                                         ?>
-                                        <span class="subItemListaMenor" style="font-size: 10px;"><?php echo isset($Dir) ? $Dir : '' ?>: <?php echo utf8($direc)?></span><br /><br />
+                                        <span class="subItemListaMenor" style="font-size: 10px;"><?php echo isset($Dir) ? $Dir : '' ?>: <?php echo ($direc)?></span><br /><br />
                                     <?php }
                                 }
                                 unset($titulo);
