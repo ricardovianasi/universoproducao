@@ -936,7 +936,7 @@ ini_set("display_errors", 1);
                         <!-- FAIXA ETÁRIAS -->
                         <?php
 
-                        if($rowProg->infoAdicional != "" ){ echo "<span class='subItemListaMenor'><strong style='font-size: 11px;'>(".$rowProg->infoAdicional.")</strong></span>";}
+                        if($rowProg->infoAdicional != "" ){ echo "<span class='subItemListaMenor'><strong style='font-size: 11px;'>(".\uft8_decode($rowProg->infoAdicional).")</strong></span>";}
 
 
                         $frase = $lg=='Ing' ? "Recommended for ages" : "* Faixa etária sugerida: a partir de";
