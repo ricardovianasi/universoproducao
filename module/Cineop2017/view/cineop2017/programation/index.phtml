@@ -1,8 +1,3 @@
-<?php
-error_reporting(E_ALL);
-ini_set("display_errors", 1);
-
-?>
 <main class="main">
     <?php if($this->breadcrumbs): ?>
         <?php echo $this->partial('cineop2017/partials/_breadcrumbs.phtml', ['breadcrumbs'=>$this->breadcrumbs]); ?>
@@ -811,7 +806,7 @@ ini_set("display_errors", 1);
 
                     <td valign="top">
 
-                        <?php //echo "contCurta: " . $countCurta . " | limiteCurta: " . $limitCurta . " | horaAnterior: $horaAnterior | horario: $horario | LocalAnterior: $localAnterior | Local: $local | CodProg: $rowProg->CodItemProg | CodProdEvento: $rowProg->CodProgEvento"; ?>
+                        <?php echo "contCurta: " . $countCurta . " | limiteCurta: " . $limitCurta . " | horaAnterior: $horaAnterior | horario: $horario | LocalAnterior: $localAnterior | Local: $local | CodProg: $rowProg->CodItemProg | CodProdEvento: $rowProg->CodProgEvento"; ?>
                         <?php if($cat == "Sessão de Curtas")
                         { echo "<a name='curta'></a>";
                         }?>
