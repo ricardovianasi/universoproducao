@@ -13,7 +13,7 @@
             <?php
 //            $dbh=mysql_connect ("162.243.253.29", "universoprod2", "ag51www");
             try {
-                $pdo = new \PDO('mysql:host=162.243.253.29;dbname=universoprod2', "universoprod2", "ag51www", array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
+                $pdo = new \PDO('mysql:host=162.243.253.29;dbname=universoprod2', "universoprod2", "ag51www");
                 $pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
             } catch(\Exeception $e) {
                 echo 'ERROR: ' . $e->getMessage();
@@ -636,7 +636,7 @@
                         $SqlTit = "select TitExpo, TitExpoIng from tb_exposicao where CodExpo = $rowProg->CodItemProg";
                         $resultTit  = $pdo->query($SqlTit);
                         $r = $resultTit->fetchObject();
-                        $titulo	= $r->TitExpo;
+                        @$titulo	= $r->TitExpo;
                         $url = $this->url('cineop2017') . 'exposicao/';
                         $preEstreia = "";
                         break;
@@ -717,7 +717,7 @@
 
                 if ($dataFinal == '23/06' && $horario == '16h30'){
                     //$countCurta = 1;
-                    $limitCurta = 13;
+                    $limitCurta = 12;
                 } elseif ($dataFinal == '23/06' && $horario == '17h30'){
                     //$countCurta = 1;
                     $limitCurta = 17;
@@ -736,6 +736,9 @@
                 } elseif ($dataFinal == '24/06' && $horario == '20h'){
                     //$countCurta = 1;
                     $limitCurta = 18;
+                } elseif ($dataFinal == '24/06' && $horario == '23h30' && $rowProg->CodProgEvento == 5563){
+                    $countCurta = 1;
+                    $limitCurta = 2;
                 } elseif ($dataFinal == '25/06' && $rowProg->CodProgEvento == 5571){
                     $countCurta = 1;
                     $limitCurta = 2;
