@@ -105,8 +105,8 @@ $result	= $pdo->query("select codSeminario, tituloSeminario, tituloSeminarioIng,
 
 $result = $result->fetchObject();
 
-$TituloSem	= ($result->tituloSeminario, "UTF-8", "ISO-8859-1");
-$DescSem	= ($result->descricaoSeminario, "UTF-8", "ISO-8859-1");
+$TituloSem	= ($result->tituloSeminario);
+$DescSem	= ($result->descricaoSeminario);
 $dataOrig	= $result->Data;
 $local	= $result->Local;
 $HoraManhaInicial	= $result->HoraManhaInicial;
@@ -116,7 +116,7 @@ $titPagInt = "Seminário";
 $parLang = "";
 $titPag = "Programação > ".$titPagInt;
 
-$Tematica	= ($result->titTematica, "UTF-8", "ISO-8859-1");
+$Tematica	= ($result->titTematica);
 
 
 
@@ -158,7 +158,7 @@ if ($local != "") {
                 <h1 class="main-title"><?php echo $titPagInt; ?></h1>
             </header>
 
-            <h2><?php echo $TituloSem?><br /><span style="font-size: 10px;"><?php echo ($Tematica)?></span><br /><br />
+            <h2><?php echo $TituloSem?><br /><span style="font-size: 10px;"><?php echo utf8($Tematica)?></span><br /><br />
                 <span class="subItemLista"><?php echo $lg=='Ing' ? "Date" : "Data"; ?>: <?php echo $dataFinal?> | <?php echo $diaSemana?> <br />
                     <?php if ($horaFim != "") { ?>
                         <?php echo $lg=='Ing' ? "Time: " : "Hora: de "; ?><?php echo $horaInicio?> <?php echo $lg=='Ing' ? "-" : "às"; ?> <?php echo $horaFim?><br />
