@@ -10,7 +10,7 @@
 
                 <?php
                 try {
-                    $pdo = new \PDO('mysql:host=162.243.253.29;dbname=universoprod2', "universoprod2", "ag51www");
+                    $pdo = new \PDO('mysql:host=162.243.253.29;dbname=universoprod2', "universoprod2", "ag51www", array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
                     $pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
                 } catch(\Exeception $e) {
                     echo 'ERROR: ' . $e->getMessage();

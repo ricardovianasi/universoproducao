@@ -13,6 +13,7 @@
             <?php
 //            $dbh=mysql_connect ("162.243.253.29", "universoprod2", "ag51www");
             try {
+//                $pdo = new \PDO('mysql:host=localhost;dbname=universoprod2', "root", "root", array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
                 $pdo = new \PDO('mysql:host=162.243.253.29;dbname=universoprod2', "universoprod2", "ag51www", array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
                 $pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
             } catch(\Exeception $e) {
@@ -714,16 +715,18 @@
                     $countCurta = 0;
                 }
 
-
-                if ($dataFinal == '23/06' && $horario == '16h30'){
+                if ($dataFinal == '22/06' && $rowProg->CodProgEvento == 5482){
+                    $countCurta = 1;
+                    $limitCurta = 1;
+                } elseif ($dataFinal == '23/06' && $horario == '16h30'){
                     //$countCurta = 1;
                     $limitCurta = 12;
                 } elseif ($dataFinal == '23/06' && $horario == '17h30'){
                     //$countCurta = 1;
-                    $limitCurta = 17;
+                    $limitCurta = 16;
                 } elseif ($dataFinal == '23/06' && $horario == '19h'){
                     //$countCurta = 1;
-                    $limitCurta = 21;
+                    $limitCurta = 20;
                 } elseif ($dataFinal == '23/06' && $horario == '22h45'){
                     //$countCurta = 1;
                     $limitCurta = 21;
@@ -762,7 +765,7 @@
                     if( ($countCurta > 0 && $countCurta < $limitCurta && $rowProg->CodProgEvento != 5408)
 //                        ||($rowProg->CategoriaProg == "AB")
 //                        ||($rowProg->CodProgEvento == 5341)
-                        ||($rowProg->CodProgEvento == 5482)
+//                        ||($rowProg->CodProgEvento == 5482)
                         ||($rowProg->CodProgEvento == 5538)
                         ||($rowProg->CodProgEvento == 5537)
                         //||($rowProg->CodProgEvento == 3132)
@@ -863,10 +866,31 @@
                                             $pe = "";
                                         }
 
-                                        if($rowProg->CodItemProg == 213 && $horario == "23h" ){$pe="SHOW MUSICAL";}
-                                        elseif($rowProg->CodItemProg == 17970 && $horario != "20h30" ){$categoria = "";}
-                                        elseif($rowProg->CodItemProg == 18178 && $horario != "20h30" ){$categoria = "HISTÓRICA • CURTA E LONGA";}
-                                        elseif($rowProg->CodItemProg == 17986){$categoria = "CONTEMPORÂNEA • MEDIAS";}
+                                        if($rowProg->CodItemProg == 21100 && $horario == "17h30" ){$categoria.=" E MÉDIA";}
+                                        elseif($rowProg->CodItemProg == 21096 && $horario == "17h30" ){$categoria = "";}
+                                        elseif($rowProg->CodItemProg == 21130 && $horario == "19h" ){$categoria.= " E MÉDIA";}
+                                        elseif($rowProg->CodItemProg == 21131 && $horario == "19h"){$categoria = "";}
+                                        elseif($rowProg->CodItemProg == 21092 && $horario == "20h45"){$categoria = "FILME • MOSTRA HISTÓRICA";}
+                                        elseif($rowProg->CodItemProg == 21102 && $horario == "20h45"){$categoria = "";}
+                                        elseif($rowProg->CodItemProg == 21014 && $horario == "22h45"){$categoria = "FILME • MOSTRA CONTEMPORÂNEA • SESSÃO DE CURTAS";}
+                                        elseif($rowProg->CodItemProg == 20946 && $horario == "22h45"){$categoria = "";}
+                                        elseif($rowProg->CodItemProg == 20917 && $horario == "22h45"){$categoria = "";}
+                                        elseif($rowProg->CodItemProg == 21093 && $horario == "20h"){$categoria.= "E MÉDIA";}
+                                        elseif($rowProg->CodItemProg == 20902 && $horario == "23h30"){$categoria.= "SESSÃO DE CURTAS";}
+                                        elseif($rowProg->CodItemProg == 20062 && $horario == "23h30"){$categoria= "";}
+                                        elseif($rowProg->CodItemProg == 20184 && $horario == "19h15"){$categoria.= "SESSÃO DE CURTAS";}
+                                        elseif($rowProg->CodItemProg == 21103 && $horario == "20h"){$categoria.= " E LONGAS";}
+                                        elseif($rowProg->CodItemProg == 21105 && $horario == "20h"){$categoria = "";}
+                                        elseif($rowProg->CodItemProg == 20862 && $horario == "20h"){$categoria.= "SESSÃO DE CURTAS";}
+                                        elseif($rowProg->CodItemProg == 20482 && $horario == "20h"){$categoria = "";}
+                                        elseif($rowProg->CodItemProg == 20182 && $horario == "20h"){$categoria = "";}
+                                        elseif($rowProg->CodItemProg == 20966 && $horario == "22h"){$categoria.= "SESSÃO DE CURTAS";}
+                                        elseif($rowProg->CodItemProg == 20869 && $horario == "22h"){$categoria = "";}
+                                        elseif($rowProg->CodItemProg == 20076 && $horario == "22h"){$categoria = "";}
+                                        elseif($rowProg->CodItemProg == 20865 && $horario == "22h"){$categoria = "";}
+
+
+
                                         elseif($rowProg->CodItemProg == 18179 && $horario != "20h30" ){$categoria = "";}
                                         elseif($rowProg->CategoriaProg == "SE"){$pe = "";}
                                         elseif($rowProg->CategoriaProg == "EN"){$categoria = "ENCERRAMENTO";}
