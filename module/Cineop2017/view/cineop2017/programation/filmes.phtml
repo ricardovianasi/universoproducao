@@ -235,7 +235,7 @@
                             ?>
 
                             <option <?php echo $codSubMostra == $subMostra->CodCat ? "selected='selected'" : "";?>
-                                value="<?php echo $subMostra->CodCat;?>"><?php echo utf8($subMostra->NomeHom);?></option>
+                                value="<?php echo $subMostra->CodCat;?>"><?php echo ($subMostra->NomeHom);?></option>
 
                             <?php
                         }
@@ -279,7 +279,7 @@
 
                         $CodFilme = $row->codObra;
                         //$TitObra = $lg=='Ing' ? "TituloObraIng" : "TituloObra";
-                        $diretor = utf8_encode($row->DirecaoObra);
+                        $diretor = ($row->DirecaoObra);
 
                         if ($lg=='Ing') {
                             $diretor = str_replace(' e ',' and ',$diretor);
@@ -300,7 +300,7 @@
                                     <?php
 
                                     ?>
-                                    <?php echo utf8_encode($tituloObra)?>
+                                    <?php echo ($tituloObra)?>
                                     <?php
                                     if($CodFilme == 13085) echo " - Filme de Abertura";
                                     ?>
