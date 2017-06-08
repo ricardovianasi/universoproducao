@@ -156,12 +156,12 @@
                             $dataFinal = $data2[1]."-".$data2[0];
                             $horaInicio = horaIng($row->HoraManhaInicial);
                             $horaFim = horaIng($row->HoraManhaFinal);
-                            $diaSemana = utf8(formata_data_extensoIng(".$dataOrig."));
+                            $diaSemana = (formata_data_extensoIng(".$dataOrig."));
                         } else {
                             $dataFinal = $data2[0]."/".$data2[1];
                             $horaInicio = hora($row->HoraManhaInicial);
                             $horaFim = hora($row->HoraManhaFinal);
-                            $diaSemana = utf8(formata_data_extenso(".$dataOrig."));
+                            $diaSemana = (formata_data_extenso(".$dataOrig."));
                         }
 
                         $local = $row->Local;
@@ -171,7 +171,7 @@
                             $resultLoc = $resultLoc->fetchObject();
 
                             if ( $resultLoc ){
-                                $local	= utf8($resultLoc->TitLocal);
+                                $local	= ($resultLoc->TitLocal);
                             }
                         }
 
@@ -179,7 +179,7 @@
 
 
 
-                        <h2><?php echo $tituloSeminario?><br /><span style="font-size: 12px;"><?php echo utf8($row->titTematica)?></span><br /><br />
+                        <h2><?php echo $tituloSeminario?><br /><span style="font-size: 12px;"><?php echo ($row->titTematica)?></span><br /><br />
                             <span class="subItemLista cxBaixa"><?php echo $lg=='Ing' ? "Date" : "Data"; ?>: <?php echo $dataFinal?> | <?php echo $diaSemana?> <br />
                                 <?php if ($horaFim != "") { ?>
                                     <?php echo $lg=='Ing' ? "Time: " : "Hora: de "; ?><?php echo $horaInicio?> <?php echo $lg=='Ing' ? "-" : "às"; ?> <?php echo $horaFim?><br />
