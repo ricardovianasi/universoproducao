@@ -108,18 +108,18 @@ $CodFilme = $this->idMovie;
 $result		= $pdo->query("SELECT * FROM tb_obras WHERE codObra = $CodFilme");
 $res = $result->fetchObject();
 
-$TituloFilme	= utf8_encode($res->TituloObra);
+$TituloFilme	= ($res->TituloObra);
 $AnoProducao	= $res->AnoProducaoObra;
 $UfProducao		= $res->ufProducaoObra;
-$PaisProducao	= utf8_encode($res->paisProducao);
+$PaisProducao	= ($res->paisProducao);
 $Duracao		= $res->DuracaoObra;
 $Formato		= $res->Formato;
 $Cor			= $res->ColoracaoObra;
 $Genero1		= $res->Genero;
-$Direcao		= utf8_encode($res->DirecaoObra);
-$Sinopse		= utf8_encode($res->Sinopseobra);
+$Direcao		= ($res->DirecaoObra);
+$Sinopse		= ($res->Sinopseobra);
 $Foto			= $res->fotoFilme;
-$CreditoFoto	= utf8_encode($res->CreditoFoto);
+$CreditoFoto	= ($res->CreditoFoto);
 $CineEscola		= $res->CineEscola;
 $Mostrinha		= $res->ExibirMostrinha;
 $ProgramacaoOficial	= $res->ProgramacaoOficial;
@@ -130,8 +130,8 @@ $faixaEtaria1	= $res->FaixaEtaria1;
 $faixaEtaria2	= $res->FaixaEtaria2;
 $ClassificacaoObra	= $res->ClassificacaoObra;
 
-$elencoObra		= utf8_encode($res->ElencoObra);
-$empresaProdutoraObra	= utf8_encode($res->EmpresaProdutoraObra);
+$elencoObra		= ($res->ElencoObra);
+$empresaProdutoraObra	= ($res->EmpresaProdutoraObra);
 
 
 
@@ -184,8 +184,8 @@ if ($Duracao != ""){
 
         $Duracao = ", ".$Duracao."min";
     } else {
-        if (utf8($Duracao) == "até 45 min") {
-            $Duracao = ", ".utf8($Duracao);
+        if (($Duracao) == "até 45 min") {
+            $Duracao = ", ".($Duracao);
         } else {
             $Duracao = ", ".$Duracao."min";
         }
@@ -290,7 +290,7 @@ if ($Cor == "0") {
                 $data2 = explode("/", $data);
                 $dataFinal = $data2[0]."/".$data2[1];
                 $hora = hora($resPPP->HoraManhaInicial);
-                $diaSemana = utf8(formata_data_extenso(".$dataOrig."));
+                $diaSemana = (formata_data_extenso(".$dataOrig."));
 
 
 
@@ -301,7 +301,7 @@ if ($Cor == "0") {
                     $resultLoc = $resultLoc->fetchObject();
                     $linhas = $resultLoc->$resultLoc;
                     if ( $linhas > 0 ){
-                        $local	= utf8($resultLoc->TitLocal);
+                        $local	= ($resultLoc->TitLocal);
                     }
                 }
                 ?>
@@ -322,7 +322,7 @@ if ($Cor == "0") {
                     $data2 = explode("/", $data);
                     $dataFinal = $data2[0]."/".$data2[1];
                     $hora = hora($row->HoraManhaInicial);
-                    $diaSemana = utf8(formata_data_extenso(".$dataOrig."));
+                    $diaSemana = (formata_data_extenso(".$dataOrig."));
 
 
                     $local = $row->Local;
@@ -332,7 +332,7 @@ if ($Cor == "0") {
                         $resultLoc = $resultLoc->fetchObject();
 //                        $linhas = mysql_num_rows($resultLoc);
                         if ( $linhas > 0 ){
-                            $local	= utf8($resultLoc->TitLocal);
+                            $local	= ($resultLoc->TitLocal);
                         }
                     }
 
