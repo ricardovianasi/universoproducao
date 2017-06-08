@@ -146,7 +146,7 @@
                         $TitSem = $lg=='Ing' ? "tituloSeminarioIng" : "tituloSeminario";
                         $DesSem = $lg=='Ing' ? "descricaoSeminarioIng" : "descricaoSeminario";
 
-                        $tituloSeminario = mb_convert_encoding($row->$TitSem, "UTF-8", "ISO-8859-1");
+                        $tituloSeminario = ($row->$TitSem);
 
                         $dataOrig = $row->Data;
                         $data = databr($dataOrig);
