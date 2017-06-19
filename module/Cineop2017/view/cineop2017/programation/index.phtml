@@ -13,8 +13,8 @@
             <?php
 //            $dbh=mysql_connect ("162.243.253.29", "universoprod2", "ag51www");
             try {
-//                $pdo = new \PDO('mysql:host=localhost;dbname=universoprod2', "root", "root", array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
-                $pdo = new \PDO('mysql:host=162.243.253.29;dbname=universoprod2', "universoprod2", "ag51www", array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
+              $pdo = new \PDO('mysql:host=localhost;dbname=universoprod2', "root", "root", array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
+                //$pdo = new \PDO('mysql:host=162.243.253.29;dbname=universoprod2', "universoprod2", "ag51www", array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
                 $pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
             } catch(\Exeception $e) {
                 echo 'ERROR: ' . $e->getMessage();
@@ -627,7 +627,7 @@
                         $SqlTit = "select TitAbertura, TitAberturaIng, DescAbertura, DescAberturaIng from tb_abertura 
                                             where CodAbertura = $rowProg->CodItemProg";
                         $resultTit  = $pdo->query($SqlTit);
-                        $resultTit = $resultTit->fetch();
+                        $resultTit = $resultTit->fetchObject();
                         $titulo	= $resultTit->TitAbertura;
                         $descricao	= $resultTit->DescAbertura;
                         $url = $this->url('cineop2017') . 'abertura/';
@@ -768,7 +768,8 @@
 //                        ||($rowProg->CodProgEvento == 5482)
                         ||($rowProg->CodProgEvento == 5538)
                         ||($rowProg->CodProgEvento == 5537)
-                        || ($rowProg->codProgEvento == 5595)
+                        || ($rowProg->CodProgEvento == 5595)
+                        || ($rowProg->CodProgEvento == 5600)
                         //||($rowProg->CodProgEvento == 3132)
 
                         /*||($rowProg->CodItemProg == 13028)
