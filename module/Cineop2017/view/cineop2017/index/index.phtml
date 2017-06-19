@@ -25,8 +25,8 @@
             </p>
         </header>
         <div class="programation-highlights owl-carousel" id="programation-highlights">
-            <div class="programation-featured">
             <?php foreach ($this->program as $p): ?>
+            <div class="programation-featured">
                 <div class="bgc" style="background-image: url('<?php echo  $this->thumbor()->url($p->getPhoto())->resize(480, 460); ?>')">
                     <a href="<?php echo $p->getUrl(); ?>">
                         <div class="wrapper">
