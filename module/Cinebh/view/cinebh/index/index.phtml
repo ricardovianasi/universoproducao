@@ -144,7 +144,8 @@
             <p class="tv__day">Dias</p>
             <ul class="tv__items">
                 <?php foreach ($this->videos as $v): ?>
-                    <li class="tv__item"><a class="tv__link" href="<?php echo $v->getYoutube(); ?>" data-lity><?php echo $v->getDate()->format('d'); ?></a></li>
+                    <li class="tv__item">
+                        <a class="tv__link" href="<?php echo $v->getYoutube(); ?>" data-lity><?php echo $v->getDate()->format('d'); ?></a></li>
                 <?php endforeach; ?>
             </ul>
             <!--<p class="readmore"><a class="readmore__link" href="">Veja Todos os Vídeos<span class="icon icon-plus2"></span></a></p>-->

@@ -86,7 +86,7 @@
                 <h1 class="main-title">Vídeos</h1>
             </header>
             <div class="tv-wrapper">
-                <div class="tv-highlight center" style="width: 100%">
+                <div class="tv-highlight">
                     <div class="tv-featured">
                         <div class="tv-bg" style="background-image: url('<?php echo $this->basePath('assets/cineop2017/dist') ?>/images/tv.jpg')">
                             <a data-fancybox class="tv-link" href="https://youtu.be/-hT1iH6vq3E"><span class="icon-play4"></span></a>
@@ -95,6 +95,19 @@
                             <p class="tv-title">CineOP - Mostra de Cinema de Ouro Preto</p>
                         </div>
                     </div>
+                </div>
+                <div class="tv-highlight">
+                    <?php foreach ($this->videos as $v): ?>
+                        <div class="tv-featured">
+                            <div class="tv-bg" style="background-image: url('<?php echo $this->thumbor()->url($v->getThumb())->resize(260, 180); ?>')">
+                                <a class="tv-link" href="<?php echo $v->getYoutube(); ?>"><span class="icon-play4"></span></a>
+                            </div>
+                            <div class="tv-content">
+                                <p class="tv-title"><?php echo $v->getCaption(); ?></p>
+                                <!--<p class="tv-subtitle">Filmes nacionais estreiam em grande estilo na Mostra Tiradentes. Confira como foi o primeiro dia</p>-->
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
                 </div>
             </div>
             <p class="news-readmore">
