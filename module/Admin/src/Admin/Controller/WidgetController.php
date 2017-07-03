@@ -46,7 +46,7 @@ class WidgetController extends AbstractAdminController
 		$this->getEntityManager()->remove($widget);
 		$this->getEntityManager()->flush();
 
-		$this->messages()->flashSuccess('Video excluído com sucesso.');
+		$this->messages()->flashSuccess('Widget excluído com sucesso.');
 
 		return $this->redirect()->toRoute('admin/tv', [self::SITE_PARAM => $this->getSiteIdFromUri()]);
 	}
