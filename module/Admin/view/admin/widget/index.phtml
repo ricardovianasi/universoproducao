@@ -42,7 +42,7 @@
 						</thead>
 						<tbody>
                         <?php foreach ($this->widgets as $w):
-                            $widgetCode="[widget=".$w->getId()."]";
+                            $widgetCode="[".$w->getType()." id=".$w->getId()."]";
 
                             $updateUrl = $this->url('admin/widget', [
                                 'action' => 'update',
