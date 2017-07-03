@@ -15,11 +15,11 @@ $(document).ready(function() {
     $('.project--caroucel .owl-carousel').owlCarousel({
         singleItem: true,
         autoHeight: true,
-        autoWidth: false,
+        autoWidth: true,
         items: 1,
         center: true,
         loop: true,
-        autoplay: false,
+        autoplay: true,
         mouseDrag: true,
         nav: true,
         margin: 10,
