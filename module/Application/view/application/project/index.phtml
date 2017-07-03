@@ -13,7 +13,7 @@
     <div class="main-wrapper">
         <?php if(!empty($post->getContent())): ?>
             <div class="main-content">
-                <?php echo $post->getContent(); ?>
+                <?php echo $this->shortcode($this->thumborize($post->getContent())); ?>
                 <div class="main-separator"></div>
             </div>
         <?php endif; ?>
