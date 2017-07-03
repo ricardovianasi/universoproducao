@@ -9,7 +9,8 @@ return [
         Controller\IndexController::class => InvokableFactory::class,
         Controller\PostController::class => InvokableFactory::class,
         Controller\NewsController::class => InvokableFactory::class,
-        Controller\ChannelController::class => InvokableFactory::class
+        Controller\ChannelController::class => InvokableFactory::class,
+        Controller\ProjectController::class => InvokableFactory::class
     ],
     'initializers' => [
         function($instance, $sm) {
