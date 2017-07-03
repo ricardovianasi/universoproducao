@@ -42,8 +42,8 @@ class WidgetController extends AbstractAdminController
 
 	public function deleteAction($id)
 	{
-		$video = $this->getRepository(Tv::class)->find($id);
-		$this->getEntityManager()->remove($video);
+		$widget = $this->getRepository(Widget::class)->find($id);
+		$this->getEntityManager()->remove($widget);
 		$this->getEntityManager()->flush();
 
 		$this->messages()->flashSuccess('Video excluído com sucesso.');
