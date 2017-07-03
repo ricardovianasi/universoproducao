@@ -63,6 +63,8 @@ class AdminGallery extends AbstractHelper implements ServiceLocatorAwareInterfac
 
 	public function renderRow($item)
 	{
+	    $item = (array)$item;
+
 		$markup = '';
 
 		$data = [
@@ -82,7 +84,7 @@ class AdminGallery extends AbstractHelper implements ServiceLocatorAwareInterfac
 
 	protected function renderthumbColumn($id, $value="")
 	{
-		return '<input name="gallery['.$id.'][file]" class="form-control" type="hidden" value="'.$value.'">
+		return '<input name="gallery['.$id.'][id]" type="hidden" value="'.$id.'" /><input name="gallery['.$id.'][image]" class="form-control" type="hidden" value="'.$value.'">
 			<a href="'.$value.'" class="fancybox-button" data-rel="fancybox-button">
 			<img class="img-responsive" src="'.str_replace('source', 'thumbs', $value).'" alt=""></a>';
 	}

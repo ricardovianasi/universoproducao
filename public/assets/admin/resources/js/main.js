@@ -139,7 +139,10 @@ jQuery(document).ready(function() {
         if(copyToClipboard(document.getElementById("post-url"))) {
 
         }
-    })
+    });
+
+    new Clipboard('.data-copy');
+    
 });
 
 function copyToClipboard(elem) {

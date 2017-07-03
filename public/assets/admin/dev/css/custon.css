@@ -344,4 +344,23 @@
   display: none;
 }
 
+/* line 1, ../../resources/sass/_copy.sass */
+.data-copy {
+  position: relative;
+  color: inherit;
+  text-decoration: none;
+  padding-right: 100px;
+  transition: all 0.2s linear, z-index 0ms, display 0ms;
+}
+/* line 7, ../../resources/sass/_copy.sass */
+.data-copy:hover {
+  text-decoration: none;
+}
+/* line 9, ../../resources/sass/_copy.sass */
+.data-copy:hover:after {
+  content: "copy";
+  position: relative;
+  padding-left: 8px;
+}
+
 /*# sourceMappingURL=custon.css.map */

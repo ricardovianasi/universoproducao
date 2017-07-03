@@ -142,6 +142,10 @@ return array(
                 $thumborUrl = $config['thumbor']['url'];
 
                 return new View\Helper\Thumbor($thumborUrl);
+            },
+            'shortcode' => function($e) {
+                $em = $e->getServiceLocator()->get('Doctrine\ORM\EntityManager');
+                return new View\Helper\Shortcode($em);
             }
         ]
     ),

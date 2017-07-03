@@ -160,6 +160,14 @@ return [
                             'site' => 7
                         ]
                     ],
+                    [
+                        'label' => 'Widgets',
+                        'route' => 'admin/widget',
+                        'icon' => 'icon-book-open',
+                        'params' => [
+                            'site' => 7
+                        ]
+                    ],
 				]
 			],
             [

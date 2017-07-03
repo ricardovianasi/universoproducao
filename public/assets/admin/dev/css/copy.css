@@ -1,0 +1,14 @@
+/* line 1, ../../resources/sass/copy.sass */
+.data-copy {
+  position: relative;
+  color: inherit;
+  text-decoration: none;
+}
+/* line 6, ../../resources/sass/copy.sass */
+.data-copy:hover:after {
+  content: "copy";
+  position: relative;
+  color: red;
+}
+
+/*# sourceMappingURL=copy.css.map */

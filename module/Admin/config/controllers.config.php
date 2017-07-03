@@ -23,15 +23,16 @@ return [
         ///Controller\Factory\PostControllerFactory::class
     ],
     'factories' => [
-        'Admin\Controller\Page'		=> Controller\Factory\PageControllerFactory::class,
-        'Admin\Controller\News'		=> Controller\Factory\NewsControllerFactory::class,
-        'Admin\Controller\Login' 	=> Controller\Factory\LoginControllerFactory::class,
-        'Admin\Controller\Site' 	=> Controller\Factory\SiteControllerFactory::class,
-        'Admin\Controller\Banner'	=> Controller\Factory\BannerControllerFactory::class,
-        'Admin\Controller\Gallery'	=> Controller\Factory\GalleryControllerFactory::class,
-        'Admin\Controller\Menu'		=> Controller\Factory\MenuControllerFactory::class,
-        'Admin\Controller\Guide'    => Controller\Factory\GuideControllerFactory::class,
+        'Admin\Controller\Page'		        => Controller\Factory\PageControllerFactory::class,
+        'Admin\Controller\News'		        => Controller\Factory\NewsControllerFactory::class,
+        'Admin\Controller\Login' 	        => Controller\Factory\LoginControllerFactory::class,
+        'Admin\Controller\Site' 	        => Controller\Factory\SiteControllerFactory::class,
+        'Admin\Controller\Banner'	        => Controller\Factory\BannerControllerFactory::class,
+        'Admin\Controller\Gallery'	        => Controller\Factory\GalleryControllerFactory::class,
+        'Admin\Controller\Menu'		        => Controller\Factory\MenuControllerFactory::class,
+        'Admin\Controller\Guide'            => Controller\Factory\GuideControllerFactory::class,
         'Admin\Controller\Tv'               => Controller\Factory\TvControllerFactory::class,
         'Admin\Controller\Programation'     => Controller\Factory\ProgramationControllerFactory::class,
+        'Admin\Controller\Widget'           => Controller\Factory\WidgetControllerFactory::class
     ]
 ];

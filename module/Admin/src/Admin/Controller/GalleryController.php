@@ -48,7 +48,7 @@ class GalleryController extends AbstractAdminController
                 $galleryItem->setAuthor($this->getAuthenticationService()->getIdentity());
                 $galleryItem->setTitle($item['title']);
                 $galleryItem->setContent($item['description']);
-                $galleryItem->addMeta(new PostMeta(PostMeta::IMAGE, $item['file']));
+                $galleryItem->addMeta(new PostMeta(PostMeta::IMAGE, $item['image']));
                 if($item['credits']) {
                     $galleryItem->addMeta(new PostMeta(PostMeta::CREDITS, $item['credits']));
                 }

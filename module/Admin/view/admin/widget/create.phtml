@@ -1,0 +1,53 @@
+<div class="row post guide">
+<div class="col-md-12">
+	<div class="portlet light portlet-fit bordered">
+		<div class="portlet-title">
+			<div class="caption"><i class="fa fa-file-o"></i>Novo Widget - <?php echo $widget_name ?></div>
+			<div class="actions">
+				<a href="<?php echo $this->url('admin/widget', ['site'=>$site]); ?>"
+				   class="btn btn-default">
+					<i class="icon-action-undo"></i>
+					<span class="hidden-xs"> Voltar </span>
+				</a>
+			</div>
+		</div>
+		<div class="portlet-body">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="portlet-body">
+                        <form action="" method="post" class="default-form-actions">
+                            <input type="hidden" name="widget_type" value="<?php echo $widget_type ?>">
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label">Título</label>
+                                        <input type="text" name="title" class="form-control" placeholder="Título" value="<?php echo $widget->getTitle(); ?>">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label">Descrição</label>
+                                        <input type="text" name="description" class="form-control" placeholder="Descrição" value="<?php echo $widget->getDescription(); ?>">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <hr />
+
+                            <?php echo $this->partial("admin/widget/_widget_$widget_type.phtml", ['site'=>$site, 'widget'=>$widget, 'widget_value'=>$widget_value]) ?>
+                            <div class="form">
+                                <div class="form-body"></div>
+                                <div class="form-actions">
+                                    <button type="submit" class="btn blue btn-lg pull-right action-save">Salvar</button>
+                                    <a href="<?php echo $this->url('admin/tv', ['site'=>$this->site]); ?>" class="btn red btn-lg pull-right action cancel">Descartar</a>
+                                </div>
+                            </div>
+                        </form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</div>

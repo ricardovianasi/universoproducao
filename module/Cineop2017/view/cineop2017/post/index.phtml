@@ -13,7 +13,7 @@
                 <h2><?php $this->post->getSubtitle(); ?></h2>
             <?php endif; ?>
 
-            <?php echo $this->thumborize($post->getContent()); ?>
+            <?php echo $this->shortcode($this->thumborize($post->getContent())); ?>
         </section>
     </div>
 </main>

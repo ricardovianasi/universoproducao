@@ -174,6 +174,19 @@ return array(
                         ],
                         'priority' => 999
                     ],
+                    'widget' => [
+                        'type' => 'Segment',
+                        'options' => [
+                            'route' => '/site/:site/widget[/:action[/:id]]',
+                            'constraints' => [
+                            ],
+                            'defaults' => [
+                                'controller'   => 'Widget',
+                                'action'       => 'index'
+                            ],
+                        ],
+                        'priority' => 999
+                    ],
                     'programation' => [
                         'type' => 'Segment',
                         'options' => [
