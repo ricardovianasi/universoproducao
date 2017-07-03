@@ -470,11 +470,13 @@ class Shortcode extends AbstractHelper
             return "";
         }
 
+        $thumbor = $this->getView()->plugin('thumbor');
+
         $value = json_decode($gallery->getValue());
         $return = "";
         foreach ($value as $v) {
             $return.= '<div class="project-item">
-                  <img src="'.$v->image.'" alt="">
+                  <img src="'.$thumbor()->url($v->image)->resize(640, 427).'" alt="">
                   <div class="project-desc">
                     <p>'.$v->title.'</p>
                   </div></div>';
