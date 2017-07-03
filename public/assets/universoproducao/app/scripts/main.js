@@ -13,6 +13,7 @@ $(document).ready(function() {
     });
 
     $('.project--caroucel .owl-carousel').owlCarousel({
+        singleItem: true,
         autoHeight: true,
         autoWidth: false,
         items: 1,
