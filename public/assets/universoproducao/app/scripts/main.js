@@ -189,3 +189,30 @@ $(document).ready(function() {
     window.Modal = Plugin;
 
 })(window, jQuery);
+
+$('.project--caroucel .owl-carousel').owlCarousel({
+        singleItem: true,
+        autoHeight: true,
+        autoWidth: true,
+        items: 1,
+        center: true,
+        loop: true,
+        autoplay: true,
+        mouseDrag: true,
+        nav: true,
+        margin: 10,
+        navText: [
+            '<button><span class="icon icon-arrow-left4"></span></button>',
+            '<button><span class="icon icon-arrow-right4"></span></button>'
+        ],
+        responsive: {
+            0: {
+                stagePadding: 30,
+                autoWidth: false
+            },
+            480: {
+                stagePadding: 0,
+                autoWidth: true
+            }
+        }
+    });
