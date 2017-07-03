@@ -89,6 +89,14 @@ return [
                             'site' => 1
                         ]
                     ],
+                    [
+                        'label' => 'Widgets',
+                        'route' => 'admin/widget',
+                        'icon' => 'icon-book-open',
+                        'params' => [
+                            'site' => 1
+                        ]
+                    ],
 				]
 			],
 			[
@@ -159,15 +167,7 @@ return [
                         'params' => [
                             'site' => 7
                         ]
-                    ],
-                    [
-                        'label' => 'Widgets',
-                        'route' => 'admin/widget',
-                        'icon' => 'icon-book-open',
-                        'params' => [
-                            'site' => 7
-                        ]
-                    ],
+                    ]
 				]
 			],
             [
