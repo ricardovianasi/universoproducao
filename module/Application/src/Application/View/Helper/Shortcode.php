@@ -484,7 +484,7 @@ class Shortcode extends AbstractHelper
 
 
         return '<div class="project project--caroucel">
-            <div class="project-wrapper"><div class="project-list owl-carousel owl-theme">'.$return.'</div></div>
+            <div class="project-wrapper"><div class="project-list owl-carousel">'.$return.'</div></div>
             </div>';
     }
 }
