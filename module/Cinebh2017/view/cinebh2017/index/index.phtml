@@ -1,0 +1,178 @@
+<?php $this->placeholder("home-class")->set("home"); ?>
+
+<?php if(count($this->bannerImages )): ?>
+<section class="banner">
+    <div class="owl-carousel">
+        <?php foreach ($this->bannerImages as $banner): ?>
+            <div class="item">
+                <img src="<?php echo $this->thumbor()->url($banner->getMeta('_image'))->resize(1920, 630); ?>" alt="">
+                <p class="banner-caption"><?php echo $banner->getSubtitle(); ?></p>
+            </div>
+        <?php endforeach; ?>
+    </div>
+</section>
+<?php endif; ?>
+
+<div class="main-wrapper">
+    <section class="news top">
+        <header class="main-header">
+            <h1 class="main-title"><?php echo $this->translate("Notícias") ?></h1>
+        </header>
+        <div class="news-items">
+            <?php foreach ($this->news as $news): ?>
+                <div class="news-item">
+                    <a href="<?php echo $this->url("cinebh2017/news", ['slug'=>$news->getSlug()]) ?>" class="news-link">
+                        <div class="news-figure">
+                            <img src="<?php echo  $this->thumbor()->url($news->getMeta('_thumb'))->resize(300, 214); ?>" alt="">
+                        </div>
+                        <p class="news-title"><?php echo $news->getTitle(); ?></p>
+                        <p class="news-subtitle"><?php echo $news->getSubtitle(); ?></p>
+                        <p class="news-readmore">Leia mais +</p>
+                    </a>
+                </div>
+            <?php endforeach; ?>
+        </div>
+        <a href="<?php echo $this->url("cinebh2017/default", ['slug'=>'noticias']); ?>" class="btn"><?php echo $this->translate("Todas as Notícias") ?></a>
+    </section>
+</div>
+
+<section class="tv">
+    <div class="main-wrapper">
+        <header class="main-header">
+            <h1 class="main-title"><?php echo $this->translate("Vídeos") ?></h1>
+        </header>
+
+        <div class="tv-wrapper">
+            <div class="tv-highlight">
+                <div class="tv-featured">
+                    <div class="tv-bg" style="background-image: url('images/tv1.jpg')">
+                        <a class="tv-link" href="#"><span class="icon-play4"></span></a>
+                    </div>
+                    <div class="tv-content">
+                        <p class="tv-title">Estreia do longa comboio de sal</p>
+                    </div>
+                </div>
+            </div>
+            <!--<div class="tv-highlight">
+                <div class="tv-featured">
+                    <div class="tv-bg" style="background-image: url('images/tv1.jpg')">
+                        <a class="tv-link" href="#"><span class="icon-play4"></span></a>
+                    </div>
+                    <div class="tv-content">
+                        <p class="tv-title">Estréia de longas nacionais é desta que na 20ª mostra de cinema de tiradentes</p>
+                        <p class="tv-subtitle">Filmes nacionais estreiam em grande estilo na Mostra Tiradentes. Confira como foi o primeiro dia</p>
+                    </div>
+                </div>
+                <div class="tv-featured">
+                    <div class="tv-bg" style="background-image: url('images/tv1.jpg')">
+                        <a class="tv-link" href="#"><span class="icon-play4"></span></a>
+                    </div>
+                    <div class="tv-content">
+                        <p class="tv-title">estréia de longas  nacionais é destaque na 20ª mostra de cinema de tiradentes</p>
+                        <p class="tv-subtitle">Filmes nacionais estreiam em grande estilo na Mostra Tiradentes. Confira como foi o primeiro dia</p>
+                    </div>
+                </div>
+            </div>-->
+        </div>
+        <p class="news-readmore">
+            <a href="https://www.youtube.com/channel/UCaikc9czwiws39fvlHX-RpA" target="_blank" class="btn"><span>Ver todos os Vídeos</span></a>
+        </p>
+    </div>
+</section>
+
+<?php if(count($this->gallery)>0): ?>
+    <section class="gallery home-effect">
+        <header class="main-header programation-header">
+            <h1 class="main-title">Galeria</h1>
+        </header>
+        <div class="owl-carousel">
+            <?php foreach ($this->gallery as $img): ?>
+                <div class="gallery-item"><img src="<?php echo $this->thumbor()->url($img->getMeta('_image'))->resize(1920, 600); ?>" alt=""></div>
+            <?php endforeach; ?>
+        </div>
+        <div class="main-wrapper">
+            <a class="readmore-link" href="http://www.flickr.com/photos/universoproducao" target="_blank">veja mais imagens &gt;</a>
+        </div>
+    </section>
+<?php endif; ?>
+
+<?php if(count($this->eufacoamostra)>0): ?>
+    <section class="eufacoamostra">
+        <header class="main-header">
+            <h1 class="main-title"><span class="icon-eufacoamostra"></span></h1>
+            <p>Compartilhe e publique suas imagens usando a #eufaçoaMostra</p>
+        </header>
+        <ul class="eufacoamostra-items">
+            <?php foreach ($this->eufacoamostra as $eu): ?>
+                <li class="eufacoamostra-item">
+                    <?php $href = $eu->getVideo() ? $eu->getVideo() : $this->thumbor()->url($eu->getThumb())->resize(700, 700); ?>
+                    <a title="<?php echo $eu->getDescription(); ?>" href="<?php echo $href; ?>" class="eufacoamostra-link <?php echo $eu->getVideo() ? "video" : ""; ?>" data-fancybox="gallery">
+                        <img src="<?php echo $this->thumbor()->url($eu->getThumb())->resize(700, 700); ?>" alt="" class="grayscale grayscale-fade">
+                    </a>
+                </li>
+            <?php endforeach; ?>
+        </ul>
+    </section>
+<?php endif; ?>
+
+<section class="guide">
+    <div class="guide-bg" data-image-src="<?php echo $this->basePath('assets/public/cinebh2017/dist') ?>/images/cidade.jpg"></div>
+    <div class="main-wrapper">
+        <header class="main-header">
+            <h1 class="main-title"><?php echo $this->translate("Descubra ouro preto") ?></h1>
+        </header>
+
+        <div class="guide-items">
+            <div class="guide-item">
+                <a class="guide-link" href="">
+                    <span class="sprite sprite-locais"></span>
+                    <span class="guide-title"><?php echo $this->translate("Como chegar"); ?></span>
+                </a>
+            </div>
+            <div class="guide-item">
+                <a class="guide-link" href="">
+                    <span class="sprite sprite-restaurantes"></span>
+                    <span class="guide-title"><?php echo $this->translate("Restaurantes"); ?></span>
+                </a>
+            </div>
+            <div class="guide-item">
+                <a class="guide-link" href="">
+                    <span class="sprite sprite-hoteis"></span>
+                    <span class="guide-title"><?php echo $this->translate("Hoteis e acomodações"); ?></span>
+                </a>
+            </div>
+            <div class="guide-item">
+                <a class="guide-link" href="">
+                    <span class="sprite sprite-turismo"></span>
+                    <span class="guide-title"><?php echo $this->translate("Turismo e Informações"); ?></span>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="newsletter">
+    <div class="main-wrapper">
+        <header class="main-header">
+            <h1><?php echo $this->translate("Receba nossos informativos") ?></h1>
+        </header>
+        <form action="" class="newsletter-form">
+            <p><input class="newsletter-input" placeholder="<?php echo $this->translate("Nome") ?>"></p>
+            <p><input class="newsletter-input" placeholder="<?php echo $this->translate("E-mail") ?>"></p>
+            <p><button type="submit" class="newsletter-submit"><?php echo $this->translate("Cadastrar") ?></button></p>
+        </form>
+    </div>
+</section>
+
+<section class="sitemap">
+    <div class="main-wrapper">
+        <?php $this
+            ->navigation('Cinebh2017Navigation')
+            ->menu()->setPartial("cinebh2017/partials/sitemap.phtml");
+
+        echo $this
+            ->navigation('Cinebh2017Navigation')
+            ->menu()
+            ->render(); ?>
+    </div>
+</section>

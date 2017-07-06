@@ -1,0 +1,100 @@
+.header
+  width: 100%
+  background-image: url("../images/header-bg.png")
+  background-repeat: no-repeat
+  background-size: cover
+
+  &-wrapper
+    +center(1540px)
+    padding-left: 10px
+    padding-right: 10px
+
+  &-brand
+
+    width: 56%
+    float: left
+
+    display: inline-block
+
+    +padding-leader(3)
+    +padding-trailer(3)
+
+    .brand-cinebh,
+    .brand-brasilcinemundi
+      display: inline-block
+      vertical-align: middle
+    .brand-cinebh
+      background-image: url("../images/brand.svg")
+      background-repeat: no-repeat
+      height: 108px
+      width: 243px
+      margin-right: 30px
+      padding-right: 30px
+      border-right: 1px solid white
+
+    .brand-brasilcinemundi
+      background-image: url("../images/brasilcinemundi.svg")
+      background-repeat: no-repeat
+      height: 72px
+      width: 292px
+
+  &-info
+    +padding-trailer(4)
+    +padding-leader(4)
+    float: left
+    .info-date
+      +adjust-font-size-to(36px, 2.5)
+      font-family: $font-family-title
+      font-weight: 700
+      color: white
+      text-transform: uppercase
+      span
+        display: block
+        +adjust-font-size-to(30px, 1.5, 36px)
+        
+  &-actions
+    float: right
+
+    .menu-button
+      text-align: center
+      cursor: pointer
+      +padding-trailer(3.75)
+      +padding-leader(3.75)
+      span
+        +adjust-font-size-to(14px, 1.5)
+        font-weight: 700
+        color: $color-palette-1
+        text-transform: uppercase
+        display: block
+      .circle
+        display: block
+        width: 54px
+        height: 54px
+        border-radius: 50%
+        background-color: $color-palette-1
+        position: relative
+        .burger
+          width: 30px
+          height: 26px
+          transform: rotate(0deg)
+          position: absolute
+          top: 50%
+          left: 50%
+          margin-left: -15px
+          margin-top: -13px
+          .b,b
+            position: absolute
+            display: block
+            height: 5px
+            width: 100%
+            border-radius: 20px
+            background-color: $color-palette-2
+            left: 0
+            transform: rotate(0deg)
+            &:nth-child(1)
+              top: 0
+            &:nth-child(2),
+            &:nth-child(3)
+              top: 10px
+            &:nth-child(4)
+              top: 20px

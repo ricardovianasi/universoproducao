@@ -1,0 +1,36 @@
+.news
+  &-items
+    display: block
+    width: 100%
+    overflow: hidden
+
+  &-figure
+    float: left
+    margin-right: 35px
+    position: relative
+    overflow: hidden
+    img
+      transition: $transition-default
+
+  &-title
+    font-family: $font-family-title
+    font-weight: 700
+    +trailer(1)
+
+  &-subtitle
+    +adjust-font-size-to(16px, 1, 18px)
+    +trailer(1, 16px)
+
+  &-readmore
+    font-family: $font-family-title
+    font-weight: 700
+    text-align: right
+
+  &-link
+    text-decoration: none
+    color: $color-txt
+    transition: $transition-default
+    &:hover
+      color: $color-palette-2
+      img
+        transform: scale(1.2)

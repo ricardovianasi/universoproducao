@@ -180,7 +180,7 @@ return [
                         'route' => 'admin/page',
                         'icon' => 'icon-doc',
                         'params' => [
-                            'site' => 4
+                            'site' => 8
                         ]
                     ],
                     [
@@ -188,7 +188,7 @@ return [
                         'route' => 'admin/guide',
                         'icon' => 'icon-doc',
                         'params' => [
-                            'site' => 4
+                            'site' => 8
                         ]
                     ],
                     [
@@ -196,7 +196,7 @@ return [
                         'route' => 'admin/menu',
                         'icon' => 'icon-list',
                         'params' => [
-                            'site' => 4
+                            'site' => 8
                         ]
                     ],
                     [
@@ -204,7 +204,7 @@ return [
                         'route' => 'admin/banner',
                         'icon' => 'fa fa-image',
                         'params' => [
-                            'site' => 4
+                            'site' => 8
                         ]
                     ],
                     [
@@ -212,7 +212,7 @@ return [
                         'route' => 'admin/gallery',
                         'icon' => 'fa fa-image',
                         'params' => [
-                            'site' => 4
+                            'site' => 8
                         ]
                     ],
                     [
@@ -220,7 +220,7 @@ return [
                         'route' => 'admin/tv',
                         'icon' => 'fa fa-image',
                         'params' => [
-                            'site' => 4
+                            'site' => 8
                         ]
                     ],
                     [
@@ -228,9 +228,17 @@ return [
                         'route' => 'admin/programation',
                         'icon' => 'fa fa-image',
                         'params' => [
-                            'site' => 4
+                            'site' => 8
                         ]
                     ],
+                    [
+                        'label' => 'Eu Faço a Mostra',
+                        'route' => 'admin/eufacoamostra',
+                        'icon' => 'icon-book-open',
+                        'params' => [
+                            'site' => 7
+                        ]
+                    ]
                 ]
             ],
             [

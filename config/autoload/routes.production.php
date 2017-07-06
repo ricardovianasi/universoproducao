@@ -1,19 +1,15 @@
 <?php
 return [
-    /*'router' => array(
+    'router' => array(
         'routes' => array(
-            'cinebh' => array(
-                'type' => 'Literal',
+            'cinebh2017' => array(
                 'options' => array(
-                    'route'    => '/cinebh',
+                    'route'    => '[:locale.]cinebh2017',
+                    'defaults' => array(
+                        'locale' => 'pt',
+                    ),
                 )
             ),
-        )
-    ),*/
-    'universoproducao' => array(
-        'type' => 'Literal',
-        'options' => array(
-            'route'    => '/universoproducao',
         )
     ),
 ];
