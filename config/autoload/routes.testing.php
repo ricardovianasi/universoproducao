@@ -8,12 +8,14 @@ return [
                     'route'    => '/',
                 )
             ),
-            /*'cineop2017' => array(
-                'type' => 'Literal',
+            'cinebh2017' => array(
                 'options' => array(
-                    'route'    => '/cineop',
+                    'route'    => '[:locale.]cinebh2017',
+                    'defaults' => array(
+                        'locale' => 'pt',
+                    ),
                 )
-            ),*/
+            ),
         )
     )
 ];
