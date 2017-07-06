@@ -13,7 +13,7 @@ return array(
             'cinebh2017' => array(
                 'type'    => Hostname::class,
                 'options' => array(
-                    'route'    => '[www.][:locale.]cinebh.com.br',
+                    'route'    => '[:locale.]cinebh2017',
                     'defaults' => array(
                         'controller'    => Controller\IndexController::class,
                         'action'        => 'index',
