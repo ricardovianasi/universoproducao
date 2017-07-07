@@ -12,7 +12,7 @@ return array(
         'routes' => array(
             'cinebh2017' => array(
                 'type'    => Hostname::class,
-                'type' => 'Literal'
+                'type' => 'Hostname'
 ,                'options' => array(
                     'route'    => '[:locale.]cinebh',
                     'defaults' => array(
