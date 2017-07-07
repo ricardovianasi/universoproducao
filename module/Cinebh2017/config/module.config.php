@@ -14,7 +14,7 @@ return array(
 //                'type'    => Hostname::class,
                 'type' => 'Literal'
 ,                'options' => array(
-                    'route'    => 'cinebh',
+                    'route'    => '/cinebh',
                     'defaults' => array(
                         'controller'    => Controller\IndexController::class,
                         'action'        => 'index',
