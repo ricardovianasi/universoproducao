@@ -1,4 +1,4 @@
-relative_assets = false
+relative_assets = true
 
 # Root
 # project_type = :stand_alone
@@ -6,12 +6,12 @@ relative_assets = false
 # project_path = "/"
 
 # CSS and Sass
-css_dir = "dist/styles/"
-sass_dir = "app/styles/"
+css_dir = "./dist/styles/"
+sass_dir = "./app/styles/"
 
 # Images
 http_images_path = "../images" # Default: http_path + "/" + images_dir
-# images_dir = "app/images"
+images_dir = "./app/images"
 images_path = "./app/images" # Default: <project_path>/<images_dir>
 # generated_images_dir = images_dir
 
