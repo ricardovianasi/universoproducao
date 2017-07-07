@@ -26,16 +26,17 @@
     <header class="header">
         <div class="header-wrapper">
             <h1 class="header-brand">
-                <a class="brand-link" href="#">
+                <a class="brand-link" href="<?php echo $this->url('cinebh2017') ?>">
                     <span class="brand-cinebh"></span>
                     <span class="brand-brasilcinemundi"></span>
                 </a>
             </h1>
             <div class="header-info">
-                <p class="info-date">22-27 agosto 2017<span>Programação gratuita</span></p>
+                <p class="info-date"><?php echo $this->translate("22-27 agosto 2017"); ?><span><?php echo $this->translate("Programação gratuita"); ?></span></p>
             </div>
             <div class="header-actions">
-                <div class="menu-button" id="menu-button" data-src="#navigation-modal">
+                <a href="#" class="action langselector"><span>ENGLISH</span></a>
+                <div class="action menu-button" id="menu-button" data-src="#navigation-modal">
                     <div class="circle">
                         <div class="burger">
                             <span class="b"></span>
@@ -68,16 +69,16 @@
                 <div class="footer-social">
                     <p class="footer-title">Siga-nos:</p>
                     <ul class="footer-socialitems">
-                        <li class="footer-socialitem"><a class="footer-socialink" href=""><span class="icon icon-facebook"></span></a></li>
-                        <li class="footer-socialitem"><a class="footer-socialink" href=""><span class="icon icon-twitter"></span></a></li>
-                        <li class="footer-socialitem"><a class="footer-socialink" href=""><span class="icon icon-instagram"></span></a></li>
-                        <li class="footer-socialitem"><a class="footer-socialink" href=""><span class="icon icon-flickr"></span></a></li>
-                        <li class="footer-socialitem"><a class="footer-socialink" href=""><span class="icon icon-youtube"></span></a></li>
+                        <li class="footer-socialitem"><a class="footer-socialink" target="_blank" href="http://www.facebook.com/universoproducao"><span class="icon icon-facebook"></span></a></li>
+                        <li class="footer-socialitem"><a class="footer-socialink" target="_blank" href="http://twitter.com/universoprod"><span class="icon icon-twitter"></span></a></li>
+                        <li class="footer-socialitem"><a class="footer-socialink" target="_blank" href="http://instagram.com/universoproducao"><span class="icon icon-instagram"></span></a></li>
+                        <li class="footer-socialitem"><a class="footer-socialink" target="_blank" href="http://www.flickr.com/photos/universoproducao"><span class="icon icon-flickr"></span></a></li>
+                        <li class="footer-socialitem"><a class="footer-socialink" target="_blank" href="http://www.youtube.com/user/universoproducao/featured"><span class="icon icon-youtube"></span></a></li>
                     </ul>
                 </div>
             </div>
         </div>
-        <p class="footer-copy">Copyright © 2017. Universo Produção - Todos os direitos reservados.</p>
+        <p class="footer-copy">Copyright © 2017. Universo Produção - <?php echo $this->translate("Todos os direitos reservados") ?>.</p>
     </footer>
 
     <?php $this

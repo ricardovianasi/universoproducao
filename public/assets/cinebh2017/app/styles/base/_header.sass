@@ -11,7 +11,7 @@
 
   &-brand
 
-    width: 56%
+    width: 50%
     float: left
 
     display: inline-block
@@ -55,11 +55,26 @@
   &-actions
     float: right
 
+    .action
+      display: inline-block
+      vertical-align: middle
+
+    .langselector
+      font-family: $font-family-title
+      font-weight: 700
+      text-decoration: none
+      text-transform: uppercase
+      margin-right: 40px
+      color: white
+      &:hover
+        color: $color-palette-1
+
     .menu-button
       text-align: center
       cursor: pointer
       +padding-trailer(3.75)
       +padding-leader(3.75)
+      display: inline-block
       span
         +adjust-font-size-to(14px, 1.5)
         font-weight: 700

@@ -1,4 +1,8 @@
 .home
+
+  .main-header
+    +trailer(0)
+
   &-effect
     position: relative
     &:after,
@@ -11,7 +15,7 @@
       z-index: 1000
     &:before
       transform: skewY(3deg)
-      top: -8%
+      top: -10%
     &:after
       transform: skewY(3deg)
       top: 90%
@@ -26,6 +30,16 @@
     width: 100%
     position: relative
     z-index: 100
+
+    &-caption
+      +adjust-font-size-to(14px)
+      font-style: italic
+      position: absolute
+      top: 0
+      right: 10px
+      padding: 10px
+      color: white
+      background-color: rgba(0,0,0,.4)
 
     .owl-dots
       position: absolute
@@ -141,6 +155,12 @@
 
     &-item
       +column(1/2, $cycle:2)
+      padding-left: 0
+      padding-right: 0
+
+    &-figure
+      float: left
+      margin-right: 20px
 
   .tv
     +trailer(10)
@@ -155,6 +175,8 @@
       position: relative
       +leader(3)
       +trailer(3)
+      &--full
+        width: 100%
       &:nth-child(1)
         padding-right: 20px
         .tv-bg
@@ -277,6 +299,16 @@
       right: 0
       z-index: 100000
 
+    &-caption
+      +adjust-font-size-to(14px)
+      font-style: italic
+      position: absolute
+      top: 0
+      right: 10px
+      padding: 10px
+      color: white
+      background-color: rgba(0,0,0,.3)
+
   .eufacoamostra
     position: relative
     +leader(13)
@@ -343,6 +375,7 @@
     +padding-leader(13)
     +padding-trailer(16)
     position: relative
+    z-index: 9
     &-bg
       position: absolute
       top: 0
@@ -351,49 +384,24 @@
       right: 0
       width: 100%
       height: 100%
-    //  background-image: url('../images/cidade.jpg')
-    //  background-repeat: no-repeat
-    //  background-size: cover
-    //  //background-attachment: fixed
-
-
-    //position: relative
-    //background-color: rgba(255,255,255,.25)
-    //background-image: url('../images/cidade.jpg')
-    //background-repeat: no-repeat
-    //background-attachment: fixed
-    //&:after
-    //  content: ""
-    //  position: absolute
-    //  top: 0
-    //  left: 0
-    //  width: 100%
-    //  height: 100%
-    //  background-image: url('../images/cidade.jpg')
-    //  background-repeat: no-repeat
-    //  background-size: cover
-    //  opacity: .25
-    //  z-index: -1
-
-    position: relative
-    z-index: 9
     .main-header
       +padding-trailer(4)
       text-align: center
 
     &-items
       display: block
-      overflow: hidden
+      width: 100%
 
     &-item
-      +column(1/4, $cycle:4)
+      display: inline-block
       text-align: center
+      width: 24.5%
 
     &-link
       text-decoration: none
       .sprite
         margin: 0 auto
-        +trailer(1)
+        +trailer(1.5)
 
     &-title
       font-family: $font-family-title

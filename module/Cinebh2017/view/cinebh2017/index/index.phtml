@@ -87,7 +87,10 @@
         </header>
         <div class="owl-carousel">
             <?php foreach ($this->gallery as $img): ?>
-                <div class="gallery-item"><img src="<?php echo $this->thumbor()->url($img->getMeta('_image'))->resize(1920, 600); ?>" alt=""></div>
+                <div class="gallery-item">
+                    <img src="<?php echo $this->thumbor()->url($img->getMeta('_image'))->resize(1920, 600); ?>" alt="">
+                    <p class="gallery-caption"><?php echo $img->getMeta('_credits'); ?></p>
+                </div>
             <?php endforeach; ?>
         </div>
         <div class="main-wrapper">
