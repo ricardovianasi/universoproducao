@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Cinebh\n"
-"POT-Creation-Date: 2016-10-21 12:50-0200\n"
-"PO-Revision-Date: 2016-10-21 14:38-0200\n"
+"POT-Creation-Date: 2017-07-07 10:43-0300\n"
+"PO-Revision-Date: 2017-07-07 10:43-0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en_US\n"
@@ -16,124 +16,150 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: cinebh/index/index.phtml:19
+#: cinebh2017/index/index.phtml:20
 msgid "Notícias"
 msgstr "News"
 
-#: cinebh/index/index.phtml:20
-msgid "Todas as Notícias"
-msgstr "All News"
+#: cinebh2017/index/index.phtml:36
+msgid "Ver todas as Notícias"
+msgstr "All news"
 
-#: cinebh/index/index.phtml:34
-msgid "Leia Mais"
-msgstr "Read More"
+#: cinebh2017/index/index.phtml:44
+msgid "Vídeos"
+msgstr "Videos"
 
-#: cinebh/index/index.phtml:46
-msgid "Galeria"
-msgstr "Gallery"
+#: cinebh2017/index/index.phtml:81
+msgid "Ver todos os vídeos"
+msgstr "All videos"
 
-#: cinebh/index/index.phtml:47
-msgid "Galeria Completa"
-msgstr "Full Gallery"
+#: cinebh2017/index/index.phtml:101
+msgid "Ver mais imagens"
+msgstr "All photos"
 
-#: cinebh/index/index.phtml:69
-msgid "Belo Horizonte em Conexão com o mundo"
-msgstr "Belo Horizonte in Connection with the world"
+#: cinebh2017/index/index.phtml:110
+msgid "Compartilhe e publique suas imagens usando a #eufaçoaMostra"
+msgstr "Share and publish your images using #eufaçoaMostra"
 
-#: cinebh/index/index.phtml:72
-msgid "VT CineBh e Brasil CineMundi"
-msgstr "VT CineBh and Brazil CineMundi"
+#: cinebh2017/index/index.phtml:129
+msgid "Descubra ouro preto"
+msgstr "Discover Ouro Preto City"
 
-#: cinebh/index/index.phtml:80
-msgid "Guia"
-msgstr "Guide"
+#: cinebh2017/index/index.phtml:136
+msgid "Como chegar"
+msgstr "Place"
 
-#: cinebh/index/index.phtml:82
-msgid "A cidade em movimento"
-msgstr "The city in motion"
-
-#: cinebh/index/index.phtml:84
-msgid "Locais"
-msgstr "Places"
-
-#: cinebh/index/index.phtml:85
-msgid "Turismo e Informações"
-msgstr "Tourism and Information"
-
-#: cinebh/index/index.phtml:86
+#: cinebh2017/index/index.phtml:142
 msgid "Restaurantes"
 msgstr "Restaurants"
 
-#: cinebh/index/index.phtml:87
-msgid "Hoteis e Acomodações"
-msgstr "Hotels and Accommodations"
+#: cinebh2017/index/index.phtml:148
+msgid "Hoteis e acomodações"
+msgstr "Accommodation"
 
-#: cinebh/index/index.phtml:119
+#: cinebh2017/index/index.phtml:154
+msgid "Turismo e Informações"
+msgstr "Tourism and Information"
+
+#: cinebh2017/index/index.phtml:164
 msgid "Receba nossos informativos"
 msgstr "Receive our newsletter"
 
-#: cinebh/index/index.phtml:121
+#: cinebh2017/index/index.phtml:167
 msgid "Nome"
 msgstr "Name"
 
-#: cinebh/index/index.phtml:122
-msgid "Email"
-msgstr "Email"
+#: cinebh2017/index/index.phtml:168
+msgid "E-mail"
+msgstr "E-mail"
 
-#: cinebh/index/index.phtml:123
+#: cinebh2017/index/index.phtml:169
 msgid "Cadastrar"
 msgstr "Register"
 
-#: cinebh/index/index.phtml:127
-msgid "Siga-nos"
-msgstr "Follow us"
-
-#: cinebh/index/index.phtml:159
-msgid ""
-"o futuro nasce da história,<br />da cultura nasce<br />a arte e dela<br />o "
-"cinema"
-msgstr "the future born of history,<br />culture born of art<br />and her film"
-
-#: cinebh/index/index.phtml:160
-msgid "Contate-nos"
-msgstr "Contact Us"
-
-#: cinebh/index/index.phtml:180
-msgid "Patrocínio"
-msgstr "Sponsorship"
-
-#: cinebh/index/index.phtml:189
-msgid "Apoio"
-msgstr "Support"
-
-#: cinebh/index/index.phtml:201
-msgid "Patrocínio Brasilcinemundi"
-msgstr "Sponsorship Brasilcinemundi"
-
-#: cinebh/index/index.phtml:207
-msgid "COOPERAÇÃO BRASIL CINEMUNDI"
-msgstr "Cooperation Brasilcinemundi"
-
-#: cinebh/index/index.phtml:216
-msgid "APOIO BRASILCINEMUNDI"
-msgstr "Support Brasilcinemundi"
-
-#: cinebh/index/index.phtml:231
-msgid "Realização"
-msgstr "realization"
-
-#: cinebh/partials/navigation.phtml:4
+#: cinebh2017/partials/navigation.phtml:21
 msgid "Início"
 msgstr "Home"
 
-#: layout/layout.phtml:7
-msgid "10 Mostra de Cinema de Belo Horizonte"
-msgstr "10 Cinebh International Film Festival"
+#: layout/layout.phtml:9
+msgid "CineBH - 11ª Mostra de Cinema de Belo Horizonte"
+msgstr "CineBH - International film festival"
+
+#: layout/layout.phtml:37
+msgid "22-27 agosto 2017"
+msgstr "22-27 august"
+
+#: layout/layout.phtml:37
+msgid "Programação gratuita"
+msgstr "Programming free"
 
 #: layout/layout.phtml:68
+msgid "Contate-nos"
+msgstr "Contact Us"
+
+#: layout/layout.phtml:76
+msgid "Siga-nos"
+msgstr "Follow us"
+
+#: layout/layout.phtml:87
 msgid "Todos os direitos reservados"
 msgstr "All rights reserved"
 
-#: layout/layout.phtml:106
-msgid "Voltar"
-msgstr "Back"
+#~ msgid "Todas as Notícias"
+#~ msgstr "All News"
+
+#~ msgid "Leia Mais"
+#~ msgstr "Read More"
+
+#~ msgid "Galeria"
+#~ msgstr "Gallery"
+
+#~ msgid "Galeria Completa"
+#~ msgstr "Full Gallery"
+
+#~ msgid "Belo Horizonte em Conexão com o mundo"
+#~ msgstr "Belo Horizonte in Connection with the world"
+
+#~ msgid "VT CineBh e Brasil CineMundi"
+#~ msgstr "VT CineBh and Brazil CineMundi"
+
+#~ msgid "Guia"
+#~ msgstr "Guide"
+
+#~ msgid "A cidade em movimento"
+#~ msgstr "The city in motion"
+
+#~ msgid "Locais"
+#~ msgstr "Places"
+
+#~ msgid "Hoteis e Acomodações"
+#~ msgstr "Hotels and Accommodations"
+
+#~ msgid "Email"
+#~ msgstr "Email"
+
+#~ msgid "o futuro nasce da história,<br />da cultura nasce<br />a arte e dela<br />o cinema"
+#~ msgstr "the future born of history,<br />culture born of art<br />and her film"
+
+#~ msgid "Patrocínio"
+#~ msgstr "Sponsorship"
+
+#~ msgid "Apoio"
+#~ msgstr "Support"
+
+#~ msgid "Patrocínio Brasilcinemundi"
+#~ msgstr "Sponsorship Brasilcinemundi"
+
+#~ msgid "COOPERAÇÃO BRASIL CINEMUNDI"
+#~ msgstr "Cooperation Brasilcinemundi"
+
+#~ msgid "APOIO BRASILCINEMUNDI"
+#~ msgstr "Support Brasilcinemundi"
+
+#~ msgid "Realização"
+#~ msgstr "realization"
+
+#~ msgid "10 Mostra de Cinema de Belo Horizonte"
+#~ msgstr "10 Cinebh International Film Festival"
+
+#~ msgid "Voltar"
+#~ msgstr "Back"

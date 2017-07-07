@@ -2,9 +2,11 @@
 <html lang="">
 <head>
     <meta charset="utf-8">
-    <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title><?php echo $this->translate("11ª Mostra de Cinema de Belo Horizonte"); ?></title>
+    <meta name="description" content="">
+    <meta name="keywords" content="cinema,mostra,bh,cinebh,internacional,film,festival">
+
+    <title><?php echo $this->translate("CineBH - 11ª Mostra de Cinema de Belo Horizonte"); ?></title>
 
     <!--Facebook-->
     <meta property="og:url" content="<?php echo $this->serverUrl(true) ?>">
@@ -35,7 +37,11 @@
                 <p class="info-date"><?php echo $this->translate("22-27 agosto 2017"); ?><span><?php echo $this->translate("Programação gratuita"); ?></span></p>
             </div>
             <div class="header-actions">
-                <a href="#" class="action langselector"><span>ENGLISH</span></a>
+                <?php if($this->locale == 'pt'): ?>
+                    <a href="<?php echo $this->url("cinebh2017/home", ['locale'=>'en']) ?>" class="action langselector"><span>ENGLISH</span></a>
+                <?php else: ?>
+                    <a href="<?php echo $this->url("cinebh2017/home", ['locale'=>'pt']) ?>" class="action langselector"><span>Português</span></a>
+                <?php endif; ?>
                 <div class="action menu-button" id="menu-button" data-src="#navigation-modal">
                     <div class="circle">
                         <div class="burger">
@@ -59,7 +65,7 @@
         <div class="footer-wrapper">
             <div class="footer-clear">
                 <div class="footer-contact">
-                    <p class="footer-title">Contate-nos:</p>
+                    <p class="footer-title"><?php echo $this->translate("Contate-nos"); ?>:</p>
                     <span class="icon icon-universo-producao"></span>
                     <span class="footer-add">+ 55 31 3282-2366<br>
                             up@universoproducao.com.br<br>
@@ -67,7 +73,7 @@
                             30220-150, Belo Horizonte | MG</span>
                 </div>
                 <div class="footer-social">
-                    <p class="footer-title">Siga-nos:</p>
+                    <p class="footer-title"><?php echo $this->translate("Siga-nos"); ?>:</p>
                     <ul class="footer-socialitems">
                         <li class="footer-socialitem"><a class="footer-socialink" target="_blank" href="http://www.facebook.com/universoproducao"><span class="icon icon-facebook"></span></a></li>
                         <li class="footer-socialitem"><a class="footer-socialink" target="_blank" href="http://twitter.com/universoprod"><span class="icon icon-twitter"></span></a></li>

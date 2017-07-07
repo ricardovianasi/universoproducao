@@ -11,10 +11,10 @@ return array(
         'router_class' => 'Zend\Mvc\Router\Http\TranslatorAwareTreeRouteStack',
         'routes' => array(
             'cinebh2017' => array(
-//                'type'    => Hostname::class,
+                'type'    => Hostname::class,
                 'type' => 'Literal'
 ,                'options' => array(
-                    'route'    => '/cinebh',
+                    'route'    => '[:locale.]cinebh',
                     'defaults' => array(
                         'controller'    => Controller\IndexController::class,
                         'action'        => 'index',
