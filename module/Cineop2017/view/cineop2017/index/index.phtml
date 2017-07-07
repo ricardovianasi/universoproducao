@@ -127,7 +127,7 @@
         <div class="gallery-items owl-carousel" id="gallery">
             <?php foreach ($this->gallery as $img): ?>
                 <div class="gallery-item">
-                    <img src="<?php echo $this->thumbor()->url($img->getMeta('_image'))->resize(781, 504); ?>" alt="">
+                    <img src="<?php echo $this->thumbor()->url($img->getMeta('_image'))->resize(1920, 600); ?>" alt="">
                     <div class="gallery-content">
                         <p class="gallery-title"><?php echo $img->getTitle(); ?></p>
                         <p class="gallery-subtitle"><?php echo $img->getMeta('_credits'); ?></p>
