@@ -10,7 +10,7 @@ return [
             ),
             'cinebh2017' => array(
                 'options' => array(
-                    'route'    => '[:locale.]cinebh2017',
+                    'route'    => '[:locale.]cinebh',
                     'defaults' => array(
                         'locale' => 'pt',
                     ),
