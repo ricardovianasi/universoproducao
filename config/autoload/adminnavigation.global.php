@@ -236,7 +236,7 @@ return [
                         'route' => 'admin/eufacoamostra',
                         'icon' => 'icon-book-open',
                         'params' => [
-                            'site' => 7
+                            'site' => 8
                         ]
                     ]
                 ]
