@@ -60,7 +60,7 @@ $(document).ready(function () {
     });
 
     jQuery(window).trigger('resize').trigger('scroll');
-    $('.guide-bg').parallax({imageSrc: '../images/cidade.jpg'});
+    $('.guide-bg').parallax();
 
 
     $('#menu-button').fancybox({
