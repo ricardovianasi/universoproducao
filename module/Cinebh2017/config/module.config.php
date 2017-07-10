@@ -14,7 +14,7 @@ return array(
                 'type'    => Hostname::class,
                 'type' => 'Hostname'
 ,                'options' => array(
-                    'route'    => '[:locale.]cinebh',
+                    'route'    => '[www.][:locale.]cinebh.com.br',
                     'defaults' => array(
                         'controller'    => Controller\IndexController::class,
                         'action'        => 'index',

@@ -8,7 +8,7 @@ return [
                     'route'    => '/',
                 )
             ),
-            'cinebh2017' => array(
+            /*'cinebh2017' => array(
                 'type' => 'Literal',
                 'options' => array(
                     'route'    => '/cinebh',
@@ -16,7 +16,7 @@ return [
                         'locale' => 'pt',
                     ),
                 )
-            ),
+            ),*/
         )
     )
 ];
