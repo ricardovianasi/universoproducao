@@ -10,7 +10,7 @@
         <div class="news">
             <div class="news-items">
                 <?php foreach ($this->events as $event): ?>
-                    <div class="news-item" style="display: block; float: none; margin: 0 !important; padding-bottom: 1em; display: block;">
+                    <div class="news-item" style="display: block; float: none; margin: 0 !important; padding-right:0 !important; padding-left:0 !important; padding-bottom: 1em; display: block;">
                         <p class="news-title"><?php echo $event->getFullName(); ?></p>
                         <p class="news-readmore"><a href="<?php echo $this->url("cinebh2017/edition", ['id'=>$event->getId()]) ?>" class="news__link readmore-2">Leia mais</a></p>
                     </div>
