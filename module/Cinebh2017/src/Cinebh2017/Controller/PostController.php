@@ -136,14 +136,14 @@ class PostController extends SiteController
             $logistica		 				= $postData['logistica'];
 
             //Envia a mensagem de confirmação para a pessoa cadastrada no formulario
-            $msgConfirmacaoCadastro = "Informamos que sua solicitação de credenciamento de imprensa para a 10ª CineBH foi enviada com sucesso.";
+            $msgConfirmacaoCadastro = "Informamos que sua solicitação de credenciamento de imprensa para a 11ª CineBH foi enviada com sucesso.";
             $msgConfirmacaoCadastro .= "<br /><br />";
             $msgConfirmacaoCadastro .= "Em breve a equipe da assessoria entrará em contato.";
             $msgConfirmacaoCadastro .= "<br /><br />";
             $msgConfirmacaoCadastro .= "Qualquer dúvida, estamos à disposição pelo telefone (31) 3282 2366 ou e-mail imprensa@universoproducao.com.br";
             $msgConfirmacaoCadastro .= "<br /><br />";
             $msgConfirmacaoCadastro .= "Atenciosamente,<br />";
-            $msgConfirmacaoCadastro .= "Equipe Imprensa – CineOP<br />";
+            $msgConfirmacaoCadastro .= "Equipe Imprensa – CineBH<br />";
             $msgConfirmacaoCadastro .= "www.cinebh.com.br<br />";
 
             $htmlMessage = new Part($msgConfirmacaoCadastro);
