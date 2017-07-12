@@ -3,6 +3,7 @@ namespace Cinebh2017\Controller;
 
 use Application\Controller\SiteController;
 use Application\Entity\Banner\Banner;
+use Application\Entity\Eufacoamostra;
 use Application\Entity\Gallery\Gallery;
 use Application\Entity\Post\Post;
 use Application\Entity\Post\PostStatus;
@@ -65,6 +66,8 @@ class IndexController extends SiteController
             ['order'=>'ASC']
         );
 
+        $eufacoamostra = $this->getRepository(Eufacoamostra::class)->findBy(['site' => self::SITE_ID], [], 24);
+
         return new ViewModel([
             'bannerImages' => $bannerImages,
             'news' => $news,
@@ -72,7 +75,8 @@ class IndexController extends SiteController
             'program' => $program,
             'gallery' => $gallery,
             'guides' => $guides,
-            'videos' => $videos
+            'videos' => $videos,
+            'eufacoamostra' => $eufacoamostra
         ]);
     }
 
