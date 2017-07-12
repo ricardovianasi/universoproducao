@@ -155,7 +155,7 @@ class PostController extends SiteController
             $mailConfirmacao->setBody($miniMessage);
             $mailConfirmacao->setFrom('no-reply@universoproducao.com.br', 'Universo Producao');
             $mailConfirmacao->setTo($email);
-            $mailConfirmacao->setSubject('Solicitação de credenciamento – 11a CineOP');
+            $mailConfirmacao->setSubject('Solicitação de credenciamento – 11a CineBH');
             $transport->send($mailConfirmacao);
 
             $msgFormulario  = "<h1>FORMUL&Aacute;RIO DE CREDENCIAMENTO</h1>";
