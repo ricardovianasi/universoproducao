@@ -165,16 +165,17 @@
 
 
 
-                    <h2 style="font-size: 18px"><?php echo $tituloSeminario?></h2>
+                    <h2 style="font-size: 18px; margin-bottom: 0"><?php echo $tituloSeminario?></h2>
 
-                    <br /><span ><?php echo utf8($row->titTematica)?></span><br /><br />
-                    <strong class="subItemLista cxBaixa"><?php echo $lg=='Ing' ? "Date" : "Data"; ?>: <?php echo $dataFinal?> | <?php echo $diaSemana?> <br />
+                    <br /><span ><strong><?php echo utf8($row->titTematica)?></strong></span><br /><br />
+                    <span class="subItemLista cxBaixa">
+                        <strong><?php echo $lg=='Ing' ? "Date" : "Data"; ?></strong>: <?php echo $dataFinal?> | <?php echo $diaSemana?> <br />
                     <?php if ($horaFim != "") { ?>
-                        <?php echo $lg=='Ing' ? "Time: " : "Hora: de "; ?><?php echo $horaInicio?> <?php echo $lg=='Ing' ? "-" : "às"; ?> <?php echo $horaFim?><br />
+                        <strong><?php echo $lg=='Ing' ? "Time: " : "Hora: de "; ?></strong><?php echo $horaInicio?> <?php echo $lg=='Ing' ? "-" : "às"; ?> <?php echo $horaFim?><br />
                     <?php }else{ ?>
-                        <?php echo $lg=='Ing' ? "Time" : "Hora"; ?>: <?php echo $horaInicio?><br />
+                        <strong><?php echo $lg=='Ing' ? "Time" : "Hora"; ?></strong>: <?php echo $horaInicio?><br />
                     <?php } ?>
-                    <?php echo $lg=='Ing' ? "Spots" : "Local"; ?>: <?php echo $local?></strong> <br /><br />
+                        <strong><?php echo $lg=='Ing' ? "Spots" : "Local"; ?></strong>: <?php echo $local?></span> <br /><br />
 
 
                     <?php echo $row->$DesSem?>
