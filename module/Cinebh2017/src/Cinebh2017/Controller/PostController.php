@@ -43,7 +43,8 @@ class PostController extends SiteController
 
             return $this->forward()->dispatch($customAction[0], [
                 'action' => $customAction[1],
-                'post' => $post
+                'post' => $post,
+                'locale' => $this->params()->fromRoute('locale')
             ]);
         }
 

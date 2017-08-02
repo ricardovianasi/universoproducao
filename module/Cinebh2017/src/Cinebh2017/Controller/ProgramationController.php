@@ -19,7 +19,8 @@ class ProgramationController extends SiteController
         $post = $this->params('post');
         return new ViewModel([
             'post' => $post,
-            'breadcrumbs' => $post->getBreadcrumbs()
+            'breadcrumbs' => $post->getBreadcrumbs(),
+            'lg' => $this->params('locale')=='pt' ? "" : "Ing"
         ]);
     }
 
@@ -28,7 +29,8 @@ class ProgramationController extends SiteController
         $post = $this->params('post');
         return new ViewModel([
             'post' => $post,
-            'breadcrumbs' => $post->getBreadcrumbs()
+            'breadcrumbs' => $post->getBreadcrumbs(),
+            'lg' => $this->params('locale')=='pt' ? "" : "Ing"
         ]);
     }
 
@@ -37,7 +39,8 @@ class ProgramationController extends SiteController
         $post = $this->params('post');
         return new ViewModel([
             'post' => $post,
-            'breadcrumbs' => $post->getBreadcrumbs()
+            'breadcrumbs' => $post->getBreadcrumbs(),
+            'lg' => $this->params('locale')=='pt' ? "" : "Ing"
         ]);
     }
 
@@ -51,7 +54,8 @@ class ProgramationController extends SiteController
         ];
         return new ViewModel([
             'breadcrumbs' => $breadcrumbs,
-            'idMovie' => $filmeId
+            'idMovie' => $filmeId,
+            'lg' => $this->params('locale')=='pt' ? "" : "Ing"
         ]);
     }
 
@@ -60,7 +64,8 @@ class ProgramationController extends SiteController
         $post = $this->params('post');
         return new ViewModel([
             'post' => $post,
-            'breadcrumbs' => $post->getBreadcrumbs()
+            'breadcrumbs' => $post->getBreadcrumbs(),
+            'lg' => $this->params('locale')=='pt' ? "" : "Ing"
         ]);
     }
 
@@ -74,7 +79,8 @@ class ProgramationController extends SiteController
         ];
         return new ViewModel([
             'breadcrumbs' => $breadcrumbs,
-            'seminarId' => $seminarId
+            'seminarId' => $seminarId,
+            'lg' => $this->params('locale')=='pt' ? "" : "Ing"
         ]);
     }
 
