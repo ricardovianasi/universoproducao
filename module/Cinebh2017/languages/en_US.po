@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Cinebh\n"
-"POT-Creation-Date: 2017-07-07 10:43-0300\n"
-"PO-Revision-Date: 2017-08-03 10:38-0300\n"
+"POT-Creation-Date: 2017-08-03 10:40-0300\n"
+"PO-Revision-Date: 2017-08-03 10:41-0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en_US\n"
@@ -16,63 +16,63 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: cinebh2017/index/index.phtml:20
+#: cinebh2017/index/index.phtml:22
 msgid "Notícias"
 msgstr "News"
 
-#: cinebh2017/index/index.phtml:36
+#: cinebh2017/index/index.phtml:38
 msgid "Ver todas as Notícias"
 msgstr "All news"
 
-#: cinebh2017/index/index.phtml:44
+#: cinebh2017/index/index.phtml:46
 msgid "Vídeos"
 msgstr "Videos"
 
-#: cinebh2017/index/index.phtml:81
+#: cinebh2017/index/index.phtml:82
 msgid "Ver todos os vídeos"
 msgstr "All videos"
 
-#: cinebh2017/index/index.phtml:101
+#: cinebh2017/index/index.phtml:102
 msgid "Ver mais imagens"
 msgstr "All photos"
 
-#: cinebh2017/index/index.phtml:110
+#: cinebh2017/index/index.phtml:111
 msgid "Compartilhe e publique suas imagens usando a #eufaçoaMostra"
 msgstr "Share and publish your images using #eufaçoaMostra"
 
-#: cinebh2017/index/index.phtml:129
-msgid "Descubra ouro preto"
-msgstr "Discover Ouro Preto City"
+#: cinebh2017/index/index.phtml:130
+msgid "A cidade em movimento"
+msgstr "The city in motion"
 
-#: cinebh2017/index/index.phtml:136
-msgid "Como chegar"
-msgstr "Place"
+#: cinebh2017/index/index.phtml:137
+msgid "Locais"
+msgstr "Places"
 
-#: cinebh2017/index/index.phtml:142
+#: cinebh2017/index/index.phtml:143
 msgid "Restaurantes"
 msgstr "Restaurants"
 
-#: cinebh2017/index/index.phtml:148
+#: cinebh2017/index/index.phtml:149
 msgid "Hoteis e acomodações"
 msgstr "Accommodation"
 
-#: cinebh2017/index/index.phtml:154
+#: cinebh2017/index/index.phtml:155
 msgid "Turismo e Informações"
 msgstr "Tourism and Information"
 
-#: cinebh2017/index/index.phtml:164
+#: cinebh2017/index/index.phtml:165
 msgid "Receba nossos informativos"
 msgstr "Receive our newsletter"
 
-#: cinebh2017/index/index.phtml:167
+#: cinebh2017/index/index.phtml:168
 msgid "Nome"
 msgstr "Name"
 
-#: cinebh2017/index/index.phtml:168
+#: cinebh2017/index/index.phtml:169
 msgid "E-mail"
 msgstr "E-mail"
 
-#: cinebh2017/index/index.phtml:169
+#: cinebh2017/index/index.phtml:170
 msgid "Cadastrar"
 msgstr "Register"
 
@@ -84,25 +84,31 @@ msgstr "Home"
 msgid "CineBH - 11ª Mostra de Cinema de Belo Horizonte"
 msgstr "CineBH - International film festival"
 
-#: layout/layout.phtml:37
+#: layout/layout.phtml:39
 msgid "22-27 agosto 2017"
 msgstr "22-27 august"
 
-#: layout/layout.phtml:37
+#: layout/layout.phtml:39
 msgid "Programação gratuita"
 msgstr "Free Programming"
 
-#: layout/layout.phtml:68
+#: layout/layout.phtml:70
 msgid "Contate-nos"
 msgstr "Contact Us"
 
-#: layout/layout.phtml:76
+#: layout/layout.phtml:78
 msgid "Siga-nos"
 msgstr "Follow us"
 
-#: layout/layout.phtml:87
+#: layout/layout.phtml:89
 msgid "Todos os direitos reservados"
 msgstr "All rights reserved"
+
+#~ msgid "Descubra ouro preto"
+#~ msgstr "Discover Ouro Preto City"
+
+#~ msgid "Como chegar"
+#~ msgstr "Place"
 
 #~ msgid "Todas as Notícias"
 #~ msgstr "All News"
@@ -124,12 +130,6 @@ msgstr "All rights reserved"
 
 #~ msgid "Guia"
 #~ msgstr "Guide"
-
-#~ msgid "A cidade em movimento"
-#~ msgstr "The city in motion"
-
-#~ msgid "Locais"
-#~ msgstr "Places"
 
 #~ msgid "Hoteis e Acomodações"
 #~ msgstr "Hotels and Accommodations"
