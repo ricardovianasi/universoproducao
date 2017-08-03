@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Cinebh\n"
 "POT-Creation-Date: 2017-07-07 10:43-0300\n"
-"PO-Revision-Date: 2017-07-07 10:43-0300\n"
+"PO-Revision-Date: 2017-08-03 10:38-0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en_US\n"
@@ -90,7 +90,7 @@ msgstr "22-27 august"
 
 #: layout/layout.phtml:37
 msgid "Programação gratuita"
-msgstr "Programming free"
+msgstr "Free Programming"
 
 #: layout/layout.phtml:68
 msgid "Contate-nos"
