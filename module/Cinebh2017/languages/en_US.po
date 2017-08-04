@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Cinebh\n"
 "POT-Creation-Date: 2017-08-04 10:02-0300\n"
-"PO-Revision-Date: 2017-08-04 10:08-0300\n"
+"PO-Revision-Date: 2017-08-04 10:17-0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en_US\n"
@@ -90,7 +90,7 @@ msgstr "Photo"
 
 #: cinebh2017/programation/movie.phtml:323
 msgid "Elenco"
-msgstr "Classification"
+msgstr "Cast"
 
 #: cinebh2017/programation/movie.phtml:327
 msgid "Empresa Produtora"

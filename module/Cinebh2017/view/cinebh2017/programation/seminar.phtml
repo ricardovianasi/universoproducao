@@ -133,8 +133,8 @@ $Dir = $lg=='Ing' ? "Director(s)" : "Direçao";
 $CodSem	= $this->seminarId;
 
 $result	= mysql_query("select codSeminario, tituloSeminario, tituloSeminarioIng, descricaoSeminario, descricaoSeminarioIng, tematica, codTematica, titTematica, CodItemProg, CategoriaProg, Local, Data, HoraManhaInicial, HoraTardeInicial, HoraManhaFinal from tb_seminarios, tb_programacaoevento, tb_tematica where codSeminario = $CodSem and tb_seminarios.codSeminario = tb_programacaoevento.CodItemProg and tb_programacaoevento.CategoriaProg = 'SE' and tb_tematica.codTematica = tb_seminarios.tematica");
-$TituloSem	= mb_convert_encoding(mysql_result($result,0,"tituloSeminario"), "UTF-8", "ISO-8859-1");
-$DescSem	= mb_convert_encoding(mysql_result($result,0,"descricaoSeminario"), "UTF-8", "ISO-8859-1");
+$TituloSem	= mb_convert_encoding(mysql_result($result,0,"tituloSeminario$lg"), "UTF-8", "ISO-8859-1");
+$DescSem	= mb_convert_encoding(mysql_result($result,0,"descricaoSeminario$lg"), "UTF-8", "ISO-8859-1");
 $dataOrig	= mysql_result($result,0,"Data");
 $local	= mysql_result($result,0,"Local");
 $HoraManhaInicial	= mysql_result($result,0,"HoraManhaInicial");
@@ -178,7 +178,6 @@ if ($local != "") {
 <div class="main-wrapper">
     <section class="main-content">
         <header class="main-header">
-            <h1 class="main-title"><?php echo $titPagInt; ?></h1>
         </header>
 
         <h2><?php echo $TituloSem?></h2>
