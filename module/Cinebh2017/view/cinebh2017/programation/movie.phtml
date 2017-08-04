@@ -315,7 +315,7 @@ if ($Cor == "0") {
             <?php endif; ?>
 
             <div class="sinopse">
-                <h2><strong>Sinopse:</strong></h2>
+                <strong>Sinopse:</strong>
 
                 <p><?php echo $Sinopse?></p>
 
@@ -359,7 +359,7 @@ if ($Cor == "0") {
                         }
                     }
                     ?>
-                    <p><h2><strong><?php echo $this->translate('EXIBIÇÃO') ?></strong></h2></p>
+                    <strong><?php echo $this->translate('EXIBIÇÃO') ?></strong>
                     <p>
                         <?php echo $dataFinal?> | <?php echo $diaSemana?> • <?php echo $hora?><br />
                         <?php echo $local?>
@@ -367,7 +367,7 @@ if ($Cor == "0") {
                     <?php
                 } else {
                     ?>
-                    <h5><?php echo $this->translate('EXIBIÇÕES') ?></h5>
+                    <strong><?php echo $this->translate('EXIBIÇÕES') ?></strong>
                     <?php
                     $i=0;
                     while ($row = mysql_fetch_object($resultProg)) {
