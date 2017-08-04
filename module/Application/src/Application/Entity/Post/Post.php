@@ -1,6 +1,7 @@
 <?php
 namespace Application\Entity\Post;
 
+use Application\Entity\Site\Language;
 use Util\Entity\AbstractEntity;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -400,7 +401,7 @@ class Post extends AbstractEntity
     }
 
     /**
-     * @return mixed
+     * @return Language
      */
     public function getLanguage()
     {

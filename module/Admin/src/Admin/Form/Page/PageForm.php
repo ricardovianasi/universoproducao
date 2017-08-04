@@ -69,12 +69,11 @@ class PageForm extends PostForm
 				->setParameter('id', $escapePageId)
 				->andWhere('(p.parent != :id OR  p.parent is NULL) ');
 		}
-
 		$search = $qb->getQuery()->getResult();
 
 		$pages = [];
 		foreach($search as $p) {
-			$pages[$p->getId()] = $p->getTitle();
+			$pages[$p->getId()] = $p->getTitle() . " [ " . strtoupper($p->getLanguage()->getId()) . " ] ";
 		}
 
 		$this->get('parent')->setValueOptions($pages);
