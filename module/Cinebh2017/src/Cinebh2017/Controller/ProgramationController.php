@@ -20,7 +20,7 @@ class ProgramationController extends SiteController
         return new ViewModel([
             'post' => $post,
             'breadcrumbs' => $post->getBreadcrumbs(),
-            'lg' => $this->params('locale')=='pt' ? "" : "Ing"
+            'lg' => $this->params('locale')=='pt' ? "" : "en"
         ]);
     }
 
@@ -30,7 +30,7 @@ class ProgramationController extends SiteController
         return new ViewModel([
             'post' => $post,
             'breadcrumbs' => $post->getBreadcrumbs(),
-            'lg' => $this->params('locale')=='pt' ? "" : "Ing"
+            'lg' => $this->params('locale')=='pt' ? "" : "en"
         ]);
     }
 
@@ -40,7 +40,7 @@ class ProgramationController extends SiteController
         return new ViewModel([
             'post' => $post,
             'breadcrumbs' => $post->getBreadcrumbs(),
-            'lg' => $this->params('locale')=='pt' ? "" : "Ing"
+            'lg' => $this->params('locale')=='pt' ? "" : "en"
         ]);
     }
 
@@ -55,7 +55,7 @@ class ProgramationController extends SiteController
         return new ViewModel([
             'breadcrumbs' => $breadcrumbs,
             'idMovie' => $filmeId,
-            'lg' => $this->params('locale')=='pt' ? "" : "Ing"
+            'lg' => $this->params('locale')=='pt' ? "" : "en"
         ]);
     }
 
@@ -65,7 +65,7 @@ class ProgramationController extends SiteController
         return new ViewModel([
             'post' => $post,
             'breadcrumbs' => $post->getBreadcrumbs(),
-            'lg' => $this->params('locale')=='pt' ? "" : "Ing"
+            'lg' => $this->params('locale')=='pt' ? "" : "en"
         ]);
     }
 
@@ -80,7 +80,7 @@ class ProgramationController extends SiteController
         return new ViewModel([
             'breadcrumbs' => $breadcrumbs,
             'seminarId' => $seminarId,
-            'lg' => $this->params('locale')=='pt' ? "" : "Ing"
+            'lg' => $this->params('locale')=='pt' ? "" : "en"
         ]);
     }
 
