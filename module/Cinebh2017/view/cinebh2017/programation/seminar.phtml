@@ -123,11 +123,11 @@ function utf8($string)
 }
 
 $mostra = 1078;
-$lg = '';
+$lg = ($this->lg=='en') ? 'Ing' : '';
 $url = '';
 $fc = $fl = $sub = $subMostra = $fSub1 = $fSub2 = $fSub3 = '';
 //$limitCurta = 0;
-$Dir = "Direção";
+$Dir = $lg=='Ing' ? "Director(s)" : "Direçao";
 
 
 $CodSem	= $this->seminarId;
@@ -181,15 +181,17 @@ if ($local != "") {
             <h1 class="main-title"><?php echo $titPagInt; ?></h1>
         </header>
 
-        <h2><?php echo $TituloSem?><br /><span style="font-size: 10px;"><?php echo utf8($Tematica)?></span><br /><br />
-            <span class="subItemLista"><?php echo $lg=='Ing' ? "Date" : "Data"; ?>: <?php echo $dataFinal?> | <?php echo $diaSemana?> <br />
-                <?php if ($horaFim != "") { ?>
-                    <?php echo $lg=='Ing' ? "Time: " : "Hora: de "; ?><?php echo $horaInicio?> <?php echo $lg=='Ing' ? "-" : "às"; ?> <?php echo $horaFim?><br />
-                <? }else{ ?>
-                    <?php echo $lg=='Ing' ? "Time" : "Hora"; ?>: <?php echo $horaInicio?><br />
-                <?php } ?>
-                <?php echo $lg=='Ing' ? "Spots" : "Local"; ?>: <?php echo $local?></span>
-        </h2>
+        <h2><?php echo $TituloSem?></h2>
+        <br /><span><strong><?php echo utf8($Tematica)?></strong></span><br /><br />
+        <span class="subItemLista cxBaixa">
+            <strong><?php echo $lg=='Ing' ? "Date" : "Data"; ?></strong>: <?php echo $dataFinal?> | <?php echo $diaSemana?> <br />
+            <?php if ($horaFim != "") { ?>
+                <strong><?php echo $lg=='Ing' ? "Time: " : "Hora: de "; ?></strong><?php echo $horaInicio?> <?php echo $lg=='Ing' ? "-" : "às"; ?> <?php echo $horaFim?><br />
+            <? }else{ ?>
+                <strong><?php echo $lg=='Ing' ? "Time" : "Hora"; ?></strong>: <?php echo $horaInicio?><br />
+            <?php } ?>
+            <strong><?php echo $lg=='Ing' ? "Spots" : "Local"; ?></strong>: <?php echo $local?></span>
+
 
         <?php echo $DescSem?>
     </section>
