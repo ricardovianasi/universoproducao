@@ -48,7 +48,7 @@ class Slugify extends AbstractPlugin
 		do {
 			$slug = self::parse($str);
 			$str = $originalStr . ' ' . $count++;
-		} while($this->slugExists($str, $entity, $siteId, $escapeId));
+		} while($this->slugExists($slug, $entity, $siteId, $escapeId));
 
 		return $slug;
 	}

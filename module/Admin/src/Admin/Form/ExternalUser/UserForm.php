@@ -32,10 +32,10 @@ class UserForm extends Form
 		$this->entityManager = $em;
 
 		$this->add([
-			'name' => 'cpf',
-			'type' => 'TwbBundle\Form\Element\Cpf',
+			'name' => 'identifier',
+			'type' => 'Text',
 			'options' => [
-				'label' => 'CPF',
+				'label' => 'CPF, CNPJ ou Passaporte',
 			],
 			'attributes' => [
 				'required' => 'required'
@@ -43,10 +43,10 @@ class UserForm extends Form
 		]);
 
 		$this->add([
-			'name' => 'first_name',
+			'name' => 'name',
 			'required' => true,
 			'options' => [
-				'label' => 'Primeiro nome',
+				'label' => 'Nome',
 			],
 			'attributes' => [
 				'required' => 'required'
@@ -55,15 +55,12 @@ class UserForm extends Form
 		]);
 
 		$this->add([
-			'name' => 'last_name',
+			'name' => 'alias',
 			'type' => 'text',
 			'required' => true,
 			'type' => 'text',
 			'options' => [
-				'label' => 'Sobrenome',
-			],
-			'attributes' => [
-				'required' => 'required'
+				'label' => 'Como gostaria de ser chamado(apelido)',
 			],
 		]);
 
@@ -98,9 +95,6 @@ class UserForm extends Form
 			'options' => [
 				'label' => 'Data de Nascimento',
 			],
-			'attributes' => [
-				'required' => 'required'
-			]
 		]);
 
 		$this->add([

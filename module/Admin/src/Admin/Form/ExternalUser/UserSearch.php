@@ -22,10 +22,10 @@ class UserSearch extends Form
 			'method' => 'GET'
 		]);
 
-		$cpf = new Text('cpf');
-		$cpf->setLabel('CPF')
+		$identifier = new Text('identifier');
+		$identifier->setLabel('CPF, CNPJ ou PASSAPORTE')
 			->setLabelAttributes(['class', 'input-sm']);
-		$this->add($cpf);
+		$this->add($identifier);
 
 		$name = new Text('name');
 		$name->setLabel('Nome')

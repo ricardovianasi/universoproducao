@@ -55,17 +55,12 @@ class UserController extends AbstractAdminController implements CrudInterface
 		$passForm = new ChangePassForm();
 		$phoneForm = new PhoneForm();
 		$dependentForm = new DependentForm();
-		$companyForm = new CompanyForm($this->getEntityManager());
 
 		if($id) {
 			$user = $this->getRepository(User::class)->find($id);
 		} else {
 			$user = new User();
-
-			$tempPass = Crypt::makePassword();
-
-			$user->setTempPassword($tempPass);
-			$user->setPassword(Crypt::getInstance()->generateEncryptPass($tempPass));
+//			$user->setPassword(Crypt::getInstance()->generateEncryptPass($tempPass));
 			$user->setChangePasswordRequired(true);
 			$user->setConfirmedRegister(false);
 		}
@@ -134,7 +129,6 @@ class UserController extends AbstractAdminController implements CrudInterface
 			'passForm' => $passForm,
             'phoneForm' => $phoneForm,
 			'dependentForm' => $dependentForm,
-			'companyForm' => $companyForm,
 			'user' => $user
 		]);
 	}

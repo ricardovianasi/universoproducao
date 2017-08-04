@@ -3,9 +3,6 @@
 
     $phoneForm = $this->phoneForm;
     $phoneForm->prepare();
-
-    $dependentForm = $this->dependentForm;
-    $dependentForm->prepare();
 ?>
 <div class="portlet">
 	<div class="portlet-body form">
@@ -21,12 +18,12 @@
 
 			<h4 class="form-section">Informações Pessoais</h4>
 			<div class="row">
-				<div class="col-md-6"><?php echo $this->formRow($form->get('first_name')); ?></div>
-				<div class="col-md-6"><?php echo $this->formRow($form->get('last_name')); ?></div>
+				<div class="col-md-8"><?php echo $this->formRow($form->get('name')); ?></div>
+				<div class="col-md-4"><?php echo $this->formRow($form->get('alias')); ?></div>
 			</div>
 
 			<div class="row">
-				<div class="col-md-3"><?php echo $this->formRow($form->get('cpf')); ?></div>
+				<div class="col-md-3"><?php echo $this->formRow($form->get('identifier')); ?></div>
 				<div class="col-md-3"><?php echo $this->formRow($form->get('email')); ?></div>
 				<div class="col-md-3">
 					<div class="form-group ">

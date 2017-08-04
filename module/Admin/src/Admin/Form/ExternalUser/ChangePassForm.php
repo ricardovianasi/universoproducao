@@ -25,16 +25,6 @@ class ChangePassForm extends Form
 			'id' => 'user-change-pass-form'
 		]);
 
-		$oldLogin = new Text('old_login');
-		$oldLogin->setLabel('Login');
-		$oldLogin->setAttribute('readonly', 'readonly');
-		$this->add($oldLogin);
-
-		$oldPass = new Text('old_pass');
-		$oldPass->setLabel('Senha');
-		$oldPass->setAttribute('readonly', 'readonly');
-		$this->add($oldPass);
-
 		$btnGenPass = new Button('gem-pass');
 		$btnGenPass->setValue('Gerar nova senha')
 			->setAttribute('class', 'btn btn-success ')

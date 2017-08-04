@@ -13,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Util\Entity\AbstractEntity;
 
 /**
- * @ORM\Table(name="external_user_log")
+ * @ORM\Table(name="user_log")
  * @ORM\Entity
  */
 class Log extends AbstractEntity
@@ -30,14 +30,19 @@ class Log extends AbstractEntity
 
 	/**
 	 * @ORM\ManyToOne(targetEntity="User", inversedBy="logs")
-	 * @ORM\JoinColumn(name="external_user_id", referencedColumnName="id")
+	 * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
 	 */
 	private $user;
 
 	/** @ORM\Column(name="created_at", type="datetime", nullable=true) */
 	private $createdAt;
 
-	/**
+	public function __construct()
+    {
+        $this->createdAt = new \DateTime();
+    }
+
+    /**
 	 * @return mixed
 	 */
 	public function getId()

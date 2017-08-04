@@ -36,7 +36,7 @@
 						<thead>
 						<tr role="row" class="heading">
 							<th width="2%">#</th>
-							<th width="15%">CPF</th>
+							<th width="15%">CPF, CNPJ ou Passaporte</th>
 							<th width="30%">Nome</th>
 							<th width="30%">Email</th>
 							<th width="10%">Ações</th>
@@ -44,7 +44,7 @@
 						<tr role="row" class="filter">
 							<?php $form->prepare(); echo $this->form()->openTag($form); ?>
 							<td></td>
-							<td><?php echo $this->formelement($form->get('cpf')); ?></td>
+							<td><?php echo $this->formelement($form->get('identifier')); ?></td>
 							<td><?php echo $this->formelement($form->get('name')); ?></td>
 							<td><?php echo $this->formelement($form->get('email')); ?></td>
 							<td>
@@ -72,8 +72,8 @@
 							?>
 							<tr>
 								<td></td>
-								<td><a href="<?php echo $updateUrl; ?>"><?php echo $this->cpf($user->getCpf()); ?></a></td>
-								<td><?php echo $user->getFirstName() . ' ' . $user->getLastName(); ?></td>
+								<td><a href="<?php echo $updateUrl; ?>"><?php echo $user->getIdentifier(); ?></a></td>
+								<td><?php echo $user->getName() ?></td>
 								<td><?php echo $user->getEmail(); ?></td>
 								<td>
 									<a href="<?php echo  $updateUrl; ?>" class="btn btn-sm btn-default">

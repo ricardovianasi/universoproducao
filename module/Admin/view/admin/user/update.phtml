@@ -24,8 +24,12 @@
 					<?php endif; ?>
 
 					<?php if(!$this->user->getConfirmedRegister()): ?>
-						<li>Confirmação/Atualização de dados está pendente</li>
+						<li>Confirmação de cadastro está pendente</li>
 					<?php endif; ?>
+
+                    <?php if(!$this->user->getUpdateRegisterRequired()): ?>
+                        <li>Atualização de cadastro está pendente</li>
+                    <?php endif; ?>
 					</ul>
 				</div>
 			<?php endif; ?>
@@ -35,14 +39,14 @@
 					<li class="active">
 						<a href="#tab_form" data-toggle="tab" aria-expanded="true"> Cadastro </a>
 					</li>
-                    <li class="">
-                        <a href="#tab_company" data-toggle="tab" aria-expanded="false"> Empresa </a>
-                    </li>
-					<li class="">
+					<li>
 						<a href="#tab_pass" data-toggle="tab" aria-expanded="false"> Senha </a>
 					</li>
-					<li class="">
-						<a href="#tab_history" data-toggle="tab" aria-expanded="false"> Log </a>
+                    <li>
+                        <a href="#tab_conf" data-toggle="tab" aria-expanded="false"> Confirmação de Cadastro </a>
+                    </li>
+					<li>
+						<a href="#tab_history" data-toggle="tab" aria-expanded="false"> Histórico </a>
 					</li>
 				</ul>
 				<div class="tab-content">
@@ -51,18 +55,9 @@
                             'form' => $this->form,
                             'user'=>$this->user,
                             'phoneForm'=>$this->phoneForm,
-                            'dependentForm' => $this->dependentForm,
-                            'companyForm' => $this->companyForm
+                            'dependentForm' => $this->dependentForm
                         ]); ?>
 					</div>
-
-                    <div class="tab-pane" id="tab_company">
-                        <?php echo $this->partial('admin/user/_form-company.phtml', [
-                            'user'=>$this->user,
-                            'phoneForm'=>$this->phoneForm,
-                            'companyForm' => $this->companyForm
-                        ]); ?>
-                    </div>
 
 					<div class="tab-pane" id="tab_pass">
 						<div class="portlet">
@@ -80,25 +75,13 @@
 									$passForm->prepare();
 									echo $this->form(null, null)->openTag($passForm);
 								?>
-								<div class="form-body">
-									<?php if($this->user->getConfirmedRegister()
-											&& !empty($this->user->getOldLogin())
-											&& !empty($this->user->getOldPass())): ?>
-									<h4 class="form-section">Dados de acesso do sistema antigo</h4>
-									<div class="row">
-										<div class="col-md-6"><?php echo $this->formRow($passForm->get('old_login')); ?></div>
-										<div class="col-md-6"><?php echo $this->formRow($passForm->get('old_pass')); ?></div>
-									</div>
-									<?php endif; ?>
-
+								<div class="body">
 									<h4 class="form-section">Alterar Senha</h4>
-
 									<div class="note">
 										<p>O usuário será obrigado a alterar a senha quando efetuar o login. Sem a
 										atualização da senha, o mesmo ficará impossibilitado de acessar o sistema.</p>
 										<p>Uma notificação será enviado ao email cadastrado informando sobre essa modificação.</p>
 									</div>
-
 									<div class="row">
 										<div class="col-md-6 password-generator" data-url="<?php echo $this->url('util_password'); ?>">
 											<?php echo $this->formRow($passForm->get('temp_password')); ?>
@@ -117,6 +100,30 @@
 							</div>
 						</div>
 					</div>
+
+                    <div class="tab-pane" id="tab_conf">
+                        <div class="portlet">
+                            <div class="portlet-body form">
+                                <div class="body">
+                                    <h4 class="form-section">Confirmação de Cadastro</h4>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <?php if($this->user->getConfirmedRegister()): ?>
+                                                <div class="note note-info">
+                                                    <p>O usuário confirmou o cadastro</p>
+                                                </div>
+                                            <?php else: ?>
+                                                <div class="note note-danger">
+                                                    <h4>Não confirmado</h4>
+                                                    <a href="#myModal1" role="button" class="btn red" data-toggle="modal">Confirmar cadastro</a>
+                                                </div>
+                                            <?php endif; ?>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
 					<div class="tab-pane" id="tab_history">
 						<div class="portlet">

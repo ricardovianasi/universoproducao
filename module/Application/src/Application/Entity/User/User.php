@@ -27,14 +27,14 @@ class User extends AbstractEntity implements InputFilterAwareInterface
 	 */
 	private $id;
 
-	/** @ORM\Column(name="first_name", type="string") */
-	private $firstName;
+	/** @ORM\Column(name="name", type="string") */
+	private $name;
 
-	/** @ORM\Column(name="last_name", type="string") */
-	private $lastName;
+	/** @ORM\Column(name="alias", type="string") */
+	private $alias;
 
-	/** @ORM\Column(name="cpf", type="string") */
-	private $cpf;
+	/** @ORM\Column(name="identifier", type="string") */
+	private $identifier;
 
 	/** @ORM\Column(name="email", type="string") */
 	private $email;
@@ -44,9 +44,6 @@ class User extends AbstractEntity implements InputFilterAwareInterface
 
 	/** @ORM\Column(name="password", type="string") */
 	private $password;
-
-	/** @ORM\Column(name="temp_pass", type="string", length=100, nullable=false) */
-	private $tempPassword;
 
 	/** @ORM\Column(name="birth_date", type="datetime") */
 	private $birthDate;
@@ -75,12 +72,6 @@ class User extends AbstractEntity implements InputFilterAwareInterface
     /** @ORM\Column(name="gender", type="string") */
 	private $gender;
 
-	/** @ORM\Column(name="old_pass", type="string") */
-	private $oldPass;
-
-	/** @ORM\Column(name="old_login", type="string") */
-	private $oldLogin;
-
 	/** @ORM\Column(name="facebook", type="string") */
 	private $facebook;
 
@@ -93,11 +84,8 @@ class User extends AbstractEntity implements InputFilterAwareInterface
 	/** @ORM\Column(name="change_password_required", type="boolean") */
 	private $changePasswordRequired = false;
 
-    /**
-     * @ORM\OneToOne(targetEntity="Company", cascade="ALL")
-     * @ORM\JoinColumn(name="company_id", referencedColumnName="id")
-     */
-	private $company;
+    /** @ORM\Column(name="update_register_required", type="boolean") */
+    private $updateRegisterRequired = false;
 
     /**
      * Many User have Many Phonenumbers.
@@ -146,22 +134,6 @@ class User extends AbstractEntity implements InputFilterAwareInterface
 	public function setId($id)
 	{
 		$this->id = $id;
-	}
-
-	/**
-	 * @return mixed
-	 */
-	public function getCpf()
-	{
-		return $this->cpf;
-	}
-
-	/**
-	 * @param mixed $cpf
-	 */
-	public function setCpf($cpf)
-	{
-		$this->cpf = $cpf;
 	}
 
 	/**
@@ -295,38 +267,6 @@ class User extends AbstractEntity implements InputFilterAwareInterface
 	/**
 	 * @return mixed
 	 */
-	public function getOldPass()
-	{
-		return $this->oldPass;
-	}
-
-	/**
-	 * @param mixed $oldPass
-	 */
-	public function setOldPass($oldPass)
-	{
-		$this->oldPass = $oldPass;
-	}
-
-	/**
-	 * @return mixed
-	 */
-	public function getOldLogin()
-	{
-		return $this->oldLogin;
-	}
-
-	/**
-	 * @param mixed $oldLogin
-	 */
-	public function setOldLogin($oldLogin)
-	{
-		$this->oldLogin = $oldLogin;
-	}
-
-	/**
-	 * @return mixed
-	 */
 	public function getCreatedAt()
 	{
 		return $this->createdAt;
@@ -356,37 +296,37 @@ class User extends AbstractEntity implements InputFilterAwareInterface
 		$this->updatedAt = $updatedAt;
 	}
 
-	/**
-	 * @return mixed
-	 */
-	public function getLastName()
-	{
-		return $this->lastName;
-	}
+    /**
+     * @return mixed
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
 
-	/**
-	 * @param mixed $lastName
-	 */
-	public function setLastName($lastName)
-	{
-		$this->lastName = $lastName;
-	}
+    /**
+     * @param mixed $name
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+    }
 
-	/**
-	 * @return mixed
-	 */
-	public function getFirstName()
-	{
-		return $this->firstName;
-	}
+    /**
+     * @return mixed
+     */
+    public function getAlias()
+    {
+        return $this->alias;
+    }
 
-	/**
-	 * @param mixed $firstName
-	 */
-	public function setFirstName($firstName)
-	{
-		$this->firstName = $firstName;
-	}
+    /**
+     * @param mixed $alias
+     */
+    public function setAlias($alias)
+    {
+        $this->alias = $alias;
+    }
 
 	/**
 	 * @return mixed
@@ -435,6 +375,22 @@ class User extends AbstractEntity implements InputFilterAwareInterface
 	{
 		$this->confirmedRegister = $confirmedRegister;
 	}
+
+    /**
+     * @return mixed
+     */
+    public function getUpdateRegisterRequired()
+    {
+        return $this->updateRegisterRequired;
+    }
+
+    /**
+     * @param mixed $updateRegisterRequired
+     */
+    public function setUpdateRegisterRequired($updateRegisterRequired)
+    {
+        $this->updateRegisterRequired = $updateRegisterRequired;
+    }
 
 	/**
 	 * @return mixed
@@ -500,43 +456,11 @@ class User extends AbstractEntity implements InputFilterAwareInterface
 		$this->changePasswordRequired = $changePasswordRequired;
 	}
 
-	/**
-	 * @return mixed
-	 */
-	public function getTempPassword()
-	{
-		return $this->tempPassword;
-	}
-
-	/**
-	 * @param mixed $tempPassword
-	 */
-	public function setTempPassword($tempPassword)
-	{
-		$this->tempPassword = $tempPassword;
-	}
-
 	// Add content to these methods:
 	public function setInputFilter(InputFilterInterface $inputFilter)
 	{
 		throw new \Exception("Not used");
 	}
-
-    /**
-     * @return mixed
-     */
-    public function getCompany()
-    {
-        return $this->company;
-    }
-
-    /**
-     * @param mixed $company
-     */
-    public function setCompany($company)
-    {
-        $this->company = $company;
-    }
 
     /**
      * @return mixed
@@ -586,6 +510,22 @@ class User extends AbstractEntity implements InputFilterAwareInterface
         $this->gender = $gender;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getIdentifier()
+    {
+        return $this->identifier;
+    }
+
+    /**
+     * @param mixed $identifier
+     */
+    public function setIdentifier($identifier)
+    {
+        $this->identifier = $identifier;
+    }
+
 	public function getInputFilter()
 	{
 		if(!$this->inputFilter) {
@@ -593,7 +533,7 @@ class User extends AbstractEntity implements InputFilterAwareInterface
 			$factory = new Factory();
 
 			$inputFilter->add($factory->createInput([
-				'name' => 'cpf',
+				'name' => 'identifier',
 				'required' => true,
 				'filters'  => $this->getDefaultInputFilters()
 			]));
@@ -619,11 +559,11 @@ class User extends AbstractEntity implements InputFilterAwareInterface
 				]
 			]));
 
-			$inputFilter->add($factory->createInput([
+			/*$inputFilter->add($factory->createInput([
 				'name' => 'birth_date',
 				'required' => true,
 				'filters'  => $this->getDefaultInputFilters()
-			]));
+			]));*/
 
 			$inputFilter->add($factory->createInput([
 				'name' => 'cep',
@@ -654,11 +594,11 @@ class User extends AbstractEntity implements InputFilterAwareInterface
 				'filters'  => $this->getDefaultInputFilters()
 			]));
 
-            $inputFilter->add($factory->createInput([
+            /*$inputFilter->add($factory->createInput([
                 'name' => 'gender',
                 'required' => true,
                 'filters'  => $this->getDefaultInputFilters()
-            ]));
+            ]));*/
 
 
             $inputFilter->add($factory->createInput([
