@@ -315,12 +315,12 @@ if ($Cor == "0") {
             <?php endif; ?>
 
             <div class="sinopse">
-                <p><h2><strong>Sinopse:</strong></h2></p>
+                <h2><strong>Sinopse:</strong></h2>
 
                 <p><?php echo $Sinopse?></p>
 
                 <?php if($elencoObra): ?>
-                    <p><?php echo $this->translate('Elenco') ?>: <?php echo utf8_decode($elencoObra)  ?></p>
+                    <p><?php echo $this->translate('Elenco') ?>: <?php echo ($elencoObra)  ?></p>
                 <?php endif; ?>
 
                 <?php if($empresaProdutoraObra): ?>
