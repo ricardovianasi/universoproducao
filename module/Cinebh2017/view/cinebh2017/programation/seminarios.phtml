@@ -49,6 +49,15 @@
                 }
                 return $texto;
             }
+            function horaIng($valor)
+            {
+                if ($valor == '00:00:00') {
+                    $texto = "";
+                } else {
+                    $texto = date('h:i A', strtotime($valor));
+                }
+                return $texto;
+            }
             function formata_data_extenso($strDate)
             {
                 // Array com os dia da semana em português;

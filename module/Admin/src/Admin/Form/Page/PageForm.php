@@ -73,7 +73,7 @@ class PageForm extends PostForm
 
 		$pages = [];
 		foreach($search as $p) {
-			$pages[$p->getId()] = $p->getTitle() . " [ " . strtoupper($p->getLanguage()->getId()) . " ] ";
+			$pages[$p->getId()] = $p->getTitle()." [".strtoupper($p->getLanguage()->getId())."]";
 		}
 
 		$this->get('parent')->setValueOptions($pages);
