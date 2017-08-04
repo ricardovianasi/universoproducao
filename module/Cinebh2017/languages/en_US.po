@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Cinebh\n"
-"POT-Creation-Date: 2017-08-03 10:40-0300\n"
-"PO-Revision-Date: 2017-08-03 10:41-0300\n"
+"POT-Creation-Date: 2017-08-04 10:02-0300\n"
+"PO-Revision-Date: 2017-08-04 10:08-0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en_US\n"
@@ -79,6 +79,30 @@ msgstr "Register"
 #: cinebh2017/partials/navigation.phtml:21
 msgid "Início"
 msgstr "Home"
+
+#: cinebh2017/programation/movie.phtml:306
+msgid "Faixa etária sugerida"
+msgstr "Classification"
+
+#: cinebh2017/programation/movie.phtml:312
+msgid "Foto"
+msgstr "Photo"
+
+#: cinebh2017/programation/movie.phtml:323
+msgid "Elenco"
+msgstr "Classification"
+
+#: cinebh2017/programation/movie.phtml:327
+msgid "Empresa Produtora"
+msgstr "Producer"
+
+#: cinebh2017/programation/movie.phtml:362
+msgid "EXIBIÇÃO"
+msgstr "EXHIBITION"
+
+#: cinebh2017/programation/movie.phtml:370
+msgid "EXIBIÇÕES"
+msgstr "EXHIBITIONS"
 
 #: layout/layout.phtml:9
 msgid "CineBH - 11ª Mostra de Cinema de Belo Horizonte"

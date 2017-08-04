@@ -283,7 +283,7 @@ if ($Cor == "0") {
             <h1 class="main-title"><?php echo $TituloFilme; ?></h1>
         </header>
         <div class="filmedetalhe">
-            <p class=""><strong>Direção: <?php echo $Direcao?></strong></p>
+            <p class=""><strong><?php echo $Dir; ?>: <?php echo $Direcao?></strong></p>
             <p style="font-size: 16px"><?php echo $Genero1?><?php echo $Cor?><?php echo $Formato?><?php echo $Duracao?><?php echo $AnoProducao?><?php echo $UfProducao?><?php echo $PaisProducao?></p>
             <?php
                 $Faixa1 = $faixaEtaria1;
@@ -303,13 +303,13 @@ if ($Cor == "0") {
                     $FaixaEtaria = "".$Faixa1." a ".$Faixa2." anos.";
                 }
             ?>
-            <p style="font-size: 16px">Faixa etária sugerida: <?php echo $FaixaEtaria?></p>
+            <p style="font-size: 16px"><?php echo $this->translate('Faixa etária sugerida') ?>: <?php echo $FaixaEtaria?></p>
             <?php
             if ($Foto != ""): ?>
                 <figure>
                     <img src="<?php echo $caminhoFoto1?>" width="625" alt="<?php echo $TituloFilme?>" border="0" />
                     <?php if ($CreditoFoto != ""): ?>
-                        <figcaption>Foto: <?php echo $CreditoFoto?></figcaption>
+                        <figcaption><?php echo $this->translate('Foto') ?>: <?php echo $CreditoFoto?></figcaption>
                     <?php endif; ?>
                 </figure>
             <?php endif; ?>
@@ -320,12 +320,12 @@ if ($Cor == "0") {
                 <p><?php echo $Sinopse?></p>
 
                 <?php if($elencoObra): ?>
-                    <p>Elenco: <?php echo utf8_decode($elencoObra)  ?></p>
+                    <p><?php echo $this->translate('Elenco') ?>: <?php echo utf8_decode($elencoObra)  ?></p>
                 <?php endif; ?>
 
                 <?php if($empresaProdutoraObra): ?>
-                    <p>Empresa Produtora: <?php echo $empresaProdutoraObra?></p>
-                <?php endif; ?>
+                    <p><?php echo $this->translate('Empresa Produtora') ?>: <?php echo $empresaProdutoraObra?></p>
+                <?php endif; ?>S
             </div>
             <?php
 
@@ -359,7 +359,7 @@ if ($Cor == "0") {
                         }
                     }
                     ?>
-                    <p><h2><strong>EXIBIÇÃO</strong></h2></p>
+                    <p><h2><strong><?php echo $this->translate('EXIBIÇÃO') ?></strong></h2></p>
                     <p>
                         <?php echo $dataFinal?> | <?php echo $diaSemana?> • <?php echo $hora?><br />
                         <?php echo $local?>
@@ -367,7 +367,7 @@ if ($Cor == "0") {
                     <?php
                 } else {
                     ?>
-                    <h5>EXIBIÇÕES</h5>
+                    <h5><?php echo $this->translate('EXIBIÇÕES') ?></h5>
                     <?php
                     $i=0;
                     while ($row = mysql_fetch_object($resultProg)) {
