@@ -124,11 +124,11 @@ function utf8($string)
 }
 
 $mostra = 1078;
-$lg = $this->lg;
+$lg = ($this->lg=='en') ? 'Ing' : '';
 $url = '';
 $fc = $fl = $sub = $subMostra = $fSub1 = $fSub2 = $fSub3 = '';
 //$limitCurta = 0;
-$Dir = "Direção";
+$Dir = $lg=='Ing' ? "Director(s)" : "Direçao";
 ?>
 
 
@@ -162,8 +162,8 @@ $faixaEtaria1	= mysql_result($result,0,"FaixaEtaria1");
 $faixaEtaria2	= mysql_result($result,0,"FaixaEtaria2");
 $ClassificacaoObra	= mysql_result($result,0,"ClassificacaoObra");
 
-$elencoObra		= utf8_encode(mysql_result($result,0,"ElencoObra"));
-$empresaProdutoraObra	= utf8_encode(mysql_result($result,0,"EmpresaProdutoraObra"));
+$elencoObra		= (mysql_result($result,0,"ElencoObra"));
+$empresaProdutoraObra	= (mysql_result($result,0,"EmpresaProdutoraObra"));
 
 
 
