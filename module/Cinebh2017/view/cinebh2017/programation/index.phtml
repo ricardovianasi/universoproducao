@@ -502,7 +502,7 @@
                         $catIng = "Short Film Session";
                     }
 
-                    $url = $this->url('cinebh2017/movie', ['id'=>$rowProg->CodItemProg]);
+                    $url = $this->url('cinebh2017/movie', ['id'=>$rowProg->CodItemProg, 'locale'=>$this->lg]);
 
                     if ($lg=='Ing'){
                         switch($cat){
@@ -548,7 +548,7 @@
                             $faixaEtaria1	= $r["FaixaEtaria1"];
                             $faixaEtaria2	= $r["FaixaEtaria2"];
                             //$url = "cine-escola-detalhe.php?menu=prog&sub=cinescol&cat=$categoria&CodFilme=$linhaSess->idFilme";
-                            $url = $this->url('cinebh2017/movie', ['id'=>$linhaSess->idFilme]);
+                            $url = $this->url('cinebh2017/movie', ['id'=>$linhaSess->idFilme, 'locale'=>$this->lg]);
                         }
                     }
 
@@ -580,7 +580,7 @@
                         $catIng = "Short Film Session";
                     }
                     //$url = "filme-detalhe.php?menu=programacao&item=filmes&cat=$cat&mostrinha=1&CodFilme=$rowProg->CodItemProg";
-                    $url = $this->url('cinebh2017/movie', ['id'=>$rowProg->CodItemProg]);
+                    $url = $this->url('cinebh2017/movie', ['id'=>$rowProg->CodItemProg, 'locale'=>$this->lg]);
 
                     if ($lg=='Ing'){
                         switch($cat){
@@ -617,7 +617,7 @@
                     }
 
                     //$url = "seminario-detalhe.php?menu=programacao&item=seminario&CodSem=$rowProg->CodItemProg";
-                    $url = $this->url('cinebh2017/seminar', ['id'=>$rowProg->CodItemProg]);
+                    $url = $this->url('cinebh2017/seminar', ['id'=>$rowProg->CodItemProg, 'locale'=>$this->lg]);
                     break;
                 case 'AR': $SqlTit = "select TitArte, TitArteIng, CodCatArte from tb_arte where CodArte = $rowProg->CodItemProg";
                     $resultTit  = mysql_query($SqlTit);
