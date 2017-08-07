@@ -328,7 +328,7 @@ if ($Cor == "0") {
                 <?php endif; ?>
             </div>
             <?php
-
+            var_dump($cat);
             if ($cat == "CINE-ESCOLA") {
                 //$resultProg  = mysql_query("SELECT CodItemProg, CategoriaProg, Local, Data, HoraManhaInicial FROM tb_programacaoevento WHERE CodItemProg = $CodFilme AND CategoriaProg = 'CE' AND CodMostra = '$mostra' order by Data, HoraManhaInicial");
                 $resultProg  = mysql_query("SELECT P.CodItemProg, P.CategoriaProg, P.Local, P.Data, P.HoraManhaInicial
