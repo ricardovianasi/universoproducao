@@ -163,7 +163,7 @@ $faixaEtaria2	= mysql_result($result,0,"FaixaEtaria2");
 $ClassificacaoObra	= mysql_result($result,0,"ClassificacaoObra");
 
 $elencoObra		= utf8_encode(mysql_result($result,0,"ElencoObra"));
-$empresaProdutoraObra	= utf8_encode(mysql_result($result,0,"EmpresaProdutoraObra"));
+$empresaProdutoraObra	= (mysql_result($result,0,"EmpresaProdutoraObra"));
 
 
 
