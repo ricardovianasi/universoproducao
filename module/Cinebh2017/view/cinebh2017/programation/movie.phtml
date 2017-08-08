@@ -266,14 +266,26 @@ if ($Formato != "" && $Formato != 0){
     $Formato	= ", ".$Formato;
 }
 
-if ($Cor == "1") {
-    $Cor = ", Preto & Branco";
-}
-if ($Cor == "2") {
-    $Cor = ", Cor";
-}
-if ($Cor == "0") {
-    $Cor = "";
+if ($lg=='Ing'){
+    if ($Cor == "1") {
+        $Cor = ", Black & White";
+    }
+    if ($Cor == "2") {
+        $Cor = ", Color";
+    }
+    if ($Cor == "0") {
+        $Cor = "";
+    }
+} else {
+    if ($Cor == "1") {
+        $Cor = ", Preto & Branco";
+    }
+    if ($Cor == "2") {
+        $Cor = ", Cor";
+    }
+    if ($Cor == "0") {
+        $Cor = "";
+    }
 }
 ?>
 
