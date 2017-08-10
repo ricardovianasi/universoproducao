@@ -36,11 +36,8 @@ class IndexController extends SiteController
 
         //programation
         $program = $this->getRepository(Programation\Highlight::class)->findBy(
-            ['site' => self::SITE_ID, 'isHighlight' => 0],
+            ['site' => self::SITE_ID],
             ['position'=>'ASC']
-        );
-        $programHighlight = $this->getRepository(Programation\Highlight::class)->findOneBy(
-            ['site' => self::SITE_ID, 'isHighlight' => 1]
         );
 
         //gallery
@@ -71,7 +68,6 @@ class IndexController extends SiteController
         return new ViewModel([
             'bannerImages' => $bannerImages,
             'news' => $news,
-            'programHighlight' => $programHighlight,
             'program' => $program,
             'gallery' => $gallery,
             'guides' => $guides,
