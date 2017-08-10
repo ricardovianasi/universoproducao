@@ -15,6 +15,33 @@
 </section>
 <?php endif; ?>
 
+<?php if(count($this->program)): ?>
+    <section class="programation home-effect">
+        <header class="main-header programation-header">
+            <h1 class="main-title">Programação</h1>
+        </header>
+        <div class="programation-highlight">
+            <?php foreach ($this->program as $p): ?>
+                <article class="programation-item">
+                    <a href="<?php echo $p->getUrl(); ?>" class="link">
+                        <div class="bgi" style="background-image: url('<?php echo  $this->thumbor()->url($p->getPhoto())->resize(479, 811); ?>')"></div>
+                        <div class="bgc"></div>
+                        <div class="wrapper">
+                            <p class="date"><?php echo $p->getDate()->format('d/m') ?></p>
+                            <p class="title"><?php echo $p->getTitle(); ?></p>
+                            <p class="subtitle"><?php echo $p->getSubtitle(); ?></p>
+                            <p class="place"><?php echo $p->getPlace(); ?></p>
+                        </div>
+                    </a>
+                </article>
+            <?php endforeach; ?>
+        </div>
+        <div class="main-wrapper">
+            <a class="readmore-link" href="<?php echo $this->url('cinebh2017')?>/programacao/programacao-completa"">proramação completa &gt;</a>
+        </div>
+    </section>
+<?php endif; ?>
+
 <?php if(count($this->news)): ?>
     <div class="main-wrapper">
         <section class="news top">
