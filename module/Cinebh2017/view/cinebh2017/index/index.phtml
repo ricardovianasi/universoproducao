@@ -37,7 +37,7 @@
             <?php endforeach; ?>
         </div>
         <div class="main-wrapper">
-            <a class="readmore-link" href="<?php echo $this->url('cinebh2017')?>programacao/programacao-completa"">proramação completa &gt;</a>
+            <a class="readmore-link" href="<?php echo $this->url('cinebh2017')?>programacao/programacao-completa"">programação completa &gt;</a>
         </div>
     </section>
 <?php endif; ?>
@@ -73,36 +73,30 @@
             <h1 class="main-title"><?php echo $this->translate("Vídeos") ?></h1>
         </header>
         <div class="tv-wrapper">
-            <div class="tv-highlight tv-highlight--full">
+            <div class="tv-highlight">
                 <div class="tv-featured">
                     <div class="tv-bg" style="background-image: url('<?php echo $this->basePath('assets/cinebh2017/dist') ?>/images/tva.jpg')">
-                        <a data-fancybox class="tv-link" href="https://youtu.be/YeMJyeOXtY0?list=PLJXNiEFr2794jDIb4I4ytGhbISOMVpTxZ"><span class="icon-play4"></span></a>
+                        <a data-fancybox class="tv-link" href="https://youtu.be/IXPYnUPNmls"><span class="icon-play4"></span></a>
                     </div>
                     <div class="tv-content">
                         <p class="tv-title">CineBH - Mostra de Cinema de Belo Horizonte</p>
                     </div>
                 </div>
             </div>
-            <!--<div class="tv-highlight">
+            <?php if(count($this->videos)): ?>
+            <div class="tv-highlight">
+                <?php foreach ($this->videos as $v): ?>
                 <div class="tv-featured">
-                    <div class="tv-bg" style="background-image: url('images/tv1.jpg')">
-                        <a class="tv-link" href="#"><span class="icon-play4"></span></a>
+                    <div class="tv-bg" style="background-image: url('<?php echo $this->thumbor()->url($v->getThumb())->resize(260, 180); ?>')">
+                        <a class="tv-link" href="<?php echo $v->getYoutube(); ?>"><span class="icon-play4"></span></a>
                     </div>
                     <div class="tv-content">
-                        <p class="tv-title">Estréia de longas nacionais é desta que na 20ª mostra de cinema de tiradentes</p>
-                        <p class="tv-subtitle">Filmes nacionais estreiam em grande estilo na Mostra Tiradentes. Confira como foi o primeiro dia</p>
+                        <p class="tv-title"><?php echo $v->getCaption(); ?></p>
                     </div>
                 </div>
-                <div class="tv-featured">
-                    <div class="tv-bg" style="background-image: url('images/tv1.jpg')">
-                        <a class="tv-link" href="#"><span class="icon-play4"></span></a>
-                    </div>
-                    <div class="tv-content">
-                        <p class="tv-title">estréia de longas  nacionais é destaque na 20ª mostra de cinema de tiradentes</p>
-                        <p class="tv-subtitle">Filmes nacionais estreiam em grande estilo na Mostra Tiradentes. Confira como foi o primeiro dia</p>
-                    </div>
-                </div>
-            </div>-->
+                <?php endforeach; ?>
+            </div>
+            <?php endif; ?>
         </div>
         <p class="news-readmore">
             <a href="https://www.youtube.com/channel/UCaikc9czwiws39fvlHX-RpA" target="_blank" class="btn">
