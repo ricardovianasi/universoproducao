@@ -557,3 +557,63 @@
       transition: $transition-default
       &:hover
         color: $color-palette-2
+
+  .sponsorship
+    +padding-leader(4)
+    +padding-trailer(8)
+    position: relative
+    &-list
+      display: inline-block
+      width: 100%
+      &--80
+        max-width: 85%
+
+    &-block
+      display: inline-block
+      float: left
+      box-sizing: border-box
+      +trailer(2.5)
+      &--full
+        width: 100%
+      &--30
+        width: 30%
+      &--33
+        width: 33%
+      &--40
+        width: 40%
+      &--45
+        width: 45%
+      &--50
+        width: 50%
+      &--70
+        width: 70%
+      &--60
+        width: 60%
+      &--67
+        width: 67%
+      &--center
+        text-align: center
+      &--right
+        float: right
+
+    &-item
+      display: inline-block
+      box-sizing: border-box
+      vertical-align: middle
+      margin-right: 60px
+      +trailer(1)
+      &--mobile
+        display: none
+      &:first-child
+        margin-left: 0px
+      &:last-child
+        margin-right: 0px
+
+    &-title
+      +adjust-font-size-to(12px, 2, 18px)
+      font-family: $font-family-title
+      font-weight: bold
+      text-transform: uppercase
+      color: #000
+      border-bottom: 1px solid #000
+      +trailer(2)
