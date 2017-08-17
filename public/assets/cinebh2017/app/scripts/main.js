@@ -62,12 +62,30 @@ $(document).ready(function () {
     jQuery(window).trigger('resize').trigger('scroll');
     $('.guide-bg').parallax();
 
-
     $('#menu-button').fancybox({
         arrows: false,
         margin: 0,
         smallBtn: false,
         toolbar: false
+    });
 
+    $('#programation-highlight').owlCarousel({
+        navigation: false,
+        nav: false,
+        responsiveClass:true,
+        responsive:{
+            0: {
+                items: 1,
+                center: true,
+                dots: true,
+                loop: true,
+            },
+            900: {
+                items: 4,
+                loop:false,
+                dots: false,
+                mouseDrag: false
+            }
+        }
     });
 });

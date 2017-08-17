@@ -104,3 +104,18 @@
     &:hover
       color: $color-palette-2
       text-decoration: underline
+
++media("<=765px")
+  .navigation
+    &-header
+      +padding-leader(1)
+      +trailer(2)
+    &-brand
+      display: none
+    &-item
+      display: block
+      float: none
+      margin-right: auto
+      margin-left: auto
+      text-align: center
+      width: 100%

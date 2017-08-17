@@ -8,12 +8,9 @@
     +center(1760px, $pad:20px)
 
   &-brand
-
     width: 50%
     float: left
-
     display: inline-block
-
     +padding-leader(3)
     +padding-trailer(3)
 
@@ -41,14 +38,14 @@
     +padding-leader(4)
     float: left
     .info-date
-      +adjust-font-size-to(36px, 2.5)
+      +adjust-font-size-to(27px, 2.5)
       font-family: $font-family-title
       font-weight: 700
       color: white
       text-transform: uppercase
       span
         display: block
-        +adjust-font-size-to(30px, 1.5, 36px)
+        +adjust-font-size-to(21px, 1.5, 27px)
         
   &-actions
     float: right
@@ -111,3 +108,30 @@
               top: 10px
             &:nth-child(4)
               top: 20px
+
++media("<=765px")
+  .header
+    text-align: center
+    &-brand, &-info, &-actions
+      width: 100%
+      display: block
+      float: none
+    &-brand
+      +padding-leader(2)
+      +padding-trailer(1)
+      .brand-cinebh
+        border: none
+        width: 200px
+        margin-right: 0
+        padding-right: 0
+      .brand-brasilcinemundi
+        width: 200px
+
+    &-info
+      +padding-trailer(2)
+      +padding-leader(0)
+
+    &-actions
+      .menu-button
+        +padding-trailer(2)
+        +padding-leader(0)
