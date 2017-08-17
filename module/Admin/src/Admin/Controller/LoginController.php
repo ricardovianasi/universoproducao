@@ -46,6 +46,7 @@ class LoginController extends AbstractController
 				$authResult = $authService->authenticate();
 
 				if($authResult->isValid()) {
+
 					return $this->redirect()->toRoute('admin');
 				} else {
 					$this->messages()->warning('Não foi possível efetuar o login. Por favor, tente novamente.');

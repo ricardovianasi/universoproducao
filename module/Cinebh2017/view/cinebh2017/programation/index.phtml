@@ -744,6 +744,9 @@
                 $countCurta = 1;
             } elseif ($dataFinal == '26/08' && $horario == '21h'){
                 $limitCurta = 5;
+            } elseif ($dataFinal == '26/08' && $horario == '23h' && $rowProg->CodItemProg == 287){
+                $limitCurta = 2;
+                $countCurta = 1;
             } elseif ($dataFinal == '27/08' && $horario == '16h' && $rowProg->CodItemProg == 21239){
                 $limitCurta = 6;
             }
@@ -868,6 +871,18 @@
                                     elseif($rowProg->CodItemProg == 21252 && $horario == "20h" ){$categoria="FILME  - MOSTRA RETROSPECTIVA PIERRE LÉON – CURTA E LONGA";}
                                     elseif($rowProg->CodItemProg == 21248 && $horario == "20h" ){$categoria = "";}
 
+                                    elseif($rowProg->CodItemProg == 282 && $horario == "19h" ){$categoria="ARTE • EXPOSIÇÃO";}
+                                    elseif($rowProg->CodItemProg == 281 && $horario == "19h" ){$categoria="ARTE • EXPOSIÇÃO";}
+
+                                    elseif($rowProg->CodItemProg == 283 && $horario == "22h30" ){$categoria="ARTE • PERFORMANCE MUSICAL";}
+                                    elseif($rowProg->CodItemProg == 283 && $horario == "22h30" ){$categoria="ARTE • PERFORMANCE MUSICAL";}
+
+                                    elseif($rowProg->CodItemProg == 284 && $horario == "23h30" ){$categoria="ARTE • SHOW";}
+
+                                    elseif($rowProg->CodItemProg == 285 && $horario == "11h" ){$categoria="ARTE • SHOW";}
+                                    elseif($rowProg->CodItemProg == 286 && $horario == "15h" ){$categoria="ARTE • SHOW";}
+                                    elseif($rowProg->CodItemProg == 288 && $dataFinal == "26/08" && $horario == "23h" ){$categoria="";}
+                                    elseif($rowProg->CodItemProg == 287 && $horario == "23h" ){$categoria="ARTE • SHOW";}
 
                                     elseif($rowProg->CodItemProg == 18178 && $horario != "20h30" ){$categoria = "HISTÓRICA • CURTA E LONGA";}
                                     elseif($rowProg->CodItemProg == 17986){$categoria = "CONTEMPORÂNEA • MEDIAS";}

@@ -5,9 +5,10 @@
     overflow: hidden
 
   &-item
-    +column(1/3, $cycle:3)
-    padding-left: 15px
-    padding-right: 15px
+    +column(1/4, $cycle:4)
+    //padding-left: 15px
+    //padding-right: 15px
+    box-sizing: border-box
     &:first-child
       padding-left: 0
     &:last-child
@@ -40,6 +41,6 @@
     color: $color-txt
     transition: $transition-default
     &:hover
-      color: $color-palette-2
+      color: $color-palette-2 !important
       img
         transform: scale(1.1)

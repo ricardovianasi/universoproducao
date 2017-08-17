@@ -9,7 +9,7 @@
 namespace Admin\Auth\Factory;
 
 use Zend\Authentication\AuthenticationService;
-use Zend\Authentication\Storage\NonPersistent;
+use Zend\Authentication\Storage\Session;
 use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 
@@ -27,7 +27,7 @@ class AuthenticationServiceFactory implements FactoryInterface
 			return $serviceLocator->get('doctrine.authenticationservice.orm_default');
 		} else {
 			// @todo This should be configurable, or replacable?
-			return new AuthenticationService(new NonPersistent());
+			return new AuthenticationService(new Session('someNamespace'));
 		}
 	}
 }
