@@ -20,7 +20,7 @@
         <header class="main-header programation-header">
             <h1 class="main-title"><?php echo $this->translate('Programação') ?></h1>
         </header>
-        <div class="programation-highlight owl-carousel">
+        <div class="programation-highlight owl-carousel" id="programation-highlight">
             <?php foreach ($this->program as $p): ?>
                 <article class="programation-item">
                     <a href="<?php echo $p->getUrl(); ?>" class="link">
