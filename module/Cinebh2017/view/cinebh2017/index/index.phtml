@@ -18,7 +18,7 @@
 <?php if(count($this->program)): ?>
     <section class="programation home-effect">
         <header class="main-header programation-header">
-            <h1 class="main-title">Programação</h1>
+            <h1 class="main-title"><?php echo $this->translate('Programação') ?></h1>
         </header>
         <div class="programation-highlight">
             <?php foreach ($this->program as $p): ?>
@@ -37,7 +37,7 @@
             <?php endforeach; ?>
         </div>
         <div class="main-wrapper">
-            <a class="readmore-link" href="<?php echo $this->url('cinebh2017')?>programacao/programacao-completa"">programação completa &gt;</a>
+            <a class="readmore-link" href="<?php echo $this->url('cinebh2017')?>programacao/programacao-completa""><?php echo $this->translate('programação completa') ?> &gt;</a>
         </div>
     </section>
 <?php endif; ?>

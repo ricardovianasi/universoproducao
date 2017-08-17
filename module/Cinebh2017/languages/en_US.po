@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Cinebh\n"
-"POT-Creation-Date: 2017-08-04 10:02-0300\n"
-"PO-Revision-Date: 2017-08-04 10:22-0300\n"
+"POT-Creation-Date: 2017-08-17 10:57-0300\n"
+"PO-Revision-Date: 2017-08-17 10:58-0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en_US\n"
@@ -16,63 +16,71 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: cinebh2017/index/index.phtml:22
+#: cinebh2017/index/index.phtml:21
+msgid "Programação"
+msgstr "Programming"
+
+#: cinebh2017/index/index.phtml:40
+msgid "programação completa"
+msgstr "full programming"
+
+#: cinebh2017/index/index.phtml:49
 msgid "Notícias"
 msgstr "News"
 
-#: cinebh2017/index/index.phtml:38
+#: cinebh2017/index/index.phtml:65
 msgid "Ver todas as Notícias"
 msgstr "All news"
 
-#: cinebh2017/index/index.phtml:46
+#: cinebh2017/index/index.phtml:73
 msgid "Vídeos"
 msgstr "Videos"
 
-#: cinebh2017/index/index.phtml:82
+#: cinebh2017/index/index.phtml:103
 msgid "Ver todos os vídeos"
 msgstr "All videos"
 
-#: cinebh2017/index/index.phtml:102
+#: cinebh2017/index/index.phtml:123
 msgid "Ver mais imagens"
 msgstr "All photos"
 
-#: cinebh2017/index/index.phtml:111
+#: cinebh2017/index/index.phtml:132
 msgid "Compartilhe e publique suas imagens usando a #eufaçoaMostra"
 msgstr "Share and publish your images using #eufaçoaMostra"
 
-#: cinebh2017/index/index.phtml:130
+#: cinebh2017/index/index.phtml:151
 msgid "A cidade em movimento"
 msgstr "The city in motion"
 
-#: cinebh2017/index/index.phtml:137
+#: cinebh2017/index/index.phtml:158
 msgid "Locais"
 msgstr "Places"
 
-#: cinebh2017/index/index.phtml:143
+#: cinebh2017/index/index.phtml:164
 msgid "Restaurantes"
 msgstr "Restaurants"
 
-#: cinebh2017/index/index.phtml:149
+#: cinebh2017/index/index.phtml:170
 msgid "Hoteis e acomodações"
 msgstr "Accommodation"
 
-#: cinebh2017/index/index.phtml:155
+#: cinebh2017/index/index.phtml:176
 msgid "Turismo e Informações"
 msgstr "Tourism and Information"
 
-#: cinebh2017/index/index.phtml:165
+#: cinebh2017/index/index.phtml:186
 msgid "Receba nossos informativos"
 msgstr "Receive our newsletter"
 
-#: cinebh2017/index/index.phtml:168
+#: cinebh2017/index/index.phtml:189
 msgid "Nome"
 msgstr "Name"
 
-#: cinebh2017/index/index.phtml:169
+#: cinebh2017/index/index.phtml:190
 msgid "E-mail"
 msgstr "E-mail"
 
-#: cinebh2017/index/index.phtml:170
+#: cinebh2017/index/index.phtml:191
 msgid "Cadastrar"
 msgstr "Register"
 
@@ -80,27 +88,27 @@ msgstr "Register"
 msgid "Início"
 msgstr "Home"
 
-#: cinebh2017/programation/movie.phtml:306
+#: cinebh2017/programation/movie.phtml:318
 msgid "Faixa etária sugerida"
 msgstr "Classification"
 
-#: cinebh2017/programation/movie.phtml:312
+#: cinebh2017/programation/movie.phtml:324
 msgid "Foto"
 msgstr "Photo"
 
-#: cinebh2017/programation/movie.phtml:323
+#: cinebh2017/programation/movie.phtml:335
 msgid "Elenco"
 msgstr "Cast"
 
-#: cinebh2017/programation/movie.phtml:327
+#: cinebh2017/programation/movie.phtml:339
 msgid "Empresa Produtora"
 msgstr "Producer"
 
-#: cinebh2017/programation/movie.phtml:362
+#: cinebh2017/programation/movie.phtml:379
 msgid "EXIBIÇÃO"
 msgstr "EXHIBITION"
 
-#: cinebh2017/programation/movie.phtml:370
+#: cinebh2017/programation/movie.phtml:387
 msgid "EXIBIÇÕES"
 msgstr "EXHIBITIONS"
 
