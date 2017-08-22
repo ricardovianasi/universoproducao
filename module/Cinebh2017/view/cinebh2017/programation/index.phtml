@@ -506,7 +506,7 @@
                     $url = array();
                     while($linhaSess = mysql_fetch_object($resultSess))
                     {
-                        $SqlTit = "select TituloObra, TituloObraIng, DirecaoObra, preEstreia, FaixaEtaria1, FaixaEtaria2 from tb_obras where codObra = $linhaSess->idFilme";
+                        $SqlTit = "select codObra, TituloObra, TituloObraIng, DirecaoObra, preEstreia, FaixaEtaria1, FaixaEtaria2 from tb_obras where codObra = $linhaSess->idFilme";
 
                         $resultTit  = mysql_query($SqlTit);
 
@@ -521,7 +521,7 @@
                             $faixaEtaria1	= $r["FaixaEtaria1"];
                             $faixaEtaria2	= $r["FaixaEtaria2"];
                             //$url = "cine-escola-detalhe.php?menu=prog&sub=cinescol&cat=$categoria&CodFilme=$linhaSess->idFilme";
-                            $url = $this->url('cinebh2017/movie', ['id'=>$linhaSess->idFilme, 'locale'=>$this->lg]);
+                            $url = $this->url('cinebh2017/movie', ['id'=>$r['codObra'], 'locale'=>$this->lg]);
                         }
                     }
 

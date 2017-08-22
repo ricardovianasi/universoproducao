@@ -115,7 +115,24 @@
                                             <?php else: ?>
                                                 <div class="note note-danger">
                                                     <h4>Não confirmado</h4>
-                                                    <a href="#myModal1" role="button" class="btn red" data-toggle="modal">Confirmar cadastro</a>
+                                                    <a data-toggle="modal" href="#comfir_register" class="btn red">Confirmar cadastro</a>
+                                                    <div class="modal fade" id="comfir_register" tabindex="-1" role="basic" aria-hidden="true">
+                                                        <div class="modal-dialog">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                                                                    <h4 class="modal-title">Confirmação de cadastro</h4>
+                                                                </div>
+                                                                <div class="modal-body"> Verifique se os dados de cadastro estão corretos. Informações erradas podem gerar erros de comunicação. Deseja confirmar o cadastro? </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn dark btn-outline" data-dismiss="modal">Não confirmar</button>
+                                                                    <a href="<?php echo $this->url('') ?>" type="button" class="btn green">Confirmar</a>
+                                                                </div>
+                                                            </div>
+                                                            <!-- /.modal-content -->
+                                                        </div>
+                                                        <!-- /.modal-dialog -->
+                                                    </div>
                                                 </div>
                                             <?php endif; ?>
                                         </div>
