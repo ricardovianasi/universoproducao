@@ -12,7 +12,7 @@
 
         <?php
         $dbh=mysql_connect ("162.243.253.29", "universoprod2", "ag51www");
-//        $dbh=mysql_connect ("127.0.0.1", "root", "root");
+        //        $dbh=mysql_connect ("127.0.0.1", "root", "root");
         //$dbh=mysql_connect ("127.0.0.1", "root", "");
         if (!$dbh) {
             echo "Não foi possível conectar ao banco de dados: " . mysql_error();
@@ -724,7 +724,10 @@
 
             if ($dataFinal == '23/08' && $horario == '19h' && $rowProg->CodItemProg == 21081) {
                 $limitCurta = 6;
-            }elseif ($dataFinal == '23/08' && $horario == '21h'){
+            } elseif ($dataFinal == '23/08' && $horario == '19h' && $rowProg->CodItemProg == 21289) {
+                $limitCurta = 2;
+                $countCurta = 1;
+            } elseif ($dataFinal == '23/08' && $horario == '21h'){
                 $limitCurta = 5;
             } elseif ($dataFinal == '24/08' && $horario == '08h30'){
                 $limitCurta = 2;
@@ -747,8 +750,11 @@
             } elseif ($dataFinal == '26/08' && $horario == '23h' && $rowProg->CodItemProg == 287){
                 $limitCurta = 2;
                 $countCurta = 1;
-            } elseif ($dataFinal == '27/08' && $horario == '16h' && $rowProg->CodItemProg == 21239){
+            } elseif ($dataFinal == '27/08' && $horario == '16h30' && $rowProg->CodItemProg == 21239){
                 $limitCurta = 6;
+            } elseif ($dataFinal == '27/08' && $horario == '19h30' && $rowProg->CodItemProg == 25){
+                $limitCurta = 2;
+                $countCurta = 1;
             }
 
 
@@ -857,16 +863,16 @@
                                         $pe = "";
                                     }
 
-                                    if($rowProg->CodItemProg == 21289 && $horario == "19h30" ){$categoria="FILME • MOSTRA CLÁSSICOS NA PRAÇA • CURTA E LONGA";}
-                                    elseif($rowProg->CodItemProg == 21272 && $horario == "19h30" ){$categoria = "";}
-                                    elseif($rowProg->CodItemProg == 21269 && $horario == "19h30" ){$categoria="FILME • MOSTRA CLÁSSICOS NA PRAÇA • CURTA E LONGA";}
-                                    elseif($rowProg->CodItemProg == 21273 && $horario == "19h30" ){$categoria = "";}
+                                    if($rowProg->CodItemProg == 21289 && $horario == "19h" ){$categoria="FILME • MOSTRA CLÁSSICOS NA PRAÇA • CURTA E LONGA";}
+                                    elseif($rowProg->CodItemProg == 21272 && $horario == "19h" ){$categoria = "";}
+                                    elseif($rowProg->CodItemProg == 21269 && $horario == "19h" ){$categoria="FILME • MOSTRA CLÁSSICOS NA PRAÇA • CURTA E LONGA";}
+                                    elseif($rowProg->CodItemProg == 21273 && $horario == "19h" ){$categoria = "";}
 
-                                    elseif($rowProg->CodItemProg == 21268 && $horario == "19h30" ){$categoria="FILME • MOSTRA CLÁSSICOS NA PRAÇA • CURTA E LONGA";}
-                                    elseif($rowProg->CodItemProg == 21274 && $horario == "19h30" ){$categoria = "";}
+                                    elseif($rowProg->CodItemProg == 21268 && $horario == "19h" ){$categoria="FILME • MOSTRA CLÁSSICOS NA PRAÇA • CURTA E LONGA";}
+                                    elseif($rowProg->CodItemProg == 21274 && $horario == "19h" ){$categoria = "";}
 
-                                    elseif($rowProg->CodItemProg == 21270 && $horario == "19h30" ){$categoria="FILME • MOSTRA CLÁSSICOS NA PRAÇA • CURTA E LONGA";}
-                                    elseif($rowProg->CodItemProg == 21287 && $horario == "19h30" ){$categoria = "";}
+                                    elseif($rowProg->CodItemProg == 21270 && $horario == "18h" ){$categoria="FILME • MOSTRA CLÁSSICOS NA PRAÇA • CURTA E LONGA";}
+                                    elseif($rowProg->CodItemProg == 21287 && $horario == "18h" ){$categoria = "";}
 
                                     elseif($rowProg->CodItemProg == 21252 && $horario == "20h" ){$categoria="FILME  - MOSTRA RETROSPECTIVA PIERRE LÉON – CURTA E LONGA";}
                                     elseif($rowProg->CodItemProg == 21248 && $horario == "20h" ){$categoria = "";}
