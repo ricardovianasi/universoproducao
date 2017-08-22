@@ -521,7 +521,7 @@
                             $faixaEtaria1	= $r["FaixaEtaria1"];
                             $faixaEtaria2	= $r["FaixaEtaria2"];
                             //$url = "cine-escola-detalhe.php?menu=prog&sub=cinescol&cat=$categoria&CodFilme=$linhaSess->idFilme";
-                            $url = $this->url('cinebh2017/movie', ['id'=>$r['codObra'], 'locale'=>$this->lg]);
+                            $url[] = $this->url('cinebh2017/movie', ['id'=>$linhaSess->idFilme, 'locale'=>$this->lg]);
                         }
                     }
 
