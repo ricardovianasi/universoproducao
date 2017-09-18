@@ -15,6 +15,8 @@ use Zend\Form\Form;
 use Zend\Validator\EmailAddress;
 use Zend\InputFilter\Factory as InputFilterFactory;
 use Zend\Validator\Identical;
+use Zend\Validator\Regex;
+use Zend\Validator\StringLength;
 
 class NewUserForm extends Form
 {
@@ -46,14 +48,13 @@ class NewUserForm extends Form
             'attributes' => [
                 'required' => 'required',
             ],
-
         ]);
 
         $this->add([
             'name' => 'name',
             'required' => true,
             'options' => [
-                'label' => 'Nome',
+                'label' => 'Nome completo',
                 'twb-layout' => 'horizontal',
                 'column-size' => 'md-5',
                 'label_attributes' => [
@@ -89,7 +90,7 @@ class NewUserForm extends Form
             'options' => [
                 'label' => 'Senha',
                 'twb-layout' => 'horizontal',
-//                'help-block' => 'Complexidade dee senha',
+                'help-block' => 'Mínimo de 8 caracteres. Necessário incluir 1 número, 1 letra e 1 caractere especial',
                 'column-size' => 'md-5',
                 'label_attributes' => [
                     'class' => 'col-md-3'
@@ -97,7 +98,11 @@ class NewUserForm extends Form
             ],
             'attributes' => [
                 'required' => 'required',
-                'id' => 'password'
+                'id' => 'password',
+                'data-parsley-minlength' => "8",
+                'data-parsley-number' => "1",
+                'data-parsley-special' => "1",
+                'data-parsley-char' => "1",
             ],
         ]);
 
@@ -126,10 +131,16 @@ class NewUserForm extends Form
                 'required'   => true,
                 'validators' => [
                     new Identifier(),
-                    new NoObjectExists([
-                        'object_repository' => $this->entityManager->getRepository(User::class),
-                        'fields'            => 'identifier'
-                    ])
+                    [
+                        'name' => NoObjectExists::class,
+                        'options' => [
+                            'object_repository' => $this->entityManager->getRepository(User::class),
+                            'fields'            => 'identifier',
+                            'messages' => [
+                                'objectFound' => 'Este identificador já existe em nossa base de dados',
+                            ],
+                        ]
+                    ]
                 ]
             ],
             'email' => [
@@ -137,10 +148,27 @@ class NewUserForm extends Form
                 'required'   => true,
                 'validators' => [
                     new EmailAddress(),
-                    new NoObjectExists([
-                        'object_repository' => $this->entityManager->getRepository(User::class),
-                        'fields'            => 'email'
-                    ])
+                    [
+                        'name' => NoObjectExists::class,
+                        'options' => [
+                            'object_repository' => $this->entityManager->getRepository(User::class),
+                            'fields'            => 'email',
+                            'messages' => [
+                                'objectFound' => 'E-mail já existe em nossa base de dados',
+                            ],
+                        ]
+
+                    ]
+                ]
+            ],
+            'password' => [
+                'name'       => 'password',
+                'required'   => true,
+                'validators' => [
+                    new StringLength(8),
+                    new Regex('/[a-zA-z]/'),
+                    new Regex('/[0-9]/'),
+                    new Regex('/[.!@#$%^&*;:]/')
                 ]
             ],
             'confirm_password' => [

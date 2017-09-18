@@ -47,6 +47,26 @@ return [
                     ],
                 ]
             ],
+            [
+                'label' => 'Filmes',
+                'uri' => '#',
+                'icon' => 'icon-book-open',
+                'pages' => [
+                    [
+                        'label' => 'Configurações',
+                        'route' => 'admin/default',
+                        'controller' => 'movie-options',
+                        'icon' => 'icon-doc',
+
+                    ],
+                    [
+                        'label' => 'Filmes',
+                        'route' => 'admin/default',
+                        'controller' => 'movie',
+                        'icon' => 'icon-doc',
+                    ],
+                ]
+            ],
 			[
 				'label' => 'Portais',
 				'uri' => '#',

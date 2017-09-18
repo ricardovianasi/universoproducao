@@ -1,0 +1,61 @@
+<?php $form = $this->form; ?>
+<div class="row post guide">
+<div class="col-md-12">
+	<?php $form->prepare(); echo $this->form(null, null)->openTag($form) ?>
+
+	<div class="portlet light portlet-fit bordered">
+		<div class="portlet-title">
+			<div class="caption">
+				<?php if($this->option->getId()): ?>
+				<i class="fa fa-edit"></i>
+				Editar opção
+				<?php else: ?>
+				<i class="fa fa-file-o"></i>
+				Nova opção
+				<?php endif; ?>
+			</div>
+			<div class="actions">
+				<a href="<?php echo $this->url('admin/default', ['controller'=>'movie-options']); ?>"
+				   class="btn btn-default">
+					<i class="icon-action-undo"></i>
+					<span class="hidden-xs"> Voltar </span>
+				</a>
+                <a href="<?php echo $this->url('admin/default', ['controller'=>'movie-options', 'action'=>'create']); ?>"
+                   class="btn btn-default">
+                    <i class="fa fa-plus"></i>
+                    <span class="hidden-xs"> Nova opção </span>
+                </a>
+			</div>
+		</div>
+		<div class="portlet-body">
+			<div class="portlet">
+                <div class="portlet-body form">
+                    <div class="form-body">
+                        <div class="form-group">
+                            <label class="control-label col-md-3" for=""><?php echo $form->get('name')->getLabel(); ?></label>
+                            <div class="col-md-4"><?php echo $this->formElement($form->get('name')); ?></div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3" for=""><?php echo $form->get('type')->getLabel(); ?></label>
+                            <div class="col-md-4"><?php echo $this->formElement($form->get('type')); ?></div>
+                        </div>
+                        <div class="form-group last">
+                            <label class="control-label col-md-3" for=""><?php echo $form->get('status')->getLabel(); ?></label>
+                            <div class="col-md-4"><?php echo $this->formElement($form->get('status')); ?></div>
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <div class="row">
+                            <div class="col-md-offset-3 col-md-9">
+                                <button type="submit" class="btn blue btn-lg action-save">Salvar</button>
+                                <a href="<?php echo $this->url('admin/default', ['controller'=>'movie-options']); ?>" class="btn red btn-lg action cancel">Descartar</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+			</div>
+		</div>
+	</div>
+	<?php echo $this->form()->closeTag() ?>
+</div>
+</div>

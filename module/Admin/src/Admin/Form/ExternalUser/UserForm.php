@@ -46,7 +46,7 @@ class UserForm extends Form
 			'name' => 'name',
 			'required' => true,
 			'options' => [
-				'label' => 'Nome',
+				'label' => 'Nome completo',
 			],
 			'attributes' => [
 				'required' => 'required'

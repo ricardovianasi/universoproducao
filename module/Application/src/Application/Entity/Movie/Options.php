@@ -6,7 +6,7 @@ use Util\Entity\AbstractEntity;
 
 /**
  * @ORM\Table(name="movie_options")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Application\Repository\Movie\Options")
  */
 class Options extends AbstractEntity
 {
@@ -22,8 +22,8 @@ class Options extends AbstractEntity
     /** @ORM\Column(name="`type`", type="string") */
     private $type;
 
-    /** @ORM\Column(name="`status`", type="string") */
-    private $status;
+    /** @ORM\Column(name="`status`", type="boolean") */
+    private $status = true;
 
     /**
      * @return mixed
@@ -87,5 +87,10 @@ class Options extends AbstractEntity
     public function setStatus($status)
     {
         $this->status = $status;
+    }
+
+    public function getTypeName()
+    {
+        return OptionsType::get($this->getType());
     }
 }

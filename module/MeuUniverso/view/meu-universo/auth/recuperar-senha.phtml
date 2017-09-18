@@ -1,8 +1,12 @@
 <div class="userlogin-wrapper">
     <p class="meuuniverso-brand meuuniverso-brand--center"><strong>Meu</strong>Universo<br />Recuperar senha</p>
 
-    <?php if($this->error && $this->reason=='data_not_sent'): ?>
-    <?php elseif($this->error && $this->reason=='user_not_found'): ?>
+    <?php if($this->error): ?>
+        <div class="note note-danger">
+            <h4 class="block">Ocorreu um erro</h4>
+            <p>O e-mail informado parece não ser válido ou não existe em nossa base de dados</p>
+            <p>Por favor, tente novamente</p>
+        </div>
     <?php elseif($this->error==false && $this->reason=='email_sent'): ?>
         <div class="note note-info">
             <h4 class="block">Solicitação recebida</h4>
@@ -17,8 +21,10 @@
         </div>
     <?php endif ?>
 
-    <form action="" class="userlogin-form" method="POST">
-        <input required class="input" name="login" placeholder="Informe o e-mail usado no cadastro" value="">
+    <form action="" class="userlogin-form" method="POST" data-js-validate>
+        <div class="form-group">
+            <input type="email" required class="input" name="login" placeholder="Informe o e-mail usado no cadastro" value="">
+        </div>
         <button class="submit" class="userlogin-submit">Enviar</button>
     </form>
 
