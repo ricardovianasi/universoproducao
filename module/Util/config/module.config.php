@@ -44,7 +44,7 @@ return [
                     ],
                 ],
                 'may_terminate' => true,
-                'priority' => 9999,
+                'priority' => 99999999,
                 'child_routes' => [
                     'cep' => [
                         'type'    => 'Literal',
