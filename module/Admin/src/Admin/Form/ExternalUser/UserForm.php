@@ -90,7 +90,6 @@ class UserForm extends Form
 
 		$this->add([
 			'name' => 'birth_date',
-			'required' => true,
 			'type' => 'TwbBundle\Form\Element\DatePicker',
 			'options' => [
 				'label' => 'Data de Nascimento',
@@ -204,6 +203,8 @@ class UserForm extends Form
         $this->add([
             'type' => 'select',
             'name' => 'gender',
+            'required' => false,
+            'allow_empty' => true,
             'options' => [
                 'label' => 'Sexo',
                 'empty_option' => 'Selecione',
@@ -211,9 +212,6 @@ class UserForm extends Form
                     'm' => 'Masculino',
                     'f' => 'Feminino'
                 ]
-            ],
-            'attributes' => [
-                'required' => 'required'
             ]
         ]);
 
@@ -227,11 +225,11 @@ class UserForm extends Form
             'name' => 'dependents'
         ]);
 
-		$confirmedRegister = new Checkbox('confirmed_register');
+		/*$confirmedRegister = new Checkbox('confirmed_register');
 		$confirmedRegister->setLabel('Confirmar o cadastro do usuário')
 			->setAttribute('class', 'icheck')
 			->setOption('disable-twb', true);
-		$this->add($confirmedRegister);
+		$this->add($confirmedRegister);*/
 	}
 
 	protected function findStates()

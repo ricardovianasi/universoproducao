@@ -97,8 +97,6 @@ $(document).ready(function() {
         }
     });
 
-    $('.modal').modal();
-
     $('#search-btn').on('click', function (e) {
         e.preventDefault();
         console.log('hello');
@@ -108,6 +106,13 @@ $(document).ready(function() {
     $('#manu-btn').on('click', function(e) {
        e.preventDefault();
        $('.mainmenu').toggleClass('mainmenu-active');
+    });
+
+    $('#user-button').fancybox({
+        arrows: false,
+        margin: 0,
+        smallBtn: false,
+        toolbar: false
     });
 
     function mouse_bottom() {
@@ -124,70 +129,3 @@ $(document).ready(function() {
     }
     mouse_bottom();
 });
-
-(function(window, $) {
-    var Modal = function(element, options) {
-        this.element = element;
-        this.$element = $(element);
-        this.options = options;
-    };
-
-    Modal.prototype = {
-        defaults: {
-        },
-
-        init: function() {
-            this.config = $.extend({}, this.defaults, this.options, this.$element.data());
-            var _that = this;
-            $(this.config.open).on('click', function(e) {
-                e.preventDefault();
-                _that.openModal();
-            });
-
-            $('.modal-close').on('click', function (e) {
-                e.preventDefault();
-                _that.closeModal();
-            })
-        },
-        openModal: function () {
-            var _that = this;
-
-            $('body').css({
-                top: 0,
-                position: 'fixed'
-            });
-
-            _that.$element.css({
-                width: '100%',
-                height: '100%',
-                visibility: 'visible',
-                opacity: 1
-            });
-        },
-        closeModal: function() {
-            var _that = this;
-
-            $('body').css({
-                position: 'relative'
-            });
-
-            _that.$element.css({
-                width: '0',
-                height: '0',
-                visibility: 'hidden',
-                opacity: 0
-            });
-        }
-    }
-
-    Modal.defaults = Modal.prototype.defaults;
-
-    $.fn.modal = function(options) {
-        return this.each(function () {
-            new Modal(this, options).init();
-        });
-    };
-
-    window.Modal = Plugin;
-
-})(window, jQuery);

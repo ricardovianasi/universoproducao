@@ -1,12 +1,14 @@
 <?php
 namespace Admin;
 
+use Admin\Controller\Plugin\Service\UserLogFactory;
 use Zend\Mvc\Router\Http\Literal;
 
 return array(
     'controller_plugins' => array(
         'factories' => array(
-            'slugify' => 'Admin\Controller\Plugin\Service\SlugfyFactory'
+            'slugify' => SlugfyFactory::class,
+            'userLog' => UserLogFactory::class
         ),
         'invokables' => array(
             'getidentity' => 'Admin\Auth\Identity\IdentityPlugin'

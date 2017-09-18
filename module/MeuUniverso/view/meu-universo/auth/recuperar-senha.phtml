@@ -1,0 +1,31 @@
+<div class="userlogin-wrapper">
+    <p class="meuuniverso-brand meuuniverso-brand--center"><strong>Meu</strong>Universo<br />Recuperar senha</p>
+
+    <?php if($this->error && $this->reason=='data_not_sent'): ?>
+    <?php elseif($this->error && $this->reason=='user_not_found'): ?>
+    <?php elseif($this->error==false && $this->reason=='email_sent'): ?>
+        <div class="note note-info">
+            <h4 class="block">Solicitação recebida</h4>
+            <p>Enviamos um e-mail com os dados que você precisa para gerar uma nova senha.</p>
+            <p>Caso não encontre nosso e-mail, verifique sua caixa de SPAM</p>
+        </div>
+    <?php elseif($this->error==false && $this->reason=='password_change'): ?>
+        <div class="note note-info">
+            <h4 class="block">Tudo certo</h4>
+            <p>Senha alterada com sucesso.</p>
+            <p><a class="btn blue" href="<?php echo $this->url('meu-universo/auth') ?>">Efetuar login</a></p>
+        </div>
+    <?php endif ?>
+
+    <form action="" class="userlogin-form" method="POST">
+        <input required class="input" name="login" placeholder="Informe o e-mail usado no cadastro" value="">
+        <button class="submit" class="userlogin-submit">Enviar</button>
+    </form>
+
+    <div class="userlogin-tricks">
+        <p class="tricks-item center">
+            <a href="<?php echo $this->url('meu-universo/auth') ?>" class="tricks-link">
+                <span class="glyphicon glyphicon-circle-arrow-left" aria-hidden="true"></span> Voltar</a>
+        </p>
+    </div>
+</div>

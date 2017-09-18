@@ -30,6 +30,9 @@
 					type: 'POST',
 					url: _that.config.urlCep,
 					data: 'cep='+cepValue,
+					complete: function() {
+						App.unblockUI();
+					},
 					success: function(data) {
 						if(data.error) {
 							_that.erroMessage(data.error);
@@ -44,6 +47,7 @@
 						}
 					},
 					error: function() {
+						App.unblockUI();
 						_that.erroMessage('Não foi possível localizar o cep informado. Por favor, tente novamente ou informe o endereço manualmente.');
 					}
 				});
@@ -51,18 +55,9 @@
 
 		},
 		erroMessage: function(msg) {
-			bootbox.dialog({
+			bootbox.alert({
 	            message: msg,
-	            title: "Atenção",
-	            buttons: {
-	            	success: {
-	            		label: "OK",
-	                	className: "blue",
-	                	callback: function() {
-                    		App.unblockUI();
-                    	}
-	              	}
-	            }
+	            title: "Atenção"
 	        });
 		}
 	}

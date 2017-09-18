@@ -35,58 +35,71 @@ return [
 
 	'router' => [
 		'routes' => [
-			'util_cep' => [
-				'type'    => 'Literal',
-				'options' => [
-					'route' => '/cep',
-					'defaults' => [
-						// Change this value to reflect the namespace in which
-						// the controllers for your module are found
-						'__NAMESPACE__' => 'Util\Controller',
-						'controller'    => 'Adderess',
-						'action'        => 'cep',
-					]
-				]
-			],
-			'util_cities' => [
-				'type'    => 'Literal',
-				'options' => [
-					'route' => '/cities',
-					'defaults' => [
-						// Change this value to reflect the namespace in which
-						// the controllers for your module are found
-						'__NAMESPACE__' => 'Util\Controller',
-						'controller'    => 'Adderess',
-						'action'        => 'cities',
-					]
-				]
-			],
-			'util_password' => [
-				'type'    => 'Literal',
-				'options' => [
-					'route' => '/generate-password',
-					'defaults' => [
-						// Change this value to reflect the namespace in which
-						// the controllers for your module are found
-						'__NAMESPACE__' => 'Util\Controller',
-						'controller'    => 'Password',
-						'action'        => 'generate-password',
-					]
-				]
-			],
-			'util_site_item' => [
-				'type' => 'Literal',
-				'options' => [
-					'route' => '/post/add-site-item',
-					'defaults' => [
-						// Change this value to reflect the namespace in which
-						// the controllers for your module are found
-						'__NAMESPACE__' => 'Util\Controller',
-						'controller'    => 'Post',
-						'action'        => 'add-site',
-					]
-				]
-			]
+		    'util' => [
+		        'type' => 'Hostname',
+                'options' => [
+                    'route' => 's.universoproducao.com.br',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Util\Controller'
+                    ],
+                ],
+                'may_terminate' => true,
+                'priority' => 9999,
+                'child_routes' => [
+                    'cep' => [
+                        'type'    => 'Literal',
+                        'options' => [
+                            'route' => '/cep',
+                            'defaults' => [
+                                // Change this value to reflect the namespace in which
+                                // the controllers for your module are found
+                                '__NAMESPACE__' => 'Util\Controller',
+                                'controller'    => 'Adderess',
+                                'action'        => 'cep',
+                            ]
+                        ]
+                    ],
+                    'cities' => [
+                        'type'    => 'Literal',
+                        'options' => [
+                            'route' => '/cities',
+                            'defaults' => [
+                                // Change this value to reflect the namespace in which
+                                // the controllers for your module are found
+                                '__NAMESPACE__' => 'Util\Controller',
+                                'controller'    => 'Adderess',
+                                'action'        => 'cities',
+                            ]
+                        ]
+                    ],
+                    'password' => [
+                        'type'    => 'Literal',
+                        'options' => [
+                            'route' => '/generate-password',
+                            'defaults' => [
+                                // Change this value to reflect the namespace in which
+                                // the controllers for your module are found
+                                '__NAMESPACE__' => 'Util\Controller',
+                                'controller'    => 'Password',
+                                'action'        => 'generate-password',
+                            ]
+                        ]
+                    ],
+                    'site_item' => [
+                        'type' => 'Literal',
+                        'options' => [
+                            'route' => '/post/add-site-item',
+                            'defaults' => [
+                                // Change this value to reflect the namespace in which
+                                // the controllers for your module are found
+                                '__NAMESPACE__' => 'Util\Controller',
+                                'controller'    => 'Post',
+                                'action'        => 'add-site',
+                            ]
+                        ]
+                    ]
+                ]
+            ],
 		]
 	]
 ];

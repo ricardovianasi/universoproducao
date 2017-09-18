@@ -1,0 +1,25 @@
+<?php //Assets for MeuUniverso module
+    //CSS
+    $this->headLink()
+        ->appendStylesheet($this->basePath('assets/meuuniverso/dist/styles/main.css'))
+        ->appendStylesheet($this->basePath('assets/meuuniverso/dist/styles/vendor.css'))
+        ->appendStylesheet($this->basePath('assets/admin/template/metronic_v4.5.5/theme/assets/global/css/components.min.css'))
+        ->appendStylesheet($this->basePath('assets/admin/template/metronic_v4.5.5/theme/assets/global/css/plugins.min.css'));
+
+    //JS
+    $this->inlineScript()
+        //admin
+        ->appendFile($this->basePath('assets/admin/dev/js/resources/js/adderess.min.js'))
+        ->appendFile($this->basePath('assets/admin/dev/js/resources/js/cities.min.js'))
+        ->appendFile($this->basePath('assets/admin/dev/js/resources/js/dependens.min.js'))
+        ->appendFile($this->basePath('assets/admin/dev/js/resources/js/phone.min.js'))
+
+        ->appendFile($this->basePath('assets/meuuniverso/dist/scripts/main.js'))
+        ->appendFile($this->basePath('assets/meuuniverso/dist/scripts/vendor.js'));
+?>
+
+<?php echo $this->partial('layout/_header.phtml') ?>
+<main class="main meuuniverso">
+    <?php echo $this->content; ?>
+</main>
+<?php echo $this->partial('layout/_footer.phtml') ?>

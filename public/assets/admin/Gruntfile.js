@@ -122,6 +122,24 @@ module.exports = function (grunt) {
                 	'./dev/js/custom.js': ['./resources/js/*.js'],
                 }
 			},
+			maindistseparated: {
+				options: {
+					mangle: {
+						reserved: ['jQuery']
+					}
+				},
+				files: [{
+					expand: true,
+					src: './resources/js/*.js',
+					dest: './dev/js',
+					rename: function (dst, src) {
+						// To keep the source js files and make new files as `*.min.js`:
+						return dst + '/' + src.replace('.js', '.min.js');
+						// Or to override to src:
+						//return src;
+					}
+                }]
+			}
 		},
 		cssmin: {
 			dist: {
@@ -310,7 +328,7 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-contrib-copy');
 
-	grunt.registerTask('default', ['copy:dev', 'uglify:dev', 'uglify:maindev', 'cssmin:dev', 'imagemin:dev', 'compass:dev']);
+	grunt.registerTask('default', ['copy:dev', 'uglify:dev', 'uglify:maindev', 'uglify:maindistseparated', 'cssmin:dev', 'imagemin:dev', 'compass:dev']);
 
 	grunt.registerTask('w', ['watch']);
 

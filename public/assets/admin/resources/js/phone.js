@@ -16,12 +16,15 @@
 			$('.admin-phone-add').on('click', function(e) {
 				e.preventDefault();
 
+				console.log("Tentando incluir telefone");
+
 				var ddd = _that.$element.find('#admin-phone-ddd');
 				var number = _that.$element.find('#admin-phone-number');
 				var name = _that.$element.find('#admin-phone-contact_name');
 				var tipo = _that.$element.find('#admin-phone-type');
 
 				if(ddd.val() == "" || number.val() == "") {
+					console.log("Nenhum telefone adicionado");
 					return;
 				}
 
@@ -32,7 +35,7 @@
 					.append('<td>'+name.val()+'</td>')
 					.append('<td>'+tipo.find('option:selected').text()+'</td>')
 					.append($('<td></td>')
-							.append('<a href="#" class="btn btn-sm btn-default admin-phone-remove" data-remove="'+id+'"><i class="fa fa-close"></i></a>')
+							.append('<a href="#" class="btn btn-sm btn-default admin-phone-remove" data-remove="'+id+'"><i class="glyphicon glyphicon-remove"></i></a>')
 							.append('<input type="hidden" name="phones['+id+'][ddd]" value="'+ddd.val()+'">')
 							.append('<input type="hidden" name="phones['+id+'][number]" value="'+number.val()+'">')
 							.append('<input type="hidden" name="phones['+id+'][contact_name]" value="'+name.val()+'">')

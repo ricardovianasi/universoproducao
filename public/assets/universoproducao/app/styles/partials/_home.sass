@@ -287,6 +287,51 @@
           line-height: 22px
           font-weight: 900
 
+  .newsletter
+    display: block
+    +trailer(3)
+    +leader(3)
+    &-title
+      +adjust-font-size-to(36px)
+      +trailer(2, 36px)
+      font-weight: 900
+      color: black
+      text-align: center
+
+    &-form
+      display: block
+      overflow: hidden
+
+    .input,
+    .submit
+      float: left
+      box-sizing: border-box
+
+    .input
+      width: 40%
+      &:first-of-type
+        border-right-color: white
+      &::-webkit-input-placeholder
+        color: black
+        font-style: italic
+      &::-moz-placeholder
+        color: black
+        font-style: italic
+      &:-ms-input-placeholder
+        color: black
+        font-style: italic
+      &:-moz-placeholder
+        color: black
+        font-style: italic
+
+    .submit
+      width: 20%
+      background-color: $color-palette-4
+      border-color: $color-palette-4
+      color: white
+      &:hover
+        background-color: $color-palette-1
+
 
   +media("<=1024px")
     .gallery

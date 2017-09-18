@@ -21,7 +21,7 @@ class ChangePassForm extends Form
 		parent::__construct('user-change-pass-form');
 		$this->setAttributes([
 			'method' => 'POST',
-			'class' => 'user-change-pass-form default-form-actions',
+			'class' => 'user-change-pass-form default-form-actions form-inline',
 			'id' => 'user-change-pass-form'
 		]);
 
@@ -29,10 +29,11 @@ class ChangePassForm extends Form
 		$btnGenPass->setValue('Gerar nova senha')
 			->setAttribute('class', 'btn btn-success ')
 			->setOption('fontAwesome', 'fa fa-key');
-		$tempPass = new Text('temp_password');
-		$tempPass->setLabel('Senha Temporária')
-		->setAttribute('readonly', 'readonly')
-		->setOption('add-on-append', $btnGenPass);
+		$tempPass = new Text('temp-pass');
+		$tempPass
+            ->setAttribute('readonly', 'readonly')
+            ->setAttribute('placeholder', 'Senha temporária')
+            ->setOption('add-on-append', $btnGenPass);
 		$this->add($tempPass);
 
 	}

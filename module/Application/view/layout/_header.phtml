@@ -1,0 +1,79 @@
+<!doctype html>
+<html class="no-js" lang="pt">
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Universo Produção</title>
+
+    <!--Facebook-->
+    <meta property="og:url" content="<?php echo $this->serverUrl(true) ?>">
+    <meta property="og:type" content="website" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@universoprod" />
+    <meta name="twitter:creator" content="@universoprod" />
+
+    <meta name="google-site-verification" content="K1liWW9R9uUH-6_Ggx7okBbrfDNCFd6cX34nO80hhVw" />
+
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+    <?php echo $this->headLink(); ?>
+
+    <link rel="stylesheet" href="<?php echo $this->basePath('assets/universoproducao/dist'); ?>/styles/main.css">
+    <link rel="stylesheet" href="<?php echo $this->basePath('assets/universoproducao/dist'); ?>/styles/vendor.css">
+
+    <script src="<?php echo $this->basePath('assets/universoproducao/dist')?>/scripts/vendor/modernizr.js"></script>
+</head>
+<body class="<?php echo !empty((string)$this->placeholder("is_home")) ? "home" : "" ?>
+                <?php echo !empty((string)$this->placeholder("is_header_dark")) ? "header-dark" : "" ?>">
+<!--[if lt IE 10]>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<![endif]-->
+
+<header class="header">
+    <div class="header-wrapper">
+
+        <h1 class="brand">
+            <a class="brand-link" href="<?php echo $this->url('universoproducao') ?>"><span class="icon icon-universo-producao"></span></a>
+            <span>Universo Produção</span>
+        </h1>
+
+
+        <!--<div class="header-right">
+            <a class="headermenu-link" target="_blank" id="" href="http://universoproducao.com.br/site/inscricoes.php">
+            <span class="icon">
+              <i class="icon-user42"></i>
+            </span>
+            </a>
+            <a class="headermenu-link mainmenu-access" id="mainmenu-access" href="#">
+            <span class="icon">
+              <i class="icon-menu7"></i>
+            </span>
+                <span class="title-menu">Menu</span>
+            </a>
+        </div>-->
+
+        <ul class="links">
+            <li class="links-item" id="manu-btn"><a class="links-action" href="#"><i class="icon-menu"></i></a></li>
+            <li class="links-item" id="search-btn"><a class="links-action" href="#"><i class="icon-search"></i></a></li>
+        </ul>
+
+        <nav class="mainmenu">
+            <?php $this
+                ->navigation('UniversoproducaoNavigation')
+                ->menu()->setPartial("application/partials/navigation.phtml");
+
+            echo $this
+                ->navigation('UniversoproducaoNavigation')
+                ->menu()
+                ->render(); ?>
+        </nav>
+    </div>
+    <div class="search">
+        <form class="search-form" action="<?php echo $this->url('universoproducao/search') ?>">
+            <input type="text" class="search-input" placeholder="Buscar no site" name="q">
+        </form>
+    </div>
+</header>

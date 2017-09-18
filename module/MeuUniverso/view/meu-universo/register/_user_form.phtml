@@ -1,0 +1,128 @@
+<?php
+$form = $this->form;
+$phoneForm = $this->phoneForm;
+$phoneForm->prepare(); ?>
+<div class="col-md-12">
+    <?php $form->prepare(); echo $this->form(null, null)->openTag($form); ?>
+    <h3 class="h3 form-section">Informações Pessoais</h3>
+    <div class="row">
+        <div class="col-md-8"><?php echo $this->formRow($form->get('name')); ?></div>
+        <div class="col-md-4"><?php echo $this->formRow($form->get('alias')); ?></div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-3"><?php echo $this->formRow($form->get('identifier')); ?></div>
+        <div class="col-md-5"><?php echo $this->formRow($form->get('email')); ?></div>
+        <div class="col-md-2">
+            <div class="form-group ">
+                <label class="control-label">
+                    <?php echo $form->get('birth_date')->getLabel();  ?>
+                </label>
+                <div class="input-group date date-picker" data-date-format="dd/mm/yyyy">
+                    <?php echo $this->formElement($form->get('birth_date'));?>
+                    <span class="input-group-btn">
+                                <button type="button" name="btn-date" class="btn default">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </button>
+                            </span>
+                </div>
+                <?php echo $this->formElementErrors($form->get('birth_date')); ?>
+            </div>
+        </div>
+        <div class="col-md-2"><?php echo $this->formRow($form->get('gender')); ?></div>
+    </div>
+
+    <h3 class="h3 form-section">Endereço</h3>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group <?php echo $form->get('cep')->getMessages() ? "has-error" : ""; ?>">
+                <label class="control-label" for=""><?php echo $form->get('cep')->getLabel();  ?><span class="required"> * </span></label>
+                <div class="input-group cep"
+                     data-url-cep="<?php echo $this->url('util/cep'); ?>"
+                     data-form=".user-form">
+                    <?php echo $this->formElement($form->get('cep')); ?>
+                    <span class="input-group-btn">
+                                    <button id="searchcep" class="btn btn-primary " type="button">
+                                    <i class="fa fa fa-search fa-fw"></i> Buscar</button>
+                            </span>
+                </div>
+                <?php echo $this->formElementErrors($form->get('cep')); ?>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6"><?php echo $this->formRow($form->get('address')); ?></div>
+        <div class="col-md-2"><?php echo $this->formRow($form->get('number')); ?></div>
+        <div class="col-md-4"><?php echo $this->formRow($form->get('district')); ?></div>
+    </div>
+    <div class="row state-cities"
+         data-url="<?php echo $this->url('util/cities'); ?>"
+         data-state-element="#state"
+         data-city-element="#city">
+        <div class="col-md-4"><?php echo $this->formRow($form->get('state')); ?></div>
+        <div class="col-md-4"><?php echo $this->formRow($form->get('city')); ?></div>
+        <div class="col-md-4"><?php echo $this->formRow($form->get('complement')); ?></div>
+    </div>
+
+    <h3 class="h3 form-section">Contatos</h3>
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-hover table-light admin-phone">
+                <thead>
+                <tr>
+                    <th width="8%">DDD</th>
+                    <th>Número</th>
+                    <th>Nome do Contato</th>
+                    <th>Tipo</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <?php foreach ($this->user->getPhones() as $phone): ?>
+                    <tr data-row="<?php echo $phone->getId(); ?>">
+                        <td><?php echo $phone->getDDD(); ?></td>
+                        <td><?php echo $phone->getNumber(); ?></td>
+                        <td><?php echo $phone->getContactName(); ?></td>
+                        <td><?php echo \Application\Entity\Phone\PhoneType::get($phone->getType()); ?></td>
+                        <td>
+                            <a href="#" class="btn btn-sm btn-default admin-phone-remove" data-remove="<?php echo $phone->getId(); ?>">
+                                <i class="fa fa-close"></i>
+                            </a>
+                            <input type="hidden" name="phones[<?php echo $phone->getId() ?>][ddd]" value="<?php echo $phone->getDDD(); ?>">
+                            <input type="hidden" name="phones[<?php echo $phone->getId() ?>][number]" value="<?php echo $phone->getNumber(); ?>">
+                            <input type="hidden" name="phones[<?php echo $phone->getId() ?>][contact_name]" value="<?php echo $phone->getContactName(); ?>">
+                            <input type="hidden" name="phones[<?php echo $phone->getId() ?>][type]" value="<?php echo $phone->getType(); ?>">
+
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+                <tr id="admin-phone-form">
+                    <td><?php echo $this->formElement($phoneForm->get('phone[ddd]')); ?></td>
+                    <td><?php echo $this->formElement($phoneForm->get('phone[number]')); ?></td>
+                    <td><?php echo $this->formElement($phoneForm->get('phone[contact_name]')); ?></td>
+                    <td><?php echo $this->formElement($phoneForm->get('phone[type]')); ?></td>
+                    <td><button class="btn btn-sm btn-primary admin-phone-add" type="button">
+                            <i class="fa fa-plus"></i> Adicionar</button></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <h3 class="h3 form-section">Outros</h3>
+    <div class="row">
+        <div class="col-md-12"><?php echo $this->formRow($form->get('site')); ?></div>
+    </div>
+    <div class="row">
+        <div class="col-md-6"><?php echo $this->formRow($form->get('facebook')); ?></div>
+        <div class="col-md-6"><?php echo $this->formRow($form->get('twitter')); ?></div>
+    </div>
+
+    <div class="form-actions">
+        <div class="btn-set pull-right">
+            <button type="submit" name="save" class="btn btn-success btn-lg" id="save" value="Salvar">Salvar</button>
+        </div>
+    </div>
+    <?php echo $this->form()->closeTag() ?>
+</div>
+

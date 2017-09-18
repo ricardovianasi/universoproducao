@@ -9,5 +9,7 @@ return [
             return $navigation->createService($e);
         }
     ],
-    'invokables' => []
+    'invokables' => [
+        'mailService' => Service\MailService::class
+    ]
 ];

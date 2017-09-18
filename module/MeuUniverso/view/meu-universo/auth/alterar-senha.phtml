@@ -1,0 +1,23 @@
+<div class="userlogin-wrapper">
+    <p class="meuuniverso-brand meuuniverso-brand--center"><strong>Meu</strong>Universo<br />Recuperar senha</p>
+
+    <?php if($this->error): ?>
+        <div class="note note-danger">
+            <h4 class="block">Ocorreu um erro!</h4>
+            <p>Não conseguimos identificar o usuário. Por favor tente novamente ou entre em contato</p>
+            <p><a class="btn blue" href="<?php echo $this->url('meu-universo/auth') ?>">Efetuar login</a></p>
+        </div>
+    <?php elseif(!$this->error && $this->reason == 'password_change'): ?>
+        <div class="note note-info">
+            <h4 class="block">Tudo certo!</h4>
+            <p>Seu senha foi atualizada com sucesso.</p>
+            <p><a class="btn blue" href="<?php echo $this->url('meu-universo/auth') ?>">Efetuar login</a></p>
+        </div>
+    <?php else: ?>
+        <form action="" method="post" class="userlogin-form">
+            <input type="password" class="input" name="password" placeholder="Nova senha">
+            <input type="password" class="input" name="confirm_password" placeholder="Confirmação de senha">
+            <button class="submit" class="userlogin-submit">Enviar</button>
+        </form>
+    <?php endif; ?>
+</div>

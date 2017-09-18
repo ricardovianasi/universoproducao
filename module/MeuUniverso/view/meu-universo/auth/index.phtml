@@ -1,0 +1,19 @@
+<div class="userlogin-wrapper">
+    <p class="meuuniverso-brand meuuniverso-brand--center"><strong>Meu</strong>Universo</p>
+
+    <?php if($this->error): ?>
+        <div class="alert alert-danger">Usuário ou senha inválido</div>
+    <?php endif; ?>
+
+    <form action="" method="post" class="userlogin-form">
+        <input class="input" name="login" placeholder="E-mail">
+        <input type="password" class="input" name="password" placeholder="Senha">
+        <button class="submit" class="userlogin-submit">Entrar</button>
+    </form>
+    <div class="userlogin-tricks">
+        <p class="tricks-item"><a href="<?php echo $this->url('meu-universo/auth', ['action'=>'recuperar-senha']) ?>" class="tricks-link">Esqueci minha senha</a></p>
+        <p class="tricks-item"><a href="<?php echo $this->url('meu-universo/register', ['action'=>'novo']) ?>" class="tricks-link">Quero me cadastrar</a></p>
+        <!--<p class="tricks-item tricks-item--separator"><span>ou</span></p>
+        <p class="tricks-item"><a href="#" class="submit tricks-link tricks-link--facebook">Entrar com o Facebook</a></p>-->
+    </div>
+</div>

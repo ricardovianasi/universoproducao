@@ -26,10 +26,6 @@
 					<?php if(!$this->user->getConfirmedRegister()): ?>
 						<li>Confirmação de cadastro está pendente</li>
 					<?php endif; ?>
-
-                    <?php if(!$this->user->getUpdateRegisterRequired()): ?>
-                        <li>Atualização de cadastro está pendente</li>
-                    <?php endif; ?>
 					</ul>
 				</div>
 			<?php endif; ?>
@@ -83,19 +79,27 @@
 										<p>Uma notificação será enviado ao email cadastrado informando sobre essa modificação.</p>
 									</div>
 									<div class="row">
-										<div class="col-md-6 password-generator" data-url="<?php echo $this->url('util_password'); ?>">
-											<?php echo $this->formRow($passForm->get('temp_password')); ?>
+										<div class="password-generator" data-url="<?php echo $this->url('util/password'); ?>">
+											<?php echo $this->formRow($passForm->get('temp-pass')); ?>
+                                            <button type="submit" class="btn blue" value="Salvar">
+                                                <span class="fa fa-fa fa-check"></span> Salvar
+                                            </button>
 										</div>
 									</div>
 								</div>
-
-								<div class="form-actions">
-									<button type="submit" class="btn blue btn-lg" value="Salvar">
-										<span class="fa fa-fa fa-check"></span> Salvar
-									</button>
-								</div>
-
 								<?php echo $this->form()->closeTag() ?>
+
+                                <div class="body">
+                                    <h4 class="form-section">Recuperar senha</h4>
+                                    <div class="note">
+                                        <p>Enviar e-mail com instruções para recuperação de senha</p>
+                                    </div>
+                                    <a data-toggle="modal" href="#recover_pass" class="btn blue" value="Salvar">
+                                        <span class="fa fa-fa fa-check"></span> Recuperar senha</a>
+                                    <?php echo $this->partial('admin/user/_madal-recover-pass.phtml', [
+                                        'user'=>$this->user
+                                    ]); ?>
+                                </div>
 
 							</div>
 						</div>
@@ -126,7 +130,7 @@
                                                                 <div class="modal-body"> Verifique se os dados de cadastro estão corretos. Informações erradas podem gerar erros de comunicação. Deseja confirmar o cadastro? </div>
                                                                 <div class="modal-footer">
                                                                     <button type="button" class="btn dark btn-outline" data-dismiss="modal">Não confirmar</button>
-                                                                    <a href="<?php echo $this->url('') ?>" type="button" class="btn green">Confirmar</a>
+                                                                    <a href="<?php echo $this->url('admin/default', ['controller'=>'user', 'action'=>'validate-user', 'id'=>$this->user->getId()]) ?>" type="button" class="btn green">Confirmar</a>
                                                                 </div>
                                                             </div>
                                                             <!-- /.modal-content -->

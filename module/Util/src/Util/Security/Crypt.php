@@ -61,7 +61,7 @@ final class Crypt
 		return $this->bcrypt->verify($pass, $hash);
 	}
 	
-	static public function makePassword($lenght = 8, $uppercase = true, $number = true, $specialChar = true)
+	static public function makePassword($lenght = 8, $uppercase = true, $number = true, $specialChar=true)
 	{
 		$lmin = 'abcdefghijklmnopqrstuvwxyz';
 		$lmai = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -72,7 +72,13 @@ final class Crypt
 		$caracteres .= $lmin;
 		if ($uppercase) $caracteres .= $lmai;
 		if ($number) $caracteres .= $num;
-		if ($specialChar) $caracteres .= $simb;
+		if ($specialChar) {
+		    if(is_string($specialChar)) {
+                $caracteres .= $specialChar;
+            } else {
+                $caracteres .= $simb;
+            }
+        }
 		$len = strlen($caracteres);
 		for ($n = 1; $n <= $lenght; $n++) {
 			$rand = mt_rand(1, $len);

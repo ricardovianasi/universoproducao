@@ -27,7 +27,10 @@ class User extends AbstractEntity implements InputFilterAwareInterface
 	 */
 	private $id;
 
-	/** @ORM\Column(name="name", type="string") */
+    /** @ORM\Column(name="`type`", type="string") */
+    private $type;
+
+    /** @ORM\Column(name="name", type="string") */
 	private $name;
 
 	/** @ORM\Column(name="alias", type="string") */
@@ -84,17 +87,7 @@ class User extends AbstractEntity implements InputFilterAwareInterface
 	/** @ORM\Column(name="change_password_required", type="boolean") */
 	private $changePasswordRequired = false;
 
-    /** @ORM\Column(name="update_register_required", type="boolean") */
-    private $updateRegisterRequired = false;
-
-    /**
-     * Many User have Many Phonenumbers.
-     * @ORM\ManyToMany(targetEntity="Application\Entity\Phone\Phone", fetch="EAGER", cascade="ALL")
-     * @ORM\JoinTable(name="user_phones",
-     *      joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="phone_id", referencedColumnName="id")}
-     *      )
-     */
+    /** @ORM\OneToMany(targetEntity="Application\Entity\Phone\Phone", mappedBy="user", cascade="ALL") */
 	private $phones;
 
     /**
@@ -104,6 +97,7 @@ class User extends AbstractEntity implements InputFilterAwareInterface
 
 	/**
 	 * @ORM\OneToMany(targetEntity="Log", mappedBy="user")
+     * @ORM\OrderBy({"createdAt" = "DESC"})
 	 */
 	private $logs;
 
@@ -119,6 +113,22 @@ class User extends AbstractEntity implements InputFilterAwareInterface
 		$this->phones = new ArrayCollection();
 		$this->dependents = new ArrayCollection();
 	}
+
+    /**
+     * @return mixed
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    /**
+     * @param mixed $type
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+    }
 
 	/**
 	 * @return mixed
@@ -376,22 +386,6 @@ class User extends AbstractEntity implements InputFilterAwareInterface
 		$this->confirmedRegister = $confirmedRegister;
 	}
 
-    /**
-     * @return mixed
-     */
-    public function getUpdateRegisterRequired()
-    {
-        return $this->updateRegisterRequired;
-    }
-
-    /**
-     * @param mixed $updateRegisterRequired
-     */
-    public function setUpdateRegisterRequired($updateRegisterRequired)
-    {
-        $this->updateRegisterRequired = $updateRegisterRequired;
-    }
-
 	/**
 	 * @return mixed
 	 */
@@ -539,18 +533,6 @@ class User extends AbstractEntity implements InputFilterAwareInterface
 			]));
 
 			$inputFilter->add($factory->createInput([
-				'name' => 'first_name',
-				'required' => true,
-				'filters'  => $this->getDefaultInputFilters()
-			]));
-
-			$inputFilter->add($factory->createInput([
-				'name' => 'last_name',
-				'required' => true,
-				'filters'  => $this->getDefaultInputFilters()
-			]));
-
-			$inputFilter->add($factory->createInput([
 				'name' => 'email',
 				'required' => true,
 				'filters'  => $this->getDefaultInputFilters(),
@@ -558,12 +540,6 @@ class User extends AbstractEntity implements InputFilterAwareInterface
 					['name' => 'email_address']
 				]
 			]));
-
-			/*$inputFilter->add($factory->createInput([
-				'name' => 'birth_date',
-				'required' => true,
-				'filters'  => $this->getDefaultInputFilters()
-			]));*/
 
 			$inputFilter->add($factory->createInput([
 				'name' => 'cep',
@@ -594,17 +570,12 @@ class User extends AbstractEntity implements InputFilterAwareInterface
 				'filters'  => $this->getDefaultInputFilters()
 			]));
 
-            /*$inputFilter->add($factory->createInput([
-                'name' => 'gender',
-                'required' => true,
-                'filters'  => $this->getDefaultInputFilters()
-            ]));*/
-
-
             $inputFilter->add($factory->createInput([
-				'name' => 'confirmed_register',
-				'required' => false
-			]));
+                 'name' => 'gender',
+                 'required' => false,
+                 'allow_empty' => true,
+                 'filters'  => $this->getDefaultInputFilters()
+             ]));
 
 			$this->inputFilter = $inputFilter;
 		}

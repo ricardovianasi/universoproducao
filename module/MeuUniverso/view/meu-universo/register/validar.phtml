@@ -1,0 +1,29 @@
+<div class="container">
+    <p class="meuuniverso-brand meuuniverso-brand--center"><strong>Meu</strong>Universo | Validar</p>
+
+    <?php if($this->validate && is_bool($this->validate)): ?>
+        <div class="note note-info">
+            <h4 class="block">Quase lá!</h4>
+            <p>Seu e-mail foi validado. Por favor, complete seu cadastro</p>
+        </div>
+        <?php echo $this->partial("meu-universo/register/_user_form.phtml"); ?>
+    <?php elseif($this->validate == 'validated'): ?>
+        <div class="note note-info">
+            <h4 class="block">Tudo certo!</h4>
+            <p>Seu cadastro foi validado com sucesso. <br /><br />
+                <a class="btn blue" href="<?php echo $this->url('meu-universo/auth') ?>">Efetuar login</a></p>
+        </div>
+    <?php else: ?>
+        <div class="note note-danger">
+            <h4 class="block">Opsss!</h4>
+            <p>Não foi possível validar seu e-mail.</p>
+            <p>&nbsp;</p>
+            <p>
+                <a class="btn blue" href="#">Reenviar código de validação</a>
+                <a class="btn blue" href="#">Efetuar login</a>
+                <a class="btn blue" href="#">Entrar em contato</a>
+            </p>
+        </div>
+    <?php endif; ?>
+
+</div>

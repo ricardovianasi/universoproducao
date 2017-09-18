@@ -29,7 +29,6 @@
 					<div class="form-group ">
 						<label class="control-label">
 							<?php echo $form->get('birth_date')->getLabel();  ?>
-							<span class="required"> * </span>
 						</label>
 						<div class="input-group date date-picker" data-date-format="dd/mm/yyyy">
 							<?php echo $this->formElement($form->get('birth_date'));?>
@@ -51,7 +50,7 @@
 				<div class="form-group <?php echo $form->get('cep')->getMessages() ? "has-error" : ""; ?>">
 						<label class="control-label" for=""><?php echo $form->get('cep')->getLabel();  ?><span class="required"> * </span></label>
 						<div class="input-group cep"
-							 data-url-cep="<?php echo $this->url('util_cep'); ?>"
+							 data-url-cep="<?php echo $this->url('util/cep'); ?>"
 							 data-form=".user-form">
 							<?php echo $this->formElement($form->get('cep')); ?>
 							<span class="input-group-btn">
@@ -69,7 +68,7 @@
 				<div class="col-md-4"><?php echo $this->formRow($form->get('district')); ?></div>
 			</div>
 			<div class="row state-cities"
-				 data-url="<?php echo $this->url('util_cities'); ?>"
+				 data-url="<?php echo $this->url('util/cities'); ?>"
 				 data-state-element="#state"
 				 data-city-element="#city">
 				<div class="col-md-4"><?php echo $this->formRow($form->get('state')); ?></div>

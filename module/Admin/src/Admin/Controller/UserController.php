@@ -14,6 +14,7 @@ use Admin\Form\ExternalUser\DependentForm;
 use Admin\Form\ExternalUser\PhoneForm;
 use Admin\Form\ExternalUser\UserForm;
 use Admin\Form\ExternalUser\UserSearch;
+use Application\Entity\City;
 use Application\Entity\Phone\Phone;
 use Application\Entity\User\Dependent;
 use Application\Entity\User\User;
@@ -61,7 +62,7 @@ class UserController extends AbstractAdminController implements CrudInterface
 		} else {
 			$user = new User();
 //			$user->setPassword(Crypt::getInstance()->generateEncryptPass($tempPass));
-			$user->setChangePasswordRequired(true);
+//			$user->setChangePasswordRequired(true);
 			$user->setConfirmedRegister(false);
 		}
 
@@ -69,6 +70,8 @@ class UserController extends AbstractAdminController implements CrudInterface
 			$form->setInputFilter($user->getInputFilter());
 			$form->setData($data);
 			if($form->isValid()) {
+
+			    //Salva o usuário
 				$validData = $form->getData();
 
 				$phones = new ArrayCollection();
@@ -98,19 +101,26 @@ class UserController extends AbstractAdminController implements CrudInterface
                         }
                         $dependents->add($dep);
                     }
-                    unset($validData['dependents']);
                 }
                 $user->setDependents($dependents);
+                unset($validData['dependents']);
 
-				$user->setData($this->prepareDataPost(User::class, $validData));
+                if(isset($validData['city'])) {
+                    $city = $this->getRepository(City::Class)->find($validData['city']);
+                    $validData['city'] = $city;
+                }
+
+                $user->setData($user);
 
 				$this->getEntityManager()->persist($user);
 				$this->getEntityManager()->flush();
 
 				if($id) {
 					$this->messages()->success("Usuário atualizado com sucesso!");
+                    $this->userLog()->log($user, 'Cadastro do usuário atualizado');
 				} else {
 					$this->messages()->flashSuccess("Usuário criada com sucesso!");
+                    $this->userLog()->log($user, 'Cadastro do usuário criado');
 					return $this->redirect()->toRoute('admin/default', [
 						'controller' => 'user',
 						'action' => 'update',
@@ -164,6 +174,8 @@ class UserController extends AbstractAdminController implements CrudInterface
 		$this->getEntityManager()->persist($user);
 		$this->getEntityManager()->flush();
 
+        $this->userLog()->log($user, 'Senha temporária gerada');
+
 		$this->messages()->flashSuccess("A senha do usuário foi alterada com sucesso.");
 		return $this->redirect()->toRoute('admin/default', [
 			'controller' => 'user',
@@ -171,4 +183,32 @@ class UserController extends AbstractAdminController implements CrudInterface
 			'id' => $user->getId()
 		]);
 	}
+
+	public function validateUserAction()
+    {
+        $userId = $this->params()->fromRoute($this->getIdentifierName());
+
+        /** @var User $user */
+        $user = $this->getRepository(User::class)->find($userId);
+        if(!$user) {
+            $this->messages()->flashError("Usuário não encontrado!");
+            return $this->redirect()->toRoute('admin/default', [
+                'controller' => 'user',
+                'action' => 'indeex'
+            ]);
+        }
+
+        $user->setConfirmedRegister(true);
+
+        $this->getEntityManager()->persist($user);
+        $this->getEntityManager()->flush();
+
+        $this->messages()->flashSuccess("Usuário validado com sucesso.");
+        $this->userLog()->log($user, 'Cadastro de usuário validado');
+        return $this->redirect()->toRoute('admin/default', [
+            'controller' => 'user',
+            'action' => 'update',
+            'id' => $user->getId()
+        ]);
+    }
 }

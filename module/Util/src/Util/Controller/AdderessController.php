@@ -10,10 +10,11 @@ namespace Util\Controller;
 
 use Application\Entity\State;
 use Application\Entity\City;
+use Application\Service\EntityManagerAwareInterface;
 use Zend\Http\Request;
 use Zend\View\Model\JsonModel;
 
-class AdderessController extends AbstractController
+class AdderessController extends AbstractController implements EntityManagerAwareInterface
 {
 	public static $postmon = 'http://api.postmon.com.br/v1/cep/';
 
@@ -31,7 +32,6 @@ class AdderessController extends AbstractController
 			$data = $this->callPostmonApi($cep);
 			if($data) {
 				$address = [];
-
 				$state = $this->getEntityManager()
 					->getRepository(State::class)
 					->findOneBy(['acronyme'=>$data['estado']]);

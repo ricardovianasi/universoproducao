@@ -1,12 +1,18 @@
 <?php
 namespace Application;
 
+use Application\Controller\Plugin\Factory\MailServiceFactory;
 use Util\Security\Crypt;
 use Zend\Mvc\Router\Http\Hostname;
 use Zend\Mvc\Router\Http\Literal;
 use Zend\Mvc\Router\Http\Segment;
 
 return array(
+    'controller_plugins' => array(
+        'factories' => array(
+            'mailService' => MailServiceFactory::class
+        )
+    ),
     'router' => array(
         'routes' => array(
             'universoproducao' => array(
