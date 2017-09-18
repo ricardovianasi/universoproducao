@@ -1,0 +1,42 @@
+{
+  "name": "generator-custom2",
+  "private": true,
+  "dependencies": {
+    "parsleyjs": "^2.7.2",
+    "bootstrap": "^3.3.7",
+    "bootstrap-datepicker": "uxsolutions/bootstrap-datepicker#^1.7.1",
+    "blockUI": "malsup/blockui",
+    "bootbox.js": "makeusabrew/bootbox#^4.4.0"
+  },
+  "overrides": {
+    "bootstrap": {
+      "main": [
+        "dist/css/bootstrap.min.css",
+        "dist/js/bootstrap.min.js"
+      ]
+    },
+    "parsleyjs": {
+      "main": [
+        "dist/parsley.js",
+        "dist/i18n/pt-br.js"
+      ]
+    },
+    "bootstrap-datepicker": {
+      "main": [
+        "dist/css/bootstrap-datepicker3.min.css",
+        "dist/js/bootstrap-datepicker.js",
+        "dist/locales/bootstrap-datepicker.pt-BR.min.js"
+      ]
+    },
+    "blockUI": {
+      "main": [
+        "jquery.blockUI.js"
+      ]
+    },
+    "bootbox.js": {
+      "main": [
+        "bootbox.js"
+      ]
+    }
+  }
+}
