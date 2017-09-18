@@ -5,6 +5,7 @@ $modules = [
     'TwbBundle',
     'DoctrineModule',
     'DoctrineORMModule',
+    'Util',
     'Admin',
     'Application',
     'MeuUniverso',
@@ -13,7 +14,6 @@ $modules = [
     'Cinebh2017',
     'Mostratiradentes',
     'MostratiradentesSp',
-    'Util',
 ];
 
 if($env == 'development') {
