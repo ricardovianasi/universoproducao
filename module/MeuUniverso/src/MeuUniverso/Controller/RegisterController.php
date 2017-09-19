@@ -77,13 +77,17 @@ class RegisterController extends AbstractMeuUniversoController
     {
         $form = new UserForm($this->getEntityManager());
         $phoneForm = new PhoneForm();
-        $user = new User();
+
+        $identity = $this->getAuthenticationService()->getIdentity();
+        $user = $this->getRepository(User::class)->find($identity->getId());
 
         if ($this->getRequest()->isPost()) {
             $form->setData($this->getRequest()->getPost());
             if ($form->isValid()) {
                 $data = $form->getData();
             }
+        } else {
+            $form->setData($user->toArray());
         }
 
         return [

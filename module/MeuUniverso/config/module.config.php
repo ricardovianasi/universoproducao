@@ -1,6 +1,7 @@
 <?php
 namespace MeuUniverso;
 
+use MeuUniverso\View\Helper\UserMenu;
 use Util\Security\Crypt;
 
 return array(
@@ -81,5 +82,16 @@ return array(
                 },
             ]
         ]
+    ],
+    'view_helpers' => [
+        'invokables' => [
+            'meuUniversoUserMenu' => UserMenu::class
+        ]
+        /*'factories' => [
+            'meuUniversoUserMenu' => function($helpers) {
+                $services = $helpers->getServiceLocator();
+                return new UserMenu($services->get('meuuniverso_authenticationservice'));
+            }
+        ]*/
     ]
 );

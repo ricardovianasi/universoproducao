@@ -42,7 +42,7 @@ window.Parsley.addValidator('uppercase', {
   },
   messages: {
     en: 'Your password must contain at least (%s) uppercase letter.',
-    'pt-br': 'É necessário conter ao menos (%s) letra maiúscula.'
+    'pt-br': 'É necessário conter ao menos %s letra maiúscula'
   }
 });
 
@@ -55,7 +55,7 @@ window.Parsley.addValidator('lowercase', {
   },
   messages: {
     en: 'Your password must contain at least (%s) lowercase letter.',
-    'pt-br': 'É necessário conter ao menos (%s) letra minúscula.'
+    'pt-br': 'É necessário conter ao menos %s letra minúscula.'
   }
 });
 
@@ -68,20 +68,20 @@ window.Parsley.addValidator('number', {
   },
   messages: {
     en: 'Your password must contain at least (%s) number.',
-    'pt-br': 'É ncessário conter ao menos (%s) número'
+    'pt-br': 'É ncessário conter ao menos %s número.'
   }
 });
 
 //has special char
 window.Parsley.addValidator('special', {
-  requirementType: 'number',
+  requirementType: 'string',
   validateString: function validateString(value, requirement) {
     var specials = value.match(/[a-zA-Z]/g) || [];
     return specials.length >= requirement;
   },
   messages: {
-    en: 'Your password must contain at least (%s) characters.',
-    'pt-br': 'É ncessário conter ao menos (%s) letra'
+    en: 'Your password must contain at least %s characters.',
+    'pt-br': 'É ncessário conter ao menos %s letra.'
   }
 });
 
@@ -93,7 +93,7 @@ window.Parsley.addValidator('char', {
   },
   messages: {
     en: 'Your password must contain at least (%s) special characters.',
-    'pt-br': 'É ncessário conter ao menos (%s) caracter especial'
+    'pt-br': 'É ncessário conter ao menos %s caracter especial.'
   }
 });
 //# sourceMappingURL=main.js.map

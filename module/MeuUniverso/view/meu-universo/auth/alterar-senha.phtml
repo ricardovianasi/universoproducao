@@ -1,5 +1,5 @@
 <div class="userlogin-wrapper">
-    <p class="meuuniverso-brand meuuniverso-brand--center"><strong>Meu</strong>Universo<br />Recuperar senha</p>
+    <p class="meuuniverso-brand meuuniverso-brand--center"><strong>Meu</strong>Universo<br />Alterar senha</p>
 
     <?php if($this->error): ?>
         <div class="note note-danger">
@@ -13,11 +13,21 @@
             <p>Seu senha foi atualizada com sucesso.</p>
             <p><a class="btn blue" href="<?php echo $this->url('meu-universo/auth') ?>">Efetuar login</a></p>
         </div>
-    <?php else: ?>
-        <form action="" method="post" class="userlogin-form">
-            <input type="password" class="input" name="password" placeholder="Nova senha">
-            <input type="password" class="input" name="confirm_password" placeholder="Confirmação de senha">
-            <button class="submit" class="userlogin-submit">Enviar</button>
-        </form>
     <?php endif; ?>
+
+    <?php
+        if($this->form) {
+            $form = $this->form;
+            $form->prepare();
+            echo $this->form(null, null)->openTag($form);
+
+            if ($form->has('old_password')) {
+                echo $this->formRow($form->get('old_password'));
+            }
+            echo $this->formRow($form->get('password'));
+            echo $this->formRow($form->get('confirm_password'));
+            echo '<button class="submit" class="userlogin-submit">Enviar</button>';
+            echo $this->form()->closeTag();
+        } ?>
+
 </div>

@@ -3,7 +3,10 @@ namespace MeuUniverso\Controller;
 
 use Application\Entity\User\Hash;
 use Application\Entity\User\User;;
+
+use MeuUniverso\Form\ChangePasswordForm;
 use Util\Security\Crypt;
+use Zend\View\Model\ViewModel;
 
 class AuthController extends AbstractMeuUniversoController
 {
@@ -13,7 +16,7 @@ class AuthController extends AbstractMeuUniversoController
         if($this->getRequest()->isPost()) {
             $data = (array) $this->getRequest()->getPost();
 
-            $authService = $this->getServiceLocator()->get('meuuniverso_authenticationservice');
+            $authService = $this->getAuthenticationService();
 
             $adapter = $authService->getAdapter();
             $adapter->setIdentity($data['login']);
@@ -87,6 +90,10 @@ class AuthController extends AbstractMeuUniversoController
     {
         //Verificar usuário logado ou hash de alteração
         if($hash = $this->params()->fromRoute('id'))  {
+            $form = new ChangePasswordForm();
+
+            $hash = $this->params()->fromRoute('id');
+
             /** @var Hash $exist */
             $exist = $this->getEntityManager()->getRepository(Hash::class)->findOneBy([
                 'hash' => $hash
@@ -95,7 +102,7 @@ class AuthController extends AbstractMeuUniversoController
             if($exist) {
                 //Hash existe - verificar a validade
                 $now = new \DateTime('now');
-                if($now <= $exist->getValidUntil()) {
+                if ($now <= $exist->getValidUntil()) {
                     $user = $this
                         ->getEntityManager()
                         ->getRepository(User::class)
@@ -108,42 +115,62 @@ class AuthController extends AbstractMeuUniversoController
                         ];
                     }
                 }
-
             } else {
                 return [
                     'error' => true,
-                    'reason' => 'hash_not_found'
+                    'reason' => 'user_not_found'
                 ];
             }
-        } else {
+        } elseif($this->getAuthenticationService()->hasIdentity()) {
             //Usuário logado
+            $form = new ChangePasswordForm(true);
+
+            $identity = $this->getAuthenticationService()->getIdentity();
+            $user = $this->getRepository(User::class)->find($identity->getId());
+            if(!$user) {
+                return [
+                    'error' => true,
+                    'reason' => 'user_not_found'
+                ];
+            }
+
+        } else {
+            return $this->redirect()->toRoute('meu-universo/auth');
         }
 
         if($this->getRequest()->isPost()) {
-            $data = (array) $this->getRequest()->getPost();
+            $form->setData($this->getRequest()->getPost());
+            if($form->isValid()) {
+                $validData = $form->getData();
+                if($this->getAuthenticationService()->hasIdentity()) {
+                    if(!Crypt::getInstance()->testPass($validData['old_password'], $user->getPassword())) {
+                        return [
+                            'error' => true,
+                            'reason' => 'old_password_not_match',
+                            'form' => $form
+                        ];
+                    }
 
-            if($data['password'] == $data['confirm_password']) {
-                $user->setPassword(Crypt::getInstance()->generateEncryptPass($data['password']));
+                    $user->setPassword(Crypt::getInstance()->generateEncryptPass($validData['password']));
+                    $this->getEntityManager()->persist($user);
+                    $this->getEntityManager()->flush();
 
-                $this->getEntityManager()->persist($user);
-                $this->getEntityManager()->remove($exist);
-                $this->getEntityManager()->flush();
-
-                return[
-                    'error' => false,
-                    'reason' => 'password_change'
-                ];
-
-            } else {
-                return[
-                    'error' => true,
-                    'reason' => 'password_equal'
-                ];
+                    return [
+                        'error' => false,
+                        'reason' => 'password_change'
+                    ];
+                }
             }
         }
 
         return [
-            'error' => false
+            'form' => $form
         ];
+    }
+
+    public function sairAction()
+    {
+        $this->getAuthenticationService()->clearIdentity();
+		return $this->redirect()->toRoute('meu-universo/auth');
     }
 }

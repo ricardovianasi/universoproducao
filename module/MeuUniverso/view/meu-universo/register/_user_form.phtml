@@ -86,7 +86,7 @@ $phoneForm->prepare(); ?>
                         <td><?php echo \Application\Entity\Phone\PhoneType::get($phone->getType()); ?></td>
                         <td>
                             <a href="#" class="btn btn-sm btn-default admin-phone-remove" data-remove="<?php echo $phone->getId(); ?>">
-                                <i class="fa fa-close"></i>
+                                <i class="glyphicon glyphicon-remove"></i>
                             </a>
                             <input type="hidden" name="phones[<?php echo $phone->getId() ?>][ddd]" value="<?php echo $phone->getDDD(); ?>">
                             <input type="hidden" name="phones[<?php echo $phone->getId() ?>][number]" value="<?php echo $phone->getNumber(); ?>">

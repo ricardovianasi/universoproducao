@@ -1,0 +1,44 @@
+.dropdown-user.open
+  display: block
+.dropdown-user
+  box-shadow: 5px 5px rgba(189,67,23,.1)
+  display: none
+  width: 195px
+  min-width: 175px
+  z-index: 1000
+  float: left
+  list-style: none
+  text-shadow: none
+  padding: 0
+  margin: 10px 0 0
+  border: 1px solid #BD4317
+  background: $color-palette-1
+  text-align: left
+  position: absolute
+  top: 100%
+  margin-top: 0px
+  transition: $transition-default
+  li
+    a
+      +adjust-font-size-to(14px)
+      font-weight: 300
+      padding: 8px 16px
+      color: white
+      text-decoration: none
+      display: block
+      clear: both
+      white-space: nowrap
+      &:hover
+        background: #BD4317
+
+
+    &.divider
+      height: 1px
+      margin: 9px 0
+      overflow: hidden
+      background: #BD4317
+
+#user-btn
+  &:hover
+    &>.dropdown-user
+      display: block
