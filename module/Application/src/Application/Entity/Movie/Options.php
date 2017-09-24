@@ -10,6 +10,15 @@ use Util\Entity\AbstractEntity;
  */
 class Options extends AbstractEntity
 {
+    /** Opção dasabilitada */
+    const STATUS_DISABLED = 0;
+
+    /** Opção habilitada para qualquer usuario */
+    const STATUS_ENABLED = 1;
+
+    /** Opção habilitada somente apenas para admin */
+    const STATUS_ADMIN_ENABLED = 2;
+
 	/**
 	 * @ORM\Id @ORM\Column(name="id", type="integer", nullable=false)
 	 * @ORM\GeneratedValue(strategy="IDENTITY")
@@ -22,8 +31,8 @@ class Options extends AbstractEntity
     /** @ORM\Column(name="`type`", type="string") */
     private $type;
 
-    /** @ORM\Column(name="`status`", type="boolean") */
-    private $status = true;
+    /** @ORM\Column(name="`status`", type="integer") */
+    private $status = self::STATUS_ENABLED;
 
     /**
      * @return mixed

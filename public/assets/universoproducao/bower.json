@@ -8,8 +8,7 @@
     "jeet": "^7.1.0",
     "owl.carousel": "^2.2.1",
     "jquery.scrollTo": "^2.1.2",
-    "fancyBox": "^3.0.39",
-    "imagesloaded": "^4.1.3"
+    "fancyBox": "^3.0.39"
   },
   "overrides": {
     "modernizr": {
@@ -22,9 +21,6 @@
         "dist/jquery.fancyBox.css",
         "dist/jquery.fancyBox.js"
       ]
-    },
-    "imagesloaded": {
-      "main": "imagesloaded.pkgd.min.js"
     }
   },
   "devDependencies": {

@@ -1111,6 +1111,17 @@ jQuery(document).ready(function() {
             filemanager: "/filemanager/plugin.min.js"
         }
     });
+    tinymce.init({
+        selector: "#tinymce_minimal",
+        height: 350,
+        directionality: "ltr",
+        plugins: [ "autolink link lists hr anchor", "searchreplace wordcount visualblocks visualchars insertdatetime nonbreaking", "table contextmenu directionality paste, fullscreen" ],
+        toolbar1: "undo redo | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist",
+        toolbar2: "link unlink anchor | fullscreen",
+        content_css: [ "//www.tinymce.com/css/codepen.min.css" ],
+        relative_urls: false,
+        remove_script_host: false
+    });
     $(".post-sidebar-options").postStatus();
     $(".slug-container").slug();
     $(".post-list").postListStatus();
@@ -1131,6 +1142,9 @@ jQuery(document).ready(function() {
     if (jQuery().timepicker) {
         $(".time-picker").timepicker({
             defaultTime: false,
+            autoclose: true,
+            minuteStep: 5,
+            showSeconds: false,
             showMeridian: false
         });
     }
@@ -1178,6 +1192,12 @@ jQuery(document).ready(function() {
         if (copyToClipboard(document.getElementById("post-url"))) {}
     });
     new Clipboard(".data-copy");
+    $(".registration-form select[name=type]").on("change", function(e) {
+        var selected = $(this).find("option:selected").val();
+        console.log(selected);
+        $('div[class^="registration-form-"][class!="registration-form-' + selected + '"]').hide();
+        $(".registration-form-" + selected).show();
+    });
 });
 
 function copyToClipboard(elem) {

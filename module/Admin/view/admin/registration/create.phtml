@@ -1,0 +1,132 @@
+<?php $form = $this->form; ?>
+<div class="row post guide">
+<div class="col-md-12">
+	<?php $form->prepare(); echo $this->form(null, null)->openTag($form) ?>
+
+	<div class="portlet light portlet-fit bordered">
+		<div class="portlet-title">
+			<div class="caption">
+				<?php if($this->registration->getId()): ?>
+				<i class="fa fa-edit"></i>
+				Editar incrição
+				<?php else: ?>
+				<i class="fa fa-file-o"></i>
+				Nova inscrição
+				<?php endif; ?>
+			</div>
+			<div class="actions">
+				<a href="<?php echo $this->url('admin/default', ['controller'=>'registration']); ?>"
+				   class="btn btn-default">
+					<i class="icon-action-undo"></i>
+					<span class="hidden-xs"> Voltar </span>
+				</a>
+                <a href="<?php echo $this->url('admin/default', ['controller'=>'registration', 'action'=>'create']); ?>"
+                   class="btn btn-default">
+                    <i class="fa fa-plus"></i>
+                    <span class="hidden-xs"> Nova Inscrição </span>
+                </a>
+			</div>
+		</div>
+		<div class="portlet-body">
+			<div class="portlet">
+                <div class="portlet-body form">
+                    <div class="form-body">
+                        <?php echo $this->formRow($form->get('name'));
+                            echo $this->formRow($form->get('type')); ?>
+
+                        <div class="form-group">
+                            <label class="control-label col-md-4" for=""><?php echo $form->get('start_date')->getLabel(); ?><span class="required"> * </span></label>
+                            <div class="col-md-2">
+                                <div class="input-group date date-picker" data-date-format="dd/mm/yyyy">
+                                    <?php echo $this->formelement($form->get('start_date')); ?>
+                                    <span class="input-group-btn">
+                                        <button class="btn default" type="button">
+                                            <i class="fa fa-calendar"></i>
+                                        </button>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="input-group">
+                                    <?php echo $this->formelement($form->get('hour_start')); ?>
+                                    <span class="input-group-btn">
+                                        <button class="btn default" type="button">
+                                            <i class="fa fa-clock-o"></i>
+                                        </button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-md-4" for=""><?php echo $form->get('end_date')->getLabel(); ?></label>
+                            <div class="col-md-2">
+                                <div class="input-group date date-picker" data-date-format="dd/mm/yyyy">
+                                    <?php echo $this->formelement($form->get('end_date')); ?>
+                                    <span class="input-group-btn">
+                                        <button class="btn default" type="button">
+                                            <i class="fa fa-calendar"></i>
+                                        </button>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="input-group">
+                                    <?php echo $this->formelement($form->get('hour_end')); ?>
+                                    <span class="input-group-btn">
+                                        <button class="btn default" type="button">
+                                            <i class="fa fa-clock-o"></i>
+                                        </button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <?php echo $this->formRow($form->get('status'));
+                        echo $this->formRow($form->get('events'));
+                        echo $this->formRow($form->get('position')); ?>
+
+                        <div class="registration-form-movie" style="<?php echo $form->get('type')->getValue() == \Application\Entity\Registration\Type::MOVIE ? 'display: block' : 'display: none'; ?>">
+                            <?php echo $this->formRow($form->get('allow_international_registration')); ?>
+                            <div class="form-group">
+                                <label class="control-label col-md-4">Permitir filmes finalizados a partir de</label>
+                                <div class="col-md-8">
+                                    <div class="input-group input-large date-picker input-daterange" data-date-format="dd/mm/yyyy">
+                                        <?php echo $this->formElement($form->get('allow_register_from')); ?>
+                                        <span class="input-group-addon"> até </span>
+                                        <?php echo $this->formElement($form->get('allow_register_to')); ?> </div>
+                                    <!-- /input-group -->
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-4" for=""><?php echo $form->get('edit_register_until')->getLabel(); ?></label>
+                                <div class="col-md-2">
+                                    <div class="input-group date date-picker" data-date-format="dd/mm/yyyy">
+                                        <?php echo $this->formelement($form->get('edit_register_until')); ?>
+                                        <span class="input-group-btn">
+                                        <button class="btn default" type="button">
+                                            <i class="fa fa-calendar"></i>
+                                        </button>
+                                    </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <?php echo $this->formRow($form->get('regulation')); ?>
+                    </div>
+                    <div class="form-actions">
+                        <div class="row">
+                            <div class="col-md-offset-3 col-md-9">
+                                <button type="submit" class="btn blue btn-lg action-save">Salvar</button>
+                                <a href="<?php echo $this->url('admin/default', ['controller'=>'registration']); ?>" class="btn red btn-lg action cancel">Descartar</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+			</div>
+		</div>
+	</div>
+	<?php echo $this->form()->closeTag() ?>
+</div>
+</div>

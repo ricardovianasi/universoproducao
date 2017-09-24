@@ -3,6 +3,7 @@ namespace Admin\Form\Movie;
 
 use Admin\Form\EntityManagerTrait;
 use Application\Entity\Channel\Category;
+use Application\Entity\Movie\Options;
 use Application\Entity\Movie\OptionsType;
 use Zend\Form\Element\Select;
 use Zend\Form\Form;
@@ -39,8 +40,8 @@ class OptionsForm extends Form
             'options' => [
                 'label' => 'Selecione o status',
                 'value_options' => [
-                    '1' => 'Ativo',
-                    '0' => 'Desativado'
+                    Options::STATUS_ENABLED => 'Habilitado',
+                    Options::STATUS_DISABLED => 'Desabilitado'
                 ]
             ]
         ]);

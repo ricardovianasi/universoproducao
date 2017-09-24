@@ -39,9 +39,13 @@ abstract class AbstractEntity
 			$property = $date;
 		} elseif (preg_match ('/^\d{1,2}\/\d{1,2}\/\d{4}$/', $date)) {
 			$property = \DateTime::createFromFormat ('d/m/Y', $date);
-		} elseif (preg_match ( '/^\d{4}\-\d{1,2}\-\d{1,2}$/', $date )) {
+		} elseif (preg_match ('/^\d{1,2}\/\d{1,2}\/\d{4}\ \d{1,2}\:\d{1,2}$/', $date)) {
+            $property = \DateTime::createFromFormat ('d/m/Y H:i', $date);
+        } elseif (preg_match ( '/^\d{4}\-\d{1,2}\-\d{1,2}$/', $date )) {
 			$property = new \DateTime($date);
-		} elseif($nowIfEmpty && empty($property)) {
+		} elseif (preg_match ( '/^\d{4}\-\d{1,2}\-\d{1,2}\ \d{1,2}\:\d{1,2}$/', $date )) {
+            $property = new \DateTime($date);
+        } elseif($nowIfEmpty && empty($property)) {
 			$property = new \DateTime();
 		} else {
 			return null;

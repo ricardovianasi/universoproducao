@@ -196,7 +196,7 @@ gulp.task('wiredep', ['styles', 'scripts', 'fonts'], () => {
       ignorePath: ['/.tmp'],
       addRootSlash: false
     };
-  gulp.src('app/*.html')
+  gulp.src('app/index.html')
     .pipe(wiredep({
       ignorePath: /^(\.\.\/)*\.\./,
       exclude: [ '/jquery/', '/angular/', 'bower_components/modernizr/modernizr.js' ]

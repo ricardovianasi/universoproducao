@@ -4,7 +4,8 @@
         ->appendStylesheet($this->basePath('assets/meuuniverso/dist/styles/main.css'))
         ->appendStylesheet($this->basePath('assets/meuuniverso/dist/styles/vendor.css'))
         ->appendStylesheet($this->basePath('assets/admin/template/metronic_v4.5.5/theme/assets/global/css/components.min.css'))
-        ->appendStylesheet($this->basePath('assets/admin/template/metronic_v4.5.5/theme/assets/global/css/plugins.min.css'));
+        ->appendStylesheet($this->basePath('assets/admin/template/metronic_v4.5.5/theme/assets/global/css/plugins.min.css'))
+        ->appendStylesheet($this->basePath('assets/admin/template/metronic_v4.5.5/theme/assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css'));
 
 $this->inlineScript()
     //admin
@@ -12,6 +13,12 @@ $this->inlineScript()
     ->appendFile($this->basePath('assets/admin/dev/js/resources/js/cities.min.js'))
     ->appendFile($this->basePath('assets/admin/dev/js/resources/js/dependens.min.js'))
     ->appendFile($this->basePath('assets/admin/dev/js/resources/js/phone.min.js'))
+    ->appendFile($this->basePath('assets/admin/template/metronic_v4.5.5/theme/assets/global/plugins/jquery-validation/js/jquery.validate.min.js'))
+    ->appendFile($this->basePath('assets/admin/template/metronic_v4.5.5/theme/assets/global/plugins/jquery-validation/js/localization/messages_pt_PT.min.js'))
+    ->appendFile($this->basePath('assets/admin/template/metronic_v4.5.5/theme/assets/global/plugins/jquery-validation/js/additional-methods.min.js'))
+    ->appendFile($this->basePath('assets/admin/template/metronic_v4.5.5/theme/assets/global/plugins/bootstrap-wizard/jquery.bootstrap.wizard.min.js'))
+    ->appendFile($this->basePath('assets/admin/template/metronic_v4.5.5/theme/assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js'))
+    ->appendFile($this->basePath('assets/admin/template/metronic_v4.5.5/theme/assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.js'))
 
     ->appendFile($this->basePath('assets/meuuniverso/dist/scripts/vendor.js'))
     ->appendFile($this->basePath('assets/meuuniverso/dist/scripts/main.js'));

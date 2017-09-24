@@ -21,6 +21,32 @@ return [
 				'controller'=>'user',
 				'icon' => 'icon-users'
 			],
+            [
+                'label' => 'Inscrições',
+                'route' => 'admin/default',
+                'controller'=>'registration',
+                'icon' => 'icon-picture'
+            ],
+            [
+                'label' => 'Filmes',
+                'uri' => '#',
+                'icon' => 'icon-book-open',
+                'pages' => [
+                    [
+                        'label' => 'Configurações',
+                        'route' => 'admin/default',
+                        'controller' => 'movie-options',
+                        'icon' => 'icon-doc',
+
+                    ],
+                    [
+                        'label' => 'Filmes',
+                        'route' => 'admin/default',
+                        'controller' => 'movie',
+                        'icon' => 'icon-doc',
+                    ],
+                ]
+            ],
 			[
 				'label' => 'Notícias',
 				'route' => 'admin/default',
@@ -43,26 +69,6 @@ return [
                         'label' => 'Categorias',
                         'route' => 'admin/default',
                         'controller' => 'channel-category',
-                        'icon' => 'icon-doc',
-                    ],
-                ]
-            ],
-            [
-                'label' => 'Filmes',
-                'uri' => '#',
-                'icon' => 'icon-book-open',
-                'pages' => [
-                    [
-                        'label' => 'Configurações',
-                        'route' => 'admin/default',
-                        'controller' => 'movie-options',
-                        'icon' => 'icon-doc',
-
-                    ],
-                    [
-                        'label' => 'Filmes',
-                        'route' => 'admin/default',
-                        'controller' => 'movie',
                         'icon' => 'icon-doc',
                     ],
                 ]

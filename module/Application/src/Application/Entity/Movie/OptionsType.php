@@ -10,6 +10,7 @@ final class OptionsType
     const SOUND             = 'sound';
     const COLOR             = 'color';
     const GENRE             = 'genre';
+    const ACCESSIBILITY     = 'accessibility';
 
 	static public function toArray() {
 		return array(
@@ -19,7 +20,8 @@ final class OptionsType
             self::WINDOW => 'Janela de exibição',
             self::SOUND => 'Som',
             self::COLOR => 'Cor',
-            self::GENRE => 'Gênero'
+            self::GENRE => 'Gênero',
+            self::ACCESSIBILITY => 'Acessibilidade'
 		);
 	}
 
