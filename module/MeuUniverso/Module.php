@@ -9,12 +9,23 @@
 
 namespace MeuUniverso;
 
+use MeuUniverso\Auth\MvcRouteListener;
 use Zend\Mvc\Controller\AbstractController;
 use Zend\Mvc\ModuleRouteListener;
 use Zend\Mvc\MvcEvent;
 
 class Module
 {
+    public function onBootstrap(MvcEvent $e)
+    {
+        $app      = $e->getApplication();
+        $events   = $app->getEventManager();
+        $this->services = $app->getServiceManager();
+
+        $authentication = $this->services->get('meuuniverso_authenticationservice');;
+        $routeListener = new MvcRouteListener($events, $authentication);
+    }
+
     public function getConfig()
     {
         return include __DIR__ . '/config/module.config.php';
