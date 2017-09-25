@@ -11,6 +11,7 @@ return [
         Controller\AuthController::class                => InvokableFactory::class,
         Controller\RegisterController::class            => InvokableFactory::class,
         Controller\MovieRegistrationController::class   => InvokableFactory::class,
+        Controller\ErrorController::class               => InvokableFactory::class,
     ],
     'initializers' => [
         function($instance, $sm) {

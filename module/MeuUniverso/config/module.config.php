@@ -2,6 +2,7 @@
 namespace MeuUniverso;
 
 use MeuUniverso\View\Helper\UserMenu;
+use MeuUniverso\View\Helper\UserMovies;
 use Util\Security\Crypt;
 
 return array(
@@ -21,7 +22,7 @@ return array(
                     'default' => array(
                         'type'    => 'Segment',
                         'options' => array(
-                            'route'    => '/',
+                            'route'    => '/[:action]',
                             'defaults' => array(
                                 'controller' => Controller\IndexController::class,
                                 'action' => 'index',
@@ -57,7 +58,7 @@ return array(
                     'movie' => array(
                         'type'    => 'Segment',
                         'options' => array(
-                            'route'    => '/filme[/:action[/:id]]',
+                            'route'    => '/filme/:id_reg/:action[/:id]',
                             'constraints' => array(
                                 'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
                             ),
@@ -66,7 +67,7 @@ return array(
                                 'action' => 'index',
                             ),
                         ),
-                    ),
+                    )
                 )
             )
         ),
@@ -98,7 +99,8 @@ return array(
     ],
     'view_helpers' => [
         'invokables' => [
-            'meuUniversoUserMenu' => UserMenu::class
+            'meuUniversoUserMenu' => UserMenu::class,
+            'meuUniversoMovies' => UserMovies::class
         ]
         /*'factories' => [
             'meuUniversoUserMenu' => function($helpers) {

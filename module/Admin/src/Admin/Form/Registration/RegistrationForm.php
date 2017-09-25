@@ -199,6 +199,31 @@ class RegistrationForm extends Form
                 ]
             ]
         ]);
+
+        $this->add([
+            'name' => 'info',
+            'type' => 'textarea',
+            'options' => [
+                'label' => 'Informações adicionais',
+                'twb-layout' => 'horizontal',
+                'column-size' => 'md-6',
+                'label_attributes' => [
+                    'class' => 'col-md-4'
+                ]
+            ]
+        ]);
+
+        $this->add([
+            'name' => 'cover',
+            'type' => 'hidden',
+            'attributes' => [
+                'placeholder' => 'Informe uma descrição',
+                'id' => 'file'
+            ],
+            'options' => [
+                'label' => 'Imagem'
+            ]
+        ]);
     }
 
     public function setData($data)

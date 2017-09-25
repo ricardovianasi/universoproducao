@@ -1,0 +1,69 @@
+<?php if($post->getMeta('_cover')) $this->placeholder("is_header_dark")->set(true); ?>
+
+<div class="<?php echo $post->getMeta('_cover') ? 'main-bg' : 'main-no-bg'; ?>"
+     style="<?php echo $post->getMeta('_cover') ? 'background-image:url('.$post->getMeta('_cover').')' : ''; ?>">
+    <header class="main-header">
+        <div class="main-wrapper">
+            <h1 class="main-title"><?php echo $post->getTitle(); ?></h1>
+        </div>
+    </header>
+</div>
+
+<section class="main-section">
+    <div class="main-wrapper">
+        <section class="registration">
+            <?php foreach ($this->registrations as $reg): ?>
+            <article class="registration-item">
+                <?php if($reg->getCover()): ?>
+                    <figure class="registration-figure">
+                        <img src="<?php echo  $this->thumbor()->url($reg->getCover())->resize(300, 250); ?>" width="300" height="250" alt="">
+                    </figure>
+                <?php endif; ?>
+                <div class="registration-details">
+                    <p class="registration-title"><?php echo $reg->getName(); ?></p>
+                    <?php if($reg->getEndDate()) {
+                        $dataInicio = $this->dateFormat($reg->getStartDate(), null, null, "pt_BR", "d 'de' MMMM");
+                        $dataTermino = $this->dateFormat($reg->getEndDate(), null, null, "pt_BR", "d 'de' MMMM 'de' Y");
+                        $horaFim = $this->dateFormat($reg->getEndDate(), null, null, "pt_BR", "HH'h'mm");
+                        $strData = sprintf("De %s a %s(até %s horas - horário de Brasília)", $dataInicio, $dataTermino, $horaFim);
+                    } ?>
+                    <?php if($strData): ?><p class="date"><?php echo $strData ?></p><?php endif; ?>
+                    <?php if($reg->getInfo()): ?><p><?php echo $reg->getInfo(); ?></p><?php endif; ?>
+                    <p><a class="registration-link" data-fancybox data-src="#regulation-<?php echo $reg->getId(); ?>" href="javascript:;">Confira o regulamento</a></p>
+
+                    <?php if($reg->isOpen()): ?>
+
+                        <?php
+                            $url = "#";
+                            if($reg->getType() == \Application\Entity\Registration\Type::MOVIE) {
+                                $url = $this->url('meu-universo/movie', ['id_reg'=>$reg->getHash(), 'action'=>'novo']);
+                            }
+                        ?>
+                        <p><a href="<?php echo $url ?>" class="registration-btn submit">Fazer inscrição</a></p>
+                    <?php endif; ?>
+
+                    <div style="display: none">
+                        <div class="registration-modal" id="regulation-<?php echo $reg->getId();?>">
+                            <h2><?php echo $reg->getName(); ?></h2>
+                            <?php echo $reg->getRegulation(); ?>
+                        </div>
+                    </div>
+
+                </div>
+            </article>
+            <?php endforeach; ?>
+        </section>
+
+        <div class="share">
+            <span class="share-title">Compartilhe:</span>
+            <ul class="share-items">
+                <ul class="share-items">
+                    <li class="share-item"><a target="_blank" href="http://www.facebook.com/share.php?u=<?php echo $this->serverUrl(true) ?>&display=popup&title=<?php echo $post->getTitle(); ?>" class="share-link"><span class="icon-facebook"></span></a></li>
+                    <li class="share-item"><a target="_blank" href="https://twitter.com/intent/tweet?status=<?php echo $post->getTitle(); ?>+<?php echo $this->serverUrl(true) ?>" class="share-link"><span class="icon-twitter"></span></a></li>
+                </ul>
+            </ul>
+        </div>
+
+        <div class="main-separator"></div>
+    </div>
+</section>

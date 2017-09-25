@@ -6,9 +6,9 @@ use Application\Entity\Movie\Options;
 
 class MovieForm extends AdminMovieForm
 {
-    public function __construct($entityManager)
+    public function __construct($entityManager, $registration=null)
     {
-        parent::__construct($entityManager, Options::STATUS_ENABLED);
+        parent::__construct($entityManager, Options::STATUS_ENABLED, $registration);
         $this->setAttributes([
             'class' => 'form-horizontal'
         ]);

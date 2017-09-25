@@ -170,9 +170,19 @@ class Movie extends AbstractEntity
     /** @ORM\OneToMany(targetEntity="Media", mappedBy="movie")  */
     private $medias;
 
+    /** @ORM\OneToMany(targetEntity="MovieEvent", mappedBy="movie", cascade={"ALL"}) */
+    private $events;
+
+    /**
+     * @ORM\OneToOne(targetEntity="Application\Entity\Registration\Registration")
+     * @ORM\JoinColumn(name="registration_id", referencedColumnName="id")
+     */
+    private $registration;
+
     public function __construct()
     {
         $this->medias = new ArrayCollection();
+        $this->events = new ArrayCollection();
     }
 
     /**
@@ -284,7 +294,13 @@ class Movie extends AbstractEntity
      */
     public function setDuration($duration)
     {
-        $this->duration = $duration;
+        if(is_string($duration)) {
+            $time = \DateTime::createFromFormat('H:i:s', $duration);
+            $this->duration = $time;
+            return $this;
+        }
+
+        $this->duration =  $duration;
     }
 
     /**
@@ -861,5 +877,37 @@ class Movie extends AbstractEntity
     public function setMovieDivulgation($movieDivulgation)
     {
         $this->movieDivulgation = $movieDivulgation;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getEvents()
+    {
+        return $this->events;
+    }
+
+    /**
+     * @param mixed $events
+     */
+    public function setEvents($events)
+    {
+        $this->events = $events;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRegistration()
+    {
+        return $this->registration;
+    }
+
+    /**
+     * @param mixed $registration
+     */
+    public function setRegistration($registration)
+    {
+        $this->registration = $registration;
     }
 }

@@ -41,7 +41,7 @@
                     <div class="tab-content">
                         <div class="tab-pane active" id="tab_regulation">
                             <h3 class="block">Regulamento</h3>
-                            <div class="portlet light bordered">
+                            <div class="portlet light bordered bg-inverse">
                                 <div class="portlet-title">
                                     <div class="caption">
                                         <span class="caption-subject bold uppercase"> Cinema sem fronteiras - 1 etapa</span>
@@ -50,7 +50,7 @@
                                         <a class="btn btn-circle btn-icon-only btn-default fullscreen" href="javascript:;" data-original-title="" title=""> </a>
                                     </div>
                                 </div>
-                                <div class="portlet-body">
+                                <div class="portlet-body movie-regulation">
                                     <div class="scroller" style="height:300px" data-rail-visible="1" data-rail-color="yellow" data-handle-color="#a1b2bd">
                                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam maximus ullamcorper est, non tincidunt tortor pulvinar vel. Curabitur at pretium ipsum. Integer porta, mi eget sollicitudin lacinia, tellus dui imperdiet magna, eget elementum odio odio quis neque. Donec quis consequat mi. Suspendisse vel sem odio. Ut nulla velit, imperdiet ut arcu non, convallis ornare mauris. Pellentesque nec mauris posuere tellus volutpat semper. Nunc eget purus maximus, fringilla neque ac, vulputate urna. Maecenas eu gravida risus. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean a auctor libero. Phasellus eu posuere nisl.</p>
                                         <p>Quisque pulvinar a nisi non egestas. Vivamus molestie fermentum diam. Suspendisse rutrum est sit amet nulla mollis, sed pretium tortor vehicula. Cras blandit elementum nibh sit amet hendrerit. Sed tempus metus sit amet lectus tincidunt, eget blandit tortor ultrices. In at semper odio. Mauris imperdiet accumsan mauris, eget blandit metus lacinia vitae. Nulla a dignissim risus. Nulla ac enim mattis, aliquet magna et, rutrum purus. Suspendisse eget lorem eu eros vehicula malesuada. Nunc dictum ante ut augue tristique, ac pulvinar lacus laoreet.</p>
@@ -67,26 +67,20 @@
 
                             <h3 class="form-section">Mostras</h3>
 
-                            <div class="form-group">
-                                <label class="col-md-3 control-label">Checkboxes</label>
+                            <?php echo $this->formRow($form->get('events')); ?>
+
+                            <!--<div class="form-group">
                                 <div class="col-md-9">
                                     <div class="checkbox-list">
+                                        <?php /*foreach ($reg->getEvents() as $index=>$e): */?>
                                         <label>
-                                            <input type="checkbox"> Checkbox 1 </label>
-                                        <label>
-                                            <input type="checkbox"> Checkbox 1 </label>
-                                        <label>
-                                            <input type="checkbox" disabled> Disabled </label>
+                                            <input required type="checkbox" value="<?php /*echo $e->getId() */?>" name="event[<?php /*echo $e->getId() */?>]">
+                                            Autorizo a inscrição do filme para a seleção da <?php /*echo $e->getFullName(); */?>
+                                        </label>
+                                        <?php /*endforeach; */?>
                                     </div>
                                 </div>
-                            </div>
-
-                            <div class="">
-                                <label>
-                                    <input required type="checkbox" value="1" name="event[1]"> Autorizo a inscrição do filme para a seleção da 11ª CineBH - Mostra de Cinema de Belo Horizonte
-                                </label>
-                            </div>
-
+                            </div>-->
                         </div>
                         <div class="tab-pane" id="tab2">
                             <?php echo $this->formRow($form->get('title')) ?>
@@ -197,9 +191,9 @@
                             <a href="javascript:;" class="btn btn-outline green button-next"> Continuar
                                 <i class="glyphicon glyphicon-chevron-right"></i>
                             </a>
-                            <a href="javascript:;" class="btn green button-submit"> Cadastrar
+                            <button type="submit" class="btn green button-submit"> Cadastrar
                                 <i class="glyphicon glyphicon-ok"></i>
-                            </a>
+                            </button>
                         </div>
                     </div>
                 </div>

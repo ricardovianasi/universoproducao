@@ -11,6 +11,7 @@ namespace Application\Entity\Registration;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Util\Entity\AbstractEntity;
+use Util\Security\Crypt;
 
 /**
  * @ORM\Table(name="registration")
@@ -18,6 +19,9 @@ use Util\Entity\AbstractEntity;
  */
 class Registration extends AbstractEntity
 {
+    const STATUS_ENABLED = 1;
+    const STATUS_DISABLED = 0;
+
     /**
      * @ORM\Id @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\GeneratedValue(strategy="IDENTITY")
@@ -67,9 +71,19 @@ class Registration extends AbstractEntity
     /** @ORM\Column(name="`position`", type="string", nullable=true) */
     private $position;
 
+    /** @ORM\Column(name="`cover`", type="string", nullable=true) */
+    private $cover;
+
+    /** @ORM\Column(name="`info`", type="string", nullable=true) */
+    private $info;
+
+    /** @ORM\Column(name="`hash`", type="string", nullable=true) */
+    private $hash;
+
     public function __construct()
     {
         $this->events = new ArrayCollection();
+        $this->hash = Crypt::makePassword(80, true, true, "-_.");
     }
 
     /**
@@ -283,5 +297,78 @@ class Registration extends AbstractEntity
     public function setPosition($position)
     {
         $this->position = $position;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCover()
+    {
+        return $this->cover;
+    }
+
+    /**
+     * @param mixed $cover
+     */
+    public function setCover($cover)
+    {
+        $this->cover = $cover;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getInfo()
+    {
+        return $this->info;
+    }
+
+    /**
+     * @param mixed $info
+     */
+    public function setInfo($info)
+    {
+        $this->info = $info;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getHash()
+    {
+        return $this->hash;
+    }
+
+    /**
+     * @param mixed $hash
+     */
+    public function setHash($hash)
+    {
+        $this->hash = $hash;
+    }
+
+    public function isOpen()
+    {
+        if($this->status != self::STATUS_ENABLED) {
+            return false;
+        }
+
+        $now = new \DateTime();
+
+        if($this->getEndDate()) {
+            if($this->getStartDate() <= $now && $this->endDate >= $now) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            if($this->getStartDate() >= $now) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        return false;
     }
 }

@@ -1,6 +1,7 @@
 <?php
 namespace Admin;
 
+use Admin\Controller\Plugin\Service\SlugfyFactory;
 use Admin\Controller\Plugin\Service\UserLogFactory;
 use Zend\Mvc\Router\Http\Literal;
 

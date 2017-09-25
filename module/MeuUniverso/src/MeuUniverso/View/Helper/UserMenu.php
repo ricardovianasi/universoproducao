@@ -34,7 +34,7 @@ class UserMenu extends AbstractHelper implements ServiceLocatorAwareInterface
     {
         $urlHelper = $this->getServiceLocator()->get('url');
 
-//        $html = '<a class="links-action" href="%s"><i class="icon-user3"></i></a>';
+        $html = '<a class="links-action" href="%s"><i class="icon-user3"></i></a>';
         $urlUserBtn = "#";
         if($user) {
             $urlMeuCadastro = $urlHelper('meu-universo/register', ['action'=>'editar']);
@@ -52,7 +52,6 @@ class UserMenu extends AbstractHelper implements ServiceLocatorAwareInterface
               <li><a href="'.$urlLogout.'">Sair</a></li>
             </ul>';
         } else {
-            $html = "";
             $urlUserBtn = $urlHelper('meu-universo/auth');
         }
 

@@ -333,6 +333,7 @@ var FormWizard = function () {
                 if (form.valid() == false) {
                     return false;
                 }
+                document.getElementById('submit_form').submit();
             }).hide();
         }
 

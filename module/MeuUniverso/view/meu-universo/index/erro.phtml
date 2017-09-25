@@ -1,0 +1,26 @@
+<div class="container">
+    <p class="meuuniverso-brand meuuniverso-brand--center"><strong>Meu</strong>Universo | Erro</p>
+
+    <div class="note note-danger">
+        <h4 class="block">Atenção</h4>
+
+        <?php if($this->code == 'x1001'): ?>
+            <p>Não foi possível processar seu pedido. Por favor, tente novamente.</p>
+        <?php elseif($this->code == 'x1002'): ?>
+            <p>Inscrições encerradas.</p>
+            <p>
+                <a class="btn blue" href="<?php echo $this->url('universoproducao/default', ['slug'=>'inscrições']) ?>">Inscrições</a>
+            </p>
+            <p></p>
+        <?php elseif($this->code == 'x1003'): ?>
+            <p>Não é possível editar a inscrição realizada.</p>
+        <?php else: ?>
+            <p>Erro desconhecido. Por favor, tente novamente!</p>
+            <p>
+                <a class="btn blue" href="<?php echo $this->url('universoproducao/default', ['slug'=>'inscrições']) ?>">Inscrições disponíveis</a>
+                <a class="btn blue" href="<?php echo $this->url('meu-universo/default') ?>">Minhas inscrições</a>
+            </p>
+        <?php endif; ?>
+
+    </div>
+</div>

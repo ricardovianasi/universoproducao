@@ -150,16 +150,16 @@ class AuthController extends AbstractMeuUniversoController
                             'form' => $form
                         ];
                     }
-
-                    $user->setPassword(Crypt::getInstance()->generateEncryptPass($validData['password']));
-                    $this->getEntityManager()->persist($user);
-                    $this->getEntityManager()->flush();
-
-                    return [
-                        'error' => false,
-                        'reason' => 'password_change'
-                    ];
                 }
+
+                $user->setPassword(Crypt::getInstance()->generateEncryptPass($validData['password']));
+                $this->getEntityManager()->persist($user);
+                $this->getEntityManager()->flush();
+
+                return [
+                    'error' => false,
+                    'reason' => 'password_change'
+                ];
             }
         }
 
