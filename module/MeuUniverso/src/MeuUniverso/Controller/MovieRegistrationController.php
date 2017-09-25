@@ -16,6 +16,8 @@ use Application\Entity\Movie\Options;
 use Application\Entity\Registration\Registration;
 use Doctrine\Common\Collections\ArrayCollection;
 use MeuUniverso\Form\MovieForm;
+use Zend\View\Model\ViewModel;
+use Zend\View\View;
 
 class MovieRegistrationController extends AbstractMeuUniversoRegisterController
 {
@@ -35,7 +37,10 @@ class MovieRegistrationController extends AbstractMeuUniversoRegisterController
 
     public function editarAction()
     {
-        return $this->persist('update');
+        $result = $this->persist('update');
+        $result->setTemplate('meu-universo/movie-registration/editar.phtml');
+        return $result;
+
     }
 
     protected function persist($method)
@@ -218,11 +223,13 @@ class MovieRegistrationController extends AbstractMeuUniversoRegisterController
             $form->setData($movie->toArray());
         }
 
-        return [
+        $viewModel = new ViewModel();
+
+        return $viewModel->setVariables([
             'form' => $form,
             'reg' => $reg,
             'movie' => $movie
-        ];
+        ]);
     }
 
     public function deleteAction()

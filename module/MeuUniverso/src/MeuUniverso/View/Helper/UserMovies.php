@@ -37,8 +37,6 @@ class UserMovies extends AbstractHelper implements ServiceLocatorAwareInterface
             return '<p>Nenhum filme cadastrado</p>';
         }
 
-        $urlHelper = $this->getServiceLocator()->get('url');
-
         $tableFormat = '<table class="table table-hover table-light table-movie">
                         <thead>
                             <tr>
@@ -72,10 +70,17 @@ class UserMovies extends AbstractHelper implements ServiceLocatorAwareInterface
         }
         $td.= "<td>$events</td>";
 
-        $btnEditar = '<button type="button" class="btn btn-circle btn-default btn-sm"><i class="glyphicon glyphicon-edit"></i> Editar</button>';
+        $now = new \DateTime();
+        $reg = $movie->getRegistration();
+        if($now >= $reg->getEditRegisterUntil()) {
+            $btnEditar = '<a href="javascript:;" class="btn btn-circle default disabled"> Editar </a>';
+        } else {
+            $urlHelper = $this->getServiceLocator()->get('url');
 
+            $editUrl = $urlHelper('meu-universo/movie', ['id_reg'=>$reg->getHash(), 'id'=>$movie->getId(), 'action'=>'editar']);
+            $btnEditar = '<a href="'.$editUrl.'" type="button" class="btn btn-circle btn-default btn-sm"><i class="glyphicon glyphicon-edit"></i> Editar</a>';
+        }
         $td.= '<td>'.$btnEditar.'</td></tr>';
-
         return $td;
     }
 
