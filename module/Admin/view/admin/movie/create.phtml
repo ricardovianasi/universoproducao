@@ -6,24 +6,24 @@
 	<div class="portlet light portlet-fit bordered">
 		<div class="portlet-title">
 			<div class="caption">
-				<?php if($this->option->getId()): ?>
+				<?php if($this->movie->getId()): ?>
 				<i class="fa fa-edit"></i>
-				Editar opção
+				Editar filme
 				<?php else: ?>
 				<i class="fa fa-file-o"></i>
-				Nova opção
+				Novo filme
 				<?php endif; ?>
 			</div>
 			<div class="actions">
-				<a href="<?php echo $this->url('admin/default', ['controller'=>'movie-options']); ?>"
+				<a href="<?php echo $this->url('admin/default', ['controller'=>'movie']); ?>"
 				   class="btn btn-default">
 					<i class="icon-action-undo"></i>
 					<span class="hidden-xs"> Voltar </span>
 				</a>
-                <a href="<?php echo $this->url('admin/default', ['controller'=>'movie-options', 'action'=>'create']); ?>"
+                <a href="<?php echo $this->url('admin/default', ['controller'=>'movie', 'action'=>'create']); ?>"
                    class="btn btn-default">
                     <i class="fa fa-plus"></i>
-                    <span class="hidden-xs"> Nova opção </span>
+                    <span class="hidden-xs"> Nova filme </span>
                 </a>
 			</div>
 		</div>
@@ -31,18 +31,98 @@
 			<div class="portlet">
                 <div class="portlet-body form">
                     <div class="form-body">
-                        <div class="form-group">
-                            <label class="control-label col-md-3" for=""><?php echo $form->get('name')->getLabel(); ?></label>
-                            <div class="col-md-4"><?php echo $this->formElement($form->get('name')); ?></div>
+                        <?php echo $this->formRow($form->get('title'));
+                            echo $this->formRow($form->get('title_english'));
+                            echo $this->formRow($form->get('end_date_year'));
+                            echo $this->formRow($form->get('end_date_month'));
+                            echo $this->formRow($form->get('duration'));
+                            echo $this->formRow($form->get('has_official_classification'));
+                            echo $this->formRow($form->get('movie_option_classification'));
+                            echo $this->formRow($form->get('movie_option_format'));
+                            echo $this->formRow($form->get('movie_option_category'));
+                            echo $this->formRow($form->get('movie_option_window'));
+                            echo $this->formRow($form->get('movie_option_sound'));
+                            echo $this->formRow($form->get('movie_option_color'));
+                            echo $this->formRow($form->get('movie_option_genre'));
+                            echo $this->formRow($form->get('movie_option_accessibility'));
+                            echo $this->formRow($form->get('subtitles_languages'));
+                            echo $this->formRow($form->get('conversations_list_languages'));
+                            echo $this->formRow($form->get('other_festivals'));
+                            echo $this->formRow($form->get('direction'));
+                            echo $this->formRow($form->get('script'));
+                            echo $this->formRow($form->get('production_company'));
+                            echo $this->formRow($form->get('direction_production'));
+                            echo $this->formRow($form->get('direction_photography'));
+                            echo $this->formRow($form->get('direction_art'));
+                            echo $this->formRow($form->get('editing_assembly'));
+                            echo $this->formRow($form->get('direct_sound'));
+                            echo $this->formRow($form->get('scenography'));
+                            echo $this->formRow($form->get('costume'));
+                            echo $this->formRow($form->get('cast'));
+                            echo $this->formRow($form->get('synopsis'));
+                            echo $this->formRow($form->get('filmography_director'));
+                            echo $this->formRow($form->get('movie_link'));
+                            echo $this->formRow($form->get('movie_password'));
+                            echo $this->formRow($form->get('movie_divulgation')); ?>
+
+                        <h3 class="form-section">Imagens</h3>
+
+                        <div class="clearfix margin-top-10">
+                            <span class="label label-danger">Atenção!</span> Formatos válidos: JPG, JPEG e PNG. Tamanho máximo de 1MB por imagem.
                         </div>
-                        <div class="form-group">
-                            <label class="control-label col-md-3" for=""><?php echo $form->get('type')->getLabel(); ?></label>
-                            <div class="col-md-4"><?php echo $this->formElement($form->get('type')); ?></div>
+
+                        <div class="form-group ">
+                            <label class="control-label col-md-4">Imagem 1</label>
+                            <div class="col-md-6">
+                                <div class="fileinput fileinput-new" data-provides="fileinput">
+                                    <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;"> </div>
+                                    <?php echo $this->formElement($form->get('media_caption[1]')) ?>
+                                    <div>
+                                            <span class="btn red btn-outline btn-file">
+                                                <span class="fileinput-new"> Selecionar imagem </span>
+                                                <span class="fileinput-exists"> Alterar </span>
+                                                <?php echo $this->formElement($form->get('media[1]')); ?>
+                                            </span>
+                                        <a href="javascript:;" class="btn red fileinput-exists" data-dismiss="fileinput"> Remover </a>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="form-group last">
-                            <label class="control-label col-md-3" for=""><?php echo $form->get('status')->getLabel(); ?></label>
-                            <div class="col-md-4"><?php echo $this->formElement($form->get('status')); ?></div>
+                        <div class="form-group ">
+                            <label class="control-label col-md-4">Imagem 2</label>
+                            <div class="col-md-6">
+                                <div class="fileinput fileinput-new" data-provides="fileinput">
+                                    <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;"> </div>
+                                    <div>
+                                        <?php echo $this->formElement($form->get('media_caption[2]')) ?>
+                                        <span class="btn red btn-outline btn-file">
+                                                <span class="fileinput-new"> Selecionar imagem </span>
+                                                <span class="fileinput-exists"> Alterar </span>
+                                            <?php echo $this->formElement($form->get('media[2]')); ?>
+                                            </span>
+                                        <a href="javascript:;" class="btn red fileinput-exists" data-dismiss="fileinput"> Remover </a>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
+                        <div class="form-group ">
+                            <label class="control-label col-md-4">Imagem 3</label>
+                            <div class="col-md-6">
+                                <div class="fileinput fileinput-new" data-provides="fileinput">
+                                    <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;"> </div>
+                                    <div>
+                                        <?php echo $this->formElement($form->get('media_caption[3]')) ?>
+                                        <span class="btn red btn-outline btn-file">
+                                                <span class="fileinput-new"> Selecionar imagem </span>
+                                                <span class="fileinput-exists"> Alterar </span>
+                                            <?php echo $this->formElement($form->get('media[3]')); ?>
+                                            </span>
+                                        <a href="javascript:;" class="btn red fileinput-exists" data-dismiss="fileinput"> Remover </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                     <div class="form-actions">
                         <div class="row">

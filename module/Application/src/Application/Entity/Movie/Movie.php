@@ -7,7 +7,7 @@ use Util\Entity\AbstractEntity;
 
 /**
  * @ORM\Table(name="movie")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Application\Repository\Movie\Movie")
  */
 class Movie extends AbstractEntity
 {

@@ -8,6 +8,7 @@
 namespace Admin\Controller;
 
 use Admin\Form\Movie\MovieForm;
+use Admin\Form\Movie\MovieFormSearch;
 use Admin\Form\Movie\OptionsForm;
 use Application\Entity\Movie\Movie;
 use Application\Entity\Movie\Options;
@@ -20,7 +21,7 @@ class MovieController extends AbstractAdminController
 	 */
 	public function indexAction()
 	{
-	    $searchForm = new MovieForm();
+	    $searchForm = new MovieFormSearch($this->getEntityManager());
         $dataAttr = $this->params()->fromQuery();
         $searchForm->setData($dataAttr);
 
@@ -47,7 +48,7 @@ class MovieController extends AbstractAdminController
 	public function updateAction($id, $data)
 	{
 		$result = $this->persist($data, $id);
-		$result->setTemplate('admin/movie-options/create.phtml');
+		$result->setTemplate('admin/movie/create.phtml');
 
 		return $result;
 	}
@@ -65,39 +66,40 @@ class MovieController extends AbstractAdminController
 
 	public function persist($data, $id = null)
 	{
-		$form = new OptionsForm();
+		$form = new MovieForm($this->getEntityManager());
 
 		if($id) {
-			$option = $this->getRepository(Options::class)->find($id);
+			$movie = $this->getRepository(Movie::class)->find($id);
+			$form->setRegistration($movie->getRegistration());
 		} else {
-			$option = new Options();
+			$movie = new Movie();
 		}
 
 		if($this->getRequest()->isPost()) {
 			$form->setData($data);
 			if($form->isValid()) {
-				$option->setData($data);
-				$this->getEntityManager()->persist($option);
+				$movie->setData($data);
+				$this->getEntityManager()->persist($movie);
 				$this->getEntityManager()->flush();
 
 				if($id) {
-					$this->messages()->success("Opção atualizada com sucesso!");
+					$this->messages()->success("Filme atualizado com sucesso!");
 				} else {
-					$this->messages()->flashSuccess("Opção criada com sucesso!");
+					$this->messages()->flashSuccess("Filme criado com sucesso!");
 					return $this->redirect()->toRoute('admin/default', [
-						'controller' => 'movie-options',
+						'controller' => 'movie',
 						'action' => 'update',
-						'id' => $option->getId()
+						'id' => $movie->getId()
 					]);
 				}
 			}
 		} else {
-			$form->setData($option->toArray());
+			$form->setData($movie->toArray());
 		}
 
 		return $this->getViewModel()->setVariables([
 			'form' => $form,
-			'option' => $option
+			'movie' => $movie
 		]);
 	}
 }
