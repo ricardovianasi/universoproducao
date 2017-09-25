@@ -258,19 +258,22 @@ class RegistrationForm extends Form
 
         if(!empty($data['allow_register_from'])) {
             if ($data['allow_register_from'] instanceof \DateTime) {
-                $data['allow_register_from'] = ($data['allow_register_from'])->format('d/m/Y');
+                $allow_register_from = $data['allow_register_from'];
+                $data['allow_register_from'] = $allow_register_from->format('d/m/Y');
             }
         }
 
         if(!empty($data['allow_register_to'])) {
             if ($data['allow_register_to'] instanceof \DateTime) {
-                $data['allow_register_to'] = ($data['allow_register_to'])->format('d/m/Y');
+                $allow_register_to = $data['allow_register_to'];
+                $data['allow_register_to'] = $allow_register_to->format('d/m/Y');
             }
         }
 
         if(!empty($data['edit_register_until'])) {
             if ($data['edit_register_until'] instanceof \DateTime) {
-                $data['edit_register_until'] = ($data['edit_register_until'])->format('d/m/Y');
+                $edit_register_until = $data['edit_register_until'];
+                $data['edit_register_until'] = $edit_register_until->format('d/m/Y');
             }
         }
 

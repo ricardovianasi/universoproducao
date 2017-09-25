@@ -57,11 +57,12 @@ class RegistrationController extends AbstractAdminController
 
 	public function deleteAction($id)
 	{
-        $op = $this->getRepository(Options::class)->find($id);
-        $this->getEntityManager()->remove($op);
+        $reg = $this->getRepository(Registration::class)->find($id);
+
+        $this->getEntityManager()->remove($reg);
         $this->getEntityManager()->flush();
 
-        $this->messages()->flashSuccess('Opção excluída com sucesso.');
+        $this->messages()->flashSuccess('Inscrição excluída com sucesso.');
 
         return $this->redirect()->toRoute('admin/default', ['controller'=>'registration']);
 	}
