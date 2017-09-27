@@ -120,5 +120,5 @@ return array(
                 return $helper;
             }
         ]
-    ]
+    ],
 );

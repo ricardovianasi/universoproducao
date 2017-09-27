@@ -205,5 +205,19 @@ return array(
                 },
             )
         )
-    )
+    ),
+    'session' => [
+        'config' => [
+            'class' => 'Zend\Session\Config\SessionConfig',
+            'options' => [
+                'name' => 'universo_producao',
+            ],
+        ],
+        'storage' => 'Zend\Session\Storage\SessionArrayStorage',
+        'validators' => [
+            'Zend\Session\Validator\RemoteAddr',
+            'Zend\Session\Validator\HttpUserAgent',
+        ]
+
+    ]
 );

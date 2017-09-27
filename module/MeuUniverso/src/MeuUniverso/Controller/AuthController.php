@@ -6,6 +6,7 @@ use Application\Entity\User\User;;
 
 use MeuUniverso\Form\ChangePasswordForm;
 use Util\Security\Crypt;
+use Zend\Session\Container;
 use Zend\View\Model\ViewModel;
 
 class AuthController extends AbstractMeuUniversoController
@@ -25,7 +26,13 @@ class AuthController extends AbstractMeuUniversoController
             $authResult = $authService->authenticate();
 
             if ($authResult->isValid()) {
-                return $this->redirect()->toRoute('meu-universo/default');
+
+                $session = new Container();
+                if($session->offsetExists('last_url_accessed_before_login')) {
+                    return $this->redirect()->toUrl($session->offsetGet('last_url_accessed_before_login'));
+                } else {
+                    return $this->redirect()->toRoute('meu-universo/default');
+                }
             }
 
             return [

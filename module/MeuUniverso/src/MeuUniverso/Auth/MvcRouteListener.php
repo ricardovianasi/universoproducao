@@ -15,6 +15,7 @@ use Zend\EventManager\AbstractListenerAggregate;
 use Zend\EventManager\EventManagerInterface;
 use Zend\Http\Request as HttpRequest;
 use Zend\Mvc\MvcEvent;
+use Zend\Session\Container;
 
 class MvcRouteListener extends AbstractListenerAggregate
 {
@@ -79,9 +80,14 @@ class MvcRouteListener extends AbstractListenerAggregate
 		}
 
 		if(!$identity) {
-			$url = $mvcEvent->getRouter()->assemble([], ['name'=>'meu-universo/auth']);
+            //Salva a url que o usuário tentou acessar
+            $currentURL = $mvcEvent->getRequest()->getUriString();
 
+            $session = new Container();
+            $session->offsetSet('last_url_accessed_before_login', $currentURL);
 
+		    //Redireciona para a tela de login
+		    $url = $mvcEvent->getRouter()->assemble([], ['name'=>'meu-universo/auth']);
 
 			$response = $mvcEvent->getResponse();
 			$response->getHeaders()->addHeaderLine('Location', $url);

@@ -33,6 +33,17 @@ class Module
         );
 
         Zend\Validator\AbstractValidator::setDefaultTranslator($translator);
+
+        //$this->bootstrapSession($e);
+    }
+
+    public function bootstrapSession($e)
+    {
+        $session = $e->getApplication()
+            ->getServiceManager()
+            ->get('meuuniverso_session');
+
+        $session->start();
     }
 
     public function getConfig()

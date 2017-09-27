@@ -36,7 +36,7 @@ return [
             }
 
             return new Storage\ObjectRepository($options);
-        }
+        },
     ],
     'invokables' => []
 ];
