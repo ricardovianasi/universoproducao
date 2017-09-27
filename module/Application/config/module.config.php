@@ -18,7 +18,7 @@ return array(
             'universoproducao' => array(
                 'type'    => Hostname::class,
                 'options' => array(
-                    'route'    => '[www.]universoproducao.com.br',
+                    'route'    => 'universoproducao.com.br',
                     'defaults' => array(
                         'controller'    => Controller\IndexController::class,
                         'action'        => 'index',
