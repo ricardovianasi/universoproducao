@@ -3,9 +3,9 @@ return [
     'router' => array(
         'routes' => array(
             'universoproducao' => array(
-                'type' => 'Literal',
+                'type' => 'hostname',
                 'options' => array(
-                    'route'    => '/',
+                    'route'    => 'universoproducao',
                 )
             ),
             /*'cinebh2017' => array(
