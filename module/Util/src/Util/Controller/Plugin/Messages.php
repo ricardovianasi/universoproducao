@@ -27,7 +27,16 @@ class Messages extends AbstractPlugin
 	 */
 	protected $flashMessageAdded;
 
-	public function getMessages()
+	public function __construct($sessionContainer=null)
+    {
+        if($sessionContainer) {
+            $this->sessionContainer = $sessionContainer;
+        } else {
+            $this->sessionContainer = new SessionContainer(self::SESSION_NAME);
+        }
+    }
+
+    public function getMessages()
 	{
 		return $this->messages;
 	}

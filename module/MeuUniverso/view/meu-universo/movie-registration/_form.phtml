@@ -3,6 +3,15 @@
         <?php $form = $this->form;
         $form->prepare();
         echo $this->form(null, null)->openTag($form); ?>
+
+        <?php if($form->getMessages()): ?>
+            <div class="note note-danger">
+                <button type="button" class="close" data-dismiss="alert"></button>
+                <h4 class="block">Atenção, ocorreram erros! </h4>
+                <p>Por favor, confira os dados enviados e verifique se todos os campos obrigatórios foram preenchidos</p>
+            </div>
+        <?php endif; ?>
+
         <div class="form-wizard">
             <div class="form-body">
                 <ul class="nav nav-pills nav-justified steps">
@@ -37,7 +46,7 @@
 
                 <div class="tab-content">
                     <div class="tab-pane active" id="tab_regulation">
-                        <h3 class="block">Regulamento</h3>
+                        <h3 class="h3 block">Regulamento</h3>
                         <div class="portlet light bordered bg-inverse">
                             <div class="portlet-title">
                                 <div class="caption">
@@ -49,21 +58,29 @@
                             </div>
                             <div class="portlet-body movie-regulation">
                                 <div class="scroller" style="height:300px" data-rail-visible="1" data-rail-color="yellow" data-handle-color="#a1b2bd">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam maximus ullamcorper est, non tincidunt tortor pulvinar vel. Curabitur at pretium ipsum. Integer porta, mi eget sollicitudin lacinia, tellus dui imperdiet magna, eget elementum odio odio quis neque. Donec quis consequat mi. Suspendisse vel sem odio. Ut nulla velit, imperdiet ut arcu non, convallis ornare mauris. Pellentesque nec mauris posuere tellus volutpat semper. Nunc eget purus maximus, fringilla neque ac, vulputate urna. Maecenas eu gravida risus. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean a auctor libero. Phasellus eu posuere nisl.</p>
-                                    <p>Quisque pulvinar a nisi non egestas. Vivamus molestie fermentum diam. Suspendisse rutrum est sit amet nulla mollis, sed pretium tortor vehicula. Cras blandit elementum nibh sit amet hendrerit. Sed tempus metus sit amet lectus tincidunt, eget blandit tortor ultrices. In at semper odio. Mauris imperdiet accumsan mauris, eget blandit metus lacinia vitae. Nulla a dignissim risus. Nulla ac enim mattis, aliquet magna et, rutrum purus. Suspendisse eget lorem eu eros vehicula malesuada. Nunc dictum ante ut augue tristique, ac pulvinar lacus laoreet.</p>
-                                    <p>Nulla facilisi. Praesent eu justo vel risus pharetra posuere sed id arcu. Vestibulum enim arcu, fringilla a feugiat egestas, cursus eget eros. Nullam sapien eros, cursus quis turpis nec, scelerisque gravida nisl. Nulla in elit arcu. Sed a neque ullamcorper, porta quam et, sodales lectus. Mauris sagittis facilisis quam non vehicula. Nam sapien velit, placerat non lacinia eget, ullamcorper tincidunt leo.</p>
+                                    <?php echo $this->reg->getRegulation(); ?>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="">
-                            <label>
-                                <input required type="checkbox" value="1" name="accept_regulation"> Eu li e estou de acordo com as condições descritas no regulamento de inscrições de filmes
-                            </label>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="movie-multi-check">
+                        <?php echo $this->formRow($form->get('accept_regulation')); ?>
+                                </div>
+                            </div>
                         </div>
 
-                        <h3 class="form-section">Mostras</h3>
-                        <?php echo $this->formRow($form->get('events')); ?>
+                        <h3 class="h3 form-section">Mostras</h3>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="movie-multi-check">
+                                    <?php echo $this->formRow($form->get('events')) ?>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                     <div class="tab-pane" id="tab2">
                         <?php echo $this->formRow($form->get('title')) ?>
@@ -72,14 +89,14 @@
                         <?php echo $this->formRow($form->get('end_date_month')) ?>
                         <?php echo $this->formRow($form->get('duration')) ?>
                         <?php echo $this->formRow($form->get('has_official_classification')) ?>
-                        <?php echo $this->formRow($form->get('movie_option_classification')) ?>
-                        <?php echo $this->formRow($form->get('movie_option_format')) ?>
-                        <?php echo $this->formRow($form->get('movie_option_category')) ?>
-                        <?php echo $this->formRow($form->get('movie_option_window')) ?>
-                        <?php echo $this->formRow($form->get('movie_option_sound')) ?>
-                        <?php echo $this->formRow($form->get('movie_option_color')) ?>
-                        <?php echo $this->formRow($form->get('movie_option_genre')) ?>
-                        <?php echo $this->formRow($form->get('movie_option_accessibility')) ?>
+                        <?php echo $this->formRow($form->get('classification')) ?>
+                        <?php echo $this->formRow($form->get('format')) ?>
+                        <?php echo $this->formRow($form->get('category')) ?>
+                        <?php echo $this->formRow($form->get('window')) ?>
+                        <?php echo $this->formRow($form->get('sound')) ?>
+                        <?php echo $this->formRow($form->get('color')) ?>
+                        <?php echo $this->formRow($form->get('genre')) ?>
+                        <?php echo $this->formRow($form->get('accessibility')) ?>
                         <?php echo $this->formRow($form->get('subtitles_languages')) ?>
                         <?php echo $this->formRow($form->get('conversations_list_languages')) ?>
                         <?php echo $this->formRow($form->get('other_festivals')) ?>
@@ -104,7 +121,7 @@
                         <?php echo $this->formRow($form->get('movie_password')) ?>
                         <?php echo $this->formRow($form->get('movie_divulgation')) ?>
 
-                        <h3 class="form-section">Imagens</h3>
+                        <h3 class="h3 form-section">Imagens</h3>
 
                         <div class="clearfix margin-top-10">
                             <span class="label label-danger">Atenção!</span> Formatos válidos: JPG, JPEG e PNG. Tamanho máximo de 1MB por imagem.

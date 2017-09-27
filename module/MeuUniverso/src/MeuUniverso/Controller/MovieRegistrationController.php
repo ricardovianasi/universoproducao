@@ -40,7 +40,6 @@ class MovieRegistrationController extends AbstractMeuUniversoRegisterController
         $result = $this->persist('update');
         $result->setTemplate('meu-universo/movie-registration/editar.phtml');
         return $result;
-
     }
 
     protected function persist($method)
@@ -120,61 +119,61 @@ class MovieRegistrationController extends AbstractMeuUniversoRegisterController
                 }
                 unset($data['events']);
 
-                if(!empty($data['movie_option_classification'])) {
-                    $movie->setClassification($this->getRepository(Options::class)->find($data['movie_option_classification']));
+                if(!empty($data['classification'])) {
+                    $movie->setClassification($this->getRepository(Options::class)->find($data['classification']));
                 } else {
                     $movie->setClassification(null);
                 }
-                unset($data['movie_option_classification']);
+                unset($data['classification']);
 
-                if(!empty($data['movie_option_format'])) {
-                    $movie->setFormat($this->getRepository(Options::class)->find($data['movie_option_format']));
+                if(!empty($data['format'])) {
+                    $movie->setFormat($this->getRepository(Options::class)->find($data['format']));
                 } else {
                     $movie->setFormat(null);
                 }
-                unset($data['']);
+                unset($data['format']);
 
-                if(!empty($data['movie_option_category'])) {
-                    $movie->setCategory($this->getRepository(Options::class)->find($data['movie_option_category']));
+                if(!empty($data['category'])) {
+                    $movie->setCategory($this->getRepository(Options::class)->find($data['category']));
                 } else {
                     $movie->setCategory(null);
                 }
-                unset($data['movie_option_format']);
+                unset($data['category']);
 
-                if(!empty($data['movie_option_window'])) {
-                    $movie->setWindow($this->getRepository(Options::class)->find($data['movie_option_window']));
+                if(!empty($data['window'])) {
+                    $movie->setWindow($this->getRepository(Options::class)->find($data['window']));
                 } else {
                     $movie->setWindow(null);
                 }
-                unset($data['movie_option_window']);
+                unset($data['window']);
 
-                if(!empty($data['movie_option_sound'])) {
-                    $movie->setSound($this->getRepository(Options::class)->find($data['movie_option_sound']));
+                if(!empty($data['sound'])) {
+                    $movie->setSound($this->getRepository(Options::class)->find($data['sound']));
                 } else {
                     $movie->setSound(null);
                 }
-                unset($data['movie_option_sound']);
+                unset($data['sound']);
 
-                if(!empty($data['movie_option_color'])) {
-                    $movie->setColor($this->getRepository(Options::class)->find($data['movie_option_color']));
+                if(!empty($data['color'])) {
+                    $movie->setColor($this->getRepository(Options::class)->find($data['color']));
                 } else {
                     $movie->setColor(null);
                 }
-                unset($data['movie_option_color']);
+                unset($data['color']);
 
-                if(!empty($data['movie_option_genre'])) {
-                    $movie->setGenre($this->getRepository(Options::class)->find($data['movie_option_genre']));
+                if(!empty($data['genre'])) {
+                    $movie->setGenre($this->getRepository(Options::class)->find($data['genre']));
                 } else {
                     $movie->setGenre(null);
                 }
-                unset($data['movie_option_genre']);
+                unset($data['genre']);
 
-                if(!empty($data['movie_option_accessibility'])) {
-                    $movie->setAccessibility($this->getRepository(Options::class)->find($data['movie_option_accessibility']));
+                if(!empty($data['accessibility'])) {
+                    $movie->setAccessibility($this->getRepository(Options::class)->find($data['accessibility']));
                 } else {
                     $movie->setAccessibility(null);
                 }
-                unset($data['movie_option_accessibility']);
+                unset($data['accessibility']);
 
                 //Upload das fotos
                 $medias = new ArrayCollection();
@@ -209,14 +208,17 @@ class MovieRegistrationController extends AbstractMeuUniversoRegisterController
                     $msg.= '<p><ul>'.$mostras.'</ul></p>';
 
                     $msg.= '<p>O resultado da seleçãoo está previsto para ser divulgado até o dia 20 de julho de 2017, pelo site www.cineop.com.br.</p>';
-                    $msg.= '<p>Pedimos a gentileza de manter os dados do seu cadastro sempre atualizados para garantir a eficácia em nossa comunicação</p>';
-                    $msg.= '<p>Atenciosamente,<br />
-					Universo Produção<br /></p>';
+                    $msg.= '<p>Pedimos a gentileza de manter os dados do seu cadastro sempre atualizados para garantir a eficácia em nossa comunicação!</p>';
 
                     $to[$user->getName()] = $user->getEmail();
                     $this->mailService()->simpleSendEmail($to, "Confirmação de inscrição de filme", $msg);
 
-                    return $this->redirect()->toRoute('meu-universo/default', ['action'=>'sucesso']);
+                    $this->meuUniversoMessages()->flashSuccess($msg);
+                    return $this->redirect()->toRoute('meu-universo/default');
+                } else {
+                    $msg = '<p>O filme <strong>'.$movie->getTitle().'</strong> foi atualizado com sucesso!';
+                    $this->meuUniversoMessages()->flashSuccess($msg);
+                    return $this->redirect()->toRoute('meu-universo/default');
                 }
             }
         } else {

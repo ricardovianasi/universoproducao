@@ -4,8 +4,17 @@ namespace MeuUniverso;
 use MeuUniverso\View\Helper\UserMenu;
 use MeuUniverso\View\Helper\UserMovies;
 use Util\Security\Crypt;
+use Util\View\Helper\Messages;
 
 return array(
+    'controller_plugins' => array(
+        'factories' => array(
+            'meuUniversoMessages' => function() {
+                $sessionContainer = new \Zend\Session\Container('meu_universo_messages');
+                return new \Util\Controller\Plugin\Messages($sessionContainer);
+            },
+        ),
+    ),
     'router' => array(
         'routes' => array(
             'meu-universo' => array(
@@ -101,12 +110,15 @@ return array(
         'invokables' => [
             'meuUniversoUserMenu' => UserMenu::class,
             'meuUniversoMovies' => UserMovies::class
-        ]
-        /*'factories' => [
-            'meuUniversoUserMenu' => function($helpers) {
-                $services = $helpers->getServiceLocator();
-                return new UserMenu($services->get('meuuniverso_authenticationservice'));
+        ],
+        'factories' => [
+            'meuUniversoMessages' => function($e) {
+                $sm = $e->getServiceLocator();
+                $messagesPlugin = $sm->get('ControllerPluginManager')->get('meuUniversoMessages');
+                $messages = $messagesPlugin->getMergedMessages();
+                $helper = new \Util\View\Helper\Messages($messages);
+                return $helper;
             }
-        ]*/
+        ]
     ]
 );

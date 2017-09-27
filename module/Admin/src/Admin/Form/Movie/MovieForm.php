@@ -166,7 +166,7 @@ class MovieForm extends Form
 
         $this->add([
             'type' => 'select',
-            'name' => 'movie_option_classification',
+            'name' => 'classification',
             'options' => [
                 'label' => 'Classificação',
                 'value_options' => $this->populateOptions(OptionsType::CLASSIFICATION),
@@ -184,7 +184,7 @@ class MovieForm extends Form
 
         $this->add([
             'type' => 'select',
-            'name' => 'movie_option_format',
+            'name' => 'format',
             'options' => [
                 'label' => 'Formato em que o filme foi finalizado',
                 'value_options' => $this->populateOptions(OptionsType::FORMAT_COMPLETED),
@@ -202,7 +202,7 @@ class MovieForm extends Form
 
         $this->add([
             'type' => 'select',
-            'name' => 'movie_option_category',
+            'name' => 'category',
             'options' => [
                 'label' => 'Categoria',
                 'value_options' => $this->populateOptions(OptionsType::CATEGORY),
@@ -220,7 +220,7 @@ class MovieForm extends Form
 
         $this->add([
             'type' => 'select',
-            'name' => 'movie_option_window',
+            'name' => 'window',
             'options' => [
                 'label' => 'Janela final para exibição',
                 'value_options' => $this->populateOptions(OptionsType::WINDOW),
@@ -238,7 +238,7 @@ class MovieForm extends Form
 
         $this->add([
             'type' => 'select',
-            'name' => 'movie_option_sound',
+            'name' => 'sound',
             'options' => [
                 'label' => 'Som',
                 'value_options' => $this->populateOptions(OptionsType::SOUND),
@@ -256,7 +256,7 @@ class MovieForm extends Form
 
         $this->add([
             'type' => 'select',
-            'name' => 'movie_option_color',
+            'name' => 'color',
             'options' => [
                 'label' => 'Cor',
                 'value_options' => $this->populateOptions(OptionsType::COLOR),
@@ -274,7 +274,7 @@ class MovieForm extends Form
 
         $this->add([
             'type' => 'select',
-            'name' => 'movie_option_genre',
+            'name' => 'genre',
             'options' => [
                 'label' => 'Gênero',
                 'value_options' => $this->populateOptions(OptionsType::GENRE),
@@ -292,7 +292,7 @@ class MovieForm extends Form
 
         $this->add([
             'type' => 'select',
-            'name' => 'movie_option_accessibility',
+            'name' => 'accessibility',
             'options' => [
                 'label' => 'Acessibilidade para pessoas com necessidades especiais?',
                 'value_options' => $this->populateOptions(OptionsType::ACCESSIBILITY),
@@ -614,7 +614,6 @@ class MovieForm extends Form
                 ]
             ],
             'attributes' => [
-                'required' => 'required',
             ]
         ]);
 
@@ -663,19 +662,31 @@ class MovieForm extends Form
             'name' => 'events',
             'options' => [
                 'label' => 'Autorizo a inscrição do filme para a seleção da',
-                'value_options' => $this->populateEvents(),
-                'twb-layout' => 'horizontal',
-                'column-size' => 'md-6',
-                'label_attributes' => [
-                    'class' => 'col-md-3'
-                ]
+                'value_options' => $this->populateEvents()
+            ],
+            'attributes ' => [
+                'required' => true
+            ]
+        ]);
+
+        $this->add([
+            'type' => 'Checkbox',
+            'name' => 'accept_regulation',
+            'options' => array(
+                'label' => 'Eu li e estou de acordo com as condições descritas no regulamento de inscrições de filmes',
+                'use_hidden_element' => false,
+                'checked_value' => '1',
+                'unchecked_value' => '0'
+            ),
+            'attributes ' => [
+                'required' => true
             ]
         ]);
 
         //Validações
         $this->setInputFilter((new InputFilterFactory)->createInputFilter([
-            'movie_option_accessibility' => [
-                'name'       => 'movie_option_accessibility',
+            'accessibility' => [
+                'name'       => 'accessibility',
                 'required'   => false,
                 'allow_empty' => true
             ]
@@ -771,14 +782,16 @@ class MovieForm extends Form
         }
 
         $events = [];
-        if(!empty($data['events'])) {
+        if(count($data['events'])) {
             foreach ($data['events'] as $key=>$e) {
                 if(is_object($e)) {
-                    $events[$key] = $e->getEvent()->getFullName();
+                    $events[] = $e->getEvent()->getId();
+                } else {
+                    $events[] = $e;
                 }
             }
-            $data['events'] = $events;
         }
+        $data['events'] = $events;
 
         return parent::setData($data); // TODO: Change the autogenerated stub
     }

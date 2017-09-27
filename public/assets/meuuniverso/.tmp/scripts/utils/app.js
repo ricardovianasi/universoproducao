@@ -186,6 +186,12 @@ var FormWizard = function () {
                 errorElement: 'span', //default input error message container
                 errorClass: 'help-block help-block-error', // default input error message class
                 focusInvalid: false, // do not focus the last invalid input
+                rules: {
+                    'events[]': {
+                        required: true,
+                        minlength: 1
+                    }
+                },
                 errorPlacement: function errorPlacement(error, element) {
                     // render error placement for each input type
                     if (element.attr("name") == "gender") {
@@ -219,12 +225,12 @@ var FormWizard = function () {
                 success: function success(label) {
                     if (label.attr("for") == "gender" || label.attr("for") == "payment[]") {
                         // for checkboxes and radio buttons, no need to show OK icon
-                        label.closest('.form-group').removeClass('has-error').addClass('has-success');
+                        label.closest('.form-group').removeClass('has-error');
                         label.remove(); // remove error label here
                     } else {
                         // display success icon for other inputs
                         label.addClass('valid') // mark the current input as valid and display OK icon
-                        .closest('.form-group').removeClass('has-error').addClass('has-success'); // set success class to the control group
+                        .closest('.form-group').removeClass('has-error'); // set success class to the control group
                     }
                 },
 

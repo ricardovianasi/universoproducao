@@ -10,9 +10,8 @@
 namespace MeuUniverso;
 
 use MeuUniverso\Auth\MvcRouteListener;
-use Zend\Mvc\Controller\AbstractController;
-use Zend\Mvc\ModuleRouteListener;
 use Zend\Mvc\MvcEvent;
+use Zend;
 
 class Module
 {
@@ -24,6 +23,16 @@ class Module
 
         $authentication = $this->services->get('meuuniverso_authenticationservice');;
         $routeListener = new MvcRouteListener($events, $authentication);
+
+        $translator = new Zend\Mvc\I18n\Translator(new \Zend\I18n\Translator\Translator());
+        $translator->addTranslationFile(
+            'phpArray',
+            __DIR__ . '/../../vendor/zendframework/zend-i18n-resources/languages/pt_BR/Zend_Validate.php',
+            'default',
+            'pt_BR'
+        );
+
+        Zend\Validator\AbstractValidator::setDefaultTranslator($translator);
     }
 
     public function getConfig()
