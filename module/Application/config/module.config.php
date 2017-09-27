@@ -18,7 +18,7 @@ return array(
             'universoproducao' => array(
                 'type'    => Hostname::class,
                 'options' => array(
-                    'route'    => '/',
+                    'route'    => '[www.]universoproducao.com.br',
                     'defaults' => array(
                         'controller'    => Controller\IndexController::class,
                         'action'        => 'index',
@@ -29,7 +29,7 @@ return array(
                     'default' => array(
                         'type'    => Segment::class,
                         'options' => array(
-                            'route'    => ':slug',
+                            'route'    => '/:slug',
                             'constraints' => array(
                                 'slug' => '.+'
                             ),
@@ -42,7 +42,7 @@ return array(
                     'news' => array(
                         'type' => Segment::class,
                         'options' => array(
-                            'route' => 'noticia/:slug',
+                            'route' => '/noticia/:slug',
                             'constraints' => [
                                 'slug' => '[a-zA-Z0-9_-]*',
                             ],
@@ -56,7 +56,7 @@ return array(
                     'channel' => array(
                         'type' => Segment::class,
                         'options' => array(
-                            'route' => 'canal-universo/video/:id',
+                            'route' => '/canal-universo/video/:id',
                             'constraints' => [
                                 'id' => '[a-zA-Z0-9_-]*'
                             ],
@@ -70,7 +70,7 @@ return array(
                     'channel_categories' => array(
                         'type' => Segment::class,
                         'options' => array(
-                            'route' => 'canal-universo/:slug',
+                            'route' => '/canal-universo/:slug',
                             'constraints' => [
                                 'slug' => '[a-zA-Z0-9_-]*'
                             ],
@@ -84,7 +84,7 @@ return array(
                     'newsletter' => array(
                         'type' => Literal::class,
                         'options' => array(
-                            'route' => 'newsletter',
+                            'route' => '/newsletter',
                             'defaults' => array(
                                 'controller' => Controller\PostController::class,
                                 'action' => 'newsletter',
@@ -95,7 +95,7 @@ return array(
                     'search' => array(
                         'type' => Literal::class,
                         'options' => array(
-                            'route' => 'busca',
+                            'route' => '/busca',
                             'defaults' => array(
                                 'controller' => Controller\PostController::class,
                                 'action' => 'search',
@@ -106,7 +106,7 @@ return array(
                     'sitemap' => array(
                         'type' => Literal::class,
                         'options' => array(
-                            'route' => 'sitemap.xml',
+                            'route' => '/sitemap.xml',
                             'defaults' => array(
                                 'controller' => Controller\PostController::class,
                                 'action' => 'sitemap',

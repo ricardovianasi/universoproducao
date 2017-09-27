@@ -81,6 +81,8 @@ class MvcRouteListener extends AbstractListenerAggregate
 		if(!$identity) {
 			$url = $mvcEvent->getRouter()->assemble([], ['name'=>'meu-universo/auth']);
 
+
+
 			$response = $mvcEvent->getResponse();
 			$response->getHeaders()->addHeaderLine('Location', $url);
 			$response->setStatusCode(302);
