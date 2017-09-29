@@ -83,7 +83,7 @@ class MvcRouteListener extends AbstractListenerAggregate
             //Salva a url que o usuário tentou acessar
             $currentURL = $mvcEvent->getRequest()->getUriString();
             if($currentURL) {
-                if(!strpos($currentURL, 'fiveicon')) {
+                if(!strpos($currentURL, 'favicon')) {
                     $session = new Container();
                     $session->offsetSet('last_url_accessed_before_login', $currentURL);
                 }
