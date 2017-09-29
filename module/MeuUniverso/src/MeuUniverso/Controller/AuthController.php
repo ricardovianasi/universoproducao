@@ -29,7 +29,9 @@ class AuthController extends AbstractMeuUniversoController
 
                 $session = new Container();
                 if($session->offsetExists('last_url_accessed_before_login')) {
-                    return $this->redirect()->toUrl($session->offsetGet('last_url_accessed_before_login'));
+                    $redirect = $session->offsetGet('last_url_accessed_before_login');
+                    $session->offsetUnset('last_url_accessed_before_login');
+                    return $this->redirect()->toUrl($redirect);
                 } else {
                     return $this->redirect()->toRoute('meu-universo/default');
                 }
