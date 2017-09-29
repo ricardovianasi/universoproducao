@@ -12,6 +12,7 @@ namespace MeuUniverso\Controller;
 use Application\Entity\Event\Event;
 use Application\Entity\Movie\Movie;
 use Application\Entity\Movie\MovieEvent;
+use Application\Entity\Movie\Options as MovieOptions;
 use Application\Entity\Registration\Options;
 use Application\Entity\Registration\Registration;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -112,7 +113,7 @@ class MovieRegistrationController extends AbstractMeuUniversoRegisterController
                             'movie' => $movie->getId()
                         ]);
                         foreach ($movieEvents as $mv) {
-                            $this->getRepository(MovieEvent::class)->remove($mv);
+                            $this->getEntityManager()->remove($mv);
                         }
                     } else {
                         $movieEvents = new ArrayCollection();
@@ -129,56 +130,54 @@ class MovieRegistrationController extends AbstractMeuUniversoRegisterController
                 unset($data['events']);
 
                 $options = new ArrayCollection();
-
                 if(!empty($data['options_category'])) {
-                    $opt = $this->getRepository(Options::class)->find($data['options_category']);
+                    $opt = $this->getRepository(MovieOptions::class)->find($data['options_category']);
                     $options->add($opt);
                 }
                 unset($data['options_category']);
 
                 if(!empty($data['options_window'])) {
-                    $opt = $this->getRepository(Options::class)->find($data['options_window']);
+                    $opt = $this->getRepository(MovieOptions::class)->find($data['options_window']);
                     $options->add($opt);
                 }
                 unset($data['options_window']);
 
                 if(!empty($data['options_sound'])) {
-                    $opt = $this->getRepository(Options::class)->find($data['options_sound']);
+                    $opt = $this->getRepository(MovieOptions::class)->find($data['options_sound']);
                     $options->add($opt);
                 }
                 unset($data['options_sound']);
 
                if(!empty($data['options_color'])) {
-                    $opt = $this->getRepository(Options::class)->find($data['options_color']);
+                    $opt = $this->getRepository(MovieOptions::class)->find($data['options_color']);
                     $options->add($opt);
                }
                unset($data['options_color']);
 
 
                 if(!empty($data['options_genre'])) {
-                    $opt = $this->getRepository(Options::class)->find($data['options_genre']);
+                    $opt = $this->getRepository(MovieOptions::class)->find($data['options_genre']);
                     $options->add($opt);
                 }
                 unset($data['options_accessibility']);
 
                 if(!empty($data['options_accessibility'])) {
-                    $opt = $this->getRepository(Options::class)->find($data['options_genre']);
+                    $opt = $this->getRepository(MovieOptions::class)->find($data['options_genre']);
                     $options->add($opt);
                 }
                 unset($data['options_accessibility']);
 
                 if(!empty($data['options_feature_directed'])) {
-                    $opt = $this->getRepository(Options::class)->find($data['options_feature_directed']);
+                    $opt = $this->getRepository(MovieOptions::class)->find($data['options_feature_directed']);
                     $options->add($opt);
                 }
                 unset($data['options_feature_directed']);
 
                 if(!empty($data['options_short_movie_category'])) {
-                    $opt = $this->getRepository(Options::class)->find($data['options_short_movie_category']);
+                    $opt = $this->getRepository(MovieOptions::class)->find($data['options_short_movie_category']);
                     $options->add($opt);
                 }
                 unset($data['options_short_movie_category']);
-
                 $movie->setOptions($options);
 
                 //Upload das fotos

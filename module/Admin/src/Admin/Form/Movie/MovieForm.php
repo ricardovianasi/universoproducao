@@ -863,7 +863,21 @@ class MovieForm extends Form
 
     public function setData($data)
     {
-        if(!empty($data['options_category'])) {
+        if(!empty($data['options'])) {
+            foreach ($data['options'] as $op) {
+                $dataKey = "options_".$op->getType();
+                $data[$dataKey] = $op->getId();
+            }
+        }
+
+        if(!empty($data['duration'])) {
+            if(is_object($data['duration'])) {
+                $duration = $data['duration'];
+                $data['duration'] = $duration->format('H:i:s');
+            }
+        }
+
+        /*if(!empty($data['options_category'])) {
             if(is_object($data['options_category'])) {
                 $options_category = $data['options_category'];
                 $data['options_category'] = $options_category->getValue();
@@ -918,7 +932,7 @@ class MovieForm extends Form
                 $options_short_mo = $data['options_short_movie_category'];
                 $data['options_short_movie_category'] = $options_short_mo->getValue();
             }
-        }
+        }*/
 
         $events = [];
         if(count($data['events'])) {
