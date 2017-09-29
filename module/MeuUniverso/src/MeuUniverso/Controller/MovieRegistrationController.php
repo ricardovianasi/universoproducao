@@ -12,7 +12,7 @@ namespace MeuUniverso\Controller;
 use Application\Entity\Event\Event;
 use Application\Entity\Movie\Movie;
 use Application\Entity\Movie\MovieEvent;
-use Application\Entity\Movie\Options;
+use Application\Entity\Registration\Options;
 use Application\Entity\Registration\Registration;
 use Doctrine\Common\Collections\ArrayCollection;
 use MeuUniverso\Form\MovieForm;
@@ -81,7 +81,7 @@ class MovieRegistrationController extends AbstractMeuUniversoRegisterController
                     $allowEditRegister = true;
                 }
             }
-            
+
             if(!$allowEditRegister) {
                 return $this->redirect()->toRoute('meu-universo/default', [], ['query'=>[
                     'code' => self::ERROR_REG_IS_NOT_EDIT,
