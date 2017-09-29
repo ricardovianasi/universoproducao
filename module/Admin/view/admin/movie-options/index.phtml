@@ -88,7 +88,17 @@
 						</tbody>
 					</table>
                     <div class="table-paginator">
-                        <?php echo $this->paginationcontrol($this->items, 'sliding', 'admin/partials/paginator.phtml'); ?>
+                        <?php echo $this->paginationcontrol(
+                            $this->items,
+                            'sliding',
+                            'admin/partials/paginator.phtml',
+                            array(
+                                'route'=>'admin/default',
+                                'route_options' => [
+                                        'controller' => 'movie-options'
+                                ]
+                            )
+                        ); ?>
                     </div>
 
 				</div>
