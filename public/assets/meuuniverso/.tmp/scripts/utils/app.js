@@ -187,6 +187,9 @@ var FormWizard = function () {
                 errorClass: 'help-block help-block-error', // default input error message class
                 focusInvalid: false, // do not focus the last invalid input
                 rules: {
+                    'accept_regulation': {
+                        required: true
+                    },
                     'events[]': {
                         required: true,
                         minlength: 1

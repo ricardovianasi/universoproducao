@@ -5,6 +5,7 @@ use Application\Entity\Movie\Options;
 use Application\Entity\Movie\OptionsType;
 use Application\Entity\Registration\Registration;
 use Application\Entity\Registration\Options as RegistrationOptions;
+use Application\Entity\State;
 use Zend\Form\Form;
 use Zend\InputFilter\Factory as InputFilterFactory;
 use Zend\Validator\File\MimeType;
@@ -58,6 +59,24 @@ class MovieForm extends Form
             ],
             'attributes' => [
                 'placeholder' => 'Informe o título em inglês do filme'
+            ]
+        ]);
+
+        $this->add([
+            'type' => 'Select',
+            'name' => 'production_state',
+            'options' => [
+                'label' => 'Estado de produção',
+                'twb-layout' => 'horizontal',
+                'column-size' => 'md-6',
+                'label_attributes' => [
+                    'class' => 'col-md-4'
+                ],
+                'value_options' => $this->populateStates(),
+                'empty_option' => 'Selecione',
+            ],
+            'attributes' => [
+                'required' => 'required',
             ]
         ]);
 
@@ -992,6 +1011,18 @@ class MovieForm extends Form
         return (string) $this
             ->getRegistration()
             ->getOption(RegistrationOptions::MOVIE_DURATION_OBS);
+    }
+
+    public function populateStates()
+    {
+        $states = [];
+        $list = $this->getEntityManager()->getRepository(State::class)->findBy([], ['name'=>'ASC']);
+
+        foreach ($list as $l) {
+            $states[$l->getId()] = $l->getName();
+        }
+
+        return $states;
     }
 
     public function populateEndMonthYear()

@@ -186,6 +186,9 @@ var FormWizard = function () {
                 errorClass: 'help-block help-block-error', // default input error message class
                 focusInvalid: false, // do not focus the last invalid input
                 rules: {
+                    'accept_regulation': {
+                        required: true
+                    },
                     'events[]': {
                         required: true,
                         minlength: 1
@@ -216,7 +219,7 @@ var FormWizard = function () {
                     $(element)
                         .closest('.form-group').removeClass('has-error'); // set error class to the control group
                 },
-
+ 
                 success: function (label) {
                     if (label.attr("for") == "gender" || label.attr("for") == "payment[]") { // for checkboxes and radio buttons, no need to show OK icon
                         label
