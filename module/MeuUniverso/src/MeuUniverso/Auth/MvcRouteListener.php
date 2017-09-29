@@ -10,6 +10,7 @@ namespace MeuUniverso\Auth;
 
 use Admin\Auth\Identity\GuestIdentity;
 use Admin\Auth\Identity\IdentityInterface;
+use MeuUniverso\Controller\RegisterController;
 use Zend\Authentication\AuthenticationService;
 use Zend\EventManager\AbstractListenerAggregate;
 use Zend\EventManager\EventManagerInterface;
@@ -61,16 +62,23 @@ class MvcRouteListener extends AbstractListenerAggregate
 		$mvcEvent->getController();
 		$mvcEvent->getTarget();
 
+        $routeName = $mvcEvent->getRouteMatch()->getMatchedRouteName();
+        if($routeName == 'meu-universo/auth') {
+            return;
+        }
+
 		$controller = $mvcEvent->getRouteMatch()->getParam('controller');
+        $action = $mvcEvent->getRouteMatch()->getParam('action');
 
 		if(strpos($controller,'MeuUniverso\Controller') === FALSE) {
 			return;
 		}
 
-		$routeName = $mvcEvent->getRouteMatch()->getMatchedRouteName();
-		if($routeName == 'meu-universo/auth') {
-			return;
-		}
+		if($controller == RegisterController::class) {
+            if($action == 'novo' | $action == 'validar') {
+                return;
+            }
+        }
 
 		$authentication = $this->getAuthenticationService();
 

@@ -7,6 +7,8 @@ use Application\Entity\Registration\Registration;
 use Application\Entity\Registration\Options as RegistrationOptions;
 use Zend\Form\Form;
 use Zend\InputFilter\Factory as InputFilterFactory;
+use Zend\Validator\File\MimeType;
+use Zend\Validator\File\Size;
 
 class MovieForm extends Form
 {
@@ -708,20 +710,20 @@ class MovieForm extends Form
 
         $this->add([
             'type' => 'file',
-            'name' => 'media[1]'
+            'name' => 'media_file_1'
         ]);
         $this->add([
             'type' => 'file',
-            'name' => 'media[2]'
+            'name' => 'media_file_2'
         ]);
         $this->add([
             'type' => 'file',
-            'name' => 'media[3]'
+            'name' => 'media_file_3'
         ]);
 
         $this->add([
             'type' => 'text',
-            'name' => 'media_caption[1]',
+            'name' => 'media_caption_1',
             'attributes' => [
                 'placeholder' => 'Créditos da foto'
             ]
@@ -729,7 +731,7 @@ class MovieForm extends Form
 
         $this->add([
             'type' => 'text',
-            'name' => 'media_caption[2]',
+            'name' => 'media_caption_2',
             'attributes ' => [
                 'placeholder' => 'Créditos da foto'
             ]
@@ -737,7 +739,7 @@ class MovieForm extends Form
 
         $this->add([
             'type' => 'text',
-            'name' => 'media_caption[3]',
+            'name' => 'media_caption_3',
             'options' => [
             ],
             'attributes' => [
@@ -789,6 +791,30 @@ class MovieForm extends Form
                'required'   => false,
                'allow_empty' => true
            ],
+            'media_file_1' => [
+                'name' => 'media_file_1',
+                'required'   => false,
+                'validators' => [
+                    new MimeType('image/png,image/jpg'),
+                    new Size(['min'=>'800KB', 'max'=>'2MB'])
+                ]
+            ],
+           'media_file_2' => [
+               'name' => 'media_file_2',
+               'required'   => false,
+               'validators' => [
+                   new MimeType('image/png,image/jpg'),
+                   new Size(['min'=>'800KB', 'max'=>'2MB'])
+               ]
+           ],
+           'media_file_3' => [
+               'name' => 'media_file_3',
+               'required'   => false,
+               'validators' => [
+                   new MimeType('image/png,image/jpg'),
+                   new Size(['min'=>'800KB', 'max'=>'2MB'])
+               ]
+           ]
 
         ]));
     }

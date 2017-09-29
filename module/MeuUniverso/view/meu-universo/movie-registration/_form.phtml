@@ -66,7 +66,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="movie-multi-check">
-                        <?php echo $this->formRow($form->get('accept_regulation')); ?>
+                                    <?php echo $this->formRow($form->get('accept_regulation')); ?>
                                 </div>
                             </div>
                         </div>
@@ -141,16 +141,17 @@
                             <div class="col-md-6">
                                 <div class="fileinput fileinput-new" data-provides="fileinput">
                                     <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;"> </div>
-                                    <?php echo $this->formElement($form->get('media_caption[1]')) ?>
+                                    <?php echo $this->formElement($form->get('media_caption_1')) ?>
                                     <div>
                                             <span class="btn red btn-outline btn-file">
                                                 <span class="fileinput-new"> Selecionar imagem </span>
                                                 <span class="fileinput-exists"> Alterar </span>
-                                                <?php echo $this->formElement($form->get('media[1]')); ?>
+                                                <?php echo $this->formElement($form->get('media_file_1')); ?>
                                             </span>
                                         <a href="javascript:;" class="btn red fileinput-exists" data-dismiss="fileinput"> Remover </a>
                                     </div>
                                 </div>
+                                <?php echo $this->formElementErrors($form->get('media_file_1')); ?>
                             </div>
                         </div>
                         <div class="form-group ">
@@ -159,15 +160,16 @@
                                 <div class="fileinput fileinput-new" data-provides="fileinput">
                                     <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;"> </div>
                                     <div>
-                                        <?php echo $this->formElement($form->get('media_caption[2]')) ?>
+                                        <?php echo $this->formElement($form->get('media_caption_2')) ?>
                                         <span class="btn red btn-outline btn-file">
                                                 <span class="fileinput-new"> Selecionar imagem </span>
                                                 <span class="fileinput-exists"> Alterar </span>
-                                            <?php echo $this->formElement($form->get('media[2]')); ?>
+                                            <?php echo $this->formElement($form->get('media_file_2')); ?>
                                             </span>
                                         <a href="javascript:;" class="btn red fileinput-exists" data-dismiss="fileinput"> Remover </a>
                                     </div>
                                 </div>
+                                <?php echo $this->formElementErrors($form->get('media_file_2')); ?>
                             </div>
                         </div>
                         <div class="form-group ">
@@ -176,15 +178,16 @@
                                 <div class="fileinput fileinput-new" data-provides="fileinput">
                                     <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;"> </div>
                                     <div>
-                                        <?php echo $this->formElement($form->get('media_caption[3]')) ?>
+                                        <?php echo $this->formElement($form->get('media_caption_3')) ?>
                                         <span class="btn red btn-outline btn-file">
                                                 <span class="fileinput-new"> Selecionar imagem </span>
                                                 <span class="fileinput-exists"> Alterar </span>
-                                            <?php echo $this->formElement($form->get('media[3]')); ?>
+                                            <?php echo $this->formElement($form->get('media_file_3')); ?>
                                             </span>
                                         <a href="javascript:;" class="btn red fileinput-exists" data-dismiss="fileinput"> Remover </a>
                                     </div>
                                 </div>
+                                <?php echo $this->formElementErrors($form->get('media_file_3')); ?>
                             </div>
                         </div>
                     </div>
