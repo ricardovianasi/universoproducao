@@ -45,7 +45,7 @@ class UserMovies extends AbstractHelper implements ServiceLocatorAwareInterface
                                 <th> # </th>
                                 <th> Título </th>
                                 <th width="20%%"> Data de cadastro </th>
-                                <th width="27%%"> Status </th>
+                                <th width="30%%"> Status </th>
                                 <th>Ações</th>
                             </tr>
                         </thead>
