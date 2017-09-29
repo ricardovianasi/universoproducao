@@ -72,7 +72,17 @@ class MovieRegistrationController extends AbstractMeuUniversoRegisterController
             }
         } elseif($method == 'update') {
             $now = new \DateTime();
-            if($now >= $reg->getEditRegisterUntil()) {
+
+            $allowEditRegister = false;
+            $editUntil = $reg->getOption(Options::MOVIE_ALLOW_EDIT_REGISTRATION_TO);
+            if($editUntil) {
+                $editUntilDate = \DateTime::createFromFormat('d/m/Y', $editUntil);
+                if($now < $editUntilDate) {
+                    $allowEditRegister = true;
+                }
+            }
+            
+            if(!$allowEditRegister) {
                 return $this->redirect()->toRoute('meu-universo/default', [], ['query'=>[
                     'code' => self::ERROR_REG_IS_NOT_EDIT,
                     'id_reg' => $idReg
