@@ -55,19 +55,6 @@ class Registration extends AbstractEntity
      */
     private $events;
 
-    //Em caso de filmes
-    /** @ORM\Column(name="allow_international_registration", type="boolean", nullable=true) */
-    private $allowInternationalRegistration;
-
-    /** @ORM\Column(name="allow_regiter_from", type="datetime", nullable=true) */
-    private $allowRegisterFrom;
-
-    /** @ORM\Column(name="allow_register_to", type="datetime", nullable=true) */
-    private $allowRegisterTo;
-
-    /** @ORM\Column(name="edit_register_until", type="datetime", nullable=true) */
-    private $editRegisterUntil;
-
     /** @ORM\Column(name="`position`", type="string", nullable=true) */
     private $position;
 
@@ -80,10 +67,27 @@ class Registration extends AbstractEntity
     /** @ORM\Column(name="`hash`", type="string", nullable=true) */
     private $hash;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Options", mappedBy="registration", cascade={"ALL"})
+     */
+    private $options;
+
     public function __construct()
     {
+        $this->options = new ArrayCollection();
         $this->events = new ArrayCollection();
         $this->hash = Crypt::makePassword(80, true, true, "-_.");
+    }
+
+    public function getOption($option)
+    {
+        foreach ($this->options as $op) {
+            if($op->getName() == $option) {
+                return $op;
+            }
+        }
+
+        return false;
     }
 
     /**
@@ -185,70 +189,6 @@ class Registration extends AbstractEntity
     public function setRegulation($regulation)
     {
         $this->regulation = $regulation;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getAllowInternationalRegistration()
-    {
-        return $this->allowInternationalRegistration;
-    }
-
-    /**
-     * @param mixed $allowInternationalRegistration
-     */
-    public function setAllowInternationalRegistration($allowInternationalRegistration)
-    {
-        $this->allowInternationalRegistration = $allowInternationalRegistration;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getAllowRegisterFrom()
-    {
-        return $this->allowRegisterFrom;
-    }
-
-    /**
-     * @param mixed $allowRegisterFrom
-     */
-    public function setAllowRegisterFrom($allowRegisterFrom)
-    {
-        $this->parseData($allowRegisterFrom, $this->allowRegisterFrom);
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getAllowRegisterTo()
-    {
-        return $this->allowRegisterTo;
-    }
-
-    /**
-     * @param mixed $allowRegisterTo
-     */
-    public function setAllowRegisterTo($allowRegisterTo)
-    {
-        $this->parseData($allowRegisterTo, $this->allowRegisterTo);
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getEditRegisterUntil()
-    {
-        return $this->editRegisterUntil;
-    }
-
-    /**
-     * @param mixed $editRegisterUntil
-     */
-    public function setEditRegisterUntil($editRegisterUntil)
-    {
-        $this->parseData($editRegisterUntil, $this->editRegisterUntil);
     }
 
     /**
@@ -370,5 +310,21 @@ class Registration extends AbstractEntity
         }
 
         return false;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getOptions()
+    {
+        return $this->options;
+    }
+
+    /**
+     * @param ArrayCollection $options
+     */
+    public function setOptions($options)
+    {
+        $this->options = $options;
     }
 }

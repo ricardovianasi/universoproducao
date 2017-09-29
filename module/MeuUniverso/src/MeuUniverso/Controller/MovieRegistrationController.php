@@ -92,10 +92,9 @@ class MovieRegistrationController extends AbstractMeuUniversoRegisterController
         }
 
         if($this->getRequest()->isPost()) {
-            $form->setData($this->getRequest()->getPost());
+            $data = (array) $this->getRequest()->getPost();
+            $form->setData($data);
             if($form->isValid()) {
-                $data = (array) $this->getRequest()->getPost();
-
                 //Events
                 if(!empty($data['events'])) {
                     if($id) {
@@ -103,7 +102,7 @@ class MovieRegistrationController extends AbstractMeuUniversoRegisterController
                             'movie' => $movie->getId()
                         ]);
                         foreach ($movieEvents as $mv) {
-                            //Se não existir na lista, limpa do banco
+                            $this->getRepository(MovieEvent::class)->remove($mv);
                         }
                     } else {
                         $movieEvents = new ArrayCollection();
@@ -119,65 +118,62 @@ class MovieRegistrationController extends AbstractMeuUniversoRegisterController
                 }
                 unset($data['events']);
 
-                if(!empty($data['classification'])) {
-                    $movie->setClassification($this->getRepository(Options::class)->find($data['classification']));
-                } else {
-                    $movie->setClassification(null);
-                }
-                unset($data['classification']);
+                $options = new ArrayCollection();
 
-                if(!empty($data['format'])) {
-                    $movie->setFormat($this->getRepository(Options::class)->find($data['format']));
-                } else {
-                    $movie->setFormat(null);
+                if(!empty($data['options_category'])) {
+                    $opt = $this->getRepository(Options::class)->find($data['options_category']);
+                    $options->add($opt);
                 }
-                unset($data['format']);
+                unset($data['options_category']);
 
-                if(!empty($data['category'])) {
-                    $movie->setCategory($this->getRepository(Options::class)->find($data['category']));
-                } else {
-                    $movie->setCategory(null);
+                if(!empty($data['options_window'])) {
+                    $opt = $this->getRepository(Options::class)->find($data['options_window']);
+                    $options->add($opt);
                 }
-                unset($data['category']);
+                unset($data['options_window']);
 
-                if(!empty($data['window'])) {
-                    $movie->setWindow($this->getRepository(Options::class)->find($data['window']));
-                } else {
-                    $movie->setWindow(null);
+                if(!empty($data['options_sound'])) {
+                    $opt = $this->getRepository(Options::class)->find($data['options_sound']);
+                    $options->add($opt);
                 }
-                unset($data['window']);
+                unset($data['options_sound']);
 
-                if(!empty($data['sound'])) {
-                    $movie->setSound($this->getRepository(Options::class)->find($data['sound']));
-                } else {
-                    $movie->setSound(null);
-                }
-                unset($data['sound']);
+               if(!empty($data['options_color'])) {
+                    $opt = $this->getRepository(Options::class)->find($data['options_color']);
+                    $options->add($opt);
+               }
+               unset($data['options_color']);
 
-                if(!empty($data['color'])) {
-                    $movie->setColor($this->getRepository(Options::class)->find($data['color']));
-                } else {
-                    $movie->setColor(null);
-                }
-                unset($data['color']);
 
-                if(!empty($data['genre'])) {
-                    $movie->setGenre($this->getRepository(Options::class)->find($data['genre']));
-                } else {
-                    $movie->setGenre(null);
+                if(!empty($data['options_genre'])) {
+                    $opt = $this->getRepository(Options::class)->find($data['options_genre']);
+                    $options->add($opt);
                 }
-                unset($data['genre']);
+                unset($data['options_accessibility']);
 
-                if(!empty($data['accessibility'])) {
-                    $movie->setAccessibility($this->getRepository(Options::class)->find($data['accessibility']));
-                } else {
-                    $movie->setAccessibility(null);
+                if(!empty($data['options_accessibility'])) {
+                    $opt = $this->getRepository(Options::class)->find($data['options_genre']);
+                    $options->add($opt);
                 }
-                unset($data['accessibility']);
+                unset($data['options_accessibility']);
+
+                if(!empty($data['options_feature_directed'])) {
+                    $opt = $this->getRepository(Options::class)->find($data['options_feature_directed']);
+                    $options->add($opt);
+                }
+                unset($data['options_feature_directed']);
+
+                if(!empty($data['options_short_movie_category'])) {
+                    $opt = $this->getRepository(Options::class)->find($data['options_short_movie_category']);
+                    $options->add($opt);
+                }
+                unset($data['options_short_movie_category']);
+
+                $movie->setOptions($options);
 
                 //Upload das fotos
                 $medias = new ArrayCollection();
-                foreach ($movie->getMedias() as $m) {
+                /*foreach ($movie->getMedias() as $m) {
                     $this->getEntityManager()->remove($m);
                 }
                 if(!empty($data['media'])) {
@@ -186,7 +182,7 @@ class MovieRegistrationController extends AbstractMeuUniversoRegisterController
                     }
                 }
                 unset($data['media']);
-                unset($data['media_caption']);
+                unset($data['media_caption']);*/
 
                 $movie->setData($data);
 

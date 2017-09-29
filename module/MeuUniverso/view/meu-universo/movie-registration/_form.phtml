@@ -87,16 +87,19 @@
                         <?php echo $this->formRow($form->get('title_english')) ?>
                         <?php echo $this->formRow($form->get('end_date_year')) ?>
                         <?php echo $this->formRow($form->get('end_date_month')) ?>
+                        <?php echo $this->formRow($form->get('options_category')) ?>
                         <?php echo $this->formRow($form->get('duration')) ?>
+                        <?php echo $this->formRow($form->get('cpb')) ?>
                         <?php echo $this->formRow($form->get('has_official_classification')) ?>
-                        <?php echo $this->formRow($form->get('classification')) ?>
-                        <?php echo $this->formRow($form->get('format')) ?>
-                        <?php echo $this->formRow($form->get('category')) ?>
-                        <?php echo $this->formRow($form->get('window')) ?>
-                        <?php echo $this->formRow($form->get('sound')) ?>
-                        <?php echo $this->formRow($form->get('color')) ?>
-                        <?php echo $this->formRow($form->get('genre')) ?>
-                        <?php echo $this->formRow($form->get('accessibility')) ?>
+                        <?php echo $this->formRow($form->get('options_classification')) ?>
+                        <?php echo $this->formRow($form->get('options_format')) ?>
+                        <?php echo $this->formRow($form->get('options_window')) ?>
+                        <?php echo $this->formRow($form->get('options_sound')) ?>
+                        <?php echo $this->formRow($form->get('options_color')) ?>
+                        <?php echo $this->formRow($form->get('options_genre')) ?>
+                        <?php echo $this->formRow($form->get('options_accessibility')) ?>
+                        <?php echo $this->formRow($form->get('options_feature_directed')) ?>
+                        <?php echo $this->formRow($form->get('options_short_movie_category')) ?>
                         <?php echo $this->formRow($form->get('subtitles_languages')) ?>
                         <?php echo $this->formRow($form->get('conversations_list_languages')) ?>
                         <?php echo $this->formRow($form->get('other_festivals')) ?>
@@ -105,16 +108,20 @@
                         <?php echo $this->formRow($form->get('direction')) ?>
                         <?php echo $this->formRow($form->get('script')) ?>
                         <?php echo $this->formRow($form->get('production_company')) ?>
+                        <?php echo $this->formRow($form->get('co_production')) ?>
+                        <?php echo $this->formRow($form->get('executive_production')) ?>
                         <?php echo $this->formRow($form->get('direction_production')) ?>
-                        <?php echo $this->formRow($form->get('direction_photography')) ?>
-                        <?php echo $this->formRow($form->get('direction_art')) ?>
                         <?php echo $this->formRow($form->get('editing_assembly')) ?>
+                        <?php echo $this->formRow($form->get('photography')) ?>
+                        <?php echo $this->formRow($form->get('direction_art')) ?>
+                        <?php echo $this->formRow($form->get('soundtrack')) ?>
+                        <?php echo $this->formRow($form->get('mixing')) ?>
                         <?php echo $this->formRow($form->get('direct_sound')) ?>
+                        <?php echo $this->formRow($form->get('sound_editing')) ?>
                         <?php echo $this->formRow($form->get('scenography')) ?>
                         <?php echo $this->formRow($form->get('costume')) ?>
                         <?php echo $this->formRow($form->get('cast')) ?>
                         <?php echo $this->formRow($form->get('synopsis')) ?>
-                        <?php echo $this->formRow($form->get('filmography_director')) ?>
                     </div>
                     <div class="tab-pane" id="tab4">
                         <?php echo $this->formRow($form->get('movie_link')) ?>
@@ -124,7 +131,7 @@
                         <h3 class="h3 form-section">Imagens</h3>
 
                         <div class="clearfix margin-top-10">
-                            <span class="label label-danger">Atenção!</span> Formatos válidos: JPG ou PNG. Tamanho máximo de 2MB por imagem.
+                            <span class="label label-danger">Atenção!</span> Formatos válidos: JPG ou PNG. Tamanho mínimo de 800KB e máximo de 2MB por imagem.
                         </div>
 
                         <p>&nbsp;</p>

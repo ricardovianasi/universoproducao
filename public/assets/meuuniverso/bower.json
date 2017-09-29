@@ -6,7 +6,8 @@
     "bootstrap": "^3.3.7",
     "bootstrap-datepicker": "uxsolutions/bootstrap-datepicker#^1.7.1",
     "blockUI": "malsup/blockui",
-    "bootbox.js": "makeusabrew/bootbox#^4.4.0"
+    "bootbox.js": "makeusabrew/bootbox#^4.4.0",
+    "inputmask": "^3.3.8"
   },
   "overrides": {
     "bootstrap": {
@@ -36,6 +37,11 @@
     "bootbox.js": {
       "main": [
         "bootbox.js"
+      ]
+    },
+    "inputmask": {
+      "main": [
+        "dist/min/jquery.inputmask.bundle.min.js"
       ]
     }
   }

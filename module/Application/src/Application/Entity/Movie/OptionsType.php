@@ -3,14 +3,17 @@ namespace Application\Entity\Movie;
 
 final class OptionsType
 {
-    const CLASSIFICATION    = 'classification';
-    const FORMAT_COMPLETED  = 'format_completed';
-    const CATEGORY          = 'category';
-    const WINDOW            = 'window';
-    const SOUND             = 'sound';
-    const COLOR             = 'color';
-    const GENRE             = 'genre';
-    const ACCESSIBILITY     = 'accessibility';
+    const CLASSIFICATION            = 'classification';
+    const FORMAT_COMPLETED          = 'format_completed';
+    const CATEGORY                  = 'category';
+    const WINDOW                    = 'window';
+    const SOUND                     = 'sound';
+    const COLOR                     = 'color';
+    const GENRE                     = 'genre';
+    const ACCESSIBILITY             = 'accessibility';
+    const FEATURE_DIRECTED          = 'feature_directed';
+    const SHORT_MOVIE_CATEGORY      = 'short_movie_category';
+
 
 	static public function toArray() {
 		return array(
@@ -21,7 +24,9 @@ final class OptionsType
             self::SOUND => 'Som',
             self::COLOR => 'Cor',
             self::GENRE => 'Gênero',
-            self::ACCESSIBILITY => 'Acessibilidade'
+            self::ACCESSIBILITY => 'Acessibilidade',
+            self::FEATURE_DIRECTED => 'Longas dirigidos',
+            self::SHORT_MOVIE_CATEGORY => 'Categoria de curtas'
 		);
 	}
 

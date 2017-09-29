@@ -86,32 +86,43 @@
                         echo $this->formRow($form->get('events'));
                         echo $this->formRow($form->get('position')); ?>
 
-                        <div class="registration-form-movie" style="<?php echo $form->get('type')->getValue() == \Application\Entity\Registration\Type::MOVIE ? 'display: block' : 'display: none'; ?>">
-                            <?php echo $this->formRow($form->get('allow_international_registration')); ?>
-                            <div class="form-group">
-                                <label class="control-label col-md-4">Permitir filmes finalizados a partir de</label>
-                                <div class="col-md-8">
-                                    <div class="input-group input-large date-picker input-daterange" data-date-format="dd/mm/yyyy">
-                                        <?php echo $this->formElement($form->get('allow_register_from')); ?>
-                                        <span class="input-group-addon"> até </span>
-                                        <?php echo $this->formElement($form->get('allow_register_to')); ?> </div>
-                                    <!-- /input-group -->
+                        <?php if($this->registration->getType() == \Application\Entity\Registration\Type::MOVIE): ?>
+
+                            <div class="portlet light bordered">
+                                <div class="portlet-title">
+                                    <div class="caption">Configurações da inscrição de <?php echo \Application\Entity\Registration\Type::get($this->registration->getType()); ?></div>
                                 </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-md-4" for=""><?php echo $form->get('edit_register_until')->getLabel(); ?></label>
-                                <div class="col-md-2">
-                                    <div class="input-group date date-picker" data-date-format="dd/mm/yyyy">
-                                        <?php echo $this->formelement($form->get('edit_register_until')); ?>
-                                        <span class="input-group-btn">
-                                        <button class="btn default" type="button">
-                                            <i class="fa fa-calendar"></i>
-                                        </button>
-                                    </span>
+                                <div class="portlet-body form">
+                                    <div class="form-body">
+                                        <?php echo $this->formRow($form->get('options['.\Application\Entity\Registration\Options::MOVIE_ALLOW_INTERNATIONAL_REGISTRATION.']')); ?>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-4">Permitir filmes finalizados a partir de</label>
+                                            <div class="col-md-8">
+                                                <div class="input-group input-large date-picker input-daterange" data-date-format="dd/mm/yyyy">
+                                                    <?php echo $this->formElement($form->get('options['.\Application\Entity\Registration\Options::MOVIE_ALLOW_FINISHED_FROM.']')); ?>
+                                                    <span class="input-group-addon"> até </span>
+                                                    <?php echo $this->formElement($form->get('options['.\Application\Entity\Registration\Options::MOVIE_ALLOW_FINISHED_TO.']')); ?> </div>
+                                                <!-- /input-group -->
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-4" for=""><?php echo $form->get('options['.\Application\Entity\Registration\Options::MOVIE_ALLOW_EDIT_REGISTRATION_TO.']')->getLabel(); ?></label>
+                                            <div class="col-md-2">
+                                                <div class="input-group date date-picker" data-date-format="dd/mm/yyyy">
+                                                    <?php echo $this->formelement($form->get('options['.\Application\Entity\Registration\Options::MOVIE_ALLOW_FINISHED_TO.']')); ?>
+                                                    <span class="input-group-btn">
+                                                        <button class="btn default" type="button">
+                                                            <i class="fa fa-calendar"></i>
+                                                        </button>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <?php echo $this->formRow($form->get('options['.\Application\Entity\Registration\Options::MOVIE_DURATION_OBS.']')); ?>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        <?php endif; ?>
 
                         <?php
                             echo $this->formRow($form->get('regulation'));

@@ -109,22 +109,6 @@ class PostForm extends Form
 
 	public function setData($data)
 	{
-		/*unset($data['sites-enabled']);
-
-		$publish_all_sites = empty($data['publish_all_sites'])
-			? 0
-			: (int) $data['publish_all_sites'];
-
-		$data['publish_all_sites'] = $publish_all_sites;
-		if($publish_all_sites) {
-			$this->get('publish_highlight_all_sites')->setAttribute('disabled', '');
-		}
-
-		$data['publish_highlight_all_sites'] = empty($data['publish_highlight_all_sites'])
-			? 0
-			: (int) $data['publish_highlight_all_sites'];*/
-
-
         if(!empty($data['meta'])) {
             foreach ($data['meta'] as $key=>$meta) {
 

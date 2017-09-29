@@ -11,8 +11,10 @@ namespace MeuUniverso\View\Helper;
 
 use Application\Entity\Movie\Movie;
 use Application\Entity\Movie\MovieEventStatus;
+use Application\Entity\Registration\Options;
 use Zend\ServiceManager\ServiceLocatorAwareInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
+use Zend\Stdlib\DateTime;
 use Zend\View\Helper\AbstractHelper;
 
 class UserMovies extends AbstractHelper implements ServiceLocatorAwareInterface
@@ -72,7 +74,18 @@ class UserMovies extends AbstractHelper implements ServiceLocatorAwareInterface
 
         $now = new \DateTime();
         $reg = $movie->getRegistration();
-        if($now >= $reg->getEditRegisterUntil()) {
+
+        $allowEditRegister = false;
+        $editUntil = $reg->getOption(Options::MOVIE_ALLOW_EDIT_REGISTRATION_TO);
+        if($editUntil) {
+            $editUntilDate = \DateTime::createFromFormat('d/m/Y', $editUntil);
+            if($now < $editUntilDate) {
+                $allowEditRegister = true;
+            }
+        }
+
+
+        if( !$allowEditRegister) {
             $btnEditar = '<a href="javascript:;" class="btn btn-circle default disabled"> Editar </a>';
         } else {
             $urlHelper = $this->getServiceLocator()->get('url');

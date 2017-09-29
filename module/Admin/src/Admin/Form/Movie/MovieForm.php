@@ -4,7 +4,7 @@ namespace Admin\Form\Movie;
 use Application\Entity\Movie\Options;
 use Application\Entity\Movie\OptionsType;
 use Application\Entity\Registration\Registration;
-use Doctrine\Common\Collections\ArrayCollection;
+use Application\Entity\Registration\Options as RegistrationOptions;
 use Zend\Form\Form;
 use Zend\InputFilter\Factory as InputFilterFactory;
 
@@ -69,10 +69,7 @@ class MovieForm extends Form
                 'label_attributes' => [
                     'class' => 'col-md-4'
                 ],
-                'value_options' => [
-                    2017 => 2017,
-                    2018 => 2018
-                ],
+                'value_options' => $this->populateEndDateYear(),
                 'empty_option' => 'Selecione',
             ],
             'attributes' => [
@@ -115,7 +112,7 @@ class MovieForm extends Form
             'name' => 'duration',
             'options' => [
                 'label' => 'Duração exata',
-                'help-block' => 'Formato hh:mm:ss',
+                'help-block' => $this->getDurationHelpBlock(),
                 'twb-layout' => 'horizontal',
                 'column-size' => 'md-6',
                 'label_attributes' => [
@@ -124,6 +121,7 @@ class MovieForm extends Form
             ],
             'attributes' => [
                 'required' => 'required',
+                'data-inputmask' => "'alias': 'hh:mm:ss'"
             ],
         ]);
 
@@ -166,7 +164,7 @@ class MovieForm extends Form
 
         $this->add([
             'type' => 'select',
-            'name' => 'classification',
+            'name' => 'options_classification',
             'options' => [
                 'label' => 'Classificação',
                 'value_options' => $this->populateOptions(OptionsType::CLASSIFICATION),
@@ -184,7 +182,7 @@ class MovieForm extends Form
 
         $this->add([
             'type' => 'select',
-            'name' => 'format',
+            'name' => 'options_format',
             'options' => [
                 'label' => 'Formato em que o filme foi finalizado',
                 'value_options' => $this->populateOptions(OptionsType::FORMAT_COMPLETED),
@@ -202,7 +200,7 @@ class MovieForm extends Form
 
         $this->add([
             'type' => 'select',
-            'name' => 'category',
+            'name' => 'options_category',
             'options' => [
                 'label' => 'Categoria',
                 'value_options' => $this->populateOptions(OptionsType::CATEGORY),
@@ -220,7 +218,7 @@ class MovieForm extends Form
 
         $this->add([
             'type' => 'select',
-            'name' => 'window',
+            'name' => 'options_window',
             'options' => [
                 'label' => 'Janela final para exibição',
                 'value_options' => $this->populateOptions(OptionsType::WINDOW),
@@ -238,7 +236,7 @@ class MovieForm extends Form
 
         $this->add([
             'type' => 'select',
-            'name' => 'sound',
+            'name' => 'options_sound',
             'options' => [
                 'label' => 'Som',
                 'value_options' => $this->populateOptions(OptionsType::SOUND),
@@ -256,7 +254,7 @@ class MovieForm extends Form
 
         $this->add([
             'type' => 'select',
-            'name' => 'color',
+            'name' => 'options_color',
             'options' => [
                 'label' => 'Cor',
                 'value_options' => $this->populateOptions(OptionsType::COLOR),
@@ -274,7 +272,7 @@ class MovieForm extends Form
 
         $this->add([
             'type' => 'select',
-            'name' => 'genre',
+            'name' => 'options_genre',
             'options' => [
                 'label' => 'Gênero',
                 'value_options' => $this->populateOptions(OptionsType::GENRE),
@@ -292,7 +290,7 @@ class MovieForm extends Form
 
         $this->add([
             'type' => 'select',
-            'name' => 'accessibility',
+            'name' => 'options_accessibility',
             'options' => [
                 'label' => 'Acessibilidade para pessoas com necessidades especiais?',
                 'value_options' => $this->populateOptions(OptionsType::ACCESSIBILITY),
@@ -302,6 +300,37 @@ class MovieForm extends Form
                 'label_attributes' => [
                     'class' => 'col-md-4'
                 ]
+            ]
+        ]);
+
+        $this->add([
+            'type' => 'select',
+            'name' => 'options_feature_directed',
+            'options' => [
+                'label' => 'SE O FILME FOR LONGA, indique quantos LONGAS metragens o diretor já dirigiu',
+                'value_options' => $this->populateOptions(OptionsType::FEATURE_DIRECTED),
+                'empty_option' => 'Selecione',
+                'twb-layout' => 'horizontal',
+                'column-size' => 'md-6',
+                'label_attributes' => [
+                    'class' => 'col-md-4'
+                ]
+            ]
+        ]);
+
+        $this->add([
+            'type' => 'select',
+            'name' => 'options_short_movie_category',
+            'options' => [
+                'label' => 'Para curta, indique se ele se enquadra em uma das categorias',
+                'value_options' => $this->populateOptions(OptionsType::SHORT_MOVIE_CATEGORY),
+                'empty_option' => 'Selecione',
+                'twb-layout' => 'horizontal',
+                'column-size' => 'md-6',
+                'label_attributes' => [
+                    'class' => 'col-md-4'
+                ],
+                'help-block' => 'marcar uma das categorias NÃO exclui o processo de seleção para participar da mostra principal'
             ]
         ]);
 
@@ -369,9 +398,39 @@ class MovieForm extends Form
 
         $this->add([
             'type' => 'Textarea',
-            'name' => 'direction_photography',
+            'name' => 'co_production',
             'options' => [
-                'label' => 'Direção de fotografia',
+                'label' => 'Co-produção',
+                'twb-layout' => 'horizontal',
+                'column-size' => 'md-6',
+                'label_attributes' => [
+                    'class' => 'col-md-4'
+                ]
+            ],
+            'attributes' => [
+            ]
+        ]);
+
+        $this->add([
+            'type' => 'Textarea',
+            'name' => 'executive_production',
+            'options' => [
+                'label' => 'Produção executiva',
+                'twb-layout' => 'horizontal',
+                'column-size' => 'md-6',
+                'label_attributes' => [
+                    'class' => 'col-md-4'
+                ]
+            ],
+            'attributes' => [
+            ]
+        ]);
+
+        $this->add([
+            'type' => 'Textarea',
+            'name' => 'photography',
+            'options' => [
+                'label' => 'Fotografia',
                 'twb-layout' => 'horizontal',
                 'column-size' => 'md-6',
                 'label_attributes' => [
@@ -401,7 +460,7 @@ class MovieForm extends Form
             'type' => 'Textarea',
             'name' => 'editing_assembly',
             'options' => [
-                'label' => 'Montagem/Edição',
+                'label' => 'Montagem',
                 'twb-layout' => 'horizontal',
                 'column-size' => 'md-6',
                 'label_attributes' => [
@@ -432,6 +491,36 @@ class MovieForm extends Form
             'name' => 'direct_sound',
             'options' => [
                 'label' => 'Som direto',
+                'twb-layout' => 'horizontal',
+                'column-size' => 'md-6',
+                'label_attributes' => [
+                    'class' => 'col-md-4'
+                ]
+            ],
+            'attributes' => [
+            ]
+        ]);
+
+        $this->add([
+            'type' => 'Textarea',
+            'name' => 'mixing',
+            'options' => [
+                'label' => 'Mixagem',
+                'twb-layout' => 'horizontal',
+                'column-size' => 'md-6',
+                'label_attributes' => [
+                    'class' => 'col-md-4'
+                ]
+            ],
+            'attributes' => [
+            ]
+        ]);
+
+        $this->add([
+            'type' => 'Textarea',
+            'name' => 'sound_editing',
+            'options' => [
+                'label' => 'Edição de som',
                 'twb-layout' => 'horizontal',
                 'column-size' => 'md-6',
                 'label_attributes' => [
@@ -557,7 +646,7 @@ class MovieForm extends Form
             'name' => 'other_festivals',
             'options' => [
                 'label' => 'Este filme já participou de outros festivais?',
-                'help-block' => 'Informe os festivais que o filme já participou',
+                'help-block' => 'Cite os festivais e prêmios recebidos',
                 'twb-layout' => 'horizontal',
                 'column-size' => 'md-6',
                 'label_attributes' => [
@@ -684,12 +773,23 @@ class MovieForm extends Form
         ]);
 
         //Validações
-        $this->setInputFilter((new InputFilterFactory)->createInputFilter([
-            'accessibility' => [
-                'name'       => 'accessibility',
+       $this->setInputFilter((new InputFilterFactory)->createInputFilter([
+            'options_accessibility' => [
+                'name'       => 'options_accessibility',
                 'required'   => false,
                 'allow_empty' => true
-            ]
+            ],
+           'options_feature_directed' => [
+               'name'       => 'options_feature_directed',
+               'required'   => false,
+               'allow_empty' => true
+           ],
+           'options_short_movie_category' => [
+               'name'       => 'options_short_movie_category',
+               'required'   => false,
+               'allow_empty' => true
+           ],
+
         ]));
     }
 
@@ -737,48 +837,61 @@ class MovieForm extends Form
 
     public function setData($data)
     {
-        if(!empty($data['duration']) && is_object($data['duration'])) {
-            $duration = $data['duration'];
-            $data['duration'] = $duration->format('H:i:s');
+        if(!empty($data['options_category'])) {
+            if(is_object($data['options_category'])) {
+                $options_category = $data['options_category'];
+                $data['options_category'] = $options_category->getValue();
+            }
         }
 
-        if(!empty($data['classification']) && is_object($data['classification'])) {
-            $classification = $data['classification'];
-            $data['classification'] = $classification->getId();
+        if(!empty($data['options_window'])) {
+            if(is_object($data['options_window'])) {
+                $options_window = $data['options_window'];
+                $data['options_window'] = $options_window->getValue();
+            }
         }
 
-        if(!empty($data['format']) && is_object($data['format'])) {
-            $format = $data['format'];
-            $data['format'] = $format->getId();
+        if(!empty($data['options_sound'])) {
+            if(is_object($data['options_sound'])) {
+                $options_sound = $data['options_sound'];
+                $data['options_sound'] = $options_sound->getValue();
+            }
         }
 
-        if(!empty($data['category']) && is_object($data['category'])) {
-            $category = $data['category'];
-            $data['category'] = $category->getId();
+        if(!empty($data['options_color'])) {
+            if(is_object($data['options_color'])) {
+                $options_color = $data['options_color'];
+                $data['options_color'] = $options_color->getValue();
+            }
         }
 
-        if(!empty($data['window']) && is_object($data['window'])) {
-            $window = $data['window'];
-            $data['window'] = $window->getId();
+
+        if(!empty($data['options_genre'])) {
+            if(is_object($data['options_genre'])) {
+                $options_genre = $data['options_genre'];
+                $data['options_genre'] = $options_genre->getValue();
+            }
         }
 
-        if(!empty($data['sound']) && is_object($data['sound'])) {
-            $sound = $data['sound'];
-            $data['sound'] = $sound->getId();
-        }
-        if(!empty($data['color']) && is_object($data['color'])) {
-            $color = $data['color'];
-            $data['color'] = $color->getId();
+        if(!empty($data['options_accessibility'])) {
+            if(is_object($data['options_accessibility'])) {
+                $options_access = $data['options_accessibility'];
+                $data['options_accessibility'] = $options_access->getValue();
+            }
         }
 
-        if(!empty($data['genre']) && is_object($data['genre'])) {
-            $genre = $data['genre'];
-            $data['genre'] = $genre->getId();
+        if(!empty($data['options_feature_directed'])) {
+            if(is_object($data['options_feature_directed'])) {
+                $options_feature = $data['options_feature_directed'];
+                $data['options_feature_directed'] = $options_feature->getValue();
+            }
         }
 
-        if(!empty($data['accessibility']) && is_object($data['accessibility'])) {
-            $accessibility = $data['accessibility'];
-            $data['accessibility'] = $accessibility->getId();
+        if(!empty($data['options_short_movie_category'])) {
+            if(is_object($data['options_short_movie_category'])) {
+                $options_short_mo = $data['options_short_movie_category'];
+                $data['options_short_movie_category'] = $options_short_mo->getValue();
+            }
         }
 
         $events = [];
@@ -794,6 +907,56 @@ class MovieForm extends Form
         $data['events'] = $events;
 
         return parent::setData($data); // TODO: Change the autogenerated stub
+    }
+
+    public function populateEndDateYear()
+    {
+        $dateTo = new \DateTime();
+        $years = [];
+
+        if(!$this->getRegistration()) {
+            return $years;
+        }
+
+        $movieFinishFrom = (string) $this->getRegistration()->getOption(RegistrationOptions::MOVIE_ALLOW_FINISHED_FROM);
+        $movieFinishTo = (string) $this->getRegistration()->getOption(RegistrationOptions::MOVIE_ALLOW_FINISHED_TO);
+
+        if($movieFinishFrom) {
+            $dateFrom = \DateTime::createFromFormat('d/m/Y', $movieFinishFrom);
+            if($movieFinishTo) {
+                $dateTo = \DateTime::createFromFormat('d/m/Y', $movieFinishTo);
+            }
+
+            do {
+                $years[$dateFrom->format('Y')] = $dateFrom->format('Y');
+
+                $dateFrom->add(new \DateInterval('P1Y'));
+
+            } while($dateFrom->format('Y') <= $dateTo->format('Y'));
+
+        } else {
+            return [
+                $dateTo->format('Y') => $dateTo->format('Y')
+            ];
+        }
+
+        return $years;
+    }
+
+    public function getDurationHelpBlock()
+    {
+        if(!$this->getRegistration()) {
+            return;
+        }
+
+        return (string) $this
+            ->getRegistration()
+            ->getOption(RegistrationOptions::MOVIE_DURATION_OBS);
+    }
+
+    public function populateEndMonthYear()
+    {
+        $month = [];
     }
 
     /**

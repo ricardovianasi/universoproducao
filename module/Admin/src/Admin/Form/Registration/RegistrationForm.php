@@ -10,6 +10,7 @@ namespace Admin\Form\Registration;
 
 use Admin\Form\EntityManagerTrait;
 Use Application\Entity\Event\Event;
+use Application\Entity\Registration\Options;
 use Application\Entity\Registration\Type;
 use Zend\Form\Form;
 
@@ -17,12 +18,13 @@ class RegistrationForm extends Form
 {
     use EntityManagerTrait;
 
-    public function __construct($em=null, $type="")
+    public function __construct($em=null)
     {
         $this->setEntityManager($em);
 
         parent::__construct('registration-form');
         $this->setAttributes([
+            'id' => 'registration-form',
             'class' => 'form-horizontal registration-form'
         ]);
 
@@ -154,40 +156,6 @@ class RegistrationForm extends Form
         ]);
 
         $this->add([
-            'type' => 'select',
-            'name' => 'allow_international_registration',
-            'options' => [
-                'label' => 'Permitir cadastro de filme internacional',
-                'value_options' => [
-                    '0' => 'Não',
-                    '1' => 'Sim',
-                ],
-                'twb-layout' => 'horizontal',
-                'column-size' => 'md-2',
-                'label_attributes' => [
-                    'class' => 'col-md-4'
-                ]
-            ]
-        ]);
-
-        $this->add([
-            'name' => 'allow_register_from',
-            'type' => 'TwbBundle\Form\Element\DatePicker',
-        ]);
-
-        $this->add([
-            'name' => 'allow_register_to',
-            'type' => 'TwbBundle\Form\Element\DatePicker',
-        ]);
-
-        $this->add([
-            'name' => 'edit_register_until',
-            'options' => [
-                'label' => 'Permitir edição do cadastro de filme até'
-            ]
-        ]);
-
-        $this->add([
             'type' => 'number',
             'name' => 'position',
             'options' => [
@@ -256,24 +224,13 @@ class RegistrationForm extends Form
             }
         }
 
-        if(!empty($data['allow_register_from'])) {
-            if ($data['allow_register_from'] instanceof \DateTime) {
-                $allow_register_from = $data['allow_register_from'];
-                $data['allow_register_from'] = $allow_register_from->format('d/m/Y');
-            }
-        }
-
-        if(!empty($data['allow_register_to'])) {
-            if ($data['allow_register_to'] instanceof \DateTime) {
-                $allow_register_to = $data['allow_register_to'];
-                $data['allow_register_to'] = $allow_register_to->format('d/m/Y');
-            }
-        }
-
-        if(!empty($data['edit_register_until'])) {
-            if ($data['edit_register_until'] instanceof \DateTime) {
-                $edit_register_until = $data['edit_register_until'];
-                $data['edit_register_until'] = $edit_register_until->format('d/m/Y');
+        if(!empty($data['options'])) {
+            foreach ($data['options'] as $key=>$op) {
+                if(is_object($op)) {
+                    $data['options['.$op->getName().']'] = $op->getValue();
+                } else {
+                    $data['options['.$key.']'] = $op;
+                }
             }
         }
 

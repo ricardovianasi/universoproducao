@@ -5,7 +5,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Util\Entity\AbstractEntity;
 
 /**
- * @ORM\Table(name="movie_options")
+ * @ORM\Table(name="movie_option")
  * @ORM\Entity(repositoryClass="Application\Repository\Movie\Options")
  */
 class Options extends AbstractEntity

@@ -50,54 +50,6 @@ class Movie extends AbstractEntity
     /** @ORM\Column(name="has_official_classification", type="boolean", nullable=true) */
     private $hasOfficialClassification;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="Application\Entity\Movie\Options")
-     * @ORM\JoinColumn(name="movie_option_classification_id", referencedColumnName="id")
-     */
-    private $classification;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="Application\Entity\Movie\Options")
-     * @ORM\JoinColumn(name="movie_option_format_id", referencedColumnName="id")
-     */
-    private $format;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="Application\Entity\Movie\Options")
-     * @ORM\JoinColumn(name="movie_option_category_id", referencedColumnName="id")
-     */
-    private $category;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="Application\Entity\Movie\Options")
-     * @ORM\JoinColumn(name="movie_option_window_id", referencedColumnName="id")
-     */
-    private $window;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="Application\Entity\Movie\Options")
-     * @ORM\JoinColumn(name="movie_option_sound_id", referencedColumnName="id")
-     */
-    private $sound;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="Application\Entity\Movie\Options")
-     * @ORM\JoinColumn(name="movie_option_color_id", referencedColumnName="id")
-     */
-    private $color;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="Application\Entity\Movie\Options")
-     * @ORM\JoinColumn(name="movie_option_genre_id", referencedColumnName="id")
-     */
-    private $genre;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="Application\Entity\Movie\Options")
-     * @ORM\JoinColumn(name="movie_option_accessibility_id", referencedColumnName="id")
-     */
-    private $accessibility;
-
     /** @ORM\Column(name="direction", type="string", nullable=true) */
     private $direction;
 
@@ -110,8 +62,8 @@ class Movie extends AbstractEntity
     /** @ORM\Column(name="direction_production", type="string", nullable=true) */
     private $directionProduction;
 
-    /** @ORM\Column(name="direction_photography", type="string", nullable=true) */
-    private $directionPhotography;
+    /** @ORM\Column(name="photography", type="string", nullable=true) */
+    private $photography;
 
     /** @ORM\Column(name="direction_art", type="string", nullable=true) */
     private $directionArt;
@@ -179,10 +131,32 @@ class Movie extends AbstractEntity
      */
     private $registration;
 
+    /** @ORM\Column(name="co_production", type="string", nullable=true) */
+    private $coProduction;
+
+    /** @ORM\Column(name="executive_production", type="string", nullable=true) */
+    private $executiveProduction;
+
+    /** @ORM\Column(name="mixing", type="string", nullable=true) */
+    private $mixing;
+
+    /** @ORM\Column(name="sound_editing", type="string", nullable=true) */
+    private $soundEditing;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Options")
+     * @ORM\JoinTable(name="movie_has_options",
+     *      joinColumns={@ORM\JoinColumn(name="movie_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="movie_option_id", referencedColumnName="id")}
+     * )
+     */
+    private $options;
+
     public function __construct()
     {
         $this->medias = new ArrayCollection();
         $this->events = new ArrayCollection();
+        $this->options = new ArrayCollection();
     }
 
     /**
@@ -284,6 +258,38 @@ class Movie extends AbstractEntity
     /**
      * @return mixed
      */
+    public function getProductionCoutry()
+    {
+        return $this->productionCoutry;
+    }
+
+    /**
+     * @param mixed $productionCoutry
+     */
+    public function setProductionCoutry($productionCoutry)
+    {
+        $this->productionCoutry = $productionCoutry;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getProductionState()
+    {
+        return $this->productionState;
+    }
+
+    /**
+     * @param mixed $productionState
+     */
+    public function setProductionState($productionState)
+    {
+        $this->productionState = $productionState;
+    }
+
+    /**
+     * @return mixed
+     */
     public function getDuration()
     {
         return $this->duration;
@@ -294,13 +300,7 @@ class Movie extends AbstractEntity
      */
     public function setDuration($duration)
     {
-        if(is_string($duration)) {
-            $time = \DateTime::createFromFormat('H:i:s', $duration);
-            $this->duration = $time;
-            return $this;
-        }
-
-        $this->duration =  $duration;
+        $this->parseData($duration, $this->duration);
     }
 
     /**
@@ -333,134 +333,6 @@ class Movie extends AbstractEntity
     public function setHasOfficialClassification($hasOfficialClassification)
     {
         $this->hasOfficialClassification = $hasOfficialClassification;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getClassification()
-    {
-        return $this->classification;
-    }
-
-    /**
-     * @param mixed $classification
-     */
-    public function setClassification($classification)
-    {
-        $this->classification = $classification;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getFormat()
-    {
-        return $this->format;
-    }
-
-    /**
-     * @param mixed $format
-     */
-    public function setFormat($format)
-    {
-        $this->format = $format;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getCategory()
-    {
-        return $this->category;
-    }
-
-    /**
-     * @param mixed $category
-     */
-    public function setCategory($category)
-    {
-        $this->category = $category;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getWindow()
-    {
-        return $this->window;
-    }
-
-    /**
-     * @param mixed $window
-     */
-    public function setWindow($window)
-    {
-        $this->window = $window;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getSound()
-    {
-        return $this->sound;
-    }
-
-    /**
-     * @param mixed $sound
-     */
-    public function setSound($sound)
-    {
-        $this->sound = $sound;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getColor()
-    {
-        return $this->color;
-    }
-
-    /**
-     * @param mixed $color
-     */
-    public function setColor($color)
-    {
-        $this->color = $color;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getGenre()
-    {
-        return $this->genre;
-    }
-
-    /**
-     * @param mixed $genre
-     */
-    public function setGenre($genre)
-    {
-        $this->genre = $genre;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getAccessibility()
-    {
-        return $this->accessibility;
-    }
-
-    /**
-     * @param mixed $accessibility
-     */
-    public function setAccessibility($accessibility)
-    {
-        $this->accessibility = $accessibility;
     }
 
     /**
@@ -530,17 +402,17 @@ class Movie extends AbstractEntity
     /**
      * @return mixed
      */
-    public function getDirectionPhotography()
+    public function getPhotography()
     {
-        return $this->directionPhotography;
+        return $this->photography;
     }
 
     /**
-     * @param mixed $directionPhotography
+     * @param mixed $photography
      */
-    public function setDirectionPhotography($directionPhotography)
+    public function setPhotography($photography)
     {
-        $this->directionPhotography = $directionPhotography;
+        $this->photography = $photography;
     }
 
     /**
@@ -770,6 +642,22 @@ class Movie extends AbstractEntity
     /**
      * @return mixed
      */
+    public function getMovieDivulgation()
+    {
+        return $this->movieDivulgation;
+    }
+
+    /**
+     * @param mixed $movieDivulgation
+     */
+    public function setMovieDivulgation($movieDivulgation)
+    {
+        $this->movieDivulgation = $movieDivulgation;
+    }
+
+    /**
+     * @return mixed
+     */
     public function getMoviePassword()
     {
         return $this->moviePassword;
@@ -816,7 +704,7 @@ class Movie extends AbstractEntity
     }
 
     /**
-     * @return ArrayCollection
+     * @return mixed
      */
     public function getMedias()
     {
@@ -824,59 +712,11 @@ class Movie extends AbstractEntity
     }
 
     /**
-     * @param ArrayCollection $medias
+     * @param mixed $medias
      */
     public function setMedias($medias)
     {
         $this->medias = $medias;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getProductionCoutry()
-    {
-        return $this->productionCoutry;
-    }
-
-    /**
-     * @param mixed $productionCoutry
-     */
-    public function setProductionCoutry($productionCoutry)
-    {
-        $this->productionCoutry = $productionCoutry;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getProductionState()
-    {
-        return $this->productionState;
-    }
-
-    /**
-     * @param mixed $productionState
-     */
-    public function setProductionState($productionState)
-    {
-        $this->productionState = $productionState;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getMovieDivulgation()
-    {
-        return $this->movieDivulgation;
-    }
-
-    /**
-     * @param mixed $movieDivulgation
-     */
-    public function setMovieDivulgation($movieDivulgation)
-    {
-        $this->movieDivulgation = $movieDivulgation;
     }
 
     /**
@@ -910,4 +750,85 @@ class Movie extends AbstractEntity
     {
         $this->registration = $registration;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getCoProduction()
+    {
+        return $this->coProduction;
+    }
+
+    /**
+     * @param mixed $coProduction
+     */
+    public function setCoProduction($coProduction)
+    {
+        $this->coProduction = $coProduction;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getExecutiveProduction()
+    {
+        return $this->executiveProduction;
+    }
+
+    /**
+     * @param mixed $executiveProduction
+     */
+    public function setExecutiveProduction($executiveProduction)
+    {
+        $this->executiveProduction = $executiveProduction;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMixing()
+    {
+        return $this->mixing;
+    }
+
+    /**
+     * @param mixed $mixing
+     */
+    public function setMixing($mixing)
+    {
+        $this->mixing = $mixing;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSoundEditing()
+    {
+        return $this->soundEditing;
+    }
+
+    /**
+     * @param mixed $soundEditing
+     */
+    public function setSoundEditing($soundEditing)
+    {
+        $this->soundEditing = $soundEditing;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getOptions()
+    {
+        return $this->options;
+    }
+
+    /**
+     * @param mixed $options
+     */
+    public function setOptions($options)
+    {
+        $this->options = $options;
+    }
+
 }

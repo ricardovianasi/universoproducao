@@ -164,9 +164,15 @@ jQuery(document).ready(function() {
 
     $('.registration-form select[name=type]').on('change', function(e) {
         var selected = $(this).find('option:selected').val();
-        console.log(selected);
-        $('div[class^="registration-form-"][class!="registration-form-'+selected+'"]').hide();
-        $('.registration-form-'+selected).show();
+        var form  = $('#registration-form');
+
+        form.append($('<input type="hidden" name="no-validate" value="no-validate">'));
+        form.submit();
+
+        App.blockUI({
+            cenrerY: true,
+            animate: true
+        });
     });
 });
 

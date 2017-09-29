@@ -8,7 +8,6 @@ $(document).ready(function () {
         errorsWrapper: '<span class="help-block"></span>',
         errorTemplate: '<span></span>'
     };
-
     $('form[data-js-validate]').parsley( parsleyOptions );
 
     if (jQuery().datepicker) {
@@ -19,6 +18,8 @@ $(document).ready(function () {
             todayHighlight: true
         });
     }
+
+    $(":input").inputmask();
 
     //Inicia o plugin que controla a busca de cep
     $(".cep").cep();
