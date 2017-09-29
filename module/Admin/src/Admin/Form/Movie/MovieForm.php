@@ -194,7 +194,8 @@ class MovieForm extends Form
                 'column-size' => 'md-6',
                 'label_attributes' => [
                     'class' => 'col-md-4'
-                ]
+                ],
+                'help-block' => 'Indique a classificação sugerida ou oficial emitida pelo Ministério da Justiça',
             ],
             'attributes' => [
                 'required' => 'required',
@@ -383,7 +384,7 @@ class MovieForm extends Form
                 ]
             ],
             'attributes' => [
-                'rows' => 7
+                'rows' => 5
             ]
         ]);
 
