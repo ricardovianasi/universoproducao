@@ -1,11 +1,11 @@
 <?php //Assets for MeuUniverso module
     //CSS
     $this->headLink()
-        ->appendStylesheet($this->basePath('assets/meuuniverso/dist/styles/main.css'))
         ->appendStylesheet($this->basePath('assets/meuuniverso/dist/styles/vendor.css'))
         ->appendStylesheet($this->basePath('assets/admin/template/metronic_v4.5.5/theme/assets/global/css/components.min.css'))
         ->appendStylesheet($this->basePath('assets/admin/template/metronic_v4.5.5/theme/assets/global/css/plugins.min.css'))
-        ->appendStylesheet($this->basePath('assets/admin/template/metronic_v4.5.5/theme/assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css'));
+        ->appendStylesheet($this->basePath('assets/admin/template/metronic_v4.5.5/theme/assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css'))
+        ->appendStylesheet($this->basePath('assets/meuuniverso/dist/styles/main.css'));
 
 $this->inlineScript()
     //admin

@@ -300,7 +300,11 @@ class Movie extends AbstractEntity
      */
     public function setDuration($duration)
     {
-        $this->parseData($duration, $this->duration);
+        if(is_string($duration)) {
+            $this->duration = \DateTime::createFromFormat('H:i:s', $duration);
+        } elseif($duration instanceof \DateTime) {
+            $this->duration = $duration;
+        }
     }
 
     /**

@@ -42,7 +42,7 @@ class UserMovies extends AbstractHelper implements ServiceLocatorAwareInterface
         $tableFormat = '<table class="table table-hover table-light table-movie">
                         <thead>
                             <tr>
-                                <th> # </th>
+                                <th> ID </th>
                                 <th> Título </th>
                                 <th width="20%%"> Data de cadastro </th>
                                 <th width="30%%"> Status </th>

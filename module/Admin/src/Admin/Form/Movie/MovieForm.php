@@ -142,7 +142,7 @@ class MovieForm extends Form
             ],
             'attributes' => [
                 'required' => 'required',
-                'data-inputmask' => "'alias': 'hh:mm:ss'"
+                'data-inputmask' => "'alias': 'hh:mm:ss', 'placeholder':'_'"
             ],
         ]);
 
@@ -185,7 +185,7 @@ class MovieForm extends Form
 
         $this->add([
             'type' => 'select',
-            'name' => 'options_classification',
+            'name' => 'options[classification]',
             'options' => [
                 'label' => 'Classificação',
                 'value_options' => $this->populateOptions(OptionsType::CLASSIFICATION),
@@ -204,7 +204,7 @@ class MovieForm extends Form
 
         $this->add([
             'type' => 'select',
-            'name' => 'options_format',
+            'name' => 'options[format_completed]',
             'options' => [
                 'label' => 'Formato em que o filme foi finalizado',
                 'value_options' => $this->populateOptions(OptionsType::FORMAT_COMPLETED),
@@ -222,7 +222,7 @@ class MovieForm extends Form
 
         $this->add([
             'type' => 'select',
-            'name' => 'options_category',
+            'name' => 'options[category]',
             'options' => [
                 'label' => 'Categoria',
                 'value_options' => $this->populateOptions(OptionsType::CATEGORY),
@@ -240,7 +240,7 @@ class MovieForm extends Form
 
         $this->add([
             'type' => 'select',
-            'name' => 'options_window',
+            'name' => 'options[window]',
             'options' => [
                 'label' => 'Janela final para exibição',
                 'value_options' => $this->populateOptions(OptionsType::WINDOW),
@@ -258,7 +258,7 @@ class MovieForm extends Form
 
         $this->add([
             'type' => 'select',
-            'name' => 'options_sound',
+            'name' => 'options[sound]',
             'options' => [
                 'label' => 'Som',
                 'value_options' => $this->populateOptions(OptionsType::SOUND),
@@ -276,7 +276,7 @@ class MovieForm extends Form
 
         $this->add([
             'type' => 'select',
-            'name' => 'options_color',
+            'name' => 'options[color]',
             'options' => [
                 'label' => 'Cor',
                 'value_options' => $this->populateOptions(OptionsType::COLOR),
@@ -294,7 +294,7 @@ class MovieForm extends Form
 
         $this->add([
             'type' => 'select',
-            'name' => 'options_genre',
+            'name' => 'options[genre]',
             'options' => [
                 'label' => 'Gênero',
                 'value_options' => $this->populateOptions(OptionsType::GENRE),
@@ -311,8 +311,8 @@ class MovieForm extends Form
         ]);
 
         $this->add([
-            'type' => 'select',
-            'name' => 'options_accessibility',
+            'type' => 'MultiCheckbox',
+            'name' => 'options[accessibility]',
             'options' => [
                 'label' => 'Acessibilidade para pessoas com necessidades especiais?',
                 'value_options' => $this->populateOptions(OptionsType::ACCESSIBILITY),
@@ -327,7 +327,7 @@ class MovieForm extends Form
 
         $this->add([
             'type' => 'select',
-            'name' => 'options_feature_directed',
+            'name' => 'options[feature_directed]',
             'options' => [
                 'label' => 'SE O FILME FOR LONGA, indique quantos LONGAS metragens o diretor já dirigiu',
                 'value_options' => $this->populateOptions(OptionsType::FEATURE_DIRECTED),
@@ -342,7 +342,7 @@ class MovieForm extends Form
 
         $this->add([
             'type' => 'select',
-            'name' => 'options_short_movie_category',
+            'name' => 'options[short_movie_category]',
             'options' => [
                 'label' => 'Para curta, indique se ele se enquadra em uma das categorias',
                 'value_options' => $this->populateOptions(OptionsType::SHORT_MOVIE_CATEGORY),
@@ -883,10 +883,22 @@ class MovieForm extends Form
 
     public function setData($data)
     {
+
         if(!empty($data['options'])) {
-            foreach ($data['options'] as $op) {
-                $dataKey = "options_".$op->getType();
-                $data[$dataKey] = $op->getId();
+            foreach ($data['options'] as $key=>$op) {
+                if(is_object($op)) {
+                    $key = 'options['.$op->getType().']';
+                    if(key_exists($key, $data)) {
+                        if(!is_array($data[$key])) {
+                            $data[$key] = (array) $data[$key];
+                        }
+                        $data[$key][] = $op->getId();
+                    } else {
+                        $data[$key] = $op->getId();
+                    }
+                } else {
+                    $data['options['.$key.']'] = $op;
+                }
             }
         }
 
@@ -896,63 +908,6 @@ class MovieForm extends Form
                 $data['duration'] = $duration->format('H:i:s');
             }
         }
-
-        /*if(!empty($data['options_category'])) {
-            if(is_object($data['options_category'])) {
-                $options_category = $data['options_category'];
-                $data['options_category'] = $options_category->getValue();
-            }
-        }
-
-        if(!empty($data['options_window'])) {
-            if(is_object($data['options_window'])) {
-                $options_window = $data['options_window'];
-                $data['options_window'] = $options_window->getValue();
-            }
-        }
-
-        if(!empty($data['options_sound'])) {
-            if(is_object($data['options_sound'])) {
-                $options_sound = $data['options_sound'];
-                $data['options_sound'] = $options_sound->getValue();
-            }
-        }
-
-        if(!empty($data['options_color'])) {
-            if(is_object($data['options_color'])) {
-                $options_color = $data['options_color'];
-                $data['options_color'] = $options_color->getValue();
-            }
-        }
-
-
-        if(!empty($data['options_genre'])) {
-            if(is_object($data['options_genre'])) {
-                $options_genre = $data['options_genre'];
-                $data['options_genre'] = $options_genre->getValue();
-            }
-        }
-
-        if(!empty($data['options_accessibility'])) {
-            if(is_object($data['options_accessibility'])) {
-                $options_access = $data['options_accessibility'];
-                $data['options_accessibility'] = $options_access->getValue();
-            }
-        }
-
-        if(!empty($data['options_feature_directed'])) {
-            if(is_object($data['options_feature_directed'])) {
-                $options_feature = $data['options_feature_directed'];
-                $data['options_feature_directed'] = $options_feature->getValue();
-            }
-        }
-
-        if(!empty($data['options_short_movie_category'])) {
-            if(is_object($data['options_short_movie_category'])) {
-                $options_short_mo = $data['options_short_movie_category'];
-                $data['options_short_movie_category'] = $options_short_mo->getValue();
-            }
-        }*/
 
         $events = [];
         if(count($data['events'])) {
