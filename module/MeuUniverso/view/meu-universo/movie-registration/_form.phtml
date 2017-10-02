@@ -210,9 +210,15 @@
                             <div class="form-group ">
                                 <label class="control-label col-md-4">Imagem <?php echo $i ?></label>
                                 <div class="col-md-6">
-                                    <div class="fileinput fileinput-new" data-provides="fileinput">
+                                    <?php
+                                        $mediaSrc = null;
+                                        if($form->has("media_src_$i")) {
+                                            $mediaSrc = $form->get("media_src_$i")->getValue();
+                                        }
+                                    ?>
+                                    <div class="fileinput <?php echo $mediaSrc ? "fileinput-exists" : "fileinput-new" ?> " data-provides="fileinput">
                                         <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;">
-                                            <?php if($form->has("media_src_$i")): $mediaSrc = $form->get("media_src_$i")->getValue();  ?>
+                                            <?php if($mediaSrc):  ?>
                                                 <img src="<?php echo $this->fileManipulation()->url($mediaSrc); ?>" alt="">
                                             <?php endif; ?>
                                         </div>

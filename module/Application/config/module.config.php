@@ -20,7 +20,7 @@ return array(
     ),
     'file_manipulation' => [
         'repository_dir' => '/var/www/html/filemanager/repository_files/',
-        'base_url'  => 'universoproducao.com.br/repository/'
+        'base_url'  => 'http://universoproducao.com.br/repository/'
     ],
     'router' => array(
         'routes' => array(
