@@ -10,7 +10,7 @@ class MovieForm extends AdminMovieForm
     {
         parent::__construct($entityManager, Options::STATUS_ENABLED, $registration);
         $this->setAttributes([
-            'class' => 'form-horizontal'
+            'class' => 'form-horizontal movie-form'
         ]);
     }
 }

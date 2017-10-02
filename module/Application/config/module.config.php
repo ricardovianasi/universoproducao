@@ -2,6 +2,7 @@
 namespace Application;
 
 use Application\Controller\Plugin\Factory\MailServiceFactory;
+use Application\Controller\Plugin\FileManipulation;
 use Util\Security\Crypt;
 use Zend\Mvc\Router\Http\Hostname;
 use Zend\Mvc\Router\Http\Literal;
@@ -10,9 +11,17 @@ use Zend\Mvc\Router\Http\Segment;
 return array(
     'controller_plugins' => array(
         'factories' => array(
-            'mailService' => MailServiceFactory::class
+            'mailService' => MailServiceFactory::class,
+            'fileManipulation' => function($e) {
+                $conf = $e->getServiceLocator()->get('Configuration');
+                return new FileManipulation($conf['file_manipulation']);
+            }
         )
     ),
+    'file_manipulation' => [
+        'repository_dir' => '/var/www/html/filemanager/repository_files/',
+        'base_url'  => 'universoproducao.com.br/repository/'
+    ],
     'router' => array(
         'routes' => array(
             'universoproducao' => array(
@@ -162,6 +171,11 @@ return array(
             'shortcode' => function($e) {
                 $em = $e->getServiceLocator()->get('Doctrine\ORM\EntityManager');
                 return new View\Helper\Shortcode($em);
+            },
+            'fileManipulation' => function($e) {
+                $services = $e->getServiceLocator();
+                $config = $services->get('config');
+                return new View\Helper\FileManipulation($config['file_manipulation']);
             }
         ]
     ),

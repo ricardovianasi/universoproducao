@@ -10,6 +10,7 @@ namespace MeuUniverso\Controller;
 
 
 use Application\Entity\Event\Event;
+use Application\Entity\Movie\Media;
 use Application\Entity\Movie\Movie;
 use Application\Entity\Movie\MovieEvent;
 use Application\Entity\Movie\Options as MovieOptions;
@@ -103,7 +104,7 @@ class MovieRegistrationController extends AbstractMeuUniversoRegisterController
         }
 
         if($this->getRequest()->isPost()) {
-            $data = array_merge_recursive(
+            $data = array_replace_recursive(
                 $this->getRequest()->getPost()->toArray(),
                 $this->getRequest()->getFiles()->toArray()
             );
@@ -149,17 +150,46 @@ class MovieRegistrationController extends AbstractMeuUniversoRegisterController
                 unset($data['options']);
 
                 //Upload das fotos
-                $medias = new ArrayCollection();
-                /*foreach ($movie->getMedias() as $m) {
-                    $this->getEntityManager()->remove($m);
-                }
-                if(!empty($data['media'])) {
-                    foreach ($data['media'] as $m) {
 
+                $newMedias = new ArrayCollection();
+                for($i=1; $i<3; $i++) {
+
+                    if(!empty($data["media_id_$i"])) {
+                        $mediaId = $data["media_id_$i"];
+                        $media = $movie->getMediaById($mediaId);
+                    } else {
+                        $media = new Media();
+                        $media->setMovie($movie);
                     }
+
+                    if(!empty($data["media_file_$i"])) {
+                        $mediaFile = $data["media_file_$i"];
+                        $credits = !empty($data["media_caption_$i"]) ? $data["media_caption_$i"] : '';
+                        if(!empty($mediaFile['name'])) {
+                            //novo arquivo
+                            if($media->getId()) {
+                                $movie->getMedias()->removeElement($media);
+                                $this->getEntityManager()->remove($media);
+                            }
+
+                            $file = $this->fileManipulation()->moveToRepository($mediaFile);
+
+                            $media->setSrc($file['new_name']);
+                            $media->setCredits($credits);
+
+                            $movie->getMedias()->add($media);
+                        } else {
+                            if($media->getId()) {
+                                $media->setCredits($credits);
+                                $this->getEntityManager()->persist($media);
+                            }
+                        }
+                    }
+
+                    unset($data["media_file_$i"]);
+                    unset($data["media_caption_$i"]);
+                    unset($data["media_id_$i"]);
                 }
-                unset($data['media']);
-                unset($data['media_caption']);*/
 
                 $movie->setData($data);
 

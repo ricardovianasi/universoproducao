@@ -90,9 +90,34 @@
                         <?php echo $this->formRow($form->get('end_date_month')) ?>
                         <?php echo $this->formRow($form->get('options[category]')) ?>
                         <?php echo $this->formRow($form->get('duration')) ?>
-                        <?php echo $this->formRow($form->get('cpb')) ?>
+                        <?php echo $this->formRow($form->get('has_cpb')) ?>
+
+                        <?php
+                            $showCpb = false;
+                            if(!empty($form->get('cpb')->getValue())) {
+                                $showCpb = true;
+                            }
+                        ?>
+
+                        <div style="display: <?php echo $showCpb ? "block" : "none"; ?>" id="has_cpb">
+                            <?php echo $this->formRow($form->get('cpb')) ?>
+                        </div>
                         <?php echo $this->formRow($form->get('has_official_classification')) ?>
                         <?php echo $this->formRow($form->get('options[classification]')) ?>
+
+                        <?php
+                            $showContentScenes = false;
+                            if($categoryOpt = $this->movie->getOption('classification')) {
+                                if(strtolower($categoryOpt->getName()) != 'livre') {
+                                    $showContentScenes = true;
+                                }
+                            }
+                        ?>
+
+                        <div id="content_scenes" style="display: <?php echo $showContentScenes ? "block" : "none"; ?>;">
+                            <?php echo $this->formRow($form->get('content_scenes')) ?>
+                        </div>
+
                         <?php echo $this->formRow($form->get('options[format_completed]')) ?>
                         <?php echo $this->formRow($form->get('options[window]')) ?>
                         <?php echo $this->formRow($form->get('options[sound]')) ?>
@@ -101,9 +126,52 @@
                         <?php echo $this->formRow($form->get('options[accessibility]')) ?>
                         <?php echo $this->formRow($form->get('options[feature_directed]')) ?>
                         <?php echo $this->formRow($form->get('options[short_movie_category]')) ?>
-                        <?php echo $this->formRow($form->get('subtitles_languages')) ?>
-                        <?php echo $this->formRow($form->get('conversations_list_languages')) ?>
-                        <?php echo $this->formRow($form->get('other_festivals')) ?>
+
+                        <?php
+                            $show_conversations_languages = false;
+                            if($form->get('has_conversations_languages')->getValue() == 1) {
+                                $show_conversations_languages = true;
+                            }
+                        ?>
+                        <?php echo $this->formRow($form->get('has_conversations_languages')) ?>
+                        <div id="conversations_languages" style="display: <?php echo $show_conversations_languages ? "block" : "none" ?>">
+                            <?php echo $this->formRow($form->get('conversations_languages')) ?>
+                        </div>
+
+                        <?php
+                            $show_subtitles_languages = false;
+                            if($form->get('has_subtitles_languages')->getValue() == 1) {
+                                $show_subtitles_languages = true;
+                            }
+                        ?>
+                        <?php echo $this->formRow($form->get('has_subtitles_languages')) ?>
+                        <div id="subtitles_languages" style="display: <?php echo $show_subtitles_languages ? "block" : "none" ?>">
+                            <?php echo $this->formRow($form->get('subtitles_languages')) ?>
+                        </div>
+
+                        <?php
+                            $show_conversations_list_languages = false;
+                            if($form->get('has_conversations_list_languages')->getValue() == 1) {
+                                $show_conversations_list_languages = true;
+                            }
+                        ?>
+                        <?php echo $this->formRow($form->get('has_conversations_list_languages')) ?>
+                        <div id="conversations_list_languages" style="display: <?php echo $show_conversations_list_languages ? "block" : "none" ?>">
+                            <?php echo $this->formRow($form->get('conversations_list_languages')) ?>
+                        </div>
+
+
+                        <?php echo $this->formRow($form->get('has_participated_other_festivals')) ?>
+                        <?php
+                        $showOtherFestivals = false;
+                        if($form->get('has_participated_other_festivals')->getValue() == 1) {
+                            $showOtherFestivals = true;
+                        }
+                        ?>
+
+                        <div id="other_festivals" style="display: <?php echo $showOtherFestivals ? "block" : "none"; ?>;">
+                            <?php echo $this->formRow($form->get('other_festivals')) ?>
+                        </div>
                     </div>
                     <div class="tab-pane" id="tab3">
                         <?php echo $this->formRow($form->get('direction')) ?>
@@ -137,60 +205,34 @@
 
                         <p>&nbsp;</p>
 
-                        <div class="form-group ">
-                            <label class="control-label col-md-4">Imagem 1</label>
-                            <div class="col-md-6">
-                                <div class="fileinput fileinput-new" data-provides="fileinput">
-                                    <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;"> </div>
-                                    <?php echo $this->formElement($form->get('media_caption_1')) ?>
-                                    <div>
+
+                        <?php for($i=1; $i<=3; $i++): ?>
+                            <div class="form-group ">
+                                <label class="control-label col-md-4">Imagem <?php echo $i ?></label>
+                                <div class="col-md-6">
+                                    <div class="fileinput fileinput-new" data-provides="fileinput">
+                                        <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;">
+                                            <?php if($form->has("media_src_$i")): $mediaSrc = $form->get("media_src_$i")->getValue();  ?>
+                                                <img src="<?php echo $this->fileManipulation()->url($mediaSrc); ?>">
+                                            <?php endif; ?>
+                                        </div>
+                                        <?php echo $this->formElement($form->get("media_caption_$i")) ?>
+                                        <div>
                                             <span class="btn red btn-outline btn-file">
                                                 <span class="fileinput-new"> Selecionar imagem </span>
                                                 <span class="fileinput-exists"> Alterar </span>
-                                                <?php echo $this->formElement($form->get('media_file_1')); ?>
+                                                <?php echo $this->formElement($form->get("media_file_$i")); ?>
+                                                <?php echo $this->formElement($form->get("media_id_$i")); ?>
+                                                <?php echo $this->formElement($form->get("media_src_$i")); ?>
                                             </span>
-                                        <a href="javascript:;" class="btn red fileinput-exists" data-dismiss="fileinput"> Remover </a>
+                                            <a href="javascript:;" class="btn red fileinput-exists" data-dismiss="fileinput"> Remover </a>
+                                        </div>
                                     </div>
+                                    <?php echo $this->formElementErrors($form->get("media_file_1")); ?>
                                 </div>
-                                <?php echo $this->formElementErrors($form->get('media_file_1')); ?>
                             </div>
-                        </div>
-                        <div class="form-group ">
-                            <label class="control-label col-md-4">Imagem 2</label>
-                            <div class="col-md-6">
-                                <div class="fileinput fileinput-new" data-provides="fileinput">
-                                    <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;"> </div>
-                                    <div>
-                                        <?php echo $this->formElement($form->get('media_caption_2')) ?>
-                                        <span class="btn red btn-outline btn-file">
-                                                <span class="fileinput-new"> Selecionar imagem </span>
-                                                <span class="fileinput-exists"> Alterar </span>
-                                            <?php echo $this->formElement($form->get('media_file_2')); ?>
-                                            </span>
-                                        <a href="javascript:;" class="btn red fileinput-exists" data-dismiss="fileinput"> Remover </a>
-                                    </div>
-                                </div>
-                                <?php echo $this->formElementErrors($form->get('media_file_2')); ?>
-                            </div>
-                        </div>
-                        <div class="form-group ">
-                            <label class="control-label col-md-4">Imagem 3</label>
-                            <div class="col-md-6">
-                                <div class="fileinput fileinput-new" data-provides="fileinput">
-                                    <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;"> </div>
-                                    <div>
-                                        <?php echo $this->formElement($form->get('media_caption_3')) ?>
-                                        <span class="btn red btn-outline btn-file">
-                                                <span class="fileinput-new"> Selecionar imagem </span>
-                                                <span class="fileinput-exists"> Alterar </span>
-                                            <?php echo $this->formElement($form->get('media_file_3')); ?>
-                                            </span>
-                                        <a href="javascript:;" class="btn red fileinput-exists" data-dismiss="fileinput"> Remover </a>
-                                    </div>
-                                </div>
-                                <?php echo $this->formElementErrors($form->get('media_file_3')); ?>
-                            </div>
-                        </div>
+                        <?php endfor; ?>
+
                     </div>
                 </div>
             </div>

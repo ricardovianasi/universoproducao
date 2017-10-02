@@ -27,7 +27,7 @@ class MovieForm extends Form
         parent::__construct('movie-form');
         $this->setAttributes([
             'method' => 'POST',
-            'class' => 'form-horizontal',
+            'class' => 'form-horizontal movie-form',
             'id' => 'submit_form'
         ]);
 
@@ -150,7 +150,6 @@ class MovieForm extends Form
             'name' => 'cpb',
             'options' => [
                 'label' => 'Número do CPB',
-                'help-block' => 'Certificado de produto brasileiro emitido pela Ancine',
                 'twb-layout' => 'horizontal',
                 'column-size' => 'md-6',
                 'label_attributes' => [
@@ -159,6 +158,29 @@ class MovieForm extends Form
             ],
             'attributes' => [
                 'placeholder' => 'Informe o número do cpb'
+            ]
+        ]);
+
+        $this->add([
+            'type' => 'Select',
+            'name' => 'has_cpb',
+            'options' => [
+                'label' => 'O filme possui CPB?',
+                'help-block' => 'Certificado de produto brasileiro emitido pela Ancine',
+                'twb-layout' => 'horizontal',
+                'column-size' => 'md-6',
+                'label_attributes' => [
+                    'class' => 'col-md-4'
+                ],
+                'value_options' => [
+                    1 => 'Sim',
+                    0 => 'Não'
+                ],
+                'empty_option' => 'Selecione',
+            ],
+            'attributes' => [
+                'placeholder' => 'Informe o número do cpb',
+                'required' => 'required'
             ]
         ]);
 
@@ -182,6 +204,7 @@ class MovieForm extends Form
                 'required' => 'required',
             ],
         ]);
+
 
         $this->add([
             'type' => 'select',
@@ -385,6 +408,22 @@ class MovieForm extends Form
             ],
             'attributes' => [
                 'rows' => 5
+            ]
+        ]);
+
+        $this->add([
+            'type' => 'Textarea',
+            'name' => 'content_scenes',
+            'options' => [
+                'label' => 'Informar o conteúdo das cenas',
+                'twb-layout' => 'horizontal',
+                'column-size' => 'md-6',
+                'label_attributes' => [
+                    'class' => 'col-md-4'
+                ],
+                'help-block' => 'Exemplo: cenas de sexo, violência, uso de drogas, etc...'
+            ],
+            'attributes' => [
             ]
         ]);
 
@@ -632,11 +671,88 @@ class MovieForm extends Form
         ]);
 
         $this->add([
+            'type' => 'select',
+            'name' => 'has_conversations_languages',
+            'options' => [
+                'label' => 'O filme possui diálogos?',
+                'value_options' => [
+                    '1' => 'Sim',
+                    '0' => 'Não'
+                ],
+                'empty_option' => 'Selecione',
+                'twb-layout' => 'horizontal',
+                'column-size' => 'md-6',
+                'label_attributes' => [
+                    'class' => 'col-md-4'
+                ]
+            ],
+            'attributes' => [
+                'required' => 'required',
+            ],
+        ]);
+
+        $this->add([
+            'type' => 'select',
+            'name' => 'has_subtitles_languages',
+            'options' => [
+                'label' => 'O filme possui cópia legendada?',
+                'value_options' => [
+                    '1' => 'Sim',
+                    '0' => 'Não'
+                ],
+                'empty_option' => 'Selecione',
+                'twb-layout' => 'horizontal',
+                'column-size' => 'md-6',
+                'label_attributes' => [
+                    'class' => 'col-md-4'
+                ]
+            ],
+            'attributes' => [
+                'required' => 'required',
+            ],
+        ]);
+
+        $this->add([
+            'type' => 'select',
+            'name' => 'has_conversations_list_languages',
+            'options' => [
+                'label' => 'O filme possui lista de diálogos?',
+                'value_options' => [
+                    '1' => 'Sim',
+                    '0' => 'Não'
+                ],
+                'empty_option' => 'Selecione',
+                'twb-layout' => 'horizontal',
+                'column-size' => 'md-6',
+                'label_attributes' => [
+                    'class' => 'col-md-4'
+                ]
+            ],
+            'attributes' => [
+                'required' => 'required',
+            ],
+        ]);
+
+        $this->add([
+            'type' => 'Textarea',
+            'name' => 'conversations_languages',
+            'options' => [
+                'label' => 'Informe em qual(is) idioma(s)',
+                'twb-layout' => 'horizontal',
+                'column-size' => 'md-6',
+                'label_attributes' => [
+                    'class' => 'col-md-4'
+                ]
+            ],
+            'attributes' => [
+            ]
+        ]);
+
+        $this->add([
             'type' => 'Textarea',
             'name' => 'subtitles_languages',
             'options' => [
-                'label' => 'Idioma(s) das legendas',
-                'help-block' => 'Se o filme possuir diálogos, informe o idioma nesse campo',
+                'label' => 'Informe em qual(is) idioma(s)',
                 'twb-layout' => 'horizontal',
                 'column-size' => 'md-6',
                 'label_attributes' => [
@@ -651,8 +767,7 @@ class MovieForm extends Form
             'type' => 'Textarea',
             'name' => 'conversations_list_languages',
             'options' => [
-                'label' => 'Idioma(s) lista de diálogo',
-                'help-block' => 'Se o filme possuir lista de diálogos, informe o idioma nesse campo',
+                'label' => 'Informe em qual(is) idioma(s)',
                 'twb-layout' => 'horizontal',
                 'column-size' => 'md-6',
                 'label_attributes' => [
@@ -664,11 +779,32 @@ class MovieForm extends Form
         ]);
 
         $this->add([
+            'type' => 'select',
+            'name' => 'has_participated_other_festivals',
+            'options' => [
+                'label' => 'O filme já participou de outros festivais',
+                'value_options' => [
+                    '1' => 'Sim',
+                    '0' => 'Não'
+                ],
+                'empty_option' => 'Selecione',
+                'twb-layout' => 'horizontal',
+                'column-size' => 'md-6',
+                'label_attributes' => [
+                    'class' => 'col-md-4'
+                ]
+            ],
+            'attributes' => [
+                'required' => 'required',
+            ],
+        ]);
+
+        $this->add([
             'type' => 'Textarea',
             'name' => 'other_festivals',
             'options' => [
-                'label' => 'Este filme já participou de outros festivais?',
-                'help-block' => 'Cite os festivais e prêmios recebidos',
+                'label' => 'Cite os festivais e prêmios recebidos',
+                'help-block' => '',
                 'twb-layout' => 'horizontal',
                 'column-size' => 'md-6',
                 'label_attributes' => [
@@ -700,7 +836,7 @@ class MovieForm extends Form
             'name' => 'movie_link',
             'options' => [
                 'label' => 'Link de acesso ao filme',
-                'help-block' => 'A organização do evento não se responsabiliza por links incorretos. O filme poderá ser excluído do processo de seleção caso não seja possével ter acesso e/ou exibição do mesmo',
+                'help-block' => 'A organização do evento não se responsabiliza por links incorretos. O filme poderá ser excluído do processo de seleção caso não seja possível ter acesso e/ou  visualização do mesmo',
                 'twb-layout' => 'horizontal',
                 'column-size' => 'md-6',
                 'label_attributes' => [
@@ -730,15 +866,24 @@ class MovieForm extends Form
 
         $this->add([
             'type' => 'file',
-            'name' => 'media_file_1'
+            'name' => 'media_file_1',
+            'attributes' => [
+                'accept' => 'image/*'
+            ]
         ]);
         $this->add([
             'type' => 'file',
-            'name' => 'media_file_2'
+            'name' => 'media_file_2',
+            'attributes' => [
+                'accept' => 'image/*'
+            ]
         ]);
         $this->add([
             'type' => 'file',
-            'name' => 'media_file_3'
+            'name' => 'media_file_3',
+            'attributes' => [
+                'accept' => 'image/*'
+            ]
         ]);
 
         $this->add([
@@ -765,6 +910,36 @@ class MovieForm extends Form
             'attributes' => [
                 'placeholder' => 'Créditos da foto'
             ]
+        ]);
+
+        $this->add([
+            'type' => 'hidden',
+            'name' => 'media_id_1',
+        ]);
+
+        $this->add([
+            'type' => 'hidden',
+            'name' => 'media_id_2',
+        ]);
+
+        $this->add([
+            'type' => 'hidden',
+            'name' => 'media_id_3',
+        ]);
+
+        $this->add([
+            'type' => 'hidden',
+            'name' => 'media_src_1',
+        ]);
+
+        $this->add([
+            'type' => 'hidden',
+            'name' => 'media_src_2',
+        ]);
+
+        $this->add([
+            'type' => 'hidden',
+            'name' => 'media_src_3',
         ]);
 
 
@@ -815,7 +990,7 @@ class MovieForm extends Form
                 'name' => 'media_file_1',
                 'required'   => false,
                 'validators' => [
-                    new MimeType('image/png,image/jpg'),
+                    new MimeType('image/png,image/jpg,image/jpeg'),
                     new Size(['min'=>'800KB', 'max'=>'2MB'])
                 ]
             ],
@@ -823,7 +998,7 @@ class MovieForm extends Form
                'name' => 'media_file_2',
                'required'   => false,
                'validators' => [
-                   new MimeType('image/png,image/jpg'),
+                   new MimeType('image/png,image/jpg,image/jpeg'),
                    new Size(['min'=>'800KB', 'max'=>'2MB'])
                ]
            ],
@@ -831,7 +1006,7 @@ class MovieForm extends Form
                'name' => 'media_file_3',
                'required'   => false,
                'validators' => [
-                   new MimeType('image/png,image/jpg'),
+                   new MimeType('image/png,image/jpg,image/jpeg'),
                    new Size(['min'=>'800KB', 'max'=>'2MB'])
                ]
            ]
@@ -908,6 +1083,16 @@ class MovieForm extends Form
                 $data['duration'] = $duration->format('H:i:s');
             }
         }
+
+        if(count($data['medias'])) {
+            $count = 1;
+            foreach ($data['medias'] as $key=>$m) {
+                $data["media_id_$count"] = $m->getId();
+                $data["media_caption_$count"] = $m->getCredits();
+                $data["media_src_$count"] = $m->getSrc();
+            }
+        }
+
 
         $events = [];
         if(count($data['events'])) {

@@ -119,7 +119,7 @@ class Movie extends AbstractEntity
     /** @ORM\Column(name="updated_at", type="datetime", nullable=true) */
     private $updatedAt;
 
-    /** @ORM\OneToMany(targetEntity="Media", mappedBy="movie")  */
+    /** @ORM\OneToMany(targetEntity="Media", mappedBy="movie", cascade={"ALL"})  */
     private $medias;
 
     /** @ORM\OneToMany(targetEntity="MovieEvent", mappedBy="movie", cascade={"ALL"}) */
@@ -143,6 +143,21 @@ class Movie extends AbstractEntity
     /** @ORM\Column(name="sound_editing", type="string", nullable=true) */
     private $soundEditing;
 
+    /** @ORM\Column(name="content_scenes", type="string", nullable=true) */
+    private $contentScenes;
+
+    /** @ORM\Column(name="has_participated_other_festivals", type="boolean", nullable=true) */
+    private $hasParticipatedOtherFestivals;
+
+    /** @ORM\Column(name="has_conversations_languages", type="boolean", nullable=true) */
+    private $hasConversationsLanguages;
+
+    /** @ORM\Column(name="has_subtitles_languages", type="boolean", nullable=true) */
+    private $hasSubtitlesLanguages;
+
+    /** @ORM\Column(name="has_conversations_list_languages", type="boolean", nullable=true) */
+    private $hasConversationsListLanguages;
+
     /**
      * @ORM\ManyToMany(targetEntity="Options")
      * @ORM\JoinTable(name="movie_has_options",
@@ -151,6 +166,8 @@ class Movie extends AbstractEntity
      * )
      */
     private $options;
+
+    private $hasCpb;
 
     public function __construct()
     {
@@ -707,8 +724,19 @@ class Movie extends AbstractEntity
         $this->updatedAt = $updatedAt;
     }
 
+    public function getMediaById($mediaId)
+    {
+        foreach ($this->medias as $key=>$m) {
+            if($m->getId() == $mediaId) {
+                return $m;
+            }
+        }
+
+        return false;
+    }
+
     /**
-     * @return mixed
+     * @return ArrayCollection
      */
     public function getMedias()
     {
@@ -835,4 +863,103 @@ class Movie extends AbstractEntity
         $this->options = $options;
     }
 
+    public function getHasCpb()
+    {
+        if(!empty($this->getCpb())) {
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getContentScenes()
+    {
+        return $this->contentScenes;
+    }
+
+    /**
+     * @param mixed $contentScenes
+     */
+    public function setContentScenes($contentScenes)
+    {
+        $this->contentScenes = $contentScenes;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getHasParticipatedOtherFestivals()
+    {
+        return $this->hasParticipatedOtherFestivals;
+    }
+
+    /**
+     * @param mixed $hasParticipatedOtherFestivals
+     */
+    public function setHasParticipatedOtherFestivals($hasParticipatedOtherFestivals)
+    {
+        $this->hasParticipatedOtherFestivals = $hasParticipatedOtherFestivals;
+    }
+
+    public function getOption($option)
+    {
+        foreach ($this->options as $op) {
+            if($op->getName() == $option) {
+                return $op;
+            }
+        }
+
+        return false;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getHasConversationsLanguages()
+    {
+        return $this->hasConversationsLanguages;
+    }
+
+    /**
+     * @param mixed $hasConversationsLanguages
+     */
+    public function setHasConversationsLanguages($hasConversationsLanguages)
+    {
+        $this->hasConversationsLanguages = $hasConversationsLanguages;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getHasSubtitlesLanguages()
+    {
+        return $this->hasSubtitlesLanguages;
+    }
+
+    /**
+     * @param mixed $hasSubtitlesLanguages
+     */
+    public function setHasSubtitlesLanguages($hasSubtitlesLanguages)
+    {
+        $this->hasSubtitlesLanguages = $hasSubtitlesLanguages;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getHasConversationsListLanguages()
+    {
+        return $this->hasConversationsListLanguages;
+    }
+
+    /**
+     * @param mixed $hasConversationsListLanguages
+     */
+    public function setHasConversationsListLanguages($hasConversationsListLanguages)
+    {
+        $this->hasConversationsListLanguages = $hasConversationsListLanguages;
+    }
 }

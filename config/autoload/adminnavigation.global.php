@@ -10,12 +10,6 @@ return [
 				'class' => 'start'
 			],
 			[
-				'label' => 'Gerenciador de Arquivos',
-				'route' => 'admin/default',
-				'controller' => 'file-manager',
-				'icon' => 'icon-picture',
-			],
-			[
 				'label' => 'Usuários',
 				'route' => 'admin/default',
 				'controller'=>'user',
