@@ -1,11 +1,13 @@
 <?php
 namespace Admin\Form\Movie;
 
+use Application\Entity\Movie\Movie;
 use Application\Entity\Movie\Options;
 use Application\Entity\Movie\OptionsType;
 use Application\Entity\Registration\Registration;
 use Application\Entity\Registration\Options as RegistrationOptions;
 use Application\Entity\State;
+use DoctrineModule\Validator\UniqueObject;
 use Zend\Form\Form;
 use Zend\InputFilter\Factory as InputFilterFactory;
 use Zend\Validator\File\MimeType;
@@ -989,9 +991,13 @@ class MovieForm extends Form
                'required'   => false,
                'allow_empty' => true
            ],
+           'media_caption_1' => [
+               'name'       => 'media_caption_1',
+               'required'   => true
+           ],
             'media_file_1' => [
                 'name' => 'media_file_1',
-                'required'   => false,
+                'required'   => true,
                 'validators' => [
                     new MimeType('image/png,image/jpg,image/jpeg'),
                     [

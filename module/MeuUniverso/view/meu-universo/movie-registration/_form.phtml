@@ -121,9 +121,14 @@
                             $labelClassification = "";
                             if($form->get('has_official_classification')->getValue() == 1) {
                                 $labelClassification = "Classificação indicativa";
-                            } else {
+                                $showClassification = true;
+                            } elseif($form->get('has_official_classification')->getValue() == 0 ) {
+                                $showClassification = true;
                                 $labelClassification = "Indique a classificação indicativa sugerida";
+                            } else {
+                                $showClassification = false;
                             }
+                            $form->get('has_official_classification')->setOption('label', $labelClassification);
                         ?>
 
                         <div id="classification" style="display: <?php echo $showClassification ? "block" : "none" ?>">

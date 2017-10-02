@@ -9,6 +9,7 @@
 namespace MeuUniverso\Controller;
 
 
+use Admin\Validator\Movie\Unique;
 use Application\Entity\Event\Event;
 use Application\Entity\Movie\Media;
 use Application\Entity\Movie\Movie;
@@ -17,6 +18,7 @@ use Application\Entity\Movie\Options as MovieOptions;
 use Application\Entity\Registration\Options;
 use Application\Entity\Registration\Registration;
 use Doctrine\Common\Collections\ArrayCollection;
+use DoctrineModule\Validator\UniqueObject;
 use MeuUniverso\Form\MovieForm;
 use Zend\View\Model\ViewModel;
 use Zend\View\View;
@@ -109,6 +111,23 @@ class MovieRegistrationController extends AbstractMeuUniversoRegisterController
                 $this->getRequest()->getFiles()->toArray()
             );
             $form->setData($data);
+
+            $movieTitleValidationOptions = [
+                'object_manager' => $this->getRepository(Movie::class),
+                'user_context' => $this->getAuthenticationService()->getIdentity()->getId(),
+                'messages' => [
+                    Unique::ERROR_OBJECT_NOT_UNIQUE => "O filme '%value%' já foi cadastrado"
+                ]
+            ];
+            if($id) {
+                $movieTitleValidationOptions['scape_id'] = $id;
+            }
+
+            $titleExist = new Unique($movieTitleValidationOptions);
+
+            $titleInputFilter = $form->getInputFilter()->get('title');
+            $titleInputFilter->getValidatorChain()->attach($titleExist);
+
             if($form->isValid()) {
 
                 if($id) {
@@ -135,13 +154,19 @@ class MovieRegistrationController extends AbstractMeuUniversoRegisterController
                 $options = new ArrayCollection();
                 if(!empty($data['options'])) {
                     foreach ($data['options'] as $opt) {
-                        if(is_string($opt)) {
-                            $opt = $this->getRepository(MovieOptions::class)->find($opt);
-                            $options->add($opt);
-                        } elseif(is_array($opt)) {
-                            foreach ($opt as $oId) {
-                                $opt = $this->getRepository(MovieOptions::class)->find($oId);
-                                $options->add($opt);
+                        if(!empty($opt)) {
+                            if(is_string($opt)) {
+                                $optEntity = $this->getRepository(MovieOptions::class)->find($opt);
+                                if($optEntity) {
+                                    $options->add($optEntity);
+                                }
+                            } elseif(is_array($opt)) {
+                                foreach ($opt as $oId) {
+                                    $optEntity = $this->getRepository(MovieOptions::class)->find($oId);
+                                    if($optEntity) {
+                                        $options->add($optEntity);
+                                    }
+                                }
                             }
                         }
                     }

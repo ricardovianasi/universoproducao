@@ -80,16 +80,19 @@ $(document).ready(function () {
 		var target = $('#classification');
 		var field = $('#option_classification');
 		var label = $('label[for="option_classification"]');
+		var helpBlock = target.find('.help-block');
 		if(selected === '1') {
 			target.show();
 			label.text(field.data('oficial-classification'))
 			field.val("");
 			field.trigger('change');
+			helpBlock.show();
 		} else if(selected === '0') {
 			target.show();
 			label.text(field.data('suggest-classification'))
 			field.val('');
 			field.trigger('change');
+			helpBlock.hide();
 		} else {
 			field.trigger('change');
 			target.hide();
