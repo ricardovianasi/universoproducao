@@ -1195,7 +1195,7 @@ class MovieForm extends Form
 
         return (string) $this
             ->getRegistration()
-            ->getOption(RegistrationOptions::MOVIE_DURATION_OBS);
+            ->getOption(nl2br(RegistrationOptions::MOVIE_DURATION_OBS));
     }
 
     public function populateStates()

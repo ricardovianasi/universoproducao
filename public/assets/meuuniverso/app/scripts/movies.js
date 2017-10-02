@@ -86,13 +86,13 @@ $(document).ready(function () {
 			label.text(field.data('oficial-classification'))
 			field.val("");
 			field.trigger('change');
-			helpBlock.show();
+			helpBlock.hide();
 		} else if(selected === '0') {
 			target.show();
 			label.text(field.data('suggest-classification'))
 			field.val('');
 			field.trigger('change');
-			helpBlock.hide();
+			helpBlock.show();
 		} else {
 			field.trigger('change');
 			target.hide();
