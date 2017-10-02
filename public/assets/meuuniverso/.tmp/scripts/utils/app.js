@@ -187,6 +187,10 @@ var FormWizard = function () {
                 errorClass: 'help-block help-block-error', // default input error message class
                 focusInvalid: false, // do not focus the last invalid input
                 rules: {
+                    'media_file_1': {
+                        extension: "jpg,jpeg,png",
+                        filesize: 5
+                    },
                     'accept_regulation': {
                         required: true
                     },

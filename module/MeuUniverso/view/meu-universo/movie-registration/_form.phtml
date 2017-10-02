@@ -5,11 +5,24 @@
         echo $this->form(null, null)->openTag($form); ?>
 
         <?php if($form->getMessages()): ?>
-            <div class="note note-danger">
-                <button type="button" class="close" data-dismiss="alert"></button>
-                <h4 class="block">Atenção, ocorreram erros! </h4>
-                <p>Por favor, confira os dados enviados e verifique se todos os campos obrigatórios foram preenchidos</p>
+
+            <div class="portlet box red">
+                <div class="portlet-title">
+                    <div class="caption">Atenção, os seguintes erros foram encontrados </div>
+                </div>
+                <div class="portlet-body">
+                        <?php foreach ($form->getMessages() as $field=>$message): ?>
+                            <h4 class="h4">Campo <?php echo $form->get($field)->getLabel(); ?></h4>
+                            <div style="padding-left: 20px">
+                            <?php foreach ($message as $key=>$m): ?>
+                                <p class=""><?php echo $m ?></p>
+                            <?php endforeach; ?>
+                            </div>
+                        <?php endforeach; ?>
+
+                </div>
             </div>
+
         <?php endif; ?>
 
         <div class="form-wizard">
@@ -88,7 +101,6 @@
                         <?php echo $this->formRow($form->get('production_state')) ?>
                         <?php echo $this->formRow($form->get('end_date_year')) ?>
                         <?php echo $this->formRow($form->get('end_date_month')) ?>
-                        <?php echo $this->formRow($form->get('options[category]')) ?>
                         <?php echo $this->formRow($form->get('duration')) ?>
                         <?php echo $this->formRow($form->get('has_cpb')) ?>
 
@@ -103,7 +115,20 @@
                             <?php echo $this->formRow($form->get('cpb')) ?>
                         </div>
                         <?php echo $this->formRow($form->get('has_official_classification')) ?>
-                        <?php echo $this->formRow($form->get('options[classification]')) ?>
+
+                        <?php
+                            $showClassification = false;
+                            $labelClassification = "";
+                            if($form->get('has_official_classification')->getValue() == 1) {
+                                $labelClassification = "Classificação indicativa";
+                            } else {
+                                $labelClassification = "Indique a classificação indicativa sugerida";
+                            }
+                        ?>
+
+                        <div id="classification" style="display: <?php echo $showClassification ? "block" : "none" ?>">
+                            <?php echo $this->formRow($form->get('options[classification]')) ?>
+                        </div>
 
                         <?php
                             $showContentScenes = false;

@@ -47,6 +47,9 @@ class Movie extends AbstractEntity
     /** @ORM\Column(name="cpb", type="string", nullable=true) */
     private $cpb;
 
+    /** @ORM\Column(name="has_cpb", type="boolean", nullable=true) */
+    private $hasCpb;
+
     /** @ORM\Column(name="has_official_classification", type="boolean", nullable=true) */
     private $hasOfficialClassification;
 
@@ -166,8 +169,6 @@ class Movie extends AbstractEntity
      * )
      */
     private $options;
-
-    private $hasCpb;
 
     public function __construct()
     {
@@ -863,13 +864,20 @@ class Movie extends AbstractEntity
         $this->options = $options;
     }
 
+    /**
+     * @return mixed
+     */
     public function getHasCpb()
     {
-        if(!empty($this->getCpb())) {
-            return true;
-        }
+        return $this->hasCpb;
+    }
 
-        return false;
+    /**
+     * @param mixed $hasCpb
+     */
+    public function setHasCpb($hasCpb)
+    {
+        $this->hasCpb = $hasCpb;
     }
 
     /**

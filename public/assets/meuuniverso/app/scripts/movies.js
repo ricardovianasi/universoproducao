@@ -74,4 +74,26 @@ $(document).ready(function () {
 			field.val('');
 		}
 	});
+
+	$('.movie-form select[name="has_official_classification"]').on('change', function(e) {
+		var selected = $(this).children('option:selected').val();
+		var target = $('#classification');
+		var field = $('#option_classification');
+		var label = $('label[for="option_classification"]');
+		if(selected === '1') {
+			target.show();
+			label.text(field.data('oficial-classification'))
+			field.val("");
+			field.trigger('change');
+		} else if(selected === '0') {
+			target.show();
+			label.text(field.data('suggest-classification'))
+			field.val('');
+			field.trigger('change');
+		} else {
+			field.trigger('change');
+			target.hide();
+			field.val("");
+		}
+	});
 });

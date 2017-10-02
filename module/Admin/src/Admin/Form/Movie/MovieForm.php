@@ -188,7 +188,7 @@ class MovieForm extends Form
             'type' => 'select',
             'name' => 'has_official_classification',
             'options' => [
-                'label' => 'O filme possui classificação oficial emitida pelo ministério da justiça',
+                'label' => 'O filme possui classificação indicativa oficial emitida pelo Ministério da Justiça?',
                 'value_options' => [
                     '1' => 'Sim',
                     '0' => 'Não'
@@ -198,10 +198,10 @@ class MovieForm extends Form
                 'column-size' => 'md-6',
                 'label_attributes' => [
                     'class' => 'col-md-4'
-                ]
+                ],
             ],
             'attributes' => [
-                'required' => 'required',
+                'required' => 'required'
             ],
         ]);
 
@@ -218,10 +218,13 @@ class MovieForm extends Form
                 'label_attributes' => [
                     'class' => 'col-md-4'
                 ],
-                'help-block' => 'Indique a classificação sugerida ou oficial emitida pelo Ministério da Justiça',
+                'help-block' => 'Para informações sobre os critérios de classificação indicativa, acesse: http://www.justica.gov.br/seus-direitos/classificacao/guia-pratico'
             ],
             'attributes' => [
                 'required' => 'required',
+                'id' => 'option_classification',
+                'data-oficial-classification' => 'Classificação indicativa',
+                'data-suggest-classification' => 'Indique a classificação indicativa sugerida'
             ],
         ]);
 
@@ -231,24 +234,6 @@ class MovieForm extends Form
             'options' => [
                 'label' => 'Formato em que o filme foi finalizado',
                 'value_options' => $this->populateOptions(OptionsType::FORMAT_COMPLETED),
-                'empty_option' => 'Selecione',
-                'twb-layout' => 'horizontal',
-                'column-size' => 'md-6',
-                'label_attributes' => [
-                    'class' => 'col-md-4'
-                ]
-            ],
-            'attributes' => [
-                'required' => 'required',
-            ],
-        ]);
-
-        $this->add([
-            'type' => 'select',
-            'name' => 'options[category]',
-            'options' => [
-                'label' => 'Categoria',
-                'value_options' => $this->populateOptions(OptionsType::CATEGORY),
                 'empty_option' => 'Selecione',
                 'twb-layout' => 'horizontal',
                 'column-size' => 'md-6',
@@ -869,26 +854,38 @@ class MovieForm extends Form
             'name' => 'media_file_1',
             'attributes' => [
                 'accept' => 'image/*'
-            ]
+            ],
+            'options' => [
+                'label' => 'Imagem 1'
+            ],
         ]);
         $this->add([
             'type' => 'file',
             'name' => 'media_file_2',
             'attributes' => [
                 'accept' => 'image/*'
-            ]
+            ],
+            'options' => [
+                'label' => 'Imagem 2'
+            ],
         ]);
         $this->add([
             'type' => 'file',
             'name' => 'media_file_3',
             'attributes' => [
                 'accept' => 'image/*'
-            ]
+            ],
+            'options' => [
+                'label' => 'Imagem 3'
+            ],
         ]);
 
         $this->add([
             'type' => 'text',
             'name' => 'media_caption_1',
+            'options' => [
+                'label' => 'Créditos da foto'
+            ],
             'attributes' => [
                 'placeholder' => 'Créditos da foto'
             ]
@@ -899,7 +896,10 @@ class MovieForm extends Form
             'name' => 'media_caption_2',
             'attributes ' => [
                 'placeholder' => 'Créditos da foto'
-            ]
+            ],
+            'options' => [
+                'label' => 'Créditos da foto'
+            ],
         ]);
 
         $this->add([
@@ -909,7 +909,10 @@ class MovieForm extends Form
             ],
             'attributes' => [
                 'placeholder' => 'Créditos da foto'
-            ]
+            ],
+            'options' => [
+                'label' => 'Créditos da foto'
+            ],
         ]);
 
         $this->add([
@@ -971,18 +974,18 @@ class MovieForm extends Form
 
         //Validações
        $this->setInputFilter((new InputFilterFactory)->createInputFilter([
-            'options_accessibility' => [
-                'name'       => 'options_accessibility',
+            'options[accessibility]' => [
+                'name'       => 'options[accessibility]',
                 'required'   => false,
                 'allow_empty' => true
             ],
-           'options_feature_directed' => [
-               'name'       => 'options_feature_directed',
+           'options[feature_directed]' => [
+               'name'       => 'options[feature_directed]',
                'required'   => false,
                'allow_empty' => true
            ],
-           'options_short_movie_category' => [
-               'name'       => 'options_short_movie_category',
+           'options[short_movie_category]' => [
+               'name'       => 'options[short_movie_category]',
                'required'   => false,
                'allow_empty' => true
            ],
@@ -991,7 +994,18 @@ class MovieForm extends Form
                 'required'   => false,
                 'validators' => [
                     new MimeType('image/png,image/jpg,image/jpeg'),
-                    new Size(['min'=>'800KB', 'max'=>'2MB'])
+                    [
+                        'name' => Size::class,
+                        'options' => [
+                            'min' => '800KB',
+                            'max' => '2MB',
+                            'messages' => [
+                                Size::TOO_SMALL => "O tamanho mínimo do arquivo é '%min%'",
+                                Size::TOO_BIG => "O tamanho máximo do arquivo é '%min%'"
+                            ]
+                        ]
+                    ],
+                    //new Size(['min'=>'800KB', 'max'=>'2MB'])
                 ]
             ],
            'media_file_2' => [
@@ -999,7 +1013,18 @@ class MovieForm extends Form
                'required'   => false,
                'validators' => [
                    new MimeType('image/png,image/jpg,image/jpeg'),
-                   new Size(['min'=>'800KB', 'max'=>'2MB'])
+                   [
+                       'name' => Size::class,
+                       'options' => [
+                           'min' => '800KB',
+                           'max' => '2MB',
+                           'messages' => [
+                               Size::TOO_SMALL => "O tamanho mínimo do arquivo é '%min%'",
+                               Size::TOO_BIG => "O tamanho máximo do arquivo é '%min%'"
+                           ]
+                       ]
+                   ]
+                   //new Size(['min'=>'800KB', 'max'=>'2MB'])
                ]
            ],
            'media_file_3' => [
@@ -1007,7 +1032,18 @@ class MovieForm extends Form
                'required'   => false,
                'validators' => [
                    new MimeType('image/png,image/jpg,image/jpeg'),
-                   new Size(['min'=>'800KB', 'max'=>'2MB'])
+                   [
+                       'name' => Size::class,
+                       'options' => [
+                           'min' => '800KB',
+                           'max' => '2MB',
+                           'messages' => [
+                               Size::TOO_SMALL => "O tamanho mínimo do arquivo é '%min%'",
+                               Size::TOO_BIG => "O tamanho máximo do arquivo é '%min%'"
+                           ]
+                       ]
+                   ]
+                   //new Size(['min'=>'800KB', 'max'=>'2MB'])
                ]
            ]
 
@@ -1084,12 +1120,14 @@ class MovieForm extends Form
             }
         }
 
-        if(count($data['medias'])) {
-            $count = 1;
-            foreach ($data['medias'] as $key=>$m) {
-                $data["media_id_$count"] = $m->getId();
-                $data["media_caption_$count"] = $m->getCredits();
-                $data["media_src_$count"] = $m->getSrc();
+        if(isset($data['medias'])) {
+            if(count($data['medias'])) {
+                $count = 1;
+                foreach ($data['medias'] as $key=>$m) {
+                    $data["media_id_$count"] = $m->getId();
+                    $data["media_caption_$count"] = $m->getCredits();
+                    $data["media_src_$count"] = $m->getSrc();
+                }
             }
         }
 
