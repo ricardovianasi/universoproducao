@@ -412,6 +412,7 @@ class MovieForm extends Form
                 'help-block' => 'Exemplo: cenas de sexo, violência, uso de drogas, etc...'
             ],
             'attributes' => [
+                'required' => 'required'
             ]
         ]);
 
