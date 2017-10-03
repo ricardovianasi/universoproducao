@@ -13,6 +13,7 @@ use Zend\InputFilter\Factory as InputFilterFactory;
 use Zend\Validator\Date;
 use Zend\Validator\File\MimeType;
 use Zend\Validator\File\Size;
+use Zend\Validator\NotEmpty;
 use Zend\Validator\Uri;
 
 class MovieForm extends Form
@@ -825,7 +826,7 @@ class MovieForm extends Form
         ]);
 
         $this->add([
-            'type' => 'Url',
+            'type' => 'Textarea',
             'name' => 'movie_link',
             'options' => [
                 'label' => 'Link de acesso ao filme',
@@ -931,10 +932,7 @@ class MovieForm extends Form
            ],
            'movie_link' => [
                'name' => 'movie_link',
-               'required' => true,
-               'validators' => [
-                   new Uri()
-               ]
+               'required' => true
            ],
             'options[accessibility]' => [
                 'name'       => 'options[accessibility]',
@@ -952,8 +950,8 @@ class MovieForm extends Form
                'allow_empty' => true
             ],
             'media_caption_1' => [
-               'name'       => 'media_caption_1',
-               'required'   => true
+                'name'       => 'media_caption_1',
+                'required'   => true,
             ],
             'media_file_1' => [
                 'name' => 'media_file_1',

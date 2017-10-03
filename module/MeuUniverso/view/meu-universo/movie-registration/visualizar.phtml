@@ -101,6 +101,19 @@ $movie = $this->movie;
                         </div>
                     </div>
 
+                    <?php if(!$movie->getHasOfficialClassification() &&  $cla && strtolower($cla->getName()) != "livre"): ?>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label">Informar o conteúdo das cenas:</label>
+                                <p class="form-control-static">
+                                    <?php echo $movie->getContentScenes(); ?>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <?php endif; ?>
+
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
