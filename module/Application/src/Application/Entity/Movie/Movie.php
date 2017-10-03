@@ -36,7 +36,7 @@ class Movie extends AbstractEntity
     private $endDateMonth;
 
     /** @ORM\Column(name="production_coutry", type="string", nullable=true) */
-    private $productionCoutry;
+    private $productionCoutry = 'Brasil';
 
     /** @ORM\Column(name="production_state", type="string", nullable=true) */
     private $productionState;
@@ -914,13 +914,22 @@ class Movie extends AbstractEntity
 
     public function getOption($option)
     {
+        $opts = [];
         foreach ($this->options as $op) {
-            if($op->getName() == $option) {
-                return $op;
+            if($op->getType() == $option) {
+                $opts[] = $op;
             }
         }
 
-        return false;
+        if(empty($opts)) {
+            return false;
+        }
+
+        if(count($opts) == 1) {
+            return $opts[0];
+        }
+
+        return $opts;
     }
 
     /**

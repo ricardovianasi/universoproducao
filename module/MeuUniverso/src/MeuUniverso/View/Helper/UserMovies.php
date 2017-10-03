@@ -72,6 +72,8 @@ class UserMovies extends AbstractHelper implements ServiceLocatorAwareInterface
         }
         $td.= "<td>$events</td>";
 
+        $urlHelper = $this->getServiceLocator()->get('url');
+
         $now = new \DateTime();
         $reg = $movie->getRegistration();
 
@@ -84,16 +86,16 @@ class UserMovies extends AbstractHelper implements ServiceLocatorAwareInterface
             }
         }
 
-
-        if( !$allowEditRegister) {
-            $btnEditar = '<a href="javascript:;" class="btn btn-circle default disabled"> Editar </a>';
-        } else {
-            $urlHelper = $this->getServiceLocator()->get('url');
-
+        if( $allowEditRegister) {
             $editUrl = $urlHelper('meu-universo/movie', ['id_reg'=>$reg->getHash(), 'id'=>$movie->getId(), 'action'=>'editar']);
             $btnEditar = '<a href="'.$editUrl.'" type="button" class="btn btn-circle btn-default btn-sm"><i class="glyphicon glyphicon-edit"></i> Editar</a>';
         }
-        $td.= '<td>'.$btnEditar.'</td></tr>';
+
+        //visualizar
+        $viewUrl = $urlHelper('meu-universo/movie', ['id_reg'=>$reg->getHash(), 'id'=>$movie->getId(), 'action'=>'visualizar']);
+        $btnView = '<a href="'.$viewUrl.'" type="button" class="btn btn-circle btn-default btn-sm"><i class="glyphicon glyphicon-list-alt"></i> Visualizar</a>';
+
+        $td.= '<td>'.$btnEditar.$btnView.'</td></tr>';
         return $td;
     }
 

@@ -28,10 +28,51 @@ class MovieRegistrationController extends AbstractMeuUniversoRegisterController
     const ERROR_REG_NOT_FOUND = 'x1001';
     const ERROR_REG_IS_CLOSED = 'x1002';
     const ERROR_REG_IS_NOT_EDIT = 'x1003';
+    const ERROR_MOVIE_NOT_FOUNT = 'x1004';
 
     public function indexAction()
     {
         return [];
+    }
+
+    public function visualizarAction()
+    {
+        $idReg = $this->params()->fromRoute('id_reg');
+        if(!$idReg) {
+            return $this->redirect()->toRoute('meu-universo/default', [], ['query'=>[
+                'code' => self::ERROR_REG_NOT_FOUND,
+                'id_reg' => $idReg
+            ]]);
+        }
+
+        $reg = $this->getRepository(Registration::class)->findOneBy([
+            'hash' => $idReg
+        ]);
+
+        if(!$reg) {
+            return $this->redirect()->toRoute('meu-universo/default', [], ['query'=>[
+                'code' => self::ERROR_REG_NOT_FOUND,
+                'id_reg' => $idReg
+            ]]);
+        }
+
+        $id = $this->params()->fromRoute('id');
+        $movie = $this->getRepository(Movie::class)->findOneBy([
+           'id' => $id,
+           'author' => $this->getAuthenticationService()->getIdentity()->getId()
+        ]);
+
+        if(!$movie) {
+            return $this->redirect()->toRoute('meu-universo/default', [], ['query'=>[
+                'code' => self::ERROR_REG_NOT_FOUND,
+                'id_reg' => $idReg
+            ]]);
+        }
+
+        return [
+            'movie' => $movie,
+            'reg' => $reg
+        ];
     }
 
     public function novoAction()
@@ -98,7 +139,18 @@ class MovieRegistrationController extends AbstractMeuUniversoRegisterController
 
         $id = $this->params()->fromRoute('id');
         if($id) {
-            $movie = $this->getRepository(Movie::class)->find($id);
+            $movie = $this->getRepository(Movie::class)->findOneBy([
+                'id' => $id,
+                'author' => $this->getAuthenticationService()->getIdentity()->getId()
+            ]);
+
+            if(!$movie) {
+                return $this->redirect()->toRoute('meu-universo/default', [], ['query'=>[
+                    'code' => self::ERROR_REG_NOT_FOUND,
+                    'id_reg' => $idReg
+                ]]);
+            }
+
         } else {
             $movie = new Movie();
             $movie->setRegistration($reg);

@@ -10,6 +10,7 @@ use Application\Entity\State;
 use DoctrineModule\Validator\UniqueObject;
 use Zend\Form\Form;
 use Zend\InputFilter\Factory as InputFilterFactory;
+use Zend\Validator\Date;
 use Zend\Validator\File\MimeType;
 use Zend\Validator\File\Size;
 
@@ -159,7 +160,8 @@ class MovieForm extends Form
                 ]
             ],
             'attributes' => [
-                'placeholder' => 'Informe o número do cpb'
+                'placeholder' => 'Informe o número do cpb',
+                'required' => 'required'
             ]
         ]);
 
@@ -394,7 +396,6 @@ class MovieForm extends Form
                 ]
             ],
             'attributes' => [
-                'rows' => 5
             ]
         ]);
 
@@ -732,6 +733,7 @@ class MovieForm extends Form
                 ]
             ],
             'attributes' => [
+                'required' => 'required',
             ]
         ]);
 
@@ -747,6 +749,7 @@ class MovieForm extends Form
                 ]
             ],
             'attributes' => [
+                'required' => 'required',
             ]
         ]);
 
@@ -762,6 +765,7 @@ class MovieForm extends Form
                 ]
             ],
             'attributes' => [
+                'required' => 'required',
             ]
         ]);
 
@@ -861,26 +865,6 @@ class MovieForm extends Form
                 'label' => 'Imagem 1'
             ],
         ]);
-        $this->add([
-            'type' => 'file',
-            'name' => 'media_file_2',
-            'attributes' => [
-                'accept' => 'image/*'
-            ],
-            'options' => [
-                'label' => 'Imagem 2'
-            ],
-        ]);
-        $this->add([
-            'type' => 'file',
-            'name' => 'media_file_3',
-            'attributes' => [
-                'accept' => 'image/*'
-            ],
-            'options' => [
-                'label' => 'Imagem 3'
-            ],
-        ]);
 
         $this->add([
             'type' => 'text',
@@ -894,59 +878,14 @@ class MovieForm extends Form
         ]);
 
         $this->add([
-            'type' => 'text',
-            'name' => 'media_caption_2',
-            'attributes ' => [
-                'placeholder' => 'Créditos da foto'
-            ],
-            'options' => [
-                'label' => 'Créditos da foto'
-            ],
-        ]);
-
-        $this->add([
-            'type' => 'text',
-            'name' => 'media_caption_3',
-            'options' => [
-            ],
-            'attributes' => [
-                'placeholder' => 'Créditos da foto'
-            ],
-            'options' => [
-                'label' => 'Créditos da foto'
-            ],
-        ]);
-
-        $this->add([
             'type' => 'hidden',
             'name' => 'media_id_1',
         ]);
 
         $this->add([
             'type' => 'hidden',
-            'name' => 'media_id_2',
-        ]);
-
-        $this->add([
-            'type' => 'hidden',
-            'name' => 'media_id_3',
-        ]);
-
-        $this->add([
-            'type' => 'hidden',
             'name' => 'media_src_1',
         ]);
-
-        $this->add([
-            'type' => 'hidden',
-            'name' => 'media_src_2',
-        ]);
-
-        $this->add([
-            'type' => 'hidden',
-            'name' => 'media_src_3',
-        ]);
-
 
         $this->add([
             'type' => 'MultiCheckbox',
@@ -976,25 +915,37 @@ class MovieForm extends Form
 
         //Validações
        $this->setInputFilter((new InputFilterFactory)->createInputFilter([
+           'duration' => [
+               'name' => 'duration',
+               'required' => true,
+               'validators' => [
+                   [
+                       'name' => Date::class,
+                       'options' => [
+                           'format' => 'H:i:s'
+                       ]
+                   ]
+               ]
+           ],
             'options[accessibility]' => [
                 'name'       => 'options[accessibility]',
                 'required'   => false,
                 'allow_empty' => true
             ],
-           'options[feature_directed]' => [
+            'options[feature_directed]' => [
                'name'       => 'options[feature_directed]',
                'required'   => false,
                'allow_empty' => true
-           ],
-           'options[short_movie_category]' => [
+            ],
+            'options[short_movie_category]' => [
                'name'       => 'options[short_movie_category]',
                'required'   => false,
                'allow_empty' => true
-           ],
-           'media_caption_1' => [
+            ],
+            'media_caption_1' => [
                'name'       => 'media_caption_1',
                'required'   => true
-           ],
+            ],
             'media_file_1' => [
                 'name' => 'media_file_1',
                 'required'   => true,
@@ -1006,53 +957,14 @@ class MovieForm extends Form
                             'min' => '800KB',
                             'max' => '2MB',
                             'messages' => [
-                                Size::TOO_SMALL => "O tamanho mínimo do arquivo é '%min%'",
-                                Size::TOO_BIG => "O tamanho máximo do arquivo é '%min%'"
+                                Size::TOO_SMALL => "O tamanho mínimo do arquivo é 800KB",
+                                Size::TOO_BIG => "O tamanho máximo do arquivo é 2MB"
                             ]
                         ]
                     ],
                     //new Size(['min'=>'800KB', 'max'=>'2MB'])
                 ]
             ],
-           'media_file_2' => [
-               'name' => 'media_file_2',
-               'required'   => false,
-               'validators' => [
-                   new MimeType('image/png,image/jpg,image/jpeg'),
-                   [
-                       'name' => Size::class,
-                       'options' => [
-                           'min' => '800KB',
-                           'max' => '2MB',
-                           'messages' => [
-                               Size::TOO_SMALL => "O tamanho mínimo do arquivo é '%min%'",
-                               Size::TOO_BIG => "O tamanho máximo do arquivo é '%min%'"
-                           ]
-                       ]
-                   ]
-                   //new Size(['min'=>'800KB', 'max'=>'2MB'])
-               ]
-           ],
-           'media_file_3' => [
-               'name' => 'media_file_3',
-               'required'   => false,
-               'validators' => [
-                   new MimeType('image/png,image/jpg,image/jpeg'),
-                   [
-                       'name' => Size::class,
-                       'options' => [
-                           'min' => '800KB',
-                           'max' => '2MB',
-                           'messages' => [
-                               Size::TOO_SMALL => "O tamanho mínimo do arquivo é '%min%'",
-                               Size::TOO_BIG => "O tamanho máximo do arquivo é '%min%'"
-                           ]
-                       ]
-                   ]
-                   //new Size(['min'=>'800KB', 'max'=>'2MB'])
-               ]
-           ]
-
         ]));
     }
 
@@ -1204,7 +1116,7 @@ class MovieForm extends Form
         $list = $this->getEntityManager()->getRepository(State::class)->findBy([], ['name'=>'ASC']);
 
         foreach ($list as $l) {
-            $states[$l->getId()] = $l->getName();
+            $states[$l->getName()] = $l->getName();
         }
 
         return $states;

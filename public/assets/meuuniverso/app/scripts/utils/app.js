@@ -187,6 +187,7 @@ var FormWizard = function () {
                 focusInvalid: false, // do not focus the last invalid input
                 rules: {
                     'media_file_1': {
+                        required: true,
                         extension: "jpg,jpeg,png",
                         filesize: 5,
                     },
@@ -196,6 +197,9 @@ var FormWizard = function () {
                     'events[]': {
                         required: true,
                         minlength: 1
+                    },
+                    'movie_link': {
+                        required: true
                     }
                 },
                 errorPlacement: function (error, element) { // render error placement for each input type
