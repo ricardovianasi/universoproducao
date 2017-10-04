@@ -9,8 +9,10 @@
 namespace MeuUniverso\Controller;
 
 
+use Admin\Validator\Movie\Duration;
 use Admin\Validator\Movie\Unique;
 use Application\Entity\Event\Event;
+use Application\Entity\Event\EventType;
 use Application\Entity\Movie\Media;
 use Application\Entity\Movie\Movie;
 use Application\Entity\Movie\MovieEvent;
@@ -164,6 +166,8 @@ class MovieRegistrationController extends AbstractMeuUniversoRegisterController
             );
             $form->setData($data);
 
+
+            //Validação do título do filme
             $movieTitleValidationOptions = [
                 'object_manager' => $this->getRepository(Movie::class),
                 'user_context' => $this->getAuthenticationService()->getIdentity()->getId(),
@@ -176,9 +180,31 @@ class MovieRegistrationController extends AbstractMeuUniversoRegisterController
             }
 
             $titleExist = new Unique($movieTitleValidationOptions);
-
             $titleInputFilter = $form->getInputFilter()->get('title');
             $titleInputFilter->getValidatorChain()->attach($titleExist);
+
+            //Validação dos médias para mostra tiradentes
+            $hasTiradentesSubscribe = false;
+            if(!empty($data['events'])) {
+                foreach ($data['events'] as $e) {
+                    $event = $this->getRepository(Event::class)->find($e);
+                    if($event && $event->getType() == EventType::MOSTRATIRADENTES) {
+                        $hasTiradentesSubscribe = true;
+                        break;
+                    }
+                }
+            }
+            if($hasTiradentesSubscribe) {
+                $durationInputFilter = $form->getInputFilter()->get('duration');
+                $durationInputFilter->getValidatorChain()->attach(new Duration([
+                    'min' => (30*60),
+                    'max' => (60*60),
+                    'inclusive' => true,
+                    'messages' => [
+                        Duration::ERROR_IS_NOT_MARCH => 'Para Mostra Tiradentes não é permitido inscrição de filmes média'
+                    ]
+                ]));
+            }
 
             if($form->isValid()) {
 
