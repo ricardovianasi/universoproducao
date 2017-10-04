@@ -62,12 +62,12 @@ class Duration extends AbstractValidator
         $totalSeconds = (($hours*60)*60) + ($minutes*60) + $seconds;
 
         if($this->inclusive) {
-            if(!($totalSeconds >= $this->min && $totalSeconds <= $this->max)) {
+            if(($totalSeconds >= $this->min && $totalSeconds <= $this->max)) {
                 $this->error(self::ERROR_IS_NOT_MARCH, $value);
                 return false;
             }
         } else {
-            if(!($totalSeconds > $this->min && $totalSeconds < $this->max)) {
+            if(($totalSeconds > $this->min && $totalSeconds < $this->max)) {
                 $this->error(self::ERROR_IS_NOT_MARCH, $value);
                 return false;
             }

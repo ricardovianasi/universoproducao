@@ -199,7 +199,7 @@ class MovieRegistrationController extends AbstractMeuUniversoRegisterController
                 $durationInputFilter->getValidatorChain()->attach(new Duration([
                     'min' => (30*60),
                     'max' => (60*60),
-                    'inclusive' => true,
+                    'inclusive' => false,
                     'messages' => [
                         Duration::ERROR_IS_NOT_MARCH => 'Para Mostra Tiradentes não é permitido inscrição de filmes média'
                     ]
