@@ -48,7 +48,7 @@ class MailService extends AbstractPlugin
                 }
               ],
               "from": {
-                "email": "relacionamento@universoproducao.com.br"
+                "email": "comunicados@universoproducao.com.br"
               },
               "content": [
                 {
