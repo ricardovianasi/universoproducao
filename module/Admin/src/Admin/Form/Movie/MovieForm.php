@@ -32,19 +32,13 @@ class MovieForm extends Form
         parent::__construct('movie-form');
         $this->setAttributes([
             'method' => 'POST',
-            'class' => 'form-horizontal movie-form',
             'id' => 'submit_form'
         ]);
 
         $this->add([
             'name' => 'title',
             'options' => [
-                'label' => 'Título',
-                'twb-layout' => 'horizontal',
-                'column-size' => 'md-6',
-                'label_attributes' => [
-                    'class' => 'col-md-4'
-                ]
+                'label' => 'Título'
             ],
             'attributes' => [
                 'placeholder' => 'Informe o título do filme',
@@ -55,12 +49,7 @@ class MovieForm extends Form
         $this->add([
             'name' => 'title_english',
             'options' => [
-                'label' => 'Título em inglês',
-                'twb-layout' => 'horizontal',
-                'column-size' => 'md-6',
-                'label_attributes' => [
-                    'class' => 'col-md-4'
-                ]
+                'label' => 'Título em inglês'
             ],
             'attributes' => [
                 'placeholder' => 'Informe o título em inglês do filme'
@@ -72,12 +61,18 @@ class MovieForm extends Form
             'name' => 'production_state',
             'options' => [
                 'label' => 'Estado de produção',
-                'twb-layout' => 'horizontal',
-                'column-size' => 'md-6',
-                'label_attributes' => [
-                    'class' => 'col-md-4'
-                ],
                 'value_options' => $this->populateStates(),
+                'empty_option' => 'Selecione',
+            ],
+            'attributes' => [
+                'required' => 'required',
+            ]
+        ]);
+
+        $this->add([
+            'name' => 'production_country',
+            'options' => [
+                'label' => 'País de produção',
                 'empty_option' => 'Selecione',
             ],
             'attributes' => [
@@ -90,11 +85,6 @@ class MovieForm extends Form
             'name' => 'end_date_year',
             'options' => [
                 'label' => 'Ano de finalização',
-                'twb-layout' => 'horizontal',
-                'column-size' => 'md-6',
-                'label_attributes' => [
-                    'class' => 'col-md-4'
-                ],
                 'value_options' => $this->populateEndDateYear(),
                 'empty_option' => 'Selecione',
             ],
@@ -108,11 +98,6 @@ class MovieForm extends Form
             'name' => 'end_date_month',
             'options' => [
                 'label' => 'Mês de finalização',
-                'twb-layout' => 'horizontal',
-                'column-size' => 'md-6',
-                'label_attributes' => [
-                    'class' => 'col-md-4'
-                ],
                 'value_options' => [
                     1 => 'Janeiro',
                     2 => 'Fevereiro',
@@ -138,12 +123,7 @@ class MovieForm extends Form
             'name' => 'duration',
             'options' => [
                 'label' => 'Duração exata',
-                'help-block' => $this->getDurationHelpBlock(),
-                'twb-layout' => 'horizontal',
-                'column-size' => 'md-6',
-                'label_attributes' => [
-                    'class' => 'col-md-4'
-                ]
+                'help-block' => $this->getDurationHelpBlock()
             ],
             'attributes' => [
                 'required' => 'required',
@@ -155,11 +135,6 @@ class MovieForm extends Form
             'name' => 'cpb',
             'options' => [
                 'label' => 'Número do CPB',
-                'twb-layout' => 'horizontal',
-                'column-size' => 'md-6',
-                'label_attributes' => [
-                    'class' => 'col-md-4'
-                ]
             ],
             'attributes' => [
                 'placeholder' => 'Informe o número do cpb',
@@ -173,11 +148,6 @@ class MovieForm extends Form
             'options' => [
                 'label' => 'O filme possui CPB?',
                 'help-block' => 'Certificado de produto brasileiro emitido pela Ancine',
-                'twb-layout' => 'horizontal',
-                'column-size' => 'md-6',
-                'label_attributes' => [
-                    'class' => 'col-md-4'
-                ],
                 'value_options' => [
                     1 => 'Sim',
                     0 => 'Não'
@@ -200,11 +170,6 @@ class MovieForm extends Form
                     '0' => 'Não'
                 ],
                 'empty_option' => 'Selecione',
-                'twb-layout' => 'horizontal',
-                'column-size' => 'md-6',
-                'label_attributes' => [
-                    'class' => 'col-md-4'
-                ],
             ],
             'attributes' => [
                 'required' => 'required'
@@ -219,11 +184,6 @@ class MovieForm extends Form
                 'label' => 'Classificação',
                 'value_options' => $this->populateOptions(OptionsType::CLASSIFICATION),
                 'empty_option' => 'Selecione',
-                'twb-layout' => 'horizontal',
-                'column-size' => 'md-6',
-                'label_attributes' => [
-                    'class' => 'col-md-4'
-                ],
                 'help-block' => 'Para informações sobre os critérios de classificação indicativa, acesse: http://www.justica.gov.br/seus-direitos/classificacao/guia-pratico'
             ],
             'attributes' => [
@@ -241,11 +201,6 @@ class MovieForm extends Form
                 'label' => 'Formato em que o filme foi finalizado',
                 'value_options' => $this->populateOptions(OptionsType::FORMAT_COMPLETED),
                 'empty_option' => 'Selecione',
-                'twb-layout' => 'horizontal',
-                'column-size' => 'md-6',
-                'label_attributes' => [
-                    'class' => 'col-md-4'
-                ]
             ],
             'attributes' => [
                 'required' => 'required',
@@ -259,11 +214,6 @@ class MovieForm extends Form
                 'label' => 'Janela final para exibição',
                 'value_options' => $this->populateOptions(OptionsType::WINDOW),
                 'empty_option' => 'Selecione',
-                'twb-layout' => 'horizontal',
-                'column-size' => 'md-6',
-                'label_attributes' => [
-                    'class' => 'col-md-4'
-                ]
             ],
             'attributes' => [
                 'required' => 'required',
@@ -277,11 +227,6 @@ class MovieForm extends Form
                 'label' => 'Som',
                 'value_options' => $this->populateOptions(OptionsType::SOUND),
                 'empty_option' => 'Selecione',
-                'twb-layout' => 'horizontal',
-                'column-size' => 'md-6',
-                'label_attributes' => [
-                    'class' => 'col-md-4'
-                ]
             ],
             'attributes' => [
                 'required' => 'required',
@@ -295,11 +240,6 @@ class MovieForm extends Form
                 'label' => 'Cor',
                 'value_options' => $this->populateOptions(OptionsType::COLOR),
                 'empty_option' => 'Selecione',
-                'twb-layout' => 'horizontal',
-                'column-size' => 'md-6',
-                'label_attributes' => [
-                    'class' => 'col-md-4'
-                ]
             ],
             'attributes' => [
                 'required' => 'required',
@@ -313,11 +253,6 @@ class MovieForm extends Form
                 'label' => 'Gênero',
                 'value_options' => $this->populateOptions(OptionsType::GENRE),
                 'empty_option' => 'Selecione',
-                'twb-layout' => 'horizontal',
-                'column-size' => 'md-6',
-                'label_attributes' => [
-                    'class' => 'col-md-4'
-                ]
             ],
             'attributes' => [
                 'required' => 'required',
@@ -331,11 +266,6 @@ class MovieForm extends Form
                 'label' => 'Acessibilidade para pessoas com necessidades especiais?',
                 'value_options' => $this->populateOptions(OptionsType::ACCESSIBILITY),
                 'empty_option' => 'Selecione',
-                'twb-layout' => 'horizontal',
-                'column-size' => 'md-6',
-                'label_attributes' => [
-                    'class' => 'col-md-4'
-                ]
             ]
         ]);
 
@@ -346,11 +276,6 @@ class MovieForm extends Form
                 'label' => 'SE O FILME FOR LONGA, indique quantos LONGAS metragens o diretor já dirigiu',
                 'value_options' => $this->populateOptions(OptionsType::FEATURE_DIRECTED),
                 'empty_option' => 'Selecione',
-                'twb-layout' => 'horizontal',
-                'column-size' => 'md-6',
-                'label_attributes' => [
-                    'class' => 'col-md-4'
-                ]
             ]
         ]);
 
@@ -361,11 +286,6 @@ class MovieForm extends Form
                 'label' => 'Para curta, indique se ele se enquadra em uma das categorias',
                 'value_options' => $this->populateOptions(OptionsType::SHORT_MOVIE_CATEGORY),
                 'empty_option' => 'Selecione',
-                'twb-layout' => 'horizontal',
-                'column-size' => 'md-6',
-                'label_attributes' => [
-                    'class' => 'col-md-4'
-                ],
                 'help-block' => 'marcar uma das categorias NÃO exclui o processo de seleção para participar da mostra principal'
             ]
         ]);
@@ -374,11 +294,6 @@ class MovieForm extends Form
             'name' => 'direction',
             'options' => [
                 'label' => 'Direção',
-                'twb-layout' => 'horizontal',
-                'column-size' => 'md-6',
-                'label_attributes' => [
-                    'class' => 'col-md-4'
-                ]
 
             ],
             'attributes' => [
@@ -391,11 +306,6 @@ class MovieForm extends Form
             'name' => 'script',
             'options' => [
                 'label' => 'Roteiro',
-                'twb-layout' => 'horizontal',
-                'column-size' => 'md-6',
-                'label_attributes' => [
-                    'class' => 'col-md-4'
-                ]
             ],
             'attributes' => [
             ]
@@ -406,11 +316,6 @@ class MovieForm extends Form
             'name' => 'content_scenes',
             'options' => [
                 'label' => 'Informar o conteúdo das cenas',
-                'twb-layout' => 'horizontal',
-                'column-size' => 'md-6',
-                'label_attributes' => [
-                    'class' => 'col-md-4'
-                ],
                 'help-block' => 'Exemplo: cenas de sexo, violência, uso de drogas, etc...'
             ],
             'attributes' => [
@@ -423,11 +328,6 @@ class MovieForm extends Form
             'name' => 'production_company',
             'options' => [
                 'label' => 'Empresa produtora',
-                'twb-layout' => 'horizontal',
-                'column-size' => 'md-6',
-                'label_attributes' => [
-                    'class' => 'col-md-4'
-                ]
             ],
             'attributes' => [
             ]
@@ -438,11 +338,6 @@ class MovieForm extends Form
             'name' => 'direction_production',
             'options' => [
                 'label' => 'Direção de produção',
-                'twb-layout' => 'horizontal',
-                'column-size' => 'md-6',
-                'label_attributes' => [
-                    'class' => 'col-md-4'
-                ]
             ],
             'attributes' => [
             ]
@@ -453,11 +348,6 @@ class MovieForm extends Form
             'name' => 'co_production',
             'options' => [
                 'label' => 'Co-produção',
-                'twb-layout' => 'horizontal',
-                'column-size' => 'md-6',
-                'label_attributes' => [
-                    'class' => 'col-md-4'
-                ]
             ],
             'attributes' => [
             ]
@@ -468,11 +358,6 @@ class MovieForm extends Form
             'name' => 'executive_production',
             'options' => [
                 'label' => 'Produção executiva',
-                'twb-layout' => 'horizontal',
-                'column-size' => 'md-6',
-                'label_attributes' => [
-                    'class' => 'col-md-4'
-                ]
             ],
             'attributes' => [
             ]
@@ -483,11 +368,6 @@ class MovieForm extends Form
             'name' => 'photography',
             'options' => [
                 'label' => 'Fotografia',
-                'twb-layout' => 'horizontal',
-                'column-size' => 'md-6',
-                'label_attributes' => [
-                    'class' => 'col-md-4'
-                ]
             ],
             'attributes' => [
             ]
@@ -498,11 +378,6 @@ class MovieForm extends Form
             'name' => 'direction_art',
             'options' => [
                 'label' => 'Direção de arte',
-                'twb-layout' => 'horizontal',
-                'column-size' => 'md-6',
-                'label_attributes' => [
-                    'class' => 'col-md-4'
-                ]
             ],
             'attributes' => [
             ]
@@ -513,11 +388,6 @@ class MovieForm extends Form
             'name' => 'editing_assembly',
             'options' => [
                 'label' => 'Montagem',
-                'twb-layout' => 'horizontal',
-                'column-size' => 'md-6',
-                'label_attributes' => [
-                    'class' => 'col-md-4'
-                ]
             ],
             'attributes' => [
             ]
@@ -528,11 +398,6 @@ class MovieForm extends Form
             'name' => 'soundtrack',
             'options' => [
                 'label' => 'Trilha sonora',
-                'twb-layout' => 'horizontal',
-                'column-size' => 'md-6',
-                'label_attributes' => [
-                    'class' => 'col-md-4'
-                ]
             ],
             'attributes' => [
             ]
@@ -543,11 +408,6 @@ class MovieForm extends Form
             'name' => 'direct_sound',
             'options' => [
                 'label' => 'Som direto',
-                'twb-layout' => 'horizontal',
-                'column-size' => 'md-6',
-                'label_attributes' => [
-                    'class' => 'col-md-4'
-                ]
             ],
             'attributes' => [
             ]
@@ -558,11 +418,6 @@ class MovieForm extends Form
             'name' => 'mixing',
             'options' => [
                 'label' => 'Mixagem',
-                'twb-layout' => 'horizontal',
-                'column-size' => 'md-6',
-                'label_attributes' => [
-                    'class' => 'col-md-4'
-                ]
             ],
             'attributes' => [
             ]
@@ -573,11 +428,6 @@ class MovieForm extends Form
             'name' => 'sound_editing',
             'options' => [
                 'label' => 'Edição de som',
-                'twb-layout' => 'horizontal',
-                'column-size' => 'md-6',
-                'label_attributes' => [
-                    'class' => 'col-md-4'
-                ]
             ],
             'attributes' => [
             ]
@@ -588,11 +438,6 @@ class MovieForm extends Form
             'name' => 'scenography',
             'options' => [
                 'label' => 'Cenografia',
-                'twb-layout' => 'horizontal',
-                'column-size' => 'md-6',
-                'label_attributes' => [
-                    'class' => 'col-md-4'
-                ]
             ],
             'attributes' => [
             ]
@@ -603,11 +448,6 @@ class MovieForm extends Form
             'name' => 'costume',
             'options' => [
                 'label' => 'Figurino',
-                'twb-layout' => 'horizontal',
-                'column-size' => 'md-6',
-                'label_attributes' => [
-                    'class' => 'col-md-4'
-                ]
             ],
             'attributes' => [
             ]
@@ -618,11 +458,6 @@ class MovieForm extends Form
             'name' => 'cast',
             'options' => [
                 'label' => 'Elenco',
-                'twb-layout' => 'horizontal',
-                'column-size' => 'md-6',
-                'label_attributes' => [
-                    'class' => 'col-md-4'
-                ]
             ],
             'attributes' => [
                 'rows' => 7
@@ -634,11 +469,6 @@ class MovieForm extends Form
             'name' => 'synopsis',
             'options' => [
                 'label' => 'Sinopse',
-                'twb-layout' => 'horizontal',
-                'column-size' => 'md-6',
-                'label_attributes' => [
-                    'class' => 'col-md-4'
-                ]
             ],
             'attributes' => [
                 'rows' => 7,
@@ -651,11 +481,6 @@ class MovieForm extends Form
             'name' => 'filmography_director',
             'options' => [
                 'label' => 'Filmografia do diretor',
-                'twb-layout' => 'horizontal',
-                'column-size' => 'md-6',
-                'label_attributes' => [
-                    'class' => 'col-md-4'
-                ]
             ],
             'attributes' => [
             ]
@@ -671,11 +496,6 @@ class MovieForm extends Form
                     '0' => 'Não'
                 ],
                 'empty_option' => 'Selecione',
-                'twb-layout' => 'horizontal',
-                'column-size' => 'md-6',
-                'label_attributes' => [
-                    'class' => 'col-md-4'
-                ]
             ],
             'attributes' => [
                 'required' => 'required',
@@ -692,11 +512,6 @@ class MovieForm extends Form
                     '0' => 'Não'
                 ],
                 'empty_option' => 'Selecione',
-                'twb-layout' => 'horizontal',
-                'column-size' => 'md-6',
-                'label_attributes' => [
-                    'class' => 'col-md-4'
-                ]
             ],
             'attributes' => [
                 'required' => 'required',
@@ -713,11 +528,6 @@ class MovieForm extends Form
                     '0' => 'Não'
                 ],
                 'empty_option' => 'Selecione',
-                'twb-layout' => 'horizontal',
-                'column-size' => 'md-6',
-                'label_attributes' => [
-                    'class' => 'col-md-4'
-                ]
             ],
             'attributes' => [
                 'required' => 'required',
@@ -729,11 +539,6 @@ class MovieForm extends Form
             'name' => 'conversations_languages',
             'options' => [
                 'label' => 'Informe em qual(is) idioma(s)',
-                'twb-layout' => 'horizontal',
-                'column-size' => 'md-6',
-                'label_attributes' => [
-                    'class' => 'col-md-4'
-                ]
             ],
             'attributes' => [
                 'required' => 'required',
@@ -745,11 +550,6 @@ class MovieForm extends Form
             'name' => 'subtitles_languages',
             'options' => [
                 'label' => 'Informe em qual(is) idioma(s)',
-                'twb-layout' => 'horizontal',
-                'column-size' => 'md-6',
-                'label_attributes' => [
-                    'class' => 'col-md-4'
-                ]
             ],
             'attributes' => [
                 'required' => 'required',
@@ -761,11 +561,6 @@ class MovieForm extends Form
             'name' => 'conversations_list_languages',
             'options' => [
                 'label' => 'Informe em qual(is) idioma(s)',
-                'twb-layout' => 'horizontal',
-                'column-size' => 'md-6',
-                'label_attributes' => [
-                    'class' => 'col-md-4'
-                ]
             ],
             'attributes' => [
                 'required' => 'required',
@@ -782,11 +577,6 @@ class MovieForm extends Form
                     '0' => 'Não'
                 ],
                 'empty_option' => 'Selecione',
-                'twb-layout' => 'horizontal',
-                'column-size' => 'md-6',
-                'label_attributes' => [
-                    'class' => 'col-md-4'
-                ]
             ],
             'attributes' => [
                 'required' => 'required',
@@ -799,11 +589,6 @@ class MovieForm extends Form
             'options' => [
                 'label' => 'Cite os festivais e prêmios recebidos',
                 'help-block' => '',
-                'twb-layout' => 'horizontal',
-                'column-size' => 'md-6',
-                'label_attributes' => [
-                    'class' => 'col-md-4'
-                ]
             ],
             'attributes' => [
             ]
@@ -815,11 +600,6 @@ class MovieForm extends Form
             'options' => [
                 'label' => 'Link de divulgação',
                 'help-block' => 'Inserir link do Vimeo ou Youtube',
-                'twb-layout' => 'horizontal',
-                'column-size' => 'md-6',
-                'label_attributes' => [
-                    'class' => 'col-md-4'
-                ]
             ],
             'attributes' => [
             ]
@@ -831,11 +611,6 @@ class MovieForm extends Form
             'options' => [
                 'label' => 'Link de acesso ao filme',
                 'help-block' => 'A organização do evento não se responsabiliza por links incorretos. O filme poderá ser excluído do processo de seleção caso não seja possível ter acesso e/ou  visualização do mesmo',
-                'twb-layout' => 'horizontal',
-                'column-size' => 'md-6',
-                'label_attributes' => [
-                    'class' => 'col-md-4'
-                ]
             ],
             'attributes' => [
                 'required' => 'required',
@@ -848,11 +623,6 @@ class MovieForm extends Form
             'options' => [
                 'label' => 'Senha de acesso ao filme',
                 'help-block' => 'Se for necessário senha para acesso ao filme informe nesse campo',
-                'twb-layout' => 'horizontal',
-                'column-size' => 'md-6',
-                'label_attributes' => [
-                    'class' => 'col-md-4'
-                ]
             ],
             'attributes' => [
             ]

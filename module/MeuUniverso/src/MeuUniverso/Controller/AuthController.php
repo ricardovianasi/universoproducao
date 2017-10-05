@@ -27,6 +27,17 @@ class AuthController extends AbstractMeuUniversoController
 
             if ($authResult->isValid()) {
 
+                /** @var User $user */
+                $user = $this->getAuthenticationService()->getIdentity();
+
+                if(!$user->getConfirmedRegister()) {
+                    $this->getAuthenticationService()->clearIdentity();
+                    return [
+                        'error' => true,
+                        'reason' => 'user_not_confirmed_register'
+                    ];
+                }
+
                 $session = new Container();
                 if($session->offsetExists('last_url_accessed_before_login')) {
                     $redirect = $session->offsetGet('last_url_accessed_before_login');

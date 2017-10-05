@@ -87,6 +87,9 @@ class User extends AbstractEntity implements InputFilterAwareInterface
 	/** @ORM\Column(name="change_password_required", type="boolean") */
 	private $changePasswordRequired = false;
 
+    /** @ORM\Column(name="update_register_required", type="boolean") */
+	private $updateRegisterRequired = true;
+
     /** @ORM\OneToMany(targetEntity="Application\Entity\Phone\Phone", mappedBy="user", cascade="ALL") */
 	private $phones;
 
@@ -518,6 +521,22 @@ class User extends AbstractEntity implements InputFilterAwareInterface
     public function setIdentifier($identifier)
     {
         $this->identifier = $identifier;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getUpdateRegisterRequired()
+    {
+        return $this->updateRegisterRequired;
+    }
+
+    /**
+     * @param mixed $updateRegisterRequired
+     */
+    public function setUpdateRegisterRequired($updateRegisterRequired)
+    {
+        $this->updateRegisterRequired = $updateRegisterRequired;
     }
 
 	public function getInputFilter()

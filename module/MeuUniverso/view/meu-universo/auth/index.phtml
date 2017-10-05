@@ -2,7 +2,12 @@
     <p class="meuuniverso-brand meuuniverso-brand--center"><strong>Meu</strong>Universo</p>
 
     <?php if($this->error): ?>
-        <div class="alert alert-danger">Usuário ou senha inválidos</div>
+
+        <?php if(isset($this->reason) && $this->reason == 'user_not_confirmed_register'): ?>
+            <div class="alert alert-danger">Confimação de conta necessária. Por favor, acesse seu e-mail e clique no link de validação</div>
+        <?php else: ?>
+            <div class="alert alert-danger">Usuário ou senha inválidos</div>
+        <?php endif; ?>
     <?php endif; ?>
 
     <form action="" method="post" class="userlogin-form">

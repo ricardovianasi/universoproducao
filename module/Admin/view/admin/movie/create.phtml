@@ -31,73 +31,134 @@
 			<div class="portlet">
                 <div class="portlet-body form">
                     <div class="form-body">
-                        <?php echo $this->formRow($form->get('title')) ?>
-                        <?php echo $this->formRow($form->get('title_english')) ?>
-                        <?php echo $this->formRow($form->get('production_state')) ?>
-                        <?php echo $this->formRow($form->get('end_date_year')) ?>
-                        <?php echo $this->formRow($form->get('end_date_month')) ?>
 
-                        <?php echo $this->formRow($form->get('duration')) ?>
-                        <?php echo $this->formRow($form->get('has_cpb')) ?>
-                        <?php echo $this->formRow($form->get('cpb')) ?>
-                        <?php echo $this->formRow($form->get('has_official_classification')) ?>
-                        <?php echo $this->formRow($form->get('options[classification]')) ?>
-                        <?php echo $this->formRow($form->get('content_scenes')) ?>
+                        <h3 class="form-section">Inscrição</h3>
 
-                        <?php echo $this->formRow($form->get('options[format_completed]')) ?>
-                        <?php echo $this->formRow($form->get('options[window]')) ?>
-                        <?php echo $this->formRow($form->get('options[sound]')) ?>
-                        <?php echo $this->formRow($form->get('options[color]')) ?>
-                        <?php echo $this->formRow($form->get('options[genre]')) ?>
-                        <?php echo $this->formRow($form->get('options[accessibility]')) ?>
-                        <?php echo $this->formRow($form->get('options[feature_directed]')) ?>
-                        <?php echo $this->formRow($form->get('options[short_movie_category]')) ?>
 
-                        <?php echo $this->formRow($form->get('has_conversations_languages')) ?>
-                        <?php echo $this->formRow($form->get('conversations_languages')) ?>
-                        <?php echo $this->formRow($form->get('has_subtitles_languages')) ?>
-                        <?php echo $this->formRow($form->get('subtitles_languages')) ?>
-                        <?php echo $this->formRow($form->get('has_conversations_list_languages')) ?>
-                        <?php echo $this->formRow($form->get('conversations_list_languages')) ?>
-                        <?php echo $this->formRow($form->get('has_participated_other_festivals')) ?>
-                        <?php echo $this->formRow($form->get('other_festivals')) ?>
+                        <h3 class="form-section">Ficha técnica</h3>
 
-                        <?php echo $this->formRow($form->get('direction')) ?>
-                        <?php echo $this->formRow($form->get('script')) ?>
-                        <?php echo $this->formRow($form->get('production_company')) ?>
-                        <?php echo $this->formRow($form->get('co_production')) ?>
-                        <?php echo $this->formRow($form->get('executive_production')) ?>
-                        <?php echo $this->formRow($form->get('direction_production')) ?>
-                        <?php echo $this->formRow($form->get('editing_assembly')) ?>
-                        <?php echo $this->formRow($form->get('photography')) ?>
-                        <?php echo $this->formRow($form->get('direction_art')) ?>
-                        <?php echo $this->formRow($form->get('soundtrack')) ?>
-                        <?php echo $this->formRow($form->get('mixing')) ?>
-                        <?php echo $this->formRow($form->get('direct_sound')) ?>
-                        <?php echo $this->formRow($form->get('sound_editing')) ?>
-                        <?php echo $this->formRow($form->get('scenography')) ?>
-                        <?php echo $this->formRow($form->get('costume')) ?>
-                        <?php echo $this->formRow($form->get('cast')) ?>
-                        <?php echo $this->formRow($form->get('synopsis')) ?>
-
-                        <?php echo $this->formRow($form->get('movie_link')) ?>
-                        <?php echo $this->formRow($form->get('movie_password')) ?>
-                        <?php echo $this->formRow($form->get('movie_divulgation')) ?>
-
-                        <h3 class="h3 form-section">Imagens</h3>
-
-                        <div class="clearfix margin-top-10">
-                            <span class="label label-danger">Atenção!</span> Formatos válidos: JPG ou PNG. Tamanho mínimo de 800KB e máximo de 2MB por imagem.
+                        <div class="row">
+                            <div class="col-md-6"><?php echo $this->formRow($form->get('title')) ?></div>
+                            <div class="col-md-6"><?php echo $this->formRow($form->get('title_english')) ?></div>
                         </div>
 
-                        <?php for($i=1; $i<=1; $i++): ?>
-                            <div class="form-group ">
-                                <label class="control-label col-md-4">Imagem <?php echo $i ?></label>
-                                <div class="col-md-6">
+                        <div class="row">
+                            <div class="col-md-6"><?php echo $this->formRow($form->get('production_country')) ?></div>
+                            <div class="col-md-6"><?php echo $this->formRow($form->get('production_state')) ?></div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4"><?php echo $this->formRow($form->get('end_date_year')) ?></div>
+                            <div class="col-md-4"><?php echo $this->formRow($form->get('end_date_month')) ?></div>
+                            <div class="col-md-4"><?php echo $this->formRow($form->get('duration')) ?></div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4"><?php echo $this->formRow($form->get('has_cpb')) ?></div>
+                            <div class="col-md-4"><?php echo $this->formRow($form->get('cpb')) ?></div>
+                            <div class="col-md-4"><?php echo $this->formRow($form->get('has_official_classification')) ?></div>
+                        </div>
+
+                        <div class="row">
+
+                            <div class="col-md-4"><?php echo $this->formRow($form->get('options[classification]')) ?></div>
+                            <div class="col-md-8"><?php echo $this->formRow($form->get('content_scenes')) ?></div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4"><?php echo $this->formRow($form->get('options[format_completed]')) ?></div>
+                            <div class="col-md-4"><?php echo $this->formRow($form->get('options[window]')) ?></div>
+                            <div class="col-md-4"><?php echo $this->formRow($form->get('options[sound]')) ?></div>
+
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4"><?php echo $this->formRow($form->get('options[color]')) ?></div>
+                            <div class="col-md-4"><?php echo $this->formRow($form->get('options[genre]')) ?></div>
+                            <div class="col-md-4"><?php echo $this->formRow($form->get('options[accessibility]')) ?></div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4"><?php echo $this->formRow($form->get('options[feature_directed]')) ?></div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4"><?php echo $this->formRow($form->get('options[short_movie_category]')) ?></div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4"><?php echo $this->formRow($form->get('has_conversations_languages')) ?></div>
+                            <div class="col-md-8"><?php echo $this->formRow($form->get('conversations_languages')) ?></div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4"><?php echo $this->formRow($form->get('has_subtitles_languages')) ?></div>
+                            <div class="col-md-8"><?php echo $this->formRow($form->get('subtitles_languages')) ?></div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4"><?php echo $this->formRow($form->get('has_conversations_list_languages')) ?></div>
+                            <div class="col-md-8"><?php echo $this->formRow($form->get('conversations_list_languages')) ?></div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4"><?php echo $this->formRow($form->get('has_participated_other_festivals')) ?></div>
+                            <div class="col-md-8"><?php echo $this->formRow($form->get('other_festivals')) ?></div>
+                        </div>
+
+                        <h3 class="form-section">Produção/Direção/Edição</h3>
+
+                        <div class="row">
+                            <div class="col-md-4"><?php echo $this->formRow($form->get('direction')) ?></div>
+                            <div class="col-md-4"><?php echo $this->formRow($form->get('script')) ?></div>
+                            <div class="col-md-4"><?php echo $this->formRow($form->get('production_company')) ?></div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4"><?php echo $this->formRow($form->get('co_production')) ?></div>
+                            <div class="col-md-4"><?php echo $this->formRow($form->get('executive_production')) ?></div>
+                            <div class="col-md-4"><?php echo $this->formRow($form->get('direction_production')) ?></div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4"><?php echo $this->formRow($form->get('editing_assembly')) ?></div>
+                            <div class="col-md-4"><?php echo $this->formRow($form->get('photography')) ?></div>
+                            <div class="col-md-4"><?php echo $this->formRow($form->get('direction_art')) ?></div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4"><?php echo $this->formRow($form->get('soundtrack')) ?></div>
+                            <div class="col-md-4"><?php echo $this->formRow($form->get('mixing')) ?></div>
+                            <div class="col-md-4"><?php echo $this->formRow($form->get('direct_sound')) ?></div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4"><?php echo $this->formRow($form->get('sound_editing')) ?></div>
+                            <div class="col-md-4"><?php echo $this->formRow($form->get('scenography')) ?></div>
+                            <div class="col-md-4"><?php echo $this->formRow($form->get('costume')) ?></div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6"><?php echo $this->formRow($form->get('cast')) ?></div>
+                            <div class="col-md-6"><?php echo $this->formRow($form->get('synopsis')) ?></div>
+                        </div>
+
+                        <h3 class="form-section">Multimídia</h3>
+
+                        <div class="row">
+                            <div class="col-md-4"><?php echo $this->formRow($form->get('movie_link')) ?></div>
+                            <div class="col-md-4"><?php echo $this->formRow($form->get('movie_password')) ?></div>
+                            <div class="col-md-4"><?php echo $this->formRow($form->get('movie_divulgation')) ?></div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group ">
+                                    <label class="control-label">Imagem</label>
                                     <?php
                                     $mediaSrc = null;
-                                    if($form->has("media_src_$i")) {
-                                        $mediaSrc = $form->get("media_src_$i")->getValue();
+                                    if($form->has("media_src_1")) {
+                                        $mediaSrc = $form->get("media_src_1")->getValue();
                                     }
                                     ?>
                                     <div class="fileinput <?php echo $mediaSrc ? "fileinput-exists" : "fileinput-new" ?> " data-provides="fileinput">
@@ -106,14 +167,14 @@
                                                 <img src="<?php echo $this->fileManipulation()->url($mediaSrc); ?>" alt="">
                                             <?php endif; ?>
                                         </div>
-                                        <?php echo $this->formElement($form->get("media_caption_$i")) ?>
+                                        <?php echo $this->formElement($form->get("media_caption_1")) ?>
                                         <div>
                                             <span class="btn red btn-outline btn-file">
                                                 <span class="fileinput-new"> Selecionar imagem </span>
                                                 <span class="fileinput-exists"> Alterar </span>
-                                                <?php echo $this->formElement($form->get("media_file_$i")); ?>
-                                                <?php echo $this->formElement($form->get("media_id_$i")); ?>
-                                                <?php echo $this->formElement($form->get("media_src_$i")); ?>
+                                                <?php echo $this->formElement($form->get("media_file_1")); ?>
+                                                <?php echo $this->formElement($form->get("media_id_1")); ?>
+                                                <?php echo $this->formElement($form->get("media_src_1")); ?>
                                             </span>
                                             <a href="javascript:;" class="btn red fileinput-exists" data-dismiss="fileinput"> Remover </a>
                                         </div>
@@ -121,8 +182,7 @@
                                     <?php echo $this->formElementErrors($form->get("media_file_1")); ?>
                                 </div>
                             </div>
-                        <?php endfor; ?>
-
+                        </div>
                     </div>
                     <div class="form-actions">
                         <div class="row">
