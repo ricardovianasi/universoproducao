@@ -10,6 +10,7 @@ use Application\Service\EntityManagerAwareInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use MeuUniverso\Form\NewUserForm;
 use MeuUniverso\Form\UserForm;
+use MeuUniverso\Form\ValidateUserForm;
 use Util\Controller\AbstractController;
 use Util\Security\Crypt;
 use Zend\I18n\Filter\Alnum;
@@ -144,8 +145,6 @@ class RegisterController extends AbstractMeuUniversoController
         $identity = $this->getAuthenticationService()->getIdentity();
         $user = $this->getRepository(User::class)->find($identity->getId());
 
-        $form->setInputFilter($user->getInputFilter());
-
         if ($this->getRequest()->isPost()) {
             $form->setData($this->getRequest()->getPost());
             if ($form->isValid()) {
@@ -197,11 +196,7 @@ class RegisterController extends AbstractMeuUniversoController
     public function validarAction()
     {
         //Formulários
-        $form = new UserForm($this->getEntityManager());
-        $form->get('email')->setAttributes([
-            'disabled' => 'disabled',
-            'required' => false
-        ]);
+        $form = new ValidateUserForm($this->getEntityManager());
         $phoneForm = new PhoneForm();
 
         $hash = $this->params()->fromRoute('id');
@@ -227,8 +222,6 @@ class RegisterController extends AbstractMeuUniversoController
                 $user->setConfirmedRegister(true);
                 $this->getEntityManager()->persist($user);
                 $this->getEntityManager()->flush();
-
-                $form->setInputFilter($user->getInputFilter());
 
                 if ($this->getRequest()->isPost()) {
                     $form->setData($this->getRequest()->getPost());

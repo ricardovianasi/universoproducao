@@ -16,10 +16,8 @@ use Zend\InputFilter\InputFilterInterface;
  * @ORM\Table(name="user")
  * @ORM\Entity(repositoryClass="Application\Repository\User\User")
  */
-class User extends AbstractEntity implements InputFilterAwareInterface
+class User extends AbstractEntity
 {
-	protected $inputFilter;
-
 	/**
 	 * @ORM\Column(name="id", type="integer", nullable=false)
 	 * @ORM\Id
@@ -538,67 +536,4 @@ class User extends AbstractEntity implements InputFilterAwareInterface
     {
         $this->updateRegisterRequired = $updateRegisterRequired;
     }
-
-	public function getInputFilter()
-	{
-		if(!$this->inputFilter) {
-			$inputFilter = new InputFilter();
-			$factory = new Factory();
-
-			$inputFilter->add($factory->createInput([
-				'name' => 'identifier',
-				'required' => false,
-				'filters'  => $this->getDefaultInputFilters()
-			]));
-
-			$inputFilter->add($factory->createInput([
-				'name' => 'email',
-				'required' => true,
-				'filters'  => $this->getDefaultInputFilters(),
-				'validators' => [
-					['name' => 'email_address']
-				]
-			]));
-
-			$inputFilter->add($factory->createInput([
-				'name' => 'cep',
-				'required' => true,
-				'filters'  => array_merge(
-					$this->getDefaultInputFilters(),
-					[
-						['name' => 'Digits']
-					]
-				)
-			]));
-
-			$inputFilter->add($factory->createInput([
-				'name' => 'address',
-				'required' => true,
-				'filters'  => $this->getDefaultInputFilters()
-			]));
-
-			$inputFilter->add($factory->createInput([
-				'name' => 'number',
-				'required' => true,
-				'filters'  => $this->getDefaultInputFilters()
-			]));
-
-			$inputFilter->add($factory->createInput([
-				'name' => 'district',
-				'required' => true,
-				'filters'  => $this->getDefaultInputFilters()
-			]));
-
-            $inputFilter->add($factory->createInput([
-                 'name' => 'gender',
-                 'required' => false,
-                 'allow_empty' => true,
-                 'filters'  => $this->getDefaultInputFilters()
-             ]));
-
-			$this->inputFilter = $inputFilter;
-		}
-
-		return $this->inputFilter;
-	}
 }
