@@ -102,7 +102,7 @@ class Movie extends AbstractEntity
     private $conversationsListLanguages;
 
     /** @ORM\Column(name="filmography_director", type="string", nullable=true) */
-    private $filmography_director;
+    private $filmographyDirector;
 
     /** @ORM\Column(name="other_festivals", type="string", nullable=true) */
     private $otherFestivals;
@@ -618,7 +618,7 @@ class Movie extends AbstractEntity
      */
     public function getFilmographyDirector()
     {
-        return $this->filmography_director;
+        return $this->filmographyDirector;
     }
 
     /**
@@ -626,7 +626,7 @@ class Movie extends AbstractEntity
      */
     public function setFilmographyDirector($filmography_director)
     {
-        $this->filmography_director = $filmography_director;
+        $this->filmographyDirector = $filmography_director;
     }
 
     /**
