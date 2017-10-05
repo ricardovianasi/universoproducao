@@ -31,7 +31,7 @@ class MovieController extends AbstractAdminController
 
         $data = $searchForm->getData();
 
-        $items = $this->search(Movie::class, $data);;
+        $items = $this->search(Movie::class, $data, ['createdAt' => 'DESC']);;
         $this->getViewModel()->setVariables([
             'items' => $items,
             'searchForm' => $searchForm
