@@ -144,6 +144,8 @@ class RegisterController extends AbstractMeuUniversoController
         $identity = $this->getAuthenticationService()->getIdentity();
         $user = $this->getRepository(User::class)->find($identity->getId());
 
+        $form->setInputFilter($user->getInputFilter());
+
         if ($this->getRequest()->isPost()) {
             $form->setData($this->getRequest()->getPost());
             if ($form->isValid()) {
@@ -225,6 +227,8 @@ class RegisterController extends AbstractMeuUniversoController
                 $user->setConfirmedRegister(true);
                 $this->getEntityManager()->persist($user);
                 $this->getEntityManager()->flush();
+
+                $form->setInputFilter($user->getInputFilter());
 
                 if ($this->getRequest()->isPost()) {
                     $form->setData($this->getRequest()->getPost());

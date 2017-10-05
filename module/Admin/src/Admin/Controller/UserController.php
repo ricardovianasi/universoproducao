@@ -61,8 +61,8 @@ class UserController extends AbstractAdminController implements CrudInterface
 			$user = $this->getRepository(User::class)->find($id);
 		} else {
 			$user = new User();
-//			$user->setPassword(Crypt::getInstance()->generateEncryptPass($tempPass));
-//			$user->setChangePasswordRequired(true);
+			//$user->setPassword(Crypt::getInstance()->generateEncryptPass());
+			$user->setChangePasswordRequired(true);
 			$user->setConfirmedRegister(false);
 		}
 
