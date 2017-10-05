@@ -17,6 +17,7 @@ use Admin\Form\ExternalUser\UserSearch;
 use Application\Entity\City;
 use Application\Entity\Phone\Phone;
 use Application\Entity\User\Dependent;
+use Application\Entity\User\Hash;
 use Application\Entity\User\User;
 use Doctrine\Common\Collections\ArrayCollection;
 use Util\Security\Crypt;
@@ -205,6 +206,47 @@ class UserController extends AbstractAdminController implements CrudInterface
 
         $this->messages()->flashSuccess("Usuário validado com sucesso.");
         $this->userLog()->log($user, 'Cadastro de usuário validado');
+        return $this->redirect()->toRoute('admin/default', [
+            'controller' => 'user',
+            'action' => 'update',
+            'id' => $user->getId()
+        ]);
+    }
+
+    public function recoverPasswordAction()
+    {
+        $userId = $this->params()->fromRoute($this->getIdentifierName());
+
+        /** @var User $user */
+        $user = $this->getRepository(User::class)->find($userId);
+        if(!$user) {
+            $this->messages()->flashError("Usuário não encontrado!");
+            return $this->redirect()->toRoute('admin/default', [
+                'controller' => 'user',
+                'action' => 'indeex'
+            ]);
+        }
+
+        $hash = new Hash();
+        $hash->setUser($user);
+        $this->getEntityManager()->persist($hash);
+        $this->getEntityManager()->flush();
+
+        $link = $this->url()->fromRoute('meu-universo/auth', ['action'=>'alterar-senha', 'id'=>$hash->getHash()]);
+
+        //Enviar email de confirmação
+        $msg = '<p>Olá <strong>'.$user->getName().'</strong>!</p>';
+        $msg.= '<p>Esqueceu sua senha? Não tem problema. Crie uma nova clicando no botão abaixo: </p>';
+        $msg.= '<p style="text-align: center">'.$this->mailService()->generateButton('Gerar nova senha', $link).'</p>';
+        $msg.= '<p>Se o botão não funcionar, copie e cole o seguinte link em seu navegador:</p>
+                <p><a href="'.$link.'">'.$link.'</a></p>';
+
+        $to[$user->getName()] = $user->getEmail();
+        $this->mailService()->simpleSendEmail($to, "Recuperar senha", $msg);
+
+        $this->messages()->flashSuccess("E-mail de recuperação de senha enviado com sucesso!");
+        $this->userLog()->log($user, 'Recuperação de senha solicitado');
+
         return $this->redirect()->toRoute('admin/default', [
             'controller' => 'user',
             'action' => 'update',

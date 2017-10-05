@@ -5,11 +5,11 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
                 <h4 class="modal-title">Recuperar senha</h4>
             </div>
-            <div class="modal-body">As instruções para recuperação da senha será enviado para <b><?php echo $this->user->getEmail(); ?></b>
-                <br /> <br />Certifique-se que o e-mail cadastrado está correto. Para alter acesse o cadastro do usuário</div>
+            <div class="modal-body">As instruções para recuperação da senha serão enviados para <b><?php echo $this->user->getEmail(); ?></b>
+                <br /> <br />Certifique-se que o e-mail cadastrado está correto. Para alterar, acesse o cadastro do usuário.</div>
             <div class="modal-footer">
                 <button type="button" class="btn dark btn-outline" data-dismiss="modal">Não enviar</button>
-                <a href="<?php echo $this->url('admin/default', ['controller'=>'user', 'action'=>'validate-user', 'id'=>$this->user->getId()]) ?>" type="button" class="btn green">Enviar</a>
+                <a href="<?php echo $this->url('admin/default', ['controller'=>'user', 'action'=>'recover-password', 'id'=>$this->user->getId()]) ?>" type="button" class="btn green">Enviar</a>
             </div>
         </div>
         <!-- /.modal-content -->
