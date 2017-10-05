@@ -31,14 +31,12 @@
 			<div class="portlet">
                 <div class="portlet-body form">
                     <div class="form-body">
-
-
                         <?php echo $this->formRow($form->get('title')) ?>
                         <?php echo $this->formRow($form->get('title_english')) ?>
                         <?php echo $this->formRow($form->get('production_state')) ?>
                         <?php echo $this->formRow($form->get('end_date_year')) ?>
                         <?php echo $this->formRow($form->get('end_date_month')) ?>
-                        <?php echo $this->formRow($form->get('options[category]')) ?>
+
                         <?php echo $this->formRow($form->get('duration')) ?>
                         <?php echo $this->formRow($form->get('has_cpb')) ?>
                         <?php echo $this->formRow($form->get('cpb')) ?>
@@ -92,7 +90,7 @@
                             <span class="label label-danger">Atenção!</span> Formatos válidos: JPG ou PNG. Tamanho mínimo de 800KB e máximo de 2MB por imagem.
                         </div>
 
-                        <?php for($i=1; $i<=3; $i++): ?>
+                        <?php for($i=1; $i<=1; $i++): ?>
                             <div class="form-group ">
                                 <label class="control-label col-md-4">Imagem <?php echo $i ?></label>
                                 <div class="col-md-6">
