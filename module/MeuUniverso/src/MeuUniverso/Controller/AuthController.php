@@ -177,6 +177,8 @@ class AuthController extends AbstractMeuUniversoController
                 $this->getEntityManager()->persist($user);
                 $this->getEntityManager()->flush();
 
+                $this->getAuthenticationService()->clearIdentity();
+
                 return [
                     'error' => false,
                     'reason' => 'password_change'

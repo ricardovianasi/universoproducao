@@ -547,7 +547,7 @@ class User extends AbstractEntity implements InputFilterAwareInterface
 
 			$inputFilter->add($factory->createInput([
 				'name' => 'identifier',
-				'required' => true,
+				'required' => false,
 				'filters'  => $this->getDefaultInputFilters()
 			]));
 
