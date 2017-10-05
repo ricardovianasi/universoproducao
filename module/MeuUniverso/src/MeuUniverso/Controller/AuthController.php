@@ -173,6 +173,7 @@ class AuthController extends AbstractMeuUniversoController
                 }
 
                 $user->setPassword(Crypt::getInstance()->generateEncryptPass($validData['password']));
+                $user->setChangePasswordRequired(false);
                 $this->getEntityManager()->persist($user);
                 $this->getEntityManager()->flush();
 
