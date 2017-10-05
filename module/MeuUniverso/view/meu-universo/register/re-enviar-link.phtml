@@ -1,0 +1,17 @@
+<div class="userlogin-wrapper">
+    <p class="meuuniverso-brand meuuniverso-brand--center"><strong>Meu</strong>Universo</p>
+
+    <?php if($this->error): ?>
+        <div class="alert alert-danger">Não identificamos seu cadastro. Por favor, tente novamente!</div>
+    <?php endif; ?>
+
+    <?php if($this->success): ?>
+        <div class="alert">O link de ativação foi enviado para o e-mail cadastrado</div>
+    <?php endif; ?>
+
+    <form action="" method="post" class="userlogin-form">
+        <input class="input" required name="identifier" placeholder="CPF, CNPJ ou Passaporte">
+        <input class="input" required name="login" placeholder="E-mail">
+        <button class="submit" class="userlogin-submit">Re-enviar link de confirmação</button>
+    </form>
+</div>

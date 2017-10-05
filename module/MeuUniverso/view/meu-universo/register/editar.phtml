@@ -1,4 +1,11 @@
 <div class="container">
     <p class="meuuniverso-brand meuuniverso-brand--center"><strong>Meu</strong>Universo | Editar</p>
+    <?php if($this->requiredUpdate): ?>
+        <div class="note note-info">
+            <h4 class="block">Atualização de cadastro necessária</h4>
+            <p> Antes de continuar será necessário atualiza os dados do seu cadstro. Por favor, complete as informações abaixo. </p>
+        </div>
+    <?php endif; ?>
+
     <?php echo $this->partial("meu-universo/register/_user_form.phtml"); ?>
 </div>

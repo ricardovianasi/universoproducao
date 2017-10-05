@@ -15,6 +15,13 @@
         </div>
     <?php endif; ?>
 
+    <?php if($this->requiredUpdate): ?>
+        <div class="note note-info">
+            <h4 class="block">Atualização de senha necessária</h4>
+            <p> Sua senha precisa ser alterada. Por favor, informe os dados abaixo. </p>
+        </div>
+    <?php endif; ?>
+
     <?php
         if($this->form) {
             $form = $this->form;

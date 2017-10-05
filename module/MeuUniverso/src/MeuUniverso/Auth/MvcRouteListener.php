@@ -10,6 +10,7 @@ namespace MeuUniverso\Auth;
 
 use Admin\Auth\Identity\GuestIdentity;
 use Admin\Auth\Identity\IdentityInterface;
+use Application\Entity\User\User;
 use MeuUniverso\Controller\RegisterController;
 use Zend\Authentication\AuthenticationService;
 use Zend\EventManager\AbstractListenerAggregate;
@@ -75,13 +76,14 @@ class MvcRouteListener extends AbstractListenerAggregate
 		}
 
 		if($controller == RegisterController::class) {
-            if($action == 'novo' | $action == 'validar') {
+            if($action == 'novo' || $action == 'validar' || $action == 're-enviar-link') {
                 return;
             }
         }
 
 		$authentication = $this->getAuthenticationService();
 
+		/** @var User|null $identity */
 		$identity = null;
 		if($authentication->hasIdentity()) {
 			$identity = $authentication->getIdentity();
@@ -106,6 +108,34 @@ class MvcRouteListener extends AbstractListenerAggregate
 			$response->sendHeaders();
 			exit();
 		}
+
+        if($controller == RegisterController::class) {
+            if($action == 'editar') {
+                return;
+            }
+        }
+
+        if($identity->getUpdateRegisterRequired()) {
+            $updateRegisterUrl = $mvcEvent->getRouter()->assemble(['action'=>'editar'], ['name'=>'meu-universo/register']);
+            $updateRegisterUrl.='?atualizacao-necessaria=1';
+
+            $response = $mvcEvent->getResponse();
+            $response->getHeaders()->addHeaderLine('Location', $updateRegisterUrl);
+            $response->setStatusCode(302);
+            $response->sendHeaders();
+            exit();
+        }
+
+        if($identity->getChangePasswordRequired()) {
+            $changePassUrl = $mvcEvent->getRouter()->assemble(['action'=>'alterar-senha'], ['name'=>'meu-universo/auth']);
+            $changePassUrl.='?atualizacao-necessaria=1';
+            $response = $mvcEvent->getResponse();
+            $response->getHeaders()->addHeaderLine('Location', $changePassUrl);
+            $response->setStatusCode(302);
+            $response->sendHeaders();
+            exit();
+
+        }
 	}
 
 	/**

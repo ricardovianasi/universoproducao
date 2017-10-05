@@ -4,7 +4,10 @@
     <?php if($this->error): ?>
 
         <?php if(isset($this->reason) && $this->reason == 'user_not_confirmed_register'): ?>
-            <div class="alert alert-danger">Confimação de conta necessária. Por favor, acesse seu e-mail e clique no link de validação</div>
+            <div class="alert alert-danger">
+                <p>Confimação de conta necessária. Por favor, acesse seu e-mail e clique no link de validação.</p>
+                <p>Você tambem pode <a href="<?php echo $this->url('meu-universo/register', ['action'=>'re-enviar-link']) ?>">Re-enviar link de ativação</a></p>
+            </div>
         <?php else: ?>
             <div class="alert alert-danger">Usuário ou senha inválidos</div>
         <?php endif; ?>
@@ -23,16 +26,18 @@
     </div>
 </div>
 
-<?php $this->inlineScript()->captureStart();
+<?php if(!$this->error): ?>
+    <?php $this->inlineScript()->captureStart();
 echo <<<JS
-$(document).ready(function() {
-    $.fancybox.open('<div class="" id="novo-sistema" style="width: 500px; height: 300px;">\
-        <h2 style="font-size: 24px; font-weight: 900; margin-bottom: 24px;">Novo sistema</h2>\
-        <p style="margin-bottom: 18px;">Olá! Nosso sistema está passando por mudanças.</p>\
-        <p style="margin-bottom: 18px;">Se você já possuia um login e senha para acesso ao portal da Universo Produção, eles não valem mais. É necessário efetuar um novo cadastro.</p>\
-        <p><a href="http://meu-universo.universoproducao.com.br/cadastro/novo" class="tricks-link">Quero me cadastrar</a></p>\
-    </div>');
-});
+    $(document).ready(function() {
+        $.fancybox.open('<div class="" id="novo-sistema" style="width: 500px; height: 300px;">\
+            <h2 style="font-size: 24px; font-weight: 900; margin-bottom: 24px;">Novo sistema</h2>\
+            <p style="margin-bottom: 18px;">Olá! Nosso sistema está passando por mudanças.</p>\
+            <p style="margin-bottom: 18px;">Se você já possuia um login e senha para acesso ao portal da Universo Produção, eles não valem mais. É necessário efetuar um novo cadastro.</p>\
+            <p><a href="http://meu-universo.universoproducao.com.br/cadastro/novo" class="tricks-link">Quero me cadastrar</a></p>\
+        </div>');
+    });
 JS;
-$this->inlineScript()->captureEnd();
-?>
+    $this->inlineScript()->captureEnd();
+    ?>
+<?php endif; ?>

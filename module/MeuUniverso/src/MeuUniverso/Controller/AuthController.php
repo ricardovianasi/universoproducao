@@ -184,7 +184,8 @@ class AuthController extends AbstractMeuUniversoController
         }
 
         return [
-            'form' => $form
+            'form' => $form,
+            'requiredUpdate' => $this->params()->fromQuery('atualizacao-necessaria', false)
         ];
     }
 
