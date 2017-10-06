@@ -84,6 +84,7 @@ class AuthController extends AbstractMeuUniversoController
             //Cria a hash de confirmação
             $hash = new Hash();
             $hash->setUser($user);
+            $hash->setType(Hash::TYPE_RECOVER_PASS);
             $this->getEntityManager()->persist($hash);
             $this->getEntityManager()->flush();
 

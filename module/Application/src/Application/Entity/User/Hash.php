@@ -19,6 +19,10 @@ use Util\Security\Crypt;
  */
 class Hash extends AbstractEntity
 {
+
+    const TYPE_RECOVER_PASS = 'revocer_password';
+    const TYPE_EMAIL_VALIDATION = 'email_validation';
+
 	/**
 	 * @ORM\Column(name="id", type="integer", nullable=false)
 	 * @ORM\Id
@@ -35,13 +39,16 @@ class Hash extends AbstractEntity
     /** @ORM\Column(type="string", nullable=true) */
 	private $hash;
 
+    /** @ORM\Column(type="`type`", nullable=true) */
+	private $type;
+
 	/** @ORM\Column(name="created_at", type="datetime", nullable=true) */
 	private $createdAt;
 
     /** @ORM\Column(name="valid_until", type="datetime", nullable=true) */
     private $validUntil;
 
-	public function __construct($user=null)
+	public function __construct($user=null, $type=null)
     {
         $this->createdAt = new \DateTime();
         $this->validUntil = clone $this->createdAt;
@@ -50,6 +57,9 @@ class Hash extends AbstractEntity
 
         if($user)
             $this->user = $user;
+
+        if($type)
+            $this->type = $type;
     }
 
     /**
@@ -130,5 +140,21 @@ class Hash extends AbstractEntity
     public function setValidUntil($validUntil)
     {
         $this->validUntil = $validUntil;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    /**
+     * @param mixed $type
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
     }
 }

@@ -49,6 +49,7 @@ class RegisterController extends AbstractMeuUniversoController
                 //Cria a hash de confirmação
                 $hash = new Hash();
                 $hash->setUser($user);
+                $hash->setType(Hash::TYPE_EMAIL_VALIDATION);
                 $this->getEntityManager()->persist($hash);
 
                 $this->getEntityManager()->flush();
@@ -104,7 +105,8 @@ class RegisterController extends AbstractMeuUniversoController
             }
 
             $hashs = $this->getEntityManager()->getRepository(Hash::class)->findBy([
-                'user' => $user->getId()
+                'user' => $user->getId(),
+                'type' => Hash::TYPE_EMAIL_VALIDATION
             ]);
             foreach ($hashs as $h) {
                 $this->getEntityManager()->remove($h);
@@ -113,6 +115,7 @@ class RegisterController extends AbstractMeuUniversoController
             //Cria a hash de confirmação
             $hash = new Hash();
             $hash->setUser($user);
+            $hash->setType(Hash::TYPE_EMAIL_VALIDATION);
             $this->getEntityManager()->persist($hash);
 
             $this->getEntityManager()->flush();
