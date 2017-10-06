@@ -12,13 +12,14 @@ use Application\Entity\City;
 use Application\Entity\State;
 use Zend\Form\Form;
 use Zend\InputFilter\Factory as InputFilterFactory;
+use Zend\Validator\Date;
 use Zend\Validator\EmailAddress;
 
 class UserForm extends Form
 {
 	private $entityManager;
 
-	public function __construct($em)
+	public function __construct($em, $birthDateRequired=true)
 	{
 		parent::__construct('user-form');
 		$this->setAttributes([
@@ -257,8 +258,20 @@ class UserForm extends Form
                 'name' => 'gender',
                 'required' => false,
                 'allow_empty' => true
+            ],
+            [
+                'name' => 'phones',
+                'required' => true,
             ]
         ]));
+
+        if($birthDateRequired) {
+            $this->getInputFilter()
+                ->get('birth_date')
+                ->setRequired(true)
+                ->getValidatorChain()
+                ->attach(new Date(['format'=>'d/m/Y']));
+        }
 	}
 
 	protected function findStates()

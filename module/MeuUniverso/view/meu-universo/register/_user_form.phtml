@@ -64,7 +64,7 @@ $phoneForm->prepare(); ?>
         <div class="col-md-4"><?php echo $this->formRow($form->get('complement')); ?></div>
     </div>
 
-    <h3 class="h3 form-section">Contatos</h3>
+    <h3 class="h3 form-section">Contatos <span class="required"> * </span></h3>
     <div class="row">
         <div class="col-md-12">
             <table class="table table-hover table-light admin-phone">
@@ -106,6 +106,7 @@ $phoneForm->prepare(); ?>
                 </tr>
                 </tbody>
             </table>
+            <?php echo $this->formElementErrors($form->get('phones')); ?>
         </div>
     </div>
 
