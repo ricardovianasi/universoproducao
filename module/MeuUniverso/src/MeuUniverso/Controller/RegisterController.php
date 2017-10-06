@@ -149,7 +149,11 @@ class RegisterController extends AbstractMeuUniversoController
         $phoneForm = new PhoneForm();
 
         if ($this->getRequest()->isPost()) {
-            $form->setData($this->getRequest()->getPost());
+
+            $data = $this->getRequest()->getPost()->toArray();
+            $data['identifier'] = $user->getIdentifier();
+
+            $form->setData($data);
             if ($form->isValid()) {
                 $validData = $form->getData();
                 unset($validData['identifier']);
@@ -227,7 +231,12 @@ class RegisterController extends AbstractMeuUniversoController
                 $phoneForm = new PhoneForm();
 
                 if ($this->getRequest()->isPost()) {
-                    $form->setData($this->getRequest()->getPost());
+
+                    $data = $this->getRequest()->getPost()->toArray();
+                    $data['identifier'] = $user->getIdentifier();
+                    $data['email'] = $user->getEmail();
+
+                    $form->setData($data);
                     if ($form->isValid()) {
                         $validData = $form->getData();
 

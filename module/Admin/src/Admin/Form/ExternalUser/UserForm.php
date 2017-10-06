@@ -91,52 +91,6 @@ class UserForm extends Form
 			]
 		]);
 
-		if($type == 'all' || $type == User::TYPE_PESSOA_FISICA || $type == User::TYPE_CADASTRO_INTERNACIONAL) {
-            $this->add([
-                'name' => 'birth_date',
-                'options' => [
-                    'label' => 'Data de Nascimento',
-                ],
-                'attributes' => [
-                    'data-inputmask' => "'alias': 'dd/mm/yyyy', 'placeholder':'_'",
-                    'required' => true
-                ]
-            ]);
-            $this->getInputFilter()->add([
-                'name' => 'birth_date',
-                'required' => true,
-                'validators' => [
-                    new Date(['format'=>'d/m/Y'])
-                ]
-            ]);
-
-            $this->add([
-                'type' => 'select',
-                'name' => 'gender',
-                'required' => false,
-                'allow_empty' => true,
-                'options' => [
-                    'label' => 'Sexo',
-                    'empty_option' => 'Selecione',
-                    'value_options' => [
-                        'm' => 'Masculino',
-                        'f' => 'Feminino'
-                    ]
-                ]
-            ]);
-            $this->getInputFilter()
-                ->add([
-                    'name' => 'gender',
-                    'required' => false,
-                    'allow_empty' => true,
-
-                ]);
-        }
-
-        if($type == User::TYPE_CADASTRO_INTERNACIONAL || $type == 'all') {
-		    //Campo de país aberto e campo de estado aberto...
-        }
-
 		$this->add([
 			'name' => 'cep',
 			'required' => true,
@@ -291,6 +245,52 @@ class UserForm extends Form
                 'required' => true,
             ]
         ]));
+
+        if($type == 'all' || $type == User::TYPE_PESSOA_FISICA || $type == User::TYPE_CADASTRO_INTERNACIONAL) {
+            $this->add([
+                'name' => 'birth_date',
+                'options' => [
+                    'label' => 'Data de Nascimento',
+                ],
+                'attributes' => [
+                    'data-inputmask' => "'alias': 'dd/mm/yyyy', 'placeholder':'_'",
+                    'required' => true
+                ]
+            ]);
+            $this->getInputFilter()->add([
+                'name' => 'birth_date',
+                'required' => true,
+                'validators' => [
+                    new Date(['format'=>'d/m/Y'])
+                ]
+            ]);
+
+            $this->add([
+                'type' => 'select',
+                'name' => 'gender',
+                'required' => false,
+                'allow_empty' => true,
+                'options' => [
+                    'label' => 'Sexo',
+                    'empty_option' => 'Selecione',
+                    'value_options' => [
+                        'm' => 'Masculino',
+                        'f' => 'Feminino'
+                    ]
+                ]
+            ]);
+            $this->getInputFilter()
+                ->add([
+                    'name' => 'gender',
+                    'required' => false,
+                    'allow_empty' => true,
+
+                ]);
+        }
+
+        if($type == User::TYPE_CADASTRO_INTERNACIONAL || $type == 'all') {
+            //Campo de país aberto e campo de estado aberto...
+        }
 	}
 
 	protected function findStates()
