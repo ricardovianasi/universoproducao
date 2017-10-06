@@ -1,11 +1,13 @@
 <?php
 namespace MeuUniverso\Form;
 
+use Application\Entity\User\User;
+
 class ValidateUserForm extends \Admin\Form\ExternalUser\UserForm
 {
-    public function __construct($em)
+    public function __construct($em, $type=User::TYPE_PESSOA_FISICA)
     {
-        parent::__construct($em);
+        parent::__construct($em, $type);
 
         $this->setAttribute('data-js-validate', '');
 

@@ -13,23 +13,31 @@ $phoneForm->prepare(); ?>
     <div class="row">
         <div class="col-md-3"><?php echo $this->formRow($form->get('identifier')); ?></div>
         <div class="col-md-5"><?php echo $this->formRow($form->get('email')); ?></div>
-        <div class="col-md-2">
-            <div class="form-group ">
-                <label class="control-label">
-                    <?php echo $form->get('birth_date')->getLabel();  ?>
-                </label>
-                <div class="input-group date date-picker" data-date-format="dd/mm/yyyy">
-                    <?php echo $this->formElement($form->get('birth_date'));?>
-                    <span class="input-group-btn">
-                                <button type="button" name="btn-date" class="btn default">
-                                    <span class="glyphicon glyphicon-calendar"></span>
-                                </button>
-                            </span>
+
+        <?php if($form->has('birth_date')): ?>
+            <div class="col-md-2">
+                <div class="form-group <?php echo $form->get('birth_date')->getMessages() ? "has-error" : ""; ?>">
+                    <label class="control-label">
+                        <?php echo $form->get('birth_date')->getLabel();  ?>
+                    </label>
+                    <div class="input-group date date-picker" data-date-format="dd/mm/yyyy">
+                        <?php echo $this->formElement($form->get('birth_date'));?>
+                        <span class="input-group-btn">
+                                    <button type="button" name="btn-date" class="btn default">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </button>
+                                </span>
+                    </div>
+                    <?php echo $this->formElementErrors($form->get('birth_date')); ?>
                 </div>
-                <?php echo $this->formElementErrors($form->get('birth_date')); ?>
             </div>
-        </div>
-        <div class="col-md-2"><?php echo $this->formRow($form->get('gender')); ?></div>
+        <?php endif; ?>
+
+        <?php if($form->has('gender')): ?>
+            <div class="col-md-2">
+                <?php echo $this->formRow($form->get('gender')); ?>
+            </div>
+        <?php endif; ?>
     </div>
 
     <h3 class="h3 form-section">Endereço</h3>

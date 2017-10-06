@@ -39,7 +39,7 @@ class Hash extends AbstractEntity
     /** @ORM\Column(type="string", nullable=true) */
 	private $hash;
 
-    /** @ORM\Column(type="`type`", nullable=true) */
+    /** @ORM\Column(type="string", nullable=true) */
 	private $type;
 
 	/** @ORM\Column(name="created_at", type="datetime", nullable=true) */

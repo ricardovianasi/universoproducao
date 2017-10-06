@@ -10,7 +10,10 @@ namespace Admin\Form\ExternalUser;
 
 use Application\Entity\City;
 use Application\Entity\State;
+use Application\Entity\User\User;
+use Util\Validator\Identifier;
 use Zend\Form\Form;
+use Zend\I18n\Filter\Alnum;
 use Zend\InputFilter\Factory as InputFilterFactory;
 use Zend\Validator\Date;
 use Zend\Validator\EmailAddress;
@@ -19,7 +22,7 @@ class UserForm extends Form
 {
 	private $entityManager;
 
-	public function __construct($em, $birthDateRequired=true)
+	public function __construct($em, $type='all')
 	{
 		parent::__construct('user-form');
 		$this->setAttributes([
@@ -46,6 +49,7 @@ class UserForm extends Form
 			'required' => true,
 			'options' => [
 				'label' => 'Nome completo',
+                'help-block' => 'Pessoa física ou jurídica'
 			],
 			'attributes' => [
 				'required' => 'required'
@@ -87,15 +91,51 @@ class UserForm extends Form
 			]
 		]);
 
-		$this->add([
-			'name' => 'birth_date',
-			'options' => [
-				'label' => 'Data de Nascimento',
-			],
-            'attributes' => [
-                'data-inputmask' => "'alias': 'dd/mm/yyyy', 'placeholder':'_'"
-            ]
-		]);
+		if($type == 'all' || $type == User::TYPE_PESSOA_FISICA || $type == User::TYPE_CADASTRO_INTERNACIONAL) {
+            $this->add([
+                'name' => 'birth_date',
+                'options' => [
+                    'label' => 'Data de Nascimento',
+                ],
+                'attributes' => [
+                    'data-inputmask' => "'alias': 'dd/mm/yyyy', 'placeholder':'_'",
+                    'required' => true
+                ]
+            ]);
+            $this->getInputFilter()->add([
+                'name' => 'birth_date',
+                'required' => true,
+                'validators' => [
+                    new Date(['format'=>'d/m/Y'])
+                ]
+            ]);
+
+            $this->add([
+                'type' => 'select',
+                'name' => 'gender',
+                'required' => false,
+                'allow_empty' => true,
+                'options' => [
+                    'label' => 'Sexo',
+                    'empty_option' => 'Selecione',
+                    'value_options' => [
+                        'm' => 'Masculino',
+                        'f' => 'Feminino'
+                    ]
+                ]
+            ]);
+            $this->getInputFilter()
+                ->add([
+                    'name' => 'gender',
+                    'required' => false,
+                    'allow_empty' => true,
+
+                ]);
+        }
+
+        if($type == User::TYPE_CADASTRO_INTERNACIONAL || $type == 'all') {
+		    //Campo de país aberto e campo de estado aberto...
+        }
 
 		$this->add([
 			'name' => 'cep',
@@ -201,21 +241,6 @@ class UserForm extends Form
 			],
 		]);
 
-        $this->add([
-            'type' => 'select',
-            'name' => 'gender',
-            'required' => false,
-            'allow_empty' => true,
-            'options' => [
-                'label' => 'Sexo',
-                'empty_option' => 'Selecione',
-                'value_options' => [
-                    'm' => 'Masculino',
-                    'f' => 'Feminino'
-                ]
-            ]
-        ]);
-
 		$this->add([
 		    'type' => 'hidden',
             'name' => 'phones'
@@ -229,7 +254,14 @@ class UserForm extends Form
         $this->setInputFilter((new InputFilterFactory)->createInputFilter([
             [
                 'name' => 'identifier',
-                'required' => true
+                'required' => true,
+                'validators' => [
+                    new Identifier()
+                ],
+                'filters' => [
+                    new Alnum()
+                ]
+
             ],
             [
                 'name' => 'email',
@@ -255,23 +287,10 @@ class UserForm extends Form
                 'required' => true
             ],
             [
-                'name' => 'gender',
-                'required' => false,
-                'allow_empty' => true
-            ],
-            [
                 'name' => 'phones',
                 'required' => true,
             ]
         ]));
-
-        if($birthDateRequired) {
-            $this->getInputFilter()
-                ->get('birth_date')
-                ->setRequired(true)
-                ->getValidatorChain()
-                ->attach(new Date(['format'=>'d/m/Y']));
-        }
 	}
 
 	protected function findStates()

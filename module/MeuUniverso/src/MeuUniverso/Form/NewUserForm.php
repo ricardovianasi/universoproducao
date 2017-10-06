@@ -12,6 +12,7 @@ use Application\Entity\User\User;
 use DoctrineModule\Validator\NoObjectExists;
 use Util\Validator\Identifier;
 use Zend\Form\Form;
+use Zend\I18n\Filter\Alnum;
 use Zend\Validator\EmailAddress;
 use Zend\InputFilter\Factory as InputFilterFactory;
 use Zend\Validator\Identical;
@@ -59,7 +60,8 @@ class NewUserForm extends Form
                 'column-size' => 'md-5',
                 'label_attributes' => [
                     'class' => 'col-md-3'
-                ]
+                ],
+                'help-block' => 'O nome pode ser de uma Pessoa Física ou Pessoa Jurídica'
             ],
             'attributes' => [
                 'required' => 'required'
@@ -141,6 +143,9 @@ class NewUserForm extends Form
                             ],
                         ]
                     ]
+                ],
+                'filters' => [
+                    new Alnum()
                 ]
             ],
             'email' => [

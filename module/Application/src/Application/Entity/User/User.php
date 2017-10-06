@@ -4,6 +4,7 @@ namespace Application\Entity\User;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Util\Entity\AbstractEntity;
+use Util\Validator\Identifier;
 use Zend\InputFilter\Factory;
 use Zend\InputFilter\Input;
 use Zend\InputFilter\InputFilter;
@@ -18,15 +19,16 @@ use Zend\InputFilter\InputFilterInterface;
  */
 class User extends AbstractEntity
 {
+    const TYPE_PESSOA_FISICA = 'pf';
+    const TYPE_PESSOA_JURIDICA = 'pj';
+    const TYPE_CADASTRO_INTERNACIONAL = 'pi';
+
 	/**
 	 * @ORM\Column(name="id", type="integer", nullable=false)
 	 * @ORM\Id
 	 * @ORM\GeneratedValue(strategy="IDENTITY")
 	 */
 	private $id;
-
-    /** @ORM\Column(name="`type`", type="string") */
-    private $type;
 
     /** @ORM\Column(name="name", type="string") */
 	private $name;
@@ -120,15 +122,20 @@ class User extends AbstractEntity
      */
     public function getType()
     {
-        return $this->type;
-    }
+        if(!$this->getIdentifier()) {
+            return false;
+        }
 
-    /**
-     * @param mixed $type
-     */
-    public function setType($type)
-    {
-        $this->type = $type;
+        $identifierValidator = new Identifier();
+        if($identifierValidator->validateCPF($this->getIdentifier())) {
+            return self::TYPE_PESSOA_FISICA;
+        } elseif($identifierValidator->validateCNPJ($this->getIdentifier())) {
+            return self::TYPE_PESSOA_JURIDICA;
+        } elseif($identifierValidator->validatePassport($this->getIdentifier())) {
+            return self::TYPE_CADASTRO_INTERNACIONAL;
+        }
+
+        return false;
     }
 
 	/**
@@ -449,12 +456,6 @@ class User extends AbstractEntity
 	public function setChangePasswordRequired($changePasswordRequired)
 	{
 		$this->changePasswordRequired = $changePasswordRequired;
-	}
-
-	// Add content to these methods:
-	public function setInputFilter(InputFilterInterface $inputFilter)
-	{
-		throw new \Exception("Not used");
 	}
 
     /**

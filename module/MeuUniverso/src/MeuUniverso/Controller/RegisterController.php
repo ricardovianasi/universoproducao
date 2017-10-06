@@ -142,11 +142,11 @@ class RegisterController extends AbstractMeuUniversoController
 
     public function editarAction()
     {
-        $form = new UserForm($this->getEntityManager());
-        $phoneForm = new PhoneForm();
-
         $identity = $this->getAuthenticationService()->getIdentity();
         $user = $this->getRepository(User::class)->find($identity->getId());
+
+        $form = new UserForm($this->getEntityManager(), $user->getType());
+        $phoneForm = new PhoneForm();
 
         if ($this->getRequest()->isPost()) {
             $form->setData($this->getRequest()->getPost());
@@ -198,10 +198,6 @@ class RegisterController extends AbstractMeuUniversoController
 
     public function validarAction()
     {
-        //Formulários
-        $form = new ValidateUserForm($this->getEntityManager());
-        $phoneForm = new PhoneForm();
-
         $hash = $this->params()->fromRoute('id');
 
         /** @var Hash $exist */
@@ -225,6 +221,10 @@ class RegisterController extends AbstractMeuUniversoController
                 $user->setConfirmedRegister(true);
                 $this->getEntityManager()->persist($user);
                 $this->getEntityManager()->flush();
+
+                //Formulários
+                $form = new ValidateUserForm($this->getEntityManager(), $user->getType());
+                $phoneForm = new PhoneForm();
 
                 if ($this->getRequest()->isPost()) {
                     $form->setData($this->getRequest()->getPost());

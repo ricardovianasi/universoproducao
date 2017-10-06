@@ -32,7 +32,7 @@ class Identifier extends AbstractValidator
 		return true;
 	}
 
-	protected function validateCPF($value)
+	public function validateCPF($value)
 	{
         if(
             strlen($value) != 11
@@ -60,7 +60,7 @@ class Identifier extends AbstractValidator
         return true;
 	}
 
-    protected function validateCNPJ($value)
+    public function validateCNPJ($value)
     {
         // Valida tamanho
         if (strlen($value) != 14)
@@ -90,8 +90,9 @@ class Identifier extends AbstractValidator
         return $value{13} == ($resto < 2 ? 0 : 11 - $resto);
     }
 
-    protected function validatePassport($value)
+    public function validatePassport($value)
     {
+        /** @TODO como validar passaporte? */
         return true;
     }
 }
