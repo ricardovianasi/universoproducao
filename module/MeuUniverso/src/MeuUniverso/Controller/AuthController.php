@@ -17,6 +17,8 @@ class AuthController extends AbstractMeuUniversoController
         if($this->getRequest()->isPost()) {
             $data = (array) $this->getRequest()->getPost();
 
+            $teste = Crypt::getInstance()->generateEncryptPass($data['password']);
+
             $authService = $this->getAuthenticationService();
 
             $adapter = $authService->getAdapter();

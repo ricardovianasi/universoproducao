@@ -169,11 +169,30 @@ class UserController extends AbstractAdminController implements CrudInterface
 		}
 
 		$tempPass = $this->params()->fromPost('temp-pass');
+
+		if(!$tempPass) {
+            $this->messages()->flashError("Senha temporária não foi definida!");
+            return $this->redirect()->toRoute('admin/default', [
+                'controller' => 'user',
+                'action' => 'indeex'
+            ]);
+        }
+
 		$user->setPassword(Crypt::getInstance()->generateEncryptPass($tempPass));
 		$user->setChangePasswordRequired(true);
 
 		$this->getEntityManager()->persist($user);
 		$this->getEntityManager()->flush();
+
+        //Enviar email de confirmação
+        $msg = '<p>Olá <strong>'.$user->getName().'</strong>!</p>';
+        $msg.= '<p>Uma senha de acesso temporária foi gerada. Por favor, acesse seu cadastro e escolha uma nova senha. </p>';
+        $msg.= '<p>Senha temporária: <strong>'.$tempPass.'</strong></p>';
+        $msg.= '<p>Lembramos que a atualização é obrigatória e não será possível usar sua conta enquanto a modificação da senha não for realizada.</p>';
+
+        $to[$user->getName()] = $user->getEmail();
+        $this->mailService()->simpleSendEmail($to, "Nova senha de acesso", $msg);
+
 
         $this->userLog()->log($user, 'Senha temporária gerada');
 
