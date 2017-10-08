@@ -14,7 +14,7 @@
     <?php endif; ?>
 
     <form action="" method="post" class="userlogin-form">
-        <input class="input" name="login" placeholder="E-mail">
+        <input class="input" name="login" placeholder="E-mail" value="<?php echo isset($this->login) ? $this->login : "" ?>">
         <input type="password" class="input" name="password" placeholder="Senha">
         <button class="submit" class="userlogin-submit">Entrar</button>
     </form>

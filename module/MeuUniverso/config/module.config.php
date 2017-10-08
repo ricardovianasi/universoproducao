@@ -1,6 +1,7 @@
 <?php
 namespace MeuUniverso;
 
+use MeuUniverso\View\Helper\RegistrationRegulation;
 use MeuUniverso\View\Helper\UserMenu;
 use MeuUniverso\View\Helper\UserMovies;
 use Util\Security\Crypt;
@@ -108,8 +109,9 @@ return array(
     ],
     'view_helpers' => [
         'invokables' => [
-            'meuUniversoUserMenu' => UserMenu::class,
-            'meuUniversoMovies' => UserMovies::class
+            'meuUniversoUserMenu'   => UserMenu::class,
+            'meuUniversoMovies'     => UserMovies::class,
+            'regulation'            => RegistrationRegulation::class
         ],
         'factories' => [
             'meuUniversoMessages' => function($e) {

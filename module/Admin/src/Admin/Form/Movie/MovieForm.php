@@ -123,7 +123,7 @@ class MovieForm extends Form
             'name' => 'duration',
             'options' => [
                 'label' => 'Duração exata',
-                'help-block' => $this->getDurationHelpBlock()
+                'help-block' => nl2br($this->getDurationHelpBlock())
             ],
             'attributes' => [
                 'required' => 'required',
@@ -884,7 +884,7 @@ class MovieForm extends Form
 
         return (string) $this
             ->getRegistration()
-            ->getOption(nl2br(RegistrationOptions::MOVIE_DURATION_OBS));
+            ->getOption(RegistrationOptions::MOVIE_DURATION_OBS);
     }
 
     public function populateStates()

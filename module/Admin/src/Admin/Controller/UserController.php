@@ -68,7 +68,6 @@ class UserController extends AbstractAdminController implements CrudInterface
 		}
 
 		if($this->getRequest()->isPost()) {
-			$form->setInputFilter($user->getInputFilter());
 			$form->setData($data);
 			if($form->isValid()) {
 

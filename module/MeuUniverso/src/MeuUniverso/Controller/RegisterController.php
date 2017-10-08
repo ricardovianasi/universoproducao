@@ -1,6 +1,7 @@
 <?php
 namespace MeuUniverso\Controller;
 
+use Admin\Form\ExternalUser\DependentForm;
 use Admin\Form\ExternalUser\PhoneForm;
 use Application\Entity\City;
 use Application\Entity\Phone\Phone;
@@ -291,6 +292,23 @@ class RegisterController extends AbstractMeuUniversoController
         }
 
         return ['validate'=>false];
+    }
+
+    public function dependentesAction()
+    {
+        $form = new DependentForm();
+
+        $identity = $this->getAuthenticationService()->getIdentity();
+        $user = $this->getRepository(User::class)->find($identity->getId());
+
+        if($this->getRequest()->isPost()) {
+
+        }
+
+        return [
+            'form' => $form,
+            'user' => $user
+        ];
     }
 
     protected function getNewUserForm()

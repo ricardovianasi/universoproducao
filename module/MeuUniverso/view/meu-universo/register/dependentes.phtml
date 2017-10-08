@@ -1,0 +1,81 @@
+<?php $dependentForm = $this->form; ?>
+
+<div class="container">
+    <p class="meuuniverso-brand meuuniverso-brand--center"><strong>Meu</strong>Universo | Dependentes</p>
+
+    <form action="">
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table table-hover table-light table-bordered" id="user-dependents">
+                    <thead>
+                    <tr>
+                        <th width="20%">Nome</th>
+                        <th width="20%">Email</th>
+                        <th width="15%">Data Nascimento</th>
+                        <th width="15%">CPF ou Identidade</th>
+                        <th width="15%">Sexo</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <?php foreach ($this->user->getDependents() as $dep): ?>
+                        <tr data-row="<?php echo $dep->getId(); ?>">
+                            <td><?php echo $dep->getName() ?></td>
+                            <td><?php echo $dep->getEmail() ?></td>
+                            <td><?php echo $dep->getBirthDate() ? $dep->getBirthDate()->format('d/m/Y') : ""; ?></td>
+                            <td><?php echo $dep->getIdentifier() ?></td>
+                            <td><?php echo $this->gender($dep->getGender()); ?></td>
+                            <td>
+                                <a href="#" class="btn btn-sm btn-default user-dependents-remove" data-remove="<?php echo $dep->getId(); ?>">
+                                    <i class="glyphicon glyphicon-remove"></i>
+                                </a>
+                                <a href="#" class="btn btn-sm btn-default user-dependents-edit" data-edit="<?php echo $dep->getId(); ?>">
+                                    <i class="glyphicon glyphicon-edit"></i>
+                                </a>
+                                <input type="hidden" name="dependents[<?php echo $dep->getId() ?>][id]" value="<?php echo $dep->getId(); ?>">
+                                <input type="hidden" name="dependents[<?php echo $dep->getId() ?>][name]" value="<?php echo $dep->getName(); ?>">
+                                <input type="hidden" name="dependents[<?php echo $dep->getId() ?>][email]" value="<?php echo $dep->getEmail(); ?>">
+                                <input type="hidden" name="dependents[<?php echo $dep->getId() ?>][birth_date]" value="<?php echo $dep->getBirthDate()->format('Y-m-d'); ?>">
+                                <input type="hidden" name="dependents[<?php echo $dep->getId() ?>][identifier]" value="<?php echo $dep->getIdentifier(); ?>">
+                                <input type="hidden" name="dependents[<?php echo $dep->getId() ?>][gender]" value="<?php echo $dep->getGender(); ?>">
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                    <tr id="user-dependents-form">
+                        <td><?php echo $this->formRow($dependentForm->get('dependent[name]')); ?></td>
+                        <td><?php echo $this->formRow($dependentForm->get('dependent[email]')); ?></td>
+                        <td>
+                            <div class="form-group">
+                            <div class="input-group date date-picker" data-date-format="dd/mm/yyyy">
+                                <?php echo $this->formElement($dependentForm->get('dependent[birth_date]'));?>
+                                <span class="input-group-btn">
+                                                <button type="button" name="btn-date" class="btn default">
+                                                    <span class="glyphicon glyphicon-calendar"></span>
+                                                </button>
+                                            </span>
+                            </div>
+                            </div>
+                        </td>
+                        <td><?php echo $this->formRow($dependentForm->get('dependent[identifier]')); ?></td>
+                        <td><?php echo $this->formRow($dependentForm->get('dependent[gender]')); ?></td>
+                        <td>
+                            <div class="form-group">
+                                <button style="width: 100%" class="btn btn-sm btn-success user-dependents-add" type="button">
+                                    <i class="fa fa-plus"></i> Adicionar</button>
+                            </div>
+                        </td>
+                    </tr>
+
+                    </tbody>
+                </table>
+
+                <div class="form-actions">
+                    <div class="btn-set pull-right">
+                        <button type="submit" name="save" class="btn btn-success btn-lg" id="save" value="Salvar">Salvar</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </form>
+</div>

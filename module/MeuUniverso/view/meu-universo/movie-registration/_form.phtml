@@ -59,21 +59,7 @@
                 <div class="tab-content">
                     <div class="tab-pane active" id="tab_regulation">
                         <h3 class="h3 block">Regulamento</h3>
-                        <div class="portlet light bordered bg-inverse">
-                            <div class="portlet-title">
-                                <div class="caption">
-                                    <span class="caption-subject bold uppercase"><?php echo $this->reg->getName(); ?></span>
-                                </div>
-                                <div class="actions">
-                                    <a class="btn btn-circle btn-icon-only btn-default fullscreen" href="javascript:;" data-original-title="" title=""> </a>
-                                </div>
-                            </div>
-                            <div class="portlet-body movie-regulation">
-                                <div class="scroller" style="height:300px" data-rail-visible="1" data-rail-color="yellow" data-handle-color="#a1b2bd">
-                                    <?php echo $this->reg->getRegulation(); ?>
-                                </div>
-                            </div>
-                        </div>
+                        <?php echo $this->regulation($this->reg); ?>
 
                         <div class="row">
                             <div class="col-md-12">

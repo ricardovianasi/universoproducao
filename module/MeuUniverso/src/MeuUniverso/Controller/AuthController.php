@@ -51,7 +51,8 @@ class AuthController extends AbstractMeuUniversoController
             }
 
             return [
-                'error' => true
+                'error' => true,
+                'login' => $this->params()->fromPost('login')
             ];
         }
         return [];

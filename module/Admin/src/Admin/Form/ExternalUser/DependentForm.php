@@ -27,7 +27,8 @@ class DependentForm extends Form
             ],
             'attributes' => [
                 'class' => 'input-sm',
-                'data-required' => 'required'
+                'data-required' => 'required',
+                'id' => 'dependent_name'
 
             ]
         ]);
@@ -42,6 +43,7 @@ class DependentForm extends Form
             ],
             'attributes' => [
                 'class' => 'input-sm',
+                'id' => 'dependent_email'
             ]
         ]);
 
@@ -60,7 +62,7 @@ class DependentForm extends Form
                 ]
             ],
             'attributes' => [
-                'data-required' => 'required'
+                'id' => 'dependent_gender'
             ]
         ]);
 
@@ -75,7 +77,9 @@ class DependentForm extends Form
                 ],
             ],
             'attributes' => [
-                'data-required' => 'required'
+                'data-required' => 'required',
+                'data-inputmask' => "'alias': 'dd/mm/yyyy', 'placeholder':'_'",
+                'id' => 'dependent_birth_date'
             ]
         ]);
 
@@ -89,6 +93,7 @@ class DependentForm extends Form
             ],
             'attributes' => [
                 'class' => 'input-sm',
+                'id' => 'dependent_identifier'
             ]
         ]);
 	}
