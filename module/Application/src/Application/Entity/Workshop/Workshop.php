@@ -25,10 +25,6 @@ class Workshop extends AbstractEntity
      */
     private $event;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="Responsible")
-     * @ORM\JoinColumn(name="workshop_responsible_id", referencedColumnName="id")
-     */
     private $responsible;
 
     /** @ORM\Column(name="minimum_age", type="integer", nullable=true) */

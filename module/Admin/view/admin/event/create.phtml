@@ -25,21 +25,9 @@
 				<div class="portlet">
 					<div class="portlet-body form">
 						<div class="form-body">
-							<div class="form-group">
-								<label class="control-label col-md-3" for=""><?php echo $form->get('full_name')->getLabel(); ?></label>
-								<div class="col-md-4"><?php echo $this->formElement($form->get('full_name')); ?></div>
-							</div>
-
-							<div class="form-group">
-								<label class="control-label col-md-3" for=""><?php echo $form->get('short_name')->getLabel(); ?></label>
-								<div class="col-md-4"><?php echo $this->formElement($form->get('short_name')); ?></div>
-							</div>
-
-							<div class="form-group">
-								<label class="control-label col-md-3" for=""><?php echo $form->get('edition')->getLabel(); ?></label>
-								<div class="col-md-4"><?php echo $this->formElement($form->get('edition')); ?></div>
-							</div>
-
+                            <?php echo $this->formRow($form->get('full_name')); ?>
+                            <?php echo $this->formRow($form->get('short_name')); ?>
+                            <?php echo $this->formRow($form->get('edition')); ?>
 							<div class="form-group">
 								<label class="control-label col-md-3" for=""><?php echo $form->get('start_date')->getLabel(); ?></label>
 								<div class="col-md-4">
@@ -53,7 +41,6 @@
 									</div>
 								</div>
 							</div>
-
 							<div class="form-group">
 								<label class="control-label col-md-3" for=""><?php echo $form->get('end_date')->getLabel(); ?></label>
 								<div class="col-md-4">
@@ -68,16 +55,10 @@
 								</div>
 							</div>
 
-							<div class="form-group">
-								<label class="control-label col-md-3" for=""><?php echo $form->get('type')->getLabel(); ?></label>
-								<div class="col-md-4"><?php echo $this->formElement($form->get('type')); ?></div>
-							</div>
-
-							<div class="form-group last">
-								<label class="control-label col-md-3" for=""><?php echo $form->get('description')->getLabel(); ?></label>
-								<div class="col-md-8"><?php echo $this->formElement($form->get('description')); ?></div>
-							</div>
-
+                            <?php echo $this->formRow($form->get('type')); ?>
+                            <?php echo $this->formRow($form->get('places')); ?>
+                            <?php echo $this->formRow($form->get('sub_events')); ?>
+                            <?php echo $this->formRow($form->get('description')); ?>
 						</div>
 
 						<div class="form-actions">

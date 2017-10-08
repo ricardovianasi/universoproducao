@@ -472,10 +472,29 @@ return [
 				'heading' => true
 			],
 			[
-				'label' => 'Mostras',
-				'route' => 'admin/event',
-				'controller' => 'event',
-				'icon' => 'icon-book-open'
+				'label' => 'Eventos',
+                'uri' => '#',
+				'icon' => 'icon-book-open',
+                'pages' => [
+                    [
+                        'label' => 'Mostras',
+                        'route' => 'admin/event',
+                        'controller' => 'event',
+                        'icon' => 'icon-eye'
+                    ],
+                    [
+                        'label' => 'Locais',
+                        'route' => 'admin/default',
+                        'controller' => 'event-place',
+                        'icon' => 'icon-eye'
+                    ],
+                    [
+                        'label' => 'Sub-mostras',
+                        'route' => 'admin/default',
+                        'controller' => 'event-sub',
+                        'icon' => 'icon-eye'
+                    ],
+                ]
 			],
 			[
 				'label' => 'Controle de Acesso',

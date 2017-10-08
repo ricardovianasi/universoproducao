@@ -51,7 +51,7 @@ class Registration extends AbstractEntity
      * @ORM\JoinTable(name="registration_has_events",
      *      joinColumns={@ORM\JoinColumn(name="registration_id", referencedColumnName="id")},
      *      inverseJoinColumns={@ORM\JoinColumn(name="event_id", referencedColumnName="id", unique=true)}
-     *      )
+     * )
      */
     private $events;
 

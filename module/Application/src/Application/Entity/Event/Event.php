@@ -1,6 +1,7 @@
 <?php
 namespace Application\Entity\Event;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Util\Entity\AbstractEntity;
 use Application\Annotations as APP;
@@ -46,7 +47,31 @@ class Event extends AbstractEntity
 	/** @ORM\Column(type="string") */
 	private $logo;
 
-	/**
+    /**
+     * @ORM\ManyToMany(targetEntity="Place", cascade={"ALL"})
+     * @ORM\JoinTable(name="event_has_places",
+     *      joinColumns={@ORM\JoinColumn(name="event_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="event_place_id", referencedColumnName="id", unique=true)}
+     * )
+     */
+	private $places;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="SubEvent", cascade={"ALL"})
+     * @ORM\JoinTable(name="event_has_sub_events",
+     *      joinColumns={@ORM\JoinColumn(name="event_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="sub_event_id", referencedColumnName="id", unique=true)}
+     * )
+     */
+	private $subEvents;
+
+	public function __construct()
+    {
+        $this->places = new ArrayCollection();
+        $this->subEvents = new ArrayCollection();
+    }
+
+    /**
 	 * @return mixed
 	 */
 	public function getId()
@@ -205,4 +230,36 @@ class Event extends AbstractEntity
 	{
 		$this->description = $description;
 	}
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getPlaces()
+    {
+        return $this->places;
+    }
+
+    /**
+     * @param ArrayCollection $places
+     */
+    public function setPlaces($places)
+    {
+        $this->places = $places;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getSubEvents()
+    {
+        return $this->subEvents;
+    }
+
+    /**
+     * @param ArrayCollection $subEvents
+     */
+    public function setSubEvents($subEvents)
+    {
+        $this->subEvents = $subEvents;
+    }
 }

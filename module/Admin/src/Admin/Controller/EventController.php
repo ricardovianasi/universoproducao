@@ -4,6 +4,9 @@ namespace Admin\Controller;
 use Admin\Form\Event\EventForm;
 use Admin\Form\Event\EventSearchForm;
 use Application\Entity\Event\Event;
+use Application\Entity\Event\Place;
+use Application\Entity\Event\SubEvent;
+use Doctrine\Common\Collections\ArrayCollection;
 
 class EventController extends AbstractAdminController implements CrudInterface
 {
@@ -54,7 +57,7 @@ class EventController extends AbstractAdminController implements CrudInterface
 
 	public function persist($data, $id = null)
 	{
-		$form = new EventForm();
+		$form = new EventForm($this->getEntityManager());
 
 		if($id) {
 			$event = $this->getRepository(Event::class)->find($id);
@@ -65,8 +68,28 @@ class EventController extends AbstractAdminController implements CrudInterface
 		if($this->getRequest()->isPost()) {
 			$form->setData($data);
 			if($form->isValid()) {
-				$event->setData($data);
 
+			    $places = new ArrayCollection();
+			    if(!empty($data['places'])) {
+			        foreach ($data['places'] as $placeId) {
+			            $place = $this->getRepository(Place::class)->find($placeId);
+			            if($place)
+			                $places->add($place);
+                    }
+                }
+                $data['places'] = $places;
+
+                $subEvents = new ArrayCollection();
+                if(!empty($data['sub_events'])) {
+                    foreach ($data['sub_events'] as $subId) {
+                        $subEvent = $this->getRepository(SubEvent::class)->find($subId);
+                        if($subEvent)
+                            $subEvents->add($subEvent);
+                    }
+                }
+                $data['sub_events'] = $subEvents;
+
+				$event->setData($data);
 				$this->getEntityManager()->persist($event);
 				$this->getEntityManager()->flush();
 

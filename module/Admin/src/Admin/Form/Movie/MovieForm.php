@@ -687,7 +687,7 @@ class MovieForm extends Form
         ]);
 
         //Validações
-       $this->setInputFilter((new InputFilterFactory)->createInputFilter([
+        $this->setInputFilter((new InputFilterFactory)->createInputFilter([
            'duration' => [
                'name' => 'duration',
                'required' => true,
