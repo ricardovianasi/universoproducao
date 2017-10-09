@@ -18,8 +18,26 @@ $(document).ready(function () {
         mouseDrag: false
     });
 
-    $(".banner").sullivanBanner({
-        items: ".banner__item"
+    $('#banner-home').owlCarousel({
+        autoHeight: true,
+        autoplay: true,
+        autoplayTimeout: 7000,
+        animateOut: 'fadeOut',
+        center: true,
+        dots: true,
+        items: 1,
+        loop: true,
+        nav: false,
+        navigation: false,
+        responsive: {
+            1024: {
+                autoHeight: true
+            },
+            900: {
+                autoHeight: false,
+                autoWidth: false
+            }
+        }
     });
 
     $(".place").place({

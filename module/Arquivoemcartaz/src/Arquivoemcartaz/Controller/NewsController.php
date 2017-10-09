@@ -12,7 +12,7 @@ use Zend\Paginator\Paginator;
 
 class NewsController extends SiteController
 {
-    const SITE_ID = 3;
+    const SITE_ID = 9;
 
     public function indexAction()
     {
