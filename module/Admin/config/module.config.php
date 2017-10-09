@@ -225,6 +225,7 @@ return array(
         'exception_template' => 'admin/error/index',
         'template_map' => array(
             'admin/layout'		=> __DIR__ . '/../view/layout/layout.phtml',
+            'admin/footer'      => __DIR__ . '/../view/layout/_footer.phtml',
             'admin/login'		=> __DIR__ . '/../view/layout/login.phtml',
             'admin/error/404'	=> __DIR__ . '/../view/error/404.phtml',
             'admin/error/index'	=> __DIR__ . '/../view/error/index.phtml',

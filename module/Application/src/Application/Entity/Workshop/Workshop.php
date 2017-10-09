@@ -6,7 +6,7 @@ use Util\Entity\AbstractEntity;
 
 /**
  * @ORM\Table(name="workshop")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Application\Repository\Workshop\Workshop")
  */
 class Workshop extends AbstractEntity
 {
@@ -20,12 +20,16 @@ class Workshop extends AbstractEntity
     private $name;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Application\Entity\Event\Event")
-     * @ORM\JoinColumn(name="event_id", referencedColumnName="id")
+     * @ORM\OneToOne(targetEntity="Application\Entity\Registration\Registration")
+     * @ORM\JoinColumn(name="registration_id", referencedColumnName="id")
      */
-    private $event;
+    private $registration;
 
-    private $responsible;
+    /**
+     * @ORM\ManyToOne(targetEntity="Manager")
+     * @ORM\JoinColumn(name="workshop_manager_id", referencedColumnName="id")
+     */
+    private $manager;
 
     /** @ORM\Column(name="minimum_age", type="integer", nullable=true) */
     private $minimumAge;
@@ -33,11 +37,11 @@ class Workshop extends AbstractEntity
     /** @ORM\Column(name="maximum_age", type="integer", nullable=true) */
     private $maximumAge;
 
-    /** @ORM\Column(name="hours", type="integer", nullable=true) */
-    private $hours;
+    /** @ORM\Column(name="duration", type="time", nullable=true) */
+    private $duration;
 
-    /** @ORM\Column(name="number_places", type="integer", nullable=true) */
-    private $numberPlaces;
+    /** @ORM\Column(name="available_subscriptions", type="integer", nullable=true) */
+    private $availableSubscriptions;
 
     /** @ORM\Column(name="description", type="text", nullable=true) */
     private $description;
@@ -83,33 +87,17 @@ class Workshop extends AbstractEntity
     /**
      * @return mixed
      */
-    public function getEvent()
+    public function getManager()
     {
-        return $this->event;
+        return $this->manager;
     }
 
     /**
-     * @param mixed $event
+     * @param mixed $manager
      */
-    public function setEvent($event)
+    public function setManager($manager)
     {
-        $this->event = $event;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getResponsible()
-    {
-        return $this->responsible;
-    }
-
-    /**
-     * @param mixed $responsible
-     */
-    public function setResponsible($responsible)
-    {
-        $this->responsible = $responsible;
+        $this->manager = $manager;
     }
 
     /**
@@ -147,33 +135,33 @@ class Workshop extends AbstractEntity
     /**
      * @return mixed
      */
-    public function getHours()
+    public function getDuration()
     {
-        return $this->hours;
+        return $this->duration;
     }
 
     /**
-     * @param mixed $hours
+     * @param mixed $duration
      */
-    public function setHours($hours)
+    public function setDuration($duration)
     {
-        $this->hours = $hours;
+        $this->duration = $duration;
     }
 
     /**
      * @return mixed
      */
-    public function getNumberPlaces()
+    public function getAvailableSubscriptions()
     {
-        return $this->numberPlaces;
+        return $this->availableSubscriptions;
     }
 
     /**
-     * @param mixed $numberPlaces
+     * @param mixed $availableSubscriptions
      */
-    public function setNumberPlaces($numberPlaces)
+    public function setAvailableSubscriptions($availableSubscriptions)
     {
-        $this->numberPlaces = $numberPlaces;
+        $this->availableSubscriptions = $availableSubscriptions;
     }
 
     /**
@@ -222,5 +210,13 @@ class Workshop extends AbstractEntity
     public function setProgram($program)
     {
         $this->program = $program;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRegistration()
+    {
+        return $this->registration;
     }
 }

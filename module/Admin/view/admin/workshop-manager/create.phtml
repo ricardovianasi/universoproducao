@@ -1,0 +1,82 @@
+<?php $form = $this->form; ?>
+<div class="row post news">
+	<div class="col-md-12">
+		<?php $form->prepare(); echo $this->form(null, null)->openTag($form) ?>
+		<div class="portlet light portlet-fit bordered">
+			<div class="portlet-title">
+				<div class="caption">
+					<?php if($this->manager->getId()): ?>
+					<i class="fa fa-edit"></i>
+					Editar Responsável
+					<?php else: ?>
+					<i class="fa fa-file-o"></i>
+					Cadastrar Responsável
+					<?php endif; ?>
+				</div>
+				<div class="actions">
+					<a href="<?php echo $this->url('admin/default', ['controller'=>'workshop-manager']); ?>"
+					   class="btn btn-default">
+						<i class="icon-action-undo"></i>
+						<span class="hidden-xs"> Voltar </span>
+					</a>
+                    <a href="<?php echo $this->url('admin/default', ['controller'=>'workshop-manager', 'action'=>'create']); ?>"
+                       class="btn blue btn-lg">
+                        <i class="fa fa-plus"></i>
+                        <span class="hidden-xs"> Novo Responsável  </span>
+                    </a>
+				</div>
+			</div>
+			<div class="portlet-body">
+				<div class="portlet state-cities"
+                     data-url="<?php echo $this->url('util/cities'); ?>"
+                     data-state-element="#state"
+                     data-city-element="#city">
+
+					<div class="portlet-body form">
+						<div class="form-body">
+
+                            <div class="row">
+                                <div class="col-md-6"><?php echo $this->formRow($form->get('name')); ?></div>
+                                <div class="col-md-2"><?php echo $this->formRow($form->get('cpf')); ?></div>
+                                <div class="col-md-2"><?php echo $this->formRow($form->get('birth_date')); ?></div>
+                                <div class="col-md-2"><?php echo $this->formRow($form->get('gender')); ?></div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-4"><?php echo $this->formRow($form->get('address')); ?></div>
+                                <div class="col-md-4"><?php echo $this->formRow($form->get('state')); ?></div>
+                                <div class="col-md-4"><?php echo $this->formRow($form->get('city')); ?></div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-4"><?php echo $this->formRow($form->get('company')); ?></div>
+                                <div class="col-md-4"><?php echo $this->formRow($form->get('phone')); ?></div>
+                                <div class="col-md-4"><?php echo $this->formRow($form->get('mobile_phone')); ?></div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6"><?php echo $this->formRow($form->get('email')); ?></div>
+                                <div class="col-md-6"><?php echo $this->formRow($form->get('site')); ?></div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12"><?php echo $this->formRow($form->get('description'));  ?></div>
+                            </div>
+						</div>
+
+						<div class="form-actions">
+							<div class="row">
+								<div class="col-md-offset-3 col-md-9">
+									<button type="submit" class="btn blue btn-lg action-save">Salvar</button>
+									<a href="#" class="btn red btn-lg action cancel">Descartar</a>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+		<?php echo $this->form()->closeTag() ?>
+	</div>
+</div>

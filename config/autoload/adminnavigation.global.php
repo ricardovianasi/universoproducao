@@ -41,6 +41,26 @@ return [
                     ],
                 ]
             ],
+            [
+                'label' => 'Oficinas',
+                'uri' => '#',
+                'icon' => 'icon-book-open',
+                'pages' => [
+                    [
+                        'label' => 'Responsáveis',
+                        'route' => 'admin/default',
+                        'controller' => 'workshop-manager',
+                        'icon' => 'icon-doc',
+
+                    ],
+                    [
+                        'label' => 'Oficinas',
+                        'route' => 'admin/default',
+                        'controller' => 'workshop',
+                        'icon' => 'icon-doc',
+                    ],
+                ]
+            ],
 			[
 				'label' => 'Notícias',
 				'route' => 'admin/default',

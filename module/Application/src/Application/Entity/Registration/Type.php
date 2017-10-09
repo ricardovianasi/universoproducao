@@ -9,7 +9,7 @@ final class Type
 
 	static public function toArray() {
 		return array(
-		    self::MOVIE => 'Filmes',
+		    self::MOVIE => 'Filme',
             self::WORKSHOP => 'Oficina',
             self::SEMINAR => 'Seminário',
 		);

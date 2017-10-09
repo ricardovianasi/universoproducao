@@ -36,8 +36,8 @@ jQuery(document).ready(function() {
         });
 
         tinymce.init({
-            selector: '#tinymce_minimal',
-            height: 350,
+            selector: '.tinymce_minimal',
+            height: 250,
             directionality : 'ltr',
             plugins: [
                 "autolink link lists hr anchor",
@@ -52,6 +52,8 @@ jQuery(document).ready(function() {
             relative_urls: false,
             remove_script_host : false
         });
+
+    $(":input").inputmask();
 
 	//inicia o plugin de opções de página
 	$(".post-sidebar-options").postStatus();

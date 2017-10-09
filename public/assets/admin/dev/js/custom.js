@@ -1,2 +1,1980 @@
-/*! universo-producao - 0.0.1 - By Ricardo Viana */(function(a,b){var c=function(a,c){this.element=a;this.$element=b(a);this.options=c};c.prototype={defaults:{},init:function(){this.config=b.extend({},this.defaults,this.options,this.$element.data());var a=this;a.$element.find("#searchcep").on("click",function(c){c.preventDefault();var d=a.$element.find('input[name="cep"]').val();if(!d){return}App.blockUI({cenrerY:true,animate:true});b.ajax({type:"POST",url:a.config.urlCep,data:"cep="+d,complete:function(){App.unblockUI()},success:function(c){if(c.error){a.erroMessage(c.error)}else{b(a.config.form+' select[name="state"]').val(c.cep.state);b(a.config.form+' select[name="city"]').empty().append(c.cep.cities).val(c.cep.city);b(a.config.form+' input[name="address"]').val(c.cep.address);b(a.config.form+' input[name="district"]').val(c.cep.district);App.unblockUI()}},error:function(){App.unblockUI();a.erroMessage("Não foi possível localizar o cep informado. Por favor, tente novamente ou informe o endereço manualmente.")}})})},erroMessage:function(a){bootbox.alert({message:a,title:"Atenção"})}};c.defaults=c.prototype.defaults;b.fn.cep=function(a){return this.each(function(){new c(this,a).init()})};a.Cep=Plugin})(window,jQuery);(function(a,b){var c=function(a,c){this.element=a;this.$element=b(a);this.options=c};c.prototype={defaults:{},init:function(){this.config=b.extend({},this.defaults,this.options,this.$element.data());var a=this;a.$element.find(a.config.input).on("change",function(c){var d=b(this).val();console.log(d);if(!d){return}App.blockUI({cenrerY:true,animate:true});b.ajax({type:"POST",url:a.config.url,data:"media="+d,success:function(c){if(c.error){alert(c.error)}else{a.$element.find(".gallery-items").append(c.item);b(".icheck").iCheck({checkboxClass:"icheckbox_minimal-grey"});App.unblockUI()}},error:function(){alert("Não foi inserir um novo item. Por favor, tente novamente.")}})});console.log(a.element);b(document).on("click",".gallery-item-action-remove",function(a){a.preventDefault();var c=b(this).closest("tr");c.css({"border-color":"red",background:"#FFB5B5"});c.fadeOut("slow",function(){c.remove()})})}};c.defaults=c.prototype.defaults;b.fn.banner=function(a){return this.each(function(){new c(this,a).init()})};a.Banner=Plugin})(window,jQuery);(function(a,b){var c=function(a,c){this.element=a;this.$element=b(a);this.options=c};c.prototype={defaults:{disableAllBtn:".icheckcontrol-disable-all",enableAllBtn:".icheckcontrol-enable-all",toggleAllBtn:".icheckcontrol-toggle-all",target:"input.icheck"},init:function(){this.config=b.extend({},this.defaults,this.options);var a=this;a.$element.on("click",function(c){c.preventDefault;var d=b(a.config.target);if(b(this).hasClass(a.config.disableAllBtn)){d.iCheck("uncheck")}else if(b(this).hasClass(a.config.enableAllBtn)){d.iCheck("check")}else{if(d.not(":checked").length>0){d.iCheck("check")}else{d.iCheck("uncheck")}}})}};c.defaults=c.prototype.defaults;b.fn.iCheckControl=function(a){new c(this,a).init()};a.ICheckControl=Plugin})(window,jQuery);jQuery(document).ready(function(){$(".icheckcontrol").iCheckControl()});(function(a,b){var c=function(a,c){this.element=a;this.$element=b(a);this.options=c};c.prototype={defaults:{},init:function(){this.config=b.extend({},this.defaults,this.options,this.$element.data());var a=this;a.$element.find(a.config.stateElement).on("change",function(c){c.preventDefault();var d=b(this).val();if(!d){return}App.blockUI({cenrerY:true,animate:true});b.ajax({type:"POST",url:a.config.url,data:"state="+d,success:function(b){if(b.error){a.erroMessage(b.error)}else{a.$element.find(a.config.cityElement).empty().append(b.cities);App.unblockUI()}},error:function(){a.erroMessage("Não foi possível localizar o cep informado. Por favor, tente novamente ou informe o endereço manualmente.")}})})},erroMessage:function(a){bootbox.dialog({message:a,title:"Atenção",buttons:{success:{label:"OK",className:"blue",callback:function(){App.unblockUI()}}}})}};c.defaults=c.prototype.defaults;b.fn.cities=function(a){return this.each(function(){new c(this,a).init()})};a.Cities=Plugin})(window,jQuery);(function(a){if(typeof exports==="object"&&typeof module!=="undefined"){module.exports=a()}else if(typeof define==="function"&&define.amd){define([],a)}else{var b;if(typeof window!=="undefined"){b=window}else if(typeof global!=="undefined"){b=global}else if(typeof self!=="undefined"){b=self}else{b=this}b.Clipboard=a()}})(function(){var a,b,c;return function d(a,b,c){function e(g,h){if(!b[g]){if(!a[g]){var i=typeof require=="function"&&require;if(!h&&i)return i(g,!0);if(f)return f(g,!0);var j=new Error("Cannot find module '"+g+"'");throw j.code="MODULE_NOT_FOUND",j}var k=b[g]={exports:{}};a[g][0].call(k.exports,function(b){var c=a[g][1][b];return e(c?c:b)},k,k.exports,d,a,b,c)}return b[g].exports}var f=typeof require=="function"&&require;for(var g=0;g<c.length;g++)e(c[g]);return e}({1:[function(a,b,c){var d=9;if(typeof Element!=="undefined"&&!Element.prototype.matches){var e=Element.prototype;e.matches=e.matchesSelector||e.mozMatchesSelector||e.msMatchesSelector||e.oMatchesSelector||e.webkitMatchesSelector}function f(a,b){while(a&&a.nodeType!==d){if(typeof a.matches==="function"&&a.matches(b)){return a}a=a.parentNode}}b.exports=f},{}],2:[function(a,b,c){var d=a("./closest");function e(a,b,c,d,e){var g=f.apply(this,arguments);a.addEventListener(c,g,e);return{destroy:function(){a.removeEventListener(c,g,e)}}}function f(a,b,c,e){return function(c){c.delegateTarget=d(c.target,b);if(c.delegateTarget){e.call(a,c)}}}b.exports=e},{"./closest":1}],3:[function(a,b,c){c.node=function(a){return a!==undefined&&a instanceof HTMLElement&&a.nodeType===1};c.nodeList=function(a){var b=Object.prototype.toString.call(a);return a!==undefined&&(b==="[object NodeList]"||b==="[object HTMLCollection]")&&"length"in a&&(a.length===0||c.node(a[0]))};c.string=function(a){return typeof a==="string"||a instanceof String};c.fn=function(a){var b=Object.prototype.toString.call(a);return b==="[object Function]"}},{}],4:[function(a,b,c){var d=a("./is");var e=a("delegate");function f(a,b,c){if(!a&&!b&&!c){throw new Error("Missing required arguments")}if(!d.string(b)){throw new TypeError("Second argument must be a String")}if(!d.fn(c)){throw new TypeError("Third argument must be a Function")}if(d.node(a)){return g(a,b,c)}else if(d.nodeList(a)){return h(a,b,c)}else if(d.string(a)){return i(a,b,c)}else{throw new TypeError("First argument must be a String, HTMLElement, HTMLCollection, or NodeList")}}function g(a,b,c){a.addEventListener(b,c);return{destroy:function(){a.removeEventListener(b,c)}}}function h(a,b,c){Array.prototype.forEach.call(a,function(a){a.addEventListener(b,c)});return{destroy:function(){Array.prototype.forEach.call(a,function(a){a.removeEventListener(b,c)})}}}function i(a,b,c){return e(document.body,a,b,c)}b.exports=f},{"./is":3,delegate:2}],5:[function(a,b,c){function d(a){var b;if(a.nodeName==="SELECT"){a.focus();b=a.value}else if(a.nodeName==="INPUT"||a.nodeName==="TEXTAREA"){var c=a.hasAttribute("readonly");if(!c){a.setAttribute("readonly","")}a.select();a.setSelectionRange(0,a.value.length);if(!c){a.removeAttribute("readonly")}b=a.value}else{if(a.hasAttribute("contenteditable")){a.focus()}var d=window.getSelection();var e=document.createRange();e.selectNodeContents(a);d.removeAllRanges();d.addRange(e);b=d.toString()}return b}b.exports=d},{}],6:[function(a,b,c){function d(){}d.prototype={on:function(a,b,c){var d=this.e||(this.e={});(d[a]||(d[a]=[])).push({fn:b,ctx:c});return this},once:function(a,b,c){var d=this;function e(){d.off(a,e);b.apply(c,arguments)}e._=b;return this.on(a,e,c)},emit:function(a){var b=[].slice.call(arguments,1);var c=((this.e||(this.e={}))[a]||[]).slice();var d=0;var e=c.length;for(d;d<e;d++){c[d].fn.apply(c[d].ctx,b)}return this},off:function(a,b){var c=this.e||(this.e={});var d=c[a];var e=[];if(d&&b){for(var f=0,g=d.length;f<g;f++){if(d[f].fn!==b&&d[f].fn._!==b)e.push(d[f])}}e.length?c[a]=e:delete c[a];return this}};b.exports=d},{}],7:[function(b,c,d){(function(e,f){if(typeof a==="function"&&a.amd){a(["module","select"],f)}else if(typeof d!=="undefined"){f(c,b("select"))}else{var g={exports:{}};f(g,e.select);e.clipboardAction=g.exports}})(this,function(a,b){"use strict";var c=d(b);function d(a){return a&&a.__esModule?a:{"default":a}}var e=typeof Symbol==="function"&&typeof Symbol.iterator==="symbol"?function(a){return typeof a}:function(a){return a&&typeof Symbol==="function"&&a.constructor===Symbol&&a!==Symbol.prototype?"symbol":typeof a};function f(a,b){if(!(a instanceof b)){throw new TypeError("Cannot call a class as a function")}}var g=function(){function a(a,b){for(var c=0;c<b.length;c++){var d=b[c];d.enumerable=d.enumerable||false;d.configurable=true;if("value"in d)d.writable=true;Object.defineProperty(a,d.key,d)}}return function(b,c,d){if(c)a(b.prototype,c);if(d)a(b,d);return b}}();var h=function(){function a(b){f(this,a);this.resolveOptions(b);this.initSelection()}g(a,[{key:"resolveOptions",value:function b(){var a=arguments.length>0&&arguments[0]!==undefined?arguments[0]:{};this.action=a.action;this.container=a.container;this.emitter=a.emitter;this.target=a.target;this.text=a.text;this.trigger=a.trigger;this.selectedText=""}},{key:"initSelection",value:function d(){if(this.text){this.selectFake()}else if(this.target){this.selectTarget()}}},{key:"selectFake",value:function h(){var a=this;var b=document.documentElement.getAttribute("dir")=="rtl";this.removeFake();this.fakeHandlerCallback=function(){return a.removeFake()};this.fakeHandler=this.container.addEventListener("click",this.fakeHandlerCallback)||true;this.fakeElem=document.createElement("textarea");this.fakeElem.style.fontSize="12pt";this.fakeElem.style.border="0";this.fakeElem.style.padding="0";this.fakeElem.style.margin="0";this.fakeElem.style.position="absolute";this.fakeElem.style[b?"right":"left"]="-9999px";var d=window.pageYOffset||document.documentElement.scrollTop;this.fakeElem.style.top=d+"px";this.fakeElem.setAttribute("readonly","");this.fakeElem.value=this.text;this.container.appendChild(this.fakeElem);this.selectedText=(0,c.default)(this.fakeElem);this.copyText()}},{key:"removeFake",value:function i(){if(this.fakeHandler){this.container.removeEventListener("click",this.fakeHandlerCallback);this.fakeHandler=null;this.fakeHandlerCallback=null}if(this.fakeElem){this.container.removeChild(this.fakeElem);this.fakeElem=null}}},{key:"selectTarget",value:function j(){this.selectedText=(0,c.default)(this.target);this.copyText()}},{key:"copyText",value:function k(){var a=void 0;try{a=document.execCommand(this.action)}catch(b){a=false}this.handleResult(a)}},{key:"handleResult",value:function l(a){this.emitter.emit(a?"success":"error",{action:this.action,text:this.selectedText,trigger:this.trigger,clearSelection:this.clearSelection.bind(this)})}},{key:"clearSelection",value:function m(){if(this.trigger){this.trigger.focus()}window.getSelection().removeAllRanges()}},{key:"destroy",value:function n(){this.removeFake()}},{key:"action",set:function o(){var a=arguments.length>0&&arguments[0]!==undefined?arguments[0]:"copy";this._action=a;if(this._action!=="copy"&&this._action!=="cut"){throw new Error('Invalid "action" value, use either "copy" or "cut"')}},get:function p(){return this._action}},{key:"target",set:function q(a){if(a!==undefined){if(a&&(typeof a==="undefined"?"undefined":e(a))==="object"&&a.nodeType===1){if(this.action==="copy"&&a.hasAttribute("disabled")){throw new Error('Invalid "target" attribute. Please use "readonly" instead of "disabled" attribute')}if(this.action==="cut"&&(a.hasAttribute("readonly")||a.hasAttribute("disabled"))){throw new Error('Invalid "target" attribute. You can\'t cut text from elements with "readonly" or "disabled" attributes')}this._target=a}else{throw new Error('Invalid "target" value, use a valid Element')}}},get:function r(){return this._target}}]);return a}();a.exports=h})},{select:5}],8:[function(b,c,d){(function(e,f){if(typeof a==="function"&&a.amd){a(["module","./clipboard-action","tiny-emitter","good-listener"],f)}else if(typeof d!=="undefined"){f(c,b("./clipboard-action"),b("tiny-emitter"),b("good-listener"))}else{var g={exports:{}};f(g,e.clipboardAction,e.tinyEmitter,e.goodListener);e.clipboard=g.exports}})(this,function(a,b,c,d){"use strict";var e=h(b);var f=h(c);var g=h(d);function h(a){return a&&a.__esModule?a:{"default":a}}var i=typeof Symbol==="function"&&typeof Symbol.iterator==="symbol"?function(a){return typeof a}:function(a){return a&&typeof Symbol==="function"&&a.constructor===Symbol&&a!==Symbol.prototype?"symbol":typeof a};function j(a,b){if(!(a instanceof b)){throw new TypeError("Cannot call a class as a function")}}var k=function(){function a(a,b){for(var c=0;c<b.length;c++){var d=b[c];d.enumerable=d.enumerable||false;d.configurable=true;if("value"in d)d.writable=true;Object.defineProperty(a,d.key,d)}}return function(b,c,d){if(c)a(b.prototype,c);if(d)a(b,d);return b}}();function l(a,b){if(!a){throw new ReferenceError("this hasn't been initialised - super() hasn't been called")}return b&&(typeof b==="object"||typeof b==="function")?b:a}function m(a,b){if(typeof b!=="function"&&b!==null){throw new TypeError("Super expression must either be null or a function, not "+typeof b)}a.prototype=Object.create(b&&b.prototype,{constructor:{value:a,enumerable:false,writable:true,configurable:true}});if(b)Object.setPrototypeOf?Object.setPrototypeOf(a,b):a.__proto__=b}var n=function(a){m(b,a);function b(a,c){j(this,b);var d=l(this,(b.__proto__||Object.getPrototypeOf(b)).call(this));d.resolveOptions(c);d.listenClick(a);return d}k(b,[{key:"resolveOptions",value:function c(){var a=arguments.length>0&&arguments[0]!==undefined?arguments[0]:{};this.action=typeof a.action==="function"?a.action:this.defaultAction;this.target=typeof a.target==="function"?a.target:this.defaultTarget;this.text=typeof a.text==="function"?a.text:this.defaultText;this.container=i(a.container)==="object"?a.container:document.body}},{key:"listenClick",value:function d(a){var b=this;this.listener=(0,g.default)(a,"click",function(a){return b.onClick(a)})}},{key:"onClick",value:function f(a){var b=a.delegateTarget||a.currentTarget;if(this.clipboardAction){this.clipboardAction=null}this.clipboardAction=new e.default({action:this.action(b),target:this.target(b),text:this.text(b),container:this.container,trigger:b,emitter:this})}},{key:"defaultAction",value:function h(a){return o("action",a)}},{key:"defaultTarget",value:function n(a){var b=o("target",a);if(b){return document.querySelector(b)}}},{key:"defaultText",value:function p(a){return o("text",a)}},{key:"destroy",value:function q(){this.listener.destroy();if(this.clipboardAction){this.clipboardAction.destroy();this.clipboardAction=null}}}],[{key:"isSupported",value:function r(){var a=arguments.length>0&&arguments[0]!==undefined?arguments[0]:["copy","cut"];var b=typeof a==="string"?[a]:a;var c=!!document.queryCommandSupported;b.forEach(function(a){c=c&&!!document.queryCommandSupported(a)});return c}}]);return b}(f.default);function o(a,b){var c="data-clipboard-"+a;if(!b.hasAttribute(c)){return}return b.getAttribute(c)}a.exports=n})},{"./clipboard-action":7,"good-listener":4,"tiny-emitter":6}]},{},[8])(8)});(function(a,b){var c=function(a,c){this.element=a;this.$element=b(a);this.options=c};c.prototype={defaults:{},init:function(){this.config=b.extend({},this.defaults,this.options);var a=this;a.$element.find('input[data-required="required"], select[data-required="required"]').each(function(){b(this).on("change",function(a){if(b(this).val()!=""){b(this).css({border:""})}})});a.$element.find(".user-dependents-add").on("click",function(c){c.preventDefault();var d=true;a.$element.find('input[data-required="required"], select[data-required="required"]').each(function(){if(b(this).val()==""){b(this).css({border:"1px solid red"});d=false}});if(!d){return}var e=Math.floor(Date.now()/1e3),f=a.$element.find("#dependent_name"),g=a.$element.find("#dependent_email"),h=a.$element.find("#dependent_birth_date");identifier=a.$element.find("#dependent_identifier");gender=a.$element.find("#dependent_gender");a.$element.find("tbody > tr:last").before(b('<tr data-row="'+e+'"></tr>').append("<td>"+f.val()+"</td>").append("<td>"+g.val()+"</td>").append("<td>"+h.val()+"</td>").append("<td>"+identifier.val()+"</td>").append("<td>"+gender.find("option:selected").text()+"</td>").append(b("<td></td>").append('<a href="#" class="btn btn-sm btn-default user-dependents-remove" data-remove="'+e+'"><i class="glyphicon glyphicon-remove"></i></a>').append('<a href="#" class="btn btn-sm btn-default user-dependents-edit" data-edit="'+e+'"><i class="glyphicon glyphicon-edit"></i></a>').append('<input type="hidden" name="dependents['+e+'][name]" value="'+f.val()+'">').append('<input type="hidden" name="dependents['+e+'][email]" value="'+g.val()+'">').append('<input type="hidden" name="dependents['+e+'][birth_date]" value="'+h.val()+'">').append('<input type="hidden" name="dependents['+e+'][identifier]" value="'+identifier.val()+'">').append('<input type="hidden" name="dependents['+e+'][gender]" value="'+gender.val()+'">')));f.val("");g.val("");h.val("");identifier.val("");gender.val("")});b(document).on("click",".user-dependents-remove",function(a){a.preventDefault();var c=b(document).find('tr[data-row="'+b(this).data("remove")+'"]');c.fadeOut("slow",function(){c.remove()})});b(document).on("click",".user-dependents-edit",function(a){a.preventDefault();var c=b(document).find('tr[data-row="'+b(this).data("edit")+'"]');console.log(b(document).find('input[name^="dependents['+b(this).data("edit")+']"]'))})}};c.defaults=c.prototype.defaults;b.fn.adminDependents=function(a){return this.each(function(){new c(this,a).init()})};a.AdminDependents=Plugin})(window,jQuery);(function(a,b){var c=function(a,c){this.element=a;this.$element=b(a);this.options=c};c.prototype={defaults:{},init:function(){this.config=b.extend({},this.defaults,this.options);var a=this;console.log(this.$element);a.$element.find("#file").on("change",function(){if(b(this).val()){a.$element.addClass("fileinput-exist");var c=b("<img width='100%' src='"+b(this).val()+"'>");a.$element.find(".fileinput-preview").empty().append(c).show();a.$element.find(".fileinput-new").hide()}});a.$element.find(".fileinput-remove").on("click",function(b){a.$element.find(".fileinput-preview").empty().hide();a.$element.find(".fileinput-new").show();a.$element.addClass("fileinput-exist");a.$element.find("#file").val("")})}};c.defaults=c.prototype.defaults;b.fn.fileInput=function(a){return this.each(function(){new c(this,a).init()})};a.FileInput=Plugin})(window,jQuery);(function(a,b){var c=function(a,c){this.element=a;this.$element=b(a);this.options=c};c.prototype={defaults:{submitTrigger:'button[type="submit"]',cancelTrigguer:".form-action-cancel",enableValidators:false},init:function(){this.config=b.extend({},this.defaults,this.options,this.$element.data());var c=this;c.$element.find(c.config.submitTrigger).on("click",function(a){a.preventDefault();var d=true;if(c.$element.hasClass("enable-validators")||c.config.enableValidators){d=c.$element.valid()}if(d){App.blockUI({cenrerY:true,animate:true});setTimeout(function(){b(c.$element).submit()},1500)}});c.$element.find(c.config.cancelTrigguer).on("click",function(c){c.preventDefault();var d=b(this);bootbox.dialog({message:"Tem certeza que deseja descartar as alterações?",title:"Atenção",buttons:{success:{label:"OK",className:"red",callback:function(){App.blockUI({cenrerY:true,animate:true});a.location.href=d.attr("href");return}},danger:{label:"Cancelar",className:"blue",callback:function(){return}}}})})}};c.defaults=c.prototype.defaults;b.fn.formSave=function(a){return this.each(function(){new c(this,a).init()})};a.FormSave=Plugin})(window,jQuery);(function(a,b){var c=function(a,c){this.element=a;this.$element=b(a);this.options=c};c.prototype={defaults:{alertMensage:".alert-form-errors",errorElement:"span",errorClass:"help-block help-block-error"},init:function(){this.config=b.extend({},this.defaults,this.options,this.$element.data());var a=this;a.$element.validate({errorElement:a.config.errorElement,errorClass:a.config.errorClass,focusInvalid:false,ignore:"",messages:{},errorPlacement:function(a,b){if(b.parent(".input-group").size()>0){a.insertAfter(b.parent(".input-group"))}else if(b.attr("data-error-container")){a.appendTo(b.attr("data-error-container"))}else if(b.parents(".radio-list").size()>0){a.appendTo(b.parents(".radio-list").attr("data-error-container"))}else if(b.parents(".radio-inline").size()>0){a.appendTo(b.parents(".radio-inline").attr("data-error-container"))}else if(b.parents(".checkbox-list").size()>0){a.appendTo(b.parents(".checkbox-list").attr("data-error-container"))}else if(b.parents(".checkbox-inline").size()>0){a.appendTo(b.parents(".checkbox-inline").attr("data-error-container"))}else{a.insertAfter(b)}},invalidHandler:function(c,d){a.$element.find(a.config.alertMensage).show();App.scrollTo(b("div.alert.display-hide"),-200)},highlight:function(a){b(a).closest(".form-group").addClass("has-error")},unhighlight:function(a){b(a).closest(".form-group").removeClass("has-error")},success:function(a){a.closest(".form-group").removeClass("has-error")}});a.$element.find(".date-picker .form-control").change(function(){a.$element.validate().element(b(this))})}};c.defaults=c.prototype.defaults;b.fn.formValidation=function(a){return this.each(function(){new c(this,a).init()})};a.FormValidation=Plugin})(window,jQuery);jQuery.extend(jQuery.validator.messages,{required:"Este campo é obrigatório.",remote:"Please fix this field.",email:"Endereço de email não é válido.",url:"Please enter a valid URL.",date:"Please enter a valid date.",dateISO:"Please enter a valid date (ISO).",number:"Please enter a valid number.",digits:"Please enter only digits.",creditcard:"Please enter a valid credit card number.",equalTo:"Please enter the same value again.",accept:"Please enter a value with a valid extension.",maxlength:jQuery.validator.format("Please enter no more than {0} characters."),minlength:jQuery.validator.format("Please enter at least {0} characters."),rangelength:jQuery.validator.format("Please enter a value between {0} and {1} characters long."),range:jQuery.validator.format("Please enter a value between {0} and {1}."),max:jQuery.validator.format("Please enter a value less than or equal to {0}."),min:jQuery.validator.format("Please enter a value greater than or equal to {0}.")});jQuery(document).ready(function(){tinymce.init({selector:".tinymce",height:350,directionality:"ltr",plugins:["autolink link image lists hr anchor","searchreplace wordcount visualblocks visualchars insertdatetime media nonbreaking","table contextmenu directionality paste, responsivefilemanager, imagetools, fullscreen"],toolbar1:"undo redo | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | styleselect",toolbar2:"| responsivefilemanager | link unlink anchor | image media | fullscreen",image_advtab:true,imagetools_cors_hosts:["localhost","codepen.io"],image_caption:true,style_formats:[{title:"Image Left",selector:"img",styles:{"float":"left",margin:"0 10px 0 10px"}},{title:"Image Right",selector:"img",styles:{"float":"right",margin:"0 10px 0 10px"}}],content_css:["//www.tinymce.com/css/codepen.min.css"],relative_urls:false,remove_script_host:false,external_filemanager_path:"/filemanager/",filemanager_title:"Responsive Filemanager",external_plugins:{filemanager:"/filemanager/plugin.min.js"}});tinymce.init({selector:"#tinymce_minimal",height:350,directionality:"ltr",plugins:["autolink link lists hr anchor","searchreplace wordcount visualblocks visualchars insertdatetime nonbreaking","table contextmenu directionality paste, fullscreen"],toolbar1:"undo redo | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist",toolbar2:"link unlink anchor | fullscreen",content_css:["//www.tinymce.com/css/codepen.min.css"],relative_urls:false,remove_script_host:false});$(".post-sidebar-options").postStatus();$(".slug-container").slug();$(".post-list").postListStatus();$(".post-sites").postSites();$("form.default-form-actions").formSave();$(".cep").cep();$(".state-cities").cities();$(".password-generator").passwordGenerator();if(jQuery().datepicker){$(".date-picker").datepicker({rtl:App.isRTL(),todayBtn:true,autoclose:true,language:"pt-BR",todayHighlight:true})}if(jQuery().timepicker){$(".time-picker").timepicker({defaultTime:false,autoclose:true,minuteStep:5,showSeconds:false,showMeridian:false})}$("form.enable-validators").formValidation();$(".dd").nestable();$("#sortable_banner").sortable({items:".banner-item",opacity:.8,handle:".portlet-title",coneHelperSize:true});$(".gallery-items").sortable({items:".gallery-item",opacity:.8,coneHelperSize:true,handle:".gallery-item-move"});$("select.multi-select").multiSelect({selectableOptgroup:true});$.fn.select2.defaults.set("theme","bootstrap");$("select.select2").select2({placeholder:"Selecione"});$(".select2, .select2-multiple, .select2-allow-clear, .js-data-example-ajax").on("select2:open",function(){if($(this).parents("[class*='has-']").length){var a=$(this).parents("[class*='has-']")[0].className.split(/\s+/);for(var b=0;b<a.length;++b){if(a[b].match("has-")){$("body > .select2-container").addClass(a[b])}}}});$.fn.postThumb();$.fn.selectImage();$(".responsivefilemanager").modalResponsiveFileManager();$(".page-gallery").banner();$("div#admin-menu").menu();$(".fileinput").fileInput();$(".admin-phone").adminPhone();$("#user-dependents").adminDependents();$("#post-url-btn").on("click",function(a){a.preventDefault();if(copyToClipboard(document.getElementById("post-url"))){}});new Clipboard(".data-copy");$(".registration-form select[name=type]").on("change",function(a){var b=$(this).find("option:selected").val();var c=$("#registration-form");c.append($('<input type="hidden" name="no-validate" value="no-validate">'));c.submit();App.blockUI({cenrerY:true,animate:true})})});function copyToClipboard(a){var b="_hiddenCopyText_";var c=a.tagName==="INPUT"||a.tagName==="TEXTAREA";var d,e;if(c){f=a;d=a.selectionStart;e=a.selectionEnd}else{f=document.getElementById(b);if(!f){var f=document.createElement("textarea");f.style.position="absolute";f.style.left="-9999px";f.style.top="0";f.id=b;document.body.appendChild(f)}f.textContent=a.textContent}var g=document.activeElement;f.focus();f.setSelectionRange(0,f.value.length);var h;try{h=document.execCommand("copy")}catch(i){h=false}if(g&&typeof g.focus==="function"){g.focus()}if(c){a.setSelectionRange(d,e)}else{f.textContent=""}return h}(function(a,b){var c=function(a,c){this.element=a;this.$element=b(a);this.options=c};c.prototype={defaults:{},init:function(){this.config=b.extend({},this.defaults,this.options,this.$element.data());var a=this;var c=a.$element.find(".admin-menu-add .admin-menu-add-external-url form");a.$element.find(".admin-menu-add .admin-menu-add-external-url .action-add").on("click",function(b){b.preventDefault();if(a.validateForm(c)){a.createNode(c.serialize())}});var d=a.$element.find(".admin-menu-add .admin-menu-add-page form");a.$element.find('.admin-menu-add .admin-menu-add-page form a[data-toggle="tab"]').on("shown.bs.tab",function(a){d.find("input.icheck").iCheck("uncheck")});a.$element.find(".admin-menu-add .admin-menu-add-page .action-add").on("click",function(b){b.preventDefault();if(a.validateForm(d)){if(d.find('input[type="checkbox"]:checked').length>0){a.createNode(d.serialize())}}});b(document).on("click",".admin-menu-items .menu-items .form-item-edit .actions .remove",function(a){a.preventDefault();var c=b(this).closest(".dd-item");c.children(".dd-handle").first().css({"border-color":"red",background:"#FFB5B5"});c.slideUp(function(){c.remove()})});b(document).on("keyup",'.admin-menu-items .menu-items .form-item-edit input[name="label"]',function(a){b(this).closest(".dd-item").data("label",b(this).val()).children(".dd-handle").children().text(b(this).val())});b(document).on("keyup",'.admin-menu-items .menu-items .form-item-edit input[name="url"]',function(a){b(this).closest(".dd-item").data("external-url",b(this).val())});a.$element.find(".admin-menu-add .search-page-action").on("click",function(c){c.preventDefault();if(!a.$element.find('#tab_search_pages .form-search input[name="search"]').val()){return}var d=a.$element.find("#tab_search_pages .form-search :input").serialize();App.blockUI({cenrerY:true,animate:true});b.ajax({type:"GET",url:a.config.urlPage,data:d,success:function(c){if(c.error){alert(c.error)}else{a.$element.find(".admin-menu-add #tab_search_pages .page-list").replaceWith(c.pages);b(".icheck").iCheck({checkboxClass:"icheckbox_minimal-grey"})}},error:function(){alert("Erro desconhecido. Tente novamente")},complete:function(){App.unblockUI()}})});a.$element.find(".admin-menu-items .form-actions .action-save").on("click",function(c){c.preventDefault();var d=a.$element.find(".admin-menu-items .menu-items .dd").nestable("serialize");App.blockUI({cenrerY:true,animate:true});var e=b('<form method="POST">').append(b('<input name="menu">').val(JSON.stringify(d)));b(document.body).append(e);e.submit()})},createNode:function(a){var c=this;App.blockUI({cenrerY:true,animate:true});b.ajax({type:"POST",url:c.config.urlItem,data:a,success:function(a){if(a.error){alert(a.error)}else{c.addNode(a.node);c.resetForm()}},error:function(){alert("Erro desconhecido. Tente novamente")},complete:function(){App.unblockUI()}})},addNode:function(a){this.$element.find(".admin-menu-items .menu-items .dd-list").first().append(a)},resetForm:function(){this.$element.find(".admin-menu-add form").trigger("reset");this.$element.find(".icheck").iCheck("uncheck");b(document).find(".icheck").iCheck("uncheck")},validateForm:function(a){a.validate({highlight:function(a){b(a).closest(".form-group").addClass("has-error")},errorPlacement:function(a,b){return""},unhighlight:function(a){b(a).closest(".form-group").removeClass("has-error")}});return a.valid()}};c.defaults=c.prototype.defaults;b.fn.menu=function(a){return this.each(function(){new c(this,a).init()})};a.Menu=Plugin})(window,jQuery);(function(a,b){var c=function(a,c){this.element=a;this.$element=b(a);this.options=c};c.prototype={defaults:{},init:function(){this.config=b.extend({},this.defaults,this.options,this.$element.data());var a=this;var c=b(a.config.target);a.$element.on("click",function(d){d.preventDefault();App.blockUI({cenrerY:true,animate:true});var e=b("<iframe/>",{src:a.config.url,style:"width: 100%; min-height: 600px",frameborder:0,load:function(){App.unblockUI();c.modal("show")}});c.find(".modal-body").empty().replaceWith(e);c.on("hide.bs.modal	",function(a){App.unblockUI();c.find(".modal-body").empty()})})}};c.defaults=c.prototype.defaults;b.fn.modalResponsiveFileManager=function(a){return this.each(function(){new c(this,a).init()})};a.ModalResponsiveFileManager=Plugin})(window,jQuery);function responsive_filemanager_callback(a){var b=$("#"+a);b.trigger("change");return}(function(a,b){var c=function(a,c){this.element=a;this.$element=b(a);this.options=c};c.prototype={defaults:{buttonTrigger:"button",input:'input[name="temp-pass"]'},init:function(){this.config=b.extend({},this.defaults,this.options,this.$element.data());var a=this;a.$element.find(a.config.buttonTrigger).on("click",function(c){c.preventDefault();App.blockUI({cenrerY:true,animate:true});b.ajax({type:"GET",url:a.config.url,success:function(b){if(b.error){a.erroMessage(b.error)}else{a.$element.find(a.config.input).val(b.password);App.unblockUI()}},error:function(){a.erroMessage("Não foi possível gerar a senha. Por favor, tente novamente.")}})})},erroMessage:function(a){bootbox.dialog({message:a,title:"Atenção",buttons:{success:{label:"OK",className:"blue",callback:function(){App.unblockUI()}}}})}};c.defaults=c.prototype.defaults;b.fn.passwordGenerator=function(a){return this.each(function(){new c(this,a).init()})};a.PasswordGenerator=Plugin})(window,jQuery);
-(function(a,b){var c=function(a,c){this.element=a;this.$element=b(a);this.options=c};c.prototype={defaults:{},init:function(){this.config=b.extend({},this.defaults,this.options);var a=this;b(".admin-phone-add").on("click",function(c){c.preventDefault();console.log("Tentando incluir telefone");var d=a.$element.find("#admin-phone-ddd");var e=a.$element.find("#admin-phone-number");var f=a.$element.find("#admin-phone-contact_name");var g=a.$element.find("#admin-phone-type");if(d.val()==""||e.val()==""){console.log("Nenhum telefone adicionado");return}var h=Math.floor(Date.now()/1e3);var i=b('<tr data-row="'+h+'"></tr>').append("<td>"+d.val()+"</td>").append("<td>"+e.val()+"</td>").append("<td>"+f.val()+"</td>").append("<td>"+g.find("option:selected").text()+"</td>").append(b("<td></td>").append('<a href="#" class="btn btn-sm btn-default admin-phone-remove" data-remove="'+h+'"><i class="glyphicon glyphicon-remove"></i></a>').append('<input type="hidden" name="phones['+h+'][ddd]" value="'+d.val()+'">').append('<input type="hidden" name="phones['+h+'][number]" value="'+e.val()+'">').append('<input type="hidden" name="phones['+h+'][contact_name]" value="'+f.val()+'">').append('<input type="hidden" name="phones['+h+'][type]" value="'+g.val()+'">'));a.$element.find("tbody > tr:last").before(i);d.val("");e.val("");f.val("");g.val("")});b(document).on("click",".admin-phone-remove",function(a){a.preventDefault();var c=b(document).find('tr[data-row="'+b(this).data("remove")+'"]');c.fadeOut("slow",function(){c.remove()})})}};c.defaults=c.prototype.defaults;b.fn.adminPhone=function(a){return this.each(function(){new c(this,a).init()})};a.AdminPhone=Plugin})(window,jQuery);(function(a,b){var c=function(a,c){this.element=a;this.$element=b(a);this.options=c};c.prototype={defaults:{removeMsg:"Tem certeza que deseja exluir o item?"},init:function(){this.config=b.extend({},this.defaults,this.options);var a=this;a.trashAction()},trashAction:function(){var a=this;console.log(a.$element.find(".post-list-remove"));a.$element.find(".post-list-remove").on("click",function(c){c.preventDefault();a.remove(a.config.removeMsg,b(this).attr("href"))})},remove:function(b,c){bootbox.dialog({message:b,title:"Atenção",buttons:{success:{label:"OK",className:"red",callback:function(){App.blockUI({cenrerY:true,animate:true});a.location.href=c;return}},danger:{label:"Cancelar",className:"blue",callback:function(){return}}}})}};c.defaults=c.prototype.defaults;b.fn.postListStatus=function(a){return this.each(function(){new c(this,a).init()})};a.PostListStatus=Plugin})(window,jQuery);(function(a,b){var c=function(a,c){this.element=a;this.$element=b(a);this.options=c};c.prototype={defaults:{},init:function(){this.config=b.extend({},this.defaults,this.options,this.$element.data());var a=this;var c=a.$element.find(".post-site-form");a.$element.find(".post-site-form .action.add").on("click",function(b){b.preventDefault();var d=c.find('select[name="sites-enabled"]').select2("data");var e=d[0].id;var f=d[0].text;var g=c.find('input[name="site-highlight"]').is(":checked");if(e==""){return}if(a.isExist(e)){return}App.blockUI({cenrerY:true,animate:true});var h=a.$element.find(".post-sites-table tbody");if(g){f=f+'<span class="label label-sm label-success"> Destaque </span>'}h.append("<tr class='post-sites-item' data-id='"+e+"'>					<td>"+f+"</td>					<td>					<button class='btn btn-sm btn-default action remove'><i class='fa fa-close'></i></button>					<input type='hidden' name='sites["+e+"][id]' value='"+e+"' />					<input type='hidden' name='sites["+e+"][highlight]' value='"+g+"' /></td>");setTimeout(function(){App.unblockUI();c.find('select[name="sites-enabled"]').val(null).trigger("change");c.find('input[name="site-highlight"]').iCheck("uncheck")},1e3)});b(document).on("click",".post-sites-table .post-sites-item .action.remove",function(a){a.preventDefault();var c=b(this).closest(".post-sites-item");c.fadeOut("slow",function(){c.remove()})});a.$element.find(".post-sites-table .action.remove-all").on("click",function(b){b.preventDefault();a.$element.find(".post-sites-table .post-sites-item").remove()})},isExist:function(a){var b=this;if(b.$element.find('.post-sites-table .post-sites-item[data-id="'+a+'"]').length>0){return true}return false}};c.defaults=c.prototype.defaults;b.fn.postSites=function(a){return this.each(function(){new c(this,a).init()})};a.PostSites=Plugin})(window,jQuery);(function(a,b){var c=function(a,c){this.element=a;this.$element=b(a);this.options=c};c.prototype={defaults:{btnAction:".slug-action-edit",inputElement:"#slug"},init:function(){this.config=b.extend({},this.defaults,this.options,this.$element.data());var a=this;a.process();a.processTarget()},process:function(){var a=this;var c=b(this.config.inputElement);b(a.config.btnAction).on("click",function(a){a.preventDefault();c.removeProp("readonly")})},processTarget:function(){var a=this;var c=b(this.config.slugtarget);c.on("blur",function(b){b.preventDefault();if(c.val()===""){return false}if(a.getSlugValue()!=""){return false}a.generateSlug(c.val())})},getSlugValue:function(){return b(this.config.inputElement).val()},generateSlug:function(a){var c=this;var d="slug="+a;b.ajax({type:"POST",url:c.config.slugurlvalidation,data:d,success:function(a){c.displaySlug(a.slug)},error:function(){alert("error")}})},displaySlug:function(a){if(a!=""){b(this.config.inputElement).val(a)}}};c.defaults=c.prototype.defaults;b.fn.slug=function(a){return this.each(function(){new c(this,a).init()})};a.Slug=Plugin})(window,jQuery);(function(a,b){var c=function(a,c){this.element=a;this.$element=b(a);this.options=c};c.prototype={defaults:{form:"#post-form"},init:function(){this.config=b.extend({},this.defaults,this.options);var a=this;a.changeStatus();a.changePostDate();a.descartAction();a.publishAction();a.draftAction();a.saveAction()},changeStatus:function(){var a=this;a.$element.find(".status .action.edit").on("click",function(c){c.preventDefault();var d=a.$element.find(".status .options");if(d.hasClass("show-options")){d.removeClass("show-options").hide(100);b(this).text("Editar")}else{d.addClass("show-options").show(100);b(this).text("Cancelar")}});a.$element.find(".status .action.ok").on("click",function(b){b.preventDefault();var c=a.$element.find(".status .options select[name='status']").val();if(c==""){return}a.$element.find(".status span > strong").text(a.$element.find(".status .options select[name='status'] option:selected").text());a.$element.find(".status .options").removeClass("show-options").hide(100);a.$element.find(".status .action.edit").text("Editar")})},changePostDate:function(){var a=this;a.$element.find(".post-date .action.edit").on("click",function(c){c.preventDefault();var d=a.$element.find(".post-date .options");if(d.hasClass("show-options")){d.removeClass("show-options").hide(100);b(this).text("Editar")}else{d.addClass("show-options").show(100);b(this).text("Cancelar")}});a.$element.find(".post-date .action.ok").on("click",function(b){b.preventDefault();var c=a.$element.find(".post-date input[name='date']").datepicker("getDate");var d=a.$element.find(".post-date input[name='hour']").timepicker("getTime").val();var e=new Date(c.getFullYear(),c.getMonth(),c.getDate(),d.split(":")[0],d.split(":")[1]);var f=moment(e);a.$element.find(".post-date span strong").text(f.format("DD/MM/YYYY [às] HH:mm"));a.$element.find(".post-date input[name='postDate']").val(f.format("DD/MM/YYYY HH:mm"));a.$element.find(".post-date .options").hide(100);a.$element.find(".post-date .options").removeClass("show-options");a.$element.find(".post-date .action.edit").text("Editar")})},descartAction:function(){this.$element.find(".form-actions .action.cancel").on("click",function(c){c.preventDefault();var d=b(this);bootbox.dialog({message:"Tem certeza que deseja descartar as alterações?",title:"Atenção",buttons:{success:{label:"OK",className:"red",callback:function(){App.blockUI({cenrerY:true,animate:true});a.location.href=d.attr("href");return}},danger:{label:"Cancelar",className:"blue",callback:function(){return}}}})})},publishAction:function(){var a=this;a.$element.find('.form-actions button[name="publish"]').on("click",function(b){b.preventDefault();a.$element.find(".status .options select[name='status']").val("published");a.save()})},draftAction:function(){var a=this;a.$element.find(".heding-actions .action.save-draft").on("click",function(b){b.preventDefault();a.$element.find(".status .options select[name='status']").val("draft");a.save()})},saveAction:function(){var a=this;a.$element.find('.form-actions button[name="save"]').on("click",function(b){b.preventDefault();a.save()})},save:function(){var a=this;App.blockUI({cenrerY:true,animate:true});setTimeout(function(){b(a.config.form).submit()},1500)}};c.defaults=c.prototype.defaults;b.fn.postStatus=function(a){return this.each(function(){new c(this,a).init()})};a.PostStatus=Plugin})(window,jQuery);(function(a,b){var c=function(a){this.options=a};c.prototype={defaults:{btnAdd:".post-sidebar-thumb-action-add",btnRemove:".post-sidebar-thumb-action-remove",inputElement:"#returnResponsivefilemanager",imgContainer:".post-sidebar-thumb-img"},init:function(){this.config=b.extend({},this.defaults,this.options);var a=this;b(a.config.inputElement).on("change",function(c){if(b(this).val()){var d=b("<img width='100%' src='"+b(this).val()+"'>");b(a.config.imgContainer).empty().append(d);b(a.config.btnRemove).show()}});b(a.config.btnRemove).on("click",function(c){c.preventDefault();b(a.config.btnRemove).hide();b(a.config.imgContainer).empty();b(a.config.inputElement).val("");return})}};c.defaults=Slug.prototype.defaults;b.fn.postThumb=function(a){return new c(a).init()};a.PostThumb=Plugin})(window,jQuery);(function(a,b){var c=function(a){this.options=a};c.prototype={defaults:{container:".select-image",btnAdd:".select-image-add",btnRemove:".select-image-remove",inputTarget:".select-image-input",imgContainerTarget:".select-image-container"},init:function(){this.config=b.extend({},this.defaults,this.options);var a=this;console.log(b(a.config.container));b(a.config.inputTarget).on("change",function(c){if(b(this).val()){var d=b("<img width='100%' height='200px' src='"+b(this).val()+"'>");b(a.config.imgContainerTarget).empty().append(d);b(a.config.container).addClass("select-image-has-image")}});b(a.config.btnRemove).on("click",function(c){c.preventDefault();b(a.config.imgContainerTarget).empty();b(a.config.inputTarget).val("");b(a.config.container).removeClass("select-image-has-image");return})}};c.defaults=Slug.prototype.defaults;b.fn.selectImage=function(a){return new c(a).init()};a.SelectImage=Plugin})(window,jQuery);
+(function(window, $) {
+    var Cep = function(element, options) {
+        this.element = element;
+        this.$element = $(element);
+        this.options = options;
+    };
+    Cep.prototype = {
+        defaults: {},
+        init: function() {
+            this.config = $.extend({}, this.defaults, this.options, this.$element.data());
+            var _that = this;
+            _that.$element.find("#searchcep").on("click", function(e) {
+                e.preventDefault();
+                var cepValue = _that.$element.find('input[name="cep"]').val();
+                if (!cepValue) {
+                    return;
+                }
+                App.blockUI({
+                    cenrerY: true,
+                    animate: true
+                });
+                $.ajax({
+                    type: "POST",
+                    url: _that.config.urlCep,
+                    data: "cep=" + cepValue,
+                    complete: function() {
+                        App.unblockUI();
+                    },
+                    success: function(data) {
+                        if (data.error) {
+                            _that.erroMessage(data.error);
+                        } else {
+                            $(_that.config.form + ' select[name="state"]').val(data.cep.state);
+                            $(_that.config.form + ' select[name="city"]').empty().append(data.cep.cities).val(data.cep.city);
+                            $(_that.config.form + ' input[name="address"]').val(data.cep.address);
+                            $(_that.config.form + ' input[name="district"]').val(data.cep.district);
+                            App.unblockUI();
+                        }
+                    },
+                    error: function() {
+                        App.unblockUI();
+                        _that.erroMessage("Não foi possível localizar o cep informado. Por favor, tente novamente ou informe o endereço manualmente.");
+                    }
+                });
+            });
+        },
+        erroMessage: function(msg) {
+            bootbox.alert({
+                message: msg,
+                title: "Atenção"
+            });
+        }
+    };
+    Cep.defaults = Cep.prototype.defaults;
+    $.fn.cep = function(options) {
+        return this.each(function() {
+            new Cep(this, options).init();
+        });
+    };
+    window.Cep = Plugin;
+})(window, jQuery);
+
+(function(window, $) {
+    var Banner = function(element, options) {
+        this.element = element;
+        this.$element = $(element);
+        this.options = options;
+    };
+    Banner.prototype = {
+        defaults: {},
+        init: function() {
+            this.config = $.extend({}, this.defaults, this.options, this.$element.data());
+            var _that = this;
+            _that.$element.find(_that.config.input).on("change", function(e) {
+                var val = $(this).val();
+                console.log(val);
+                if (!val) {
+                    return;
+                }
+                App.blockUI({
+                    cenrerY: true,
+                    animate: true
+                });
+                $.ajax({
+                    type: "POST",
+                    url: _that.config.url,
+                    data: "media=" + val,
+                    success: function(data) {
+                        if (data.error) {
+                            alert(data.error);
+                        } else {
+                            _that.$element.find(".gallery-items").append(data.item);
+                            $(".icheck").iCheck({
+                                checkboxClass: "icheckbox_minimal-grey"
+                            });
+                            App.unblockUI();
+                        }
+                    },
+                    error: function() {
+                        alert("Não foi inserir um novo item. Por favor, tente novamente.");
+                    }
+                });
+            });
+            console.log(_that.element);
+            $(document).on("click", ".gallery-item-action-remove", function(e) {
+                e.preventDefault();
+                var target = $(this).closest("tr");
+                target.css({
+                    "border-color": "red",
+                    background: "#FFB5B5"
+                });
+                target.fadeOut("slow", function() {
+                    target.remove();
+                });
+            });
+        }
+    };
+    Banner.defaults = Banner.prototype.defaults;
+    $.fn.banner = function(options) {
+        return this.each(function() {
+            new Banner(this, options).init();
+        });
+    };
+    window.Banner = Plugin;
+})(window, jQuery);
+
+(function(window, $) {
+    var ICheckControl = function(element, options) {
+        this.element = element;
+        this.$element = $(element);
+        this.options = options;
+    };
+    ICheckControl.prototype = {
+        defaults: {
+            disableAllBtn: ".icheckcontrol-disable-all",
+            enableAllBtn: ".icheckcontrol-enable-all",
+            toggleAllBtn: ".icheckcontrol-toggle-all",
+            target: "input.icheck"
+        },
+        init: function() {
+            this.config = $.extend({}, this.defaults, this.options);
+            var _that = this;
+            _that.$element.on("click", function(e) {
+                e.preventDefault;
+                var target = $(_that.config.target);
+                if ($(this).hasClass(_that.config.disableAllBtn)) {
+                    target.iCheck("uncheck");
+                } else if ($(this).hasClass(_that.config.enableAllBtn)) {
+                    target.iCheck("check");
+                } else {
+                    if (target.not(":checked").length > 0) {
+                        target.iCheck("check");
+                    } else {
+                        target.iCheck("uncheck");
+                    }
+                }
+            });
+        }
+    };
+    ICheckControl.defaults = ICheckControl.prototype.defaults;
+    $.fn.iCheckControl = function(options) {
+        new ICheckControl(this, options).init();
+    };
+    window.ICheckControl = Plugin;
+})(window, jQuery);
+
+jQuery(document).ready(function() {
+    $(".icheckcontrol").iCheckControl();
+});
+
+(function(window, $) {
+    var Cities = function(element, options) {
+        this.element = element;
+        this.$element = $(element);
+        this.options = options;
+    };
+    Cities.prototype = {
+        defaults: {},
+        init: function() {
+            this.config = $.extend({}, this.defaults, this.options, this.$element.data());
+            var _that = this;
+            _that.$element.find(_that.config.stateElement).on("change", function(e) {
+                e.preventDefault();
+                var stateValue = $(this).val();
+                if (!stateValue) {
+                    return;
+                }
+                App.blockUI({
+                    cenrerY: true,
+                    animate: true
+                });
+                $.ajax({
+                    type: "POST",
+                    url: _that.config.url,
+                    data: "state=" + stateValue,
+                    success: function(data) {
+                        if (data.error) {
+                            _that.erroMessage(data.error);
+                        } else {
+                            _that.$element.find(_that.config.cityElement).empty().append(data.cities);
+                            App.unblockUI();
+                        }
+                    },
+                    error: function() {
+                        _that.erroMessage("Não foi possível localizar o cep informado. Por favor, tente novamente ou informe o endereço manualmente.");
+                    }
+                });
+            });
+        },
+        erroMessage: function(msg) {
+            bootbox.dialog({
+                message: msg,
+                title: "Atenção",
+                buttons: {
+                    success: {
+                        label: "OK",
+                        className: "blue",
+                        callback: function() {
+                            App.unblockUI();
+                        }
+                    }
+                }
+            });
+        }
+    };
+    Cities.defaults = Cities.prototype.defaults;
+    $.fn.cities = function(options) {
+        return this.each(function() {
+            new Cities(this, options).init();
+        });
+    };
+    window.Cities = Plugin;
+})(window, jQuery);
+
+(function(f) {
+    if (typeof exports === "object" && typeof module !== "undefined") {
+        module.exports = f();
+    } else if (typeof define === "function" && define.amd) {
+        define([], f);
+    } else {
+        var g;
+        if (typeof window !== "undefined") {
+            g = window;
+        } else if (typeof global !== "undefined") {
+            g = global;
+        } else if (typeof self !== "undefined") {
+            g = self;
+        } else {
+            g = this;
+        }
+        g.Clipboard = f();
+    }
+})(function() {
+    var define, module, exports;
+    return function e(t, n, r) {
+        function s(o, u) {
+            if (!n[o]) {
+                if (!t[o]) {
+                    var a = typeof require == "function" && require;
+                    if (!u && a) return a(o, !0);
+                    if (i) return i(o, !0);
+                    var f = new Error("Cannot find module '" + o + "'");
+                    throw f.code = "MODULE_NOT_FOUND", f;
+                }
+                var l = n[o] = {
+                    exports: {}
+                };
+                t[o][0].call(l.exports, function(e) {
+                    var n = t[o][1][e];
+                    return s(n ? n : e);
+                }, l, l.exports, e, t, n, r);
+            }
+            return n[o].exports;
+        }
+        var i = typeof require == "function" && require;
+        for (var o = 0; o < r.length; o++) s(r[o]);
+        return s;
+    }({
+        1: [ function(require, module, exports) {
+            var DOCUMENT_NODE_TYPE = 9;
+            if (typeof Element !== "undefined" && !Element.prototype.matches) {
+                var proto = Element.prototype;
+                proto.matches = proto.matchesSelector || proto.mozMatchesSelector || proto.msMatchesSelector || proto.oMatchesSelector || proto.webkitMatchesSelector;
+            }
+            function closest(element, selector) {
+                while (element && element.nodeType !== DOCUMENT_NODE_TYPE) {
+                    if (typeof element.matches === "function" && element.matches(selector)) {
+                        return element;
+                    }
+                    element = element.parentNode;
+                }
+            }
+            module.exports = closest;
+        }, {} ],
+        2: [ function(require, module, exports) {
+            var closest = require("./closest");
+            function delegate(element, selector, type, callback, useCapture) {
+                var listenerFn = listener.apply(this, arguments);
+                element.addEventListener(type, listenerFn, useCapture);
+                return {
+                    destroy: function() {
+                        element.removeEventListener(type, listenerFn, useCapture);
+                    }
+                };
+            }
+            function listener(element, selector, type, callback) {
+                return function(e) {
+                    e.delegateTarget = closest(e.target, selector);
+                    if (e.delegateTarget) {
+                        callback.call(element, e);
+                    }
+                };
+            }
+            module.exports = delegate;
+        }, {
+            "./closest": 1
+        } ],
+        3: [ function(require, module, exports) {
+            exports.node = function(value) {
+                return value !== undefined && value instanceof HTMLElement && value.nodeType === 1;
+            };
+            exports.nodeList = function(value) {
+                var type = Object.prototype.toString.call(value);
+                return value !== undefined && (type === "[object NodeList]" || type === "[object HTMLCollection]") && "length" in value && (value.length === 0 || exports.node(value[0]));
+            };
+            exports.string = function(value) {
+                return typeof value === "string" || value instanceof String;
+            };
+            exports.fn = function(value) {
+                var type = Object.prototype.toString.call(value);
+                return type === "[object Function]";
+            };
+        }, {} ],
+        4: [ function(require, module, exports) {
+            var is = require("./is");
+            var delegate = require("delegate");
+            function listen(target, type, callback) {
+                if (!target && !type && !callback) {
+                    throw new Error("Missing required arguments");
+                }
+                if (!is.string(type)) {
+                    throw new TypeError("Second argument must be a String");
+                }
+                if (!is.fn(callback)) {
+                    throw new TypeError("Third argument must be a Function");
+                }
+                if (is.node(target)) {
+                    return listenNode(target, type, callback);
+                } else if (is.nodeList(target)) {
+                    return listenNodeList(target, type, callback);
+                } else if (is.string(target)) {
+                    return listenSelector(target, type, callback);
+                } else {
+                    throw new TypeError("First argument must be a String, HTMLElement, HTMLCollection, or NodeList");
+                }
+            }
+            function listenNode(node, type, callback) {
+                node.addEventListener(type, callback);
+                return {
+                    destroy: function() {
+                        node.removeEventListener(type, callback);
+                    }
+                };
+            }
+            function listenNodeList(nodeList, type, callback) {
+                Array.prototype.forEach.call(nodeList, function(node) {
+                    node.addEventListener(type, callback);
+                });
+                return {
+                    destroy: function() {
+                        Array.prototype.forEach.call(nodeList, function(node) {
+                            node.removeEventListener(type, callback);
+                        });
+                    }
+                };
+            }
+            function listenSelector(selector, type, callback) {
+                return delegate(document.body, selector, type, callback);
+            }
+            module.exports = listen;
+        }, {
+            "./is": 3,
+            delegate: 2
+        } ],
+        5: [ function(require, module, exports) {
+            function select(element) {
+                var selectedText;
+                if (element.nodeName === "SELECT") {
+                    element.focus();
+                    selectedText = element.value;
+                } else if (element.nodeName === "INPUT" || element.nodeName === "TEXTAREA") {
+                    var isReadOnly = element.hasAttribute("readonly");
+                    if (!isReadOnly) {
+                        element.setAttribute("readonly", "");
+                    }
+                    element.select();
+                    element.setSelectionRange(0, element.value.length);
+                    if (!isReadOnly) {
+                        element.removeAttribute("readonly");
+                    }
+                    selectedText = element.value;
+                } else {
+                    if (element.hasAttribute("contenteditable")) {
+                        element.focus();
+                    }
+                    var selection = window.getSelection();
+                    var range = document.createRange();
+                    range.selectNodeContents(element);
+                    selection.removeAllRanges();
+                    selection.addRange(range);
+                    selectedText = selection.toString();
+                }
+                return selectedText;
+            }
+            module.exports = select;
+        }, {} ],
+        6: [ function(require, module, exports) {
+            function E() {}
+            E.prototype = {
+                on: function(name, callback, ctx) {
+                    var e = this.e || (this.e = {});
+                    (e[name] || (e[name] = [])).push({
+                        fn: callback,
+                        ctx: ctx
+                    });
+                    return this;
+                },
+                once: function(name, callback, ctx) {
+                    var self = this;
+                    function listener() {
+                        self.off(name, listener);
+                        callback.apply(ctx, arguments);
+                    }
+                    listener._ = callback;
+                    return this.on(name, listener, ctx);
+                },
+                emit: function(name) {
+                    var data = [].slice.call(arguments, 1);
+                    var evtArr = ((this.e || (this.e = {}))[name] || []).slice();
+                    var i = 0;
+                    var len = evtArr.length;
+                    for (i; i < len; i++) {
+                        evtArr[i].fn.apply(evtArr[i].ctx, data);
+                    }
+                    return this;
+                },
+                off: function(name, callback) {
+                    var e = this.e || (this.e = {});
+                    var evts = e[name];
+                    var liveEvents = [];
+                    if (evts && callback) {
+                        for (var i = 0, len = evts.length; i < len; i++) {
+                            if (evts[i].fn !== callback && evts[i].fn._ !== callback) liveEvents.push(evts[i]);
+                        }
+                    }
+                    liveEvents.length ? e[name] = liveEvents : delete e[name];
+                    return this;
+                }
+            };
+            module.exports = E;
+        }, {} ],
+        7: [ function(require, module, exports) {
+            (function(global, factory) {
+                if (typeof define === "function" && define.amd) {
+                    define([ "module", "select" ], factory);
+                } else if (typeof exports !== "undefined") {
+                    factory(module, require("select"));
+                } else {
+                    var mod = {
+                        exports: {}
+                    };
+                    factory(mod, global.select);
+                    global.clipboardAction = mod.exports;
+                }
+            })(this, function(module, _select) {
+                "use strict";
+                var _select2 = _interopRequireDefault(_select);
+                function _interopRequireDefault(obj) {
+                    return obj && obj.__esModule ? obj : {
+                        "default": obj
+                    };
+                }
+                var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function(obj) {
+                    return typeof obj;
+                } : function(obj) {
+                    return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+                };
+                function _classCallCheck(instance, Constructor) {
+                    if (!(instance instanceof Constructor)) {
+                        throw new TypeError("Cannot call a class as a function");
+                    }
+                }
+                var _createClass = function() {
+                    function defineProperties(target, props) {
+                        for (var i = 0; i < props.length; i++) {
+                            var descriptor = props[i];
+                            descriptor.enumerable = descriptor.enumerable || false;
+                            descriptor.configurable = true;
+                            if ("value" in descriptor) descriptor.writable = true;
+                            Object.defineProperty(target, descriptor.key, descriptor);
+                        }
+                    }
+                    return function(Constructor, protoProps, staticProps) {
+                        if (protoProps) defineProperties(Constructor.prototype, protoProps);
+                        if (staticProps) defineProperties(Constructor, staticProps);
+                        return Constructor;
+                    };
+                }();
+                var ClipboardAction = function() {
+                    function ClipboardAction(options) {
+                        _classCallCheck(this, ClipboardAction);
+                        this.resolveOptions(options);
+                        this.initSelection();
+                    }
+                    _createClass(ClipboardAction, [ {
+                        key: "resolveOptions",
+                        value: function resolveOptions() {
+                            var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+                            this.action = options.action;
+                            this.container = options.container;
+                            this.emitter = options.emitter;
+                            this.target = options.target;
+                            this.text = options.text;
+                            this.trigger = options.trigger;
+                            this.selectedText = "";
+                        }
+                    }, {
+                        key: "initSelection",
+                        value: function initSelection() {
+                            if (this.text) {
+                                this.selectFake();
+                            } else if (this.target) {
+                                this.selectTarget();
+                            }
+                        }
+                    }, {
+                        key: "selectFake",
+                        value: function selectFake() {
+                            var _this = this;
+                            var isRTL = document.documentElement.getAttribute("dir") == "rtl";
+                            this.removeFake();
+                            this.fakeHandlerCallback = function() {
+                                return _this.removeFake();
+                            };
+                            this.fakeHandler = this.container.addEventListener("click", this.fakeHandlerCallback) || true;
+                            this.fakeElem = document.createElement("textarea");
+                            this.fakeElem.style.fontSize = "12pt";
+                            this.fakeElem.style.border = "0";
+                            this.fakeElem.style.padding = "0";
+                            this.fakeElem.style.margin = "0";
+                            this.fakeElem.style.position = "absolute";
+                            this.fakeElem.style[isRTL ? "right" : "left"] = "-9999px";
+                            var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+                            this.fakeElem.style.top = yPosition + "px";
+                            this.fakeElem.setAttribute("readonly", "");
+                            this.fakeElem.value = this.text;
+                            this.container.appendChild(this.fakeElem);
+                            this.selectedText = (0, _select2.default)(this.fakeElem);
+                            this.copyText();
+                        }
+                    }, {
+                        key: "removeFake",
+                        value: function removeFake() {
+                            if (this.fakeHandler) {
+                                this.container.removeEventListener("click", this.fakeHandlerCallback);
+                                this.fakeHandler = null;
+                                this.fakeHandlerCallback = null;
+                            }
+                            if (this.fakeElem) {
+                                this.container.removeChild(this.fakeElem);
+                                this.fakeElem = null;
+                            }
+                        }
+                    }, {
+                        key: "selectTarget",
+                        value: function selectTarget() {
+                            this.selectedText = (0, _select2.default)(this.target);
+                            this.copyText();
+                        }
+                    }, {
+                        key: "copyText",
+                        value: function copyText() {
+                            var succeeded = void 0;
+                            try {
+                                succeeded = document.execCommand(this.action);
+                            } catch (err) {
+                                succeeded = false;
+                            }
+                            this.handleResult(succeeded);
+                        }
+                    }, {
+                        key: "handleResult",
+                        value: function handleResult(succeeded) {
+                            this.emitter.emit(succeeded ? "success" : "error", {
+                                action: this.action,
+                                text: this.selectedText,
+                                trigger: this.trigger,
+                                clearSelection: this.clearSelection.bind(this)
+                            });
+                        }
+                    }, {
+                        key: "clearSelection",
+                        value: function clearSelection() {
+                            if (this.trigger) {
+                                this.trigger.focus();
+                            }
+                            window.getSelection().removeAllRanges();
+                        }
+                    }, {
+                        key: "destroy",
+                        value: function destroy() {
+                            this.removeFake();
+                        }
+                    }, {
+                        key: "action",
+                        set: function set() {
+                            var action = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "copy";
+                            this._action = action;
+                            if (this._action !== "copy" && this._action !== "cut") {
+                                throw new Error('Invalid "action" value, use either "copy" or "cut"');
+                            }
+                        },
+                        get: function get() {
+                            return this._action;
+                        }
+                    }, {
+                        key: "target",
+                        set: function set(target) {
+                            if (target !== undefined) {
+                                if (target && (typeof target === "undefined" ? "undefined" : _typeof(target)) === "object" && target.nodeType === 1) {
+                                    if (this.action === "copy" && target.hasAttribute("disabled")) {
+                                        throw new Error('Invalid "target" attribute. Please use "readonly" instead of "disabled" attribute');
+                                    }
+                                    if (this.action === "cut" && (target.hasAttribute("readonly") || target.hasAttribute("disabled"))) {
+                                        throw new Error('Invalid "target" attribute. You can\'t cut text from elements with "readonly" or "disabled" attributes');
+                                    }
+                                    this._target = target;
+                                } else {
+                                    throw new Error('Invalid "target" value, use a valid Element');
+                                }
+                            }
+                        },
+                        get: function get() {
+                            return this._target;
+                        }
+                    } ]);
+                    return ClipboardAction;
+                }();
+                module.exports = ClipboardAction;
+            });
+        }, {
+            select: 5
+        } ],
+        8: [ function(require, module, exports) {
+            (function(global, factory) {
+                if (typeof define === "function" && define.amd) {
+                    define([ "module", "./clipboard-action", "tiny-emitter", "good-listener" ], factory);
+                } else if (typeof exports !== "undefined") {
+                    factory(module, require("./clipboard-action"), require("tiny-emitter"), require("good-listener"));
+                } else {
+                    var mod = {
+                        exports: {}
+                    };
+                    factory(mod, global.clipboardAction, global.tinyEmitter, global.goodListener);
+                    global.clipboard = mod.exports;
+                }
+            })(this, function(module, _clipboardAction, _tinyEmitter, _goodListener) {
+                "use strict";
+                var _clipboardAction2 = _interopRequireDefault(_clipboardAction);
+                var _tinyEmitter2 = _interopRequireDefault(_tinyEmitter);
+                var _goodListener2 = _interopRequireDefault(_goodListener);
+                function _interopRequireDefault(obj) {
+                    return obj && obj.__esModule ? obj : {
+                        "default": obj
+                    };
+                }
+                var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function(obj) {
+                    return typeof obj;
+                } : function(obj) {
+                    return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+                };
+                function _classCallCheck(instance, Constructor) {
+                    if (!(instance instanceof Constructor)) {
+                        throw new TypeError("Cannot call a class as a function");
+                    }
+                }
+                var _createClass = function() {
+                    function defineProperties(target, props) {
+                        for (var i = 0; i < props.length; i++) {
+                            var descriptor = props[i];
+                            descriptor.enumerable = descriptor.enumerable || false;
+                            descriptor.configurable = true;
+                            if ("value" in descriptor) descriptor.writable = true;
+                            Object.defineProperty(target, descriptor.key, descriptor);
+                        }
+                    }
+                    return function(Constructor, protoProps, staticProps) {
+                        if (protoProps) defineProperties(Constructor.prototype, protoProps);
+                        if (staticProps) defineProperties(Constructor, staticProps);
+                        return Constructor;
+                    };
+                }();
+                function _possibleConstructorReturn(self, call) {
+                    if (!self) {
+                        throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+                    }
+                    return call && (typeof call === "object" || typeof call === "function") ? call : self;
+                }
+                function _inherits(subClass, superClass) {
+                    if (typeof superClass !== "function" && superClass !== null) {
+                        throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
+                    }
+                    subClass.prototype = Object.create(superClass && superClass.prototype, {
+                        constructor: {
+                            value: subClass,
+                            enumerable: false,
+                            writable: true,
+                            configurable: true
+                        }
+                    });
+                    if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
+                }
+                var Clipboard = function(_Emitter) {
+                    _inherits(Clipboard, _Emitter);
+                    function Clipboard(trigger, options) {
+                        _classCallCheck(this, Clipboard);
+                        var _this = _possibleConstructorReturn(this, (Clipboard.__proto__ || Object.getPrototypeOf(Clipboard)).call(this));
+                        _this.resolveOptions(options);
+                        _this.listenClick(trigger);
+                        return _this;
+                    }
+                    _createClass(Clipboard, [ {
+                        key: "resolveOptions",
+                        value: function resolveOptions() {
+                            var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+                            this.action = typeof options.action === "function" ? options.action : this.defaultAction;
+                            this.target = typeof options.target === "function" ? options.target : this.defaultTarget;
+                            this.text = typeof options.text === "function" ? options.text : this.defaultText;
+                            this.container = _typeof(options.container) === "object" ? options.container : document.body;
+                        }
+                    }, {
+                        key: "listenClick",
+                        value: function listenClick(trigger) {
+                            var _this2 = this;
+                            this.listener = (0, _goodListener2.default)(trigger, "click", function(e) {
+                                return _this2.onClick(e);
+                            });
+                        }
+                    }, {
+                        key: "onClick",
+                        value: function onClick(e) {
+                            var trigger = e.delegateTarget || e.currentTarget;
+                            if (this.clipboardAction) {
+                                this.clipboardAction = null;
+                            }
+                            this.clipboardAction = new _clipboardAction2.default({
+                                action: this.action(trigger),
+                                target: this.target(trigger),
+                                text: this.text(trigger),
+                                container: this.container,
+                                trigger: trigger,
+                                emitter: this
+                            });
+                        }
+                    }, {
+                        key: "defaultAction",
+                        value: function defaultAction(trigger) {
+                            return getAttributeValue("action", trigger);
+                        }
+                    }, {
+                        key: "defaultTarget",
+                        value: function defaultTarget(trigger) {
+                            var selector = getAttributeValue("target", trigger);
+                            if (selector) {
+                                return document.querySelector(selector);
+                            }
+                        }
+                    }, {
+                        key: "defaultText",
+                        value: function defaultText(trigger) {
+                            return getAttributeValue("text", trigger);
+                        }
+                    }, {
+                        key: "destroy",
+                        value: function destroy() {
+                            this.listener.destroy();
+                            if (this.clipboardAction) {
+                                this.clipboardAction.destroy();
+                                this.clipboardAction = null;
+                            }
+                        }
+                    } ], [ {
+                        key: "isSupported",
+                        value: function isSupported() {
+                            var action = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [ "copy", "cut" ];
+                            var actions = typeof action === "string" ? [ action ] : action;
+                            var support = !!document.queryCommandSupported;
+                            actions.forEach(function(action) {
+                                support = support && !!document.queryCommandSupported(action);
+                            });
+                            return support;
+                        }
+                    } ]);
+                    return Clipboard;
+                }(_tinyEmitter2.default);
+                function getAttributeValue(suffix, element) {
+                    var attribute = "data-clipboard-" + suffix;
+                    if (!element.hasAttribute(attribute)) {
+                        return;
+                    }
+                    return element.getAttribute(attribute);
+                }
+                module.exports = Clipboard;
+            });
+        }, {
+            "./clipboard-action": 7,
+            "good-listener": 4,
+            "tiny-emitter": 6
+        } ]
+    }, {}, [ 8 ])(8);
+});
+
+(function(window, $) {
+    var AdminDependents = function(element, options) {
+        this.element = element;
+        this.$element = $(element);
+        this.options = options;
+    };
+    AdminDependents.prototype = {
+        defaults: {},
+        init: function() {
+            this.config = $.extend({}, this.defaults, this.options);
+            var _that = this;
+            _that.$element.find('input[data-required="required"], select[data-required="required"]').each(function() {
+                $(this).on("change", function(e) {
+                    if ($(this).val() != "") {
+                        $(this).css({
+                            border: ""
+                        });
+                    }
+                });
+            });
+            _that.$element.find(".user-dependents-add").on("click", function(e) {
+                e.preventDefault();
+                var valid = true;
+                _that.$element.find('input[data-required="required"], select[data-required="required"]').each(function() {
+                    if ($(this).val() == "") {
+                        $(this).css({
+                            border: "1px solid red"
+                        });
+                        valid = false;
+                    }
+                });
+                if (!valid) {
+                    return;
+                }
+                var id = Math.floor(Date.now() / 1e3), name = _that.$element.find("#dependent_name"), email = _that.$element.find("#dependent_email"), birth = _that.$element.find("#dependent_birth_date");
+                identifier = _that.$element.find("#dependent_identifier");
+                gender = _that.$element.find("#dependent_gender");
+                _that.$element.find("tbody > tr:last").before($('<tr data-row="' + id + '"></tr>').append("<td>" + name.val() + "</td>").append("<td>" + email.val() + "</td>").append("<td>" + birth.val() + "</td>").append("<td>" + identifier.val() + "</td>").append("<td>" + gender.find("option:selected").text() + "</td>").append($("<td></td>").append('<a href="#" class="btn btn-sm btn-default user-dependents-remove" data-remove="' + id + '"><i class="glyphicon glyphicon-remove"></i></a>').append('<a href="#" class="btn btn-sm btn-default user-dependents-edit" data-edit="' + id + '"><i class="glyphicon glyphicon-edit"></i></a>').append('<input type="hidden" name="dependents[' + id + '][name]" value="' + name.val() + '">').append('<input type="hidden" name="dependents[' + id + '][email]" value="' + email.val() + '">').append('<input type="hidden" name="dependents[' + id + '][birth_date]" value="' + birth.val() + '">').append('<input type="hidden" name="dependents[' + id + '][identifier]" value="' + identifier.val() + '">').append('<input type="hidden" name="dependents[' + id + '][gender]" value="' + gender.val() + '">')));
+                name.val("");
+                email.val("");
+                birth.val("");
+                identifier.val("");
+                gender.val("");
+            });
+            $(document).on("click", ".user-dependents-remove", function(e) {
+                e.preventDefault();
+                var row = $(document).find('tr[data-row="' + $(this).data("remove") + '"]');
+                row.fadeOut("slow", function() {
+                    row.remove();
+                });
+            });
+            $(document).on("click", ".user-dependents-edit", function(e) {
+                e.preventDefault();
+                var row = $(document).find('tr[data-row="' + $(this).data("edit") + '"]');
+                console.log($(document).find('input[name^="dependents[' + $(this).data("edit") + ']"]'));
+            });
+        }
+    };
+    AdminDependents.defaults = AdminDependents.prototype.defaults;
+    $.fn.adminDependents = function(options) {
+        return this.each(function() {
+            new AdminDependents(this, options).init();
+        });
+    };
+    window.AdminDependents = Plugin;
+})(window, jQuery);
+
+(function(window, $) {
+    var FileInput = function(element, options) {
+        this.element = element;
+        this.$element = $(element);
+        this.options = options;
+    };
+    FileInput.prototype = {
+        defaults: {},
+        init: function() {
+            this.config = $.extend({}, this.defaults, this.options);
+            var _that = this;
+            console.log(this.$element);
+            _that.$element.find("#file").on("change", function() {
+                if ($(this).val()) {
+                    _that.$element.addClass("fileinput-exist");
+                    var img = $("<img width='100%' src='" + $(this).val() + "'>");
+                    _that.$element.find(".fileinput-preview").empty().append(img).show();
+                    _that.$element.find(".fileinput-new").hide();
+                }
+            });
+            _that.$element.find(".fileinput-remove").on("click", function(e) {
+                _that.$element.find(".fileinput-preview").empty().hide();
+                _that.$element.find(".fileinput-new").show();
+                _that.$element.addClass("fileinput-exist");
+                _that.$element.find("#file").val("");
+            });
+        }
+    };
+    FileInput.defaults = FileInput.prototype.defaults;
+    $.fn.fileInput = function(options) {
+        return this.each(function() {
+            new FileInput(this, options).init();
+        });
+    };
+    window.FileInput = Plugin;
+})(window, jQuery);
+
+(function(window, $) {
+    var FormSave = function(element, options) {
+        this.element = element;
+        this.$element = $(element);
+        this.options = options;
+    };
+    FormSave.prototype = {
+        defaults: {
+            submitTrigger: 'button[type="submit"]',
+            cancelTrigguer: ".form-action-cancel",
+            enableValidators: false
+        },
+        init: function() {
+            this.config = $.extend({}, this.defaults, this.options, this.$element.data());
+            var _that = this;
+            _that.$element.find(_that.config.submitTrigger).on("click", function(e) {
+                e.preventDefault();
+                var isValid = true;
+                if (_that.$element.hasClass("enable-validators") || _that.config.enableValidators) {
+                    isValid = _that.$element.valid();
+                }
+                if (isValid) {
+                    App.blockUI({
+                        cenrerY: true,
+                        animate: true
+                    });
+                    setTimeout(function() {
+                        $(_that.$element).submit();
+                    }, 1500);
+                }
+            });
+            _that.$element.find(_that.config.cancelTrigguer).on("click", function(e) {
+                e.preventDefault();
+                var _link = $(this);
+                bootbox.dialog({
+                    message: "Tem certeza que deseja descartar as alterações?",
+                    title: "Atenção",
+                    buttons: {
+                        success: {
+                            label: "OK",
+                            className: "red",
+                            callback: function() {
+                                App.blockUI({
+                                    cenrerY: true,
+                                    animate: true
+                                });
+                                window.location.href = _link.attr("href");
+                                return;
+                            }
+                        },
+                        danger: {
+                            label: "Cancelar",
+                            className: "blue",
+                            callback: function() {
+                                return;
+                            }
+                        }
+                    }
+                });
+            });
+        }
+    };
+    FormSave.defaults = FormSave.prototype.defaults;
+    $.fn.formSave = function(options) {
+        return this.each(function() {
+            new FormSave(this, options).init();
+        });
+    };
+    window.FormSave = Plugin;
+})(window, jQuery);
+
+(function(window, $) {
+    var FormValidation = function(element, options) {
+        this.element = element;
+        this.$element = $(element);
+        this.options = options;
+    };
+    FormValidation.prototype = {
+        defaults: {
+            alertMensage: ".alert-form-errors",
+            errorElement: "span",
+            errorClass: "help-block help-block-error"
+        },
+        init: function() {
+            this.config = $.extend({}, this.defaults, this.options, this.$element.data());
+            var _that = this;
+            _that.$element.validate({
+                errorElement: _that.config.errorElement,
+                errorClass: _that.config.errorClass,
+                focusInvalid: false,
+                ignore: "",
+                messages: {},
+                errorPlacement: function(error, element) {
+                    if (element.parent(".input-group").size() > 0) {
+                        error.insertAfter(element.parent(".input-group"));
+                    } else if (element.attr("data-error-container")) {
+                        error.appendTo(element.attr("data-error-container"));
+                    } else if (element.parents(".radio-list").size() > 0) {
+                        error.appendTo(element.parents(".radio-list").attr("data-error-container"));
+                    } else if (element.parents(".radio-inline").size() > 0) {
+                        error.appendTo(element.parents(".radio-inline").attr("data-error-container"));
+                    } else if (element.parents(".checkbox-list").size() > 0) {
+                        error.appendTo(element.parents(".checkbox-list").attr("data-error-container"));
+                    } else if (element.parents(".checkbox-inline").size() > 0) {
+                        error.appendTo(element.parents(".checkbox-inline").attr("data-error-container"));
+                    } else {
+                        error.insertAfter(element);
+                    }
+                },
+                invalidHandler: function(event, validator) {
+                    _that.$element.find(_that.config.alertMensage).show();
+                    App.scrollTo($("div.alert.display-hide"), -200);
+                },
+                highlight: function(element) {
+                    $(element).closest(".form-group").addClass("has-error");
+                },
+                unhighlight: function(element) {
+                    $(element).closest(".form-group").removeClass("has-error");
+                },
+                success: function(label) {
+                    label.closest(".form-group").removeClass("has-error");
+                }
+            });
+            _that.$element.find(".date-picker .form-control").change(function() {
+                _that.$element.validate().element($(this));
+            });
+        }
+    };
+    FormValidation.defaults = FormValidation.prototype.defaults;
+    $.fn.formValidation = function(options) {
+        return this.each(function() {
+            new FormValidation(this, options).init();
+        });
+    };
+    window.FormValidation = Plugin;
+})(window, jQuery);
+
+jQuery.extend(jQuery.validator.messages, {
+    required: "Este campo é obrigatório.",
+    remote: "Please fix this field.",
+    email: "Endereço de email não é válido.",
+    url: "Please enter a valid URL.",
+    date: "Please enter a valid date.",
+    dateISO: "Please enter a valid date (ISO).",
+    number: "Please enter a valid number.",
+    digits: "Please enter only digits.",
+    creditcard: "Please enter a valid credit card number.",
+    equalTo: "Please enter the same value again.",
+    accept: "Please enter a value with a valid extension.",
+    maxlength: jQuery.validator.format("Please enter no more than {0} characters."),
+    minlength: jQuery.validator.format("Please enter at least {0} characters."),
+    rangelength: jQuery.validator.format("Please enter a value between {0} and {1} characters long."),
+    range: jQuery.validator.format("Please enter a value between {0} and {1}."),
+    max: jQuery.validator.format("Please enter a value less than or equal to {0}."),
+    min: jQuery.validator.format("Please enter a value greater than or equal to {0}.")
+});
+
+jQuery(document).ready(function() {
+    tinymce.init({
+        selector: ".tinymce",
+        height: 350,
+        directionality: "ltr",
+        plugins: [ "autolink link image lists hr anchor", "searchreplace wordcount visualblocks visualchars insertdatetime media nonbreaking", "table contextmenu directionality paste, responsivefilemanager, imagetools, fullscreen" ],
+        toolbar1: "undo redo | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | styleselect",
+        toolbar2: "| responsivefilemanager | link unlink anchor | image media | fullscreen",
+        image_advtab: true,
+        imagetools_cors_hosts: [ "localhost", "codepen.io" ],
+        image_caption: true,
+        style_formats: [ {
+            title: "Image Left",
+            selector: "img",
+            styles: {
+                "float": "left",
+                margin: "0 10px 0 10px"
+            }
+        }, {
+            title: "Image Right",
+            selector: "img",
+            styles: {
+                "float": "right",
+                margin: "0 10px 0 10px"
+            }
+        } ],
+        content_css: [ "//www.tinymce.com/css/codepen.min.css" ],
+        relative_urls: false,
+        remove_script_host: false,
+        external_filemanager_path: "/filemanager/",
+        filemanager_title: "Responsive Filemanager",
+        external_plugins: {
+            filemanager: "/filemanager/plugin.min.js"
+        }
+    });
+    tinymce.init({
+        selector: ".tinymce_minimal",
+        height: 250,
+        directionality: "ltr",
+        plugins: [ "autolink link lists hr anchor", "searchreplace wordcount visualblocks visualchars insertdatetime nonbreaking", "table contextmenu directionality paste, fullscreen" ],
+        toolbar1: "undo redo | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist",
+        toolbar2: "link unlink anchor | fullscreen",
+        content_css: [ "//www.tinymce.com/css/codepen.min.css" ],
+        relative_urls: false,
+        remove_script_host: false
+    });
+    $(":input").inputmask();
+    $(".post-sidebar-options").postStatus();
+    $(".slug-container").slug();
+    $(".post-list").postListStatus();
+    $(".post-sites").postSites();
+    $("form.default-form-actions").formSave();
+    $(".cep").cep();
+    $(".state-cities").cities();
+    $(".password-generator").passwordGenerator();
+    if (jQuery().datepicker) {
+        $(".date-picker").datepicker({
+            rtl: App.isRTL(),
+            todayBtn: true,
+            autoclose: true,
+            language: "pt-BR",
+            todayHighlight: true
+        });
+    }
+    if (jQuery().timepicker) {
+        $(".time-picker").timepicker({
+            defaultTime: false,
+            autoclose: true,
+            minuteStep: 5,
+            showSeconds: false,
+            showMeridian: false
+        });
+    }
+    $("form.enable-validators").formValidation();
+    $(".dd").nestable();
+    $("#sortable_banner").sortable({
+        items: ".banner-item",
+        opacity: .8,
+        handle: ".portlet-title",
+        coneHelperSize: true
+    });
+    $(".gallery-items").sortable({
+        items: ".gallery-item",
+        opacity: .8,
+        coneHelperSize: true,
+        handle: ".gallery-item-move"
+    });
+    $("select.multi-select").multiSelect({
+        selectableOptgroup: true
+    });
+    $.fn.select2.defaults.set("theme", "bootstrap");
+    $("select.select2").select2({
+        placeholder: "Selecione"
+    });
+    $(".select2, .select2-multiple, .select2-allow-clear, .js-data-example-ajax").on("select2:open", function() {
+        if ($(this).parents("[class*='has-']").length) {
+            var classNames = $(this).parents("[class*='has-']")[0].className.split(/\s+/);
+            for (var i = 0; i < classNames.length; ++i) {
+                if (classNames[i].match("has-")) {
+                    $("body > .select2-container").addClass(classNames[i]);
+                }
+            }
+        }
+    });
+    $.fn.postThumb();
+    $.fn.selectImage();
+    $(".responsivefilemanager").modalResponsiveFileManager();
+    $(".page-gallery").banner();
+    $("div#admin-menu").menu();
+    $(".fileinput").fileInput();
+    $(".admin-phone").adminPhone();
+    $("#user-dependents").adminDependents();
+    $("#post-url-btn").on("click", function(e) {
+        e.preventDefault();
+        if (copyToClipboard(document.getElementById("post-url"))) {}
+    });
+    new Clipboard(".data-copy");
+    $(".registration-form select[name=type]").on("change", function(e) {
+        var selected = $(this).find("option:selected").val();
+        var form = $("#registration-form");
+        form.append($('<input type="hidden" name="no-validate" value="no-validate">'));
+        form.submit();
+        App.blockUI({
+            cenrerY: true,
+            animate: true
+        });
+    });
+});
+
+function copyToClipboard(elem) {
+    var targetId = "_hiddenCopyText_";
+    var isInput = elem.tagName === "INPUT" || elem.tagName === "TEXTAREA";
+    var origSelectionStart, origSelectionEnd;
+    if (isInput) {
+        target = elem;
+        origSelectionStart = elem.selectionStart;
+        origSelectionEnd = elem.selectionEnd;
+    } else {
+        target = document.getElementById(targetId);
+        if (!target) {
+            var target = document.createElement("textarea");
+            target.style.position = "absolute";
+            target.style.left = "-9999px";
+            target.style.top = "0";
+            target.id = targetId;
+            document.body.appendChild(target);
+        }
+        target.textContent = elem.textContent;
+    }
+    var currentFocus = document.activeElement;
+    target.focus();
+    target.setSelectionRange(0, target.value.length);
+    var succeed;
+    try {
+        succeed = document.execCommand("copy");
+    } catch (e) {
+        succeed = false;
+    }
+    if (currentFocus && typeof currentFocus.focus === "function") {
+        currentFocus.focus();
+    }
+    if (isInput) {
+        elem.setSelectionRange(origSelectionStart, origSelectionEnd);
+    } else {
+        target.textContent = "";
+    }
+    return succeed;
+}
+
+(function(window, $) {
+    var Menu = function(element, options) {
+        this.element = element;
+        this.$element = $(element);
+        this.options = options;
+    };
+    Menu.prototype = {
+        defaults: {},
+        init: function() {
+            this.config = $.extend({}, this.defaults, this.options, this.$element.data());
+            var _that = this;
+            var formExternalUrl = _that.$element.find(".admin-menu-add .admin-menu-add-external-url form");
+            _that.$element.find(".admin-menu-add .admin-menu-add-external-url .action-add").on("click", function(e) {
+                e.preventDefault();
+                if (_that.validateForm(formExternalUrl)) {
+                    _that.createNode(formExternalUrl.serialize());
+                }
+            });
+            var formPages = _that.$element.find(".admin-menu-add .admin-menu-add-page form");
+            _that.$element.find('.admin-menu-add .admin-menu-add-page form a[data-toggle="tab"]').on("shown.bs.tab", function(e) {
+                formPages.find("input.icheck").iCheck("uncheck");
+            });
+            _that.$element.find(".admin-menu-add .admin-menu-add-page .action-add").on("click", function(e) {
+                e.preventDefault();
+                if (_that.validateForm(formPages)) {
+                    if (formPages.find('input[type="checkbox"]:checked').length > 0) {
+                        _that.createNode(formPages.serialize());
+                    }
+                }
+            });
+            $(document).on("click", ".admin-menu-items .menu-items .form-item-edit .actions .remove", function(e) {
+                e.preventDefault();
+                var target = $(this).closest(".dd-item");
+                target.children(".dd-handle").first().css({
+                    "border-color": "red",
+                    background: "#FFB5B5"
+                });
+                target.slideUp(function() {
+                    target.remove();
+                });
+            });
+            $(document).on("keyup", '.admin-menu-items .menu-items .form-item-edit input[name="label"]', function(e) {
+                $(this).closest(".dd-item").data("label", $(this).val()).children(".dd-handle").children().text($(this).val());
+            });
+            $(document).on("keyup", '.admin-menu-items .menu-items .form-item-edit input[name="url"]', function(e) {
+                $(this).closest(".dd-item").data("external-url", $(this).val());
+            });
+            _that.$element.find(".admin-menu-add .search-page-action").on("click", function(e) {
+                e.preventDefault();
+                if (!_that.$element.find('#tab_search_pages .form-search input[name="search"]').val()) {
+                    return;
+                }
+                var form = _that.$element.find("#tab_search_pages .form-search :input").serialize();
+                App.blockUI({
+                    cenrerY: true,
+                    animate: true
+                });
+                $.ajax({
+                    type: "GET",
+                    url: _that.config.urlPage,
+                    data: form,
+                    success: function(data) {
+                        if (data.error) {
+                            alert(data.error);
+                        } else {
+                            _that.$element.find(".admin-menu-add #tab_search_pages .page-list").replaceWith(data.pages);
+                            $(".icheck").iCheck({
+                                checkboxClass: "icheckbox_minimal-grey"
+                            });
+                        }
+                    },
+                    error: function() {
+                        alert("Erro desconhecido. Tente novamente");
+                    },
+                    complete: function() {
+                        App.unblockUI();
+                    }
+                });
+            });
+            _that.$element.find(".admin-menu-items .form-actions .action-save").on("click", function(e) {
+                e.preventDefault();
+                var menuSerialize = _that.$element.find(".admin-menu-items .menu-items .dd").nestable("serialize");
+                App.blockUI({
+                    cenrerY: true,
+                    animate: true
+                });
+                var form = $('<form method="POST">').append($('<input name="menu">').val(JSON.stringify(menuSerialize)));
+                $(document.body).append(form);
+                form.submit();
+            });
+        },
+        createNode: function(data) {
+            var _that = this;
+            App.blockUI({
+                cenrerY: true,
+                animate: true
+            });
+            $.ajax({
+                type: "POST",
+                url: _that.config.urlItem,
+                data: data,
+                success: function(data) {
+                    if (data.error) {
+                        alert(data.error);
+                    } else {
+                        _that.addNode(data.node);
+                        _that.resetForm();
+                    }
+                },
+                error: function() {
+                    alert("Erro desconhecido. Tente novamente");
+                },
+                complete: function() {
+                    App.unblockUI();
+                }
+            });
+        },
+        addNode: function(node) {
+            this.$element.find(".admin-menu-items .menu-items .dd-list").first().append(node);
+        },
+        resetForm: function() {
+            this.$element.find(".admin-menu-add form").trigger("reset");
+            this.$element.find(".icheck").iCheck("uncheck");
+            $(document).find(".icheck").iCheck("uncheck");
+        },
+        validateForm: function(form) {
+            form.validate({
+                highlight: function(element) {
+                    $(element).closest(".form-group").addClass("has-error");
+                },
+                errorPlacement: function(error, element) {
+                    return "";
+                },
+                unhighlight: function(element) {
+                    $(element).closest(".form-group").removeClass("has-error");
+                }
+            });
+            return form.valid();
+        }
+    };
+    Menu.defaults = Menu.prototype.defaults;
+    $.fn.menu = function(options) {
+        return this.each(function() {
+            new Menu(this, options).init();
+        });
+    };
+    window.Menu = Plugin;
+})(window, jQuery);
+
+(function(window, $) {
+    var ModalResponsiveFileManager = function(element, options) {
+        this.element = element;
+        this.$element = $(element);
+        this.options = options;
+    };
+    ModalResponsiveFileManager.prototype = {
+        defaults: {},
+        init: function() {
+            this.config = $.extend({}, this.defaults, this.options, this.$element.data());
+            var _that = this;
+            var modal = $(_that.config.target);
+            _that.$element.on("click", function(e) {
+                e.preventDefault();
+                App.blockUI({
+                    cenrerY: true,
+                    animate: true
+                });
+                var ifr = $("<iframe/>", {
+                    src: _that.config.url,
+                    style: "width: 100%; min-height: 600px",
+                    frameborder: 0,
+                    load: function() {
+                        App.unblockUI();
+                        modal.modal("show");
+                    }
+                });
+                modal.find(".modal-body").empty().replaceWith(ifr);
+                modal.on("hide.bs.modal	", function(e) {
+                    App.unblockUI();
+                    modal.find(".modal-body").empty();
+                });
+            });
+        }
+    };
+    ModalResponsiveFileManager.defaults = ModalResponsiveFileManager.prototype.defaults;
+    $.fn.modalResponsiveFileManager = function(options) {
+        return this.each(function() {
+            new ModalResponsiveFileManager(this, options).init();
+        });
+    };
+    window.ModalResponsiveFileManager = Plugin;
+})(window, jQuery);
+
+function responsive_filemanager_callback(field_id) {
+    var field = $("#" + field_id);
+    field.trigger("change");
+    return;
+}
+
+(function(window, $) {
+    var PasswordGenerator = function(element, options) {
+        this.element = element;
+        this.$element = $(element);
+        this.options = options;
+    };
+    PasswordGenerator.prototype = {
+        defaults: {
+            buttonTrigger: "button",
+            input: 'input[name="temp-pass"]'
+        },
+        init: function() {
+            this.config = $.extend({}, this.defaults, this.options, this.$element.data());
+            var _that = this;
+            _that.$element.find(_that.config.buttonTrigger).on("click", function(e) {
+                e.preventDefault();
+                App.blockUI({
+                    cenrerY: true,
+                    animate: true
+                });
+                $.ajax({
+                    type: "GET",
+                    url: _that.config.url,
+                    success: function(data) {
+                        if (data.error) {
+                            _that.erroMessage(data.error);
+                        } else {
+                            _that.$element.find(_that.config.input).val(data.password);
+                            App.unblockUI();
+                        }
+                    },
+                    error: function() {
+                        _that.erroMessage("Não foi possível gerar a senha. Por favor, tente novamente.");
+                    }
+                });
+            });
+        },
+        erroMessage: function(msg) {
+            bootbox.dialog({
+                message: msg,
+                title: "Atenção",
+                buttons: {
+                    success: {
+                        label: "OK",
+                        className: "blue",
+                        callback: function() {
+                            App.unblockUI();
+                        }
+                    }
+                }
+            });
+        }
+    };
+    PasswordGenerator.defaults = PasswordGenerator.prototype.defaults;
+    $.fn.passwordGenerator = function(options) {
+        return this.each(function() {
+            new PasswordGenerator(this, options).init();
+        });
+    };
+    window.PasswordGenerator = Plugin;
+})(window, jQuery);
+
+(function(window, $) {
+    var AdminPhone = function(element, options) {
+        this.element = element;
+        this.$element = $(element);
+        this.options = options;
+    };
+    AdminPhone.prototype = {
+        defaults: {},
+        init: function() {
+            this.config = $.extend({}, this.defaults, this.options);
+            var _that = this;
+            $(".admin-phone-add").on("click", function(e) {
+                e.preventDefault();
+                console.log("Tentando incluir telefone");
+                var ddd = _that.$element.find("#admin-phone-ddd");
+                var number = _that.$element.find("#admin-phone-number");
+                var name = _that.$element.find("#admin-phone-contact_name");
+                var tipo = _that.$element.find("#admin-phone-type");
+                if (ddd.val() == "" || number.val() == "") {
+                    console.log("Nenhum telefone adicionado");
+                    return;
+                }
+                var id = Math.floor(Date.now() / 1e3);
+                var newLine = $('<tr data-row="' + id + '"></tr>').append("<td>" + ddd.val() + "</td>").append("<td>" + number.val() + "</td>").append("<td>" + name.val() + "</td>").append("<td>" + tipo.find("option:selected").text() + "</td>").append($("<td></td>").append('<a href="#" class="btn btn-sm btn-default admin-phone-remove" data-remove="' + id + '"><i class="glyphicon glyphicon-remove"></i></a>').append('<input type="hidden" name="phones[' + id + '][ddd]" value="' + ddd.val() + '">').append('<input type="hidden" name="phones[' + id + '][number]" value="' + number.val() + '">').append('<input type="hidden" name="phones[' + id + '][contact_name]" value="' + name.val() + '">').append('<input type="hidden" name="phones[' + id + '][type]" value="' + tipo.val() + '">'));
+                _that.$element.find("tbody > tr:last").before(newLine);
+                ddd.val("");
+                number.val("");
+                name.val("");
+                tipo.val("");
+            });
+            $(document).on("click", ".admin-phone-remove", function(e) {
+                e.preventDefault();
+                var row = $(document).find('tr[data-row="' + $(this).data("remove") + '"]');
+                row.fadeOut("slow", function() {
+                    row.remove();
+                });
+            });
+        }
+    };
+    AdminPhone.defaults = AdminPhone.prototype.defaults;
+    $.fn.adminPhone = function(options) {
+        return this.each(function() {
+            new AdminPhone(this, options).init();
+        });
+    };
+    window.AdminPhone = Plugin;
+})(window, jQuery);
+
+(function(window, $) {
+    var PostListStatus = function(element, options) {
+        this.element = element;
+        this.$element = $(element);
+        this.options = options;
+    };
+    PostListStatus.prototype = {
+        defaults: {
+            removeMsg: "Tem certeza que deseja exluir o item?"
+        },
+        init: function() {
+            this.config = $.extend({}, this.defaults, this.options);
+            var _that = this;
+            _that.trashAction();
+        },
+        trashAction: function() {
+            var _that = this;
+            console.log(_that.$element.find(".post-list-remove"));
+            _that.$element.find(".post-list-remove").on("click", function(e) {
+                e.preventDefault();
+                _that.remove(_that.config.removeMsg, $(this).attr("href"));
+            });
+        },
+        remove: function(msg, link) {
+            bootbox.dialog({
+                message: msg,
+                title: "Atenção",
+                buttons: {
+                    success: {
+                        label: "OK",
+                        className: "red",
+                        callback: function() {
+                            App.blockUI({
+                                cenrerY: true,
+                                animate: true
+                            });
+                            window.location.href = link;
+                            return;
+                        }
+                    },
+                    danger: {
+                        label: "Cancelar",
+                        className: "blue",
+                        callback: function() {
+                            return;
+                        }
+                    }
+                }
+            });
+        }
+    };
+    PostListStatus.defaults = PostListStatus.prototype.defaults;
+    $.fn.postListStatus = function(options) {
+        return this.each(function() {
+            new PostListStatus(this, options).init();
+        });
+    };
+    window.PostListStatus = Plugin;
+})(window, jQuery);
+
+(function(window, $) {
+    var PostSites = function(element, options) {
+        this.element = element;
+        this.$element = $(element);
+        this.options = options;
+    };
+    PostSites.prototype = {
+        defaults: {},
+        init: function() {
+            this.config = $.extend({}, this.defaults, this.options, this.$element.data());
+            var _that = this;
+            var form = _that.$element.find(".post-site-form");
+            _that.$element.find(".post-site-form .action.add").on("click", function(e) {
+                e.preventDefault();
+                var site = form.find('select[name="sites-enabled"]').select2("data");
+                var siteId = site[0].id;
+                var siteTitle = site[0].text;
+                var highlight = form.find('input[name="site-highlight"]').is(":checked");
+                if (siteId == "") {
+                    return;
+                }
+                if (_that.isExist(siteId)) {
+                    return;
+                }
+                App.blockUI({
+                    cenrerY: true,
+                    animate: true
+                });
+                var table = _that.$element.find(".post-sites-table tbody");
+                if (highlight) {
+                    siteTitle = siteTitle + '<span class="label label-sm label-success"> Destaque </span>';
+                }
+                table.append("<tr class='post-sites-item' data-id='" + siteId + "'>					<td>" + siteTitle + "</td>					<td>					<button class='btn btn-sm btn-default action remove'><i class='fa fa-close'></i></button>					<input type='hidden' name='sites[" + siteId + "][id]' value='" + siteId + "' />					<input type='hidden' name='sites[" + siteId + "][highlight]' value='" + highlight + "' /></td>");
+                setTimeout(function() {
+                    App.unblockUI();
+                    form.find('select[name="sites-enabled"]').val(null).trigger("change");
+                    form.find('input[name="site-highlight"]').iCheck("uncheck");
+                }, 1e3);
+            });
+            $(document).on("click", ".post-sites-table .post-sites-item .action.remove", function(e) {
+                e.preventDefault();
+                var item = $(this).closest(".post-sites-item");
+                item.fadeOut("slow", function() {
+                    item.remove();
+                });
+            });
+            _that.$element.find(".post-sites-table .action.remove-all").on("click", function(e) {
+                e.preventDefault();
+                _that.$element.find(".post-sites-table .post-sites-item").remove();
+            });
+        },
+        isExist: function(siteId) {
+            var _that = this;
+            if (_that.$element.find('.post-sites-table .post-sites-item[data-id="' + siteId + '"]').length > 0) {
+                return true;
+            }
+            return false;
+        }
+    };
+    PostSites.defaults = PostSites.prototype.defaults;
+    $.fn.postSites = function(options) {
+        return this.each(function() {
+            new PostSites(this, options).init();
+        });
+    };
+    window.PostSites = Plugin;
+})(window, jQuery);
+
+(function(window, $) {
+    var Slug = function(element, options) {
+        this.element = element;
+        this.$element = $(element);
+        this.options = options;
+    };
+    Slug.prototype = {
+        defaults: {
+            btnAction: ".slug-action-edit",
+            inputElement: "#slug"
+        },
+        init: function() {
+            this.config = $.extend({}, this.defaults, this.options, this.$element.data());
+            var _that = this;
+            _that.process();
+            _that.processTarget();
+        },
+        process: function() {
+            var _that = this;
+            var slug = $(this.config.inputElement);
+            $(_that.config.btnAction).on("click", function(e) {
+                e.preventDefault();
+                slug.removeProp("readonly");
+            });
+        },
+        processTarget: function() {
+            var _that = this;
+            var target = $(this.config.slugtarget);
+            target.on("blur", function(e) {
+                e.preventDefault();
+                if (target.val() === "") {
+                    return false;
+                }
+                if (_that.getSlugValue() != "") {
+                    return false;
+                }
+                _that.generateSlug(target.val());
+            });
+        },
+        getSlugValue: function() {
+            return $(this.config.inputElement).val();
+        },
+        generateSlug: function(str) {
+            var _that = this;
+            var data = "slug=" + str;
+            $.ajax({
+                type: "POST",
+                url: _that.config.slugurlvalidation,
+                data: data,
+                success: function(data) {
+                    _that.displaySlug(data.slug);
+                },
+                error: function() {
+                    alert("error");
+                }
+            });
+        },
+        displaySlug: function(slug) {
+            if (slug != "") {
+                $(this.config.inputElement).val(slug);
+            }
+        }
+    };
+    Slug.defaults = Slug.prototype.defaults;
+    $.fn.slug = function(options) {
+        return this.each(function() {
+            new Slug(this, options).init();
+        });
+    };
+    window.Slug = Plugin;
+})(window, jQuery);
+
+(function(window, $) {
+    var PostStatus = function(element, options) {
+        this.element = element;
+        this.$element = $(element);
+        this.options = options;
+    };
+    PostStatus.prototype = {
+        defaults: {
+            form: "#post-form"
+        },
+        init: function() {
+            this.config = $.extend({}, this.defaults, this.options);
+            var _that = this;
+            _that.changeStatus();
+            _that.changePostDate();
+            _that.descartAction();
+            _that.publishAction();
+            _that.draftAction();
+            _that.saveAction();
+        },
+        changeStatus: function() {
+            var _that = this;
+            _that.$element.find(".status .action.edit").on("click", function(e) {
+                e.preventDefault();
+                var optionsBlock = _that.$element.find(".status .options");
+                if (optionsBlock.hasClass("show-options")) {
+                    optionsBlock.removeClass("show-options").hide(100);
+                    $(this).text("Editar");
+                } else {
+                    optionsBlock.addClass("show-options").show(100);
+                    $(this).text("Cancelar");
+                }
+            });
+            _that.$element.find(".status .action.ok").on("click", function(e) {
+                e.preventDefault();
+                var status = _that.$element.find(".status .options select[name='status']").val();
+                if (status == "") {
+                    return;
+                }
+                _that.$element.find(".status span > strong").text(_that.$element.find(".status .options select[name='status'] option:selected").text());
+                _that.$element.find(".status .options").removeClass("show-options").hide(100);
+                _that.$element.find(".status .action.edit").text("Editar");
+            });
+        },
+        changePostDate: function() {
+            var _that = this;
+            _that.$element.find(".post-date .action.edit").on("click", function(e) {
+                e.preventDefault();
+                var optionsBlock = _that.$element.find(".post-date .options");
+                if (optionsBlock.hasClass("show-options")) {
+                    optionsBlock.removeClass("show-options").hide(100);
+                    $(this).text("Editar");
+                } else {
+                    optionsBlock.addClass("show-options").show(100);
+                    $(this).text("Cancelar");
+                }
+            });
+            _that.$element.find(".post-date .action.ok").on("click", function(e) {
+                e.preventDefault();
+                var date = _that.$element.find(".post-date input[name='date']").datepicker("getDate");
+                var hour = _that.$element.find(".post-date input[name='hour']").timepicker("getTime").val();
+                var postDate = new Date(date.getFullYear(), date.getMonth(), date.getDate(), hour.split(":")[0], hour.split(":")[1]);
+                var momentdate = moment(postDate);
+                _that.$element.find(".post-date span strong").text(momentdate.format("DD/MM/YYYY [às] HH:mm"));
+                _that.$element.find(".post-date input[name='postDate']").val(momentdate.format("DD/MM/YYYY HH:mm"));
+                _that.$element.find(".post-date .options").hide(100);
+                _that.$element.find(".post-date .options").removeClass("show-options");
+                _that.$element.find(".post-date .action.edit").text("Editar");
+            });
+        },
+        descartAction: function() {
+            this.$element.find(".form-actions .action.cancel").on("click", function(e) {
+                e.preventDefault();
+                var _that = $(this);
+                bootbox.dialog({
+                    message: "Tem certeza que deseja descartar as alterações?",
+                    title: "Atenção",
+                    buttons: {
+                        success: {
+                            label: "OK",
+                            className: "red",
+                            callback: function() {
+                                App.blockUI({
+                                    cenrerY: true,
+                                    animate: true
+                                });
+                                window.location.href = _that.attr("href");
+                                return;
+                            }
+                        },
+                        danger: {
+                            label: "Cancelar",
+                            className: "blue",
+                            callback: function() {
+                                return;
+                            }
+                        }
+                    }
+                });
+            });
+        },
+        publishAction: function() {
+            var _that = this;
+            _that.$element.find('.form-actions button[name="publish"]').on("click", function(e) {
+                e.preventDefault();
+                _that.$element.find(".status .options select[name='status']").val("published");
+                _that.save();
+            });
+        },
+        draftAction: function() {
+            var _that = this;
+            _that.$element.find(".heding-actions .action.save-draft").on("click", function(e) {
+                e.preventDefault();
+                _that.$element.find(".status .options select[name='status']").val("draft");
+                _that.save();
+            });
+        },
+        saveAction: function() {
+            var _that = this;
+            _that.$element.find('.form-actions button[name="save"]').on("click", function(e) {
+                e.preventDefault();
+                _that.save();
+            });
+        },
+        save: function() {
+            var _that = this;
+            App.blockUI({
+                cenrerY: true,
+                animate: true
+            });
+            setTimeout(function() {
+                $(_that.config.form).submit();
+            }, 1500);
+        }
+    };
+    PostStatus.defaults = PostStatus.prototype.defaults;
+    $.fn.postStatus = function(options) {
+        return this.each(function() {
+            new PostStatus(this, options).init();
+        });
+    };
+    window.PostStatus = Plugin;
+})(window, jQuery);
+
+(function(window, $) {
+    var PostThumb = function(options) {
+        this.options = options;
+    };
+    PostThumb.prototype = {
+        defaults: {
+            btnAdd: ".post-sidebar-thumb-action-add",
+            btnRemove: ".post-sidebar-thumb-action-remove",
+            inputElement: "#returnResponsivefilemanager",
+            imgContainer: ".post-sidebar-thumb-img"
+        },
+        init: function() {
+            this.config = $.extend({}, this.defaults, this.options);
+            var _that = this;
+            $(_that.config.inputElement).on("change", function(e) {
+                if ($(this).val()) {
+                    var img = $("<img width='100%' src='" + $(this).val() + "'>");
+                    $(_that.config.imgContainer).empty().append(img);
+                    $(_that.config.btnRemove).show();
+                }
+            });
+            $(_that.config.btnRemove).on("click", function(e) {
+                e.preventDefault();
+                $(_that.config.btnRemove).hide();
+                $(_that.config.imgContainer).empty();
+                $(_that.config.inputElement).val("");
+                return;
+            });
+        }
+    };
+    PostThumb.defaults = Slug.prototype.defaults;
+    $.fn.postThumb = function(options) {
+        return new PostThumb(options).init();
+    };
+    window.PostThumb = Plugin;
+})(window, jQuery);
+
+(function(window, $) {
+    var SelectImage = function(options) {
+        this.options = options;
+    };
+    SelectImage.prototype = {
+        defaults: {
+            container: ".select-image",
+            btnAdd: ".select-image-add",
+            btnRemove: ".select-image-remove",
+            inputTarget: ".select-image-input",
+            imgContainerTarget: ".select-image-container"
+        },
+        init: function() {
+            this.config = $.extend({}, this.defaults, this.options);
+            var _that = this;
+            console.log($(_that.config.container));
+            $(_that.config.inputTarget).on("change", function(e) {
+                if ($(this).val()) {
+                    var img = $("<img width='100%' height='200px' src='" + $(this).val() + "'>");
+                    $(_that.config.imgContainerTarget).empty().append(img);
+                    $(_that.config.container).addClass("select-image-has-image");
+                }
+            });
+            $(_that.config.btnRemove).on("click", function(e) {
+                e.preventDefault();
+                $(_that.config.imgContainerTarget).empty();
+                $(_that.config.inputTarget).val("");
+                $(_that.config.container).removeClass("select-image-has-image");
+                return;
+            });
+        }
+    };
+    SelectImage.defaults = Slug.prototype.defaults;
+    $.fn.selectImage = function(options) {
+        return new SelectImage(options).init();
+    };
+    window.SelectImage = Plugin;
+})(window, jQuery);

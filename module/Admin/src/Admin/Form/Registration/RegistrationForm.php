@@ -110,7 +110,7 @@ class RegistrationForm extends Form
                 ]
             ],
             'attributes' => [
-                'id' => 'tinymce_minimal'
+                'class' => 'tinymce_minimal'
             ]
         ]);
 
