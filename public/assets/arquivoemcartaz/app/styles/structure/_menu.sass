@@ -27,15 +27,15 @@
     padding-left: 178px
     text-align: right
 
-  &-list
+  &__list
     display: inline-block
     &--sub
       display: none
       transition: opacity .35s, visibility .35s, height .35s
       +leader(1)
-      .mainmenu-item
+      .mainmenu__item
         +trailer(.5)
-      .mainmenu-link
+      .mainmenu__link
         +adjust-font-size-to(18px)
         color: $color-pallete-3
         &:hover
@@ -48,7 +48,7 @@
             height: 3px
             background: $color-pallete-3
 
-  &-item
+  &__item
     +trailer(1)
     transition: .5s ease-in-out
     &:hover
@@ -56,7 +56,7 @@
         display: block
 
     &--active
-      .mainmenu-link
+      .mainmenu__link
         +corner-border($color-pallete-1)
         color: $color-pallete-1
         &:hover
@@ -66,7 +66,7 @@
 
 
 
-  &-link
+  &__link
     +adjust-font-size-to(36px, 2)
     font-weight: 800
     text-transform: uppercase
