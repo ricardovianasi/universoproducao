@@ -168,7 +168,7 @@ class EventForm extends Form
                 'required'   => false,
                 'allow_empty' => true
             ],
-            'sub_events' => [
+            'places' => [
                 'name' => 'places',
                 'required'   => false,
                 'allow_empty' => true
