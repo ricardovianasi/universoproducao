@@ -622,11 +622,11 @@ class Movie extends AbstractEntity
     }
 
     /**
-     * @param mixed $filmography_director
+     * @param mixed $filmographyDirector
      */
-    public function setFilmographyDirector($filmography_director)
+    public function setFilmographyDirector($filmographyDirector)
     {
-        $this->filmographyDirector = $filmography_director;
+        $this->filmographyDirector = $filmographyDirector;
     }
 
     /**
