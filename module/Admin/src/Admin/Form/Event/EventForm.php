@@ -6,6 +6,8 @@ use Application\Entity\Event\Place;
 use Application\Entity\Event\SubEvent;
 use TwbBundle\Form\Element\Tinymce;
 use Zend\Form\Form;
+use Zend\InputFilter\Factory as InputFilterFactory;
+
 
 class EventForm extends Form
 {
@@ -159,6 +161,19 @@ class EventForm extends Form
                 'class' => 'form-control multi-select'
             ],
         ]);
+
+        $this->setInputFilter((new InputFilterFactory)->createInputFilter([
+            'sub_events' => [
+                'name' => 'sub_events',
+                'required'   => false,
+                'allow_empty' => true
+            ],
+            'sub_events' => [
+                'name' => 'places',
+                'required'   => false,
+                'allow_empty' => true
+            ],
+        ]));
 	}
 
 	public function populatePlaces()
