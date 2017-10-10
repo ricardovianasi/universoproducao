@@ -81,6 +81,7 @@ class UserController extends AbstractAdminController implements CrudInterface
 				if(!empty($validData['phones'])) {
                     foreach ($validData['phones'] as $ph) {
                         $phone = new Phone($ph);
+                        $phone->setUser($user);
                         $phones->add($phone);
                     }
                 }
