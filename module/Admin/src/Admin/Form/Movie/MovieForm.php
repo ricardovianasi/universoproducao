@@ -123,11 +123,11 @@ class MovieForm extends Form
             'name' => 'duration',
             'options' => [
                 'label' => 'Duração exata',
-                'help-block' => nl2br($this->getDurationHelpBlock())
+                'help-block' => 'Fomato do campo: hh:mm:seg <br />'.nl2br($this->getDurationHelpBlock())
             ],
             'attributes' => [
                 'required' => 'required',
-                'data-inputmask' => "'alias': 'hh:mm:ss', 'placeholder':'_'"
+                'data-inputmask' => "'alias': 'hh:mm:ss'"
             ],
         ]);
 
