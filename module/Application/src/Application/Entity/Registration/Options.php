@@ -23,6 +23,9 @@ class Options extends AbstractEntity
     const MOVIE_ALLOW_FINISHED_TO                   = 'movie_allow_finished_to';
     const MOVIE_ALLOW_EDIT_REGISTRATION_TO          = 'movie_allow_edit_registration_to';
     const MOVIE_DURATION_OBS                        = 'movie_duration_obs';
+    const MOVIE_DURATION_CURTA                      = 'movie_duration_curta';
+    const MOVIE_DURATION_MEDIA                      = 'movie_duration_media';
+    const MOVIE_DURATION_LONGA                      = 'movie_duration_longa';
 
 
     /**

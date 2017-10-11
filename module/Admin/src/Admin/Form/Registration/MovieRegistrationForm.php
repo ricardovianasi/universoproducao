@@ -48,7 +48,8 @@ class MovieRegistrationForm extends RegistrationForm
         $this->add([
             'name' => 'options['.Options::MOVIE_ALLOW_EDIT_REGISTRATION_TO.']',
             'options' => [
-                'label' => 'Permitir edição do cadastro de filme até'
+                'label' => 'Permitir edição do cadastro de filme até',
+                'help-block' => 'Se não for permitido a edição do filme, o campo deverá permancer em branco'
             ]
         ]);
 
