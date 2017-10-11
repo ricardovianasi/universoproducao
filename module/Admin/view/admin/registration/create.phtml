@@ -118,7 +118,38 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <?php echo $this->formRow($form->get('options['.\Application\Entity\Registration\Options::MOVIE_DURATION_OBS.']')); ?>
+
+                                        <div class="form-group">
+                                            <label class="control-label col-md-4">Duração de Curtas</label>
+                                            <div class="col-md-8">
+                                                <div class="input-group input-large">
+                                                    <?php echo $this->formElement($form->get('options['.\Application\Entity\Registration\Options::MOVIE_DURATION_CURTA_FROM.']')); ?>
+                                                    <span class="input-group-addon"> até </span>
+                                                    <?php echo $this->formElement($form->get('options['.\Application\Entity\Registration\Options::MOVIE_DURATION_CURTA_TO.']')); ?> </div>
+                                                <!-- /input-group -->
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-4">Duração de Médias</label>
+                                            <div class="col-md-8">
+                                                <div class="input-group input-large">
+                                                    <?php echo $this->formElement($form->get('options['.\Application\Entity\Registration\Options::MOVIE_DURATION_MEDIA_FROM.']')); ?>
+                                                    <span class="input-group-addon"> até </span>
+                                                    <?php echo $this->formElement($form->get('options['.\Application\Entity\Registration\Options::MOVIE_DURATION_MEDIA_TO.']')); ?> </div>
+                                                <!-- /input-group -->
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-4">Duração de Longas</label>
+                                            <div class="col-md-8">
+                                                <div class="input-group input-large">
+                                                    <?php echo $this->formElement($form->get('options['.\Application\Entity\Registration\Options::MOVIE_DURATION_LONGA_FROM.']')); ?>
+                                                    <span class="input-group-addon"> até </span>
+                                                    <?php echo $this->formElement($form->get('options['.\Application\Entity\Registration\Options::MOVIE_DURATION_LONGA_TO.']')); ?> </div>
+                                                <!-- /input-group -->
+                                            </div>
+                                        </div>
+
                                     </div>
                                 </div>
                             </div>

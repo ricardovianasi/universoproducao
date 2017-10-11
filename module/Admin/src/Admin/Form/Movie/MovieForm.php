@@ -882,9 +882,65 @@ class MovieForm extends Form
             return;
         }
 
-        return (string) $this
-            ->getRegistration()
-            ->getOption(RegistrationOptions::MOVIE_DURATION_OBS);
+        $description = "";
+
+        $durationCurtaTo = $this->getRegistration()->getOption(RegistrationOptions::MOVIE_DURATION_CURTA_TO);
+        if($durationCurtaTo) {
+            $time = \DateTime::createFromFormat('H:i:s', $durationCurtaTo->getValue());
+            $hour = (int) $time->format('H');
+            $mim = (int) $time->format('i');
+            $sec = (int) $time->format('s');
+
+            $description.= "Curtas - Filmes brasileiros com duração de até ".(($hour*60)+$mim)." ";
+            if($sec>0) {
+                $description.= "'".str_pad($sec, '2', '0', STR_PAD_LEFT)." ";
+            }
+            $description.= "minutos;<br/>";
+        }
+
+        $durationMediaFrom = $this->getRegistration()->getOption(RegistrationOptions::MOVIE_DURATION_MEDIA_FROM);
+        $durationMediaTo = $this->getRegistration()->getOption(RegistrationOptions::MOVIE_DURATION_MEDIA_TO);
+        if($durationMediaFrom && $durationMediaTo) {
+
+            $description.= "Médias - Filmes brasileiros com duração entre ";
+
+            $time = \DateTime::createFromFormat('H:i:s', $durationMediaFrom->getValue());
+            $hour = (int) $time->format('H');
+            $mim = (int) $time->format('i');
+            $sec = (int) $time->format('s');
+
+            $description.=(($hour*60)+$mim);
+            if($sec) {
+                $description.="'".str_pad($sec, '2', '0', STR_PAD_LEFT);
+            }
+
+            $time = \DateTime::createFromFormat('H:i:s', $durationMediaTo->getValue());
+            $hour = (int) $time->format('H');
+            $mim = (int) $time->format('i');
+            $sec = (int) $time->format('s');
+
+            $description.= " e ".(($hour*60)+$mim);
+            if($sec) {
+                $description.="'".str_pad($sec, '2', '0', STR_PAD_LEFT);
+            }
+            $description.= " minutos;<br/>";
+        }
+
+        $durationLongaFrom = $this->getRegistration()->getOption(RegistrationOptions::MOVIE_DURATION_LONGA_FROM);
+        if($durationLongaFrom) {
+            $time = \DateTime::createFromFormat('H:i:s', $durationLongaFrom->getValue());
+            $hour = (int)$time->format('H');
+            $mim = (int)$time->format('i');
+            $sec = (int)$time->format('s');
+
+            $description .= "Longas - Filmes brasileiros com duração superior a " . (($hour * 60) + $mim) . " ";
+            if ($sec > 0) {
+                $description .= "'" . str_pad($sec, '2', '0',STR_PAD_LEFT) . " ";
+            }
+            $description .= "minutos;";
+        }
+
+        return $description;
     }
 
     public function populateStates()

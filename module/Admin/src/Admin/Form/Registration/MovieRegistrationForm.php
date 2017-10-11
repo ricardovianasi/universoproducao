@@ -54,18 +54,55 @@ class MovieRegistrationForm extends RegistrationForm
         ]);
 
         $this->add([
-            'type' => 'textarea',
-            'name' => 'options['.Options::MOVIE_DURATION_OBS.']',
+            'name' => 'options['.Options::MOVIE_DURATION_CURTA_FROM.']',
             'options' => [
-                'label' => 'Regras para duração dos filmes',
-                'twb-layout' => 'horizontal',
-                'column-size' => 'md-6',
-                'label_attributes' => [
-                    'class' => 'col-md-4'
-                ]
+                ''
             ],
             'attributes' => [
-                'row' => 5
+                'data-inputmask' => "'alias': 'hh:mm:ss'"
+            ]
+        ]);
+        $this->add([
+            'name' => 'options['.Options::MOVIE_DURATION_CURTA_TO.']',
+            'options' => [
+                ''
+            ],
+            'attributes' => [
+                'data-inputmask' => "'alias': 'hh:mm:ss'"
+            ]
+        ]);
+
+        $this->add([
+            'name' => 'options['.Options::MOVIE_DURATION_MEDIA_FROM.']',
+            'options' => [
+            ],
+            'attributes' => [
+                'data-inputmask' => "'alias': 'hh:mm:ss'"
+            ]
+        ]);
+        $this->add([
+            'name' => 'options['.Options::MOVIE_DURATION_MEDIA_TO.']',
+            'options' => [
+            ],
+            'attributes' => [
+                'data-inputmask' => "'alias': 'hh:mm:ss'"
+            ]
+        ]);
+
+        $this->add([
+            'name' => 'options['.Options::MOVIE_DURATION_LONGA_FROM.']',
+            'options' => [
+            ],
+            'attributes' => [
+                'data-inputmask' => "'alias': 'hh:mm:ss'"
+            ]
+        ]);
+        $this->add([
+            'name' => 'options['.Options::MOVIE_DURATION_LONGA_TO.']',
+            'options' => [
+            ],
+            'attributes' => [
+                'data-inputmask' => "'alias': 'hh:mm:ss'"
             ]
         ]);
     }
