@@ -2,6 +2,7 @@
 namespace Util\Entity;
 
 use Zend\Hydrator\ClassMethods;
+use Zend\Validator\Date;
 
 abstract class AbstractEntity
 {
@@ -58,4 +59,33 @@ abstract class AbstractEntity
 	{
 		return $this->defaultInputFilter;
 	}
+
+	public function timeToSeconds($time)
+    {
+        if(!$time) {
+            throw new \InvalidArgumentException();
+        }
+
+        $dateValidator = new Date([
+            'format' => 'H:i:s'
+        ]);
+
+        if(!$dateValidator->isValid($time)) {
+            throw new \Exception('Formato não válido');
+        }
+
+	    if(is_string($time)) {
+	        $time = \DateTime::createFromFormat('H:i:s', $time);
+        }
+
+        if(!($time instanceof \DateTime)) {
+            throw new \Exception('Formato não válido');
+        }
+
+        $h = (int) $time->format('H');
+        $m = (int) $time->format('i');
+        $s = (int) $time->format('s');
+
+        return (($h*60)*60)+($m*60)+$s;
+    }
 }

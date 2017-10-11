@@ -2,6 +2,7 @@
 namespace Admin\Form\Movie;
 
 use Application\Entity\Event\Event;
+use Application\Entity\Movie\Category;
 use Application\Entity\Movie\Options;
 use Application\Entity\Movie\OptionsType;
 use Application\Entity\Registration\Registration;
@@ -64,6 +65,18 @@ class MovieFormSearch extends Form
             'name' => 'events',
             'options' => [
                 'empty_option' => 'Selecione',
+            ],
+            'attributes' => [
+                'class' => 'input-sm'
+            ]
+        ]);
+
+        $this->add([
+            'type' => 'Select',
+            'name' => 'category',
+            'options' => [
+                'empty_option' => 'Selecione',
+                'value_options' => Category::toArray()
             ],
             'attributes' => [
                 'class' => 'input-sm'

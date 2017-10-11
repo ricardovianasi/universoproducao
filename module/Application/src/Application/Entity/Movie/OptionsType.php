@@ -14,7 +14,6 @@ final class OptionsType
     const FEATURE_DIRECTED          = 'feature_directed';
     const SHORT_MOVIE_CATEGORY      = 'short_movie_category';
 
-
 	static public function toArray() {
 		return array(
 		    self::CLASSIFICATION => 'Classificação',

@@ -24,6 +24,7 @@
 							<tr role="row" class="heading">
 								<th width="2%">ID</th>
 								<th width="15%">Título</th>
+								<th width="15%">Categoria</th>
                                 <th width="15%">Eventos</th>
                                 <th width="15%">Data de cadastro</th>
                                 <th width="15%">Usuário</th>
@@ -33,6 +34,7 @@
                                 <?php $form->prepare(); echo $this->form()->openTag($form); ?>
                                     <td><?php echo $this->formelement($form->get('id')); ?></td>
                                     <td><?php echo $this->formelement($form->get('title')); ?></td>
+                                    <td><?php echo $this->formelement($form->get('category')); ?></td>
                                     <td><?php echo $this->formelement($form->get('events')); ?></td>
                                     <td>
                                         <div class="input-group date date-picker margin-bottom-5" data-date-format="dd/mm/yyyy">
@@ -86,6 +88,10 @@
 							<tr>
 								<td><?php echo $item->getId() ?></td>
 								<td><a href="<?php echo $updateUrl; ?>"><?php echo $item->getTitle(); ?></a></td>
+                                <td>
+                                    <?php echo \Application\Entity\Movie\Category::get($item->getCategory()); ?> <br>
+                                    <?php echo $item->getDuration()->format('H:i:s'); ?>
+                                </td>
 								<td>
                                     <?php foreach ($item->getEvents() as $e): ?>
                                         <span style="margin-right: 10px" class="label label-sm label-info"> <?php echo $e->getEvent()->getShortName(); ?> </span>

@@ -1,6 +1,7 @@
 <?php
 namespace Application\Entity\Movie;
 
+use Application\Entity\Registration\Registration;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Util\Entity\AbstractEntity;
@@ -11,6 +12,10 @@ use Util\Entity\AbstractEntity;
  */
 class Movie extends AbstractEntity
 {
+    const CATEGORY_LONGA = 'longa';
+    const CATEGORY_MEDIA = 'media';
+    const CATEGORY_CURTA = 'curta';
+
 	/**
 	 * @ORM\Id @ORM\Column(name="id", type="integer", nullable=false)
 	 * @ORM\GeneratedValue(strategy="IDENTITY")
@@ -769,7 +774,7 @@ class Movie extends AbstractEntity
     }
 
     /**
-     * @return mixed
+     * @return Registration|null
      */
     public function getRegistration()
     {
@@ -978,5 +983,59 @@ class Movie extends AbstractEntity
     public function setHasConversationsListLanguages($hasConversationsListLanguages)
     {
         $this->hasConversationsListLanguages = $hasConversationsListLanguages;
+    }
+
+    public function getCategory()
+    {
+        if (!$this->duration) {
+            return;
+        }
+
+        if ($this->getRegistration()) {
+            $durationCurtaTo = $this->getRegistration()->getOption(\Application\Entity\Registration\Options::MOVIE_DURATION_CURTA_TO);
+
+            $durationMediaFrom = $this->getRegistration()->getOption(\Application\Entity\Registration\Options::MOVIE_DURATION_MEDIA_FROM);
+            $durationMediaTo = $this->getRegistration()->getOption(\Application\Entity\Registration\Options::MOVIE_DURATION_MEDIA_TO);
+
+            $durationLongaFrom = $this->getRegistration()->getOption(\Application\Entity\Registration\Options::MOVIE_DURATION_LONGA_TO);
+        }
+
+        if ($durationCurtaTo) {
+            $durationCurtaTo = \DateTime::createFromFormat('H:i:s', $durationCurtaTo->getValue());
+        } else {
+            $durationCurtaTo = \DateTime::createFromFormat('H:i:s', '00:30:00');
+        }
+
+        if ($durationMediaFrom) {
+            $durationMediaFrom = \DateTime::createFromFormat('H:i:s', $durationMediaFrom->getValue());
+        } else {
+            $durationMediaFrom = \DateTime::createFromFormat('H:i:s', '00:30:01');
+        }
+
+        if ($durationMediaTo) {
+            $durationMediaTo = \DateTime::createFromFormat('H:i:s', $durationMediaTo->getValue());
+        } else {
+            $durationMediaTo = \DateTime::createFromFormat('H:i:s', '00:59:59');
+        }
+
+        if ($durationLongaFrom) {
+            $durationLongaFrom = \DateTime::createFromFormat('H:i:s', $durationLongaFrom->getValue());
+        } else {
+            $durationLongaFrom = \DateTime::createFromFormat('H:i:s', '01:00:00');
+        }
+
+        $durationInSeconds = $this->timeToSeconds($this->duration);
+        $durationCurtaToSeconds = $this->timeToSeconds($durationCurtaTo);
+        $durationMediaFromSeconds = $this->timeToSeconds($durationMediaFrom);
+        $durationMediaToSeconds = $this->timeToSeconds($durationMediaTo);
+        $durationLongaFromSeconds = $this->timeToSeconds($durationLongaFrom);
+
+        if ($durationInSeconds <= $durationCurtaToSeconds) {
+            return Category::CURTA;
+        } elseif ($durationInSeconds > $durationMediaFromSeconds && $durationInSeconds < $durationMediaToSeconds) {
+            return Category::MEDIA;
+        } elseif ($durationInSeconds >= $durationLongaFromSeconds) {
+            return Category::LONGA;
+        }
     }
 }
