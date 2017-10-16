@@ -19,7 +19,7 @@ class MovieFormSearch extends Form
 
         parent::__construct('movie-form-search');
         $this->setAttributes([
-            'method' => 'POST',
+            'method' => 'GET',
         ]);
 
         $this->add([
