@@ -85,7 +85,7 @@ class MovieFormSearch extends Form
             ]
         ]);
 
-        $this->add([
+        /*$this->add([
             'type' => 'Select',
             'name' => 'category',
             'options' => [
@@ -94,6 +94,24 @@ class MovieFormSearch extends Form
             ],
             'attributes' => [
                 'class' => 'input-sm'
+            ]
+        ]);*/
+
+        $this->add([
+            'name' => 'durationInit',
+            'attributes' => [
+                'placeholder' => 'De',
+                'class' => 'input-sm',
+                'data-inputmask' => "'alias': 'hh:mm:ss'"
+            ]
+        ]);
+
+        $this->add([
+            'name' => 'durationEnd',
+            'attributes' => [
+                'placeholder' => 'Até',
+                'class' => 'input-sm',
+                'data-inputmask' => "'alias': 'hh:mm:ss'"
             ]
         ]);
 

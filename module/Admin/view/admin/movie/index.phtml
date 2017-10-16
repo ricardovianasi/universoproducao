@@ -44,9 +44,9 @@
 						<thead>
                         <?php $form->prepare(); echo $this->form()->openTag($form); ?>
 							<tr role="row" class="heading">
-								<th width="2%">ID</th>
+								<th width="5%">ID</th>
 								<th width="15%">Título</th>
-								<th width="10%">Categoria</th>
+								<th width="10%">Duração</th>
                                 <th width="15%">Evento</th>
                                 <th width="15%">Data de cadastro</th>
                                 <th width="15%">Usuário</th>
@@ -55,7 +55,10 @@
                             <tr role="row" class="filter">
                                 <td><?php echo $this->formelement($form->get('id')); ?></td>
                                 <td><?php echo $this->formelement($form->get('title')); ?></td>
-                                <td><?php echo $this->formelement($form->get('category')); ?></td>
+                                <td>
+                                    <div class="margin-bottom-5"><?php echo $this->formelement($form->get('durationInit')); ?></div>
+                                    <?php echo $this->formelement($form->get('durationEnd')); ?>
+                                </td>
                                 <td>
                                     <div class="margin-bottom-5"><?php echo $this->formelement($form->get('events')); ?></div>
                                     <?php echo $this->formelement($form->get('status')); ?>
@@ -83,7 +86,7 @@
                                     <div class="margin-bottom-5">
                                         <button class="btn btn-sm blue filter-submit margin-bottom"><i class="fa fa-search"></i> Pesquisar</button>
                                     </div>
-                                    <button class="btn btn-sm btn-default filter-cancel"><i class="fa fa-times"></i> Limpar</button>
+                                    <button type="reset" class="btn btn-sm btn-default filter-cancel"><i class="fa fa-times"></i> Limpar</button>
                                 </td>
                             </tr>
                         <?php echo $this->form()->closeTag(); ?>
@@ -113,8 +116,8 @@
 								<td><?php echo $item->getId() ?></td>
 								<td><a href="<?php echo $updateUrl; ?>"><?php echo $item->getTitle(); ?></a></td>
                                 <td>
-                                    <?php echo \Application\Entity\Movie\Category::get($item->getCategory()); ?> <br>
-                                    <?php echo $item->getDuration()->format('H:i:s'); ?>
+                                    <?php echo $item->getDuration()->format('H:i:s'); ?><br>
+                                    <?php echo \Application\Entity\Movie\Category::get($item->getCategory()); ?>
                                 </td>
 								<td>
                                     <?php if(count($item->getEvents())): ?>
