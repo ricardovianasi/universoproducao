@@ -13,7 +13,7 @@ final class Status
             self::ON_EVALUATION => 'Em processo de seleção',
             self::SELECTED => 'Selecionado',
             self::NOT_SELECTED => 'Não selecionado',
-            self::NOT_SELECTED => 'Standby',
+            self::STANDBY => 'Standby',
         );
     }
 
