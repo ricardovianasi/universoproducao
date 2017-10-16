@@ -1172,7 +1172,7 @@ jQuery(document).ready(function() {
         selectableOptgroup: true
     });
     $.fn.select2.defaults.set("theme", "bootstrap");
-    $("select.select2").select2({
+    $("select.select2, .select2-multiple").select2({
         placeholder: "Selecione"
     });
     $(".select2, .select2-multiple, .select2-allow-clear, .js-data-example-ajax").on("select2:open", function() {

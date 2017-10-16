@@ -2,6 +2,7 @@
 namespace Admin\Form\Movie;
 
 use Application\Entity\Event\Event;
+use Application\Entity\Event\EventType;
 use Application\Entity\Movie\Category;
 use Application\Entity\Registration\Status;
 use Zend\Form\Form;
@@ -39,7 +40,8 @@ class MovieFormSearch extends Form
             'name' => 'dateInit',
             'attributes' => [
                 'placeholder' => 'De',
-                'class' => 'input-sm'
+                'class' => 'input-sm',
+                'data-inputmask' => "'alias': 'dd/mm/yyyy'"
             ]
         ]);
 
@@ -47,7 +49,8 @@ class MovieFormSearch extends Form
             'name' => 'dateEnd',
             'attributes' => [
                 'placeholder' => 'Até',
-                'class' => 'input-sm'
+                'class' => 'input-sm',
+                'data-inputmask' => "'alias': 'dd/mm/yyyy'"
             ]
         ]);
 
@@ -63,6 +66,7 @@ class MovieFormSearch extends Form
             'name' => 'events',
             'options' => [
                 'empty_option' => 'Selecione o evento',
+                'value_options' => $this->populateEvents()
             ],
             'attributes' => [
                 'class' => 'input-sm'
@@ -116,16 +120,26 @@ class MovieFormSearch extends Form
 
     public function populateEvents()
     {
-        $eve = [];
-        $events = $this
-            ->getEntityManager()
-            ->getRepository(Event::class);
+        $options = [];
 
-        foreach ($events as $e) {
-            $eve[$e->getId()] = $e->getShortName();
+        if($this->getEntityManager()) {
+            $events = $this
+                ->getEntityManager()
+                ->getRepository(Event::class)
+                ->findBy([], ['startDate'=>'DESC']);
+
+            foreach ($events as $p) {
+                if(!key_exists($p->getType(), $options)) {
+                    $options[$p->getType()] = [
+                        'label' => EventType::get($p->getType()),
+                        'options' => []
+                    ];
+                }
+                $options[$p->getType()]['options'][$p->getId()] = $p->getShortName();
+            }
         }
 
-        return $eve;
+        return $options;
     }
 
 
