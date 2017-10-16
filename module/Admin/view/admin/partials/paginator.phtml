@@ -1,4 +1,5 @@
 <?php $this->route_options = $this->route_options ? $this->route_options : []; ?>
+<?php $route_query_options = $this->route_query_options ? $this->route_query_options : []; ?>
 <?php if ($this->pageCount): ?>
 <div class="row">
 
@@ -10,8 +11,9 @@
 		 <ul class="pagination pull-right">
 			 <!-- Previous page link -->
 			 <?php if (isset($this->previous)): ?>
+                 <?php $route_query_options['query']['page'] =  $this->previous?>
 				 <li>
-					 <a href="<?php echo $this->url($this->route, $this->route_options); ?>?page=<?php echo $this->previous; ?>">
+					 <a href="<?php echo $this->url($this->route, $this->route_options, $route_query_options); ?>">
 						 <<
 					 </a>
 				 </li>
@@ -26,8 +28,9 @@
 			 <!-- Numbered page links -->
 			 <?php foreach ($this->pagesInRange as $page): ?>
 				 <?php if ($page != $this->current): ?>
+                     <?php $route_query_options['query']['page'] =  $page?>
 					 <li>
-						 <a href="<?php echo $this->url($this->route, $this->route_options);?>?page=<?php echo $page; ?>">
+						 <a href="<?php echo $this->url($this->route, $this->route_options, $route_query_options);?>">
 							 <?php echo $page; ?>
 						 </a>
 					 </li>
@@ -40,8 +43,9 @@
 
 			 <!-- Next page link -->
 			 <?php if (isset($this->next)): ?>
+                 <?php $route_query_options['query']['page'] = $this->next; ?>
 				 <li>
-					 <a href="<?php echo $this->url($this->route, $this->route_options); ?>?page=<?php echo $this->next; ?>">
+					 <a href="<?php echo $this->url($this->route, $this->route_options, $route_query_options); ?>">
 						 >>
 					 </a>
 				 </li>

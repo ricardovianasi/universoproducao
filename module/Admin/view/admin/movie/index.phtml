@@ -159,7 +159,8 @@
                             'admin/partials/paginator.phtml',
                             array(
                                 'route'=>'admin/default',
-                                'route_options' => array('controller'=>'movie')
+                                'route_options' => array('controller'=>'movie'),
+                                'route_query_options' => ['query'=>$this->searchData]
                             ));
                         ?>
                     </div>
