@@ -4,7 +4,7 @@ namespace Admin\View\Helper;
 use Zend\View\Helper\AbstractHelper;
 use Application\Entity\Post\PostStatus;
 
-class StatusLabel extends AbstractHelper
+class RegisterStatusLabel extends AbstractHelper
 {
 	protected $mapStyle = [
 		PostStatus::PUBLISHED => 'label label-success',

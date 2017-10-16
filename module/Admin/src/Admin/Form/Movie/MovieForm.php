@@ -1,20 +1,16 @@
 <?php
 namespace Admin\Form\Movie;
 
-use Application\Entity\Movie\Movie;
 use Application\Entity\Movie\Options;
 use Application\Entity\Movie\OptionsType;
-use Application\Entity\Registration\Registration;
 use Application\Entity\Registration\Options as RegistrationOptions;
+use Application\Entity\Registration\Registration;
 use Application\Entity\State;
-use DoctrineModule\Validator\UniqueObject;
 use Zend\Form\Form;
 use Zend\InputFilter\Factory as InputFilterFactory;
 use Zend\Validator\Date;
 use Zend\Validator\File\MimeType;
 use Zend\Validator\File\Size;
-use Zend\Validator\NotEmpty;
-use Zend\Validator\Uri;
 
 class MovieForm extends Form
 {

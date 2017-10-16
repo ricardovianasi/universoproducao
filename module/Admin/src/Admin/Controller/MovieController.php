@@ -25,9 +25,7 @@ class MovieController extends AbstractAdminController
         $dataAttr = $this->params()->fromQuery();
         $searchForm->setData($dataAttr);
 
-        if(!$searchForm->isValid()) {
-            $teste = $searchForm->getMessages();
-        }
+        $searchForm->isValid();
 
         $data = $searchForm->getData();
 

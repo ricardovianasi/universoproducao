@@ -363,4 +363,24 @@
   padding-left: 8px;
 }
 
+/* line 2, ../../resources/sass/_table.sass */
+.table .table-in-td {
+  background-color: transparent;
+  margin-bottom: 0;
+}
+/* line 8, ../../resources/sass/_table.sass */
+.table .table-in-td tr:first-of-type td {
+  padding-top: 0;
+  border-top: none;
+}
+/* line 12, ../../resources/sass/_table.sass */
+.table .table-in-td tr:last-of-type td {
+  padding-bottom: 0;
+}
+/* line 14, ../../resources/sass/_table.sass */
+.table .table-in-td tr td {
+  padding-left: 0;
+  padding-right: 0;
+}
+
 /*# sourceMappingURL=custon.css.map */

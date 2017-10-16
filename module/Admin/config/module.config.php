@@ -249,7 +249,8 @@ return array(
             'adminMenuPages'			=> 'Admin\View\Helper\AdminMenuPages',
             'adminPostSiteView' 		=> 'Admin\View\Helper\AdminPostSiteView',
             'adminBanner'				=> 'Admin\View\Helper\AdminBanner',
-            'adminGallery'				=> 'Admin\View\Helper\AdminGallery'
+            'adminGallery'				=> 'Admin\View\Helper\AdminGallery',
+            'registrationStatus'              => 'Admin\View\Helper\RegistrationStatus'
         ),
         'factories' => [
             'adminTranslate' => function($helpers) {
