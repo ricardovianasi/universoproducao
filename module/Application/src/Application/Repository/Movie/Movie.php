@@ -5,4 +5,5 @@ use Util\Repository\AbstractRepository;
 
 class Movie extends AbstractRepository
 {
+
 }
