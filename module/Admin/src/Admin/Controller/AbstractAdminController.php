@@ -15,7 +15,6 @@ use Doctrine\Common\Annotations\AnnotationReader;
 use Doctrine\Common\Collections\ArrayCollection;
 use JasperPHP\JasperPHP;
 use JMS\Serializer\SerializerBuilder;
-use PHPJasper\PHPJasper;
 use Util\Controller\AbstractController;
 use Zend\Authentication\AuthenticationService;
 use Zend\Http\Header\SetCookie;
@@ -537,7 +536,7 @@ abstract class AbstractAdminController extends AbstractController
             ]
         ];
 
-        $jasper = new PHPJasper();
+        $jasper = new JasperPHP();
         $jasper->process(
             $input,
             $reportBasePath,
