@@ -102,4 +102,9 @@ class Options extends AbstractEntity
     {
         return OptionsType::get($this->getType());
     }
+
+    public function _toArray()
+    {
+        return $this->toArray();
+    }
 }

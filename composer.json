@@ -15,7 +15,9 @@
         "beberlei/DoctrineExtensions": "^1.0",
         "zendframework/zftool": "dev-master",
         "syslogic/doctrine-json-functions": "dev-master",
-        "sendgrid/sendgrid": "~6.0"
+        "sendgrid/sendgrid": "~6.0",
+        "jms/serializer": "^1.9",
+        "geekcom/phpjasper": "*"
     },
     "require-dev": {
         "zendframework/zend-developer-tools": "^1.1"

@@ -65,6 +65,8 @@ jQuery(document).ready(function() {
 
     $('.post-sites').postSites();
 
+    $('.report-link').report();
+
     $("form.default-form-actions").formSave();
 
     //Inicia o plugin que controla a busca de cep

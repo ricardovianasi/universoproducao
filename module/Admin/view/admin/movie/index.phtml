@@ -21,7 +21,12 @@
                             <i class="fa fa-angle-down"></i>
                         </a>
                         <div class="dropdown-menu pull-right">
-                            <li><a href="javascript:;"> Exportar para Excel </a></li>
+                            <li>
+                                <a class="report-link"
+                                   data-form="#movie-form-search"
+                                   data-url="<?php echo $this->url('admin/default', ['controller'=>'movie', 'action'=>'export-list']) ?>"
+                                   href="#"> Exportar para Excel </a>
+                            </li>
                         </div>
                     </div>
 				</div>
@@ -84,7 +89,7 @@
                                 <td><?php echo $this->formelement($form->get('author')); ?></td>
                                 <td>
                                     <div class="margin-bottom-5">
-                                        <button class="btn btn-sm blue filter-submit margin-bottom"><i class="fa fa-search"></i> Pesquisar</button>
+                                        <button type="submit" class="btn btn-sm blue filter-submit margin-bottom"><i class="fa fa-search"></i> Pesquisar</button>
                                     </div>
                                     <button type="reset" class="btn btn-sm btn-default filter-cancel"><i class="fa fa-times"></i> Limpar</button>
                                 </td>

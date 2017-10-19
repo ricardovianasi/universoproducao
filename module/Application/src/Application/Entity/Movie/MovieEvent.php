@@ -1,6 +1,9 @@
 <?php
 namespace Application\Entity\Movie;
 
+use Admin\View\Helper\RegistrationStatus;
+use Application\Entity\Event\Event;
+use Application\Entity\Registration\Status;
 use Doctrine\ORM\Mapping as ORM;
 use Util\Entity\AbstractEntity;
 
@@ -64,7 +67,7 @@ class MovieEvent extends AbstractEntity
     }
 
     /**
-     * @return mixed
+     * @return Event
      */
     public function getEvent()
     {
@@ -93,5 +96,17 @@ class MovieEvent extends AbstractEntity
     public function setStatus($status)
     {
         $this->status = $status;
+    }
+
+    public function _toArray()
+    {
+        return [
+            'id' => $this->getId(),
+            'status' => $this->getStatus(),
+            'status_name' => Status::get($this->getStatus()),
+            'event_id' => $this->getEvent()->getId(),
+            'event_short_name' => $this->getEvent()->getShortName(),
+            'event_full_name' => $this->getEvent()->getFullName()
+        ];
     }
 }

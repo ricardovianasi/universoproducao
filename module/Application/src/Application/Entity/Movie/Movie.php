@@ -278,6 +278,16 @@ class Movie extends AbstractEntity
         $this->endDateMonth = $endDateMonth;
     }
 
+    public function getEndDateMonthName()
+    {
+        if(!$this->endDateMonth) {
+            return;
+        }
+
+        $date = \DateTime::createFromFormat('!m', $this->endDateMonth);
+        return strftime('%B', $date->getTimestamp());
+    }
+
     /**
      * @return mixed
      */
@@ -1037,5 +1047,30 @@ class Movie extends AbstractEntity
         } elseif ($durationInSeconds >= $durationLongaFromSeconds) {
             return Category::LONGA;
         }
+    }
+
+    public function _toArray()
+    {
+        $eventsArray = [];
+        foreach ($this->getEvents() as $event) {
+            $eventsArray[] = $event->_toArray();
+        }
+
+        $optionsArray = [];
+        foreach ($this->getOptions() as $op) {
+            $optionsArray[] = $op->_toArray();
+        }
+
+        $data = $this->toArray();
+        $data['options'] = $optionsArray;
+        $data['events'] = $eventsArray;
+        $data['author'] = $this->getAuthor()->_toArray();
+        $data['duration'] = $this->getDuration()->formar('H:i:s');
+        $data['created_at'] = $this->getCreatedAt()->format('d/m/Y H:i:s');
+        $data['updated_at'] = $this->getUpdatedAt()->format('d/m/Y H:i:s');
+        unset($data['medias']);
+        unset($data['registration']);
+
+        return $data;
     }
 }

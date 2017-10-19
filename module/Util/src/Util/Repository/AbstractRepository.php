@@ -2,6 +2,7 @@
 namespace Util\Repository;
 
 use Doctrine\ORM\EntityRepository;
+use Doctrine\ORM\QueryBuilder;
 use DoctrineORMModule\Paginator\Adapter\DoctrinePaginator;
 use Doctrine\ORM\Tools\Pagination\Paginator as ORMPaginator;
 use Zend\Paginator\Paginator;
@@ -74,15 +75,18 @@ abstract class AbstractRepository extends EntityRepository
 		return $queryBuilder;
 	}
 
-	public function search($criteria=array(), $orderBy=[], $currentPage=1)
+	public function search($criteria=array(), $orderBy=[], $igonorePagination=false, $currentPage=1)
 	{
 		$queryBuilder = $this->prepareSearch($criteria, $orderBy);
 
-		$adapter = new DoctrinePaginator(new ORMPaginator($queryBuilder, false));
-		$paginator = new Paginator($adapter);
-		$paginator->setDefaultItemCountPerPage($this->defaultPageSize);
-		$paginator->setCurrentPageNumber($currentPage);
-
-		return $paginator;
+		if($igonorePagination) {
+            return $queryBuilder->getQuery()->getResult();
+        } else {
+            $adapter = new DoctrinePaginator(new ORMPaginator($queryBuilder, false));
+            $paginator = new Paginator($adapter);
+            $paginator->setDefaultItemCountPerPage($this->defaultPageSize);
+            $paginator->setCurrentPageNumber($currentPage);
+            return $paginator;
+        }
 	}
 }

@@ -537,4 +537,23 @@ class User extends AbstractEntity
     {
         $this->updateRegisterRequired = $updateRegisterRequired;
     }
+
+    public function _toArray()
+    {
+        $phonesArray = [];
+        foreach ($this->getPhones() as $p) {
+            $phonesArray[] = $p->_toArray();
+        }
+
+        $data = [
+            'id' => $this->getId(),
+            'name' => $this->getName(),
+            'identifier' => $this->getIdentifier(),
+            'email' => $this->getEmail(),
+            'type' => $this->getType(),
+            'phones' => $phonesArray
+        ];
+
+        return $data;
+    }
 }

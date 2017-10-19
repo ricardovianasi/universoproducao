@@ -13,8 +13,14 @@ use Application\Entity\City;
 use Application\Entity\Site\Site;
 use Doctrine\Common\Annotations\AnnotationReader;
 use Doctrine\Common\Collections\ArrayCollection;
+use JasperPHP\JasperPHP;
+use JMS\Serializer\SerializerBuilder;
+use PHPJasper\PHPJasper;
 use Util\Controller\AbstractController;
 use Zend\Authentication\AuthenticationService;
+use Zend\Http\Header\SetCookie;
+use Zend\Http\Headers;
+use Zend\Http\Response\Stream;
 use Zend\Mvc\MvcEvent;
 use Zend\View\Model\ModelInterface;
 use Zend\View\Model\ViewModel;
@@ -71,6 +77,10 @@ abstract class AbstractAdminController extends AbstractController
 	protected $authenticationService;
 
 	protected $postForm;
+
+	protected $serializerService;
+
+	protected $reportBasePath = __DIR__ ."/../../../../../data/reports";
 
 	public function getViewModel()
 	{
@@ -430,7 +440,7 @@ abstract class AbstractAdminController extends AbstractController
 		return $data;
 	}
 
-	public function search($entity, $search=[], $orderby=[])
+	public function search($entity, $search=[], $orderby=[], $igonorePagination=false)
 	{
 		//Get order by annotation entity
 		$annotationReader = new AnnotationReader();
@@ -439,7 +449,7 @@ abstract class AbstractAdminController extends AbstractController
 		$entityOrderBy = !empty($entityOrderBy->value) ? $entityOrderBy->value : [];
 		$orderby = array_merge($entityOrderBy, $orderby);
 
-		return $this->getRepository($entity)->search($search, $orderby, $this->getCurrentPage());
+		return $this->getRepository($entity)->search($search, $orderby, $igonorePagination, $this->getCurrentPage());
 	}
 
 	/**
@@ -488,4 +498,124 @@ abstract class AbstractAdminController extends AbstractController
 	{
 		return $this->getServiceLocator()->get('ViewHelperManager');
 	}
+
+	public function prepareReport(array $items, $reportName, $format, $downloadToken=null)
+    {
+        //Generate ID to report
+        $report_id = str_replace('.', '', microtime(true)).'_'.mt_rand();
+        $reportBasePath =
+            $this->reportBasePath
+            .DIRECTORY_SEPARATOR
+            .'output'.DIRECTORY_SEPARATOR
+            .$report_id;
+
+        mkdir($reportBasePath, 0775, true);
+
+        $jsonFile = $this->createJsonFile(json_encode($items), $report_id);
+        if(!file_exists($jsonFile)) {
+            throw new \Exception("Arquivo $jsonFile não foi encontrado");
+        }
+
+        $input = $this->reportBasePath
+            .DIRECTORY_SEPARATOR
+            .'reports_files'
+            .DIRECTORY_SEPARATOR
+            .$reportName.".jasper";
+
+        if(!file_exists($input)) {
+            throw new \Exception("Arquivo $input não foi encontrado");
+        }
+
+        $options = [
+            'format' => is_array($format) ? $format : [$format],
+            'params' => [],
+            'locale' => 'pt_BR',
+            'db_connection' => [
+                'driver' => 'json',
+                'data_file' => $jsonFile,
+                'json_query' => 'movie'
+            ]
+        ];
+
+        $jasper = new PHPJasper();
+        $jasper->process(
+            $input,
+            $reportBasePath,
+            $options
+        )->execute();
+
+        $reportFile =
+            $reportBasePath
+            .DIRECTORY_SEPARATOR
+            .$reportName.".".$format;
+
+        $report = $this->dowloadReport($reportFile);
+
+        if($downloadToken) {
+            $cookie = new SetCookie('downloadToken', $downloadToken, time() + 365 * 60 * 60 * 24);
+            $report->getHeaders()->addHeader($cookie);
+        }
+
+        return $report;
+    }
+
+    public function dowloadReport($report_file, $downloadToken=null)
+    {
+        if(!file_exists($report_file)) {
+            throw new \Exception("Arquivo $report_file não encontrado");
+        }
+
+        $response = new Stream();
+        $response->setStream(fopen($report_file, 'r'));
+        $response->setStatusCode(200);
+        $response->setStreamName(basename($report_file));
+
+        $headers = new Headers();
+        $headers->addHeaders([
+            'Content-Disposition' => 'attachment; filename="' . basename($report_file) .'"',
+            'Content-Type' => 'application/octet-stream',
+            'Content-Length' => filesize($report_file),
+            'Expires' => '@0', // @0, because zf2 parses date as string to \DateTime() object
+            'Cache-Control' => 'must-revalidate',
+            'Pragma' => 'public'
+        ]);
+
+        $response->setHeaders($headers);
+        return $response;
+    }
+
+    public function createJsonFile($content, $reportId) {
+        $fileName =
+            $this->reportBasePath
+            .DIRECTORY_SEPARATOR
+            .'output'
+            .DIRECTORY_SEPARATOR
+            .$reportId
+            .DIRECTORY_SEPARATOR
+            .'data.json';
+
+        $jsonFile = fopen($fileName, 'w');
+        if(!$jsonFile) {
+            throw new \Exception("Não foi possível criar o arquivo $fileName");
+        }
+
+        fwrite($jsonFile, $content);
+        fclose($jsonFile);
+
+        return $fileName;
+    }
+
+    public function arrayFlatten($array, $prefix = '')
+    {
+        $result = array();
+        foreach($array as $key=>$value) {
+            if(is_array($value)) {
+                $result = $result + $this->arrayFlatten($value, $prefix . $key . '.');
+            }
+            else {
+                $result[$prefix."_".$key] = $value;
+            }
+        }
+        return $result;
+    }
 }

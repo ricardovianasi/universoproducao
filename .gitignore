@@ -1,5 +1,6 @@
 .DS_Store
 .buildpath
+.classpath
 .project
 .zfproject.xml
 .settings/
@@ -15,8 +16,8 @@ public/assets/admin/node_modules
 /vendor
 /data/cache
 /data/DoctrineORMModule
+/data/reports/output
 config/autoload/local.php
 config/autoload/*.local.php
 .htaccess
-php_errors.log
 php_errors.log
