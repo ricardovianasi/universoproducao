@@ -17,7 +17,7 @@
         "syslogic/doctrine-json-functions": "dev-master",
         "sendgrid/sendgrid": "~6.0",
         "jms/serializer": "^1.9",
-        "geekcom/phpjasper": "*"
+        "geekcom/phpjasper": "1.16"
     },
     "require-dev": {
         "zendframework/zend-developer-tools": "^1.1"
