@@ -21,3 +21,4 @@ config/autoload/local.php
 config/autoload/*.local.php
 .htaccess
 php_errors.log
+composer.lock

@@ -501,7 +501,7 @@ abstract class AbstractAdminController extends AbstractController
 	public function prepareReport(array $items, $reportName, $format, $downloadToken=null)
     {
         //Generate ID to report
-        $report_id = str_replace('.', '', microtime(true)).'_'.mt_rand();
+        $report_id = time(false).'_'.mt_rand();
         $reportBasePath =
             $this->reportBasePath
             .DIRECTORY_SEPARATOR
@@ -514,6 +514,8 @@ abstract class AbstractAdminController extends AbstractController
         if(!file_exists($jsonFile)) {
             throw new \Exception("Arquivo $jsonFile não foi encontrado");
         }
+
+
 
         $input = $this->reportBasePath
             .DIRECTORY_SEPARATOR

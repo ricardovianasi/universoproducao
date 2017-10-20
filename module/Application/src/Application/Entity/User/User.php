@@ -1,6 +1,7 @@
 <?php
 namespace Application\Entity\User;
 
+use Application\Entity\City;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Util\Entity\AbstractEntity;
@@ -536,6 +537,21 @@ class User extends AbstractEntity
     public function setUpdateRegisterRequired($updateRegisterRequired)
     {
         $this->updateRegisterRequired = $updateRegisterRequired;
+    }
+
+    public function getFullAddress()
+    {
+        $address = [
+            $this->getAddress(),
+            $this->getNumber(),
+            $this->getCep()
+        ];
+        if($this->getCity() && $this->getCity() instanceof City) {
+            $address[] = $this->getCity()->getState()->getName();
+            $address[] = $this->getCity()->getName();
+        }
+
+        return implode(',', $address);
     }
 
     public function _toArray()

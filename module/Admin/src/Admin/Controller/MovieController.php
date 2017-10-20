@@ -62,6 +62,7 @@ class MovieController extends AbstractAdminController
                 'author_id' => $obj->getAuthor()->getId(),
                 'author_name' => $obj->getAuthor()->getName(),
                 'author_email' => $obj->getAuthor()->getEmail(),
+                'author_address' => $obj->getAuthor()->getFullAddress()
             ];
             $phones = [];
             foreach ($obj->getAuthor()->getPhones() as $phone) {

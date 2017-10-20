@@ -285,7 +285,7 @@ class Movie extends AbstractEntity
         }
 
         $date = \DateTime::createFromFormat('!m', $this->endDateMonth);
-        return strftime('%B', $date->getTimestamp());
+        return utf8_encode(strftime('%B', $date->getTimestamp()));
     }
 
     /**
