@@ -15,7 +15,7 @@ return array(
                     'route' => '/arquivoemcartaz',
                     'defaults' => array(
                         'controller'    => Controller\IndexController::class,
-                        'action'        => 'hotsite',
+                        'action'        => 'index',
                     ),
                 ),
                 'priority' => 9999
@@ -26,7 +26,7 @@ return array(
                     'route'    => '[www.]arquivoemcartaz.com.br',
                     'defaults' => array(
                         'controller'    => Controller\IndexController::class,
-                        'action'        => 'hotsite',
+                        'action'        => 'index',
                     ),
                 ),
                 'may_terminate' => true,
@@ -50,7 +50,7 @@ return array(
                             'route' => '/',
                             'defaults' => array(
                                 'controller'    => Controller\IndexController::class,
-                                'action'        => 'hotsite',
+                                'action'        => 'index',
                             ),
                         )
                     ),
