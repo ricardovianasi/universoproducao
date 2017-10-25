@@ -45,10 +45,27 @@
                 </div>
 
 				<div class="table-container post-list">
+
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 margin-bottom-10"><div class="table-group-actions pull-right">
+                            <span></span>
+                            <select class="table-group-action-input form-control input-inline input-small input-sm">
+                                <option value="">Select...</option>
+                                <option value="Cancel">Cancel</option>
+                                <option value="Cancel">Hold</option>
+                                <option value="Cancel">On Hold</option>
+                                <option value="Close">Close</option>
+                            </select>
+                            <button class="btn btn-sm btn-default table-group-action-submit">
+                                <i class="fa fa-check"></i> Submit</button>
+                        </div></div>
+                    </div>
+
 					<table class="table table-striped table-bordered table-hover">
 						<thead>
                         <?php $form->prepare(); echo $this->form()->openTag($form); ?>
 							<tr role="row" class="heading">
+                                <th width="2%"> </th>
 								<th width="5%">ID</th>
 								<th width="15%">Título</th>
 								<th width="10%">Duração</th>
@@ -58,7 +75,13 @@
 								<th width="10%">Ações</th>
 							</tr>
                             <tr role="row" class="filter">
-                                <td><?php echo $this->formelement($form->get('id')); ?></td>
+                                <td></td>
+                                <td>
+                                    <div class="margin-bottom-5">
+                                        <?php echo $this->formelement($form->get('id_from')); ?>
+                                    </div>
+                                    <?php echo $this->formelement($form->get('id_to')); ?>
+                                </td>
                                 <td><?php echo $this->formelement($form->get('title')); ?></td>
                                 <td>
                                     <div class="margin-bottom-5"><?php echo $this->formelement($form->get('durationInit')); ?></div>
@@ -118,6 +141,7 @@
 
 							?>
 							<tr>
+                                <td><input type="checkbox" name="id[]" value=""></td>
 								<td><?php echo $item->getId() ?></td>
 								<td><a href="<?php echo $updateUrl; ?>"><?php echo $item->getTitle(); ?></a></td>
                                 <td>

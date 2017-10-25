@@ -33,7 +33,25 @@
                     <div class="form-body">
 
                         <h3 class="form-section">Inscrição</h3>
-
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group ">
+                                    <?php $movieAuthor = $this->movie->getAuthor()?$this->movie->getAuthor()->getName():""; ?>
+                                    <label>Usuário</label>
+                                    <div class="input-group">
+                                        <input readonly type="text" class="form-control" value="<?php echo $movieAuthor ?>">
+                                        <span class="input-group-btn">
+                                            <button class="btn" type="button"><i class="fa fa-search"></i></button>
+                                        </span>
+                                    </div>
+                                </div>
+                                <?php echo $this->formElement($form->get("author")); ?>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4"><?php echo $this->formRow($form->get('registration')) ?></div>
+                            <div class="col-md-4"><?php echo $this->formRow($form->get('events')) ?></div>
+                        </div>
 
                         <h3 class="form-section">Ficha técnica</h3>
 
@@ -141,6 +159,10 @@
                         <div class="row">
                             <div class="col-md-6"><?php echo $this->formRow($form->get('cast')) ?></div>
                             <div class="col-md-6"><?php echo $this->formRow($form->get('synopsis')) ?></div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6"><?php echo $this->formRow($form->get('filmography_director')) ?></div>
                         </div>
 
                         <h3 class="form-section">Multimídia</h3>

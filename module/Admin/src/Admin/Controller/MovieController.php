@@ -11,7 +11,9 @@ use Admin\Form\Movie\MovieForm;
 use Admin\Form\Movie\MovieFormSearch;
 use Application\Entity\Movie\Movie;
 use Application\Entity\Movie\Options;
+use Application\Entity\Registration\Registration;
 use Application\Entity\Registration\Status;
+use Application\Entity\Registration\Type;
 
 class MovieController extends AbstractAdminController
 	implements CrudInterface, PostInterface
@@ -192,17 +194,27 @@ class MovieController extends AbstractAdminController
 
 	public function persist($data, $id = null)
 	{
-		$form = new MovieForm($this->getEntityManager());
-
 		if($id) {
 			$movie = $this->getRepository(Movie::class)->find($id);
-			$form->setRegistration($movie->getRegistration());
+			//$form->setRegistration($movie->getRegistration());
 		} else {
 			$movie = new Movie();
 		}
 
+		$registrations = [];
+		foreach ($movie->getSubscriptions() as $s) {
+		    $registrations[] = $s->getRegistration();
+        }
+
+        $form = new MovieForm($this->getEntityManager(), Options::STATUS_ENABLED, $registrations);
+
 		if($this->getRequest()->isPost()) {
-			$form->setData($data);
+            $data = array_replace_recursive(
+                $this->getRequest()->getPost()->toArray(),
+                $this->getRequest()->getFiles()->toArray()
+            );
+            $form->setData($data);
+
 			if($form->isValid()) {
 				$movie->setData($data);
 				$this->getEntityManager()->persist($movie);

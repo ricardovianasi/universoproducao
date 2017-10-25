@@ -11,6 +11,14 @@ class MovieForm extends AdminMovieForm
     {
         parent::__construct($entityManager, Options::STATUS_ENABLED, $registration);
 
+        $this->get('events')->setAttributes([
+            'type' => 'MultiCheckbox',
+            'required' => true
+        ])->setOptions([
+            'label' => 'Autorizo a inscrição do filme para a seleção da',
+            'value_options' => $this->populateEvents()
+        ]);
+
         $ignoreElements = ['events','accept_regulation'];
         foreach ($this->getElements() as $key=>$element) {
             if(!in_array($key, $ignoreElements)) {
@@ -21,8 +29,12 @@ class MovieForm extends AdminMovieForm
             }
         }
 
+        $this->remove('author');
+        $this->remove('registration');
+
         $this->setAttributes([
-            'class' => 'form-horizontal movie-form'
+            'class' => 'form-horizontal movie-form',
+
         ]);
     }
 }

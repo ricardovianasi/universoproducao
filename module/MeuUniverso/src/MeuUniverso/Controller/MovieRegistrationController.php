@@ -15,7 +15,7 @@ use Application\Entity\Event\Event;
 use Application\Entity\Event\EventType;
 use Application\Entity\Movie\Media;
 use Application\Entity\Movie\Movie;
-use Application\Entity\Movie\MovieEvent;
+use Application\Entity\Movie\MovieSubscription;
 use Application\Entity\Movie\Options as MovieOptions;
 use Application\Entity\Registration\Options;
 use Application\Entity\Registration\Registration;
@@ -155,7 +155,7 @@ class MovieRegistrationController extends AbstractMeuUniversoRegisterController
 
         } else {
             $movie = new Movie();
-            $movie->setRegistration($reg);
+            //$movie->setRegistration($reg);
             $movie->setAuthor($this->getAuthenticationService()->getIdentity());
         }
 
@@ -209,7 +209,7 @@ class MovieRegistrationController extends AbstractMeuUniversoRegisterController
             if($form->isValid()) {
 
                 if($id) {
-                    $movieEvents = $this->getRepository(MovieEvent::class)->findBy([
+                    $movieEvents = $this->getRepository(MovieSubscription::class)->findBy([
                         'movie' => $movie->getId()
                     ]);
                     foreach ($movieEvents as $mv) {
@@ -219,9 +219,10 @@ class MovieRegistrationController extends AbstractMeuUniversoRegisterController
                 $movieEvents = new ArrayCollection();
                 if(!empty($data['events'])) {
                     foreach ($data['events'] as $e) {
-                        $movieEvent = new MovieEvent();
+                        $movieEvent = new MovieSubscription();
                         $movieEvent->setMovie($movie);
                         $movieEvent->setEvent($this->getRepository(Event::class)->find($e));
+                        $movieEvent->setRegistration($reg);
 
                         $movieEvents->add($movieEvent);
                     }

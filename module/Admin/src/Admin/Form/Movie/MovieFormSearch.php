@@ -24,9 +24,18 @@ class MovieFormSearch extends Form
         ]);
 
         $this->add([
-            'name' => 'id',
+            'name' => 'id_to',
             'attributes' => [
-                'class' => 'input-sm'
+                'class' => 'input-sm',
+                'placeholder' => 'Até'
+            ]
+        ]);
+
+        $this->add([
+            'name' => 'id_from',
+            'attributes' => [
+                'class' => 'input-sm',
+                'placeholder' => 'De'
             ]
         ]);
 

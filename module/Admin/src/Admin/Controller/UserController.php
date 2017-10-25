@@ -38,8 +38,8 @@ class UserController extends AbstractAdminController implements CrudInterface
 			'users' => $users
 		]);
 
-		return $this->getViewModel();
-	}
+        return $this->getViewModel();
+    }
 
 	public function createAction($data)
 	{

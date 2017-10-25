@@ -11,10 +11,16 @@ class Movie extends AbstractRepository
         $qb->leftJoin('p.events', 'e');
 
 
-        if(!empty($criteria['id'])) {
+        if(!empty($criteria['id_from'])) {
             $qb
-                ->andWhere('p.id = :id')
-                ->setParameter('id', $criteria['id']);
+                ->andWhere('p.id >= :id_from')
+                ->setParameter('id_from', $criteria['id_from']);
+        }
+
+        if(!empty($criteria['id_to'])) {
+            $qb
+                ->andWhere('p.id <= :id_to')
+                ->setParameter('id_to', $criteria['id_to']);
         }
 
         if(!empty($criteria['title'])) {
