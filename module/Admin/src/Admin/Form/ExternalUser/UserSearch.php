@@ -20,6 +20,7 @@ class UserSearch extends Form
 
 		$this->setAttributes([
 			'id' => 'user-search',
+			'class' => 'user-search',
 			'method' => 'GET'
 		]);
 

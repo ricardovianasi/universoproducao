@@ -182,7 +182,11 @@ jQuery(document).ready(function() {
     });
 
     $('.movie-form #registration').on('change', function() {
-        var form = $('.movie-form');
+        var form = $('.movie-form'),
+            validate = form.validate();
+
+        validate.destroy();
+
         form.append($('<input type="hidden" name="no-validate" value="no-validate">'));
         form.submit();
 

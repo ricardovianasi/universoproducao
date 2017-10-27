@@ -9,6 +9,7 @@ namespace Admin\Controller;
 
 use Admin\Form\Movie\MovieForm;
 use Admin\Form\Movie\MovieFormSearch;
+use Admin\Form\Movie\MovieSubscriptionForm;
 use Application\Entity\Event\Event;
 use Application\Entity\Movie\Media;
 use Application\Entity\Movie\Movie;
@@ -181,7 +182,13 @@ class MovieController extends AbstractAdminController
 
 	public function updateAction($id, $data)
 	{
-		return $this->persist($data, $id);
+		$return = $this->persist($data, $id);
+        $movie = $return->getVariable('movie');
+
+        $movieSubscriptionForm = new MovieSubscriptionForm($movie);
+        $return->subscriptionForm = $movieSubscriptionForm;
+
+        return $return;
 	}
 
 	public function deleteAction($id)

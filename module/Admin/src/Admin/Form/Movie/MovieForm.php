@@ -37,6 +37,9 @@ class MovieForm extends Form
         $this->add([
             'type' => 'hidden',
             'name' => 'author',
+            'attributes' => [
+                'id' => 'author'
+            ]
         ]);
 
         $this->add([

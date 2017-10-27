@@ -277,11 +277,8 @@ class UserController extends AbstractAdminController implements CrudInterface
     public function modalAction()
     {
         $viewModel = $this->getViewModel();
-        $searchForm = new UserSearch();
-        $dataAttr = $this->params()->fromQuery();
-        $searchForm->setData($dataAttr);
-        $searchForm->isValid();
 
+        $dataAttr = $this->params()->fromQuery();
         $user = null;
         if(!empty($dataAttr['id'])) {
             $user = $this->getRepository(User::class)->find($dataAttr['id']);
@@ -289,15 +286,22 @@ class UserController extends AbstractAdminController implements CrudInterface
         unset($dataAttr['id']);
 
         $users = [];
-        if(!empty($dataAttr)) {
-            $users = $this->search(User::class, $searchForm->getData(), ['name'=>'ASC'], false, 5);
+        $searchForm = new UserSearch();
+        if(!isset($dataAttr['viewOnly'])) {
+            $searchForm->setData($dataAttr);
+            $searchForm->isValid();
+
+            if(!empty($dataAttr) || isset($dataAttr['peform-filter'])) {
+                $users = $this->search(User::class, $searchForm->getData(), ['name'=>'ASC'], false, 5);
+            }
         }
 
         $viewModel->setVariables([
             'searchForm' => $searchForm,
             'users' => $users,
             'user' => $user,
-            'searchData' => $dataAttr
+            'searchData' => $dataAttr,
+            'viewOnly' => isset($dataAttr['viewOnly'])
         ]);
 
 
