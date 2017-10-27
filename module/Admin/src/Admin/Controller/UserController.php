@@ -31,11 +31,12 @@ class UserController extends AbstractAdminController implements CrudInterface
 		$searchForm->setData($dataAttr);
 		$searchForm->isValid();
 
-		$users = $this->search(User::class, $searchForm->getData());
+		$users = $this->search(User::class, $searchForm->getData(), ['name'=>'DESC']);
 
 		$this->getViewModel()->setVariables([
 			'searchForm' => $searchForm,
-			'users' => $users
+			'users' => $users,
+            'searchData' => $dataAttr
 		]);
 
         return $this->getViewModel();
@@ -271,5 +272,38 @@ class UserController extends AbstractAdminController implements CrudInterface
             'action' => 'update',
             'id' => $user->getId()
         ]);
+    }
+
+    public function modalAction()
+    {
+        $viewModel = $this->getViewModel();
+        $searchForm = new UserSearch();
+        $dataAttr = $this->params()->fromQuery();
+        $searchForm->setData($dataAttr);
+        $searchForm->isValid();
+
+        $user = null;
+        if(!empty($dataAttr['id'])) {
+            $user = $this->getRepository(User::class)->find($dataAttr['id']);
+        }
+        unset($dataAttr['id']);
+
+        $users = [];
+        if(!empty($dataAttr)) {
+            $users = $this->search(User::class, $searchForm->getData(), ['name'=>'ASC'], false, 5);
+        }
+
+        $viewModel->setVariables([
+            'searchForm' => $searchForm,
+            'users' => $users,
+            'user' => $user,
+            'searchData' => $dataAttr
+        ]);
+
+
+        $viewModel->setTemplate(false);
+        $viewModel->setTerminal(true);
+
+        return $viewModel;
     }
 }

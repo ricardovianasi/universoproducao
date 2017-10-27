@@ -75,8 +75,12 @@ abstract class AbstractRepository extends EntityRepository
 		return $queryBuilder;
 	}
 
-	public function search($criteria=array(), $orderBy=[], $igonorePagination=false, $currentPage=1)
+	public function search($criteria=array(), $orderBy=[], $igonorePagination=false, $currentPage=1, $pageSize=null)
 	{
+	    if(!$pageSize) {
+	        $pageSize = $this->defaultPageSize;
+        }
+
 		$queryBuilder = $this->prepareSearch($criteria, $orderBy);
 
 		if($igonorePagination) {
@@ -84,7 +88,7 @@ abstract class AbstractRepository extends EntityRepository
         } else {
             $adapter = new DoctrinePaginator(new ORMPaginator($queryBuilder, false));
             $paginator = new Paginator($adapter);
-            $paginator->setDefaultItemCountPerPage($this->defaultPageSize);
+            $paginator->setDefaultItemCountPerPage($pageSize);
             $paginator->setCurrentPageNumber($currentPage);
             return $paginator;
         }

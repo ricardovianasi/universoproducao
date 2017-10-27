@@ -41,7 +41,7 @@ class Movie extends AbstractEntity
     private $endDateMonth;
 
     /** @ORM\Column(name="production_coutry", type="string", nullable=true) */
-    private $productionCoutry = 'Brasil';
+    private $productionCountry = 'Brasil';
 
     /** @ORM\Column(name="production_state", type="string", nullable=true) */
     private $productionState;
@@ -285,17 +285,17 @@ class Movie extends AbstractEntity
     /**
      * @return mixed
      */
-    public function getProductionCoutry()
+    public function getProductionCountry()
     {
-        return $this->productionCoutry;
+        return $this->productionCountry;
     }
 
     /**
-     * @param mixed $productionCoutry
+     * @param mixed $productionCountry
      */
-    public function setProductionCoutry($productionCoutry)
+    public function setProductionCountry($productionCountry)
     {
-        $this->productionCoutry = $productionCoutry;
+        $this->productionCountry = $productionCountry;
     }
 
     /**
@@ -958,11 +958,25 @@ class Movie extends AbstractEntity
     }
 
     /**
-     * @return mixed
+     * @return ArrayCollection
      */
     public function getSubscriptions()
     {
         return $this->subscriptions;
+    }
+
+    public function getSubscriptionByRegistrationEvent($regId, $eventId)
+    {
+        foreach ($this->getSubscriptions() as $sub) {
+            if($sub->getEvent() && $sub->getRegistration()) {
+                if($sub->getEvent()->getId() == $eventId
+                    && $sub->getRegistration()->getId() == $regId) {
+                    return $sub;
+                }
+            }
+        }
+
+        return null;
     }
 
     /**

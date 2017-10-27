@@ -1,0 +1,62 @@
+<div class="row post guide">
+<div class="col-md-12">
+
+	<div class="portlet light portlet-fit bordered">
+		<div class="portlet-title">
+			<div class="caption">
+				<?php if($this->movie->getId()): ?>
+				<i class="fa fa-edit"></i>
+				Editar filme
+				<?php else: ?>
+				<i class="fa fa-file-o"></i>
+				Novo filme
+				<?php endif; ?>
+			</div>
+			<div class="actions">
+				<a href="<?php echo $this->url('admin/default', ['controller'=>'movie']); ?>"
+				   class="btn btn-default">
+					<i class="icon-action-undo"></i>
+					<span class="hidden-xs"> Voltar </span>
+				</a>
+                <a href="<?php echo $this->url('admin/default', ['controller'=>'movie', 'action'=>'create']); ?>"
+                   class="btn btn-default">
+                    <i class="fa fa-plus"></i>
+                    <span class="hidden-xs"> Nova filme </span>
+                </a>
+			</div>
+		</div>
+		<div class="portlet-body">
+			<div class="portlet">
+                <div class="portlet-body form">
+
+                    <div class="tabbable-bordered">
+                        <ul class="nav nav-tabs">
+                            <li class="active">
+                                <a href="#tab_form" data-toggle="tab" aria-expanded="true"> Cadastro </a>
+                            </li>
+                            <li>
+                                <a href="#tab_selection" data-toggle="tab" aria-expanded="false"> Seleção </a>
+                            </li>
+                            <li>
+                                <a href="#tab_programation" data-toggle="tab" aria-expanded="false"> Programação </a>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="tab_form">
+                                <?php echo $this->partial('admin/movie/_form.phtml', [
+                                    'form' => $this->form,
+                                    'movie'=>$this->movie,
+                                    'registrationEvents'=>$this->registrationEvents
+                                ]); ?>
+                            </div>
+                            <div id="tab_selection">
+                            </div>
+                            <div id="tab_programation"></div>
+                        </div>
+                    </div>
+                </div>
+			</div>
+		</div>
+	</div>
+</div>
+</div>

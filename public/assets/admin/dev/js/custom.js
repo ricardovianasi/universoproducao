@@ -1193,6 +1193,7 @@ jQuery(document).ready(function() {
     $("div#admin-menu").menu();
     $(".fileinput").fileInput();
     $(".admin-phone").adminPhone();
+    $(".user-modal").user();
     $("#user-dependents").adminDependents();
     $("#post-url-btn").on("click", function(e) {
         e.preventDefault();
@@ -1202,6 +1203,15 @@ jQuery(document).ready(function() {
     $(".registration-form select[name=type]").on("change", function(e) {
         var selected = $(this).find("option:selected").val();
         var form = $("#registration-form");
+        form.append($('<input type="hidden" name="no-validate" value="no-validate">'));
+        form.submit();
+        App.blockUI({
+            cenrerY: true,
+            animate: true
+        });
+    });
+    $(".movie-form #registration").on("change", function() {
+        var form = $(".movie-form");
         form.append($('<input type="hidden" name="no-validate" value="no-validate">'));
         form.submit();
         App.blockUI({
@@ -2033,4 +2043,70 @@ function responsive_filemanager_callback(field_id) {
         return new SelectImage(options).init();
     };
     window.SelectImage = Plugin;
+})(window, jQuery);
+
+(function(window, $) {
+    var User = function(element, options) {
+        this.element = element;
+        this.$element = $(element);
+        this.options = options;
+        this.$modal = $("#user-modal");
+    };
+    User.prototype = {
+        defaults: {},
+        init: function() {
+            this.config = $.extend({}, this.defaults, this.options, this.$element.data());
+            var _that = this;
+            _that.$element.on("click", function(e) {
+                e.preventDefault();
+                var src = urlUserModal;
+                if (_that.config.userId) {
+                    src += "?id=" + _that.config.userId;
+                }
+                App.blockUI({
+                    cenrerY: true,
+                    animate: true
+                });
+                setTimeout(function() {
+                    _that.$modal.load(src, "", function() {
+                        _that.$modal.modal();
+                        _that.registerEvents();
+                        App.unblockUI();
+                    });
+                }, 1e3);
+            });
+        },
+        registerEvents: function() {
+            var _that = this;
+            _that.$modal.find("#user-modal-paginator a").on("click", function(e) {
+                e.preventDefault();
+                var src = $(this).attr("href");
+                if (src == "#") {
+                    return;
+                }
+                App.blockUI({
+                    cenrerY: true,
+                    animate: true,
+                    target: _that.$modal
+                });
+                var request = $.ajax({
+                    type: "GET",
+                    url: src,
+                    dataType: "html"
+                });
+                request.done(function(content) {
+                    _that.$modal.html(content);
+                    _that.registerEvent();
+                    App.unblockUI();
+                });
+            });
+        }
+    };
+    User.defaults = User.prototype.defaults;
+    $.fn.user = function(options) {
+        return this.each(function() {
+            new User(this, options).init();
+        });
+    };
+    window.User = Plugin;
 })(window, jQuery);

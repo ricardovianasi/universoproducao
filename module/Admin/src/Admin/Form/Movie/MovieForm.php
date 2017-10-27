@@ -30,6 +30,7 @@ class MovieForm extends Form
         parent::__construct('movie-form');
         $this->setAttributes([
             'method' => 'POST',
+            'class' => 'movie-form default-form-actions enable-validators',
             'id' => 'submit_form'
         ]);
 
@@ -46,22 +47,15 @@ class MovieForm extends Form
                 'value_options' => $this->populateRegulations(),
             ],
             'attributes' => [
+                'id' => 'registration',
                 'multiple' => 'multiple',
                 'class' => 'form-control multi-select'
             ]
         ]);
 
         $this->add([
-            'type' => 'Select',
+            'type' => 'hidden',
             'name' => 'events',
-            'options' => [
-                'label' => 'Eventos',
-                'value_options' => $this->populateEvents()
-            ],
-            'attributes ' => [
-                'multiple' => 'multiple',
-                'class' => 'form-control multi-select'
-            ]
         ]);
 
         $this->add([
@@ -109,13 +103,24 @@ class MovieForm extends Form
             ]
         ]);
 
-        $this->add([
+        /*$this->add([
             'type' => 'Select',
             'name' => 'end_date_year',
             'options' => [
                 'label' => 'Ano de finalização',
                 'value_options' => $this->populateEndDateYear(),
                 'empty_option' => 'Selecione',
+            ],
+            'attributes' => [
+                'required' => 'required',
+            ]
+        ]);*/
+
+        $this->add([
+            'type' => 'Number',
+            'name' => 'end_date_year',
+            'options' => [
+                'label' => 'Ano de finalização',
             ],
             'attributes' => [
                 'required' => 'required',
@@ -167,7 +172,7 @@ class MovieForm extends Form
             ],
             'attributes' => [
                 'placeholder' => 'Informe o número do cpb',
-                'required' => 'required'
+                //'required' => 'required'
             ]
         ]);
 
@@ -293,7 +298,7 @@ class MovieForm extends Form
             'name' => 'options[accessibility]',
             'options' => [
                 'label' => 'Acessibilidade para pessoas com necessidades especiais?',
-                'value_options' => $this->populateOptions(OptionsType::ACCESSIBILITY),
+                'value_options' => $this->populateOptionAccessibility(),
                 'empty_option' => 'Selecione',
             ]
         ]);
@@ -348,7 +353,7 @@ class MovieForm extends Form
                 'help-block' => 'Exemplo: cenas de sexo, violência, uso de drogas, etc...'
             ],
             'attributes' => [
-                'required' => 'required'
+                //'required' => 'required'
             ]
         ]);
 
@@ -527,7 +532,7 @@ class MovieForm extends Form
                 'empty_option' => 'Selecione',
             ],
             'attributes' => [
-                'required' => 'required',
+                //'required' => 'required',
             ],
         ]);
 
@@ -581,7 +586,7 @@ class MovieForm extends Form
                 'label' => 'Informe em qual(is) idioma(s)',
             ],
             'attributes' => [
-                'required' => 'required',
+                //'required' => 'required',
             ]
         ]);
 
@@ -592,7 +597,7 @@ class MovieForm extends Form
                 'label' => 'Informe em qual(is) idioma(s)',
             ],
             'attributes' => [
-                'required' => 'required',
+                //'required' => 'required',
             ]
         ]);
 
@@ -701,20 +706,6 @@ class MovieForm extends Form
             ]
         ]);*/
 
-        $this->add([
-            'type' => 'Checkbox',
-            'name' => 'accept_regulation',
-            'options' => array(
-                'label' => 'Eu li e estou de acordo com as condições descritas no regulamento de inscrições de filmes',
-                'use_hidden_element' => false,
-                'checked_value' => '1',
-                'unchecked_value' => '0'
-            ),
-            'attributes ' => [
-                'required' => true
-            ]
-        ]);
-
         //Validações
         $this->setInputFilter((new InputFilterFactory)->createInputFilter([
             'registration' => [
@@ -755,11 +746,11 @@ class MovieForm extends Form
             ],
             'media_caption_1' => [
                 'name'       => 'media_caption_1',
-                'required'   => true,
+                'required'   => false,
             ],
             'media_file_1' => [
                 'name' => 'media_file_1',
-                'required'   => true,
+                'required'   => false,
                 'validators' => [
                     new MimeType('image/png,image/jpg,image/jpeg'),
                     [
@@ -790,6 +781,29 @@ class MovieForm extends Form
         }
 
         return [];
+    }
+
+    public function populateOptionAccessibility()
+    {
+        if(!$this->options) {
+            $this->prepareOptions();
+        }
+
+        $valueOptions = [];
+        if($options = $this->options[OptionsType::ACCESSIBILITY]) {
+            foreach ($options as $id=>$opName) {
+                $valueOptions[] = [
+                    'value' => $id,
+                    'label' => $opName,
+                    'attributes' => [
+                        'id' => 'op_'.$id,
+                        'class' => 'icheck'
+                    ]
+                ];
+            }
+        }
+
+        return $valueOptions;
     }
 
     protected function prepareOptions()
@@ -884,18 +898,6 @@ class MovieForm extends Form
             }
         }
 
-
-        /*$events = [];
-        if(count($data['events'])) {
-            foreach ($data['events'] as $key=>$e) {
-                if(is_object($e)) {
-                    $events[] = $e->getEvent()->getId();
-                } else {
-                    $events[] = $e;
-                }
-            }
-        }
-        $data['events'] = $events;*/
         if(!empty($data['subscriptions'])) {
             $events = [];
             $registrations = [];

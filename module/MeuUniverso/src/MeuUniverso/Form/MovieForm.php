@@ -19,6 +19,35 @@ class MovieForm extends AdminMovieForm
             'value_options' => $this->populateEvents()
         ]);
 
+        $this->get('end_date_year')->setAttributes([
+            'required' => 'required',
+            'type' => 'Select'
+        ])->setOptions([
+            'label' => 'Ano de finalização',
+            'value_options' => $this->populateEndDateYear(),
+            'empty_option' => 'Selecione'
+        ]);
+
+        $this->add([
+            'type' => 'Checkbox',
+            'name' => 'accept_regulation',
+            'options' => array(
+                'label' => 'Eu li e estou de acordo com as condições descritas no regulamento de inscrições de filmes',
+                'use_hidden_element' => false,
+                'checked_value' => '1',
+                'unchecked_value' => '0'
+            ),
+            'attributes ' => [
+                'required' => true
+            ]
+        ]);
+
+        $this->get('cpb')->setAttribute('required', 'required');
+        $this->get('content_scenes')->setAttribute('required', 'required');
+        $this->get('conversations_languages')->setAttribute('required', 'required');
+        $this->get('subtitles_languages')->setAttribute('required', 'required');
+        $this->get('conversations_list_languages')->setAttribute('required', 'required');
+
         $ignoreElements = ['events','accept_regulation'];
         foreach ($this->getElements() as $key=>$element) {
             if(!in_array($key, $ignoreElements)) {
@@ -36,5 +65,8 @@ class MovieForm extends AdminMovieForm
             'class' => 'form-horizontal movie-form',
 
         ]);
+
+        $this->getInputFilter()->get('media_file_1')->setRequired(true);
+        $this->getInputFilter()->get('media_caption_1')->setRequired(true);
     }
 }

@@ -8,7 +8,7 @@ class Movie extends AbstractRepository
     public function prepareSearch($criteria = [], $orderBy = [])
     {
         $qb = $this->createQueryBuilder('p');
-        $qb->leftJoin('p.events', 'e');
+        $qb->leftJoin('p.subscriptions', 'e');
 
 
         if(!empty($criteria['id_from'])) {
@@ -30,7 +30,6 @@ class Movie extends AbstractRepository
         }
 
         if(!empty($criteria['category'])) {
-
         }
 
         if(!empty($criteria['events'])) {

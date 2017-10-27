@@ -50,14 +50,10 @@
                         <div class="col-md-12 col-sm-12 margin-bottom-10"><div class="table-group-actions pull-right">
                             <span></span>
                             <select class="table-group-action-input form-control input-inline input-small input-sm">
-                                <option value="">Select...</option>
-                                <option value="Cancel">Cancel</option>
-                                <option value="Cancel">Hold</option>
-                                <option value="Cancel">On Hold</option>
-                                <option value="Close">Close</option>
+                                <option value="">Selecione...</option>
                             </select>
                             <button class="btn btn-sm btn-default table-group-action-submit">
-                                <i class="fa fa-check"></i> Submit</button>
+                                <i class="fa fa-check"></i> Enviar</button>
                         </div></div>
                     </div>
 
@@ -75,7 +71,7 @@
 								<th width="10%">Ações</th>
 							</tr>
                             <tr role="row" class="filter">
-                                <td></td>
+                                <td><input type="checkbox" class="icheck" name="id_all" value=""></td>
                                 <td>
                                     <div class="margin-bottom-5">
                                         <?php echo $this->formelement($form->get('id_from')); ?>
@@ -132,16 +128,9 @@
 								'action'=>'delete',
 								'id'=>$item->getId()
 							]);
-
-							$restoreUrl = $this->url('admin/default', [
-								'controller' => 'movie',
-								'action'=>'restore',
-								'id'=>$item->getId()
-							]);
-
 							?>
 							<tr>
-                                <td><input type="checkbox" name="id[]" value=""></td>
+                                <td><input type="checkbox" class="icheck" name="id[]" value=""></td>
 								<td><?php echo $item->getId() ?></td>
 								<td><a href="<?php echo $updateUrl; ?>"><?php echo $item->getTitle(); ?></a></td>
                                 <td>
@@ -149,10 +138,10 @@
                                     <?php echo \Application\Entity\Movie\Category::get($item->getCategory()); ?>
                                 </td>
 								<td>
-                                    <?php if(count($item->getEvents())): ?>
+                                    <?php if(count($item->getSubscriptions())): ?>
                                     <table class="table table-in-td">
                                         <tbody>
-                                        <?php foreach ($item->getEvents() as $e): ?>
+                                        <?php foreach ($item->getSubscriptions() as $e): ?>
                                             <tr>
                                                 <td><?php echo $e->getEvent()->getShortName() ?></td>
                                                 <td><?php echo $this->registrationStatus($e->getStatus(), \Application\Entity\Registration\Status::get($e->getStatus())); ?></td>
@@ -164,7 +153,7 @@
                                 </td>
 								<td><?php echo $item->getCreatedAt()->format('d/m/Y H:i') ?></td>
 								<td>
-                                    <a target="_blank" href="<?php echo $this->url('admin/default', ['controller' => 'user', 'action'=>'update', 'id'=>$item->getAuthor()->getId()]); ?>">
+                                    <a href="#" class="user-modal" data-view-only data-user-id="<?php echo $item->getAuthor()->getId(); ?>">
                                         <?php echo $item->getAuthor()->getName(); ?>
                                     </a>
                                 </td>
