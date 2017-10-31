@@ -22,3 +22,6 @@ config/autoload/*.local.php
 .htaccess
 php_errors.log
 composer.lock
+data/annotations
+data/DoctrineORMModule
+data/metadata
