@@ -39,7 +39,7 @@ class MovieRegistrationController extends AbstractMeuUniversoRegisterController
 
     public function visualizarAction()
     {
-        $idReg = $this->params()->fromRoute('id_reg');
+        /*$idReg = $this->params()->fromRoute('id_reg');
         if(!$idReg) {
             return $this->redirect()->toRoute('meu-universo/default', [], ['query'=>[
                 'code' => self::ERROR_REG_NOT_FOUND,
@@ -56,7 +56,7 @@ class MovieRegistrationController extends AbstractMeuUniversoRegisterController
                 'code' => self::ERROR_REG_NOT_FOUND,
                 'id_reg' => $idReg
             ]]);
-        }
+        }*/
 
         $id = $this->params()->fromRoute('id');
         $movie = $this->getRepository(Movie::class)->findOneBy([
@@ -66,14 +66,12 @@ class MovieRegistrationController extends AbstractMeuUniversoRegisterController
 
         if(!$movie) {
             return $this->redirect()->toRoute('meu-universo/default', [], ['query'=>[
-                'code' => self::ERROR_REG_NOT_FOUND,
-                'id_reg' => $idReg
+                'code' => self::ERROR_REG_NOT_FOUND
             ]]);
         }
 
         return [
-            'movie' => $movie,
-            'reg' => $reg
+            'movie' => $movie
         ];
     }
 
@@ -226,7 +224,7 @@ class MovieRegistrationController extends AbstractMeuUniversoRegisterController
 
                         $movieEvents->add($movieEvent);
                     }
-                    $movie->setEvents($movieEvents);
+                    $movie->setSubscriptions($movieEvents);
                 }
                 unset($data['events']);
 
@@ -255,45 +253,31 @@ class MovieRegistrationController extends AbstractMeuUniversoRegisterController
 
                 //Upload das fotos
 
+                //Upload das fotos
+                foreach ($movie->getMedias() as $m) {
+                    $this->getEntityManager()->remove($m);
+                }
                 $newMedias = new ArrayCollection();
-                for($i=1; $i<3; $i++) {
-
-                    if(!empty($data["media_id_$i"])) {
-                        $mediaId = $data["media_id_$i"];
-                        $media = $movie->getMediaById($mediaId);
-                    } else {
+                if(!empty($data['medias'])) {
+                    foreach ($data['medias'] as $me) {
                         $media = new Media();
                         $media->setMovie($movie);
-                    }
-
-                    if(!empty($data["media_file_$i"])) {
-                        $mediaFile = $data["media_file_$i"];
-                        $credits = !empty($data["media_caption_$i"]) ? $data["media_caption_$i"] : '';
-                        if(!empty($mediaFile['name'])) {
-                            //novo arquivo
-                            if($media->getId()) {
-                                $movie->getMedias()->removeElement($media);
-                                $this->getEntityManager()->remove($media);
-                            }
-
-                            $file = $this->fileManipulation()->moveToRepository($mediaFile);
-
-                            $media->setSrc($file['new_name']);
-                            $media->setCredits($credits);
-
-                            $movie->getMedias()->add($media);
-                        } else {
-                            if($media->getId()) {
-                                $media->setCredits($credits);
-                                $this->getEntityManager()->persist($media);
+                        $media->setCredits($me['caption']);
+                        if(!empty($me['src'])) {
+                            $media->setSrc($me['src']);
+                        } elseif(!empty($me["file"])) {
+                            $mediaFile = $me["file"];
+                            if(!empty($mediaFile['name'])) {
+                                $file = $this->fileManipulation()->moveToRepository($mediaFile);
+                                $media->setSrc($file['new_name']);
                             }
                         }
-                    }
 
-                    unset($data["media_file_$i"]);
-                    unset($data["media_caption_$i"]);
-                    unset($data["media_id_$i"]);
+                        $newMedias->add($media);
+                    }
                 }
+                $movie->setMedias($newMedias);
+                unset($data['medias']);
 
                 $movie->setData($data);
 
@@ -309,7 +293,7 @@ class MovieRegistrationController extends AbstractMeuUniversoRegisterController
                     foi inscrito com sucesso para participar da seleção da:</p>';
 
                     $mostras = "";
-                    foreach ($movie->getEvents() as $e) {
+                    foreach ($movie->getSubscriptions() as $e) {
                         $mostras.= '<li><strong>'.$e->getEvent()->getFullName().'</strong></li>';
                     }
                     $msg.= '<p><ul>'.$mostras.'</ul></p>';

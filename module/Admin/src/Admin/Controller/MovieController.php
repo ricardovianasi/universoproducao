@@ -17,10 +17,8 @@ use Application\Entity\Movie\MovieSubscription;
 use Application\Entity\Movie\Options;
 use Application\Entity\Registration\Registration;
 use Application\Entity\Registration\Status;
-use Application\Entity\Registration\Type;
 use Application\Entity\User\User;
 use Doctrine\Common\Collections\ArrayCollection;
-use Zend\Feed\PubSubHubbub\Model\Subscription;
 
 class MovieController extends AbstractAdminController
 	implements CrudInterface, PostInterface
@@ -183,9 +181,11 @@ class MovieController extends AbstractAdminController
 	public function updateAction($id, $data)
 	{
 		$return = $this->persist($data, $id);
+		/** @var Movie $movie */
         $movie = $return->getVariable('movie');
 
         $movieSubscriptionForm = new MovieSubscriptionForm($movie);
+        $movieSubscriptionForm->setData(['subscriptions'=>$movie->getSubscriptions()]);
         $return->subscriptionForm = $movieSubscriptionForm;
 
         return $return;
@@ -342,45 +342,30 @@ class MovieController extends AbstractAdminController
                     unset($data['options']);
 
                     //Upload das fotos
+                    foreach ($movie->getMedias() as $m) {
+                        $this->getEntityManager()->remove($m);
+                    }
                     $newMedias = new ArrayCollection();
-                    for($i=1; $i<3; $i++) {
-
-                        if(!empty($data["media_id_$i"])) {
-                            $mediaId = $data["media_id_$i"];
-                            $media = $movie->getMediaById($mediaId);
-                        } else {
+                    if(!empty($data['medias'])) {
+                        foreach ($data['medias'] as $me) {
                             $media = new Media();
                             $media->setMovie($movie);
-                        }
-
-                        if(!empty($data["media_file_$i"])) {
-                            $mediaFile = $data["media_file_$i"];
-                            $credits = !empty($data["media_caption_$i"]) ? $data["media_caption_$i"] : '';
-                            if(!empty($mediaFile['name'])) {
-                                //novo arquivo
-                                if($media->getId()) {
-                                    $movie->getMedias()->removeElement($media);
-                                    $this->getEntityManager()->remove($media);
-                                }
-
-                                $file = $this->fileManipulation()->moveToRepository($mediaFile);
-
-                                $media->setSrc($file['new_name']);
-                                $media->setCredits($credits);
-
-                                $movie->getMedias()->add($media);
-                            } else {
-                                if($media->getId()) {
-                                    $media->setCredits($credits);
-                                    $this->getEntityManager()->persist($media);
+                            $media->setCredits($me['caption']);
+                            if(!empty($me['src'])) {
+                                $media->setSrc($me['src']);
+                            } elseif(!empty($me["file"])) {
+                                $mediaFile = $me["file"];
+                                if(!empty($mediaFile['name'])) {
+                                    $file = $this->fileManipulation()->moveToRepository($mediaFile);
+                                    $media->setSrc($file['new_name']);
                                 }
                             }
-                        }
 
-                        unset($data["media_file_$i"]);
-                        unset($data["media_caption_$i"]);
-                        unset($data["media_id_$i"]);
+                            $newMedias->add($media);
+                        }
                     }
+                    $movie->setMedias($newMedias);
+                    unset($data['medias']);
 
                     $movie->setData($data);
                     $this->getEntityManager()->persist($movie);
@@ -388,6 +373,7 @@ class MovieController extends AbstractAdminController
 
                     if($id) {
                         $this->messages()->success("Filme atualizado com sucesso!");
+                        $form->setData($movie->toArray());
                     } else {
                         $this->messages()->flashSuccess("Filme criado com sucesso!");
                         return $this->redirect()->toRoute('admin/default', [
@@ -408,4 +394,54 @@ class MovieController extends AbstractAdminController
             'registrationEvents' => $registrationEvents
 		]);
 	}
+
+	public function movieSubscriptionsAction()
+    {
+        if($this->getRequest()->isPost()) {
+            $data = $this->getRequest()->getPost()->toArray();
+
+            $id = $this->params()->fromRoute('id');
+            $movie = $this->getRepository(Movie::class)->find($id);
+            if(!$movie) {
+                $this->messages()->flashError("Filme não encontrado!");
+                return $this->redirect()->toRoute('admin/default', [
+                    'controller' => 'movie',
+                    'action' => 'index'
+                ]);
+            }
+
+            foreach ($data['subscriptions'] as $subArray) {
+                /** @var MovieSubscription $sub */
+                $sub = $this->getRepository(MovieSubscription::class)->find($subArray['id']);
+                if(!$sub) {
+                    $this->messages()->flashError("Inscrições não encontrado!");
+                    return $this->redirect()->toRoute('admin/default', [
+                        'controller' => 'movie',
+                        'action' => 'update',
+                        'id' => $movie->getId()
+                    ]);
+                }
+
+                $sub->setData($subArray);
+                $this->getEntityManager()->persist($sub);
+
+            }
+
+            $this->getEntityManager()->flush();
+            $this->messages()->flashSuccess("Filme atualizado com sucesso!");
+            return $this->redirect()->toRoute('admin/default', [
+                'controller' => 'movie',
+                'action' => 'update',
+                'id' => $movie->getId()
+            ]);
+
+
+        } else {
+            return $this->redirect()->toRoute('admin/default', [
+                'controller' => 'movie',
+                'action' => 'index'
+            ]);
+        }
+
+    }
 }

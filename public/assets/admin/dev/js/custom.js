@@ -1061,6 +1061,43 @@ jQuery(document).ready(function() {
     window.FormValidation = Plugin;
 })(window, jQuery);
 
+(function(window, $) {
+    var ImageCollection = function(element, options) {
+        this.element = element;
+        this.$element = $(element);
+        this.options = options;
+    };
+    ImageCollection.prototype = {
+        defaults: {},
+        init: function() {
+            this.config = $.extend({}, this.defaults, this.options, this.$element.data());
+            var _that = this;
+            $(document).on("change.bs.fileinput clear.bs.fileinput reset.bs.fileinput", ".fileinput", function() {
+                $(this).find(".image-collection-id").val("");
+                $(this).find(".image-collection-src").val("");
+            });
+            _that.$element.find(".image-collection-add").on("click", function(e) {
+                e.preventDefault();
+                var id = Math.floor(Date.now() / 1e3);
+                var template = $("#image-collection-template").clone().html();
+                template = template.replace(/__index__/g, id);
+                _that.$element.find(".image-collection-items").append(template).filter(".fileinput").fileinput();
+            });
+            $(document).on("click", ".image-collection-delete", function(e) {
+                e.preventDefault();
+                var el = $(this).closest(".image-collection-item").remove();
+            });
+        }
+    };
+    ImageCollection.defaults = ImageCollection.prototype.defaults;
+    $.fn.imageCollection = function(options) {
+        return this.each(function() {
+            new ImageCollection(this, options).init();
+        });
+    };
+    window.ImageCollection = Plugin;
+})(window, jQuery);
+
 jQuery.extend(jQuery.validator.messages, {
     required: "Este campo é obrigatório.",
     remote: "Please fix this field.",
@@ -1194,6 +1231,7 @@ jQuery(document).ready(function() {
     $(".fileinput").fileInput();
     $(".admin-phone").adminPhone();
     $(".user-modal").user();
+    $(".image-collection").imageCollection();
     $("#user-dependents").adminDependents();
     $("#post-url-btn").on("click", function(e) {
         e.preventDefault();

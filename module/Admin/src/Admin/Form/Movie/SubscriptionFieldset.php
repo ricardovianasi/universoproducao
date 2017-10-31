@@ -8,38 +8,30 @@ class SubscriptionFieldset extends Fieldset
 {
     protected $entityManager;
 
-    public function __construct($entityManager)
+    public function __construct($name = null, $options = array())
     {
-        if($entityManager) {
-            $this->entityManager = $entityManager;
-        }
+        parent::__construct($name, $options);
+
+        $this->add([
+            'type' => 'hidden',
+            'name' => 'id',
+        ]);
+
+        $this->add([
+            'type' => 'hidden',
+            'name' => 'event_name'
+        ]);
 
         $this->add([
             'type' => 'Select',
             'name' => 'status',
             'options' => [
                 'empty_option' => 'Selecione',
-                'value_options' => Status::toArray()
+                'value_options' => Status::toArray(),
+                'label' => 'Status',
             ],
             'attributes' => [
             ]
         ]);
-
-        /*$this->add([
-            'type' => 'Select',
-            'name' => 'subevent',
-            'options' => [
-                'empty_option' => 'Selecione',
-                'value_options' => $this->populateSubevents()
-            ],
-            'attributes' => [
-            ]
-        ]);*/
-    }
-
-    protected function populateSubevents()
-    {
-        $items= [];
-        return $items;
     }
 }

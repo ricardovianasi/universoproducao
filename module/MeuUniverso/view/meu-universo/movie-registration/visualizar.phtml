@@ -24,7 +24,7 @@ $movie = $this->movie;
                                     </tr>
                                 </thead>
                                 <tbody>
-                                <?php foreach ($movie->getEvents() as $event): ?>
+                                <?php foreach ($movie->getSubscriptions() as $event): ?>
                                     <tr>
                                         <td><?php echo $event->getEvent()->getShortName(); ?></td>
                                         <td><?php echo \Application\Entity\Movie\MovieEventStatus::get($event->getStatus()); ?></td>
@@ -526,6 +526,17 @@ $movie = $this->movie;
                         </div>
                     </div>
 
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="control-label col-md-3">Filmografia do diretor:</label>
+                                <div class="col-md-9">
+                                    <p class="form-control-static"> <?php echo $movie->getFilmographyDirector() ?> </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     <h3 class="h3 form-section">Multimídia</h3>
                     <div class="row">
                         <div class="col-md-12">
@@ -570,10 +581,6 @@ $movie = $this->movie;
                         </div>
                         <?php endforeach; ?>
                     </div>
-
-                    <h3 class="h3 form-section">Regulamento</h3>
-                    <?php echo $this->regulation($this->reg); ?>
-
                 </div>
             </form>
         </div>

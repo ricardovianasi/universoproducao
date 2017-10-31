@@ -32,13 +32,13 @@
                     <div class="tabbable-bordered">
                         <ul class="nav nav-tabs">
                             <li class="active">
-                                <a href="#tab_form" data-toggle="tab" aria-expanded="true"> Cadastro </a>
+                                <a href="#tab_form" data-toggle="tab"> Cadastro </a>
                             </li>
                             <li>
-                                <a href="#tab_selection" data-toggle="tab" aria-expanded="false"> Seleção </a>
+                                <a href="#tab_selection" data-toggle="tab"> Seleção </a>
                             </li>
                             <li>
-                                <a href="#tab_programation" data-toggle="tab" aria-expanded="false"> Programação </a>
+                                <a href="#tab_programation" data-toggle="tab"> Programação </a>
                             </li>
                         </ul>
                         <div class="tab-content">
@@ -49,9 +49,15 @@
                                     'registrationEvents'=>$this->registrationEvents
                                 ]); ?>
                             </div>
-                            <div id="tab_selection">
+                            <div class="tab-pane" id="tab_selection">
+                                <?php echo $this->partial('admin/movie/_subscription.phtml', [
+                                    'form' => $this->subscriptionForm,
+                                    'movie'=>$this->movie,
+                                ]); ?>
                             </div>
-                            <div id="tab_programation"></div>
+                            <div class="tab-pane" id="tab_programation">
+                                <h3>Hello</h3>
+                            </div>
                         </div>
                     </div>
                 </div>

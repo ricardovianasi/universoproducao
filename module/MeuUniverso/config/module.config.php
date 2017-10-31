@@ -65,6 +65,20 @@ return array(
                             ),
                         ),
                     ),
+                    'movie_view' => array(
+                        'type'    => 'Segment',
+                        'options' => array(
+                            'route'    => '/filme/visualizar/:id',
+                            'constraints' => array(
+                                'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
+                            ),
+                            'defaults' => array(
+                                'controller' => Controller\MovieRegistrationController::class,
+                                'action' => 'visualizar',
+                            ),
+                        ),
+                        'priority' => '100'
+                    ),
                     'movie' => array(
                         'type'    => 'Segment',
                         'options' => array(

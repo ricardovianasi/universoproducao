@@ -11,21 +11,32 @@ class MovieForm extends AdminMovieForm
     {
         parent::__construct($entityManager, Options::STATUS_ENABLED, $registration);
 
-        $this->get('events')->setAttributes([
+        $this->remove('events');
+        $this->remove('end_date_year');
+
+        $this->add([
             'type' => 'MultiCheckbox',
-            'required' => true
-        ])->setOptions([
-            'label' => 'Autorizo a inscrição do filme para a seleção da',
-            'value_options' => $this->populateEvents()
+            'name' => 'events',
+            'options' => [
+                'label' => 'Autorizo a inscrição do filme para a seleção da',
+                'value_options' => $this->populateEvents()
+            ],
+            'attributes' => [
+                'required' => true
+            ]
         ]);
 
-        $this->get('end_date_year')->setAttributes([
-            'required' => 'required',
-            'type' => 'Select'
-        ])->setOptions([
-            'label' => 'Ano de finalização',
-            'value_options' => $this->populateEndDateYear(),
-            'empty_option' => 'Selecione'
+        $this->add([
+           'type' => 'select',
+           'name' => 'end_date_year',
+            'options' => [
+                'label' => 'Ano de finalização',
+                'value_options' => $this->populateEndDateYear(),
+                'empty_option' => 'Selecione'
+            ],
+            'attributes' => [
+                'required' => 'required',
+            ]
         ]);
 
         $this->add([
@@ -65,8 +76,5 @@ class MovieForm extends AdminMovieForm
             'class' => 'form-horizontal movie-form',
 
         ]);
-
-        $this->getInputFilter()->get('media_file_1')->setRequired(true);
-        $this->getInputFilter()->get('media_caption_1')->setRequired(true);
     }
 }

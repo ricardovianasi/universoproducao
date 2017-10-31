@@ -32,7 +32,7 @@ class Media extends AbstractEntity
 	private $description;
 
     /** @ORM\Column(type="string", nullable=true) */
-	private $credits;
+	private $credits = 'Divulgação';
 
     /**
      * @return mixed

@@ -665,7 +665,7 @@ class MovieForm extends Form
             ]
         ]);
 
-        $this->add([
+        /*$this->add([
             'type' => 'file',
             'name' => 'media_file_1',
             'attributes' => [
@@ -695,6 +695,19 @@ class MovieForm extends Form
         $this->add([
             'type' => 'hidden',
             'name' => 'media_src_1',
+        ]);*/
+
+        $this->add([
+            'type' => 'Collection',
+            'name' => 'medias',
+            'options' => [
+                'count' => 1,
+                'should_create_template' => false,
+                'target_element' => [
+                    'type' => MediaFieldset::class
+                ]
+            ]
+
         ]);
 
         /*$this->add([
@@ -746,30 +759,7 @@ class MovieForm extends Form
                'name'       => 'options[short_movie_category]',
                'required'   => false,
                'allow_empty' => true
-            ],
-            'media_caption_1' => [
-                'name'       => 'media_caption_1',
-                'required'   => false,
-            ],
-            'media_file_1' => [
-                'name' => 'media_file_1',
-                'required'   => false,
-                'validators' => [
-                    new MimeType('image/png,image/jpg,image/jpeg'),
-                    [
-                        'name' => Size::class,
-                        'options' => [
-                            'min' => '800KB',
-                            'max' => '2MB',
-                            'messages' => [
-                                Size::TOO_SMALL => "O tamanho mínimo do arquivo é 800KB",
-                                Size::TOO_BIG => "O tamanho máximo do arquivo é 2MB"
-                            ]
-                        ]
-                    ],
-                    //new Size(['min'=>'800KB', 'max'=>'2MB'])
-                ]
-            ],
+            ]
         ]));
     }
 
@@ -890,16 +880,32 @@ class MovieForm extends Form
             }
         }
 
+        $medias = [];
         if(isset($data['medias'])) {
             if(count($data['medias'])) {
                 $count = 1;
                 foreach ($data['medias'] as $key=>$m) {
-                    $data["media_id_$count"] = $m->getId();
+                    if(is_object($m)) {
+                        $medias[] = [
+                            'id' => $m->getId(),
+                            'caption' => $m->getCredits(),
+                            'src' => $m->getSrc()
+                        ];
+                    } else {
+                        $medias[] = [
+                            'id' => isset($m['id'])?$m['id']:'',
+                            'caption' => isset($m['caption'])?$m['caption']:'',
+                            'src' => isset($m['src'])?$m['src']:'',
+                            'file' => isset($m['file'])?$m['file']:[]
+                        ];
+                    }
+                    /*$data["media_id_$count"] = $m->getId();
                     $data["media_caption_$count"] = $m->getCredits();
-                    $data["media_src_$count"] = $m->getSrc();
+                    $data["media_src_$count"] = $m->getSrc();*/
                 }
             }
         }
+        $data['medias'] = $medias;
 
         if(!empty($data['subscriptions'])) {
             $events = [];

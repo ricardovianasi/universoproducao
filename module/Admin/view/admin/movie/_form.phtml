@@ -173,41 +173,69 @@
             <div class="col-md-4"><?php echo $this->formRow($form->get('movie_divulgation')) ?></div>
         </div>
 
-        <div class="row">
-            <div class="col-md-4">
-                <div class="form-group last  <?php echo !empty($form->get("media_file_1")->getMessages()) ? "has-error" : ""; ?>">
-                    <label>Imagem</label>
-                    <div class="margin-bottom-5">
-                        <?php echo $this->formElement($form->get('media_caption_1')); ?>
-                    </div>
-                    <?php $mediaSrc = null;
-                    if($form->has("media_src_1")) {
-                        $mediaSrc = $form->get("media_src_1")->getValue();
-                    } ?>
-                    <div class="fileinput <?php echo $mediaSrc ? "fileinput-exists" : "fileinput-new" ?>" data-provides="fileinput" style="display: block">
-                        <div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">
-                            <?php if($mediaSrc):  ?>
-                                <img src="<?php echo $this->fileManipulation()->url($mediaSrc); ?>" alt="">
-                            <?php else: ?>
-                                <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image" alt="" />
-                            <?php endif; ?>
-                        </div>
-                        <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"> </div>
-                        <div>
+        <div class="portlet image-collection">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-gift"></i>Imagens </div>
+                <div class="actions">
+                    <a href="javascript:;" class="btn default btn-sm image-collection-add"><i class="fa fa-plus"></i> Adicionar </a>
+                </div>
+            </div>
+            <div class="portlet-body">
+                <div class="row image-collection-items">
+                <?php $mediaFieldsets = $form->get('medias')->getFieldsets(); ?>
+                <?php foreach ($mediaFieldsets as $mFieldset): ?>
+                    <div class="col-md-4 image-collection-item">
+                        <div class="portlet light portlet-fit bordered">
+                            <div class="portlet-title">
+                                <div class="caption">Imagem</div>
+                                <div class="actions">
+                                    <a href="#" class="btn blue btn-sm image-collection-delete">
+                                        <i class="fa fa-close"></i> Apagar </a>
+                                </div>
+                            </div>
+                            <div class="portlet-body">
+                                <div class="form-group <?php echo !empty($mFieldset->get("file")->getMessages()) ? "has-error" : ""; ?>">
+                                    <div class="margin-bottom-5">
+                                        <?php echo $this->formElement($mFieldset->get('caption')); ?>
+                                    </div>
+                                    <?php
+                                    $mediaSrc = null;
+                                    if($mFieldset->has("src")) {
+                                        $mediaSrc = $mFieldset->get("src")->getValue();
+                                    }
+                                    ?>
+                                    <div class="fileinput <?php echo $mediaSrc ? "fileinput-exists" : "fileinput-new" ?>" data-provides="fileinput" style="display: block">
+                                        <div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">
+                                            <?php if($mediaSrc):  ?>
+                                                <img src="<?php echo $this->fileManipulation()->url($mediaSrc); ?>" alt="">
+                                            <?php else: ?>
+                                                <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image" alt="" />
+                                            <?php endif; ?>
+                                        </div>
+                                        <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"> </div>
+                                        <div>
                                             <span class="btn default btn-file">
                                                 <span class="fileinput-new"> Selecionar imagem </span>
                                                 <span class="fileinput-exists"> Alterar </span>
-                                                <input type="file" name="..."> </span>
-                            <a href="javascript:;" class="btn red fileinput-exists" data-dismiss="fileinput"> Remover </a>
+                                                <?php echo $this->formElement($mFieldset->get("file")); ?>
+                                            </span>
+                                            <a href="javascript:;" class="btn red fileinput-exists" data-dismiss="fileinput"> Remover </a>
+                                        </div>
+                                        <?php echo $this->formElement($mFieldset->get("id")); ?>
+                                        <?php echo $this->formElement($mFieldset->get("src")); ?>
+                                    </div>
+                                    <?php echo $this->formElementErrors($mFieldset->get('file')); ?>
+                                    <?php echo $this->formElementErrors($mFieldset->get('caption')); ?>
+                                </div>
+                            </div>
                         </div>
-                        <?php echo $this->formElement($form->get("media_id_1")); ?>
-                        <?php echo $this->formElement($form->get("media_src_1")); ?>
                     </div>
-                    <?php echo $this->formElementErrors($form->get("media_file_1")); ?>
-                    <?php echo $this->formElementErrors($form->get("media_caption_1")); ?>
+                <?php endforeach; ?>
                 </div>
             </div>
         </div>
+
     </div>
     <div class="form-actions">
         <div class="row">
@@ -218,3 +246,39 @@
         </div>
     </div>
 <?php echo $this->form()->closeTag() ?>
+
+<div class="image-collection-template" id="image-collection-template" style="display: none">
+    <div class="col-md-4 image-collection-item">
+        <div class="portlet light portlet-fit bordered">
+            <div class="portlet-title">
+                <div class="caption">Imagem</div>
+                <div class="actions">
+                    <a href="#" class="btn blue btn-sm image-collection-delete">
+                        <i class="fa fa-close"></i> Apagar </a>
+                </div>
+            </div>
+            <div class="portlet-body">
+                <div class="form-group ">
+                    <div class="margin-bottom-5">
+                        <input name="medias[__index__][caption]" placeholder="Créditos da foto" class="form-control" type="text" value="">
+                    </div>
+                    <div class="fileinput fileinput-new" data-provides="fileinput" style="display: block">
+                        <div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">
+                            <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image" alt="" />
+                        </div>
+                        <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"> </div>
+                        <div>
+                            <span class="btn default btn-file">
+                                <span class="fileinput-new"> Selecionar imagem </span>
+                                <span class="fileinput-exists"> Alterar </span>
+                                <input type="file" name="medias[__index__][file]">
+                            </span>
+                            <a href="javascript:;" class="btn red fileinput-exists" data-dismiss="fileinput"> Remover </a>
+                        </div>
+                        <input type="hidden" name="medias[__index__][id]" class="form-control image-collection-id">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

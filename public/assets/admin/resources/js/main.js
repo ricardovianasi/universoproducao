@@ -158,6 +158,8 @@ jQuery(document).ready(function() {
 
     $('.user-modal').user();
 
+    $('.image-collection').imageCollection();
+
     $('#user-dependents').adminDependents();
 
     $('#post-url-btn').on('click', function(e) {

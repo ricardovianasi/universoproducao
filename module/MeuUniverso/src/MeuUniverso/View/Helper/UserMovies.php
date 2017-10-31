@@ -66,7 +66,7 @@ class UserMovies extends AbstractHelper implements ServiceLocatorAwareInterface
         $td.= '<td>'.$movie->getCreatedAt()->format('d/mY \à\s H:i').'</td>';
 
         $events = "";
-        foreach ($movie->getEvents() as $event) {
+        foreach ($movie->getSubscriptions() as $event) {
             $events.= '<span class="table-movie-event">
                 <label>'.$event->getEvent()->getShortName().'</label>'.$this->labelStatus($event->getStatus()). '</span>';
         }
@@ -74,10 +74,10 @@ class UserMovies extends AbstractHelper implements ServiceLocatorAwareInterface
 
         $urlHelper = $this->getServiceLocator()->get('url');
 
-        $now = new \DateTime();
-        $reg = $movie->getRegistration();
-
         $allowEditRegister = false;
+
+        /*$now = new \DateTime();
+        $reg = $movie->getRegistration();
         $editUntil = $reg->getOption(Options::MOVIE_ALLOW_EDIT_REGISTRATION_TO);
         if($editUntil) {
             $editUntilDate = \DateTime::createFromFormat('d/m/Y', $editUntil);
@@ -89,13 +89,13 @@ class UserMovies extends AbstractHelper implements ServiceLocatorAwareInterface
         if( $allowEditRegister) {
             $editUrl = $urlHelper('meu-universo/movie', ['id_reg'=>$reg->getHash(), 'id'=>$movie->getId(), 'action'=>'editar']);
             $btnEditar = '<a href="'.$editUrl.'" type="button" class="btn btn-circle btn-default btn-sm"><i class="glyphicon glyphicon-edit"></i> Editar</a>';
-        }
+        }*/
 
         //visualizar
-        $viewUrl = $urlHelper('meu-universo/movie', ['id_reg'=>$reg->getHash(), 'id'=>$movie->getId(), 'action'=>'visualizar']);
+        $viewUrl = $urlHelper('meu-universo/movie_view', ['id'=>$movie->getId()]);
         $btnView = '<a href="'.$viewUrl.'" type="button" class="btn btn-circle btn-default btn-sm"><i class="glyphicon glyphicon-list-alt"></i> Visualizar</a>';
 
-        $td.= '<td>'.$btnEditar.$btnView.'</td></tr>';
+        $td.= '<td>'.$btnView.'</td></tr>';
         return $td;
     }
 
