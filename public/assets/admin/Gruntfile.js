@@ -32,6 +32,8 @@ module.exports = function (grunt) {
 		templateDir + '/assets/global/plugins/jquery-multi-select/js/jquery.multi-select.js',
 		templateDir + '/assets/global/plugins/select2/js/select2.full.min.js',
 		templateDir + '/assets/global/plugins/jquery-inputmask/jquery.inputmask.bundle.min.js',
+		templateDir + '/assets/global/plugins/bootstrap-modal/js/bootstrap-modalmanager.js',
+		templateDir + '/assets/global/plugins/bootstrap-modal/js/bootstrap-modal.js',
 		/* END PLUGINS
 		BEGIN THEME GLOBAL SCRIPTS */
 		templateDir + '/assets/global/scripts/app.min.js',
@@ -59,7 +61,9 @@ module.exports = function (grunt) {
 		templateDir + '/assets/global/plugins/bootstrap-select/css/bootstrap-select.min.css',
 		templateDir + '/assets/global/plugins/jquery-multi-select/css/multi-select.css',
 		templateDir + '/assets/global/plugins/select2/css/select2.min.css',
-		templateDir + '/assets/global/plugins/select2/css/select2-bootstrap.min.css'
+		templateDir + '/assets/global/plugins/select2/css/select2-bootstrap.min.css',
+		templateDir + '/assets/global/plugins/bootstrap-modal/css/bootstrap-modal-bs3patch.css',
+		templateDir + '/assets/global/plugins/bootstrap-modal/css/bootstrap-modal.css'
 	];
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),

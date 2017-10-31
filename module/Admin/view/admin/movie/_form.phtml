@@ -1,0 +1,284 @@
+<?php $form = $this->form; ?>
+
+<?php $form->prepare(); echo $this->form(null, null)->openTag($form) ?>
+    <div class="form-body">
+        <h3 class="form-section">Inscrição</h3>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <?php
+                        $movieAuthor = $this->movie->getAuthor()?$this->movie->getAuthor()->getName():"";
+                        $movieId = $this->movie->getAuthor()?$this->movie->getAuthor()->getId():"";
+                    ?>
+                    <label>Usuário</label>
+                    <div class="input-group">
+                        <input readonly type="text" id="authorName" class="form-control" value="<?php echo $movieAuthor ?>">
+                        <span class="input-group-btn">
+                            <button
+                                    class="btn user-modal"
+                                    type="button"
+                                    data-user-id="<?php echo $movieId; ?>"
+                                    data-select-id-to="#author"
+                                    data-select-name-to="#authorName">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </span>
+                    </div>
+                </div>
+                <?php echo $this->formElement($form->get("author")); ?>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4"><?php echo $this->formRow($form->get('registration')) ?></div>
+            <div class="col-md-4">
+                <?php if($this->registrationEvents): ?>
+                    <table class="table">
+                        <?php foreach ($this->registrationEvents as $idRed =>$reg): ?>
+                            <tr><td><?php echo $reg['name'] ?></td></tr>
+                            <tr>
+                                <td class="icheck-inline"><?php foreach ($reg['events'] as $e): ?>
+                                        <label for="">
+                                            <input
+                                                type="checkbox"
+                                                id="event_<?php echo $idRed ?>"
+                                                class="icheck"
+                                                <?php echo $e['selected']?' checked ':'' ?>
+                                                name="events[<?php echo $idRed ?>][<?php echo $e['id'] ?>]"><?php echo $e['name']; ?>
+                                        </label>
+                                    <?php endforeach; ?></td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </table>
+                <?php endif; ?>
+            </div>
+        </div>
+
+        <h3 class="form-section">Ficha técnica</h3>
+
+        <div class="row">
+            <div class="col-md-6"><?php echo $this->formRow($form->get('title')) ?></div>
+            <div class="col-md-6"><?php echo $this->formRow($form->get('title_english')) ?></div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6"><?php echo $this->formRow($form->get('production_country')) ?></div>
+            <div class="col-md-6"><?php echo $this->formRow($form->get('production_state')) ?></div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4"><?php echo $this->formRow($form->get('end_date_year')) ?></div>
+            <div class="col-md-4"><?php echo $this->formRow($form->get('end_date_month')) ?></div>
+            <div class="col-md-4"><?php echo $this->formRow($form->get('duration')) ?></div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4"><?php echo $this->formRow($form->get('has_cpb')) ?></div>
+            <div class="col-md-4"><?php echo $this->formRow($form->get('cpb')) ?></div>
+            <div class="col-md-4"><?php echo $this->formRow($form->get('has_official_classification')) ?></div>
+        </div>
+
+        <div class="row">
+
+            <div class="col-md-4"><?php echo $this->formRow($form->get('options[classification]')) ?></div>
+            <div class="col-md-8"><?php echo $this->formRow($form->get('content_scenes')) ?></div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4"><?php echo $this->formRow($form->get('options[format_completed]')) ?></div>
+            <div class="col-md-4"><?php echo $this->formRow($form->get('options[window]')) ?></div>
+            <div class="col-md-4"><?php echo $this->formRow($form->get('options[sound]')) ?></div>
+
+        </div>
+
+        <div class="row">
+            <div class="col-md-4"><?php echo $this->formRow($form->get('options[color]')) ?></div>
+            <div class="col-md-4"><?php echo $this->formRow($form->get('options[genre]')) ?></div>
+            <div class="col-md-4"><?php echo $this->formRow($form->get('options[accessibility]')) ?></div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4"><?php echo $this->formRow($form->get('options[feature_directed]')) ?></div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4"><?php echo $this->formRow($form->get('options[short_movie_category]')) ?></div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4"><?php echo $this->formRow($form->get('has_conversations_languages')) ?></div>
+            <div class="col-md-8"><?php echo $this->formRow($form->get('conversations_languages')) ?></div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4"><?php echo $this->formRow($form->get('has_subtitles_languages')) ?></div>
+            <div class="col-md-8"><?php echo $this->formRow($form->get('subtitles_languages')) ?></div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4"><?php echo $this->formRow($form->get('has_conversations_list_languages')) ?></div>
+            <div class="col-md-8"><?php echo $this->formRow($form->get('conversations_list_languages')) ?></div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4"><?php echo $this->formRow($form->get('has_participated_other_festivals')) ?></div>
+            <div class="col-md-8"><?php echo $this->formRow($form->get('other_festivals')) ?></div>
+        </div>
+
+        <h3 class="form-section">Produção/Direção/Edição</h3>
+
+        <div class="row">
+            <div class="col-md-4"><?php echo $this->formRow($form->get('direction')) ?></div>
+            <div class="col-md-4"><?php echo $this->formRow($form->get('script')) ?></div>
+            <div class="col-md-4"><?php echo $this->formRow($form->get('production_company')) ?></div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4"><?php echo $this->formRow($form->get('co_production')) ?></div>
+            <div class="col-md-4"><?php echo $this->formRow($form->get('executive_production')) ?></div>
+            <div class="col-md-4"><?php echo $this->formRow($form->get('direction_production')) ?></div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4"><?php echo $this->formRow($form->get('editing_assembly')) ?></div>
+            <div class="col-md-4"><?php echo $this->formRow($form->get('photography')) ?></div>
+            <div class="col-md-4"><?php echo $this->formRow($form->get('direction_art')) ?></div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4"><?php echo $this->formRow($form->get('soundtrack')) ?></div>
+            <div class="col-md-4"><?php echo $this->formRow($form->get('mixing')) ?></div>
+            <div class="col-md-4"><?php echo $this->formRow($form->get('direct_sound')) ?></div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4"><?php echo $this->formRow($form->get('sound_editing')) ?></div>
+            <div class="col-md-4"><?php echo $this->formRow($form->get('scenography')) ?></div>
+            <div class="col-md-4"><?php echo $this->formRow($form->get('costume')) ?></div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6"><?php echo $this->formRow($form->get('cast')) ?></div>
+            <div class="col-md-6"><?php echo $this->formRow($form->get('synopsis')) ?></div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6"><?php echo $this->formRow($form->get('filmography_director')) ?></div>
+        </div>
+
+        <h3 class="form-section">Multimídia</h3>
+
+        <div class="row">
+            <div class="col-md-4"><?php echo $this->formRow($form->get('movie_link')) ?></div>
+            <div class="col-md-4"><?php echo $this->formRow($form->get('movie_password')) ?></div>
+            <div class="col-md-4"><?php echo $this->formRow($form->get('movie_divulgation')) ?></div>
+        </div>
+
+        <div class="portlet image-collection">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-gift"></i>Imagens </div>
+                <div class="actions">
+                    <a href="javascript:;" class="btn default btn-sm image-collection-add"><i class="fa fa-plus"></i> Adicionar </a>
+                </div>
+            </div>
+            <div class="portlet-body">
+                <div class="row image-collection-items">
+                <?php $mediaFieldsets = $form->get('medias')->getFieldsets(); ?>
+                <?php foreach ($mediaFieldsets as $mFieldset): ?>
+                    <div class="col-md-4 image-collection-item">
+                        <div class="portlet light portlet-fit bordered">
+                            <div class="portlet-title">
+                                <div class="caption">Imagem</div>
+                                <div class="actions">
+                                    <a href="#" class="btn blue btn-sm image-collection-delete">
+                                        <i class="fa fa-close"></i> Apagar </a>
+                                </div>
+                            </div>
+                            <div class="portlet-body">
+                                <div class="form-group <?php echo !empty($mFieldset->get("file")->getMessages()) ? "has-error" : ""; ?>">
+                                    <div class="margin-bottom-5">
+                                        <?php echo $this->formElement($mFieldset->get('caption')); ?>
+                                    </div>
+                                    <?php
+                                    $mediaSrc = null;
+                                    if($mFieldset->has("src")) {
+                                        $mediaSrc = $mFieldset->get("src")->getValue();
+                                    }
+                                    ?>
+                                    <div class="fileinput <?php echo $mediaSrc ? "fileinput-exists" : "fileinput-new" ?>" data-provides="fileinput" style="display: block">
+                                        <div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">
+                                            <?php if($mediaSrc):  ?>
+                                                <img src="<?php echo $this->fileManipulation()->url($mediaSrc); ?>" alt="">
+                                            <?php else: ?>
+                                                <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image" alt="" />
+                                            <?php endif; ?>
+                                        </div>
+                                        <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"> </div>
+                                        <div>
+                                            <span class="btn default btn-file">
+                                                <span class="fileinput-new"> Selecionar imagem </span>
+                                                <span class="fileinput-exists"> Alterar </span>
+                                                <?php echo $this->formElement($mFieldset->get("file")); ?>
+                                            </span>
+                                            <a href="javascript:;" class="btn red fileinput-exists" data-dismiss="fileinput"> Remover </a>
+                                        </div>
+                                        <?php echo $this->formElement($mFieldset->get("id")); ?>
+                                        <?php echo $this->formElement($mFieldset->get("src")); ?>
+                                    </div>
+                                    <?php echo $this->formElementErrors($mFieldset->get('file')); ?>
+                                    <?php echo $this->formElementErrors($mFieldset->get('caption')); ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="form-actions">
+        <div class="row">
+            <div class="col-md-offset-3 col-md-9">
+                <button type="submit" class="btn blue btn-lg action-save">Salvar</button>
+                <a href="<?php echo $this->url('admin/default', ['controller'=>'movie-options']); ?>" class="btn red btn-lg action cancel">Descartar</a>
+            </div>
+        </div>
+    </div>
+<?php echo $this->form()->closeTag() ?>
+
+<div class="image-collection-template" id="image-collection-template" style="display: none">
+    <div class="col-md-4 image-collection-item">
+        <div class="portlet light portlet-fit bordered">
+            <div class="portlet-title">
+                <div class="caption">Imagem</div>
+                <div class="actions">
+                    <a href="#" class="btn blue btn-sm image-collection-delete">
+                        <i class="fa fa-close"></i> Apagar </a>
+                </div>
+            </div>
+            <div class="portlet-body">
+                <div class="form-group ">
+                    <div class="margin-bottom-5">
+                        <input name="medias[__index__][caption]" placeholder="Créditos da foto" class="form-control" type="text" value="">
+                    </div>
+                    <div class="fileinput fileinput-new" data-provides="fileinput" style="display: block">
+                        <div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">
+                            <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image" alt="" />
+                        </div>
+                        <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"> </div>
+                        <div>
+                            <span class="btn default btn-file">
+                                <span class="fileinput-new"> Selecionar imagem </span>
+                                <span class="fileinput-exists"> Alterar </span>
+                                <input type="file" name="medias[__index__][file]">
+                            </span>
+                            <a href="javascript:;" class="btn red fileinput-exists" data-dismiss="fileinput"> Remover </a>
+                        </div>
+                        <input type="hidden" name="medias[__index__][id]" class="form-control image-collection-id">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

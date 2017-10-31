@@ -5,7 +5,9 @@ use Application\Entity\Movie\Options;
 use Application\Entity\Movie\OptionsType;
 use Application\Entity\Registration\Options as RegistrationOptions;
 use Application\Entity\Registration\Registration;
+use Application\Entity\Registration\Type;
 use Application\Entity\State;
+use Application\Entity\User\User;
 use Zend\Form\Form;
 use Zend\InputFilter\Factory as InputFilterFactory;
 use Zend\Validator\Date;
@@ -28,7 +30,35 @@ class MovieForm extends Form
         parent::__construct('movie-form');
         $this->setAttributes([
             'method' => 'POST',
+            'class' => 'movie-form default-form-actions enable-validators',
             'id' => 'submit_form'
+        ]);
+
+        $this->add([
+            'type' => 'hidden',
+            'name' => 'author',
+            'attributes' => [
+                'id' => 'author'
+            ]
+        ]);
+
+        $this->add([
+            'type' => 'Select',
+            'name' => 'registration',
+            'options' => [
+                'label' => 'Regulamento',
+                'value_options' => $this->populateRegulations(),
+            ],
+            'attributes' => [
+                'id' => 'registration',
+                'multiple' => 'multiple',
+                'class' => 'form-control multi-select'
+            ]
+        ]);
+
+        $this->add([
+            'type' => 'hidden',
+            'name' => 'events',
         ]);
 
         $this->add([
@@ -76,13 +106,24 @@ class MovieForm extends Form
             ]
         ]);
 
-        $this->add([
+        /*$this->add([
             'type' => 'Select',
             'name' => 'end_date_year',
             'options' => [
                 'label' => 'Ano de finalização',
                 'value_options' => $this->populateEndDateYear(),
                 'empty_option' => 'Selecione',
+            ],
+            'attributes' => [
+                'required' => 'required',
+            ]
+        ]);*/
+
+        $this->add([
+            'type' => 'Number',
+            'name' => 'end_date_year',
+            'options' => [
+                'label' => 'Ano de finalização',
             ],
             'attributes' => [
                 'required' => 'required',
@@ -134,7 +175,7 @@ class MovieForm extends Form
             ],
             'attributes' => [
                 'placeholder' => 'Informe o número do cpb',
-                'required' => 'required'
+                //'required' => 'required'
             ]
         ]);
 
@@ -260,7 +301,7 @@ class MovieForm extends Form
             'name' => 'options[accessibility]',
             'options' => [
                 'label' => 'Acessibilidade para pessoas com necessidades especiais?',
-                'value_options' => $this->populateOptions(OptionsType::ACCESSIBILITY),
+                'value_options' => $this->populateOptionAccessibility(),
                 'empty_option' => 'Selecione',
             ]
         ]);
@@ -315,7 +356,7 @@ class MovieForm extends Form
                 'help-block' => 'Exemplo: cenas de sexo, violência, uso de drogas, etc...'
             ],
             'attributes' => [
-                'required' => 'required'
+                //'required' => 'required'
             ]
         ]);
 
@@ -494,7 +535,7 @@ class MovieForm extends Form
                 'empty_option' => 'Selecione',
             ],
             'attributes' => [
-                'required' => 'required',
+                //'required' => 'required',
             ],
         ]);
 
@@ -548,7 +589,7 @@ class MovieForm extends Form
                 'label' => 'Informe em qual(is) idioma(s)',
             ],
             'attributes' => [
-                'required' => 'required',
+                //'required' => 'required',
             ]
         ]);
 
@@ -559,7 +600,7 @@ class MovieForm extends Form
                 'label' => 'Informe em qual(is) idioma(s)',
             ],
             'attributes' => [
-                'required' => 'required',
+                //'required' => 'required',
             ]
         ]);
 
@@ -624,7 +665,7 @@ class MovieForm extends Form
             ]
         ]);
 
-        $this->add([
+        /*$this->add([
             'type' => 'file',
             'name' => 'media_file_1',
             'attributes' => [
@@ -654,9 +695,22 @@ class MovieForm extends Form
         $this->add([
             'type' => 'hidden',
             'name' => 'media_src_1',
-        ]);
+        ]);*/
 
         $this->add([
+            'type' => 'Collection',
+            'name' => 'medias',
+            'options' => [
+                'count' => 1,
+                'should_create_template' => false,
+                'target_element' => [
+                    'type' => MediaFieldset::class
+                ]
+            ]
+
+        ]);
+
+        /*$this->add([
             'type' => 'MultiCheckbox',
             'name' => 'events',
             'options' => [
@@ -666,24 +720,15 @@ class MovieForm extends Form
             'attributes ' => [
                 'required' => true
             ]
-        ]);
-
-        $this->add([
-            'type' => 'Checkbox',
-            'name' => 'accept_regulation',
-            'options' => array(
-                'label' => 'Eu li e estou de acordo com as condições descritas no regulamento de inscrições de filmes',
-                'use_hidden_element' => false,
-                'checked_value' => '1',
-                'unchecked_value' => '0'
-            ),
-            'attributes ' => [
-                'required' => true
-            ]
-        ]);
+        ]);*/
 
         //Validações
         $this->setInputFilter((new InputFilterFactory)->createInputFilter([
+            'registration' => [
+                'name'       => 'registration',
+                'required'   => false,
+                'allow_empty' => true
+            ],
            'duration' => [
                'name' => 'duration',
                'required' => true,
@@ -714,30 +759,7 @@ class MovieForm extends Form
                'name'       => 'options[short_movie_category]',
                'required'   => false,
                'allow_empty' => true
-            ],
-            'media_caption_1' => [
-                'name'       => 'media_caption_1',
-                'required'   => true,
-            ],
-            'media_file_1' => [
-                'name' => 'media_file_1',
-                'required'   => true,
-                'validators' => [
-                    new MimeType('image/png,image/jpg,image/jpeg'),
-                    [
-                        'name' => Size::class,
-                        'options' => [
-                            'min' => '800KB',
-                            'max' => '2MB',
-                            'messages' => [
-                                Size::TOO_SMALL => "O tamanho mínimo do arquivo é 800KB",
-                                Size::TOO_BIG => "O tamanho máximo do arquivo é 2MB"
-                            ]
-                        ]
-                    ],
-                    //new Size(['min'=>'800KB', 'max'=>'2MB'])
-                ]
-            ],
+            ]
         ]));
     }
 
@@ -752,6 +774,29 @@ class MovieForm extends Form
         }
 
         return [];
+    }
+
+    public function populateOptionAccessibility()
+    {
+        if(!$this->options) {
+            $this->prepareOptions();
+        }
+
+        $valueOptions = [];
+        if($options = $this->options[OptionsType::ACCESSIBILITY]) {
+            foreach ($options as $id=>$opName) {
+                $valueOptions[] = [
+                    'value' => $id,
+                    'label' => $opName,
+                    'attributes' => [
+                        'id' => 'op_'.$id,
+                        'class' => 'icheck'
+                    ]
+                ];
+            }
+        }
+
+        return $valueOptions;
     }
 
     protected function prepareOptions()
@@ -783,8 +828,32 @@ class MovieForm extends Form
         return $options;
     }
 
+    public function populateRegulations()
+    {
+        $regulations = [];
+        if($this->getEntityManager()) {
+            $coll = $this
+                ->getEntityManager()
+                ->getRepository(Registration::class)
+                ->findBy([
+                    'type' => Type::MOVIE
+                ], ['startDate'=>'DESC']);
+
+            foreach ($coll as $c) {
+                $regulations[$c->getId()] = $c->getName();
+            }
+        }
+        return $regulations;
+    }
+
     public function setData($data)
     {
+        if(!empty($data['author'])) {
+            $author = $data['author'];
+            if($author instanceof User) {
+                $data['author'] = $author->getId();
+            }
+        }
 
         if(!empty($data['options'])) {
             foreach ($data['options'] as $key=>$op) {
@@ -811,29 +880,43 @@ class MovieForm extends Form
             }
         }
 
+        $medias = [];
         if(isset($data['medias'])) {
             if(count($data['medias'])) {
                 $count = 1;
                 foreach ($data['medias'] as $key=>$m) {
-                    $data["media_id_$count"] = $m->getId();
+                    if(is_object($m)) {
+                        $medias[] = [
+                            'id' => $m->getId(),
+                            'caption' => $m->getCredits(),
+                            'src' => $m->getSrc()
+                        ];
+                    } else {
+                        $medias[] = [
+                            'id' => isset($m['id'])?$m['id']:'',
+                            'caption' => isset($m['caption'])?$m['caption']:'',
+                            'src' => isset($m['src'])?$m['src']:'',
+                            'file' => isset($m['file'])?$m['file']:[]
+                        ];
+                    }
+                    /*$data["media_id_$count"] = $m->getId();
                     $data["media_caption_$count"] = $m->getCredits();
-                    $data["media_src_$count"] = $m->getSrc();
+                    $data["media_src_$count"] = $m->getSrc();*/
                 }
             }
         }
+        $data['medias'] = $medias;
 
-
-        $events = [];
-        if(count($data['events'])) {
-            foreach ($data['events'] as $key=>$e) {
-                if(is_object($e)) {
-                    $events[] = $e->getEvent()->getId();
-                } else {
-                    $events[] = $e;
-                }
+        if(!empty($data['subscriptions'])) {
+            $events = [];
+            $registrations = [];
+            foreach ($data['subscriptions'] as $ms) {
+                $events[] = $ms->getEvent()->getId();
+                $registrations[] = $ms->getRegistration()->getId();
             }
+            $data['events'] = $events;
+            $data['registration'] = $registrations;
         }
-        $data['events'] = $events;
 
         return parent::setData($data); // TODO: Change the autogenerated stub
     }

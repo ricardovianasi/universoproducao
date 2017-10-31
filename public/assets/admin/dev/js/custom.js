@@ -1061,6 +1061,43 @@ jQuery(document).ready(function() {
     window.FormValidation = Plugin;
 })(window, jQuery);
 
+(function(window, $) {
+    var ImageCollection = function(element, options) {
+        this.element = element;
+        this.$element = $(element);
+        this.options = options;
+    };
+    ImageCollection.prototype = {
+        defaults: {},
+        init: function() {
+            this.config = $.extend({}, this.defaults, this.options, this.$element.data());
+            var _that = this;
+            $(document).on("change.bs.fileinput clear.bs.fileinput reset.bs.fileinput", ".fileinput", function() {
+                $(this).find(".image-collection-id").val("");
+                $(this).find(".image-collection-src").val("");
+            });
+            _that.$element.find(".image-collection-add").on("click", function(e) {
+                e.preventDefault();
+                var id = Math.floor(Date.now() / 1e3);
+                var template = $("#image-collection-template").clone().html();
+                template = template.replace(/__index__/g, id);
+                _that.$element.find(".image-collection-items").append(template).filter(".fileinput").fileinput();
+            });
+            $(document).on("click", ".image-collection-delete", function(e) {
+                e.preventDefault();
+                var el = $(this).closest(".image-collection-item").remove();
+            });
+        }
+    };
+    ImageCollection.defaults = ImageCollection.prototype.defaults;
+    $.fn.imageCollection = function(options) {
+        return this.each(function() {
+            new ImageCollection(this, options).init();
+        });
+    };
+    window.ImageCollection = Plugin;
+})(window, jQuery);
+
 jQuery.extend(jQuery.validator.messages, {
     required: "Este campo é obrigatório.",
     remote: "Please fix this field.",
@@ -1193,6 +1230,8 @@ jQuery(document).ready(function() {
     $("div#admin-menu").menu();
     $(".fileinput").fileInput();
     $(".admin-phone").adminPhone();
+    $(".user-modal").user();
+    $(".image-collection").imageCollection();
     $("#user-dependents").adminDependents();
     $("#post-url-btn").on("click", function(e) {
         e.preventDefault();
@@ -1202,6 +1241,16 @@ jQuery(document).ready(function() {
     $(".registration-form select[name=type]").on("change", function(e) {
         var selected = $(this).find("option:selected").val();
         var form = $("#registration-form");
+        form.append($('<input type="hidden" name="no-validate" value="no-validate">'));
+        form.submit();
+        App.blockUI({
+            cenrerY: true,
+            animate: true
+        });
+    });
+    $(".movie-form #registration").on("change", function() {
+        var form = $(".movie-form"), validate = form.validate();
+        validate.destroy();
         form.append($('<input type="hidden" name="no-validate" value="no-validate">'));
         form.submit();
         App.blockUI({
@@ -2033,4 +2082,128 @@ function responsive_filemanager_callback(field_id) {
         return new SelectImage(options).init();
     };
     window.SelectImage = Plugin;
+})(window, jQuery);
+
+(function(window, $) {
+    var User = function(element, options) {
+        this.element = element;
+        this.$element = $(element);
+        this.options = options;
+        this.$modal = $("#user-modal");
+    };
+    User.prototype = {
+        defaults: {},
+        init: function() {
+            this.config = $.extend({}, this.defaults, this.options, this.$element.data());
+            var _that = this;
+            _that.$element.on("click", function(e) {
+                e.preventDefault();
+                _that.$modal.empty();
+                App.blockUI({
+                    cenrerY: true,
+                    animate: true
+                });
+                var data = {};
+                if (_that.config.userId) {
+                    data.id = _that.config.userId;
+                }
+                if (_that.config.hasOwnProperty("viewOnly")) {
+                    data.viewOnly = 1;
+                }
+                var request = $.ajax({
+                    type: "GET",
+                    url: urlUserModal,
+                    data: jQuery.param(data),
+                    dataType: "html"
+                });
+                request.done(function(content) {
+                    _that.$modal.html(content);
+                    _that.$modal.modal();
+                    _that.registerEvents();
+                    App.unblockUI();
+                });
+            });
+        },
+        registerEvents: function() {
+            var _that = this;
+            _that.$modal.find("#user-modal-paginator a").on("click", function(e) {
+                e.preventDefault();
+                var src = $(this).attr("href");
+                if (src == "#") {
+                    return;
+                }
+                App.blockUI({
+                    cenrerY: true,
+                    animate: true,
+                    target: _that.$modal
+                });
+                var request = $.ajax({
+                    type: "GET",
+                    url: src,
+                    dataType: "html"
+                });
+                request.done(function(content) {
+                    _that.$modal.html(content);
+                    _that.registerEvents();
+                    App.unblockUI();
+                });
+            });
+            var formSearch = _that.$modal.find(".user-search");
+            formSearch.find('button[type="submit"]').on("click", function(e) {
+                e.preventDefault();
+                App.blockUI({
+                    cenrerY: true,
+                    animate: true,
+                    target: _that.$modal
+                });
+                formSearch.append($('<input type="hidden" name="peform-filter"/>'));
+                var src = urlUserModal;
+                if (_that.config.userId) {
+                    src += "?id=" + _that.config.userId;
+                }
+                var request = $.ajax({
+                    type: "GET",
+                    url: src,
+                    data: formSearch.serialize(),
+                    dataType: "html"
+                });
+                request.done(function(content) {
+                    _that.$modal.html(content);
+                    _that.registerEvents();
+                    _that.resizeModal();
+                    App.unblockUI();
+                });
+            });
+            _that.$modal.find(".user-modal-select").on("click", function(e) {
+                e.preventDefault();
+                var el = $(this), name = el.data("name"), id = el.data("id");
+                if (_that.config.selectIdTo) {
+                    var selectIdTo = $(_that.config.selectIdTo);
+                    selectIdTo.val(id);
+                }
+                if (_that.config.selectNameTo) {
+                    var selectNameTo = $(_that.config.selectNameTo);
+                    selectNameTo.val(name);
+                }
+                _that.$element.data("user-id", id);
+                _that.$modal.modal("hide");
+                _that.$modal.on("hidden.bs.modal", function(e) {
+                    _that.$modal.empty();
+                    _that.$element.off();
+                    _that.$element.user();
+                });
+            });
+        },
+        resizeModal: function() {
+            var _that = this, newMargin = _that.$modal.height() / 2;
+            _that.$modal.css("margin-top", "-" + newMargin + "px");
+        }
+    };
+    User.defaults = User.prototype.defaults;
+    $.fn.user = function(options) {
+        return this.each(function() {
+            new User(this, options).init();
+        });
+    };
+    window.User = Plugin;
 })(window, jQuery);

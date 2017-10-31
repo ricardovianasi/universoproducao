@@ -11,6 +11,54 @@ class MovieForm extends AdminMovieForm
     {
         parent::__construct($entityManager, Options::STATUS_ENABLED, $registration);
 
+        $this->remove('events');
+        $this->remove('end_date_year');
+
+        $this->add([
+            'type' => 'MultiCheckbox',
+            'name' => 'events',
+            'options' => [
+                'label' => 'Autorizo a inscrição do filme para a seleção da',
+                'value_options' => $this->populateEvents()
+            ],
+            'attributes' => [
+                'required' => true
+            ]
+        ]);
+
+        $this->add([
+           'type' => 'select',
+           'name' => 'end_date_year',
+            'options' => [
+                'label' => 'Ano de finalização',
+                'value_options' => $this->populateEndDateYear(),
+                'empty_option' => 'Selecione'
+            ],
+            'attributes' => [
+                'required' => 'required',
+            ]
+        ]);
+
+        $this->add([
+            'type' => 'Checkbox',
+            'name' => 'accept_regulation',
+            'options' => array(
+                'label' => 'Eu li e estou de acordo com as condições descritas no regulamento de inscrições de filmes',
+                'use_hidden_element' => false,
+                'checked_value' => '1',
+                'unchecked_value' => '0'
+            ),
+            'attributes ' => [
+                'required' => true
+            ]
+        ]);
+
+        $this->get('cpb')->setAttribute('required', 'required');
+        $this->get('content_scenes')->setAttribute('required', 'required');
+        $this->get('conversations_languages')->setAttribute('required', 'required');
+        $this->get('subtitles_languages')->setAttribute('required', 'required');
+        $this->get('conversations_list_languages')->setAttribute('required', 'required');
+
         $ignoreElements = ['events','accept_regulation'];
         foreach ($this->getElements() as $key=>$element) {
             if(!in_array($key, $ignoreElements)) {
@@ -21,8 +69,12 @@ class MovieForm extends AdminMovieForm
             }
         }
 
+        $this->remove('author');
+        $this->remove('registration');
+
         $this->setAttributes([
-            'class' => 'form-horizontal movie-form'
+            'class' => 'form-horizontal movie-form',
+
         ]);
     }
 }

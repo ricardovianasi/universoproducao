@@ -156,6 +156,10 @@ jQuery(document).ready(function() {
 
     $('.admin-phone').adminPhone();
 
+    $('.user-modal').user();
+
+    $('.image-collection').imageCollection();
+
     $('#user-dependents').adminDependents();
 
     $('#post-url-btn').on('click', function(e) {
@@ -169,6 +173,21 @@ jQuery(document).ready(function() {
     $('.registration-form select[name=type]').on('change', function(e) {
         var selected = $(this).find('option:selected').val();
         var form  = $('#registration-form');
+
+        form.append($('<input type="hidden" name="no-validate" value="no-validate">'));
+        form.submit();
+
+        App.blockUI({
+            cenrerY: true,
+            animate: true
+        });
+    });
+
+    $('.movie-form #registration').on('change', function() {
+        var form = $('.movie-form'),
+            validate = form.validate();
+
+        validate.destroy();
 
         form.append($('<input type="hidden" name="no-validate" value="no-validate">'));
         form.submit();

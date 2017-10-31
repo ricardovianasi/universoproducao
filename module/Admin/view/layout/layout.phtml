@@ -97,6 +97,11 @@
 		<?php echo $this->partial('admin/footer'); ?>
 		<!-- END FOOTER -->
 
+        <div id="user-modal" class="modal container fade" tabindex="-1"></div>
+        <script type="text/javascript">
+            var urlUserModal="<?php echo $this->url('admin/default', ['controller'=>'user', 'action'=>'modal']); ?>";
+        </script>
+
 		<!--[if lt IE 9]>
 		<script src="<?php echo $this->adminTemplateBasePath('assets/global/plugins/respond.min.js'); ?>"></script>
 		<script src="<?php echo $this->adminTemplateBasePath('assets/global/plugins/excanvas.min.js'); ?>"></script>

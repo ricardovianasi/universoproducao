@@ -213,13 +213,16 @@
                         <?php echo $this->formRow($form->get('movie_password')) ?>
                         <?php echo $this->formRow($form->get('movie_divulgation')) ?>
 
-                        <div class="form-group <?php echo !empty($form->get("media_file_1")->getMessages()) ? "has-error" : ""; ?> ">
+                        <?php $mediaFieldsets = $form->get('medias')->getFieldsets(); ?>
+                        <?php $mediaFieldset = $mediaFieldsets[0];  ?>
+
+                        <div class="form-group <?php echo !empty($mediaFieldset->get("file")->getMessages()) ? "has-error" : ""; ?> ">
                             <label class="control-label col-md-4">Imagem</label>
                             <div class="col-md-6">
                                 <?php
                                 $mediaSrc = null;
-                                if($form->has("media_src_1")) {
-                                    $mediaSrc = $form->get("media_src_1")->getValue();
+                                if($mediaFieldset->has("src")) {
+                                    $mediaSrc = $mediaFieldset->get("src")->getValue();
                                 }
                                 ?>
                                 <div class="fileinput <?php echo $mediaSrc ? "fileinput-exists" : "fileinput-new" ?> " data-provides="fileinput">
@@ -232,17 +235,17 @@
                                         <span class="btn red btn-outline btn-file">
                                             <span class="fileinput-new"> Selecionar imagem </span>
                                             <span class="fileinput-exists"> Alterar </span>
-                                            <?php echo $this->formElement($form->get("media_file_1")); ?>
-                                            <?php echo $this->formElement($form->get("media_id_1")); ?>
-                                            <?php echo $this->formElement($form->get("media_src_1")); ?>
+                                            <?php echo $this->formElement($mediaFieldset->get("file")); ?>
+                                            <?php echo $this->formElement($mediaFieldset->get("id")); ?>
+                                            <?php echo $this->formElement($mediaFieldset->get("src")); ?>
                                         </span>
                                         <a href="javascript:;" class="btn red fileinput-exists" data-dismiss="fileinput"> Remover </a>
                                     </div>
-                                    <?php echo $this->formElement($form->get("media_caption_1")) ?>
+                                    <?php echo $this->formElement($mediaFieldset->get("caption")) ?>
                                     <p class="help-block">Formatos válidos: JPG ou PNG. Tamanho mínimo de 800KB e máximo de 2MB</p>
                                 </div>
-                                <?php echo $this->formElementErrors($form->get("media_file_1")); ?>
-                                <?php echo $this->formElementErrors($form->get("media_caption_1")); ?>
+                                <?php echo $this->formElementErrors($mediaFieldset->get("file")); ?>
+                                <?php echo $this->formElementErrors($mediaFieldset->get("caption")); ?>
                             </div>
                         </div>
                     </div>

@@ -41,7 +41,7 @@ class Movie extends AbstractEntity
     private $endDateMonth;
 
     /** @ORM\Column(name="production_coutry", type="string", nullable=true) */
-    private $productionCoutry = 'Brasil';
+    private $productionCountry = 'Brasil';
 
     /** @ORM\Column(name="production_state", type="string", nullable=true) */
     private $productionState;
@@ -130,14 +130,8 @@ class Movie extends AbstractEntity
     /** @ORM\OneToMany(targetEntity="Media", mappedBy="movie", cascade={"ALL"})  */
     private $medias;
 
-    /** @ORM\OneToMany(targetEntity="MovieEvent", mappedBy="movie", cascade={"ALL"}) */
-    private $events;
-
-    /**
-     * @ORM\OneToOne(targetEntity="Application\Entity\Registration\Registration")
-     * @ORM\JoinColumn(name="registration_id", referencedColumnName="id")
-     */
-    private $registration;
+    /** @ORM\OneToMany(targetEntity="MovieSubscription", mappedBy="movie", cascade={"ALL"}) */
+    private $subscriptions;
 
     /** @ORM\Column(name="co_production", type="string", nullable=true) */
     private $coProduction;
@@ -178,7 +172,7 @@ class Movie extends AbstractEntity
     public function __construct()
     {
         $this->medias = new ArrayCollection();
-        $this->events = new ArrayCollection();
+        $this->subscriptions = new ArrayCollection();
         $this->options = new ArrayCollection();
     }
 
@@ -291,17 +285,17 @@ class Movie extends AbstractEntity
     /**
      * @return mixed
      */
-    public function getProductionCoutry()
+    public function getProductionCountry()
     {
-        return $this->productionCoutry;
+        return $this->productionCountry;
     }
 
     /**
-     * @param mixed $productionCoutry
+     * @param mixed $productionCountry
      */
-    public function setProductionCoutry($productionCoutry)
+    public function setProductionCountry($productionCountry)
     {
-        $this->productionCoutry = $productionCoutry;
+        $this->productionCountry = $productionCountry;
     }
 
     /**
@@ -770,38 +764,6 @@ class Movie extends AbstractEntity
     /**
      * @return mixed
      */
-    public function getEvents()
-    {
-        return $this->events;
-    }
-
-    /**
-     * @param mixed $events
-     */
-    public function setEvents($events)
-    {
-        $this->events = $events;
-    }
-
-    /**
-     * @return Registration|null
-     */
-    public function getRegistration()
-    {
-        return $this->registration;
-    }
-
-    /**
-     * @param mixed $registration
-     */
-    public function setRegistration($registration)
-    {
-        $this->registration = $registration;
-    }
-
-    /**
-     * @return mixed
-     */
     public function getCoProduction()
     {
         return $this->coProduction;
@@ -995,21 +957,52 @@ class Movie extends AbstractEntity
         $this->hasConversationsListLanguages = $hasConversationsListLanguages;
     }
 
+    /**
+     * @return ArrayCollection
+     */
+    public function getSubscriptions()
+    {
+        return $this->subscriptions;
+    }
+
+    public function getSubscriptionByRegistrationEvent($regId, $eventId)
+    {
+        foreach ($this->getSubscriptions() as $sub) {
+            if($sub->getEvent() && $sub->getRegistration()) {
+                if($sub->getEvent()->getId() == $eventId
+                    && $sub->getRegistration()->getId() == $regId) {
+                    return $sub;
+                }
+            }
+        }
+
+        return null;
+    }
+
+    /**
+     * @param mixed $subscriptions
+     */
+    public function setSubscriptions($subscriptions)
+    {
+        $this->subscriptions = $subscriptions;
+    }
+
     public function getCategory()
     {
         if (!$this->duration) {
             return;
         }
-
+/*
         if ($this->getRegistration()) {
-            $durationCurtaTo = $this->getRegistration()->getOption(\Application\Entity\Registration\Options::MOVIE_DURATION_CURTA_TO);
+             = $this->getRegistration()->getOption(\Application\Entity\Registration\Options::MOVIE_DURATION_CURTA_TO);
 
             $durationMediaFrom = $this->getRegistration()->getOption(\Application\Entity\Registration\Options::MOVIE_DURATION_MEDIA_FROM);
-            $durationMediaTo = $this->getRegistration()->getOption(\Application\Entity\Registration\Options::MOVIE_DURATION_MEDIA_TO);
+             = $this->getRegistration()->getOption(\Application\Entity\Registration\Options::MOVIE_DURATION_MEDIA_TO);
 
-            $durationLongaFrom = $this->getRegistration()->getOption(\Application\Entity\Registration\Options::MOVIE_DURATION_LONGA_TO);
-        }
+             = $this->getRegistration()->getOption(\Application\Entity\Registration\Options::MOVIE_DURATION_LONGA_TO);
+        }*/
 
+        $durationCurtaTo = $durationMediaFrom = $durationMediaTo = $durationLongaFrom = null;
         if ($durationCurtaTo) {
             $durationCurtaTo = \DateTime::createFromFormat('H:i:s', $durationCurtaTo->getValue());
         } else {
@@ -1052,7 +1045,7 @@ class Movie extends AbstractEntity
     public function _toArray()
     {
         $eventsArray = [];
-        foreach ($this->getEvents() as $event) {
+        foreach ($this->getSubscriptions() as $event) {
             $eventsArray[] = $event->_toArray();
         }
 

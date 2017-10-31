@@ -11,7 +11,7 @@ use Util\Entity\AbstractEntity;
  * @ORM\Table(name="movie_events")
  * @ORM\Entity
  */
-class MovieEvent extends AbstractEntity
+class MovieSubscription extends AbstractEntity
 {
 	/**
 	 * @ORM\Id @ORM\Column(name="id", type="integer", nullable=false)
@@ -30,6 +30,12 @@ class MovieEvent extends AbstractEntity
      * @ORM\JoinColumn(name="event_id", referencedColumnName="id")
      */
     private $event;
+
+    /**
+     * @ORM\OneToOne(targetEntity="Application\Entity\Registration\Registration")
+     * @ORM\JoinColumn(name="registration_id", referencedColumnName="id")
+     */
+    private $registration;
 
     /** @ORM\Column(name="status", type="string", nullable=true) */
     private $status = MovieEventStatus::ON_EVALUATION;
@@ -96,6 +102,22 @@ class MovieEvent extends AbstractEntity
     public function setStatus($status)
     {
         $this->status = $status;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRegistration()
+    {
+        return $this->registration;
+    }
+
+    /**
+     * @param mixed $registration
+     */
+    public function setRegistration($registration)
+    {
+        $this->registration = $registration;
     }
 
     public function _toArray()

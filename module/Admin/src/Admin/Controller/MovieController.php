@@ -9,9 +9,16 @@ namespace Admin\Controller;
 
 use Admin\Form\Movie\MovieForm;
 use Admin\Form\Movie\MovieFormSearch;
+use Admin\Form\Movie\MovieSubscriptionForm;
+use Application\Entity\Event\Event;
+use Application\Entity\Movie\Media;
 use Application\Entity\Movie\Movie;
+use Application\Entity\Movie\MovieSubscription;
 use Application\Entity\Movie\Options;
+use Application\Entity\Registration\Registration;
 use Application\Entity\Registration\Status;
+use Application\Entity\User\User;
+use Doctrine\Common\Collections\ArrayCollection;
 
 class MovieController extends AbstractAdminController
 	implements CrudInterface, PostInterface
@@ -75,7 +82,7 @@ class MovieController extends AbstractAdminController
 
             //Events
             $events = [];
-            foreach ($obj->getEvents() as $e) {
+            foreach ($obj->getSubscriptions() as $e) {
                 $events[] = $e->getEvent()->getShortName().":".Status::get($e->getStatus());
             }
             $itemArray['events'] = implode(';', $events);
@@ -173,15 +180,20 @@ class MovieController extends AbstractAdminController
 
 	public function updateAction($id, $data)
 	{
-		$result = $this->persist($data, $id);
-		$result->setTemplate('admin/movie/create.phtml');
+		$return = $this->persist($data, $id);
+		/** @var Movie $movie */
+        $movie = $return->getVariable('movie');
 
-		return $result;
+        $movieSubscriptionForm = new MovieSubscriptionForm($movie);
+        $movieSubscriptionForm->setData(['subscriptions'=>$movie->getSubscriptions()]);
+        $return->subscriptionForm = $movieSubscriptionForm;
+
+        return $return;
 	}
 
 	public function deleteAction($id)
 	{
-        $op = $this->getRepository(Options::class)->find($id);
+        $op = $this->getRepository(Movie::class)->find($id);
         $this->getEntityManager()->remove($op);
         $this->getEntityManager()->flush();
 
@@ -192,40 +204,244 @@ class MovieController extends AbstractAdminController
 
 	public function persist($data, $id = null)
 	{
-		$form = new MovieForm($this->getEntityManager());
+        $form = new MovieForm($this->getEntityManager(), Options::STATUS_ENABLED);
 
-		if($id) {
-			$movie = $this->getRepository(Movie::class)->find($id);
-			$form->setRegistration($movie->getRegistration());
-		} else {
-			$movie = new Movie();
-		}
+        if($id) {
+            $movie = $this->getRepository(Movie::class)->find($id);
+        } else {
+            $movie = new Movie();
+        }
 
-		if($this->getRequest()->isPost()) {
-			$form->setData($data);
-			if($form->isValid()) {
-				$movie->setData($data);
-				$this->getEntityManager()->persist($movie);
-				$this->getEntityManager()->flush();
+        //Popula os eventos baseado nos regulamentos que selecionados
+        $registrationEvents = [];
+        if($this->getRequest()->isPost()) {
+            $registrationParam = $this->params()->fromPost('registration', []);
+            $eventsParam = $this->params()->fromPost('events', []);
+            foreach ($registrationParam as $subP) {
+                $reg = $this->getRepository(Registration::class)->find($subP);
+                if(key_exists($reg->getId(), $registrationEvents))
+                   continue;
 
-				if($id) {
-					$this->messages()->success("Filme atualizado com sucesso!");
-				} else {
-					$this->messages()->flashSuccess("Filme criado com sucesso!");
-					return $this->redirect()->toRoute('admin/default', [
-						'controller' => 'movie',
-						'action' => 'update',
-						'id' => $movie->getId()
-					]);
-				}
-			}
+                $events = [];
+                foreach ($reg->getEvents() as $e) {
+                    $events[] = [
+                        'id' => $e->getId(),
+                        'name' => $e->getShortName(),
+                        'selected' => isset($eventsParam[$reg->getId()][$e->getId()]) ? true : false
+                    ];
+                }
+                $registrationEvents[$reg->getId()] = [
+                    'name' => $reg->getName(),
+                    'events' => $events
+                ];
+
+            }
+        } elseif(count($movie->getSubscriptions())) {
+            foreach ($movie->getSubscriptions() as $sub) {
+
+                if(key_exists($sub->getRegistration()->getId(), $registrationEvents))
+                    continue;
+
+                $events = [];
+                foreach ($sub->getRegistration()->getEvents() as $e) {
+                    $events[] = [
+                        'id' => $e->getId(),
+                        'name' => $e->getShortName(),
+                        'selected' => $movie->getSubscriptionByRegistrationEvent($sub->getRegistration()->getId(), $e->getId()) ? true : false
+                    ];
+                }
+                $registrationEvents[$sub->getRegistration()->getId()] = [
+                    'name' => $sub->getRegistration()->getName(),
+                    'events' => $events
+                ];
+            }
+        }
+
+        $noValidate = $this->params()->fromPost('no-validate', false);
+
+        if($this->getRequest()->isPost()) {
+            $data = array_replace_recursive(
+                $this->getRequest()->getPost()->toArray(),
+                $this->getRequest()->getFiles()->toArray()
+            );
+            $form->setData($data);
+
+            if(!$noValidate) {
+                if($form->isValid()) {
+                    //Inscrições de filmes
+                    $subscriptionsToRemove = [];
+                    foreach ($movie->getSubscriptions() as $sub) {
+                        $subscriptionsToRemove[$sub->getId()] = $sub;
+                    }
+
+                    $subscriptions = new ArrayCollection();
+                    if(!empty($data['events'])) {
+                        foreach ($data['events'] as $regId => $events) {
+                            $registration = $this
+                                ->getRepository(Registration::class)
+                                ->find($regId);
+
+                            foreach ($events as $eventId=>$on) {
+                                $event = $this
+                                    ->getRepository(Event::class)
+                                    ->find($eventId);
+
+                                //if exist
+                                $sub = $movie->getSubscriptionByRegistrationEvent($regId, $eventId);
+                                if($sub) {
+                                   unset($subscriptionsToRemove[$sub->getId()]);
+                                } else {
+                                    $sub = new MovieSubscription();
+                                    $sub->setRegistration($registration);
+                                    $sub->setEvent($event);
+                                    $sub->setMovie($movie);
+                                }
+
+                                $subscriptions->add($sub);
+                            }
+                        }
+                    }
+                    $movie->setSubscriptions($subscriptions);
+                    foreach ($subscriptionsToRemove as $subRemove) {
+                        $this->getEntityManager()->remove($subRemove);
+                    }
+                    unset($data['events']);
+
+                    //Author
+                    $author = null;
+                    if(!empty($data['author'])) {
+                        $author = $this
+                            ->getRepository(User::class)
+                            ->find($data['author']);
+                    }
+                    $movie->setAuthor($author);
+                    unset($data['author']);
+
+                    //Options
+                    $options = new ArrayCollection();
+                    if(!empty($data['options'])) {
+                        foreach ($data['options'] as $opt) {
+                            if(!empty($opt)) {
+                                if(is_string($opt)) {
+                                    $optEntity = $this->getRepository(Options::class)->find($opt);
+                                    if($optEntity) {
+                                        $options->add($optEntity);
+                                    }
+                                } elseif(is_array($opt)) {
+                                    foreach ($opt as $oId) {
+                                        $optEntity = $this->getRepository(Options::class)->find($oId);
+                                        if($optEntity) {
+                                            $options->add($optEntity);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    $movie->setOptions($options);
+                    unset($data['options']);
+
+                    //Upload das fotos
+                    foreach ($movie->getMedias() as $m) {
+                        $this->getEntityManager()->remove($m);
+                    }
+                    $newMedias = new ArrayCollection();
+                    if(!empty($data['medias'])) {
+                        foreach ($data['medias'] as $me) {
+                            $media = new Media();
+                            $media->setMovie($movie);
+                            $media->setCredits($me['caption']);
+                            if(!empty($me['src'])) {
+                                $media->setSrc($me['src']);
+                            } elseif(!empty($me["file"])) {
+                                $mediaFile = $me["file"];
+                                if(!empty($mediaFile['name'])) {
+                                    $file = $this->fileManipulation()->moveToRepository($mediaFile);
+                                    $media->setSrc($file['new_name']);
+                                }
+                            }
+
+                            $newMedias->add($media);
+                        }
+                    }
+                    $movie->setMedias($newMedias);
+                    unset($data['medias']);
+
+                    $movie->setData($data);
+                    $this->getEntityManager()->persist($movie);
+                    $this->getEntityManager()->flush();
+
+                    if($id) {
+                        $this->messages()->success("Filme atualizado com sucesso!");
+                        $form->setData($movie->toArray());
+                    } else {
+                        $this->messages()->flashSuccess("Filme criado com sucesso!");
+                        return $this->redirect()->toRoute('admin/default', [
+                            'controller' => 'movie',
+                            'action' => 'update',
+                            'id' => $movie->getId()
+                        ]);
+                    }
+                }
+            }
 		} else {
 			$form->setData($movie->toArray());
 		}
 
 		return $this->getViewModel()->setVariables([
 			'form' => $form,
-			'movie' => $movie
+			'movie' => $movie,
+            'registrationEvents' => $registrationEvents
 		]);
 	}
+
+	public function movieSubscriptionsAction()
+    {
+        if($this->getRequest()->isPost()) {
+            $data = $this->getRequest()->getPost()->toArray();
+
+            $id = $this->params()->fromRoute('id');
+            $movie = $this->getRepository(Movie::class)->find($id);
+            if(!$movie) {
+                $this->messages()->flashError("Filme não encontrado!");
+                return $this->redirect()->toRoute('admin/default', [
+                    'controller' => 'movie',
+                    'action' => 'index'
+                ]);
+            }
+
+            foreach ($data['subscriptions'] as $subArray) {
+                /** @var MovieSubscription $sub */
+                $sub = $this->getRepository(MovieSubscription::class)->find($subArray['id']);
+                if(!$sub) {
+                    $this->messages()->flashError("Inscrições não encontrado!");
+                    return $this->redirect()->toRoute('admin/default', [
+                        'controller' => 'movie',
+                        'action' => 'update',
+                        'id' => $movie->getId()
+                    ]);
+                }
+
+                $sub->setData($subArray);
+                $this->getEntityManager()->persist($sub);
+
+            }
+
+            $this->getEntityManager()->flush();
+            $this->messages()->flashSuccess("Filme atualizado com sucesso!");
+            return $this->redirect()->toRoute('admin/default', [
+                'controller' => 'movie',
+                'action' => 'update',
+                'id' => $movie->getId()
+            ]);
+
+
+        } else {
+            return $this->redirect()->toRoute('admin/default', [
+                'controller' => 'movie',
+                'action' => 'index'
+            ]);
+        }
+
+    }
 }

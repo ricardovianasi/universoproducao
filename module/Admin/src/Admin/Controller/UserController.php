@@ -31,15 +31,16 @@ class UserController extends AbstractAdminController implements CrudInterface
 		$searchForm->setData($dataAttr);
 		$searchForm->isValid();
 
-		$users = $this->search(User::class, $searchForm->getData());
+		$users = $this->search(User::class, $searchForm->getData(), ['name'=>'DESC']);
 
 		$this->getViewModel()->setVariables([
 			'searchForm' => $searchForm,
-			'users' => $users
+			'users' => $users,
+            'searchData' => $dataAttr
 		]);
 
-		return $this->getViewModel();
-	}
+        return $this->getViewModel();
+    }
 
 	public function createAction($data)
 	{
@@ -271,5 +272,42 @@ class UserController extends AbstractAdminController implements CrudInterface
             'action' => 'update',
             'id' => $user->getId()
         ]);
+    }
+
+    public function modalAction()
+    {
+        $viewModel = $this->getViewModel();
+
+        $dataAttr = $this->params()->fromQuery();
+        $user = null;
+        if(!empty($dataAttr['id'])) {
+            $user = $this->getRepository(User::class)->find($dataAttr['id']);
+        }
+        unset($dataAttr['id']);
+
+        $users = [];
+        $searchForm = new UserSearch();
+        if(!isset($dataAttr['viewOnly'])) {
+            $searchForm->setData($dataAttr);
+            $searchForm->isValid();
+
+            if(!empty($dataAttr) || isset($dataAttr['peform-filter'])) {
+                $users = $this->search(User::class, $searchForm->getData(), ['name'=>'ASC'], false, 5);
+            }
+        }
+
+        $viewModel->setVariables([
+            'searchForm' => $searchForm,
+            'users' => $users,
+            'user' => $user,
+            'searchData' => $dataAttr,
+            'viewOnly' => isset($dataAttr['viewOnly'])
+        ]);
+
+
+        $viewModel->setTemplate(false);
+        $viewModel->setTerminal(true);
+
+        return $viewModel;
     }
 }

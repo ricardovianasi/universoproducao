@@ -439,7 +439,7 @@ abstract class AbstractAdminController extends AbstractController
 		return $data;
 	}
 
-	public function search($entity, $search=[], $orderby=[], $igonorePagination=false)
+	public function search($entity, $search=[], $orderby=[], $igonorePagination=false, $pageSize=null)
 	{
 		//Get order by annotation entity
 		$annotationReader = new AnnotationReader();
@@ -448,7 +448,7 @@ abstract class AbstractAdminController extends AbstractController
 		$entityOrderBy = !empty($entityOrderBy->value) ? $entityOrderBy->value : [];
 		$orderby = array_merge($entityOrderBy, $orderby);
 
-		return $this->getRepository($entity)->search($search, $orderby, $igonorePagination, $this->getCurrentPage());
+		return $this->getRepository($entity)->search($search, $orderby, $igonorePagination, $this->getCurrentPage(), $pageSize);
 	}
 
 	/**

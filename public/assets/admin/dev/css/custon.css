@@ -329,11 +329,6 @@
   padding-left: 15px;
 }
 
-/* line 2, ../../resources/sass/_fileinput.sass */
-.fileinput .fileinput-remove,
-.fileinput .fileinput-preview {
-  display: none;
-}
 /* line 8, ../../resources/sass/_fileinput.sass */
 .fileinput.fileinput-exist .fileinput-remove,
 .fileinput.fileinput-exist .fileinput-preview {

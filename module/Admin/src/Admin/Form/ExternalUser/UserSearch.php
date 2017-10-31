@@ -9,6 +9,7 @@
 namespace Admin\Form\ExternalUser;
 
 use Zend\Form\Element\Text;
+use Zend\Form\Element\Textarea;
 use Zend\Form\Form;
 
 class UserSearch extends Form
@@ -19,8 +20,12 @@ class UserSearch extends Form
 
 		$this->setAttributes([
 			'id' => 'user-search',
+			'class' => 'user-search',
 			'method' => 'GET'
 		]);
+
+		$id = new Textarea('id');
+		$this->add($id);
 
 		$identifier = new Text('identifier');
 		$identifier->setLabel('CPF, CNPJ ou PASSAPORTE')
