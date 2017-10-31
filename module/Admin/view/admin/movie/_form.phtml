@@ -207,13 +207,15 @@
                                     ?>
                                     <div class="fileinput <?php echo $mediaSrc ? "fileinput-exists" : "fileinput-new" ?>" data-provides="fileinput" style="display: block">
                                         <div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">
-                                            <?php if($mediaSrc):  ?>
-                                                <img src="<?php echo $this->fileManipulation()->url($mediaSrc); ?>" alt="">
-                                            <?php else: ?>
+                                            <?php if(!$mediaSrc):  ?>
                                                 <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image" alt="" />
                                             <?php endif; ?>
                                         </div>
-                                        <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"> </div>
+                                        <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;">
+                                            <?php if($mediaSrc): ?>
+                                                <img src="<?php echo $this->fileManipulation()->url($mediaSrc); ?>" alt="">
+                                            <?php endif; ?>
+                                        </div>
                                         <div>
                                             <span class="btn default btn-file">
                                                 <span class="fileinput-new"> Selecionar imagem </span>
