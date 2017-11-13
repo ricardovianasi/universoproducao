@@ -35,10 +35,10 @@
 								<div class="form-group">
 									<label class="control-label">Imagem</label>
 									<div class="input-group ">
-										<div class="fileinput <?php echo $this->banner->getMeta('_image') ? "fileinput-exist" : ""; ?>">
-											<div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">
+										<div class="fileinput <?php echo $this->banner->getMeta('_image') ? "fileinput-exist" : "fileinput-new"; ?>">
+											<div class="fileinput-new thumbnail " style="width: 200px; height: 150px;">
 												<img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image" alt="" /> </div>
-											<div class="fileinput-preview thumbnail" style="max-width: 200px; max-height: 150px;">
+											<div class="fileinput-preview fileinput-exists thumbnail select-image-container" style="max-width: 200px; max-height: 150px;">
 												<?php if($this->banner->getMeta('_image')): ?>
 													<img width="100%" src="<?php echo $this->banner->getMeta('_image') ?>" alt="" />
 												<?php endif; ?>

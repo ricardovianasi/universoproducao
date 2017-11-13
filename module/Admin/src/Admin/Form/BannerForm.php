@@ -24,7 +24,8 @@ class BannerForm extends Form
             'name' => 'meta['.PostMeta::IMAGE.']',
             'type' => 'hidden',
             'attributes' => [
-                'id' => 'file'
+                'id' => 'file',
+                'class' => 'select-image-input'
             ],
         ]);
 

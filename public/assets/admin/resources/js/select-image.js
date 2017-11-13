@@ -13,8 +13,8 @@
 		init: function() {
 			this.config = $.extend({}, this.defaults, this.options);
 			var _that = this;
-			console.log($(_that.config.container));
 			$(_that.config.inputTarget).on('change', function(e) {
+				console.log($(this).val());
 				if($(this).val()) {
 					var img = $("<img width='100%' height='200px' src='"+$(this).val()+"'>");
 					$(_that.config.imgContainerTarget).empty().append(img);

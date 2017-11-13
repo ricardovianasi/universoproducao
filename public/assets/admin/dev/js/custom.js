@@ -900,6 +900,7 @@ jQuery(document).ready(function() {
             var _that = this;
             console.log(this.$element);
             _that.$element.find("#file").on("change", function() {
+                console.log("bla");
                 if ($(this).val()) {
                     _that.$element.addClass("fileinput-exist");
                     var img = $("<img width='100%' src='" + $(this).val() + "'>");
@@ -1585,7 +1586,9 @@ function copyToClipboard(elem) {
 })(window, jQuery);
 
 function responsive_filemanager_callback(field_id) {
+    console.log("responsive_filemanager_callback " + field_id);
     var field = $("#" + field_id);
+    console.log(field);
     field.trigger("change");
     return;
 }
@@ -2151,8 +2154,8 @@ function responsive_filemanager_callback(field_id) {
         init: function() {
             this.config = $.extend({}, this.defaults, this.options);
             var _that = this;
-            console.log($(_that.config.container));
             $(_that.config.inputTarget).on("change", function(e) {
+                console.log($(this).val());
                 if ($(this).val()) {
                     var img = $("<img width='100%' height='200px' src='" + $(this).val() + "'>");
                     $(_that.config.imgContainerTarget).empty().append(img);

@@ -14,6 +14,7 @@
 			console.log(this.$element);
 
 			_that.$element.find("#file").on("change", function() {
+				console.log('bla');
 				if($(this).val()) {
 					_that.$element.addClass("fileinput-exist");
 

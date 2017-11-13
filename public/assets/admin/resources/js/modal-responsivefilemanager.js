@@ -55,7 +55,9 @@
 })(window, jQuery);
 
 function responsive_filemanager_callback(field_id) {
-	var field = $("#"+field_id);
-	field.trigger('change');
-	return;
+    console.log('responsive_filemanager_callback ' + field_id);
+    var field = $("#"+field_id);
+    console.log(field);
+    field.trigger('change');
+    return;
 }
