@@ -152,7 +152,7 @@ jQuery(document).ready(function() {
 
     $('div#admin-menu').menu();
 
-    $('.fileinput').fileInput();
+    $('.fileinput2').fileInput();
 
     $('.list-actions').listActions();
 

@@ -1318,7 +1318,7 @@ jQuery(document).ready(function() {
     $(".responsivefilemanager").modalResponsiveFileManager();
     $(".page-gallery").banner();
     $("div#admin-menu").menu();
-    $(".fileinput").fileInput();
+    $(".fileinput2").fileInput();
     $(".list-actions").listActions();
     $(".admin-phone").adminPhone();
     $(".user-modal").user();
