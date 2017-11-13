@@ -154,6 +154,8 @@ jQuery(document).ready(function() {
 
     $('.fileinput').fileInput();
 
+    $('.list-actions').listActions();
+
     $('.admin-phone').adminPhone();
 
     $('.user-modal').user();
