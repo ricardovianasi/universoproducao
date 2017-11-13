@@ -20,7 +20,8 @@ class MovieFormSearch extends Form
         parent::__construct('movie-form-search');
         $this->setAttributes([
             'method' => 'GET',
-            'id' => 'movie-form-search'
+            'id' => 'movie-form-search',
+            'class' => 'enable-validators'
         ]);
 
         $this->add([
@@ -79,7 +80,8 @@ class MovieFormSearch extends Form
                 'value_options' => $this->populateEvents()
             ],
             'attributes' => [
-                'class' => 'input-sm'
+                'class' => 'input-sm',
+                'data-label' => 'Evento'
             ]
         ]);
 
@@ -91,7 +93,8 @@ class MovieFormSearch extends Form
                 'value_options' => Status::toArray()
             ],
             'attributes' => [
-                'class' => 'input-sm'
+                'class' => 'input-sm',
+                'data-label' => 'Status'
             ]
         ]);
 

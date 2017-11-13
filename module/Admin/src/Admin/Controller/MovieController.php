@@ -40,7 +40,8 @@ class MovieController extends AbstractAdminController
         $this->getViewModel()->setVariables([
             'items' => $items,
             'searchForm' => $searchForm,
-            'searchData' => $dataAttr
+            'searchData' => $dataAttr,
+            'isFiltered' => !empty($data) ? true : false
         ]);
 
         return $this->getViewModel();
