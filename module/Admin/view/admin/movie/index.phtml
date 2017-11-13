@@ -33,7 +33,6 @@
 			</div>
 
 			<div class="portlet-body">
-
                 <div class="portlet light bordered">
                     <div class="portlet-body">
                         <div class="row">
@@ -44,17 +43,30 @@
                     </div>
                 </div>
 
-				<div class="table-container post-list">
+				<div class="table-container post-list list-actions"
+                     data-total="<?php echo $this->items->getTotalItemCount(); ?>"
+                     data-form="#movie-form-search">
+
+                    <?php
+                        $urlStatusAction = $this->url('admin/default', [
+                            'controller' => 'movie',
+                            'action' => 'modal-status'
+                        ]);
+                    ?>
 
                     <div class="row">
-                        <div class="col-md-12 col-sm-12 margin-bottom-10"><div class="table-group-actions pull-right">
-                            <span></span>
-                            <select class="table-group-action-input form-control input-inline input-small input-sm">
-                                <option value="">Selecione...</option>
-                            </select>
-                            <button class="btn btn-sm btn-default table-group-action-submit">
-                                <i class="fa fa-check"></i> Enviar</button>
-                        </div></div>
+                        <div class="col-md-12 col-sm-12 margin-bottom-10">
+                            <div class="table-group-actions pull-right">
+                                <span class="list-actions-selected"></span>
+                                <select class="table-group-action-input form-control input-inline input-sm list-actions-options">
+                                    <option value="">Selecione uma ação...</option>
+                                    <option data-required-fields="status;events" data-url="<?php echo $urlStatusAction ?>">Alterar status</option>
+                                    <option>Enviar comunicados</option>
+                                </select>
+                                <button class="btn btn-sm btn-default table-group-action-submit list-actions-submit">
+                                    <i class="fa fa-check"></i> Processar</button>
+                            </div>
+                        </div>
                     </div>
 
 					<table class="table table-striped table-bordered table-hover">
@@ -71,7 +83,7 @@
 								<th width="10%">Ações</th>
 							</tr>
                             <tr role="row" class="filter">
-                                <td><input type="checkbox" class="icheck" name="id_all" value=""></td>
+                                <td><input type="checkbox" class="icheck select-all" name="id_select_all" value=""></td>
                                 <td>
                                     <div class="margin-bottom-5">
                                         <?php echo $this->formelement($form->get('id_from')); ?>
@@ -84,7 +96,7 @@
                                     <?php echo $this->formelement($form->get('durationEnd')); ?>
                                 </td>
                                 <td>
-                                    <div class="margin-bottom-5"><?php echo $this->formelement($form->get('events')); ?></div>
+                                    <div class="margin-bottom-5"><?php echo $this->formElement($form->get('events')); ?></div>
                                     <?php echo $this->formelement($form->get('status')); ?>
                                 </td>
                                 <td>
@@ -130,7 +142,7 @@
 							]);
 							?>
 							<tr>
-                                <td><input type="checkbox" class="icheck" name="id[]" value=""></td>
+                                <td><input type="checkbox" class="icheck" name="id[]" value="<?php echo $item->getId() ?>"></td>
 								<td><?php echo $item->getId() ?></td>
 								<td><a href="<?php echo $updateUrl; ?>"><?php echo $item->getTitle(); ?></a></td>
                                 <td>
