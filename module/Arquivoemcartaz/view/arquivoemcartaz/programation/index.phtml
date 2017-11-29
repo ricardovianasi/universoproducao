@@ -703,7 +703,7 @@
                 if ($dataFinal == '04/12' && $horario == '19h30') {
                     $limitCurta = 6;
                 }elseif ($dataFinal == '05/12' && $horario == '15h'){
-                    $limitCurta = 13;
+                    $limitCurta = 12;
                 }elseif ($dataFinal == '06/12' && $horario == '14h'){
                     $limitCurta = 1;
                 }elseif ($dataFinal == '06/12' && $horario == '15h'){
@@ -754,10 +754,10 @@
 
                     <th valign="top">
                         <h5>
-                            <?php if(($rowProg->CodItemProg == 20757 && $dataFinal="13/11") || ($rowProg->CodItemProg == 20756 && $dataFinal="14/11")){$horaAnterior = ""; $localAnterior="";}?>
+                            <?php if(($rowProg->CodItemProg == 20757 && $dataFinal="13/11") || ($rowProg->CodItemProg == 21357 && $dataFinal="09/12") || $rowProg->CodItemProg == 21339 || $rowProg->CodItemProg == 21356 || $rowProg->CodItemProg == 21358 || $rowProg->CodItemProg == 21359){$horaAnterior = ""; $localAnterior="";}?>
                             <?php if (($horaAnterior != $horario || $localAnterior != $local) || $rowProg->CategoriaProg == "EN"  ) { ?>
 
-                                <?php if ($rowProg->CodItemProg != 18177) { ?>
+                                <?php if ($rowProg->CodItemProg != 18177 || $rowProg->CodItemProg == 21356 || $rowProg->CodItemProg == 21358 || $rowProg->CodItemProg == 21359) { ?>
                                     <?php echo $horarioImp?><?php echo $horarioFimImp?>
                                 <?php } ?>
                                 <?php
@@ -767,7 +767,7 @@
                         </h5>
                         <span style="font-size: 9px;">
 
-                        <?php if (($horaAnterior != $horario || $localAnterior != $local) || $rowProg->CodItemProg == 71 || $rowProg->CategoriaProg == "EN") { ?>
+                        <?php if (($horaAnterior != $horario || $localAnterior != $local) || $rowProg->CodItemProg == 21357 || $rowProg->CodItemProg == 21339 || $rowProg->CategoriaProg == "EN") { ?>
                             <?php if ($rowProg->CodItemProg != 18177) { ?>
                                 <?php echo $localImp?>
                             <?php } ?>
@@ -777,7 +777,7 @@
 
                     <td valign="top">
 
-                        <?php //echo "contCurta: " . $countCurta . " | limiteCurta: " . $limitCurta . " | horaAnterior: $horaAnterior | horario: $horario | LocalAnterior: $localAnterior | Local: $local | CodProg: $rowProg->CodItemProg "; ?>
+                        <?php echo "contCurta: " . $countCurta . " | limiteCurta: " . $limitCurta . " | horaAnterior: $horaAnterior | horario: $horario | LocalAnterior: $localAnterior | Local: $local | CodProg: $rowProg->CodItemProg "; ?>
                         <?php if($cat == "Sessão de Curtas")
                         { echo "<a name='curta'></a>";
                         }?>
@@ -831,9 +831,22 @@
                                             $pe = "";
                                         }
 
-                                        if($rowProg->CodItemProg == 20747 && $horario == "12h30" ){$categoria="FILME • CURTAS E MÉDIA";}
-                                        elseif($rowProg->CodItemProg == 20746 && $horario == "12h30" ){$categoria="";}
-                                        elseif($rowProg->CodItemProg == 20754 && $horario == "17h" ){$categoria="FILME • HOMENAGEM • MEDIA";}
+                                        if($rowProg->CodItemProg == 21209 && $horario == "15h" ){
+                                            $categoria="";
+                                        } elseif($rowProg->CodItemProg == 21211 && $horario == "15h" ){
+                                            $categoria="";
+                                        } elseif($rowProg->CodItemProg == 19087 && $horario == "15h" ){
+                                            $categoria="";
+                                        } elseif($rowProg->CodItemProg == 21220 && $horario == "15h" ){
+                                            $categoria="";
+                                        }
+                                        elseif($rowProg->CodItemProg == 21303 && $horario == "15h" ){
+                                            $categoria="";
+                                        } elseif($rowProg->CodItemProg == 19190 && $horario == "15h" ){
+                                            $categoria="";
+                                        } elseif($rowProg->CodItemProg == 21325 && $horario == "19h30" ){
+                                            $categoria="";
+                                        }
                                         ?>
 
                                         <a href="<?php echo !empty($url)&&is_string($url) ? $url : "" ?>"><?php echo $categoria; ?> <?php echo $pe;?>
