@@ -70,10 +70,10 @@
         <div class="footer__wrapper">
             <div class="footer__newsletter">
                 <p class="footer__title">Receba nossos informativos</p>
-                <form action="#<?php /*echo $this->url("arquivoemcartaz/newsletter"); */?>" class="form newsletter__form">
-                    <input type="text" class="form__input newsletter__input" placeholder="Nome">
-                    <input type="text" class="form__input newsletter__input" placeholder="Email">
-                    <button onclick="javascript:alert('Erro. Não foi possível fazer o cadastro.')" href="" class="form__submit newsletter__button">Cadastrar</button>
+                <form action="<?php echo $this->url("arquivoemcartaz/newsletter"); ?>" class="form newsletter__form">
+                    <input type="text" class="form__input newsletter__input" placeholder="Nome" required>
+                    <input type="email" class="form__input newsletter__input" placeholder="Email" required>
+                    <button type="submit" class="form__submit newsletter__button">Cadastrar</button>
                 </form>
             </div>
             <div class="footer__contact">
