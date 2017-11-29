@@ -712,7 +712,7 @@
                     $limitCurta = 11;
                 }elseif ($dataFinal == '07/12' && $horario == '14h'){
                     $limitCurta = 1;
-                }elseif ($dataFinal == '07/12' && $horario == '15h' && $rowProg->CodItemProg == 18938){
+                }elseif ($dataFinal == '07/12' && $horario == '15h'){
                     $limitCurta = 4;
                 }elseif ($dataFinal == '07/12' && $horario == '16h30'){
                     $limitCurta = 8;
@@ -777,7 +777,7 @@
 
                     <td valign="top">
 
-                        <?php echo "contCurta: " . $countCurta . " | limiteCurta: " . $limitCurta . " | horaAnterior: $horaAnterior | horario: $horario | LocalAnterior: $localAnterior | Local: $local | CodProg: $rowProg->CodItemProg "; ?>
+                        <?php //echo "contCurta: " . $countCurta . " | limiteCurta: " . $limitCurta . " | horaAnterior: $horaAnterior | horario: $horario | LocalAnterior: $localAnterior | Local: $local | CodProg: $rowProg->CodItemProg "; ?>
                         <?php if($cat == "Sessão de Curtas")
                         { echo "<a name='curta'></a>";
                         }?>
@@ -842,7 +842,7 @@
                                         }
                                         elseif($rowProg->CodItemProg == 21303 && $horario == "15h" ){
                                             $categoria="";
-                                        } elseif($rowProg->CodItemProg == 19190 && $horario == "15h" ){
+                                        } elseif($rowProg->CodItemProg == 18938 && $horario == "15h" ){
                                             $categoria="";
                                         } elseif($rowProg->CodItemProg == 21325 && $horario == "19h30" ){
                                             $categoria="";

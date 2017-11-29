@@ -1,9 +1,3 @@
-<?php if($post->hasMeta('_cover')): ?>
-    <div class="site__cover">
-        <img src="<?php echo $post->getMeta('_cover') ?>" alt="">
-    </div>
-<?php endif; ?>
-
 <?php if($this->breadcrumbs): ?>
     <?php echo $this->partial('arquivoemcartaz/partials/_breadcrumbs.phtml', ['breadcrumbs'=>$this->breadcrumbs]); ?>
 <?php endif; ?>
