@@ -5,7 +5,7 @@
   position: relative
   +box-sizing(border-box)
   display: inline-block
-  z-index: 100
+
 
   &-left,
   &-right
@@ -67,6 +67,7 @@
       +leader(1.5)
 
 .mainmenu-active
+  overflow-y: auto !important
   .header
     &-left
       .brand
@@ -117,8 +118,14 @@
       text-align: center
 
     .header-right
+      .menu
+        +trailer(0)
+        +leader(0)
+
       .search
         float: left
+        +trailer(0)
+        +leader(0)
 
     .header-left
       .brand
