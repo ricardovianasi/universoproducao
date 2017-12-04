@@ -106,8 +106,10 @@
     .search-form
       display: none
 
-+media("<600px")
++media("<500px")
   .header
+    padding-left: 16px
+    padding-right: 16px
     .header-left,
     .header-right
       width: 100%
@@ -116,5 +118,9 @@
     .header-right
       .search
         float: left
+
+    .header-left
+      .brand
+        +trailer(0)
       
         

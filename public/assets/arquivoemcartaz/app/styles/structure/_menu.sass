@@ -64,8 +64,6 @@
           &:before
             background: none
 
-
-
   &-link
     +adjust-font-size-to(36px, 2)
     font-weight: 800
@@ -89,3 +87,14 @@
     opacity: 1
     visibility: visible
     height: 100%
+
++media("<500px")
+  .mainmenu
+    &__wrapper
+      +padding-leader(8)
+      padding-right: 16px
+      padding-left: 16px
+      text-align: center
+
+    &-link
+      +adjust-font-size-to(24px, 1.5)
