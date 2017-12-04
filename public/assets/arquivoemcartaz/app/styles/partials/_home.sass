@@ -459,12 +459,10 @@
         +adjust-font-size-to(36px)
 
     .news
-      .news__item--highlight
+      .news__item--highlight, .news__item
         .news__item-figure,
         .news__item-content
-          width: 100%
-      .news__item
-        width: 100%
+          width: 100% !important
 
     .programation
       .programation__item--highlight
@@ -503,8 +501,11 @@
     .news__item-figure,
     .news__item-content
       width: 100%
-    .news-item
-      display: block
-      margin-right: 0
-      margin-left: 0
-      width: 100% !important
+    .news__item--highlight, .news__item
+      .news__item-figure,
+      .news__item-content
+        width: 100% !important
+        display: block
+        margin-right: 0
+        margin-left: 0
+        width: 100% !important
