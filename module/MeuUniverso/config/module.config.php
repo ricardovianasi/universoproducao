@@ -91,6 +91,19 @@ return array(
                                 'action' => 'index',
                             ),
                         ),
+                    ),
+                    'workshop' => array(
+                        'type'    => 'Segment',
+                        'options' => array(
+                            'route'    => '/oficina/:id_reg/:action[/:id]',
+                            'constraints' => array(
+                                'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
+                            ),
+                            'defaults' => array(
+                                'controller' => Controller\MovieRegistrationController::class,
+                                'action' => 'index',
+                            ),
+                        ),
                     )
                 )
             )

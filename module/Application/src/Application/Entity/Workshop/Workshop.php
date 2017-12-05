@@ -43,6 +43,9 @@ class Workshop extends AbstractEntity
     /** @ORM\Column(name="available_subscriptions", type="integer", nullable=true) */
     private $availableSubscriptions;
 
+    /** @ORM\Column(name="maximum_subscriptions", type="integer", nullable=true) */
+    private $maximumSubscriptions;
+
     /** @ORM\Column(name="description", type="text", nullable=true) */
     private $description;
 
@@ -145,6 +148,9 @@ class Workshop extends AbstractEntity
      */
     public function setDuration($duration)
     {
+        if(is_string($duration)) {
+            $duration = \DateTime::createFromFormat('H:i:s', $duration);
+        }
         $this->duration = $duration;
     }
 
@@ -218,5 +224,26 @@ class Workshop extends AbstractEntity
     public function getRegistration()
     {
         return $this->registration;
+    }
+
+    public function setRegistration($reg)
+    {
+        $this->registration = $reg;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMaximumSubscriptions()
+    {
+        return $this->maximumSubscriptions;
+    }
+
+    /**
+     * @param mixed $maximumSubscriptions
+     */
+    public function setMaximumSubscriptions($maximumSubscriptions)
+    {
+        $this->maximumSubscriptions = $maximumSubscriptions;
     }
 }

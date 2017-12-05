@@ -32,11 +32,17 @@
                     <p><a class="registration-link" data-fancybox data-src="#regulation-<?php echo $reg->getId(); ?>" href="javascript:;">Confira o regulamento</a></p>
 
                     <?php if($reg->isOpen()): ?>
-
                         <?php
                             $url = "#";
-                            if($reg->getType() == \Application\Entity\Registration\Type::MOVIE) {
-                                $url = $this->url('meu-universo/movie', ['id_reg'=>$reg->getHash(), 'action'=>'novo']);
+                            switch ($reg->getType()) {
+                                case \Application\Entity\Registration\Type::MOVIE:
+                                    $url = $this->url('meu-universo/movie', ['id_reg'=>$reg->getHash(), 'action'=>'novo']);
+                                    break;
+
+                                case \Application\Entity\Registration\Type::WORKSHOP:
+                                    $url = $this->url('meu-universo/workshop', ['id_reg'=>$reg->getHash(), 'action'=>'inscricao']);
+                                    break;
+
                             }
                         ?>
                         <p><a href="<?php echo $url ?>" class="registration-btn submit">Fazer inscrição</a></p>

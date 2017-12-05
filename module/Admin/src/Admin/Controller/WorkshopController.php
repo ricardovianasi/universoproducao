@@ -5,6 +5,7 @@ use Admin\Form\Workshop\ManagerForm;
 use Admin\Form\Workshop\WorkshopForm;
 use Admin\Form\Workshop\WorkshopSearchForm;
 use Application\Entity\City;
+use Application\Entity\Registration\Registration;
 use Application\Entity\Workshop\Manager;
 use Application\Entity\Workshop\Workshop;
 
@@ -60,15 +61,30 @@ class WorkshopController extends AbstractAdminController implements CrudInterfac
 		$form = new WorkshopForm($this->getEntityManager());
 
 		if($id) {
-			$workshop = $this->getRepository(Manager::class)->find($id);
+			$workshop = $this->getRepository(Workshop::class)->find($id);
 		} else {
-			$workshop = new Manager();
+			$workshop = new Workshop();
 		}
 
 		if($this->getRequest()->isPost()) {
 			$form->setData($data);
 			if($form->isValid()) {
-				$workshop->setData($data);
+
+				$manager = null;
+				if(!empty($data['manager'])) {
+				    $manager = $this->getRepository(Manager::class)->find($data['manager']);
+                }
+                $workshop->setManager($manager);
+				unset($data['manager']);
+
+                $registration = null;
+                if(!empty($data['registration'])) {
+                    $registration = $this->getRepository(Registration::class)->find($data['registration']);
+                }
+                $workshop->setRegistration($registration);
+                unset($data['registration']);
+
+                $workshop->setData($data);
 
 				$this->getEntityManager()->persist($workshop);
 				$this->getEntityManager()->flush();
