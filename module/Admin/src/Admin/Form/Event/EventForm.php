@@ -108,6 +108,25 @@ class EventForm extends Form
 
 		]);
 
+        $this->add([
+            'name' => 'default',
+            'type' => 'select',
+            'options' => [
+                'label' => 'Evento padrão',
+                'column-size' => 'md-3',
+                'twb-layout' => 'horizontal',
+                'label_attributes' => [
+                    'class' => 'col-md-3'
+                ],
+                'value_options' => [
+                    '1' => 'Sim',
+                    '0' => 'Não'
+                ],
+                'empty_option' => 'Selecione',
+
+            ],
+        ]);
+
 		$this->add([
 			'name' => 'description',
 			'type' => Tinymce::class,

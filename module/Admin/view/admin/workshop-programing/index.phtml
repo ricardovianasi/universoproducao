@@ -1,0 +1,39 @@
+<div class="row">
+	<div class="col-md-12">
+		<div class="portlet light portlet-fit portlet-datatable bordered">
+			<div class="portlet-title">
+				<div class="caption">
+					<i class="fa fa-th-list"></i>
+					Programação de Oficinas
+				</div>
+				<div class="actions">
+					<a href="<?php echo $this->url('admin/default', ['controller' => 'workshop-programing', 'action'=>'create']); ?>"
+					   class="btn blue btn-lg">
+						<i class="fa fa-plus"></i>
+						<span class="hidden-xs"> Cadastrar horário</span>
+					</a>
+					<div class="btn-group">
+						<a class="btn btn-default dropdown-toggle" href="javascript:;" data-toggle="dropdown">
+							<i class="fa fa-share"></i>
+							<span class="hidden-xs"> Opções </span>
+							<i class="fa fa-angle-down"></i>
+						</a>
+						<div class="dropdown-menu pull-right">
+							<li><a href="javascript:;"> Exportar para Excel </a></li>
+							<li><a href="javascript:;"> Exportar para PDF </a></li>
+							<li class="divider"></li>
+							<li><a href="javascript:;"> Imprimir </a></li>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="portlet-body">
+                <?php echo $this->partial('admin/workshop-programing/_programing-list.phtml', [
+                    'searchForm' => $this->searchForm,
+                    'items' => $this->items
+                ]); ?>
+			</div>
+		</div>
+	</div>
+</div>

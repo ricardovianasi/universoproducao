@@ -2,6 +2,7 @@
 namespace Admin\Controller;
 
 use Admin\Form\PostForm;
+use Application\Entity\Event\Event;
 use Application\Entity\Post\Post;
 use Application\Entity\Post\PostMeta;
 use Application\Entity\Post\PostSite;
@@ -618,5 +619,15 @@ abstract class AbstractAdminController extends AbstractController
             }
         }
         return $result;
+    }
+
+    /**
+     * @return null|Event
+     */
+    public function getDefaultEvent()
+    {
+        return $this->getRepository(Event::class)->findOneBy([
+            'default' => 1
+        ]);
     }
 }

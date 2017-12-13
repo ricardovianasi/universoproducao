@@ -59,6 +59,18 @@ return [
                         'controller' => 'workshop',
                         'icon' => 'icon-doc',
                     ],
+                    [
+                        'label' => 'Programação',
+                        'route' => 'admin/default',
+                        'controller' => 'workshop-programing',
+                        'icon' => 'icon-doc',
+                    ],
+                    [
+                        'label' => 'Inscrições',
+                        'route' => 'admin/default',
+                        'controller' => 'workshop-registrations',
+                        'icon' => 'icon-doc',
+                    ],
                 ]
             ],
 			[

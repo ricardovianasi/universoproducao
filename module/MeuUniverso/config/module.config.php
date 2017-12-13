@@ -100,7 +100,7 @@ return array(
                                 'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
                             ),
                             'defaults' => array(
-                                'controller' => Controller\MovieRegistrationController::class,
+                                'controller' => Controller\WorkshopRegistrationController::class,
                                 'action' => 'index',
                             ),
                         ),

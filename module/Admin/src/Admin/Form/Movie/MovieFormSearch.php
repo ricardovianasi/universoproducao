@@ -33,6 +33,11 @@ class MovieFormSearch extends Form
         ]);
 
         $this->add([
+            'name' => 'selected',
+            'type' => 'hidden'
+        ]);
+
+        $this->add([
             'name' => 'id_from',
             'attributes' => [
                 'class' => 'input-sm',
@@ -81,7 +86,8 @@ class MovieFormSearch extends Form
             ],
             'attributes' => [
                 'class' => 'input-sm',
-                'data-label' => 'Evento'
+                'data-label' => 'Evento',
+                'id' => 'event'
             ]
         ]);
 

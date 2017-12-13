@@ -1,6 +1,7 @@
 <?php
 namespace Admin\Controller;
 
+use Admin\Form\Programing\ProgramingForm;
 use Admin\Form\Workshop\ManagerForm;
 use Admin\Form\Workshop\WorkshopForm;
 use Admin\Form\Workshop\WorkshopSearchForm;
@@ -13,7 +14,7 @@ class WorkshopController extends AbstractAdminController implements CrudInterfac
 {
 	public function indexAction()
 	{
-        $searchForm = new WorkshopSearchForm($this->getEntityManager());
+        $searchForm = new WorkshopSearchForm($this->getEntityManager(), $this->getDefaultEvent());
         $dataAttr = $this->params()->fromQuery();
         $searchForm->setData($dataAttr);
 
@@ -41,7 +42,7 @@ class WorkshopController extends AbstractAdminController implements CrudInterfac
 	public function updateAction($id, $data)
 	{
 		$result = $this->persist($data, $id);
-		$result->setTemplate('admin/workshop/create.phtml');
+		//$result->setTemplate('admin/workshop/create.phtml');
 		return $result;
 	}
 
@@ -58,13 +59,14 @@ class WorkshopController extends AbstractAdminController implements CrudInterfac
 
 	public function persist($data, $id = null)
 	{
-		$form = new WorkshopForm($this->getEntityManager());
-
 		if($id) {
 			$workshop = $this->getRepository(Workshop::class)->find($id);
 		} else {
 			$workshop = new Workshop();
 		}
+
+        $form = new WorkshopForm($this->getEntityManager());
+        $programingForm = new ProgramingForm($this->getEntityManager(), $workshop->getEvent());
 
 		if($this->getRequest()->isPost()) {
 			$form->setData($data);
@@ -106,9 +108,8 @@ class WorkshopController extends AbstractAdminController implements CrudInterfac
 
 		return $this->getViewModel()->setVariables([
 			'form' => $form,
-			'workshop' => $workshop
+			'workshop' => $workshop,
+            'programingForm' => $programingForm
 		]);
 	}
-
-
 }

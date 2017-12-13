@@ -1,0 +1,57 @@
+<div class="row post news">
+	<div class="col-md-12">
+
+		<div class="portlet light portlet-fit bordered">
+			<div class="portlet-title">
+				<div class="caption">
+					<?php if($this->workshop->getId()): ?>
+					<i class="fa fa-edit"></i>
+					Editar Oficina
+					<?php else: ?>
+					<i class="fa fa-file-o"></i>
+					Cadastrar Oficina
+					<?php endif; ?>
+				</div>
+				<div class="actions">
+					<a href="<?php echo $this->url('admin/default', ['controller'=>'workshop']); ?>"
+					   class="btn btn-default">
+						<i class="icon-action-undo"></i>
+						<span class="hidden-xs"> Voltar </span>
+					</a>
+                    <a href="<?php echo $this->url('admin/default', ['controller'=>'workshop', 'action'=>'create']); ?>"
+                       class="btn blue btn-lg">
+                        <i class="fa fa-plus"></i>
+                        <span class="hidden-xs"> Nova Oficina  </span>
+                    </a>
+				</div>
+			</div>
+			<div class="portlet-body">
+                <div class="tabbable-bordered">
+                    <ul class="nav nav-tabs">
+                        <li class="active">
+                            <a href="#tab_form" data-toggle="tab"> Cadastro </a>
+                        </li>
+                        <li>
+                            <a href="#tab_programing" data-toggle="tab"> Programação </a>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="tab_form">
+                            <?php echo $this->partial('admin/workshop/_form.phtml', [
+                                'form' => $this->form,
+                                'workshop'=>$this->workshop
+                            ]); ?>
+                        </div>
+                        <div class="tab-pane" id="tab_programing">
+                            <?php /*echo $this->partial('admin/workshop/_programing.phtml', [
+                                'programingForm' => $this->programingForm,
+                                'workshop'=>$this->workshop
+                            ]);*/ ?>
+                        </div>
+                    </div>
+                </div>
+			</div>
+		</div>
+
+	</div>
+</div>

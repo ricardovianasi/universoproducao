@@ -1,0 +1,44 @@
+<?php $form = $this->form; ?>
+<div class="portlet">
+    <div class="portlet-body form">
+        <?php $form->prepare(); echo $this->form(null, null)->openTag($form) ?>
+        <div class="form-body">
+
+            <div class="row">
+                <div class="col-md-4"><?php echo $this->formRow($form->get('registration')); ?></div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4"><?php echo $this->formRow($form->get('name')); ?></div>
+                <div class="col-md-4"><?php echo $this->formRow($form->get('manager')); ?></div>
+                <div class="col-md-2"><?php echo $this->formRow($form->get('minimum_age')); ?></div>
+                <div class="col-md-2"><?php echo $this->formRow($form->get('maximum_age')); ?></div>
+            </div>
+
+            <div class="row">
+
+            </div>
+
+            <div class="row">
+                <div class="col-md-4"><?php echo $this->formRow($form->get('duration')); ?></div>
+                <div class="col-md-4"><?php echo $this->formRow($form->get('available_subscriptions')); ?></div>
+                <div class="col-md-4"><?php echo $this->formRow($form->get('maximum_subscriptions')); ?></div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6"><?php echo $this->formRow($form->get('description')); ?></div>
+                <div class="col-md-6"><?php echo $this->formRow($form->get('requirements')); ?></div>
+            </div>
+        </div>
+
+        <div class="form-actions">
+            <div class="row">
+                <div class="col-md-offset-3 col-md-9">
+                    <button type="submit" class="btn blue btn-lg action-save">Salvar</button>
+                    <a href="#" class="btn red btn-lg action cancel">Descartar</a>
+                </div>
+            </div>
+        </div>
+        <?php echo $this->form()->closeTag() ?>
+    </div>
+</div>

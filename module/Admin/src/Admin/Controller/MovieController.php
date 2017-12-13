@@ -9,6 +9,7 @@ namespace Admin\Controller;
 
 use Admin\Form\Movie\MovieForm;
 use Admin\Form\Movie\MovieFormSearch;
+use Admin\Form\Movie\MovieStatusModalForm;
 use Admin\Form\Movie\MovieSubscriptionForm;
 use Application\Entity\Event\Event;
 use Application\Entity\Movie\Media;
@@ -17,6 +18,7 @@ use Application\Entity\Movie\MovieSubscription;
 use Application\Entity\Movie\Options;
 use Application\Entity\Registration\Registration;
 use Application\Entity\Registration\Status;
+use Application\Entity\Seminar\Thematic;
 use Application\Entity\User\User;
 use Doctrine\Common\Collections\ArrayCollection;
 
@@ -28,6 +30,7 @@ class MovieController extends AbstractAdminController
 	 */
 	public function indexAction()
 	{
+	    $movieStatusModalForm = new MovieStatusModalForm($this->getEntityManager());
 	    $searchForm = new MovieFormSearch($this->getEntityManager());
         $dataAttr = $this->params()->fromQuery();
         $searchForm->setData($dataAttr);
@@ -41,7 +44,8 @@ class MovieController extends AbstractAdminController
             'items' => $items,
             'searchForm' => $searchForm,
             'searchData' => $dataAttr,
-            'isFiltered' => !empty($data) ? true : false
+            'isFiltered' => !empty($data) ? true : false,
+            'movieStatusModalForm' => $movieStatusModalForm
         ]);
 
         return $this->getViewModel();
@@ -443,6 +447,104 @@ class MovieController extends AbstractAdminController
                 'action' => 'index'
             ]);
         }
+
+    }
+
+    public function statusAction()
+    {
+        if(!$this->getRequest()->isPost()) {
+            $this->messages()->flashError("Erro ao processar solicitação.");
+            return $this->redirect()->toRoute('admin/default', [
+                'controller' => 'movie',
+                'action' => 'index'
+            ]);
+        }
+
+        $data = $this->getRequest()->getPost()->toArray();
+        if(empty($data['event'])) {
+            $this->messages()->flashError("Erro ao processar solicitação.");
+            return $this->redirect()->toRoute('admin/default', [
+                'controller' => 'movie',
+                'action' => 'index'
+            ]);
+        }
+
+        if(empty($data['status'])) {
+            $this->messages()->flashError("Erro ao processar solicitação.");
+            return $this->redirect()->toRoute('admin/default', [
+                'controller' => 'movie',
+                'action' => 'index'
+            ]);
+        }
+
+        if(empty($data['filter'])) {
+            $this->messages()->flashError("Erro ao processar solicitação.");
+            return $this->redirect()->toRoute('admin/default', [
+                'controller' => 'movie',
+                'action' => 'index'
+            ]);
+        }
+
+        $event = $data['event'];
+        $status = $data['status'];
+        parse_str(urldecode($data['filter']), $filter);
+
+        if(empty($filter['selected'])) {
+            $this->messages()->flashError("Erro ao processar solicitação.");
+            return $this->redirect()->toRoute('admin/default', [
+                'controller' => 'movie',
+                'action' => 'index'
+            ]);
+        }
+
+        $selectedItens = [];
+        if($filter['selected'] == 'all') {
+            $selectedItens = $this->search(Movie::class, $filter, [], true);
+        } else {
+            $selected = explode(',', $filter['selected']);
+            if(!$selected) {
+                $this->messages()->flashError("Erro ao processar solicitação.");
+                return $this->redirect()->toRoute('admin/default', [
+                    'controller' => 'movie',
+                    'action' => 'index'
+                ]);
+            }
+
+            $qb = $this
+                ->getRepository(Movie::class)
+                ->createQueryBuilder('m');
+
+            $selectedItens = $qb
+                ->andWhere($qb->expr()->in('m.id', ':arrayId'))
+                ->setParameter('arrayId', $selected)
+                ->getQuery()
+                ->getResult();
+        }
+
+        $contItensChange = 0;
+        foreach ($selectedItens as $item) {
+            /** @var MovieSubscription $subscription */
+            $subscription = $this
+                ->getRepository(MovieSubscription::class)
+                ->findOneBy([
+                    'movie' => $item->getId(),
+                    'event' => $event
+                ]);
+
+            if($subscription) {
+                $subscription->setStatus($status);
+                $this->getEntityManager()->persist($subscription);
+
+                $contItensChange++;
+            }
+        }
+
+        $this->getEntityManager()->flush();
+        $this->messages()->flashSuccess("Status alterado com suscesso!");
+        return $this->redirect()->toRoute('admin/default', [
+            'controller' => 'movie',
+            'action' => 'index'
+        ]);
 
     }
 }

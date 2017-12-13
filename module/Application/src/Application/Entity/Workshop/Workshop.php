@@ -1,6 +1,7 @@
 <?php
 namespace Application\Entity\Workshop;
 
+use Application\Entity\Event\Event;
 use Doctrine\ORM\Mapping as ORM;
 use Util\Entity\AbstractEntity;
 
@@ -219,7 +220,7 @@ class Workshop extends AbstractEntity
     }
 
     /**
-     * @return mixed
+     * @return \Application\Entity\Registration\Registration
      */
     public function getRegistration()
     {
@@ -245,5 +246,22 @@ class Workshop extends AbstractEntity
     public function setMaximumSubscriptions($maximumSubscriptions)
     {
         $this->maximumSubscriptions = $maximumSubscriptions;
+    }
+
+    /**
+     * @return Event
+     */
+    public function getEvent()
+    {
+        if(!$this->getRegistration()) {
+            return null;
+        }
+
+        $events = $this->getRegistration()->getEvents();
+        if(!count($events)) {
+            return null;
+        }
+
+        return $events[0];
     }
 }

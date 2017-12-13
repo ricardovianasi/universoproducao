@@ -19,6 +19,7 @@ use Application\Entity\Movie\MovieSubscription;
 use Application\Entity\Movie\Options as MovieOptions;
 use Application\Entity\Registration\Options;
 use Application\Entity\Registration\Registration;
+use Application\Entity\Workshop\Workshop;
 use Doctrine\Common\Collections\ArrayCollection;
 use DoctrineModule\Validator\UniqueObject;
 use MeuUniverso\Form\MovieForm;
@@ -42,7 +43,7 @@ class WorkshopRegistrationController extends AbstractMeuUniversoRegisterControll
 
     }
 
-    protected function persist($method)
+    protected function novoAction()
     {
         $idReg = $this->params()->fromRoute('id_reg');
         if(!$idReg) {
@@ -63,7 +64,13 @@ class WorkshopRegistrationController extends AbstractMeuUniversoRegisterControll
             ]]);
         }
 
+        $workshops = $this->getRepository(Workshop::class)->findBy([
+            'registration' => $idReg
+        ], ['name'=>'DESC']);
 
+        return [
+            'workshops' => $workshops
+        ];
     }
 
     public function deleteAction()

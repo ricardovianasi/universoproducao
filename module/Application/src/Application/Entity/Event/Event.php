@@ -41,6 +41,8 @@ class Event extends AbstractEntity
 	/** @ORM\Column(name="description", type="text") */
 	private $description;
 
+    /** @ORM\Column(name="`default`", type="boolean") */
+    private $default = false;
 	
 	private $site;
 
@@ -261,5 +263,21 @@ class Event extends AbstractEntity
     public function setSubEvents($subEvents)
     {
         $this->subEvents = $subEvents;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDefault()
+    {
+        return $this->default;
+    }
+
+    /**
+     * @param mixed $default
+     */
+    public function setDefault($default)
+    {
+        $this->default = $default;
     }
 }

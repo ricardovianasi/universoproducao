@@ -78,6 +78,8 @@ jQuery(document).ready(function() {
     //gerador de password
     $(".password-generator").passwordGenerator();
 
+    $(".programing-table").programing();
+
 	if (jQuery().datepicker) {
         $('.date-picker').datepicker({
             rtl: App.isRTL(),

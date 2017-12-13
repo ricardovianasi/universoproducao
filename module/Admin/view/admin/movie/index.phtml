@@ -60,7 +60,7 @@
                                 <span class="list-actions-selected"></span>
                                 <select class="table-group-action-input form-control input-inline input-sm list-actions-options">
                                     <option value="">Selecione uma ação...</option>
-                                    <option data-required-fields="status;events" data-url="<?php echo $urlStatusAction ?>">Alterar status</option>
+                                    <option data-modal="#modal-movie-status">Alterar status</option>
                                     <option>Enviar comunicados</option>
                                 </select>
                                 <button class="btn btn-sm btn-default table-group-action-submit list-actions-submit">
@@ -83,7 +83,10 @@
 								<th width="10%">Ações</th>
 							</tr>
                             <tr role="row" class="filter">
-                                <td><input type="checkbox" class="icheck select-all" name="id_select_all" value=""></td>
+                                <td>
+                                    <input type="checkbox" class="icheck select-all" name="id_select_all" value="">
+                                    <?php echo $this->formElement($form->get('selected')); ?>
+                                </td>
                                 <td>
                                     <div class="margin-bottom-5">
                                         <?php echo $this->formelement($form->get('id_from')); ?>
@@ -200,3 +203,7 @@
 		</div>
 	</div>
 </div>
+
+<?php echo $this->partial('admin/movie/_modal-status.phtml', [
+        'movieStatusModalForm' => $this->movieStatusModalForm
+]); ?>

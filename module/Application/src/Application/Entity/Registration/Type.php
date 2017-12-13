@@ -1,7 +1,7 @@
 <?php
 namespace Application\Entity\Registration;
 
-final class Type
+class Type
 {
     const MOVIE     = 'movie';
     const WORKSHOP  = 'workshop';

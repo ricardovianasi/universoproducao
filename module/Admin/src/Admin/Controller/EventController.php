@@ -93,6 +93,16 @@ class EventController extends AbstractAdminController implements CrudInterface
 				$this->getEntityManager()->persist($event);
 				$this->getEntityManager()->flush();
 
+				if($event->getDefault()) {
+				    //Remover o evento default de outros registros
+                    $qb = $this->getEntityManager()->createQueryBuilder();
+                    $qb->update(Event::class, 'e')
+                        ->set('e.default', 0)
+                        ->andWhere('e.id != :id')
+                        ->setParameter('id', $event->getId())
+                        ->getQuery()->execute();
+                }
+
 				if($id) {
 					$this->messages()->success("Mostra atualizada com sucesso!");
 				} else {
