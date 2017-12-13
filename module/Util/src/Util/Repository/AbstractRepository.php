@@ -11,7 +11,7 @@ abstract class AbstractRepository extends EntityRepository
 {
 	const QB_ALIAS = 'q';
 
-	protected $defaultPageSize = 25;
+	protected $defaultPageSize = 10;
 
 	public function directUpdate($entity) {
 		$this->getEntityManager()->persist($entity);

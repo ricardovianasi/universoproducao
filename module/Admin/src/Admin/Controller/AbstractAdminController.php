@@ -34,7 +34,7 @@ abstract class AbstractAdminController extends AbstractController
 	 *
 	 * @var int
 	 */
-	protected $defaultPageSize = 30;
+	protected $defaultPageSize = 10;
 
 	/**
 	 * Current page
