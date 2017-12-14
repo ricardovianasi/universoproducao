@@ -528,6 +528,12 @@ return [
                     ],
                 ]
 			],
+            [
+                'label' => 'Comunicados',
+                'route' => 'admin/default',
+                'controller' => 'notify',
+                'icon' => 'icon-envelope-open',
+            ],
 			[
 				'label' => 'Controle de Acesso',
 				'uri' => '#',

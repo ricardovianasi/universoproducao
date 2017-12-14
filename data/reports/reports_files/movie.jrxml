@@ -1,0 +1,1475 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.4.0.final using JasperReports Library version 6.4.1  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="movie" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="7db8d1d6-a97e-4968-9b6b-d0c06495d638">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="DataAdapter.xml"/>
+	<queryString language="json">
+		<![CDATA[movie]]>
+	</queryString>
+	<field name="id" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="id"/>
+		<fieldDescription><![CDATA[id]]></fieldDescription>
+	</field>
+	<field name="title" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="title"/>
+		<fieldDescription><![CDATA[title]]></fieldDescription>
+	</field>
+	<field name="title_english" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="title_english"/>
+		<fieldDescription><![CDATA[title_english]]></fieldDescription>
+	</field>
+	<field name="end_date_year" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="end_date_year"/>
+		<fieldDescription><![CDATA[end_date_year]]></fieldDescription>
+	</field>
+	<field name="end_date_month" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="end_date_month"/>
+		<fieldDescription><![CDATA[end_date_month]]></fieldDescription>
+	</field>
+	<field name="end_date_month_name" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="end_date_month_name"/>
+		<fieldDescription><![CDATA[end_date_month_name]]></fieldDescription>
+	</field>
+	<field name="production_coutry" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="production_coutry"/>
+		<fieldDescription><![CDATA[production_coutry]]></fieldDescription>
+	</field>
+	<field name="production_state" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="production_state"/>
+		<fieldDescription><![CDATA[production_state]]></fieldDescription>
+	</field>
+	<field name="duration" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="duration"/>
+		<fieldDescription><![CDATA[duration]]></fieldDescription>
+	</field>
+	<field name="cpb" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="cpb"/>
+		<fieldDescription><![CDATA[cpb]]></fieldDescription>
+	</field>
+	<field name="has_official_classification" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="has_official_classification"/>
+		<fieldDescription><![CDATA[has_official_classification]]></fieldDescription>
+	</field>
+	<field name="direction" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="direction"/>
+		<fieldDescription><![CDATA[direction]]></fieldDescription>
+	</field>
+	<field name="script" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="script"/>
+		<fieldDescription><![CDATA[script]]></fieldDescription>
+	</field>
+	<field name="production_company" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="production_company"/>
+		<fieldDescription><![CDATA[production_company]]></fieldDescription>
+	</field>
+	<field name="direction_production" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="direction_production"/>
+		<fieldDescription><![CDATA[direction_production]]></fieldDescription>
+	</field>
+	<field name="photography" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="photography"/>
+		<fieldDescription><![CDATA[photography]]></fieldDescription>
+	</field>
+	<field name="direction_art" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="direction_art"/>
+		<fieldDescription><![CDATA[direction_art]]></fieldDescription>
+	</field>
+	<field name="editing_assembly" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="editing_assembly"/>
+		<fieldDescription><![CDATA[editing_assembly]]></fieldDescription>
+	</field>
+	<field name="soundtrack" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="soundtrack"/>
+		<fieldDescription><![CDATA[soundtrack]]></fieldDescription>
+	</field>
+	<field name="direct_sound" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="direct_sound"/>
+		<fieldDescription><![CDATA[direct_sound]]></fieldDescription>
+	</field>
+	<field name="scenography" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="scenography"/>
+		<fieldDescription><![CDATA[scenography]]></fieldDescription>
+	</field>
+	<field name="costume" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="costume"/>
+		<fieldDescription><![CDATA[costume]]></fieldDescription>
+	</field>
+	<field name="cast" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="cast"/>
+		<fieldDescription><![CDATA[cast]]></fieldDescription>
+	</field>
+	<field name="synopsis" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="synopsis"/>
+		<fieldDescription><![CDATA[synopsis]]></fieldDescription>
+	</field>
+	<field name="conversations_languages" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="conversations_languages"/>
+		<fieldDescription><![CDATA[conversations_languages]]></fieldDescription>
+	</field>
+	<field name="subtitles_languages" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="subtitles_languages"/>
+		<fieldDescription><![CDATA[subtitles_languages]]></fieldDescription>
+	</field>
+	<field name="conversations_list_languages" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="conversations_list_languages"/>
+		<fieldDescription><![CDATA[conversations_list_languages]]></fieldDescription>
+	</field>
+	<field name="filmography_director" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="filmography_director"/>
+		<fieldDescription><![CDATA[filmography_director]]></fieldDescription>
+	</field>
+	<field name="other_festivals" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="other_festivals"/>
+		<fieldDescription><![CDATA[other_festivals]]></fieldDescription>
+	</field>
+	<field name="movie_link" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="movie_link"/>
+		<fieldDescription><![CDATA[movie_link]]></fieldDescription>
+	</field>
+	<field name="movie_divulgation" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="movie_divulgation"/>
+		<fieldDescription><![CDATA[movie_divulgation]]></fieldDescription>
+	</field>
+	<field name="movie_password" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="movie_password"/>
+		<fieldDescription><![CDATA[movie_password]]></fieldDescription>
+	</field>
+	<field name="created_at" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="created_at"/>
+		<fieldDescription><![CDATA[created_at]]></fieldDescription>
+	</field>
+	<field name="events" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="events"/>
+		<fieldDescription><![CDATA[events]]></fieldDescription>
+	</field>
+	<field name="co_production" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="co_production"/>
+		<fieldDescription><![CDATA[co_production]]></fieldDescription>
+	</field>
+	<field name="executive_production" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="executive_production"/>
+		<fieldDescription><![CDATA[executive_production]]></fieldDescription>
+	</field>
+	<field name="mixing" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="mixing"/>
+		<fieldDescription><![CDATA[mixing]]></fieldDescription>
+	</field>
+	<field name="sound_editing" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="sound_editing"/>
+		<fieldDescription><![CDATA[sound_editing]]></fieldDescription>
+	</field>
+	<field name="has_cpb" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="has_cpb"/>
+		<fieldDescription><![CDATA[has_cpb]]></fieldDescription>
+	</field>
+	<field name="content_scenes" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="content_scenes"/>
+		<fieldDescription><![CDATA[content_scenes]]></fieldDescription>
+	</field>
+	<field name="has_participated_other_festivals" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="has_participated_other_festivals"/>
+		<fieldDescription><![CDATA[has_participated_other_festivals]]></fieldDescription>
+	</field>
+	<field name="has_conversations_languages" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="has_conversations_languages"/>
+		<fieldDescription><![CDATA[has_conversations_languages]]></fieldDescription>
+	</field>
+	<field name="has_subtitles_languages" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="has_subtitles_languages"/>
+		<fieldDescription><![CDATA[has_subtitles_languages]]></fieldDescription>
+	</field>
+	<field name="has_conversations_list_languages" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="has_conversations_list_languages"/>
+		<fieldDescription><![CDATA[has_conversations_list_languages]]></fieldDescription>
+	</field>
+	<field name="category" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="category"/>
+		<fieldDescription><![CDATA[category]]></fieldDescription>
+	</field>
+	<field name="author_id" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="author_id"/>
+		<fieldDescription><![CDATA[author_id]]></fieldDescription>
+	</field>
+	<field name="author_name" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="author_name"/>
+		<fieldDescription><![CDATA[author_name]]></fieldDescription>
+	</field>
+	<field name="author_email" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="author_email"/>
+		<fieldDescription><![CDATA[author_email]]></fieldDescription>
+	</field>
+	<field name="author_address" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="author_address"/>
+		<fieldDescription><![CDATA[author_address]]></fieldDescription>
+	</field>
+	<field name="author_phones" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="author_phones"/>
+		<fieldDescription><![CDATA[author_phones]]></fieldDescription>
+	</field>
+	<field name="opt_classification" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="opt_classification"/>
+		<fieldDescription><![CDATA[opt_classification]]></fieldDescription>
+	</field>
+	<field name="opt_format_completed" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="opt_format_completed"/>
+		<fieldDescription><![CDATA[opt_format_completed]]></fieldDescription>
+	</field>
+	<field name="opt_window" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="opt_window"/>
+		<fieldDescription><![CDATA[opt_window]]></fieldDescription>
+	</field>
+	<field name="opt_sound" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="opt_sound"/>
+		<fieldDescription><![CDATA[opt_sound]]></fieldDescription>
+	</field>
+	<field name="opt_color" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="opt_color"/>
+		<fieldDescription><![CDATA[opt_color]]></fieldDescription>
+	</field>
+	<field name="opt_genre" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="opt_genre"/>
+		<fieldDescription><![CDATA[opt_genre]]></fieldDescription>
+	</field>
+	<field name="opt_accessibility" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="opt_accessibility"/>
+		<fieldDescription><![CDATA[opt_accessibility]]></fieldDescription>
+	</field>
+	<field name="opt_feature_directed" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="opt_feature_directed"/>
+		<fieldDescription><![CDATA[opt_feature_directed]]></fieldDescription>
+	</field>
+	<field name="opt_short_movie_category" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="opt_short_movie_category"/>
+		<fieldDescription><![CDATA[opt_short_movie_category]]></fieldDescription>
+	</field>
+	<group name="id">
+		<groupExpression><![CDATA[$F{id}]]></groupExpression>
+	</group>
+	<group name="title">
+		<groupExpression><![CDATA[$F{title}]]></groupExpression>
+	</group>
+	<group name="title_english">
+		<groupExpression><![CDATA[$F{title_english}]]></groupExpression>
+	</group>
+	<group name="end_date_year">
+		<groupExpression><![CDATA[$F{end_date_year}]]></groupExpression>
+	</group>
+	<group name="end_date_month">
+		<groupExpression><![CDATA[$F{end_date_month}]]></groupExpression>
+	</group>
+	<group name="end_date_month_name">
+		<groupExpression><![CDATA[$F{end_date_month_name}]]></groupExpression>
+	</group>
+	<group name="production_coutry">
+		<groupExpression><![CDATA[$F{production_coutry}]]></groupExpression>
+	</group>
+	<group name="production_state">
+		<groupExpression><![CDATA[$F{production_state}]]></groupExpression>
+	</group>
+	<group name="duration">
+		<groupExpression><![CDATA[$F{duration}]]></groupExpression>
+	</group>
+	<group name="cpb">
+		<groupExpression><![CDATA[$F{cpb}]]></groupExpression>
+	</group>
+	<group name="has_official_classification">
+		<groupExpression><![CDATA[$F{has_official_classification}]]></groupExpression>
+	</group>
+	<group name="direction">
+		<groupExpression><![CDATA[$F{direction}]]></groupExpression>
+	</group>
+	<group name="script">
+		<groupExpression><![CDATA[$F{script}]]></groupExpression>
+	</group>
+	<group name="production_company">
+		<groupExpression><![CDATA[$F{production_company}]]></groupExpression>
+	</group>
+	<group name="direction_production">
+		<groupExpression><![CDATA[$F{direction_production}]]></groupExpression>
+	</group>
+	<group name="photography">
+		<groupExpression><![CDATA[$F{photography}]]></groupExpression>
+	</group>
+	<group name="direction_art">
+		<groupExpression><![CDATA[$F{direction_art}]]></groupExpression>
+	</group>
+	<group name="editing_assembly">
+		<groupExpression><![CDATA[$F{editing_assembly}]]></groupExpression>
+	</group>
+	<group name="soundtrack">
+		<groupExpression><![CDATA[$F{soundtrack}]]></groupExpression>
+	</group>
+	<group name="direct_sound">
+		<groupExpression><![CDATA[$F{direct_sound}]]></groupExpression>
+	</group>
+	<group name="scenography">
+		<groupExpression><![CDATA[$F{scenography}]]></groupExpression>
+	</group>
+	<group name="costume">
+		<groupExpression><![CDATA[$F{costume}]]></groupExpression>
+	</group>
+	<group name="cast">
+		<groupExpression><![CDATA[$F{cast}]]></groupExpression>
+	</group>
+	<group name="synopsis">
+		<groupExpression><![CDATA[$F{synopsis}]]></groupExpression>
+	</group>
+	<group name="conversations_languages">
+		<groupExpression><![CDATA[$F{conversations_languages}]]></groupExpression>
+	</group>
+	<group name="subtitles_languages">
+		<groupExpression><![CDATA[$F{subtitles_languages}]]></groupExpression>
+	</group>
+	<group name="conversations_list_languages">
+		<groupExpression><![CDATA[$F{conversations_list_languages}]]></groupExpression>
+	</group>
+	<group name="filmography_director">
+		<groupExpression><![CDATA[$F{filmography_director}]]></groupExpression>
+	</group>
+	<group name="other_festivals">
+		<groupExpression><![CDATA[$F{other_festivals}]]></groupExpression>
+	</group>
+	<group name="movie_link">
+		<groupExpression><![CDATA[$F{movie_link}]]></groupExpression>
+	</group>
+	<group name="movie_divulgation">
+		<groupExpression><![CDATA[$F{movie_divulgation}]]></groupExpression>
+	</group>
+	<group name="movie_password">
+		<groupExpression><![CDATA[$F{movie_password}]]></groupExpression>
+	</group>
+	<group name="created_at">
+		<groupExpression><![CDATA[$F{created_at}]]></groupExpression>
+	</group>
+	<group name="events">
+		<groupExpression><![CDATA[$F{events}]]></groupExpression>
+	</group>
+	<group name="co_production">
+		<groupExpression><![CDATA[$F{co_production}]]></groupExpression>
+	</group>
+	<group name="executive_production">
+		<groupExpression><![CDATA[$F{executive_production}]]></groupExpression>
+	</group>
+	<group name="mixing">
+		<groupExpression><![CDATA[$F{mixing}]]></groupExpression>
+	</group>
+	<group name="sound_editing">
+		<groupExpression><![CDATA[$F{sound_editing}]]></groupExpression>
+	</group>
+	<group name="has_cpb">
+		<groupExpression><![CDATA[$F{has_cpb}]]></groupExpression>
+	</group>
+	<group name="content_scenes">
+		<groupExpression><![CDATA[$F{content_scenes}]]></groupExpression>
+	</group>
+	<group name="has_participated_other_festivals">
+		<groupExpression><![CDATA[$F{has_participated_other_festivals}]]></groupExpression>
+	</group>
+	<group name="has_conversations_languages">
+		<groupExpression><![CDATA[$F{has_conversations_languages}]]></groupExpression>
+	</group>
+	<group name="has_subtitles_languages">
+		<groupExpression><![CDATA[$F{has_subtitles_languages}]]></groupExpression>
+	</group>
+	<group name="has_conversations_list_languages">
+		<groupExpression><![CDATA[$F{has_conversations_list_languages}]]></groupExpression>
+	</group>
+	<group name="category">
+		<groupExpression><![CDATA[$F{category}]]></groupExpression>
+	</group>
+	<group name="author_id">
+		<groupExpression><![CDATA[$F{author_id}]]></groupExpression>
+	</group>
+	<group name="author_name">
+		<groupExpression><![CDATA[$F{author_name}]]></groupExpression>
+	</group>
+	<group name="author_email">
+		<groupExpression><![CDATA[$F{author_email}]]></groupExpression>
+	</group>
+	<group name="author_address">
+		<groupExpression><![CDATA[$F{author_address}]]></groupExpression>
+	</group>
+	<group name="author_phones">
+		<groupExpression><![CDATA[$F{author_phones}]]></groupExpression>
+	</group>
+	<group name="opt_classification">
+		<groupExpression><![CDATA[$F{opt_classification}]]></groupExpression>
+	</group>
+	<group name="opt_format_completed">
+		<groupExpression><![CDATA[$F{opt_format_completed}]]></groupExpression>
+	</group>
+	<group name="opt_window">
+		<groupExpression><![CDATA[$F{opt_window}]]></groupExpression>
+	</group>
+	<group name="opt_sound">
+		<groupExpression><![CDATA[$F{opt_sound}]]></groupExpression>
+	</group>
+	<group name="opt_color">
+		<groupExpression><![CDATA[$F{opt_color}]]></groupExpression>
+	</group>
+	<group name="opt_genre">
+		<groupExpression><![CDATA[$F{opt_genre}]]></groupExpression>
+	</group>
+	<group name="opt_accessibility">
+		<groupExpression><![CDATA[$F{opt_accessibility}]]></groupExpression>
+	</group>
+	<group name="opt_feature_directed">
+		<groupExpression><![CDATA[$F{opt_feature_directed}]]></groupExpression>
+	</group>
+	<group name="opt_short_movie_category">
+		<groupExpression><![CDATA[$F{opt_short_movie_category}]]></groupExpression>
+	</group>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="51" splitType="Stretch">
+			<image>
+				<reportElement x="0" y="0" width="50" height="50" uuid="b50f848a-a086-4d5f-ad2a-5b66c68a8091"/>
+				<imageExpression><![CDATA["R:/ambiente/php/projetos/up/app/data/reports/reports_files/images/universo-producao.png"]]></imageExpression>
+			</image>
+			<line>
+				<reportElement x="0" y="45" width="555" height="1" uuid="8a9b2a5f-9fa1-4b5a-8559-bdd0f57a5dea">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+			</line>
+			<staticText>
+				<reportElement x="50" y="0" width="505" height="20" uuid="35b4e2e4-b9f5-45ad-9d00-0add2d6c0e77"/>
+				<textElement textAlignment="Center">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[CADASTRO DE FILME]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="50" y="25" width="505" height="25" uuid="434a89bf-21ba-4540-9473-07ed26861474"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{title}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="706" splitType="Stretch">
+			<textField>
+				<reportElement stretchType="ElementGroupBottom" x="110" y="70" width="445" height="30" uuid="2ec1993c-27ec-4d90-8e8a-1d2d081a3130"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{title}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement stretchType="ElementGroupBottom" x="0" y="70" width="110" height="30" uuid="31a2bbcd-500d-4214-9c5c-2a872c69c14b"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<text><![CDATA[Título]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="110" y="100" width="445" height="30" uuid="f95316ce-d979-416e-b3f5-acd228cf7ea4"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{title_english}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="100" width="110" height="30" uuid="846cc1e9-7dec-4267-84e2-cee0be733952"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<text><![CDATA[Título em inglês]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="30" y="10" width="80" height="30" uuid="e7a7f288-41d6-4947-8ba0-ef92479d542e"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="10" width="30" height="30" uuid="d87214b4-287d-4cc7-bcd4-b398977d618b"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<text><![CDATA[ID]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="230" y="10" width="325" height="30" uuid="4102f540-e4c5-4d55-8080-a25f3df1d490"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{created_at}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="110" y="10" width="120" height="30" uuid="aae0ba71-4652-49ef-8ab6-1287a39c9139"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<text><![CDATA[Data do cadastro]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="110" y="40" width="445" height="30" uuid="458bd1c2-72e4-4996-8c0f-fbfbed2cf9a7"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{events}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="40" width="110" height="30" uuid="da2d122f-06bd-4499-b30a-7e48f21c1c47"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<text><![CDATA[Eventos]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="160" y="160" width="120" height="30" uuid="6eba5c84-2e47-417e-a17c-666640c7abe6"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{end_date_year}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="160" width="160" height="30" uuid="de7a9830-d456-42fa-813b-307900a0fcca"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<text><![CDATA[Ano]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="380" y="160" width="175" height="30" uuid="38c8981c-58f8-4fc0-aa11-9f7dc5674ffd"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{end_date_month}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="280" y="160" width="100" height="30" uuid="8b32f329-e697-4429-9e4c-d43bd01ca216"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<text><![CDATA[Mês]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="160" y="190" width="120" height="30" uuid="f86789e1-470f-4332-9b48-8bdb410a18e4"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{duration}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="190" width="160" height="30" uuid="940f1e3b-3560-47fe-bb28-618e21a2226b"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<text><![CDATA[Duração]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="380" y="190" width="175" height="30" uuid="f42d1693-82db-430c-9ff5-e7851ad3f89f"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{category}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="280" y="190" width="100" height="30" uuid="faeca5d0-e422-4a5f-a014-a1c0af34c69b"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<text><![CDATA[Categoria]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="220" width="160" height="30" uuid="2a4a3d64-4994-404e-bfeb-07357eca53b3"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<text><![CDATA[Possui CPB?]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="160" y="220" width="120" height="30" uuid="1f5e74d2-d771-48a2-a58b-b4a2bcb075e8"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textFieldExpression><![CDATA[Boolean.TRUE.equals($F{has_cpb}) ? "Sim" : "Não"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="380" y="220" width="175" height="30" uuid="2a3603f6-373d-4d76-afd0-19d3890d7b28"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{cpb}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="280" y="220" width="100" height="30" uuid="ea034e92-0d1f-4eeb-9bd9-a13ad2a2230d"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<text><![CDATA[N. CPB]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="250" width="180" height="40" uuid="9d3445f3-8b1d-4a4d-a786-dc1aebafd3d0"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<text><![CDATA[Possui classificação oficial emitida pelo Ministério da Justiça?]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="180" y="250" width="100" height="40" uuid="0504d78f-e2e4-41aa-a9e7-201a4bbd50af"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textFieldExpression><![CDATA[Boolean.TRUE.equals($F{has_official_classification}) ? "Sim" : "Não"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="280" y="290" width="275" height="67" uuid="d6775145-63aa-47eb-a474-6968e6f6410d"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{content_scenes}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="290" width="280" height="67" uuid="72f28717-0a3b-429a-be91-26746a445b45"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<text><![CDATA[Conteúdo das cenas(cenas de sexo, violência, uso de drogas, etc...)]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="380" y="250" width="175" height="40" uuid="2c5dac0a-3ad7-4b34-92c6-6a1075ca7ec0"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{opt_classification}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="280" y="250" width="100" height="40" uuid="0c95d641-ca09-4ef8-b8f7-38a9e52cb0df"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<text><![CDATA[Classificação]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="130" y="357" width="150" height="30" uuid="32dd5c71-9db9-46fb-a441-e04d333ebd5d"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{opt_format_completed}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="357" width="130" height="30" uuid="1919ada2-6903-464d-a12e-2b6ee30db67f"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<text><![CDATA[Formato em que o filme foi finalizado]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="420" y="357" width="135" height="30" uuid="26b01af0-3d5d-4f30-837f-ca7a85cdaf0f"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{opt_window}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="280" y="357" width="140" height="30" uuid="4ed90525-3408-4eba-ac92-ee4e096ee8a8"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<text><![CDATA[Janela final para exibição]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="130" y="387" width="150" height="30" uuid="3899c69e-4a0e-4725-af33-79a2f944cadf"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{opt_sound}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="387" width="130" height="30" uuid="3c700dc0-ef48-4182-af2e-cd7c4c829d44"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<text><![CDATA[Som]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="420" y="387" width="135" height="30" uuid="907e31e3-7e02-4f6f-9ca6-9b820d51b91a"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{opt_color}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="280" y="387" width="140" height="30" uuid="d25b95a4-ad76-4e3e-8517-e89bc717b3c2"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<text><![CDATA[Cor]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="130" y="417" width="150" height="30" uuid="9750e206-1ead-4635-82fe-a23a8c371c5d"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{opt_genre}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="417" width="130" height="30" uuid="e4fb3862-6c41-4fe1-8230-2a755d43d743"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<text><![CDATA[Gênero]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="420" y="417" width="135" height="30" uuid="833b413e-2bb1-4424-9eee-786de80f882b"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{opt_accessibility}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="280" y="417" width="140" height="30" uuid="2c48543b-1a93-4f06-ab81-14ce5a0eb123"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<text><![CDATA[Acessibilidade]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="130" y="447" width="150" height="30" uuid="d00ae72a-c648-427e-95bc-41346f44da41"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{opt_feature_directed}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="447" width="130" height="30" uuid="b48e8941-7493-4149-a075-cf87d4f0bf13"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<text><![CDATA[Longas metragens que o diretor já dirigiu]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="420" y="447" width="135" height="30" uuid="d52c8f8c-909b-4373-ae8e-814f056c402d"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{opt_short_movie_category}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="280" y="447" width="140" height="30" uuid="93df0486-05de-45e9-9f50-78229339dbc6"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<text><![CDATA[Categoria do curta]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="477" width="280" height="30" uuid="7077458c-e06c-4abc-ad62-c49496806161"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<text><![CDATA[Possui diálogos]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="280" y="477" width="275" height="30" uuid="90f03b02-9358-4f41-beed-0b6a644e1f4f"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textFieldExpression><![CDATA[Boolean.TRUE.equals($F{has_conversations_languages}) ? "Sim" : "Não"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="280" y="507" width="275" height="30" uuid="1580289a-e22a-481c-abac-29c2c9647de2"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{conversations_list_languages}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="507" width="280" height="30" uuid="8c1e636d-ee41-47bf-a8a2-b28f0f9429df"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<text><![CDATA[Idioma dos diálogos]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="537" width="280" height="30" uuid="e1d8cf9b-1439-47c5-8178-721d88a28f1f"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<text><![CDATA[Possui cópia legendada]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="280" y="537" width="275" height="30" uuid="1f21161c-1971-4fd1-a4ed-3eccff4a55ab"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textFieldExpression><![CDATA[Boolean.TRUE.equals($F{has_subtitles_languages}) ? "Sim" : "Não"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="280" y="567" width="275" height="30" uuid="223f4f0c-7568-456e-9d5e-3ec3e6f6aec5"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{subtitles_languages}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="567" width="280" height="30" uuid="ef17a319-e173-4170-8f3d-5477d6801c5a"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<text><![CDATA[Idioma das cópias legendadas]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="597" width="280" height="30" uuid="24b9b032-6ec7-4779-b6d0-a8511b323d9a"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<text><![CDATA[Possui lista de diálogos]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="280" y="597" width="275" height="30" uuid="f015491a-8ef7-4bb5-a70d-09fdc85f8338"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textFieldExpression><![CDATA[Boolean.TRUE.equals($F{has_conversations_list_languages}) ? "Sim" : "Não"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="280" y="627" width="275" height="30" uuid="0a858e2c-5f6e-4d2d-bc37-7f2537cb118d"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{conversations_list_languages}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="627" width="280" height="30" uuid="c7b680cc-f440-4f4b-ade4-0eaf4fe3bf12"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<text><![CDATA[Idioma das listas de diálogos]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="657" width="130" height="30" uuid="7847f689-8378-4977-9bf2-6869f8e81ca6"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<text><![CDATA[Já participou de outros festivais]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="130" y="657" width="150" height="30" uuid="021ce456-10ed-4af6-99d9-7a96b67c491c"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textFieldExpression><![CDATA[Boolean.TRUE.equals($F{has_participated_other_festivals}) ? "Sim" : "Não"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="420" y="657" width="135" height="30" uuid="c9185bc6-d273-4450-9adc-fb1e0eda49e0"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{other_festivals}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="280" y="657" width="140" height="30" uuid="f11ca90e-0d57-45fd-ae3f-bd7a46854f7e"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<text><![CDATA[Festivais e prêmios recebidos]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="110" y="130" width="170" height="30" uuid="99b884d6-9cbe-4b47-9fec-4f30dc35ed04"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{production_coutry}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="130" width="110" height="30" uuid="d2d36388-a811-41f8-8c2a-810ea6bbdff3"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<text><![CDATA[País de produção]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="380" y="130" width="175" height="30" uuid="842d0908-9898-462d-9356-e7f1a674140f"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{production_state}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="280" y="130" width="100" height="30" uuid="0e1a5268-c487-40e1-b864-bdfff133f5c9"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<text><![CDATA[Estado de produção]]></text>
+			</staticText>
+		</band>
+		<band height="706">
+			<textField>
+				<reportElement x="280" y="23" width="275" height="30" uuid="01f6eb55-7a9d-414d-bff1-3682b0f50418"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{direction}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="23" width="280" height="30" uuid="c80ac7bf-bd47-42f7-8f4d-87560e77dfe5"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<text><![CDATA[Direção]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="280" y="53" width="275" height="30" uuid="f6f9ffc3-2d43-45a4-ad5e-a5f1e1c88748"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{script}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="53" width="280" height="30" uuid="8ea798e5-29e5-4831-8863-248f950dea8f"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<text><![CDATA[Roteiro]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="280" y="83" width="275" height="30" uuid="c19072c5-cc8e-420b-b661-b947f00a5728"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{production_company}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="280" y="173" width="275" height="30" uuid="1c44f44b-58e3-40db-af84-475190c421ca"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{direction_production}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="280" y="233" width="275" height="30" uuid="6d8feb30-c2d4-4936-bd49-23b2d870a2a5"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{photography}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="280" y="203" width="275" height="30" uuid="9b4ee060-caa2-4d41-8029-e2d2e7064fb8"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{editing_assembly}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="280" y="293" width="275" height="30" uuid="834d477a-0959-4430-a7b9-955036414c70"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{soundtrack}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="280" y="353" width="275" height="30" uuid="ab4eb487-1d36-4366-908d-f3bc825da041"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{direct_sound}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="280" y="413" width="275" height="30" uuid="86ca248d-d1ec-4381-a74f-7c4fe978dbe6"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{scenography}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="83" width="280" height="30" uuid="49ab6b40-3780-4167-93d4-9a2e1ffcc9bd"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<text><![CDATA[Empresa produtora]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="113" width="280" height="30" uuid="eff01924-6efc-4c21-b49c-b28827c76793"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<text><![CDATA[Co-produção]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="143" width="280" height="30" uuid="95960a6d-8062-49ac-9090-48a33536c1b4"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<text><![CDATA[Produção executiva]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="280" y="113" width="275" height="30" uuid="f1f592e8-f31f-494f-b7be-2d092c586277"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{co_production}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="280" y="143" width="275" height="30" uuid="c9e18416-6adc-4d78-8033-ff378b7458fc"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{executive_production}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="173" width="280" height="30" uuid="666fb008-00a6-4bac-acfd-726430f81bd4"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<text><![CDATA[Direção de produção]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="203" width="280" height="30" uuid="712e5965-3957-4ca7-a5f1-913f6d55b6fa"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<text><![CDATA[Montagem]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="280" y="263" width="275" height="30" uuid="4a0d0da7-e719-49fe-ba4e-54b7e5ccbd3a"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{direction_art}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="233" width="280" height="30" uuid="dae50760-b986-4824-bb97-7c6e3bda2d0a"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<text><![CDATA[Fotografia]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="263" width="280" height="30" uuid="abe8118e-8c1c-4f96-87d3-4fc709c6f2b5"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<text><![CDATA[Direção de arte]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="293" width="280" height="30" uuid="7f8cab30-e902-4fe7-a542-02e79df646c3"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<text><![CDATA[Trilha sonora]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="323" width="280" height="30" uuid="3341c97e-59fd-4089-a097-553852a8eaed"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<text><![CDATA[Mixagem]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="353" width="280" height="30" uuid="6706da77-2495-471b-8904-53c1f59c6f60"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<text><![CDATA[Som direto]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="280" y="323" width="275" height="30" uuid="64f25fa4-866a-43a5-a30f-752c84575628"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{mixing}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="280" y="383" width="275" height="30" uuid="48d98754-4a67-4221-9d9d-3b6559832e79"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{sound_editing}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="383" width="280" height="30" uuid="4ff9196f-b9c6-4742-8606-28aa69625b48"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<text><![CDATA[Edição de som]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="413" width="280" height="30" uuid="8595d89b-3462-4d6c-b284-172173b8d52d"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<text><![CDATA[Cenografia]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="280" y="443" width="275" height="30" uuid="21c7d820-1764-4a7a-84a4-17b6dab80eba"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{costume}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="280" y="473" width="275" height="30" uuid="bda17802-0ba5-44ef-adf7-357e6ad533a0"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{cast}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="280" y="503" width="275" height="60" uuid="c189b5ae-e972-4ff4-819e-50b48c65b197"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{synopsis}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="443" width="280" height="30" uuid="432edf33-33b3-41ae-b3b3-87367163e643"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<text><![CDATA[Figurino]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="473" width="280" height="30" uuid="c1faee69-2c79-4e0a-a552-37b7faf49a70"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<text><![CDATA[Elenco]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="503" width="280" height="60" uuid="4c1e0f04-862b-4c41-b157-c6c89b0f2f63"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<text><![CDATA[Sinopse]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="280" y="563" width="275" height="30" uuid="c62b5fc9-a5bd-4f73-83c8-0095fb296760"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{filmography_director}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="563" width="280" height="30" uuid="9276e3bb-085d-4e0a-a1ef-bec492f6be2f"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<text><![CDATA[Filmografia do diretor]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="100" y="593" width="250" height="30" uuid="95fd991b-6f06-48df-bce8-8da2179e83e9"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{movie_link}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="280" y="623" width="275" height="30" uuid="89c40c61-bf57-41d5-919d-39c079be7053"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{movie_divulgation}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="465" y="593" width="90" height="30" uuid="c35cd759-1081-4929-b0f8-0545f537d574"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{movie_password}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="593" width="100" height="30" uuid="65387ff4-b1a4-42c0-ae3a-4fc4bf64e514"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<text><![CDATA[Link de acesso ao filme]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="350" y="593" width="115" height="30" uuid="2169c9ed-2aab-4af8-bf8a-2fc77f42328a"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<text><![CDATA[Senha de acesso ao filme]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="623" width="280" height="30" uuid="b065773e-49d0-4882-a89a-776cb1ad8200"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<text><![CDATA[Link de divulgação]]></text>
+			</staticText>
+		</band>
+		<band height="706">
+			<staticText>
+				<reportElement x="0" y="61" width="80" height="30" uuid="906c604c-8a19-4c22-a811-773630c4f2f3"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<text><![CDATA[ID]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="80" y="61" width="60" height="30" uuid="0c1f92d7-950a-4fe2-b4ee-c9bb67ca9703"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{author_id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="230" y="61" width="325" height="30" uuid="de5e798e-9003-4b1e-bf8e-626178160f47"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{author_name}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="140" y="61" width="90" height="30" uuid="ff8da6e8-e9b9-45ba-b8c2-8245f370be91"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<text><![CDATA[Nome]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="100" y="91" width="455" height="30" uuid="8a3f0598-757e-45b4-9bb5-bab5be347b3d"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{author_address}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="100" y="151" width="455" height="30" uuid="254d778f-a428-47eb-a175-87f3ef4bb081"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<text><![CDATA[author_address]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="21" width="190" height="30" uuid="4a0e4396-0ae8-42c4-8098-c2bead4d1083"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Dados do usuário]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="91" width="100" height="30" uuid="c97afedf-d350-4651-8966-215ff2485017"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<text><![CDATA[E-mail]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="100" y="121" width="455" height="30" uuid="2f44ab80-7ada-4327-9ca8-144461556a67"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{author_phones}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="121" width="100" height="30" uuid="90fe97fe-e67a-4109-891e-75756e4e6cf5"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<text><![CDATA[Telefone]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="151" width="100" height="30" uuid="7dcc0b12-705d-4a3b-a7dd-32509eb2653f"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<text><![CDATA[Endereço]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="45" splitType="Stretch">
+			<image>
+				<reportElement x="0" y="11" width="50" height="32" uuid="1f949c18-1411-4947-be85-01442b1858cf"/>
+				<imageExpression><![CDATA["R:/ambiente/php/projetos/up/app/data/reports/reports_files/images/universo-producao.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="60" y="11" width="350" height="15" uuid="a6073510-0bd1-4af8-8cd1-be340e327ff2"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[CADASTRO DE FILME]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="60" y="28" width="350" height="15" uuid="8b83025f-d490-4532-ad62-68a5c25efd09"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{title}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="455" y="12" width="100" height="14" uuid="29259994-4b93-462c-b06d-2b7b5236ac06"/>
+				<textElement textAlignment="Right">
+					<font size="8" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Página " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="455" y="26" width="100" height="14" uuid="6d44d5cb-536a-4b8d-99e1-2a2abe4ea7ef"/>
+				<textElement textAlignment="Right">
+					<font size="8" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" de " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="0" width="555" height="1" uuid="87756895-eba3-4046-8813-8ee9572d3a94"/>
+			</line>
+		</band>
+	</pageFooter>
+</jasperReport>
