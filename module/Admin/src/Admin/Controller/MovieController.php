@@ -51,6 +51,24 @@ class MovieController extends AbstractAdminController
         return $this->getViewModel();
 	}
 
+	public function exportAction()
+    {
+        //recupera os itens
+        $dataAttr = $this->params()->fromQuery();
+        $id = $this->params()->fromRoute('id');
+        $item = $this->getRepository(Movie::class)->find($id);
+
+        //criar um arquivo json
+        $preparedItems = $this->prepareItemsForReports($item);
+
+        $downloadToken = null;
+        if(!empty($dataAttr['downloadToken'])) {
+            $downloadToken = $dataAttr['downloadToken'];
+        }
+
+        return $this->prepareReport($preparedItems, 'movie' ,'pdf', $downloadToken);
+    }
+
 	public function exportListAction()
     {
         //recupera os itens
@@ -58,6 +76,22 @@ class MovieController extends AbstractAdminController
         $items = $this->search(Movie::class, $dataAttr, ['createdAt' => 'DESC'], true);
 
         //criar um arquivo json
+        $preparedItems = $this->prepareItemsForReports($items);
+
+        $downloadToken = null;
+        if(!empty($dataAttr['downloadToken'])) {
+            $downloadToken = $dataAttr['downloadToken'];
+        }
+
+        return $this->prepareReport($preparedItems, 'movie_list' ,'xlsx', $downloadToken);
+    }
+
+    protected function prepareItemsForReports($items)
+    {
+        if(!is_array($items)) {
+            $items = [$items];
+        }
+
         $preparedItems = [];
         foreach ($items as $obj) {
 
@@ -169,13 +203,7 @@ class MovieController extends AbstractAdminController
 
             $preparedItems[] = ['movie'=>$itemArray];
         }
-
-        $downloadToken = null;
-        if(!empty($dataAttr['downloadToken'])) {
-            $downloadToken = $dataAttr['downloadToken'];
-        }
-
-        return $this->prepareReport($preparedItems, 'movie_list' ,'xlsx', $downloadToken);
+        return $preparedItems;
     }
 
 	public function createAction($data)

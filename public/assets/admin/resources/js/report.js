@@ -26,6 +26,7 @@
 					$form = $(_that.$element.data('form'));
 				} else {
 					$form = $('<form method="GET">');
+					$(document.body).append($form);
 				}
 				$form.attr('action', urlReport);
 				$form.append($('<input type="hidden", name="downloadToken">').val(token));

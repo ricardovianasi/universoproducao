@@ -424,8 +424,8 @@
 	<pageHeader>
 		<band height="51" splitType="Stretch">
 			<image>
-				<reportElement x="0" y="0" width="50" height="50" uuid="b50f848a-a086-4d5f-ad2a-5b66c68a8091"/>
-				<imageExpression><![CDATA["R:/ambiente/php/projetos/up/app/data/reports/reports_files/images/universo-producao.png"]]></imageExpression>
+				<reportElement x="0" y="0" width="50" height="50" printWhenGroupChanges="title" uuid="b50f848a-a086-4d5f-ad2a-5b66c68a8091"/>
+				<imageExpression><![CDATA["http://universoproducao.com.br/assets/universoproducao/dist/images/universo-producao.png"]]></imageExpression>
 			</image>
 			<line>
 				<reportElement x="0" y="45" width="555" height="1" uuid="8a9b2a5f-9fa1-4b5a-8559-bdd0f57a5dea">
@@ -468,6 +468,9 @@
 					<bottomPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
 					<rightPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
 				</box>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
 				<text><![CDATA[Título]]></text>
 			</staticText>
 			<textField>
@@ -490,6 +493,9 @@
 					<bottomPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
 					<rightPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
 				</box>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
 				<text><![CDATA[Título em inglês]]></text>
 			</staticText>
 			<textField>
@@ -512,6 +518,9 @@
 					<bottomPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
 					<rightPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
 				</box>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
 				<text><![CDATA[ID]]></text>
 			</staticText>
 			<textField>
@@ -534,6 +543,9 @@
 					<bottomPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
 					<rightPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
 				</box>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
 				<text><![CDATA[Data do cadastro]]></text>
 			</staticText>
 			<textField>
@@ -556,6 +568,9 @@
 					<bottomPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
 					<rightPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
 				</box>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
 				<text><![CDATA[Eventos]]></text>
 			</staticText>
 			<textField>
@@ -578,6 +593,9 @@
 					<bottomPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
 					<rightPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
 				</box>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
 				<text><![CDATA[Ano]]></text>
 			</staticText>
 			<textField>
@@ -600,6 +618,9 @@
 					<bottomPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
 					<rightPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
 				</box>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
 				<text><![CDATA[Mês]]></text>
 			</staticText>
 			<textField>
@@ -622,6 +643,9 @@
 					<bottomPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
 					<rightPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
 				</box>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
 				<text><![CDATA[Duração]]></text>
 			</staticText>
 			<textField>
@@ -644,6 +668,9 @@
 					<bottomPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
 					<rightPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
 				</box>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
 				<text><![CDATA[Categoria]]></text>
 			</staticText>
 			<staticText>
@@ -651,6 +678,9 @@
 				<box padding="5">
 					<pen lineWidth="0.5"/>
 				</box>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
 				<text><![CDATA[Possui CPB?]]></text>
 			</staticText>
 			<textField>
@@ -672,6 +702,9 @@
 				<box padding="5">
 					<pen lineWidth="0.5"/>
 				</box>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
 				<text><![CDATA[N. CPB]]></text>
 			</staticText>
 			<staticText>
@@ -679,6 +712,9 @@
 				<box padding="5">
 					<pen lineWidth="0.5"/>
 				</box>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
 				<text><![CDATA[Possui classificação oficial emitida pelo Ministério da Justiça?]]></text>
 			</staticText>
 			<textField>
@@ -700,6 +736,9 @@
 				<box padding="5">
 					<pen lineWidth="0.5"/>
 				</box>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
 				<text><![CDATA[Conteúdo das cenas(cenas de sexo, violência, uso de drogas, etc...)]]></text>
 			</staticText>
 			<textField>
@@ -714,6 +753,9 @@
 				<box padding="5">
 					<pen lineWidth="0.5"/>
 				</box>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
 				<text><![CDATA[Classificação]]></text>
 			</staticText>
 			<textField>
@@ -728,6 +770,9 @@
 				<box padding="5">
 					<pen lineWidth="0.5"/>
 				</box>
+				<textElement>
+					<font isBold="true" isItalic="false"/>
+				</textElement>
 				<text><![CDATA[Formato em que o filme foi finalizado]]></text>
 			</staticText>
 			<textField>
@@ -742,6 +787,9 @@
 				<box padding="5">
 					<pen lineWidth="0.5"/>
 				</box>
+				<textElement>
+					<font isBold="true" isItalic="false"/>
+				</textElement>
 				<text><![CDATA[Janela final para exibição]]></text>
 			</staticText>
 			<textField>
@@ -756,6 +804,9 @@
 				<box padding="5">
 					<pen lineWidth="0.5"/>
 				</box>
+				<textElement>
+					<font isBold="true" isItalic="false"/>
+				</textElement>
 				<text><![CDATA[Som]]></text>
 			</staticText>
 			<textField>
@@ -770,6 +821,9 @@
 				<box padding="5">
 					<pen lineWidth="0.5"/>
 				</box>
+				<textElement>
+					<font isBold="true" isItalic="false"/>
+				</textElement>
 				<text><![CDATA[Cor]]></text>
 			</staticText>
 			<textField>
@@ -792,6 +846,9 @@
 					<bottomPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
 					<rightPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
 				</box>
+				<textElement>
+					<font isBold="true" isItalic="false"/>
+				</textElement>
 				<text><![CDATA[Gênero]]></text>
 			</staticText>
 			<textField>
@@ -814,6 +871,9 @@
 					<bottomPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
 					<rightPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
 				</box>
+				<textElement>
+					<font isBold="true" isItalic="false"/>
+				</textElement>
 				<text><![CDATA[Acessibilidade]]></text>
 			</staticText>
 			<textField>
@@ -836,6 +896,9 @@
 					<bottomPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
 					<rightPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
 				</box>
+				<textElement>
+					<font isBold="true" isItalic="false"/>
+				</textElement>
 				<text><![CDATA[Longas metragens que o diretor já dirigiu]]></text>
 			</staticText>
 			<textField>
@@ -858,6 +921,9 @@
 					<bottomPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
 					<rightPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
 				</box>
+				<textElement>
+					<font isBold="true" isItalic="false"/>
+				</textElement>
 				<text><![CDATA[Categoria do curta]]></text>
 			</staticText>
 			<staticText>
@@ -869,6 +935,9 @@
 					<bottomPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
 					<rightPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
 				</box>
+				<textElement>
+					<font isBold="true" isItalic="false"/>
+				</textElement>
 				<text><![CDATA[Possui diálogos]]></text>
 			</staticText>
 			<textField>
@@ -902,6 +971,9 @@
 					<bottomPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
 					<rightPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
 				</box>
+				<textElement>
+					<font isBold="true" isItalic="false"/>
+				</textElement>
 				<text><![CDATA[Idioma dos diálogos]]></text>
 			</staticText>
 			<staticText>
@@ -913,6 +985,9 @@
 					<bottomPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
 					<rightPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
 				</box>
+				<textElement>
+					<font isBold="true" isItalic="false"/>
+				</textElement>
 				<text><![CDATA[Possui cópia legendada]]></text>
 			</staticText>
 			<textField>
@@ -938,6 +1013,9 @@
 				<box>
 					<pen lineWidth="0.5"/>
 				</box>
+				<textElement>
+					<font isBold="true" isItalic="false"/>
+				</textElement>
 				<text><![CDATA[Idioma das cópias legendadas]]></text>
 			</staticText>
 			<staticText>
@@ -949,6 +1027,9 @@
 					<bottomPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
 					<rightPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
 				</box>
+				<textElement>
+					<font isBold="true" isItalic="false"/>
+				</textElement>
 				<text><![CDATA[Possui lista de diálogos]]></text>
 			</staticText>
 			<textField>
@@ -982,6 +1063,9 @@
 					<bottomPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
 					<rightPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
 				</box>
+				<textElement>
+					<font isBold="true" isItalic="false"/>
+				</textElement>
 				<text><![CDATA[Idioma das listas de diálogos]]></text>
 			</staticText>
 			<staticText>
@@ -993,6 +1077,9 @@
 					<bottomPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
 					<rightPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
 				</box>
+				<textElement>
+					<font isBold="true" isItalic="false"/>
+				</textElement>
 				<text><![CDATA[Já participou de outros festivais]]></text>
 			</staticText>
 			<textField>
@@ -1026,6 +1113,9 @@
 					<bottomPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
 					<rightPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
 				</box>
+				<textElement>
+					<font isBold="true" isItalic="false"/>
+				</textElement>
 				<text><![CDATA[Festivais e prêmios recebidos]]></text>
 			</staticText>
 			<textField>
@@ -1040,6 +1130,9 @@
 				<box padding="5">
 					<pen lineWidth="0.5"/>
 				</box>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
 				<text><![CDATA[País de produção]]></text>
 			</staticText>
 			<textField>
@@ -1054,6 +1147,9 @@
 				<box padding="5">
 					<pen lineWidth="0.5"/>
 				</box>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
 				<text><![CDATA[Estado de produção]]></text>
 			</staticText>
 		</band>
@@ -1070,6 +1166,9 @@
 				<box padding="5">
 					<pen lineWidth="0.5"/>
 				</box>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
 				<text><![CDATA[Direção]]></text>
 			</staticText>
 			<textField>
@@ -1084,6 +1183,9 @@
 				<box padding="5">
 					<pen lineWidth="0.5"/>
 				</box>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
 				<text><![CDATA[Roteiro]]></text>
 			</staticText>
 			<textField>
@@ -1140,6 +1242,9 @@
 				<box padding="5">
 					<pen lineWidth="0.5"/>
 				</box>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
 				<text><![CDATA[Empresa produtora]]></text>
 			</staticText>
 			<staticText>
@@ -1147,6 +1252,9 @@
 				<box padding="5">
 					<pen lineWidth="0.5"/>
 				</box>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
 				<text><![CDATA[Co-produção]]></text>
 			</staticText>
 			<staticText>
@@ -1154,6 +1262,9 @@
 				<box padding="5">
 					<pen lineWidth="0.5"/>
 				</box>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
 				<text><![CDATA[Produção executiva]]></text>
 			</staticText>
 			<textField>
@@ -1175,6 +1286,9 @@
 				<box padding="5">
 					<pen lineWidth="0.5"/>
 				</box>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
 				<text><![CDATA[Direção de produção]]></text>
 			</staticText>
 			<staticText>
@@ -1182,6 +1296,9 @@
 				<box padding="5">
 					<pen lineWidth="0.5"/>
 				</box>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
 				<text><![CDATA[Montagem]]></text>
 			</staticText>
 			<textField>
@@ -1196,6 +1313,9 @@
 				<box padding="5">
 					<pen lineWidth="0.5"/>
 				</box>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
 				<text><![CDATA[Fotografia]]></text>
 			</staticText>
 			<staticText>
@@ -1203,6 +1323,9 @@
 				<box padding="5">
 					<pen lineWidth="0.5"/>
 				</box>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
 				<text><![CDATA[Direção de arte]]></text>
 			</staticText>
 			<staticText>
@@ -1210,6 +1333,9 @@
 				<box padding="5">
 					<pen lineWidth="0.5"/>
 				</box>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
 				<text><![CDATA[Trilha sonora]]></text>
 			</staticText>
 			<staticText>
@@ -1217,6 +1343,9 @@
 				<box padding="5">
 					<pen lineWidth="0.5"/>
 				</box>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
 				<text><![CDATA[Mixagem]]></text>
 			</staticText>
 			<staticText>
@@ -1224,6 +1353,9 @@
 				<box padding="5">
 					<pen lineWidth="0.5"/>
 				</box>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
 				<text><![CDATA[Som direto]]></text>
 			</staticText>
 			<textField>
@@ -1245,6 +1377,9 @@
 				<box padding="5">
 					<pen lineWidth="0.5"/>
 				</box>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
 				<text><![CDATA[Edição de som]]></text>
 			</staticText>
 			<staticText>
@@ -1252,6 +1387,9 @@
 				<box padding="5">
 					<pen lineWidth="0.5"/>
 				</box>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
 				<text><![CDATA[Cenografia]]></text>
 			</staticText>
 			<textField>
@@ -1280,6 +1418,9 @@
 				<box padding="5">
 					<pen lineWidth="0.5"/>
 				</box>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
 				<text><![CDATA[Figurino]]></text>
 			</staticText>
 			<staticText>
@@ -1287,6 +1428,9 @@
 				<box padding="5">
 					<pen lineWidth="0.5"/>
 				</box>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
 				<text><![CDATA[Elenco]]></text>
 			</staticText>
 			<staticText>
@@ -1294,6 +1438,9 @@
 				<box padding="5">
 					<pen lineWidth="0.5"/>
 				</box>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
 				<text><![CDATA[Sinopse]]></text>
 			</staticText>
 			<textField>
@@ -1308,10 +1455,13 @@
 				<box padding="5">
 					<pen lineWidth="0.5"/>
 				</box>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
 				<text><![CDATA[Filmografia do diretor]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="100" y="593" width="250" height="30" uuid="95fd991b-6f06-48df-bce8-8da2179e83e9"/>
+				<reportElement x="120" y="593" width="230" height="30" uuid="95fd991b-6f06-48df-bce8-8da2179e83e9"/>
 				<box padding="5">
 					<pen lineWidth="0.5"/>
 				</box>
@@ -1332,10 +1482,13 @@
 				<textFieldExpression><![CDATA[$F{movie_password}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="0" y="593" width="100" height="30" uuid="65387ff4-b1a4-42c0-ae3a-4fc4bf64e514"/>
+				<reportElement x="0" y="593" width="120" height="30" uuid="65387ff4-b1a4-42c0-ae3a-4fc4bf64e514"/>
 				<box padding="5">
 					<pen lineWidth="0.5"/>
 				</box>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
 				<text><![CDATA[Link de acesso ao filme]]></text>
 			</staticText>
 			<staticText>
@@ -1343,6 +1496,9 @@
 				<box padding="5">
 					<pen lineWidth="0.5"/>
 				</box>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
 				<text><![CDATA[Senha de acesso ao filme]]></text>
 			</staticText>
 			<staticText>
@@ -1350,94 +1506,112 @@
 				<box padding="5">
 					<pen lineWidth="0.5"/>
 				</box>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
 				<text><![CDATA[Link de divulgação]]></text>
 			</staticText>
 		</band>
 		<band height="706">
 			<staticText>
-				<reportElement x="0" y="61" width="80" height="30" uuid="906c604c-8a19-4c22-a811-773630c4f2f3"/>
+				<reportElement x="0" y="71" width="80" height="30" uuid="906c604c-8a19-4c22-a811-773630c4f2f3"/>
 				<box padding="5">
 					<pen lineWidth="0.5"/>
 				</box>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
 				<text><![CDATA[ID]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="80" y="61" width="60" height="30" uuid="0c1f92d7-950a-4fe2-b4ee-c9bb67ca9703"/>
+				<reportElement x="80" y="71" width="60" height="30" uuid="0c1f92d7-950a-4fe2-b4ee-c9bb67ca9703"/>
 				<box padding="5">
 					<pen lineWidth="0.5"/>
 				</box>
 				<textFieldExpression><![CDATA[$F{author_id}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="230" y="61" width="325" height="30" uuid="de5e798e-9003-4b1e-bf8e-626178160f47"/>
+				<reportElement x="230" y="71" width="325" height="30" uuid="de5e798e-9003-4b1e-bf8e-626178160f47"/>
 				<box padding="5">
 					<pen lineWidth="0.5"/>
 				</box>
 				<textFieldExpression><![CDATA[$F{author_name}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="140" y="61" width="90" height="30" uuid="ff8da6e8-e9b9-45ba-b8c2-8245f370be91"/>
+				<reportElement x="140" y="71" width="90" height="30" uuid="ff8da6e8-e9b9-45ba-b8c2-8245f370be91"/>
 				<box padding="5">
 					<pen lineWidth="0.5"/>
 				</box>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
 				<text><![CDATA[Nome]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="100" y="91" width="455" height="30" uuid="8a3f0598-757e-45b4-9bb5-bab5be347b3d"/>
+				<reportElement x="100" y="161" width="455" height="30" uuid="8a3f0598-757e-45b4-9bb5-bab5be347b3d"/>
 				<box padding="5">
 					<pen lineWidth="0.5"/>
 				</box>
 				<textFieldExpression><![CDATA[$F{author_address}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="100" y="151" width="455" height="30" uuid="254d778f-a428-47eb-a175-87f3ef4bb081"/>
-				<box padding="5">
-					<pen lineWidth="0.5"/>
-				</box>
-				<text><![CDATA[author_address]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="0" y="21" width="190" height="30" uuid="4a0e4396-0ae8-42c4-8098-c2bead4d1083"/>
+				<reportElement x="0" y="31" width="190" height="30" uuid="4a0e4396-0ae8-42c4-8098-c2bead4d1083"/>
 				<textElement>
 					<font size="14"/>
 				</textElement>
 				<text><![CDATA[Dados do usuário]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="91" width="100" height="30" uuid="c97afedf-d350-4651-8966-215ff2485017"/>
+				<reportElement x="0" y="101" width="100" height="30" uuid="c97afedf-d350-4651-8966-215ff2485017"/>
 				<box padding="5">
 					<pen lineWidth="0.5"/>
 				</box>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
 				<text><![CDATA[E-mail]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="100" y="121" width="455" height="30" uuid="2f44ab80-7ada-4327-9ca8-144461556a67"/>
+				<reportElement x="100" y="131" width="455" height="30" uuid="2f44ab80-7ada-4327-9ca8-144461556a67"/>
 				<box padding="5">
 					<pen lineWidth="0.5"/>
 				</box>
 				<textFieldExpression><![CDATA[$F{author_phones}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="0" y="121" width="100" height="30" uuid="90fe97fe-e67a-4109-891e-75756e4e6cf5"/>
+				<reportElement x="0" y="131" width="100" height="30" uuid="90fe97fe-e67a-4109-891e-75756e4e6cf5"/>
 				<box padding="5">
 					<pen lineWidth="0.5"/>
 				</box>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
 				<text><![CDATA[Telefone]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="151" width="100" height="30" uuid="7dcc0b12-705d-4a3b-a7dd-32509eb2653f"/>
+				<reportElement x="0" y="161" width="100" height="30" uuid="7dcc0b12-705d-4a3b-a7dd-32509eb2653f"/>
 				<box padding="5">
 					<pen lineWidth="0.5"/>
 				</box>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
 				<text><![CDATA[Endereço]]></text>
 			</staticText>
+			<textField>
+				<reportElement x="100" y="101" width="455" height="30" uuid="866736a7-4591-4a5e-9f36-3b95198fc5d8"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{author_email}]]></textFieldExpression>
+			</textField>
 		</band>
 	</detail>
 	<pageFooter>
 		<band height="45" splitType="Stretch">
 			<image>
 				<reportElement x="0" y="11" width="50" height="32" uuid="1f949c18-1411-4947-be85-01442b1858cf"/>
-				<imageExpression><![CDATA["R:/ambiente/php/projetos/up/app/data/reports/reports_files/images/universo-producao.png"]]></imageExpression>
+				<imageExpression><![CDATA["http://universoproducao.com.br/assets/universoproducao/dist/images/universo-producao.png"]]></imageExpression>
 			</image>
 			<staticText>
 				<reportElement x="60" y="11" width="350" height="15" uuid="a6073510-0bd1-4af8-8cd1-be340e327ff2"/>
