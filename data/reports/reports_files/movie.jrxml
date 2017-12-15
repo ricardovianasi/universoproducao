@@ -732,7 +732,7 @@
 				<textFieldExpression><![CDATA[Boolean.TRUE.equals($F{has_official_classification}) ? "Sim" : "Não"]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement positionType="Float" x="0" y="320" width="555" height="37" uuid="d6775145-63aa-47eb-a474-6968e6f6410d"/>
+				<reportElement positionType="Float" x="0" y="320" width="555" height="30" uuid="d6775145-63aa-47eb-a474-6968e6f6410d"/>
 				<box padding="5">
 					<pen lineWidth="0.5"/>
 				</box>
@@ -769,7 +769,7 @@
 				<text><![CDATA[Classificação]]></text>
 			</staticText>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement positionType="Float" x="130" y="357" width="150" height="30" uuid="32dd5c71-9db9-46fb-a441-e04d333ebd5d"/>
+				<reportElement positionType="Float" x="130" y="350" width="150" height="37" uuid="32dd5c71-9db9-46fb-a441-e04d333ebd5d"/>
 				<box padding="5">
 					<pen lineWidth="0.5"/>
 				</box>
@@ -777,17 +777,17 @@
 				<textFieldExpression><![CDATA[$F{opt_format_completed}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement positionType="Float" x="0" y="357" width="130" height="30" uuid="1919ada2-6903-464d-a12e-2b6ee30db67f"/>
+				<reportElement positionType="Float" x="0" y="350" width="130" height="37" uuid="1919ada2-6903-464d-a12e-2b6ee30db67f"/>
 				<box padding="5">
 					<pen lineWidth="0.5"/>
 				</box>
 				<textElement>
-					<font isBold="true" isItalic="false"/>
+					<font size="10" isBold="true" isItalic="false"/>
 				</textElement>
 				<text><![CDATA[Formato em que o filme foi finalizado]]></text>
 			</staticText>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement positionType="Float" x="420" y="357" width="135" height="30" uuid="26b01af0-3d5d-4f30-837f-ca7a85cdaf0f"/>
+				<reportElement positionType="Float" x="420" y="350" width="135" height="37" uuid="26b01af0-3d5d-4f30-837f-ca7a85cdaf0f"/>
 				<box padding="5">
 					<pen lineWidth="0.5"/>
 				</box>
@@ -795,7 +795,7 @@
 				<textFieldExpression><![CDATA[$F{opt_window}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement positionType="Float" x="280" y="357" width="140" height="30" uuid="4ed90525-3408-4eba-ac92-ee4e096ee8a8"/>
+				<reportElement positionType="Float" x="280" y="350" width="140" height="37" uuid="4ed90525-3408-4eba-ac92-ee4e096ee8a8"/>
 				<box padding="5">
 					<pen lineWidth="0.5"/>
 				</box>
@@ -893,7 +893,7 @@
 				<text><![CDATA[Acessibilidade]]></text>
 			</staticText>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement positionType="Float" x="130" y="447" width="150" height="30" uuid="d00ae72a-c648-427e-95bc-41346f44da41"/>
+				<reportElement positionType="Float" x="130" y="447" width="150" height="38" uuid="d00ae72a-c648-427e-95bc-41346f44da41"/>
 				<box padding="5">
 					<pen lineWidth="0.5"/>
 					<topPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
@@ -905,7 +905,7 @@
 				<textFieldExpression><![CDATA[$F{opt_feature_directed}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement positionType="Float" x="0" y="447" width="130" height="30" uuid="b48e8941-7493-4149-a075-cf87d4f0bf13"/>
+				<reportElement positionType="Float" x="0" y="447" width="130" height="38" uuid="b48e8941-7493-4149-a075-cf87d4f0bf13"/>
 				<box padding="5">
 					<pen lineWidth="0.5"/>
 					<topPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
@@ -919,7 +919,7 @@
 				<text><![CDATA[Longas metragens que o diretor já dirigiu]]></text>
 			</staticText>
 			<textField>
-				<reportElement positionType="Float" x="420" y="447" width="135" height="30" uuid="d52c8f8c-909b-4373-ae8e-814f056c402d"/>
+				<reportElement positionType="Float" x="420" y="447" width="135" height="38" uuid="d52c8f8c-909b-4373-ae8e-814f056c402d"/>
 				<box padding="5">
 					<pen lineWidth="0.5"/>
 					<topPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
@@ -930,7 +930,7 @@
 				<textFieldExpression><![CDATA[$F{opt_short_movie_category}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement positionType="Float" x="280" y="447" width="140" height="30" uuid="93df0486-05de-45e9-9f50-78229339dbc6"/>
+				<reportElement positionType="Float" x="280" y="447" width="140" height="38" uuid="93df0486-05de-45e9-9f50-78229339dbc6"/>
 				<box padding="5">
 					<pen lineWidth="0.5"/>
 					<topPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
@@ -944,7 +944,7 @@
 				<text><![CDATA[Categoria do curta]]></text>
 			</staticText>
 			<staticText>
-				<reportElement positionType="Float" x="0" y="477" width="280" height="30" uuid="7077458c-e06c-4abc-ad62-c49496806161"/>
+				<reportElement positionType="Float" x="0" y="485" width="280" height="30" uuid="7077458c-e06c-4abc-ad62-c49496806161"/>
 				<box padding="5">
 					<pen lineWidth="0.5"/>
 					<topPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
@@ -958,7 +958,7 @@
 				<text><![CDATA[Possui diálogos]]></text>
 			</staticText>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement positionType="Float" x="280" y="477" width="275" height="30" uuid="90f03b02-9358-4f41-beed-0b6a644e1f4f"/>
+				<reportElement positionType="Float" x="280" y="485" width="275" height="30" uuid="90f03b02-9358-4f41-beed-0b6a644e1f4f"/>
 				<box padding="5">
 					<pen lineWidth="0.5"/>
 					<topPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
@@ -970,7 +970,7 @@
 				<textFieldExpression><![CDATA[Boolean.TRUE.equals($F{has_conversations_languages}) ? "Sim" : "Não"]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement positionType="Float" x="280" y="507" width="275" height="30" uuid="1580289a-e22a-481c-abac-29c2c9647de2"/>
+				<reportElement positionType="Float" x="280" y="515" width="275" height="30" uuid="1580289a-e22a-481c-abac-29c2c9647de2"/>
 				<box padding="5">
 					<pen lineWidth="0.5"/>
 					<topPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
@@ -982,7 +982,7 @@
 				<textFieldExpression><![CDATA[$F{conversations_list_languages}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement positionType="Float" x="0" y="507" width="280" height="30" uuid="8c1e636d-ee41-47bf-a8a2-b28f0f9429df"/>
+				<reportElement positionType="Float" x="0" y="515" width="280" height="30" uuid="8c1e636d-ee41-47bf-a8a2-b28f0f9429df"/>
 				<box padding="5">
 					<pen lineWidth="0.5"/>
 					<topPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
@@ -996,7 +996,7 @@
 				<text><![CDATA[Idioma dos diálogos]]></text>
 			</staticText>
 			<staticText>
-				<reportElement positionType="Float" x="0" y="537" width="280" height="30" uuid="e1d8cf9b-1439-47c5-8178-721d88a28f1f"/>
+				<reportElement positionType="Float" x="0" y="545" width="280" height="30" uuid="e1d8cf9b-1439-47c5-8178-721d88a28f1f"/>
 				<box padding="5">
 					<pen lineWidth="0.5"/>
 					<topPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
@@ -1010,7 +1010,7 @@
 				<text><![CDATA[Possui cópia legendada]]></text>
 			</staticText>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement positionType="Float" x="280" y="537" width="275" height="30" uuid="1f21161c-1971-4fd1-a4ed-3eccff4a55ab"/>
+				<reportElement positionType="Float" x="280" y="545" width="275" height="30" uuid="1f21161c-1971-4fd1-a4ed-3eccff4a55ab"/>
 				<box padding="5">
 					<pen lineWidth="0.5"/>
 					<topPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
@@ -1022,7 +1022,7 @@
 				<textFieldExpression><![CDATA[Boolean.TRUE.equals($F{has_subtitles_languages}) ? "Sim" : "Não"]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement positionType="Float" x="280" y="567" width="275" height="30" uuid="223f4f0c-7568-456e-9d5e-3ec3e6f6aec5"/>
+				<reportElement positionType="Float" x="280" y="575" width="275" height="30" uuid="223f4f0c-7568-456e-9d5e-3ec3e6f6aec5"/>
 				<box padding="5">
 					<pen lineWidth="0.5"/>
 				</box>
@@ -1030,7 +1030,7 @@
 				<textFieldExpression><![CDATA[$F{subtitles_languages}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement positionType="Float" x="0" y="567" width="280" height="30" uuid="ef17a319-e173-4170-8f3d-5477d6801c5a"/>
+				<reportElement positionType="Float" x="0" y="575" width="280" height="30" uuid="ef17a319-e173-4170-8f3d-5477d6801c5a"/>
 				<box padding="5">
 					<pen lineWidth="0.5"/>
 				</box>
@@ -1040,7 +1040,7 @@
 				<text><![CDATA[Idioma das cópias legendadas]]></text>
 			</staticText>
 			<staticText>
-				<reportElement positionType="Float" x="0" y="597" width="280" height="30" uuid="24b9b032-6ec7-4779-b6d0-a8511b323d9a"/>
+				<reportElement positionType="Float" x="0" y="605" width="280" height="30" uuid="24b9b032-6ec7-4779-b6d0-a8511b323d9a"/>
 				<box padding="5">
 					<pen lineWidth="0.5"/>
 					<topPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
@@ -1054,7 +1054,7 @@
 				<text><![CDATA[Possui lista de diálogos]]></text>
 			</staticText>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement positionType="Float" x="280" y="597" width="275" height="30" uuid="f015491a-8ef7-4bb5-a70d-09fdc85f8338"/>
+				<reportElement positionType="Float" x="280" y="605" width="275" height="30" uuid="f015491a-8ef7-4bb5-a70d-09fdc85f8338"/>
 				<box padding="5">
 					<pen lineWidth="0.5"/>
 					<topPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
@@ -1066,7 +1066,7 @@
 				<textFieldExpression><![CDATA[Boolean.TRUE.equals($F{has_conversations_list_languages}) ? "Sim" : "Não"]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement positionType="Float" x="280" y="627" width="275" height="30" uuid="0a858e2c-5f6e-4d2d-bc37-7f2537cb118d"/>
+				<reportElement positionType="Float" x="280" y="635" width="275" height="30" uuid="0a858e2c-5f6e-4d2d-bc37-7f2537cb118d"/>
 				<box padding="5">
 					<pen lineWidth="0.5"/>
 					<topPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
@@ -1078,7 +1078,7 @@
 				<textFieldExpression><![CDATA[$F{conversations_list_languages}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement positionType="Float" x="0" y="627" width="280" height="30" uuid="c7b680cc-f440-4f4b-ade4-0eaf4fe3bf12"/>
+				<reportElement positionType="Float" x="0" y="635" width="280" height="30" uuid="c7b680cc-f440-4f4b-ade4-0eaf4fe3bf12"/>
 				<box padding="5">
 					<pen lineWidth="0.5"/>
 					<topPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
@@ -1092,7 +1092,7 @@
 				<text><![CDATA[Idioma das listas de diálogos]]></text>
 			</staticText>
 			<staticText>
-				<reportElement positionType="Float" x="0" y="657" width="130" height="30" uuid="7847f689-8378-4977-9bf2-6869f8e81ca6"/>
+				<reportElement positionType="Float" x="0" y="665" width="200" height="33" uuid="7847f689-8378-4977-9bf2-6869f8e81ca6"/>
 				<box padding="5">
 					<pen lineWidth="0.5"/>
 					<topPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
@@ -1103,10 +1103,10 @@
 				<textElement>
 					<font isBold="true" isItalic="false"/>
 				</textElement>
-				<text><![CDATA[Já participou de outros festivais]]></text>
+				<text><![CDATA[Já participou de outros festivais?]]></text>
 			</staticText>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement positionType="Float" x="130" y="657" width="425" height="30" uuid="021ce456-10ed-4af6-99d9-7a96b67c491c"/>
+				<reportElement positionType="Float" x="200" y="665" width="355" height="33" uuid="021ce456-10ed-4af6-99d9-7a96b67c491c"/>
 				<box padding="5">
 					<pen lineWidth="0.5"/>
 					<topPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
