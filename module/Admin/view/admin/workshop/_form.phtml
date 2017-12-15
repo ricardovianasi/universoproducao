@@ -30,10 +30,10 @@
                     <div class="form-group">
                         <label class="control-label">Imagem de capa</label>
                         <div class="input-group">
-                            <div class="fileinput <?php echo $this->workshop->getFile() ? "fileinput-exist" : ""; ?>">
+                            <div class="fileinput fileinput2 <?php echo $this->workshop->getFile() ? "fileinput-exist" : "fileinput-new"; ?>" data-provides="fileinput">
                                 <div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">
                                     <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=sem+imagem" alt="" /> </div>
-                                <div class="fileinput-preview thumbnail" style="max-width: 200px; max-height: 150px;">
+                                <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;">
                                     <?php if($this->workshop->getFile()): ?>
                                         <img width="100%" src="<?php echo $this->workshop->getFile() ?>" alt="" />
                                     <?php endif; ?>
