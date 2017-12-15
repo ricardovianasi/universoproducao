@@ -22,6 +22,7 @@ use Zend\Http\Header\SetCookie;
 use Zend\Http\Headers;
 use Zend\Http\Response\Stream;
 use Zend\Mvc\MvcEvent;
+use Zend\View\Model\JsonModel;
 use Zend\View\Model\ModelInterface;
 use Zend\View\Model\ViewModel;
 
@@ -81,6 +82,7 @@ abstract class AbstractAdminController extends AbstractController
 	protected $serializerService;
 
 	protected $reportBasePath = __DIR__ ."/../../../../../data/reports";
+	protected $reportOutputPath = __DIR__ ."/../../../../../public/reports";
 
 	public function getViewModel()
 	{
@@ -499,24 +501,15 @@ abstract class AbstractAdminController extends AbstractController
 		return $this->getServiceLocator()->get('ViewHelperManager');
 	}
 
-	public function prepareReport(array $items, $reportName, $format, $downloadToken=null)
+	public function prepareReport(array $items, $reportName, $format)
     {
         //Generate ID to report
         $report_id = time(false).'_'.mt_rand();
-        $reportBasePath =
-            $this->reportBasePath
-            .DIRECTORY_SEPARATOR
-            .'output'.DIRECTORY_SEPARATOR
-            .$report_id;
-
-        mkdir($reportBasePath, 0775, true);
 
         $jsonFile = $this->createJsonFile(json_encode($items), $report_id);
         if(!file_exists($jsonFile)) {
             throw new \Exception("Arquivo $jsonFile não foi encontrado");
         }
-
-
 
         $input = $this->reportBasePath
             .DIRECTORY_SEPARATOR
@@ -527,6 +520,12 @@ abstract class AbstractAdminController extends AbstractController
         if(!file_exists($input)) {
             throw new \Exception("Arquivo $input não foi encontrado");
         }
+
+        $output = $this->reportOutputPath
+            .DIRECTORY_SEPARATOR
+            .$report_id;
+
+        mkdir($output, 0775, true);
 
         $options = [
             'format' => is_array($format) ? $format : [$format],
@@ -542,20 +541,26 @@ abstract class AbstractAdminController extends AbstractController
         $jasper = new JasperPHP();
         $jasper->process(
             $input,
-            $reportBasePath,
+            $output,
             $options
         )->execute();
 
-        $reportFile =
-            $reportBasePath
-            .DIRECTORY_SEPARATOR
-            .$reportName.".".$format;
+        if($this->getRequest()->isXmlHttpRequest()) {
+            $reportUrl = rtrim($this->url()->fromRoute('universoproducao'), '/');
+            $reportUrl.= '/reports/'
+                . $report_id
+                . '/' . $reportName.".".$format;
 
-        $report = $this->dowloadReport($reportFile);
+            $report = new JsonModel();
+            $report->setTerminal(true);
+            $report->report = $reportUrl;
+        } else {
+            $reportFile =
+                $output
+                .DIRECTORY_SEPARATOR
+                .$reportName.".".$format;
 
-        if($downloadToken) {
-            $cookie = new SetCookie('downloadToken', $downloadToken, time() + 365 * 60 * 60 * 24);
-            $report->getHeaders()->addHeader($cookie);
+            $report = $this->dowloadReport($reportFile);
         }
 
         return $report;
@@ -590,11 +595,9 @@ abstract class AbstractAdminController extends AbstractController
         $fileName =
             $this->reportBasePath
             .DIRECTORY_SEPARATOR
-            .'output'
+            .'data_files'
             .DIRECTORY_SEPARATOR
-            .$reportId
-            .DIRECTORY_SEPARATOR
-            .'data.json';
+            .$reportId.'.json';
 
         $jsonFile = fopen($fileName, 'w');
         if(!$jsonFile) {

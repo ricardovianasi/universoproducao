@@ -61,12 +61,7 @@ class MovieController extends AbstractAdminController
         //criar um arquivo json
         $preparedItems = $this->prepareItemsForReports($item);
 
-        $downloadToken = null;
-        if(!empty($dataAttr['downloadToken'])) {
-            $downloadToken = $dataAttr['downloadToken'];
-        }
-
-        return $this->prepareReport($preparedItems, 'movie' ,'pdf', $downloadToken);
+        return $this->prepareReport($preparedItems, 'movie' ,'pdf');
     }
 
 	public function exportListAction()
@@ -77,13 +72,7 @@ class MovieController extends AbstractAdminController
 
         //criar um arquivo json
         $preparedItems = $this->prepareItemsForReports($items);
-
-        $downloadToken = null;
-        if(!empty($dataAttr['downloadToken'])) {
-            $downloadToken = $dataAttr['downloadToken'];
-        }
-
-        return $this->prepareReport($preparedItems, 'movie_list' ,'xlsx', $downloadToken);
+        return $this->prepareReport($preparedItems, 'movie_list' ,'xlsx');
     }
 
     protected function prepareItemsForReports($items)

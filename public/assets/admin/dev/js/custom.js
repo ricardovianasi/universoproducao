@@ -2170,38 +2170,55 @@ function responsive_filemanager_callback(field_id) {
             var _that = this;
             _that.$element.on("click", function(e) {
                 e.preventDefault();
-                var $form = null, urlReport = _that.$element.data("url"), token = new Date().getTime(), downloadTimer, attempts = 60;
+                var $form = null, urlReport = _that.$element.data("url"), reportFilter = "";
                 if (_that.$element.data("form")) {
-                    $form = $(_that.$element.data("form"));
-                } else {
-                    $form = $('<form method="GET">');
-                    $(document.body).append($form);
+                    var $form = $(_that.$element.data("form"));
+                    reportFilter = $form.serialize();
                 }
-                $form.attr("action", urlReport);
-                $form.append($('<input type="hidden", name="downloadToken">').val(token));
                 App.blockUI({
                     cenrerY: true,
                     animate: true
                 });
-                $form.submit();
-                downloadTimer = window.setInterval(function() {
-                    var cookieToken = _that.getCookie("downloadToken");
-                    if (cookieToken == token || attempts == 0) {
-                        App.unblockUI();
-                        window.clearInterval(downloadTimer);
-                        _that.expireCookie("downloadToken");
-                        attempts = 60;
+                console.log(urlReport);
+                $.ajax({
+                    type: "GET",
+                    url: urlReport,
+                    data: reportFilter,
+                    success: function(data) {
+                        if (data.error) {
+                            _that.erroMessage(data.error);
+                        } else if (data.report) {
+                            _that.successMessage(data.report);
+                            App.unblockUI();
+                        } else {
+                            _that.erroMessage("Erro ao gerar relatório. Por favor, tente novamente.");
+                        }
+                    },
+                    error: function() {
+                        _that.erroMessage("Erro ao gerar relatório. Por favor, tente novamente.");
                     }
-                    attempts--;
-                }, 1e3);
+                });
             });
         },
-        getCookie: function(name) {
-            var parts = document.cookie.split(name + "=");
-            if (parts.length == 2) return parts.pop().split(";").shift();
+        erroMessage: function(msg) {
+            bootbox.dialog({
+                message: msg,
+                title: "Atenção",
+                buttons: {
+                    success: {
+                        label: "OK",
+                        className: "blue",
+                        callback: function() {
+                            App.unblockUI();
+                        }
+                    }
+                }
+            });
         },
-        expireCookie: function(cName) {
-            document.cookie = encodeURIComponent(cName) + "=deleted; expires=" + new Date(0).toUTCString();
+        successMessage: function(urlReport) {
+            var $reportResult = $("#report_result");
+            $(".report-result-action.download", $reportResult).attr("href", urlReport);
+            $reportResult.modal();
         }
     };
     Report.defaults = Report.prototype.defaults;
