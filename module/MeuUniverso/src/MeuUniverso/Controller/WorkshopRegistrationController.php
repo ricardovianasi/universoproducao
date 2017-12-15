@@ -35,15 +35,43 @@ class WorkshopRegistrationController extends AbstractMeuUniversoRegisterControll
 
     public function indexAction()
     {
-        return [];
+        $idReg = $this->params()->fromRoute('id_reg');
+        if(!$idReg) {
+            return $this->redirect()->toRoute('meu-universo/default', [], ['query'=>[
+                'code' => self::ERROR_REG_NOT_FOUND,
+                'id_reg' => $idReg
+            ]]);
+        }
+
+        $reg = $this->getRepository(Registration::class)->findOneBy([
+            'hash' => $idReg
+        ]);
+
+        if(!$reg) {
+            return $this->redirect()->toRoute('meu-universo/default', [], ['query'=>[
+                'code' => self::ERROR_REG_NOT_FOUND,
+                'id_reg' => $idReg
+            ]]);
+        }
+
+        if(!$reg->isOpen()) {
+            return $this->redirect()->toRoute('meu-universo/default', [], ['query'=>[
+                'code' => self::ERROR_REG_IS_CLOSED,
+                'id_reg' => $idReg
+            ]]);
+        }
+
+        $workshops = $this->getRepository(Workshop::class)->findBy([
+            'registration' => $reg->getId()
+        ], ['name'=>'DESC']);
+
+        return [
+            'workshops' => $workshops,
+            'registration' => $reg
+        ];
     }
 
-    public function visualizarAction()
-    {
-
-    }
-
-    protected function novoAction()
+    public function inscricaoAction()
     {
         $idReg = $this->params()->fromRoute('id_reg');
         if(!$idReg) {
@@ -64,13 +92,36 @@ class WorkshopRegistrationController extends AbstractMeuUniversoRegisterControll
             ]]);
         }
 
-        $workshops = $this->getRepository(Workshop::class)->findBy([
-            'registration' => $idReg
-        ], ['name'=>'DESC']);
+        if(!$reg->isOpen()) {
+            return $this->redirect()->toRoute('meu-universo/default', [], ['query'=>[
+                'code' => self::ERROR_REG_IS_CLOSED,
+                'id_reg' => $idReg
+            ]]);
+        }
 
-        return [
-            'workshops' => $workshops
-        ];
+        $idWorkshop = $this->params()->fromRoute('id');
+        if(!$idWorkshop) {
+            return $this->redirect()->toRoute('meu-universo/default', [], ['query'=>[
+                'code' => self::ERROR_REG_NOT_FOUND,
+                'id_reg' => $idWorkshop
+            ]]);
+        }
+
+        $workshop = $this->getRepository(Workshop::class)->findOneBy([
+            'id' => $idWorkshop,
+            'registration' => $reg->getId()
+        ]);
+
+        if(!$workshop) {
+
+        }
+
+
+        if($this->getRequest()->isPost()) {
+
+        } else {
+
+        }
     }
 
     public function deleteAction()

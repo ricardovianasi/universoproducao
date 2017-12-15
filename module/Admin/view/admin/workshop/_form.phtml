@@ -26,6 +26,34 @@
             </div>
 
             <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="control-label">Imagem de capa</label>
+                        <div class="input-group">
+                            <div class="fileinput <?php echo $this->workshop->getFile() ? "fileinput-exist" : ""; ?>">
+                                <div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">
+                                    <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=sem+imagem" alt="" /> </div>
+                                <div class="fileinput-preview thumbnail" style="max-width: 200px; max-height: 150px;">
+                                    <?php if($this->workshop->getFile()): ?>
+                                        <img width="100%" src="<?php echo $this->workshop->getFile() ?>" alt="" />
+                                    <?php endif; ?>
+                                </div>
+                                <div>
+                                    <a href="#"
+                                       data-toggle="modal"
+                                       data-target="#modal-responsivefilemanager"
+                                       data-url="/filemanager/dialog.php?type=1&field_id=file"
+                                       class="btn btn-success responsivefilemanager fileinput-add"><i class="fa fa-plus"></i> Selecionar uma Imagem</a>
+                                    <a class="btn red fileinput-remove"> Remover </a>
+                                    <?php echo $this->formElement($form->get('file')); ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
                 <div class="col-md-6"><?php echo $this->formRow($form->get('description')); ?></div>
                 <div class="col-md-6"><?php echo $this->formRow($form->get('requirements')); ?></div>
             </div>

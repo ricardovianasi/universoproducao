@@ -56,6 +56,9 @@ class Workshop extends AbstractEntity
     /** @ORM\Column(name="program", type="text", nullable=true) */
     private $program;
 
+    /** @ORM\Column(name="file", type="string", nullable=true) */
+    private $file;
+
     /**
      * @return mixed
      */
@@ -263,5 +266,21 @@ class Workshop extends AbstractEntity
         }
 
         return $events[0];
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFile()
+    {
+        return $this->file;
+    }
+
+    /**
+     * @param mixed $file
+     */
+    public function setFile($file)
+    {
+        $this->file = $file;
     }
 }

@@ -1,0 +1,76 @@
+<div class="container">
+    <div class="col-md-12">
+        <p class="meuuniverso-brand meuuniverso-brand--center"><strong>Meu</strong>Universo | Oficinas</p>
+    </div>
+
+    <div class="portlet light">
+        <div class="portlet-body">
+
+            <div class="panel-group accordion" id="workshop_list">
+
+                <?php foreach ($this->workshops as $workshop): ?>
+                    <div class="portlet light bordered">
+                        <div class="portlet-title">
+                            <div class="caption font-green-sharp"><?php echo $workshop->getName() ?> </div>
+                            <div class="tools">
+                                <a href="javascript:;" class="expand" data-original-title="" title=""> </a>
+                            </div>
+                        </div>
+                        <div class="portlet-body form portlet-collapsed">
+
+                            <p>
+                                <strong>Instrutor(a):</strong>
+                                <a href=""><?php echo $workshop->getManager()->getName(); ?></a>
+                            </p>
+                            <p>
+                                <strong>Faixa etária: </strong>
+                                <?php
+                                    if($workshop->getMinimumAge()) {
+                                        if($workshop->getMaximumAge()) {
+                                            echo "De " . $workshop->getMinimumAge() . ' a ' . $workshop->getMaximumAge() . ' anos';
+                                        } else {
+                                            echo "A partir de " . $workshop->getMinimumAge() . 'anos';
+                                        }
+                                    } elseif($workshop->getMaximumAge()) {
+                                        echo 'Até ' . $workshop->getMaximumAge();
+                                    } else {
+                                        echo "Livre";
+                                    }
+                                ?>
+                            </p>
+                            <p>
+                                <strong>Carga horária:</strong>
+                                <a href=""><?php echo $workshop->getDuration()->format('H\hi'); ?></a>
+                            </p>
+                            <p>
+                                <b>Número de vagas:</b>
+                                <a href=""><?php echo $workshop->getAvailableSubscriptions(); ?></a>
+                            </p>
+                            <p>
+                                <strong>Conteúdo programático:</strong> <br />
+                                <div><?php echo $workshop->getDescription(); ?></div>
+                            </p>
+
+                            <p>
+                                <strong>Pré-requisitos:</strong> <br />
+                            <div><?php echo $workshop->getRequirements(); ?></div>
+                            </p>
+
+                            <div class="form-actions">
+                                <?php $urlSub = $this->url('meu-universo/workshop', [
+                                    'controller'=>'workshop-registration',
+                                    'action' => 'inscricao',
+                                    'id' => $workshop->getId(),
+                                    'id_reg' => $registration->getHash()
+                                ]); ?>
+                                <a href="<?php echo $urlSub; ?>" class="btn green button-submit">Fazer inscrição</a>
+                            </div>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+
+            </div>
+        </div>
+    </div>
+
+</div>

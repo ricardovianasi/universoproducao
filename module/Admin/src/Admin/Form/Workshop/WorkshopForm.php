@@ -140,6 +140,17 @@ class WorkshopForm extends Form
                 'class' => 'tinymce_minimal'
             ]
         ]);
+
+        $this->add([
+            'name' => 'file',
+            'type' => 'hidden',
+            'attributes' => [
+                'id' => 'file'
+            ],
+            'options' => [
+                'label' => 'Imagem'
+            ]
+        ]);
     }
 
     public function populateRegulations()

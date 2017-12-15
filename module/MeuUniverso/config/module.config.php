@@ -95,7 +95,7 @@ return array(
                     'workshop' => array(
                         'type'    => 'Segment',
                         'options' => array(
-                            'route'    => '/oficina/:id_reg/:action[/:id]',
+                            'route'    => '/oficina/:id_reg/[:action[/:id]]',
                             'constraints' => array(
                                 'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
                             ),
