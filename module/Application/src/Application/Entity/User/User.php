@@ -94,10 +94,14 @@ class User extends AbstractEntity
     /** @ORM\OneToMany(targetEntity="Application\Entity\Phone\Phone", mappedBy="user", cascade="ALL") */
 	private $phones;
 
-    /**
-     * @ORM\OneToMany(targetEntity="Dependent", mappedBy="user", cascade="ALL")
-     */
+    /** @ORM\OneToMany(targetEntity="User", mappedBy="parent") */
 	private $dependents;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="dependents")
+     * @ORM\JoinColumn(name="parent_user_id", referencedColumnName="id")
+     */
+	private $parent;
 
 	/**
 	 * @ORM\OneToMany(targetEntity="Log", mappedBy="user")
@@ -476,7 +480,7 @@ class User extends AbstractEntity
     }
 
     /**
-     * @return mixed
+     * @return ArrayCollection
      */
     public function getDependents()
     {
@@ -489,6 +493,11 @@ class User extends AbstractEntity
     public function setDependents($dependents)
     {
         $this->dependents = $dependents;
+    }
+
+    public function hasDependents()
+    {
+        return (boolean) $this->getDependents()->count();
     }
 
     /**
@@ -571,5 +580,21 @@ class User extends AbstractEntity
         ];
 
         return $data;
+    }
+
+    /**
+     * @return User
+     */
+    public function getParent()
+    {
+        return $this->parent;
+    }
+
+    /**
+     * @param mixed $parent
+     */
+    public function setParent($parent)
+    {
+        $this->parent = $parent;
     }
 }

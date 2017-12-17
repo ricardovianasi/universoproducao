@@ -4,6 +4,7 @@ namespace MeuUniverso;
 use MeuUniverso\View\Helper\RegistrationRegulation;
 use MeuUniverso\View\Helper\UserMenu;
 use MeuUniverso\View\Helper\UserMovies;
+use MeuUniverso\View\Helper\UserWorkshops;
 use Util\Security\Crypt;
 use Util\View\Helper\Messages;
 
@@ -61,6 +62,19 @@ return array(
                             ),
                             'defaults' => array(
                                 'controller' => Controller\RegisterController::class,
+                                'action' => 'index',
+                            ),
+                        ),
+                    ),
+                    'dependents' => array(
+                        'type'    => 'Segment',
+                        'options' => array(
+                            'route'    => '/dependentes[/:action[/:id]]',
+                            'constraints' => array(
+                                'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
+                            ),
+                            'defaults' => array(
+                                'controller' => Controller\DependentsController::class,
                                 'action' => 'index',
                             ),
                         ),
@@ -138,6 +152,7 @@ return array(
         'invokables' => [
             'meuUniversoUserMenu'   => UserMenu::class,
             'meuUniversoMovies'     => UserMovies::class,
+            'meuUniversoWorkshops'  => UserWorkshops::class,
             'regulation'            => RegistrationRegulation::class
         ],
         'factories' => [

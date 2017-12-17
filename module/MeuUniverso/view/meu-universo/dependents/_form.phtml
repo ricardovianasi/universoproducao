@@ -1,0 +1,25 @@
+<div class="portlet light" id="form_wizard_1">
+    <div class="portlet-body-form">
+        <?php
+            $form = $this->form;
+            $form->setAttribute('class', 'form-horizontal')
+                ->setAttribute('data-js-validate', '');
+            $form->prepare();
+            echo $this->form(null, null)->openTag($form); ?>
+        <div class="form-body">
+        <?php //form body
+            echo $this->formRow($form->get('name'));
+            echo $this->formRow($form->get('birth_date'));
+            echo $this->formRow($form->get('identifier'));
+            echo $this->formRow($form->get('gender')); ?>
+        </div>
+        <div class="form-actions">
+            <div class="row">
+                <div class="col-md-offset-4 col-md-9">
+                    <button type="submit" class="btn btn-success btn-lg">Salvar</button>
+                </div>
+            </div>
+        </div>
+        <?php echo $this->form()->closeTag(); ?>
+    </div>
+</div>

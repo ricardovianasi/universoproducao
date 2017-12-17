@@ -38,7 +38,7 @@ class UserMenu extends AbstractHelper implements ServiceLocatorAwareInterface
         $urlUserBtn = "#";
         if($user) {
             $urlMeuCadastro = $urlHelper('meu-universo/register', ['action'=>'editar']);
-            $urlMeusDependentes = $urlHelper('meu-universo/register', ['action'=>'dependentes']);
+            $urlMeusDependentes = $urlHelper('meu-universo/dependents');
             $urlMinhasInscricoes = $urlHelper('meu-universo');
             $urlAlterarSenha = $urlHelper('meu-universo/auth', ['action'=>'alterar-senha']);
             $urlLogout = $urlHelper('meu-universo/auth', ['action'=>'sair']);

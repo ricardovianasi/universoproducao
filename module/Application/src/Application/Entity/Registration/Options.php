@@ -30,6 +30,10 @@ class Options extends AbstractEntity
     const MOVIE_DURATION_LONGA_FROM                 = 'movie_duration_longa_from';
     const MOVIE_DURATION_LONGA_TO                   = 'movie_duration_longa_to';
 
+    //Workshop Options
+    const WORKSHOP_FORM                             = 'workshop_form';
+    CONST WORKSHOP_PONTUATION                       = 'workshop_pontuation';
+
 
     /**
      * @ORM\Id @ORM\Column(name="id", type="integer", nullable=false)

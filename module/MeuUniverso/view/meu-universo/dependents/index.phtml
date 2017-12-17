@@ -1,0 +1,42 @@
+<div class="container">
+    <p class="meuuniverso-brand meuuniverso-brand--center"><strong>Meu</strong>Universo | Dependentes</p>
+    <?php echo $this->meuUniversoMessages(); ?>
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th> Nome </th>
+            <th> Identificador </th>
+            <th> Data de Nascimento </th>
+            <th> Sexo </th>
+            <th> Ações </th>
+        </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($this->user->getDependents() as $dep): ?>
+            <tr>
+                <td><?php echo $dep->getName(); ?></td>
+                <td><?php echo $dep->getIdentifier(); ?></td>
+                <td><?php echo $dep->getBirthDate() ? $dep->getBirthDate()->format('d/m/Y') : ""; ?></td>
+                <td><?php echo $this->gender($dep->getGender()); ?></td>
+                <td>
+                    <?php
+                        $editUrl = $this->url('meu-universo/dependents', ['action'=>'editar', 'id'=>$dep->getId()]);
+                        $deleteUrl = $this->url('meu-universo/dependents', ['action'=>'deletar', 'id'=>$dep->getId()]);
+                    ?>
+                    <a href="<?php echo $editUrl ?>" type="button" class="btn btn-circle btn-default btn-sm">
+                        <i class="glyphicon glyphicon-edit"></i> Editar</a>
+
+                    <a href="<?php echo $deleteUrl ?>" type="button" class="btn btn-circle btn-default btn-sm">
+                        <i class="glyphicon glyphicon-close"></i> Excluir</a>
+                </td>
+            </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+
+    <div class="form-actions">
+        <div class="btn-set pull-right">
+            <a href="<?php echo $this->url('meu-universo/dependents', ['action'=>'novo']); ?>" class="btn btn-success btn-lg">Adicionar</a>
+        </div>
+    </div>
+</div>

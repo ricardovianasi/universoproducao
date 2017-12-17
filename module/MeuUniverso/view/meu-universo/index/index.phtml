@@ -2,6 +2,7 @@
     <p class="meuuniverso-brand meuuniverso-brand--center"><strong>Meu</strong>Universo | Minhas inscrições</p>
     <div class="row">
         <?php echo $this->meuUniversoMessages(); ?>
+
         <div class="portlet box blue-hoki">
             <div class="portlet-title">
                 <div class="caption">
@@ -11,6 +12,18 @@
             </div>
             <div class="portlet-body">
                 <?php echo $this->meuUniversoMovies($this->movies); ?>
+            </div>
+        </div>
+
+        <div class="portlet box blue-hoki">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-gift"></i>Oficinas</div>
+                <div class="actions">
+                </div>
+            </div>
+            <div class="portlet-body">
+                <?php echo $this->meuUniversoWorkshops($this->workshops); ?>
             </div>
         </div>
     </div>

@@ -18,42 +18,31 @@ class DependentForm extends Form
 	    parent::__construct('dependent');
 
 		$this->add([
-		    'name' => 'dependent[name]',
+		    'name' => 'name',
             'options' => [
                 'label' => 'Nome',
+                'twb-layout' => 'horizontal',
+                'column-size' => 'md-6',
                 'label_attributes' => [
-                    'class'  => 'sr-only'
-                ],
+                    'class' => 'col-md-4'
+                ]
             ],
             'attributes' => [
-                'class' => 'input-sm',
-                'data-required' => 'required',
+                'required' => 'required',
                 'id' => 'dependent_name'
 
             ]
         ]);
 
         $this->add([
-            'name' => 'dependent[email]',
-            'options' => [
-                'label' => 'Email',
-                'label_attributes' => [
-                    'class'  => 'sr-only'
-                ],
-            ],
-            'attributes' => [
-                'class' => 'input-sm',
-                'id' => 'dependent_email'
-            ]
-        ]);
-
-        $this->add([
             'type' => 'select',
-            'name' => 'dependent[gender]',
+            'name' => 'gender',
             'options' => [
                 'label' => 'Sexo',
+                'twb-layout' => 'horizontal',
+                'column-size' => 'md-6',
                 'label_attributes' => [
-                    'class'  => 'sr-only'
+                    'class' => 'col-md-4'
                 ],
                 'empty_option' => 'Selecione',
                 'value_options' => [
@@ -67,33 +56,37 @@ class DependentForm extends Form
         ]);
 
         $this->add([
-            'name' => 'dependent[birth_date]',
+            'name' => 'birth_date',
             'required' => true,
             'type' => 'TwbBundle\Form\Element\DatePicker',
             'options' => [
                 'label' => 'Data de Nascimento',
+                'twb-layout' => 'horizontal',
+                'column-size' => 'md-6',
                 'label_attributes' => [
-                    'class'  => 'sr-only'
-                ],
+                    'class' => 'col-md-4'
+                ]
             ],
             'attributes' => [
-                'data-required' => 'required',
+                'required' => 'required',
                 'data-inputmask' => "'alias': 'dd/mm/yyyy', 'placeholder':'_'",
                 'id' => 'dependent_birth_date'
             ]
         ]);
 
         $this->add([
-            'name' => 'dependent[identifier]',
+            'name' => 'identifier',
             'options' => [
                 'label' => 'Documento',
+                'twb-layout' => 'horizontal',
+                'column-size' => 'md-6',
                 'label_attributes' => [
-                    'class'  => 'sr-only'
-                ],
+                    'class' => 'col-md-4'
+                ]
             ],
             'attributes' => [
-                'class' => 'input-sm',
-                'id' => 'dependent_identifier'
+                'id' => 'dependent_identifier',
+                'placeholder' => 'CPF ou identidade'
             ]
         ]);
 	}

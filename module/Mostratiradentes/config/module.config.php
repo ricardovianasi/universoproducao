@@ -68,6 +68,20 @@ return array(
                         ),
                         'priority' => '99999'
                     ),
+                    'workshop' => array(
+                        'type' => Segment::class,
+                        'options' => array(
+                            'route' => '/programacao/oficina/:id',
+                            'constraints' => [
+                                'id' => '[a-zA-Z0-9_-]*',
+                            ],
+                            'defaults' => array(
+                                'controller' => Controller\WorkshopController::class,
+                                'action' => 'details',
+                            ),
+                        ),
+                        'priority' => '99999'
+                    ),
                     'movie' => array(
                         'type' => Segment::class,
                         'options' => array(

@@ -71,6 +71,26 @@ return [
                         'controller' => 'workshop-registrations',
                         'icon' => 'icon-doc',
                     ],
+                    [
+                        'label' => 'Configurações',
+                        'uri' => '#',
+                        'icon' => 'icon-book-open',
+                        'pages' => [
+                            [
+                                'label' => 'Formulário de cadastro',
+                                'route' => 'admin/default',
+                                'controller' => 'workshop-config-form',
+                                'icon' => 'icon-doc',
+
+                            ],
+                            [
+                                'label' => 'Ficha de pontuação',
+                                'route' => 'admin/default',
+                                'controller' => 'workshop-config-pontuation',
+                                'icon' => 'icon-doc',
+                            ],
+                        ]
+                    ],
                 ]
             ],
 			[

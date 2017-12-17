@@ -3,6 +3,7 @@ namespace MeuUniverso\Controller;
 
 use Application\Entity\Movie\Movie;
 use Application\Entity\Registration\Registration;
+use Application\Entity\Workshop\WorkshopSubscription;
 
 class IndexController extends AbstractMeuUniversoController
 {
@@ -12,8 +13,20 @@ class IndexController extends AbstractMeuUniversoController
            'author' => $this->getAuthenticationService()->getIdentity()->getId()
         ],['createdAt' => 'DESC']);
 
+        $idUserAndDependents = [$this->getAuthenticationService()->getIdentity()->getId()];
+        foreach ($this->getAuthenticationService()->getIdentity()->getDependents() as $dep) {
+            array_push($idUserAndDependents, $dep->getId());
+        }
+
+        $workshopQb = $this->getRepository(WorkshopSubscription::class)->createQueryBuilder('w');
+        $workshops = $workshopQb
+            ->andWhere($workshopQb->expr()->in('w.user', ':idUserAndDependents'))
+            ->setParameter('idUserAndDependents', $idUserAndDependents)
+            ->getQuery()
+            ->getResult();
         return [
-            'movies' => $movies
+            'movies' => $movies,
+            'workshops' => $workshops
         ];
     }
 

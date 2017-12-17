@@ -10,6 +10,7 @@ return [
         Controller\IndexController::class                   => InvokableFactory::class,
         Controller\AuthController::class                    => InvokableFactory::class,
         Controller\RegisterController::class                => InvokableFactory::class,
+        Controller\DependentsController::class              => InvokableFactory::class,
         Controller\MovieRegistrationController::class       => InvokableFactory::class,
         Controller\WorkshopRegistrationController::class    => InvokableFactory::class,
         Controller\ErrorController::class                   => InvokableFactory::class,
