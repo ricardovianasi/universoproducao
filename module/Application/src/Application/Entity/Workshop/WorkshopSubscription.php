@@ -26,7 +26,7 @@ class WorkshopSubscription extends AbstractEntity
 	private $user;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Workshop", inversedBy="events")
+     * @ORM\ManyToOne(targetEntity="Workshop", inversedBy="subscriptions")
      * @ORM\JoinColumn(name="workshop_id", referencedColumnName="id")
      */
     private $workshop;

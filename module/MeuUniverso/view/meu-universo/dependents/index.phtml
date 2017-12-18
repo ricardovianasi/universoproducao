@@ -21,7 +21,7 @@
                 <td>
                     <?php
                         $editUrl = $this->url('meu-universo/dependents', ['action'=>'editar', 'id'=>$dep->getId()]);
-                        $deleteUrl = $this->url('meu-universo/dependents', ['action'=>'deletar', 'id'=>$dep->getId()]);
+                        $deleteUrl = $this->url('meu-universo/dependents', ['action'=>'excluir', 'id'=>$dep->getId()]);
                     ?>
                     <a href="<?php echo $editUrl ?>" type="button" class="btn btn-circle btn-default btn-sm">
                         <i class="glyphicon glyphicon-edit"></i> Editar</a>

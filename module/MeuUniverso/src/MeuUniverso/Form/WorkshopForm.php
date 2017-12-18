@@ -10,6 +10,7 @@ namespace MeuUniverso\Form;
 
 use Admin\Form\Workshop\WorkshopRegistrationForm;
 use Application\Entity\User\User;
+use Zend\InputFilter\Factory;
 
 class WorkshopForm extends WorkshopRegistrationForm
 {
@@ -22,6 +23,7 @@ class WorkshopForm extends WorkshopRegistrationForm
     {
         parent::__construct($em, $registration);
         $this->user = $user;
+        $inputFilterFactory = new Factory();
 
         $this->add([
             'type' => 'Checkbox',
@@ -37,38 +39,43 @@ class WorkshopForm extends WorkshopRegistrationForm
             ]
         ]);
 
-        if($this->user->hasDependents()) {
-            $this->remove('user');
-            $this->add([
-                'type' => 'Select',
-                'name' => 'user',
-                'options' => [
-                    'label' => 'Inscrição para',
-                    'value_options' => $this->populateUser(),
-                    'empty_option' => 'Selecione',
-                    'twb-layout' => 'horizontal',
-                    'column-size' => 'md-6',
-                    'label_attributes' => [
-                        'class' => 'col-md-4'
-                    ]
-                ],
-                'attributes' => [
-                    'required' => 'required',
+        $this->remove('user');
+        $this->add([
+            'type' => 'Select',
+            'name' => 'user',
+            'options' => [
+                'label' => 'Inscrição para',
+                'value_options' => $this->populateUser(),
+                'empty_option' => 'Selecione',
+                'twb-layout' => 'horizontal',
+                'column-size' => 'md-6',
+                'label_attributes' => [
+                    'class' => 'col-md-4'
                 ]
+            ],
+        ]);
+        if(!$user->hasDependents()) {
+            $this->get('user')->setAttribute('disabled', 'disabled');
+            $this->get('user')->setValue($user->getId());
+
+            $this->getInputFilter()->add([
+                'name'       => 'user',
+                'required'   => false,
+                'allow_empty' => true
             ]);
+
+        } else {
+            $this->get('user')->setOption('empty_option', 'Selecione');
+            $this->get('user')->setAttribute('required', 'required');
         }
     }
 
     public function populateUser()
     {
-        $users = [];
-        if($this->user->hasDependents()) {
-            $users[$this->user->getId()] = $this->user->getName();
-            foreach ($this->user->getDependents() as $dependent) {
-                $users[$dependent->getId()] = $dependent->getName();
-            }
+        $users[$this->user->getId()] = 'Titular - '.$this->user->getName();
+        foreach ($this->user->getDependents() as $dependent) {
+            $users[$dependent->getId()] = 'Dependente - '.$dependent->getName();
         }
-
         return $users;
     }
 }

@@ -1,18 +1,16 @@
 <?php $workshop = $this->workshop; $registration = $this->registration; ?>
 
-<div class="portlet light bordered">
+<div class="portlet workshop">
     <div class="portlet-title">
-        <div class="caption font-green-sharp"><?php echo $workshop->getName() ?> </div>
+        <div class="caption font-dark">
+            <h2 class="main-title"><?php echo $workshop->getName() ?> </h2>
+            <strong>Instrutor(a):</strong> <?php echo $workshop->getManager()->getName(); ?>
+        </div>
         <div class="tools">
             <a href="javascript:;" class="expand" data-original-title="" title=""> </a>
         </div>
     </div>
     <div class="portlet-body form portlet-collapsed">
-
-        <p>
-            <strong>Instrutor(a):</strong>
-            <a href=""><?php echo $workshop->getManager()->getName(); ?></a>
-        </p>
         <p>
             <strong>Faixa etária: </strong>
             <?php
@@ -30,25 +28,23 @@
             ?>
         </p>
         <p>
-            <strong>Carga horária:</strong>
-            <a href=""><?php echo $workshop->getDuration()->format('H\hi'); ?></a>
+            <strong>Carga horária:</strong> <?php echo $workshop->getDuration()->format('H\hi'); ?>
         </p>
         <p>
-            <b>Número de vagas:</b>
-            <a href=""><?php echo $workshop->getAvailableSubscriptions(); ?></a>
+            <b>Número de vagas:</b> <?php echo $workshop->getAvailableSubscriptions(); ?>
         </p>
         <p>
             <strong>Conteúdo programático:</strong> <br />
-        <div><?php echo $workshop->getDescription(); ?></div>
+            <?php echo $workshop->getDescription(); ?>
         </p>
 
         <p>
             <strong>Pré-requisitos:</strong> <br />
-            <div><?php echo $workshop->getRequirements(); ?></div>
+            <?php echo $workshop->getRequirements(); ?>
         </p>
 
         <?php if($this->show_register_link): ?>
-        <div class="form-actions">
+        <div class="">
             <?php $urlSub = $this->url('meu-universo/workshop', [
                 'controller'=>'workshop-registration',
                 'action' => 'inscricao',

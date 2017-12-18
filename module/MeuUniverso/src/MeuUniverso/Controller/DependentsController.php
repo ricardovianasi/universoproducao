@@ -44,7 +44,10 @@ class DependentsController extends AbstractMeuUniversoController
         $user = $this->getRepository(User::class)->find($identity->getId());
 
         if($id = $this->params()->fromRoute('id')) {
-            $dep = $this->getRepository(User::class)->find($id);
+            $dep = $this->getRepository(User::class)->findOneBy([
+                'parent' => $user->getId(),
+                'id' => $id
+            ]);
         } else {
             $dep = new User();
             $dep->setParent($user);
@@ -76,6 +79,24 @@ class DependentsController extends AbstractMeuUniversoController
 
     public function excluirAction()
     {
-        return [];
+        $identity = $this->getAuthenticationService()->getIdentity();
+        $id = $this->params()->fromRoute('id');
+
+        $dep = $this->getRepository(User::class)->findOneBy([
+            'parent' => $identity->getId(),
+            'id' => $id
+        ]);
+
+        if($dep) {
+            $this->getEntityManager()->remove($dep);
+            $this->getEntityManager()->flush();
+            $msg = '<p>Dependente excluido com sucesso!';
+            $this->meuUniversoMessages()->flashSuccess($msg);
+        } else {
+            $msg = '<p>Dependente não localizado. Por favor, tente novamente!';
+            $this->meuUniversoMessages()->flashError($msg);
+        }
+
+        return $this->redirect()->toRoute('meu-universo/dependents');
     }
 }

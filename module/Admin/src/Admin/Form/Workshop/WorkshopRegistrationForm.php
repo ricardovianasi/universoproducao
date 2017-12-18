@@ -13,6 +13,8 @@ use Application\Entity\Registration\Options;
 use Application\Entity\Registration\Registration;
 use Zend\Form\Fieldset;
 use Zend\Form\Form;
+use Zend\InputFilter\Factory as InputFilterFactory;
+use Zend\Validator\Between;
 
 class WorkshopRegistrationForm extends Form
 {
@@ -39,6 +41,18 @@ class WorkshopRegistrationForm extends Form
             'type' => 'hidden',
             'name' => 'user'
         ]);
+
+        $this->add([
+            'name' => 'age_of_user',
+            'options' => [
+                'label' => 'Idade do usuário'
+            ]
+        ]);
+
+        //Validações
+        $this->setInputFilter((new InputFilterFactory)->createInputFilter([
+
+        ]));
 
         $subForm = new Fieldset('form_answer');
 

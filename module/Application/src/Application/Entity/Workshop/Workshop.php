@@ -2,12 +2,14 @@
 namespace Application\Entity\Workshop;
 
 use Application\Entity\Event\Event;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Util\Entity\AbstractEntity;
 
 /**
  * @ORM\Table(name="workshop")
  * @ORM\Entity(repositoryClass="Application\Repository\Workshop\Workshop")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Workshop extends AbstractEntity
 {
@@ -58,6 +60,14 @@ class Workshop extends AbstractEntity
 
     /** @ORM\Column(name="file", type="string", nullable=true) */
     private $file;
+
+    /** @ORM\OneToMany(targetEntity="WorkshopSubscription", mappedBy="workshop", fetch="EXTRA_LAZY") */
+    private $subscriptions;
+
+    public function __construct()
+    {
+        $this->subscriptions = new ArrayCollection();
+    }
 
     /**
      * @return mixed
@@ -282,5 +292,34 @@ class Workshop extends AbstractEntity
     public function setFile($file)
     {
         $this->file = $file;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getSubscriptions()
+    {
+        return $this->subscriptions;
+    }
+
+    /**
+     * @param ArrayCollection $subscriptions
+     */
+    public function setSubscriptions($subscriptions)
+    {
+        $this->subscriptions = $subscriptions;
+    }
+
+    public function hasAvailableSubscriptions()
+    {
+        $maxSubscriptions = $this->getMaximumSubscriptions()
+            ? $this->getMaximumSubscriptions()
+            : $this->getAvailableSubscriptions();
+
+        if($this->getSubscriptions()->count() >= $maxSubscriptions) {
+            return false;
+        }
+
+        return true;
     }
 }
