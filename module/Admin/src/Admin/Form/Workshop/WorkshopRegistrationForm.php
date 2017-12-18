@@ -135,7 +135,7 @@ class WorkshopRegistrationForm extends Form
                     foreach ($form->getElements() as $el) {
                         $options = [];
                         if($elementOptions = $el->getOptions()) {
-                            $options = $elementOptions;
+                            $options = json_decode($elementOptions);
                         }
                         $options['label'] = $el->getLabel();
                         $options['twb-layout'] = 'horizontal';
@@ -146,7 +146,7 @@ class WorkshopRegistrationForm extends Form
 
                         $attributes = [];
                         if($elementAttributes = $el->getAttributes()) {
-                            $attributes = $elementAttributes;
+                            $attributes = json_decode($elementAttributes);
                         }
 
                         if($el->getRequired()) {

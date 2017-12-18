@@ -35,10 +35,10 @@ class FormElements extends AbstractEntity
     /** @ORM\Column(type="integer", nullable=true) */
     private $order;
 
-    /** @ORM\Column(type="json", nullable=true) */
+    /** @ORM\Column(type="string", nullable=true) */
     private $options;
 
-    /** @ORM\Column(type="json", nullable=true) */
+    /** @ORM\Column(type="string", nullable=true) */
     private $attributes;
 
     /** @ORM\Column(type="boolean", nullable=true) */
