@@ -72,8 +72,6 @@ class WorkshopForm extends Form
             'name' => 'minimum_age',
             'options' => [
                 'label' => 'Idade mínima',
-            ],
-            'attributes' => [
             ]
         ]);
 
@@ -82,9 +80,6 @@ class WorkshopForm extends Form
             'name' => 'maximum_age',
             'options' => [
                 'label' => 'Idade máxima',
-            ],
-            'attributes' => [
-
             ]
         ]);
 
@@ -94,8 +89,7 @@ class WorkshopForm extends Form
                 'label' => 'Carga horária',
             ],
             'attributes' => [
-                'required' => 'required',
-                'data-inputmask' => "'alias': 'hh:mm:ss', 'placeholder':'_'"
+                'required' => 'required'
             ]
         ]);
 
@@ -216,13 +210,6 @@ class WorkshopForm extends Form
             $registration = $data['registration'];
             if(is_object($registration)) {
                 $data['registration'] = $registration->getId();
-            }
-        }
-
-        if(!empty($data['duration'])) {
-            $duration = $data['duration'];
-            if(is_object($duration)) {
-                $data['duration'] = $duration->format('H:i:s');
             }
         }
 

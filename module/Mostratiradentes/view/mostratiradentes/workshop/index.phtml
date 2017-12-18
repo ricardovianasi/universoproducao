@@ -16,7 +16,7 @@
                     <figure class="news-figure"><img src="<?php echo $this->thumbor()->url($workshop->getFile())->resize(180, 180); ?>" alt=""></figure>
                 <?php endif; ?>
                 <p class="news-desc"></p>
-                <a href="<?php echo $this->url("mostratiradentes/workshop", ['id'=>$workshop->getId()]) ?>" class="button-readmore">Ver maiores informações</a>
+                <a href="<?php echo $this->url("mostratiradentes/workshop", ['id'=>$workshop->getId()]) ?>" class="button-readmore">Mais informações</a>
             </article>
         <?php endforeach; ?>
     </div>

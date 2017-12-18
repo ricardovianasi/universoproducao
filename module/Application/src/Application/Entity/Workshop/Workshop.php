@@ -40,7 +40,7 @@ class Workshop extends AbstractEntity
     /** @ORM\Column(name="maximum_age", type="integer", nullable=true) */
     private $maximumAge;
 
-    /** @ORM\Column(name="duration", type="time", nullable=true) */
+    /** @ORM\Column(name="duration", type="string", nullable=true) */
     private $duration;
 
     /** @ORM\Column(name="available_subscriptions", type="integer", nullable=true) */
@@ -162,9 +162,6 @@ class Workshop extends AbstractEntity
      */
     public function setDuration($duration)
     {
-        if(is_string($duration)) {
-            $duration = \DateTime::createFromFormat('H:i:s', $duration);
-        }
         $this->duration = $duration;
     }
 
