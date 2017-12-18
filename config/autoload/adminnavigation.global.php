@@ -68,7 +68,7 @@ return [
                     [
                         'label' => 'Inscrições',
                         'route' => 'admin/default',
-                        'controller' => 'workshop-registrations',
+                        'controller' => 'workshop-registration',
                         'icon' => 'icon-doc',
                     ],
                     [

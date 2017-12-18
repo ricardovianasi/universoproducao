@@ -9,7 +9,7 @@ use Util\Entity\AbstractEntity;
 
 /**
  * @ORM\Table(name="workshop_subscription")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Application\Repository\Workshop\WorkshopSubscription")
  */
 class WorkshopSubscription extends AbstractEntity
 {
@@ -79,7 +79,7 @@ class WorkshopSubscription extends AbstractEntity
     }
 
     /**
-     * @return mixed
+     * @return Workshop
      */
     public function getWorkshop()
     {

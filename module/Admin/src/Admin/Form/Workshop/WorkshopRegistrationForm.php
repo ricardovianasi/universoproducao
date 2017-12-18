@@ -8,9 +8,12 @@
 
 namespace Admin\Form\Workshop;
 
+use Application\Entity\Event\Event;
+use Application\Entity\Event\EventType;
 use Application\Entity\Form\Form as EntityForm;
 use Application\Entity\Registration\Options;
 use Application\Entity\Registration\Registration;
+use Application\Entity\Registration\Status;
 use Zend\Form\Fieldset;
 use Zend\Form\Form;
 use Zend\InputFilter\Factory as InputFilterFactory;
@@ -38,14 +41,77 @@ class WorkshopRegistrationForm extends Form
         ]);
 
         $this->add([
-            'type' => 'hidden',
-            'name' => 'user'
+            'name' => 'user',
+            'attributes' => [
+                'class' => 'input-sm',
+            ]
         ]);
 
         $this->add([
-            'name' => 'age_of_user',
+            'name' => 'id',
+            'attributes' => [
+                'class' => 'input-sm',
+            ]
+        ]);
+
+        $this->add([
+            'name' => 'dateInit',
+            'attributes' => [
+                'placeholder' => 'De',
+                'class' => 'input-sm',
+                'data-inputmask' => "'alias': 'dd/mm/yyyy'"
+            ]
+        ]);
+
+        $this->add([
+            'name' => 'dateEnd',
+            'attributes' => [
+                'placeholder' => 'Até',
+                'class' => 'input-sm',
+                'data-inputmask' => "'alias': 'dd/mm/yyyy'"
+            ]
+        ]);
+
+        $this->add([
+            'name' => 'selected',
+            'type' => 'hidden'
+        ]);
+
+        $this->add([
+            'type' => 'Select',
+            'name' => 'event',
             'options' => [
-                'label' => 'Idade do usuário'
+                'empty_option' => 'Selecione',
+                'value_options' => $this->populateEvents()
+            ],
+            'attributes' => [
+                'class' => 'input-sm',
+                'data-label' => 'Evento',
+                'id' => 'event'
+            ]
+        ]);
+        $this->add([
+            'type' => 'Select',
+            'name' => 'workshop',
+            'options' => [
+                'empty_option' => 'Selecione',
+                'value_options' => []
+            ],
+            'attributes' => [
+                'class' => 'input-sm',
+            ]
+        ]);
+
+        $this->add([
+            'type' => 'Select',
+            'name' => 'status',
+            'options' => [
+                'empty_option' => 'Selecione o status',
+                'value_options' => Status::toArray()
+            ],
+            'attributes' => [
+                'class' => 'input-sm',
+                'data-label' => 'Status'
             ]
         ]);
 
@@ -99,6 +165,30 @@ class WorkshopRegistrationForm extends Form
         }
 
         $this->add($subForm);
+    }
+
+    public function populateEvents()
+    {
+        $options = [];
+
+        if($this->getEntityManager()) {
+            $events = $this
+                ->getEntityManager()
+                ->getRepository(Event::class)
+                ->findBy([], ['startDate'=>'DESC']);
+
+            foreach ($events as $p) {
+                if(!key_exists($p->getType(), $options)) {
+                    $options[$p->getType()] = [
+                        'label' => EventType::get($p->getType()),
+                        'options' => []
+                    ];
+                }
+                $options[$p->getType()]['options'][$p->getId()] = $p->getShortName();
+            }
+        }
+
+        return $options;
     }
 
     /**
