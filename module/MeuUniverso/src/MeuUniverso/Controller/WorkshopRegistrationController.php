@@ -20,6 +20,8 @@ use Application\Entity\Workshop\WorkshopSubscriptionAnswerForm;
 use Doctrine\Common\Collections\ArrayCollection;
 use MeuUniverso\Form\WorkshopForm;
 use Zend\Validator\Between;
+use Zend\Validator\GreaterThan;
+use Zend\Validator\LessThan;
 
 class WorkshopRegistrationController extends AbstractMeuUniversoRegisterController
 {
@@ -29,6 +31,7 @@ class WorkshopRegistrationController extends AbstractMeuUniversoRegisterControll
 
     const ERROR_WORKSHOP_NOT_FOUNT = 'x2004';
     const ERROR_WORKSHOP_NO_SUBSCRIPTION = 'x2005';
+    const ERROR_WORKSHOP_MULTIPLES_SUBSCRIPTION = 'x2006';
 
     public function indexAction()
     {
@@ -156,26 +159,56 @@ class WorkshopRegistrationController extends AbstractMeuUniversoRegisterControll
             }
 
             //Verifica se o usuário já efetuou a inscrição
+            $existSubscription = $this->getRepository(WorkshopSubscription::class)->findBy([
+                'event' => $workshop->getEvent()->getId(),
+                'user' => $userSubs->getId()
+            ]);
+            if($existSubscription && count($existSubscription)) {
+                return $this->redirect()->toRoute('meu-universo/default', ['action'=>'erro'], ['query'=>[
+                    'code' => self::ERROR_WORKSHOP_MULTIPLES_SUBSCRIPTION,
+                    'id' => $idWorkshop
+                ]]);
+            }
 
             //Validação da faixa etária
             $extraValidations = true;
-            if($workshop->getMinimumAge() || $workshop->getMaximumAge()) {
-                $ageUserSub = $userSubs->getBirthDate()->diff(new \DateTime('now'))->y;
-
+            $ageUserSub = $userSubs->getBirthDate()->diff(new \DateTime('now'))->y;
+            if($workshop->getMinimumAge() && $workshop->getMaximumAge()) {
                 $validatorOpt['inclusive'] = true;
-                if($workshop->getMinimumAge()) {
-                    $validatorOpt['min'] = $workshop->getMinimumAge();
-                } else {
-                    $validatorOpt['min'] = 0;
-                }
+                $validatorOpt['min'] = $workshop->getMinimumAge();
+                $validatorOpt['max'] = $workshop->getMaximumAge();
 
-                if($workshop->getMaximumAge()) {
-                    $validatorOpt['max'] = $workshop->getMaximumAge();
-                } else {
-                    $validatorOpt['max'] = 100;
-                }
+                $validatorOpt['messages'] = [
+                    Between::NOT_BETWEEN_STRICT => "A sua faixa etária não está dentro da permitida para essa oficina. Por favor, escolher outra opção."
+                ];
 
                 $validator = new Between($validatorOpt);
+                if(!$validator->isValid($ageUserSub)) {
+                    $messages = $validator->getMessages();
+                    $form->setMessages(['user'=>$messages]);
+                    $extraValidations = false;
+                }
+            } elseif($workshop->getMinimumAge()) {
+                $validator = new GreaterThan([
+                    'min'       => $workshop->getMinimumAge(),
+                    'inclusive' => true,
+                    'messages' => [
+                        GreaterThan::NOT_GREATER_INCLUSIVE => "A sua faixa etária não está dentro da permitida para essa oficina. Por favor, escolher outra opção."
+                    ]
+                ]);
+                if(!$validator->isValid($ageUserSub)) {
+                    $messages = $validator->getMessages();
+                    $form->setMessages(['user'=>$messages]);
+                    $extraValidations = false;
+                }
+            } elseif($workshop->getMaximumAge()) {
+                $validator = new LessThan([
+                    'max'       => $workshop->getMaximumAge(),
+                    'inclusive' => true,
+                    'messages' => [
+                        LessThan::NOT_LESS_INCLUSIVE => "A faixa etária tem que ser acima de '%max%' anos"
+                    ]
+                ]);
                 if(!$validator->isValid($ageUserSub)) {
                     $messages = $validator->getMessages();
                     $form->setMessages(['user'=>$messages]);

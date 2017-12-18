@@ -20,9 +20,15 @@
                             <h4 class="h4">Campo <?php echo $form->get($field)->getLabel(); ?></h4>
                             <div style="padding-left: 20px">
                                 <?php foreach ($message as $key=>$m): ?>
-                                    <p class=""><?php echo $m ?></p>
+                                    <p class="">
+                                        <?php echo $m ?>
+                                    </p>
                                 <?php endforeach; ?>
+                                <?php if($field == 'user'): ?>
+                                    <a class="btn btn-outline green" href="<?php echo $this->url('meu-universo/workshop', ['id_reg'=>$reg->getHash()]); ?>">Ver lista de oficinas</a>
+                                <?php endif; ?>
                             </div>
+
                         <?php endforeach; ?>
                     </div>
                 </div>
