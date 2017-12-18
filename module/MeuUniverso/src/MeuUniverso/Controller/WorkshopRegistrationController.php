@@ -165,10 +165,14 @@ class WorkshopRegistrationController extends AbstractMeuUniversoRegisterControll
                 $validatorOpt['inclusive'] = true;
                 if($workshop->getMinimumAge()) {
                     $validatorOpt['min'] = $workshop->getMinimumAge();
+                } else {
+                    $validatorOpt['min'] = 0;
                 }
 
                 if($workshop->getMaximumAge()) {
                     $validatorOpt['max'] = $workshop->getMaximumAge();
+                } else {
+                    $validatorOpt['max'] = 100;
                 }
 
                 $validator = new Between($validatorOpt);
@@ -223,7 +227,7 @@ class WorkshopRegistrationController extends AbstractMeuUniversoRegisterControll
         }
 
         return [
-            'form' => $form,
+            'form' => $form->getMessages(),
             'reg' => $reg,
             'workshop' => $workshop
         ];
