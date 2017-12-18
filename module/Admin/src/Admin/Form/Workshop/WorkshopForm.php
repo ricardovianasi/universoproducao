@@ -8,11 +8,11 @@
 
 namespace Admin\Form\Workshop;
 
-
 use Application\Entity\Registration\Registration;
 use Application\Entity\Registration\Type;
 use Application\Entity\Workshop\Manager;
 use Zend\Form\Form;
+use Zend\InputFilter\Factory as InputFilterFactory;
 
 class WorkshopForm extends Form
 {
@@ -68,7 +68,7 @@ class WorkshopForm extends Form
         ]);
 
         $this->add([
-            'type' => 'number',
+            'type' => 'text',
             'name' => 'minimum_age',
             'options' => [
                 'label' => 'Idade mínima',
@@ -76,7 +76,7 @@ class WorkshopForm extends Form
         ]);
 
         $this->add([
-            'type' => 'number',
+            'type' => 'text',
             'name' => 'maximum_age',
             'options' => [
                 'label' => 'Idade máxima',
@@ -145,6 +145,18 @@ class WorkshopForm extends Form
                 'label' => 'Imagem'
             ]
         ]);
+
+        $this->setInputFilter((new InputFilterFactory)->createInputFilter([
+            'maximum_age' => [
+                'name' => 'maximum_age',
+                'required'   => false
+            ],
+            'minimum_age' => [
+                'name' => 'minimum_age',
+                'required'   => false
+            ]
+        ]));
+
     }
 
     public function populateRegulations()
