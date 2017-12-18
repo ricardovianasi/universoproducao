@@ -227,7 +227,7 @@ class WorkshopRegistrationController extends AbstractMeuUniversoRegisterControll
         }
 
         return [
-            'form' => $form->getMessages(),
+            'form' => $form,
             'reg' => $reg,
             'workshop' => $workshop
         ];

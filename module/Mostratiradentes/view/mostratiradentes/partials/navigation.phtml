@@ -7,9 +7,11 @@
             </a>
         </li>
         <?php foreach ($this->container as $page):
-            /** @var Zend\Navigation\Page\AbstractPage $page */ ?>
+            /** @var Zend\Navigation\Page\AbstractPage $page */
+            $url = $page->hasPages() ? '#' : rawurldecode($page->getHref()); ?>
+            ?>
             <li class="menu-item">
-                <a class="menu-link" href="" target="<?php echo $page->getTarget() ?>">
+                <a class="menu-link" href="<?php echo $url; ?>" target="<?php echo $page->getTarget() ?>">
                     <span><?php echo $page->getLabel() ?></span>
                 </a>
                 <?php if ($page->hasPages()): ?>
