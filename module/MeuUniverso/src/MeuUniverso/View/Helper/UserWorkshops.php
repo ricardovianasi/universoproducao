@@ -44,11 +44,11 @@ class UserWorkshops extends AbstractHelper
         $tableFormat = '<table class="table table-hover table-light table-movie">
                         <thead>
                             <tr>
-                                <th> Inscrição para </th>
+                                <th width="20%%"> Inscrição para </th>
                                 <th width="20%%"> Evento </th>
                                 <th width="20%%"> Oficina </th>
                                 <th width="20%%"> Data de cadastro </th>
-                                <th width="30%%"> Status </th>
+                                <th width="20%%"> Status </th>
                                 <th>Ações</th>
                             </tr>
                         </thead>
@@ -66,7 +66,7 @@ class UserWorkshops extends AbstractHelper
     {
         $td = '<tr><td>'.$workshop->getUser()->getName().'</td>';
         $td.= '<td>'.$workshop->getEvent()->getShortName().'</td>';
-        $td.= '<td>'.$workshop->getName().'</td>';
+        $td.= '<td>'.$workshop->getWorkshop()->getName().'</td>';
         $td.= '<td>'.$workshop->getCreatedAt()->format('d/mY \à\s H:i').'</td>';
         $td.= '<td>'.$this->labelStatus($workshop->getStatus()).'</td>';
 
