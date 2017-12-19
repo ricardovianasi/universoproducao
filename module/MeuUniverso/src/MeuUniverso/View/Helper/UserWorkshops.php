@@ -80,7 +80,7 @@ class UserWorkshops extends AbstractHelper
             class="btn btn-circle btn-default btn-sm">
                 <i class="glyphicon glyphicon-list-alt"></i> Confirmação de participação</a>';
 
-        $td.= '<td>'.$btnView.'</td></tr>';
+        $td.= '<td></td></tr>';
         return $td;
     }
 
