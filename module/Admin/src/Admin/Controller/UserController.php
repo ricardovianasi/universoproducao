@@ -57,7 +57,7 @@ class UserController extends AbstractAdminController implements CrudInterface
 		$form = new UserForm($this->getEntityManager());
 		$passForm = new ChangePassForm();
 		$phoneForm = new PhoneForm();
-		$dependentForm = new DependentForm();
+		//$dependentForm = new DependentForm();
 
 		if($id) {
 			$user = $this->getRepository(User::class)->find($id);
@@ -89,7 +89,7 @@ class UserController extends AbstractAdminController implements CrudInterface
                 unset($validData['phones']);
                 $user->setPhones($phones);
 
-                $dependents = new ArrayCollection();
+                /*$dependents = new ArrayCollection();
                 foreach ($user->getDependents() as $de) {
                     $this->getEntityManager()->remove($de);
                 }
@@ -105,7 +105,7 @@ class UserController extends AbstractAdminController implements CrudInterface
                     }
                 }
                 $user->setDependents($dependents);
-                unset($validData['dependents']);
+                unset($validData['dependents']);*/
 
                 if(isset($validData['city'])) {
                     $city = $this->getRepository(City::Class)->find($validData['city']);
@@ -140,7 +140,7 @@ class UserController extends AbstractAdminController implements CrudInterface
 			'form' => $form,
 			'passForm' => $passForm,
             'phoneForm' => $phoneForm,
-			'dependentForm' => $dependentForm,
+			//'dependentForm' => $dependentForm,
 			'user' => $user
 		]);
 	}
