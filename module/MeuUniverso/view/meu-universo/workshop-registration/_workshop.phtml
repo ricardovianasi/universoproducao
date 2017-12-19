@@ -1,10 +1,15 @@
 <?php $workshop = $this->workshop; $registration = $this->registration; ?>
 
+<div style="display: none;min-width:400px;min-height: 400px" id="manager_<?php echo $workshop->getManager()->getId(); ?>">
+    <?php echo $workshop->getManager()->getDescription(); ?>
+</div>
+
 <div class="portlet workshop">
     <div class="portlet-title">
         <div class="caption font-dark">
             <h2 class="main-title"><?php echo $workshop->getName() ?> </h2>
-            <strong>Instrutor(a):</strong> <?php echo $workshop->getManager()->getName(); ?>
+            <strong>Instrutor(a):</strong> <a style="color: #000;" data-fancybox data-src="#manager_<?php echo $workshop->getManager()->getId(); ?>" data-modal="true"  href="javascript:;"><?php echo $workshop->getManager()->getName(); ?>
+                <i style="margin-left: 2px; font-size: 13px;" class="icon-plus-circle"></i></a>
         </div>
         <div class="tools">
             <a href="javascript:;" class="expand" data-original-title="" title=""> </a>
