@@ -94,7 +94,7 @@ class User extends AbstractEntity
     /** @ORM\OneToMany(targetEntity="Application\Entity\Phone\Phone", mappedBy="user", cascade="ALL") */
 	private $phones;
 
-    /** @ORM\OneToMany(targetEntity="User", mappedBy="parent") */
+    /** @ORM\OneToMany(targetEntity="User", mappedBy="parent", cascade={"ALL"}) */
 	private $dependents;
 
     /**

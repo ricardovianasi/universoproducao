@@ -57,7 +57,7 @@ class UserController extends AbstractAdminController implements CrudInterface
 		$form = new UserForm($this->getEntityManager());
 		$passForm = new ChangePassForm();
 		$phoneForm = new PhoneForm();
-		//$dependentForm = new DependentForm();
+		$dependentForm = new DependentForm();
 
 		if($id) {
 			$user = $this->getRepository(User::class)->find($id);
@@ -89,23 +89,34 @@ class UserController extends AbstractAdminController implements CrudInterface
                 unset($validData['phones']);
                 $user->setPhones($phones);
 
-                /*$dependents = new ArrayCollection();
-                foreach ($user->getDependents() as $de) {
-                    $this->getEntityManager()->remove($de);
+                $dependentsToRemove = [];
+                foreach ($user->getDependents() as $depRemove) {
+                    $dependentsToRemove[$depRemove->getId()] = $depRemove;
                 }
+
+                $dependents = new ArrayCollection();
                 if(!empty($validData['dependents'])) {
                     foreach ($validData['dependents'] as $d) {
-                        if(isset($d['id'])) {
-                            $dep = $this->getRepository(Dependent::class)->find($d['id']);
+                        if(isset($d['id']) && isset($dependentsToRemove[$d['id']])) {
+                            $dep = $dependentsToRemove[$d['id']];
+                            unset($dependentsToRemove[$d['id']]);
                         } else {
-                            $dep = new Dependent($d);
-                            $dep->setUser($user);
+                            $dep = new User($d);
+                            $dep->setParent($user);
                         }
+                        $dep->setName($d['name']);
+                        $dep->setIdentifier($d['identifier']);
+                        $dep->setBirthDate($d['birth_date']);
+                        $dep->setGender($d['gender']);
+
                         $dependents->add($dep);
                     }
                 }
                 $user->setDependents($dependents);
-                unset($validData['dependents']);*/
+                foreach ($dependentsToRemove as $depRemove) {
+                    $this->getEntityManager()->remove($depRemove);
+                }
+                unset($validData['dependents']);
 
                 if(isset($validData['city'])) {
                     $city = $this->getRepository(City::Class)->find($validData['city']);
@@ -140,7 +151,7 @@ class UserController extends AbstractAdminController implements CrudInterface
 			'form' => $form,
 			'passForm' => $passForm,
             'phoneForm' => $phoneForm,
-			//'dependentForm' => $dependentForm,
+			'dependentForm' => $dependentForm,
 			'user' => $user
 		]);
 	}

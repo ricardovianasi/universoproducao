@@ -58,7 +58,11 @@ class DependentsController extends AbstractMeuUniversoController
             $data = $this->getRequest()->getPost();
             $form->setData($data);
             if($form->isValid()) {
-                $dep->setData($data);
+                $dep->setName($data['dependent_name']);
+                $dep->setBirthDate($data['dependent_birth_date']);
+                $dep->setIdentifier($data['dependent_identifier']);
+                $dep->setGender($data['dependent_gender']);
+                $dep->setParent($user);
 
                 $this->getEntityManager()->persist($dep);
                 $this->getEntityManager()->flush();

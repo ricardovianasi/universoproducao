@@ -42,22 +42,19 @@
 
 				var id = Math.floor(Date.now() / 1000),
 					name = _that.$element.find('#dependent_name'),
-					email = _that.$element.find('#dependent_email'),
 					birth = _that.$element.find('#dependent_birth_date')
 					identifier = _that.$element.find('#dependent_identifier')
 					gender = _that.$element.find('#dependent_gender');
 
 				_that.$element.find('tbody > tr:last').before($('<tr data-row="'+id+'"></tr>')
 					.append('<td>'+name.val()+'</td>')
-					.append('<td>'+email.val()+'</td>')
 					.append('<td>'+birth.val()+'</td>')
 					.append('<td>'+identifier.val()+'</td>')
 					.append('<td>'+gender.find('option:selected').text()+'</td>')
 					.append($('<td></td>')
-						.append('<a href="#" class="btn btn-sm btn-default user-dependents-remove" data-remove="'+id+'"><i class="glyphicon glyphicon-remove"></i></a>')
-						.append('<a href="#" class="btn btn-sm btn-default user-dependents-edit" data-edit="'+id+'"><i class="glyphicon glyphicon-edit"></i></a>')
+						.append('<a href="#" class="btn btn-sm btn-default user-dependents-remove" data-remove="'+id+'"><i class="fa fa-close"></i></a>')
+						.append('<a href="#" class="btn btn-sm btn-default user-dependents-edit" data-edit="'+id+'"><i class="fa fa-pencil"></i></a>')
 						.append('<input type="hidden" name="dependents['+id+'][name]" value="'+name.val()+'">')
-						.append('<input type="hidden" name="dependents['+id+'][email]" value="'+email.val()+'">')
 						.append('<input type="hidden" name="dependents['+id+'][birth_date]" value="'+birth.val()+'">')
 						.append('<input type="hidden" name="dependents['+id+'][identifier]" value="'+identifier.val()+'">')
 						.append('<input type="hidden" name="dependents['+id+'][gender]" value="'+gender.val()+'">')
@@ -65,7 +62,6 @@
 				);
 
 				name.val('');
-				email.val('');
 				birth.val('');
 				identifier.val('');
 				gender.val('');
