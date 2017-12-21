@@ -1,3 +1,8 @@
+.main-content
+  .movie-list
+    figure
+      +trailer(.5)
+
 .movie
 
   .main-title
@@ -10,9 +15,10 @@
     +trailer(3)
   &-item
     +column(1/4, $cycle:4)
-    +trailer(1)
+    +trailer(1.5)
 
   &-figure
+    
     position: relative
     overflow: hidden
     img

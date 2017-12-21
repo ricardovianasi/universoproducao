@@ -7,31 +7,33 @@
                 <h2 class="movie-title--sub"><?php echo $this->post->getTitleEnglish(); ?></h2>
             <?php endif; ?>
         </header>
-    </div>
 
-    <p class="movie-classification"><?php echo implode(', ', $movie_details) ?></p>
 
-    <?php if(!empty($this->medias)): ?>
-        <div class="movie-media">
-            <div class="owl-carousel movie-carousel">
-                <?php foreach ($this->medias as $media): ?>
-                    <div class="movie-media-item">
-                        <?php if($media['type'] == 'video'): ?>
-                            <a class="owl-video" href="<?php echo $media['src'] ?>"></a>
-                        <?php else: ?>
-                            <img src="<?php echo $media['src'] ?>" alt="">
-                            <img src="<?php echo $this->thumbor()->url($this->fileManipulation()->url($media['src']))->resize(500); ?>" alt="">
-                        <?php endif; ?>
-                    </div>
-                <?php endforeach; ?>
+        <p class="movie-classification"><?php echo implode(', ', $movie_details) ?></p>
+
+        <?php if(!empty($this->medias)): ?>
+            <div class="movie-media">
+                <div class="owl-carousel movie-carousel">
+                    <?php foreach ($this->medias as $media): ?>
+                        <div class="movie-media-item">
+                            <?php if($media['type'] == 'video'): ?>
+                                <a class="owl-video" href="<?php echo $media['src'] ?>"></a>
+                            <?php else: ?>
+                                <img src="<?php echo $media['src'] ?>" alt="">
+                                <img src="<?php echo $this->thumbor()->url($this->fileManipulation()->url($media['src']))->resize(500); ?>" alt="">
+                            <?php endif; ?>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
             </div>
-        </div>
-    <?php endif; ?>
+        <?php endif; ?>
 
-    <div class="movie-detail">
-        <p><strong>Direção: </strong><?php echo $this->post->getDirection(); ?></p>
-        <p class="movie-detail-title"><strong>Sinopse</strong></p>
-        <p><?php echo $this->post->getSynopsis(); ?></p>
+
+        <div class="movie-detail">
+            <p><strong>Direção: </strong><?php echo $this->post->getDirection(); ?></p>
+            <p class="movie-detail-title"><strong>Sinopse</strong></p>
+            <p><?php echo $this->post->getSynopsis(); ?></p>
+        </div>
     </div>
 
     <?php echo $this->partial("application/partials/share.phtml", ['title'=>$post->getTitle()]); ?>
