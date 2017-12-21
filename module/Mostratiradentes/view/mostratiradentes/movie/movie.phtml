@@ -20,6 +20,7 @@
                             <a class="owl-video" href="<?php echo $media['src'] ?>"></a>
                         <?php else: ?>
                             <img src="<?php echo $media['src'] ?>" alt="">
+                            <img src="<?php echo $this->thumbor()->url($this->fileManipulation()->url($media['src']))->resize(500); ?>" alt="">
                         <?php endif; ?>
                     </div>
                 <?php endforeach; ?>

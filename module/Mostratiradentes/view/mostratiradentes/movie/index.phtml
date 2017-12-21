@@ -7,7 +7,7 @@
             <article class="movie-item">
                 <a href="<?php echo $this->url('mostratiradentes/movie', ['id'=>$movie->getId()]) ?>" class="movie-link">
                     <?php if($movie->getMedias()->first()): $media = $movie->getMedias()->first(); ?>
-                        <figure class="movie-figure"><img src="<?php echo $this->thumbor()->url($media->getSrc())->resize(400, 400); ?>" alt=""></figure>
+                        <figure class="movie-figure"><img src="<?php echo $this->thumbor()->url($this->fileManipulation()->url($media->getSrc()))->resize(400, 400); ?>" alt=""></figure>
                     <?php endif; ?>
                     <h1 class="movie-title"><?php echo $movie->getTitle(); ?></h1>
                     <span class="movie-director">Direção: <?php echo $movie->getDirection(); ?></span>
