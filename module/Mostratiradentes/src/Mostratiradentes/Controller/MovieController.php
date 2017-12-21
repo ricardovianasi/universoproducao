@@ -71,6 +71,8 @@ class MovieController extends SiteController
             //não achou a notícia
         }
 
+
+
         $movieMedias = [];
         if($movie->getMovieDivulgation()) {
             $movieMedias[] = [
