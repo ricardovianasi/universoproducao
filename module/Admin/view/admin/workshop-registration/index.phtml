@@ -20,14 +20,14 @@
                             <span class="hidden-xs"> Opções </span>
                             <i class="fa fa-angle-down"></i>
                         </a>
-                        <div class="dropdown-menu pull-right">
+                        <!--<div class="dropdown-menu pull-right">
                             <li>
                                 <a class="report-link"
                                    data-form="#movie-form-search"
-                                   data-url="<?php echo $this->url('admin/default', ['controller'=>'movie', 'action'=>'export-list']) ?>"
+                                   data-url="<?php /*echo $this->url('admin/default', ['controller'=>'movie', 'action'=>'export-list']) */?>"
                                    href="#"> Exportar para Excel </a>
                             </li>
-                        </div>
+                        </div>-->
                     </div>
 				</div>
 			</div>
@@ -143,9 +143,6 @@
 									<a href="<?php echo $removeUrl; ?>" class="btn btn-sm btn-default post-list-remove">
 										<i class="fa fa-trash-o"></i> Excluir
 									</a>
-                                    <a href="#" class="btn btn-sm btn-default">
-                                        <i class="fa fa-file-text-o"></i>
-                                    </a>
 								</td>
 							</tr>
 						<?php endforeach; ?>

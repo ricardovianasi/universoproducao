@@ -1,0 +1,16 @@
+<div class="main-wrapper main-content">
+    <header class="main-header">
+        <h1 class="main-title"><?php echo $post->getTitle() ?></h1>
+    </header>
+    <div class="movie-list">
+        <?php foreach ($this->movies as $movie): ?>
+            <article class="movie-item">
+                <a href="<?php echo $this->url('mostratiradentes/movie', ['id'=>$movie->getId()]) ?>" class="movie-link">
+                    <figure class="movie-figure"><img src="images/prog4.jpg" alt=""></figure>
+                    <h1 class="movie-title"><?php echo $movie->getTitle(); ?></h1>
+                    <span class="movie-director">Direção: <?php echo $movie->getDirection(); ?></span>
+                </a>
+            </article>
+        <?php endforeach; ?>
+    </div>
+</div>

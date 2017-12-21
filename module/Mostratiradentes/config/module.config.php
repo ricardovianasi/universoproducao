@@ -90,7 +90,7 @@ return array(
                                 'id' => '[a-zA-Z0-9_-]*',
                             ],
                             'defaults' => array(
-                                'controller' => Controller\ProgramationController::class,
+                                'controller' => Controller\MovieController::class,
                                 'action' => 'movie',
                             ),
                         ),

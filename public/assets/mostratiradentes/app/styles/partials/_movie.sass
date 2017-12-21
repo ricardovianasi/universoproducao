@@ -1,0 +1,60 @@
+.movie
+
+  .main-title
+    +trailer(0)
+
+  position: relative
+  width: 100%
+  &-list
+    display: inline-block
+    +trailer(3)
+  &-item
+    +column(1/4, $cycle:4)
+    +trailer(1)
+
+  &-figure
+    position: relative
+    overflow: hidden
+    img
+      width: 100%
+      transition: $transition-default
+
+  &-link
+    &:hover
+      .movie-figure
+        img
+          transform: scale(1.05)
+
+  &-title
+    +adjust-font-size-to(20px, 1)
+    //+trailer(.4, 20px)
+    color: $color-txt
+    &--sub
+      +adjust-font-size-to(26px, 1)
+      +trailer(1, 26px)
+      font-weight: 700
+      font-style: italic
+      color: #999999
+
+  &-director
+    +adjust-font-size-to(16px)
+    color: $color-txt
+    font-style: italic
+
+  &-classification
+    +adjust-font-size-to(16px, 1)
+    text-transform: uppercase
+    font-style: italic
+
+  &-media
+    background: black
+    +leader(1)
+    +expand
+    &-item
+      position: relative
+      height: 400px
+
+  &-detail
+    +center(960px)
+    +leader(1)
+
