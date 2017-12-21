@@ -57,7 +57,8 @@ $(document).ready(function () {
         center: true,
         autoplay: true,
         autoplayTimeout: 7000,
-        animateOut: 'fadeOut'
+        animateOut: 'fadeOut',
+        videoHeight: 400
     });
 
     $(".gallery-list").owlCarousel({
