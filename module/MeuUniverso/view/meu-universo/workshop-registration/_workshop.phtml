@@ -1,4 +1,10 @@
 <?php $workshop = $this->workshop; $registration = $this->registration; ?>
+<?php $urlSub = $this->url('meu-universo/workshop', [
+    'controller'=>'workshop-registration',
+    'action' => 'inscricao',
+    'id' => $workshop->getId(),
+    'id_reg' => $registration->getHash()
+]); ?>
 
 <div style="display: none;min-width:400px;min-height: 400px" id="manager_<?php echo $workshop->getManager()->getId(); ?>">
     <?php echo $workshop->getManager()->getDescription(); ?>
@@ -8,8 +14,13 @@
     <div class="portlet-title">
         <div class="caption font-dark">
             <h2 class="main-title"><?php echo $workshop->getName() ?> </h2>
-            <strong>Instrutor(a):</strong> <a style="color: #000;" data-fancybox data-src="#manager_<?php echo $workshop->getManager()->getId(); ?>" data-modal="true"  href="javascript:;"><?php echo $workshop->getManager()->getName(); ?>
+            <strong>Instrutor(a): </strong><a style="color: #000;" data-fancybox data-src="#manager_<?php echo $workshop->getManager()->getId(); ?>" data-modal="true"  href="javascript:;"><?php echo $workshop->getManager()->getName(); ?>
                 <i style="margin-left: 2px; font-size: 13px;" class="icon-plus-circle"></i></a>
+            <?php if($this->show_register_link): ?>
+                <a style="margin-left: 15px; color: #000;" href="<?php echo $urlSub; ?>">Fazer inscrição
+                    <i style="font-size: 13px;" class="icon-arrow-right4"></i>
+                </a>
+            <?php endif; ?>
         </div>
         <div class="tools">
             <a href="javascript:;" class="expand" data-original-title="" title=""> </a>
@@ -50,12 +61,6 @@
 
         <?php if($this->show_register_link): ?>
         <div class="">
-            <?php $urlSub = $this->url('meu-universo/workshop', [
-                'controller'=>'workshop-registration',
-                'action' => 'inscricao',
-                'id' => $workshop->getId(),
-                'id_reg' => $registration->getHash()
-            ]); ?>
             <a href="<?php echo $urlSub; ?>" class="btn green button-submit">Fazer inscrição</a>
         </div>
         <?php endif; ?>
