@@ -68,7 +68,8 @@
                         <div class="tab-pane" id="tab2">
                             <?php echo $this->partial('meu-universo/workshop-registration/_workshop.phtml', [
                                 'workshop' => $this->workshop,
-                                'show_register_link' => false
+                                'show_register_link' => false,
+                                'registration' => $this->reg
                             ]); ?>
                             <?php
                                 if($form->has('user')) {
