@@ -160,6 +160,9 @@ class Movie extends AbstractEntity
     /** @ORM\Column(name="has_conversations_list_languages", type="boolean", nullable=true) */
     private $hasConversationsListLanguages;
 
+    /** @ORM\Column(name="comunicado_enviado", type="boolean", nullable=true) */
+    private $comunicadoEnviado;
+
     /**
      * @ORM\ManyToMany(targetEntity="Options")
      * @ORM\JoinTable(name="movie_has_options",
@@ -1065,5 +1068,21 @@ class Movie extends AbstractEntity
         unset($data['registration']);
 
         return $data;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getComunicadoEnviado()
+    {
+        return $this->comunicadoEnviado;
+    }
+
+    /**
+     * @param mixed $comunicadoEnviado
+     */
+    public function setComunicadoEnviado($comunicadoEnviado)
+    {
+        $this->comunicadoEnviado = $comunicadoEnviado;
     }
 }

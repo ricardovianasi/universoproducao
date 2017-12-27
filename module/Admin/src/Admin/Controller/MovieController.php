@@ -564,4 +564,34 @@ class MovieController extends AbstractAdminController
         ]);
 
     }
+
+    public function comunicadosAction()
+    {
+        $items = $this->search(Movie::class,
+            ['status'=>Status::NOT_SELECTED, 'comunicadoEnviado'=>0],
+            ['createdAt' => 'DESC'],
+            true);
+
+        var_dump(count($items)); exit();
+
+        foreach ($items as $item) {
+            //$item = new Movie();
+
+            $msg = "<p>Prezado (a) ".$item->getAuthor()->getName().",</p>";
+            $msg.= "<p>Comunicamos que o filme <strong>".$item->getTitle()."</strong> não foi selecionado para a 21ª Mostra de Cinema de Tiradentes.</p>";
+            $msg.= "<p>Esclarecemos que os critérios que baseiam a seleção de filmes para festivais são múltiplos e podem variar de acordo com o perfil do evento, a safra anual e a composição formal das grades. Tentamos abarcar o maior número de filmes inscritos, tentando diversificar ao máximo propostas estéticas e temáticas, sempre pensando no público de cada mostra e numa seleção que dê conta do estado atual da produção audiovisual nacional. </p>";
+            $msg.= "<p>Se algum filme não pertence à lista final de selecionados, é porque não se enquadrou nesses critérios e/ou por falta de espaço de exibição e limitação do período de duração do evento.</p>";
+            $msg.= "<p><strong>Se você optou por participar também da seleção de filmes para a 13ª CineOP - Mostra de Cinema de Ouro Preto, informamos que o filme passará por novo processo de seleção próximo à data de realização do evento.</strong></p>";
+            $msg.= "<p>Agradecemos seu interesse e esperamos contar com sua participação nas próximas edições.</p>";
+            $msg.= "<p>A programação da Mostra de Cinema de Tiradentes é gratuita e, estará disponível no site <a href='http://www.mostratiradentes.com.br'>www.mostratiradentes.com.br</a> a partir do dia 10 de janeiro.</p>";
+            $msg.= "<p>Atenciosamente,<br />Coordenação - Mostra Tiradentes</p>";
+
+            //$to[$item->getAuthor()->getName()] = 'ricardovianasi@gmail.com';
+            $this->mailService()->simpleSendEmail(
+                [$item->getAuthor()->getName()=>'ricardovianasi@gmail.com'],
+                'Filmes - 21ª Mostra de Cinema de Tiradentes', $msg);
+
+        }
+        return $items;
+    }
 }
