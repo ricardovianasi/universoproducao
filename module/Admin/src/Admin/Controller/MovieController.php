@@ -21,6 +21,7 @@ use Application\Entity\Registration\Status;
 use Application\Entity\Seminar\Thematic;
 use Application\Entity\User\User;
 use Doctrine\Common\Collections\ArrayCollection;
+use Zend\View\Model\JsonModel;
 
 class MovieController extends AbstractAdminController
 	implements CrudInterface, PostInterface
@@ -567,13 +568,23 @@ class MovieController extends AbstractAdminController
 
     public function comunicadosAction()
     {
-        $items = $this->search(Movie::class,
-            ['status'=>Status::NOT_SELECTED, 'comunicadoEnviado'=>0],
-            ['createdAt' => 'DESC'],
-            true);
+        $this->getViewModel()->setTerminal(true);
 
-        var_dump(count($items)); exit();
+        $items = $this
+            ->getRepository(Movie::class)
+            ->createQueryBuilder('m')
+            ->innerJoin('m.subscriptions', 's')
+            ->andWhere('s.status = :status')
+            ->andWhere('m.comunicadoEnviado = :comunicadoEnviado')
+            ->setParameters([
+                'status' => 'not_selected',
+                'comunicadoEnviado' => 0
+            ])
+            ->getQuery()
+            ->getResult();
 
+        //var_dump(count($items)); exit();
+        $count = 0;
         foreach ($items as $item) {
             //$item = new Movie();
 
@@ -588,10 +599,15 @@ class MovieController extends AbstractAdminController
 
             //$to[$item->getAuthor()->getName()] = 'ricardovianasi@gmail.com';
             $this->mailService()->simpleSendEmail(
-                [$item->getAuthor()->getName()=>'ricardovianasi@gmail.com'],
+                [$item->getAuthor()->getName()=>$item->getAuthor()->getEmail()],
                 'Filmes - 21ª Mostra de Cinema de Tiradentes', $msg);
 
+            $count++;
+            echo "$count - Nome: " . $item->getAuthor()->getName();
+            echo "<br />Email: " . $item->getAuthor()->getEmail();
+            echo "<br />Filme: " . $item->getTitle() . '<br /><br />';
         }
-        return $items;
+
+        return $this->getViewModel();
     }
 }
