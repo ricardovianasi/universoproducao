@@ -1,72 +1,36 @@
 <?php $form = $this->form; ?>
-<div class="portlet">
-    <div class="portlet-body form">
-        <?php $form->prepare(); echo $this->form(null, null)->openTag($form) ?>
-        <div class="form-body">
 
-            <div class="row">
-                <div class="col-md-4"><?php echo $this->formRow($form->get('registration')); ?></div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-4"><?php echo $this->formRow($form->get('name')); ?></div>
-                <div class="col-md-4"><?php echo $this->formRow($form->get('manager')); ?></div>
-                <div class="col-md-2"><?php echo $this->formRow($form->get('minimum_age')); ?></div>
-                <div class="col-md-2"><?php echo $this->formRow($form->get('maximum_age')); ?></div>
-            </div>
-
-            <div class="row">
-
-            </div>
-
-            <div class="row">
-                <div class="col-md-4"><?php echo $this->formRow($form->get('duration')); ?></div>
-                <div class="col-md-4"><?php echo $this->formRow($form->get('available_subscriptions')); ?></div>
-                <div class="col-md-4"><?php echo $this->formRow($form->get('maximum_subscriptions')); ?></div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label class="control-label">Imagem de destaque</label>
-                        <div class="input-group">
-                            <div class="fileinput fileinput2 <?php echo $this->workshop->getFile() ? "fileinput-exist" : "fileinput-new"; ?>" data-provides="fileinput">
-                                <div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">
-                                    <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=sem+imagem" alt="" /> </div>
-                                <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;">
-                                    <?php if($this->workshop->getFile()): ?>
-                                        <img width="100%" src="<?php echo $this->workshop->getFile() ?>" alt="" />
-                                    <?php endif; ?>
-                                </div>
-                                <div>
-                                    <a href="#"
-                                       data-toggle="modal"
-                                       data-target="#modal-responsivefilemanager"
-                                       data-url="/filemanager/dialog.php?type=1&field_id=file"
-                                       class="btn btn-success responsivefilemanager fileinput-add"><i class="fa fa-plus"></i> Selecionar uma Imagem</a>
-                                    <a class="btn red fileinput-remove"> Remover </a>
-                                    <?php echo $this->formElement($form->get('file')); ?>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-6"><?php echo $this->formRow($form->get('description')); ?></div>
-                <div class="col-md-6"><?php echo $this->formRow($form->get('requirements')); ?></div>
-            </div>
+<h3 class="form-section">Inscrição</h3>
+<div class="form-group ">
+    <?php
+        $userName = $this->subscription->getUser()?$this->subscription->getUser()->getName():"";
+        $userId = $this->subscription->getUser()?$this->subscription->getUser()->getId():"";
+    ?>
+    <label class="col-md-4 control-label">Usuário<span class="required"> * </span></label>
+    <div class=" col-md-4">
+        <div class="input-group">
+            <input readonly type="text" id="userName" class="form-control" value="<?php echo $userName ?>">
+            <span class="input-group-btn">
+                <button
+                        class="btn user-modal"
+                        type="button"
+                        data-user-id="<?php echo $userId; ?>"
+                        data-select-id-to="#user"
+                        data-select-name-to="#userName">
+                    <i class="fa fa-search"></i>
+                </button>
+            </span>
         </div>
-
-        <div class="form-actions">
-            <div class="row">
-                <div class="col-md-offset-3 col-md-9">
-                    <button type="submit" class="btn blue btn-lg action-save">Salvar</button>
-                    <a href="#" class="btn red btn-lg action cancel">Descartar</a>
-                </div>
-            </div>
-        </div>
-        <?php echo $this->form()->closeTag() ?>
     </div>
 </div>
+
+<?php echo $this->formElement($form->get("user")) ?>
+<?php echo $this->formRow($form->get("registration")) ?>
+<?php echo $this->formRow($form->get("workshop")) ?>
+<?php
+$workshopRegisterElements = $form->get('form_answer')->getElements();
+foreach ($workshopRegisterElements as $workshopEl) {
+    echo $this->formRow($workshopEl);
+}
+?>
+

@@ -222,6 +222,7 @@ class WorkshopRegistrationController extends AbstractMeuUniversoRegisterControll
                 $subscription->setEvent($workshop->getEvent());
                 $subscription->setWorkshop($workshop);
                 $subscription->setUser($userSubs);
+                $subscription->setRegistration($reg);
 
                 $formAnswer = new ArrayCollection();
                 if(!empty($data['form_answer'])) {

@@ -4,6 +4,7 @@ namespace Application\Entity\Workshop;
 use Admin\View\Helper\RegistrationStatus;
 use Application\Entity\Event\Event;
 use Application\Entity\Registration\Status;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Util\Entity\AbstractEntity;
 
@@ -37,14 +38,35 @@ class WorkshopSubscription extends AbstractEntity
      */
     private $event;
 
+    /**
+     * @ORM\OneToOne(targetEntity="Application\Entity\Registration\Registration")
+     * @ORM\JoinColumn(name="registration_id", referencedColumnName="id")
+     */
+    private $registration;
+
     /** @ORM\Column(name="status", type="string", nullable=true) */
     private $status = Status::ON_EVALUATION;
 
     /** @ORM\OneToMany(targetEntity="WorkshopSubscriptionAnswerForm", mappedBy="subscription", cascade={"ALL"}) */
     private $formAnswers;
 
+    /**
+     * Many Users have Many Groups.
+     * @ORM\ManyToMany(targetEntity="PontuationItems")
+     * @ORM\JoinTable(name="workshop_subscription_pontuation",
+     *      joinColumns={@ORM\JoinColumn(name="workshop_subscription_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="workshop_pontuation_itens_id", referencedColumnName="id")}
+     * )
+     */
+    private $pontuations;
+
     /** @ORM\Column(name="created_at", type="datetime", nullable=true) */
     private $createdAt;
+
+    public function __construct()
+    {
+        $this->pontuations = new ArrayCollection();
+    }
 
     /**
      * @return mixed
@@ -156,5 +178,58 @@ class WorkshopSubscription extends AbstractEntity
     public function setCreatedAt($createdAt)
     {
         $this->createdAt = $createdAt;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRegistration()
+    {
+        return $this->registration;
+    }
+
+    /**
+     * @param mixed $registration
+     */
+    public function setRegistration($registration)
+    {
+        $this->registration = $registration;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPontuations()
+    {
+        return $this->pontuations;
+    }
+
+    /**
+     * @param mixed $pontuations
+     */
+    public function setPontuations($pontuations)
+    {
+        $this->pontuations = $pontuations;
+    }
+
+    public function getTotalPontuation()
+    {
+        $total = 0;
+        foreach ($this->getPontuations() as $p) {
+            $total+= $p->getValue();
+        }
+
+        return $total;
+    }
+
+    public function hasPontuation($pontuationId)
+    {
+        foreach ($this->getPontuations() as $p) {
+            if($p->getId() == $pontuationId) {
+                return $p;
+            }
+        }
+
+        return false;
     }
 }

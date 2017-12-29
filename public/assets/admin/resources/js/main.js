@@ -80,6 +80,8 @@ jQuery(document).ready(function() {
 
     $(".programing-table").programing();
 
+    $(".workshop-pontuation").workshopPontuation();
+
 	if (jQuery().datepicker) {
         $('.date-picker').datepicker({
             rtl: App.isRTL(),

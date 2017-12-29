@@ -1,0 +1,31 @@
+<?php $form = $this->form; ?>
+<h3 class="form-section">Seleção/Pontuação</h3>
+
+     <div class="col-md-6">
+        <?php echo $this->formRow($form->get('status')); ?>
+    </div>
+
+<table class="table table-striped table-hover table-bordered workshop-pontuation">
+    <thead>
+    <tr>
+        <th></th>
+        <th>Descrição</th>
+        <th>Pontos</th>
+    </tr>
+    </thead>
+    <tbody>
+    <?php foreach ($this->pontuationItems as $item): ?>
+        <?php $isChecked = $this->subscription->hasPontuation($item->getId()) ? 'checked=checked' : ''; ?>
+        <tr data-pontuation-id="<?php echo $item->getId(); ?>" data-value="<?php echo $item->getValue(); ?>">
+            <td><input <?php echo $isChecked ?> type="checkbox" data-value="<?php echo $item->getValue(); ?>" class="icheck" name="pontuation[]" value="<?php echo $item->getId() ?>"></td>
+            <td><?php echo $item->getDescription(); ?></td>
+            <td><?php echo $item->getValue(); ?></td>
+        </tr>
+    <?php endforeach; ?>
+    <tr class="success">
+        <td></td>
+        <td>Total</td>
+        <td><span class="workshop-pontuation-total"><?php echo $this->subscription->getTotalPontuation(); ?></span></td>
+    </tr>
+    </tbody>
+</table>

@@ -11,6 +11,7 @@ namespace Admin\Form\Registration;
 
 use Application\Entity\Registration\Options;
 use Application\Entity\Registration\Type;
+use Application\Entity\Workshop\Pontuation;
 use Zend\InputFilter\Factory as InputFilterFactory;
 
 class WorkshopRegistrationForm extends RegistrationForm
@@ -34,12 +35,12 @@ class WorkshopRegistrationForm extends RegistrationForm
             ]
         ]);
 
-        /*$this->add([
+        $this->add([
             'type' => 'select',
             'name' => 'options['.Options::WORKSHOP_PONTUATION.']',
             'options' => [
                 'label' => 'Ficha de pontuação',
-                'value_options' => [],
+                'value_options' => $this->populateWorkshopPontuations(),
                 'empty_option' => 'Selecione',
                 'twb-layout' => 'horizontal',
                 'column-size' => 'md-6',
@@ -60,7 +61,7 @@ class WorkshopRegistrationForm extends RegistrationForm
                 'required'   => false,
                 'allow_empty' => true
             ],
-        ]));*/
+        ]));
 
     }
 
@@ -74,6 +75,22 @@ class WorkshopRegistrationForm extends RegistrationForm
                 ->findBy(['type'=>Type::WORKSHOP]);
 
             foreach ($events as $e) {
+                $options[$e->getId()] = $e->getName();
+            }
+        }
+        return $options;
+    }
+
+    public function populateWorkshopPontuations()
+    {
+        $options = [];
+        if ($this->getEntityManager()) {
+            $items = $this
+                ->getEntityManager()
+                ->getRepository(Pontuation::class)
+                ->findAll();
+
+            foreach ($items as $e) {
                 $options[$e->getId()] = $e->getName();
             }
         }

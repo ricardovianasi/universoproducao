@@ -46,6 +46,7 @@ class WorkshopForm extends WorkshopRegistrationForm
         $this->remove('event');
         $this->remove('workshop');
         $this->remove('user');
+        $this->remove('registration');
 
         $this->add([
             'type' => 'Select',

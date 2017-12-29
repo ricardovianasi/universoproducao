@@ -3,6 +3,7 @@ namespace Admin;
 
 use Admin\Controller\Plugin\Service\SlugfyFactory;
 use Admin\Controller\Plugin\Service\UserLogFactory;
+use Admin\View\Helper\AdminNavigation;
 use Zend\Mvc\Router\Http\Literal;
 
 return array(
@@ -250,7 +251,8 @@ return array(
             'adminPostSiteView' 		=> 'Admin\View\Helper\AdminPostSiteView',
             'adminBanner'				=> 'Admin\View\Helper\AdminBanner',
             'adminGallery'				=> 'Admin\View\Helper\AdminGallery',
-            'registrationStatus'              => 'Admin\View\Helper\RegistrationStatus'
+            'registrationStatus'        => 'Admin\View\Helper\RegistrationStatus',
+            'adminNavigation'           => AdminNavigation::class
         ),
         'factories' => [
             'adminTranslate' => function($helpers) {

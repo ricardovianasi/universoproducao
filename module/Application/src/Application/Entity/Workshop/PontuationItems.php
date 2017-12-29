@@ -20,7 +20,7 @@ class PontuationItems extends AbstractEntity
      * @ORM\ManyToOne(targetEntity="Pontuation", inversedBy="items")
      * @ORM\JoinColumn(name="workshop_pontuation_id", referencedColumnName="id")
      */
-    private $workshopPontuation;
+    private $pontuation;
 
     /** @ORM\Column(type="text", nullable=true) */
     private $description;
@@ -47,17 +47,17 @@ class PontuationItems extends AbstractEntity
     /**
      * @return mixed
      */
-    public function getWorkshopPontuation()
+    public function getPontuation()
     {
-        return $this->workshopPontuation;
+        return $this->pontuation;
     }
 
     /**
-     * @param mixed $workshopPontuation
+     * @param mixed $pontuation
      */
-    public function setWorkshopPontuation($workshopPontuation)
+    public function setPontuation($pontuation)
     {
-        $this->workshopPontuation = $workshopPontuation;
+        $this->pontuation = $pontuation;
     }
 
     /**

@@ -18,9 +18,10 @@ class Pontuation extends AbstractEntity
      */
     private $id;
 
+    /** @ORM\Column(type="string", nullable=true) */
     private $name;
 
-    /** @ORM\OneToMany(targetEntity="PontuationItems", mappedBy="workshopPontuation")  */
+    /** @ORM\OneToMany(targetEntity="PontuationItems", mappedBy="pontuation")  */
     private $items;
 
     /** @ORM\Column(name="created_at", type="datetime", nullable=true) */
