@@ -26,21 +26,26 @@ class WorkshopRegistrationController extends AbstractAdminController
 {
 	public function indexAction()
 	{
-        $searchForm = new WorkshopRegistrationForm($this->getEntityManager());
-        $dataAttr = $this->params()->fromQuery();
-        $searchForm->setData($dataAttr);
+	    $registration = $this->getRepository(Registration::class)->findOneBy([
+	        'type' => Type::WORKSHOP
+        ]);
 
+        $dataAttr = $this->params()->fromQuery();
+        if(empty($dataAttr)) {
+            $dataAttr['event'] = $this->getDefaultEvent()->getId();
+        }
+
+        $searchForm = new WorkshopRegistrationForm($this->getEntityManager(), $registration);
+        $searchForm->setData($dataAttr);
         if(!$searchForm->isValid()) {
             $teste = $searchForm->getMessages();
         }
-
-        $data = $searchForm->getData();
-
-		$items = $this->search(WorkshopSubscription::class, $data);
+		$items = $this->search(WorkshopSubscription::class, $dataAttr);
 
 		$this->getViewModel()->setVariables([
 			'items' => $items,
-            'searchForm' => $searchForm
+            'searchForm' => $searchForm,
+            'searchData' => $dataAttr,
 		]);
 
 		return $this->getViewModel();

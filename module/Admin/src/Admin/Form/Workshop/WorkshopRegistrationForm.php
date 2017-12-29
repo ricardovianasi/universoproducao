@@ -53,9 +53,13 @@ class WorkshopRegistrationForm extends Form
         ]);
 
         $this->add([
+            'type' => 'text',
+            'name' => 'user_search',
+        ]);
+
+        $this->add([
             'name' => 'id',
             'attributes' => [
-                'class' => 'input-sm',
             ]
         ]);
 
@@ -109,7 +113,6 @@ class WorkshopRegistrationForm extends Form
                 'value_options' => $this->populateEvents()
             ],
             'attributes' => [
-                'class' => 'input-sm',
                 'data-label' => 'Evento',
                 'id' => 'event'
             ]
@@ -228,7 +231,6 @@ class WorkshopRegistrationForm extends Form
     public function populateWorkshops()
     {
         $options = [];
-
         if($this->getEntityManager() && $this->getRegistration()) {
             $items = $this
                 ->getEntityManager()

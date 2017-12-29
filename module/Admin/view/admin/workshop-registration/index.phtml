@@ -1,4 +1,7 @@
-<?php $form = $this->searchForm; ?>
+<?php
+    $form = $this->searchForm;
+    $form->setAttribute('method', 'GET');
+?>
 
 <div class="row">
 	<div class="col-md-12">
@@ -81,7 +84,7 @@
                                 <td><?php echo $this->formelement($form->get('id')); ?></td>
                                 <td><?php echo $this->formelement($form->get('event')); ?></td>
                                 <td><?php echo $this->formelement($form->get('workshop')); ?></td>
-                                <td><?php echo $this->formelement($form->get('user')); ?></td>
+                                <td><?php echo $this->formelement($form->get('user_search')); ?></td>
                                 <td><?php echo $this->formelement($form->get('status')); ?></td>
                                 <td>
                                     <div class="input-group date date-picker margin-bottom-5" data-date-format="dd/mm/yyyy">
