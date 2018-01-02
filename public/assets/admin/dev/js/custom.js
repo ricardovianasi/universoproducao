@@ -2302,6 +2302,7 @@ function responsive_filemanager_callback(field_id) {
                     dataType: "html"
                 });
                 request.done(function(content) {
+                    _that.$modal.attr("style", "");
                     _that.$modal.html(content);
                     _that.$modal.modal();
                     _that.registerEvents();
