@@ -60,9 +60,11 @@ class WorkshopSubscription extends AbstractRepository
                 ->setParameter('dateEnd', $dateEnd);
         }
 
-        foreach($orderBy as $name=>$order) {
-            $qb->addOrderBy("p.$name", $order);
-        }
+        $qb
+            ->leftJoin('p.pontuations', 'po')
+            ->addSelect('SUM(po.value) as HIDDEN total_pontuation')
+            ->groupBy('p.id')
+            ->orderBy('total_pontuation', 'DESC');
 
         return $qb;
     }
