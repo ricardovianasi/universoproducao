@@ -128,10 +128,13 @@ class ProgramingForm extends Form
                 ]
             ],
             'attributes' => [
-                'class' => 'input-sm',
                 'data-label' => 'Evento'
             ]
         ]);
+
+        if($this->getEvent()) {
+            $this->get('event')->setValue($this->getEvent()->getId());
+        }
     }
 
     public function populatePlace()

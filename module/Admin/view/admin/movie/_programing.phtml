@@ -1,0 +1,70 @@
+<?php
+    $form = $this->form;
+    $form->setAttribute('action', $this->url('admin/default', [
+        'controller'=>'movie',
+        'action'=>'movie-subscriptions'
+    ]));
+    $form->prepare();
+    echo $this->form(null, null)->openTag($form);
+?>
+
+<h3 class="form-section">Programação</h3>
+<div class="form-body">
+
+    <div class="row">
+        <div class="col-md-3">
+            <?php $eventElement = $form->get('event')
+                ->setOption('twb-layout', '')
+                ->setOption('column-size', '')
+                ->setLabelAttributes([]); ?>
+
+            <?php echo $this->formRow($eventElement) ?>
+        </div>
+        <div class="col-md-3">
+            <?php $eventDate = $form->get('date')
+                ->setOption('twb-layout', '')
+                ->setOption('column-size', '')
+                ->setLabelAttributes([]); ?>
+            <?php echo $this->formRow($eventDate) ?>
+        </div>
+        <div class="col-md-3">
+            <?php $elementStarttime = $form->get('start_time')
+                ->setOption('twb-layout', '')
+                ->setOption('column-size', '')
+                ->setLabelAttributes([]); ?>
+            <?php echo $this->formRow($elementStarttime) ?>
+        </div>
+        <div class="col-md-3">
+            <?php $elementend_time = $form->get('end_time')
+                ->setOption('twb-layout', '')
+                ->setOption('column-size', '')
+                ->setLabelAttributes([]); ?>
+            <?php echo $this->formRow($elementend_time) ?>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <?php $elementsub_event = $form->get('sub_event')
+                ->setOption('twb-layout', '')
+                ->setOption('column-size', '')
+                ->setLabelAttributes([]); ?>
+            <?php echo $this->formRow($elementsub_event) ?>
+        </div>
+        <div class="col-md-3">
+            <?php $elementPlace = $form->get('place')
+                ->setOption('twb-layout', '')
+                ->setOption('column-size', '')
+                ->setLabelAttributes([]); ?>
+            <?php echo $this->formRow($elementPlace) ?>
+        </div>
+    </div>
+</div>
+<div class="form-actions">
+    <div class="btn-set pull-right">
+        <button type="submit" name="save" class="btn blue btn-lg" id="save" value="Salvar">
+            <span class="fa fa-fa fa-check"></span> Salvar
+        </button>
+    </div>
+</div>
+
+<?php echo $this->form()->closeTag(); ?>

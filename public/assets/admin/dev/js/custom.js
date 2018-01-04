@@ -2270,6 +2270,37 @@ function responsive_filemanager_callback(field_id) {
 })(window, jQuery);
 
 (function(window, $) {
+    var TabSelection = function(element, options) {
+        this.element = element;
+        this.$element = $(element);
+        this.options = options;
+    };
+    TabSelection.prototype = {
+        defaults: {},
+        init: function() {
+            this.config = $.extend({}, this.defaults, this.options, this.$element.data());
+            var _that = this;
+            $('a[data-toggle="tab"]').on("shown.bs.tab", function(e) {
+                localStorage.setItem("lastTab", $(this).attr("href"));
+            });
+            var lastTab = localStorage.getItem("lastTab");
+            if (lastTab) {
+                $("a[href=" + lastTab + "]").tab("show");
+            } else {
+                $('a[data-toggle="tab"]:first').tab("show");
+            }
+        }
+    };
+    TabSelection.defaults = TabSelection.prototype.defaults;
+    $.fn.tabSelection = function(options) {
+        return this.each(function() {
+            new TabSelection(this, options).init();
+        });
+    };
+    window.TabSelection = Plugin;
+})(window, jQuery);
+
+(function(window, $) {
     var User = function(element, options) {
         this.element = element;
         this.$element = $(element);

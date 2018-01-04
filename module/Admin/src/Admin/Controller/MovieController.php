@@ -9,8 +9,10 @@ namespace Admin\Controller;
 
 use Admin\Form\Movie\MovieForm;
 use Admin\Form\Movie\MovieFormSearch;
+use Admin\Form\Movie\MovieProgramingForm;
 use Admin\Form\Movie\MovieStatusModalForm;
 use Admin\Form\Movie\MovieSubscriptionForm;
+use Admin\Form\Programing\ProgramingForm;
 use Application\Entity\Event\Event;
 use Application\Entity\Movie\Media;
 use Application\Entity\Movie\Movie;
@@ -235,6 +237,8 @@ class MovieController extends AbstractAdminController
             $movie = new Movie();
         }
 
+        $programingForm = new MovieProgramingForm($this->getEntityManager());
+
         //Popula os eventos baseado nos regulamentos que selecionados
         $registrationEvents = [];
         if($this->getRequest()->isPost()) {
@@ -414,7 +418,8 @@ class MovieController extends AbstractAdminController
 		return $this->getViewModel()->setVariables([
 			'form' => $form,
 			'movie' => $movie,
-            'registrationEvents' => $registrationEvents
+            'registrationEvents' => $registrationEvents,
+            'programingForm' => $programingForm
 		]);
 	}
 

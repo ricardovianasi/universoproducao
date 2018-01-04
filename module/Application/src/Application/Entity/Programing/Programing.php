@@ -2,6 +2,7 @@
 namespace Application\Entity\Programing;
 
 use Application\Entity\Workshop\Workshop;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Event\LifecycleEventArgs;
 use Doctrine\ORM\Mapping as ORM;
 use Util\Entity\AbstractEntity;
@@ -27,6 +28,12 @@ class Programing extends AbstractEntity
 	private $event;
 
     /**
+     * @ORM\ManyToOne(targetEntity="Application\Entity\Event\SubEvent")
+     * @ORM\JoinColumn(name="sub_event_id", referencedColumnName="id")
+     */
+    private $subEvent;
+
+    /**
      * @ORM\ManyToOne(targetEntity="Application\Entity\Event\Place")
      * @ORM\JoinColumn(name="place_id", referencedColumnName="id")
      */
@@ -48,6 +55,14 @@ class Programing extends AbstractEntity
 	private $objectId;
 
 	private $object;
+
+    /** @ORM\OneToMany(targetEntity="Meta", mappedBy="programing", cascade={"ALL"}) */
+	private $meta;
+
+	public function __construct()
+    {
+        $this->meta = new ArrayCollection();
+    }
 
     /**
      * @return mixed
@@ -217,5 +232,48 @@ class Programing extends AbstractEntity
 
         $this->object = $queryBuilder->getQuery()->getOneOrNullResult();
         return $this->object;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMeta()
+    {
+        return $this->meta;
+    }
+
+    /**
+     * @param mixed $meta
+     */
+    public function setMeta($meta)
+    {
+        $this->meta = $meta;
+    }
+
+    public function hasMeta($metaName)
+    {
+        foreach ($this->getMeta() as $meta) {
+            if($meta->getName() == $metaName) {
+                return $meta;
+            }
+        }
+
+        return false;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSubEvent()
+    {
+        return $this->subEvent;
+    }
+
+    /**
+     * @param mixed $subEvent
+     */
+    public function setSubEvent($subEvent)
+    {
+        $this->subEvent = $subEvent;
     }
 }

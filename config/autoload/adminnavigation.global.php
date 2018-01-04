@@ -27,19 +27,27 @@ return [
                 'icon' => 'icon-book-open',
                 'pages' => [
                     [
+                        'label' => 'Filmes',
+                        'route' => 'admin/default',
+                        'controller' => 'movie',
+                        'icon' => 'icon-doc',
+                    ],
+                    [
+                        'label' => 'Programação',
+                        'route' => 'admin/default',
+                        'controller' => 'movie-programing',
+                        'icon' => 'icon-doc',
+
+                    ],
+                    [
                         'label' => 'Configurações',
                         'route' => 'admin/default',
                         'controller' => 'movie-options',
                         'icon' => 'icon-doc',
 
                     ],
-                    [
-                        'label' => 'Filmes',
-                        'route' => 'admin/default',
-                        'controller' => 'movie',
-                        'icon' => 'icon-doc',
-                    ],
                 ]
+
             ],
             [
                 'label' => 'Oficinas',

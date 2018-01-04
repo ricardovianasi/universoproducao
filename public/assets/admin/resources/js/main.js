@@ -82,6 +82,8 @@ jQuery(document).ready(function() {
 
     $(".workshop-pontuation").workshopPontuation();
 
+    //$(".nav-tabs li a").tabSelection();
+
 	if (jQuery().datepicker) {
         $('.date-picker').datepicker({
             rtl: App.isRTL(),

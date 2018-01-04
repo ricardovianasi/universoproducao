@@ -42,7 +42,6 @@
 		<div class="portlet-body">
 			<div class="portlet">
                 <div class="portlet-body form">
-
                     <div class="tabbable-bordered">
                         <ul class="nav nav-tabs">
                             <li class="active">
@@ -70,7 +69,11 @@
                                 ]); ?>
                             </div>
                             <div class="tab-pane" id="tab_programation">
-                                <h3>Hello</h3>
+                                <?php echo $this->partial('admin/movie/_programing.phtml', [
+                                    'form' => $this->programingForm,
+                                    'movie' => $this->movie,
+                                    'registrationEvents' => $this->registrationEvents
+                                ]); ?>
                             </div>
                         </div>
                     </div>
