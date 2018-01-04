@@ -18,9 +18,13 @@
             <strong>Instrutor(a): </strong><a style="color: #000;" data-fancybox data-src="#manager_<?php echo $workshop->getManager()->getId(); ?>" data-modal="true"  href="javascript:;"><?php echo $workshop->getManager()->getName(); ?>
                 <i style="margin-left: 2px; font-size: 13px;" class="icon-plus-circle"></i></a>
             <?php if($this->show_register_link): ?>
-                <a style="margin-left: 15px; color: #000;" href="<?php echo $urlSub; ?>">Fazer inscrição
-                    <i style="font-size: 13px;" class="icon-arrow-right4"></i>
-                </a>
+                <?php if($this->workshop->hasAvailableSubscriptions()): ?>
+                    <a style="margin-left: 15px; color: #000;" href="<?php echo $urlSub; ?>">Fazer inscrição
+                        <i style="font-size: 13px;" class="icon-arrow-right4"></i>
+                    </a>
+                <?php else: ?>
+                    <span>Inscrições esgotadas!</span>
+                <?php endif; ?>
             <?php endif; ?>
         </div>
         <div class="tools">
@@ -61,9 +65,13 @@
         </p>
 
         <?php if($this->show_register_link): ?>
-        <div class="">
-            <a href="<?php echo $urlSub; ?>" class="btn green button-submit">Fazer inscrição</a>
-        </div>
+            <?php if($this->workshop->hasAvailableSubscriptions()): ?>
+            <div class="">
+                <a href="<?php echo $urlSub; ?>" class="btn green button-submit">Fazer inscrição</a>
+            </div>
+            <?php else: ?>
+                <p>Inscrições esgotadas</p>
+            <?php endif; ?>
         <?php endif; ?>
     </div>
 </div>
