@@ -25,6 +25,7 @@ class WorkshopProgramingController extends AbstractAdminController implements Cr
         }
 
         $data = $searchForm->getData();
+        $data['type'] = 'workshop';
 
 		$items = $this->search(Programing::class, $data);
 

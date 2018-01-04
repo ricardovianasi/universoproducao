@@ -9,12 +9,39 @@
 namespace Admin\Form\Movie;
 
 use Admin\Form\Programing\ProgramingForm;
+use Application\Entity\Movie\Movie;
+use Application\Entity\Movie\MovieEventStatus;
+use Application\Entity\Registration\Status;
 
 class MovieProgramingForm extends  ProgramingForm
 {
+    protected $movie;
+
     public function __construct($em, $event = null)
     {
         parent::__construct($em, $event);
+        $this->setAttributes([
+            'class' => 'movie-programing-form default-form-actions enable-validators',
+        ]);
+
+        $this->add([
+            'name' => 'movie',
+            'type' => 'select',
+            'options' => [
+                'label' => 'Filme',
+                'empty_option' => 'Selecione',
+                'value_options' => $this->populateMovies(),
+                'twb-layout' => 'horizontal',
+                'column-size' => 'md-4',
+                'label_attributes' => [
+                    'class' => 'col-md-4'
+                ]
+            ],
+            'attributes' => [
+                'required' => 'required',
+                'class' => 'select2'
+            ]
+        ]);
 
         $this->add([
             'type' => 'Select',
@@ -28,8 +55,19 @@ class MovieProgramingForm extends  ProgramingForm
                 'label_attributes' => [
                     'class' => 'col-md-4'
                 ]
+            ],
+            'attributes' => [
+                'required' => 'required',
             ]
         ]);
+
+        $this->add([
+            'name' => 'meta',
+            'type' => MetaProgramingFieldset::class,
+
+        ]);
+
+        $this->get('place')->setAttribute('required', 'required');
     }
 
     public function populateSubEvents()
@@ -44,12 +82,56 @@ class MovieProgramingForm extends  ProgramingForm
         return $subEvents;
     }
 
+    public function populateMovies()
+    {
+        $movies = [];
+        if($this->getEntityManager() && $this->getEvent()) {
+            $itens = $this
+                ->getEntityManager()
+                ->getRepository(Movie::class)
+                ->createQueryBuilder('m')
+                ->innerJoin('m.subscriptions', 's')
+                ->andWhere('s.event = :idEvent')
+                ->andWhere('s.status = :status')
+                ->setParameters([
+                    'idEvent' => $this->getEvent()->getId(),
+                    'status' => MovieEventStatus::SELECTED
+                ])
+                ->orderBy('m.title', 'ASC')
+                ->getQuery()
+                ->getResult();
+
+            foreach ($itens as $m) {
+                $movies[$m->getId()] = $m->getTitle();
+            }
+        }
+        return $movies;
+    }
+
     public function setData($data)
     {
-        if(empty($data['sub_event']) && is_object($data['sub_event'])) {
+        if(!empty($data['sub_event']) && is_object($data['sub_event'])) {
             $subEvent = $data['sub_event'];
             $data['sub_event'] = $subEvent->getId();
         }
+
+        if(!empty($data['object']) && is_object($data['object'])) {
+            $movie = $data['object'];
+            $data['movie'] = $movie->getId();
+        }
+
+        if(!empty($data['meta'])) {
+            $meta = [];
+            foreach ($data['meta'] as $key=>$m) {
+                if(is_object($m)) {
+                    $meta[$m->getName()] = $m->getValue();
+                } else {
+                    $meta[$key] = $m;
+                }
+            }
+            $data['meta'] = $meta;
+        }
+
         return parent::setData($data);
     }
 }

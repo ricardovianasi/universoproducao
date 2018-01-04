@@ -102,7 +102,7 @@ class ProgramingForm extends Form
             'name' => 'place',
             'options' => [
                 'label' => 'Local',
-                'empty_option' => 'Selecione o local',
+                'empty_option' => 'Selecione',
                 'value_options' => $this->populatePlace(),
                 'twb-layout' => 'horizontal',
                 'column-size' => 'md-4',
@@ -128,8 +128,11 @@ class ProgramingForm extends Form
                 ]
             ],
             'attributes' => [
-                'data-label' => 'Evento'
+                'data-label' => 'Evento',
+                'class' => 'event-populate',
+                'required' => 'required',
             ]
+
         ]);
 
         if($this->getEvent()) {

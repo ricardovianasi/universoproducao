@@ -5,6 +5,7 @@ return [
 			'Util\Controller\Adderess' => 'Util\Controller\AdderessController',
 			'Util\Controller\Password' => 'Util\Controller\PasswordController',
 			'Util\Controller\Post'		=> 'Util\Controller\PostController',
+			'Util\Controller\Event'		=> 'Util\Controller\EventController',
 		]
 	],
 	'controller_plugins' => [
@@ -69,6 +70,19 @@ return [
                                 '__NAMESPACE__' => 'Util\Controller',
                                 'controller'    => 'Adderess',
                                 'action'        => 'cities',
+                            ]
+                        ]
+                    ],
+                    'event' => [
+                        'type'    => 'Literal',
+                        'options' => [
+                            'route' => '/event',
+                            'defaults' => [
+                                // Change this value to reflect the namespace in which
+                                // the controllers for your module are found
+                                '__NAMESPACE__' => 'Util\Controller',
+                                'controller'    => 'Event',
+                                'action'        => 'event',
                             ]
                         ]
                     ],

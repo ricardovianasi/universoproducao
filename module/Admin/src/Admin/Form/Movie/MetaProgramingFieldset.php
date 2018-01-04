@@ -26,7 +26,12 @@ class MetaProgramingFieldset extends Fieldset
             'name' => Meta::ADDITIONAL_INFO,
             'type' => 'Textarea',
             'options' => [
-                'label' => 'Informações adicionais'
+                'label' => 'Informações adicionais',
+                'twb-layout' => 'horizontal',
+                'column-size' => 'md-4',
+                'label_attributes' => [
+                    'class' => 'col-md-4'
+                ]
             ]
         ]);
 
@@ -40,11 +45,16 @@ class MetaProgramingFieldset extends Fieldset
                     '1' => 'Não',
                     '2' => 'Sim',
                 ],
+                'twb-layout' => 'horizontal',
+                'column-size' => 'md-4',
+                'label_attributes' => [
+                    'class' => 'col-md-4'
+                ]
             ]
         ]);
 
         $this->add([
-            'name' => Meta::NATIONAL_PREMIERE,
+            'name' => Meta::WORLD_PREMIERE,
             'type' => 'Select',
             'options' => [
                 'label' => 'Pré estreia internacional',
@@ -53,7 +63,33 @@ class MetaProgramingFieldset extends Fieldset
                     '1' => 'Não',
                     '2' => 'Sim',
                 ],
+                'twb-layout' => 'horizontal',
+                'column-size' => 'md-4',
+                'label_attributes' => [
+                    'class' => 'col-md-4'
+                ]
             ]
         ]);
+    }
+
+    public function getInputFilterSpecification()
+    {
+        return [
+            Meta::WORLD_PREMIERE => [
+                'name' => Meta::WORLD_PREMIERE,
+                'required'   => false,
+                'allow_empty' => true
+            ],
+            Meta::NATIONAL_PREMIERE => [
+                'name' => Meta::NATIONAL_PREMIERE,
+                'required'   => false,
+                'allow_empty' => true
+            ],
+            Meta::ADDITIONAL_INFO => [
+                'name' => Meta::ADDITIONAL_INFO,
+                'required'   => false,
+                'allow_empty' => true
+            ],
+        ];
     }
 }

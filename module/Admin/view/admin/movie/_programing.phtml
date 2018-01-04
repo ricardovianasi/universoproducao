@@ -1,8 +1,8 @@
 <?php
     $form = $this->form;
     $form->setAttribute('action', $this->url('admin/default', [
-        'controller'=>'movie',
-        'action'=>'movie-subscriptions'
+        'controller'=>'movie-programing',
+        'action'=>'create'
     ]));
     $form->prepare();
     echo $this->form(null, null)->openTag($form);
@@ -11,12 +11,21 @@
 <h3 class="form-section">Programação</h3>
 <div class="form-body">
 
+    <?php echo $this->formElement($form->get('movie')); ?>
+
     <div class="row">
         <div class="col-md-3">
             <?php $eventElement = $form->get('event')
                 ->setOption('twb-layout', '')
                 ->setOption('column-size', '')
-                ->setLabelAttributes([]); ?>
+                ->setLabelAttributes([]);
+
+            $eventElement
+                ->setAttribute('data-event-populate', '')
+                ->setAttribute('data-url', $this->url('util/event'))
+                ->setAttribute('data-form', '.movie-programing-form');
+
+            ?>
 
             <?php echo $this->formRow($eventElement) ?>
         </div>
@@ -42,6 +51,9 @@
             <?php echo $this->formRow($elementend_time) ?>
         </div>
     </div>
+
+    <?php $metaForm = $form->get('meta'); ?>
+
     <div class="row">
         <div class="col-md-3">
             <?php $elementsub_event = $form->get('sub_event')
@@ -57,14 +69,39 @@
                 ->setLabelAttributes([]); ?>
             <?php echo $this->formRow($elementPlace) ?>
         </div>
+        <div class="col-md-3">
+            <?php $national_premiere = $metaForm->get('national_premiere')
+                ->setOption('twb-layout', '')
+                ->setOption('column-size', '')
+                ->setLabelAttributes([]); ?>
+            <?php echo $this->formRow($national_premiere) ?>
+        </div>
+        <div class="col-md-3">
+            <?php $world_premiere = $metaForm->get('world_premiere')
+                ->setOption('twb-layout', '')
+                ->setOption('column-size', '')
+                ->setLabelAttributes([]); ?>
+            <?php echo $this->formRow($world_premiere) ?>
+        </div>
     </div>
-</div>
-<div class="form-actions">
-    <div class="btn-set pull-right">
-        <button type="submit" name="save" class="btn blue btn-lg" id="save" value="Salvar">
-            <span class="fa fa-fa fa-check"></span> Salvar
-        </button>
+
+    <div class="row">
+        <div class="col-md-6">
+            <?php $additional_info = $metaForm->get('additional_info')
+                ->setOption('twb-layout', '')
+                ->setOption('column-size', '')
+                ->setLabelAttributes([]); ?>
+            <?php echo $this->formRow($additional_info) ?>
+        </div>
+        <div class="col-md-6">
+            <div class="btn-set pull-right">
+                <button type="submit" name="save" class="btn btn-lg" id="save" value="Salvar">
+                    <span class="fa fa-fa fa-plus"></span> Adicionar
+                </button>
+            </div>
+        </div>
     </div>
+
 </div>
 
 <?php echo $this->form()->closeTag(); ?>

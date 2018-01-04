@@ -1,6 +1,7 @@
 <?php
 namespace Application\Entity\Programing;
 
+use Application\Entity\Movie\Movie;
 use Application\Entity\Workshop\Workshop;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Event\LifecycleEventArgs;
@@ -223,6 +224,10 @@ class Programing extends AbstractEntity
             case Type::WORKSHOP:
                 $queryBuilder
                     ->from(Workshop::class, 'q');
+                break;
+            case Type::MOVIE:
+                $queryBuilder
+                    ->from(Movie::class, 'q');
                 break;
         }
 

@@ -887,6 +887,54 @@ jQuery(document).ready(function() {
 })(window, jQuery);
 
 (function(window, $) {
+    var EventPopulate = function(element, options) {
+        this.element = element;
+        this.$element = $(element);
+        this.options = options;
+    };
+    EventPopulate.prototype = {
+        defaults: {},
+        init: function() {
+            this.config = $.extend({}, this.defaults, this.options, this.$element.data());
+            var _that = this;
+            _that.$element.on("change", function() {
+                var stateValue = $(this).val();
+                if (!stateValue) {
+                    return;
+                }
+                App.blockUI({
+                    cenrerY: true,
+                    animate: true
+                });
+            });
+            $.ajax({
+                type: "POST",
+                url: _that.config.url,
+                data: "event=" + stateValue,
+                success: function(data) {
+                    if (data.error) {
+                        _that.erroMessage(data.error);
+                    } else {
+                        console.log(data);
+                        App.unblockUI();
+                    }
+                },
+                error: function() {
+                    _that.erroMessage("Erro ao localizar locais e sub-mostra. Por favor, tente novamente.");
+                }
+            });
+        }
+    };
+    EventPopulate.defaults = EventPopulate.prototype.defaults;
+    $.fn.eventPopulate = function(options) {
+        return this.each(function() {
+            new EventPopulate(this, options).init();
+        });
+    };
+    window.EventPopulate = Plugin;
+})(window, jQuery);
+
+(function(window, $) {
     var FileInput = function(element, options) {
         this.element = element;
         this.$element = $(element);
@@ -1380,6 +1428,18 @@ jQuery(document).ready(function() {
         if (copyToClipboard(document.getElementById("post-url"))) {}
     });
     new Clipboard(".data-copy");
+    $(".movie-programing-form .event-populate").on("change", function(e) {
+        var selected = $(this).find("option:selected").val();
+        var form = $(".movie-programing-form");
+        var validate = form.validate();
+        validate.destroy();
+        form.append($('<input type="hidden" name="no-validate" value="no-validate">'));
+        form.submit();
+        App.blockUI({
+            cenrerY: true,
+            animate: true
+        });
+    });
     $(".registration-form select[name=type]").on("change", function(e) {
         var selected = $(this).find("option:selected").val();
         var form = $("#registration-form");

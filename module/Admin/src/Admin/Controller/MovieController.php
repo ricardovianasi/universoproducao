@@ -237,7 +237,7 @@ class MovieController extends AbstractAdminController
             $movie = new Movie();
         }
 
-        $programingForm = new MovieProgramingForm($this->getEntityManager());
+        $programingForm = new MovieProgramingForm($this->getEntityManager(), null, $movie);
 
         //Popula os eventos baseado nos regulamentos que selecionados
         $registrationEvents = [];

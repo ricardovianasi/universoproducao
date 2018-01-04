@@ -84,6 +84,8 @@ jQuery(document).ready(function() {
 
     //$(".nav-tabs li a").tabSelection();
 
+    //$("[data-event-populate]").eventPopulate();
+
 	if (jQuery().datepicker) {
         $('.date-picker').datepicker({
             rtl: App.isRTL(),
@@ -177,6 +179,22 @@ jQuery(document).ready(function() {
         }
     });
     new Clipboard('.data-copy');
+
+    $('.movie-programing-form .event-populate').on('change', function(e) {
+        var selected = $(this).find('option:selected').val();
+        var form  = $('.movie-programing-form');
+        var validate = form.validate();
+
+        validate.destroy();
+
+        form.append($('<input type="hidden" name="no-validate" value="no-validate">'));
+        form.submit();
+
+        App.blockUI({
+            cenrerY: true,
+            animate: true
+        });
+    })
 
     $('.registration-form select[name=type]').on('change', function(e) {
         var selected = $(this).find('option:selected').val();
