@@ -13,6 +13,7 @@ class Meta extends AbstractEntity
     const ADDITIONAL_INFO = 'additional_info';
     const WORLD_PREMIERE = 'world_premiere';
     const NATIONAL_PREMIERE = 'national_premiere';
+    const SESSION_TITLE = 'session_title';
 
 	/**
 	 * @ORM\Column(name="id", type="integer", nullable=false)

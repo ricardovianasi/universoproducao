@@ -37,14 +37,83 @@
                         <?php $form->prepare(); echo $this->form(null, null)->openTag($form) ?>
                         <div class="form-body">
                             <?php
-
                                 $metaForm = $form->get('meta');
-
                                 echo $this->formRow($form->get('event'));
-                                echo $this->formRow($form->get('movie'));
+                                echo $this->formRow($form->get('type'));
+
+                                $type = $form->get('type')->getValue();
+                                if($type == 'movie') {
+                                    echo $this->formRow($form->get('movie'));
+                                } elseif($type == 'session') {
+                                    echo $this->formRow($form->get('sessions'));
+                                    ?>
+                                    <div class="row">
+                                        <div class="col-md-offset-4 col-md-4 movie-session">
+                                            <div class="portlet light bordered">
+                                                <div class="portlet-title">Dados da sessão</div>
+                                                <div class="portlet-body">
+                                                    <?php
+                                                        $sessionTitle = $metaForm->get('session_title');
+                                                        $sessionTitle
+                                                            ->setOption('twb-layout', '')
+                                                            ->setOption('column-size', '')
+                                                            ->setLabelAttributes(['class'=>'']);
+
+                                                        echo $this->formRow($sessionTitle);
+                                                    ?>
+                                                    <div class="form-group">
+                                                        <label for="">Filmes</label>
+                                                        <div class="input-group">
+                                                            <?php echo $this->formElement($form->get('movie')); ?>
+                                                            <span class="input-group-btn">
+                                                                <button class="btn movie-session-add" type="button">
+                                                                    <i class="fa fa-plus"></i>
+                                                                </button>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="portlet-body">
+                                                    <div class="dd" id="nestable_session_movie">
+                                                        <ol class="dd-list">
+                                                            <?php foreach ($programing->getChildren() as $c): ?>
+                                                                <li class="dd-item" data-id="<?php echo $c->getObjectId(); ?>">
+                                                                    <div class="item-controls">
+                                                                        <a class="movie-session-remove" role="button">excluir</a>
+                                                                    </div>
+                                                                    <div class="dd-handle">
+                                                                        <span class="item-title">
+                                                                            <?php echo $c->getObject()->getTitle(); ?>
+                                                                        </span>
+                                                                    </div>
+                                                                </li>
+                                                            <?php endforeach; ?>
+                                                        </ol>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <?php
+                                }
                                 echo $this->formRow($form->get('place'));
                                 echo $this->formRow($form->get('sub_event'));
-                                echo $this->formRow($form->get('date'));
+                             ?>
+                            <div class="form-group">
+                                <label class="control-label col-md-4" for=""><?php echo $form->get('date')->getLabel(); ?><span class="required"> * </span></label>
+                                <div class="col-md-2">
+                                    <div class="input-group date date-picker" data-date-format="dd/mm/yyyy">
+                                        <?php echo $this->formelement($form->get('date')); ?>
+                                        <span class="input-group-btn">
+                                            <button class="btn default" type="button">
+                                                <i class="fa fa-calendar"></i>
+                                            </button>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <?php
+                                //echo $this->formRow($form->get('date'));
                                 echo $this->formRow($form->get('start_time'));
                                 echo $this->formRow($form->get('end_time'));
 

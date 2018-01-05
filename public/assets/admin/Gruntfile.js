@@ -32,6 +32,7 @@ module.exports = function (grunt) {
 		templateDir + '/assets/global/plugins/jquery-multi-select/js/jquery.multi-select.js',
 		templateDir + '/assets/global/plugins/select2/js/select2.full.min.js',
 		templateDir + '/assets/global/plugins/jquery-inputmask/jquery.inputmask.bundle.min.js',
+		templateDir + '/assets/global/plugins/js/jquery.pulsate.min.js',
 		//templateDir + '/assets/global/plugins/bootstrap-modal/js/bootstrap-modalmanager.js',
 		//templateDir + '/assets/global/plugins/bootstrap-modal/js/bootstrap-modal.js',
 		/* END PLUGINS

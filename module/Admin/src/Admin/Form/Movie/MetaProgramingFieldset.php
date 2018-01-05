@@ -23,6 +23,20 @@ class MetaProgramingFieldset extends Fieldset
         ]);
 
         $this->add([
+            'name' => Meta::SESSION_TITLE,
+            'options' => [
+                'twb-layout' => 'horizontal',
+                'column-size' => 'md-4',
+                'label_attributes' => [
+                    'class' => 'col-md-4'
+                ]
+            ],
+            'attributes' => [
+                'placeholder' => 'Nome da sessão'
+            ]
+        ]);
+
+        $this->add([
             'name' => Meta::ADDITIONAL_INFO,
             'type' => 'Textarea',
             'options' => [

@@ -12,6 +12,8 @@ use Application\Entity\Event\Event;
 use Application\Entity\Event\EventType;
 use Application\Entity\Event\Place;
 use Doctrine\ORM\EntityManager;
+use TwbBundle\Form\Element\DatePicker;
+use TwbBundle\Form\Element\DateTimePicker;
 use Zend\Form\Form;
 
 class ProgramingForm extends Form
@@ -47,6 +49,7 @@ class ProgramingForm extends Form
 
         $this->add([
             'name' => 'date',
+            'type' => DatePicker::class,
             'options' => [
                 'label' => 'Data',
                 'placeholder' => 'Data',

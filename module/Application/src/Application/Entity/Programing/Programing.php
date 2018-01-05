@@ -60,9 +60,22 @@ class Programing extends AbstractEntity
     /** @ORM\OneToMany(targetEntity="Meta", mappedBy="programing", cascade={"ALL"}) */
 	private $meta;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Programing", inversedBy="children")
+     * @ORM\JoinColumn(name="parent_programing_id", referencedColumnName="id")
+     */
+	private $parent;
+
+    /** @ORM\OneToMany(targetEntity="Programing", mappedBy="parent", cascade={"ALL"}) */
+	private $children;
+
+    /** @ORM\Column(name="`order`", type="integer") */
+	private $order;
+
 	public function __construct()
     {
         $this->meta = new ArrayCollection();
+        $this->children = new ArrayCollection();
     }
 
     /**
@@ -280,5 +293,53 @@ class Programing extends AbstractEntity
     public function setSubEvent($subEvent)
     {
         $this->subEvent = $subEvent;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getParent()
+    {
+        return $this->parent;
+    }
+
+    /**
+     * @param mixed $parent
+     */
+    public function setParent($parent)
+    {
+        $this->parent = $parent;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getChildren()
+    {
+        return $this->children;
+    }
+
+    /**
+     * @param mixed $children
+     */
+    public function setChildren($children)
+    {
+        $this->children = $children;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getOrder()
+    {
+        return $this->order;
+    }
+
+    /**
+     * @param mixed $order
+     */
+    public function setOrder($order)
+    {
+        $this->order = $order;
     }
 }

@@ -18,14 +18,25 @@ class Programing extends AbstractRepository
     {
         $queryBuilder = $this->createQueryBuilder(self::QB_ALIAS);
 
+        $alias = self::QB_ALIAS;
+
+        $queryBuilder->andWhere("$alias.parent is NULL");
+
         if(!empty($criteria['event'])) {
             $queryBuilder->andWhere(self::QB_ALIAS.'.event = :event')
                 ->setParameter('event', $criteria['event']);
         }
 
         if(!empty($criteria['type'])) {
-            $queryBuilder->andWhere(self::QB_ALIAS.'.type = :type')
-                ->setParameter('type', $criteria['type']);
+            if($criteria['type'] == 'movie') {
+                $queryBuilder->andWhere("$alias.type = :typeMovie OR $alias.type = :typeSession")
+                    ->setParameter('typeMovie', 'movie')
+                    ->setParameter('typeSession', 'session');
+
+            } else {
+                $queryBuilder->andWhere(self::QB_ALIAS.'.type = :type')
+                    ->setParameter('type', $criteria['type']);
+            }
         }
 
         foreach($orderBy as $name=>$order) {

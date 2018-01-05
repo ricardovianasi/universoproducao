@@ -4,7 +4,7 @@
     <thead>
     <tr role="row" class="heading">
         <th width="15%">Evento</th>
-        <th width="15%">Filme</th>
+        <th width="15%">Filme|Sessão</th>
         <th width="13%">Data</th>
         <th width="13%">Hora de início</th>
         <th width="13%">Hora de término</th>
@@ -40,9 +40,11 @@
     <tr>
         <td><?php echo $i->getEvent()->getShortName() ?></td>
         <td>
-            <?php if($i->getObject()): ?>
-            <?php echo $i->getObject()->getTitle(); ?>
-            <?php endif; ?>
+            <?php if($i->getType() == 'movie') {
+                echo $i->getObject()->getTitle();
+            } elseif($i->getType() == 'session' && $i->hasMeta('session_title')) {
+                echo 'Sessão de Filmes: ' . $i->hasMeta('session_title')->getValue();
+            } ?>
         </td>
         <td><?php echo $i->getDate()->format('d/m/Y'); ?></td>
         <td><?php echo $i->getStartTime()->format('H:i:s'); ?></td>

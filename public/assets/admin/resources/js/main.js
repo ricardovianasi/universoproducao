@@ -82,6 +82,8 @@ jQuery(document).ready(function() {
 
     $(".workshop-pontuation").workshopPontuation();
 
+    $('.movie-session').movieSession();
+
     //$(".nav-tabs li a").tabSelection();
 
     //$("[data-event-populate]").eventPopulate();
@@ -109,6 +111,11 @@ jQuery(document).ready(function() {
     $("form.enable-validators").formValidation();
 
     $('.dd').nestable();
+    $('.nestable-session-movie').nestable({
+        maxDepth: 0,
+        rootClass: 'nestable-session-movie',
+        listNodeName: 'ol'
+    });
 
     $( "#sortable_banner" ).sortable({
         items: ".banner-item", 
@@ -223,6 +230,22 @@ jQuery(document).ready(function() {
             animate: true
         });
     });
+
+    $('#movie-programing-type').on('change', function() {
+        var selected = $(this).find('option:selected').val();
+        var form  = $('.movie-programing-form');
+        var validate = form.validate();
+
+        validate.destroy();
+
+        form.append($('<input type="hidden" name="no-validate" value="no-validate">'));
+        form.submit();
+
+        App.blockUI({
+            cenrerY: true,
+            animate: true
+        });
+    })
 });
 
 function copyToClipboard(elem) {

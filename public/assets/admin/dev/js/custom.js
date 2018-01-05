@@ -1363,6 +1363,7 @@ jQuery(document).ready(function() {
     $(".password-generator").passwordGenerator();
     $(".programing-table").programing();
     $(".workshop-pontuation").workshopPontuation();
+    $(".movie-session").movieSession();
     if (jQuery().datepicker) {
         $(".date-picker").datepicker({
             rtl: App.isRTL(),
@@ -1383,6 +1384,11 @@ jQuery(document).ready(function() {
     }
     $("form.enable-validators").formValidation();
     $(".dd").nestable();
+    $(".nestable-session-movie").nestable({
+        maxDepth: 0,
+        rootClass: "nestable-session-movie",
+        listNodeName: "ol"
+    });
     $("#sortable_banner").sortable({
         items: ".banner-item",
         opacity: .8,
@@ -1452,6 +1458,18 @@ jQuery(document).ready(function() {
     });
     $(".movie-form #registration").on("change", function() {
         var form = $(".movie-form"), validate = form.validate();
+        validate.destroy();
+        form.append($('<input type="hidden" name="no-validate" value="no-validate">'));
+        form.submit();
+        App.blockUI({
+            cenrerY: true,
+            animate: true
+        });
+    });
+    $("#movie-programing-type").on("change", function() {
+        var selected = $(this).find("option:selected").val();
+        var form = $(".movie-programing-form");
+        var validate = form.validate();
         validate.destroy();
         form.append($('<input type="hidden" name="no-validate" value="no-validate">'));
         form.submit();
@@ -1702,6 +1720,62 @@ function responsive_filemanager_callback(field_id) {
     field.trigger("change");
     return;
 }
+
+(function(window, $) {
+    var MovieSession = function(element, options) {
+        this.element = element;
+        this.$element = $(element);
+        this.options = options;
+    };
+    MovieSession.prototype = {
+        defaults: {},
+        init: function() {
+            this.config = $.extend({}, this.defaults, this.options, this.$element.data());
+            var _that = this;
+            $(".movie-session-add", _that.$element).on("click", function(e) {
+                e.preventDefault();
+                var movieSelected = $('select[name="movie"] option:selected', _that.$element);
+                if (movieSelected.val() == "") {
+                    return;
+                }
+                _that.addNode(movieSelected.val(), movieSelected.text());
+            });
+            $(document).on("click", ".movie-session-remove", function(e) {
+                e.preventDefault();
+                var target = $(this).closest(".dd-item");
+                target.children(".dd-handle").first().css({
+                    "border-color": "red",
+                    background: "#FFB5B5"
+                });
+                target.slideUp(function() {
+                    target.remove();
+                });
+            });
+            $(".action-save").on("click", function(e) {
+                e.preventDefault();
+                App.blockUI({
+                    cenrerY: true,
+                    animate: true
+                });
+                var session = $(".dd").nestable("serialize");
+                var form = $(".movie-programing-form");
+                form.find('input[name="sessions"]').val(JSON.stringify(session));
+            });
+        },
+        addNode: function(id, text) {
+            var _that = this;
+            var el = $('<li class="dd-item" data-id="' + id + '">').append('<div class="item-controls"><a class="movie-session-remove" role="button">excluir</a></div>').append('<div class="dd-handle"><span class="item-title">' + text + "</span></div>");
+            $(".dd-list", _that.$element).append(el);
+        }
+    };
+    MovieSession.defaults = MovieSession.prototype.defaults;
+    $.fn.movieSession = function(options) {
+        return this.each(function() {
+            new MovieSession(this, options).init();
+        });
+    };
+    window.MovieSession = Plugin;
+})(window, jQuery);
 
 (function(window, $) {
     var PasswordGenerator = function(element, options) {

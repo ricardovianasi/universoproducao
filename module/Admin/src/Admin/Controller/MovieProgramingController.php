@@ -87,8 +87,11 @@ class MovieProgramingController extends AbstractAdminController
 			$event = $programing->getEvent();
 		} else {
 			$programing = new Programing();
-			$programing->setType(Type::MOVIE);
 		}
+
+		if($paramTtpe = $this->params()->fromPost('type')) {
+		    $programing->setType($paramTtpe);
+        }
 
         if($this->params()->fromPost('event')) {
 		    $event = $this
@@ -103,13 +106,6 @@ class MovieProgramingController extends AbstractAdminController
 			$form->setData($data);
             if(!$noValidate) {
                 if ($form->isValid()) {
-
-                    $movie = null;
-                    if (!empty($data['movie'])) {
-                        $movie = $this->getRepository(Movie::class)->find($data['movie']);
-                    }
-                    $programing->setObjectId($movie->getId());
-                    unset($data['movie']);
 
                     $event = null;
                     if (!empty($data['event'])) {
@@ -150,6 +146,38 @@ class MovieProgramingController extends AbstractAdminController
                     }
                     $programing->setMeta($metaColl);
                     unset($data['meta']);
+
+                    foreach ($programing->getChildren() as $c) {
+                        $this->getEntityManager()->remove($c);
+                    }
+
+                    if($data['type'] == Type::MOVIE) {
+                        $movie = null;
+                        if (!empty($data['movie'])) {
+                            $movie = $this->getRepository(Movie::class)->find($data['movie']);
+                        }
+                        $programing->setObjectId($movie->getId());
+                        unset($data['movie']);
+                    } elseif($data['type'] == Type::SESSION) {
+                        $sessionsParam = json_decode($data['sessions'], true);
+                        $sessions = new ArrayCollection();
+                        $count = 0;
+                        foreach ($sessionsParam as $s) {
+                            $movie = $this
+                                ->getRepository(Movie::class)
+                                ->find($s['id']);
+
+                            $itemToSession = new Programing();
+                            $itemToSession->setType(Type::MOVIE);
+                            $itemToSession->setEvent($event);
+                            $itemToSession->setParent($programing);
+                            $itemToSession->setObjectId($movie->getId());
+                            $itemToSession->setOrder($count++);
+
+                            $sessions->add($itemToSession);
+                        }
+                        $programing->setChildren($sessions);
+                    }
 
                     $programing->setData($data);
 

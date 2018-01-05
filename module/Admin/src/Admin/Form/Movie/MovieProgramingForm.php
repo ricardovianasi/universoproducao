@@ -11,6 +11,7 @@ namespace Admin\Form\Movie;
 use Admin\Form\Programing\ProgramingForm;
 use Application\Entity\Movie\Movie;
 use Application\Entity\Movie\MovieEventStatus;
+use Application\Entity\Programing\Type;
 use Application\Entity\Registration\Status;
 
 class MovieProgramingForm extends  ProgramingForm
@@ -21,7 +22,34 @@ class MovieProgramingForm extends  ProgramingForm
     {
         parent::__construct($em, $event);
         $this->setAttributes([
-            'class' => 'movie-programing-form default-form-actions enable-validators',
+            'class' => 'movie-programing-form',
+        ]);
+
+        $this->add([
+            'name' => 'type',
+            'type' => 'select',
+            'options' => [
+                'label' => 'Tipo',
+                'empty_option' => 'Selecione',
+                'value_options' => [
+                    Type::MOVIE => 'Filme',
+                    Type::SESSION => 'Sessão'
+                ],
+                'twb-layout' => 'horizontal',
+                'column-size' => 'md-4',
+                'label_attributes' => [
+                    'class' => 'col-md-4'
+                ]
+            ],
+            'attributes' => [
+                'required' => 'required',
+                'id' => 'movie-programing-type'
+            ]
+        ]);
+
+        $this->add([
+            'type' => 'hidden',
+            'name' => 'sessions'
         ]);
 
         $this->add([
