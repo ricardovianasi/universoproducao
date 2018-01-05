@@ -84,6 +84,8 @@ jQuery(document).ready(function() {
 
     $('.movie-session').movieSession();
 
+    $('.table-programing').tablePrograming();
+
     //$(".nav-tabs li a").tabSelection();
 
     //$("[data-event-populate]").eventPopulate();

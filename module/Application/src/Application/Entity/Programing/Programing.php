@@ -1,6 +1,7 @@
 <?php
 namespace Application\Entity\Programing;
 
+use Application\Entity\Art\Art;
 use Application\Entity\Movie\Movie;
 use Application\Entity\Workshop\Workshop;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -241,6 +242,10 @@ class Programing extends AbstractEntity
             case Type::MOVIE:
                 $queryBuilder
                     ->from(Movie::class, 'q');
+                break;
+            case Type::ART:
+                $queryBuilder
+                    ->from(Art::class, 'q');
                 break;
         }
 

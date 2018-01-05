@@ -22,6 +22,27 @@ return [
                 'icon' => 'icon-picture'
             ],
             [
+                'label' => 'Arte',
+                'uri' => '#',
+                'icon' => 'icon-book-open',
+                'pages' => [
+                    [
+                        'label' => 'Arte',
+                        'route' => 'admin/default',
+                        'controller' => 'art',
+                        'icon' => 'icon-doc',
+                    ],
+                    [
+                        'label' => 'Categoria',
+                        'route' => 'admin/default',
+                        'controller' => 'art-category',
+                        'icon' => 'icon-doc',
+
+                    ],
+                ]
+
+            ],
+            [
                 'label' => 'Filmes',
                 'uri' => '#',
                 'icon' => 'icon-book-open',

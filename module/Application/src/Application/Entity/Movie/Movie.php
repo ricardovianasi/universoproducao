@@ -163,6 +163,9 @@ class Movie extends AbstractEntity
     /** @ORM\Column(name="comunicado_enviado", type="boolean", nullable=true) */
     private $comunicadoEnviado;
 
+    /** @ORM\Column(name="is_invited", type="boolean", nullable=true) */
+    private $isInvited = false;
+
     /**
      * @ORM\ManyToMany(targetEntity="Options")
      * @ORM\JoinTable(name="movie_has_options",
@@ -1084,5 +1087,21 @@ class Movie extends AbstractEntity
     public function setComunicadoEnviado($comunicadoEnviado)
     {
         $this->comunicadoEnviado = $comunicadoEnviado;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getisInvited()
+    {
+        return $this->isInvited;
+    }
+
+    /**
+     * @param mixed $isInvited
+     */
+    public function setIsInvited($isInvited)
+    {
+        $this->isInvited = $isInvited;
     }
 }

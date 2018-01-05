@@ -150,6 +150,21 @@ class ProgramingForm extends Form
             foreach ($this->getEvent()->getPlaces() as $p) {
                 $places[$p->getId()] = $p->getName();
             }
+        } elseif($this->getEntityManager()) {
+            $allPlaces = $this
+                ->getEntityManager()
+                ->getRepository(Place::class)
+                ->findBy([], ['name'=>'ASC']);
+
+            foreach ($allPlaces as $p) {
+                if(!key_exists($p->getEventType(), $places)) {
+                    $places[$p->getEventType()] = [
+                        'label' => EventType::get($p->getEventType()),
+                        'options' => []
+                    ];
+                }
+                $places[$p->getEventType()]['options'][$p->getId()] = $p->getName();
+            }
         }
 
         return $places;
