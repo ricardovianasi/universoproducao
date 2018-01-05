@@ -53,7 +53,7 @@ class MetaProgramingFieldset extends Fieldset
             'name' => Meta::NATIONAL_PREMIERE,
             'type' => 'Select',
             'options' => [
-                'label' => 'Pré estreia nacional',
+                'label' => 'Pré-estreia nacional',
                 'empty_option' => 'Selecione',
                 'value_options' => [
                     '1' => 'Não',
@@ -71,7 +71,7 @@ class MetaProgramingFieldset extends Fieldset
             'name' => Meta::WORLD_PREMIERE,
             'type' => 'Select',
             'options' => [
-                'label' => 'Pré estreia internacional',
+                'label' => 'Pré-estreia mundial',
                 'empty_option' => 'Selecione',
                 'value_options' => [
                     '1' => 'Não',
