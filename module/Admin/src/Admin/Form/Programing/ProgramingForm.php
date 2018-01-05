@@ -94,7 +94,6 @@ class ProgramingForm extends Form
                 ]
             ],
             'attributes' => [
-                'required' => 'required',
                 'data-inputmask' => "'alias': 'hh:mm:ss'",
                 'placeholder' => 'Hora término'
             ],
