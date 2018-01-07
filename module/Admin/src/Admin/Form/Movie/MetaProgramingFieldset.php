@@ -103,7 +103,7 @@ class MetaProgramingFieldset extends Fieldset
             ],
             Meta::ADDITIONAL_INFO => [
                 'name' => Meta::ADDITIONAL_INFO,
-                'required'   => true,
+                'required'   => false,
                 //'allow_empty' => true
             ],
         ];
