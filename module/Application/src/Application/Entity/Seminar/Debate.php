@@ -1,14 +1,19 @@
 <?php
 namespace Application\Entity\Seminar;
 
+use Application\Entity\Programing\Programing;
+use Application\Entity\Programing\Type;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\ORM\Event\LifecycleEventArgs;
 use Doctrine\ORM\Mapping as ORM;
 use Util\Entity\AbstractEntity;
 
 /**
- * @ORM\Table(name="seminar")
- * @ORM\Entity
+ * @ORM\Table(name="seminar_debate")
+ * @ORM\Entity(repositoryClass="Application\Repository\Seminar\Debate")
+ * @ORM\HasLifecycleCallbacks()
  */
-class Seminar extends AbstractEntity
+class Debate extends AbstractEntity
 {
     /**
      * @ORM\Id @ORM\Column(name="id", type="integer", nullable=false)
@@ -16,8 +21,8 @@ class Seminar extends AbstractEntity
      */
     private $id;
 
-    /** @ORM\Column(name="name", type="string", nullable=true) */
-    private $name;
+    /** @ORM\Column(name="title", type="string", nullable=true) */
+    private $title;
 
     /** @ORM\Column(name="description", type="text", nullable=true) */
     private $description;
@@ -33,6 +38,13 @@ class Seminar extends AbstractEntity
      * @ORM\JoinColumn(name="event_id", referencedColumnName="id")
      */
     private $event;
+
+    private $programing;
+
+    public function __construct()
+    {
+        $this->programing = new ArrayCollection();
+    }
 
     /**
      * @return mixed
@@ -53,17 +65,17 @@ class Seminar extends AbstractEntity
     /**
      * @return mixed
      */
-    public function getName()
+    public function getTitle()
     {
-        return $this->name;
+        return $this->title;
     }
 
     /**
-     * @param mixed $name
+     * @param mixed $title
      */
-    public function setName($name)
+    public function setTitle($title)
     {
-        $this->name = $name;
+        $this->title = $title;
     }
 
     /**
@@ -112,5 +124,28 @@ class Seminar extends AbstractEntity
     public function setEvent($event)
     {
         $this->event = $event;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPrograming()
+    {
+        return $this->programing;
+    }
+
+    /**
+     * @ORM\PostLoad
+     * @ORM\PostPersist
+     */
+    public function setPrograming(LifecycleEventArgs $event)
+    {
+        $this->programing = $event
+            ->getEntityManager()
+            ->getRepository(Programing::class)
+            ->findBy([
+                'type' => Type::SEMINAR_DEBATE,
+                'objectId' => $this->id
+            ]);
     }
 }

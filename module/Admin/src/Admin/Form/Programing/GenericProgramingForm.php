@@ -2,21 +2,15 @@
 /**
  * Created by PhpStorm.
  * User: Ricardo Viana
- * Date: 11/12/2017
- * Time: 10:13
+ * Date: 05/01/2018
+ * Time: 15:19
  */
 
-namespace Admin\Form\Workshop;
+namespace Admin\Form\Programing;
 
-
-use Admin\Form\Programing\ProgramingForm;
-use Application\Entity\Registration\Type;
-use Application\Entity\Workshop\Workshop;
-
-class WorkshopProgramingForm extends ProgramingForm
+class GenericProgramingForm extends ProgramingForm
 {
-
-    public function __construct($em, $event=null)
+    public function __construct($em, $event = null)
     {
         parent::__construct($em, $event);
 
@@ -28,6 +22,8 @@ class WorkshopProgramingForm extends ProgramingForm
                 ->setLabelAttributes(['class' => ''])
                 ->setAttribute('required', '')
                 ->setAttribute('data-required', 'required');
+
         }
     }
+
 }

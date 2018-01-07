@@ -3,6 +3,7 @@ namespace Application\Entity\Art;
 
 use Application\Entity\Programing\Programing;
 use Application\Entity\Programing\Type;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Event\LifecycleEventArgs;
 use Doctrine\ORM\Mapping as ORM;
 use Util\Entity\AbstractEntity;
@@ -42,6 +43,11 @@ class Art extends AbstractEntity
     private $event;
 
     private $programing;
+
+    public function __construct()
+    {
+        $this->programing = new ArrayCollection();
+    }
 
     /**
      * @return mixed

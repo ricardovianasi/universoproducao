@@ -1,20 +1,14 @@
 <?php
 namespace Admin\Controller;
 
-use Admin\Form\Programing\ProgramingForm;
-use Admin\Form\Workshop\ManagerForm;
-use Admin\Form\Workshop\WorkshopForm;
-use Admin\Form\Workshop\WorkshopPontuationForm;
 use Admin\Form\Workshop\WorkshopRegistrationForm;
-use Admin\Form\Workshop\WorkshopSearchForm;
-use Application\Entity\City;
+use Admin\Form\Workshop\WorkshopStatusModalForm;
 use Application\Entity\Form\Form;
 use Application\Entity\Programing\Programing;
 use Application\Entity\Registration\Options;
 use Application\Entity\Registration\Registration;
 use Application\Entity\Registration\Type;
 use Application\Entity\User\User;
-use Application\Entity\Workshop\Manager;
 use Application\Entity\Workshop\PontuationItems;
 use Application\Entity\Workshop\Workshop;
 use Application\Entity\Workshop\WorkshopSubscription;
@@ -26,6 +20,7 @@ class WorkshopRegistrationController extends AbstractAdminController
 {
 	public function indexAction()
 	{
+        $statusModalForm = new WorkshopStatusModalForm($this->getEntityManager());
 	    $registration = $this->getRepository(Registration::class)->findOneBy([
 	        'type' => Type::WORKSHOP
         ]);
@@ -46,6 +41,8 @@ class WorkshopRegistrationController extends AbstractAdminController
 			'items' => $items,
             'searchForm' => $searchForm,
             'searchData' => $dataAttr,
+            'isFiltered' => !empty($data) ? true : false,
+            'statusModalForm' => $statusModalForm
 		]);
 
 		return $this->getViewModel();
@@ -250,5 +247,86 @@ class WorkshopRegistrationController extends AbstractAdminController
         }
 
         return $preparedItems;
+    }
+
+    public function statusAction()
+    {
+        if(!$this->getRequest()->isPost()) {
+            $this->messages()->flashError("Erro ao processar solicitação.");
+            return $this->redirect()->toRoute('admin/default', [
+                'controller' => 'workshop-registration',
+                'action' => 'index'
+            ]);
+        }
+
+        $data = $this->getRequest()->getPost()->toArray();
+        if(empty($data['status'])) {
+            $this->messages()->flashError("Erro ao processar solicitação.");
+            return $this->redirect()->toRoute('admin/default', [
+                'controller' => 'workshop-registration',
+                'action' => 'index'
+            ]);
+        }
+
+        if(empty($data['filter'])) {
+            $this->messages()->flashError("Erro ao processar solicitação.");
+            return $this->redirect()->toRoute('admin/default', [
+                'controller' => 'workshop-registration',
+                'action' => 'index'
+            ]);
+        }
+
+        $status = $data['status'];
+        parse_str(urldecode($data['filter']), $filter);
+
+        if(empty($filter['selected'])) {
+            $this->messages()->flashError("Erro ao processar solicitação.");
+            return $this->redirect()->toRoute('admin/default', [
+                'controller' => 'workshop-registration',
+                'action' => 'index'
+            ]);
+        }
+
+        $selectedItens = [];
+        if($filter['selected'] == 'all') {
+            $selectedItens = $this->search(WorkshopSubscription::class, $filter, [], true);
+        } else {
+            $selected = explode(',', $filter['selected']);
+            if(!$selected) {
+                $this->messages()->flashError("Erro ao processar solicitação.");
+                return $this->redirect()->toRoute('admin/default', [
+                    'controller' => 'workshop-registration',
+                    'action' => 'index'
+                ]);
+            }
+
+            $qb = $this
+                ->getRepository(WorkshopSubscription::class)
+                ->createQueryBuilder('m');
+
+            $selectedItens = $qb
+                ->andWhere($qb->expr()->in('m.id', ':arrayId'))
+                ->setParameter('arrayId', $selected)
+                ->getQuery()
+                ->getResult();
+        }
+
+        $contItensChange = 0;
+        foreach ($selectedItens as $subscription) {
+            if($subscription) {
+                $subscription->setStatus($status);
+                $this->getEntityManager()->persist($subscription);
+
+                $contItensChange++;
+            }
+        }
+
+        $this->getEntityManager()->flush();
+        $this->messages()->flashSuccess("Status alterado com suscesso!");
+        return $this->redirect()->toRoute('admin/default', [
+            'controller' => 'workshop-registration',
+            'action' => 'index',
+        ], ['query'=>$filter]);
+
     }
 }

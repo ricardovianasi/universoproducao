@@ -12,10 +12,10 @@
 					Filmes
 				</div>
 				<div class="actions">
-					<a href="<?php echo $this->url('admin/default', ['controller'=>'movie', 'action'=>'create']); ?>"
+					<a href="<?php echo $this->url('admin/default', ['controller'=>'workshop-registration', 'action'=>'create']); ?>"
 					   class="btn blue btn-lg">
 						<i class="fa fa-plus"></i>
-						<span class="hidden-xs"> Novo filme  </span>
+						<span class="hidden-xs"> Nova inscrição  </span>
 					</a>
                     <div class="btn-group">
                         <a class="btn btn-default dropdown-toggle" href="javascript:;" data-toggle="dropdown">
@@ -39,14 +39,7 @@
 
 				<div class="table-container post-list list-actions"
                      data-total="<?php echo $this->items->getTotalItemCount(); ?>"
-                     data-form="#movie-form-search">
-
-                    <?php
-                        $urlStatusAction = $this->url('admin/default', [
-                            'controller' => 'movie',
-                            'action' => 'modal-status'
-                        ]);
-                    ?>
+                     data-form="#workshop-registration-form">
 
                     <div class="row">
                         <div class="col-md-12 col-sm-12 margin-bottom-10">
@@ -54,7 +47,7 @@
                                 <span class="list-actions-selected"></span>
                                 <select class="table-group-action-input form-control input-inline input-sm list-actions-options">
                                     <option value="">Selecione uma ação...</option>
-                                    <option data-modal="#modal-movie-status">Alterar status</option>
+                                    <option data-modal="#modal-workshop-status">Alterar status</option>
                                     <option>Enviar comunicados</option>
                                 </select>
                                 <button class="btn btn-sm btn-default table-group-action-submit list-actions-submit">
@@ -173,3 +166,7 @@
 		</div>
 	</div>
 </div>
+
+<?php echo $this->partial('admin/workshop-registration/_modal-status.phtml', [
+    'statusModalForm' => $this->statusModalForm
+]); ?>

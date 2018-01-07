@@ -1,11 +1,12 @@
 <?php
 namespace Admin\Controller;
 
-use Admin\Form\Programing\ProgramingForm;
-use Admin\Form\Workshop\ManagerForm;
 use Admin\Form\Workshop\WorkshopForm;
+use Admin\Form\Workshop\WorkshopProgramingForm;
 use Admin\Form\Workshop\WorkshopSearchForm;
-use Application\Entity\City;
+use Application\Entity\Event\Place;
+use Application\Entity\Programing\Programing;
+use Application\Entity\Programing\Type;
 use Application\Entity\Registration\Registration;
 use Application\Entity\Workshop\Manager;
 use Application\Entity\Workshop\Workshop;
@@ -66,7 +67,7 @@ class WorkshopController extends AbstractAdminController implements CrudInterfac
 		}
 
         $form = new WorkshopForm($this->getEntityManager());
-        $programingForm = new ProgramingForm($this->getEntityManager(), $workshop->getEvent());
+        $programingForm = new WorkshopProgramingForm($this->getEntityManager());
 
 		if($this->getRequest()->isPost()) {
 			$form->setData($data);
@@ -86,10 +87,41 @@ class WorkshopController extends AbstractAdminController implements CrudInterfac
                 $workshop->setRegistration($registration);
                 unset($data['registration']);
 
+                $programing = [];
+                if(!empty($data['programing'])) {
+                    $programing = $data['programing'];
+                }
+                unset($data['programing']);
+                foreach ($workshop->getPrograming() as $p) {
+                    $this->getEntityManager()->remove($p);
+                }
+
                 $workshop->setData($data);
 
 				$this->getEntityManager()->persist($workshop);
 				$this->getEntityManager()->flush();
+
+                //Persiste a grade da programação
+                foreach ($programing as $pro) {
+                    $artProg = new Programing();
+                    $artProg->setEvent($workshop->getEvent());
+                    $artProg->setType(Type::WORKSHOP);
+                    $artProg->setObjectId($workshop->getId());
+
+                    if(!empty($pro['place'])) {
+                        $place = $this
+                            ->getRepository(Place::class)
+                            ->find($pro['place']);
+
+                        $pro['place'] = $place;
+                    }
+
+                    $artProg->setData($pro);
+                    $this->getEntityManager()->persist($artProg);
+                }
+
+                $this->getEntityManager()->flush();
+                $this->getEntityManager()->refresh($workshop);
 
 				if($id) {
 					$this->messages()->success("Oficina atualizada com sucesso!");

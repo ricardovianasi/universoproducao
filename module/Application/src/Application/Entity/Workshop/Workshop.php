@@ -2,7 +2,10 @@
 namespace Application\Entity\Workshop;
 
 use Application\Entity\Event\Event;
+use Application\Entity\Programing\Programing;
+use Application\Entity\Programing\Type;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\ORM\Event\LifecycleEventArgs;
 use Doctrine\ORM\Mapping as ORM;
 use Util\Entity\AbstractEntity;
 
@@ -64,9 +67,12 @@ class Workshop extends AbstractEntity
     /** @ORM\OneToMany(targetEntity="WorkshopSubscription", mappedBy="workshop", fetch="EXTRA_LAZY") */
     private $subscriptions;
 
+    private $programing;
+
     public function __construct()
     {
         $this->subscriptions = new ArrayCollection();
+        $this->programing = new ArrayCollection();
     }
 
     /**
@@ -319,4 +325,28 @@ class Workshop extends AbstractEntity
 
         return true;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getPrograming()
+    {
+        return $this->programing;
+    }
+
+    /**
+     * @ORM\PostLoad
+     * @ORM\PostPersist
+     */
+    public function setPrograming(LifecycleEventArgs $event)
+    {
+        $this->programing = $event
+            ->getEntityManager()
+            ->getRepository(Programing::class)
+            ->findBy([
+                'type' => Type::WORKSHOP,
+                'objectId' => $this->id
+            ]);
+    }
+
 }

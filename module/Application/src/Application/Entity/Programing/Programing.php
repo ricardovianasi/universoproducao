@@ -3,6 +3,7 @@ namespace Application\Entity\Programing;
 
 use Application\Entity\Art\Art;
 use Application\Entity\Movie\Movie;
+use Application\Entity\Seminar\Debate;
 use Application\Entity\Workshop\Workshop;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Event\LifecycleEventArgs;
@@ -246,6 +247,16 @@ class Programing extends AbstractEntity
             case Type::ART:
                 $queryBuilder
                     ->from(Art::class, 'q');
+                break;
+            case Type::SEMINAR_DEBATE:
+                $queryBuilder
+                    ->from(Debate::class, 'q');
+                break;
+            case Type::OPENING:
+            case Type::CLOSING:
+            case Type::OTHER:
+                $queryBuilder
+                    ->from(Generic::class, 'q');
                 break;
         }
 

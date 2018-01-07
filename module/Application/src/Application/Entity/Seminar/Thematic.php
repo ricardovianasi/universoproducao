@@ -5,7 +5,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Util\Entity\AbstractEntity;
 
 /**
- * @ORM\Table(name="thematic")
+ * @ORM\Table(name="seminar_thematic")
  * @ORM\Entity
  */
 class Thematic extends AbstractEntity

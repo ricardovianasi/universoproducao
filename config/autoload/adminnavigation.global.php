@@ -43,6 +43,27 @@ return [
 
             ],
             [
+                'label' => 'Seminários',
+                'uri' => '#',
+                'icon' => 'icon-book-open',
+                'pages' => [
+                    [
+                        'label' => 'Debate',
+                        'route' => 'admin/default',
+                        'controller' => 'seminar-debate',
+                        'icon' => 'icon-doc',
+                    ],
+                    [
+                        'label' => 'Temática',
+                        'route' => 'admin/default',
+                        'controller' => 'seminar-thematic',
+                        'icon' => 'icon-doc',
+
+                    ],
+                ]
+
+            ],
+            [
                 'label' => 'Filmes',
                 'uri' => '#',
                 'icon' => 'icon-book-open',
@@ -89,12 +110,6 @@ return [
                         'icon' => 'icon-doc',
                     ],
                     [
-                        'label' => 'Programação',
-                        'route' => 'admin/default',
-                        'controller' => 'workshop-programing',
-                        'icon' => 'icon-doc',
-                    ],
-                    [
                         'label' => 'Inscrições',
                         'route' => 'admin/default',
                         'controller' => 'workshop-registration',
@@ -121,6 +136,20 @@ return [
                         ]
                     ],
                 ]
+            ],
+            [
+                'label' => 'Programação geral',
+                'uri' => '#',
+                'icon' => 'icon-book-open',
+                'pages' => [
+                    [
+                        'label' => 'Item genérico',
+                        'route' => 'admin/default',
+                        'controller' => 'programing-generic',
+                        'icon' => 'icon-doc',
+                    ],
+                ]
+
             ],
 			[
 				'label' => 'Notícias',

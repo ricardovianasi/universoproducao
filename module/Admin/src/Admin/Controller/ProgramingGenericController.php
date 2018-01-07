@@ -1,24 +1,25 @@
 <?php
 namespace Admin\Controller;
 
-use Admin\Form\Art\ArtForm;
-use Admin\Form\Art\ArtProgramingForm;
+use Admin\Form\Programing\GenericItemForm;
+use Admin\Form\Programing\GenericProgramingForm;
 use Admin\Form\Programing\ProgramingForm;
-use Admin\Form\Workshop\WorkshopForm;
-use Application\Entity\Art\Art;
-use Application\Entity\Art\Category;
+use Admin\Form\Seminar\SeminarDebateForm;
+use Admin\Form\Seminar\SeminarDebateProgramingForm;
 use Application\Entity\Event\Event;
-use Application\Entity\Event\EventType;
 use Application\Entity\Event\Place;
+use Application\Entity\Programing\Generic;
 use Application\Entity\Programing\Programing;
 use Application\Entity\Programing\Type;
-use Application\Entity\Workshop\Workshop;
+use Application\Entity\Seminar\Debate;
+use Application\Entity\Seminar\Thematic;
 
-class ArtController extends AbstractAdminController implements CrudInterface
+class ProgramingGenericController extends AbstractAdminController
+    implements CrudInterface
 {
 	public function indexAction()
 	{
-        $searchForm = new ArtForm($this->getEntityManager());
+        $searchForm = new GenericItemForm($this->getEntityManager());
         $dataAttr = $this->params()->fromQuery();
         $searchForm->setData($dataAttr);
 
@@ -28,7 +29,7 @@ class ArtController extends AbstractAdminController implements CrudInterface
 
         $data = $searchForm->getData();
 
-		$items = $this->search(Art::class, $data);
+		$items = $this->search(Generic::class, $data);
 
 		$this->getViewModel()->setVariables([
 			'items' => $items,
@@ -46,31 +47,31 @@ class ArtController extends AbstractAdminController implements CrudInterface
 	public function updateAction($id, $data)
 	{
 		$result = $this->persist($data, $id);
-		$result->setTemplate('admin/art/create.phtml');
+		$result->setTemplate('admin/programing-generic/create.phtml');
 		return $result;
 	}
 
 	public function deleteAction($id)
 	{
-		$art = $this->getRepository(Art::class)->find($id);
-		$this->getEntityManager()->remove($art);
+		$generic = $this->getRepository(Generic::class)->find($id);
+		$this->getEntityManager()->remove($generic);
 		$this->getEntityManager()->flush();
 
-		$this->messages()->flashSuccess('Arte excluída com sucesso.');
+		$this->messages()->flashSuccess('Item excluído com sucesso.');
 
-		return $this->redirect()->toRoute('admin/default', ['controller'=>'art']);
+		return $this->redirect()->toRoute('admin/default', ['controller'=>'programing-generic']);
 	}
 
 	public function persist($data, $id = null)
 	{
 		if($id) {
-			$art = $this->getRepository(Art::class)->find($id);
+			$generic = $this->getRepository(Generic::class)->find($id);
 		} else {
-			$art = new Art();
+			$generic = new Generic();
 		}
 
-		$programingForm = new ArtProgramingForm($this->getEntityManager());
-        $form = new ArtForm($this->getEntityManager());
+		$programingForm = new GenericProgramingForm($this->getEntityManager());
+        $form = new GenericItemForm($this->getEntityManager());
 		if($this->getRequest()->isPost()) {
 			$form->setData($data);
 			if($form->isValid()) {
@@ -79,35 +80,28 @@ class ArtController extends AbstractAdminController implements CrudInterface
 			    if(!empty($data['event'])) {
 			        $event = $this->getRepository(Event::class)->find($data['event']);
                 }
-                $art->setEvent($event);
+                $generic->setEvent($event);
 			    unset($data['event']);
-
-                $category = null;
-                if(!empty($data['category'])) {
-                    $category = $this->getRepository(Category::class)->find($data['category']);
-                }
-                $art->setCategory($category);
-                unset($data['category']);
 
                 $programing = [];
                 if(!empty($data['programing'])) {
                     $programing = $data['programing'];
                 }
                 unset($data['programing']);
-                foreach ($art->getPrograming() as $p) {
+                foreach ($generic->getPrograming() as $p) {
                     $this->getEntityManager()->remove($p);
                 }
 
-                $art->setData($data);
-                $this->getEntityManager()->persist($art);
+                $generic->setData($data);
+                $this->getEntityManager()->persist($generic);
                 $this->getEntityManager()->flush();
 
                 //Persiste a grade da programação
                 foreach ($programing as $pro) {
-                    $artProg = new Programing();
-                    $artProg->setEvent($event);
-                    $artProg->setType(Type::ART);
-                    $artProg->setObjectId($art->getId());
+                    $genericProg = new Programing();
+                    $genericProg->setEvent($event);
+                    $genericProg->setType($generic->getType());
+                    $genericProg->setObjectId($generic->getId());
 
                     if(!empty($pro['place'])) {
                         $place = $this
@@ -117,32 +111,32 @@ class ArtController extends AbstractAdminController implements CrudInterface
                         $pro['place'] = $place;
                     }
 
-                    $artProg->setData($pro);
-                    $this->getEntityManager()->persist($artProg);
+                    $genericProg->setData($pro);
+                    $this->getEntityManager()->persist($genericProg);
                 }
 
                 $this->getEntityManager()->flush();
-                $this->getEntityManager()->refresh($art);
+                $this->getEntityManager()->refresh($generic);
 
 				if($id) {
-					$this->messages()->success("Arte atualizada com sucesso!");
+					$this->messages()->success("Item atualizado com sucesso!");
 				} else {
-					$this->messages()->flashSuccess("Arte criada com sucesso!");
+					$this->messages()->flashSuccess("Item criado com sucesso!");
 					return $this->redirect()->toRoute('admin/default', [
-						'controller' => 'art',
+						'controller' => 'programing-generic',
 						'action' => 'update',
-						'id' => $art->getId()
+						'id' => $generic->getId()
 					]);
 				}
 			}
 		} else {
-			$form->setData($art->toArray());
+			$form->setData($generic->toArray());
 		}
 
 		return $this->getViewModel()->setVariables([
 			'form' => $form,
 			'programingForm' => $programingForm,
-			'art' => $art
+			'generic' => $generic
 		]);
 	}
 }

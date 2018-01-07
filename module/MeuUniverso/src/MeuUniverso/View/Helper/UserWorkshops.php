@@ -9,13 +9,11 @@
 namespace MeuUniverso\View\Helper;
 
 
-use Application\Entity\Movie\Movie;
 use Application\Entity\Movie\MovieEventStatus;
-use Application\Entity\Registration\Options;
+use Application\Entity\Registration\Status;
 use Application\Entity\Workshop\WorkshopSubscription;
 use Zend\ServiceManager\ServiceLocatorAwareInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
-use Zend\Stdlib\DateTime;
 use Zend\View\Helper\AbstractHelper;
 
 class UserWorkshops extends AbstractHelper
@@ -90,18 +88,19 @@ class UserWorkshops extends AbstractHelper
 
         $color = "";
         switch($status) {
-            case MovieEventStatus::ON_EVALUATION:
+            case Status::ON_EVALUATION:
                 $color = 'label-warning';
                 break;
-            case MovieEventStatus::NOT_SELECTED:
+            case Status::NOT_SELECTED:
                 $color = 'label-danger';
                 break;
-            case MovieEventStatus::SELECTED:
+            case Status::SELECTED:
+            case Status::CONFIRMED:
                 $color = 'label-success';
                 break;
         }
 
-        return sprintf($format, $color, MovieEventStatus::get($status));
+        return sprintf($format, $color, Status::get($status));
     }
 
     public function setServiceLocator(ServiceLocatorInterface $serviceLocator) {
