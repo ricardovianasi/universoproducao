@@ -157,7 +157,9 @@ class Programing extends AbstractEntity
      */
     public function setStartTime($startTime)
     {
-        if(is_string($startTime)) {
+        if(empty($startTime)) {
+            $startTime = null;
+        } elseif(is_string($startTime)) {
             $startTime = \DateTime::createFromFormat('H:i:s', $startTime);
         }
         $this->startTime = $startTime;
@@ -176,7 +178,9 @@ class Programing extends AbstractEntity
      */
     public function setEndTime($endTime)
     {
-        if(is_string($endTime)) {
+        if(empty($endTime)) {
+            $endTime = null;
+        } elseif(is_string($endTime)) {
             $endTime = \DateTime::createFromFormat('H:i:s', $endTime);
         }
         $this->endTime = $endTime;

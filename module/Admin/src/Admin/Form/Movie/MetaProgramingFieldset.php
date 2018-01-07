@@ -10,8 +10,10 @@ namespace Admin\Form\Movie;
 
 use Application\Entity\Programing\Meta;
 use Zend\Form\Fieldset;
+use Zend\InputFilter\InputFilterProviderInterface;
 
 class MetaProgramingFieldset extends Fieldset
+    implements InputFilterProviderInterface
 {
     public function __construct($name = null, array $options = [])
     {
@@ -81,8 +83,8 @@ class MetaProgramingFieldset extends Fieldset
                 'column-size' => 'md-4',
                 'label_attributes' => [
                     'class' => 'col-md-4'
-                ]
-            ]
+                ],
+            ],
         ]);
     }
 
@@ -101,8 +103,8 @@ class MetaProgramingFieldset extends Fieldset
             ],
             Meta::ADDITIONAL_INFO => [
                 'name' => Meta::ADDITIONAL_INFO,
-                'required'   => false,
-                'allow_empty' => true
+                'required'   => true,
+                //'allow_empty' => true
             ],
         ];
     }

@@ -11,8 +11,9 @@ namespace Admin\Form\Movie;
 use Admin\Form\Programing\ProgramingForm;
 use Application\Entity\Movie\Movie;
 use Application\Entity\Movie\MovieEventStatus;
+use Application\Entity\Programing\Meta;
 use Application\Entity\Programing\Type;
-use Application\Entity\Registration\Status;
+use Zend\InputFilter\Factory as InputFilterFactory;
 
 class MovieProgramingForm extends  ProgramingForm
 {
