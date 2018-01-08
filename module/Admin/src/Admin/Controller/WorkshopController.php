@@ -114,6 +114,8 @@ class WorkshopController extends AbstractAdminController implements CrudInterfac
                             ->find($pro['place']);
 
                         $pro['place'] = $place;
+                    } else {
+                        unset($pro['place']);
                     }
 
                     $artProg->setData($pro);
