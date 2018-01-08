@@ -18,11 +18,11 @@ use Doctrine\Common\Collections\ArrayCollection;
 class WorkshopRegistrationController extends AbstractAdminController
     implements CrudInterface
 {
-	public function indexAction()
-	{
+    public function indexAction()
+    {
         $statusModalForm = new WorkshopStatusModalForm($this->getEntityManager());
-	    $registration = $this->getRepository(Registration::class)->findOneBy([
-	        'type' => Type::WORKSHOP
+        $registration = $this->getRepository(Registration::class)->findOneBy([
+            'type' => Type::WORKSHOP
         ]);
 
         $dataAttr = $this->params()->fromQuery();
@@ -35,64 +35,64 @@ class WorkshopRegistrationController extends AbstractAdminController
         if(!$searchForm->isValid()) {
             $teste = $searchForm->getMessages();
         }
-		$items = $this->search(WorkshopSubscription::class, $dataAttr);
+        $items = $this->search(WorkshopSubscription::class, $dataAttr);
 
-		$this->getViewModel()->setVariables([
-			'items' => $items,
+        $this->getViewModel()->setVariables([
+            'items' => $items,
             'searchForm' => $searchForm,
             'searchData' => $dataAttr,
             'isFiltered' => !empty($data) ? true : false,
             'statusModalForm' => $statusModalForm
-		]);
+        ]);
 
-		return $this->getViewModel();
-	}
+        return $this->getViewModel();
+    }
 
-	public function createAction($data)
-	{
+    public function createAction($data)
+    {
         $result = $this->persist($data);
         $result->setTemplate('admin/workshop-registration/update.phtml');
         return $result;
-	}
+    }
 
-	public function updateAction($id, $data)
-	{
+    public function updateAction($id, $data)
+    {
         $result = $this->persist($data, $id);
-		return $result;
-	}
+        return $result;
+    }
 
-	public function deleteAction($id)
-	{
-		$workshop = $this->getRepository(Workshop::class)->find($id);
-		$this->getEntityManager()->remove($workshop);
-		$this->getEntityManager()->flush();
+    public function deleteAction($id)
+    {
+        $workshop = $this->getRepository(Workshop::class)->find($id);
+        $this->getEntityManager()->remove($workshop);
+        $this->getEntityManager()->flush();
 
-		$this->messages()->flashSuccess('Inscrição excluída com sucesso.');
+        $this->messages()->flashSuccess('Inscrição excluída com sucesso.');
 
-		return $this->redirect()->toRoute('admin/default', ['controller'=>'workshop-registration']);
-	}
+        return $this->redirect()->toRoute('admin/default', ['controller'=>'workshop-registration']);
+    }
 
-	public function persist($data, $id = null)
-	{
-		if($id) {
-			$workshopSubscription = $this->getRepository(WorkshopSubscription::class)->find($id);
-		} else {
-			$workshopSubscription = new WorkshopSubscription();
-		}
+    public function persist($data, $id = null)
+    {
+        if($id) {
+            $workshopSubscription = $this->getRepository(WorkshopSubscription::class)->find($id);
+        } else {
+            $workshopSubscription = new WorkshopSubscription();
+        }
 
-		/** @var Registration $reg */
+        /** @var Registration $reg */
         $reg = null;
-		if($this->getRequest()->isPost()) {
+        if($this->getRequest()->isPost()) {
             $registrationID = $this->params()->fromPost('registration');
             $reg = $this->getRepository(Registration::class)->find($registrationID);
         } elseif($workshopSubscription->getRegistration()) {
-		    $reg = $workshopSubscription->getRegistration();
+            $reg = $workshopSubscription->getRegistration();
         }
 
         $form = new WorkshopRegistrationForm($this->getEntityManager(), $reg);
 
         $pontuationItems = [];
-		if($reg) {
+        if($reg) {
             $pontuationOpt = $reg->getOption(Options::WORKSHOP_PONTUATION);
             if($pontuationOpt) {
                 $pontuationItems = $this
@@ -103,10 +103,10 @@ class WorkshopRegistrationController extends AbstractAdminController
             }
         }
 
-		if($this->getRequest()->isPost()) {
-		    $data = $this->getRequest()->getPost()->toArray();
-			$form->setData($data);
-			if($form->isValid()) {
+        if($this->getRequest()->isPost()) {
+            $data = $this->getRequest()->getPost()->toArray();
+            $form->setData($data);
+            if($form->isValid()) {
 
                 $user = null;
                 if (!empty($data['user'])) {
@@ -188,19 +188,19 @@ class WorkshopRegistrationController extends AbstractAdminController
                         'id' => $id,
                     ]);
                 }
-			}
-		} else {
-			$form->setData($workshopSubscription->toArray());
-		}
+            }
+        } else {
+            $form->setData($workshopSubscription->toArray());
+        }
 
-		return $this->getViewModel()->setVariables([
-			'form' => $form,
-			'pontuationItems' => $pontuationItems,
-			'workshopSubscription' => $workshopSubscription,
-		]);
-	}
+        return $this->getViewModel()->setVariables([
+            'form' => $form,
+            'pontuationItems' => $pontuationItems,
+            'workshopSubscription' => $workshopSubscription,
+        ]);
+    }
 
-	public function exportConfirmationAction()
+    public function exportConfirmationAction()
     {
         //recupera os itens
         $dataAttr = $this->params()->fromQuery();
@@ -338,33 +338,72 @@ class WorkshopRegistrationController extends AbstractAdminController
 
         $items = $this
             ->getRepository(WorkshopSubscription::class)
-            ->createQueryBuilder('m')
-            ->andWhere('m.status = :status')
-            ->setParameters([
-                'status' => 'not_selected'
-            ])
-            ->getQuery()
-            ->getResult();
+            ->findBy([
+                'status' => 'selected'
+            ]);
 
         //var_dump(count($items)); exit();
         $count = 0;
         foreach ($items as $item) {
+
+            $workshopProgramation = $this->getRepository(Programing::class)->findBy([
+                'event' => $item->getEvent()->getId(),
+                'type' => Type::WORKSHOP,
+                'objectId' => $item->getWorkshop()->getId()
+            ]);
+            $workshopProgramationItems = [];
+            foreach ($workshopProgramation as $pro) {
+                $desc = $pro->getDate()->format('d/m/Y')
+                    . ' | ' . $pro->getStartTime()->format('H:i')
+                    . ' às '
+                    . $pro->getEndTime()->format('H:i');
+                $workshopProgramationItems[] = $desc;
+            }
+
             $msg = "<p>Prezado (a) ".$item->getUser()->getName().",</p>";
-            $msg.= "<p>Agradecemos seu interesse em participar da <strong>21ª Mostra de Cinema de Tiradentes</strong>.</p>";
-            $msg.= "<p>Informamos que você não foi selecionado(a) para a oficina ".$item->getWorkshop()->getName()."</p>";
-            $msg.= "<p>Convidamos você para participar das outras atividades do evento: sessões de filmes, debates, cortejo e shows. A programação da Mostra de Cinema de Tiradentes é gratuita e, estará disponível no site <a href='http://www.mostratiradentes.com.br'>www.mostratiradentes.com.br</a> a partir do dia 10 de janeiro.</p>";
+            $msg.= "<p>Parabéns!</p>";
+            $msg.= "<p>Você foi selecionado (a) para participar da Oficina:".$item->getWorkshop()->getName().", que será realizada durante a programação da <strong>21ª Mostra de Cinema de Tiradentes</strong>, nos dias e horários a seguir:</p>";
+
+            $msg.= "<p>Data e hora de realização: ". implode(';', $workshopProgramationItems)." <br />Local para credenciamento: Centro Cultural Yves Alves <br />Rua Direita, 168 – Tiradentes - MG</p>";
+
+            $msg.= "<p><strong>Atenção: </strong></p>";
+            $msg.= "<p><strong>- Prazo de confirmação: até às 20 horas (horário de Brasília), do dia 11/01/2017 - quinta-feira.</strong></p>";
+            $msg.= "<p><strong>- Caso não confirme sua presença no prazo estipulado sua inscrição será considerada como DESISTÊNCIA.</strong></p>";
+
+            $urlConfirmacao = $this->url()->fromRoute('meu-universo/workshop', [
+                'id_reg' => $item->getRegistration()->getHash(),
+                'id' => $item->getId(),
+                'action' => 'confirmacao'
+            ]);
+
+            $msg.= "<p>Para confirmar ou não sua participação, clique em uma das opções abaixo:</p>";
+            $msg.= "<p><a href='".$urlConfirmacao."'>Confirmo minha participação / Imprimir Documento de Inscrição de selecionado</a></p>";
+            $msg.= "<p><a href='".$urlConfirmacao."'>Confirmo minha participação / Imprimir Documento de Inscrição de selecionado</a></p>";
+
+            $msg.= "<p><strong>Observação: </strong>Caso não consiga acessar os links acima, siga o procedimento abaixo:</p>";
+            $msg.= "<p>1) Acesse: <a href='www.universoproducao.com.br'>www.universoproducao.com.br</a> <br />
+            2) Clique em Menu do Usuário (Bonequinho no lado supererior direito do Menu principal)<br />
+            3) Informe seu email e senha cadastrada)<br />
+            4) Clique em Minhas Inscrições (Bonequinho no lado supererior direito do Menu principal)<br />
+            5) Clique em Confirmar Presença ou Não Confirmar Presença<br />
+            6) Qualquer dúvida entre em contato: oficinas@universoproducao.com.br </p>";
+
+            $msg.= "<p><strong>Apresente o comprovante de confirmação impresso e um documento com foto para retirar a credencial e o material na secretaria do evento no dia de início da oficina no seguinte endereço:<br />
+            Centro Cultural Yves Alves<br />Rua Direita, 168 – Tiradentes - MG</strong></p>";
+
+            $msg.= "<p>Convidamos você para participar também das outras atividades do evento. A programação é gratuita e, estará disponível no site <a href='http://www.mostratiradentes.com.br'>www.mostratiradentes.com.br</a> a partir do dia 10 de janeiro.</p>";
+
             $msg.= "<p>Atenciosamente,<br />Coordenação Oficinas<br />21ª Mostra de Cinema de Tiradentes</p>";
 
-            //$to[$item->getAuthor()->getName()] = 'ricardovianasi@gmail.com';
             $this->mailService()->simpleSendEmail(
-                //[$item->getAuthor()->getName()=>$item->getAuthor()->getEmail()],
+            //[$item->getAuthor()->getName()=>$item->getAuthor()->getEmail()],
                 [$item->getUser()->getName()=>'ricardovianasi@gmail.com'],
                 'Comunicado oficina - Mostra de Cinema de Tiradentes', $msg);
 
             $count++;
             echo "$count - Nome: " . $item->getUser()->getName();
             echo "<br />Email: " . $item->getUser()->getEmail();
-            echo "<br />Filme: " . $item->getWorkshop()->getTitle() . '<br /><br />';
+            echo "<br />Filme: " . $item->getWorkshop()->getName() . '<br /><br />';
 
             break;
             exit();

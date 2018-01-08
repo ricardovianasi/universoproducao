@@ -115,7 +115,7 @@ class ProgramingForm extends Form
                 ]
             ],
             'attributes' => [
-                'data-required' => 'required',
+                //'data-required' => 'required',
             ]
         ]);
 
