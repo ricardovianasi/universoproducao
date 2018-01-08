@@ -80,11 +80,19 @@ class UserWorkshops extends AbstractHelper
 
         $btnConfirmParticipation = "";
         if($workshop->getStatus() == Status::SELECTED) {
+
+            $confirmedUrl = $urlHelper('meu-universo/workshop', [
+                'controller' => 'workshop-registration',
+                'action' => 'confirmacao',
+                'id_reg' => $workshop->getRegistration()->getHash(),
+                'id' => $workshop->getId()
+
+            ]);
             $btnConfirmParticipation = '<a 
-            href="#" 
-            type="button" 
-            class="btn btn-circle btn-default btn-sm">
-                <i class="glyphicon glyphicon-list-alt"></i> Confirmar participação</a>';
+                href="'.$confirmedUrl.'" 
+                type="button" 
+                class="btn btn-circle btn-default btn-sm">
+                    <i class="glyphicon glyphicon-list-alt"></i> Confirmar participação</a>';
         }
 
         $td.= "<td>$btnConfirmParticipation</td></tr>";

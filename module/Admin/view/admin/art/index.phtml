@@ -42,9 +42,6 @@
 						</thead>
 						<tbody>
 						<?php foreach ($this->items as $i):
-
-                            $events = $i->getRegistration()->getEvents();
-
 							$updateUrl = $this->url('admin/default', [
                                 'controller' => 'art',
 								'action' => 'update',
