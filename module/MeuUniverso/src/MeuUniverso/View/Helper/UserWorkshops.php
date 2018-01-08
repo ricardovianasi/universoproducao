@@ -78,7 +78,16 @@ class UserWorkshops extends AbstractHelper
             class="btn btn-circle btn-default btn-sm">
                 <i class="glyphicon glyphicon-list-alt"></i> Confirmação de participação</a>';
 
-        $td.= '<td></td></tr>';
+        $btnConfirmParticipation = "";
+        if($workshop->getStatus() == Status::SELECTED) {
+            $btnConfirmParticipation = '<a 
+            href="#" 
+            type="button" 
+            class="btn btn-circle btn-default btn-sm">
+                <i class="glyphicon glyphicon-list-alt"></i> Confirmar participação</a>';
+        }
+
+        $td.= "<td>$btnConfirmParticipation</td></tr>";
         return $td;
     }
 
