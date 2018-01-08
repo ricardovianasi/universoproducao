@@ -34,7 +34,7 @@ class WorkshopSubscription extends AbstractRepository
 
         if(!empty($criteria['user_search'])) {
             $qb->innerJoin('p.user', 'u')
-                ->andWhere('u.name like :use')
+                ->andWhere('u.name like :user')
                 ->setParameter('user', '%'.$criteria['user_search'].'%');
         }
 
