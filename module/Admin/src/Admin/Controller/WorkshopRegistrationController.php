@@ -339,7 +339,7 @@ class WorkshopRegistrationController extends AbstractAdminController
         $items = $this
             ->getRepository(WorkshopSubscription::class)
             ->createQueryBuilder('m')
-            ->andWhere('s.status = :status')
+            ->andWhere('m.status = :status')
             ->setParameters([
                 'status' => 'not_selected'
             ])
