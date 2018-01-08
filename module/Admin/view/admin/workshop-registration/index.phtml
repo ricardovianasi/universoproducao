@@ -127,7 +127,12 @@
 								<td><?php echo $item->getId() ?></td>
 								<td><?php echo $item->getEvent()->getShortName(); ?></td>
                                 <td><?php echo $item->getWorkshop()->getName(); ?></td>
-								<td><?php echo $item->getUser()->getName(); ?></td>
+								<td>
+                                    <?php echo $item->getUser()->getName(); ?> <br />
+                                    <?php if($item->getUser()->getCity()) {
+                                        echo $item->getUser()->getCity()->getName();
+                                    } ?>
+                                </td>
                                 <td>
                                     <?php
                                         $label = \Application\Entity\Registration\Status::get($item->getStatus());
