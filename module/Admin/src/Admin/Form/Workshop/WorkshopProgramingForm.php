@@ -26,8 +26,7 @@ class WorkshopProgramingForm extends ProgramingForm
             $element->setOption('twb-layout', '')
                 ->setOption('column-size', '')
                 ->setLabelAttributes(['class' => ''])
-                ->setAttribute('required', '')
-                ->setAttribute('data-required', 'required');
+                ->setAttribute('required', '');
         }
     }
 }

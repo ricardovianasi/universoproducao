@@ -61,6 +61,7 @@ class ProgramingForm extends Form
             ],
             'attributes' => [
                 'required' => 'required',
+                'data-required' => 'required',
                 'placeholder' => 'Data',
                 'data-inputmask' => "'alias': 'date'",
             ]
@@ -78,6 +79,7 @@ class ProgramingForm extends Form
             ],
             'attributes' => [
                 'required' => 'required',
+                'data-required' => 'required',
                 'data-inputmask' => "'alias': 'hh:mm:ss'",
                 'placeholder' => 'Hora início'
             ],
@@ -113,6 +115,7 @@ class ProgramingForm extends Form
                 ]
             ],
             'attributes' => [
+                'data-required' => 'required',
             ]
         ]);
 
