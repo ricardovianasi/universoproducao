@@ -331,4 +331,45 @@ class WorkshopRegistrationController extends AbstractAdminController
         ], ['query'=>$filter]);
 
     }
+
+    public function comunicadosAction()
+    {
+        $this->getViewModel()->setTerminal(true);
+
+        $items = $this
+            ->getRepository(WorkshopSubscription::class)
+            ->createQueryBuilder('m')
+            ->andWhere('s.status = :status')
+            ->setParameters([
+                'status' => 'not_selected'
+            ])
+            ->getQuery()
+            ->getResult();
+
+        //var_dump(count($items)); exit();
+        $count = 0;
+        foreach ($items as $item) {
+            $msg = "<p>Prezado (a) ".$item->getUser()->getName().",</p>";
+            $msg.= "<p>Agradecemos seu interesse em participar da <strong>21ª Mostra de Cinema de Tiradentes</strong>.</p>";
+            $msg.= "<p>Informamos que você não foi selecionado(a) para a oficina ".$item->getWorkshop()->getName()."</p>";
+            $msg.= "<p>Convidamos você para participar das outras atividades do evento: sessões de filmes, debates, cortejo e shows. A programação da Mostra de Cinema de Tiradentes é gratuita e, estará disponível no site <a href='http://www.mostratiradentes.com.br'>www.mostratiradentes.com.br</a> a partir do dia 10 de janeiro.</p>";
+            $msg.= "<p>Atenciosamente,<br />Coordenação Oficinas<br />21ª Mostra de Cinema de Tiradentes</p>";
+
+            //$to[$item->getAuthor()->getName()] = 'ricardovianasi@gmail.com';
+            $this->mailService()->simpleSendEmail(
+                //[$item->getAuthor()->getName()=>$item->getAuthor()->getEmail()],
+                [$item->getUser()->getName()=>'ricardovianasi@gmail.com'],
+                'Comunicado oficina - Mostra de Cinema de Tiradentes', $msg);
+
+            $count++;
+            echo "$count - Nome: " . $item->getUser()->getName();
+            echo "<br />Email: " . $item->getUser()->getEmail();
+            echo "<br />Filme: " . $item->getWorkshop()->getTitle() . '<br /><br />';
+
+            break;
+            exit();
+        }
+
+        return $this->getViewModel();
+    }
 }

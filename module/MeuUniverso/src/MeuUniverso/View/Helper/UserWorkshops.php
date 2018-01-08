@@ -70,23 +70,13 @@ class UserWorkshops extends AbstractHelper
 
         $urlHelper = $this->getServiceLocator()->get('url');
 
-        //visualizar
-        $viewUrl = '#';
-        $btnView = '<a 
-            href="'.$viewUrl.'" 
-            type="button" 
-            class="btn btn-circle btn-default btn-sm">
-                <i class="glyphicon glyphicon-list-alt"></i> Confirmação de participação</a>';
-
         $btnConfirmParticipation = "";
         if($workshop->getStatus() == Status::SELECTED) {
-
             $confirmedUrl = $urlHelper('meu-universo/workshop', [
                 'controller' => 'workshop-registration',
                 'action' => 'confirmacao',
                 'id_reg' => $workshop->getRegistration()->getHash(),
                 'id' => $workshop->getId()
-
             ]);
             $btnConfirmParticipation = '<a 
                 href="'.$confirmedUrl.'" 
@@ -95,7 +85,22 @@ class UserWorkshops extends AbstractHelper
                     <i class="glyphicon glyphicon-list-alt"></i> Confirmar participação</a>';
         }
 
-        $td.= "<td>$btnConfirmParticipation</td></tr>";
+        $btnComprovante = "";
+        if($workshop->getStatus() == Status::CONFIRMED) {
+            $comproveUrl = $urlHelper('meu-universo/workshop', [
+                'controller' => 'workshop-registration',
+                'action' => 'comprovante',
+                'id_reg' => $workshop->getRegistration()->getHash(),
+                'id' => $workshop->getId()
+            ]);
+            $btnComprovante = '<a 
+                href="'.$comproveUrl.'" 
+                type="button" 
+                class="btn btn-circle btn-default btn-sm">
+                    <i class="glyphicon glyphicon-list-alt"></i> Comprovante de participação</a>';
+        }
+
+        $td.= "<td>$btnConfirmParticipation $btnComprovante</td></tr>";
         return $td;
     }
 
