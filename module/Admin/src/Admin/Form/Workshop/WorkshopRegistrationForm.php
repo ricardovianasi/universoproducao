@@ -131,7 +131,6 @@ class WorkshopRegistrationForm extends Form
                 ]
             ],
             'attributes' => [
-                'required' => true
             ]
         ]);
 
