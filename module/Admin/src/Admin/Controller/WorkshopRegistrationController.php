@@ -339,7 +339,8 @@ class WorkshopRegistrationController extends AbstractAdminController
         $items = $this
             ->getRepository(WorkshopSubscription::class)
             ->findBy([
-                'status' => 'selected'
+                'status' => 'selected',
+                'id' => 11
             ]);
 
         //var_dump(count($items)); exit();
@@ -362,7 +363,7 @@ class WorkshopRegistrationController extends AbstractAdminController
 
             $msg = "<p>Prezado (a) ".$item->getUser()->getName().",</p>";
             $msg.= "<p>Parabéns!</p>";
-            $msg.= "<p>Você foi selecionado (a) para participar da Oficina:".$item->getWorkshop()->getName().", que será realizada durante a programação da <strong>21ª Mostra de Cinema de Tiradentes</strong>, nos dias e horários a seguir:</p>";
+            $msg.= "<p>Você foi selecionado (a) para participar da Oficina: ".$item->getWorkshop()->getName().", que será realizada durante a programação da <strong>21ª Mostra de Cinema de Tiradentes</strong>, nos dias e horários a seguir:</p>";
 
             $msg.= "<p>Data e hora de realização: ". implode(';', $workshopProgramationItems)." <br />Local para credenciamento: Centro Cultural Yves Alves <br />Rua Direita, 168 – Tiradentes - MG</p>";
 
@@ -378,7 +379,7 @@ class WorkshopRegistrationController extends AbstractAdminController
 
             $msg.= "<p>Para confirmar ou não sua participação, clique em uma das opções abaixo:</p>";
             $msg.= "<p><a href='".$urlConfirmacao."'>Confirmo minha participação / Imprimir Documento de Inscrição de selecionado</a></p>";
-            $msg.= "<p><a href='".$urlConfirmacao."'>Confirmo minha participação / Imprimir Documento de Inscrição de selecionado</a></p>";
+            $msg.= "<p><a href='".$urlConfirmacao."'>Não confirmo minha participação</a></p>";
 
             $msg.= "<p><strong>Observação: </strong>Caso não consiga acessar os links acima, siga o procedimento abaixo:</p>";
             $msg.= "<p>1) Acesse: <a href='www.universoproducao.com.br'>www.universoproducao.com.br</a> <br />
@@ -396,14 +397,15 @@ class WorkshopRegistrationController extends AbstractAdminController
             $msg.= "<p>Atenciosamente,<br />Coordenação Oficinas<br />21ª Mostra de Cinema de Tiradentes</p>";
 
             $this->mailService()->simpleSendEmail(
-            //[$item->getAuthor()->getName()=>$item->getAuthor()->getEmail()],
-                [$item->getUser()->getName()=>'ricardovianasi@gmail.com'],
+                [$item->getUser()->getName() => $item->getUser()->getEmail()],
                 'Comunicado oficina - Mostra de Cinema de Tiradentes', $msg);
 
             $count++;
             echo "$count - Nome: " . $item->getUser()->getName();
+            echo '<br /><br />'.$msg;
             echo "<br />Email: " . $item->getUser()->getEmail();
             echo "<br />Filme: " . $item->getWorkshop()->getName() . '<br /><br />';
+
 
             break;
             exit();
