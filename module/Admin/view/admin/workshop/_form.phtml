@@ -94,7 +94,7 @@
                             <tr data-row="<?php echo $pro->getId() ?>">
                                 <td><?php echo $pro->getDate()->format('d/m/Y') ?></td>
                                 <td><?php echo $pro->getStartTime()->format('H:i:s') ?></td>
-                                <td><?php echo $pro->getEndTime()->format('H:i:s') ?></td>
+                                <td><?php echo $pro->getEndTime() ? $pro->getEndTime()->format('H:i:s') : "" ?></td>
                                 <td><?php echo $pro->getPlace()->getName(); ?></td>
                                 <td>
                                     <a href="#" class="btn btn-sm btn-default table-programing-remove"
@@ -102,7 +102,7 @@
                                     </a>
                                     <input type="hidden" name="programing[<?php echo $pro->getId() ?>][date]" value="<?php echo $pro->getDate()->format('d/m/Y') ?>">
                                     <input type="hidden" name="programing[<?php echo $pro->getId() ?>][start_time]" value="<?php echo $pro->getStartTime()->format('H:i:s') ?>">
-                                    <input type="hidden" name="programing[<?php echo $pro->getId() ?>][end_time]" value="<?php echo $pro->getEndTime()->format('H:i:s') ?>">
+                                    <input type="hidden" name="programing[<?php echo $pro->getId() ?>][end_time]" value="<?php echo $pro->getEndTime() ? $pro->getEndTime()->format('H:i:s') : "" ?>">
                                     <input type="hidden" name="programing[<?php echo $pro->getId() ?>][place]" value="<?php echo $pro->getPlace()->getId(); ?>"></td>
                             </tr>
                         <?php endforeach; ?>
