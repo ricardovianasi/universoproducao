@@ -45,7 +45,7 @@ class MovieProgramingController extends AbstractAdminController
         unset($data['meta']);
         unset($data['movie']);
 
-        $items = $this->search(Programing::class, $data, [], true);
+        $items = $this->search(Programing::class, $data, ['date'=>'ASC', 'startTime'=>'ASC'], true);
 
         $this->getViewModel()->setVariables([
             'items' => $items,
