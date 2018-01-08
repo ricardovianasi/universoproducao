@@ -8,6 +8,7 @@ final class Status
     const NOT_SELECTED      = 'not_selected';
     const STANDBY           = 'standby';
     const CONFIRMED         = 'confirmed';
+    const NOT_CONFIRMED     = 'not_confirmed';
 
     static public function toArray() {
         return array(
@@ -16,6 +17,7 @@ final class Status
             self::NOT_SELECTED      => 'Não selecionado',
             self::STANDBY           => 'Standby',
             self::CONFIRMED         => 'Confirmado',
+            self::NOT_CONFIRMED     => 'Não confirmado'
         );
     }
 

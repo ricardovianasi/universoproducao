@@ -193,7 +193,7 @@ class MovieController extends AbstractAdminController
             }
             $itemArray['created_at'] = $createdAt;
 
-            $preparedItems[] = ['movie'=>$itemArray];
+            $preparedItems[] = ['object'=>$itemArray];
         }
         return $preparedItems;
     }

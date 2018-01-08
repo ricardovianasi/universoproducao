@@ -235,7 +235,7 @@ class WorkshopRegistrationController extends AbstractAdminController
                 $workshopProgramationItems[] = $desc;
             }
 
-            $preparedItems[]['workshop'] = [
+            $preparedItems[]['object'] = [
                 'event_name' => $obj->getEvent()->getShortName(),
                 'user_name' => $obj->getUser()->getName(),
                 'user_identifier' => $obj->getUser()->getIdentifier(),

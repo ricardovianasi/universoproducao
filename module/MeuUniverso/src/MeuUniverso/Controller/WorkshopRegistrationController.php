@@ -11,8 +11,11 @@ namespace MeuUniverso\Controller;
 
 use Admin\Form\Workshop\WorkshopRegistration;
 use Application\Entity\Form\Form as EntityForm;
+use Application\Entity\Programing\Programing;
 use Application\Entity\Registration\Options;
 use Application\Entity\Registration\Registration;
+use Application\Entity\Registration\Status;
+use Application\Entity\Registration\Type;
 use Application\Entity\User\User;
 use Application\Entity\Workshop\Workshop;
 use Application\Entity\Workshop\WorkshopSubscription;
@@ -307,6 +310,7 @@ class WorkshopRegistrationController extends AbstractMeuUniversoRegisterControll
         }
 
         //Recuperar a inscrição do cara
+        /** @var WorkshopSubscription $subscription */
         $subscription = $this->getRepository(WorkshopSubscription::class)->findOneBy([
             'id' => $idWorkshopSubscription,
             'registration' => $reg->getId(),
@@ -319,14 +323,124 @@ class WorkshopRegistrationController extends AbstractMeuUniversoRegisterControll
             ]]);
         }
 
-        if($this->getRequest()->isPost()) {
-            $data = (array) $this->getRequest()->getPost();
+        $confirmacao = $this->params()->fromQuery('confirmacao', null);
+        if($confirmacao == 'sim') {
+            $subscription->setStatus(Status::CONFIRMED);
+        } elseif($confirmacao == 'nao') {
+            $subscription->setStatus(Status::NOT_CONFIRMED);
         }
+
+        $this->getEntityManager()->persist($subscription);
+        $this->getEntityManager()->flush();
 
         return [
             'reg' => $reg,
-            'subscription' => $subscription
+            'subscription' => $subscription,
+            'confirmacao' => $confirmacao
         ];
+    }
 
+    public function comprovanteAction()
+    {
+        $idReg = $this->params()->fromRoute('id_reg');
+        if(!$idReg) {
+            return $this->redirect()->toRoute('meu-universo/default', [], ['query'=>[
+                'code' => self::ERROR_REG_NOT_FOUND,
+                'id_reg' => $idReg
+            ]]);
+        }
+
+        $reg = $this->getRepository(Registration::class)->findOneBy([
+            'hash' => $idReg
+        ]);
+
+        if(!$reg) {
+            return $this->redirect()->toRoute('meu-universo/default', [], ['query'=>[
+                'code' => self::ERROR_REG_NOT_FOUND,
+                'id_reg' => $idReg
+            ]]);
+        }
+
+        //Verificar se o prazo para confirmação está aberto
+        /*if(!$reg->isOpen()) {
+            return $this->redirect()->toRoute('meu-universo/default', [], ['query'=>[
+                'code' => self::ERROR_REG_IS_CLOSED,
+                'id_reg' => $idReg
+            ]]);
+        }*/
+
+        $user = $this->getAuthenticationService()->getIdentity();
+
+        $idWorkshopSubscription = $this->params()->fromRoute('id');
+        if(!$idWorkshopSubscription) {
+            return $this->redirect()->toRoute('meu-universo/default', [], ['query'=>[
+                'code' => self::ERROR_REG_NOT_FOUND,
+                'id_reg' => $idReg
+            ]]);
+        }
+
+        //Recuperar a inscrição do cara
+        /** @var WorkshopSubscription $subscription */
+        $subscription = $this->getRepository(WorkshopSubscription::class)->findOneBy([
+            'id' => $idWorkshopSubscription,
+            'registration' => $reg->getId(),
+            'user' => $user->getId()
+        ]);
+        if(!$subscription) {
+            return $this->redirect()->toRoute('meu-universo/default', [], ['query'=>[
+                'code' => self::ERROR_WORKSHOP_NOT_FOUNT,
+                'id_reg' => $idReg
+            ]]);
+        }
+
+        if($subscription->getStatus() != Status::CONFIRMED) {
+            return $this->redirect()->toRoute('meu-universo/default', [], ['query'=>[
+                'code' => self::ERROR_WORKSHOP_NOT_FOUNT,
+                'id_reg' => $idReg
+            ]]);
+        }
+
+        //criar um arquivo json
+        $preparedItems = $this->prepareItemsForReports($subscription);
+
+        return $this->prepareReport($preparedItems, 'workshop-confirmation' ,'pdf');
+    }
+
+    protected function prepareItemsForReports($items)
+    {
+        if(!is_array($items)) {
+            $items = [$items];
+        }
+
+        $preparedItems = [];
+        foreach ($items as $obj) {
+            $workshopProgramation = $this->getRepository(Programing::class)->findBy([
+                'event' => $obj->getEvent()->getId(),
+                'type' => Type::WORKSHOP,
+                'objectId' => $obj->getWorkshop()->getId()
+            ]);
+            $workshopProgramationItems = [];
+            foreach ($workshopProgramation as $pro) {
+                $desc = $pro->getDate()->format('d/m/Y')
+                    . ' | ' . $pro->getStartTime()->format('H:i')
+                    . ' às '
+                    . $pro->getEndTime()->format('H:i');
+                $workshopProgramationItems[] = $desc;
+            }
+
+            $preparedItems[]['object'] = [
+                'event_name' => $obj->getEvent()->getShortName(),
+                'user_name' => $obj->getUser()->getName(),
+                'user_identifier' => $obj->getUser()->getIdentifier(),
+                'user_birth_date' => $obj->getUser()->getBirthDate()->format('d/m/Y'),
+                'user_parent_name' => $obj->getUser()->getParent() ? $obj->getUser()->getParent()->getName() : "",
+                'user_parent_identifier' => $obj->getUser()->getParent() ? $obj->getUser()->getParent()->getIdentifier() : "",
+                'workshop_name' => $obj->getWorkshop()->getName(),
+                'workshop_programation' => implode(';', $workshopProgramationItems)
+
+            ];
+        }
+
+        return $preparedItems;
     }
 }

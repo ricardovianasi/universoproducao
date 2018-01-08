@@ -1,0 +1,27 @@
+<div class="container">
+    <div class="col-md-12">
+        <p class="meuuniverso-brand meuuniverso-brand--center"><strong>Meu</strong>Universo | Confirmação de participação</p>
+    </div>
+    <div class="portlet light">
+        <div class="portlet-body">
+            <?php echo $this->partial('meu-universo/workshop-registration/_workshop.phtml', [
+                'workshop' => $this->subscription->getWorkshop(),
+                'registration' => $this->reg,
+                'show_register_link' => false
+            ]); ?>
+
+            <?php if($this->confirmacao == 'sim'):  ?>
+                <p>Sua participação nesta oficina está confirmada. <a href="<?php echo $this->url('meu-universo/workshop', [
+                        'action' => 'comprovante',
+                        'id_reg' => $this->reg->getHash(),
+                        'id' => $this->subscription->getId()
+                    ]) ?>">Imprimir o comprovante</a>.</p>
+            <?php elseif($this->confirmacao == 'nao'): ?>
+                <p>Sua participação nesta oficina está cancelada.</p>
+            <?php else: ?>
+                <a href="?confirmacao=sim" type="submit" class="btn btn-lg green">Confirmo minha participação</a>
+                <a href="?confirmacao=nao" type="submit" class="btn btn-lg red">Não confirmo minha participação</a>
+            <?php endif; ?>
+        </div>
+    </div>
+</div>

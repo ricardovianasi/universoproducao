@@ -534,7 +534,7 @@ abstract class AbstractAdminController extends AbstractController
             'db_connection' => [
                 'driver' => 'json',
                 'data_file' => $jsonFile,
-                'json_query' => 'movie'
+                'json_query' => 'object'
             ]
         ];
 
@@ -557,6 +557,8 @@ abstract class AbstractAdminController extends AbstractController
         } else {
             $reportFile =
                 $output
+                .DIRECTORY_SEPARATOR
+                . $report_id
                 .DIRECTORY_SEPARATOR
                 .$reportName.".".$format;
 
