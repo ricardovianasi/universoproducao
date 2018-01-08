@@ -50,12 +50,14 @@ class WorkshopRegistrationController extends AbstractAdminController
 
 	public function createAction($data)
 	{
-		return $this->persist($data);
+        $result = $this->persist($data);
+        $result->setTemplate('admin/workshop-registration/update.phtml');
+        return $result;
 	}
 
 	public function updateAction($id, $data)
 	{
-		$result = $this->persist($data, $id);
+        $result = $this->persist($data, $id);
 		return $result;
 	}
 
@@ -65,9 +67,9 @@ class WorkshopRegistrationController extends AbstractAdminController
 		$this->getEntityManager()->remove($workshop);
 		$this->getEntityManager()->flush();
 
-		$this->messages()->flashSuccess('Oficina excluída com sucesso.');
+		$this->messages()->flashSuccess('Inscrição excluída com sucesso.');
 
-		return $this->redirect()->toRoute('admin/default', ['controller'=>'workshop']);
+		return $this->redirect()->toRoute('admin/default', ['controller'=>'workshop-registration']);
 	}
 
 	public function persist($data, $id = null)
