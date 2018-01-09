@@ -34,6 +34,7 @@ class ProgramingGridController extends AbstractAdminController
             ->createQueryBuilder('p')
             ->andWhere('p.parent is NULL')
             ->addOrderBy('p.date', 'ASC')
+            ->addOrderBy('p.order', 'ASC')
             ->addOrderBy('p.startTime', 'ASC');
 
 		$items = $qb->getQuery()->getResult();
@@ -151,11 +152,16 @@ class ProgramingGridController extends AbstractAdminController
     {
 	    if($this->getRequest()->isPost()) {
 	        $data = $this->getRequest()->getPost()->toArray();
-	        $order = 1;
-	        foreach ($data['id'] as $id) {
-
+	        $order = 0;
+	        $sort = explode(';', $data['sort']);
+	        foreach ($sort as $id) {
+                $prog = $this->getRepository(Programing::class)->find($id);
+                if($prog) {
+                    $prog->setOrder($order++);
+                    $this->getEntityManager()->persist($prog);
+                }
             }
-
+            $this->getEntityManager()->flush();
             $this->messages()->flashSuccess('Ordenação realizada com sucesso.');
         }
 

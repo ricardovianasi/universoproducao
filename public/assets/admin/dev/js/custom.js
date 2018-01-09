@@ -2461,12 +2461,14 @@ function responsive_filemanager_callback(field_id) {
             var _that = this;
             $(".table-order-save", _that.$element).on("click", function(e) {
                 e.preventDefault();
-                var $form = $(".table-order-form", _that.$element);
+                var order = $(".programing-table-sortable").sortable("toArray");
+                var $form = $('<form method="POST" action="' + _that.config.action + '">').append($('<input type="hidden" name="sort", value="' + order.join(";") + '">'));
+                $("body").append($form);
+                $form.submit();
                 App.blockUI({
                     cenrerY: true,
                     animate: true
                 });
-                $form.submit();
             });
         }
     };

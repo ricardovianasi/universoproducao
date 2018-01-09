@@ -1,7 +1,9 @@
 <?php $form = $this->searchForm; ?>
 <div class="row">
 	<div class="col-md-12">
-		<div class="portlet light portlet-fit portlet-datatable bordered table-order" data-item="tr.programing-item">
+		<div class="portlet light portlet-fit portlet-datatable bordered table-order"
+             data-item="tr.programing-item"
+             data-action="<?php echo $this->url('admin/default', ['controller'=>'programing-grid', 'action'=>'order']) ?>">
 			<div class="portlet-title">
 				<div class="caption">
 					<i class="fa fa-th-list"></i>
@@ -54,7 +56,6 @@
                             </tr>
 						</thead>
 						<tbody>
-                        <form action="<?php echo $this->url('admin/default', ['controller'=>'programing-grid', 'action'=>'order']) ?>" method="POST" class="table-order-form">
                             <?php foreach ($this->items as $i):
 
                                 $updateUrl = $this->url('admin/default', [
@@ -69,7 +70,7 @@
                                     'id'=>$i->getId()
                                 ]);
                                 ?>
-                                <tr class="programing-item" data-id="<?php echo $i->getId() ?>">
+                                <tr class="programing-item" id="<?php echo $i->getId() ?>" data-id="<?php echo $i->getId() ?>">
                                     <td><input type="hidden" name="id[]" value="<?php echo $i->getId() ?>"></td>
                                     <td><?php echo $i->getEvent()->getShortName() ?></td>
                                     <td><?php echo \Application\Entity\Programing\Type::get($i->getType()); ?></td>
@@ -88,7 +89,6 @@
                                     </td>
                                 </tr>
                             <?php endforeach; ?>
-                        </form>
 						</tbody>
 					</table>
 				</div>
