@@ -68,7 +68,10 @@ class Programing extends AbstractEntity
      */
 	private $parent;
 
-    /** @ORM\OneToMany(targetEntity="Programing", mappedBy="parent", cascade={"ALL"}) */
+    /**
+     * @ORM\OneToMany(targetEntity="Programing", mappedBy="parent", cascade={"ALL"})
+     * @ORM\OrderBy({"order" = "ASC"})
+     */
 	private $children;
 
     /** @ORM\Column(name="`order`", type="integer") */
