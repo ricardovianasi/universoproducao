@@ -12,5 +12,6 @@ return [
         Controller\PreviousEditionsController::class    => InvokableFactory::class,
         Controller\WorkshopController::class            => InvokableFactory::class,
         Controller\MovieController::class               => InvokableFactory::class,
+        Controller\SeminarController::class             => InvokableFactory::class
     ]
 ];

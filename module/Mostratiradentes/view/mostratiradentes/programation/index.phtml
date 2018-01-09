@@ -30,6 +30,9 @@
                                         case "movie":
                                             $url = $this->url('mostratiradentes/movie', ['id'=>$event['id']]);
                                             break;
+                                        case "seminar_debate":
+                                            $url = $this->url('mostratiradentes/seminar', ['id'=>$event['id']]);
+                                            break;
                                     }
                                     ?>
                                     <a class="programing-event" href="<?php echo $url;?>"><?php echo $event['title']; ?></a>

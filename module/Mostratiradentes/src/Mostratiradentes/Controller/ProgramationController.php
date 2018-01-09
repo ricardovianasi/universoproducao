@@ -95,7 +95,8 @@ class ProgramationController extends SiteController
             } elseif ($prog->getType() == Type::SEMINAR_DEBATE) {
                 $titleItem = "Seminário" . self::SEPARATOR . $prog->getObject()->getThematic()->getName();
                 $events[] = [
-                    'title' => $prog->getObject()->getTitle()
+                    'title' => $prog->getObject()->getTitle(),
+                    'id' => $prog->getObject()->getId()
                 ];
             } elseif ($prog->getType() == Type::WORKSHOP) {
                 $titleItem = "Oficina";
