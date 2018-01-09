@@ -1371,6 +1371,7 @@ jQuery(document).ready(function() {
     $(".workshop-pontuation").workshopPontuation();
     $(".movie-session").movieSession();
     $(".table-programing").tablePrograming();
+    $(".table-order").tableOrder();
     if (jQuery().datepicker) {
         $(".date-picker").datepicker({
             rtl: App.isRTL(),
@@ -1407,6 +1408,12 @@ jQuery(document).ready(function() {
         opacity: .8,
         coneHelperSize: true,
         handle: ".gallery-item-move"
+    });
+    $(".programing-table-sortable").sortable({
+        items: ".programing-item",
+        opacity: .8,
+        coneHelperSize: true,
+        handle: ".programing-item-move"
     });
     $("select.multi-select").multiSelect({
         selectableOptgroup: true
@@ -2439,6 +2446,37 @@ function responsive_filemanager_callback(field_id) {
         });
     };
     window.TabSelection = Plugin;
+})(window, jQuery);
+
+(function(window, $) {
+    var TableOrder = function(element, options) {
+        this.element = element;
+        this.$element = $(element);
+        this.options = options;
+    };
+    TableOrder.prototype = {
+        defaults: {},
+        init: function() {
+            this.config = $.extend({}, this.defaults, this.options, this.$element.data());
+            var _that = this;
+            $(".table-order-save", _that.$element).on("click", function(e) {
+                e.preventDefault();
+                var $form = $(".table-order-form", _that.$element);
+                App.blockUI({
+                    cenrerY: true,
+                    animate: true
+                });
+                $form.submit();
+            });
+        }
+    };
+    TableOrder.defaults = TableOrder.prototype.defaults;
+    $.fn.tableOrder = function(options) {
+        return this.each(function() {
+            new TableOrder(this, options).init();
+        });
+    };
+    window.TableOrder = Plugin;
 })(window, jQuery);
 
 (function(window, $) {

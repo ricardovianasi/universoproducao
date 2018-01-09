@@ -148,6 +148,12 @@ return [
                         'controller' => 'programing-generic',
                         'icon' => 'icon-doc',
                     ],
+                    [
+                        'label' => 'Grade',
+                        'route' => 'admin/default',
+                        'controller' => 'programing-grid',
+                        'icon' => 'icon-doc',
+                    ],
                 ]
 
             ],

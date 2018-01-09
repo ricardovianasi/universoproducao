@@ -29,6 +29,9 @@ class ProgramationController extends SiteController
             ->getRepository(Programing::class)
             ->createQueryBuilder('p')
             ->andWhere('p.parent is NULL')
+            ->andWhere('p.type != :type')
+            ->setParameter('type', Type::WORKSHOP)
+            ->addOrderBy('p.order', 'ASC')
             ->addOrderBy('p.date', 'ASC')
             ->addOrderBy('p.startTime', 'ASC');
 

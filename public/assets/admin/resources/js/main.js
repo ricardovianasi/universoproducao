@@ -86,6 +86,8 @@ jQuery(document).ready(function() {
 
     $('.table-programing').tablePrograming();
 
+    $('.table-order').tableOrder();
+
     //$(".nav-tabs li a").tabSelection();
 
     //$("[data-event-populate]").eventPopulate();
@@ -134,6 +136,16 @@ jQuery(document).ready(function() {
         opacity: 0.8,
         coneHelperSize: true,
         handle : '.gallery-item-move',
+        //placeholder: 'portlet-sortable-placeholder col-md-3',
+        //forcePlaceholderSize: true,
+        
+    });
+
+    $( ".programing-table-sortable" ).sortable({
+        items: ".programing-item", 
+        opacity: 0.8,
+        coneHelperSize: true,
+        handle : '.programing-item-move',
         //placeholder: 'portlet-sortable-placeholder col-md-3',
         //forcePlaceholderSize: true,
         

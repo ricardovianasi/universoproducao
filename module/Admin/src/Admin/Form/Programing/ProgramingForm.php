@@ -11,9 +11,9 @@ namespace Admin\Form\Programing;
 use Application\Entity\Event\Event;
 use Application\Entity\Event\EventType;
 use Application\Entity\Event\Place;
+use Application\Entity\Programing\Type;
 use Doctrine\ORM\EntityManager;
 use TwbBundle\Form\Element\DatePicker;
-use TwbBundle\Form\Element\DateTimePicker;
 use Zend\Form\Form;
 
 class ProgramingForm extends Form
@@ -45,6 +45,24 @@ class ProgramingForm extends Form
         parent::__construct('programing-form');
         $this->setAttributes([
            'class' => 'form-horizontal'
+        ]);
+
+        $this->add([
+            'type' => 'select',
+            'name' => 'type',
+            'options' => [
+                'label' => 'Tipo',
+                'empty_option' => 'Selecione',
+                'value_options' => Type::toArray(),
+                'twb-layout' => 'horizontal',
+                'column-size' => 'md-4',
+                'label_attributes' => [
+                    'class' => 'col-md-4'
+                ]
+            ],
+            'attributes' => [
+                //'data-required' => 'required',
+            ]
         ]);
 
         $this->add([
