@@ -80,6 +80,13 @@ class ProgramationController extends SiteController
                         'title' => $prog->getObject()->getTitle()." | <span class=\"programing-direction\">Direção: ".$prog->getObject()->getDirection()."</span>"
                     ];
                 }
+
+                if($prog->hasMeta(Meta::NATIONAL_PREMIERE)) {
+                    $titleItem.= self::SEPARATOR . 'pré-estreia-nacional';
+                } elseif ($prog->hasMeta(Meta::WORLD_PREMIERE)) {
+                    $titleItem.= self::SEPARATOR . 'pré-estreia-mundial';
+                }
+
             } elseif ($prog->getType() == Type::SEMINAR_DEBATE) {
                 $titleItem = "Seminário" . self::SEPARATOR . $prog->getObject()->getThematic()->getName();
                 $events[] = [
