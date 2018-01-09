@@ -116,6 +116,11 @@ class ProgramationController extends SiteController
                     'description' => $prog->getObject()->getDescription()
                 ];
             } elseif ($prog->getType() == Type::CLOSING) {
+
+                if(!$prog->getObject()) {
+                    continue;
+                }
+
                 $titleItem = "Encerramento";
                 $events[] = [
                     'description' => $prog->getObject()->getDescription()
