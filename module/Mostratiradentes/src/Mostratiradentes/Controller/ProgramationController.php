@@ -75,12 +75,14 @@ class ProgramationController extends SiteController
                     $titleItem .= self::SEPARATOR . $prog->hasMeta(Meta::SESSION_TITLE)->getValue();
                     foreach ($prog->getChildren() as $sess) {
                         $events[] = [
-                            'title' => $sess->getObject()->getTitle()." | <span class=\"programing-direction\">Direção: ".$sess->getObject()->getDirection()."</span>"
+                            'title' => $sess->getObject()->getTitle()." | <span class=\"programing-direction\">Direção: ".$sess->getObject()->getDirection()."</span>",
+                            'id' => $sess->getObject()->getId()
                         ];
                     }
                 } else {
                     $events[] = [
-                        'title' => $prog->getObject()->getTitle()." | <span class=\"programing-direction\">Direção: ".$prog->getObject()->getDirection()."</span>"
+                        'title' => $prog->getObject()->getTitle()." | <span class=\"programing-direction\">Direção: ".$prog->getObject()->getDirection()."</span>",
+                        'id' => $prog->getObject()->getId()
                     ];
                 }
 

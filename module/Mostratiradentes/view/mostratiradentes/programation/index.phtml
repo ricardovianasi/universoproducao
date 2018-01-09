@@ -23,7 +23,16 @@
                             <span class="programing-item-title"><?php echo $item['title']; ?></span>
                             <?php foreach ($item['events'] as $event): ?>
                                 <?php if(isset($event['title'])): ?>
-                                    <a class="programing-event" href="#"><?php echo $event['title']; ?></a>
+                                    <?php
+                                    $url = "";
+                                    switch ($item['type']) {
+                                        case "session":
+                                        case "movie":
+                                            $url = $this->url('mostratiradentes/movie', ['id'=>$event['id']]);
+                                            break;
+                                    }
+                                    ?>
+                                    <a class="programing-event" href="<?php echo $url;?>"><?php echo $event['title']; ?></a>
                                 <?php elseif(isset($event['description'])): ?>
                                     <div class="programation-desc">
                                         <?php echo $event['description'] ?>
