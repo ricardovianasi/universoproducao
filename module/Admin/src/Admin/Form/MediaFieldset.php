@@ -6,7 +6,7 @@
  * Time: 11:08
  */
 
-namespace Admin\Form\Movie;
+namespace Admin\Form;
 
 use Zend\Form\Fieldset;
 use Zend\InputFilter\Factory as InputFilterFactory;
@@ -14,7 +14,8 @@ use Zend\InputFilter\InputFilterProviderInterface;
 use Zend\Validator\File\MimeType;
 use Zend\Validator\File\Size;
 
-class MediaFieldset extends Fieldset implements InputFilterProviderInterface
+class MediaFieldset extends Fieldset
+    implements InputFilterProviderInterface
 {
     public function __construct($name = null, array $options = [])
     {
@@ -31,14 +32,8 @@ class MediaFieldset extends Fieldset implements InputFilterProviderInterface
         ]);
 
         $this->add([
-            'type' => 'file',
+            'type' => 'hidden',
             'name' => 'file',
-            'attributes' => [
-                'accept' => 'image/*',
-            ],
-            'options' => [
-                'label' => 'Imagem'
-            ],
         ]);
 
         $this->add([
@@ -61,23 +56,6 @@ class MediaFieldset extends Fieldset implements InputFilterProviderInterface
     public function getInputFilterSpecification()
     {
         return [
-            'file' => [
-                'name' => 'file',
-                'required' => false,
-                'validators' => [
-                    new MimeType('image/png,image/jpg,image/jpeg'),
-                    [
-                        'name' => Size::class,
-                        'options' => [
-                            'max' => '2MB',
-                            'messages' => [
-                                Size::TOO_SMALL => "O tamanho mínimo do arquivo é 800KB",
-                                Size::TOO_BIG => "O tamanho máximo do arquivo é 2MB"
-                            ]
-                        ]
-                    ],
-                ]
-            ],
             'caption' => [
                 'name'       => 'caption',
                 'required'   => false,

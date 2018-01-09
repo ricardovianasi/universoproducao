@@ -44,6 +44,22 @@ class MovieForm extends Form
 
         $this->add([
             'type' => 'Select',
+            'name' => 'is_invited',
+            'options' => [
+                'label' => 'Filme convidado?',
+                'value_options' => [
+                    1 => 'Sim',
+                    0 => 'Não'
+                ],
+                'empty_option' => 'Selecione',
+            ],
+            'attributes' => [
+//                'required' => 'required'
+            ]
+        ]);
+
+        $this->add([
+            'type' => 'Select',
             'name' => 'registration',
             'options' => [
                 'label' => 'Regulamento',
@@ -68,7 +84,7 @@ class MovieForm extends Form
             ],
             'attributes' => [
                 'placeholder' => 'Informe o título do filme',
-                'required' => 'required',
+//                'required' => 'required',
             ]
         ]);
 
@@ -91,7 +107,7 @@ class MovieForm extends Form
                 'empty_option' => 'Selecione',
             ],
             'attributes' => [
-                'required' => 'required',
+//                'required' => 'required',
             ]
         ]);
 
@@ -102,7 +118,7 @@ class MovieForm extends Form
                 'empty_option' => 'Selecione',
             ],
             'attributes' => [
-                'required' => 'required',
+//                'required' => 'required',
             ]
         ]);
 
@@ -126,7 +142,7 @@ class MovieForm extends Form
                 'label' => 'Ano de finalização',
             ],
             'attributes' => [
-                'required' => 'required',
+//                'required' => 'required',
             ]
         ]);
 
@@ -152,7 +168,7 @@ class MovieForm extends Form
                 'empty_option' => 'Selecione',
             ],
             'attributes' => [
-                'required' => 'required',
+//                'required' => 'required',
             ]
         ]);
 
@@ -163,7 +179,7 @@ class MovieForm extends Form
                 'help-block' => 'Fomato do campo: hh:mm:seg <br />'.nl2br($this->getDurationHelpBlock())
             ],
             'attributes' => [
-                'required' => 'required',
+//                'required' => 'required',
                 'data-inputmask' => "'alias': 'hh:mm:ss'"
             ],
         ]);
@@ -193,7 +209,7 @@ class MovieForm extends Form
             ],
             'attributes' => [
                 'placeholder' => 'Informe o número do cpb',
-                'required' => 'required'
+//                'required' => 'required'
             ]
         ]);
 
@@ -209,7 +225,7 @@ class MovieForm extends Form
                 'empty_option' => 'Selecione',
             ],
             'attributes' => [
-                'required' => 'required'
+//                'required' => 'required'
             ],
         ]);
 
@@ -224,7 +240,7 @@ class MovieForm extends Form
                 'help-block' => 'Para informações sobre os critérios de classificação indicativa, acesse: http://www.justica.gov.br/seus-direitos/classificacao/guia-pratico'
             ],
             'attributes' => [
-                'required' => 'required',
+//                'required' => 'required',
                 'id' => 'option_classification',
                 'data-oficial-classification' => 'Classificação indicativa',
                 'data-suggest-classification' => 'Indique a classificação indicativa sugerida'
@@ -240,7 +256,7 @@ class MovieForm extends Form
                 'empty_option' => 'Selecione',
             ],
             'attributes' => [
-                'required' => 'required',
+//                'required' => 'required',
             ],
         ]);
 
@@ -253,7 +269,7 @@ class MovieForm extends Form
                 'empty_option' => 'Selecione',
             ],
             'attributes' => [
-                'required' => 'required',
+//                'required' => 'required',
             ],
         ]);
 
@@ -266,7 +282,7 @@ class MovieForm extends Form
                 'empty_option' => 'Selecione',
             ],
             'attributes' => [
-                'required' => 'required',
+//                'required' => 'required',
             ],
         ]);
 
@@ -279,7 +295,7 @@ class MovieForm extends Form
                 'empty_option' => 'Selecione',
             ],
             'attributes' => [
-                'required' => 'required',
+//                'required' => 'required',
             ],
         ]);
 
@@ -292,7 +308,7 @@ class MovieForm extends Form
                 'empty_option' => 'Selecione',
             ],
             'attributes' => [
-                'required' => 'required',
+//                'required' => 'required',
             ],
         ]);
 
@@ -334,7 +350,7 @@ class MovieForm extends Form
 
             ],
             'attributes' => [
-                'required' => 'required',
+//                'required' => 'required',
             ]
         ]);
 
@@ -509,7 +525,7 @@ class MovieForm extends Form
             ],
             'attributes' => [
                 'rows' => 7,
-                'required' => 'required',
+//                'required' => 'required',
             ]
         ]);
 
@@ -551,7 +567,7 @@ class MovieForm extends Form
                 'empty_option' => 'Selecione',
             ],
             'attributes' => [
-                'required' => 'required',
+//                'required' => 'required',
             ],
         ]);
 
@@ -567,7 +583,7 @@ class MovieForm extends Form
                 'empty_option' => 'Selecione',
             ],
             'attributes' => [
-                'required' => 'required',
+//                'required' => 'required',
             ],
         ]);
 
@@ -578,7 +594,7 @@ class MovieForm extends Form
                 'label' => 'Informe em qual(is) idioma(s)',
             ],
             'attributes' => [
-                'required' => 'required',
+//                'required' => 'required',
             ]
         ]);
 
@@ -616,7 +632,7 @@ class MovieForm extends Form
                 'empty_option' => 'Selecione',
             ],
             'attributes' => [
-                'required' => 'required',
+//                'required' => 'required',
             ],
         ]);
 
@@ -650,7 +666,6 @@ class MovieForm extends Form
                 'help-block' => 'A organização do evento não se responsabiliza por links incorretos. O filme poderá ser excluído do processo de seleção caso não seja possível ter acesso e/ou  visualização do mesmo',
             ],
             'attributes' => [
-                'required' => 'required',
             ]
         ]);
 
@@ -743,7 +758,7 @@ class MovieForm extends Form
            ],
            'movie_link' => [
                'name' => 'movie_link',
-               'required' => true
+               'required' => false
            ],
             'options[accessibility]' => [
                 'name'       => 'options[accessibility]',
@@ -759,7 +774,83 @@ class MovieForm extends Form
                'name'       => 'options[short_movie_category]',
                'required'   => false,
                'allow_empty' => true
-            ]
+            ],
+            'production_state' => [
+                'name'       => 'production_state',
+                'required'   => false,
+                'allow_empty' => true
+            ],
+            'production_country' => [
+                'name'       => 'production_country',
+                'required'   => false,
+                'allow_empty' => true
+            ],
+            'end_date_month' => [
+                'name'       => 'end_date_month',
+                'required'   => false,
+                'allow_empty' => true
+            ],
+            'has_cpb' => [
+                'name'       => 'has_cpb',
+                'required'   => false,
+                'allow_empty' => true
+            ],
+            'has_official_classification' => [
+                'name'       => 'has_official_classification',
+                'required'   => false,
+                'allow_empty' => true
+            ],
+            'options[classification]' => [
+                'name'       => 'options[classification]',
+                'required'   => false,
+                'allow_empty' => true
+            ],
+            'options[format_completed]' => [
+                'name'       => 'options[format_completed]',
+                'required'   => false,
+                'allow_empty' => true
+            ],
+            'options[window]' => [
+                'name'       => 'options[window]',
+                'required'   => false,
+                'allow_empty' => true
+            ],
+            'options[sound]' => [
+                'name'       => 'options[sound]',
+                'required'   => false,
+                'allow_empty' => true
+            ],
+            'options[color]' => [
+                'name'       => 'options[color]',
+                'required'   => false,
+                'allow_empty' => true
+            ],
+            'options[genre]' => [
+                'name'       => 'options[genre]',
+                'required'   => false,
+                'allow_empty' => true
+            ],
+            'has_conversations_languages' => [
+                'name'       => 'has_conversations_languages',
+                'required'   => false,
+                'allow_empty' => true
+            ],
+            'has_subtitles_languages' => [
+                'name'       => 'has_subtitles_languages',
+                'required'   => false,
+                'allow_empty' => true
+            ],
+            'has_participated_other_festivals' => [
+                'name'       => 'has_participated_other_festivals',
+                'required'   => false,
+                'allow_empty' => true
+            ],
+            'has_conversations_list_languages' => [
+                'name'       => 'has_conversations_list_languages',
+                'required'   => false,
+                'allow_empty' => true
+            ],
+
         ]));
     }
 

@@ -8,12 +8,19 @@
 		defaults: {
 		},
 		init: function() {
-			this.config = $.extend({}, this.defaults, this.options);
+			this.config = $.extend({}, this.defaults, this.options, this.$element.data());
 			var _that = this;
 
-			console.log(this.$element);
+			console.log(_that.config);
 
-			_that.$element.find("#file").on("change", function() {
+			var $fileElement;
+			if(_that.config.fileId) {
+				$fileElement = $("#"+_that.config.fileId, _that.$element);
+			} else {
+				$fileElement = $("#file", _that.$element);
+			}
+
+			$fileElement.on("change", function() {
 				console.log('bla');
 				if($(this).val()) {
 					_that.$element.addClass("fileinput-exist");
@@ -28,7 +35,7 @@
 				_that.$element.find(".fileinput-preview").empty().hide();
 				_that.$element.find(".fileinput-new").show();
 				_that.$element.addClass("fileinput-exist");
-				_that.$element.find("#file").val("");
+				$fileElement.val("");
 			});
 		}
 	}

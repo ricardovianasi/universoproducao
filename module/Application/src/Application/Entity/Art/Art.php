@@ -44,9 +44,13 @@ class Art extends AbstractEntity
 
     private $programing;
 
+    /** @ORM\OneToMany(targetEntity="Media", mappedBy="art", cascade={"ALL"})  */
+    private $medias;
+
     public function __construct()
     {
         $this->programing = new ArrayCollection();
+        $this->medias = new ArrayCollection();
     }
 
     /**
@@ -168,4 +172,30 @@ class Art extends AbstractEntity
             ]);
     }
 
+    /**
+     * @return mixed
+     */
+    public function getMedias()
+    {
+        return $this->medias;
+    }
+
+    /**
+     * @param mixed $medias
+     */
+    public function setMedias($medias)
+    {
+        $this->medias = $medias;
+    }
+
+    public function getMediaById($mediaId)
+    {
+        foreach ($this->medias as $key=>$m) {
+            if($m->getId() == $mediaId) {
+                return $m;
+            }
+        }
+
+        return false;
+    }
 }

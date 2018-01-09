@@ -369,7 +369,7 @@ class Movie extends AbstractEntity
      */
     public function setHasOfficialClassification($hasOfficialClassification)
     {
-        $this->hasOfficialClassification = $hasOfficialClassification;
+        $this->hasOfficialClassification = (boolean) $hasOfficialClassification;
     }
 
     /**
@@ -860,7 +860,7 @@ class Movie extends AbstractEntity
      */
     public function setHasCpb($hasCpb)
     {
-        $this->hasCpb = $hasCpb;
+        $this->hasCpb = (boolean)$hasCpb;
     }
 
     /**
@@ -892,7 +892,7 @@ class Movie extends AbstractEntity
      */
     public function setHasParticipatedOtherFestivals($hasParticipatedOtherFestivals)
     {
-        $this->hasParticipatedOtherFestivals = $hasParticipatedOtherFestivals;
+        $this->hasParticipatedOtherFestivals = (boolean) $hasParticipatedOtherFestivals;
     }
 
     public function getOption($option)
@@ -928,7 +928,7 @@ class Movie extends AbstractEntity
      */
     public function setHasConversationsLanguages($hasConversationsLanguages)
     {
-        $this->hasConversationsLanguages = $hasConversationsLanguages;
+        $this->hasConversationsLanguages = (boolean) $hasConversationsLanguages;
     }
 
     /**
@@ -944,7 +944,7 @@ class Movie extends AbstractEntity
      */
     public function setHasSubtitlesLanguages($hasSubtitlesLanguages)
     {
-        $this->hasSubtitlesLanguages = $hasSubtitlesLanguages;
+        $this->hasSubtitlesLanguages = (boolean) $hasSubtitlesLanguages;
     }
 
     /**
@@ -960,7 +960,7 @@ class Movie extends AbstractEntity
      */
     public function setHasConversationsListLanguages($hasConversationsListLanguages)
     {
-        $this->hasConversationsListLanguages = $hasConversationsListLanguages;
+        $this->hasConversationsListLanguages = (boolean) $hasConversationsListLanguages;
     }
 
     /**
@@ -1103,5 +1103,10 @@ class Movie extends AbstractEntity
     public function setIsInvited($isInvited)
     {
         $this->isInvited = $isInvited;
+    }
+
+    public function isInvited()
+    {
+        return (boolean) $this->isInvited;
     }
 }

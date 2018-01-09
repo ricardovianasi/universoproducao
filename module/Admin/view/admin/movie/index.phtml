@@ -168,9 +168,17 @@
                                 </td>
 								<td><?php echo $item->getCreatedAt()->format('d/m/Y H:i') ?></td>
 								<td>
-                                    <a href="#" class="user-modal" data-view-only data-user-id="<?php echo $item->getAuthor()->getId(); ?>">
-                                        <?php echo $item->getAuthor()->getName(); ?>
-                                    </a>
+                                    <?php
+                                        if($item->isInvited()) {
+                                            echo "Filme convidado";
+                                        } elseif($item->getAuthor()) {
+                                            ?>
+                                            <a href="#" class="user-modal" data-view-only data-user-id="<?php echo $item->getAuthor()->getId(); ?>">
+                                                <?php echo $item->getAuthor()->getName(); ?>
+                                            </a>
+                                            <?php
+                                        }
+                                    ?>
                                 </td>
 								<td>
 									<a href="<?php echo  $updateUrl; ?>" class="btn btn-sm btn-default">

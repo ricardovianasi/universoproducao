@@ -1,0 +1,35 @@
+<div class="image-collection-template" id="image-collection-template" style="display: none">
+    <div class="col-md-4 image-collection-item">
+        <div class="portlet light portlet-fit bordered">
+            <div class="portlet-title">
+                <div class="caption">Imagem</div>
+                <div class="actions">
+                    <a href="#" class="btn blue btn-sm image-collection-delete">
+                        <i class="fa fa-close"></i> Apagar </a>
+                </div>
+            </div>
+            <div class="portlet-body">
+                <div class="form-group ">
+                    <div class="margin-bottom-5">
+                        <input name="medias[__index__][caption]" placeholder="Créditos da foto" class="form-control" type="text" value="">
+                    </div>
+                    <div class="fileinput fileinput2 fileinput-new" data-provides="fileinput" style="display: block">
+                        <div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">
+                            <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image" alt="" />
+                        </div>
+                        <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"> </div>
+                        <div>
+                            <span class="btn default btn-file">
+                                <span class="fileinput-new"> Selecionar imagem </span>
+                                <span class="fileinput-exists"> Alterar </span>
+                                <input type="file" name="medias[__index__][file]">
+                            </span>
+                            <a href="javascript:;" class="btn red fileinput-exists" data-dismiss="fileinput"> Remover </a>
+                        </div>
+                        <input type="hidden" name="medias[__index__][id]" class="form-control image-collection-id">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

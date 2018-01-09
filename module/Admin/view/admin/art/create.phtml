@@ -38,30 +38,73 @@
                                 <div class="col-md-4"><?php echo $this->formRow($form->get('category')) ?></div>
                             </div>
                             <div class="row">
-                                <div class="col-md-6"><?php echo $this->formRow($form->get('description')) ?></div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="control-label">Imagem</label>
-                                        <div class="input-group">
-                                            <div class="fileinput fileinput2 <?php echo $this->art->getFile() ? "fileinput-exist" : "fileinput-new"; ?>" data-provides="fileinput">
-                                                <div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">
-                                                    <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=sem+imagem" alt="" /> </div>
-                                                <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;">
-                                                    <?php if($this->art->getFile()): ?>
-                                                        <img width="100%" src="<?php echo $this->art->getFile() ?>" alt="" />
-                                                    <?php endif; ?>
-                                                </div>
-                                                <div>
-                                                    <a href="#"
-                                                       data-toggle="modal"
-                                                       data-target="#modal-responsivefilemanager"
-                                                       data-url="/filemanager/dialog.php?type=1&field_id=file"
-                                                       class="btn btn-success responsivefilemanager fileinput-add"><i class="fa fa-plus"></i> Selecionar uma Imagem</a>
-                                                    <a class="btn red fileinput-remove"> Remover </a>
-                                                    <?php echo $this->formElement($form->get('file')); ?>
+                                <div class="col-md-12"><?php echo $this->formRow($form->get('description')) ?></div>
+                            </div>
+
+                            <div class="portlet image-collection">
+                                <div class="portlet-title">
+                                    <div class="caption">
+                                        <i class="fa fa-gift"></i>Imagens </div>
+                                    <div class="actions">
+                                        <a href="javascript:;" class="btn default btn-sm image-collection-add"><i class="fa fa-plus"></i> Adicionar </a>
+                                    </div>
+                                </div>
+                                <div class="portlet-body">
+                                    <div class="row image-collection-items" data-origin="internal">
+                                        <?php $mediaFieldsets = $form->get('medias')->getFieldsets(); ?>
+                                        <?php foreach ($mediaFieldsets as $mFieldset): ?>
+                                            <div class="col-md-4 image-collection-item">
+                                                <div class="portlet light portlet-fit bordered">
+                                                    <div class="portlet-title">
+                                                        <div class="caption">Imagem</div>
+                                                        <div class="actions">
+                                                            <a href="#" class="btn blue btn-sm image-collection-delete">
+                                                                <i class="fa fa-close"></i> Apagar </a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="portlet-body">
+                                                        <div class="form-group <?php echo !empty($mFieldset->get("file")->getMessages()) ? "has-error" : ""; ?>">
+                                                            <div class="margin-bottom-5">
+                                                                <?php echo $this->formElement($mFieldset->get('caption')); ?>
+                                                            </div>
+                                                            <?php
+                                                            $mediaSrc = null;
+                                                            if($mFieldset->has("src")) {
+                                                                $mediaSrc = $mFieldset->get("src")->getValue();
+                                                            }
+                                                            $fileEl = $mFieldset->get("file");
+                                                            $fileEl->setAttribute('id', time(false).'_'.mt_rand());
+                                                            ?>
+                                                            <div class="fileinput fileinput2 <?php echo $mediaSrc ? "fileinput-exists" : "fileinput-new" ?>" data-provides="fileinput" data-file-id="<?php echo $fileEl->getAttribute('id') ?>" style="display: block">
+                                                                <div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">
+                                                                    <?php if(!$mediaSrc):  ?>
+                                                                        <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image" alt="" />
+                                                                    <?php endif; ?>
+                                                                </div>
+                                                                <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;">
+                                                                    <?php if($mediaSrc): ?>
+                                                                        <img src="<?php echo $this->fileManipulation()->url($mediaSrc); ?>" alt="">
+                                                                    <?php endif; ?>
+                                                                </div>
+                                                                <div>
+                                                                    <?php echo $this->formElement($fileEl); ?>
+                                                                    <a href="#"
+                                                                       data-toggle="modal"
+                                                                       data-target="#modal-responsivefilemanager"
+                                                                       data-url="/filemanager/dialog.php?type=1&field_id=<?php echo $fileEl->getAttribute('id') ?>"
+                                                                       class="btn btn-success responsivefilemanager fileinput-add"><i class="fa fa-plus"></i> Selecionar uma Imagem</a>
+                                                                    <a href="javascript:;" class="btn red fileinput-exists" data-dismiss="fileinput"> Remover </a>
+                                                                </div>
+                                                                <?php echo $this->formElement($mFieldset->get("id")); ?>
+                                                                <?php echo $this->formElement($mFieldset->get("src")); ?>
+                                                            </div>
+                                                            <?php echo $this->formElementErrors($mFieldset->get('file')); ?>
+                                                            <?php echo $this->formElementErrors($mFieldset->get('caption')); ?>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        <?php endforeach; ?>
                                     </div>
                                 </div>
                             </div>
@@ -135,3 +178,5 @@
 
 	</div>
 </div>
+
+<?php echo $this->partial('admin/partials/_media-fieldset-template.phtml'); ?>
