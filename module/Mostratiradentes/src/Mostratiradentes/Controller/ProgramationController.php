@@ -31,8 +31,8 @@ class ProgramationController extends SiteController
             ->andWhere('p.parent is NULL')
             ->andWhere('p.type != :type')
             ->setParameter('type', Type::WORKSHOP)
-            ->addOrderBy('p.order', 'ASC')
             ->addOrderBy('p.date', 'ASC')
+            ->addOrderBy('p.order', 'ASC')
             ->addOrderBy('p.startTime', 'ASC');
 
         $items = $qb->getQuery()->getResult();
