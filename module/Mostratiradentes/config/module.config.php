@@ -110,7 +110,7 @@ return array(
                         ),
                         'priority' => '99999'
                     ),
-                    'arte' => array(
+                    'art' => array(
                         'type' => Segment::class,
                         'options' => array(
                             'route' => '/programacao/arte/:id',
@@ -118,7 +118,7 @@ return array(
                                 'id' => '[a-zA-Z0-9_-]*',
                             ],
                             'defaults' => array(
-                                'controller' => Controller\ProgramationController::class,
+                                'controller' => Controller\ArtController::class,
                                 'action' => 'arte',
                             ),
                         ),

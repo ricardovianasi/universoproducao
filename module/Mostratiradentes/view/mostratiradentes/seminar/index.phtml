@@ -1,0 +1,16 @@
+<div class="main-wrapper main-content">
+    <header class="main-header">
+        <h1 class="main-title"><?php echo $post->getTitle() ?></h1>
+    </header>
+
+    <div class="news-list">
+        <?php foreach ($this->list as $item): ?>
+            <article class="news-item">
+                <header class="news-header">
+                    <h1 class="news-title"><?php  echo $item->getTitle(); ?></h1>
+                </header>
+                <a href="<?php echo $this->url("mostratiradentes/seminar", ['id'=>$item->getId()]) ?>" class="button-readmore">Maiores informações</a>
+            </article>
+        <?php endforeach; ?>
+    </div>
+</div>

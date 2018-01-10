@@ -1,0 +1,10 @@
+<?php $item = $this->post; ?>
+<div class="main-wrapper main-content">
+    <header class="main-header">
+        <h1 class="main-title"><?php echo $item->getTitle(); ?></h1>
+    </header>
+
+    <?php echo $item->getDescription() ?>
+
+    <?php echo $this->partial("application/partials/share.phtml", ['title'=>$item->getTitle()]); ?>
+</div>
