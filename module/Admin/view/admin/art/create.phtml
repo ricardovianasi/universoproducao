@@ -51,7 +51,7 @@
                                 </div>
                                 <div class="portlet-body">
                                     <div class="row image-collection-items" data-origin="internal">
-                                        <?php $mediaFieldsets = $form->get('medias')->getFieldsets(); ?>
+                                        <?php $mediaFieldsets = $form->get('files')->getFieldsets(); ?>
                                         <?php foreach ($mediaFieldsets as $mFieldset): ?>
                                             <div class="col-md-4 image-collection-item">
                                                 <div class="portlet light portlet-fit bordered">
@@ -63,9 +63,9 @@
                                                         </div>
                                                     </div>
                                                     <div class="portlet-body">
-                                                        <div class="form-group <?php echo !empty($mFieldset->get("file")->getMessages()) ? "has-error" : ""; ?>">
+                                                        <div class="form-group <?php echo !empty($mFieldset->get("src")->getMessages()) ? "has-error" : ""; ?>">
                                                             <div class="margin-bottom-5">
-                                                                <?php echo $this->formElement($mFieldset->get('caption')); ?>
+                                                                <?php echo $this->formElement($mFieldset->get('description')); ?>
                                                             </div>
                                                             <?php
                                                             $mediaSrc = null;
@@ -98,8 +98,7 @@
                                                                 <?php echo $this->formElement($mFieldset->get("id")); ?>
                                                                 <?php echo $this->formElement($mFieldset->get("src")); ?>
                                                             </div>
-                                                            <?php echo $this->formElementErrors($mFieldset->get('file')); ?>
-                                                            <?php echo $this->formElementErrors($mFieldset->get('caption')); ?>
+                                                            <?php echo $this->formElementErrors($mFieldset->get('description')); ?>
                                                         </div>
                                                     </div>
                                                 </div>
