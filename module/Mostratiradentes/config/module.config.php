@@ -119,7 +119,7 @@ return array(
                             ],
                             'defaults' => array(
                                 'controller' => Controller\ArtController::class,
-                                'action' => 'arte',
+                                'action' => 'details',
                             ),
                         ),
                         'priority' => '99999'
