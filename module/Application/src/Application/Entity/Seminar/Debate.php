@@ -41,9 +41,19 @@ class Debate extends AbstractEntity
 
     private $programing;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="Application\Entity\File\File", cascade={"ALL"})
+     * @ORM\JoinTable(name="seminar_debate_has_files",
+     *      joinColumns={@ORM\JoinColumn(name="seminar_debate_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="file_id", referencedColumnName="id")}
+     * )
+     */
+    private $files;
+
     public function __construct()
     {
         $this->programing = new ArrayCollection();
+        $this->files = new ArrayCollection();
     }
 
     /**
@@ -147,5 +157,21 @@ class Debate extends AbstractEntity
                 'type' => Type::SEMINAR_DEBATE,
                 'objectId' => $this->id
             ]);
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFiles()
+    {
+        return $this->files;
+    }
+
+    /**
+     * @param mixed $files
+     */
+    public function setFiles($files)
+    {
+        $this->files = $files;
     }
 }

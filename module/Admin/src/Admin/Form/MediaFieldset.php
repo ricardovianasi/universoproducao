@@ -22,9 +22,19 @@ class MediaFieldset extends Fieldset
         parent::__construct($name, $options);
 
         $this->add([
-            'name' => 'caption',
+            'type' => 'hidden',
+            'name' => 'id',
+        ]);
+
+        $this->add([
+            'type' => 'hidden',
+            'name' => 'src',
+        ]);
+
+        $this->add([
+            'name' => 'credits',
             'options' => [
-                'label' => 'Créditos da foto'
+                'label' => 'Créditos'
             ],
             'attributes' => [
                 'placeholder' => 'Créditos da foto'
@@ -32,35 +42,42 @@ class MediaFieldset extends Fieldset
         ]);
 
         $this->add([
-            'type' => 'hidden',
-            'name' => 'file',
-        ]);
-
-        $this->add([
-            'type' => 'hidden',
-            'name' => 'id',
+            'name' => 'title',
+            'options' => [
+                'label' => 'Título'
+            ],
             'attributes' => [
-                'class' => 'image-collection-id'
+                'placeholder' => 'Créditos da foto'
             ]
         ]);
 
         $this->add([
-            'type' => 'hidden',
-            'name' => 'src',
+            'name' => 'description',
+            'type' => 'Textarea',
+            'options' => [
+                'label' => 'Descrição'
+            ],
             'attributes' => [
-                'class' => 'image-collection-src'
+                'placeholder' => 'Créditos da foto'
             ]
         ]);
+
+        $this->add([
+            'type' => 'Checkbox',
+            'name' => 'is_default',
+            'options' => array(
+                'label' => 'Destaque',
+                'use_hidden_element' => false,
+                'checked_value' => '1',
+                'unchecked_value' => '0'
+            )
+        ]);
+
     }
 
     public function getInputFilterSpecification()
     {
-        return [
-            'caption' => [
-                'name'       => 'caption',
-                'required'   => false,
-            ],
-        ];
+        return [];
     }
 
 

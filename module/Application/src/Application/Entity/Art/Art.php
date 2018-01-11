@@ -44,13 +44,19 @@ class Art extends AbstractEntity
 
     private $programing;
 
-    /** @ORM\OneToMany(targetEntity="Media", mappedBy="art", cascade={"ALL"})  */
-    private $medias;
+    /**
+     * @ORM\ManyToMany(targetEntity="Application\Entity\File\File", cascade={"ALL"})
+     * @ORM\JoinTable(name="art_has_files",
+     *      joinColumns={@ORM\JoinColumn(name="art_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="file_id", referencedColumnName="id")}
+     * )
+     */
+    private $files;
 
     public function __construct()
     {
         $this->programing = new ArrayCollection();
-        $this->medias = new ArrayCollection();
+        $this->files = new ArrayCollection();
     }
 
     /**
@@ -175,27 +181,16 @@ class Art extends AbstractEntity
     /**
      * @return mixed
      */
-    public function getMedias()
+    public function getFiles()
     {
-        return $this->medias;
+        return $this->files;
     }
 
     /**
-     * @param mixed $medias
+     * @param mixed $files
      */
-    public function setMedias($medias)
+    public function setFiles($files)
     {
-        $this->medias = $medias;
-    }
-
-    public function getMediaById($mediaId)
-    {
-        foreach ($this->medias as $key=>$m) {
-            if($m->getId() == $mediaId) {
-                return $m;
-            }
-        }
-
-        return false;
+        $this->files = $files;
     }
 }
