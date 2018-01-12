@@ -113,7 +113,8 @@ class ProgramationController extends SiteController
                 }
 
                 $events[] = [
-                    'title' => $prog->getObject()->getTitle()
+                    'title' => $prog->getObject()->getTitle(),
+                    'id' => $prog->getObject()->getId()
                 ];
 
             } elseif ($prog->getType() == Type::OPENING) {
