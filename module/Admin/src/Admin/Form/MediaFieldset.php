@@ -58,7 +58,7 @@ class MediaFieldset extends Fieldset
                 'label' => 'Descrição'
             ],
             'attributes' => [
-                'placeholder' => 'Créditos da foto'
+                'placeholder' => 'Legenda ou créditos'
             ]
         ]);
 

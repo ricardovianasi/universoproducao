@@ -53,7 +53,7 @@
                                     <div class="row image-collection-items" data-origin="internal">
                                         <?php $mediaFieldsets = $form->get('files')->getFieldsets(); ?>
                                         <?php foreach ($mediaFieldsets as $mFieldset): ?>
-                                            <div class="col-md-4 image-collection-item">
+                                            <div class="col-md-3 image-collection-item">
                                                 <div class="portlet light portlet-fit bordered">
                                                     <div class="portlet-title">
                                                         <div class="caption">Imagem</div>
@@ -64,27 +64,24 @@
                                                     </div>
                                                     <div class="portlet-body">
                                                         <div class="form-group <?php echo !empty($mFieldset->get("src")->getMessages()) ? "has-error" : ""; ?>">
-                                                            <div class="margin-bottom-5">
-                                                                <?php echo $this->formElement($mFieldset->get('description')); ?>
-                                                            </div>
+
                                                             <?php
-                                                            $mediaSrc = null;
-                                                            if($mFieldset->has("src")) {
-                                                                $mediaSrc = $mFieldset->get("src")->getValue();
-                                                            }
-                                                            $fileEl = $mFieldset->get("file");
-                                                            $fileEl->setAttribute('id', time(false).'_'.mt_rand());
+                                                                $fileEl = $mFieldset->get("src");
+                                                                $fileEl->setAttribute('id', time(false).'_'.mt_rand());
                                                             ?>
-                                                            <div class="fileinput fileinput2 <?php echo $mediaSrc ? "fileinput-exists" : "fileinput-new" ?>" data-provides="fileinput" data-file-id="<?php echo $fileEl->getAttribute('id') ?>" style="display: block">
+                                                            <div class="fileinput fileinput2 <?php echo $fileEl->getValue() ? "fileinput-exists" : "fileinput-new" ?>" data-provides="fileinput" data-file-id="<?php echo $fileEl->getAttribute('id') ?>" style="display: block">
                                                                 <div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">
-                                                                    <?php if(!$mediaSrc):  ?>
+                                                                    <?php if(!$fileEl->getValue()):  ?>
                                                                         <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image" alt="" />
                                                                     <?php endif; ?>
                                                                 </div>
                                                                 <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;">
-                                                                    <?php if($mediaSrc): ?>
-                                                                        <img src="<?php echo $this->fileManipulation()->url($mediaSrc); ?>" alt="">
+                                                                    <?php if($fileEl->getValue()): ?>
+                                                                        <img src="<?php echo $this->fileManipulation()->url($fileEl->getValue()); ?>" alt="">
                                                                     <?php endif; ?>
+                                                                </div>
+                                                                <div class="margin-bottom-5">
+                                                                    <?php echo $this->formElement($mFieldset->get('description')); ?>
                                                                 </div>
                                                                 <div>
                                                                     <?php echo $this->formElement($fileEl); ?>
@@ -96,7 +93,6 @@
                                                                     <a href="javascript:;" class="btn red fileinput-exists" data-dismiss="fileinput"> Remover </a>
                                                                 </div>
                                                                 <?php echo $this->formElement($mFieldset->get("id")); ?>
-                                                                <?php echo $this->formElement($mFieldset->get("src")); ?>
                                                             </div>
                                                             <?php echo $this->formElementErrors($mFieldset->get('description')); ?>
                                                         </div>
