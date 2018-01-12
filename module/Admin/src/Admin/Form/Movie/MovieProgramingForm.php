@@ -77,8 +77,30 @@ class MovieProgramingForm extends  ProgramingForm
             'name' => 'sub_event',
             'options' => [
                 'label' => 'Sub-mostra',
-                'empty_option' => 'Selecione',
+                'empty_option' => 'Sub-mostra',
                 'value_options' => $this->populateSubEvents(),
+                'twb-layout' => 'horizontal',
+                'column-size' => 'md-4',
+                'label_attributes' => [
+                    'class' => 'col-md-4'
+                ]
+            ],
+            'attributes' => [
+                'required' => 'required',
+            ]
+        ]);
+
+        $this->add([
+            'type' => 'Select',
+            'name' => 'category',
+            'options' => [
+                'label' => '',
+                'empty_option' => 'Categoria',
+                'value_options' => [
+                    Movie::CATEGORY_CURTA => 'Curta',
+                    Movie::CATEGORY_MEDIA => 'Média',
+                    Movie::CATEGORY_LONGA => 'Longa',
+                ],
                 'twb-layout' => 'horizontal',
                 'column-size' => 'md-4',
                 'label_attributes' => [

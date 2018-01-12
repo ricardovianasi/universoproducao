@@ -111,6 +111,40 @@
                     <h1 class="main-title">Filmes</h1>
                 </header>
 
+                <div class="movie-filter filter">
+                    <form method="GET" name="programing-form" class="filter-form">
+                        <select name="sub_event" required="required" class="form-control filter-input"><option value="">Selecione</option>
+                            <option value="1">Mostra Panorama</option>
+                            <option value="2">Mostra Foco</option>
+                            <option value="3">Mostra Praça</option>
+                            <option value="4">Mostra Chamado Realista</option>
+                            <option value="5">Mostra Formação</option>
+                            <option value="6">Mostra Regional</option>
+                            <option value="7">Mostra Foco Minas</option>
+                            <option value="8">Mostrinha</option>
+                            <option value="9">Mostra Aurora</option>
+                            <option value="10">Mostra Olhos Livres</option>
+                            <option value="11">Curtas na Praça</option>
+                            <option value="12">Mostra Homenagem</option>
+                            <option value="13">Sessão Jovem</option>
+                            <option value="14">Filme de Encerramento</option>
+                        </select>
+                        <select name="category" required="required" class="form-control filter-input"><option value="">Selecione a categoria</option>
+                            <option value="curta">Curta</option>
+                            <option value="media">Média</option>
+                            <option value="longa">Longa</option>
+                        </select>
+                        <select name="place" required="required" class="form-control filter-input"><option value="">Selecione</option>
+                            <option value="1">Cine-Tenda </option>
+                            <option value="2">SESC Cine - Lounge</option>
+                            <option value="3">Cine BNDES na Praça</option>
+                            <option value="4">Cine - Teatro Sesi</option>
+                            <option value="5">SAÍDA DA IGREJA DO ROSÁRIO – RUA DIREITA COM DESTINO AO CINE BNDES NA PRAÇA</option>
+                        </select>
+                        <button type="submit" class="filter-submit">Buscar</button>
+                    </form>
+                </div>
+
                 <div class="movie-list">
                     <article class="movie-item">
                         <a href="http://www.mostratiradentes.com.br/programacao/filme/436" class="movie-link">

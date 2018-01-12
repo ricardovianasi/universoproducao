@@ -124,7 +124,7 @@ class ProgramingForm extends Form
             'name' => 'place',
             'options' => [
                 'label' => 'Local',
-                'empty_option' => 'Selecione',
+                'empty_option' => 'Local',
                 'value_options' => $this->populatePlace(),
                 'twb-layout' => 'horizontal',
                 'column-size' => 'md-4',

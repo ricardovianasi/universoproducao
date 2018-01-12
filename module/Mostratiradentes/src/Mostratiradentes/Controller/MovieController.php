@@ -1,18 +1,14 @@
 <?php
 namespace Mostratiradentes\Controller;
 
+use Admin\Form\Movie\MovieForm;
+use Admin\Form\Movie\MovieProgramingForm;
 use Application\Controller\SiteController;
 use Application\Entity\Movie\Movie;
 use Application\Entity\Movie\OptionsType;
-use Application\Entity\Post\Post;
-use Application\Entity\Post\PostStatus;
-use Application\Entity\Post\PostType;
 use Application\Entity\Registration\Status;
 use Application\Entity\Site\Site;
 use Zend\View\Model\ViewModel;
-use DoctrineORMModule\Paginator\Adapter\DoctrinePaginator;
-use Doctrine\ORM\Tools\Pagination\Paginator as ORMPaginator;
-use Zend\Paginator\Paginator;
 
 class MovieController extends SiteController
 {
@@ -22,11 +18,13 @@ class MovieController extends SiteController
     {
         $post = $this->params('post');
         $site = $this->getRepository(Site::class)->find(self::SITE_ID);
+        $formFilter = new MovieProgramingForm($this->getEntityManager(), $site->getEvent());
 
         $qb = $this
             ->getRepository(Movie::class)
             ->createQueryBuilder('m')
             ->innerJoin('m.subscriptions', 's')
+            ->join()
             ->andWhere('s.event = :idEvent')
             ->andWhere('s.status = :status')
             ->orderBy('m.title', 'ASC')
@@ -35,12 +33,18 @@ class MovieController extends SiteController
                 'status' => Status::SELECTED
             ]);
 
+        $data = $this->getRequest()->getQuery()->toArray();
+        if(!empty($data['sub_event'])) {
+
+        }
+
         $movies = $qb->getQuery()->getResult();
 
         return new ViewModel([
             'movies' => $movies,
             'post' => $post,
-            'breadcrumbs' => $post->getBreadcrumbs()
+            'breadcrumbs' => $post->getBreadcrumbs(),
+            'form' => $formFilter->setData($data)
         ]);
     }
 
