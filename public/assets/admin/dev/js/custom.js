@@ -945,7 +945,6 @@ jQuery(document).ready(function() {
         init: function() {
             this.config = $.extend({}, this.defaults, this.options, this.$element.data());
             var _that = this;
-            console.log(_that.config);
             var $fileElement;
             if (_that.config.fileId) {
                 $fileElement = $("#" + _that.config.fileId, _that.$element);
@@ -953,7 +952,6 @@ jQuery(document).ready(function() {
                 $fileElement = $("#file", _that.$element);
             }
             $fileElement.on("change", function() {
-                console.log("bla");
                 if ($(this).val()) {
                     _that.$element.addClass("fileinput-exist");
                     var img = $("<img width='100%' src='" + $(this).val() + "'>");
@@ -1135,7 +1133,9 @@ jQuery(document).ready(function() {
                 var id = Math.floor(Date.now() / 1e3);
                 var template = $("#image-collection-template").clone().html();
                 template = template.replace(/__index__/g, id);
-                _that.$element.find(".image-collection-items").append(template).filter(".fileinput").fileinput();
+                _that.$element.find(".image-collection-items").append(template);
+                $('[data-id="' + id + '"] .fileinput').fileInput();
+                $(document).find(".responsivefilemanager").modalResponsiveFileManager();
             });
             $(document).on("click", ".image-collection-delete", function(e) {
                 e.preventDefault();
@@ -1697,6 +1697,7 @@ function copyToClipboard(elem) {
             var modal = $(_that.config.target);
             _that.$element.on("click", function(e) {
                 e.preventDefault();
+                console.log(_that.config.url);
                 App.blockUI({
                     cenrerY: true,
                     animate: true
@@ -1710,7 +1711,7 @@ function copyToClipboard(elem) {
                         modal.modal("show");
                     }
                 });
-                modal.find(".modal-body").empty().replaceWith(ifr);
+                modal.find(".modal-body").empty().html(ifr);
                 modal.on("hide.bs.modal	", function(e) {
                     App.unblockUI();
                     modal.find(".modal-body").empty();
@@ -1728,9 +1729,7 @@ function copyToClipboard(elem) {
 })(window, jQuery);
 
 function responsive_filemanager_callback(field_id) {
-    console.log("responsive_filemanager_callback " + field_id);
     var field = $("#" + field_id);
-    console.log(field);
     field.trigger("change");
     return;
 }

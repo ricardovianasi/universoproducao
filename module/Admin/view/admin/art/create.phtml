@@ -77,11 +77,14 @@
                                                                 </div>
                                                                 <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;">
                                                                     <?php if($fileEl->getValue()): ?>
-                                                                        <img src="<?php echo $this->fileManipulation()->url($fileEl->getValue()); ?>" alt="">
+                                                                        <img src="<?php echo $fileEl->getValue(); ?>" alt="">
                                                                     <?php endif; ?>
                                                                 </div>
                                                                 <div class="margin-bottom-5">
                                                                     <?php echo $this->formElement($mFieldset->get('description')); ?>
+                                                                </div>
+                                                                <div class="margin-bottom-5">
+                                                                    <?php echo $this->formElement($mFieldset->get('is_default')); ?>
                                                                 </div>
                                                                 <div>
                                                                     <?php echo $this->formElement($fileEl); ?>

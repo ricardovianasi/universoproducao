@@ -10,9 +10,11 @@ use Application\Entity\Art\Category;
 use Application\Entity\Event\Event;
 use Application\Entity\Event\EventType;
 use Application\Entity\Event\Place;
+use Application\Entity\File\File;
 use Application\Entity\Programing\Programing;
 use Application\Entity\Programing\Type;
 use Application\Entity\Workshop\Workshop;
+use Doctrine\Common\Collections\ArrayCollection;
 
 class ArtController extends AbstractAdminController implements CrudInterface
 {
@@ -97,6 +99,17 @@ class ArtController extends AbstractAdminController implements CrudInterface
                 foreach ($art->getPrograming() as $p) {
                     $this->getEntityManager()->remove($p);
                 }
+
+                $files = new ArrayCollection();
+                if(!empty($data['files'])) {
+                    foreach ($data['files'] as $dataFile) {
+                        $file = new File();
+                        $file->setData($dataFile);
+                        $files->add($file);
+                    }
+                }
+                $art->setFiles($files);
+                unset($data['files']);
 
                 $art->setData($data);
                 $this->getEntityManager()->persist($art);

@@ -9,10 +9,8 @@
 		},
 		init: function() {
 			this.config = $.extend({}, this.defaults, this.options, this.$element.data());
+
 			var _that = this;
-
-			console.log(_that.config);
-
 			var $fileElement;
 			if(_that.config.fileId) {
 				$fileElement = $("#"+_that.config.fileId, _that.$element);
@@ -21,7 +19,6 @@
 			}
 
 			$fileElement.on("change", function() {
-				console.log('bla');
 				if($(this).val()) {
 					_that.$element.addClass("fileinput-exist");
 

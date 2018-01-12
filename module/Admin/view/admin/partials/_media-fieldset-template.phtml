@@ -1,5 +1,5 @@
 <div class="image-collection-template" id="image-collection-template" style="display: none">
-    <div class="col-md-3 image-collection-item">
+    <div class="col-md-3 image-collection-item" data-id="__index__">
         <div class="portlet light portlet-fit bordered">
             <div class="portlet-title">
                 <div class="caption">Imagem</div>
@@ -10,20 +10,30 @@
             </div>
             <div class="portlet-body">
                 <div class="form-group ">
-
-                    <div class="fileinput fileinput2 fileinput-new" data-provides="fileinput" data-file-id="1515712156_1154105025" style="display: block">
+                    <div class="fileinput fileinput2 fileinput-new" data-provides="fileinput" data-file-id="__index__" style="display: block">
                         <div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">
                             <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image" alt="">
                         </div>
-                        <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;">
+                        <div class="fileinput-preview fileinput-exists thumbnail"
+                             style="max-width: 200px; max-height: 150px;">
                         </div>
                         <div class="margin-bottom-5">
-                            <textarea name="files[0][description]" placeholder="Legenda ou créditos" class="form-control"></textarea>                                                                </div>
-                        <div>
-                            <input type="hidden" name="files[0][src]" id="1515712156_1154105025" class="form-control" value="">                                                                    <a href="#" data-toggle="modal" data-target="#modal-responsivefilemanager" data-url="/filemanager/dialog.php?type=1&amp;field_id=1515712156_1154105025" class="btn btn-success responsivefilemanager fileinput-add"><i class="fa fa-plus"></i> Selecionar uma Imagem</a>
-                            <a href="javascript:;" class="btn red fileinput-exists" data-dismiss="fileinput"> Remover </a>
+                            <textarea name="files[__index__][description]" placeholder="Legenda ou créditos"
+                                      class="form-control"></textarea></div>
+                        <div class="margin-bottom-5">
+                            <label><input type="checkbox" name="files[__index__][is_default]" class="icheck" value="1"> Destaque</label>
                         </div>
-                        <input type="hidden" name="files[0][id]" class="form-control" value="">                                                            </div>
+                        <div>
+                            <input type="hidden" name="files[__index__][src]" id="__index__"
+                                   class="form-control" value=""> <a href="#" data-toggle="modal"
+                                                                     data-target="#modal-responsivefilemanager"
+                                                                     data-url="/filemanager/dialog.php?type=1&amp;field_id=__index__"
+                                                                     class="btn btn-success responsivefilemanager fileinput-add"><i
+                                        class="fa fa-plus"></i> Selecionar uma Imagem</a>
+                            <a href="javascript:;" class="btn red fileinput-exists" data-dismiss="fileinput">
+                                Remover </a>
+                        </div>
+                        <input type="hidden" name="files[__index__][id]" class="form-control" value=""></div>
                 </div>
             </div>
         </div>

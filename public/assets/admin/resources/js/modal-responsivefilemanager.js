@@ -17,6 +17,8 @@
 			_that.$element.on('click', function(e) {
 				e.preventDefault();
 
+				console.log(_that.config.url);
+
 				App.blockUI({
 					cenrerY: true,
 					animate: true
@@ -32,7 +34,7 @@
 					}
 				});
 
-				modal.find('.modal-body').empty().replaceWith(ifr);
+				modal.find('.modal-body').empty().html(ifr);
 
 				modal.on('hide.bs.modal	', function (e) {
 					App.unblockUI();
@@ -55,9 +57,7 @@
 })(window, jQuery);
 
 function responsive_filemanager_callback(field_id) {
-    console.log('responsive_filemanager_callback ' + field_id);
     var field = $("#"+field_id);
-    console.log(field);
     field.trigger('change');
     return;
 }

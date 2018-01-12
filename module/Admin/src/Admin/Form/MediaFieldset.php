@@ -70,14 +70,23 @@ class MediaFieldset extends Fieldset
                 'use_hidden_element' => false,
                 'checked_value' => '1',
                 'unchecked_value' => '0'
-            )
+            ),
+            'attributes' => [
+                'class' => 'icheck'
+            ]
         ]);
 
     }
 
     public function getInputFilterSpecification()
     {
-        return [];
+        return [
+            'is_default' => [
+                'name' => 'is_default',
+                'required' => false,
+                'allow_empty' => true
+            ]
+        ];
     }
 
 

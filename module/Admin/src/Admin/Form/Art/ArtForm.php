@@ -128,15 +128,16 @@ class ArtForm extends Form
                     if(is_object($m)) {
                         $files[] = [
                             'id' => $m->getId(),
-                            'caption' => $m->getCredits(),
-                            'src' => $m->getSrc()
+                            'description' => $m->getDescription(),
+                            'src' => $m->getSrc(),
+                            'is_default' => $m->getIsDefault()
                         ];
                     } else {
                         $files[] = [
                             'id' => isset($m['id'])?$m['id']:'',
-                            'caption' => isset($m['caption'])?$m['caption']:'',
+                            'description' => isset($m['description'])?$m['description']:'',
                             'src' => isset($m['src'])?$m['src']:'',
-                            'file' => isset($m['file'])?$m['file']:[]
+                            'is_default' => isset($m['is_default'])?$m['is_default']:[]
                         ];
                     }
                 }

@@ -26,9 +26,10 @@
 				template = template.replace(/__index__/g, id);
 				_that.$element
 					.find('.image-collection-items')
-					.append(template)
-					.filter('.fileinput')
-					.fileinput();
+					.append(template);
+				
+				$('[data-id="'+id+'"] .fileinput').fileInput();
+				$(document).find('.responsivefilemanager').modalResponsiveFileManager();
 			});
 
 			$(document).on('click', '.image-collection-delete', function(e) {
