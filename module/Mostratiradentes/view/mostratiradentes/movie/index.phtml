@@ -9,7 +9,7 @@
                     <div class="movie-cover">
                     <?php if($movie->getMedias()->first()): $media = $movie->getMedias()->first(); ?>
                         <figure class="movie-figure">
-                            <img src="<?php echo $this->thumbor()->url($this->fileManipulation()->url($media->getSrc()))->resize(400, 400); ?>" alt="">
+                            <img src="<?php echo $this->thumbor()->url($this->fileManipulation()->url($media->getSrc()))->resize(400, 600); ?>" alt="">
                         </figure>
 
                         <?php if(count($movie->getPrograming())): ?>
