@@ -1,14 +1,18 @@
 <?php
 namespace Application\Entity\Movie;
 
+use Application\Entity\Programing\Programing;
 use Application\Entity\Registration\Registration;
+use Application\Entity\Registration\Type;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\ORM\Event\LifecycleEventArgs;
 use Doctrine\ORM\Mapping as ORM;
 use Util\Entity\AbstractEntity;
 
 /**
  * @ORM\Table(name="movie")
  * @ORM\Entity(repositoryClass="Application\Repository\Movie\Movie")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Movie extends AbstractEntity
 {
@@ -166,6 +170,8 @@ class Movie extends AbstractEntity
     /** @ORM\Column(name="is_invited", type="boolean", nullable=true) */
     private $isInvited = false;
 
+    private $programing;
+
     /**
      * @ORM\ManyToMany(targetEntity="Options")
      * @ORM\JoinTable(name="movie_has_options",
@@ -180,6 +186,7 @@ class Movie extends AbstractEntity
         $this->medias = new ArrayCollection();
         $this->subscriptions = new ArrayCollection();
         $this->options = new ArrayCollection();
+        $this->programing = new ArrayCollection();
     }
 
     /**
@@ -1109,4 +1116,28 @@ class Movie extends AbstractEntity
     {
         return (boolean) $this->isInvited;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getPrograming()
+    {
+        return $this->programing;
+    }
+
+    /**
+     * @ORM\PostLoad
+     * @ORM\PostPersist
+     */
+    public function setPrograming(LifecycleEventArgs $event)
+    {
+        $this->programing = $event
+            ->getEntityManager()
+            ->getRepository(Programing::class)
+            ->findBy([
+                'type' => Type::MOVIE,
+                'objectId' => $this->id
+            ]);
+    }
+
 }
