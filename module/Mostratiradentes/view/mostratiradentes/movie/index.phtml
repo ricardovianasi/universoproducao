@@ -41,8 +41,8 @@
                     <div class="movie-cover">
                     <?php if($movie->getMedias()->first()): $media = $movie->getMedias()->first(); ?>
                         <figure class="movie-figure">
-<!--                            <img src="--><?php //echo $this->thumbor()->url($this->fileManipulation()->url($media->getSrc()))->resize(400, 600); ?><!--" alt="">-->
-                            <img src="http://162.243.253.29:8888/unsafe/400x600/http://universoproducao.com.br/repository/5/9/e/2/59e2a4a21721e380ce8205c8f44a90ab_15084421060265_1115908104.jpg" alt="">
+                            <img src="<?php echo $this->thumbor()->url($this->fileManipulation()->url($media->getSrc()))->resize(400, 600); ?>" alt="">
+<!--                            <img src="http://162.243.253.29:8888/unsafe/400x600/http://universoproducao.com.br/repository/5/9/e/2/59e2a4a21721e380ce8205c8f44a90ab_15084421060265_1115908104.jpg" alt="">-->
                         </figure>
 
                         <?php if(count($movie->getPrograming())): ?>
