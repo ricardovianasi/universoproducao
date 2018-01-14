@@ -41,6 +41,12 @@ class MovieController extends SiteController
                 ->setParameter('idSubEvent', $data['sub_event']);
         }
 
+        if(!empty($data['place'])) {
+            $qb->andWhere('p.place = :place')
+                ->setParameter('place', $data['place']);
+        }
+
+
         $movies = $qb->getQuery()->getResult();
 
         return new ViewModel([
