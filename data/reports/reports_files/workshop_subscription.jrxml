@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.4.0.final using JasperReports Library version 6.4.1  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="workshop_subscription" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="842" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="124689ab-41a7-483d-8148-bbf810723d0a">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="DataAdapterWorkshopSubscriptionsList.xml"/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="net.sf.jasperreports.print.keep.full.text" value="true"/>
+	<queryString language="json">
+		<![CDATA[object]]>
+	</queryString>
+	<field name="event_name" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="event_name"/>
+		<fieldDescription><![CDATA[event_name]]></fieldDescription>
+	</field>
+	<field name="user_name" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="user_name"/>
+		<fieldDescription><![CDATA[user_name]]></fieldDescription>
+	</field>
+	<field name="user_identifier" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="user_identifier"/>
+		<fieldDescription><![CDATA[user_identifier]]></fieldDescription>
+	</field>
+	<field name="user_birth_date" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="user_birth_date"/>
+		<fieldDescription><![CDATA[user_birth_date]]></fieldDescription>
+	</field>
+	<field name="user_parent_name" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="user_parent_name"/>
+		<fieldDescription><![CDATA[user_parent_name]]></fieldDescription>
+	</field>
+	<field name="user_parent_identifier" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="user_parent_identifier"/>
+		<fieldDescription><![CDATA[user_parent_identifier]]></fieldDescription>
+	</field>
+	<field name="user_email" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="user_email"/>
+		<fieldDescription><![CDATA[user_email]]></fieldDescription>
+	</field>
+	<field name="user_address" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="user_address"/>
+		<fieldDescription><![CDATA[user_address]]></fieldDescription>
+	</field>
+	<field name="user_phones" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="user_phones"/>
+		<fieldDescription><![CDATA[user_phones]]></fieldDescription>
+	</field>
+	<field name="workshop_name" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="workshop_name"/>
+		<fieldDescription><![CDATA[workshop_name]]></fieldDescription>
+	</field>
+	<field name="workshop_programation" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="workshop_programation"/>
+		<fieldDescription><![CDATA[workshop_programation]]></fieldDescription>
+	</field>
+	<field name="status" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="status"/>
+		<fieldDescription><![CDATA[status]]></fieldDescription>
+	</field>
+	<group name="event_name">
+		<groupExpression><![CDATA[$F{event_name}]]></groupExpression>
+	</group>
+	<group name="user_name">
+		<groupExpression><![CDATA[$F{user_name}]]></groupExpression>
+	</group>
+	<group name="user_identifier">
+		<groupExpression><![CDATA[$F{user_identifier}]]></groupExpression>
+	</group>
+	<group name="user_birth_date">
+		<groupExpression><![CDATA[$F{user_birth_date}]]></groupExpression>
+	</group>
+	<group name="user_parent_name">
+		<groupExpression><![CDATA[$F{user_parent_name}]]></groupExpression>
+	</group>
+	<group name="user_parent_identifier">
+		<groupExpression><![CDATA[$F{user_parent_identifier}]]></groupExpression>
+	</group>
+	<group name="user_email">
+		<groupExpression><![CDATA[$F{user_email}]]></groupExpression>
+	</group>
+	<group name="user_address">
+		<groupExpression><![CDATA[$F{user_address}]]></groupExpression>
+	</group>
+	<group name="user_phones">
+		<groupExpression><![CDATA[$F{user_phones}]]></groupExpression>
+	</group>
+	<group name="workshop_name">
+		<groupExpression><![CDATA[$F{workshop_name}]]></groupExpression>
+	</group>
+	<group name="workshop_programation">
+		<groupExpression><![CDATA[$F{workshop_programation}]]></groupExpression>
+	</group>
+	<pageHeader>
+		<band height="60">
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="30" uuid="a999ea12-5677-41a3-a567-143a1ff089df"/>
+				<box padding="3">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Evento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="0" width="100" height="30" uuid="04883725-8751-4081-abec-f92d442cf15b"/>
+				<box padding="3">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Oficina]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="200" y="0" width="100" height="30" uuid="556663d5-94f3-420f-94b5-cfc29759e201"/>
+				<box padding="3">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Status]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="300" y="0" width="100" height="30" uuid="fa6a05eb-1b46-45a7-ad92-00e2b4a2eb5a"/>
+				<box padding="3">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nome]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="400" y="0" width="100" height="30" uuid="1c119cc8-b60a-4d85-b932-186f833db60a"/>
+				<box padding="3">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Identificador]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="500" y="0" width="100" height="30" uuid="edca656d-7e91-4013-8348-6fadf236ab7e"/>
+				<box padding="3">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Responsável]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="600" y="0" width="100" height="30" uuid="6d8f4ce0-539a-4b94-9a64-ea87fe392f18"/>
+				<box padding="3">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Id. Responsável]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="700" y="0" width="100" height="30" uuid="8629fa8d-7398-499a-96a0-46c8cb6f0ebf"/>
+				<box padding="3">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Data Nascimento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="800" y="0" width="100" height="30" uuid="f691e85a-b1d1-4117-b466-d64e8f40e046"/>
+				<box padding="3">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Telefone]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="900" y="0" width="100" height="30" uuid="6db2b27b-7fba-4994-bd0b-30a99ed7b09d"/>
+				<box padding="3">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[E-mail]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="40" splitType="Stretch">
+			<textField isBlankWhenNull="true">
+				<reportElement x="0" y="10" width="100" height="30" printWhenGroupChanges="event_name" uuid="5a602fe5-67d6-45e9-8ecb-c1b76096486d"/>
+				<box padding="3">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement>
+					<font fontName="DejaVu Sans"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{event_name}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="100" y="10" width="100" height="30" uuid="4862c80e-79ac-4d0f-9eb7-03af420d0619"/>
+				<box padding="3">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement>
+					<font fontName="DejaVu Sans"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{workshop_name}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="300" y="10" width="100" height="30" uuid="f1285642-3dcd-462b-8f63-bb17712304c0"/>
+				<box padding="3">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement>
+					<font fontName="DejaVu Sans"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{user_name}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="400" y="10" width="100" height="30" uuid="53b02ee6-9238-4ee0-84b9-a6eec636a2d3"/>
+				<box padding="3">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement>
+					<font fontName="DejaVu Sans"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{user_identifier}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="700" y="10" width="100" height="30" uuid="aebcd8b2-e707-4528-94a4-656b72ab2949"/>
+				<box padding="3">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement>
+					<font fontName="DejaVu Sans"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{user_birth_date}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="800" y="10" width="100" height="30" uuid="eea0e379-228a-49ca-8a80-d1d068c96017"/>
+				<box padding="3">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement>
+					<font fontName="DejaVu Sans"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{user_phones}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="900" y="10" width="100" height="30" uuid="519a5cff-03e7-4918-8741-945d0fa63b64"/>
+				<box padding="3">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement>
+					<font fontName="DejaVu Sans"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{user_email}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="200" y="10" width="100" height="30" uuid="cf8abafd-f55d-4f8e-a207-614352e9090a"/>
+				<box padding="3">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement>
+					<font fontName="DejaVu Sans"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{status}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="500" y="10" width="100" height="30" uuid="da28261e-2161-4420-b4ff-0bd183a2855e"/>
+				<box padding="3">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement>
+					<font fontName="DejaVu Sans"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{user_parent_name}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="600" y="10" width="100" height="30" uuid="b9568029-ee99-488c-b64b-2b87d3e11d19"/>
+				<box padding="3">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement>
+					<font fontName="DejaVu Sans"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{user_parent_identifier}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>
