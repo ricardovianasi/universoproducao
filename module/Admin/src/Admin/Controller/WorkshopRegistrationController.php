@@ -7,6 +7,7 @@ use Application\Entity\Form\Form;
 use Application\Entity\Programing\Programing;
 use Application\Entity\Registration\Options;
 use Application\Entity\Registration\Registration;
+use Application\Entity\Registration\Status;
 use Application\Entity\Registration\Type;
 use Application\Entity\User\User;
 use Application\Entity\Workshop\PontuationItems;
@@ -213,6 +214,16 @@ class WorkshopRegistrationController extends AbstractAdminController
         return $this->prepareReport($preparedItems, 'workshop-confirmation' ,'pdf');
     }
 
+    public function exportListAction()
+    {
+        $dataAttr = $this->params()->fromQuery();
+        $items = $this->search(WorkshopSubscription::class, $dataAttr, ['createdAt' => 'DESC'], true);
+
+        //criar um arquivo json
+        $preparedItems = $this->prepareItemsForReports($items);
+        return $this->prepareReport($preparedItems, 'workshop_subscription' ,'xlsx');
+    }
+
     protected function prepareItemsForReports($items)
     {
         if(!is_array($items)) {
@@ -242,8 +253,12 @@ class WorkshopRegistrationController extends AbstractAdminController
                 'user_birth_date' => $obj->getUser()->getBirthDate()->format('d/m/Y'),
                 'user_parent_name' => $obj->getUser()->getParent() ? $obj->getUser()->getParent()->getName() : "",
                 'user_parent_identifier' => $obj->getUser()->getParent() ? $obj->getUser()->getParent()->getIdentifier() : "",
+                'user_email' => $obj->getUser()->getEmail(),
+                'user_address' => $obj->getUser()->getFullAddress(),
+                'user_phones' => $obj->getUser()->getFullPhones(),
                 'workshop_name' => $obj->getWorkshop()->getName(),
-                'workshop_programation' => implode(';', $workshopProgramationItems)
+                'workshop_programation' => implode(';', $workshopProgramationItems),
+                'status' => Status::get($obj->getStatus())
 
             ];
         }
@@ -330,87 +345,5 @@ class WorkshopRegistrationController extends AbstractAdminController
             'action' => 'index',
         ], ['query'=>$filter]);
 
-    }
-
-    public function comunicadosAction()
-    {
-        $this->getViewModel()->setTerminal(true);
-
-        $items = $this
-            ->getRepository(WorkshopSubscription::class)
-            ->findBy([
-                'status' => 'selected',
-                'id' => 11
-            ]);
-
-        //var_dump(count($items)); exit();
-        $count = 0;
-        foreach ($items as $item) {
-
-            $workshopProgramation = $this->getRepository(Programing::class)->findBy([
-                'event' => $item->getEvent()->getId(),
-                'type' => Type::WORKSHOP,
-                'objectId' => $item->getWorkshop()->getId()
-            ]);
-            $workshopProgramationItems = [];
-            foreach ($workshopProgramation as $pro) {
-                $desc = $pro->getDate()->format('d/m/Y')
-                    . ' | ' . $pro->getStartTime()->format('H:i')
-                    . ' às '
-                    . $pro->getEndTime()->format('H:i');
-                $workshopProgramationItems[] = $desc;
-            }
-
-            $msg = "<p>Prezado (a) ".$item->getUser()->getName().",</p>";
-            $msg.= "<p>Parabéns!</p>";
-            $msg.= "<p>Você foi selecionado (a) para participar da Oficina: ".$item->getWorkshop()->getName().", que será realizada durante a programação da <strong>21ª Mostra de Cinema de Tiradentes</strong>, nos dias e horários a seguir:</p>";
-
-            $msg.= "<p>Data e hora de realização: ". implode(';', $workshopProgramationItems)." <br />Local para credenciamento: Centro Cultural Yves Alves <br />Rua Direita, 168 – Tiradentes - MG</p>";
-
-            $msg.= "<p><strong>Atenção: </strong></p>";
-            $msg.= "<p><strong>- Prazo de confirmação: até às 20 horas (horário de Brasília), do dia 11/01/2017 - quinta-feira.</strong></p>";
-            $msg.= "<p><strong>- Caso não confirme sua presença no prazo estipulado sua inscrição será considerada como DESISTÊNCIA.</strong></p>";
-
-            $urlConfirmacao = $this->url()->fromRoute('meu-universo/workshop', [
-                'id_reg' => $item->getRegistration()->getHash(),
-                'id' => $item->getId(),
-                'action' => 'confirmacao'
-            ]);
-
-            $msg.= "<p>Para confirmar ou não sua participação, clique em uma das opções abaixo:</p>";
-            $msg.= "<p><a href='".$urlConfirmacao."'>Confirmo minha participação / Imprimir Documento de Inscrição de selecionado</a></p>";
-            $msg.= "<p><a href='".$urlConfirmacao."'>Não confirmo minha participação</a></p>";
-
-            $msg.= "<p><strong>Observação: </strong>Caso não consiga acessar os links acima, siga o procedimento abaixo:</p>";
-            $msg.= "<p>1) Acesse: <a href='www.universoproducao.com.br'>www.universoproducao.com.br</a> <br />
-            2) Clique em Menu do Usuário (Bonequinho no lado supererior direito do Menu principal)<br />
-            3) Informe seu email e senha cadastrada)<br />
-            4) Clique em Minhas Inscrições (Bonequinho no lado supererior direito do Menu principal)<br />
-            5) Clique em Confirmar Presença ou Não Confirmar Presença<br />
-            6) Qualquer dúvida entre em contato: oficinas@universoproducao.com.br </p>";
-
-            $msg.= "<p><strong>Apresente o comprovante de confirmação impresso e um documento com foto para retirar a credencial e o material na secretaria do evento no dia de início da oficina no seguinte endereço:<br />
-            Centro Cultural Yves Alves<br />Rua Direita, 168 – Tiradentes - MG</strong></p>";
-
-            $msg.= "<p>Convidamos você para participar também das outras atividades do evento. A programação é gratuita e, estará disponível no site <a href='http://www.mostratiradentes.com.br'>www.mostratiradentes.com.br</a> a partir do dia 10 de janeiro.</p>";
-
-            $msg.= "<p>Atenciosamente,<br />Coordenação Oficinas<br />21ª Mostra de Cinema de Tiradentes</p>";
-
-            $this->mailService()->simpleSendEmail(
-                [$item->getUser()->getName() => $item->getUser()->getEmail()],
-                'Comunicado oficina - Mostra de Cinema de Tiradentes', $msg);
-
-            $count++;
-            echo "$count - Nome: " . $item->getUser()->getName();
-            echo '<br /><br />'.$msg;
-            echo "<br />Email: " . $item->getUser()->getEmail();
-            echo "<br />Filme: " . $item->getWorkshop()->getName() . '<br /><br />';
-
-
-            break;
-            exit();
-        }
-
-        return $this->getViewModel();
     }
 }

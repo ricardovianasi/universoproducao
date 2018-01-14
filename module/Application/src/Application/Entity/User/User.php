@@ -563,6 +563,15 @@ class User extends AbstractEntity
         return implode(',', $address);
     }
 
+    public function getFullPhones()
+    {
+        $phones = [];
+        foreach ($this->getPhones() as $phone) {
+            $phones[] = implode('|', $phone->_toArray());
+        }
+        return implode(';', $phones);
+    }
+
     public function _toArray()
     {
         $phonesArray = [];
