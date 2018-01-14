@@ -46,6 +46,24 @@ class MovieController extends SiteController
                 ->setParameter('place', $data['place']);
         }
 
+        if(!empty($data['category'])) {
+            if($data['category'] == Movie::CATEGORY_LONGA) {
+                $time = new \DateTime('01:00:00');
+                $qb->andWhere('m.duration >= :time')
+                    ->setParameter('time', $time);
+
+            } elseif ($data['category'] == Movie::CATEGORY_MEDIA) {
+                $timeIni = new \DateTime('00:30:00');
+                $timeEnd = new \DateTime('01:00:00');
+                $qb->andWhere('m.duration > :timeIni AND m.duration < :timeEnd')
+                    ->setParameter('timeIni', $timeIni)
+                    ->setParameter('timeEnd', $timeEnd);
+            } elseif ($data['category'] == Movie::CATEGORY_CURTA) {
+                $time = new \DateTime('00:30:00');
+                $qb->andWhere('m.duration <= :time')
+                    ->setParameter('time', $time);
+            }
+        }
 
         $movies = $qb->getQuery()->getResult();
 
