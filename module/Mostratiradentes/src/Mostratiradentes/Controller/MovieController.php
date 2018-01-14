@@ -6,8 +6,10 @@ use Admin\Form\Movie\MovieProgramingForm;
 use Application\Controller\SiteController;
 use Application\Entity\Movie\Movie;
 use Application\Entity\Movie\OptionsType;
+use Application\Entity\Programing\Programing;
 use Application\Entity\Registration\Status;
 use Application\Entity\Site\Site;
+use Doctrine\ORM\Query\Expr\Join;
 use Zend\View\Model\ViewModel;
 
 class MovieController extends SiteController
@@ -23,8 +25,8 @@ class MovieController extends SiteController
         $qb = $this
             ->getRepository(Movie::class)
             ->createQueryBuilder('m')
+            ->leftJoin(Programing::class, 'p', Join::WITH, 'm.id = p.objectId')
             ->innerJoin('m.subscriptions', 's')
-            ->join()
             ->andWhere('s.event = :idEvent')
             ->andWhere('s.status = :status')
             ->orderBy('m.title', 'ASC')
@@ -35,7 +37,8 @@ class MovieController extends SiteController
 
         $data = $this->getRequest()->getQuery()->toArray();
         if(!empty($data['sub_event'])) {
-
+            $qb->andWhere('p.subEvent = :idSubEvent')
+                ->setParameter('idSubEvent', $data['sub_event']);
         }
 
         $movies = $qb->getQuery()->getResult();

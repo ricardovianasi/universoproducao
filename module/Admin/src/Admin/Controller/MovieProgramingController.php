@@ -173,6 +173,8 @@ class MovieProgramingController extends AbstractAdminController
                             $itemToSession->setParent($programing);
                             $itemToSession->setObjectId($movie->getId());
                             $itemToSession->setOrder($count++);
+                            $itemToSession->setSubEvent($subEvent);
+                            $itemToSession->setPlace($place);
 
                             $sessions->add($itemToSession);
                         }
