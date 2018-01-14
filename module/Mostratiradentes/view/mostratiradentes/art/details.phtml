@@ -12,7 +12,7 @@
                         <div class="movie-media-item">
                             <div class="movie-media-wrapper">
                                 <img src="<?php echo $this->thumbor()->url($media->getSrc())->resize(1140, 400); ?>" alt="">
-                                <p class="banner-caption"><?php echo $media->getDescription(); ?></p>
+                                <p class="movie-media-caption"><?php echo $media->getDescription(); ?></p>
                             </div>
                         </div>
                     <?php endforeach; ?>
