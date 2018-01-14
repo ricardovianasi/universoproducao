@@ -11,9 +11,9 @@ namespace Admin\Form\Movie;
 use Admin\Form\Programing\ProgramingForm;
 use Application\Entity\Movie\Movie;
 use Application\Entity\Movie\MovieEventStatus;
-use Application\Entity\Programing\Meta;
 use Application\Entity\Programing\Type;
 use Zend\InputFilter\Factory as InputFilterFactory;
+
 
 class MovieProgramingForm extends  ProgramingForm
 {
@@ -119,6 +119,19 @@ class MovieProgramingForm extends  ProgramingForm
         ]);
 
         $this->get('place')->setAttribute('required', 'required');
+
+        $this->setInputFilter((new InputFilterFactory)->createInputFilter([
+            'movie' => [
+                'name' => 'movie',
+                'required' => false,
+                'allow_empry' => true
+            ],
+            'category' => [
+                'name' => 'category',
+                'required' => false,
+                'allow_empry' => true
+            ]
+        ]));
     }
 
     public function populateSubEvents()

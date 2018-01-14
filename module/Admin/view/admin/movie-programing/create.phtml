@@ -64,7 +64,11 @@
                                                     <div class="form-group">
                                                         <label for="">Filmes</label>
                                                         <div class="input-group">
-                                                            <?php echo $this->formElement($form->get('movie')); ?>
+                                                            <?php
+                                                            $movieEl = $form->get('movie');
+                                                            $movieEl->setAttribute('required', '');
+                                                            echo $this->formElement($movieEl);
+                                                            ?>
                                                             <span class="input-group-btn">
                                                                 <button class="btn movie-session-add" type="button">
                                                                     <i class="fa fa-plus"></i>
