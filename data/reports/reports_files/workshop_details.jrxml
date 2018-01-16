@@ -89,7 +89,7 @@
 		</band>
 	</pageHeader>
 	<detail>
-		<band height="466" splitType="Stretch">
+		<band height="721" splitType="Stretch">
 			<textField>
 				<reportElement x="100" y="20" width="454" height="30" uuid="834999a3-9603-4237-a0e7-ff5a3ea429e8"/>
 				<box padding="3"/>
@@ -220,15 +220,12 @@
 				</textElement>
 				<text><![CDATA[Cursos extra-curriculares]]></text>
 			</staticText>
-			<line>
-				<reportElement x="0" y="450" width="553" height="1" uuid="d5e129f9-df7a-4ec4-896d-fa58c25dd52c"/>
-			</line>
 		</band>
 	</detail>
 	<pageFooter>
-		<band height="40" splitType="Stretch">
+		<band height="46" splitType="Stretch">
 			<image>
-				<reportElement x="2" y="0" width="50" height="40" uuid="23591aec-0682-4a12-b0d3-326a6700ec70"/>
+				<reportElement x="2" y="1" width="50" height="40" uuid="23591aec-0682-4a12-b0d3-326a6700ec70"/>
 				<imageExpression><![CDATA["http://universoproducao.com.br/assets/universoproducao/dist/images/universo-producao.png"]]></imageExpression>
 			</image>
 			<staticText>
