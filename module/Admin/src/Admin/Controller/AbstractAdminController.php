@@ -538,12 +538,16 @@ abstract class AbstractAdminController extends AbstractController
             ]
         ];
 
-        $jasper = new JasperPHP();
-        $jasper->process(
-            $input,
-            $output,
-            $options
-        )->execute();
+        try {
+            $jasper = new JasperPHP();
+            $jasper->process(
+                $input,
+                $output,
+                $options
+            )->execute();
+        } catch (\Exception $e) {
+            
+        }
 
         if($this->getRequest()->isXmlHttpRequest()) {
             $reportUrl = rtrim($this->url()->fromRoute('universoproducao'), '/');
