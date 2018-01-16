@@ -232,7 +232,7 @@ class WorkshopRegistrationController extends AbstractAdminController
 
         //criar um arquivo json
         $preparedItems = $this->prepareItemsForReports($items);
-        return $this->prepareReport($preparedItems, 'workshop_details' ,'xlsx');
+        return $this->prepareReport($preparedItems, 'workshop_details' ,'docx');
     }
 
     protected function prepareItemsForReports($items)

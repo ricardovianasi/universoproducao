@@ -546,7 +546,7 @@ abstract class AbstractAdminController extends AbstractController
                 $options
             )->execute();
         } catch (\Exception $e) {
-            
+
         }
 
         if($this->getRequest()->isXmlHttpRequest()) {
