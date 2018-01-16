@@ -1,6 +1,7 @@
 <?php
 namespace Mostratiradentes\Controller;
 
+use Admin\Form\Movie\MovieProgramingForm;
 use Application\Controller\SiteController;
 use Application\Entity\Post\Post;
 use Application\Entity\Post\PostStatus;
@@ -25,6 +26,21 @@ class ProgramationController extends SiteController
         $post = $this->params('post');
         $site = $this->getRepository(Site::class)->find(self::SITE_ID);
 
+        $formFilter = new MovieProgramingForm($this->getEntityManager(), $site->getEvent());
+        $data = $this->getRequest()->getQuery()->toArray();
+
+        //Filtro do dia
+        $daysEvents = $this
+            ->getRepository(Programing::class)
+            ->createQueryBuilder('p')
+            ->select('p.date')
+            ->andWhere('p.event = :idEvent')
+            ->andWhere('p.date is not null')
+            ->setParameter('idEvent', $site->getEvent()->getId())
+            ->groupBy('p.date')
+            ->orderBy('p.date')
+            ->getQuery()
+            ->getScalarResult();
 
         $qb = $this
             ->getRepository(Programing::class)
@@ -35,6 +51,27 @@ class ProgramationController extends SiteController
             ->addOrderBy('p.date', 'ASC')
             ->addOrderBy('p.order', 'ASC')
             ->addOrderBy('p.startTime', 'ASC');
+
+        if(!empty($data['sub_event'])) {
+            $qb->andWhere('p.subEvent = :idSubEvent')
+                ->setParameter('idSubEvent', $data['sub_event']);
+        }
+
+        if(!empty($data['place'])) {
+            $qb->andWhere('p.place = :place')
+                ->setParameter('place', $data['place']);
+        }
+
+        if(!empty($data['programing_type'])) {
+            $qb->andWhere('p.type = :programing_type')
+                ->setParameter('programing_type', $data['programing_type']);
+        }
+
+        if(!empty($data['day'])) {
+            $day = new \DateTime($data['day']);
+            $qb->andWhere('p.date = :date')
+                ->setParameter('date', $day);
+        }
 
         $items = $qb->getQuery()->getResult();
 
@@ -152,7 +189,10 @@ class ProgramationController extends SiteController
         return new ViewModel([
             'programing' => $programing,
             'post' => $post,
-            'breadcrumbs' => $post->getBreadcrumbs()
+            'breadcrumbs' => $post->getBreadcrumbs(),
+            'form' => $formFilter->setData($data),
+            'eventDays' => $daysEvents
+
         ]);
     }
 

@@ -73,6 +73,28 @@ class MovieProgramingForm extends  ProgramingForm
         ]);
 
         $this->add([
+            'name' => 'programing_type',
+            'type' => 'select',
+            'options' => [
+                'label' => 'Tipo',
+                'empty_option' => 'Tipo',
+                'value_options' => [
+                    Type::OPENING => 'Abertura',
+                    Type::CLOSING => 'Encerramento',
+                    Type::ART => 'Arte',
+                    Type::MOVIE => 'Filmes',
+                    Type::SEMINAR_DEBATE => 'Seminário'
+
+                ],
+                'twb-layout' => 'horizontal',
+                'column-size' => 'md-4',
+                'label_attributes' => [
+                    'class' => 'col-md-4'
+                ]
+            ],
+        ]);
+
+        $this->add([
             'type' => 'Select',
             'name' => 'sub_event',
             'options' => [
@@ -128,6 +150,11 @@ class MovieProgramingForm extends  ProgramingForm
             ],
             'category' => [
                 'name' => 'category',
+                'required' => false,
+                'allow_empry' => true
+            ],
+            'programing_type' => [
+                'name' => 'programing_type',
                 'required' => false,
                 'allow_empry' => true
             ]

@@ -24,3 +24,24 @@
     cursor: pointer
     text-align: center!important
     &:hover
+
+  &-days
+    +trailer(2.5)
+    p
+      +trailer(.5)
+      font-weight: 700
+      text-transform: uppercase
+    ul
+      display: block
+      li
+        display: inline-block
+        a
+          display: block
+          padding: 8px
+          border: 1px solid $color-palette-2
+          color: $color-palette-2
+          transition: $transition-default
+          &:hover,
+          &.active
+            background-color: $color-palette-2
+            color: white
