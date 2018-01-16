@@ -168,8 +168,8 @@
 				</textElement>
 				<text><![CDATA[Identificador]]></text>
 			</staticText>
-			<textField>
-				<reportElement x="0" y="230" width="554" height="30" uuid="6ae8f1a0-77d6-41fd-9c70-24a8f5436718"/>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="0" y="230" width="554" height="30" uuid="6ae8f1a0-77d6-41fd-9c70-24a8f5436718"/>
 				<box padding="3"/>
 				<textFieldExpression><![CDATA[$F{formacao_academica}]]></textFieldExpression>
 			</textField>
@@ -181,39 +181,39 @@
 				</textElement>
 				<text><![CDATA[Formação acadêmica]]></text>
 			</staticText>
-			<textField>
-				<reportElement x="0" y="290" width="554" height="30" uuid="62c3676b-a2f1-4597-9626-0d49f5045a4d"/>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="0" y="290" width="554" height="30" uuid="62c3676b-a2f1-4597-9626-0d49f5045a4d"/>
 				<box padding="3"/>
 				<textFieldExpression><![CDATA[$F{experiencia_profissional}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="0" y="260" width="554" height="30" uuid="dc8b8b79-4196-443e-a2fc-b14ef6657d2c"/>
+				<reportElement positionType="Float" x="0" y="260" width="554" height="30" uuid="dc8b8b79-4196-443e-a2fc-b14ef6657d2c"/>
 				<box padding="3"/>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[Experiência profissional]]></text>
 			</staticText>
-			<textField>
-				<reportElement x="0" y="350" width="554" height="30" uuid="fde1373d-e110-4314-90f1-909022135cdd"/>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="0" y="350" width="554" height="30" uuid="fde1373d-e110-4314-90f1-909022135cdd"/>
 				<box padding="3"/>
 				<textFieldExpression><![CDATA[$F{motivo_interesse}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="0" y="320" width="554" height="30" uuid="6ccf58ec-7ebb-4875-9c4c-44966b85dedd"/>
+				<reportElement positionType="Float" x="0" y="320" width="554" height="30" uuid="6ccf58ec-7ebb-4875-9c4c-44966b85dedd"/>
 				<box padding="3"/>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[Motivo do interesse em participar da oficina escolhida]]></text>
 			</staticText>
-			<textField>
-				<reportElement x="0" y="410" width="554" height="30" uuid="a1124c2d-320e-4343-9fd6-b7594a3ebbec"/>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="0" y="410" width="554" height="30" uuid="a1124c2d-320e-4343-9fd6-b7594a3ebbec"/>
 				<box padding="3"/>
 				<textFieldExpression><![CDATA[$F{cursos_extra_curriculares}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="0" y="380" width="554" height="30" uuid="428a01fa-bcc6-42c3-ad52-4eb9984177f7"/>
+				<reportElement positionType="Float" x="0" y="380" width="554" height="30" uuid="428a01fa-bcc6-42c3-ad52-4eb9984177f7"/>
 				<box padding="3"/>
 				<textElement>
 					<font isBold="true"/>
