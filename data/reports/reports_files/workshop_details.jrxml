@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.5.1.final using JasperReports Library version 6.5.1  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="workshop_details" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="a19b18f3-73c7-42c5-839e-583fffa83e53">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="workshop_details_adapter"/>
+	<queryString language="json">
+		<![CDATA[object]]>
+	</queryString>
+	<field name="event_name" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="event_name"/>
+		<fieldDescription><![CDATA[event_name]]></fieldDescription>
+	</field>
+	<field name="user_name" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="user_name"/>
+		<fieldDescription><![CDATA[user_name]]></fieldDescription>
+	</field>
+	<field name="user_identifier" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="user_identifier"/>
+		<fieldDescription><![CDATA[user_identifier]]></fieldDescription>
+	</field>
+	<field name="user_birth_date" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="user_birth_date"/>
+		<fieldDescription><![CDATA[user_birth_date]]></fieldDescription>
+	</field>
+	<field name="user_parent_name" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="user_parent_name"/>
+		<fieldDescription><![CDATA[user_parent_name]]></fieldDescription>
+	</field>
+	<field name="user_parent_identifier" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="user_parent_identifier"/>
+		<fieldDescription><![CDATA[user_parent_identifier]]></fieldDescription>
+	</field>
+	<field name="user_email" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="user_email"/>
+		<fieldDescription><![CDATA[user_email]]></fieldDescription>
+	</field>
+	<field name="user_address" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="user_address"/>
+		<fieldDescription><![CDATA[user_address]]></fieldDescription>
+	</field>
+	<field name="user_phones" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="user_phones"/>
+		<fieldDescription><![CDATA[user_phones]]></fieldDescription>
+	</field>
+	<field name="workshop_name" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="workshop_name"/>
+		<fieldDescription><![CDATA[workshop_name]]></fieldDescription>
+	</field>
+	<field name="workshop_programation" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="workshop_programation"/>
+		<fieldDescription><![CDATA[workshop_programation]]></fieldDescription>
+	</field>
+	<field name="status" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="status"/>
+		<fieldDescription><![CDATA[status]]></fieldDescription>
+	</field>
+	<field name="motivo_interesse" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="motivo_interesse"/>
+		<fieldDescription><![CDATA[motivo_interesse]]></fieldDescription>
+	</field>
+	<field name="formacao_academica" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="formacao_academica"/>
+		<fieldDescription><![CDATA[formacao_academica]]></fieldDescription>
+	</field>
+	<field name="cursos_extra_curriculares" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="cursos_extra_curriculares"/>
+		<fieldDescription><![CDATA[cursos_extra_curriculares]]></fieldDescription>
+	</field>
+	<field name="ja_participou" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="ja_participou"/>
+		<fieldDescription><![CDATA[ja_participou]]></fieldDescription>
+	</field>
+	<field name="experiencia_profissional" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="experiencia_profissional"/>
+		<fieldDescription><![CDATA[experiencia_profissional]]></fieldDescription>
+	</field>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<image>
+				<reportElement x="2" y="0" width="50" height="35" uuid="3d0beb05-d852-44b2-98b2-4015218ff8b5"/>
+				<imageExpression><![CDATA["http://universoproducao.com.br/assets/universoproducao/dist/images/universo-producao.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="60" y="0" width="490" height="35" uuid="fe923070-4d09-4e12-a84d-7641e3c76f4c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[OFICINAS - CURRÍCULO DOS PARTICIPANTES]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="466" splitType="Stretch">
+			<textField>
+				<reportElement x="100" y="20" width="454" height="30" uuid="834999a3-9603-4237-a0e7-ff5a3ea429e8"/>
+				<box padding="3"/>
+				<textFieldExpression><![CDATA[$F{event_name}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="20" width="100" height="30" uuid="80b5e4e8-abd1-4bac-bf50-0335cf1d27c7"/>
+				<box padding="3"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Evento]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="100" y="50" width="454" height="30" uuid="1c2f4580-2b4f-4564-9056-65642340f7e4"/>
+				<box padding="3"/>
+				<textFieldExpression><![CDATA[$F{workshop_name}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="50" width="100" height="30" uuid="1bb2780d-a63b-46f7-8932-1a563183a32f"/>
+				<box padding="3"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Oficina]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="100" y="80" width="454" height="30" uuid="00290232-36a4-4756-b70f-93d05df94fa6"/>
+				<box padding="3"/>
+				<textFieldExpression><![CDATA[$F{user_name}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="80" width="100" height="30" uuid="4074a510-1152-49ba-bb9b-44c49af23217"/>
+				<box padding="3"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Participante]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="100" y="140" width="454" height="30" uuid="03f7f783-8f80-4986-84f6-cdef5c17c31a"/>
+				<box padding="3"/>
+				<textFieldExpression><![CDATA[$F{user_email}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="140" width="100" height="30" uuid="ad6040a7-c62f-4aaa-9f0b-d21c40b757c5"/>
+				<box padding="3"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[E-mail]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="100" y="170" width="454" height="30" uuid="d3a5be3f-2d56-4ad2-b674-4bda5171de81"/>
+				<box padding="3"/>
+				<textFieldExpression><![CDATA[$F{user_phones}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="170" width="100" height="30" uuid="c9666748-cdf0-4a99-8ede-07afadcf32e1"/>
+				<box padding="3"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Telefones]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="100" y="110" width="454" height="30" uuid="e09ad08b-6262-427d-941a-4af6ab8dfb90"/>
+				<box padding="3"/>
+				<textFieldExpression><![CDATA[$F{user_identifier}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="110" width="100" height="30" uuid="bb46862d-94e0-4703-8517-0da1f5109245"/>
+				<box padding="3"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Identificador]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="230" width="554" height="30" uuid="6ae8f1a0-77d6-41fd-9c70-24a8f5436718"/>
+				<box padding="3"/>
+				<textFieldExpression><![CDATA[$F{formacao_academica}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="200" width="554" height="30" uuid="881f9d7e-d4d0-42a3-a830-554077e1d02d"/>
+				<box padding="3"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Formação acadêmica]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="290" width="554" height="30" uuid="62c3676b-a2f1-4597-9626-0d49f5045a4d"/>
+				<box padding="3"/>
+				<textFieldExpression><![CDATA[$F{experiencia_profissional}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="260" width="554" height="30" uuid="dc8b8b79-4196-443e-a2fc-b14ef6657d2c"/>
+				<box padding="3"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Experiência profissional]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="350" width="554" height="30" uuid="fde1373d-e110-4314-90f1-909022135cdd"/>
+				<box padding="3"/>
+				<textFieldExpression><![CDATA[$F{motivo_interesse}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="320" width="554" height="30" uuid="6ccf58ec-7ebb-4875-9c4c-44966b85dedd"/>
+				<box padding="3"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Motivo do interesse em participar da oficina escolhida]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="410" width="554" height="30" uuid="a1124c2d-320e-4343-9fd6-b7594a3ebbec"/>
+				<box padding="3"/>
+				<textFieldExpression><![CDATA[$F{cursos_extra_curriculares}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="380" width="554" height="30" uuid="428a01fa-bcc6-42c3-ad52-4eb9984177f7"/>
+				<box padding="3"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cursos extra-curriculares]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="450" width="553" height="1" uuid="d5e129f9-df7a-4ec4-896d-fa58c25dd52c"/>
+			</line>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="40" splitType="Stretch">
+			<image>
+				<reportElement x="2" y="0" width="50" height="40" uuid="23591aec-0682-4a12-b0d3-326a6700ec70"/>
+				<imageExpression><![CDATA["http://universoproducao.com.br/assets/universoproducao/dist/images/universo-producao.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="50" y="0" width="504" height="31" uuid="344b6405-896a-4eed-a407-1469dd5780c3"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Rua Pirapetinga, 567 - Serra - Belo Horizonte - MG - 30220-150 - (31) 3282 2366 - www.mostratiradentes.com.br]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+</jasperReport>

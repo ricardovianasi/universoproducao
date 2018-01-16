@@ -4,6 +4,7 @@ namespace Admin\Controller;
 use Admin\Form\Workshop\WorkshopRegistrationForm;
 use Admin\Form\Workshop\WorkshopStatusModalForm;
 use Application\Entity\Form\Form;
+use Application\Entity\Form\FormElements;
 use Application\Entity\Programing\Programing;
 use Application\Entity\Registration\Options;
 use Application\Entity\Registration\Registration;
@@ -224,6 +225,16 @@ class WorkshopRegistrationController extends AbstractAdminController
         return $this->prepareReport($preparedItems, 'workshop_subscription' ,'xlsx');
     }
 
+    public function exportDetailsListAction()
+    {
+        $dataAttr = $this->params()->fromQuery();
+        $items = $this->search(WorkshopSubscription::class, $dataAttr, ['createdAt' => 'DESC'], true);
+
+        //criar um arquivo json
+        $preparedItems = $this->prepareItemsForReports($items);
+        return $this->prepareReport($preparedItems, 'workshop_details' ,'xlsx');
+    }
+
     protected function prepareItemsForReports($items)
     {
         if(!is_array($items)) {
@@ -246,7 +257,12 @@ class WorkshopRegistrationController extends AbstractAdminController
                 $workshopProgramationItems[] = $desc;
             }
 
-            $preparedItems[]['object'] = [
+            $answers = [];
+            foreach ($obj->getFormAnswers() as $fw) {
+                $answers[$fw->getQuestion()] = $fw->getAnswer();
+            }
+
+            $item = [
                 'event_name' => $obj->getEvent()->getShortName(),
                 'user_name' => $obj->getUser()->getName(),
                 'user_identifier' => $obj->getUser()->getIdentifier(),
@@ -258,9 +274,9 @@ class WorkshopRegistrationController extends AbstractAdminController
                 'user_phones' => $obj->getUser()->getFullPhones(),
                 'workshop_name' => $obj->getWorkshop()->getName(),
                 'workshop_programation' => implode(';', $workshopProgramationItems),
-                'status' => Status::get($obj->getStatus())
-
+                'status' => Status::get($obj->getStatus()),
             ];
+            $preparedItems[]['object'] = array_merge($item, $answers);
         }
 
         return $preparedItems;
