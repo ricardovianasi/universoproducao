@@ -32,7 +32,11 @@
 
 
         <div class="movie-detail">
-            <p><strong>Direção: </strong><?php echo $this->post->getDirection(); ?></p>
+            <p>
+                <strong>Direção: </strong>
+                <a class="fancybox" style="color: #000;" href="#moreinfo"><?php echo $this->post->getDirection(); ?>
+                    <i style="margin-left: 2px; font-size: 13px;" class="icon-plus-circle"></i></a>
+            </p>
             <p class="movie-detail-title"><strong>Sinopse</strong></p>
             <p><?php echo $this->post->getSynopsis(); ?></p>
 
@@ -54,6 +58,26 @@
                     <p class="hightlight-place"><?php echo $place ?></p>
                 </div>
             <?php endforeach; ?>
+        </div>
+    </div>
+
+    <div style="display: none;min-width:600px;min-height: 400px" id="moreinfo">
+        <div class="padding" style="padding: 20px">
+            <p><strong>Roteiro:</strong> <?php echo $this->post->getScript(); ?></p>
+            <p><strong>Empresa produtora:</strong> <?php echo $this->post->getProductionCompany(); ?></p>
+            <p><strong>Co-produção:</strong> <?php echo $this->post->getCoProduction(); ?></p>
+            <p><strong>Produção executiva:</strong> <?php echo $this->post->getExecutiveProduction(); ?></p>
+            <p><strong>Direção de produção:</strong> <?php echo $this->post->getDirectionProduction(); ?></p>
+            <p><strong>Montagem:</strong> <?php echo $this->post->getEditingAssembly(); ?></p>
+            <p><strong>Fotografia:</strong> <?php echo $this->post->getPhotography(); ?></p>
+            <p><strong>Direção de arte:</strong> <?php echo $this->post->getDirectionArt(); ?></p>
+            <p><strong>Trilha sonora:</strong> <?php echo $this->post->getSoundtrack(); ?></p>
+            <p><strong>Mixagem:</strong> <?php echo $this->post->getMixing(); ?></p>
+            <p><strong>Som direto:</strong> <?php echo $this->post->getDirectSound(); ?></p>
+            <p><strong>Edição de som:</strong> <?php echo $this->post->getSoundEditing(); ?></p>
+            <p><strong>Cenografia:</strong> <?php echo $this->post->getScenography(); ?></p>
+            <p><strong>Figurino:</strong> <?php echo $this->post->getCostume(); ?></p>
+            <p><strong>Elenco:</strong> <?php echo $this->post->getCast(); ?></p>
         </div>
     </div>
 
