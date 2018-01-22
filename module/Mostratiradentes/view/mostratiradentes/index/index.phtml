@@ -35,35 +35,39 @@ $program = $this->program;
     </div>
     <div class="prog-items">
         <article class="prog-item prog-item--high">
-            <figure class="prog-figure">
-                <img src="<?php echo  $this->thumbor()->url($programHighlight->getPhoto())->resize(960, 648); ?>" alt="">
-            </figure>
-            <div class="prog-content">
-                <p class="prog-day"><?php echo $programHighlight->getDate()->format('d'); ?>
-                    <small><?php echo  str_replace('-feira', '', $this->dateFormat($programHighlight->getDate(), null, null, "pt_BR", "ccc")); ?></small>
-                </p>
-                <p class="prog-title"><?php echo $programHighlight->getTitle(); ?></p>
-                <p class="prog-cat"><?php echo $programHighlight->getSubTitle(); ?></p>
-                <p class="prog-place">
-                    <?php echo $programHighlight->getPlace(); ?> - <?php echo $programHighlight->getHour(); ?>
-                </p>
-            </div>
+            <a href="<?php echo $programHighlight->getUrl(); ?>">
+                <figure class="prog-figure">
+                    <img class="grayscale" src="<?php echo  $this->thumbor()->url($programHighlight->getPhoto())->resize(960, 648); ?>" alt="">
+                </figure>
+                <div class="prog-content">
+                    <p class="prog-day"><?php echo $programHighlight->getDate()->format('d'); ?>
+                        <small><?php echo  str_replace('-feira', '', $this->dateFormat($programHighlight->getDate(), null, null, "pt_BR", "ccc")); ?></small>
+                    </p>
+                    <p class="prog-title"><?php echo $programHighlight->getTitle(); ?></p>
+                    <p class="prog-cat"><?php echo $programHighlight->getSubTitle(); ?></p>
+                    <p class="prog-place">
+                        <?php echo $programHighlight->getPlace(); ?> - <?php echo $programHighlight->getHour(); ?>
+                    </p>
+                </div>
+            </a>
         </article>
         <?php foreach ($program as $p): ?>
             <article class="prog-item">
-                <figure class="prog-figure">
-                    <img src="<?php echo  $this->thumbor()->url($p->getPhoto())->resize(960, 648); ?>" alt="">
-                </figure>
-                <div class="prog-content">
-                    <p class="prog-day"><?php echo $p->getDate()->format('d'); ?>
-                        <small><?php echo  str_replace('-feira', '', $this->dateFormat($p->getDate(), null, null, "pt_BR", "ccc")); ?></small>
-                    </p>
-                    <p class="prog-title"><?php echo $p->getTitle(); ?></p>
-                    <p class="prog-cat"><?php echo $p->getSubTitle(); ?></p>
-                    <p class="prog-place">
-                        <?php echo $p->getPlace(); ?> - <?php echo $p->getHour(); ?>
-                    </p>
-                </div>
+                <a href="<?php echo $p->getUrl(); ?>">
+                    <figure class="prog-figure">
+                        <img class="grayscale" src="<?php echo  $this->thumbor()->url($p->getPhoto())->resize(960, 648); ?>" alt="">
+                    </figure>
+                    <div class="prog-content">
+                        <p class="prog-day"><?php echo $p->getDate()->format('d'); ?>
+                            <small><?php echo  str_replace('-feira', '', $this->dateFormat($p->getDate(), null, null, "pt_BR", "ccc")); ?></small>
+                        </p>
+                        <p class="prog-title"><?php echo $p->getTitle(); ?></p>
+                        <p class="prog-cat"><?php echo $p->getSubTitle(); ?></p>
+                        <p class="prog-place">
+                            <?php echo $p->getPlace(); ?> - <?php echo $p->getHour(); ?>
+                        </p>
+                    </div>
+                </a>
             </article>
         <?php endforeach; ?>
     </div>
