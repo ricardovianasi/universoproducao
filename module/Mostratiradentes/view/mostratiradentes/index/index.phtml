@@ -24,72 +24,55 @@
 </section>-->
 
 <!-- PRogramação -->
-<!--<section class="prog">
+<?php
+$programHighlight = $this->programHighlight;
+$program = $this->program;
+?>
+<?php if($programHighlight && count($program)): ?>
+<section class="prog">
     <div class="main-wrapper">
         <header class="main-header"><h1 class="section-title">Programação</h1></header>
     </div>
     <div class="prog-items">
         <article class="prog-item prog-item--high">
             <figure class="prog-figure">
-                <img src="images/prog1.jpg" alt="">
+                <img src="<?php echo  $this->thumbor()->url($programHighlight->getPhoto())->resize(960, 648); ?>" alt="">
             </figure>
             <div class="prog-content">
-                <p class="prog-day">20 <small>sex</small></p>
-                <p class="prog-title">Tantinho -memória em verde e rosa</p>
-                <p class="prog-cat">Mostra Pré-estreia</p>
-                <p class="prog-place">Centro Histórico - 15h</p>
+                <p class="prog-day"><?php echo $programHighlight->getDate()->format('d'); ?>
+                    <small><?php echo  str_replace('-feira', '', $this->dateFormat($programHighlight->getDate(), null, null, "pt_BR", "cccc")); ?></small>
+                </p>
+                <p class="prog-title"><?php echo $programHighlight->getTitle(); ?></p>
+                <p class="prog-cat"><?php echo $programHighlight->getSubTitle(); ?></p>
+                <p class="prog-place">
+                    <?php echo $programHighlight->getPlace(); ?> - <?php echo $programHighlight->getHour(); ?>
+                </p>
             </div>
         </article>
-        <article class="prog-item">
-            <figure class="prog-figure">
-                <img src="images/prog5.jpg" alt="">
-            </figure>
-            <div class="prog-content">
-                <p class="prog-day">20 <small>sex</small></p>
-                <p class="prog-title">Tantinho -memória em verde e rosa</p>
-                <p class="prog-cat">Mostra Pré-estreia</p>
-                <p class="prog-place">Centro Histórico - 15h</p>
-            </div>
-        </article>
-        <article class="prog-item">
-            <figure class="prog-figure">
-                <img src="images/prog2.jpg" alt="">
-            </figure>
-            <div class="prog-content">
-                <p class="prog-day">20 <small>sex</small></p>
-                <p class="prog-title">Tantinho -memória em verde e rosa</p>
-                <p class="prog-cat">Mostra Pré-estreia</p>
-                <p class="prog-place">Centro Histórico - 15h</p>
-            </div>
-        </article>
-        <article class="prog-item">
-            <figure class="prog-figure">
-                <img src="images/prog3.jpg" alt="">
-            </figure>
-            <div class="prog-content">
-                <p class="prog-day">20 <small>sex</small></p>
-                <p class="prog-title">Tantinho -memória em verde e rosa</p>
-                <p class="prog-cat">Mostra Pré-estreia</p>
-                <p class="prog-place">Centro Histórico - 15h</p>
-            </div>
-        </article>
-        <article class="prog-item">
-            <figure class="prog-figure">
-                <img src="images/prog4.jpg" alt="">
-            </figure>
-            <div class="prog-content">
-                <p class="prog-day">20 <small>sex</small></p>
-                <p class="prog-title">Tantinho -memória em verde e rosa</p>
-                <p class="prog-title">Mostra Pré-estreia</p>
-                <p class="prog-place">Centro Histórico - 15h</p>
-            </div>
-        </article>
+        <?php foreach ($program as $p): ?>
+            <article class="prog-item">
+                <figure class="prog-figure">
+                    <img src="<?php echo  $this->thumbor()->url($p->getPhoto())->resize(960, 648); ?>" alt="">
+                </figure>
+                <div class="prog-content">
+                    <p class="prog-day"><?php echo $p->getDate()->format('d'); ?>
+                        <small><?php echo  str_replace('-feira', '', $this->dateFormat($p->getDate(), null, null, "pt_BR", "cccc")); ?></small>
+                    </p>
+                    <p class="prog-title"><?php echo $p->getTitle(); ?></p>
+                    <p class="prog-cat"><?php echo $p->getSubTitle(); ?></p>
+                    <p class="prog-place">
+                        <?php echo $p->getPlace(); ?> - <?php echo $p->getHour(); ?>
+                    </p>
+                </div>
+            </article>
+        <?php endforeach; ?>
     </div>
     <div class="main-wrapper">
-        <p class="prog-text">De 20 a 28 de janeiro, você estará em sintonia com o cinema em Tiradentes. São exposições, exibições de curtas e longas, debates, seminários e oficinas com grandes nomes da sétima arte
-            <br /><a href="" class="button-readmore">Programação Completa</a></p>
+        <p class="prog-text">De 19 a 27 de janeiro, você estará em sintonia com o cinema em Tiradentes. São exposições, exibições de curtas e longas, debates, seminários e oficinas com grandes nomes da sétima arte
+            <br /><a href="http://universoproducao.com.br/source/21Tiradentes/releases/Folder_21MCT_BX.pdf" class="button-readmore">Programação Completa</a></p>
     </div>
-</section>-->
+</section>
+<?php endif; ?>
 
 <section class="news">
     <div class="main-wrapper">
@@ -111,45 +94,30 @@
 </section>
 
 <!-- TV -->
-<!--<section class="tv">
+<?php if(count($this->videos)): ?>
+<section class="tv">
     <div class="main-wrapper">
         <header class="main-header"><h1 class="section-title">TV Mostra</h1></header>
 
         <div class="tv-items">
-
+            <?php foreach ($this->videos as $v): ?>
             <article class="tv-item">
-                <figure class="tv-figure">
-                    <img src="images/tv1.jpg" alt="">
-                </figure>
-                <div class="tv-content">
-                    <p class="tv-title">Estréia do longa comboio de sal e açúcar</p>
-                </div>
+                <a  data-fancybox class="tv-link" href="<?php echo $v->getYoutube(); ?>">
+                    <figure class="tv-figure">
+                        <img src="<?php echo $this->thumbor()->url($v->getThumb())->resize(640, 396); ?>" alt="">
+                    </figure>
+                    <div class="tv-content">
+                        <p class="tv-title"><?php echo $v->getCaption(); ?></p>
+                    </div>
+                </a>
             </article>
-
-            <article class="tv-item">
-                <figure class="tv-figure">
-                    <img src="images/tv2.jpg" alt="">
-                </figure>
-                <div class="tv-content">
-                    <p class="tv-title">stréia de longas nacionais é destaque na 20ª mostra de cinema de tiradentes</p>
-                    <p class="tv-subtitle">Filmes nacionais estreiam em grande estilo na Mostra Tiradentes. Confira como foi o primeiro dia</p>
-                </div>
-            </article>
-
-            <article class="tv-item">
-                <figure class="tv-figure">
-                    <img src="images/tv2.jpg" alt="">
-                </figure>
-                <div class="tv-content">
-                    <p class="tv-title">stréia de longas nacionais é destaque na 20ª mostra de cinema de tiradentes</p>
-                    <p class="tv-subtitle">Filmes nacionais estreiam em grande estilo na Mostra Tiradentes. Confira como foi o primeiro dia</p>
-                </div>
-            </article>
-            <p class="tv-all"><a href="">Assista todos os vídeos <span class="icon icon-plus-circle"></span></a></p>
+            <?php endforeach; ?>
+            <p class="tv-all"><a href="https://www.youtube.com/channel/UCaikc9czwiws39fvlHX-RpA">Assista todos os vídeos <span class="icon icon-plus-circle"></span></a></p>
         </div>
 
     </div>
-</section>-->
+</section>
+<?php endif; ?>
 
 <section class="gallery">
     <div class="gallery-list owl-carousel">
