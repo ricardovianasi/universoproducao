@@ -40,7 +40,7 @@ $program = $this->program;
             </figure>
             <div class="prog-content">
                 <p class="prog-day"><?php echo $programHighlight->getDate()->format('d'); ?>
-                    <small><?php echo  str_replace('-feira', '', $this->dateFormat($programHighlight->getDate(), null, null, "pt_BR", "cccc")); ?></small>
+                    <small><?php echo  str_replace('-feira', '', $this->dateFormat($programHighlight->getDate(), null, null, "pt_BR", "ccc")); ?></small>
                 </p>
                 <p class="prog-title"><?php echo $programHighlight->getTitle(); ?></p>
                 <p class="prog-cat"><?php echo $programHighlight->getSubTitle(); ?></p>
@@ -56,7 +56,7 @@ $program = $this->program;
                 </figure>
                 <div class="prog-content">
                     <p class="prog-day"><?php echo $p->getDate()->format('d'); ?>
-                        <small><?php echo  str_replace('-feira', '', $this->dateFormat($p->getDate(), null, null, "pt_BR", "cccc")); ?></small>
+                        <small><?php echo  str_replace('-feira', '', $this->dateFormat($p->getDate(), null, null, "pt_BR", "ccc")); ?></small>
                     </p>
                     <p class="prog-title"><?php echo $p->getTitle(); ?></p>
                     <p class="prog-cat"><?php echo $p->getSubTitle(); ?></p>
