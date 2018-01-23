@@ -30,7 +30,7 @@ $(document).ready(function () {
         items: 1,
         nav: false,
         navText: ["<button class='gallery__arrow gallery__arrow--left'><span class='icon icon-arrow-left'></span></button>", "<button class='gallery__arrow gallery__arrow--right'><span class='icon icon-arrow-right'></span></button>"],
-        dots: false,
+        dots: true,
         mouseDrag: false,
         lazyLoad: false,
         loop: false,
