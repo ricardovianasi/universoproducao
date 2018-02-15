@@ -1,0 +1,110 @@
+<!doctype html>
+<html class="no-js" lang="">
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Mostra Tiradentes | SP 2017</title>
+
+    <link rel="icon" href="<?php echo $this->basePath("assets/mostratiradentessp2017/dist") ?>/images/favicon-16.png" sizes="16x16">
+    <link rel="icon" href="<?php echo $this->basePath("assets/mostratiradentessp2017/dist") ?>/images/favicon-32.png" sizes="32x32">
+    <link rel="icon" href="<?php echo $this->basePath("assets/mostratiradentessp2017/dist") ?>/images/favicon-48.png" sizes="48x48">
+    <link rel="icon" href="<?php echo $this->basePath("assets/mostratiradentessp2017/dist") ?>/images/favicon-64.png" sizes="64x64">
+    <link rel="icon" href="<?php echo $this->basePath("assets/mostratiradentessp2017/dist") ?>/images/favicon-128.png" sizes="128x128">
+    <!-- iPad com Retina Display -->
+    <link rel="apple-touch-icon" sizes="144x144" href="<?php echo $this->basePath("assets/mostratiradentessp2017/dist") ?>/images/apple-touch-icon-144x144.png">
+    <!-- iPhone com Retina Display -->
+    <link rel="apple-touch-icon" sizes="114x114" href="<?php echo $this->basePath("assets/mostratiradentessp2017/dist") ?>/images/apple-touch-icon-114x114.png">
+    <!-- Primeira e segunda geração de iPad -->
+    <link rel="apple-touch-icon" sizes="72x72" href="<?php echo $this->basePath("assets/mostratiradentessp2017/dist") ?>/images/apple-touch-icon-72x72.png">
+
+    <link rel="stylesheet" href="<?php echo $this->basePath('assets/mostratiradentessp2017/dist') ?>/styles/vendor.css">
+    <link rel="stylesheet" href="<?php echo $this->basePath('assets/mostratiradentessp2017/dist') ?>/styles/main.css">
+
+<!--    <script src="--><?php //echo $this->basePath('assets/mostratiradentessp2017/dist') ?><!--/scripts/modernizr/modernizr.js"></script>-->
+</head>
+<body>
+
+<div class="site__wrapper">
+    <header class="header">
+        <div class="header-bgc">
+            <div class="header-wrapper">
+                <h1 class="brand">
+                    <a href="<?php echo $this->url("mostratiradentessp2017"); ?>" class="brand-link">
+                        <img src="<?php echo $this->basePath('assets/mostratiradentessp2017/dist/images/header-bg-wrapper.png') ?>" alt="">
+                    </a>
+                </h1>
+                <!--<div class="brand-right">
+                    <p class="name">20-28 Janeiro 2017<span>Programação Gratuita</span></p>
+                    <ul class="social">
+                        <li class="social-item"><a target="_blank" class="social-link" href="https://www.facebook.com/mostratiradentes"><span class="icon icon-facebook"></span></a></li>
+                        <li class="social-item"><a target="_blank" class="social-link" href="https://www.youtube.com/user/universoproducao"><span class="icon icon-youtube"></span></a></li>
+                        <li class="social-item"><a target="_blank" class="social-link" href="https://www.instagram.com/universoproducao/"><span class="icon icon-instagram"></span></a></li>
+                        <li class="social-item"><a target="_blank" class="social-link" href="https://www.flickr.com/photos/universoproducao/"><span class="icon icon-flickr"></span></a></li>
+                    </ul>
+                </div>-->
+            </div>
+        </div>
+
+        <nav class="menu">
+            <?php $this
+                ->navigation('MostratiradentesSpNavigation')
+                ->menu()->setPartial("mostratiradentes-sp/partials/navigation.phtml");
+
+            echo $this
+                ->navigation('MostratiradentesSpNavigation')
+                ->menu()
+                ->render(); ?>
+        </nav>
+    </header>
+
+    <main class="main <?php echo $this->placeholder("home-class") ?>">
+        <?php echo $this->content; ?>
+    </main>
+    <footer class="footer">
+        <div class="footer-wrapper">
+            <div class="footer-contact">
+                <p class="footer-title">Contate-nos:</p>
+                <span class="icon icon-universo-brand"></span>
+                <span class="footer-add">+ 55 31 3282-2366<br />
+                        mostratiradentes@universoproducao.com.br<br />
+                        Rua Pirapetinga, 567 - Serra<br />
+                        30220-150, Belo Horizonte | MG</span>
+
+            </div>
+            <div class="footer-social">
+                <p class="footer-title">Siga-nos:</p>
+                <ul>
+                    <li class="footer-socialitem"><a target="_blank" class="footer-socialink" href="https://www.facebook.com/universoproducao"><span class="icon icon-facebook"></span></a></li>
+                    <li class="footer-socialitem"><a target="_blank" class="footer-socialink" href="https://twitter.com/universoprod"><span class="icon icon-twitter"></span></a></li>
+                    <li class="footer-socialitem"><a target="_blank" class="footer-socialink" href="https://www.instagram.com/universoproducao/"><span class="icon icon-instagram"></span></a></li>
+                    <li class="footer-socialitem"><a target="_blank" class="footer-socialink" href="https://www.flickr.com/photos/universoproducao/"><span class="icon icon-flickr"></span></a></li>
+                    <li class="footer-socialitem"><a target="_blank" class="footer-socialink" href="https://www.youtube.com/user/universoproducao"><span class="icon icon-youtube"></span></a></li>
+                </ul>
+            </div>
+            <p class="footer-title footer-copy">Copyright © 2015. Universo Produção - Todos os direitos reservados.</p>
+        </div>
+    </footer>
+</div>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="/bower_components/jquery/dist/jquery.min.js"><\/script>')</script>
+
+<script src="<?php echo $this->basePath('assets/mostratiradentessp2017/dist') ?>/scripts/main.js"></script>
+<script src="<?php echo $this->basePath('assets/mostratiradentessp2017/dist') ?>/scripts/vendor.js"></script>
+
+
+<!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-10028533-3', 'auto');
+    ga('send', 'pageview');
+
+</script>
+<!-- endbuild -->
+</body>
+</html>

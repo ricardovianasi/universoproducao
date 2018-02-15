@@ -14,7 +14,7 @@ use Zend\View\Model\ViewModel;
 
 class PreviousEditionsController extends SiteController
 {
-    const SITE_ID = 6;
+    const SITE_ID = 11;
 
     protected $breadcrumbs = [];
 

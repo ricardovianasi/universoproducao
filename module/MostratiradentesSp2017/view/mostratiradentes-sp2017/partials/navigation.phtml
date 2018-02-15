@@ -1,0 +1,32 @@
+<div class="menu-container">
+    <a href="#" id="menu-button" class="menu-button"><span class="icon icon-menu7"></span></a>
+    <ul class="menu-list menu-bar">
+        <li class="menu-item">
+            <a class="menu-link" href="<?php echo $this->url('mostratiradentessp') ?>">
+                <span>Início</span>
+            </a>
+        </li>
+        <?php foreach ($this->container as $page):
+            /** @var Zend\Navigation\Page\AbstractPage $page */ ?>
+            <li class="menu-item">
+                <a class="menu-link" href="" target="<?php echo $page->getTarget() ?>">
+                    <span><?php echo $page->getLabel() ?></span>
+                </a>
+                <?php if ($page->hasPages()): ?>
+                    <div class="menu-container">
+                        <ul class="menu-list">
+                            <?php foreach ($page->getPages() as $child):
+                                /** @var Zend\Navigation\Page\AbstractPage $child */ ?>
+                                <li class="menu-item">
+                                    <a class="menu-link" href="<?php echo rawurldecode($child->getHref()); ?>">
+                                        <span><?php echo $child->getLabel() ?></span>
+                                    </a>
+                                </li>
+                            <?php endforeach; ?>
+                        </ul>
+                    </div>
+                <?php endif; ?>
+            </li>
+        <?php endforeach; ?>
+    </ul>
+</div>

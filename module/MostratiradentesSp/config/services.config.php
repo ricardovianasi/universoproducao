@@ -4,7 +4,7 @@ use Application\Navigation;
 return [
     'factories' => [
         'MostratiradentesSpNavigation' => function($e) {
-            $navigation = new Navigation\SiteNavigation(6, 'mostratiradentessp/default');
+            $navigation = new Navigation\SiteNavigation(11, 'mostratiradentessp/default');
             return $navigation->createService($e);
         },
     ],
