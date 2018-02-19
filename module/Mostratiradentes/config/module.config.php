@@ -30,7 +30,7 @@ return array(
                             ),
                             'defaults' => array(
                                 'controller' => Controller\PostController::class,
-                                'action' => 'index',
+                                'action' => 'index-sp',
                             ),
                         ),
                     ),
@@ -40,7 +40,7 @@ return array(
                             'route' => '/',
                             'defaults' => array(
                                 'controller'    => Controller\IndexController::class,
-                                'action'        => 'index',
+                                'action'        => 'index-sp',
                             ),
                         )
                     ),
