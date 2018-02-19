@@ -1,6 +1,6 @@
 <?php
 
-namespace MostratiradentesSp\Controller\Factory;
+namespace MostratiradentesSp2017\Controller\Factory;
 
 use Arquivoemcartaz\Controller\IndexController;
 use Zend\ServiceManager\FactoryInterface;
