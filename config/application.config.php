@@ -14,7 +14,7 @@ $modules = [
     'Cinebh2017',
     'Mostratiradentes',
     'MostratiradentesSp',
-//    'MostratiradentesSp2017',
+    'MostratiradentesSp2017',
 ];
 
 if($env == 'development') {
