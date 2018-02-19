@@ -7,7 +7,7 @@ return [
                 'options' => array(
                     'route'    => '/',
                 )
-            ),*/
+            ),
             'cinebh2017' => array(
                 'options' => array(
                     'route'    => '[:locale.]cinebh',
@@ -21,7 +21,7 @@ return [
                 'options' => array(
                     'route'    => 'mostratiradentes-sp',
                 )
-            ),
+            ),*/
         )
     )
 ];
