@@ -1,5 +1,5 @@
 <?php
-namespace MostratiradentesSp;
+namespace MostratiradentesSp2017;
 
 use Zend\Mvc\Router\Http\Hostname;
 use Zend\Mvc\Router\Http\Literal;
