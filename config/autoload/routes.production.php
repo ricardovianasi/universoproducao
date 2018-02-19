@@ -16,6 +16,11 @@ return [
                     ),
                 )
             ),
+            'mostratiradentessp2017' => array(
+                'options' => array(
+                    'route'    => 'mostratiradentes-sp',
+                )
+            ),
         )
     )
 ];
