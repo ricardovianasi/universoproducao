@@ -16,11 +16,12 @@ return [
                     ),
                 )
             ),
-            /*'mostratiradentessp2017' => array(
+            'mostratiradentessp' => array(
+                'type' => 'Literal',
                 'options' => array(
                     'route'    => 'mostratiradentes-sp',
                 )
-            ),*/
+            ),
         )
     )
 ];
