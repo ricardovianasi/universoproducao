@@ -2,6 +2,7 @@
 namespace MeuUniverso\Controller;
 
 use Application\Entity\Movie\Movie;
+use Application\Entity\Project\Project;
 use Application\Entity\Registration\Registration;
 use Application\Entity\Workshop\WorkshopSubscription;
 
@@ -24,9 +25,15 @@ class IndexController extends AbstractMeuUniversoController
             ->setParameter('idUserAndDependents', $idUserAndDependents)
             ->getQuery()
             ->getResult();
+
+        $projects = $this->getRepository(Project::class)->findBy([
+            'user' => $this->getAuthenticationService()->getIdentity()->getId()
+        ],['createdAt' => 'DESC']);
+
         return [
             'movies' => $movies,
-            'workshops' => $workshops
+            'workshops' => $workshops,
+            'projects' => $projects
         ];
     }
 

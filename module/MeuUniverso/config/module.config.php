@@ -4,6 +4,7 @@ namespace MeuUniverso;
 use MeuUniverso\View\Helper\RegistrationRegulation;
 use MeuUniverso\View\Helper\UserMenu;
 use MeuUniverso\View\Helper\UserMovies;
+use MeuUniverso\View\Helper\UserProjects;
 use MeuUniverso\View\Helper\UserWorkshops;
 use Util\Security\Crypt;
 use Util\View\Helper\Messages;
@@ -118,7 +119,20 @@ return array(
                                 'action' => 'index',
                             ),
                         ),
-                    )
+                    ),
+                    'project' => array(
+                        'type'    => 'Segment',
+                        'options' => array(
+                            'route'    => '/projeto/:id_reg/:action[/:id]',
+                            'constraints' => array(
+                                'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
+                            ),
+                            'defaults' => array(
+                                'controller' => Controller\ProjectRegistrationController::class,
+                                'action' => 'index',
+                            ),
+                        ),
+                    ),
                 )
             )
         ),
@@ -152,6 +166,7 @@ return array(
         'invokables' => [
             'meuUniversoUserMenu'   => UserMenu::class,
             'meuUniversoMovies'     => UserMovies::class,
+            'meuUniversoProjects'   => UserProjects::class,
             'meuUniversoWorkshops'  => UserWorkshops::class,
             'regulation'            => RegistrationRegulation::class
         ],

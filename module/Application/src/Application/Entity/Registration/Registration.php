@@ -327,4 +327,13 @@ class Registration extends AbstractEntity
     {
         $this->options = $options;
     }
+
+    public function getEvent()
+    {
+        if($this->getEvents()->count() == 1) {
+            return $this->getEvents()->current();
+        }
+
+        return null;
+    }
 }

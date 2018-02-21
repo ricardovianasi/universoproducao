@@ -13,6 +13,7 @@ return [
         Controller\DependentsController::class              => InvokableFactory::class,
         Controller\MovieRegistrationController::class       => InvokableFactory::class,
         Controller\WorkshopRegistrationController::class    => InvokableFactory::class,
+        Controller\ProjectRegistrationController::class     => InvokableFactory::class,
         Controller\ErrorController::class                   => InvokableFactory::class,
     ],
     'initializers' => [

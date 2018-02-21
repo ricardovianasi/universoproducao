@@ -1,0 +1,269 @@
+<div class="portlet light" id="form_wizard_1">
+    <div class="portlet-body form">
+        <?php $form = $this->form;
+        $form->prepare();
+        echo $this->form(null, null)->openTag($form); ?>
+
+        <?php if($form->getMessages()): ?>
+            <div class="portlet box red">
+                <div class="portlet-title">
+                    <div class="caption">Atenção, os seguintes erros foram encontrados </div>
+                </div>
+                <div class="portlet-body">
+                    <?php foreach ($form->getMessages() as $field=>$message): ?>
+                        <h4 class="h4">Campo <?php echo $form->get($field)->getLabel(); ?></h4>
+                        <div style="padding-left: 20px">
+                        <?php foreach ($message as $key=>$m): ?>
+                            <p class=""><?php echo $m ?></p>
+                        <?php endforeach; ?>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+
+        <?php endif; ?>
+
+        <div class="form-wizard">
+            <div class="form-body">
+                <ul class="nav nav-pills nav-justified steps">
+                    <li>
+                        <a href="#tab_regulation" data-toggle="tab" class="step">
+                            <span class="number"> 1 </span>
+                            <span class="desc"><i class="glyphicon glyphicon-ok"></i> Regulamento </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#tab2" data-toggle="tab" class="step">
+                            <span class="number"> 2 </span>
+                            <span class="desc"><i class="glyphicon glyphicon-ok"></i> Ficha técnica </span>
+                        </a>
+                    </li>
+
+                </ul>
+                <div id="bar" class="progress progress-striped" role="progressbar">
+                    <div class="progress-bar progress-bar-success"> </div>
+                </div>
+
+                <div class="tab-content">
+                    <div class="tab-pane active" id="tab_regulation">
+                        <h3 class="h3 block">Regulamento</h3>
+                        <?php echo $this->regulation($this->reg); ?>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="movie-multi-check">
+                                    <?php echo $this->formRow($form->get('accept_regulation')); ?>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="tab-pane" id="tab2">
+                        <?php echo $this->formRow($form->get('title')) ?>
+                        <?php echo $this->formRow($form->get('state_production')) ?>
+                        <?php echo $this->formRow($form->get('options[phase]')) ?>
+
+                        <div class="project-producers">
+                            <h3 class="h3 block">Produtor(es)</h3>
+                            <?php echo $this->formCollection()->renderTemplate($form->get('producers')); ?>
+                            <div class="list">
+                                <?php $prodColl = $form->get('producers')->getFieldsets(); ?>
+                                <?php foreach ($prodColl as $proItem): ?>
+                                    <div class="portlet light bordered">
+                                        <div class="portlet-title">
+                                            <div class="caption"><?php echo $proItem->get('name')->getValue(); ?></div>
+                                            <div class="tools">
+                                                <a href="" class="collapse" data-original-title="" title=""></a>
+                                                <a href="" class="remove" data-original-title="" title=""> </a>
+                                            </div>
+                                        </div>
+                                        <div class="portlet-body">
+                                            <?php echo $this->formRow($proItem->get('name')); ?>
+                                            <?php echo $this->formRow($proItem->get('address')); ?>
+                                            <?php echo $this->formRow($proItem->get('phone')); ?>
+                                            <?php echo $this->formRow($proItem->get('email')); ?>
+                                            <?php echo $this->formRow($proItem->get('image')); ?>
+                                            <?php echo $this->formRow($proItem->get('description')); ?>
+                                        </div>
+                                    </div>
+                                <?php endforeach; ?>
+                            </div>
+                            <a href="#" class="btn btn-default add">Adicionar produtor <i class="glyphicon glyphicon-plus"></i></a>
+                        </div>
+                        <hr>
+
+                        <div class="project-directors">
+                            <h3 class="h3 block">Diretor(es)</h3>
+                            <?php echo $this->formCollection()->renderTemplate($form->get('directors')); ?>
+                            <div class="list">
+                                <?php $dirColl = $form->get('directors')->getFieldsets(); ?>
+                                <?php foreach ($dirColl as $dirItem): ?>
+                                    <div class="portlet light bordered">
+                                        <div class="portlet-title">
+                                            <div class="caption"><?php echo $dirItem->get('name')->getValue(); ?></div>
+                                            <div class="tools">
+                                                <a href="" class="collapse" data-original-title="" title=""></a>
+                                                <a href="" class="remove" data-original-title="" title=""> </a>
+                                            </div>
+                                        </div>
+                                        <div class="portlet-body">
+                                            <?php echo $this->formRow($dirItem->get('name')); ?>
+                                            <?php echo $this->formRow($dirItem->get('address')); ?>
+                                            <?php echo $this->formRow($dirItem->get('phone')); ?>
+                                            <?php echo $this->formRow($dirItem->get('email')); ?>
+                                            <?php echo $this->formRow($dirItem->get('image')); ?>
+                                            <?php echo $this->formRow($dirItem->get('description')); ?>
+                                        </div>
+                                    </div>
+                                <?php endforeach; ?>
+                            </div>
+                            <a href="#" class="btn btn-default add">Adicionar diretor <i class="glyphicon glyphicon-plus"></i></a>
+                        </div>
+
+                        <h3 class="h3 block">Projeto</h3>
+
+                        <?php echo $this->formRow($form->get('has_protocol_registration_law')) ?>
+                        <div class="has_protocol_registration_law" style="display: <?php echo $form->get('has_protocol_registration_law')->getValue()==1 ? "block" : "none" ?>">
+                            <?php echo $this->formRow($form->get('protocol_registration_law')) ?>
+                        </div>
+
+                        <?php echo $this->formRow($form->get('presentation')) ?>
+                        <?php echo $this->formRow($form->get('short_sinopse')) ?>
+                        <?php echo $this->formRow($form->get('long_sinopse')) ?>
+                        <?php echo $this->formRow($form->get('argument')) ?>
+                        <?php echo $this->formRow($form->get('director_notes')) ?>
+
+                        <h3 class="h3">Especificações do filme</h3>
+                        <div class="form-group">
+                            <label>Tempo de duração do filme</label>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <?php echo $this->formRow($form->get('movie_length_hour')) ?>
+                                </div>
+                                <div class="col-md-3">
+                                    <?php echo $this->formRow($form->get('movie_length_minutes')) ?>
+                                </div>
+                            </div>
+                            <p class="help-block">o tempo mínimo de duração permitido é de 60min</p>
+                        </div>
+
+                        <?php echo $this->formRow($form->get('options[genre]')) ?>
+                        <?php echo $this->formRow($form->get('options[format]')) ?>
+                        <?php echo $this->formRow($form->get('options[display_format]')) ?>
+                        <?php echo $this->formRow($form->get('estimated_time_filming')) ?>
+                        <?php echo $this->formRow($form->get('locations')) ?>
+                        <?php echo $this->formRow($form->get('estimated_value')) ?>
+                        <?php echo $this->formRow($form->get('related_partners')) ?>
+                        <?php echo $this->formRow($form->get('value_captured_resources')) ?>
+                        <?php echo $this->formRow($form->get('value_captured_services')) ?>
+                        <?php echo $this->formRow($form->get('options[written_script]')) ?>
+                        <?php echo $this->formRow($form->get('options[first_or_second_project]')) ?>
+
+                        <?php $image = $form->get('image'); ?>
+                        <div class="form-group">
+                            <label class="">Extra - Imagem do filme</label> <br>
+                            <div class="fileinput fileinput-new" data-provides="fileinput">
+                                <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;"> </div>
+                                <div>
+                                    <span class="btn red btn-outline btn-file">
+                                        <span class="fileinput-new"> Selecionar imagem </span>
+                                        <span class="fileinput-exists"> Alterar </span>
+                                        <?php echo $this->formElement($image->get('file')); ?>
+                                    </span>
+                                    <a href="javascript:;" class="btn red fileinput-exists" data-dismiss="fileinput"> Remover </a>
+                                </div>
+                            </div>
+                            <p class="help-block">Anexar uma imagem que ilustre o projeto (mínimo 800kb e máximo de 2mb)</p>
+                        </div>
+
+                        <?php $files = $form->get('files')->getFieldsets(); ?>
+                        <div class="form-group">
+                            <label class="">Anexo - Extras</label> <br>
+                            <?php foreach ($files as $fieldset):  ?>
+                                <div class="fileinput fileinput-new" data-provides="fileinput">
+                                    <div class="input-group input-large">
+                                        <div class="form-control uneditable-input input-fixed input-medium" data-trigger="fileinput">
+                                            <i class="fa fa-file fileinput-exists"></i>&nbsp;
+                                            <span class="fileinput-filename"> </span>
+                                        </div>
+                                        <span class="input-group-addon btn default btn-file">
+                                            <span class="fileinput-new"> Selecione um arquivo </span>
+                                            <span class="fileinput-exists"> Alterar </span>
+                                            <?php echo $this->formElement($fieldset->get('file')); ?>
+                                        </span>
+                                        <a href="javascript:;" class="input-group-addon btn red fileinput-exists" data-dismiss="fileinput"> Remove </a>
+                                    </div>
+                                </div><br>
+                            <?php endforeach; ?>
+                            <p class="help-block">Anexar vídeos, imagens ou textos explicativos/ilustrativos ao projeto (mínimo 800kb e máximo de 2mb)</p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="form-actions">
+                <div class="row">
+                    <div class="col-md-offset-3 col-md-9">
+                        <a href="javascript:;" class="btn default button-previous">
+                            <i class="glyphicon glyphicon-chevron-left"></i> Voltar </a>
+                        <a href="javascript:;" class="btn btn-outline green button-next"> Continuar
+                            <i class="glyphicon glyphicon-chevron-right"></i>
+                        </a>
+                        <button type="submit" class="btn green button-submit"> Cadastrar
+                            <i class="glyphicon glyphicon-ok"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <?php echo $this->form()->closeTag() ?>
+    </div>
+</div>
+<?php $this->inlineScript()->captureStart();
+echo <<<JS
+    (function ( $ ) {
+        $.fn.projectPeoples = function() {
+            var el = $(this);
+            $('.add', el).on('click', function(e) {
+                e.preventDefault();
+                var template = $('span[data-template]', el).data('template'),
+                    index = Math.floor(Date.now() / 1000);
+                template = template.replace(/__index__/g, index);
+                var item = $('<div class="portlet light bordered">' +
+                 '<div class="portlet-title">' +
+                  '<div class="caption"></div>' +
+                  '<div class="tools"><a href="" class="collapse" data-original-title="" title=""></a><a href="" class="remove" data-original-title="" title=""> </a></div>' + 
+                 '</div>' +
+                 '<div class="portlet-body">' + template + '</div>' +
+                  '</div>');
+                $('.list', el).append(item);
+            });
+            
+            $(document).on('keyup', '.people-name', function() {
+                $(this)
+                    .parents('.portlet-body')
+                    .first()
+                    .siblings('.portlet-title')
+                    .children('.caption')
+                    .text($(this).val())
+            });
+        };
+    }(jQuery));
+
+    $( document ).ready(function() {
+        $('.project-directors').projectPeoples();
+        $('.project-producers').projectPeoples();
+       
+        var hasProtocolContainer = $('.has_protocol_registration_law');
+        $('#has_protocol_registration_law').on('change', function() {
+            var selected = $(this).find('option:selected').val();
+            if(selected == 1) {
+                hasProtocolContainer.css('display', 'block');
+            } else {
+                hasProtocolContainer.css('display', 'none');
+            }
+        });
+    });
+    
+JS;
+$this->inlineScript()->captureEnd(); ?>

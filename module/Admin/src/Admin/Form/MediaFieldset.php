@@ -32,6 +32,11 @@ class MediaFieldset extends Fieldset
         ]);
 
         $this->add([
+            'type' => 'file',
+            'name' => 'file',
+        ]);
+
+        $this->add([
             'name' => 'credits',
             'options' => [
                 'label' => 'Créditos'

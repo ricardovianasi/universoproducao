@@ -1,0 +1,589 @@
+<?php
+/** @var \Application\Entity\Movie\Movie $movie */
+$movie = $this->movie;
+?>
+
+<div class="container">
+    <p class="meuuniverso-brand meuuniverso-brand--center"><strong>Meu</strong>Universo | Visualizar projeto</p>
+
+    <div class="portlet light" id="form_wizard_1">
+        <div class="portlet-body form">
+            <form class="form-horizontal form-bordered" action="">
+                <div class="form-body">
+
+                    <div class="portlet light bordered">
+                        <div class="portlet-title">
+                            <div class="caption bold">Inscrição</div>
+                        </div>
+                        <div class="portlet-body form">
+                            <table class="table table-bordered table-hover">
+                                <thead>
+                                    <tr>
+                                        <th> Evento </th>
+                                        <th> Status </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                <?php foreach ($movie->getSubscriptions() as $event): ?>
+                                    <tr>
+                                        <td><?php echo $event->getEvent()->getShortName(); ?></td>
+                                        <td><?php echo \Application\Entity\Movie\MovieEventStatus::get($event->getStatus()); ?></td>
+                                    </tr>
+                                <?php endforeach; ?>
+                                </tbody>
+                            </table>
+                            <p><small>Sua inscrição foi realizada em <?php echo $movie->getCreatedAt()->format('d/m/Y \a\s H:i') ?></small></p>
+                        </div>
+                    </div>
+
+                    <h3 class="h3 form-section">Ficha técnica</h3>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="control-label col-md-3">Título:</label>
+                                <div class="col-md-9">
+                                    <p class="form-control-static"> <?php echo $movie->getTitle(); ?> </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="control-label col-md-3">Título em inglês:</label>
+                                <div class="col-md-9">
+                                    <p class="form-control-static"> <?php echo $movie->getTitleEnglish(); ?> </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="control-label col-md-3">País de produção:</label>
+                                <p class="form-control-static"> <?php $movie->getProductionCountry(); ?> </p>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="control-label col-md-3">Estado de produção:</label>
+                                <div class="col-md-9">
+                                    <p class="form-control-static"> <?php echo $movie->getProductionState(); ?> </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="control-label col-md-3">Ano de finalização:</label>
+                                <div class="col-md-9">
+                                    <p class="form-control-static"> <?php echo $movie->getEndDateYear(); ?> </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="control-label col-md-3">Mês de finalização:</label>
+                                <div class="col-md-9">
+                                    <p class="form-control-static"> <?php echo $movie->getEndDateMonth(); ?> </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="control-label col-md-3">Duração exata:</label>
+                                <div class="col-md-9">
+                                    <p class="form-control-static"> <?php echo $movie->getDuration()->format('H:i:s'); ?> </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="control-label col-md-3">O filme possui CPB?</label>
+                                <div class="col-md-9">
+                                    <p class="form-control-static"> <?php echo $movie->getHasCpb()==1 ? "Sim" : "Não"; ?> </p>
+                                </div>
+                            </div>
+                        </div>
+                        <?php if($movie->getHasCpb()): ?>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="control-label col-md-3">Número do CPB:</label>
+                                <div class="col-md-9">
+                                    <p class="form-control-static"> <?php echo $movie->getCpb(); ?> </p>
+                                </div>
+                            </div>
+                        </div>
+                        <?php endif; ?>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="control-label col-md-3">O filme possui classificação indicativa oficial emitida pelo Ministério da Justiça?</label>
+                                <div class="col-md-9">
+                                    <p class="form-control-static"> <?php echo $movie->getHasOfficialClassification()==1 ? "Sim" : "Não"; ?> </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="control-label col-md-3"><?php echo $movie->getHasOfficialClassification()==1 ? "Classificação indicativa:" : "Indique a classificação indicativa sugerida:"; ?></label>
+                                <div class="col-md-9">
+                                    <p class="form-control-static">
+                                        <?php if($cla = $movie->getOption(\Application\Entity\Movie\OptionsType::CLASSIFICATION)) {
+                                            echo $cla->getName();
+                                        } ?>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <?php if(!$movie->getHasOfficialClassification() &&  $cla && strtolower($cla->getName()) != "livre"): ?>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="control-label col-md-3">Informar o conteúdo das cenas:</label>
+                                <div class="col-md-9">
+                                    <p class="form-control-static">
+                                        <?php echo $movie->getContentScenes(); ?>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <?php endif; ?>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="control-label col-md-3">Formato em que o filme foi finalizado:</label>
+                                <div class="col-md-9">
+                                    <p class="form-control-static">
+                                        <?php if($for = $movie->getOption(\Application\Entity\Movie\OptionsType::FORMAT_COMPLETED)) {
+                                            echo $for->getName();
+                                        } ?>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="control-label col-md-3">Janela final para exibição:</label>
+                                <div class="col-md-9">
+                                    <p class="form-control-static">
+                                        <?php if($win = $movie->getOption(\Application\Entity\Movie\OptionsType::WINDOW)) {
+                                            echo $win->getName();
+                                        } ?>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="control-label col-md-3">Som:</label>
+                                <div class="col-md-9">
+                                    <p class="form-control-static">
+                                        <?php if($sou = $movie->getOption(\Application\Entity\Movie\OptionsType::SOUND)) {
+                                            echo $sou->getName();
+                                        } ?>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="control-label col-md-3">Cor:</label>
+                                <div class="col-md-9">
+                                    <p class="form-control-static">
+                                        <?php if($cor = $movie->getOption(\Application\Entity\Movie\OptionsType::COLOR)) {
+                                            echo $cor->getName();
+                                        } ?>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="control-label col-md-3">Gênero:</label>
+                                <div class="col-md-9">
+                                    <p class="form-control-static">
+                                        <?php if($gen = $movie->getOption(\Application\Entity\Movie\OptionsType::GENRE)) {
+                                            echo $gen->getName();
+                                        } ?>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="control-label col-md-3">Acessibilidade para pessoas com necessidades especiais:</label>
+                                <div class="col-md-9">
+                                    <p class="form-control-static">
+                                        <?php if($acc = $movie->getOption(\Application\Entity\Movie\OptionsType::ACCESSIBILITY)) {
+                                            $str = "";
+                                            if(count($acc) > 1) {
+                                                foreach ($acc as $a) {
+                                                    $str.= $a->getName() . ', ';
+                                                }
+                                            } else {
+                                                $str = $acc->getName();
+                                            }
+
+                                            echo rtrim($str, ',');
+                                        } ?>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="control-label col-md-3">SE O FILME FOR LONGA, indique quantos LONGAS metragens o diretor já dirigiu:</label>
+                                <div class="col-md-9">
+                                    <p class="form-control-static">
+                                        <?php if($fea = $movie->getOption(\Application\Entity\Movie\OptionsType::FEATURE_DIRECTED)) {
+                                            echo $fea->getName();
+                                        } ?>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="control-label col-md-3">Para curta, indique se ele se enquadra em uma das categorias:</label>
+                                <div class="col-md-9">
+                                    <p class="form-control-static">
+                                        <?php if($short = $movie->getOption(\Application\Entity\Movie\OptionsType::SHORT_MOVIE_CATEGORY)) {
+                                            echo $short->getName();
+                                        } ?>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="control-label col-md-3">O filme possui diálogos?</label>
+                                <div class="col-md-9">
+                                    <p class="form-control-static"> <?php echo $movie->getHasConversationsLanguages()==1 ? "Sim" : "Não"; ?> </p>
+                                </div>
+                            </div>
+                        </div>
+                        <?php if($movie->getHasConversationsLanguages()): ?>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="control-label col-md-3">Informe em qual(is) idioma(s):</label>
+                                    <div class="col-md-9">
+                                        <p class="form-control-static"> <?php echo $movie->getConversationsLanguages(); ?> </p>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php endif; ?>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="control-label col-md-3">O filme possui cópia legendada?</label>
+                                <div class="col-md-9">
+                                    <p class="form-control-static"> <?php echo $movie->getHasSubtitlesLanguages()==1 ? "Sim" : "Não"; ?> </p>
+                                </div>
+                            </div>
+                        </div>
+                        <?php if($movie->getHasSubtitlesLanguages()): ?>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="control-label col-md-3">Informe em qual(is) idioma(s):</label>
+                                    <div class="col-md-9">
+                                        <p class="form-control-static"> <?php echo $movie->getSubtitlesLanguages(); ?> </p>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php endif; ?>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="control-label col-md-3">O filme possui lista de diálogos?</label>
+                                <div class="col-md-9">
+                                    <p class="form-control-static"> <?php echo $movie->getHasConversationsListLanguages()==1 ? "Sim" : "Não"; ?> </p>
+                                </div>
+                            </div>
+                        </div>
+                        <?php if($movie->getHasConversationsListLanguages()): ?>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="control-label col-md-3">Informe em qual(is) idioma(s):</label>
+                                    <div class="col-md-9">
+                                        <p class="form-control-static"> <?php echo $movie->getConversationsListLanguages(); ?> </p>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php endif; ?>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="control-label col-md-3">O filme já participou de outros festivais?</label>
+                                <div class="col-md-9">
+                                    <p class="form-control-static"> <?php echo $movie->getHasParticipatedOtherFestivals()==1 ? "Sim" : "Não"; ?> </p>
+                                </div>
+                            </div>
+                        </div>
+                        <?php if($movie->getHasParticipatedOtherFestivals()): ?>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="control-label col-md-3">Cite os festivais e prêmios recebidos:</label>
+                                    <div class="col-md-9">
+                                        <p class="form-control-static"> <?php echo $movie->getOtherFestivals(); ?> </p>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php endif; ?>
+                    </div>
+
+                    <h3 class="h3 form-section">Produção/Direção</h3>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="control-label col-md-3">Direção:</label>
+                                <div class="col-md-9">
+                                    <p class="form-control-static"> <?php echo $movie->getDirection() ?> </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="control-label col-md-3">Roteiro:</label>
+                                <p class="form-control-static"> <?php echo $movie->getScript() ?> </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="control-label col-md-3">Empresa produtora:</label>
+                                <div class="col-md-9">
+                                    <p class="form-control-static"> <?php echo $movie->getProductionCompany() ?> </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="control-label col-md-3">Co-produção:</label>
+                                <div class="col-md-9">
+                                    <p class="form-control-static"> <?php echo $movie->getCoProduction() ?> </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="control-label col-md-3">Produção executiva</label>
+                                <div class="col-md-9">
+                                    <p class="form-control-static"> <?php echo $movie->getExecutiveProduction() ?> </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="control-label col-md-3">Direção de produção:</label>
+                                <div class="col-md-9">
+                                    <p class="form-control-static"> <?php echo $movie->getDirectionProduction() ?> </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="control-label col-md-3">Montagem:</label>
+                                <div class="col-md-9">
+                                    <p class="form-control-static"> <?php echo $movie->getEditingAssembly() ?> </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="control-label col-md-3">Fotografia:</label>
+                                <div class="col-md-9">
+                                    <p class="form-control-static"> <?php echo $movie->getPhotography() ?> </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="control-label col-md-3">Direção de arte:</label>
+                                <div class="col-md-9">
+                                    <p class="form-control-static"> <?php echo $movie->getDirectionArt() ?> </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="control-label col-md-3">Trilha sonora:</label>
+                                <div class="col-md-9">
+                                    <p class="form-control-static"> <?php echo $movie->getSoundtrack() ?> </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="control-label col-md-3">Mixagem:</label>
+                                <div class="col-md-9">
+                                    <p class="form-control-static"> <?php echo $movie->getMixing() ?> </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="control-label col-md-3">Som direto:</label>
+                                <div class="col-md-9">
+                                    <p class="form-control-static"> <?php echo $movie->getDirectSound() ?> </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="control-label col-md-3">Edição de som:</label>
+                                <div class="col-md-9">
+                                    <p class="form-control-static"> <?php echo $movie->getSoundEditing() ?> </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="control-label col-md-3">Cenografia:</label>
+                                <div class="col-md-9">
+                                    <p class="form-control-static"> <?php echo $movie->getScenography() ?> </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="control-label col-md-3">Figurino:</label>
+                                <div class="col-md-9">
+                                    <p class="form-control-static"> <?php echo $movie->getCostume() ?> </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="control-label col-md-3">Elenco:</label>
+                                <div class="col-md-9">
+                                    <p class="form-control-static"> <?php echo $movie->getCast() ?> </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="control-label col-md-3">Sinopse:</label>
+                                <div class="col-md-9">
+                                    <p class="form-control-static"> <?php echo $movie->getSynopsis() ?> </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="control-label col-md-3">Filmografia do diretor:</label>
+                                <div class="col-md-9">
+                                    <p class="form-control-static"> <?php echo $movie->getFilmographyDirector() ?> </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3 class="h3 form-section">Multimídia</h3>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="control-label col-md-3">Link de acesso ao filme:</label>
+                                <div class="col-md-9">
+                                    <p class="form-control-static"> <?php echo $movie->getMovieLink() ?> </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="control-label col-md-3">Senha de acesso ao filme:</label>
+                                <div class="col-md-9">
+                                    <p class="form-control-static"> <?php echo $movie->getMoviePassword() ?> </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="control-label col-md-3">Link de divulgação:</label>
+                                <div class="col-md-9">
+                                    <p class="form-control-static"> <?php echo $movie->getMovieDivulgation() ?> </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <?php foreach ($movie->getMedias() as $key=>$media): ?>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="control-label col-md-3">Créditos da foto:<?php echo $media->getCredits(); ?></label>
+                                <div class="col-md-9">
+                                    <p class="form-control-static">
+                                        <img width="200" src="<?php echo $this->fileManipulation()->url($media->getSrc()); ?>" alt="">
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <?php endforeach; ?>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>
