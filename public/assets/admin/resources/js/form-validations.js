@@ -16,7 +16,7 @@
 		init: function() {
 			this.config = $.extend({}, this.defaults, this.options, this.$element.data());
 			var _that = this;
-
+			console.log('hahahahaha');
 			_that.$element.validate({
 		        errorElement: _that.config.errorElement, //default input error message container
 		        errorClass: _that.config.errorClass, // default input error message class
@@ -26,6 +26,7 @@
 		        	
 		        },
 		        errorPlacement: function (error, element) { // render error placement for each input type
+
                     if (element.parent(".input-group").size() > 0) {
                         error.insertAfter(element.parent(".input-group"));
                     } else if (element.attr("data-error-container")) { 
@@ -38,6 +39,8 @@
                         error.appendTo(element.parents('.checkbox-list').attr("data-error-container"));
                     } else if (element.parents('.checkbox-inline').size() > 0) { 
                         error.appendTo(element.parents('.checkbox-inline').attr("data-error-container"));
+                    } else if (element.parents('.checkbox').size() > 0) { 
+                        error.appendTo(element.parents('.checkbox'));
                     } else {
                         error.insertAfter(element); // for other inputs, just perform default behavior
                     }

@@ -15,7 +15,9 @@
                         <div style="padding-left: 20px">
                         <?php foreach ($message as $key=>$m): ?>
                             <?php if(is_array($m)): ?>
-                                <p class=""><?php echo implode('; ', $m) ?></p>
+                                <?php foreach ($m as $subK => $subN): ?>
+                                    <p class=""><?php echo is_array($subN)?implode(';', $subN):$subN ?></p>
+                                <?php endforeach; ?>
                             <?php else: ?>
                                 <p class=""><?php echo $m ?></p>
                             <?php endif; ?>
@@ -55,8 +57,9 @@
 
                         <div class="row">
                             <div class="col-md-12">
-                                <div class="movie-multi-check">
-                                    <?php echo $this->formRow($form->get('accept_regulation')); ?>
+                                <div class="form-group">
+                                    <?php echo $this->formElement($form->get('accept_regulation')); ?>
+                                    <div id="accept_regulation_error"></div>
                                 </div>
                             </div>
                         </div>
@@ -67,7 +70,7 @@
                         <?php echo $this->formRow($form->get('state_production')) ?>
                         <?php echo $this->formRow($form->get('options[phase]')) ?>
 
-                        <div class="project-producers">
+                        <div class="project-producers form-group">
                             <h3 class="h3 block">Produtor(es)</h3>
                             <?php echo $this->formCollection()->renderTemplate($form->get('producers')); ?>
                             <div class="list">
@@ -96,7 +99,7 @@
                         </div>
                         <hr>
 
-                        <div class="project-directors">
+                        <div class="project-directors form-group">
                             <h3 class="h3 block">Diretor(es)</h3>
                             <?php echo $this->formCollection()->renderTemplate($form->get('directors')); ?>
                             <div class="list">
@@ -178,6 +181,7 @@
                                 </div>
                             </div>
                             <p class="help-block">Anexar uma imagem que ilustre o projeto (mínimo 800kb e máximo de 2mb)</p>
+                            <div id="image_file_error"></div>
                             <?php echo $this->formElementErrors($image->get('file')); ?>
                         </div>
 

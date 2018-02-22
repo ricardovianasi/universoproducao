@@ -1062,6 +1062,7 @@ jQuery(document).ready(function() {
         init: function() {
             this.config = $.extend({}, this.defaults, this.options, this.$element.data());
             var _that = this;
+            console.log("hahahahaha");
             _that.$element.validate({
                 errorElement: _that.config.errorElement,
                 errorClass: _that.config.errorClass,
@@ -1081,6 +1082,8 @@ jQuery(document).ready(function() {
                         error.appendTo(element.parents(".checkbox-list").attr("data-error-container"));
                     } else if (element.parents(".checkbox-inline").size() > 0) {
                         error.appendTo(element.parents(".checkbox-inline").attr("data-error-container"));
+                    } else if (element.parents(".checkbox").size() > 0) {
+                        error.appendTo(element.parents(".checkbox"));
                     } else {
                         error.insertAfter(element);
                     }

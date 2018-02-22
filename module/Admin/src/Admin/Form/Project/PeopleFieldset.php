@@ -31,7 +31,8 @@ class PeopleFieldset extends Fieldset
                 'label' => 'Nome'
             ],
             'attributes' => [
-                'class' => 'people-name'
+                'class' => 'people-name',
+                'required' => 'required'
             ]
         ]);
 
@@ -42,6 +43,7 @@ class PeopleFieldset extends Fieldset
                 'label' => 'Endereço'
             ],
             'attributes' => [
+                'required' => 'required'
             ]
         ]);
 
@@ -51,6 +53,7 @@ class PeopleFieldset extends Fieldset
                 'label' => 'Telefone'
             ],
             'attributes' => [
+                'required' => 'required'
             ]
         ]);
 
@@ -60,6 +63,7 @@ class PeopleFieldset extends Fieldset
                 'label' => 'E-mail'
             ],
             'attributes' => [
+                'required' => 'required'
             ]
         ]);
 
@@ -70,7 +74,8 @@ class PeopleFieldset extends Fieldset
                 'label' => 'Descrição'
             ],
             'attributes' => [
-                'rows' => '3'
+                'rows' => '3',
+                'required' => 'required'
             ]
         ]);
 
@@ -94,7 +99,7 @@ class PeopleFieldset extends Fieldset
         return [
             'image' => [
                 'name' => 'image',
-//                'required' => false,
+                'required' => false,
                 'validators' => [
                     new MimeType('image/png,image/jpg,image/jpeg'),
                     [

@@ -199,7 +199,18 @@ var FormWizard = function () {
                         required: true,
                         minlength: 1
                     },
+                    'producers[]': {
+                        required: true,
+                        minlength: 1
+                    },
+                    'directors[]': {
+                        required: true,
+                        minlength: 1
+                    },
                     'movie_link': {
+                        required: true
+                    },
+                    'image[file]': {
                         required: true
                     }
                 },
@@ -211,6 +222,11 @@ var FormWizard = function () {
                     } else if (element.attr("name") == "payment[]") {
                         // for uniform checkboxes, insert the after the given container
                         error.insertAfter("#form_payment_error");
+                    } else if (element.attr("name") == "accept_regulation") {
+                        // for uniform checkboxes, insert the after the given container
+                        error.insertAfter("#accept_regulation_error");
+                    } else if (element.attr("name") == "image[file]") {
+                        error.insertAfter("#image_file_error");
                     } else {
                         error.insertAfter(element); // for other inputs, just perform default behavior
                     }

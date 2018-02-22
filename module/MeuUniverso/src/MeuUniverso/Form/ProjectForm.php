@@ -22,7 +22,8 @@ class ProjectForm extends \Admin\Form\Project\ProjectForm
                 'label' => 'Eu li e estou de acordo com as condições descritas no regulamento',
                 'use_hidden_element' => false,
                 'checked_value' => '1',
-                'unchecked_value' => '0'
+                'unchecked_value' => '0',
+                'form-group' => true
             ),
             'attributes ' => [
                 'required' => true

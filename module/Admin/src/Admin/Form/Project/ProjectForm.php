@@ -80,7 +80,8 @@ class ProjectForm extends Form
             'type' => 'Collection',
             'name' => 'producers',
             'options' => [
-                'count' => 0,
+                'label' => 'Produtor(es)',
+                'count' => 1,
                 'should_create_template' => true,
                 'allow_add' => true,
                 'target_element' => [
@@ -94,7 +95,8 @@ class ProjectForm extends Form
             'type' => 'Collection',
             'name' => 'directors',
             'options' => [
-                'count' => 0,
+                'label' => 'Diretor(es)',
+                'count' => 1,
                 'should_create_template' => true,
                 'allow_add' => true,
                 'target_element' => [
@@ -311,6 +313,7 @@ class ProjectForm extends Form
                 'label' => 'Porcentagem do valor total de projetos já captada em recursos',
             ],
             'attributes' => [
+                'required' => 'required',
             ]
         ]);
 
@@ -321,6 +324,7 @@ class ProjectForm extends Form
                 'label' => 'Porcentagem do valor total de projetos já captada em serviços',
             ],
             'attributes' => [
+                'required' => 'required',
             ]
         ]);
 
@@ -355,6 +359,9 @@ class ProjectForm extends Form
             'name' => 'image',
             'options' => [
                 'label' => 'Extra - Imagem do filme '
+            ],
+            'attributes' => [
+                'required' => 'required'
             ]
         ]);
 
