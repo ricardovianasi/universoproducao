@@ -10,8 +10,10 @@ namespace Admin\Form\Project;
 
 use Zend\Form\Fieldset;
 use Zend\InputFilter\InputFilterProviderInterface;
+use Zend\Validator\File\MimeType;
+use Zend\Validator\File\Size;
 
-class PeopleMediaset extends Fieldset
+class PeopleFieldset extends Fieldset
     implements InputFilterProviderInterface
 {
     public function __construct($name = null, array $options = [])
@@ -80,12 +82,34 @@ class PeopleMediaset extends Fieldset
                 'help-block' => 'mínimo 800kb e máximo de 2mb'
             ],
             'attributes' => [
+                'attributes' => [
+                    'accept' => 'image/*',
+                ],
             ]
         ]);
     }
 
     public function getInputFilterSpecification()
     {
-        return [];
+        return [
+            'image' => [
+                'name' => 'image',
+//                'required' => false,
+                'validators' => [
+                    new MimeType('image/png,image/jpg,image/jpeg'),
+                    [
+                        'name' => Size::class,
+                        'options' => [
+                            'max' => '2MB',
+                            'min' => '800KB',
+                            'messages' => [
+                                Size::TOO_SMALL => "O tamanho mínimo do arquivo é 800KB",
+                                Size::TOO_BIG => "O tamanho máximo do arquivo é 2MB"
+                            ]
+                        ]
+                    ],
+                ]
+            ],
+        ];
     }
 }

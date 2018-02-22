@@ -351,8 +351,11 @@ class ProjectForm extends Form
         ]);
 
         $this->add([
-            'type' => MediaFieldset::class,
+            'type' => FileFieldset::class,
             'name' => 'image',
+            'options' => [
+                'label' => 'Extra - Imagem do filme '
+            ]
         ]);
 
         $this->add([
@@ -362,7 +365,7 @@ class ProjectForm extends Form
                 'count' => 2,
                 'should_create_template' => false,
                 'target_element' => [
-                    'type' => MediaFieldset::class
+                    'type' => FileFieldset::class
                 ]
             ]
 

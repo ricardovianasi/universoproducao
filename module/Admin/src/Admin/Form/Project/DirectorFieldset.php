@@ -9,7 +9,7 @@
 namespace Admin\Form\Project;
 
 
-class DirectorFieldset extends PeopleMediaset
+class DirectorFieldset extends PeopleFieldset
 {
     public function __construct($name = null, array $options = [])
     {

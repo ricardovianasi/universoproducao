@@ -9,7 +9,7 @@
 namespace Admin\Form\Project;
 
 
-class ProductorFieldset extends PeopleMediaset
+class ProductorFieldset extends PeopleFieldset
 {
     public function __construct($name = null, array $options = [])
     {

@@ -11,10 +11,14 @@
                 </div>
                 <div class="portlet-body">
                     <?php foreach ($form->getMessages() as $field=>$message): ?>
-                        <h4 class="h4">Campo <?php echo $form->get($field)->getLabel(); ?></h4>
+                        <h4 class="h4">Campo <strong class="bold"><?php echo $form->get($field)->getLabel(); ?></strong></h4>
                         <div style="padding-left: 20px">
                         <?php foreach ($message as $key=>$m): ?>
-                            <p class=""><?php echo $m ?></p>
+                            <?php if(is_array($m)): ?>
+                                <p class=""><?php echo implode('; ', $m) ?></p>
+                            <?php else: ?>
+                                <p class=""><?php echo $m ?></p>
+                            <?php endif; ?>
                         <?php endforeach; ?>
                         </div>
                     <?php endforeach; ?>
@@ -160,7 +164,7 @@
                         <?php echo $this->formRow($form->get('options[first_or_second_project]')) ?>
 
                         <?php $image = $form->get('image'); ?>
-                        <div class="form-group">
+                        <div class="form-group <?php echo count($image->getMessages())?"has-error":"" ?>">
                             <label class="">Extra - Imagem do filme</label> <br>
                             <div class="fileinput fileinput-new" data-provides="fileinput">
                                 <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;"> </div>
@@ -174,6 +178,7 @@
                                 </div>
                             </div>
                             <p class="help-block">Anexar uma imagem que ilustre o projeto (mínimo 800kb e máximo de 2mb)</p>
+                            <?php echo $this->formElementErrors($image->get('file')); ?>
                         </div>
 
                         <?php $files = $form->get('files')->getFieldsets(); ?>
@@ -193,6 +198,7 @@
                                         </span>
                                         <a href="javascript:;" class="input-group-addon btn red fileinput-exists" data-dismiss="fileinput"> Remove </a>
                                     </div>
+                                    <?php echo $this->formElementErrors($fieldset->get('file')); ?>
                                 </div><br>
                             <?php endforeach; ?>
                             <p class="help-block">Anexar vídeos, imagens ou textos explicativos/ilustrativos ao projeto (mínimo 800kb e máximo de 2mb)</p>
