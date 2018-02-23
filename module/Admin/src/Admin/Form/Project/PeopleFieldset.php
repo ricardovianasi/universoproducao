@@ -99,7 +99,7 @@ class PeopleFieldset extends Fieldset
         return [
             'image' => [
                 'name' => 'image',
-                'required' => false,
+                'required' => true,
                 'validators' => [
                     new MimeType('image/png,image/jpg,image/jpeg'),
                     [
