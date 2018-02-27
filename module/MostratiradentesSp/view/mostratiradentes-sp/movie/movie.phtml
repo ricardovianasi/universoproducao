@@ -1,0 +1,85 @@
+<div class="main-wrapper main-content">
+
+    <div class="movie">
+        <header class="main-header">
+            <h1 class="main-title"><?php echo $this->post->getTitle(); ?></h1>
+            <?php if ($post->getTitleEnglish()): ?>
+                <h2 class="movie-title--sub"><?php echo $this->post->getTitleEnglish(); ?></h2>
+            <?php endif; ?>
+        </header>
+
+
+        <p class="movie-classification"><?php echo implode(', ', $movie_details) ?></p>
+
+        <?php if(!empty($this->medias)): ?>
+            <div class="movie-media">
+                <div class="owl-carousel movie-carousel">
+                    <?php foreach ($this->medias as $media): ?>
+                        <div class="movie-media-item">
+                            <div class="movie-media-wrapper">
+                                <?php if($media['type'] == 'video'): ?>
+                                    <a class="owl-video" href="<?php echo $media['src'] ?>"></a>
+                                <?php else: ?>
+                                    <img src="<?php echo $media['src'] ?>" alt="">
+                                    <img src="<?php echo $this->thumbor()->url($this->fileManipulation()->url($media['src']))->resize(1140, 400); ?>" alt="">
+                                <?php endif; ?>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+        <?php endif; ?>
+
+
+        <div class="movie-detail">
+            <p>
+                <strong>Direção: </strong>
+                <a class="fancybox" style="color: #000;" href="#moreinfo"><?php echo $this->post->getDirection(); ?>
+                    <i style="margin-left: 2px; font-size: 13px;" class="icon-plus-circle"></i></a>
+            </p>
+            <p class="movie-detail-title"><strong>Sinopse</strong></p>
+            <p><?php echo $this->post->getSynopsis(); ?></p>
+
+            <p><strong>Exibições</strong></p>
+            <?php foreach ($this->post->getPrograming() as $pro): ?>
+                <?php
+                $progObj = null;
+                if($pro->getParent()) {
+                    $progObj = $pro->getParent();
+                } else {
+                    $progObj = $pro;
+                }
+                $date =  str_replace('-feira', '', $this->dateFormat($progObj->getDate(), null, null, "pt_BR", "dd/MM | cccc"));
+                $hour = $progObj->getStartTime()->format('H\hi');
+                $place = $progObj->getPlace()?$progObj->getPlace()->getName():"";
+                ?>
+                <div class="highlight-item">
+                    <p class="hightlight-date"><?php echo "$date - $hour"; ?></p>
+                    <p class="hightlight-place"><?php echo $place ?></p>
+                </div>
+            <?php endforeach; ?>
+        </div>
+    </div>
+
+    <div style="display: none;min-width:600px;min-height: 400px" id="moreinfo">
+        <div class="padding" style="padding: 20px">
+            <p><strong>Roteiro:</strong> <?php echo $this->post->getScript(); ?></p>
+            <p><strong>Empresa produtora:</strong> <?php echo $this->post->getProductionCompany(); ?></p>
+            <p><strong>Co-produção:</strong> <?php echo $this->post->getCoProduction(); ?></p>
+            <p><strong>Produção executiva:</strong> <?php echo $this->post->getExecutiveProduction(); ?></p>
+            <p><strong>Direção de produção:</strong> <?php echo $this->post->getDirectionProduction(); ?></p>
+            <p><strong>Montagem:</strong> <?php echo $this->post->getEditingAssembly(); ?></p>
+            <p><strong>Fotografia:</strong> <?php echo $this->post->getPhotography(); ?></p>
+            <p><strong>Direção de arte:</strong> <?php echo $this->post->getDirectionArt(); ?></p>
+            <p><strong>Trilha sonora:</strong> <?php echo $this->post->getSoundtrack(); ?></p>
+            <p><strong>Mixagem:</strong> <?php echo $this->post->getMixing(); ?></p>
+            <p><strong>Som direto:</strong> <?php echo $this->post->getDirectSound(); ?></p>
+            <p><strong>Edição de som:</strong> <?php echo $this->post->getSoundEditing(); ?></p>
+            <p><strong>Cenografia:</strong> <?php echo $this->post->getScenography(); ?></p>
+            <p><strong>Figurino:</strong> <?php echo $this->post->getCostume(); ?></p>
+            <p><strong>Elenco:</strong> <?php echo $this->post->getCast(); ?></p>
+        </div>
+    </div>
+
+    <?php echo $this->partial("application/partials/share.phtml", ['title'=>$post->getTitle()]); ?>
+</div>
