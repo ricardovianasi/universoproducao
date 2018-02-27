@@ -10,5 +10,6 @@ return [
         Controller\PostController::class            => InvokableFactory::class,
         Controller\ProgramationController::class    => InvokableFactory::class,
         Controller\PreviousEditionsController::class    => InvokableFactory::class,
+        Controller\MovieController::class    => InvokableFactory::class,
     ]
 ];
