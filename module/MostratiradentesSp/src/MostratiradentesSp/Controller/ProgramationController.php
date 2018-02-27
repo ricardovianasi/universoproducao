@@ -74,8 +74,6 @@ class ProgramationController extends SiteController
         }
 
         $items = $qb->getQuery()->getResult();
-
-
         foreach ($items as $prog) {
 
             /** @var Programing $prog */
@@ -117,7 +115,8 @@ class ProgramationController extends SiteController
                             'id' => $sess->getObject()->getId()
                         ];
                     }
-                } else {
+                } elseif($prog->getObject()) {
+
                     $events[] = [
                         'title' => $prog->getObject()->getTitle()." | <span class=\"programing-direction\">Direção: ".$prog->getObject()->getDirection()."</span>",
                         'id' => $prog->getObject()->getId()
@@ -183,8 +182,6 @@ class ProgramationController extends SiteController
                 'events' => $events
             ];
         }
-
-
 
         return new ViewModel([
             'programing' => $programing,
