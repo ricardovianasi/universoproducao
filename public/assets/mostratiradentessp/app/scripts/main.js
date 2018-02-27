@@ -41,7 +41,7 @@ $(document).ready(function () {
         autoplayTimeout: 7000,
         animateOut: 'fadeOut'
     });
-    
+
     $(".movie-carousel").owlCarousel({
         items: 1,
         // autoHeight:true,
