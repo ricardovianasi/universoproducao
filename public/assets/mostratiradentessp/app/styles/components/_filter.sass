@@ -1,0 +1,47 @@
+.filter
+  &-form
+    display: inline-block
+    width: 100%
+
+  &-input,
+  &-submit
+    width: 100%
+    box-sizing: border-box
+    +adjust-font-size-to(16px, 1)
+    outline: none
+    text-transform: uppercase
+    font-family: "Share", cursive, Arial, Helvetica, sans-serif
+    +apply-side-rhythm-border(all, 1px, 1, 18px, solid $color-palette-2)
+    color: $color-palette-2
+    letter-spacing: .05em
+
+  &-submit
+    width: 100%
+    background-color: $color-palette-2
+    color: white
+    font-weight: 700
+    transition: $transition-default
+    cursor: pointer
+    text-align: center!important
+    &:hover
+
+  &-days
+    +trailer(2.5)
+    p
+      +trailer(.5)
+      font-weight: 700
+      text-transform: uppercase
+    ul
+      display: block
+      li
+        display: inline-block
+        a
+          display: block
+          padding: 8px
+          border: 1px solid $color-palette-2
+          color: $color-palette-2
+          transition: $transition-default
+          &:hover,
+          &.active
+            background-color: $color-palette-2
+            color: white

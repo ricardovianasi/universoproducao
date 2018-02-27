@@ -41,6 +41,25 @@ $(document).ready(function () {
         animateOut: 'fadeOut'
     });
 
+    $(".movie-carousel").owlCarousel({
+        items: 1,
+        // autoHeight:true,
+        nav: false,
+        video: true,
+        /*navText: [
+            "<button class='gallery__arrow gallery__arrow--left'><span class='icon icon-arrow-left'></span></button>",
+            "<button class='gallery__arrow gallery__arrow--right'><span class='icon icon-arrow-right'></span></button>"
+        ],*/
+        dots: true,
+        mouseDrag: false,
+        lazyLoad: false,
+        loop: true,
+        center: true,
+        autoplay: true,
+        autoplayTimeout: 7000,
+        animateOut: 'fadeOut'
+    });
+
     $(".gallery-list").owlCarousel({
         items: 1,
         autoWidth: true,
