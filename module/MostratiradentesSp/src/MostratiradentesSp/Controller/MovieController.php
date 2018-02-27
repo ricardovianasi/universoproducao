@@ -136,6 +136,7 @@ class MovieController extends SiteController
             'post' => $movie,
             'medias' => $movieMedias,
             'breadcrumbs' => $breadcrumbs,
+            'event' => $site->getEvent(),
             'movie_details' => [
                 $genre->getName(),
                 $color->getName(),

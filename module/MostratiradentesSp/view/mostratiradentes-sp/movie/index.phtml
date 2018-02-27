@@ -45,7 +45,7 @@
 <!--                            <img src="http://162.243.253.29:8888/unsafe/400x600/http://universoproducao.com.br/repository/5/9/e/2/59e2a4a21721e380ce8205c8f44a90ab_15084421060265_1115908104.jpg" alt="">-->
                         </figure>
 
-                        <?php if(count($movie->getPrograming())): ?>
+                        <?php if(count($movie->getPrograming($this->getEvent()->getId()))): ?>
                         <div class="movie-highlight">
                             <div class="hightlight-wrapper">
                                 <p class="hightlight-title">Exibições</p>
