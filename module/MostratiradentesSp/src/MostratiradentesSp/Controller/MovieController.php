@@ -71,7 +71,8 @@ class MovieController extends SiteController
             'movies' => $movies,
             'post' => $post,
             'breadcrumbs' => $post->getBreadcrumbs(),
-            'form' => $formFilter->setData($data)
+            'form' => $formFilter->setData($data),
+            'event' => $site->getEvent()
         ]);
     }
 

@@ -49,7 +49,7 @@
                         <div class="movie-highlight">
                             <div class="hightlight-wrapper">
                                 <p class="hightlight-title">Exibições</p>
-                                <?php foreach ($movie->getPrograming() as $pro): ?>
+                                <?php foreach ($movie->getPrograming($this->getEvent()->getId()) as $pro): ?>
                                     <?php
                                     $progObj = null;
                                     if($pro->getParent()) {

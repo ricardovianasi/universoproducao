@@ -5,6 +5,7 @@ use Application\Entity\Programing\Programing;
 use Application\Entity\Registration\Registration;
 use Application\Entity\Registration\Type;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\ORM\Event\LifecycleEventArgs;
 use Doctrine\ORM\Mapping as ORM;
 use Util\Entity\AbstractEntity;
@@ -19,6 +20,9 @@ class Movie extends AbstractEntity
     const CATEGORY_LONGA = 'longa';
     const CATEGORY_MEDIA = 'media';
     const CATEGORY_CURTA = 'curta';
+
+    /** @var ObjectManager */
+    protected $objectManager;
 
 	/**
 	 * @ORM\Id @ORM\Column(name="id", type="integer", nullable=false)
@@ -1120,24 +1124,58 @@ class Movie extends AbstractEntity
     /**
      * @return mixed
      */
-    public function getPrograming()
+    public function getPrograming($event=null)
     {
-        return $this->programing;
+//        return $this->programing;
+        if(!$this->objectManager) {
+            return [];
+        }
+
+        $args = [
+            'type' => Type::MOVIE,
+            'objectId' => $this->id
+        ];
+        if($event) {
+            $args['event'] = $event;
+        }
+
+        $programing = $this
+            ->getObjectManager()
+            ->getRepository(Programing::class)
+            ->findBy($args, ['date'=>'ASC']);
+
+        return $programing;
     }
 
     /**
      * @ORM\PostLoad
-     * @ORM\PostPersist
      */
     public function setPrograming(LifecycleEventArgs $event)
     {
-        $this->programing = $event
+        /*$this->programing = $event
             ->getEntityManager()
             ->getRepository(Programing::class)
             ->findBy([
                 'type' => Type::MOVIE,
                 'objectId' => $this->id
-            ], ['date'=>'ASC']);
+            ], ['date'=>'ASC']);*/
+
+        $this->objectManager = $event->getObjectManager();
     }
 
+    /**
+     * @return ObjectManager
+     */
+    public function getObjectManager()
+    {
+        return $this->objectManager;
+    }
+
+    /**
+     * @param ObjectManager $objectManager
+     */
+    public function setObjectManager($objectManager)
+    {
+        $this->objectManager = $objectManager;
+    }
 }
