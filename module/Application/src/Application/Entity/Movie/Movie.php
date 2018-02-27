@@ -1137,7 +1137,7 @@ class Movie extends AbstractEntity
             ->findBy([
                 'type' => Type::MOVIE,
                 'objectId' => $this->id
-            ]);
+            ], ['date'=>'ASC']);
     }
 
 }
