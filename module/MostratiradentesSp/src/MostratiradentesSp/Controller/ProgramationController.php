@@ -47,10 +47,12 @@ class ProgramationController extends SiteController
             ->createQueryBuilder('p')
             ->andWhere('p.parent is NULL')
             ->andWhere('p.type != :type')
+            ->andWhere('p.event = :idEvent')
             ->setParameter('type', Type::WORKSHOP)
             ->addOrderBy('p.date', 'ASC')
             ->addOrderBy('p.order', 'ASC')
-            ->addOrderBy('p.startTime', 'ASC');
+            ->addOrderBy('p.startTime', 'ASC')
+            ->setParameter('idEvent', $site->getEvent()->getId());
 
         if(!empty($data['sub_event'])) {
             $qb->andWhere('p.subEvent = :idSubEvent')
