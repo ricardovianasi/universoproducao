@@ -37,6 +37,10 @@ class ProgramingGridController extends AbstractAdminController
             ->addOrderBy('p.order', 'ASC')
             ->addOrderBy('p.startTime', 'ASC');
 
+        if(!empty($data['event'])) {
+            $qb->andWhere('p.event = :idEvent')->setParameter('idEvent', $data['event']);
+        }
+
 		$items = $qb->getQuery()->getResult();
 
 		$this->getViewModel()->setVariables([
