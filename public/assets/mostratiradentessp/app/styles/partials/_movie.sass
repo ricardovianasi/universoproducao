@@ -11,6 +11,12 @@
     .filter-submit
       +column(1/7, $cycle:4)
 
+    +media('<=tablet')
+      .filter-input,
+      .filter-submit
+        +column(1/1, $cycle:1)
+        +trailer(1)
+
 
 
   position: relative
