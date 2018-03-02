@@ -125,10 +125,16 @@ class ProgramationController extends SiteController
                     ];
                 }
 
-                if($prog->hasMeta(Meta::NATIONAL_PREMIERE)) {
-                    $titleItem.= self::SEPARATOR . 'pré-estreia-nacional';
-                } elseif ($prog->hasMeta(Meta::WORLD_PREMIERE)) {
-                    $titleItem.= self::SEPARATOR . 'pré-estreia-mundial';
+                if($meta = $prog->hasMeta(Meta::NATIONAL_PREMIERE)) {
+                    if($meta->getValue() == 2) {
+                        $titleItem.= self::SEPARATOR . 'pré-estreia-nacional';
+                    }
+                }
+
+                if ($meta = $prog->hasMeta(Meta::WORLD_PREMIERE)) {
+                    if($meta->getValue() == 2) {
+                        $titleItem .= self::SEPARATOR . 'pré-estreia-mundial';
+                    }
                 }
 
             } elseif ($prog->getType() == Type::SEMINAR_DEBATE) {
