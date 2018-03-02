@@ -13,7 +13,7 @@
     </tr>
     <tr role="row" class="filter">
         <td><?php echo $this->formelement($form->get('event')); ?></td>
-        <td><?php echo $this->formelement($form->get('movie')); ?></td>
+        <td><?php echo $this->formelement($form->get('movie')->setAttribute('required', '')); ?></td>
         <td><?php echo $this->formelement($form->get('date')); ?></td>
         <td><?php echo $this->formelement($form->get('start_time')); ?></td>
         <td><?php echo $this->formelement($form->get('end_time')); ?></td>
