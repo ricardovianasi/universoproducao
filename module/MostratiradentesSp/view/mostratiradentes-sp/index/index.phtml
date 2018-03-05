@@ -111,45 +111,30 @@
 </section>
 
 <!-- TV -->
-<!--<section class="tv">
-    <div class="main-wrapper">
-        <header class="main-header"><h1 class="section-title">TV Mostra</h1></header>
+<?php if(count($this->videos)): ?>
+    <section class="tv">
+        <div class="main-wrapper">
+            <header class="main-header"><h1 class="section-title">TV Mostra</h1></header>
 
-        <div class="tv-items">
+            <div class="tv-items">
+                <?php foreach ($this->videos as $v): ?>
+                    <article class="tv-item">
+                        <a  data-fancybox class="tv-link" href="<?php echo $v->getYoutube(); ?>">
+                            <figure class="tv-figure">
+                                <img src="<?php echo $this->thumbor()->url($v->getThumb())->resize(640, 396); ?>" alt="">
+                            </figure>
+                            <div class="tv-content">
+                                <p class="tv-title"><?php echo $v->getCaption(); ?></p>
+                            </div>
+                        </a>
+                    </article>
+                <?php endforeach; ?>
+                <p class="tv-all"><a href="https://www.youtube.com/channel/UCaikc9czwiws39fvlHX-RpA">Assista todos os vídeos <span class="icon icon-plus-circle"></span></a></p>
+            </div>
 
-            <article class="tv-item">
-                <figure class="tv-figure">
-                    <img src="images/tv1.jpg" alt="">
-                </figure>
-                <div class="tv-content">
-                    <p class="tv-title">Estréia do longa comboio de sal e açúcar</p>
-                </div>
-            </article>
-
-            <article class="tv-item">
-                <figure class="tv-figure">
-                    <img src="images/tv2.jpg" alt="">
-                </figure>
-                <div class="tv-content">
-                    <p class="tv-title">stréia de longas nacionais é destaque na 20ª mostra de cinema de tiradentes</p>
-                    <p class="tv-subtitle">Filmes nacionais estreiam em grande estilo na Mostra Tiradentes. Confira como foi o primeiro dia</p>
-                </div>
-            </article>
-
-            <article class="tv-item">
-                <figure class="tv-figure">
-                    <img src="images/tv2.jpg" alt="">
-                </figure>
-                <div class="tv-content">
-                    <p class="tv-title">stréia de longas nacionais é destaque na 20ª mostra de cinema de tiradentes</p>
-                    <p class="tv-subtitle">Filmes nacionais estreiam em grande estilo na Mostra Tiradentes. Confira como foi o primeiro dia</p>
-                </div>
-            </article>
-            <p class="tv-all"><a href="">Assista todos os vídeos <span class="icon icon-plus-circle"></span></a></p>
         </div>
-
-    </div>
-</section>-->
+    </section>
+<?php endif; ?>
 
 <section class="gallery">
     <div class="gallery-list owl-carousel">
