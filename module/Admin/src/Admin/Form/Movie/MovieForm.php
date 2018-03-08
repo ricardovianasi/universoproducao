@@ -531,6 +531,18 @@ class MovieForm extends Form
 
         $this->add([
             'type' => 'Textarea',
+            'name' => 'synopsis_english',
+            'options' => [
+                'label' => 'Sinopse em inglês',
+            ],
+            'attributes' => [
+                'rows' => 7,
+//                'required' => 'required',
+            ]
+        ]);
+
+        $this->add([
+            'type' => 'Textarea',
             'name' => 'filmography_director',
             'options' => [
                 'label' => 'Filmografia do diretor',

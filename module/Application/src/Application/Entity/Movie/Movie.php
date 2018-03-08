@@ -105,6 +105,9 @@ class Movie extends AbstractEntity
     /** @ORM\Column(name="synopsis", type="string", nullable=true) */
     private $synopsis;
 
+    /** @ORM\Column(name="synopsis_english", type="text", nullable=true) */
+    private $synopsisEnglish;
+
     /** @ORM\Column(name="conversations_languages", type="string", nullable=true) */
     private $conversationsLanguages;
 
@@ -589,6 +592,22 @@ class Movie extends AbstractEntity
     public function setSynopsis($synopsis)
     {
         $this->synopsis = $synopsis;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSynopsisEnglish()
+    {
+        return $this->synopsisEnglish;
+    }
+
+    /**
+     * @param mixed $synopsisEnglish
+     */
+    public function setSynopsisEnglish($synopsisEnglish)
+    {
+        $this->synopsisEnglish = $synopsisEnglish;
     }
 
     /**
