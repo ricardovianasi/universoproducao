@@ -53,7 +53,7 @@ class IndexController extends SiteController
 
         $videos = $this->getRepository(Tv::class)->findBy(['site' => self::SITE_ID], [
             'date' => 'DESC'
-        ]);
+        ], 3);
 
         $guides = $this->getRepository(Post::class)->findBy(
             [
