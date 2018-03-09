@@ -94,6 +94,30 @@ class MovieForm extends AdminMovieForm
         $this->remove('author');
         $this->remove('registration');
 
+        $this->getInputFilter()->get('movie_link')->setRequired(true);
+        $this->getInputFilter()->get('title')->setRequired(true);
+        $this->getInputFilter()->get('title_english')->setRequired(true);
+        $this->getInputFilter()->get('production_state')->setRequired(true);
+        $this->getInputFilter()->get('end_date_year')->setRequired(true);
+        $this->getInputFilter()->get('end_date_month')->setRequired(true);
+        $this->getInputFilter()->get('duration')->setRequired(true);
+        $this->getInputFilter()->get('has_cpb')->setRequired(true);
+        $this->getInputFilter()->get('has_official_classification')->setRequired(true);
+        $this->getInputFilter()->get('has_conversations_languages')->setRequired(true);
+        $this->getInputFilter()->get('has_subtitles_languages')->setRequired(true);
+        $this->getInputFilter()->get('subtitles_languages')->setRequired(true);
+        $this->getInputFilter()->get('options[format_completed]')->setRequired(true);
+        $this->getInputFilter()->get('options[window]')->setRequired(true);
+        $this->getInputFilter()->get('options[sound]')->setRequired(true);
+        $this->getInputFilter()->get('options[color]')->setRequired(true);
+        $this->getInputFilter()->get('options[genre]')->setRequired(true);
+        $this->getInputFilter()->get('direction')->setRequired(true);
+        $this->getInputFilter()->get('filmography_director')->setRequired(true);
+        $this->getInputFilter()->get('synopsis_english')->setRequired(true);
+        $this->getInputFilter()->get('synopsis')->setRequired(true);
+        $this->getInputFilter()->get('has_participated_other_festivals')->setRequired(true);
+        $this->getInputFilter()->get('movie_link')->setRequired(true);
+
         $this->setAttributes([
             'class' => 'form-horizontal movie-form',
 
