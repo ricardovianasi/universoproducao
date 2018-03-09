@@ -64,6 +64,9 @@ class MovieForm extends AdminMovieForm
         $this->get('has_official_classification')->setAttribute('required', 'required');
         $this->get('content_scenes')->setAttribute('required', 'required');
         $this->get('conversations_languages')->setAttribute('required', 'required');
+        $this->get('has_conversations_languages')->setAttribute('required', 'required');
+        $this->get('has_subtitles_languages')->setAttribute('required', 'required');
+        $this->get('has_conversations_list_languages')->setAttribute('required', 'required');
         $this->get('subtitles_languages')->setAttribute('required', 'required');
         $this->get('conversations_list_languages')->setAttribute('required', 'required');
         $this->get('options[format_completed]')->setAttribute('required', 'required');

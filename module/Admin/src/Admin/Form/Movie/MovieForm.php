@@ -122,7 +122,7 @@ class MovieForm extends Form
             ]
         ]);
 
-        /*$this->add([
+        $this->add([
             'type' => 'Select',
             'name' => 'end_date_year',
             'options' => [
@@ -133,9 +133,9 @@ class MovieForm extends Form
             'attributes' => [
                 'required' => 'required',
             ]
-        ]);*/
+        ]);
 
-        $this->add([
+        /*$this->add([
             'type' => 'Number',
             'name' => 'end_date_year',
             'options' => [
@@ -144,7 +144,7 @@ class MovieForm extends Form
             'attributes' => [
 //                'required' => 'required',
             ]
-        ]);
+        ]);*/
 
         $this->add([
             'type' => 'Select',
