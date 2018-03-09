@@ -53,11 +53,31 @@ class MovieForm extends AdminMovieForm
             ]
         ]);
 
-        $this->get('cpb')->setAttribute('required', 'required');
+        $this->get('title')->setAttribute('required', 'required');
+        $this->get('title_english')->setAttribute('required', 'required');
+        $this->get('production_state')->setAttribute('required', 'required');
+        $this->get('end_date_year')->setAttribute('required', 'required');
+        $this->get('end_date_month')->setAttribute('required', 'required');
+        $this->get('duration')->setAttribute('required', 'required');
+//        $this->get('cpb')->setAttribute('required', 'required');
+        $this->get('has_cpb')->setAttribute('required', 'required');
+        $this->get('has_official_classification')->setAttribute('required', 'required');
         $this->get('content_scenes')->setAttribute('required', 'required');
         $this->get('conversations_languages')->setAttribute('required', 'required');
         $this->get('subtitles_languages')->setAttribute('required', 'required');
         $this->get('conversations_list_languages')->setAttribute('required', 'required');
+        $this->get('options[format_completed]')->setAttribute('required', 'required');
+        $this->get('options[window]')->setAttribute('required', 'required');
+        $this->get('options[sound]')->setAttribute('required', 'required');
+        $this->get('options[color]')->setAttribute('required', 'required');
+        $this->get('options[genre]')->setAttribute('required', 'required');
+        $this->get('direction')->setAttribute('required', 'required');
+        $this->get('filmography_director')->setAttribute('required', 'required');
+        $this->get('synopsis_english')->setAttribute('required', 'required');
+        $this->get('synopsis')->setAttribute('required', 'required');
+        $this->get('has_participated_other_festivals')->setAttribute('required', 'required');
+        $this->get('movie_link')->setAttribute('required', 'required');
+        $this->get('movie_password')->setAttribute('required', 'required');
 
         $ignoreElements = ['events','accept_regulation'];
         foreach ($this->getElements() as $key=>$element) {

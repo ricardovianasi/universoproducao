@@ -652,7 +652,6 @@ class MovieForm extends Form
             'type' => 'Textarea',
             'name' => 'other_festivals',
             'options' => [
-                'label' => 'Cite os festivais e prêmios recebidos',
                 'help-block' => '',
             ],
             'attributes' => [

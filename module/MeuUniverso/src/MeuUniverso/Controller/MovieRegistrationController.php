@@ -298,7 +298,7 @@ class MovieRegistrationController extends AbstractMeuUniversoRegisterController
                     }
                     $msg.= '<p><ul>'.$mostras.'</ul></p>';
 
-                    $msg.= '<p>O resultado da seleção está previsto para ser divulgado até o dia 23 de dezembro de 2017, pelo e-mail cadastrado.</p>';
+                    $msg.= '<p>O resultado para a seleção da 13ª CineOP está previsto para ser divulgado até 14 de maio. Já o resultado da 12ª CineBH está previsto para ser divulgato até 01 de agosto. Os resultados serão enviados pelo email cadastrado.</p>';
                     $msg.= '<p>Pedimos a gentileza de manter os dados do seu cadastro sempre atualizados para garantir a eficácia em nossa comunicação!</p>';
 
                     $to[$user->getName()] = $user->getEmail();
