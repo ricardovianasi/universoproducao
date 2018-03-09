@@ -663,7 +663,7 @@ class MovieForm extends Form
             'name' => 'movie_divulgation',
             'options' => [
                 'label' => 'Link de divulgação',
-                'help-block' => 'Inserir link do Vimeo ou Youtube',
+                'help-block' => 'Inserir link do Vimeo ou Youtube (link aberto)',
             ],
             'attributes' => [
             ]
