@@ -80,7 +80,6 @@ class MovieForm extends AdminMovieForm
         $this->get('synopsis')->setAttribute('required', 'required');
         $this->get('has_participated_other_festivals')->setAttribute('required', 'required');
         $this->get('movie_link')->setAttribute('required', 'required');
-        $this->get('movie_password')->setAttribute('required', 'required');
 
         $ignoreElements = ['events','accept_regulation'];
         foreach ($this->getElements() as $key=>$element) {
