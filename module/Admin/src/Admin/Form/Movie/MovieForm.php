@@ -861,6 +861,11 @@ class MovieForm extends Form
                 'required'   => false,
                 'allow_empty' => true
             ],
+            'is_invited' => [
+                'name'       => 'is_invited',
+                'required'   => false,
+                'allow_empty' => true
+            ],
 
         ]));
     }
