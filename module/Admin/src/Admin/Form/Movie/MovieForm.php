@@ -123,12 +123,12 @@ class MovieForm extends Form
         ]);
 
         $this->add([
-            'type' => 'Select',
+            'type' => 'Number',
             'name' => 'end_date_year',
             'options' => [
                 'label' => 'Ano de finalização',
-                'value_options' => $this->populateEndDateYear(),
-                'empty_option' => 'Selecione',
+                //'value_options' => $this->populateEndDateYear(),
+                //'empty_option' => 'Selecione',
             ],
             'attributes' => [
                 'required' => 'required',
