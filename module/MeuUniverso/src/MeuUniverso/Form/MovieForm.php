@@ -105,7 +105,6 @@ class MovieForm extends AdminMovieForm
         $this->getInputFilter()->get('has_official_classification')->setRequired(true);
         $this->getInputFilter()->get('has_conversations_languages')->setRequired(true);
         $this->getInputFilter()->get('has_subtitles_languages')->setRequired(true);
-        $this->getInputFilter()->get('subtitles_languages')->setRequired(true);
         $this->getInputFilter()->get('options[format_completed]')->setRequired(true);
         $this->getInputFilter()->get('options[window]')->setRequired(true);
         $this->getInputFilter()->get('options[sound]')->setRequired(true);
