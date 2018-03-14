@@ -1,6 +1,7 @@
 <?php
 namespace MeuUniverso;
 
+use MeuUniverso\View\Helper\LabelStatus;
 use MeuUniverso\View\Helper\RegistrationRegulation;
 use MeuUniverso\View\Helper\UserMenu;
 use MeuUniverso\View\Helper\UserMovies;
@@ -168,7 +169,8 @@ return array(
             'meuUniversoMovies'     => UserMovies::class,
             'meuUniversoProjects'   => UserProjects::class,
             'meuUniversoWorkshops'  => UserWorkshops::class,
-            'regulation'            => RegistrationRegulation::class
+            'regulation'            => RegistrationRegulation::class,
+            'labelStatus'           => LabelStatus::class
         ],
         'factories' => [
             'meuUniversoMessages' => function($e) {

@@ -223,6 +223,17 @@ class Registration extends AbstractEntity
         $this->events = $events;
     }
 
+    public function getEventById($eventId)
+    {
+        foreach ($this->getEvents() as $e) {
+            if($e->getId() == $eventId) {
+                return $e;
+            }
+        }
+
+        return null;
+    }
+
     /**
      * @return mixed
      */

@@ -1015,6 +1015,17 @@ class Movie extends AbstractEntity
         return null;
     }
 
+    public function hasSubscriptonByEvent($eventId)
+    {
+        foreach ($this->getSubscriptions() as $sub) {
+            if($sub->getEvent()->getId() == $eventId) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     /**
      * @param mixed $subscriptions
      */

@@ -75,6 +75,70 @@ class MovieRegistrationController extends AbstractMeuUniversoRegisterController
         ];
     }
 
+    public function inscricaoAction()
+    {
+        $idReg = $this->params()->fromRoute('id_reg');
+        if(!$idReg) {
+            return $this->redirect()->toRoute('meu-universo/default', [], ['query'=>[
+                'code' => self::ERROR_REG_NOT_FOUND,
+                'id_reg' => $idReg
+            ]]);
+        }
+
+        $reg = $this->getRepository(Registration::class)->findOneBy([
+            'hash' => $idReg
+        ]);
+
+        if(!$reg) {
+            return $this->redirect()->toRoute('meu-universo/default', [], ['query'=>[
+                'code' => self::ERROR_REG_NOT_FOUND,
+                'id_reg' => $idReg
+            ]]);
+        }
+
+
+        $finishedFrom = $reg->getOption(Options::MOVIE_ALLOW_FINISHED_FROM);
+        $finishedTo = $reg->getOption(Options::MOVIE_ALLOW_FINISHED_TO);
+        if(!($finishedFrom && $finishedTo)) {
+            return $this->redirect()->toRoute('meu-universo/default', [], ['query'=>[
+                'code' => self::ERROR_REG_NOT_FOUND,
+                'id_reg' => $idReg
+            ]]);
+        }
+
+        $dateFinishFrom = \DateTime::createFromFormat('d/m/Y', $finishedFrom->getValue());
+        $dateFinishTo = \DateTime::createFromFormat('d/m/Y', $finishedTo->getValue());
+
+        //verifica se existem filmes que podem ser inscritos no novo regulamento
+        $movies = $this
+            ->getRepository(Movie::class)
+            ->createQueryBuilder('m')
+            ->andWhere('m.endDateYear >= :finishedFrom')
+            ->andWhere('m.endDateYear <= :finishedTo')
+            ->andWhere('m.author = :idAuthor')
+            ->setParameters([
+                'finishedFrom' => $dateFinishFrom->format('Y'),
+                'finishedTo' => $dateFinishTo->format('Y'),
+                'idAuthor' => $this->getAuthenticationService()->getIdentity()->getId()
+            ])
+            ->getQuery()
+            ->getResult();
+
+        if(count($movies)) {
+            $viewModel = new ViewModel();
+            return $viewModel->setVariables([
+                'reg' => $reg,
+                'movies' => $movies
+            ]);
+
+        } else {
+            return $this->redirect()->toRoute('meu-universo/movie', [
+                'action' => 'novo',
+                'id_reg' => $idReg
+            ]);
+        }
+    }
+
     public function novoAction()
     {
         return $this->persist('create');
@@ -85,6 +149,104 @@ class MovieRegistrationController extends AbstractMeuUniversoRegisterController
         $result = $this->persist('update');
         $result->setTemplate('meu-universo/movie-registration/editar.phtml');
         return $result;
+    }
+
+    public function editarInscricaoAction()
+    {
+        $idReg = $this->params()->fromRoute('id_reg');
+        if(!$idReg) {
+            return $this->redirect()->toRoute('meu-universo/default', [], ['query'=>[
+                'code' => self::ERROR_REG_NOT_FOUND,
+                'id_reg' => $idReg
+            ]]);
+        }
+
+        $reg = $this->getRepository(Registration::class)->findOneBy([
+            'hash' => $idReg
+        ]);
+
+        if(!$reg) {
+            return $this->redirect()->toRoute('meu-universo/default', [], ['query'=>[
+                'code' => self::ERROR_REG_NOT_FOUND,
+                'id_reg' => $idReg
+            ]]);
+        }
+
+        //Evento
+        //Verifica se o evento faz parte do regulamento em questão
+        $idEvent = $this->params()->fromQuery('event');
+        if(!$reg->getEventById($idEvent)) {
+            return $this->redirect()->toRoute('meu-universo/default', [], ['query'=>[
+                'code' => self::ERROR_REG_NOT_FOUND,
+                'id_reg' => $idReg
+            ]]);
+        }
+
+        //Movie
+        $idMovie = $this->params()->fromQuery('movie');
+        $movie = $this->getRepository(Movie::class)->findOneBy([
+            'id' => $idMovie,
+            'author' => $this->getAuthenticationService()->getIdentity()->getId()
+        ]);
+        if(!$movie) {
+            return $this->redirect()->toRoute('meu-universo/default', [], ['query'=>[
+                'code' => self::ERROR_REG_NOT_FOUND,
+                'id_reg' => $idReg
+            ]]);
+        }
+
+        $finishedFrom = $reg->getOption(Options::MOVIE_ALLOW_FINISHED_FROM);
+        $finishedTo = $reg->getOption(Options::MOVIE_ALLOW_FINISHED_TO);
+        if(!($finishedFrom && $finishedTo)) {
+            return $this->redirect()->toRoute('meu-universo/default', [], ['query'=>[
+                'code' => self::ERROR_REG_NOT_FOUND,
+                'id_reg' => $idReg
+            ]]);
+        }
+
+        $dateFinishFrom = \DateTime::createFromFormat('d/m/Y', $finishedFrom->getValue());
+        $dateFinishTo = \DateTime::createFromFormat('d/m/Y', $finishedTo->getValue());
+
+        if(!($movie->getEndDateYear() >= $dateFinishFrom->format('Y') && $movie->getEndDateYear() <= $dateFinishTo->format('Y'))) {
+            return $this->redirect()->toRoute('meu-universo/default', [], ['query'=>[
+                'code' => self::ERROR_REG_NOT_FOUND,
+                'id_reg' => $idReg
+            ]]);
+        }
+
+        if($this->getRequest()->isPost()) {
+
+            $movieEvent = new MovieSubscription();
+            $movieEvent->setMovie($movie);
+            $movieEvent->setEvent($reg->getEventById($idEvent));
+            $movieEvent->setRegistration($reg);
+
+            $this->getEntityManager()->persist($movieEvent);
+            $this->getEntityManager()->flush();
+
+            //Enviar email de confirmação
+            $user = $this->getAuthenticationService()->getIdentity();
+            $msg = '<p>Olá <strong>'.$user->getName().'</strong>!</p>';
+            $msg.= '<p>Informamos que o filme <strong>'.$movie->getTitle().'</strong>
+                    foi inscrito com sucesso para participar da seleção da 
+                    <strong>'.$reg->getEventById($idEvent)->getFullName().'</strong></p>';
+
+            $msg.= '<p>O resultado para a seleção da 13ª CineOP está previsto para 14 de maio, e o da 12ª CineBH para 01 de agosto. Os resultados serão enviados pelo email cadastrado.</p>';
+            $msg.= '<p>Pedimos a gentileza de manter os dados do seu cadastro sempre atualizados para garantir a eficácia em nossa comunicação!</p>';
+
+            $to[$user->getName()] = $user->getEmail();
+            $this->mailService()->simpleSendEmail($to, "Confirmação de inscrição de filme", $msg);
+
+            $this->meuUniversoMessages()->flashSuccess($msg);
+            return $this->redirect()->toRoute('meu-universo/default');
+        }
+
+        $viewModel = new ViewModel();
+        return $viewModel->setVariables([
+            'movie' => $movie,
+            'event' => $reg->getEventById($idEvent),
+            'reg' => $reg
+        ]);
     }
 
     protected function persist($method)
