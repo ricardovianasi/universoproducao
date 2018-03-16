@@ -21,19 +21,23 @@
                 <?php endif; ?>
                 <div class="registration-details">
                     <p class="registration-title"><?php echo $reg->getName(); ?></p>
-                    <?php if($reg->getEndDate()) {
+                    <?php
+                    $dataInicio = $dataTermino = $horaFim = $strData = "";
+                    if($reg->getEndDate()) {
                         $dataInicio = $this->dateFormat($reg->getStartDate(), null, null, "pt_BR", "d 'de' MMMM");
                         $dataTermino = $this->dateFormat($reg->getEndDate(), null, null, "pt_BR", "d 'de' MMMM 'de' Y");
                         $horaFim = $this->dateFormat($reg->getEndDate(), null, null, "pt_BR", "HH'h'mm");
                         $strData = sprintf("De %s a %s(até %s horas - horário de Brasília)", $dataInicio, $dataTermino, $horaFim);
+                    } elseif($reg->getStartDate()) {
+                        $dataInicio = $this->dateFormat($reg->getStartDate(), null, null, "pt_BR", "d 'de' MMMM");
+                        $strData = sprintf("A partir de %s", $dataInicio);
                     } ?>
                     <?php if($strData): ?><p class="date"><?php echo $strData ?></p><?php endif; ?>
                     <?php if($reg->getInfo()): ?><p><?php echo $reg->getInfo(); ?></p><?php endif; ?>
                     <p><a class="registration-link" data-fancybox data-src="#regulation-<?php echo $reg->getId(); ?>" href="javascript:;">Confira o regulamento</a></p>
 
-                    <?php if($reg->isOpen()): ?>
+                    <?php $url = "#"; if($reg->isOpen()): ?>
                         <?php
-                            $url = "#";
                             switch ($reg->getType()) {
                                 case \Application\Entity\Registration\Type::MOVIE:
                                     $url = $this->url('meu-universo/movie', ['id_reg'=>$reg->getHash(), 'action'=>'inscricao']);
@@ -44,6 +48,8 @@
                                 case \Application\Entity\Registration\Type::PROJECT:
                                     $url = $this->url('meu-universo/project', ['id_reg'=>$reg->getHash(), 'action'=>'novo']);
                                     break;
+                                default:
+                                    $url = "#";
 
                             }
                         ?>

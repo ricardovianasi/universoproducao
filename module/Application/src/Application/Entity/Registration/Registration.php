@@ -313,7 +313,7 @@ class Registration extends AbstractEntity
                 return false;
             }
         } elseif($this->getStartDate()) {
-            if($this->getStartDate() >= $now) {
+            if($this->getStartDate() <= $now) {
                 return true;
             } else {
                 return false;
