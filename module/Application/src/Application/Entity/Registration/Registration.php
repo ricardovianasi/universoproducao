@@ -47,7 +47,7 @@ class Registration extends AbstractEntity
     private $regulation;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Application\Entity\Event\Event", cascade={"ALL"})
+     * @ORM\ManyToMany(targetEntity="Application\Entity\Event\Event")
      * @ORM\JoinTable(name="registration_has_events",
      *      joinColumns={@ORM\JoinColumn(name="registration_id", referencedColumnName="id")},
      *      inverseJoinColumns={@ORM\JoinColumn(name="event_id", referencedColumnName="id", unique=true)}
