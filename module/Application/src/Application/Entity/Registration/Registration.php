@@ -307,12 +307,12 @@ class Registration extends AbstractEntity
         $now = new \DateTime();
 
         if($this->getEndDate()) {
-            if($this->getStartDate() <= $now && $this->endDate >= $now) {
+            if($this->getStartDate() <= $now && $this->getEndDate() >= $now) {
                 return true;
             } else {
                 return false;
             }
-        } else {
+        } elseif($this->getStartDate()) {
             if($this->getStartDate() >= $now) {
                 return true;
             } else {
