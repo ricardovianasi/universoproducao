@@ -36,7 +36,7 @@
                             $url = "#";
                             switch ($reg->getType()) {
                                 case \Application\Entity\Registration\Type::MOVIE:
-                                    $url = $this->url('meu-universo/movie', ['id_reg'=>$reg->getHash(), 'action'=>'novo']);
+                                    $url = $this->url('meu-universo/movie', ['id_reg'=>$reg->getHash(), 'action'=>'inscricao']);
                                     break;
                                 case \Application\Entity\Registration\Type::WORKSHOP:
                                     $url = $this->url('meu-universo/workshop', ['id_reg'=>$reg->getHash()]);

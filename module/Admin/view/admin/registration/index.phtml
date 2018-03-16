@@ -82,7 +82,7 @@
                                     <?php endif; ?>
                                 </td>
                                 <td><?php echo $item->getStartDate() ? $item->getStartDate()->format('d/m/Y H:i') : ''  ?></td>
-                                <td><?php echo $item->getStartDate() ? $item->getEndDate()->format('d/m/Y H:i') : ''  ?></td>
+                                <td><?php echo $item->getEndDate() ? $item->getEndDate()->format('d/m/Y H:i') : ''  ?></td>
                                 <td><?php echo $item->getPosition(); ?></td>
 								<td>
 									<a href="<?php echo  $updateUrl; ?>" class="btn btn-sm btn-default">
