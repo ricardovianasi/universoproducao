@@ -1,6 +1,7 @@
 <?php
 namespace MeuUniverso\Controller;
 
+use Application\Entity\EducationalProject\EducationalProject;
 use Application\Entity\Movie\Movie;
 use Application\Entity\Project\Project;
 use Application\Entity\Registration\Registration;
@@ -30,10 +31,15 @@ class IndexController extends AbstractMeuUniversoController
             'user' => $this->getAuthenticationService()->getIdentity()->getId()
         ],['createdAt' => 'DESC']);
 
+        $educationalProjects = $this->getRepository(EducationalProject::class)->findBy([
+            'user' => $this->getAuthenticationService()->getIdentity()->getId()
+        ],['createdAt' => 'DESC']);
+
         return [
             'movies' => $movies,
             'workshops' => $workshops,
-            'projects' => $projects
+            'projects' => $projects,
+            'educationalProjects' => $educationalProjects
         ];
     }
 

@@ -3,6 +3,7 @@ namespace MeuUniverso;
 
 use MeuUniverso\View\Helper\LabelStatus;
 use MeuUniverso\View\Helper\RegistrationRegulation;
+use MeuUniverso\View\Helper\UserEducationalProjects;
 use MeuUniverso\View\Helper\UserMenu;
 use MeuUniverso\View\Helper\UserMovies;
 use MeuUniverso\View\Helper\UserProjects;
@@ -134,6 +135,19 @@ return array(
                             ),
                         ),
                     ),
+                    'educational_project' => array(
+                        'type'    => 'Segment',
+                        'options' => array(
+                            'route'    => '/projeto-educational/:id_reg/:action[/:id]',
+                            'constraints' => array(
+                                'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
+                            ),
+                            'defaults' => array(
+                                'controller' => Controller\EducationalProjectController::class,
+                                'action' => 'index',
+                            ),
+                        ),
+                    ),
                 )
             )
         ),
@@ -165,12 +179,13 @@ return array(
     ],
     'view_helpers' => [
         'invokables' => [
-            'meuUniversoUserMenu'   => UserMenu::class,
-            'meuUniversoMovies'     => UserMovies::class,
-            'meuUniversoProjects'   => UserProjects::class,
-            'meuUniversoWorkshops'  => UserWorkshops::class,
-            'regulation'            => RegistrationRegulation::class,
-            'labelStatus'           => LabelStatus::class
+            'meuUniversoUserMenu'               => UserMenu::class,
+            'meuUniversoMovies'                 => UserMovies::class,
+            'meuUniversoProjects'               => UserProjects::class,
+            'meuUniversoEducationalProjects'    => UserEducationalProjects::class,
+            'meuUniversoWorkshops'              => UserWorkshops::class,
+            'regulation'                        => RegistrationRegulation::class,
+            'labelStatus'                       => LabelStatus::class
         ],
         'factories' => [
             'meuUniversoMessages' => function($e) {

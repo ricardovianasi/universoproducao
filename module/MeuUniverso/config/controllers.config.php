@@ -15,6 +15,7 @@ return [
         Controller\WorkshopRegistrationController::class    => InvokableFactory::class,
         Controller\ProjectRegistrationController::class     => InvokableFactory::class,
         Controller\ErrorController::class                   => InvokableFactory::class,
+        Controller\EducationalProjectController::class      => InvokableFactory::class
     ],
     'initializers' => [
         function($instance, $sm) {

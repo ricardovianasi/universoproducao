@@ -38,5 +38,19 @@
                 <?php echo $this->meuUniversoProjects($this->projects); ?>
             </div>
         </div>
+
+        <?php if(count($this->educationalProjects)): ?>
+            <div class="portlet box blue-hoki">
+                <div class="portlet-title">
+                    <div class="caption">
+                        <i class="fa fa-gift"></i>Projetos audioviais educativos</div>
+                    <div class="actions">
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    <?php echo $this->meuUniversoEducationalProjects($this->educationalProjects); ?>
+                </div>
+            </div>
+        <?php endif; ?>
     </div>
 </div>

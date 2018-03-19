@@ -2,12 +2,10 @@
 namespace MeuUniverso\Controller;
 
 use Application\Entity\User\Hash;
-use Application\Entity\User\User;;
-
+use Application\Entity\User\User;
 use MeuUniverso\Form\ChangePasswordForm;
 use Util\Security\Crypt;
 use Zend\Session\Container;
-use Zend\View\Model\ViewModel;
 
 class AuthController extends AbstractMeuUniversoController
 {

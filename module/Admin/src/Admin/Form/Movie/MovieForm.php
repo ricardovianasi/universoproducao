@@ -11,8 +11,6 @@ use Application\Entity\User\User;
 use Zend\Form\Form;
 use Zend\InputFilter\Factory as InputFilterFactory;
 use Zend\Validator\Date;
-use Zend\Validator\File\MimeType;
-use Zend\Validator\File\Size;
 
 class MovieForm extends Form
 {
