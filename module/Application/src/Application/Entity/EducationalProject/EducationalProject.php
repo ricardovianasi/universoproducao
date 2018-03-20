@@ -90,10 +90,10 @@ class EducationalProject extends AbstractEntity
     /** @ORM\Column(name="complete_text", type="text") */
     private $completeText;
 
-    /** @ORM\Column(name="references", type="text") */
+    /** @ORM\Column(name="`references`", type="text") */
     private $references;
 
-    /** @ORM\Column(name="links", type="text") */
+    /** @ORM\Column(name="`links`", type="text") */
     private $links;
 
     /** @ORM\Column(name="created_at", type="datetime", nullable=true) */

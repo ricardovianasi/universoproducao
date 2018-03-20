@@ -325,10 +325,6 @@ class EducationalProjectForm extends Form
                 'name'       => 'institution_mobile_phone',
                 'required'   => true,
             ],
-            'institution_phone' => [
-                'name'       => 'institution_phone',
-                'required'   => true,
-            ],
             'institution_email' => [
                 'name'       => 'institution_email',
                 'required'   => true,
