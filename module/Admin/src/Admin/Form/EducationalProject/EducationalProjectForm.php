@@ -251,10 +251,49 @@ class EducationalProjectForm extends Form
                 'label_attributes' => [
                     'class' => 'col-md-4'
                 ],
-                'help-block' => 'Limite de 4.000 caracteres, incluindo espaços',
+                'help-block' => 'Histórico e justificativa, bases teórico-metodológicas utilizadas, principais 
+                ações e reflexões junto a comunidade, duas questões sobre a categoria escolhida para dinamizar 
+                a interlocução do trabalho com os participantes do seminário. <br />Limite de 4.000 caracteres, 
+                incluindo espaços.',
             ],
             'attributes' => [
                 'rows' => '15',
+                'required' => 'required',
+            ]
+        ]);
+
+        $this->add([
+            'name' => 'references',
+            'type' => 'Textarea',
+            'options' => [
+                'label' => 'Referências',
+                'twb-layout' => 'horizontal',
+                'column-size' => 'md-8',
+                'label_attributes' => [
+                    'class' => 'col-md-4'
+                ],
+                'help-block' => 'Limite de 1.000 caracteres, incluindo espaços',
+            ],
+            'attributes' => [
+                'rows' => '10',
+                'required' => 'required',
+            ]
+        ]);
+
+        $this->add([
+            'name' => 'links',
+            'type' => 'Textarea',
+            'options' => [
+                'label' => 'Links de materiais audiovisuais citados e realizados pelo projeto',
+                'twb-layout' => 'horizontal',
+                'column-size' => 'md-8',
+                'label_attributes' => [
+                    'class' => 'col-md-4'
+                ],
+                'help-block' => 'Máximo de 10 minutos de duração',
+            ],
+            'attributes' => [
+                'rows' => '10',
                 'required' => 'required',
             ]
         ]);

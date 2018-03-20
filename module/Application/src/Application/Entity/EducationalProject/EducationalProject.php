@@ -90,6 +90,12 @@ class EducationalProject extends AbstractEntity
     /** @ORM\Column(name="complete_text", type="text") */
     private $completeText;
 
+    /** @ORM\Column(name="references", type="text") */
+    private $references;
+
+    /** @ORM\Column(name="links", type="text") */
+    private $links;
+
     /** @ORM\Column(name="created_at", type="datetime", nullable=true) */
     private $createdAt;
 
@@ -444,5 +450,37 @@ class EducationalProject extends AbstractEntity
     public function setFiles($files)
     {
         $this->files = $files;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getReferences()
+    {
+        return $this->references;
+    }
+
+    /**
+     * @param mixed $references
+     */
+    public function setReferences($references)
+    {
+        $this->references = $references;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLinks()
+    {
+        return $this->links;
+    }
+
+    /**
+     * @param mixed $links
+     */
+    public function setLinks($links)
+    {
+        $this->links = $links;
     }
 }
