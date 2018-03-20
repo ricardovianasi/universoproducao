@@ -135,9 +135,6 @@ class EducationalProjectForm extends Form
                     'class' => 'col-md-4'
                 ]
             ],
-            'attributes' => [
-                'required' => 'required',
-            ]
         ]);
 
         $this->add([
@@ -292,10 +289,6 @@ class EducationalProjectForm extends Form
                 ],
                 'help-block' => 'Máximo de 10 minutos de duração',
             ],
-            'attributes' => [
-                'rows' => '10',
-                'required' => 'required',
-            ]
         ]);
 
         $this->add([
