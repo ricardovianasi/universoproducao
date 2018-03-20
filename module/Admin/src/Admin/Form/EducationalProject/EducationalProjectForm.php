@@ -120,6 +120,9 @@ class EducationalProjectForm extends Form
                     'class' => 'col-md-4'
                 ]
             ],
+            'attributes' => [
+                'required' => 'required',
+            ]
         ]);
 
         $this->add([
@@ -132,6 +135,9 @@ class EducationalProjectForm extends Form
                     'class' => 'col-md-4'
                 ]
             ],
+            'attributes' => [
+                'required' => 'required',
+            ]
         ]);
 
         $this->add([
@@ -144,6 +150,9 @@ class EducationalProjectForm extends Form
                     'class' => 'col-md-4'
                 ]
             ],
+            'attributes' => [
+                'required' => 'required',
+            ]
         ]);
 
         $this->add([
@@ -156,6 +165,9 @@ class EducationalProjectForm extends Form
                     'class' => 'col-md-4'
                 ]
             ],
+            'attributes' => [
+                'required' => 'required',
+            ]
         ]);
 
         $this->add([
@@ -184,7 +196,8 @@ class EducationalProjectForm extends Form
                 'column-size' => 'md-6',
                 'label_attributes' => [
                     'class' => 'col-md-4'
-                ]
+                ],
+                'help-block' => 'Consulte o regulamento'
             ],
             'attributes' => [
                 'required' => 'required',
@@ -274,8 +287,19 @@ class EducationalProjectForm extends Form
             ],
             'institution_uf' => [
                 'name'       => 'institution_uf',
-                'required'   => false,
-                'allow_empty' => true
+                'required'   => true,
+            ],
+            'institution_mobile_phone' => [
+                'name'       => 'institution_mobile_phone',
+                'required'   => true,
+            ],
+            'institution_phone' => [
+                'name'       => 'institution_phone',
+                'required'   => true,
+            ],
+            'institution_email' => [
+                'name'       => 'institution_email',
+                'required'   => true,
             ],
             'title' => [
                 'name'       => 'title',
