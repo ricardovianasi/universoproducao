@@ -88,18 +88,21 @@
                         <?php echo $this->formRow($form->get('end_date_year')) ?>
                         <?php echo $this->formRow($form->get('end_date_month')) ?>
 
-                        <div class="form-group ">
-                            <label class="col-md-4 control-label">Título<span class="required" aria-required="true"> * </span></label>
+
+                        <div class="form-group <?php echo count($form->get('duration')->getMessages())?'has-error':''; ?>">
+                            <label class="col-md-4 control-label">Duração<span class="required" aria-required="true"> * </span></label>
                             <div class=" col-md-3">
                                 <?php echo $this->formElement($form->get('duration_minutes')); ?>
+                                <p class="help-block">Duração máxima de 3 minutos</p>
+                                <?php echo $this->formElementErrors($form->get('duration')); ?>
+                                <?php echo $this->formElementErrors($form->get('duration_minutes')); ?>
                             </div>
                             <div class=" col-md-3">
                                 <?php echo $this->formElement($form->get('duration_seconds')); ?>
+                                <?php echo $this->formElementErrors($form->get('duration_seconds')); ?>
                             </div>
-                            <p class="help-block">Duração máxima de 3 minutos</p>
                         </div>
 
-                        <?php echo $this->formRow($form->get('duration')) ?>
                         <?php echo $this->formRow($form->get('options[format_completed]')) ?>
                         <?php echo $this->formRow($form->get('options[window]')) ?>
                         <?php echo $this->formRow($form->get('options[sound]')) ?>

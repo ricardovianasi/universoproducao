@@ -243,12 +243,10 @@ class EducationalMovieRegistrationController extends AbstractMeuUniversoRegister
                 'min' => (1), //1 segundo
                 'max' => (3*60), //3 minutos
                 'inclusive' => false,
-                'date-time-format' => 'i:s',
                 'messages' => [
                     Duration::ERROR_IS_NOT_MARCH => 'O tempo de duração é de no máximo 03 minutos'
                 ]
             ]));
-
 
             if($form->isValid()) {
 
@@ -269,7 +267,6 @@ class EducationalMovieRegistrationController extends AbstractMeuUniversoRegister
                 if(!empty($data['institution'])) {
                     $instituition = new ProducingInstitution();
                     $instituition->setData($data['institution']);
-                    $instituition->setMovie($movie);
                 }
                 $movie->setProducingInstitution($instituition);
                 unset($data['institution']);
@@ -344,7 +341,7 @@ class EducationalMovieRegistrationController extends AbstractMeuUniversoRegister
                     }
                     $msg.= '<p><ul>'.$mostras.'</ul></p>';
 
-                    $msg.= '<p>O resultado para a seleção da 13ª CineOP está previsto para 14 de maio, e o da 12ª CineBH para 01 de agosto. Os resultados serão enviados pelo email cadastrado.</p>';
+                    $msg.= '<p>O resultado para a seleção está previsto para ser divulgado até o dia 14 de maio</p>';
                     $msg.= '<p>Pedimos a gentileza de manter os dados do seu cadastro sempre atualizados para garantir a eficácia em nossa comunicação!</p>';
 
                     $to[$user->getName()] = $user->getEmail();
