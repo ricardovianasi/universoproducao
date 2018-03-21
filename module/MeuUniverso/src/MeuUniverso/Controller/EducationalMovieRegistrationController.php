@@ -229,6 +229,7 @@ class EducationalMovieRegistrationController extends AbstractMeuUniversoRegister
             $movie = new Movie();
             //$movie->setRegistration($reg);
             $movie->setAuthor($this->getAuthenticationService()->getIdentity());
+            $movie->setType(Movie::TYPE_EDUCATIONAL_MOVIE);
         }
 
         if($this->getRequest()->isPost()) {

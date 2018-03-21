@@ -21,6 +21,9 @@ class Movie extends AbstractEntity
     const CATEGORY_MEDIA = 'media';
     const CATEGORY_CURTA = 'curta';
 
+    const TYPE_MOVIE = 'movie';
+    const TYPE_EDUCATIONAL_MOVIE = 'educational_movie';
+
     /** @var ObjectManager */
     protected $objectManager;
 
@@ -176,6 +179,9 @@ class Movie extends AbstractEntity
 
     /** @ORM\Column(name="is_invited", type="boolean", nullable=true) */
     private $isInvited = false;
+
+    /** @ORM\Column(name="`type`", type="string", nullable=true) */
+    private $type = self::TYPE_MOVIE;
 
     private $programing;
 
@@ -1229,5 +1235,21 @@ class Movie extends AbstractEntity
     public function setProducingInstitution($producingInstitution)
     {
         $this->producingInstitution = $producingInstitution;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    /**
+     * @param mixed $type
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
     }
 }
