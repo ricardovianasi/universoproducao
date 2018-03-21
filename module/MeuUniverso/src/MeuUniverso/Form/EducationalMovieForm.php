@@ -140,7 +140,7 @@ class EducationalMovieForm extends AdminMovieForm
 
     public function setData($data)
     {
-        if(!empty($data['duration_minutes']) && !empty($data['duration_seconds'])) {
+        if(isset($data['duration_minutes']) && isset($data['duration_seconds'])) {
             $time = '00:'
                 . str_pad($data['duration_minutes'], 2, '0', STR_PAD_LEFT)
                 . ':' . str_pad($data['duration_seconds'], 2, '0', STR_PAD_LEFT);
