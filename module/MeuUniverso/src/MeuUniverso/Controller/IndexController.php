@@ -15,6 +15,11 @@ class IndexController extends AbstractMeuUniversoController
            'author' => $this->getAuthenticationService()->getIdentity()->getId()
         ],['createdAt' => 'DESC']);
 
+        $educationalMovies = $this->getRepository(Movie::class)->findBy([
+            'author' => $this->getAuthenticationService()->getIdentity()->getId(),
+            'type' => Movie::TYPE_EDUCATIONAL_MOVIE
+        ],['createdAt' => 'DESC']);
+
         $idUserAndDependents = [$this->getAuthenticationService()->getIdentity()->getId()];
         foreach ($this->getAuthenticationService()->getIdentity()->getDependents() as $dep) {
             array_push($idUserAndDependents, $dep->getId());
@@ -37,6 +42,7 @@ class IndexController extends AbstractMeuUniversoController
 
         return [
             'movies' => $movies,
+            'educational_movies' => $educationalMovies,
             'workshops' => $workshops,
             'projects' => $projects,
             'educationalProjects' => $educationalProjects

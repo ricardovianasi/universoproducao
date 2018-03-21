@@ -52,5 +52,19 @@
                 </div>
             </div>
         <?php endif; ?>
+
+        <?php if(count($this->educational_movies)): ?>
+            <div class="portlet box blue-hoki">
+                <div class="portlet-title">
+                    <div class="caption">
+                        <i class="fa fa-gift"></i>Filmes Mostra Educação</div>
+                    <div class="actions">
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    <?php echo $this->meuUniversoMovies($this->educational_movies); ?>
+                </div>
+            </div>
+        <?php endif; ?>
     </div>
 </div>
