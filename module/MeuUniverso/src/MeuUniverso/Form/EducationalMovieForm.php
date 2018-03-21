@@ -124,6 +124,7 @@ class EducationalMovieForm extends AdminMovieForm
         $count = 0;
         do {
             $coll[$count] = str_pad($count, 2, '0');
+            $count++;
         } while($count < 60);
 
         return $coll;
