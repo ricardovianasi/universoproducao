@@ -109,6 +109,19 @@ return array(
                             ),
                         ),
                     ),
+                    'educational_movie' => array(
+                        'type'    => 'Segment',
+                        'options' => array(
+                            'route'    => '/filme-mostra-educacao/:id_reg/:action[/:id]',
+                            'constraints' => array(
+                                'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
+                            ),
+                            'defaults' => array(
+                                'controller' => Controller\EducationalMovieRegistrationController::class,
+                                'action' => 'index',
+                            ),
+                        ),
+                    ),
                     'workshop' => array(
                         'type'    => 'Segment',
                         'options' => array(

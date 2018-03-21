@@ -32,6 +32,8 @@ class Duration extends AbstractValidator
 
     protected $inclusive = false;
 
+    protected $dateTimeFormat  ='H:i:s';
+
     public function __construct($options=null)
     {
         //In seconds
@@ -48,12 +50,16 @@ class Duration extends AbstractValidator
             $this->inclusive = (bool) $options['inclusive'];
         }
 
+        if(!empty($options['date-time-format'])) {
+            $this->dateTimeFormat = $options['date-time-format'];
+        }
+
         parent::__construct($options);
     }
 
     public function isValid($value)
     {
-        $time = \DateTime::createFromFormat('H:i:s', $value);
+        $time = \DateTime::createFromFormat($this->dateTimeFormat, $value);
 
         $hours = (int) $time->format('H');
         $minutes = (int) $time->format('i');
@@ -67,7 +73,7 @@ class Duration extends AbstractValidator
                 return false;
             }
         } else {
-            if(($totalSeconds > $this->min && $totalSeconds < $this->max)) {
+            if(!($totalSeconds > $this->min && $totalSeconds < $this->max)) {
                 $this->error(self::ERROR_IS_NOT_MARCH, $value);
                 return false;
             }

@@ -8,6 +8,7 @@ class Type
     const SEMINAR               = 'seminar';
     const PROJECT               = 'project';
     const EDUCATIONAL_PROJECT   = 'educational_project';
+    const EDUCATIONAL_MOVIE     = 'educational_movie';
 
 	static public function toArray() {
 		return array(
@@ -15,7 +16,8 @@ class Type
             self::WORKSHOP => 'Oficina',
             self::SEMINAR => 'Seminário',
             self::PROJECT => 'Projeto',
-            self::EDUCATIONAL_PROJECT => 'Projetos audiovisuaus educativos'
+            self::EDUCATIONAL_PROJECT => 'Projetos audiovisuaus educativos',
+            self::EDUCATIONAL_MOVIE => 'Filmes Mostra Educação'
 		);
 	}
 

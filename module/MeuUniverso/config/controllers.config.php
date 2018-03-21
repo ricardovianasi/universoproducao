@@ -7,15 +7,16 @@ use Zend\ServiceManager\Factory\InvokableFactory;
 
 return [
     'factories' => [
-        Controller\IndexController::class                   => InvokableFactory::class,
-        Controller\AuthController::class                    => InvokableFactory::class,
-        Controller\RegisterController::class                => InvokableFactory::class,
-        Controller\DependentsController::class              => InvokableFactory::class,
-        Controller\MovieRegistrationController::class       => InvokableFactory::class,
-        Controller\WorkshopRegistrationController::class    => InvokableFactory::class,
-        Controller\ProjectRegistrationController::class     => InvokableFactory::class,
-        Controller\ErrorController::class                   => InvokableFactory::class,
-        Controller\EducationalProjectController::class      => InvokableFactory::class
+        Controller\IndexController::class                           => InvokableFactory::class,
+        Controller\AuthController::class                            => InvokableFactory::class,
+        Controller\RegisterController::class                        => InvokableFactory::class,
+        Controller\DependentsController::class                      => InvokableFactory::class,
+        Controller\MovieRegistrationController::class               => InvokableFactory::class,
+        Controller\WorkshopRegistrationController::class            => InvokableFactory::class,
+        Controller\ProjectRegistrationController::class             => InvokableFactory::class,
+        Controller\ErrorController::class                           => InvokableFactory::class,
+        Controller\EducationalProjectController::class              => InvokableFactory::class,
+        Controller\EducationalMovieRegistrationController::class    => InvokableFactory::class
     ],
     'initializers' => [
         function($instance, $sm) {

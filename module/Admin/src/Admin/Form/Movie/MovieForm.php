@@ -174,7 +174,7 @@ class MovieForm extends Form
             'name' => 'duration',
             'options' => [
                 'label' => 'Duração exata',
-                'help-block' => 'Fomato do campo: hh:mm:seg <br />'.nl2br($this->getDurationHelpBlock())
+                'help-block' => 'Formato do campo: hh:mm:seg <br />'.nl2br($this->getDurationHelpBlock())
             ],
             'attributes' => [
 //                'required' => 'required',

@@ -180,6 +180,12 @@ class Movie extends AbstractEntity
     private $programing;
 
     /**
+     * @ORM\OneToOne(targetEntity="ProducingInstitution", cascade={"ALL"})
+     * @ORM\JoinColumn(name="producing_institution_id", referencedColumnName="id")
+     */
+    private $producingInstitution;
+
+    /**
      * @ORM\ManyToMany(targetEntity="Options")
      * @ORM\JoinTable(name="movie_has_options",
      *      joinColumns={@ORM\JoinColumn(name="movie_id", referencedColumnName="id")},
@@ -1207,5 +1213,21 @@ class Movie extends AbstractEntity
     public function setObjectManager($objectManager)
     {
         $this->objectManager = $objectManager;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getProducingInstitution()
+    {
+        return $this->producingInstitution;
+    }
+
+    /**
+     * @param mixed $producingInstitution
+     */
+    public function setProducingInstitution($producingInstitution)
+    {
+        $this->producingInstitution = $producingInstitution;
     }
 }
