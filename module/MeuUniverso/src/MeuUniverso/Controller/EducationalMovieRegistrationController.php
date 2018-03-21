@@ -250,7 +250,7 @@ class EducationalMovieRegistrationController extends AbstractMeuUniversoRegister
             ]));
 
             if($form->isValid()) {
-
+                $validData = $form->getData();
                 if($id) {
                     $movieEvents = $this->getRepository(MovieSubscription::class)->findBy([
                         'movie' => $movie->getId()
@@ -265,16 +265,16 @@ class EducationalMovieRegistrationController extends AbstractMeuUniversoRegister
                 $movieEvent->setRegistration($reg);
                 $movie->getSubscriptions()->add($movieEvent);
 
-                if(!empty($data['institution'])) {
+                if(!empty($validData['institution'])) {
                     $instituition = new ProducingInstitution();
-                    $instituition->setData($data['institution']);
+                    $instituition->setData($validData['institution']);
                 }
                 $movie->setProducingInstitution($instituition);
-                unset($data['institution']);
+                unset($validData['institution']);
 
                 $options = new ArrayCollection();
-                if(!empty($data['options'])) {
-                    foreach ($data['options'] as $opt) {
+                if(!empty($validData['options'])) {
+                    foreach ($validData['options'] as $opt) {
                         if(!empty($opt)) {
                             if(is_string($opt)) {
                                 $optEntity = $this->getRepository(MovieOptions::class)->find($opt);
@@ -293,7 +293,7 @@ class EducationalMovieRegistrationController extends AbstractMeuUniversoRegister
                     }
                 }
                 $movie->setOptions($options);
-                unset($data['options']);
+                unset($validData['options']);
 
                 //Upload das fotos
 
@@ -302,8 +302,8 @@ class EducationalMovieRegistrationController extends AbstractMeuUniversoRegister
                     $this->getEntityManager()->remove($m);
                 }
                 $newMedias = new ArrayCollection();
-                if(!empty($data['medias'])) {
-                    foreach ($data['medias'] as $me) {
+                if(!empty($validData['medias'])) {
+                    foreach ($validData['medias'] as $me) {
                         $media = new Media();
                         $media->setMovie($movie);
                         $media->setCredits($me['caption']);
@@ -321,9 +321,9 @@ class EducationalMovieRegistrationController extends AbstractMeuUniversoRegister
                     }
                 }
                 $movie->setMedias($newMedias);
-                unset($data['medias']);
+                unset($validData['medias']);
 
-                $movie->setData($data);
+                $movie->setData($validData);
 
                 $this->getEntityManager()->persist($movie);
                 $this->getEntityManager()->flush();
