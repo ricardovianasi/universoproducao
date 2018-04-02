@@ -1,5 +1,5 @@
 <?php
-namespace Cineop2017;
+namespace Cineop2018;
 
 use Zend\Mvc\Router\Http\Hostname;
 use Zend\Mvc\Router\Http\Literal;
@@ -10,10 +10,10 @@ return array(
     'router' => array(
         'router_class' => 'Zend\Mvc\Router\Http\TranslatorAwareTreeRouteStack',
         'routes' => array(
-            'cineop2017' => array(
+            'cineop2018' => array(
                 'type'    => Hostname::class,
                 'options' => array(
-                    'route'    => '[www.]2017.cineop.com.br',
+                    'route'    => '[www.]cineop.com.br',
                     'defaults' => array(
                         'controller'    => Controller\IndexController::class,
                         'action'        => 'index'

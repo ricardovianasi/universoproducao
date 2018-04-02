@@ -1,0 +1,14 @@
+<main class="main home">
+    <?php if(count($this->bannerImages)): ?>
+        <section class="banner">
+            <div class="owl-carousel" id="banner-home">
+                <?php foreach ($this->bannerImages as $banner): ?>
+                    <div class="banner-item">
+                        <img src="<?php echo $this->thumbor()->url($banner->getMeta('_image'))->resize(1920, 630); ?>" alt="">
+                        <p class="banner-caption"><?php echo $banner->getSubtitle(); ?></p>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+        </section>
+    <?php endif; ?>
+</main>

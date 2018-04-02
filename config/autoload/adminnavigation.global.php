@@ -633,9 +633,9 @@ return [
                 ]
 			],
             [
-                'label' => 'Comunicados',
+                'label' => 'Mensagens',
                 'route' => 'admin/default',
-                'controller' => 'notify',
+                'controller' => 'message',
                 'icon' => 'icon-envelope-open',
             ],
 			[

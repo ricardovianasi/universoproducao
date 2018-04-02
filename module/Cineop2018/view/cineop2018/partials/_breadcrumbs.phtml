@@ -1,0 +1,13 @@
+<div class="breadcrumbs">
+    <ul class="breadcrumbs-items">
+        <li class="breadcrumbs-item">
+            <a href="<?php echo $this->url("cineop2018") ?>" class="breadcrumbs-link">Home</a>
+        </li>
+        <?php $relativeSlug=""; foreach($this->breadcrumbs as $slug): ?>
+            <?php $relativeSlug.= "/" . key($slug); ?>
+            <li class="breadcrumbs-item">
+                <a href="<?php echo rawurldecode($this->url("cineop2018/default", ['slug' => trim($relativeSlug, "/")])); ?>" class="breadcrumbs-link"><?php echo current($slug); ?></a>
+            </li>
+        <?php endforeach; ?>
+    </ul>
+</div>

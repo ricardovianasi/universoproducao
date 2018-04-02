@@ -11,6 +11,7 @@ $modules = [
     'MeuUniverso',
     'Arquivoemcartaz',
     'Cineop2017',
+    'Cineop2018',
     'Cinebh2017',
     'Mostratiradentes',
     'MostratiradentesSp',
