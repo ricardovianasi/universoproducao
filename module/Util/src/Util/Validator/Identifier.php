@@ -19,7 +19,10 @@ class Identifier extends AbstractValidator
 		$value = preg_replace('/[^0-9A-Ba-b]/', '', $value);
 
 		if(is_numeric($value)) {
-            $validated = ($this->validateCNPJ($value) || $this->validateCPF($value));
+            $validated = (bool) ($this->validateCNPJ($value) || $this->validateCPF($value));
+            if(!$validated) {
+                $validated = $this->validatePassport($value);
+            }
         } else {
             $validated = $this->validatePassport($value);
         }
