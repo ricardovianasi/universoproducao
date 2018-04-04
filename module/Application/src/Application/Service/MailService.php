@@ -90,4 +90,9 @@ class MailService extends AbstractPlugin
             $label
         );
     }
+
+    public function sendMessage($message, array $data=[])
+    {
+
+    }
 }

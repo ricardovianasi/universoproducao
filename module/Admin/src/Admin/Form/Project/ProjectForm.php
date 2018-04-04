@@ -8,6 +8,7 @@
 
 namespace Admin\Form\Project;
 
+use Admin\Form\Instituition\InstituitionFieldset;
 use Admin\Form\MediaFieldset;
 use Application\Entity\Project\Options;
 use Application\Entity\State;
@@ -42,7 +43,18 @@ class ProjectForm extends Form
         $this->add([
             'name' => 'title',
             'options' => [
-                'label' => 'Título'
+                'label' => 'Título original'
+            ],
+            'attributes' => [
+                'placeholder' => 'Informe o título do projeto',
+                'required' => 'required',
+            ]
+        ]);
+
+        $this->add([
+            'name' => 'english_title',
+            'options' => [
+                'label' => 'Versão em inglês'
             ],
             'attributes' => [
                 'placeholder' => 'Informe o título do projeto',
@@ -77,6 +89,19 @@ class ProjectForm extends Form
         ]);
 
         $this->add([
+            'type' => 'select',
+            'name' => 'options[category]',
+            'options' => [
+                'label' => 'Categoria na qual o projeto se enquadra',
+                'value_options' => $this->populateOptions(Options::CATEGORY),
+                'empty_option' => 'Selecione',
+            ],
+            'attributes' => [
+                'required' => 'required',
+            ],
+        ]);
+
+        $this->add([
             'type' => 'Collection',
             'name' => 'producers',
             'options' => [
@@ -89,6 +114,11 @@ class ProjectForm extends Form
                 ]
             ]
 
+        ]);
+
+        $this->add([
+            'type' => InstituitionFieldset::class,
+            'name' => 'instituition'
         ]);
 
         $this->add([
@@ -135,11 +165,12 @@ class ProjectForm extends Form
             'name' => 'presentation',
             'options' => [
                 'label' => 'Apresentação do projeto',
-                'help-block' => 'máximo 1.500 caracteres'
+                'help-block' => 'máximo de 3.500 caracteres'
             ],
             'attributes' => [
-                'maxlength' => 1500,
-                'rows' => '4'
+                'maxlength' => 3500,
+                'rows' => '6',
+                'required' => 'required',
             ]
         ]);
 
@@ -148,10 +179,24 @@ class ProjectForm extends Form
             'name' => 'short_sinopse',
             'options' => [
                 'label' => 'Sinopse curta',
-                'help-block' => 'máximo 500 caracteres'
+                'help-block' => 'máximo de 500 caracteres'
             ],
             'attributes' => [
                 'maxlength' => 500,
+                'required' => 'required',
+            ]
+        ]);
+
+        $this->add([
+            'type' => 'Textarea',
+            'name' => 'short_sinopse_english',
+            'options' => [
+                'label' => 'Sinopse curta em inglês',
+                'help-block' => 'máximo de 500 caracteres'
+            ],
+            'attributes' => [
+                'maxlength' => 500,
+                'required' => 'required',
             ]
         ]);
 
@@ -164,7 +209,8 @@ class ProjectForm extends Form
             ],
             'attributes' => [
                 'maxlength' => 1500,
-                'rows' => '4'
+                'rows' => '4',
+                'required' => 'required',
             ]
         ]);
 
@@ -173,11 +219,12 @@ class ProjectForm extends Form
             'name' => 'argument',
             'options' => [
                 'label' => 'Argumento ',
-                'help-block' => 'máximo 1.500 caracteres'
+                'help-block' => 'máximo de 10.000 caracteres'
             ],
             'attributes' => [
-                'maxlength' => 1500,
-                'rows' => '4'
+                'maxlength' => 10000,
+                'rows' => '4',
+                'required' => 'required',
             ]
         ]);
 
@@ -186,11 +233,26 @@ class ProjectForm extends Form
             'name' => 'director_notes',
             'options' => [
                 'label' => 'Notas do(a) diretor(a) e conceito visual',
-                'help-block' => 'Descrição das referências técnicas e visuais que serão aplicadas à estética e linguagem do filme. Máximo 3.000 caracteres'
+                'help-block' => 'Descrição das referências técnicas e visuais que serão aplicadas à estética e linguagem do filme. Máximo 10.000 caracteres'
             ],
             'attributes' => [
-                'maxlength' => 3000,
-                'rows' => '6'
+                'maxlength' => 10000,
+                'rows' => '6',
+                'required' => 'required',
+            ]
+        ]);
+
+        $this->add([
+            'type' => 'Textarea',
+            'name' => 'producer_notes',
+            'options' => [
+                'label' => 'Notas do(a) produtor(a)',
+                'help-block' => 'Descrição das referências, interesses e desafios na produção do filme. Máximo 5.000 caracteres'
+            ],
+            'attributes' => [
+                'maxlength' => 5000,
+                'rows' => '6',
+                'required' => 'required',
             ]
         ]);
 
@@ -376,6 +438,17 @@ class ProjectForm extends Form
                 ]
             ]
 
+        ]);
+
+        $this->add([
+            'type' => 'Textarea',
+            'name' => 'links',
+            'options' => [
+                'label' => 'Informar links e senhas, se houver, para acesso ao material audiovisual relacionado ao projeto (trailer, teaser, etc)',
+            ],
+            'attributes' => [
+                'required' => 'required',
+            ]
         ]);
     }
 

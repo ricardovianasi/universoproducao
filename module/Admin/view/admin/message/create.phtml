@@ -34,16 +34,24 @@
                             <div class="row">
                                 <?php echo $this->formRow($form->get('type')); ?>
                                 <?php echo $this->formRow($form->get('subject')); ?>
-                                <div class="col-md-6">
-                                    <div class="portlet light">
-                                        <div class="portlet-body">
-                                            <?php $type = $form->get('type')->getValue();
-                                            foreach (\Application\Entity\Message\MessageType::getVariablesByType($type) as $key=>$varLabel): ?>
-                                                <button type="button" class="btn btn-default"><?php echo $varLabel ?></button>
-                                            <?php endforeach; ?>
+
+                                <?php
+                                    $type = $form->get('type')->getValue();
+                                    $vars = \Application\Entity\Message\MessageType::getVariablesByType($type);
+                                    if($vars): ?>
+                                    <div class="col-md-6 col-md-offset-4">
+                                        <div class="portlet light portlet-fit bordered">
+                                            <div class="portlet-title">Variáveis</div>
+                                            <div class="portlet-body">
+                                                <?php foreach ($vars as $key=>$varLabel): ?>
+                                                    <button data-clipboard-text="<?php echo $key ?>" type="button" class="btn btn-default margin-bottom-5 data-copy">
+                                                        <?php echo $key . " - " . $varLabel ?>
+                                                    </button>
+                                                <?php endforeach; ?>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
+                                <?php endif; ?>
                                 <?php echo $this->formRow($form->get('body')); ?>
                                 <?php echo $this->formRow($form->get('status')); ?>
                             </div>
@@ -64,3 +72,25 @@
 		<?php echo $this->form()->closeTag() ?>
 	</div>
 </div>
+<?php
+$this->inlineScript()->captureStart();
+echo <<<JS
+    $('[name="type"]').on('change', function() {
+        var form = $('.message-form'),
+            selected = $('option:selected', $(this)),
+            validate = form.validate();
+        
+        validate.destroy();
+        
+        form.append($('<input type="hidden" name="no-validate" value="no-validate">'));
+        form.submit();
+
+        App.blockUI({
+            cenrerY: true,
+            animate: true
+        });
+    });
+JS;
+$this->inlineScript()->captureEnd();
+?>
+

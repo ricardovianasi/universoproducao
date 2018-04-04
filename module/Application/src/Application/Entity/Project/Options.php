@@ -24,6 +24,7 @@ class Options extends AbstractEntity
     const DISPLAY_FORMAT = 'display_format';
     const WRITTEN_SCRIPT = 'written_script';
     const FIRST_OR_SECOND_PROJECT = 'first_or_second_project';
+    const CATEGORY = 'category';
 
     /**
      * @ORM\Column(name="id", type="integer", nullable=false)

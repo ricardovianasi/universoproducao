@@ -10,6 +10,7 @@ namespace MeuUniverso\Controller;
 
 
 use Application\Entity\File\File;
+use Application\Entity\Institution\Institution;
 use Application\Entity\Movie\Movie;
 use Application\Entity\Project\Options;
 use Application\Entity\Project\People;
@@ -190,6 +191,12 @@ class ProjectRegistrationController extends AbstractMeuUniversoRegisterControlle
                 unset($data['movie_length_hour']);
                 unset($data['movie_length_minutes']);
 
+                if(!empty($data['instituition'])) {
+                    $instituition = new Institution();
+                    $instituition->setData($data['instituition']);
+                    $project->setInstituition($instituition);
+                }
+                unset($data['instituition']);
 
                 //Files
                 $files = new ArrayCollection();
@@ -208,7 +215,6 @@ class ProjectRegistrationController extends AbstractMeuUniversoRegisterControlle
                 unset($data['files']);
                 $project->setFiles($files);
 
-
                 $project->setData($data);
 
                 $this->getEntityManager()->persist($project);
@@ -219,7 +225,10 @@ class ProjectRegistrationController extends AbstractMeuUniversoRegisterControlle
                     //Enviar email de confirmação
                     $user = $this->getAuthenticationService()->getIdentity();
                     $msg = '<p>Olá <strong>'.$user->getName().'</strong>!</p>';
-                    $msg.= '<p>Informamos que o projeto <strong>'.$project->getTitle().'</strong> foi inscrito com sucesso</p>';
+                    $msg.= '<p>Informamos que o projeto <strong>'.$project->getTitle().'</strong> foi inscrito com sucesso 
+                       para participar da seleção da  <strong>'.$reg->getEvent()->getFullName().'</strong></p>';
+                    $msg.= '<p>O resultado da seleção está previsto para ser divulgado até o dia <strong>?</strong>, 
+                    pelo site <a href="www.cinebh.com.br">www.cinebh.com.br</a>.</p>';
 
                     $to[$user->getName()] = $user->getEmail();
                     $this->mailService()->simpleSendEmail($to, "Confirmação de inscrição de projeto", $msg);
@@ -256,7 +265,7 @@ class ProjectRegistrationController extends AbstractMeuUniversoRegisterControlle
             $file = $this->fileManipulation()->moveToRepository($data['image']);
             $image = $file['new_name'];
         }
-        isset($data['image']);
+        unset($data['image']);
 
         $people = new People();
         $people->setImage($image);

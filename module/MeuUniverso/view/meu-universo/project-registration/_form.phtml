@@ -67,8 +67,24 @@
                     </div>
                     <div class="tab-pane" id="tab2">
                         <?php echo $this->formRow($form->get('title')) ?>
+                        <?php echo $this->formRow($form->get('english_title')) ?>
                         <?php echo $this->formRow($form->get('state_production')) ?>
+                        <?php echo $this->formRow($form->get('options[category]')) ?>
                         <?php echo $this->formRow($form->get('options[phase]')) ?>
+
+                        <h3 class="h3 block">Empresa produtora</h3>
+                        <?php $instituitionFieldset = $form->get('instituition'); ?>
+
+                        <?php echo $this->formRow($instituitionFieldset->get('social_name')) ?>
+                        <?php echo $this->formRow($instituitionFieldset->get('fantasy_name')) ?>
+                        <?php echo $this->formRow($instituitionFieldset->get('cnpj')) ?>
+                        <?php echo $this->formRow($instituitionFieldset->get('legal_representative')) ?>
+                        <?php echo $this->formRow($instituitionFieldset->get('address')) ?>
+                        <?php echo $this->formRow($instituitionFieldset->get('phone')) ?>
+                        <?php echo $this->formRow($instituitionFieldset->get('mobile_phone')) ?>
+                        <?php echo $this->formRow($instituitionFieldset->get('email')) ?>
+                        <?php echo $this->formRow($instituitionFieldset->get('site')) ?>
+                        <?php echo $this->formRow($instituitionFieldset->get('description')) ?>
 
                         <div class="project-producers form-group">
                             <h3 class="h3 block">Produtor(es)</h3>
@@ -136,9 +152,11 @@
 
                         <?php echo $this->formRow($form->get('presentation')) ?>
                         <?php echo $this->formRow($form->get('short_sinopse')) ?>
+                        <?php echo $this->formRow($form->get('short_sinopse_english')) ?>
                         <?php echo $this->formRow($form->get('long_sinopse')) ?>
                         <?php echo $this->formRow($form->get('argument')) ?>
                         <?php echo $this->formRow($form->get('director_notes')) ?>
+                        <?php echo $this->formRow($form->get('producer_notes')) ?>
 
                         <h3 class="h3">Especificações do filme</h3>
                         <div class="form-group">
@@ -165,6 +183,7 @@
                         <?php echo $this->formRow($form->get('value_captured_services')) ?>
                         <?php echo $this->formRow($form->get('options[written_script]')) ?>
                         <?php echo $this->formRow($form->get('options[first_or_second_project]')) ?>
+                        <?php echo $this->formRow($form->get('links')) ?>
 
                         <?php $image = $form->get('image'); ?>
                         <div class="form-group <?php echo count($image->getMessages())?"has-error":"" ?>">

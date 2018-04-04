@@ -75,7 +75,6 @@ class MessageForm extends Form
             'attributes' => [
                 'class' => 'tinymce_minimal',
                 'rows' => '9',
-                'required' => 'required',
             ]
         ]);
 

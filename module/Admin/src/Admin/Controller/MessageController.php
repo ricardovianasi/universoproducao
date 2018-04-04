@@ -70,24 +70,29 @@ class MessageController extends AbstractAdminController
             $message = new Message();
         }
 
+        $noValidate = $this->params()->fromPost('no-validate', false);
+
         if($this->getRequest()->isPost()) {
             $form->setData($data);
-            if($form->isValid()) {
-                $dataValida = $form->getData();
 
-                $message->setData($dataValida);
-                $this->getEntityManager()->persist($message);
-                $this->getEntityManager()->flush();
+            if(!$noValidate) {
+                if($form->isValid()) {
+                    $dataValida = $form->getData();
 
-                if($id) {
-                    $this->messages()->success("Mensagem atualizada com sucesso!");
-                } else {
-                    $this->messages()->flashSuccess("Mensagem criada com sucesso!");
-                    return $this->redirect()->toRoute('admin/default', [
-                        'controller' => 'message',
-                        'action' => 'update',
-                        'id' => $message->getId()
-                    ]);
+                    $message->setData($dataValida);
+                    $this->getEntityManager()->persist($message);
+                    $this->getEntityManager()->flush();
+
+                    if($id) {
+                        $this->messages()->success("Mensagem atualizada com sucesso!");
+                    } else {
+                        $this->messages()->flashSuccess("Mensagem criada com sucesso!");
+                        return $this->redirect()->toRoute('admin/default', [
+                            'controller' => 'message',
+                            'action' => 'update',
+                            'id' => $message->getId()
+                        ]);
+                    }
                 }
             }
         } else {

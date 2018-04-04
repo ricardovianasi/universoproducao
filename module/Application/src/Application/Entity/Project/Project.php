@@ -62,6 +62,9 @@ class Project extends AbstractEntity
     /** @ORM\Column(name="short_sinopse", type="string", nullable=true) */
     private $shortSinopse;
 
+    /** @ORM\Column(name="short_sinopse_english", type="text", nullable=true) */
+    private $shortSinopseEnglish;
+
     /** @ORM\Column(name="long_sinopse", type="string", nullable=true) */
     private $long_sinopse;
 
@@ -70,6 +73,9 @@ class Project extends AbstractEntity
 
     /** @ORM\Column(name="director_notes", type="string", nullable=true) */
     private $directorNotes;
+
+    /** @ORM\Column(name="producer_notes", type="string", nullable=true) */
+    private $producerNotes;
 
     /** @ORM\Column(name="movie_length", type="time", nullable=true) */
     private $movieLength;
@@ -102,6 +108,12 @@ class Project extends AbstractEntity
     private $peoples;
 
     /**
+     * @ORM\OneToOne(targetEntity="Application\Entity\Institution\Institution", cascade={"ALL"})
+     * @ORM\JoinColumn(name="instituition_id", referencedColumnName="id")
+     */
+    private $instituition;
+
+    /**
      * @ORM\ManyToMany(targetEntity="Options")
      * @ORM\JoinTable(name="project_has_options",
      *   joinColumns={@ORM\JoinColumn(name="project_id", referencedColumnName="id")},
@@ -118,6 +130,9 @@ class Project extends AbstractEntity
      * )
      */
     private $files;
+
+    /** @ORM\Column(name="links", type="text", nullable=true) */
+    private $links;
 
     /** @ORM\Column(name="created_at", type="datetime", nullable=true) */
     private $createdAt;
@@ -555,5 +570,69 @@ class Project extends AbstractEntity
     public function setFiles($files)
     {
         $this->files = $files;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getInstituition()
+    {
+        return $this->instituition;
+    }
+
+    /**
+     * @param mixed $instituition
+     */
+    public function setInstituition($instituition)
+    {
+        $this->instituition = $instituition;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getShortSinopseEnglish()
+    {
+        return $this->shortSinopseEnglish;
+    }
+
+    /**
+     * @param mixed $shortSinopseEnglish
+     */
+    public function setShortSinopseEnglish($shortSinopseEnglish)
+    {
+        $this->shortSinopseEnglish = $shortSinopseEnglish;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getProducerNotes()
+    {
+        return $this->producerNotes;
+    }
+
+    /**
+     * @param mixed $producerNotes
+     */
+    public function setProducerNotes($producerNotes)
+    {
+        $this->producerNotes = $producerNotes;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLinks()
+    {
+        return $this->links;
+    }
+
+    /**
+     * @param mixed $links
+     */
+    public function setLinks($links)
+    {
+        $this->links = $links;
     }
 }

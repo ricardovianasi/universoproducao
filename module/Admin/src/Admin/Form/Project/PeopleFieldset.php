@@ -87,10 +87,9 @@ class PeopleFieldset extends Fieldset
                 'help-block' => 'mínimo 800kb e máximo de 2mb'
             ],
             'attributes' => [
-                'attributes' => [
-                    'accept' => 'image/*',
-                ],
-            ]
+                'accept' => 'image/*',
+                'required' => 'required'
+            ],
         ]);
     }
 
