@@ -82,7 +82,7 @@
 
                         <?php $files = $form->get('files')->getFieldsets(); ?>
                         <div class="form-group">
-                            <label class="control-label col-md-4">Imagem</label>
+                            <label class="control-label col-md-4">Imagem<span class="required" aria-required="true"> * </span></label>
                             <div class="col-md-6">
                             <?php foreach ($files as $fieldset):  ?>
                                 <div class="fileinput fileinput-new" data-provides="fileinput">

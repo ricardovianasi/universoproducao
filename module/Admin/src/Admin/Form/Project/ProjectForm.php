@@ -343,6 +343,7 @@ class ProjectForm extends Form
             ],
             'attributes' => [
                 'maxlength' => 500,
+                'required' => 'required',
             ]
         ]);
 
@@ -353,7 +354,8 @@ class ProjectForm extends Form
                 'help-block' => 'Estimativa de orçamento, definida em ordem de grandeza, não sendo necessário detalhamento das rubricas'
             ],
             'attributes' => [
-                'placeholder' => 'R$ '
+                'placeholder' => 'R$ ',
+                'required' => 'required',
             ]
         ]);
 
@@ -365,6 +367,7 @@ class ProjectForm extends Form
                 'help-block' => 'Caso o projeto já esteja associado a algum tipo de parceria ou patrocínio, relacione quais os nomes e percentual desta participação em relação ao orçamento do seu projeto'
             ],
             'attributes' => [
+                'required' => 'required',
             ]
         ]);
 
@@ -447,7 +450,6 @@ class ProjectForm extends Form
                 'label' => 'Informar links e senhas, se houver, para acesso ao material audiovisual relacionado ao projeto (trailer, teaser, etc)',
             ],
             'attributes' => [
-                'required' => 'required',
             ]
         ]);
     }
