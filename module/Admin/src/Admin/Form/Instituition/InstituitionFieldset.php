@@ -69,6 +69,9 @@ class InstituitionFieldset extends Fieldset
             'options' => [
                 'label' => 'Representante legal'
             ],
+            'attributes' => [
+                'required' => 'required'
+            ]
         ]);
 
         $this->add([
@@ -83,6 +86,9 @@ class InstituitionFieldset extends Fieldset
             'options' => [
                 'label' => 'Celular'
             ],
+            'attributes' => [
+                'required' => 'required'
+            ]
         ]);
 
         $this->add([
@@ -90,6 +96,9 @@ class InstituitionFieldset extends Fieldset
             'options' => [
                 'label' => 'E-mail'
             ],
+            'attributes' => [
+                'required' => 'required'
+            ]
         ]);
 
         $this->add([
@@ -107,6 +116,7 @@ class InstituitionFieldset extends Fieldset
                 'help-block' => 'Máximo de 500 caracteres'
             ],
             'attributes' => [
+                'required' => 'required'
             ]
         ]);
 
