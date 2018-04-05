@@ -187,7 +187,7 @@
 
                         <?php $image = $form->get('image'); ?>
                         <div class="form-group <?php echo count($image->getMessages())?"has-error":"" ?>">
-                            <label class="">Extra - Imagem do filme</label> <br>
+                            <label class="">Extra - Imagem do filme <span class="required" aria-required="true"> * </span></label> <br>
                             <div class="fileinput fileinput-new" data-provides="fileinput">
                                 <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;"> </div>
                                 <div>

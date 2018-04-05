@@ -226,9 +226,14 @@ class ProjectRegistrationController extends AbstractMeuUniversoRegisterControlle
                     $user = $this->getAuthenticationService()->getIdentity();
                     $msg = '<p>Olá <strong>'.$user->getName().'</strong>!</p>';
                     $msg.= '<p>Informamos que o projeto <strong>'.$project->getTitle().'</strong> foi inscrito com sucesso 
-                       para participar da seleção da  <strong>'.$reg->getEvent()->getFullName().'</strong></p>';
-                    $msg.= '<p>O resultado da seleção está previsto para ser divulgado até o dia <strong>?</strong>, 
+                       para participar da seleção de projetos do <strong>9º Brasil CineMundi</strong>, a ser realizado 
+                       entre 28 de agosto e 02 de setembro de 2018, como parte integrante da programação da 12ª Mostra CineBH.</p>';
+                    $msg.= '<p>O resultado da seleção está previsto para ser divulgado até o dia <strong>04 de julho de 2018</strong>, 
                     pelo site <a href="www.cinebh.com.br">www.cinebh.com.br</a>.</p>';
+                    $msg.= '<p>Pedimos a gentileza de manter os dados do seu cadastro sempre atualizados para garantir 
+                        a eficácia em nossa comunicação.</p>';
+
+                    $msg.= '<p>Agradecemos sua participação!</p>';
 
                     $to[$user->getName()] = $user->getEmail();
                     $this->mailService()->simpleSendEmail($to, "Confirmação de inscrição de projeto", $msg);
