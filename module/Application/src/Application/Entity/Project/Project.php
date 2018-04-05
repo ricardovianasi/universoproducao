@@ -15,7 +15,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Table(name="project")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Application\Repository\Project\Project")
  */
 class Project extends AbstractEntity
 {

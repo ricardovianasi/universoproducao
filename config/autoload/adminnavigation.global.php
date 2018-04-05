@@ -158,6 +158,26 @@ return [
                 ]
             ],
             [
+                'label' => 'Projetos BrasilCineMundi',
+                'uri' => '#',
+                'icon' => 'icon-book-open',
+                'pages' => [
+                    [
+                        'label' => 'Opções',
+                        'route' => 'admin/default',
+                        'controller' => 'educational-project-category',
+                        'icon' => 'icon-doc',
+
+                    ],
+                    [
+                        'label' => 'Projetos',
+                        'route' => 'admin/default',
+                        'controller' => 'project',
+                        'icon' => 'icon-doc',
+                    ]
+                ]
+            ],
+            [
                 'label' => 'Programação geral',
                 'uri' => '#',
                 'icon' => 'icon-book-open',
