@@ -15,26 +15,30 @@
 </section>
 <?php endif; ?>
 
-<section class="news">
-    <header class="main-header">
-        <h1 class="main-title"><?php echo $this->translate("Notícias") ?></h1>
-    </header>
-    <div class="news-items">
-        <?php foreach ($this->news as $news): ?>
-            <div class="news-item">
-                <a href="<?php echo $this->url("cinebh2017/news", ['slug'=>$news->getSlug()]) ?>" class="news-link">
-                    <div class="news-figure">
-                        <img src="<?php echo  $this->thumbor()->url($news->getMeta('_thumb'))->resize(300, 214); ?>" alt="">
+<?php if(count($this->news)): ?>
+    <div class="main-wrapper">
+        <section class="news">
+            <header class="main-header">
+                <h1 class="main-title"><?php echo $this->translate("Notícias") ?></h1>
+            </header>
+            <div class="news-items">
+                <?php foreach ($this->news as $news): ?>
+                    <div class="news-item">
+                        <a href="<?php echo $this->url("cinebh2017/news", ['slug'=>$news->getSlug()]) ?>" class="news-link">
+                            <div class="news-figure">
+                                <img src="<?php echo  $this->thumbor()->url($news->getMeta('_thumb'))->resize(300, 214); ?>" alt="">
+                            </div>
+                            <p class="news-title"><?php echo $news->getTitle(); ?></p>
+                            <p class="news-subtitle"><?php echo $news->getSubtitle(); ?></p>
+                            <p class="news-readmore">Leia mais +</p>
+                        </a>
                     </div>
-                    <p class="news-title"><?php echo $news->getTitle(); ?></p>
-                    <p class="news-subtitle"><?php echo $news->getSubtitle(); ?></p>
-                    <p class="news-readmore">Leia mais +</p>
-                </a>
+                <?php endforeach; ?>
             </div>
-        <?php endforeach; ?>
+            <a href="<?php echo $this->url("cinebh2017/default", ['slug'=>'noticias']); ?>" class="btn"><?php echo $this->translate("Ver todas as Notícias") ?></a>
+        </section>
     </div>
-    <a href="<?php echo $this->url("cinebh2017/default", ['slug'=>'noticias']); ?>" class="btn"><?php echo $this->translate("Ver todas as Notícias") ?></a>
-</section>
+<?php endif; ?>
 
 <?php if(count($this->eufacoamostra)>0): ?>
     <section class="eufacoamostra">
