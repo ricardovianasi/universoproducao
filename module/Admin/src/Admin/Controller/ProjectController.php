@@ -9,11 +9,9 @@
 namespace Admin\Controller;
 
 
-use Admin\Form\EducationalProject\CategoryForm;
+use Admin\Form\Project\ProjectForm;
 use Admin\Form\Project\ProjectSearchForm;
-use Application\Entity\EducationalProject\Category;
 use Application\Entity\Project\Project;
-use Application\Entity\Registration\Registration;
 
 class ProjectController extends AbstractAdminController
 {
@@ -47,29 +45,29 @@ class ProjectController extends AbstractAdminController
     public function updateAction($id, $data)
     {
         $result = $this->persist($data, $id);
-        $result->setTemplate('admin/educational-project-category/create.phtml');
+        $result->setTemplate('admin/project/create.phtml');
         return $result;
     }
 
     public function deleteAction($id)
     {
-        $cat = $this->getRepository(Category::class)->find($id);
-        $this->getEntityManager()->remove($cat);
+        $project = $this->getRepository(Project::class)->find($id);
+        $this->getEntityManager()->remove($project);
         $this->getEntityManager()->flush();
 
-        $this->messages()->flashSuccess('Categoria excluída com sucesso.');
+        $this->messages()->flashSuccess('Projeto excluído com sucesso.');
 
-        return $this->redirect()->toRoute('admin/default', ['controller'=>'educational-project-category']);
+        return $this->redirect()->toRoute('admin/default', ['controller'=>'project']);
     }
 
     public function persist($data, $id = null)
     {
-        $form = new CategoryForm($this->getEntityManager($this->getEntityManager()));
+        $form = new ProjectForm($this->getEntityManager($this->getEntityManager()));
 
         if($id) {
-            $category = $this->getRepository(Category::class)->find($id);
+            $project = $this->getRepository(Project::class)->find($id);
         } else {
-            $category = new Category();
+            $project = new Project();
         }
 
         if($this->getRequest()->isPost()) {
@@ -77,14 +75,9 @@ class ProjectController extends AbstractAdminController
             if($form->isValid()) {
                 $dataValida = $form->getData();
 
-                if(!empty($dataValida['registration'])) {
-                    $reg = $this->getRepository(Registration::class)->find($dataValida['registration']);
-                    $category->setRegistration($reg);
-                }
-                unset($dataValida['registration']);
 
-                $category->setData($dataValida);
-                $this->getEntityManager()->persist($category);
+                $project->setData($dataValida);
+                $this->getEntityManager()->persist($project);
                 $this->getEntityManager()->flush();
 
                 if($id) {
@@ -94,17 +87,17 @@ class ProjectController extends AbstractAdminController
                     return $this->redirect()->toRoute('admin/default', [
                         'controller' => 'educational-project-category',
                         'action' => 'update',
-                        'id' => $category->getId()
+                        'id' => $project->getId()
                     ]);
                 }
             }
         } else {
-            $form->setData($category->toArray());
+            $form->setData($project->toArray());
         }
 
         return $this->getViewModel()->setVariables([
             'form' => $form,
-            'category' => $category
+            'project' => $project
         ]);
     }
 
