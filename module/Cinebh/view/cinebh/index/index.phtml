@@ -24,7 +24,7 @@
             <div class="news-items">
                 <?php foreach ($this->news as $news): ?>
                     <div class="news-item">
-                        <a href="<?php echo $this->url("cinebh2017/news", ['slug'=>$news->getSlug()]) ?>" class="news-link">
+                        <a href="<?php echo $this->url("cinebh/news", ['slug'=>$news->getSlug()]) ?>" class="news-link">
                             <div class="news-figure">
                                 <img src="<?php echo  $this->thumbor()->url($news->getMeta('_thumb'))->resize(300, 214); ?>" alt="">
                             </div>
@@ -35,7 +35,7 @@
                     </div>
                 <?php endforeach; ?>
             </div>
-            <a href="<?php echo $this->url("cinebh2017/default", ['slug'=>'noticias']); ?>" class="btn"><?php echo $this->translate("Ver todas as Notícias") ?></a>
+            <a href="<?php echo $this->url("cinebh/default", ['slug'=>'noticias']); ?>" class="btn"><?php echo $this->translate("Ver todas as Notícias") ?></a>
         </section>
     </div>
 <?php endif; ?>
