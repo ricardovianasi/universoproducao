@@ -9,7 +9,7 @@ return [
 
             $locale = $router->match($request)->getParam('locale');
 
-            $navigation = new Navigation\SiteNavigation(4, 'cinebh/default', $locale);
+            $navigation = new Navigation\SiteNavigation(13, 'cinebh/default', $locale);
             return $navigation->createService($e);
         },
     ],

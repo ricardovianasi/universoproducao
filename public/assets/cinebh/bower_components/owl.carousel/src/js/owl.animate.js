@@ -1,6 +1,6 @@
 /**
  * Animate Plugin
- * @version 2.1.0
+ * @version 2.3.3
  * @author Bartosz Wojciechowski
  * @author David Deutsch
  * @license The MIT License (MIT)

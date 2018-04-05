@@ -1,0 +1,30 @@
+figure
+  line-height: 0
+  position: relative
+  display: inline-block
+  figcaption
+    +adjust-font-size-to(14px, 1)
+    +padding-trailer(1, 14px)
+    +padding-leader(.5, 14px)
+    +leader(.5, 14px)
+    border-bottom: 1px solid #d1d2d4
+    box-sizing: border-box
+    font-style: italic
+    color: #818285
+    width: 100%
+    strong
+      +adjust-font-size-to(16px, 1)
+      font-style: normal
+      font-weight: 700
+      display: block
+    p
+      margin-bottom: 0 !important
+      margin-top: 0 !important
+
+.image
+  &.align-left
+    float: left
+    margin: 0 30px 30px 0
+  &.align-right
+    float: right
+    margin: 0 0 30px 30px

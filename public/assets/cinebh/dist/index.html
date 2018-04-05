@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js" lang="">
+<html lang="">
   <head>
     <meta charset="utf-8">
     <meta name="description" content="">
@@ -14,19 +14,27 @@
     <link rel="stylesheet" href="styles/vendor.css">
 
 
-    <script src="scripts/vendor/modernizr.js"></script>
   </head>
   <body class="home">
-    <div class="site__wrapper">
-      <header class="header">
-        <div class="header__left">
-          <h1 class="header__brand"><a class="header__link" href=""></a></h1>
-          
+    <!--[if lt IE 10]>
+      <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <header class="header">
+      <div class="header-wrapper">
+        <h1 class="header-brand">
+          <a class="brand-link" href="#">
+            <span class="brand-cinebh"></span>
+            <span class="brand-brasilcinemundi"></span>
+          </a>
+        </h1>
+        <div class="header-info">
+          <p class="info-date">22-27 agosto 2017<span>Programação gratuita</span></p>
         </div>
-        <div class="header__right">
-          <div class="menu">
-            <div class="translate"><a class="translate__link" href="#">English</a></div>
-            <div class="menu-button" id="mainmenu-access">
+        <div class="header-actions">
+          <a href="#" class="action langselector"><span>ENGLISH</span></a>
+          <div class="action menu-button" id="menu-button" data-src="#navigation-modal">
+            <div class="circle">
               <div class="burger">
                 <span class="b"></span>
                 <span class="b"></span>
@@ -34,480 +42,558 @@
                 <span class="b"></span>
               </div>
             </div>
+            <span>menu</span>
           </div>
         </div>
-      </header>
+      </div>
+    </header>
 
-      <main class="main">
-
-        <section class="banner">
-          <div class="banner__items owl-carousel">
-            <div class="banner__item item" style="background-image: url('images/banner1.jpg'); background-size: cover">
-              <p class="banner__caption">Foto: Ricardo Viana</p>
-            </div>
-            <div class="banner__item item" style="background-image: url('images/banner2.jpg'); background-size: cover">
-              <p class="banner__caption">Foto: Ricardo Viana</p>
-            </div>
+    <main class="main">
+      <section class="banner">
+        <div class="owl-carousel">
+          <div class="item">
+            <img src="images/banner1.jpg" alt="">
+            <p class="banner-caption">Foto: Ricardo Viana</p>
           </div>
-        </section>
-
-        <section class="programation">
-          <header class="main__header main__header--bgc">
-            <div class="header__wrapper">
-              <h1 class="main__title">Programação</h1>
-              <p class="readmore"><a class="readmore__link" href="">Programação Completa<span class="icon icon-plus2"></span></a></p>
-            </div>
-          </header>
-
-          <div class="programation__list">
-            <div class="programation__item programation__item--highlight">
-              <figure class="programation__figure">
-                <img src="images/prog1.jpg" alt="">
-              </figure>
-              <div class="programation__desc">
-                <p class="programation__date">22/10</p>
-                <p class="programation__day">Sábado</p>
-                <p class="programation__title"><strong>Filme - Poesia</strong></p>
-                <p class="programation__title">Filme - Poesia</p>
-                <p class="programation__title">Direção: Yun Jung-hee (Coréia)</p>
-                <p class="programation__subtitle">INE BRASIL VALOUREC <br>19:00h</p>
-              </div>
-            </div>
-
-            <div class="programation__item">
-              <figure class="programation__figure">
-                <img src="images/prog2.jpg" alt="">
-              </figure>
-              <div class="programation__desc">
-                <p class="programation__date">22/10</p>
-                <p class="programation__day">Sábado</p>
-              </div>
-            </div>
-
-            <div class="programation__item">
-              <figure class="programation__figure">
-                <img src="images/prog3.jpg" alt="">
-              </figure>
-              <div class="programation__desc">
-                <p class="programation__date">22/10</p>
-                <p class="programation__day">Domingo</p>
-              </div>
-            </div>
-
-            <div class="programation__item">
-              <figure class="programation__figure">
-                <img src="images/prog3.jpg" alt="">
-              </figure>
-              <div class="programation__desc">
-                <p class="programation__date">22/10</p>
-                <p class="programation__day">Segunda</p>
-              </div>
-            </div>
-
-            <div class="programation__item">
-              <figure class="programation__figure">
-                <img src="images/prog5.jpg" alt="">
-              </figure>
-              <div class="programation__desc">
-                <p class="programation__date">22/10</p>
-                <p class="programation__day">Terça</p>
-              </div>
-            </div>
+          <div class="item">
+            <img src="images/banner2.jpg" alt="">
+            <p class="banner-caption">Foto: Ricardo Viana</p>
           </div>
+          <div class="item">
+            <img src="images/banner3.jpg" alt="">
+            <p class="banner-caption">Ricardo Viana</p>
+          </div>
+        </div>
+      </section>
 
-        </section>
+      <section class="programation home-effect">
+        <header class="main-header programation-header">
+          <h1 class="main-title">Programação</h1>
+        </header>
+        <div class="programation-highlight owl-carousel" id="programation-highlight">
+          <article class="programation-item">
+            <a href="#" class="link">
+              <div class="bgi" style="background-image: url('images/prog1.jpg')"></div>
+              <div class="bgc"></div>
+              <div class="wrapper">
+                <p class="date">22/08</p>
+                <p class="title">Entre o trágico e o patético</p>
+                <p class="subtitle">Mostra Retrospectiva</p>
+                <p class="place">Cine santa tereza|20:00 h</p>
+              </div>
+            </a>
+          </article>
+          <article class="programation-item">
+            <a href="" class="link">
+              <div class="bgi" style="background-image: url('images/prog2.jpg')"></div>
+              <div class="bgc"></div>
+              <div class="wrapper">
+                <p class="date">23/08</p>
+                <p class="title">A canção do pôr do sol (sunset song)</p>
+                <p class="subtitle">Filme</p>
+                <p class="place">Cine santa tereza|20:00 h</p>
+              </div>
+            </a>
+          </article>
+          <article class="programation-item">
+            <a href="" class="link">
+              <div class="bgi" style="background-image: url('images/prog1.jpg')"></div>
+              <div class="bgc"></div>
+              <div class="wrapper">
+                <p class="date">24/08</p>
+                <p class="title">Chico de paula - A cidade em movimento</p>
+                <p class="subtitle">Mostra Retrospectiva</p>
+                <p class="place">Cine santa tereza|20:00 h</p>
+              </div>
+            </a>
+          </article>
+          <article class="programation-item">
+            <a href="" class="link">
+              <div class="bgi" style="background-image: url('images/prog2.jpg')"></div>
+              <div class="bgc"></div>
+              <div class="wrapper">
+                <p class="date">26/08</p>
+                <p class="title">Antes o tempo não acabava</p>
+                <p class="subtitle">Mostra Retrospectiva</p>
+                <p class="place">Cine santa tereza|20:00 h</p>
+              </div>
+            </a>
+          </article>
+        </div>
+        <div class="main-wrapper">
+          <a class="readmore-link" href="#">proramação completa &gt;</a>
+        </div>
+      </section>
 
+      <div class="main-wrapper">
         <section class="news">
-          <header class="main__header main__header--bgc">
-            <div class="header__wrapper">
-              <h1 class="main__title">Notícias</h1>
-              <p class="readmore"><a class="readmore__link" href="">Todas as Notícias<span class="icon icon-plus2"></span></a></p>
+          <header class="main-header">
+            <h1 class="main-title">Notícias</h1>
+          </header>
+          <div class="news-items">
+            <div class="news-item">
+              <a href="#" class="news-link">
+                <div class="news-figure"><img src="images/news.jpg" alt=""></div>
+                <p class="news-title">Mostra Cine BH: últimos dias para inscrição nos cursos gratuitos</p>
+                <p class="news-subtitle">São oferecidas seis modalidades de curso – três oficinas, dois workshops e uma masterclass – em três sessões com instrutores brasileiros e internacionais, num total de 280 vagas</p>
+                <p class="news-readmore">Leia mais +</p>
+              </a>
             </div>
+            <div class="news-item">
+              <a href="#" class="news-link">
+                <div class="news-figure"><img src="images/news.jpg" alt=""></div>
+                <p class="news-title">Mostra Cine BH: últimos dias para inscrição nos cursos gratuitos</p>
+                <p class="news-subtitle">São oferecidas seis modalidades de curso – três oficinas, dois workshops e uma masterclass – em três sessões com instrutores brasileiros e internacionais, num total de 280 vagas</p>
+                <p class="news-readmore">Leia mais +</p>
+              </a>
+            </div>
+          </div>
+          <a href="#" class="btn">Veja todas as notícias</a>
+        </section>
+      </div>
+
+      <section class="tv">
+        <div class="main-wrapper">
+          <header class="main-header">
+            <h1 class="main-title">Vídeos</h1>
           </header>
 
-          <div class="news__list news__list--highlight">
-            <div class="news__item">
-              <figure class="news__figure">
-                <img src="images/news1.jpg" alt="">
-              </figure>
-              <div class="news__desc">
-                <p class="news__title">MEXICO iiEM BH</p>
-                <p class="news__text">O cinema mexicano marca presença no 10º Festival de Cinema Internacional de Belo Horizonte com o filme Juntos de Nicolas Pareda.</p>
-                <p class="news__button"><a class="news__link" href="">Leia Mais</a></p>
+          <div class="tv-wrapper">
+            <div class="tv-highlight">
+              <div class="tv-featured">
+                <div class="tv-bg" style="background-image: url('images/tv1.jpg')">
+                  <a class="tv-link" href="#"><span class="icon-play4"></span></a>
+                </div>
+                <div class="tv-content">
+                  <p class="tv-title">Estreia do longa comboio de sal</p>
+                </div>
               </div>
             </div>
-
-            <div class="news__item">
-              <figure class="news__figure">
-                <img src="images/news2.jpg" alt="">
-              </figure>
-              <div class="news__desc">
-                <p class="news__title">MEXICO iiEM BH</p>
-                <p class="news__text">O cinema mexicano marca presença no 10º Festival de Cinema Internacional de Belo Horizonte com o filme Juntos de Nicolas Pareda.</p>
-                <p class="news__button"><a class="news__link" href="">Leia Mais</a></p>
+            <div class="tv-highlight">
+              <div class="tv-featured">
+                <div class="tv-bg" style="background-image: url('images/tv1.jpg')">
+                  <a class="tv-link" href="#"><span class="icon-play4"></span></a>
+                </div>
+                <div class="tv-content">
+                  <p class="tv-title">Estréia de longas nacionais é desta que na 20ª mostra de cinema de tiradentes</p>
+                  <p class="tv-subtitle">Filmes nacionais estreiam em grande estilo na Mostra Tiradentes. Confira como foi o primeiro dia</p>
+                </div>
+              </div>
+              <div class="tv-featured">
+                <div class="tv-bg" style="background-image: url('images/tv1.jpg')">
+                  <a class="tv-link" href="#"><span class="icon-play4"></span></a>
+                </div>
+                <div class="tv-content">
+                  <p class="tv-title">estréia de longas  nacionais é destaque na 20ª mostra de cinema de tiradentes</p>
+                  <p class="tv-subtitle">Filmes nacionais estreiam em grande estilo na Mostra Tiradentes. Confira como foi o primeiro dia</p>
+                </div>
               </div>
             </div>
-
           </div>
 
-        </section>
+          <p class="news-readmore">
+            <a href="#" class="btn"><span>Ver todos os Vídeos</span></a>
+          </p>
+        </div>
+      </section>
 
-        <section class="gallery">
-          <header class="main__header main__header--bgc">
-            <div class="header__wrapper">
-              <h1 class="main__title">Galeria</h1>
-              <p class="readmore"><a class="readmore__link" href="">Galeria Completa<span class="icon icon-plus2"></span></a></p>
-            </div>
+      <section class="gallery home-effect">
+        <header class="main-header programation-header">
+          <h1 class="main-title">Galeria</h1>
+        </header>
+        <div class="owl-carousel">
+          <div class="gallery-item">
+            <img src="images/gallery1.jpg" alt="">
+            <p class="gallery-caption">Foto: Ricardo Viana</p>
+          </div>
+          <div class="gallery-item">
+            <img src="images/gallery2.jpg" alt="">
+            <p class="gallery-caption">Foto: Ricardo Viana</p>
+          </div>
+        </div>
+
+        <div class="main-wrapper">
+          <a class="readmore-link" href="#">veja mais imagens &gt;</a>
+        </div>
+
+      </section>
+
+      <section class="eufacoamostra">
+        <header class="main-header">
+          <h1 class="main-title"><span class="icon-eufacoamostra"></span></h1>
+          <p>Compartilhe e publique suas imagens usando a #eufaçoaMostra</p>
+        </header>
+        <ul class="eufacoamostra-items">
+          <li class="eufacoamostra-item">
+            <a href="images/eu1.jpg" rel="eufacoamostra" class="eufacoamostra-link video fancybox fancybox.iframe">
+              <img src="images/eu1.jpg" alt="" class="grayscale grayscale-fade">
+            </a>
+          </li>
+          <li class="eufacoamostra-item">
+            <a href="images/eu1.jpg" rel="eufacoamostra" class="eufacoamostra-link fancybox fancybox.iframe">
+              <img src="images/eu2.jpg" alt="" class="grayscale grayscale-fade">
+            </a>
+          </li>
+          <li class="eufacoamostra-item">
+            <a href="images/eu1.jpg" rel="eufacoamostra" class="eufacoamostra-link fancybox fancybox.iframe">
+              <img src="images/eu1.jpg" alt="" class="grayscale grayscale-fade">
+            </a>
+          </li>
+          <li class="eufacoamostra-item">
+            <a href="images/eu1.jpg" rel="eufacoamostra" class="eufacoamostra-link fancybox fancybox.iframe">
+              <img src="images/eu2.jpg" alt="" class="grayscale grayscale-fade">
+            </a>
+          </li>
+          <li class="eufacoamostra-item">
+            <a href="images/eu1.jpg" rel="eufacoamostra" class="eufacoamostra-link video fancybox fancybox.iframe">
+              <img src="images/eu1.jpg" alt="" class="grayscale grayscale-fade">
+            </a>
+          </li>
+          <li class="eufacoamostra-item">
+            <a href="images/eu1.jpg" rel="eufacoamostra" class="eufacoamostra-link fancybox fancybox.iframe">
+              <img src="images/eu2.jpg" alt="" class="grayscale grayscale-fade">
+            </a>
+          </li>
+          <li class="eufacoamostra-item">
+            <a href="images/eu1.jpg" rel="eufacoamostra" class="eufacoamostra-link fancybox fancybox.iframe">
+              <img src="images/eu1.jpg" alt="" class="grayscale grayscale-fade">
+            </a>
+          </li>
+          <li class="eufacoamostra-item">
+            <a href="images/eu1.jpg" rel="eufacoamostra" class="eufacoamostra-link fancybox fancybox.iframe">
+              <img src="images/eu2.jpg" alt="" class="grayscale grayscale-fade">
+            </a>
+          </li>
+          <li class="eufacoamostra-item">
+            <a href="images/eu1.jpg" rel="eufacoamostra" class="eufacoamostra-link fancybox fancybox.iframe">
+              <img src="images/eu1.jpg" alt="" class="grayscale grayscale-fade">
+            </a>
+          </li>
+          <li class="eufacoamostra-item">
+            <a href="images/eu1.jpg" rel="eufacoamostra" class="eufacoamostra-link fancybox fancybox.iframe">
+              <img src="images/eu2.jpg" alt="" class="grayscale grayscale-fade">
+            </a>
+          </li>
+          <li class="eufacoamostra-item">
+            <a href="images/eu1.jpg" rel="eufacoamostra" class="eufacoamostra-link fancybox fancybox.iframe">
+              <img src="images/eu1.jpg" alt="" class="grayscale grayscale-fade">
+            </a>
+          </li>
+          <li class="eufacoamostra-item">
+            <a href="images/eu1.jpg" rel="eufacoamostra" class="eufacoamostra-link fancybox fancybox.iframe">
+              <img src="images/eu2.jpg" alt="" class="grayscale grayscale-fade">
+            </a>
+          </li>
+          <li class="eufacoamostra-item">
+            <a href="images/eu1.jpg" rel="eufacoamostra" class="eufacoamostra-link fancybox fancybox.iframe">
+              <img src="images/eu1.jpg" alt="" class="grayscale grayscale-fade">
+            </a>
+          </li>
+          <li class="eufacoamostra-item">
+            <a href="images/eu1.jpg" rel="eufacoamostra" class="eufacoamostra-link fancybox fancybox.iframe">
+              <img src="images/eu2.jpg" alt="" class="grayscale grayscale-fade">
+            </a>
+          </li>
+          <li class="eufacoamostra-item">
+            <a href="images/eu1.jpg" rel="eufacoamostra" class="eufacoamostra-link fancybox fancybox.iframe">
+              <img src="images/eu1.jpg" alt="" class="grayscale grayscale-fade">
+            </a>
+          </li>
+          <li class="eufacoamostra-item">
+            <a href="images/eu1.jpg" rel="eufacoamostra" class="eufacoamostra-link fancybox fancybox.iframe">
+              <img src="images/eu2.jpg" alt="" class="grayscale grayscale-fade">
+            </a>
+          </li>
+          <li class="eufacoamostra-item">
+            <a href="images/eu1.jpg" rel="eufacoamostra" class="eufacoamostra-link fancybox fancybox.iframe">
+              <img src="images/eu1.jpg" alt="" class="grayscale grayscale-fade">
+            </a>
+          </li>
+          <li class="eufacoamostra-item">
+            <a href="images/eu1.jpg" rel="eufacoamostra" class="eufacoamostra-link fancybox fancybox.iframe">
+              <img src="images/eu2.jpg" alt="" class="grayscale grayscale-fade">
+            </a>
+          </li>
+          <li class="eufacoamostra-item">
+            <a href="images/eu1.jpg" rel="eufacoamostra" class="eufacoamostra-link fancybox fancybox.iframe">
+              <img src="images/eu1.jpg" alt="" class="grayscale grayscale-fade">
+            </a>
+          </li>
+          <li class="eufacoamostra-item">
+            <a href="images/eu1.jpg" rel="eufacoamostra" class="eufacoamostra-link fancybox fancybox.iframe">
+              <img src="images/eu2.jpg" alt="" class="grayscale grayscale-fade">
+            </a>
+          </li>
+          <li class="eufacoamostra-item">
+            <a href="images/eu1.jpg" rel="eufacoamostra" class="eufacoamostra-link fancybox fancybox.iframe">
+              <img src="images/eu1.jpg" alt="" class="grayscale grayscale-fade">
+            </a>
+          </li>
+          <li class="eufacoamostra-item">
+            <a href="images/eu1.jpg" rel="eufacoamostra" class="eufacoamostra-link fancybox fancybox.iframe">
+              <img src="images/eu2.jpg" alt="" class="grayscale grayscale-fade">
+            </a>
+          </li>
+          <li class="eufacoamostra-item">
+            <a href="images/eu1.jpg" rel="eufacoamostra" class="eufacoamostra-link fancybox fancybox.iframe">
+              <img src="images/eu1.jpg" alt="" class="grayscale grayscale-fade">
+            </a>
+          </li>
+          <li class="eufacoamostra-item">
+            <a href="images/eu1.jpg" rel="eufacoamostra" class="eufacoamostra-link fancybox fancybox.iframe">
+              <img src="images/eu2.jpg" alt="" class="grayscale grayscale-fade">
+            </a>
+          </li>
+        </ul>
+      </section>
+
+      <section class="guide">
+        <div class="guide-bg" data-image-src="/images/cidade.jpg"></div>
+        <div class="main-wrapper">
+          <header class="main-header">
+            <h1 class="main-title">Descubra ouro preto</h1>
           </header>
 
-          <div class="gallery__list owl-carousel">
-
-            <div class="gallery__item">
-              <figure class="gallery__figure">
-                <img src="images/gallery1.jpg" alt="">
-              </figure>
-              <div class="gallery__desc">
-                <p class="gallery__title">Abertura 6 Cinebh</p>
-                <p class="gallery__subtitle">Abertura da 6ª Mostra CineBH - Sesc Palladium</p>
-                <p class="gallery__credits">Foto: Cristiano Trad/Universo Produção</p>
-              </div>
+          <div class="guide-items">
+            <div class="guide-item">
+              <a class="guide-link" href="">
+                <span class="sprite sprite-locais"></span>
+                <span class="guide-title">Como chegar</span>
+              </a>
             </div>
-
-            <div class="gallery__item">
-              <figure class="gallery__figure">
-                <img src="images/gallery2.jpg" alt="">
-              </figure>
-              <div class="gallery__desc">
-                <p class="gallery__title">Abertura 6 Cinebh</p>
-                <p class="gallery__subtitle">Abertura da 6ª Mostra CineBH - Sesc Palladium</p>
-                <p class="gallery__credits">Foto: Cristiano Trad/Universo Produção</p>
-              </div>
+            <div class="guide-item">
+              <a class="guide-link" href="">
+                <span class="sprite sprite-restaurantes"></span>
+                <span class="guide-title">Restaurantes</span>
+              </a>
             </div>
-
-            <div class="gallery__item">
-              <figure class="gallery__figure">
-                <img src="images/gallery3.jpg" alt="">
-              </figure>
-              <div class="gallery__desc">
-                <p class="gallery__title">Abertura 6 Cinebh</p>
-                <p class="gallery__subtitle">Abertura da 6ª Mostra CineBH - Sesc Palladium</p>
-                <p class="gallery__credits">Foto: Cristiano Trad/Universo Produção</p>
-              </div>
+            <div class="guide-item">
+              <a class="guide-link" href="">
+                <span class="sprite sprite-hoteis"></span>
+                <span class="guide-title">Hoteis e Acomodações</span>
+              </a>
             </div>
-          </div>
-        </section>
-
-        <section class="institutional">
-          <div class="institutional__wrapper">
-            <p class="institutional__title">Belo Horizonte em Conexão com o mundo</p>
-            <div class="institutional__video">
-              <iframe width="100%" height="540px" src="https://www.youtube.com/embed/2ssmwjkUdcs?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
-              <p class="institutional__desc">VÍDEO DE DIVULGAÇÃO 10º CINEBH</p>
+            <div class="guide-item">
+              <a class="guide-link" href="">
+                <span class="sprite sprite-turismo"></span>
+                <span class="guide-title">Turismo e informações</span>
+              </a>
             </div>
-          </div>
-        </section>
-
-        <section class="tv">
-          <div class="tv__last">
-            <figure class="tv__figure">
-              <img src="images/tv1.jpg" alt="">
-            </figure>
-            <div class="tv__last-desc">
-              <p class="tv__last-title">Rodrigo santoro fala ao TV mostra como foi  interpretar Marcos, no longa Meu país</p>
-              
-              <a class="tv__last-play" href="http://www.youtube.com/embed/L9szn1QQfas?autoplay=1" data-lity><span class="icon icon-play4"></span></a>
-            </div>
-          </div>
-          <div class="tv__header">
-            <p class="tv__title">Tv Mostra</p>
-            <p class="tv__subtitle">Acesse o conteúdo exclusivo em vídeo dos principais momentos da 10ª CineBH</p>
-            <p class="tv__subtitle"><strong>Uma década de história</strong></p>
-            <p class="tv__day">Dias</p>
-            <ul class="tv__items">
-              <li class="tv__item"><a class="tv__link" href="">1</a></li>
-              <li class="tv__item"><a class="tv__link" href="">2</a></li>
-              <li class="tv__item"><a class="tv__link" href="">3</a></li>
-            </ul>
-            <p class="readmore"><a class="readmore__link" href="">Veja Todos os Vídeos<span class="icon icon-plus2"></span></a></p>
-          </div>
-        </section>
-
-        <section class="guide">
-          <div class="guide__wrapper">
-            <header class="guide__header">
-              <h1 class="main__title">Guia</h1>
-            </header>
-            <p class="guide__highlight">A cidade em movimento</p>
-            <ul class="guide__list">
-              <li class="guide__item"><a href="" class="guide__link">
-                <img src="images/guide-place.svg"><span>Locais</span></a></li>
-              <li class="guide__item"><a href="" class="guide__link"><img src="images/guide-tur.svg"><span>Turismo e Informações</span></a></li>
-              <li class="guide__item"><a href="" class="guide__link"><img src="images/guide-res.svg"><span>Restaurantes</span></a></li>
-              <li class="guide__item"><a href="" class="guide__link"><img src="images/guide-hot.svg"><span>Hoteis e Acomodações</span></a></li>
-            </ul>
-
-          </div>
-        </section>
-
-        <section class="contact">
-          <div class="contact__wrapper">
-            <div class="newsletter">
-              <p class="newsletter__title">Receba nossos informativos</p>
-              <form action="" class="newsletter__form">
-                <input class="newsletter__input" placeholder="Nome">
-                <input class="newsletter__input" placeholder="Email">
-                <button type="submit" class="newsletter__submit">Cadastrar</button>
-              </form>
-            </div>
-
-            <div class="social">
-              <p class="social__title">Siga-nos:</p>
-              <ul class="social__items">
-                <li class="social__item">
-                  <a href="" class="social__link"><span class="icon icon-instagram"></span></a>
-                </li>
-                <li class="social__item">
-                  <a href="" class="social__link"><span class="icon icon-twitter"></span></a>
-                </li>
-                <li class="social__item">
-                  <a href="" class="social__link"><span class="icon icon-facebook"></span></a>
-                </li>
-                <li class="social__item">
-                  <a href="" class="social__link"><span class="icon icon-youtube"></span></a>
-                </li>
-                <li class="social__item">
-                  <a href="" class="social__link"><span class="icon icon-flickr"></span></a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </section>
-
-        <section class="sitemap">
-          <div class="sitemap__wrapper">
-            <ul class="sitemap__items">
-              <li class="sitemap__item"><a href="" class="sitemap__link">O Festival</a></li>
-              <li class="sitemap__item"><a href="" class="sitemap__link">Programação</a></li>
-              <li class="sitemap__item"><a href="" class="sitemap__link">Comunicação</a></li>
-              <li class="sitemap__item"><a href="" class="sitemap__link">Inscrições</a></li>
-              <li class="sitemap__item"><a href="" class="sitemap__link">Cinema Sem Fronteiras</a></li>
-            </ul>
-            <p class="sitemap__high">o futuro nasce da história,<br>da cultura nasce<br>a arte e dela<br>o cinema</p>
-            <p class="sitemap__contact">Contate-nos</p>
-            <p class="sitemap__add">
-              <span class="icon icon-universo-brand"></span>
-              <span>+ 55 31 3282-2366<br>
-                CINEBH@universoproducao.com.br<br>
-                Rua Pirapetinga, 567 - Serra<br>
-                30220-150, Belo Horizonte | MG</span>
-            </p>
-          </div>
-        </section>
-
-        <section class="sponsor">
-          <div class="sponsor__wrapper">
-            <ul class="sponsor__list">
-              <li class="sponsor__block sponsor__block--1">
-                <ul class="sponsor__items">
-                  <li class="sponsor__item" style="margin-top: 20px"><span class="sponsor__img"><img height="110px" src="images/sponsor/lei-cultura.svg" alt=""></span></li>
-                </ul>
-              </li>
-              <li class="sponsor__block sponsor__block--5">
-                <p class="sponsor__title">Patrocínio</p>
-                <ul class="sponsor__items">
-                  <li class="sponsor__item"><span class="sponsor__img sprite sprite-sesi"></span></li>
-                  <li class="sponsor__item"><span class="sponsor__img sprite sprite-materdei"></span></li>
-                  <li class="sponsor__item"><span class="sponsor__img sprite sprite-copasa"></span></li>
-                </ul>
-                <p class="sponsor__subtitle">Realizado com recursos da Lei Municipal de Incentivo à Cultura de Belo Horizonte - Projeto: 167/2015 | Valor: 100 mil reais</p>
-              </li>
-              <li class="sponsor__block sponsor__block--full">
-                <p class="sponsor__title">Apoio</p>
-                <ul class="sponsor__items">
-                  <li class="sponsor__item"><span class="sponsor__img sprite sprite-universocultural"></span></li>
-                  <li class="sponsor__item"><span class="sponsor__img sprite sprite-inhotim"></span></li>
-                  <li class="sponsor__item"><span class="sponsor__img sprite sprite-globominas"></span></li>
-                  <li class="sponsor__item"><span class="sponsor__img sprite sprite-hoteisothon"></span></li>
-                  <li class="sponsor__item"><span class="sponsor__img sprite sprite-fundacaoclovissalgado"></span></li>
-                  <li class="sponsor__item"><span class="sponsor__img sprite sprite-minasgerais"></span></li>
-                  <li class="sponsor__item"><span class="sponsor__img sprite sprite-heineken"></span></li>
-                </ul>
-              </li>
-              <li class="sponsor__block sponsor__block--2">
-                <p class="sponsor__title">Patrocínio Brasilcinemundi</p>
-                <ul class="sponsor__items">
-                  <li class="sponsor__item"><span class="sponsor__img sprite sprite-codemig"></span></li>
-                </ul>
-              </li>
-              <li class="sponsor__block sponsor__block--4">
-                <p class="sponsor__title">COOPERAÇÃO BRASIL CINEMUNDI</p>
-                <ul class="sponsor__items">
-                  <li class="sponsor__item"><span class="sponsor__img sprite sprite-vs2016"></span></li>
-                  <li class="sponsor__item"><span class="sponsor__img sprite sprite-cinelatino"></span></li>
-                  <li class="sponsor__item"><span class="sponsor__img sprite sprite-torinofilmlab"></span></li>
-                  <li class="sponsor__item"><span class="sponsor__img sprite sprite-doc"></span></li>
-                </ul>
-              </li>
-              <li class="sponsor__block sponsor__block--full">
-                <p class="sponsor__title">APOIO BRASILCINEMUNDI</p>
-                <ul class="sponsor__items">
-                  <li class="sponsor__item"><span class="sponsor__img sprite sprite-sebrae"></span></li>
-                  <li class="sponsor__item"><span class="sponsor__img sprite sprite-vrasil"></span></li>
-                  <li class="sponsor__item"><span class="sponsor__img sprite sprite-cinemadobrasil"></span></li>
-                  <li class="sponsor__item"><span class="sponsor__img sprite sprite-cine"></span></li>
-                  <li class="sponsor__item"><span class="sponsor__img sprite sprite-parati"></span></li>
-                  <li class="sponsor__item"><span class="sponsor__img sprite sprite-cinecolor"></span></li>
-                  <li class="sponsor__item"><span class="sponsor__img sprite sprite-dot"></span></li>
-                  <li class="sponsor__item"><span class="sponsor__img sprite sprite-ciario"></span></li>
-                  <li class="sponsor__item"><span class="sponsor__img sprite sprite-centrotecnicoaudiovisual"></span></li>
-                  <li class="sponsor__item"><span class="sponsor__img sprite sprite-mistika"></span></li>
-                </ul>
-              </li>
-              <li class="sponsor__block sponsor__block--full">
-                <p class="sponsor__title">Realização</p>
-                <ul class="sponsor__items">
-                  <li class="sponsor__item"><span class="icon icon-universo-brand"></span></li>
-                  <li class="sponsor__item" style="float: right"><span class="sponsor__img"><img height="70px" src="images/sponsor/brasil.svg" alt=""></span></li>
-                </ul>
-              </li>
-            </ul>
-          </div>
-        </section>
-      </main>
-
-      <footer class="footer">
-        <div class="footer__brand">
-          <span class="icon icon-universo-brand-min"></span>
-        </div>
-        <p class="footer__copy">Copyright © 2015. Universo Produção - Todos os direitos reservados.</p>
-      </footer>
-    </div>
-
-    <div class="mainmenu mainmenu-modal" id="mainmenu-modal">
-      <div class="mainmenu-bgc">
-        <div class="mainmenu__header">
-          <div class="mainmenu__header-left">
-            <div class="brand">
-              <a class="brand__link" href=""><span class="icon icon-cinebh"></span></a>
-            </div>
-          </div>
-          <div class="mainmenu__header-right">
-            <ul class="usermenu__list">
-              <li class="usermenu__item">
-                <form action="" class="mainmenu__search">
-                  <input placeholder="Buscar" class="search__input" name="q">
-                </form>
-              </li>
-              <li class="usermenu__item">
-                <a href="" id="usermenu__search" class="usermenu__link"><span class="icon icon-search"></span></a>
-              </li>
-              <li class="usermenu__item">
-                <a href="" class="usermenu__link mainmenu-close"><span class="icon icon-cross2"></span></a>
-              </li>
-            </ul>
           </div>
         </div>
-        <nav class="mainmenu__wrapper">
-          <ul class="mainmenu__list">
-            <li class="mainmenu__item mainmenu__item--active">
-              <a href="" class="mainmenu__link"><span>Início</span></a>
-            </li>
-            <li class="mainmenu__item mainmenu__item">
-              <a href="" class="mainmenu__link"><span>O Festival</span></a>
-              <ul class="mainmenu__list">
-                <li class="mainmenu__item">
-                  <a href="" class="mainmenu__link"><span>Cinebh</span></a>
-                </li>
-                <li class="mainmenu__item">
-                  <a href="" class="mainmenu__link"><span>Créditos</span></a>
-                </li>
-                <li class="mainmenu__item">
-                  <a href="" class="mainmenu__link"><span>Parceiros</span></a>
-                </li>
-                <li class="mainmenu__item">
-                  <a href="" class="mainmenu__link"><span>Locais</span></a>
-                </li>
+      </section>
+
+      <section class="newsletter">
+        <div class="main-wrapper">
+          <header class="main-header">
+            <h1>Receba Nossos Informativos</h1>
+          </header>
+          <form action="" class="newsletter-form">
+            <p><input class="newsletter-input" placeholder="Nome"></p>
+            <p><input class="newsletter-input" placeholder="Email"></p>
+            <p><button type="submit" class="newsletter-submit">Cadastrar</button></p>
+          </form>
+        </div>
+      </section>
+
+
+      <section class="sponsorship">
+        <div class="main-wrapper">
+          <ul class="sponsorship-list sponsorship-list--80">
+            <li class="sponsorship-block sponsorship-block--33">
+              <ul class="sponsorship-items">
+                <li class="sponsorship-item"><span class="sprite sprite-lei"></span></li>
               </ul>
             </li>
-            <li class="mainmenu__item mainmenu__item">
-              <a href="" class="mainmenu__link"><span>Programação</span></a>
-              <ul class="mainmenu__list">
-                <li class="mainmenu__item">
-                  <a href="" class="mainmenu__link"><span>Homenages</span></a>
-                </li>
-                <li class="mainmenu__item">
-                  <a href="" class="mainmenu__link"><span>Filmes</span></a>
-                </li>
-                <li class="mainmenu__item">
-                  <a href="" class="mainmenu__link"><span>Mostras</span></a>
-                </li>
-                <li class="mainmenu__item">
-                  <a href="" class="mainmenu__link"><span>Debates</span></a>
-                </li>
-                <li class="mainmenu__item">
-                  <a href="" class="mainmenu__link"><span>Exposições</span></a>
-                </li>
-                <li class="mainmenu__item">
-                  <a href="" class="mainmenu__link"><span>Programação Completa</span></a>
-                </li>
+            <li class="sponsorship-block sponsorship-block--67">
+              <p class="sponsorship-title">Patrocínio</p>
+              <ul class="sponsorship-items">
+                <li class="sponsorship-item"><span class="sprite sprite-copasa"></span></li>
+                <li class="sponsorship-item"><span class="sprite sprite-cemig"></span></li>
+                <li class="sponsorship-item"><span class="sprite sprite-mg"></span></li>
               </ul>
             </li>
-            <li class="mainmenu__item">
-              <a href="" class="mainmenu__link"><span>Comunicação</span></a>
-              <ul class="mainmenu__list">
-                <li class="mainmenu__item">
-                  <a href="" class="mainmenu__link"><span>Notícias</span></a>
-                </li>
-                <li class="mainmenu__item">
-                  <a href="" class="mainmenu__link"><span>Galeria</span></a>
-                </li>
-                <li class="mainmenu__item">
-                  <a href="" class="mainmenu__link"><span>Redes Sociais</span></a>
-                </li>
-                <li class="mainmenu__item">
-                  <a href="" class="mainmenu__link"><span>Fale Conosco</span></a>
-                </li>
+            <li class="sponsorship-block sponsorship-block--45">
+              <p class="sponsorship-title">Parceria Cultural</p>
+              <ul class="sponsorship-items">
+                <li class="sponsorship-item"><span class="sprite sprite-sesc"></span></li>
+                <li class="sponsorship-item"><span class="sprite sprite-max"></span></li>
               </ul>
             </li>
-            <li class="mainmenu__item">
-              <a href="" class="mainmenu__link"><span>Inscrições</span></a>
-              <ul class="mainmenu__list">
-                <li class="mainmenu__item">
-                  <a href="" class="mainmenu__link"><span>Credenciameno</span></a>
-                </li>
-                <li class="mainmenu__item">
-                  <a href="" class="mainmenu__link"><span>Releases</span></a>
-                </li>
-                <li class="mainmenu__item">
-                  <a href="" class="mainmenu__link"><span>Depoimentos</span></a>
-                </li>
-                <li class="mainmenu__item">
-                  <a href="" class="mainmenu__link"><span>Saiu na Imprensa</span></a>
-                </li>
-              </ul>
-            </li>
-            <li class="mainmenu__item">
-              <a href="" class="mainmenu__link"><span>Brasil Cine Mundi</span></a>
-              <ul class="mainmenu__list">
-                <li class="mainmenu__item">
-                  <a href="" class="mainmenu__link"><span>Credenciameno</span></a>
-                </li>
-                <li class="mainmenu__item">
-                  <a href="" class="mainmenu__link"><span>Releases</span></a>
-                </li>
-                <li class="mainmenu__item">
-                  <a href="" class="mainmenu__link"><span>Depoimentos</span></a>
-                </li>
-                <li class="mainmenu__item">
-                  <a href="" class="mainmenu__link"><span>Saiu na Imprensa</span></a>
-                </li>
+            <li class="sponsorship-block sponsorship-block--45 sponsorship-block--right">
+              <p class="sponsorship-title">Fomento</p>
+              <ul class="sponsorship-items">
+                <li class="sponsorship-item"><span class="sprite sprite-codemig"></span></li>
+                <li class="sponsorship-item"><span class="sprite sprite-mg"></span></li>
               </ul>
             </li>
           </ul>
-        </nav>
+          <ul class="sponsorship-list">
+            <li class="sponsorship-block sponsorship-block--full">
+              <p class="sponsorship-title">Apoio</p>
+              <ul class="sponsorship-items">
+                <li class="sponsorship-item"><span class="sprite sprite-universo-cultural"></span></li>
+                <li class="sponsorship-item"><span class="sprite sprite-inhotim"></span></li>
+                <li class="sponsorship-item"><span class="sprite sprite-globo-minas"></span></li>
+                <li class="sponsorship-item"><span class="sprite sprite-hoteis-othon"></span></li>
+                <li class="sponsorship-item"><span class="sprite sprite-fcs"></span></li>
+                <li class="sponsorship-item"><span class="sprite sprite-minas-gerais"></span></li>
+              </ul>
+            </li>
+            <li class="sponsorship-block sponsorship-block">
+              <p class="sponsorship-title">patrocínio brasil cinemundi</p>
+              <ul class="sponsorship-items">
+                <li class="sponsorship-item"><span class="sprite sprite-sesi"></span></li>
+              </ul>
+            </li>
+            <li class="sponsorship-block sponsorship-block--70 sponsorship-block--right">
+              <p class="sponsorship-title">cooperação brasil cinemundi</p>
+              <ul class="sponsorship-items">
+                <li class="sponsorship-item"><span class="sprite sprite-tfl"></span></li>
+                <li class="sponsorship-item"><span class="sprite sprite-vs2017"></span></li>
+                <li class="sponsorship-item"><span class="sprite sprite-doc"></span></li>
+                <li class="sponsorship-item"><span class="sprite sprite-docsp"></span></li>
+              </ul>
+            </li>
+            <li class="sponsorship-block sponsorship-block--full">
+              <p class="sponsorship-title">Apoio brasil cinemundi</p>
+              <ul class="sponsorship-items">
+                <li class="sponsorship-item"><span class="sprite sprite-ministerio-relacoes"></span></li>
+                <li class="sponsorship-item"><span class="sprite sprite-naymar"></span></li>
+                <li class="sponsorship-item"><span class="sprite sprite-institut-france"></span></li>
+                <li class="sponsorship-item"><span class="sprite sprite-goethe"></span></li>
+                <li class="sponsorship-item"><span class="sprite sprite-dot"></span></li>
+                <li class="sponsorship-item"><span class="sprite sprite-mistika"></span></li>
+                <li class="sponsorship-item"><span class="sprite sprite-parati"></span></li>
+                <li class="sponsorship-item"><span class="sprite sprite-cinema-brasil"></span></li>
+                <li class="sponsorship-item"><span class="sprite sprite-apex"></span></li>
+                <li class="sponsorship-item"><span class="sprite sprite-ctw"></span></li>
+                <li class="sponsorship-item"><span class="sprite sprite-cinecolor"></span></li>
+              </ul>
+            </li>
+            <li class="sponsorship-block sponsorship-block--full">
+              <p class="sponsorship-title">realização</p>
+              <ul class="sponsorship-items">
+                <li class="sponsorship-item"><span class="sprite sprite-universo-producao"></span></li>
+                <li class="sponsorship-item sponsorship-item--desktop" style="float: right"><span class="sprite sprite-ministerio-cultura"></span></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </section>
 
-        <p class="back"><a class="mainmenu-close" href="">Voltar</a></p>
+      <section class="sitemap">
+        <div class="main-wrapper">
+          <ul class="sitemap-items">
+            <li class="sitemap-item">
+              <a href="" class="sitemap-link">A Mostra</a>
+              <ul class="sitemap-items">
+                <li class="sitemap-item"><a href="" class="sitemap-link">20 Mostra Tiradentes</a></li>
+                <li class="sitemap-item"><a href="" class="sitemap-link">Temática Central</a></li>
+                <li class="sitemap-item"><a href="" class="sitemap-link">Edições Anteriores</a></li>
+                <li class="sitemap-item"><a href="" class="sitemap-link">Guias</a></li>
+              </ul>
+            </li>
+            <li class="sitemap-item">
+              <a href="" class="sitemap-link">Brasilcinemundi</a>
+              <ul class="sitemap-items">
+                <li class="sitemap-item"><a href="" class="sitemap-link">20 Mostra Tiradentes</a></li>
+                <li class="sitemap-item"><a href="" class="sitemap-link">Temática Central</a></li>
+                <li class="sitemap-item"><a href="" class="sitemap-link">Edições Anteriores</a></li>
+                <li class="sitemap-item"><a href="" class="sitemap-link">Guias</a></li>
+              </ul>
+            </li>
+            <li class="sitemap-item">
+              <a href="" class="sitemap-link">Programaçao</a>
+              <ul class="sitemap-items">
+                <li class="sitemap-item"><a href="" class="sitemap-link">Homenagens</a></li>
+                <li class="sitemap-item"><a href="" class="sitemap-link">Filmes</a></li>
+                <li class="sitemap-item"><a href="" class="sitemap-link">Programação</a></li>
+                <li class="sitemap-item"><a href="" class="sitemap-link">Oficina</a></li>
+              </ul>
+            </li>
+            <li class="sitemap-item">
+              <a href="" class="sitemap-link">Comunicação</a>
+              <ul class="sitemap-items">
+                <li class="sitemap-item"><a href="" class="sitemap-link">Noticiuas</a></li>
+                <li class="sitemap-item"><a href="" class="sitemap-link">Credenciamento</a></li>
+                <li class="sitemap-item"><a href="" class="sitemap-link">Imprensa</a></li>
+              </ul>
+            </li>
+            <li class="sitemap-item">
+              <a href="" class="sitemap-link">Inscrições</a>
+              <ul class="sitemap-items">
+                <li class="sitemap-item"><a href="" class="sitemap-link">Filmes</a></li>
+                <li class="sitemap-item"><a href="" class="sitemap-link">Oficinas</a></li>
+                <li class="sitemap-item"><a href="" class="sitemap-link">Seminários</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </section>
+    </main>
 
+    <footer class="footer">
+      <div class="footer-wrapper">
+        <div class="footer-clear">
+          <div class="footer-contact">
+            <p class="footer-title">Contate-nos:</p>
+            <span class="icon icon-universo-producao"></span>
+            <span class="footer-add">+ 55 31 3282-2366<br>
+                            up@universoproducao.com.br<br>
+                            Rua Pirapetinga, 567 - Serra<br>
+                            30220-150, Belo Horizonte | MG</span>
+          </div>
+          <div class="footer-social">
+            <p class="footer-title">Siga-nos:</p>
+            <ul class="footer-socialitems">
+              <li class="footer-socialitem"><a class="footer-socialink" href=""><span class="icon icon-facebook"></span></a></li>
+              <li class="footer-socialitem"><a class="footer-socialink" href=""><span class="icon icon-twitter"></span></a></li>
+              <li class="footer-socialitem"><a class="footer-socialink" href=""><span class="icon icon-instagram"></span></a></li>
+              <li class="footer-socialitem"><a class="footer-socialink" href=""><span class="icon icon-flickr"></span></a></li>
+              <li class="footer-socialitem"><a class="footer-socialink" href=""><span class="icon icon-youtube"></span></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <p class="footer-copy">Copyright © 2017. Universo Produção - Todos os direitos reservados.</p>
+    </footer>
+
+    <div class="navigation navigation-modal" style="display: none" id="navigation-modal">
+      <div class="navigation-bg"></div>
+      <div class="navigation-wrapper">
+        <div class="navigation-header">
+          <div class="navigation-brand">
+            <span class="icon-brand"></span>
+            <span class="icon-brasilcinemundi"></span>
+          </div>
+          <div class="navigation-actions">
+           <div class="item search">
+             <a href="#" class="action"><span class="icon-search"></span></a>
+           </div>
+            <div class="item close">
+              <a data-fancybox-close href="#" class="action"><span class="icon-cross2"></span></a>
+            </div>
+          </div>
+        </div>
+        <div class="navigation-menu">
+          <ul class="navigation-items">
+            <li class="navigation-item"><a class="navigation-link" href="">Início</a></li>
+            <li class="navigation-item">
+              <a class="navigation-link" href="">O Festival</a>
+              <ul class="navigation-subitems">
+                <li class="navigation-subitem"><a class="navigation-link" href="">CineBH</a></li>
+                <li class="navigation-subitem"><a class="navigation-link" href="">Créditos</a></li>
+                <li class="navigation-subitem"><a class="navigation-link" href="">Parceiros</a></li>
+                <li class="navigation-subitem"><a class="navigation-link" href="">Locais</a></li>
+              </ul>
+            </li>
+            <li class="navigation-item"><a class="navigation-link" href="">Programação</a></li>
+            <li class="navigation-item"><a class="navigation-link" href="">Comunicação</a></li>
+            <li class="navigation-item"><a class="navigation-link" href="">Inscrições</a></li>
+            <li class="navigation-item"><a class="navigation-link" href="">Brasilcinemundi</a></li>
+          </ul>
+        </div>
       </div>
     </div>
 

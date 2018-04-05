@@ -12,14 +12,15 @@ use Zend\Paginator\Paginator;
 
 class ProgramationController extends SiteController
 {
-    const SITE_ID = 4;
+    const SITE_ID = 13;
 
     public function indexAction()
     {
         $post = $this->params('post');
         return new ViewModel([
             'post' => $post,
-            'breadcrumbs' => $post->getBreadcrumbs()
+            'breadcrumbs' => $post->getBreadcrumbs(),
+            'lg' => $this->params('locale')
         ]);
     }
 
@@ -28,7 +29,8 @@ class ProgramationController extends SiteController
         $post = $this->params('post');
         return new ViewModel([
             'post' => $post,
-            'breadcrumbs' => $post->getBreadcrumbs()
+            'breadcrumbs' => $post->getBreadcrumbs(),
+            'lg' => $this->params('locale')
         ]);
     }
 
@@ -37,7 +39,8 @@ class ProgramationController extends SiteController
         $post = $this->params('post');
         return new ViewModel([
             'post' => $post,
-            'breadcrumbs' => $post->getBreadcrumbs()
+            'breadcrumbs' => $post->getBreadcrumbs(),
+            'lg' => $this->params('locale')
         ]);
     }
 
@@ -51,7 +54,8 @@ class ProgramationController extends SiteController
         ];
         return new ViewModel([
             'breadcrumbs' => $breadcrumbs,
-            'idMovie' => $filmeId
+            'idMovie' => $filmeId,
+            'lg' => $this->params('locale')
         ]);
     }
 
@@ -60,7 +64,8 @@ class ProgramationController extends SiteController
         $post = $this->params('post');
         return new ViewModel([
             'post' => $post,
-            'breadcrumbs' => $post->getBreadcrumbs()
+            'breadcrumbs' => $post->getBreadcrumbs(),
+            'lg' => $this->params('locale')
         ]);
     }
 
@@ -74,7 +79,8 @@ class ProgramationController extends SiteController
         ];
         return new ViewModel([
             'breadcrumbs' => $breadcrumbs,
-            'seminarId' => $seminarId
+            'seminarId' => $seminarId,
+            'lg' => $this->params('locale')
         ]);
     }
 

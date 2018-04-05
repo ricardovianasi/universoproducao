@@ -1,4 +1,4 @@
-// generated on 2016-08-24 using generator-custom2 1.0.8
+// generated on 2017-07-03 using generator-custom2 1.0.8
 import gulp from 'gulp';
 import gulpLoadPlugins from 'gulp-load-plugins';
 import browserSync from 'browser-sync';
@@ -205,7 +205,7 @@ gulp.task('wiredep', ['styles', 'scripts', 'fonts'], () => {
     .pipe(gulp.dest('app'));
 });
 
-gulp.task('build', ['html', 'images', 'fonts', 'extras'], () => {
+gulp.task('build', ['lint', 'html', 'images', 'fonts', 'extras'], () => {
   return gulp.src('dist/**/*').pipe($.size({title: 'build', gzip: true}));
 });
 

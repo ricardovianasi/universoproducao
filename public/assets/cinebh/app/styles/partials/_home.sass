@@ -1,883 +1,673 @@
 .home
-  .header__left
-    height: 912px
-    +media("<=1500px")
-      height: 712px
-    +media("<=desktop")
-      height: 512px
-    +media("<=tablet")
-      height: 312px
-  .header__brand
-    height: 674px
-    //left: 58px
-    +media("<=tablet")
+
+  .main-header
+    +trailer(0)
+
+  &-effect
+    position: relative
+    &:after,
+    &:before
+      content: ""
+      position: absolute
       width: 100%
-      height: 150px
-  .main__header--bgc
-    width: 100%
-    background-color: $color-palette-7
-    .main__title
-      display: inline-block
-      color: #fff
-      +media(">=tablet")
-        +adjust-font-size-to(48px, 2.5)
-        +trailer(1.5, 48px)
-        +leader(1.5, 48px)
-      +media("<tablet")
-        +adjust-font-size-to(36px, 1.5)
-        +trailer(1, 36px)
-        +leader(1, 36px)
-    .readmore
-      float: right
-      +leader(2)
-      +trailer(2)
-      +media("<tablet")
-        +leader(1)
-        +trailer(1)
-      +media("<=570px")
-        float: none
-        +leader(0)
-        +trailer(0)
-      &__link
-        color: #fff
-        +media("<tablet")
-          +adjust-font-size-to(18px, 1.5)
-        &:hover
-          color: $color-palette-10
+      height: 230px
+      background-color: $color-palette-1
+      z-index: 1000
+    &:before
+      transform: skewY(3deg)
+      top: -10%
+    &:after
+      transform: skewY(3deg)
+      top: 90%
 
-  .header__wrapper
-    +container(1566px)
-    padding-left: 30px
-    padding-right: 30px
-
-  section
-    line-height: 0
-
-  figure
-    margin-bottom: 0
+  .readmore-link
+    +leader(3)
+    position: absolute
+    right: 0
+    z-index: 100000
 
   .banner
+    width: 100%
     position: relative
-    right: 0
-    &__caption
-      position: absolute
-      bottom: 0
-      right: 0
-      color: #fff
-      padding: 10px
+    z-index: 100
+
+    &-caption
+      +adjust-font-size-to(14px)
       font-style: italic
-      background-color: rgba(0,0,0,.6)
-      margin-bottom: 0
-      +adjust-font-size-to(12px, .5)
-    &__item
-      width: 68%
-      height: 912px
-      +media("<=1500px")
-        width: calc(100% - 345px)
-        height: 712px
-      +media("<=desktop")
-        height: 512px
-      +media("<=tablet")
-        width: calc(100% - 260px)
-        height: 312px
-      +media("<=570px")
-        width: 100%
-        float: none
-      background-repeat: no-repeat
-      background-position: center center
-      float: right
+      position: absolute
+      top: 0
+      right: 10px
+      padding: 10px
+      color: white
+      background-color: rgba(0,0,0,.4)
+
     .owl-dots
       position: absolute
-      text-align: center
-      bottom: 90px
+      bottom: 108px
       left: 50%
       transform: translateX(-50%)
-    .owl-dot
-      display: inline-block
-      zoom: 1
-    .owl-dots .owl-dot span
-      display: block
-      width: 16px
-      height: 16px
-      border-radius: 50%
-      margin: 0 12px
-      background-color: $color-palette-6
-    .owl-dots .owl-dot.active span, .owl-dots .owl-dot:hover span
-      background-color: $color-palette-7
+      .owl-dot
+        display: inline-block
+        width: 18px
+        height: 18px
+        background-color: white
+        border-radius: 50%
+        margin-right: 12px
+        margin-left: 12px
+        &.active
+          background-color: $color-palette-1
 
   .programation
-    &__list
-      display: inline-block
-      width: 100%
-
-    &__item
-      +grid(1, 4, $gutter:0)
-      +media("<tablet")
-        +grid(2, 4, $gutter:0)
-      position: relative
-      &--highlight
-        background-color: $color-palette-9
-        +grid(1, 1, $gutter:0)
-        .programation__figure
-          +grid(3, 4, $gutter:0)
-          +media("<tablet")
-            +grid(2, 4, $gutter:0)
-          img
-            filter: none
-          &:before
-            background: none
-        .programation__desc
-          position: absolute
-          +grid(1, 4, $gutter:0)
-          +media("<tablet")
-            +grid(2, 4, $gutter:0)
-          transform: translate(0, -50%)
-          left: inherit
-          right: 0
-          padding: 30px
-          box-sizing: border-box
-        .programation__date
-          +media('>=1600px')
-            +adjust-font-size-to(160px)
-          +media('<1600px')
-            +adjust-font-size-to(100px)
-        .programation__day
-          +adjust-font-size-to(48px, 2)
-        .programation__title
-          +adjust-font-size-to(24px, 1)
-          strong
-            +adjust-font-size-to(36px, 1.5)
-            color: $color-palette-12
-            +media('<1600px')
-              +adjust-font-size-to(24px, 1)
-        .programation__subtitle
-          +adjust-font-size-to(18px, 1)
-          color: $color-palette-13
-
-    +media("<=desktop")
-      .programation__item--highlight
-        .programation__date,
-        .programation__day,
-        .programation__title,
-        .programation__title strong,
-        .programation__subtitle
-          +adjust-font-size-to(18px, 1)
-      .programation__date,
-      .programation__day
-        +adjust-font-size-to(18px, 1)
-
-    +media("<=tablet")
-      .programation__title,
-      .programation__subtitle
-        display: none
-      .programation__figure
-        width: 100%
-
-
-    &__figure
-      line-height: 0
-      position: relative
-      &:before
-        content: ""
-        position: absolute
-        top: 0
-        bottom: 0
-        right: 0
-        width: 100%
-        height: 100%
-        background: rgba(0,0,0,.6)
-      img
-        width: 100%
-        filter: grayscale(100%)
-
-    &__desc
-      position: absolute
-      top: 50%
-      left: 50%
-      transform: translate(-50%, -50%)
-
-    &__date,
-    &__day,
-    &__title,
-    &__subtitle
-      color: #fff
-      font-family: 'Fjalla One', sans-serif
-      line-height: 1
-
-    &__day,
-    &__date
-      text-transform: uppercase
-
-    &__date
-      +adjust-font-size-to(100px, 4.5)
-      +trailer(.5, 100px)
-
-    &__day
-      +adjust-font-size-to(36px, 1.5)
-      +trailer(.5, 36px)
-
-
-  .news
-    overflow: hidden
-    &__list
-      display: inline-block
-      width: 100%
-
-    &__item
-      position: relative
-      border: none
-      clear: none
-      padding: 0
-      margin: 0
-      +media(">=tablet")
-        +grid(1, 2, $gutter:0)
-        &:nth-child(1)
-          .news__desc
-            background-color: rgba(33,176,136,.8)
-            &:before
-              background-color: rgba(33,176,136,.8)
-        &:nth-child(2)
-          .news__desc
-            background-color: rgba(137,52,51,.8)
-            &:before
-              background-color: rgba(137,52,51,.8)
-      +media("<tablet")
-        display: inline-block
-        width: 100%
-        &:nth-child(1)
-          background-color: $color-palette-7
-        &:nth-child(2)
-          background-color: $color-palette-10
-    &__figure
-      padding: 0
-      margin: 0
-      img
-        width: 100%
-
-    &__desc
-      padding-left: 40px
-      padding-right: 40px
-      +media(">=tablet")
-        position: absolute
-        width: 50%
-        height: 100%
-        top: 0
-        right: 0
-        &:before
-          content: ""
-          position: absolute
-          width: 100%
-          height: 100%
-          transform-origin: 100% 0
-          transform: matrix(1, -3, 0, 1, 0, 0)
-          left: -100%
-      +media("<tablet")
-        padding-top: 40px
-
-    &__title
-      +adjust-font-size-to(24px, 1)
-      font-family: $font-family-base
-      font-weight: 700
-      color: #fff
-      +trailer(1)
-      +leader(1.5)
-
-    &__text
-      +adjust-font-size-to(24px, 1)
-      color: #fff
-      +trailer(1.5)
-
-    &__link
-      +adjust-font-size-to(18px, 1)
-      color: #fff
-      font-family: 'Fjalla One', sans-serif
-      text-transform: uppercase
-      padding: 5px 10px
-      border: 1px solid #fff
-      &:hover
-        color: $color-txt
-        background-color: #fff
-
-    &__button
-      +adjust-font-size-to(18px, 2)
-      text-align: right
-
-    +media("<=1500px")
-      .news__desc
-        +adjust-font-size-to(18px, 1)
-    +media("<=1200px")
-      .news__title
-        +adjust-font-size-to(18px, 1)
-        +trailer(.5, 18px)
-        +leader(.5, 18px)
-      .news__text
-        +adjust-font-size-to(14px, .6)
-        +trailer(1, 14px)
-
-    +media("<=desktop")
-
-  .gallery
-    position: relative
-    &__list
-      display: inline-block
-      width: 100%
-      position: relative
-
-    &__item
-      display: inline-block
-      width: 953px
-      +media("<tablet")
-        width: 500px
-      position: relative
-
-    &__desc
-      height: 168px
-      background-color: $color-palette-7
-      padding-left: 36px
-      padding-right: 36px
-
-    &__title
-      +adjust-font-size-to(24px, 1)
-      +trailer(0)
-      +padding-leader(1.5)
-      font-family: 'Fjalla One', sans-serif
-      text-transform: uppercase
-      color: #fff
-    &__subtitle
-      +adjust-font-size-to(18px)
-      color: #fff
-    &__credits
-      +adjust-font-size-to(16px)
-      +leader(1)
-      font-style: italic
-      color: #fff
-
-    +media("<tablet")
-      .gallery__title
-        +adjust-font-size-to(18px, 1)
-        +padding-leader(1, 18px)
-      .gallery__subtitle
-        +adjust-font-size-to(16px)
-      .gallery__credits
-        +adjust-font-size-to(14px)
-      .gallery__desc
-        height: 100%
-    .owl-item
-      &:nth-child(2n+1)
-        .gallery__desc
-          background-color: $color-palette-10 !important
-      .gallery__desc
-        text-indent: -100%
-        white-space: nowrap
-        overflow: hidden
-      &:before
-        content: ""
-        position: absolute
-        width: 100%
-        height: 100%
-        top: 0
-        left: 0
-        bottom: 0
-        background: rgba(0, 0, 0, .6)
-        z-index: 9
-    .center
-      .gallery__desc
-        text-indent: inherit
-        white-space: inherit
-        overflow: inherit
-      &:before
-        background: rgba(0, 0, 0, 0)
-
-    .owl-nav
-      position: absolute
-      bottom: 168px
-      top: 50%
-      transform: translateY(-50%)
-      width: 100%
-
-    .owl-prev,
-    .owl-next
-      position: absolute
-    .owl-prev
-      left: 45px
-    .owl-next
-      right: 45px
-
-    &__arrow
-      background-color: transparent
-      border: none
-      outline: 0
-      cursor: pointer
-      color: #fff
-      font-size: 72px
-      +media("<tablet")
-        font-size: 36px
-
-  .institutional
-    +padding-leader(5)
-    +padding-trailer(3)
     width: 100%
-    background: url("../images/pattern.png") repeat
-    +media("<tablet")
-      +padding-leader(2.5)
-      +padding-trailer(2)
-    &__wrapper
-      +container(1468px)
-      padding-left: 30px
-      padding-right: 30px
-      text-align: center
-      +media("<=570px")
-        width: 100%
-        padding-left: 0
-        padding-right: 0
-
-    &__title
-      +adjust-font-size-to(60px)
-      font-family: 'Fjalla One', sans-serif
-      color: $color-palette-7
-      text-transform: uppercase
-      //text-shadow: 4px 0px 0px rgba(220, 55, 51, 1), -4px 0px 0px rgba(19, 187, 180, 1)
-      letter-spacing: .05em
-      +media("<tablet")
-        +adjust-font-size-to(48px, 2)
-      +media("<=570px")
-        width: 100%
-        padding-left: 30px
-        padding-right: 30px
-        box-sizing: border-box
-
-    &__video
-      max-width: 953px
-      margin-left: auto
-      margin-right: auto
-      text-align: left
-    &__desc
-      +adjust-font-size-to(24px)
-      font-family: 'Fjalla One', sans-serif
-      text-transform: uppercase
-      +media("<=570px")
-        padding-left: 30px
-        padding-right: 30px
-
-  .tv
-    display: inline-block
+    display: block
     position: relative
-    width: 100%
-    height: 100%
-    overflow: hidden
-    &__last,
-    &__header
-      +grid(1, 2, $gutter:0)
-      position: relative
-      box-sizing: border-box
+    z-index: 100
 
-    +media("<tablet")
-      .tv__last,
-      .tv__header
-        +grid(1, 1, $gutter:0)
-        float: none
+    &-header
+      position: relative
+      top: -36px
+      +center($pad:20px)
+
+    &-highlight
+      display: inline-block
+      position: relative
+      width: 100%
+      overflow: hidden
+      z-index: 10000
+      transform: skewY(-4deg)
+
+    &-item
+      position: relative
+      float: left
+      width: 100%
+      height: 811px
+      transform: skewY(4deg)
+      &:nth-child(1)
+        .wrapper
+          margin-top: -95px
+      &:nth-child(2)
+        .wrapper
+          margin-top: -65px
+      &:nth-child(3)
+        .wrapper
+          margin-top: -30px
+
+      .link
         display: block
-
-    &__figure
-      line-height: 0
-      img
-        //width: 100%
-
-    &__last
-      position: relative
-      &:before
-        content: ''
-        position: absolute
         width: 100%
         height: 100%
+        text-decoration: none
+      .bgi,
+      .bgc
+        position: absolute
         top: 0
-        bottom: 0
-        right: 0
         left: 0
-        background: rgba(158, 51, 53, .6)
+        width: 100%
+        height: 100%
+        background-repeat: no-repeat
+        background-size: cover
+        transform: scale(1.1)
+        +media("<=765px")
+          left: 5%
 
-      &-desc
+      .bgc
+        background-color: black
+        opacity: 0.3
+
+      .wrapper
         position: absolute
         top: 50%
-        transform: translateY(-50%)
+        left: 50%
+        transform: translateY(-50%) translateX(-50%)
         width: 100%
-        padding-left: 100px
-        padding-right: 80px
+        max-width: 300px
+        padding: 10px
+        text-align: center
         z-index: 999
 
-      &-title
-        display: inline-block
-        +adjust-font-size-to(24px, 1)
+      .title,
+      .subtitle,
+      .date,
+      .place
+        font-family: $font-family-title
+        text-transform: uppercase
+
+      .date
+        +adjust-font-size-to(72px)
+        +trailer(3, 72px)
         font-weight: 700
-        text-transform: uppercase
-        color: #fff
-        max-width: 320px
-        vertical-align: middle
-        +trailer(0)
-      &-play
-        display: inline-block
-        width: 94px
-        height: 94px
-        border: 1px solid #fff
-        border-radius: 50%
-        color: #fff
-        font-size: 48px
-        line-height: 94px
-        text-align: center
-        vertical-align: middle
-        margin-left: 20px
+        color: $color-palette-1
 
-    &__header
-      background: $color-palette-7
-      height: 100%
-      padding-right: 100px
-      padding-left: 80px
-      +media(">=tablet")
-        position: absolute
-        right: 0
-        &:before
-          content: ""
-          position: absolute
-          width: 100%
-          height: 100%
-          transform-origin: 100% 0
-          transform: matrix(1, -3, 0, 1, 0, 0)
-          left: -100%
-          background-color: $color-palette-7
-    &__title
-      +adjust-font-size-to(48px,2)
-      +trailer(1.5, 48px)
-      +padding-leader(3, 48px)
-      font-family: 'Fjalla One', sans-serif
-      text-transform: uppercase
-      color: #fff
-    &__subtitle
-      +adjust-font-size-to(24px, 1)
-      font-weight: 700
-      color: #fff
-      strong
-        +adjust-font-size-to(30px, 1.5, 30px)
-        text-transform: uppercase
+
+      .title
+        +adjust-font-size-to(30px)
+        +trailer(1, 30px)
+        font-weight: 600
+        color: white
+
+      .subtitle
+        color: white
+
+      .place
+        +adjust-font-size-to(14px, 2)
         font-weight: 700
-    &__day
-      +adjust-font-size-to(18px)
-      font-weight: 700
-      color: #fff
-      text-transform: uppercase
+        color: $color-palette-1
 
-    &__item
-      display: inline-block
-      border: 1px solid $color-palette-9
-      width: 35px
-      margin-right: 20px
-    &__link
-      +adjust-font-size-to(18px, 1)
-      +padding-trailer(.2)
-      +padding-leader(.2)
-      font-family: 'Fjalla One', sans-serif
-      display: block
-      text-align: center
-      vertical-align: middle
-      color: $color-palette-9
-    .readmore
-      text-align: right
-      &__link
-        color: #fff
-
-  .guide
-    +container(1664px)
-    padding-left: 30px
-    padding-right: 30px
-    +trailer(8)
-    +leader(2)
-
-    &__highlight
-      +adjust-font-size-to(100px)
-      +leader(2, 100px)
-      +trailer(4, 100px)
-      font-family: 'Fjalla One', sans-serif
-      color: $color-palette-11
-      text-transform: uppercase
-      text-shadow: 6px 0px 0px rgba(220, 55, 51, 1), -6px 0px 0px rgba(19, 187, 180, 1)
-      text-align: center
-      letter-spacing: .05em
-      +media("<tablet")
-        +adjust-font-size-to(60px)
-        +leader(1.5, 60px)
-        +trailer(2, 60px)
-
-    &__list
-      width: 100%
-      display: inline-block
-      text-align: center
-    &__item
-      +grid(1, 4, $cycle:4)
-      +media("<tablet")
-        +grid(2, 4, $cycle:2)
-        +trailer(1)
-
-      img
-        height: 80px
-        +media("<=570px")
-          height: 50px
-    &__link
-      display: inline-block
-      width: 100%
-      span
-        +adjust-font-size-to(30px, 1.5)
-        +leader(1, 30px)
-        font-family: 'Fjalla One', sans-serif
-        color: $color-palette-7
-        text-transform: uppercase
-        display: block
-        width: 50%
-        margin-left: auto
-        margin-right: auto
-        +media("<=570px")
-          +adjust-font-size-to(18px, 1)
-          +leader(1, 18px)
-
-  .contact
-    display: inline-block
+  .news
+    display: block
     width: 100%
-    position: relative
-    //background: url("../images/forms2.svg") no-repeat top left
-    //background-size: cover
-    &:before
-      content: ""
-      position: absolute
-      background: url("../images/forms2.svg") no-repeat top left
-      background-size: cover
-      width: 100%
-      height: 100%
-      transform: skewY(-6deg)
-      z-index: -9
-    &__wrapper
-      +container(1468px)
-      padding-left: 30px
-      padding-right: 30px
-      text-align: center
+    +leader(15)
+    +padding-trailer(6)
+    +trailer(6)
+    border-bottom: 1px solid black
 
-    .newsletter
-      +padding-leader(6)
-      +trailer(4)
-      &__title
-        +adjust-font-size-to(36px, 1.5)
-        +trailer(2.5, 36px)
-        font-family: 'Fjalla One', sans-serif
-        text-transform: uppercase
-        color: #fff
-      &__form
-        +container(1210px)
-        display: inline-block
-        width: 100%
-      &__input,
-      &__submit
-        box-sizing: border-box
-        +adjust-font-size-to(18px, 1)
-        font-family: 'Fjalla One', sans-serif
-        outline: none
-        text-transform: uppercase
-        background-color: transparent
-        color: #fff
-        +apply-side-rhythm-border(all, 1px, .5, 18px, solid #fff)
+    &.top
+      margin-top: 36px !important
 
-      &__input
-        +grid(2, 5, $gutter:0)
-        border-right: none
-        &::-webkit-input-placeholder
-          color: #fff
-        &::-moz-placeholder
-          color: #fff
-        &:-ms-input-placeholder
-          color: #fff
-        &:-moz-placeholder
-          color: #fff
-      &__submit
-        +grid(1, 5, $gutter:0)
-        transition: $transition-default
-        cursor: pointer
-        &:hover
-          background-color: #fff
-          color: $color-palette-7
+    &-items
+      +leader(3)
+      +trailer(3)
 
-      +media("<tablet")
-        .newsletter__submit,
-        .newsletter__input
-          float: none
-          width: 100%
-        .newsletter__input
-          border-right: 1px solid #fff
-          border-bottom: none
+    &-item
+      +media(">765px")
+        +column(1/2, $cycle:2)
+      +media("<=765px")
+        +column(1/1, $cycle:1)
+        +trailer(2)
+      padding-left: 0
+      padding-right: 0
 
-    .social
-      +container(1210px)
-      +trailer(10)
-      +media("<tablet")
-        +trailer(5)
-      &__title
-        +adjust-font-size-to(24px, 1)
-        +trailer(2.5, 24px)
-        font-family: 'Fjalla One', sans-serif
-        text-transform: uppercase
-        color: #fff
-
-      &__items
-        text-align: center
-        width: 100%
-        display: inline-block
-      &__item
-        +grid(1,5, $gutter:30px)
-        +media("<=570px")
-          +grid(2,5, $gutter:16px, $cycle:2)
-          +trailer(1)
-          text-align: center
-        &:first-child
-          margin-left: 0
-        &:last-child
-          margin-right: 0
-      &__link
-        color: #fff
-        +adjust-font-size-to(48px, 1.5)
-        &:hover
-          color: $color-palette-10
-
-  .sitemap
-    display: inline-block
-    width: 100%
-    position: relative
-    &:before
-      content: ""
-      position: absolute
-      background-color: $color-palette-10
-      width: 100%
-      height: 100%
-      transform: skewY(-6deg)
-      z-index: -99
-    &__wrapper
-      +container(1210px)
-      padding-left: 30px
-      padding-right: 30px
-      text-align: center
-    &__items
-      width: 100%
-      display: inline-block
-      +leader(7.5)
-      +trailer(5)
-      +media("<tablet")
-        +leader(4.5)
-        +trailer(3)
-    &__item
-      +grid(1, 5)
-      +media("<tablet")
-        +grid(1, 1)
-        +trailer(1)
-    &__link
-      +adjust-font-size-to(18px, 1)
-      font-family: 'Fjalla One', sans-serif
-      text-transform: uppercase
-      color: #fff
-
-    &__high
-      width: 100%
-      +media(">500px")
-        width: 500px
-      +adjust-font-size-to(60px, 2.5)
-      +trailer(4, 60px)
-      font-family: 'Fjalla One', sans-serif
-      text-transform: uppercase
-      text-align: left
-      color: #fff
-      margin-left: auto
-      margin-right: auto
-      +media("<tablet")
-        +adjust-font-size-to(48px, 2)
-        +trailer(2, 48px)
-
-    &__contact
-      +adjust-font-size-to(18px, 1)
-      +trailer(2.5)
-      font-family: 'Fjalla One', sans-serif
-      text-transform: uppercase
-      color: #fff
-
-    &__add
-      +adjust-font-size-to(14px, .9)
-      text-transform: uppercase
-      color: #fff
-      +trailer(6)
-      span
-        text-align: left
-        display: inline-block
-        vertical-align: middle
-      .icon
-        font-size: 90px
-        margin-right: 40px
-
-  .sponsor
-    +leader(8)
-    &__wrapper
-      +container(1210px)
-      padding-left: 30px
-      padding-right: 30px
-    &__list
-      display: inline-block
-      width: 100%
-    &__block
+    &-figure
       float: left
-      +trailer(2.5)
-      box-sizing: border-box
-      padding-right: 20px
-      padding-left: 20px
-      +media("<=570px")
+      margin-right: 20px
+      +media("<=765px")
+        float: none
+        display: block
         width: 100%
+        +trailer(1)
+
+
+  .tv
+    +trailer(10)
+    &-wrapper
+      display: block
+      overflow: hidden
+
+    &-highlight
+      float: left
+      width: 50%
+      box-sizing: border-box
+      position: relative
+      +leader(3)
+      +trailer(3)
       &--full
         width: 100%
-        padding-right: 0
-        padding-left: 0
-      &--1
-        width: 20%
-        padding-left: 0
-      &--2
-        width: 30%
-        padding-left: 0
-      &--4
-        width: 70%
-        padding-right: 0
-      &--5
-        width: 80%
-        padding-right: 0
-    &__title
-      +adjust-font-size-to(16px, 1.5)
-      font-family: 'Fjalla One', sans-serif
-      text-transform: uppercase
-      color: #000
-      border-bottom: 1px solid #000
-    &__subtitle
-      +adjust-font-size-to(12px, 1)
-      +leader(.5)
-      font-weight: 700
-      border-top: 1px solid #000
-      color: #000
-      font-family: Arial
-    &__item
+      &:nth-child(1)
+        padding-right: 20px
+        .tv-bg
+          padding-right: 18px
+        .tv-link
+          +padding-trailer(9, 54px)
+          +padding-leader(9, 54px)
+        .tv-content
+          +leader(1)
+      &:nth-child(2)
+        padding-left: 19px
+        border-left: 1px solid black
+        .tv-bg
+          max-width: 260px
+          float: left
+        .tv-link
+          +padding-trailer(3.5, 54px)
+          +padding-leader(3.5, 54px)
+        .tv-featured
+          &:last-of-type
+            +leader(1)
+        .tv-content
+          padding-left: 15px
+          position: absolute
+          max-width: 260px
+        .tv-title
+          +trailer(1, 16px)
+        .tv-title,
+        .tv-subtitle
+          +adjust-font-size-to(16px, 1.1, 18px)
+      +media('<=765px')
+        width: 100%
+        float: none
+        &:nth-child(2)
+          width: 100%
+          float: none
+
+    &-featured
+      display: block
+      overflow: hidden
+      position: relative
+
+    &-content
       display: inline-block
-      margin-right: 50px
+
+    &-title,
+    &-subtitle
+      font-family: $font-family-title
+
+    &-title
+      font-weight: 700
+
+    &-bg
+      background-repeat: no-repeat
+      background-size: cover
+      background-position: center
+      text-align: center
+      width: 100%
+
+    &-link
+      display: block
+      text-decoration: none
+      +adjust-font-size-to(54px, 3)
+      color: $color-palette-1
+      position: relative
+      &:after
+        content: ""
+        width: 100%
+        height: 100%
+        background-color: black
+        opacity: .3
+        position: absolute
+        top: 0
+        left: 0
+
+  .gallery
+    width: 100%
+    display: block
+    position: relative
+    z-index: 100
+    .owl-carousel
+      transform: skewY(-4deg)
+      z-index: 10000
+    .owl-nav
+      position: absolute
+      width: 100%
+      height: 100%
+      top: 0
+      left: 0
+      transform: skewY(4deg)
+      .owl-next,
+      .owl-prev
+        position: absolute
+        height: 100%
+        width: 230px
+        text-align: center
+        button
+          background-color: transparent
+          background-repeat: no-repeat
+          overflow: hidden
+          outline: none
+          border: none
+          cursor: pointer
+          height: 60px
+          font-size: 60px
+          color: $color-palette-1
+          position: absolute
+          top: 50%
+          transform: translateY(-50%)
+      .owl-next
+        right: 0
+        button
+          right: 50px
+        //background: linear-gradient(to left, black , rgba(0,0,0,0))
+      .owl-prev
+        left: 0
+        button
+          left: 50px
+        //background: linear-gradient(to right, black , rgba(0,0,0,0))
+    .readmore-link
+      +leader(3)
+      position: absolute
+      right: 8px
+      z-index: 100000
+
+    &-caption
+      +adjust-font-size-to(14px)
+      font-style: italic
+      position: absolute
+      top: 0
+      right: 10px
+      padding: 10px
+      color: white
+      background-color: rgba(0,0,0,.3)
+
+  .eufacoamostra
+    position: relative
+    +leader(13)
+
+    .main-header
+      position: relative
+      +padding-leader(4)
+      +padding-trailer(4)
+      text-align: center
+      z-index: 99
+      p
+        font-family: $font-family-title
+
+    .main-title
+      +adjust-font-size-to(72px)
+      +trailer(2, 72px)
+
+    &-items
+      display: block
+      overflow: hidden
+      position: relative
+      z-index: 99
+
+    &-item
+      position: relative
+      +media(">=1600px")
+        +column(1/8, $gutter:0)
+      +media("<1600px")
+        +column(1/6, $gutter:0)
+      +media("<1280px")
+        +column(1/4, $gutter:0)
+      +media("<480px")
+        +column(1/2, $gutter:0)
+
+    &-link
+      display: block
+      &.video
+        &:after
+          position: absolute
+          top: 50%
+          left: 50%
+          transform: translate(-50%, -50%)
+          content: "\ed85"
+          font-family: 'Universoproducao' !important
+          speak: none
+          font-style: normal
+          font-weight: normal
+          font-variant: normal
+          font-size: 85px
+          text-transform: none
+          line-height: 1
+          -webkit-font-smoothing: antialiased
+          color: $color-palette-2
+          opacity: .8
+
+      img
+        max-width: 100%
+        height: auto
+        display: block
+        background: #ccc
+        border: none
+
+  .guide
+    +padding-leader(13)
+    +padding-trailer(16)
+    position: relative
+    z-index: 9
+    &-bg
+      position: absolute
+      top: 0
+      left: 0
+      bottom: 0
+      right: 0
+      width: 100%
+      height: 100%
+    .main-header
+      +padding-trailer(4)
+      text-align: center
+
+    &-items
+      display: block
+      width: 100%
+
+    &-item
+      display: inline-block
+      text-align: center
+      width: 24.5%
+
+    &-link
+      text-decoration: none
+      .sprite
+        margin: 0 auto
+        +trailer(1.5)
+
+    &-title
+      font-family: $font-family-title
+      font-weight: 700
+      text-transform: uppercase
+      color: $color-txt
+
+  .newsletter
+    position: relative
+    +padding-leader(7)
+    +padding-trailer(7)
+    top: -85px
+    &:before
+      content: ''
+      position: absolute
+      top: 0
+      left: 0
+      width: 100%
+      height: 100%
+      background-color: black
+      transform: skewY(-4deg)
+      z-index: 100
+
+    .main-header
+      +trailer(1)
+      text-align: center
+      h1
+        color: white
+        +adjust-font-size-to(18px)
+        font-family: $font-family-title
+        font-weight: 700
+        text-transform: uppercase
+        letter-spacing: .05em
+
+    &-form
+      display: inline-block
+      width: 100%
+      position: relative
+      z-index: 9999999
+      p
+        float: left
+        box-sizing: border-box
+        &:nth-child(1)
+          padding-right: 20px
+        &:nth-child(1),
+        &:nth-child(2)
+          width: 40%
+        &:nth-child(3)
+          padding-left: 20px
+          width: 20%
+
+    &-input,
+    &-submit
+      width: 100%
+      +adjust-font-size-to(14px, 1)
+      text-transform: uppercase
+      font-family: $font-family-title
+      letter-spacing: .05em
+      outline: none
+      box-sizing: border-box
+
+    &-input
+      color: $color-txt
+      background-color: white
+      +apply-side-rhythm-border(all, 1px, 1, 18px, solid #fff)
+      &::-webkit-input-placeholder
+        color: $color-palette-2
+      &::-moz-placeholder
+        color: $color-palette-2
+      &:-ms-input-placeholder
+        color: $color-palette-2
+      &:-moz-placeholder
+        color: $color-palette-2
+    &-submit
+      +apply-side-rhythm-border(all, 1px, 1, 18px, solid $color-palette-2)
+      background-color: $color-palette-2
+      color: white
+      cursor: pointer
+      transition: $transition-default
+      font-weight: 700
+
+  .sitemap
+    position: relative
+    +padding-leader(8)
+    +padding-trailer(8)
+    top: -100px
+    &:before
+      content: ''
+      position: absolute
+      top: 0
+      left: 0
+      width: 100%
+      height: 100%
+      background-color: $color-palette-3
+      transform: skewY(-4deg)
+      transform: skewY(-4deg)
+
+    &-items
+      display: inline-block
+      width: 100%
+      position: relative
+      z-index: 99999
+
+    &-item
+      text-align: center
+      +media(">=tablet")
+        +column(1/5)
+      +media("<tablet")
+        +column(2/4, $cycle: 2)
+      +media("<480px")
+        +column(1/1)
+      & >.sitemap-items
+        +leader(.5)
+        +trailer(.5)
+        .sitemap-item
+          display: block
+          width: 100%
+        .sitemap-link
+          +adjust-font-size-to(14px, 1)
+          +trailer(1, 14px)
+          font-weight: 400
+          font-family: $font-family-title
+          text-transform: none
+          color: white
+          letter-spacing: .05em
+          &:hover
+            color: $color-palette-2
+
+    &-link
+      display: block
+      color: $color-txt
+      text-transform: uppercase
+      text-decoration: none
+      +adjust-font-size-to(16px, 1)
+      font-family: $font-family-title
+      font-weight: 700
+      +trailer(1, 16px)
+      letter-spacing: .05em
+      transition: $transition-default
+      &:hover
+        color: $color-palette-2
+
+  .sponsorship
+    +padding-leader(4)
+    +padding-trailer(8)
+    position: relative
+    &-list
+      display: inline-block
+      width: 100%
+      &--80
+        max-width: 85%
+
+    &-block
+      display: inline-block
+      float: left
+      box-sizing: border-box
+      +trailer(2.5)
+      &--full
+        width: 100%
+      &--30
+        width: 30%
+      &--33
+        width: 33%
+      &--40
+        width: 40%
+      &--45
+        width: 45%
+      &--50
+        width: 50%
+      &--70
+        width: 70%
+      &--60
+        width: 60%
+      &--67
+        width: 67%
+      &--center
+        text-align: center
+      &--right
+        float: right
+
+    &-item
+      display: inline-block
       box-sizing: border-box
       vertical-align: middle
+      margin-right: 60px
       +trailer(1)
+      &--mobile
+        display: none
       &:first-child
         margin-left: 0px
       &:last-child
         margin-right: 0px
-      span
-        font-size: 48px
-        color: #000
-      .icon-mercantil
-        font-size: 36px
-      .icon-contax
-        font-size: 23px
-      .icon-universo-brand
-        font-size: 130px
-      &:last-child
-        margin-right: 0
+
+    &-title
+      +adjust-font-size-to(12px, 2, 18px)
+      font-family: $font-family-title
+      font-weight: bold
+      text-transform: uppercase
+      color: #000
+      border-bottom: 1px solid #000
+      +trailer(2)
+
+
++media("<=765px")
+  .home
+    .sponsorship
+      &-list
+        width: 100%
+      &--80
+        max-width: 100% !important
+
+      &-block
+        width: 100% !important
+        &--center
+          text-align: center
+        &--right
+          float: left
+
+      &-item
+        +trailer(1)
+        &--mobile
+          display: block
+        &--desktop
+          display: none
+
+    .newsletter
+      &-form
+        p
+          &:nth-child(1)
+            padding-right: 0
+          &:nth-child(1),
+          &:nth-child(2)
+            width: 100%
+          &:nth-child(3)
+            padding-left: 0
+            width: 100%
+
+    .guide
+      &-item
+        width: 100%
+        +trailer(1)

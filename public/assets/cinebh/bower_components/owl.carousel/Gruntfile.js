@@ -16,7 +16,7 @@ module.exports = function(grunt) {
 			app: grunt.file.readJSON('_config.json'),
 			banner: '/**\n' + ' * Owl Carousel v<%= pkg.version %>\n'
 				+ ' * Copyright 2013-<%= grunt.template.today("yyyy") %> <%= pkg.author.name %>\n'
-				+ ' * Licensed under <%= pkg.license.type %> (<%= pkg.license.url %>)\n' + ' */\n',
+				+ ' * Licensed under: <%= pkg.license %>\n' + ' */\n',
 
 			// assemble
 			assemble: {
@@ -148,15 +148,6 @@ module.exports = function(grunt) {
 					timeout: 10000
 				},
 				dist: [ 'test/index.html' ]
-			},
-
-			blanket_qunit: {
-				dist: {
-					options: {
-						urls: [ 'test/index.html?coverage&gruntReport' ],
-						threshold: 0
-					}
-				}
 			},
 
 			jscs: {
@@ -312,11 +303,11 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('assemble');
 
 	// tasks
-	grunt.registerTask('dist', [ 'clean:dist', 'sass:dist', 'autoprefixer', 'concat:dist', 'cssmin:dist', 'copy:distImages', 'jscs:dist', 'usebanner:dist', 'uglify:dist', 'copy:readme' ]);
+	grunt.registerTask('dist', [ 'clean:dist', 'sass:dist', 'autoprefixer', 'concat:dist', 'cssmin:dist', 'copy:distImages', 'usebanner:dist', 'uglify:dist', 'copy:readme' ]);
 
 	grunt.registerTask('docs', [ 'dist', 'clean:docs', 'assemble', 'sass:docs', 'copy:docsAssets', 'copy:distToDocs', 'zip' ]);
 
-	grunt.registerTask('test', [ 'jshint:dist', 'qunit:dist', 'blanket_qunit:dist' ]);
+	grunt.registerTask('test', [ 'jshint:dist', 'qunit:dist', 'jscs:dist' ]);
 
 	grunt.registerTask('default', [ 'dist', 'docs', 'test' ]);
 

@@ -1,39 +1,27 @@
 .breadcrumbs
-  background-color: $color-palette-7
-  +trailer(2)
-  &__wrapper
-    +container(964px)
-    padding-left: 30px
-    padding-right: 30px
-    position: relative
-  &__list
-    display: inline-block
-    width: 100%
-  &__item
-    display: inline-block
-    &:last-child
-      .breadcrumbs__link
-        &:after
-          content: ""
-          padding-left: 0
-          padding-right: 0
+  width: 100%
+  background-color: $color-palette-1
 
-  &__link
-    display: block
-    +adjust-font-size-to(18px)
-    +trailer(.5)
-    +leader(.5)
-    font-family: 'Fjalla One', sans-serif
+  &-items
+    +center($pad: 20px)
+
+  &-item
+    display: inline-block
+    +padding-trailer(.5)
+    +padding-leader(.5)
+    &:last-child
+      a:after
+        display: none
+
+  &-link
+    +adjust-font-size-to(16px)
+    font-family: $font-family-title
+    color: $color-txt
+    text-decoration: none
     text-transform: uppercase
-    color: #fff
+    transition: $transition-default
     &:after
-      content: "\edbe"
-      font-family: 'Cinebh' !important
-      speak: none
-      font-style: normal
-      font-weight: normal
-      font-variant: normal
-      text-transform: none
-      padding-left: 20px
-      padding-right: 20px
+      content: ">"
+      padding-left: 10px
+      padding-right: 10px
       color: $color-txt

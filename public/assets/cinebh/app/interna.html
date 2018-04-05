@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js" lang="">
+<html lang="">
   <head>
     <meta charset="utf-8">
     <meta name="description" content="">
@@ -16,24 +16,33 @@
     <!-- build:css styles/vendor.css -->
     <!-- bower:css -->
     <link rel="stylesheet" href="/bower_components/owl.carousel/dist/assets/owl.carousel.css" />
+    <link rel="stylesheet" href="/bower_components/owl.carousel/dist/assets/owl.theme.default.css" />
+    <link rel="stylesheet" href="/bower_components/gray/css/gray.css" />
+    <link rel="stylesheet" href="/bower_components/fancybox/dist/jquery.fancybox.min.css" />
     <!-- endbower -->
     <!-- endbuild -->
 
 
-    <!-- build:js scripts/vendor/modernizr.js -->
-    <script src="/bower_components/modernizr/modernizr.js"></script>
-    <!-- endbuild -->
   </head>
-  <body class="">
-    <div class="site__wrapper">
-      <header class="header">
-        <div class="header__left">
-          <h1 class="header__brand"><a class="header__link" href=""></a></h1>
-          <!--<img class="header__letteringform" src="images/lettering-form.svg" alt="">-->
+  <body>
+    <!--[if lt IE 10]>
+      <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <header class="header">
+      <div class="header-wrapper">
+        <h1 class="header-brand">
+          <a class="brand-link" href="#">
+            <span class="brand-cinebh"></span>
+            <span class="brand-brasilcinemundi"></span>
+          </a>
+        </h1>
+        <div class="header-info">
+          <p class="info-date">22-27 agosto 2017<span>Programação gratuita</span></p>
         </div>
-        <div class="header__right">
-          <div class="menu">
-            <div class="menu-button" id="mainmenu-access">
+        <div class="header-actions">
+          <div class="menu-button" id="menu-button" data-src="#navigation-modal">
+            <div class="circle">
               <div class="burger">
                 <span class="b"></span>
                 <span class="b"></span>
@@ -41,218 +50,97 @@
                 <span class="b"></span>
               </div>
             </div>
+            <span>menu</span>
           </div>
         </div>
-      </header>
+      </div>
+    </header>
 
-      <main class="main">
+    <main class="main">
 
-        <div class="main__figure">
-          <img src="images/internal.jpg" alt="">
-        </div>
+      <div class="breadcrumbs">
+        <ul class="breadcrumbs-items">
+          <li class="breadcrumbs-item"><a class="breadcrumbs-link" href="">Home</a></li>
+          <li class="breadcrumbs-item"><a class="breadcrumbs-link" href="">12ª Cineop</a></li>
+        </ul>
+      </div>
 
-        <div class="breadcrumbs">
-          <div class="breadcrumbs__wrapper">
-            <ul class="breadcrumbs__list">
-              <li class="breadcrumbs__item"><a href="" class="breadcrumbs__link">Início</a></li>
-              <li class="breadcrumbs__item"><a href="" class="breadcrumbs__link">Notícias</a></li>
-              <li class="breadcrumbs__item"><a href="" class="breadcrumbs__link">No domingo, penultimo dia bla bla...</a></li>
-            </ul>
-          </div>
-        </div>
-
-        <section class="main__wrapper">
-          <header class="main__header">
-            <h1 class="main__title">NO DOMINGO, PENÚLTIMO DIA DA 11ª CINEOP, MESA DISCUTE OS DIREITOS AUTORAIS EM TEMPOS DE DIGITALIZAÇÃO DE ACERVOS </h1>
+      <div class="main-wrapper">
+        <section class="main-content">
+          <header class="main-header">
+            <h1 class="main-title">Cinebh 2017</h1>
           </header>
-
-          <figure>
-            <img src="images/img-text.jpg" alt="">
-            <figcaption>
-              <strong>Exibição na Praça Tiradentes no 6º CineOP em Ouro Preto</strong>
-              Foto: Leo Lara
-            </figcaption>
-          </figure>
-          <p>O penúltimo dia da 11ª CineOP - Mostra de Cinema de Ouro Preto chega neste domingo dando continuidade aos Encontros de Arquivos com a mesa “Política cultural e os direitos autorais: novos desafios em tempos de novos formatos de difusão de conteúdo audiovisual: Internet, VOD, novas mídias”, às 14h45, no Centro de Convenções. A mesa terá a presença do ex-secretário do Audiovisual Pola Ribeiro, do cineasta Sylvio Back (integrande de um entidade brasileira dedicada a administrar os direitos de artistas do audiovisual) e de três advogados especializados em políticas e leis de direitos autorais no Brasil, com o objetivo de discutir um dos grandes desafios da nova conjuntura de onipresença do audiovisual no país.</p>
-          <p>Às 18h, o seminário da Temática Histórica debate o programa “Globo Repórter” dos anos 1970, tendo por base o documentário Retrato de Classe, de Gregório Bacic. Na mesa, o diretor divide suas ideias com Cláudia Mesquita (pesquisadora) e Reinaldo Cardenuto (pesquisador).</p>
-          <p>Na programação de filmes, o Cine BNDES na Praça exibe Jogo de Cena, parte da homenagem ao diretor Eduardo Coutinho, às 18h30. Em seguida, às 20h30, a sessão de curtas Mostra na Praça apresenta quatro filmes. No Cine Vila Rica, às 18, tem Lost Zweig, longa de Sylvio Back exibido em tributo a Chico Moreira, homenageado da Mostra Preservação. Às 20h, a mostra de médias conta com Bahia Sci-fi, de Petrus Pires, e Superoutro, de Edgard Navarro. A noite de exibição termina com a série 2 da Mostra Ventura de curtas, a partir das 22h.</p>
-
-
-          <form class="form-filtro" action="" method="get" name="form">
-            <select class="form__input" name="fc" id="fc">
-              <option value="">CATEGORIA</option>
-              <option value="AB">ABERTURA</option>
-              <option value="FI">FILMES</option>
-              <option value="MO">MOSTRINHA</option>
-              <option value="SCE">CINE-ESCOLA</option>
-              <option value="SE">SEMINÁRIO</option>
-              <option value="AR">ARTE</option>
-              <option value="EX">EXPOSIÇÃO</option>
-              <option value="EN">ENCERRAMENTO</option>
-
-            </select>
-            <select class="form__input" name="subMostra" id="subMostra">
-              <option value="">SUB-MOSTRA</option>
-              <option value="267"> Mostra Retrospectiva </option>
-              <option value="268"> Mostra Diálogos Históricos </option>
-              <option value="269"> Mostra Contemporânea </option>
-              <option value="270"> Mostra Curtas </option>
-              <option value="271"> Mostra Curtas no Almoço </option>
-              <option value="272"> Mostrinha </option>
-              <option value="273"> Série Portugal </option>
-              <option value="274"> Mostra Cidade em Movimento </option>
-            </select>
-            <select class="form__input" name="fl" id="fl">
-              <option value="">LOCAL</option>
-              <option value="227">Cine 104 </option>
-              <option value="222">Cine Humberto Mauro </option>
-              <option value="224">Hall  Teatro João Ceschiatti - Palácio das Artes</option>
-              <option value="220">MIS Cine Santa Tereza </option>
-              <option value="225">Sala Juvenal Dias - Palácio das Artes</option>
-              <option value="221">Sesc Palladium </option>
-              <option value="226">Teatro João Ceschiatti - Palácio das Artes</option>
-              <option value="223" selected="selected">Teatro Sesiminas</option>
-            </select>
-            <button type="submit" class="form__button">Filtrar</button>
-
-            <input name="lg" type="hidden" value="">
-            <input name="menu" type="hidden" value="prog">
-            <input name="sub" type="hidden" value="pc">
-
-          </form>
+          <h2>Mostra CineBH 11 anos, persistir para avançar</h2>
+          <div class="main-txt">
+            <p>A Mostra CineBH celebra, em 2016, uma década de história. O evento nasceu no bairro de Santa Tereza,um dos mais tradicionais redutos culturais da capital mineira, e foi responsável pela reabertura do Cine Santa Tereza, cinema de bairro fundado em 1944 e desativado desde 1980. Na ocasião, a Universo Produção instalou “uma operação” em tempo recorde de reconstrução do espaço físico do cinema,entreaberto provisoriamente para ser sede do evento (2007-2011), e neste ano foi reinaugurado após a conclusão das reformas,tornando-se o único cinema de rua público da cidade. A Mostra CineBH retorna ao bairro para comemorar seus 10 anos e brindar o legado cinematográfico que motivou novas iniciativas e diálogos na comunidade, em Belo Horizonte e em Minas Gerais.</p>
+            <p>Ao longo de oito dias de programação oferecida gratuitamente ao público, a 10ª CineBHacontece em seis espaços públicos da cidade –Fundação Clóvis Salgado, MISCine Santa Tereza, Cine 104, Sesc Palladium, Teatro Sesiminas, Museu de Artes e Ofícios– e apresenta uma seleção de filmes nacionais e internacionais, em pré-estreias e retrospectivas, mostras temáticas. Promove debates, diálogos e encontros de negócios. Investe na formação e capacitação de profissionais com a oferta de oficinas,  workshops e masterclassese ainda realiza oCine-Expressão – A Escola Vai ao Cinema, programa que beneficia estudantes e educadores da rede pública de ensino,e a Mostrinha de Cinema,dedicada ao público infanto-juvenil.</p>
+          </div>
 
         </section>
+      </div>
+    </main>
 
-      </main>
-
-      <footer class="footer">
-        <div class="footer__brand">
-          <span class="icon icon-universo-brand-min"></span>
-        </div>
-        <p class="footer__copy">Copyright © 2015. Universo Produção - Todos os direitos reservados.</p>
-      </footer>
-    </div>
-
-    <div class="mainmenu mainmenu-modal" id="mainmenu-modal">
-      <div class="mainmenu-bgc">
-        <div class="mainmenu__header">
-          <div class="mainmenu__header-left">
-            <div class="brand">
-              <a class="brand__link" href=""><span class="icon icon-cinebh"></span></a>
-            </div>
+    <footer class="footer">
+      <div class="footer-wrapper">
+        <div class="footer-clear">
+          <div class="footer-contact">
+            <p class="footer-title">Contate-nos:</p>
+            <span class="icon icon-universo-producao"></span>
+            <span class="footer-add">+ 55 31 3282-2366<br />
+                            up@universoproducao.com.br<br />
+                            Rua Pirapetinga, 567 - Serra<br />
+                            30220-150, Belo Horizonte | MG</span>
           </div>
-          <div class="mainmenu__header-right">
-            <ul class="usermenu__list">
-              <li class="usermenu__item">
-                <a href="" class="usermenu__link"><span class="icon icon-search"></span></a>
-              </li>
-              <li class="usermenu__item">
-                <a href="" class="usermenu__link mainmenu-close"><span class="icon icon-cross2"></span></a>
-              </li>
+          <div class="footer-social">
+            <p class="footer-title">Siga-nos:</p>
+            <ul class="footer-socialitems">
+              <li class="footer-socialitem"><a class="footer-socialink" href=""><span class="icon icon-facebook"></span></a></li>
+              <li class="footer-socialitem"><a class="footer-socialink" href=""><span class="icon icon-twitter"></span></a></li>
+              <li class="footer-socialitem"><a class="footer-socialink" href=""><span class="icon icon-instagram"></span></a></li>
+              <li class="footer-socialitem"><a class="footer-socialink" href=""><span class="icon icon-flickr"></span></a></li>
+              <li class="footer-socialitem"><a class="footer-socialink" href=""><span class="icon icon-youtube"></span></a></li>
             </ul>
           </div>
         </div>
-        <nav class="mainmenu__wrapper">
-          <ul class="mainmenu__list">
-            <li class="mainmenu__item mainmenu__item--active">
-              <a href="" class="mainmenu__link"><span>Início</span></a>
-            </li>
-            <li class="mainmenu__item mainmenu__item">
-              <a href="" class="mainmenu__link"><span>O Festival</span></a>
-              <ul class="mainmenu__list">
-                <li class="mainmenu__item">
-                  <a href="" class="mainmenu__link"><span>Cinebh</span></a>
-                </li>
-                <li class="mainmenu__item">
-                  <a href="" class="mainmenu__link"><span>Créditos</span></a>
-                </li>
-                <li class="mainmenu__item">
-                  <a href="" class="mainmenu__link"><span>Parceiros</span></a>
-                </li>
-                <li class="mainmenu__item">
-                  <a href="" class="mainmenu__link"><span>Locais</span></a>
-                </li>
+      </div>
+      <p class="footer-copy">Copyright © 2017. Universo Produção - Todos os direitos reservados.</p>
+    </footer>
+
+    <div class="navigation navigation-modal" style="display: none" id="navigation-modal">
+      <div class="navigation-bg"></div>
+      <div class="navigation-wrapper">
+        <div class="navigation-header">
+          <div class="navigation-brand">
+            <span class="icon-brand"></span>
+            <span class="icon-brasilcinemundi"></span>
+          </div>
+          <div class="navigation-actions">
+           <div class="item search">
+             <a href="#" class="action"><span class="icon-search"></span></a>
+           </div>
+            <div class="item close">
+              <a data-fancybox-close href="#" class="action"><span class="icon-cross2"></span></a>
+            </div>
+          </div>
+        </div>
+        <div class="navigation-menu">
+          <ul class="navigation-items">
+            <li class="navigation-item"><a class="navigation-link" href="">Início</a></li>
+            <li class="navigation-item">
+              <a class="navigation-link" href="">O Festival</a>
+              <ul class="navigation-subitems">
+                <li class="navigation-subitem"><a class="navigation-link" href="">CineBH</a></li>
+                <li class="navigation-subitem"><a class="navigation-link" href="">Créditos</a></li>
+                <li class="navigation-subitem"><a class="navigation-link" href="">Parceiros</a></li>
+                <li class="navigation-subitem"><a class="navigation-link" href="">Locais</a></li>
               </ul>
             </li>
-            <li class="mainmenu__item mainmenu__item">
-              <a href="" class="mainmenu__link"><span>Programação</span></a>
-              <ul class="mainmenu__list">
-                <li class="mainmenu__item">
-                  <a href="" class="mainmenu__link"><span>Homenages</span></a>
-                </li>
-                <li class="mainmenu__item">
-                  <a href="" class="mainmenu__link"><span>Filmes</span></a>
-                </li>
-                <li class="mainmenu__item">
-                  <a href="" class="mainmenu__link"><span>Mostras</span></a>
-                </li>
-                <li class="mainmenu__item">
-                  <a href="" class="mainmenu__link"><span>Debates</span></a>
-                </li>
-                <li class="mainmenu__item">
-                  <a href="" class="mainmenu__link"><span>Exposições</span></a>
-                </li>
-                <li class="mainmenu__item">
-                  <a href="" class="mainmenu__link"><span>Programação Completa</span></a>
-                </li>
-              </ul>
-            </li>
-            <li class="mainmenu__item">
-              <a href="" class="mainmenu__link"><span>Comunicação</span></a>
-              <ul class="mainmenu__list">
-                <li class="mainmenu__item">
-                  <a href="" class="mainmenu__link"><span>Notícias</span></a>
-                </li>
-                <li class="mainmenu__item">
-                  <a href="" class="mainmenu__link"><span>Galeria</span></a>
-                </li>
-                <li class="mainmenu__item">
-                  <a href="" class="mainmenu__link"><span>Redes Sociais</span></a>
-                </li>
-                <li class="mainmenu__item">
-                  <a href="" class="mainmenu__link"><span>Fale Conosco</span></a>
-                </li>
-              </ul>
-            </li>
-            <li class="mainmenu__item">
-              <a href="" class="mainmenu__link"><span>Inscrições</span></a>
-              <ul class="mainmenu__list">
-                <li class="mainmenu__item">
-                  <a href="" class="mainmenu__link"><span>Credenciameno</span></a>
-                </li>
-                <li class="mainmenu__item">
-                  <a href="" class="mainmenu__link"><span>Releases</span></a>
-                </li>
-                <li class="mainmenu__item">
-                  <a href="" class="mainmenu__link"><span>Depoimentos</span></a>
-                </li>
-                <li class="mainmenu__item">
-                  <a href="" class="mainmenu__link"><span>Saiu na Imprensa</span></a>
-                </li>
-              </ul>
-            </li>
-            <li class="mainmenu__item">
-              <a href="" class="mainmenu__link"><span>Brasil Cine Mundi</span></a>
-              <ul class="mainmenu__list">
-                <li class="mainmenu__item">
-                  <a href="" class="mainmenu__link"><span>Credenciameno</span></a>
-                </li>
-                <li class="mainmenu__item">
-                  <a href="" class="mainmenu__link"><span>Releases</span></a>
-                </li>
-                <li class="mainmenu__item">
-                  <a href="" class="mainmenu__link"><span>Depoimentos</span></a>
-                </li>
-                <li class="mainmenu__item">
-                  <a href="" class="mainmenu__link"><span>Saiu na Imprensa</span></a>
-                </li>
-              </ul>
-            </li>
+            <li class="navigation-item"><a class="navigation-link" href="">Programação</a></li>
+            <li class="navigation-item"><a class="navigation-link" href="">Comunicação</a></li>
+            <li class="navigation-item"><a class="navigation-link" href="">Inscrições</a></li>
+            <li class="navigation-item"><a class="navigation-link" href="">Brasilcinemundi</a></li>
           </ul>
-        </nav>
-
-        <p class="back"><a class="mainmenu-close" href="">Voltar</a></p>
-
+        </div>
       </div>
     </div>
 
@@ -262,19 +150,16 @@
 
     <!-- build:js scripts/vendor.js -->
     <!-- bower:js -->
-    <script src="/bower_components/perfect-scrollbar/js/perfect-scrollbar.jquery.js"></script>
-    <script src="/bower_components/jquery-easing-original/jquery.easing.min.js"></script>
-    <script src="/bower_components/jquery.advancedScroll/jquery.advancedScroll.js"></script>
     <script src="/bower_components/owl.carousel/dist/owl.carousel.js"></script>
+    <script src="/bower_components/ev-emitter/ev-emitter.js"></script>
+    <script src="/bower_components/imagesloaded/imagesloaded.js"></script>
+    <script src="/bower_components/gray/js/jquery.gray.min.js"></script>
+    <script src="/bower_components/fancybox/dist/jquery.fancybox.min.js"></script>
+    <script src="/bower_components/parallax.js/parallax.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:js scripts/main.js -->
     <!-- inject:js -->
-    <script src="scripts/vendor/jquery.fancybox-media.js"></script>
-    <script src="scripts/vendor/jquery.fancybox.js"></script>
-    <script src="scripts/vendor/jquery.fancybox.pack.js"></script>
-    <script src="scripts/vendor/lity.js"></script>
-    <script src="scripts/vendor/lity.min.js"></script>
     <script src="scripts/main.js"></script>
     <!-- endinject -->
     <!-- Place inline scripts here -->

@@ -16,23 +16,21 @@
 
 
 /* ==========================================================================
-   Setup
-   ========================================================================== */
-
-@import "settings/variables"
-@import "settings/settings"
-
-
-/* ==========================================================================
    Vendor
    ========================================================================== */
 
 //@import "vendor/"
 @import "../../bower_components/include-media/dist/include-media"
-@import "../../bower_components/custom.gs/custom"
-@import "../../bower_components/perfect-scrollbar/src/css/main"
-@import "../../bower_components/owl.carousel/dist/assets/owl.carousel.css"
-@import "../../bower_components/lity/dist/lity.min.css"
+@import "../../bower_components/jeet/jeet"
+
+
+
+/* ==========================================================================
+   Setup
+   ========================================================================== */
+
+@import "settings/variables"
+@import "settings/settings"
 
 
 /* ==========================================================================
@@ -57,20 +55,23 @@
    ========================================================================== */
 
 @import "base/typo"
-@import "base/links"
-@import "base/text"
-@import "base/figures"
+@import "base/html-body"
+@import "base/main"
+@import "base/header"
+@import "base/footer"
 
 
 /* ==========================================================================
    Components
    ========================================================================== */
 
-@import "components/menu-burger"
+@import "components/btn"
+@import "components/fancybox"
+@import "components/navigation"
 @import "components/breadcrumbs"
-@import "components/pagination"
-@import "components/share"
-@import "components/sprites"
+@import "components/figure"
+@import "components/links"
+@import "components/table"
 
 
 /* ==========================================================================
@@ -81,22 +82,10 @@
 
 
 /* ==========================================================================
-   Structure
-   ========================================================================== */
-
-@import "structure/html-body"
-@import "structure/header"
-@import "structure/menu"
-@import "structure/main"
-@import "structure/footer"
-
-
-
-/* ==========================================================================
    Partials
    ========================================================================== */
 
 @import "partials/home"
 @import "partials/news"
-@import "partials/programation"
 @import "partials/filmes"
+@import "partials/programation"

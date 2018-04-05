@@ -12,11 +12,12 @@ return array(
         'routes' => array(
             'cinebh' => array(
                 'type'    => Hostname::class,
-                'options' => array(
+                'type' => 'Hostname'
+,                'options' => array(
                     'route'    => '[www.][:locale.]cinebh.com.br',
                     'defaults' => array(
                         'controller'    => Controller\IndexController::class,
-                        'action'        => 'hotsite',
+                        'action'        => 'index',
                         'locale'        => 'pt'
                     ),
                 ),
@@ -41,7 +42,7 @@ return array(
                             'route' => '/',
                             'defaults' => array(
                                 'controller'    => Controller\IndexController::class,
-                                'action'        => 'hotsite',
+                                'action'        => 'index',
                             ),
                         )
                     ),

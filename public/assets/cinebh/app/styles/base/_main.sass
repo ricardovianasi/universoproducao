@@ -1,0 +1,42 @@
+.main
+
+  &-header
+    position: relative
+    +trailer(2)
+    z-index: 10000
+
+  &-content
+    +leader(4)
+    +trailer(12)
+
+    h2
+      +adjust-font-size-to(24px)
+      +trailer(2)
+      font-family: $font-family-title
+      font-weight: 700
+
+    p
+      +adjust-font-size-to(18px, 1.4)
+      +trailer(1.5)
+
+    a
+      color: $color-txt
+      &:hover
+        color: $color-palette-1
+
+    b,strong
+      font-family: $font-family-title
+      font-weight: 700
+
+  &-title
+    +adjust-font-size-to(42px, 4)
+    font-family: $font-family-title
+    font-weight: 700
+    text-transform: uppercase
+
+  &-wrapper
+    +center($pad:20px)
+    position: relative
+
+  &-txt
+    +leader(3)

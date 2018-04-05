@@ -1,6 +1,6 @@
 <?php
 
-namespace Arquivoemcartaz\Controller\Factory;
+namespace Cinebh\Controller\Factory;
 
 use Arquivoemcartaz\Controller\IndexController;
 use Zend\ServiceManager\FactoryInterface;

@@ -126,7 +126,7 @@
     "desc":     "Show dots each x item."
   },
   {
-    "name":     "dotData",
+    "name":     "dotsData",
     "type":     "Boolean",
     "Default":  "false",
     "desc":     "Used by data-dot content."
@@ -246,7 +246,7 @@
     "desc":     "Class for CSS3 animation out."
   },
   {
-    "name":     "animateInClass",
+    "name":     "animateIn",
     "type":     "String/Boolean",
     "Default":  "false",
     "desc":     "Class for CSS3 animation in."

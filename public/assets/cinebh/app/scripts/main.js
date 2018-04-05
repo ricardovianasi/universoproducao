@@ -1,84 +1,91 @@
-(function($) {
-    /**
-     * jQuery function to prevent default anchor event and take the href * and the title to make a share pupup
-     *
-     * @param  {[object]} e           [Mouse event]
-     * @param  {[integer]} intWidth   [Popup width defalut 500]
-     * @param  {[integer]} intHeight  [Popup height defalut 400]
-     * @param  {[boolean]} blnResize  [Is popup resizeabel default true]
-     */
-    $.fn.customerPopup = function (e, intWidth, intHeight, blnResize) {
-
-        // Prevent default anchor event
-        e.preventDefault();
-
-        // Set values for window
-        intWidth = intWidth || '500';
-        intHeight = intHeight || '400';
-        var strResize = (blnResize ? 'yes' : 'no');
-
-        // Set title and open popup with focus on it
-        var strTitle = ((typeof this.attr('title') !== 'undefined') ? this.attr('title') : 'Social Share'),
-            strParam = 'width=' + intWidth + ',height=' + intHeight + ',resizable=' + strResize,
-            objWindow = window.open(this.attr('href'), strTitle, strParam).focus();
-    }
-})(jQuery);
-
 $(document).ready(function () {
-    $("body").on("click", "a[href='']", function (e) {
+    $('body').on('click', 'a[href=""]', function (e) {
         e.preventDefault();
     });
 
-    $(".banner__items").owlCarousel({
-        items: 1,
+    $('.banner .owl-carousel').imagesLoaded( function() {
+        $('.banner .owl-carousel').owlCarousel({
+            autoWidth: true,
+            autoHeight: true,
+            items: 1,
+            nav: false,
+            dots: true,
+            mouseDrag: false,
+            lazyLoad: true,
+            loop: true,
+            center: true,
+            autoplay: true,
+            autoplayTimeout: 7000,
+            animateOut: 'fadeOut'
+        });
+    });
+
+    $('.gallery .owl-carousel').imagesLoaded( function() {
+        $('.gallery .owl-carousel').owlCarousel({
+            autoWidth: true,
+            autoplay: true,
+            animateOut: 'fadeOut',
+            autoHeight: true,
+            autoplayTimeout: 7000,
+            center: true,
+            dots: false,
+            items: 1,
+            lazyLoad: true,
+            loop: true,
+            mouseDrag: true,
+            nav: true,
+            navigation: false,
+            navText: [
+                '<button><span class=\'icon icon-arrow-left4\'></span></button>',
+                '<button><span class=\'icon icon-arrow-right4\'></span></button>'
+            ],
+        });
+    });
+
+    $('.fancybox').fancybox({
+        padding : 0,
+        openEffect  : 'elastic',
+        maxWidth	: 700,
+        maxHeight	: 700,
+        width		: '100%',
+        height		: '100%',
+        helpers: {
+            overlay: {
+                locked: false
+            },
+            title	: {
+                type: 'outside'
+            }
+        }
+    });
+
+    jQuery(window).trigger('resize').trigger('scroll');
+    $('.guide-bg').parallax();
+
+    $('#menu-button').fancybox({
+        arrows: false,
+        margin: 0,
+        smallBtn: false,
+        toolbar: false
+    });
+
+    $('#programation-highlight').owlCarousel({
+        navigation: false,
         nav: false,
-        navText: [
-            "<button class='gallery__arrow gallery__arrow--left'><span class='icon icon-arrow-left'></span></button>",
-            "<button class='gallery__arrow gallery__arrow--right'><span class='icon icon-arrow-right'></span></button>"
-        ],
-        dots: true,
-        mouseDrag: false,
-        lazyLoad: false,
-        loop: true,
-        center: true,
-        autoplay: true,
-        autoplayTimeout: 7000,
-        animateOut: 'fadeOut'
+        responsiveClass:true,
+        responsive:{
+            0: {
+                items: 1,
+                center: true,
+                dots: true,
+                loop: true,
+            },
+            900: {
+                items: 4,
+                loop:false,
+                dots: false,
+                mouseDrag: false
+            }
+        }
     });
-
-    $(".gallery__list").owlCarousel({
-        items: 1,
-        autoWidth: true,
-        nav: true,
-        navText: [
-            "<button class='gallery__arrow gallery__arrow--left'><span class='icon icon-arrow-left4'></span></button>",
-            "<button class='gallery__arrow gallery__arrow--right'><span class='icon icon-arrow-right4'></span></button>"
-        ],
-        dots: false,
-        mouseDrag: false,
-        loop: true,
-        center: true,
-        autoplay: false,
-        autoplayTimeout: 7000,
-        lazyLoad: false,
-        loop: true
-    });
-
-    $("#mainmenu-access, .mainmenu-close").on("click", function(e) {
-        e.preventDefault();
-        $("body").toggleClass("mainmenu-active");
-    });
-
-    $(".customer-share").on("click", function(e) {
-        $(this).customerPopup(e);
-    });
-
-    $(".mainmenu-bgc").perfectScrollbar();
-
-    $("#usermenu__search").on('click', function(e) {
-        e.preventDefault();
-        $(".mainmenu__search").toggleClass("active");
-    });
-
-
 });

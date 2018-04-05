@@ -1,10 +1,12 @@
 <!doctype html>
-<html class="no-js" lang="">
+<html lang="">
 <head>
     <meta charset="utf-8">
-    <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title><?php echo $this->translate("10 Mostra de Cinema de Belo Horizonte"); ?></title>
+    <meta name="description" content="">
+    <meta name="keywords" content="cinema,mostra,bh,cinebh,internacional,film,festival">
+
+    <title><?php echo $this->translate("CineBH - 12ª Mostra de Cinema de Belo Horizonte"); ?></title>
 
     <!--Facebook-->
     <meta property="og:url" content="<?php echo $this->serverUrl(true) ?>">
@@ -17,41 +19,41 @@
 
     <meta name="google-site-verification" content="YvbTqZPnLwRE27su8GU0nAwqVEbW8PrdsxVbfDJ4488" />
 
-    <link rel="icon" href="<?php echo $this->basePath("assets/cinebh/dist") ?>/images/favicon-16.png" sizes="16x16">
-    <link rel="icon" href="<?php echo $this->basePath("assets/cinebh/dist") ?>/images/favicon-32.png" sizes="32x32">
-    <link rel="icon" href="<?php echo $this->basePath("assets/cinebh/dist") ?>/images/favicon-48.png" sizes="48x48">
-    <link rel="icon" href="<?php echo $this->basePath("assets/cinebh/dist") ?>/images/favicon-64.png" sizes="64x64">
-    <link rel="icon" href="<?php echo $this->basePath("assets/cinebh/dist") ?>/images/favicon-128.png" sizes="128x128">
-    <!-- iPad com Retina Display -->
-    <link rel="apple-touch-icon" sizes="144x144" href="<?php echo $this->basePath("assets/cinebh/dist") ?>/images/apple-touch-icon-144x144.png">
-    <!-- iPhone com Retina Display -->
-    <link rel="apple-touch-icon" sizes="114x114" href="<?php echo $this->basePath("assets/cinebh/dist") ?>/images/apple-touch-icon-114x114.png">
-    <!-- Primeira e segunda geração de iPad -->
-    <link rel="apple-touch-icon" sizes="72x72" href="<?php echo $this->basePath("assets/cinebh/dist") ?>/images/apple-touch-icon-72x72.png">
-
+    <link rel="stylesheet" href="<?php echo $this->basePath("assets/cinebh/dist") ?>/styles/vendor.css">
     <link rel="stylesheet" href="<?php echo $this->basePath("assets/cinebh/dist") ?>/styles/main.css">
-    <script src="<?php echo $this->basePath("assets/cinebh/dist") ?>/scripts/vendor/modernizr.js"></script>
 
-    <?php echo $this->headScript() ?>
+    <link rel="icon" href="<?php echo $this->basePath('assets/cinebh/dist') ?>/images/icon32.png" sizes="16x16 32x32" type="image/png">
+
 </head>
-<body class="<?php echo $this->placeholder("home-class") ?>">
-<div class="site__wrapper">
+    <body class="<?php echo $this->placeholder("home-class") ?>">
+
     <header class="header">
-        <div class="header__left">
-            <h1 class="header__brand"><a class="header__link" href="<?php echo $this->url("cinebh/home", ['locale'=>$this->locale]) ?>"></a></h1>
-        </div>
-        <div class="header__right">
-            <div class="menu">
+        <div class="header-wrapper">
+            <h1 class="header-brand">
+                <a class="brand-link" href="<?php echo $this->url('cinebh') ?>">
+                    <span class="brand-cinebh"></span>
+                    <span class="brand-brasilcinemundi"></span>
+                </a>
+            </h1>
+            <div class="header-info">
+                <p class="info-date"><?php echo $this->translate("28 ago - 02 set 2018"); ?><span><?php echo $this->translate("Programação gratuita"); ?></span></p>
+            </div>
+            <div class="header-actions">
                 <?php if($this->locale == 'pt'): ?>
-                    <div class="translate"><a class="translate__link" href="<?php echo $this->url("cinebh/home", ['locale'=>'en']) ?>">English</a></div>
+                    <a href="<?php echo $this->url("cinebh/home", ['locale'=>'en']) ?>" class="action langselector"><span>ENGLISH</span></a>
+                <?php else: ?>
+                    <a href="<?php echo $this->url("cinebh/home", ['locale'=>'pt']) ?>" class="action langselector"><span>Português</span></a>
                 <?php endif; ?>
-                <div class="menu-button" id="mainmenu-access">
-                    <div class="burger">
-                        <span class="b"></span>
-                        <span class="b"></span>
-                        <span class="b"></span>
-                        <span class="b"></span>
+                <div class="action menu-button" id="menu-button" data-src="#navigation-modal">
+                    <div class="circle">
+                        <div class="burger">
+                            <span class="b"></span>
+                            <span class="b"></span>
+                            <span class="b"></span>
+                            <span class="b"></span>
+                        </div>
                     </div>
+                    <span>menu</span>
                 </div>
             </div>
         </div>
@@ -62,70 +64,56 @@
     </main>
 
     <footer class="footer">
-        <div class="footer__brand">
-            <span class="icon icon-universo-brand-min"></span>
-        </div>
-        <p class="footer__copy">Copyright © 2015. Universo Produção - <?php echo $this->translate("Todos os direitos reservados") ?>.</p>
-    </footer>
-</div>
-
-<div class="mainmenu mainmenu-modal" id="mainmenu-modal">
-    <div class="mainmenu-bgc">
-        <div class="mainmenu__header">
-            <div class="mainmenu__header-left">
-                <div class="brand">
-                    <a class="brand__link" href="<?php echo $this->url("arquivoemcartaz/home") ?>"><span class="icon icon-cinebh"></span></a>
+        <div class="footer-wrapper">
+            <div class="footer-clear">
+                <div class="footer-contact">
+                    <p class="footer-title"><?php echo $this->translate("Contate-nos"); ?>:</p>
+                    <span class="icon icon-universo-producao"></span>
+                    <span class="footer-add">+ 55 31 3282-2366<br>
+                            cinebh@universoproducao.com.br<br>
+                            Rua Pirapetinga, 567 - Serra<br>
+                            30220-150, Belo Horizonte | MG</span>
+                </div>
+                <div class="footer-social">
+                    <p class="footer-title"><?php echo $this->translate("Siga-nos"); ?>:</p>
+                    <ul class="footer-socialitems">
+                        <li class="footer-socialitem"><a class="footer-socialink" target="_blank" href="https://www.facebook.com/cinebh/"><span class="icon icon-facebook"></span></a></li>
+                        <li class="footer-socialitem"><a class="footer-socialink" target="_blank" href="http://twitter.com/universoprod"><span class="icon icon-twitter"></span></a></li>
+                        <li class="footer-socialitem"><a class="footer-socialink" target="_blank" href="http://instagram.com/universoproducao"><span class="icon icon-instagram"></span></a></li>
+                        <li class="footer-socialitem"><a class="footer-socialink" target="_blank" href="http://www.flickr.com/photos/universoproducao"><span class="icon icon-flickr"></span></a></li>
+                        <li class="footer-socialitem"><a class="footer-socialink" target="_blank" href="http://www.youtube.com/user/universoproducao/featured"><span class="icon icon-youtube"></span></a></li>
+                    </ul>
                 </div>
             </div>
-            <div class="mainmenu__header-right">
-                <ul class="usermenu__list">
-                    <li class="usermenu__item">
-                        <form method="get" action="<?php echo $this->url("cinebh/search") ?>" class="mainmenu__search">
-                            <input placeholder="Buscar" class="search__input" type="text" name="q">
-                        </form>
-                    </li>
-                    <li class="usermenu__item">
-                        <a href="" id="usermenu__search" class="usermenu__link"><span class="icon icon-search"></span></a>
-                    </li>
-                    <li class="usermenu__item">
-                        <a href="" class="usermenu__link mainmenu-close"><span class="icon icon-cross2"></span></a>
-                    </li>
-                </ul>
-            </div>
         </div>
-        <nav class="mainmenu__wrapper">
-            <?php $this
-                ->navigation('CinebhNavigation')
-                ->menu()->setPartial("cinebh/partials/navigation.phtml");
+        <p class="footer-copy">Copyright © 2018. Universo Produção - <?php echo $this->translate("Todos os direitos reservados") ?>.</p>
+    </footer>
 
-            echo $this
-                ->navigation('CinebhNavigation')
-                ->menu()
-                ->render(); ?>
-        </nav>
-        <p class="back"><a class="mainmenu-close" href=""><?php echo $this->translate("Voltar") ?></a></p>
-    </div>
-</div>
+    <?php $this
+        ->navigation('CinebhNavigation')
+        ->menu()->setPartial("cinebh/partials/navigation.phtml");
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-<script>window.jQuery || document.write('<script src="/bower_components/jquery/dist/jquery.min.js"><\/script>')</script>
+        echo $this
+            ->navigation('CinebhNavigation')
+            ->menu()
+            ->render(); ?>
 
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 
-<script src="<?php echo $this->basePath("assets/cinebh/dist") ?>/scripts/vendor.js"></script>
-<script src="<?php echo $this->basePath("assets/cinebh") ?>/bower_components/lity/dist/lity.js"></script>
-<script src="<?php echo $this->basePath("assets/cinebh/dist") ?>/scripts/main.js"></script>
+    <script src="<?php echo $this->basePath("assets/cinebh/dist") ?>/scripts/vendor.js"></script>
+    <script src="<?php echo $this->basePath("assets/cinebh/dist") ?>/scripts/main.js"></script>
 
-<!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-<script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-    ga('create', 'UA-10028533-2', 'auto');
-    ga('send', 'pageview');
+        ga('create', 'UA-10028533-2', 'auto');
+        ga('send', 'pageview');
 
-</script>
-<!-- endbuild -->
-</body>
+    </script>
+    <!-- endbuild -->
+    </body>
 </html>

@@ -14,7 +14,7 @@ use Zend\View\Model\ViewModel;
 
 class PostController extends SiteController
 {
-    const SITE_ID = 4;
+    const SITE_ID = 13;
 
     protected $breadcrumbs = [];
 
@@ -43,7 +43,8 @@ class PostController extends SiteController
 
             return $this->forward()->dispatch($customAction[0], [
                 'action' => $customAction[1],
-                'post' => $post
+                'post' => $post,
+                'locale' => $this->params()->fromRoute('locale')
             ]);
         }
 
@@ -136,14 +137,14 @@ class PostController extends SiteController
             $logistica		 				= $postData['logistica'];
 
             //Envia a mensagem de confirmação para a pessoa cadastrada no formulario
-            $msgConfirmacaoCadastro = "Informamos que sua solicitação de credenciamento de imprensa para a 10ª CineBH foi enviada com sucesso.";
+            $msgConfirmacaoCadastro = "Informamos que sua solicitação de credenciamento de imprensa para a 11ª CineBH foi enviada com sucesso.";
             $msgConfirmacaoCadastro .= "<br /><br />";
             $msgConfirmacaoCadastro .= "Em breve a equipe da assessoria entrará em contato.";
             $msgConfirmacaoCadastro .= "<br /><br />";
             $msgConfirmacaoCadastro .= "Qualquer dúvida, estamos à disposição pelo telefone (31) 3282 2366 ou e-mail imprensa@universoproducao.com.br";
             $msgConfirmacaoCadastro .= "<br /><br />";
             $msgConfirmacaoCadastro .= "Atenciosamente,<br />";
-            $msgConfirmacaoCadastro .= "Equipe Imprensa – CineOP<br />";
+            $msgConfirmacaoCadastro .= "Equipe Imprensa – CineBH<br />";
             $msgConfirmacaoCadastro .= "www.cinebh.com.br<br />";
 
             $htmlMessage = new Part($msgConfirmacaoCadastro);
@@ -155,7 +156,7 @@ class PostController extends SiteController
             $mailConfirmacao->setBody($miniMessage);
             $mailConfirmacao->setFrom('no-reply@universoproducao.com.br', 'Universo Producao');
             $mailConfirmacao->setTo($email);
-            $mailConfirmacao->setSubject('Solicitação de credenciamento – 11a CineOP');
+            $mailConfirmacao->setSubject('Solicitação de credenciamento – 11a CineBH');
             $transport->send($mailConfirmacao);
 
             $msgFormulario  = "<h1>FORMUL&Aacute;RIO DE CREDENCIAMENTO</h1>";
