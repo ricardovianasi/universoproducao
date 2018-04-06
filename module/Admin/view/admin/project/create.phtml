@@ -221,7 +221,7 @@
                                 <label class="">Anexo - Extras</label> <br>
                                 <?php foreach ($files as $fieldset):  ?>
                                     <?php $fileSrc = $fieldset->get('src')->getValue(); ?>
-                                    <div class="fileinput <?php echo $fileSrc ? "fileinput-exists" : "fileinput-new" ?>" data-provides="fileinput">
+                                    <div class="fileinput <?php echo !empty() ? "fileinput-exists" : "fileinput-new" ?>" data-provides="fileinput">
                                         <div class="input-group input-large">
                                             <div class="form-control uneditable-input input-fixed input-medium" data-trigger="fileinput">
                                                 <i class="fa fa-file fileinput-exists"></i>&nbsp;
