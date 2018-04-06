@@ -191,17 +191,17 @@
                             <div class="form-group <?php echo count($image->getMessages())?"has-error":"" ?>">
                                 <label class="">Extra - Imagem do filme <span class="required" aria-required="true"> * </span></label> <br>
                                 <?php $imageSrc = $image->get('src')->getValue(); ?>
-                                <div class="fileinput fileinput2 <?php echo $imageSrc ? "fileinput-exists" : "fileinput-new" ?>" data-provides="fileinput">
-                                    <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;">
+                                <div class="fileinput fileinput2 <?php echo !empty($imageSrc) ? "fileinput-exists" : "fileinput-new" ?>" data-provides="fileinput">
+                                    <div class="fileinput-new thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;">
                                         <?php if(!$imageSrc):  ?>
                                             <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image" alt="" />
                                         <?php endif; ?>
                                     </div>
-                                    <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;">
-                                        <?php if($imageSrc): ?>
+                                    <?php if($imageSrc): ?>
+                                        <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;">
                                             <img src="<?php echo $this->fileManipulation()->url($imageSrc); ?>" alt="">
-                                        <?php endif; ?>
-                                    </div>
+                                        </div>
+                                    <?php endif; ?>
                                     <div>
                                     <span class="btn red btn-outline btn-file">
                                         <span class="fileinput-new"> Selecionar imagem </span>
@@ -221,7 +221,7 @@
                                 <label class="">Anexo - Extras</label> <br>
                                 <?php foreach ($files as $fieldset):  ?>
                                     <?php $fileSrc = $fieldset->get('src')->getValue(); ?>
-                                    <div class="fileinput <?php echo $fileSrc ? "fileinput-exists" : "fileinput-new" ?>" data-provides="fileinput">
+                                    <div class="fileinput <?php echo !empty($fileSrc)? "fileinput-exists" : "fileinput-new" ?>" data-provides="fileinput">
                                         <div class="input-group input-large">
                                             <div class="form-control uneditable-input input-fixed input-medium" data-trigger="fileinput">
                                                 <i class="fa fa-file fileinput-exists"></i>&nbsp;
@@ -234,7 +234,7 @@
                                                 <?php echo $this->formElement($fieldset->get('file')); ?>
                                             </span>
                                             <a href="javascript:;" class="input-group-addon btn red fileinput-exists" data-dismiss="fileinput"> Remove </a>
-                                            <a href="<?php echo $fileSrc; ?>" class="input-group-addon btn fileinput-exists" target="_blank"> Download <a/>
+                                            <a href="<?php echo $fileSrc; ?>" class="input-group-addon btn green fileinput-exists" target="_blank"> Download </a>
                                         </div>
                                         <?php echo $this->formElementErrors($fieldset->get('file')); ?>
                                     </div><br>
