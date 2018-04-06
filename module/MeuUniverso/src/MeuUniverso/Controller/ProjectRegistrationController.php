@@ -198,13 +198,14 @@ class ProjectRegistrationController extends AbstractMeuUniversoRegisterControlle
                 }
                 unset($data['instituition']);
 
-                //Files
-                $files = new ArrayCollection();
+
                 if(!empty($data['image'])) {
                     $image = $this->populateFiles($data['image'], true);
-                    $files->add($image);
+                    $project->setImage($image);
                 }
 
+                //Files
+                $files = new ArrayCollection();
                 if(!empty($data['files'])) {
                     foreach ($data['files'] as $f) {
                         $file = $this->populateFiles($f);

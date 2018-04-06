@@ -131,6 +131,12 @@ class Project extends AbstractEntity
      */
     private $files;
 
+    /**
+     * @ORM\OneToOne(targetEntity="Application\Entity\File\File", cascade={"ALL"})
+     * @ORM\JoinColumn(name="image_id", referencedColumnName="id")
+     */
+    private $image;
+
     /** @ORM\Column(name="links", type="text", nullable=true) */
     private $links;
 
@@ -634,5 +640,21 @@ class Project extends AbstractEntity
     public function setLinks($links)
     {
         $this->links = $links;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    /**
+     * @param mixed $image
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
     }
 }
