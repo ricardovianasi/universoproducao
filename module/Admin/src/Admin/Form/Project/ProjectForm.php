@@ -10,6 +10,7 @@ namespace Admin\Form\Project;
 
 use Admin\Form\Instituition\InstituitionFieldset;
 use Admin\Form\MediaFieldset;
+use Application\Entity\File\File;
 use Application\Entity\Institution\Institution;
 use Application\Entity\Project\Options;
 use Application\Entity\Project\People;
@@ -439,7 +440,7 @@ class ProjectForm extends Form
         ]);
 
         $this->add([
-            'type' => FileFieldset::class,
+            'type' => ImageFieldset::class,
             'name' => 'image',
             'options' => [
                 'label' => 'Extra - Imagem do filme '
@@ -581,12 +582,9 @@ class ProjectForm extends Form
                             'src' => $m->getSrc(),
                             'is_default' => $m->getIsDefault()
                         ];
-                    } else {
+                    } elseif(!empty($m['file'])) {
                         $files[] = [
-                            'id' => isset($m['id'])?$m['id']:'',
-                            'description' => isset($m['description'])?$m['description']:'',
-                            'src' => isset($m['src'])?$m['src']:'',
-                            'is_default' => isset($m['is_default'])?$m['is_default']:[]
+                            'file' => $m['file']
                         ];
                     }
                 }
@@ -594,10 +592,14 @@ class ProjectForm extends Form
         }
         $data['files'] = $files;
 
-        if(!empty($data['image'])) {
-
+        if(!empty($data['image']) && $data['image'] instanceof File) {
+            $image = $data['image'];
+            $data['image'] = $image->toArray();
+        } elseif(!empty($data['image']['file'])) {
+            $data['image'] = [
+                'file' => $data['image']['file']
+            ];
         }
-        unset($data['image']);
 
         if(!empty($data['instituition']) && $data['instituition'] instanceof Institution) {
             $instituition = $data['instituition'];

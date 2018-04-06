@@ -44,8 +44,8 @@ class FileManipulation extends AbstractPlugin
     public function generateNewFileName($file)
     {
         return strtolower(md5_file($file['tmp_name']).
-            '_'.str_replace('.', '', microtime(true)).
-            '_'.mt_rand().
+            '_'.str_replace(['.', ','], '', microtime(true)).
+            '_'.str_replace(['.', ','], '',mt_rand()).
             '.'.$this->getFileExtension($file['name']));
     }
 

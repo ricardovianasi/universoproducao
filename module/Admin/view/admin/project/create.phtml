@@ -190,8 +190,18 @@
                             <?php $image = $form->get('image'); ?>
                             <div class="form-group <?php echo count($image->getMessages())?"has-error":"" ?>">
                                 <label class="">Extra - Imagem do filme <span class="required" aria-required="true"> * </span></label> <br>
-                                <div class="fileinput fileinput-new" data-provides="fileinput">
-                                    <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;"> </div>
+                                <?php $imageSrc = $image->get('src')->getValue(); ?>
+                                <div class="fileinput fileinput2 <?php echo $imageSrc ? "fileinput-exists" : "fileinput-new" ?>" data-provides="fileinput">
+                                    <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;">
+                                        <?php if(!$imageSrc):  ?>
+                                            <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image" alt="" />
+                                        <?php endif; ?>
+                                    </div>
+                                    <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;">
+                                        <?php if($imageSrc): ?>
+                                            <img src="<?php echo $this->fileManipulation()->url($imageSrc); ?>" alt="">
+                                        <?php endif; ?>
+                                    </div>
                                     <div>
                                     <span class="btn red btn-outline btn-file">
                                         <span class="fileinput-new"> Selecionar imagem </span>
@@ -210,18 +220,21 @@
                             <div class="form-group">
                                 <label class="">Anexo - Extras</label> <br>
                                 <?php foreach ($files as $fieldset):  ?>
-                                    <div class="fileinput fileinput-new" data-provides="fileinput">
+                                    <?php $fileSrc = $fieldset->get('src')->getValue(); ?>
+                                    <div class="fileinput <?php echo $fileSrc ? "fileinput-exists" : "fileinput-new" ?>" data-provides="fileinput">
                                         <div class="input-group input-large">
                                             <div class="form-control uneditable-input input-fixed input-medium" data-trigger="fileinput">
                                                 <i class="fa fa-file fileinput-exists"></i>&nbsp;
                                                 <span class="fileinput-filename"> </span>
                                             </div>
                                             <span class="input-group-addon btn default btn-file">
-                                            <span class="fileinput-new"> Selecione um arquivo </span>
-                                            <span class="fileinput-exists"> Alterar </span>
+                                                <span class="fileinput-new"> Selecione um arquivo </span>
+                                                <span class="fileinput-exists"> Alterar </span>
+
                                                 <?php echo $this->formElement($fieldset->get('file')); ?>
-                                        </span>
+                                            </span>
                                             <a href="javascript:;" class="input-group-addon btn red fileinput-exists" data-dismiss="fileinput"> Remove </a>
+                                            <a href="<?php echo $fileSrc; ?>" class="input-group-addon btn fileinput-exists" target="_blank"> Download <a/>
                                         </div>
                                         <?php echo $this->formElementErrors($fieldset->get('file')); ?>
                                     </div><br>
