@@ -234,7 +234,7 @@
                                                 <?php echo $this->formElement($fieldset->get('file')); ?>
                                             </span>
                                             <a href="javascript:;" class="input-group-addon btn red fileinput-exists" data-dismiss="fileinput"> Remove </a>
-                                            <a href="<?php echo $fileSrc; ?>" class="input-group-addon btn green fileinput-exists" target="_blank"> Download </a>
+                                            <a href="<?php echo $this->fileManipulation()->url($fileSrc); ?>" class="input-group-addon btn green fileinput-exists" target="_blank"> Download </a>
                                         </div>
                                         <?php echo $this->formElementErrors($fieldset->get('file')); ?>
                                     </div><br>
