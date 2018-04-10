@@ -532,7 +532,7 @@
 			</frame>
 		</band>
 		<band height="726">
-			<textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement positionType="Float" x="0" y="50" width="554" height="30" uuid="c88abd5c-e544-4b6e-a2a4-0991498c2666"/>
 				<box padding="5">
 					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
@@ -555,7 +555,7 @@
 				</textElement>
 				<text><![CDATA[Apresentação do projeto]]></text>
 			</staticText>
-			<textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement positionType="Float" x="0" y="110" width="554" height="30" uuid="fac92a1d-0a48-4dad-8798-5ff64fcfd3a9"/>
 				<box padding="5">
 					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
@@ -578,7 +578,7 @@
 				</textElement>
 				<text><![CDATA[Curriculum Vitae do proponente do projeto]]></text>
 			</staticText>
-			<textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement positionType="Float" x="0" y="170" width="554" height="30" uuid="b24c2ad7-449f-4afa-a228-f300ce4cb0eb"/>
 				<box padding="5">
 					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
@@ -601,7 +601,7 @@
 				</textElement>
 				<text><![CDATA[Texto completo]]></text>
 			</staticText>
-			<textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement positionType="Float" x="0" y="230" width="554" height="30" uuid="da857d1b-1f10-4fac-b400-e4d59f705772"/>
 				<box padding="5">
 					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
@@ -624,7 +624,7 @@
 				</textElement>
 				<text><![CDATA[Referências]]></text>
 			</staticText>
-			<textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement positionType="Float" x="0" y="290" width="554" height="30" uuid="43d1cb6c-66b9-4215-998a-4dc1629174a2"/>
 				<box padding="5">
 					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
@@ -673,7 +673,7 @@
 					</textElement>
 					<text><![CDATA[Nome]]></text>
 				</staticText>
-				<textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 					<reportElement positionType="Float" x="100" y="80" width="454" height="30" uuid="2fa2fff1-6825-4630-bbbb-ec18e7fbcb7c"/>
 					<box padding="5">
 						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
@@ -696,7 +696,7 @@
 					</textElement>
 					<text><![CDATA[E-mail]]></text>
 				</staticText>
-				<textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 					<reportElement positionType="Float" x="100" y="140" width="454" height="30" uuid="2cd5ceb7-9475-4fff-844d-14398426f7df"/>
 					<box padding="5">
 						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
@@ -742,7 +742,7 @@
 					</textElement>
 					<text><![CDATA[ID]]></text>
 				</staticText>
-				<textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 					<reportElement positionType="Float" x="100" y="110" width="454" height="30" uuid="068e00fa-8558-4b4d-b897-373a21ea13ed"/>
 					<box padding="5">
 						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
@@ -766,7 +766,7 @@
 					<text><![CDATA[Telefones]]></text>
 				</staticText>
 				<staticText>
-					<reportElement positionType="Float" x="0" y="2" width="160" height="30" uuid="c9fb5257-bbfa-4d11-93dd-bed2dd3db73a"/>
+					<reportElement positionType="Float" x="0" y="14" width="160" height="30" uuid="c9fb5257-bbfa-4d11-93dd-bed2dd3db73a"/>
 					<box padding="0"/>
 					<textElement>
 						<font size="14" isBold="true"/>
