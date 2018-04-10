@@ -28,73 +28,10 @@
 			</div>
 			<div class="portlet-body">
 				<div class="portlet">
-
-					<div class="portlet-body form">
-						<div class="form-body">
-                            <div class="row">
-                                <div class="col-md-12"><?php echo $this->formRow($form->get('proposers_name')) ?></div>
-                                <div class="col-md-12"><?php echo $this->formRow($form->get('responsible')) ?></div>
-                                <div class="col-md-12"><?php echo $this->formRow($form->get('institution')) ?></div>
-                                <div class="col-md-12"><?php echo $this->formRow($form->get('institution_address')) ?></div>
-                                <div class="col-md-12"><?php echo $this->formRow($form->get('institution_uf')) ?></div>
-                                <div class="col-md-12"><?php echo $this->formRow($form->get('institution_phone')) ?></div>
-                                <div class="col-md-12"><?php echo $this->formRow($form->get('institution_mobile_phone')) ?></div>
-                                <div class="col-md-12"><?php echo $this->formRow($form->get('institution_email')) ?></div>
-                                <div class="col-md-12"><?php echo $this->formRow($form->get('title')) ?></div>
-                                <div class="col-md-12"><?php echo $this->formRow($form->get('category')) ?></div>
-                                <div class="col-md-12"><?php echo $this->formRow($form->get('presentation')) ?></div>
-                                <div class="col-md-12"><?php echo $this->formRow($form->get('curriculum')) ?></div>
-                                <div class="col-md-12"><?php echo $this->formRow($form->get('complete_text')) ?></div>
-                                <div class="col-md-12"><?php echo $this->formRow($form->get('references')) ?></div>
-                                <div class="col-md-12"><?php echo $this->formRow($form->get('links')) ?></div>
-
-                                <div class="col-md-12">
-                                    <?php $files = $form->get('files')->getFieldsets(); ?>
-                                    <div class="form-group">
-                                        <label class="control-label col-md-4">Imagem <span class="required" aria-required="true"> * </span></label>
-                                        <div class="col-md-3">
-                                            <?php foreach ($files as $fieldset):  ?>
-                                                <?php $imageSrc = $fieldset->get('src')->getValue(); ?>
-                                                <div class="fileinput fileinput2 <?php echo !empty($imageSrc) ? "fileinput-exists" : "fileinput-new" ?>" data-provides="fileinput">
-                                                    <div class="fileinput-new thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;">
-                                                        <?php if(!$imageSrc):  ?>
-                                                            <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image" alt="" />
-                                                        <?php endif; ?>
-                                                    </div>
-                                                    <?php if($imageSrc): ?>
-                                                        <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;">
-                                                            <img src="<?php echo $this->fileManipulation()->url($imageSrc); ?>" alt="">
-                                                        </div>
-                                                    <?php endif; ?>
-                                                    <div>
-                                                    <span class="btn red btn-outline btn-file">
-                                                        <span class="fileinput-new"> Selecionar imagem </span>
-                                                        <span class="fileinput-exists"> Alterar </span>
-                                                        <?php echo $this->formElement($fieldset->get('file')); ?>
-                                                    </span>
-                                                        <a href="javascript:;" class="input-group-addon btn red fileinput-exists" data-dismiss="fileinput"> Remove </a>
-                                                    </div>
-                                                    <?php echo $this->formElement($fieldset->get("credits")) ?>
-                                                    <?php echo $this->formElementErrors($fieldset->get('file')); ?>
-                                                </div><br /><br />
-                                            <?php endforeach; ?>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-
-                        </div>
-						<div class="form-actions">
-							<div class="row">
-								<div class="col-md-offset-3 col-md-9">
-									<button type="submit" class="btn blue btn-lg action-save">Salvar</button>
-									<a href="#" class="btn red btn-lg action cancel">Descartar</a>
-								</div>
-							</div>
-						</div>
-
-					</div>
+                    <?php echo $this->partial('admin/educational-project/_form.phtml', [
+                        'form' => $this->form,
+                        'project'=>$this->project,
+                    ]); ?>
 				</div>
 			</div>
 		</div>

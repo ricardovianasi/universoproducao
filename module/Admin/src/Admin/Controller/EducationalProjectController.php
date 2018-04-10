@@ -14,6 +14,8 @@ use Admin\Form\EducationalProject\EducationalProjectForm;
 use Application\Entity\EducationalProject\Category;
 use Application\Entity\EducationalProject\EducationalProject;
 use Application\Entity\Registration\Registration;
+use Application\Entity\Registration\Status;
+use Application\Entity\State;
 
 class EducationalProjectController extends AbstractAdminController
 {
@@ -46,9 +48,7 @@ class EducationalProjectController extends AbstractAdminController
 
     public function updateAction($id, $data)
     {
-        $result = $this->persist($data, $id);
-        $result->setTemplate('admin/educational-project/create.phtml');
-        return $result;
+        return $this->persist($data, $id);
     }
 
     public function deleteAction($id)
@@ -77,6 +77,22 @@ class EducationalProjectController extends AbstractAdminController
             if($form->isValid()) {
                 $dataValida = $form->getData();
 
+                if(!empty($data['category'])) {
+                    $cat = $this->getRepository(Category::class)->find($data['category']);
+                    $project->setCategory($cat);
+                }
+                unset($data['category']);
+
+                $files = new ArrayCollection();
+                if(!empty($data['files'])) {
+                    foreach ($data['files'] as $f) {
+                        $file = $this->populateFiles($f);
+                        $files->add($file);
+                    }
+                }
+                unset($data['image']);
+                unset($data['files']);
+                $project->setFiles($files);
 
                 $project->setData($dataValida);
                 $this->getEntityManager()->persist($project);
@@ -103,4 +119,106 @@ class EducationalProjectController extends AbstractAdminController
         ]);
     }
 
+    protected function populateFiles($data, $isDefault=false)
+    {
+        $media = new File();
+        $media->setIsDefault($isDefault);
+
+        if(!empty($data['file'])) {
+            $mediaFile = $data["file"];
+            if(!empty($mediaFile['name'])) {
+                $file = $this->fileManipulation()->moveToRepository($mediaFile);
+                $media->setSrc($file['new_name']);
+            }
+        }
+
+        return $media;
+    }
+
+
+    public function exportAction()
+    {
+        //recupera os itens
+        $dataAttr = $this->params()->fromQuery();
+        $id = $this->params()->fromRoute('id');
+        $item = $this->getRepository(EducationalProject::class)->find($id);
+
+        //criar um arquivo json
+        $preparedItems = $this->prepareItemsForReports($item);
+
+        return $this->prepareReport($preparedItems, 'educational_project' ,'pdf');
+    }
+
+    public function exportListAction()
+    {
+        //recupera os itens
+        $dataAttr = $this->params()->fromQuery();
+        $items = $this->search(Movie::class, $dataAttr, ['createdAt' => 'DESC'], true);
+
+        //criar um arquivo json
+        $preparedItems = $this->prepareItemsForReports($items);
+        return $this->prepareReport($preparedItems, 'movie_list' ,'xlsx');
+    }
+
+    protected function prepareItemsForReports($items)
+    {
+        if(!is_array($items)) {
+            $items = [$items];
+        }
+
+        $preparedItems = [];
+        foreach ($items as $obj) {
+
+            $itemArray = $obj->toArray();
+            unset($itemArray['medias']);
+            unset($itemArray['updated_at']);
+            unset($itemArray['registration']);
+            unset($itemArray['default_input_filters']);
+            unset($itemArray['event']);
+            unset($itemArray['files']);
+
+            //Author
+            $author = [
+                'user_id' => $obj->getUser()->getId(),
+                'user_name' => $obj->getUser()->getName(),
+                'user_email' => $obj->getUser()->getEmail(),
+                'user_address' => $obj->getUser()->getFullAddress()
+            ];
+            $phones = [];
+            foreach ($obj->getUser()->getPhones() as $phone) {
+                $phones[] = implode('|', $phone->_toArray());
+            }
+            $author['user_phones'] = implode(';', $phones);
+
+            $itemArray = $itemArray+$author;
+            unset($itemArray['user']);
+
+            //Event
+            $itemArray['event_name'] = $obj->getEvent()->getFullName();
+
+            //state
+            if(!empty($itemArray['state']) && $itemArray['state'] instanceof State) {
+                $state = $itemArray['state'];
+                $itemArray['state'] = $state->getName();
+            }
+
+            //category
+            if(!empty( $itemArray['category']) &&  $itemArray['category'] instanceof Category) {
+                $category = $itemArray['category'];
+                $itemArray['category'] = $category->getName();
+            }
+
+            $itemArray['status'] = Status::get($obj->getStatus());
+
+            //Created At
+            $createdAt = "";
+            if($obj->getCreatedAt() instanceof \DateTime) {
+                $createdAt = $obj->getCreatedAt()->format('d/m/Y H:i:s');
+            }
+            $itemArray['created_at'] = $createdAt;
+
+            $preparedItems[] = ['object'=>$itemArray];
+        }
+        return $preparedItems;
+    }
 }
