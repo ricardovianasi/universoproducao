@@ -47,7 +47,7 @@ class EducationalProjectController extends AbstractAdminController
     public function updateAction($id, $data)
     {
         $result = $this->persist($data, $id);
-        $result->setTemplate('admin/educational-project-category/create.phtml');
+        $result->setTemplate('admin/educational-project/create.phtml');
         return $result;
     }
 
@@ -64,12 +64,12 @@ class EducationalProjectController extends AbstractAdminController
 
     public function persist($data, $id = null)
     {
-        $form = new CategoryForm($this->getEntityManager($this->getEntityManager()));
+        $form = new EducationalProjectForm($this->getEntityManager($this->getEntityManager()));
 
         if($id) {
-            $category = $this->getRepository(Category::class)->find($id);
+            $project = $this->getRepository(EducationalProject::class)->find($id);
         } else {
-            $category = new Category();
+            $project = new EducationalProject();
         }
 
         if($this->getRequest()->isPost()) {
@@ -77,34 +77,29 @@ class EducationalProjectController extends AbstractAdminController
             if($form->isValid()) {
                 $dataValida = $form->getData();
 
-                if(!empty($dataValida['registration'])) {
-                    $reg = $this->getRepository(Registration::class)->find($dataValida['registration']);
-                    $category->setRegistration($reg);
-                }
-                unset($dataValida['registration']);
 
-                $category->setData($dataValida);
-                $this->getEntityManager()->persist($category);
+                $project->setData($dataValida);
+                $this->getEntityManager()->persist($project);
                 $this->getEntityManager()->flush();
 
                 if($id) {
-                    $this->messages()->success("Categoria atualizada com sucesso!");
+                    $this->messages()->success("Projeto atualizado com sucesso!");
                 } else {
-                    $this->messages()->flashSuccess("Categoria criado com sucesso!");
+                    $this->messages()->flashSuccess("Projeto criado com sucesso!");
                     return $this->redirect()->toRoute('admin/default', [
-                        'controller' => 'educational-project-category',
+                        'controller' => 'educational-project',
                         'action' => 'update',
-                        'id' => $category->getId()
+                        'id' => $project->getId()
                     ]);
                 }
             }
         } else {
-            $form->setData($category->toArray());
+            $form->setData($project->toArray());
         }
 
         return $this->getViewModel()->setVariables([
             'form' => $form,
-            'category' => $category
+            'project' => $project
         ]);
     }
 

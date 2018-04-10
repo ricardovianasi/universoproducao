@@ -92,7 +92,7 @@
                                                     <?php echo $this->formRow($proItem->get('phone')); ?>
                                                     <?php echo $this->formRow($proItem->get('email')); ?>
                                                     <div class="row">
-                                                        <div class="col-md-6"><?php echo $this->formRow($proItem->get('image')); ?></div>
+                                                        <div class="col-md-6"><?php echo $this->formRow($proItem->get('image')->setAttribute('required', null)); ?></div>
                                                         <div class="col-md-6">
                                                             <?php if($proItem->get('image')->getValue()): ?>
                                                                 <a href="<?php echo $this->fileManipulation()->url($proItem->get('image')->getValue()); ?>"
@@ -132,7 +132,7 @@
                                                     <?php echo $this->formRow($dirItem->get('phone')); ?>
                                                     <?php echo $this->formRow($dirItem->get('email')); ?>
                                                     <div class="row">
-                                                        <div class="col-md-6"><?php echo $this->formRow($dirItem->get('image')); ?></div>
+                                                        <div class="col-md-6"><?php echo $this->formRow($dirItem->get('image')->setAttribute('required', null)); ?></div>
                                                         <div class="col-md-6">
                                                             <?php if($dirItem->get('image')->getValue()): ?>
                                                                 <a target="_blank"

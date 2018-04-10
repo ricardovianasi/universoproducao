@@ -61,6 +61,19 @@ class FileManipulation extends AbstractPlugin
         return null;
     }
 
+    public function removeFile($filename)
+    {
+        $file = $this->getRepositoryDir()
+            . $this->generateDirectoryByFilename($filename)
+            . $filename;
+
+        if(file_exists($file)) {
+            return unlink($file);
+        }
+
+        return false;
+    }
+
     /**
      * @param $filename
      *

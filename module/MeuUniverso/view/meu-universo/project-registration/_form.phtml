@@ -101,6 +101,7 @@
                                             </div>
                                         </div>
                                         <div class="portlet-body">
+                                            <?php echo $this->formRow($proItem->get('id')); ?>
                                             <?php echo $this->formRow($proItem->get('name')); ?>
                                             <?php echo $this->formRow($proItem->get('address')); ?>
                                             <?php echo $this->formRow($proItem->get('phone')); ?>
@@ -130,6 +131,7 @@
                                             </div>
                                         </div>
                                         <div class="portlet-body">
+                                            <?php echo $this->formRow($dirItem->get('id')); ?>
                                             <?php echo $this->formRow($dirItem->get('name')); ?>
                                             <?php echo $this->formRow($dirItem->get('address')); ?>
                                             <?php echo $this->formRow($dirItem->get('phone')); ?>
