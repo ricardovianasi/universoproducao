@@ -152,7 +152,7 @@ class EducationalProjectController extends AbstractAdminController
     {
         //recupera os itens
         $dataAttr = $this->params()->fromQuery();
-        $items = $this->search(Movie::class, $dataAttr, ['createdAt' => 'DESC'], true);
+        $items = $this->search(EducationalProject::class, $dataAttr, ['createdAt' => 'DESC'], true);
 
         //criar um arquivo json
         $preparedItems = $this->prepareItemsForReports($items);
