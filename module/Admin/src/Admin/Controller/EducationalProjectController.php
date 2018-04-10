@@ -156,7 +156,7 @@ class EducationalProjectController extends AbstractAdminController
 
         //criar um arquivo json
         $preparedItems = $this->prepareItemsForReports($items);
-        return $this->prepareReport($preparedItems, 'movie_list' ,'xlsx');
+        return $this->prepareReport($preparedItems, 'educational_project_list' ,'xlsx');
     }
 
     protected function prepareItemsForReports($items)
