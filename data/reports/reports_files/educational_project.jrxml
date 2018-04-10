@@ -182,7 +182,10 @@
 	<pageHeader>
 		<band height="35" splitType="Stretch">
 			<staticText>
-				<reportElement x="60" y="0" width="490" height="35" uuid="1738f225-19b6-4695-9fde-60c4c81ca3b0"/>
+				<reportElement x="60" y="0" width="220" height="35" uuid="1738f225-19b6-4695-9fde-60c4c81ca3b0"/>
+				<box>
+					<rightPen lineWidth="1.0"/>
+				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="12" isBold="true"/>
 				</textElement>
@@ -192,6 +195,13 @@
 				<reportElement x="2" y="0" width="50" height="35" uuid="22c26b97-63ff-4c62-9363-4e7923be0648"/>
 				<imageExpression><![CDATA["http://universoproducao.com.br/assets/universoproducao/dist/images/universo-producao.png"]]></imageExpression>
 			</image>
+			<textField>
+				<reportElement x="290" y="0" width="264" height="35" uuid="7c1d68f8-1516-44fa-bbb5-7d855144dd56"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{title}]]></textFieldExpression>
+			</textField>
 		</band>
 	</pageHeader>
 	<detail>
@@ -779,7 +789,7 @@
 	<pageFooter>
 		<band height="41" splitType="Stretch">
 			<staticText>
-				<reportElement x="50" y="0" width="504" height="31" uuid="34ae5f86-0e65-43eb-be2e-9a9a3843795c"/>
+				<reportElement x="50" y="0" width="504" height="20" uuid="34ae5f86-0e65-43eb-be2e-9a9a3843795c"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
@@ -789,6 +799,13 @@
 				<reportElement x="2" y="1" width="50" height="40" uuid="53f10a13-c9b3-4556-a768-e7abef5010f0"/>
 				<imageExpression><![CDATA["http://universoproducao.com.br/assets/universoproducao/dist/images/universo-producao.png"]]></imageExpression>
 			</image>
+			<textField>
+				<reportElement x="50" y="20" width="504" height="20" uuid="ca2e111d-d5cd-4468-b6da-2cafbf649db3"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Pag " + $V{PAGE_NUMBER}  + " de " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
 		</band>
 	</pageFooter>
 </jasperReport>
