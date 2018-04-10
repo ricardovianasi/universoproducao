@@ -182,10 +182,7 @@
 	<pageHeader>
 		<band height="35" splitType="Stretch">
 			<staticText>
-				<reportElement x="60" y="0" width="210" height="35" uuid="1738f225-19b6-4695-9fde-60c4c81ca3b0"/>
-				<box>
-					<rightPen lineWidth="1.0"/>
-				</box>
+				<reportElement x="60" y="0" width="490" height="35" uuid="1738f225-19b6-4695-9fde-60c4c81ca3b0"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="12" isBold="true"/>
 				</textElement>
@@ -195,13 +192,6 @@
 				<reportElement x="2" y="0" width="50" height="35" uuid="22c26b97-63ff-4c62-9363-4e7923be0648"/>
 				<imageExpression><![CDATA["http://universoproducao.com.br/assets/universoproducao/dist/images/universo-producao.png"]]></imageExpression>
 			</image>
-			<textField>
-				<reportElement x="280" y="2" width="274" height="33" uuid="98e362e8-a5c8-47f4-83b7-00584c0bbb9d"/>
-				<textElement textAlignment="Left" verticalAlignment="Middle">
-					<font size="12"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{title}]]></textFieldExpression>
-			</textField>
 		</band>
 	</pageHeader>
 	<detail>
@@ -776,7 +766,7 @@
 					<text><![CDATA[Telefones]]></text>
 				</staticText>
 				<staticText>
-					<reportElement positionType="Float" x="0" y="10" width="160" height="18" uuid="c9fb5257-bbfa-4d11-93dd-bed2dd3db73a"/>
+					<reportElement positionType="Float" x="0" y="2" width="160" height="30" uuid="c9fb5257-bbfa-4d11-93dd-bed2dd3db73a"/>
 					<box padding="0"/>
 					<textElement>
 						<font size="14" isBold="true"/>

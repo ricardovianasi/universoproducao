@@ -135,7 +135,6 @@ class EducationalProjectController extends AbstractAdminController
         return $media;
     }
 
-
     public function exportAction()
     {
         //recupera os itens
