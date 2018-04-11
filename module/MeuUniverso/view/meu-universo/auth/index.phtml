@@ -25,19 +25,3 @@
         <p class="tricks-item"><a href="#" class="submit tricks-link tricks-link--facebook">Entrar com o Facebook</a></p>-->
     </div>
 </div>
-<?php if(!$this->error): ?>
-    <?php $this->inlineScript()->captureStart();
-    echo <<<JS
-    $(document).ready(function() {
-        $.fancybox.open('<div class="" id="novo-sistema" style="width: 500px; height: 300px;">\
-            <h2 style="font-size: 24px; font-weight: 900; margin-bottom: 24px;">Novo sistema</h2>\
-            <p style="margin-bottom: 18px;">Olá! Nosso sistema está passando por mudanças.</p>\
-            <p style="margin-bottom: 18px;">Se você já possuia um login e senha para acesso ao portal da Universo Produção, eles não valem mais. É necessário efetuar um novo cadastro.</p>\
-            <p><a href="http://meu-universo.universoproducao.com.br/cadastro/novo" class="tricks-link">Quero me cadastrar</a></p>\
-            <p>Caso você já tenha efetuado o seu cadastro no novo sistema, por favor, desconsiderar essa mensagem. </p>\
-        </div>');
-    });
-JS;
-    $this->inlineScript()->captureEnd();
-    ?>
-<?php endif; ?>
