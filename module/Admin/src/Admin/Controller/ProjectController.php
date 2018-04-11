@@ -381,43 +381,43 @@ class ProjectController extends AbstractAdminController
             unset($itemArray['options']);
             $opt_phase = "";
             if($opt_phase = $obj->getOption('phase')) {
-                $opt_phase = $opt_phase->getName();
+                $opt_phase = $opt_phase->getLabel();
             }
             $itemArray['opt_phase'] = $opt_phase?$opt_phase:"";
 
             $opt_category = "";
             if($opt_category = $obj->getOption('category')) {
-                $opt_category = $opt_category->getName();
+                $opt_category = $opt_category->getLabel();
             }
             $itemArray['opt_category'] = $opt_category?$opt_category:"";
 
             $opt_genre = "";
             if($opt_genre = $obj->getOption('genre')) {
-                $opt_genre = $opt_genre->getName();
+                $opt_genre = $opt_genre->getLabel();
             }
             $itemArray['opt_genre'] = $opt_genre?$opt_genre:"";
 
             $opt_format = "";
             if($opt_format = $obj->getOption('format')) {
-                $opt_format = $opt_format->getName();
+                $opt_format = $opt_format->getLabel();
             }
             $itemArray['opt_format'] = $opt_format?$opt_format:"";
 
             $opt_display_format = "";
             if($opt_display_format = $obj->getOption('display_format')) {
-                $opt_display_format = $opt_display_format->getName();
+                $opt_display_format = $opt_display_format->getLabel();
             }
             $itemArray['opt_display_format'] = $opt_display_format?$opt_display_format:"";
 
             $opt_written_script = "";
             if($opt_written_script = $obj->getOption('written_script')) {
-                $opt_written_script = $opt_written_script->getName();
+                $opt_written_script = $opt_written_script->getLabel();
             }
             $itemArray['opt_written_script'] = $opt_written_script?$opt_written_script:"";
 
             $opt_first_or_second_project = "";
             if($opt_first_or_second_project = $obj->getOption('first_or_second_project')) {
-                $opt_first_or_second_project = $opt_first_or_second_project->getName();
+                $opt_first_or_second_project = $opt_first_or_second_project->getLabel();
             }
             $itemArray['opt_first_or_second_project'] = $opt_first_or_second_project?$opt_first_or_second_project:"";
 
