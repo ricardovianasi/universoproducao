@@ -657,4 +657,25 @@ class Project extends AbstractEntity
     {
         $this->image = $image;
     }
+
+    public function getOption($option)
+    {
+        $opts = [];
+        foreach ($this->options as $op) {
+            if($op->getName() == $option) {
+                $opts[] = $op;
+            }
+        }
+
+        if(empty($opts)) {
+            return false;
+        }
+
+        if(count($opts) == 1) {
+            return $opts[0];
+        }
+
+        return $opts;
+    }
+
 }

@@ -1,0 +1,282 @@
+<div class="portlet-body form">
+    <div class="form-body">
+        <div class="row">
+            <div class="col-md-6"><?php echo $this->formRow($form->get('title')) ?></div>
+            <div class="col-md-6"><?php echo $this->formRow($form->get('english_title')) ?></div>
+        </div>
+        <div class="row">
+            <div class="col-md-4"><?php echo $this->formRow($form->get('state_production')) ?></div>
+            <div class="col-md-4"><?php echo $this->formRow($form->get('options[category]')) ?></div>
+            <div class="col-md-4"><?php echo $this->formRow($form->get('options[phase]')) ?></div>
+        </div>
+
+        <h3 class="form-section">Empresa produtora</h3>
+        <?php $instituitionFieldset = $form->get('instituition'); ?>
+
+        <div class="row">
+            <div class="col-md-6"><?php echo $this->formRow($instituitionFieldset->get('social_name')) ?></div>
+            <div class="col-md-6"><?php echo $this->formRow($instituitionFieldset->get('fantasy_name')) ?></div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6"><?php echo $this->formRow($instituitionFieldset->get('cnpj')) ?></div>
+            <div class="col-md-6"><?php echo $this->formRow($instituitionFieldset->get('legal_representative')) ?></div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4"><?php echo $this->formRow($instituitionFieldset->get('address')) ?></div>
+            <div class="col-md-4"><?php echo $this->formRow($instituitionFieldset->get('phone')) ?></div>
+            <div class="col-md-4"><?php echo $this->formRow($instituitionFieldset->get('mobile_phone')) ?></div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6"><?php echo $this->formRow($instituitionFieldset->get('email')) ?></div>
+            <div class="col-md-6"><?php echo $this->formRow($instituitionFieldset->get('site')) ?></div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12"><?php echo $this->formRow($instituitionFieldset->get('description')) ?></div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 project-producers">
+                <h3 class="form-section">Produtor(es)</h3>
+                <?php echo $this->formCollection()->renderTemplate($form->get('producers')); ?>
+
+                <div class="list">
+                    <?php $prodColl = $form->get('producers')->getFieldsets(); ?>
+                    <?php foreach ($prodColl as $proItem): ?>
+                        <div class="portlet light bordered">
+                            <div class="portlet-title">
+                                <div class="caption"><?php echo $proItem->get('name')->getValue(); ?></div>
+                                <div class="tools">
+                                    <a href="" class="collapse" data-original-title="" title=""></a>
+                                    <a href="" class="remove" data-original-title="" title=""> </a>
+                                </div>
+                            </div>
+                            <div class="portlet-body">
+                                <?php echo $this->formRow($proItem->get('id')); ?>
+                                <?php echo $this->formRow($proItem->get('name')); ?>
+                                <?php echo $this->formRow($proItem->get('address')); ?>
+                                <?php echo $this->formRow($proItem->get('phone')); ?>
+                                <?php echo $this->formRow($proItem->get('email')); ?>
+                                <div class="row">
+                                    <div class="col-md-6"><?php echo $this->formRow($proItem->get('image')->setAttribute('required', null)); ?></div>
+                                    <div class="col-md-6">
+                                        <?php if($proItem->get('image')->getValue()): ?>
+                                            <a href="<?php echo $this->fileManipulation()->url($proItem->get('image')->getValue()); ?>"
+                                               class="btn green"
+                                               target="_blank">Download</a>
+                                        <?php endif; ?>
+                                    </div>
+                                </div>
+                                <?php echo $this->formRow($proItem->get('description')); ?>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+                <a href="#" class="btn btn-default add">Adicionar produtor <i class="glyphicon glyphicon-plus"></i></a>
+
+            </div>
+
+            <div class="col-md-6 project-directors">
+                <h3 class="form-section">Diretor(es)</h3>
+                <?php echo $this->formCollection()->renderTemplate($form->get('directors')); ?>
+
+                <div class="list">
+                    <?php $dirColl = $form->get('directors')->getFieldsets(); ?>
+                    <?php foreach ($dirColl as $dirItem): ?>
+                        <div class="portlet light bordered">
+                            <div class="portlet-title">
+                                <div class="caption"><?php echo $dirItem->get('name')->getValue(); ?></div>
+                                <div class="tools">
+                                    <a href="" class="collapse" data-original-title="" title=""></a>
+                                    <a href="" class="remove" data-original-title="" title=""> </a>
+                                </div>
+                            </div>
+                            <div class="portlet-body">
+                                <?php echo $this->formRow($dirItem->get('id')); ?>
+                                <?php echo $this->formRow($dirItem->get('name')); ?>
+                                <?php echo $this->formRow($dirItem->get('address')); ?>
+                                <?php echo $this->formRow($dirItem->get('phone')); ?>
+                                <?php echo $this->formRow($dirItem->get('email')); ?>
+                                <div class="row">
+                                    <div class="col-md-6"><?php echo $this->formRow($dirItem->get('image')->setAttribute('required', null)); ?></div>
+                                    <div class="col-md-6">
+                                        <?php if($dirItem->get('image')->getValue()): ?>
+                                            <a target="_blank"
+                                               href="<?php echo $this->fileManipulation()->url($dirItem->get('image')->getValue()); ?>"
+                                               class="btn green">Download</a>
+                                        <?php endif; ?>
+                                    </div>
+                                </div>
+                                <?php echo $this->formRow($dirItem->get('description')); ?>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+                <a href="#" class="btn btn-default add">Adicionar diretor <i class="glyphicon glyphicon-plus"></i></a>
+
+            </div>
+        </div>
+
+        <h3 class="form-section">Projeto</h3>
+
+        <div class="row">
+            <div class="col-md-4"><?php echo $this->formRow($form->get('has_protocol_registration_law')) ?></div>
+            <div class="col-md-6"><?php echo $this->formRow($form->get('protocol_registration_law')) ?></div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12"><?php echo $this->formRow($form->get('presentation')) ?></div>
+            <div class="col-md-12"><?php echo $this->formRow($form->get('short_sinopse')) ?></div>
+            <div class="col-md-12"><?php echo $this->formRow($form->get('short_sinopse_english')) ?></div>
+            <div class="col-md-12"><?php echo $this->formRow($form->get('long_sinopse')) ?></div>
+            <div class="col-md-12"><?php echo $this->formRow($form->get('argument')) ?></div>
+            <div class="col-md-12"><?php echo $this->formRow($form->get('director_notes')) ?></div>
+            <div class="col-md-12"><?php echo $this->formRow($form->get('producer_notes')) ?></div>
+        </div>
+
+        <h3 class="form-section">Especificações do filme</h3>
+
+        <div class="form-group">
+            <label>Tempo de duração do filme</label>
+            <div class="row">
+                <div class="col-md-2">
+                    <?php echo $this->formRow($form->get('movie_length_hour')) ?>
+                </div>
+                <div class="col-md-2">
+                    <?php echo $this->formRow($form->get('movie_length_minutes')) ?>
+                </div>
+                <div class="col-md-4"><?php echo $this->formRow($form->get('options[genre]')) ?></div>
+                <div class="col-md-4"><?php echo $this->formRow($form->get('options[format]')) ?></div>
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col-md-4"><?php echo $this->formRow($form->get('options[display_format]')) ?></div>
+            <div class="col-md-6"><?php echo $this->formRow($form->get('estimated_time_filming')) ?></div>
+        </div>
+
+        <div class="row">
+
+            <div class="col-md-6"><?php echo $this->formRow($form->get('locations')) ?></div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4"><?php echo $this->formRow($form->get('related_partners')) ?></div>
+            <div class="col-md-4"><?php echo $this->formRow($form->get('value_captured_resources')) ?></div>
+            <div class="col-md-4"><?php echo $this->formRow($form->get('value_captured_services')) ?></div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4"><?php echo $this->formRow($form->get('options[written_script]')) ?></div>
+            <div class="col-md-4"><?php echo $this->formRow($form->get('options[first_or_second_project]')) ?></div>
+            <div class="col-md-4"><?php echo $this->formRow($form->get('links')) ?></div>
+        </div>
+
+        <?php $image = $form->get('image'); ?>
+        <div class="form-group <?php echo count($image->getMessages())?"has-error":"" ?>">
+            <label class="">Extra - Imagem do filme <span class="required" aria-required="true"> * </span></label> <br>
+            <?php $imageSrc = $image->get('src')->getValue(); ?>
+            <div class="fileinput fileinput2 <?php echo !empty($imageSrc) ? "fileinput-exists" : "fileinput-new" ?>" data-provides="fileinput">
+                <div class="fileinput-new thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;">
+                    <?php if(!$imageSrc):  ?>
+                        <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image" alt="" />
+                    <?php endif; ?>
+                </div>
+                <?php if($imageSrc): ?>
+                    <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;">
+                        <img src="<?php echo $this->fileManipulation()->url($imageSrc); ?>" alt="">
+                    </div>
+                <?php endif; ?>
+                <div>
+                                    <span class="btn red btn-outline btn-file">
+                                        <span class="fileinput-new"> Selecionar imagem </span>
+                                        <span class="fileinput-exists"> Alterar </span>
+                                        <?php echo $this->formElement($image->get('file')); ?>
+                                    </span>
+                    <a href="javascript:;" class="btn red fileinput-exists" data-dismiss="fileinput"> Remover </a>
+                </div>
+            </div>
+            <p class="help-block">Anexar uma imagem que ilustre o projeto (mínimo 800kb e máximo de 2mb)</p>
+            <div id="image_file_error"></div>
+            <?php echo $this->formElementErrors($image->get('file')); ?>
+        </div>
+
+        <?php $files = $form->get('files')->getFieldsets(); ?>
+        <div class="form-group">
+            <label class="">Anexo - Extras</label> <br>
+            <?php foreach ($files as $fieldset):  ?>
+                <?php $fileSrc = $fieldset->get('src')->getValue(); ?>
+                <div class="fileinput <?php echo !empty($fileSrc)? "fileinput-exists" : "fileinput-new" ?>" data-provides="fileinput">
+                    <div class="input-group input-large">
+                        <div class="form-control uneditable-input input-fixed input-medium" data-trigger="fileinput">
+                            <i class="fa fa-file fileinput-exists"></i>&nbsp;
+                            <span class="fileinput-filename"> </span>
+                        </div>
+                        <span class="input-group-addon btn default btn-file">
+                                                <span class="fileinput-new"> Selecione um arquivo </span>
+                                                <span class="fileinput-exists"> Alterar </span>
+
+                            <?php echo $this->formElement($fieldset->get('file')); ?>
+                                            </span>
+                        <a href="javascript:;" class="input-group-addon btn red fileinput-exists" data-dismiss="fileinput"> Remove </a>
+                        <a href="<?php echo $this->fileManipulation()->url($fileSrc); ?>" class="input-group-addon btn green fileinput-exists" target="_blank"> Download </a>
+                    </div>
+                    <?php echo $this->formElementErrors($fieldset->get('file')); ?>
+                </div><br>
+            <?php endforeach; ?>
+            <p class="help-block">Anexar vídeos, imagens ou textos explicativos/ilustrativos ao projeto (mínimo 800kb e máximo de 2mb)</p>
+        </div>
+
+    </div>
+    <div class="form-actions">
+        <div class="row">
+            <div class="col-md-offset-3 col-md-9">
+                <button type="submit" class="btn blue btn-lg action-save">Salvar</button>
+                <a href="#" class="btn red btn-lg action cancel">Descartar</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<?php $this->inlineScript()->captureStart();
+echo <<<JS
+    (function ( $ ) {
+        $.fn.projectPeoples = function() {
+            var el = $(this);
+            $('.add', el).on('click', function(e) {
+                e.preventDefault();
+                var template = $('span[data-template]', el).data('template'),
+                    index = Math.floor(Date.now() / 1000);
+                template = template.replace(/__index__/g, index);
+                var item = $('<div class="portlet light bordered">' +
+                 '<div class="portlet-title">' +
+                  '<div class="caption"></div>' +
+                  '<div class="tools"><a href="" class="collapse" data-original-title="" title=""></a><a href="" class="remove" data-original-title="" title=""> </a></div>' + 
+                 '</div>' +
+                 '<div class="portlet-body">' + template + '</div>' +
+                  '</div>');
+                $('.list', el).append(item);
+            });
+            
+            $(document).on('keyup', '.people-name', function() {
+                $(this)
+                    .parents('.portlet-body')
+                    .first()
+                    .siblings('.portlet-title')
+                    .children('.caption')
+                    .text($(this).val())
+            });
+        };
+    }(jQuery));
+
+    $( document ).ready(function() {
+        $('.project-directors').projectPeoples();
+        $('.project-producers').projectPeoples();
+    });
+    
+JS;
+$this->inlineScript()->captureEnd(); ?>

@@ -14,6 +14,7 @@ use Admin\Form\Project\ProjectSearchForm;
 use Application\Entity\File\File;
 use Application\Entity\Project\People;
 use Application\Entity\Project\Project;
+use Application\Entity\Registration\Status;
 use Doctrine\Common\Collections\ArrayCollection;
 
 class ProjectController extends AbstractAdminController
@@ -47,9 +48,7 @@ class ProjectController extends AbstractAdminController
 
     public function updateAction($id, $data)
     {
-        $result = $this->persist($data, $id);
-        $result->setTemplate('admin/project/create.phtml');
-        return $result;
+        return $this->persist($data, $id);
     }
 
     public function deleteAction($id)
@@ -259,6 +258,186 @@ class ProjectController extends AbstractAdminController
         }
 
         return $media;
+    }
+
+    public function exportAction()
+    {
+        //recupera os itens
+        $dataAttr = $this->params()->fromQuery();
+        $id = $this->params()->fromRoute('id');
+        $item = $this->getRepository(Project::class)->find($id);
+
+        //criar um arquivo json
+        $preparedItems = $this->prepareItemsForReports($item);
+
+        return $this->prepareReport($preparedItems, 'project' ,'pdf');
+    }
+
+    public function exportListAction()
+    {
+        //recupera os itens
+        $dataAttr = $this->params()->fromQuery();
+        $items = $this->search(Project::class, $dataAttr, ['createdAt' => 'DESC'], true);
+
+        //criar um arquivo json
+        $preparedItems = $this->prepareItemsForReports($items);
+        return $this->prepareReport($preparedItems, 'project_list' ,'xlsx');
+    }
+
+    protected function prepareItemsForReports($items)
+    {
+        if(!is_array($items)) {
+            $items = [$items];
+        }
+
+        $preparedItems = [];
+        foreach ($items as $obj) {
+
+            $itemArray = $obj->toArray();
+            unset($itemArray['medias']);
+            unset($itemArray['updated_at']);
+            unset($itemArray['registration']);
+            unset($itemArray['default_input_filters']);
+            unset($itemArray['event']);
+            unset($itemArray['files']);
+            unset($itemArray['peoples']);
+            unset($itemArray['options']);
+            unset($itemArray['instituition']);
+            unset($itemArray['image']);
+
+            //Author
+            $author = [
+                'user_id' => $obj->getUser()->getId(),
+                'user_name' => $obj->getUser()->getName(),
+                'user_email' => $obj->getUser()->getEmail(),
+                'user_address' => $obj->getUser()->getFullAddress()
+            ];
+            $phones = [];
+            foreach ($obj->getUser()->getPhones() as $phone) {
+                $phones[] = implode('|', $phone->_toArray());
+            }
+            $author['user_phones'] = implode(';', $phones);
+
+            $itemArray = $itemArray+$author;
+            unset($itemArray['user']);
+
+            //Event
+            $itemArray['event_name'] = $obj->getEvent()->getFullName();
+
+            //state
+            if(!empty($itemArray['state_production'])) {
+                $state = $itemArray['state_production'];
+                $itemArray['state_production'] = $state->getName();
+            }
+
+            //category
+            if(!empty( $itemArray['category'])) {
+                $category = $itemArray['category'];
+                $itemArray['category'] = $category->getName();
+            }
+
+            $itemArray['status'] = Status::get($obj->getStatus());
+
+            //Peoples
+            $producers = [];
+            $directors = [];
+            foreach ($obj->getPeoples() as $p) {
+                if($p->getType() == People::TYPE_PRODUCER) {
+                    $peopleData = [
+                        'Nome: ' . $p->getName(),
+                        'Endereço: ' . $p->getAddress(),
+                        'Telefone: ' . $p->getPhone(),
+                        'E-mail: ' . $p->getEmail(),
+                        'Currículo: ' . $p->getDescription()
+                    ];
+                    $producers[] = implode(' | ', $peopleData);
+                } elseif($p->getType() == People::TYPE_DIRECTOR) {
+                    $peopleData = [
+                        'Nome: ' . $p->getName(),
+                        'Endereço: ' . $p->getAddress(),
+                        'Telefone: ' . $p->getPhone(),
+                        'E-mail: ' . $p->getEmail(),
+                        'Biofilmografia: ' . $p->getDescription()
+                    ];
+                    $directors[] = implode(' | ', $peopleData);
+                }
+            }
+            $itemArray['producers'] = implode(' ; ', $producers);
+            $itemArray['directors'] = implode(' ; ', $producers);
+
+            //instituition
+            $itemArray['institution_social_name'] = $obj->getInstituition()->getSocialName();
+            $itemArray['institution_fantasy_name'] = $obj->getInstituition()->getFantasyName();
+            $itemArray['institution_cnpj'] = $obj->getInstituition()->getCnpj();
+            $itemArray['institution_address'] = $obj->getInstituition()->getAddress();
+            $itemArray['institution_legal_representative'] = $obj->getInstituition()->getLegalRepresentative();
+            $itemArray['institution_phone'] = $obj->getInstituition()->getPhone();
+            $itemArray['institution_mobile_phone'] = $obj->getInstituition()->getMobilePhone();
+            $itemArray['institution_site'] = $obj->getInstituition()->getSite();
+            $itemArray['institution_email'] = $obj->getInstituition()->getEmail();
+            $itemArray['institution_description'] = $obj->getInstituition()->getDescription();
+
+            //Options
+            unset($itemArray['options']);
+            $opt_phase = "";
+            if($opt_phase = $obj->getOption('phase')) {
+                $opt_phase = $opt_phase->getName();
+            }
+            $itemArray['opt_phase'] = $opt_phase?$opt_phase:"";
+
+            $opt_category = "";
+            if($opt_category = $obj->getOption('category')) {
+                $opt_category = $opt_category->getName();
+            }
+            $itemArray['opt_category'] = $opt_category?$opt_category:"";
+
+            $opt_genre = "";
+            if($opt_genre = $obj->getOption('genre')) {
+                $opt_genre = $opt_genre->getName();
+            }
+            $itemArray['opt_genre'] = $opt_genre?$opt_genre:"";
+
+            $opt_format = "";
+            if($opt_format = $obj->getOption('format')) {
+                $opt_format = $opt_format->getName();
+            }
+            $itemArray['opt_format'] = $opt_format?$opt_format:"";
+
+            $opt_display_format = "";
+            if($opt_display_format = $obj->getOption('display_format')) {
+                $opt_display_format = $opt_display_format->getName();
+            }
+            $itemArray['opt_display_format'] = $opt_display_format?$opt_display_format:"";
+
+            $opt_written_script = "";
+            if($opt_written_script = $obj->getOption('written_script')) {
+                $opt_written_script = $opt_written_script->getName();
+            }
+            $itemArray['opt_written_script'] = $opt_written_script?$opt_written_script:"";
+
+            $opt_first_or_second_project = "";
+            if($opt_first_or_second_project = $obj->getOption('first_or_second_project')) {
+                $opt_first_or_second_project = $opt_first_or_second_project->getName();
+            }
+            $itemArray['opt_first_or_second_project'] = $opt_first_or_second_project?$opt_first_or_second_project:"";
+
+            //Duration
+            $duration = "";
+            if($obj->getMovieLength() instanceof \DateTime) {
+                $duration = $obj->getMovieLength()->format('H:i:s');
+            }
+            $itemArray['movie_length'] = $duration;
+
+            //Created At
+            $createdAt = "";
+            if($obj->getCreatedAt() instanceof \DateTime) {
+                $createdAt = $obj->getCreatedAt()->format('d/m/Y H:i:s');
+            }
+            $itemArray['created_at'] = $createdAt;
+
+            $preparedItems[] = ['object'=>$itemArray];
+        }
+        return $preparedItems;
     }
 
 }
