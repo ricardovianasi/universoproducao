@@ -12,25 +12,6 @@
         </section>
     <?php endif; ?>
 
-    <?php if(count($this->eufacoamostra)>0): ?>
-        <section class="eufacoamostra">
-            <header class="main-header">
-                <h1 class="main-title"><span class="icon-eufacoamostra"></span></h1>
-                <p>Compartilhe e publique suas imagens usando a #eufaçoaMostra</p>
-            </header>
-            <ul class="eufacoamostra-items">
-                <?php foreach ($this->eufacoamostra as $eu): ?>
-                    <li class="eufacoamostra-item">
-                        <?php $href = $eu->getVideo() ? $eu->getVideo() : $this->thumbor()->url($eu->getThumb())->resize(700, 700); ?>
-                        <a title="<?php echo $eu->getDescription(); ?>" href="<?php echo $href; ?>" class="eufacoamostra-link <?php echo $eu->getVideo() ? "video" : ""; ?>" data-fancybox="gallery">
-                            <img src="<?php echo $this->thumbor()->url($eu->getThumb())->resize(700, 700); ?>" alt="" class="grayscale grayscale-fade">
-                        </a>
-                    </li>
-                <?php endforeach; ?>
-            </ul>
-        </section>
-    <?php endif; ?>
-
     <section class="news">
         <div class="main-wrapper">
             <header class="main-header">
@@ -59,4 +40,25 @@
             </p>
         </div>
     </section>
+
+    <?php if(count($this->eufacoamostra)>0): ?>
+        <section class="eufacoamostra">
+            <header class="main-header">
+                <h1 class="main-title"><span class="icon-eufacoamostra"></span></h1>
+                <p>Compartilhe e publique suas imagens usando a #eufaçoaMostra</p>
+            </header>
+            <ul class="eufacoamostra-items">
+                <?php foreach ($this->eufacoamostra as $eu): ?>
+                    <li class="eufacoamostra-item">
+                        <?php $href = $eu->getVideo() ? $eu->getVideo() : $this->thumbor()->url($eu->getThumb())->resize(700, 700); ?>
+                        <a title="<?php echo $eu->getDescription(); ?>" href="<?php echo $href; ?>" class="eufacoamostra-link <?php echo $eu->getVideo() ? "video" : ""; ?>" data-fancybox="gallery">
+                            <img src="<?php echo $this->thumbor()->url($eu->getThumb())->resize(700, 700); ?>" alt="" class="grayscale grayscale-fade">
+                        </a>
+                    </li>
+                <?php endforeach; ?>
+            </ul>
+        </section>
+    <?php endif; ?>
+
+
 </main>
