@@ -30,4 +30,33 @@
             </ul>
         </section>
     <?php endif; ?>
+
+    <section class="news">
+        <div class="main-wrapper">
+            <header class="main-header">
+                <h1 class="main-title">Notícias</h1>
+            </header>
+            <div class="news-highlight owl-carousel" id="news-highlight">
+                <?php foreach ($this->news as $news): ?>
+                    <div class="news-featured">
+                        <div class="news-wrapper">
+                            <a href="<?php echo $this->url("cineop2018/news", ['slug'=>$news->getSlug()]) ?>" class="news-link">
+                                <div class="news-bg">
+                                    <figure class="news-figure">
+                                        <img src="<?php echo  $this->thumbor()->url($news->getMeta('_thumb'))->resize(240, 240); ?>" alt="">
+                                    </figure>
+                                </div>
+                                <p class="news-title"><?php echo $news->getTitle(); ?></p>
+                                <p class="news-subtitle"><?php echo $news->getSubtitle(); ?></p>
+                                <p class="news-seemore">Veja +</p>
+                            </a>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+            <p class="news-readmore">
+                <a href="<?php echo $this->url("cineop2018/default", ['slug'=>'noticias']); ?>" class="btn"><span>Ver todas as notícias</span></a>
+            </p>
+        </div>
+    </section>
 </main>
