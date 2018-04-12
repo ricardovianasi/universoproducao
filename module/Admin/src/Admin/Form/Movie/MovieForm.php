@@ -563,6 +563,7 @@ class MovieForm extends Form
                 'label' => 'Filmografia do diretor',
             ],
             'attributes' => [
+                'rows' => 5,
             ]
         ]);
 
