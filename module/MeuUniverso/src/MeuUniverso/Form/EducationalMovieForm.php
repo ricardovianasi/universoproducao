@@ -12,12 +12,12 @@ class EducationalMovieForm extends AdminMovieForm
         parent::__construct($entityManager, Options::STATUS_ENABLED, $registration);
 
         $this->remove('events');
+        $this->remove('type');
         //$this->remove('end_date_year');
 
         $this->add([
             'type' => \Admin\Form\Movie\ProducingInstitutionFieldset::class,
             'name' => 'institution',
-
         ]);
 
         $this->add([

@@ -14,12 +14,12 @@ use Zend\View\Helper\AbstractHelper;
 class RegistrationStatus extends AbstractHelper
 {
     protected $labelTemplate = [
-        Status::SELECTED => '<span title="%s" class="label label-success"><i class="fa fa-check"></i></span>',
-        Status::CONFIRMED => '<span title="%s" class="label label-success"><i class="fa fa-check"></i></span>',
-        Status::NOT_CONFIRMED => '<span title="%s" class="label label-danger"><i class="fa fa-check"></i></span>',
-        Status::NOT_SELECTED => '<span title="%s" class="label label-danger"><i class="fa fa-close"></i></span>',
-        Status::ON_EVALUATION => '<span title="%s" class="label label-default"><i class="fa fa-cog"></i></span>',
-        Status::STANDBY => '<span title="%s" class="label label-warning"><i class="fa fa-hourglass-half"></i></span>',
+        Status::SELECTED => '<span data-original-title="%s" title="%s" class="label label-success tooltips"><i class="fa fa-check"></i></span>',
+        Status::CONFIRMED => '<span data-original-title="%s" title="%s" class="label label-success tooltips"><i class="fa fa-check"></i></span>',
+        Status::NOT_CONFIRMED => '<span data-original-title="%s" title="%s" class="label label-danger tooltips"><i class="fa fa-check"></i></span>',
+        Status::NOT_SELECTED => '<span data-original-title="%s" title="%s" class="label label-danger tooltips"><i class="fa fa-close"></i></span>',
+        Status::ON_EVALUATION => '<span data-original-title="%s" title="%s" class="label label-default tooltips"><i class="fa fa-cog"></i></span>',
+        Status::STANDBY => '<span data-original-title="%s" title="%s" class="label label-warning tooltips"><i class="fa fa-hourglass-half"></i></span>',
     ];
 
 
@@ -27,6 +27,7 @@ class RegistrationStatus extends AbstractHelper
     {
         return sprintf(
             $this->labelTemplate[$status],
+            $label,
             $label
         );
     }

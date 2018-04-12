@@ -13,6 +13,7 @@ class MovieForm extends AdminMovieForm
 
         $this->remove('events');
         $this->remove('end_date_year');
+        $this->remove('type');
 
         $this->add([
             'type' => 'MultiCheckbox',

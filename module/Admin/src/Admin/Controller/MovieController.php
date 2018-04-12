@@ -18,6 +18,7 @@ use Application\Entity\Movie\Media;
 use Application\Entity\Movie\Movie;
 use Application\Entity\Movie\MovieSubscription;
 use Application\Entity\Movie\Options;
+use Application\Entity\Movie\ProducingInstitution;
 use Application\Entity\Registration\Registration;
 use Application\Entity\Registration\Status;
 use Application\Entity\Seminar\Thematic;
@@ -393,6 +394,20 @@ class MovieController extends AbstractAdminController
                     }
                     $movie->setMedias($newMedias);
                     unset($data['medias']);
+
+                    if(!empty($data['producing_institution'])) {
+                        $dataInst = $data['producing_institution'];
+                        if(!empty($dataInst['id'])) {
+                            $instituition = $this->getRepository(ProducingInstitution::class)->find($dataInst['id']);
+                        } else {
+                            $instituition = new ProducingInstitution();
+                            $instituition->setData($dataInst);
+                        }
+                        $movie->setProducingInstitution($instituition);
+                    } else {
+                        $movie->setProducingInstitution(null);
+                    }
+                    unset($data['producing_institution']);
 
                     $movie->setData($data);
                     $this->getEntityManager()->persist($movie);

@@ -30,6 +30,9 @@
             <div class="col-md-4">
                 <?php echo $this->formRow($form->get('is_invited')); ?>
             </div>
+            <div class="col-md-4">
+                <?php echo $this->formRow($form->get('type')); ?>
+            </div>
 
         </div>
         <div class="row">
@@ -167,6 +170,18 @@
 
         <div class="row">
             <div class="col-md-6"><?php echo $this->formRow($form->get('filmography_director')) ?></div>
+        </div>
+
+        <h3 class="form-section">Instituição produtora</h3>
+        <div class="row">
+            <?php echo $this->formRow($form->get('producing_institution')->get('id')) ?>
+            <div class="col-md-12"><?php echo $this->formRow($form->get('producing_institution')->get('name')) ?></div>
+            <div class="col-md-4"><?php echo $this->formRow($form->get('producing_institution')->get('country')) ?></div>
+            <div class="col-md-4"><?php echo $this->formRow($form->get('producing_institution')->get('uf')) ?></div>
+            <div class="col-md-4"><?php echo $this->formRow($form->get('producing_institution')->get('address')) ?></div>
+            <div class="col-md-4"><?php echo $this->formRow($form->get('producing_institution')->get('phone')) ?></div>
+            <div class="col-md-4"><?php echo $this->formRow($form->get('producing_institution')->get('mobile_phone')) ?></div>
+            <div class="col-md-4"><?php echo $this->formRow($form->get('producing_institution')->get('email')) ?></div>
         </div>
 
         <h3 class="form-section">Multimídia</h3>

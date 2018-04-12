@@ -22,17 +22,22 @@ class ProducingInstitutionFieldset extends Fieldset
         parent::__construct($name, $options);
 
         $this->add([
+            'type' => 'hidden',
+            'name' => 'id'
+        ]);
+
+        $this->add([
             'name' => 'name',
             'options' => [
                 'label' => 'Nome da instituição',
-                'twb-layout' => 'horizontal',
+                /*'twb-layout' => 'horizontal',
                 'column-size' => 'md-6',
                 'label_attributes' => [
                     'class' => 'col-md-4'
-                ]
+                ]*/
             ],
             'attributes' => [
-                'required' => 'required'
+//                'required' => 'required'
             ]
         ]);
 
@@ -40,14 +45,14 @@ class ProducingInstitutionFieldset extends Fieldset
             'name' => 'address',
             'options' => [
                 'label' => 'Endereço',
-                'twb-layout' => 'horizontal',
+                /*'twb-layout' => 'horizontal',
                 'column-size' => 'md-6',
                 'label_attributes' => [
                     'class' => 'col-md-4'
-                ]
+                ]*/
             ],
             'attributes' => [
-                'required' => 'required'
+//                'required' => 'required'
             ]
         ]);
 
@@ -55,11 +60,11 @@ class ProducingInstitutionFieldset extends Fieldset
             'name' => 'country',
             'options' => [
                 'label' => 'País',
-                'twb-layout' => 'horizontal',
+                /*'twb-layout' => 'horizontal',
                 'column-size' => 'md-6',
                 'label_attributes' => [
                     'class' => 'col-md-4'
-                ]
+                ]*/
             ],
         ]);
 
@@ -67,14 +72,14 @@ class ProducingInstitutionFieldset extends Fieldset
             'name' => 'uf',
             'options' => [
                 'label' => 'UF',
-                'twb-layout' => 'horizontal',
+                /*'twb-layout' => 'horizontal',
                 'column-size' => 'md-6',
                 'label_attributes' => [
                     'class' => 'col-md-4'
-                ]
+                ]*/
             ],
             'attributes' => [
-                'required' => 'required'
+//                'required' => 'required'
             ]
         ]);
 
@@ -82,14 +87,14 @@ class ProducingInstitutionFieldset extends Fieldset
             'name' => 'phone',
             'options' => [
                 'label' => 'Telefone fixo',
-                'twb-layout' => 'horizontal',
+                /*'twb-layout' => 'horizontal',
                 'column-size' => 'md-6',
                 'label_attributes' => [
                     'class' => 'col-md-4'
-                ]
+                ]*/
             ],
             'attributes' => [
-                'required' => 'required'
+//                'required' => 'required'
             ]
         ]);
 
@@ -97,14 +102,14 @@ class ProducingInstitutionFieldset extends Fieldset
             'name' => 'mobile_phone',
             'options' => [
                 'label' => 'Telefone celular',
-                'twb-layout' => 'horizontal',
+                /*'twb-layout' => 'horizontal',
                 'column-size' => 'md-6',
                 'label_attributes' => [
                     'class' => 'col-md-4'
-                ]
+                ]*/
             ],
             'attributes' => [
-                'required' => 'required'
+//                'required' => 'required'
             ]
         ]);
 
@@ -112,14 +117,14 @@ class ProducingInstitutionFieldset extends Fieldset
             'name' => 'email',
             'options' => [
                 'label' => 'Email',
-                'twb-layout' => 'horizontal',
+                /*'twb-layout' => 'horizontal',
                 'column-size' => 'md-6',
                 'label_attributes' => [
                     'class' => 'col-md-4'
-                ]
+                ]*/
             ],
             'attributes' => [
-                'required' => 'required'
+//                'required' => 'required'
             ]
         ]);
     }
@@ -127,7 +132,7 @@ class ProducingInstitutionFieldset extends Fieldset
     public function getInputFilterSpecification()
     {
         return [
-            'name' => [
+            /*'name' => [
                 'name' => 'name',
                 'required' => true,
             ],
@@ -150,7 +155,7 @@ class ProducingInstitutionFieldset extends Fieldset
             'email' => [
                 'name' => 'email',
                 'required' => true,
-            ],
+            ],*/
         ];
     }
 

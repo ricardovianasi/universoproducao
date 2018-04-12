@@ -1,8 +1,10 @@
 <?php
 namespace Admin\Form\Movie;
 
+use Application\Entity\Movie\Movie;
 use Application\Entity\Movie\Options;
 use Application\Entity\Movie\OptionsType;
+use Application\Entity\Movie\ProducingInstitution;
 use Application\Entity\Registration\Options as RegistrationOptions;
 use Application\Entity\Registration\Registration;
 use Application\Entity\Registration\Type;
@@ -30,6 +32,21 @@ class MovieForm extends Form
             'method' => 'POST',
             'class' => 'movie-form default-form-actions enable-validators',
             'id' => 'submit_form'
+        ]);
+
+        $this->add([
+            'type' => ProducingInstitutionFieldset::class,
+            'name' => 'producing_institution',
+        ]);
+
+        $this->add([
+            'type' => 'Select',
+            'name' => 'type',
+            'options' => [
+                'label' => 'Tipo de inscrição',
+                'empty_option' => 'Selecione',
+                'value_options' => Movie::getMovieTypes()
+            ],
         ]);
 
         $this->add([
@@ -958,6 +975,11 @@ class MovieForm extends Form
             if($author instanceof User) {
                 $data['author'] = $author->getId();
             }
+        }
+
+        if(!empty($data['producing_institution']) && $data['producing_institution'] instanceof ProducingInstitution) {
+            $instituition = $data['producing_institution'];
+            $data['producing_institution'] = $instituition->toArray();
         }
 
         if(!empty($data['options'])) {
