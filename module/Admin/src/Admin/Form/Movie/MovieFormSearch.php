@@ -4,6 +4,7 @@ namespace Admin\Form\Movie;
 use Application\Entity\Event\Event;
 use Application\Entity\Event\EventType;
 use Application\Entity\Movie\Category;
+use Application\Entity\Movie\Movie;
 use Application\Entity\Registration\Status;
 use Zend\Form\Form;
 use Zend\InputFilter\Factory as InputFilterFactory;
@@ -102,6 +103,19 @@ class MovieFormSearch extends Form
                 'class' => 'input-sm',
                 'data-label' => 'Status'
             ]
+        ]);
+
+        $this->add([
+            'type' => 'Select',
+            'name' => 'type',
+            'options' => [
+                'empty_option' => 'Selecione',
+                'value_options' => Movie::getMovieTypes()
+            ],
+            'attributes' => [
+                'class' => 'input-sm',
+            ]
+
         ]);
 
         /*$this->add([

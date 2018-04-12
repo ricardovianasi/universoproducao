@@ -1252,4 +1252,24 @@ class Movie extends AbstractEntity
     {
         $this->type = $type;
     }
+
+    static function getMovieTypes($typeOp=null)
+    {
+        $types = [
+            self::TYPE_MOVIE => 'Filmes',
+            self::TYPE_EDUCATIONAL_MOVIE => 'Mostra Educação'
+        ];
+
+        if($typeOp) {
+            if(isset($types[$typeOp])) {
+                return $types[$typeOp];
+            } else {
+                return null;
+            }
+        } else {
+            return $types;
+        }
+
+
+    }
 }

@@ -78,6 +78,7 @@
 								<th width="15%">Título</th>
 								<th width="10%">Duração</th>
                                 <th width="15%">Evento</th>
+                                <th width="15%">Tipo</th>
                                 <th width="15%">Data de cadastro</th>
                                 <th width="15%">Usuário</th>
 								<th width="10%">Ações</th>
@@ -102,6 +103,7 @@
                                     <div class="margin-bottom-5"><?php echo $this->formElement($form->get('events')); ?></div>
                                     <?php echo $this->formelement($form->get('status')); ?>
                                 </td>
+                                <td><?php echo $this->formelement($form->get('type')); ?></td>
                                 <td>
                                     <div class="input-group date date-picker margin-bottom-5" data-date-format="dd/mm/yyyy">
                                         <?php echo $this->formelement($form->get('dateInit')); ?>
@@ -149,7 +151,7 @@
 								<td><?php echo $item->getId() ?></td>
 								<td><a href="<?php echo $updateUrl; ?>"><?php echo $item->getTitle(); ?></a></td>
                                 <td>
-                                    <?php echo $item->getDuration()->format('H:i:s'); ?><br>
+                                    <?php echo $item->getDuration() ? $item->getDuration()->format('H:i:s') : ""; ?><br>
                                     <?php echo \Application\Entity\Movie\Category::get($item->getCategory()); ?>
                                 </td>
 								<td>
@@ -166,6 +168,7 @@
                                     </table>
                                     <?php endif; ?>
                                 </td>
+                                <td><?php echo $item->getType()?\Application\Entity\Movie\Movie::getMovieTypes($item->getType()):"" ?></td>
 								<td><?php echo $item->getCreatedAt()->format('d/m/Y H:i') ?></td>
 								<td>
                                     <?php

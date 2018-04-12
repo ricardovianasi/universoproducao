@@ -27,6 +27,12 @@ class Movie extends AbstractRepository
                 ->setParameter('title', '%'.$criteria['title'].'%');
         }
 
+        if(!empty($criteria['type'])) {
+            $qb
+                ->andWhere('p.type = :type')
+                ->setParameter('type', $criteria['type']);
+        }
+
         if(!empty($criteria['category'])) {
         }
 
