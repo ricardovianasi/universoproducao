@@ -15,6 +15,13 @@ class AdminNavigation extends AbstractHelper
     private $navigation;
     private $escapeHtml;
 
+    private $authService;
+
+    public function __construct($authService = null)
+    {
+        $this->authService = $authService;
+    }
+
     public function __invoke($container=null)
     {
         $this->navigation = $this->getView()->plugin('navigation');
@@ -56,6 +63,13 @@ class AdminNavigation extends AbstractHelper
     public function renderItem($item)
     {
         $html = '';
+
+        $user = $this->authService->getIdentity();
+        if($user->getEmail() == 'brasilcinemundi@brasilcinemundi.com.br') {
+            if($item->get('brasilcinemundi') != true) {
+                return '';
+            }
+        }
 
         if (!$this->getNavigation()->accept($item)) return;
 

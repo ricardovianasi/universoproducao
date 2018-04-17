@@ -7,7 +7,8 @@ return [
 				'route' => 'admin/default',
 				'controller' => 'index',
 				'icon' => 'icon-home',
-				'class' => 'start'
+				'class' => 'start',
+                'brasilcinemundi' => true
 			],
 			[
 				'label' => 'Usuários',
@@ -161,6 +162,7 @@ return [
                 'label' => 'Projetos BrasilCineMundi',
                 'uri' => '#',
                 'icon' => 'icon-book-open',
+                'brasilcinemundi' => true,
                 'pages' => [
                     [
                         'label' => 'Opções',
@@ -174,6 +176,7 @@ return [
                         'route' => 'admin/default',
                         'controller' => 'project',
                         'icon' => 'icon-doc',
+                        'brasilcinemundi' => true
                     ]
                 ]
             ],

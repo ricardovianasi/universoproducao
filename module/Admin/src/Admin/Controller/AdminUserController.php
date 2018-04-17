@@ -59,7 +59,7 @@ class AdminUserController extends AbstractAdminController
 
 	public function persist($data, $id = null)
 	{
-		$form = $this->getServiceLocator()->get(UserForm::class);
+		$form = new UserForm($this->getEntityManager());
 		$resetPassForm = new ResetPasswordForm();
 		$tabActive = $this->params()->fromQuery('tab', 'tab_form');
 
