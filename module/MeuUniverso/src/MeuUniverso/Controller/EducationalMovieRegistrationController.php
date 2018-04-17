@@ -296,8 +296,6 @@ class EducationalMovieRegistrationController extends AbstractMeuUniversoRegister
                 unset($validData['options']);
 
                 //Upload das fotos
-
-                //Upload das fotos
                 foreach ($movie->getMedias() as $m) {
                     $this->getEntityManager()->remove($m);
                 }

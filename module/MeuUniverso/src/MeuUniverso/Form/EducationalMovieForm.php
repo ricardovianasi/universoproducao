@@ -13,6 +13,7 @@ class EducationalMovieForm extends AdminMovieForm
 
         $this->remove('events');
         $this->remove('type');
+        $this->remove('producing_institution');
         //$this->remove('end_date_year');
 
         $this->add([
