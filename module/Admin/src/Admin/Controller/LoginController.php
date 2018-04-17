@@ -61,7 +61,7 @@ class LoginController extends AbstractController
 
 	public function getOutAction()
 	{
-		$this->getAuthService()->clearIdentity();
+        $this->getAuthenticationService()->clearIdentity();
 		return $this->redirect()->toRoute('admin/auth');
 	}
 

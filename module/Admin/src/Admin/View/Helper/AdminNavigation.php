@@ -65,9 +65,11 @@ class AdminNavigation extends AbstractHelper
         $html = '';
 
         $user = $this->authService->getIdentity();
-        if($user->getEmail() == 'brasilcinemundi@brasilcinemundi.com.br') {
-            if($item->get('brasilcinemundi') != true) {
-                return '';
+        if($user) {
+            if($user->getEmail() == 'brasilcinemundi@brasilcinemundi.com.br') {
+                if($item->get('brasilcinemundi') != true) {
+                    return '';
+                }
             }
         }
 
