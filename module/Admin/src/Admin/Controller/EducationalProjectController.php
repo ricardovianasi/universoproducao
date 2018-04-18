@@ -8,14 +8,13 @@
 
 namespace Admin\Controller;
 
-
-use Admin\Form\EducationalProject\CategoryForm;
 use Admin\Form\EducationalProject\EducationalProjectForm;
 use Application\Entity\EducationalProject\Category;
 use Application\Entity\EducationalProject\EducationalProject;
-use Application\Entity\Registration\Registration;
+use Application\Entity\File\File;
 use Application\Entity\Registration\Status;
 use Application\Entity\State;
+use Doctrine\Common\Collections\ArrayCollection;
 
 class EducationalProjectController extends AbstractAdminController
 {
@@ -75,7 +74,6 @@ class EducationalProjectController extends AbstractAdminController
         if($this->getRequest()->isPost()) {
             $form->setData($data);
             if($form->isValid()) {
-                $dataValida = $form->getData();
 
                 if(!empty($data['category'])) {
                     $cat = $this->getRepository(Category::class)->find($data['category']);
@@ -83,18 +81,28 @@ class EducationalProjectController extends AbstractAdminController
                 }
                 unset($data['category']);
 
+                $oldFiles = [];
+                foreach ($project->getFiles() as $of) {
+                    $oldFiles[$of->getId()] = $of;
+                }
                 $files = new ArrayCollection();
                 if(!empty($data['files'])) {
                     foreach ($data['files'] as $f) {
                         $file = $this->populateFiles($f);
-                        $files->add($file);
+                        if($file) {
+                            $files->add($file);
+                            unset($oldFiles[$file->getId()]);
+                        }
                     }
+                }
+                foreach ($oldFiles as $key=>$fileToRemove) {
+                    $this->getEntityManager()->remove($fileToRemove);
                 }
                 unset($data['image']);
                 unset($data['files']);
                 $project->setFiles($files);
 
-                $project->setData($dataValida);
+                $project->setData($data);
                 $this->getEntityManager()->persist($project);
                 $this->getEntityManager()->flush();
 
@@ -109,9 +117,9 @@ class EducationalProjectController extends AbstractAdminController
                     ]);
                 }
             }
-        } else {
-            $form->setData($project->toArray());
         }
+
+        $form->setData($project->toArray());
 
         return $this->getViewModel()->setVariables([
             'form' => $form,
@@ -121,15 +129,23 @@ class EducationalProjectController extends AbstractAdminController
 
     protected function populateFiles($data, $isDefault=false)
     {
-        $media = new File();
-        $media->setIsDefault($isDefault);
+        $media = null;
+        if(!empty($data['id'])) {
+            $media = $this->getRepository(File::class)->find($data['id']);
+        }
 
-        if(!empty($data['file'])) {
+        if(!$media) {
+            $media = new File();
+        }
+
+        if(!empty($data['file']['name'])) {
             $mediaFile = $data["file"];
             if(!empty($mediaFile['name'])) {
                 $file = $this->fileManipulation()->moveToRepository($mediaFile);
                 $media->setSrc($file['new_name']);
             }
+        } elseif(empty($media->getId())) {
+            return;
         }
 
         return $media;

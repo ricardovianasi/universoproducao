@@ -332,7 +332,7 @@ abstract class AbstractAdminController extends AbstractController
 	 */
 	protected function processBodyContent($request)
 	{
-		$content = $request->getContent();
+		/*$content = $request->getContent();
 
 		parse_str($content, $parsedParams);
 
@@ -344,7 +344,14 @@ abstract class AbstractAdminController extends AbstractController
 			return $content;
 		}
 
-		return $parsedParams;
+		return $parsedParams;*/
+
+        $data = array_replace_recursive(
+            $this->getRequest()->getPost()->toArray(),
+            $this->getRequest()->getFiles()->toArray()
+        );
+
+        return $data;
 	}
 
 	public function prepareDataPost($entity, $data=[], &$post=null)
