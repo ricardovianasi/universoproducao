@@ -70,6 +70,10 @@ class AdminNavigation extends AbstractHelper
                 if($item->get('brasilcinemundi') != true) {
                     return '';
                 }
+            } elseif($user->getEmail() == 'projetoseducativos@projetoseducativos.com.br') {
+                if($item->get('projetoseducativos') != true) {
+                    return '';
+                }
             }
         }
 

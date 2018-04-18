@@ -8,7 +8,8 @@ return [
 				'controller' => 'index',
 				'icon' => 'icon-home',
 				'class' => 'start',
-                'brasilcinemundi' => true
+                'brasilcinemundi' => true,
+                'projetoseducativos' => true,
 			],
 			[
 				'label' => 'Usuários',
@@ -142,6 +143,7 @@ return [
                 'label' => 'Projetos audiovisuais educativos',
                 'uri' => '#',
                 'icon' => 'icon-book-open',
+                'projetoseducativos' => true,
                 'pages' => [
                     [
                         'label' => 'Categoria',
@@ -155,6 +157,7 @@ return [
                         'route' => 'admin/default',
                         'controller' => 'educational-project',
                         'icon' => 'icon-doc',
+                        'projetoseducativos' => true,
                     ]
                 ]
             ],
