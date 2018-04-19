@@ -35,6 +35,7 @@ class EducationalProjectController extends AbstractAdminController
         $this->getViewModel()->setVariables([
             'items' => $items,
             'searchForm' => $searchForm,
+            'canEdit' => $this->getAuthenticationService()->getIdentity()->getEmail() == 'projetoseducativos@projetoseducativos.com.br'?false:true
         ]);
 
         return $this->getViewModel();
@@ -123,7 +124,8 @@ class EducationalProjectController extends AbstractAdminController
 
         return $this->getViewModel()->setVariables([
             'form' => $form,
-            'project' => $project
+            'project' => $project,
+            'canEdit' => $this->getAuthenticationService()->getIdentity()->getEmail() == 'projetoseducativos@projetoseducativos.com.br'?false:true
         ]);
     }
 

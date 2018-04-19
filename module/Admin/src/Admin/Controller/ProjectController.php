@@ -36,6 +36,7 @@ class ProjectController extends AbstractAdminController
         $this->getViewModel()->setVariables([
             'items' => $items,
             'searchForm' => $searchForm,
+            'canEdit' => $this->getAuthenticationService()->getIdentity()->getEmail() == 'brasilcinemundi@brasilcinemundi.com.br'?false:true
         ]);
 
         return $this->getViewModel();
@@ -212,7 +213,8 @@ class ProjectController extends AbstractAdminController
 
         return $this->getViewModel()->setVariables([
             'form' => $form,
-            'project' => $project
+            'project' => $project,
+            'canEdit' => $this->getAuthenticationService()->getIdentity()->getEmail() == 'brasilcinemundi@brasilcinemundi.com.br'?false:true
         ]);
     }
 

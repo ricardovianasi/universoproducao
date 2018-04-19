@@ -57,12 +57,14 @@
 
     </div>
     <div class="form-actions">
+        <?php if($this->canEdit): ?>
         <div class="row">
             <div class="col-md-offset-3 col-md-9">
                 <button type="submit" class="btn blue btn-lg action-save">Salvar</button>
                 <a href="#" class="btn red btn-lg action cancel">Descartar</a>
             </div>
         </div>
+        <?php endif; ?>
     </div>
 
 </div>

@@ -19,11 +19,13 @@
                         <i class="icon-action-undo"></i>
                         <span class="hidden-xs"> Voltar </span>
                     </a>
+                    <?php if($this->canEdit): ?>
                     <a href="<?php echo $this->url('admin/default', ['controller'=>'project', 'action'=>'create']); ?>"
                        class="btn blue btn-lg">
                         <i class="fa fa-plus"></i>
                         <span class="hidden-xs"> Novo projeto  </span>
                     </a>
+                    <?php endif; ?>
                     <div class="btn-group">
                         <a class="btn btn-default dropdown-toggle" href="javascript:;" data-toggle="dropdown">
                             <i class="fa fa-share"></i>

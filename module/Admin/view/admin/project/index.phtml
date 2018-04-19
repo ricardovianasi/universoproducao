@@ -8,11 +8,13 @@
 					Projetos BrasilCineMundi
 				</div>
 				<div class="actions">
+                    <?php if($this->canEdit): ?>
 					<a href="<?php echo $this->url('admin/default', ['controller' => 'project', 'action'=>'create']); ?>"
 					   class="btn blue btn-lg">
 						<i class="fa fa-plus"></i>
 						<span class="hidden-xs"> Cadastrar projeto </span>
 					</a>
+                    <?php endif; ?>
                     <div class="btn-group">
                         <a class="btn btn-default dropdown-toggle" href="javascript:;" data-toggle="dropdown">
                             <i class="fa fa-share"></i>
@@ -83,13 +85,18 @@
                                     echo $this->registrationStatus($i->getStatus(), $label). " ". $label; ?></td>
                                 <td><?php echo $i->getCreatedAt()->format('d/m/Y H:i') ?></td>
 								<td>
+                                    <?php if($this->canEdit): ?>
 									<a href="<?php echo  $updateUrl; ?>" class="btn btn-sm btn-default">
 										<i class="fa fa-edit"></i> Editar
 									</a>
 									<a href="<?php echo $removeUrl; ?>" class="btn btn-sm btn-default post-list-remove">
 										<i class="fa fa-trash-o"></i> Excluir
 									</a>
-
+                                    <?php else: ?>
+                                        <a href="<?php echo  $updateUrl; ?>" class="btn btn-sm btn-default">
+                                            <i class="fa fa-edit"></i> Visualizar
+                                        </a>
+                                    <?php endif; ?>
 								</td>
 							</tr>
 						<?php endforeach; ?>
