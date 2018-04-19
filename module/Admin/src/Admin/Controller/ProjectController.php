@@ -12,9 +12,12 @@ namespace Admin\Controller;
 use Admin\Form\Project\ProjectForm;
 use Admin\Form\Project\ProjectSearchForm;
 use Application\Entity\File\File;
+use Application\Entity\Institution\Institution;
+use Application\Entity\Project\Options;
 use Application\Entity\Project\People;
 use Application\Entity\Project\Project;
 use Application\Entity\Registration\Status;
+use Application\Entity\State;
 use Doctrine\Common\Collections\ArrayCollection;
 
 class ProjectController extends AbstractAdminController
@@ -66,6 +69,10 @@ class ProjectController extends AbstractAdminController
     public function persist($data, $id = null)
     {
         $form = new ProjectForm($this->getEntityManager($this->getEntityManager()));
+        $form->getInputFilter()->remove('image');
+        $form->getInputFilter()->remove('files');
+        $form->getInputFilter()->remove('directors');
+        $form->getInputFilter()->remove('producers');
 
         if($id) {
             $project = $this->getRepository(Project::class)->find($id);
@@ -74,20 +81,13 @@ class ProjectController extends AbstractAdminController
         }
 
         if($this->getRequest()->isPost()) {
-
-            $data = array_replace_recursive(
-                $this->getRequest()->getPost()->toArray(),
-                $this->getRequest()->getFiles()->toArray()
-            );
-
             $form->setData($data);
             if($form->isValid()) {
-                $dataValida = $form->getData();
 
                 //options
                 $options = new ArrayCollection();
-                if(!empty($dataValida['options'])) {
-                    foreach ($dataValida['options'] as $opt) {
+                if(!empty($data['options'])) {
+                    foreach ($data['options'] as $opt) {
                         if(!empty($opt)) {
                             if(is_string($opt)) {
                                 $optEntity = $this->getRepository(Options::class)->find($opt);
@@ -106,17 +106,17 @@ class ProjectController extends AbstractAdminController
                     }
                 }
                 $project->setOptions($options);
-                unset($dataValida['options']);
+                unset($data['options']);
 
                 //estado
-                if(!empty($dataValida['state_production'])) {
+                if(!empty($data['state_production'])) {
                     $state = $this
                         ->getRepository(State::class)
-                        ->find($dataValida['state_production']);
+                        ->find($data['state_production']);
 
                     $project->setStateProduction($state);
                 }
-                unset($dataValida['state_production']);
+                unset($data['state_production']);
 
                 $newPeoples = new ArrayCollection();
                 $oldPeoples = [];
@@ -125,8 +125,8 @@ class ProjectController extends AbstractAdminController
                 }
 
                 //produtores
-                if(!empty($dataValida['producers'])) {
-                    foreach ($dataValida['producers'] as $prod) {
+                if(!empty($data['producers'])) {
+                    foreach ($data['producers'] as $prod) {
                         $productor = $this->populatePeople($prod, People::TYPE_PRODUCER);
                         $productor->setProject($project);
                         $newPeoples->add($productor);
@@ -135,11 +135,11 @@ class ProjectController extends AbstractAdminController
                         }
                     }
                 }
-                unset($dataValida['producers']);
+                unset($data['producers']);
 
                 //diretores
-                if(!empty($dataValida['directors'])) {
-                    foreach ($dataValida['directors'] as $dir) {
+                if(!empty($data['directors'])) {
+                    foreach ($data['directors'] as $dir) {
                         $director = $this->populatePeople($dir, People::TYPE_DIRECTOR);
                         $director->setProject($project);
                         $newPeoples->add($director);
@@ -148,7 +148,7 @@ class ProjectController extends AbstractAdminController
                         }
                     }
                 }
-                unset($dataValida['directors']);
+                unset($data['directors']);
 
                 $project->setPeoples($newPeoples);
                 foreach ($oldPeoples as $oldP) {
@@ -157,42 +157,46 @@ class ProjectController extends AbstractAdminController
                 }
 
                 //Tempo de duração
-                if(!empty($dataValida['movie_length_hour'] && !empty($dataValida['movie_length_minutes']))) {
+                if(!empty($data['movie_length_hour'] && !empty($data['movie_length_minutes']))) {
                     $time = new \DateTime();
-                    $time->setTime($dataValida['movie_length_hour'], $dataValida['movie_length_minutes']);
+                    $time->setTime($data['movie_length_hour'], $data['movie_length_minutes']);
                     $project->setMovieLength($time);
                 }
-                unset($dataValida['movie_length_hour']);
-                unset($dataValida['movie_length_minutes']);
+                unset($data['movie_length_hour']);
+                unset($data['movie_length_minutes']);
 
-                if(!empty($dataValida['instituition'])) {
+                if(!empty($data['instituition'])) {
                     $instituition = new Institution();
-                    $instituition->setData($dataValida['instituition']);
+                    $instituition->setData($data['instituition']);
                     $project->setInstituition($instituition);
                 }
-                unset($dataValida['instituition']);
+                unset($data['instituition']);
 
 
-                if(!empty($dataValida['image'])) {
-                    $image = $this->populateFiles($dataValida['image'], true);
-                    $project->setImage($image);
+                if(!empty($data['image']['file']['name'])) {
+                    $image = $this->populateFiles($data['image'], true);
+                    if($image) {
+                        $project->setImage($image);
+                    }
                 }
+                unset($data['image']);
 
                 //Files
                 $files = new ArrayCollection();
-                if(!empty($dataValida['files'])) {
-                    foreach ($dataValida['files'] as $f) {
-                        $file = $this->populateFiles($f);
-                        $files->add($file);
+                if(!empty($data['files'])) {
+                    foreach ($data['files'] as $f) {
+                        if(!empty($f['file']['name'])) {
+                            $file = $this->populateFiles($f);
+                            $files->add($file);
+                        }
                     }
                 }
-                unset($dataValida['image']);
-                unset($dataValida['files']);
+                unset($data['image']);
+                unset($data['files']);
                 $project->setFiles($files);
 
-                $project->setData($dataValida);
+                $project->setData($data);
 
-                $project->setData($dataValida);
                 $this->getEntityManager()->persist($project);
                 $this->getEntityManager()->flush();
 
@@ -207,9 +211,9 @@ class ProjectController extends AbstractAdminController
                     ]);
                 }
             }
-        } else {
-            $form->setData($project->toArray());
         }
+
+        $form->setData($project->toArray());
 
         return $this->getViewModel()->setVariables([
             'form' => $form,
@@ -234,8 +238,8 @@ class ProjectController extends AbstractAdminController
             if(!empty($people->getImage())) {
                 $this->fileManipulation()->removeFile($people->getImage());
             }
-        } else {
-            $image = $data['image'];
+        } elseif($people->getImage()) {
+            $image = $people->getImage();
         }
         unset($data['image']);
 
@@ -248,6 +252,7 @@ class ProjectController extends AbstractAdminController
 
     protected function populateFiles($data, $isDefault=false)
     {
+
         $media = new File();
         $media->setIsDefault($isDefault);
 

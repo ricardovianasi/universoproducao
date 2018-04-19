@@ -138,7 +138,6 @@ class ProjectForm extends Form
                     'type' => DirectorFieldset::class
                 ]
             ]
-
         ]);
 
         $this->add([

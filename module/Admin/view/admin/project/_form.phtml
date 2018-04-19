@@ -192,11 +192,12 @@
                     </div>
                 <?php endif; ?>
                 <div>
-                                    <span class="btn red btn-outline btn-file">
-                                        <span class="fileinput-new"> Selecionar imagem </span>
-                                        <span class="fileinput-exists"> Alterar </span>
-                                        <?php echo $this->formElement($image->get('file')); ?>
-                                    </span>
+                    <span class="btn red btn-outline btn-file">
+                        <span class="fileinput-new"> Selecionar imagem </span>
+                        <span class="fileinput-exists"> Alterar </span>
+                        <?php echo $this->formElement($image->get('file')); ?>
+                        <?php echo $this->formElement($image->get('id')); ?>
+                    </span>
                     <a href="javascript:;" class="btn red fileinput-exists" data-dismiss="fileinput"> Remover </a>
                 </div>
             </div>
@@ -217,11 +218,11 @@
                             <span class="fileinput-filename"> </span>
                         </div>
                         <span class="input-group-addon btn default btn-file">
-                                                <span class="fileinput-new"> Selecione um arquivo </span>
-                                                <span class="fileinput-exists"> Alterar </span>
-
+                            <span class="fileinput-new"> Selecione um arquivo </span>
+                            <span class="fileinput-exists"> Alterar </span>
                             <?php echo $this->formElement($fieldset->get('file')); ?>
-                                            </span>
+                            <?php echo $this->formElement($fieldset->get('id')); ?>
+                        </span>
                         <a href="javascript:;" class="input-group-addon btn red fileinput-exists" data-dismiss="fileinput"> Remove </a>
                         <a href="<?php echo $this->fileManipulation()->url($fileSrc); ?>" class="input-group-addon btn green fileinput-exists" target="_blank"> Download </a>
                     </div>
