@@ -454,6 +454,7 @@ class ProjectForm extends Form
             'type' => 'Collection',
             'name' => 'files',
             'options' => [
+                'label' => 'Anexo - Extras ',
                 'count' => 2,
                 'should_create_template' => false,
                 'target_element' => [

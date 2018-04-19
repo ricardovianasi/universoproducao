@@ -15,7 +15,7 @@ class FileFieldset extends MediaFieldset
 {
     public function getInputFilterSpecification()
     {
-        $inputFilterSpecification = parent::getInputFilterSpecification();
+        /*$inputFilterSpecification = parent::getInputFilterSpecification();
         return array_merge($inputFilterSpecification, [
             'file' => [
                 'name' => 'file',
@@ -32,7 +32,9 @@ class FileFieldset extends MediaFieldset
                     ],
                 ]
             ]
-        ]);
+        ]);*/
+        $inputFilterSpecification = parent::getInputFilterSpecification();
+        return $inputFilterSpecification;
     }
 
 }
