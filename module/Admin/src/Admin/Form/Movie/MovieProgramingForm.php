@@ -33,8 +33,9 @@ class MovieProgramingForm extends  ProgramingForm
                 'label' => 'Tipo',
                 'empty_option' => 'Selecione',
                 'value_options' => [
-                    Type::MOVIE => 'Filme',
-                    Type::SESSION => 'Sessão'
+                    Type::MOVIE             => 'Filme',
+                    Type::SESSION           => 'Sessão',
+                    Type::SESSION_SCHOOL    => 'Sessão Cine Escola'
                 ],
                 'twb-layout' => 'horizontal',
                 'column-size' => 'md-4',
@@ -138,6 +139,21 @@ class MovieProgramingForm extends  ProgramingForm
             'name' => 'meta',
             'type' => MetaProgramingFieldset::class,
 
+        ]);
+
+        $this->add([
+            'name' => 'age_range',
+            'options' => [
+                'label' => 'Faixa etária',
+                'twb-layout' => 'horizontal',
+                'column-size' => 'md-4',
+                'label_attributes' => [
+                    'class' => 'col-md-4'
+                ]
+            ],
+            'attributes' => [
+                'placeholder' => 'Faixa etária'
+            ]
         ]);
 
         $this->get('place')->setAttribute('required', 'required');

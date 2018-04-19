@@ -158,7 +158,7 @@ class MovieProgramingController extends AbstractAdminController
                         }
                         $programing->setObjectId($movie->getId());
                         unset($data['movie']);
-                    } elseif($data['type'] == Type::SESSION) {
+                    } elseif($data['type'] == Type::SESSION || $data['type'] == Type::SESSION_SCHOOL) {
                         $sessionsParam = json_decode($data['sessions'], true);
                         $sessions = new ArrayCollection();
                         $count = 0;

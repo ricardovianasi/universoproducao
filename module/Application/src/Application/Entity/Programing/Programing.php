@@ -77,6 +77,9 @@ class Programing extends AbstractEntity
     /** @ORM\Column(name="`order`", type="integer") */
 	private $order;
 
+    /** @ORM\Column(name="`age_range`", type="string") */
+	private $ageRange;
+
 	public function __construct()
     {
         $this->meta = new ArrayCollection();
@@ -364,5 +367,21 @@ class Programing extends AbstractEntity
     public function setOrder($order)
     {
         $this->order = $order;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAgeRange()
+    {
+        return $this->ageRange;
+    }
+
+    /**
+     * @param mixed $ageRange
+     */
+    public function setAgeRange($ageRange)
+    {
+        $this->ageRange = $ageRange;
     }
 }

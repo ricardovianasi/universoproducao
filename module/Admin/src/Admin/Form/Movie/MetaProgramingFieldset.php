@@ -27,6 +27,7 @@ class MetaProgramingFieldset extends Fieldset
         $this->add([
             'name' => Meta::SESSION_TITLE,
             'options' => [
+                'label' => 'Nome da sessão',
                 'twb-layout' => 'horizontal',
                 'column-size' => 'md-4',
                 'label_attributes' => [
