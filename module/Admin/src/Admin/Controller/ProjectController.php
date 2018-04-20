@@ -453,11 +453,13 @@ class ProjectController extends AbstractAdminController
 
     protected function preparePeoplesToReport(People $people)
     {
+        $labelDescription = $people->getType()==People::TYPE_PRODUCER ? 'Currículo' : 'Biofilmografia';
+
         $txt = "";
         $txt.= "<b>Nome</b>: " . $people->getName() . "<br />";
         $txt.= "<b>Endereço</b>: " . $people->getAddress() . "<br />";
         $txt.= "<b>Telefone</b>: " . $people->getPhone() . "<br />";
-        $txt.= "<b>Currículo</b>: " . nl2br($people->getDescription()) . "<br />";
+        $txt.= "<b>$labelDescription</b>: " . nl2br($people->getDescription()) . "<br /><br /><br />";
 
         return $txt;
 
