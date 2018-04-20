@@ -243,7 +243,7 @@ class EducationalMovieRegistrationController extends AbstractMeuUniversoRegister
             $durationInputFilter->getValidatorChain()->attach(new Duration([
                 'min' => (1), //1 segundo
                 'max' => (3*60), //3 minutos
-                'inclusive' => false,
+                'inclusive' => true,
                 'messages' => [
                     Duration::ERROR_IS_NOT_MARCH => 'O tempo de duração é de no máximo 03 minutos'
                 ]
