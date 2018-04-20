@@ -346,31 +346,33 @@ class ProjectController extends AbstractAdminController
             $itemArray['status'] = Status::get($obj->getStatus());
 
             //Peoples
-            $producers = [];
-            $directors = [];
+            $producers = "";
+            $directors = "";
             foreach ($obj->getPeoples() as $p) {
                 if($p->getType() == People::TYPE_PRODUCER) {
-                    $peopleData = [
+                    /*$peopleData = [
                         'Nome: ' . $p->getName(),
                         'Endereço: ' . $p->getAddress(),
                         'Telefone: ' . $p->getPhone(),
                         'E-mail: ' . $p->getEmail(),
                         'Currículo: ' . $p->getDescription()
                     ];
-                    $producers[] = implode(' | ', $peopleData);
+                    $producers[] = implode(' | ', $peopleData);*/
+                    $producers.= $this->preparePeoplesToReport($p);
                 } elseif($p->getType() == People::TYPE_DIRECTOR) {
-                    $peopleData = [
+                    /*$peopleData = [
                         'Nome: ' . $p->getName(),
                         'Endereço: ' . $p->getAddress(),
                         'Telefone: ' . $p->getPhone(),
                         'E-mail: ' . $p->getEmail(),
                         'Biofilmografia: ' . $p->getDescription()
                     ];
-                    $directors[] = implode(' | ', $peopleData);
+                    $directors[] = implode(' | ', $peopleData);*/
+                    $directors.= $this->preparePeoplesToReport($p);
                 }
             }
-            $itemArray['producers'] = implode(' ; ', $producers);
-            $itemArray['directors'] = implode(' ; ', $producers);
+            /*$itemArray['producers'] = implode(' ; ', $producers);
+            $itemArray['directors'] = implode(' ; ', $producers);*/
 
             //instituition
             $itemArray['institution_social_name'] = $obj->getInstituition()->getSocialName();
@@ -445,6 +447,18 @@ class ProjectController extends AbstractAdminController
             $preparedItems[] = ['object'=>$itemArray];
         }
         return $preparedItems;
+    }
+
+    protected function preparePeoplesToReport(People $people)
+    {
+        $txt = "";
+        $txt.= "<b>Nome</b>: " . $people->getName() . "<br />";
+        $txt.= "<b>Endereço</b>: " . $people->getAddress() . "<br />";
+        $txt.= "<b>Telefone</b>: " . $people->getPhone() . "<br />";
+        $txt.= "<b>Currículo</b>: " . nl2br($people->getDescription()) . "<br />";
+
+        return $txt;
+
     }
 
 }
