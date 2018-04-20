@@ -373,6 +373,8 @@ class ProjectController extends AbstractAdminController
             }
             /*$itemArray['producers'] = implode(' ; ', $producers);
             $itemArray['directors'] = implode(' ; ', $producers);*/
+            $itemArray['producers'] = $producers;
+            $itemArray['directors'] = $directors;
 
             //instituition
             $itemArray['institution_social_name'] = $obj->getInstituition()->getSocialName();
