@@ -135,7 +135,7 @@ class PostController extends SiteController
             $logistica		 				= $postData['logistica'];
 
             //Envia a mensagem de confirmação para a pessoa cadastrada no formulario
-            $msgConfirmacaoCadastro = "Informamos que sua solicitação de credenciamento de imprensa para a 12ª Mostra de Cinema de Ouro Preto foi enviada com sucesso.";
+            $msgConfirmacaoCadastro = "Informamos que sua solicitação de credenciamento de imprensa para a 13ª Mostra de Cinema de Ouro Preto foi enviada com sucesso.";
             $msgConfirmacaoCadastro .= "<br /><br />";
             $msgConfirmacaoCadastro .= "Em breve a equipe da assessoria entrará em contato.";
             $msgConfirmacaoCadastro .= "<br /><br />";
@@ -154,7 +154,7 @@ class PostController extends SiteController
             $mailConfirmacao->setBody($miniMessage);
             $mailConfirmacao->setFrom('no-reply@universoproducao.com.br', 'Universo Producao');
             $mailConfirmacao->setTo($email);
-            $mailConfirmacao->setSubject('Solicitação de credenciamento – 12a CineOP');
+            $mailConfirmacao->setSubject('Solicitação de credenciamento – 13a CineOP');
             $transport->send($mailConfirmacao);
 
             $msgFormulario  = "<h1>FORMUL&Aacute;RIO DE CREDENCIAMENTO</h1>";
@@ -294,7 +294,7 @@ class PostController extends SiteController
             $mailConfirmacaoForm->setBody($miniMessage);
             $mailConfirmacaoForm->setFrom('no-reply@universoproducao.com.br', 'Universo Producao');
             $mailConfirmacaoForm->setTo('imprensa@universoproducao.com.br');
-            $mailConfirmacaoForm->setSubject('Credenciamento de Imprensa - 12ª CineOP');
+            $mailConfirmacaoForm->setSubject('Credenciamento de Imprensa - 13ª CineOP');
 //            $mailConfirmacaoForm->addBcc('ricardovianasi@gmail.com');
             //$transport->send($mailConfirmacaoForm);
 
