@@ -712,6 +712,7 @@
 					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
+				<textElement markup="html"/>
 				<textFieldExpression><![CDATA[$F{producers}]]></textFieldExpression>
 			</textField>
 			<staticText>
@@ -735,6 +736,7 @@
 					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
+				<textElement markup="html"/>
 				<textFieldExpression><![CDATA[$F{directors}]]></textFieldExpression>
 			</textField>
 			<staticText>
@@ -819,6 +821,7 @@
 					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
+				<textElement markup="html"/>
 				<textFieldExpression><![CDATA[$F{presentation}]]></textFieldExpression>
 			</textField>
 			<staticText>
@@ -842,6 +845,7 @@
 					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
+				<textElement markup="html"/>
 				<textFieldExpression><![CDATA[$F{short_sinopse}]]></textFieldExpression>
 			</textField>
 			<staticText>
@@ -865,6 +869,7 @@
 					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
+				<textElement markup="html"/>
 				<textFieldExpression><![CDATA[$F{short_sinopse_english}]]></textFieldExpression>
 			</textField>
 			<staticText>
@@ -888,6 +893,7 @@
 					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
+				<textElement markup="html"/>
 				<textFieldExpression><![CDATA[$F{long_sinopse}]]></textFieldExpression>
 			</textField>
 			<staticText>
@@ -911,6 +917,7 @@
 					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
+				<textElement markup="html"/>
 				<textFieldExpression><![CDATA[$F{argument}]]></textFieldExpression>
 			</textField>
 			<staticText>
@@ -936,6 +943,7 @@
 					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
+				<textElement markup="html"/>
 				<textFieldExpression><![CDATA[$F{director_notes}]]></textFieldExpression>
 			</textField>
 			<staticText>
@@ -959,6 +967,7 @@
 					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
+				<textElement markup="html"/>
 				<textFieldExpression><![CDATA[$F{producer_notes}]]></textFieldExpression>
 			</textField>
 			<staticText>
@@ -1097,6 +1106,7 @@
 					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
+				<textElement markup="html"/>
 				<textFieldExpression><![CDATA[$F{locations}]]></textFieldExpression>
 			</textField>
 			<staticText>
@@ -1120,6 +1130,7 @@
 					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
+				<textElement markup="html"/>
 				<textFieldExpression><![CDATA[$F{related_partners}]]></textFieldExpression>
 			</textField>
 			<staticText>
@@ -1143,6 +1154,7 @@
 					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
+				<textElement markup="html"/>
 				<textFieldExpression><![CDATA[$F{value_captured_resources}]]></textFieldExpression>
 			</textField>
 			<staticText>
@@ -1166,6 +1178,7 @@
 					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
+				<textElement markup="html"/>
 				<textFieldExpression><![CDATA[$F{value_captured_services}]]></textFieldExpression>
 			</textField>
 			<staticText>
@@ -1235,6 +1248,7 @@
 					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
+				<textElement markup="html"/>
 				<textFieldExpression><![CDATA[$F{links}]]></textFieldExpression>
 			</textField>
 			<staticText>
