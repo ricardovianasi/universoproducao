@@ -74,7 +74,7 @@ class PeopleFieldset extends Fieldset
                 'label' => 'Descrição'
             ],
             'attributes' => [
-                'rows' => '3',
+                'rows' => '6',
                 'required' => 'required'
             ]
         ]);

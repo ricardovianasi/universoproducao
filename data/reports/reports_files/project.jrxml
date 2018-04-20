@@ -1400,14 +1400,14 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
-				<text><![CDATA[Rua Pirapetinga, 567 - Serra - Belo Horizonte - MG - 30220-150 - (31) 3282 2366 - www.mostratiradentes.com.br]]></text>
+				<text><![CDATA[Rua Pirapetinga, 567 - Serra - Belo Horizonte - MG - 30220-150 - (31) 3282 2366 - www.universoproducao.com.br]]></text>
 			</staticText>
 			<textField>
 				<reportElement x="50" y="20" width="504" height="20" uuid="4d88fb17-331c-4d34-a99e-1b41dd79ce50"/>
 				<textElement textAlignment="Center">
 					<font size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA["Pag " + $V{PAGE_NUMBER}  + " de " + $V{PAGE_COUNT}]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Pag " + $V{PAGE_NUMBER} ]]></textFieldExpression>
 			</textField>
 			<image>
 				<reportElement x="2" y="1" width="50" height="40" uuid="416da9ee-7fed-4238-b0de-312aecfd9d05"/>
