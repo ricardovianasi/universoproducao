@@ -1,5 +1,57 @@
 <div class="portlet-body form">
     <div class="form-body">
+
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <?php
+                    $projectUser = $this->project->getUser()?$this->project->getUser()->getName():"";
+                    $projectId = $this->project->getUser()?$this->project->getUser()->getId():"";
+                    ?>
+                    <label>Usuário</label>
+                    <div class="input-group">
+                        <input readonly type="text" id="authorName" class="form-control" value="<?php echo $projectUser ?>">
+                        <span class="input-group-btn">
+                            <button
+                                    class="btn user-modal"
+                                    type="button"
+                                    data-user-id="<?php echo $projectId; ?>"
+                                    data-select-id-to="#author"
+                                    data-select-name-to="#authorName">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </span>
+                    </div>
+                </div>
+                <?php echo $this->formElement($form->get("user")); ?>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4"><?php echo $this->formRow($form->get('registration')) ?></div>
+            <div class="col-md-4">
+                <?php if($this->registrationEvents): ?>
+                    <table class="table">
+                        <?php foreach ($this->registrationEvents as $idRed =>$reg): ?>
+                            <tr><td><?php echo $reg['name'] ?></td></tr>
+                            <tr>
+                                <td class="icheck-inline"><?php foreach ($reg['events'] as $e): ?>
+                                        <label for="">
+                                            <input
+                                                    type="checkbox"
+                                                    id="event_<?php echo $idRed ?>"
+                                                    class="icheck"
+                                                <?php echo $e['selected']?' checked ':'' ?>
+                                                    name="events[<?php echo $idRed ?>][<?php echo $e['id'] ?>]"><?php echo $e['name']; ?>
+                                        </label>
+                                    <?php endforeach; ?></td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </table>
+                <?php endif; ?>
+            </div>
+        </div>
+
         <div class="row">
             <div class="col-md-6"><?php echo $this->formRow($form->get('title')) ?></div>
             <div class="col-md-6"><?php echo $this->formRow($form->get('english_title')) ?></div>
@@ -160,8 +212,8 @@
         </div>
 
         <div class="row">
-
             <div class="col-md-6"><?php echo $this->formRow($form->get('locations')) ?></div>
+            <div class="col-md-6"><?php echo $this->formRow($form->get('estimated_value')) ?></div>
         </div>
 
         <div class="row">

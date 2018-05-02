@@ -1,6 +1,36 @@
 <div class="portlet-body form">
     <div class="form-body">
+
         <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <?php
+                    $projectUser = $this->project->getUser()?$this->project->getUser()->getName():"";
+                    $projectId = $this->project->getUser()?$this->project->getUser()->getId():"";
+                    ?>
+                    <label class="col-md-4 control-label">Usuário</label>
+                    <div class="col-md-6">
+                        <div class="input-group">
+                            <input readonly type="text" id="authorName" class="form-control" value="<?php echo $projectUser ?>">
+                            <span class="input-group-btn">
+                                <button
+                                        class="btn user-modal"
+                                        type="button"
+                                        data-user-id="<?php echo $projectId; ?>"
+                                        data-select-id-to="#author"
+                                        data-select-name-to="#authorName">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <?php echo $this->formElement($form->get("user")); ?>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12"><?php echo $this->formRow($form->get('registration')) ?></div>
             <div class="col-md-12"><?php echo $this->formRow($form->get('proposers_name')) ?></div>
             <div class="col-md-12"><?php echo $this->formRow($form->get('responsible')) ?></div>
             <div class="col-md-12"><?php echo $this->formRow($form->get('institution')) ?></div>

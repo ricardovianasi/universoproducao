@@ -16,8 +16,10 @@ use Application\Entity\Institution\Institution;
 use Application\Entity\Project\Options;
 use Application\Entity\Project\People;
 use Application\Entity\Project\Project;
+use Application\Entity\Registration\Registration;
 use Application\Entity\Registration\Status;
 use Application\Entity\State;
+use Application\Entity\User\User;
 use Doctrine\Common\Collections\ArrayCollection;
 
 class ProjectController extends AbstractAdminController
@@ -83,6 +85,25 @@ class ProjectController extends AbstractAdminController
         if($this->getRequest()->isPost()) {
             $form->setData($data);
             if($form->isValid()) {
+
+                //Author
+                $user = null;
+                if(!empty($data['user'])) {
+                    $user = $this
+                        ->getRepository(User::class)
+                        ->find($data['user']);
+                }
+                $project->setUser($user);
+                unset($data['user']);
+
+                $registration = null;
+                if(!empty($data['registration'])) {
+                    $registration = $this
+                        ->getRepository(Registration::class)
+                        ->find($data['registration']);
+                }
+                $project->setRegistration($registration);
+                unset($data['registration']);
 
                 //options
                 $options = new ArrayCollection();

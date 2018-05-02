@@ -12,8 +12,10 @@ use Admin\Form\EducationalProject\EducationalProjectForm;
 use Application\Entity\EducationalProject\Category;
 use Application\Entity\EducationalProject\EducationalProject;
 use Application\Entity\File\File;
+use Application\Entity\Registration\Registration;
 use Application\Entity\Registration\Status;
 use Application\Entity\State;
+use Application\Entity\User\User;
 use Doctrine\Common\Collections\ArrayCollection;
 
 class EducationalProjectController extends AbstractAdminController
@@ -75,6 +77,25 @@ class EducationalProjectController extends AbstractAdminController
         if($this->getRequest()->isPost()) {
             $form->setData($data);
             if($form->isValid()) {
+
+                //Author
+                $user = null;
+                if(!empty($data['user'])) {
+                    $user = $this
+                        ->getRepository(User::class)
+                        ->find($data['user']);
+                }
+                $project->setUser($user);
+                unset($data['user']);
+
+                $registration = null;
+                if(!empty($data['registration'])) {
+                    $registration = $this
+                        ->getRepository(Registration::class)
+                        ->find($data['registration']);
+                }
+                $project->setRegistration($registration);
+                unset($data['registration']);
 
                 if(!empty($data['category'])) {
                     $cat = $this->getRepository(Category::class)->find($data['category']);
