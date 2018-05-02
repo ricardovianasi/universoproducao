@@ -9,7 +9,6 @@
 namespace Admin\Form\Project;
 
 use Admin\Form\Instituition\InstituitionFieldset;
-use Admin\Form\MediaFieldset;
 use Application\Entity\File\File;
 use Application\Entity\Institution\Institution;
 use Application\Entity\Project\Options;
@@ -19,9 +18,9 @@ use Application\Entity\Registration\Type;
 use Application\Entity\State;
 use Application\Entity\User\User;
 use Application\Service\EntityManagerAwareInterface;
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Zend\Form\Form;
+use Zend\InputFilter\Factory as InputFilterFactory;
 
 class ProjectForm extends Form
     implements EntityManagerAwareInterface
