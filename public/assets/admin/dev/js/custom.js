@@ -2648,7 +2648,6 @@ function responsive_filemanager_callback(field_id) {
         },
         resizeModal: function() {
             var _that = this, newMargin = _that.$modal.height() / 2;
-            _that.$modal.css("margin-top", "-" + newMargin + "px");
         }
     };
     User.defaults = User.prototype.defaults;

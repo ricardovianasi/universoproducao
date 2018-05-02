@@ -27,7 +27,7 @@
                                 <div class="form-group">
                                     <label class="control-label col-md-3"><strong>Data de nascimento:</strong></label>
                                     <div class="col-md-9">
-                                        <p class="form-control-static"> <?php echo $this->user->getBirthDate()->format('d/m/Y'); ?> </p>
+                                        <p class="form-control-static"> <?php echo $this->user->getBirthDate()?$this->user->getBirthDate()->format('d/m/Y'):""; ?> </p>
                                     </div>
                                 </div>
                             </div>
@@ -97,16 +97,16 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <?php foreach ($this->users as $user): ?>
+                    <?php foreach ($this->users as $u): ?>
                         <tr>
-                            <td><?php echo $user->getIdentifier(); ?></td>
-                            <td><?php echo $user->getName() ?></td>
-                            <td><?php echo $user->getEmail(); ?></td>
+                            <td><?php echo $u->getIdentifier(); ?></td>
+                            <td><?php echo $u->getName() ?></td>
+                            <td><?php echo $u->getEmail(); ?></td>
                             <td>
                                 <a
                                     href="#"
-                                    data-id="<?php echo $user->getId(); ?>"
-                                    data-name="<?php echo $user->getName()  ?>"
+                                    data-id="<?php echo $u->getId(); ?>"
+                                    data-name="<?php echo $u->getName()  ?>"
                                     class="btn btn-sm btn-default user-modal-select">
                                     <i class="fa fa-edit"></i> Selecionar
                                 </a>
