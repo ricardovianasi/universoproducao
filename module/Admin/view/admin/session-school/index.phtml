@@ -33,14 +33,29 @@
 
                             //$events = $i->getRegistration()->getEvents();
 
-							$updateUrl = "#";
-							$removeUrl = "#"
+                            $updateUrl = $this->url('admin/default', [
+                                'controller' => 'session-school',
+                                'action' => 'update',
+                                'id' => $i->getId()
+                            ]);
+
+                            $removeUrl = $this->url('admin/default', [
+                                'controller' => 'session-school',
+                                'action'=>'delete',
+                                'id'=>$i->getId()
+                            ]);
 							?>
 							<tr>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
+                                <td></td>
+                                <td><?php echo $i->getName() ?></td>
+                                <td><?php echo $i->getEvent()->getShortName(); ?></td>
+								<td>
+                                    <a href="<?php echo  $updateUrl; ?>" class="btn btn-sm btn-default">
+                                        <i class="fa fa-edit"></i> Editar
+                                    </a>
+                                    <a href="<?php echo $removeUrl; ?>" class="btn btn-sm btn-default post-list-remove">
+                                        <i class="fa fa-trash-o"></i> Excluir
+                                    </a></td>
 							</tr>
 						<?php endforeach; ?>
 						</tbody>

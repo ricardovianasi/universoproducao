@@ -34,10 +34,10 @@ class SessionSchoolController extends AbstractAdminController
 
         $data = $searchForm->getData();
 
-        //$items = $this->search(Programing::class, $data);
+        $items = $this->search(SessionSchool::class, $data);
 
         $this->getViewModel()->setVariables([
-            'items' => [],
+            'items' => $items,
             'searchForm' => $searchForm
         ]);
 
