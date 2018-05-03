@@ -230,6 +230,26 @@ jQuery(document).ready(function() {
         });
     });
 
+    $('.trigger-form-reload').on('change', function(e) {
+        console.log('trigger-form-reload');
+        var form = $('.form-reload');
+
+        if(!form) {
+            return;
+        }
+            
+        var validate = form.validate();
+        validate.destroy();
+
+        form.append($('<input type="hidden" name="no-validate" value="no-validate">'));
+        form.submit();
+
+        App.blockUI({
+            cenrerY: true,
+            animate: true
+        });
+    });
+
     $('.movie-form #registration').on('change', function() {
         var form = $('.movie-form'),
             validate = form.validate();

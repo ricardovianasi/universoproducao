@@ -1,0 +1,35 @@
+<?php $session = $this->session; $registration = $this->registration; ?>
+
+<?php $urlSub = $this->url('meu-universo/session_school', [
+    'action' => 'inscricao',
+    'id' => $session->getId(),
+    'id_reg' => $registration->getHash()
+]); ?>
+
+<div class="portlet workshop">
+    <div class="portlet-title">
+        <div class="caption font-dark">
+            <h2 class="main-title">
+                <?php if($sessionName = $session->hasMeta('session_title')) {
+                    echo $sessionName->getValue();
+                } else {
+                    echo "Sessão Cine-escola";
+                } ?>
+            </h2>
+            <span class="caption-helper">Faixa etária: <?php echo $session->getAgeRange(); ?></span>
+        </div>
+
+        <div class="tools">
+            <a href="javascript:;" class="expand" data-original-title="" title=""> </a>
+        </div>
+    </div>
+    <div class="portlet-body form portlet-collapsed">
+        <p>
+            <strong>Faixa etária: </strong> <?php echo $session->getAgeRange(); ?>
+        </p>
+        <p>
+            <b>Número de vagas:</b> <?php echo $session->getAvailablePlaces(); ?>
+        </p>
+
+    </div>
+</div>

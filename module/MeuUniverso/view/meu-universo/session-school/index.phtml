@@ -1,0 +1,18 @@
+<div class="container">
+    <div class="col-md-12">
+        <p class="meuuniverso-brand meuuniverso-brand--center"><strong>Meu</strong>Universo | Sessões</p>
+    </div>
+    <div class="portlet light">
+        <div class="portlet-body">
+            <div class="panel-group accordion" id="workshop_list">
+                <?php foreach ($this->sessions as $session): ?>
+                <?php echo $this->partial('meu-universo/session-school/_session.phtml', [
+                        'session' => $session,
+                        'registration' => $this->registration,
+                        'show_register_link' => true
+                    ]); ?>
+                <?php endforeach; ?>
+            </div>
+        </div>
+    </div>
+</div>

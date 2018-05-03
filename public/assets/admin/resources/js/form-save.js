@@ -25,6 +25,8 @@
 					isValid = _that.$element.valid()
 				}
 
+				console.log(isValid);
+
 				if(isValid) {
 					App.blockUI({
 						cenrerY: true,
@@ -34,6 +36,9 @@
 					setTimeout(function() {
 						$(_that.$element).submit();
 					}, 1500);
+				} else {
+					App.unblockUI();
+					return;
 				}
 
 			});

@@ -4,6 +4,7 @@ namespace Application\Entity\Programing;
 use Application\Entity\Art\Art;
 use Application\Entity\Movie\Movie;
 use Application\Entity\Seminar\Debate;
+use Application\Entity\SessionSchool\SessionSchool;
 use Application\Entity\Workshop\Workshop;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Event\LifecycleEventArgs;
@@ -79,6 +80,12 @@ class Programing extends AbstractEntity
 
     /** @ORM\Column(name="`age_range`", type="string") */
 	private $ageRange;
+
+    /** @ORM\Column(name="`available_places`", type="string") */
+    private $availablePlaces;
+
+    /** @ORM\Column(name="`title`", type="text") */
+    private $title;
 
 	public function __construct()
     {
@@ -246,6 +253,10 @@ class Programing extends AbstractEntity
             ->select('q');
 
         switch ($this->type) {
+            case Type::SESSION_SCHOOL:
+                $queryBuilder
+                    ->from(SessionSchool::class, 'q');
+                break;
             case Type::WORKSHOP:
                 $queryBuilder
                     ->from(Workshop::class, 'q');
@@ -383,5 +394,37 @@ class Programing extends AbstractEntity
     public function setAgeRange($ageRange)
     {
         $this->ageRange = $ageRange;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAvailablePlaces()
+    {
+        return $this->availablePlaces;
+    }
+
+    /**
+     * @param mixed $availablePlaces
+     */
+    public function setAvailablePlaces($availablePlaces)
+    {
+        $this->availablePlaces = $availablePlaces;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    /**
+     * @param mixed $title
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
     }
 }

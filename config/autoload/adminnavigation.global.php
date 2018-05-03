@@ -94,6 +94,27 @@ return [
 
             ],
             [
+                'label' => 'Sessão Cine-escola',
+                'uri' => '#',
+                'icon' => 'icon-book-open',
+                'pages' => [
+                    [
+                        'label' => 'Sessões',
+                        'route' => 'admin/default',
+                        'controller' => 'session-school',
+                        'icon' => 'icon-doc',
+                    ],
+                    [
+                        'label' => 'Inscrições',
+                        'route' => 'admin/default',
+                        'controller' => 'session-school-subscriptions',
+                        'icon' => 'icon-doc',
+
+                    ],
+                ]
+
+            ],
+            [
                 'label' => 'Oficinas',
                 'uri' => '#',
                 'icon' => 'icon-book-open',

@@ -135,6 +135,19 @@ return array(
                             ),
                         ),
                     ),
+                    'session_school' => array(
+                        'type'    => 'Segment',
+                        'options' => array(
+                            'route'    => '/sessao-cine-escola/:id_reg/[:action[/:id]]',
+                            'constraints' => array(
+                                'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
+                            ),
+                            'defaults' => array(
+                                'controller' => Controller\SessionSchoolController::class,
+                                'action' => 'index',
+                            ),
+                        ),
+                    ),
                     'project' => array(
                         'type'    => 'Segment',
                         'options' => array(

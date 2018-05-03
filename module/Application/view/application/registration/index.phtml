@@ -54,6 +54,9 @@
                                 case \Application\Entity\Registration\Type::EDUCATIONAL_MOVIE:
                                     $url = $this->url('meu-universo/educational_movie', ['id_reg'=>$reg->getHash(), 'action'=>'novo']);
                                     break;
+                                case \Application\Entity\Registration\Type::SESSION_SCHOOL:
+                                    $url = $this->url('meu-universo/session_school', ['id_reg'=>$reg->getHash()]);
+                                    break;
                                 default:
                                     $url = "#";
 

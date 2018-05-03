@@ -36,26 +36,35 @@
 					date = _that.$element.find('input[name="date"]'),
 					start = _that.$element.find('input[name="start_time"]')
 					end = _that.$element.find('input[name="end_time"]')
-					place = _that.$element.find('select[name="place"]');
+					place = _that.$element.find('select[name="place"]')
+					availablePlaces = _that.$element.find('input[name="available_places"]');
 
-				_that.$element.find('tbody > tr:last').before($('<tr data-row="'+id+'"></tr>')
-					.append('<td>'+date.val()+'</td>')
-					.append('<td>'+start.val()+'</td>')
-					.append('<td>'+end.val()+'</td>')
-					.append('<td>'+place.find('option:selected').text()+'</td>')
-					.append($('<td></td>')
-						.append('<a href="#" class="btn btn-sm btn-default table-programing-remove" data-remove="'+id+'"><i class="fa fa-close"></i></a>')
-						.append('<input type="hidden" name="programing['+id+'][date]" value="'+date.val()+'">')
-						.append('<input type="hidden" name="programing['+id+'][start_time]" value="'+start.val()+'">')
-						.append('<input type="hidden" name="programing['+id+'][end_time]" value="'+end.val()+'">')
-						.append('<input type="hidden" name="programing['+id+'][place]" value="'+place.val()+'">')
-					)
-				);
+
+				var tr = $('<tr data-row="'+id+'"></tr>');
+				tr.append('<td>'+date.val()+'</td>');
+				tr.append('<td>'+start.val()+'</td>');
+				tr.append('<td>'+end.val()+'</td>');
+				if(availablePlaces){
+					tr.append('<td>'+availablePlaces.val()+'</td>');
+				}
+				tr.append('<td>'+place.find('option:selected').text()+'</td>');
+				tr.append($('<td></td>')
+					.append('<a href="#" class="btn btn-sm btn-default table-programing-remove" data-remove="'+id+'"><i class="fa fa-close"></i></a>')
+					.append('<input type="hidden" name="programing['+id+'][date]" value="'+date.val()+'">')
+					.append('<input type="hidden" name="programing['+id+'][start_time]" value="'+start.val()+'">')
+					.append('<input type="hidden" name="programing['+id+'][end_time]" value="'+end.val()+'">')
+					.append('<input type="hidden" name="programing['+id+'][place]" value="'+place.val()+'">')
+					.append('<input type="hidden" name="programing['+id+'][available_places]" value="'+(availablePlaces?availablePlaces.val():'')+'">')				);
+
+				_that.$element.find('tbody > tr:last').before(tr);
 
 				date.val('').attr('style', '');
 				end.val('').attr('style', '')
 				start.val('').attr('style', '');
 				place.val('').attr('style', '');
+				if(availablePlaces){
+					availablePlaces.val('').attr('style', '');
+				}
 			});
 
 			$(document).on('click', '.table-programing-remove', function(e) {

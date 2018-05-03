@@ -15,7 +15,7 @@ use Application\Entity\Programing\Type;
 use Zend\InputFilter\Factory as InputFilterFactory;
 
 
-class MovieProgramingForm extends  ProgramingForm
+class MovieProgramingForm extends ProgramingForm
 {
     protected $movie;
 
@@ -153,6 +153,21 @@ class MovieProgramingForm extends  ProgramingForm
             ],
             'attributes' => [
                 'placeholder' => 'Faixa etária'
+            ]
+        ]);
+
+        $this->add([
+            'type' => 'number',
+            'name' => 'available_places',
+            'options' => [
+                'label' => 'Vagas disponíveis',
+                'twb-layout' => 'horizontal',
+                'column-size' => 'md-4',
+                'label_attributes' => [
+                    'class' => 'col-md-4'
+                ]
+            ],
+            'attributes' => [
             ]
         ]);
 

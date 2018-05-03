@@ -66,6 +66,19 @@ class ProgramingForm extends Form
         ]);
 
         $this->add([
+            'type' => 'number',
+            'name' => 'available_places',
+            'options' => [
+                'label' => 'Vagas',
+                'twb-layout' => 'horizontal',
+                'column-size' => 'md-4',
+                'label_attributes' => [
+                    'class' => 'col-md-4'
+                ]
+            ],
+        ]);
+
+        $this->add([
             'name' => 'date',
             'type' => DatePicker::class,
             'options' => [
@@ -78,7 +91,7 @@ class ProgramingForm extends Form
                 ]
             ],
             'attributes' => [
-                'required' => 'required',
+//                'required' => 'required',
                 'data-required' => 'required',
                 'placeholder' => 'Data',
                 'data-inputmask' => "'alias': 'date'",
@@ -96,7 +109,7 @@ class ProgramingForm extends Form
                 ]
             ],
             'attributes' => [
-                'required' => 'required',
+//                'required' => 'required',
                 'data-required' => 'required',
                 'data-inputmask' => "'alias': 'hh:mm:ss'",
                 'placeholder' => 'Hora início'
@@ -153,7 +166,7 @@ class ProgramingForm extends Form
             'attributes' => [
                 'data-label' => 'Evento',
                 'class' => 'event-populate',
-                'required' => 'required',
+//                'required' => 'required',
             ]
 
         ]);

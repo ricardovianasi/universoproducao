@@ -997,6 +997,7 @@ jQuery(document).ready(function() {
                 if (_that.$element.hasClass("enable-validators") || _that.config.enableValidators) {
                     isValid = _that.$element.valid();
                 }
+                console.log(isValid);
                 if (isValid) {
                     App.blockUI({
                         cenrerY: true,
@@ -1005,6 +1006,9 @@ jQuery(document).ready(function() {
                     setTimeout(function() {
                         $(_that.$element).submit();
                     }, 1500);
+                } else {
+                    App.unblockUI();
+                    return;
                 }
             });
             _that.$element.find(_that.config.cancelTrigguer).on("click", function(e) {
@@ -1466,6 +1470,21 @@ jQuery(document).ready(function() {
     $(".registration-form select[name=type]").on("change", function(e) {
         var selected = $(this).find("option:selected").val();
         var form = $("#registration-form");
+        form.append($('<input type="hidden" name="no-validate" value="no-validate">'));
+        form.submit();
+        App.blockUI({
+            cenrerY: true,
+            animate: true
+        });
+    });
+    $(".trigger-form-reload").on("change", function(e) {
+        console.log("trigger-form-reload");
+        var form = $(".form-reload");
+        if (!form) {
+            return;
+        }
+        var validate = form.validate();
+        validate.destroy();
         form.append($('<input type="hidden" name="no-validate" value="no-validate">'));
         form.submit();
         App.blockUI({
@@ -2511,11 +2530,24 @@ function responsive_filemanager_callback(field_id) {
                 var id = Math.floor(Date.now() / 1e3), date = _that.$element.find('input[name="date"]'), start = _that.$element.find('input[name="start_time"]');
                 end = _that.$element.find('input[name="end_time"]');
                 place = _that.$element.find('select[name="place"]');
-                _that.$element.find("tbody > tr:last").before($('<tr data-row="' + id + '"></tr>').append("<td>" + date.val() + "</td>").append("<td>" + start.val() + "</td>").append("<td>" + end.val() + "</td>").append("<td>" + place.find("option:selected").text() + "</td>").append($("<td></td>").append('<a href="#" class="btn btn-sm btn-default table-programing-remove" data-remove="' + id + '"><i class="fa fa-close"></i></a>').append('<input type="hidden" name="programing[' + id + '][date]" value="' + date.val() + '">').append('<input type="hidden" name="programing[' + id + '][start_time]" value="' + start.val() + '">').append('<input type="hidden" name="programing[' + id + '][end_time]" value="' + end.val() + '">').append('<input type="hidden" name="programing[' + id + '][place]" value="' + place.val() + '">')));
+                availablePlaces = _that.$element.find('input[name="available_places"]');
+                var tr = $('<tr data-row="' + id + '"></tr>');
+                tr.append("<td>" + date.val() + "</td>");
+                tr.append("<td>" + start.val() + "</td>");
+                tr.append("<td>" + end.val() + "</td>");
+                if (availablePlaces) {
+                    tr.append("<td>" + availablePlaces.val() + "</td>");
+                }
+                tr.append("<td>" + place.find("option:selected").text() + "</td>");
+                tr.append($("<td></td>").append('<a href="#" class="btn btn-sm btn-default table-programing-remove" data-remove="' + id + '"><i class="fa fa-close"></i></a>').append('<input type="hidden" name="programing[' + id + '][date]" value="' + date.val() + '">').append('<input type="hidden" name="programing[' + id + '][start_time]" value="' + start.val() + '">').append('<input type="hidden" name="programing[' + id + '][end_time]" value="' + end.val() + '">').append('<input type="hidden" name="programing[' + id + '][place]" value="' + place.val() + '">').append('<input type="hidden" name="programing[' + id + '][available_places]" value="' + (availablePlaces ? availablePlaces.val() : "") + '">'));
+                _that.$element.find("tbody > tr:last").before(tr);
                 date.val("").attr("style", "");
                 end.val("").attr("style", "");
                 start.val("").attr("style", "");
                 place.val("").attr("style", "");
+                if (availablePlaces) {
+                    availablePlaces.val("").attr("style", "");
+                }
             });
             $(document).on("click", ".table-programing-remove", function(e) {
                 e.preventDefault();

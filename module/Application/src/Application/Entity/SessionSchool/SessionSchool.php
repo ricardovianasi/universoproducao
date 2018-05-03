@@ -1,30 +1,32 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: ricardo
+ * Date: 03/05/2018
+ * Time: 13:41
+ */
+
 namespace Application\Entity\SessionSchool;
 
-use Admin\View\Helper\RegistrationStatus;
-use Application\Entity\Event\Event;
-use Application\Entity\Registration\Status;
+use Application\Entity\Programing\Programing;
+use Application\Entity\Registration\Type;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\ORM\Event\LifecycleEventArgs;
 use Doctrine\ORM\Mapping as ORM;
 use Util\Entity\AbstractEntity;
 
 /**
  * @ORM\Table(name="session_school")
  * @ORM\Entity(repositoryClass="Application\Repository\SessionSchool\SessionSchool")
+ * @ORM\HasLifecycleCallbacks()
  */
-class WorkshopSubscription extends AbstractEntity
+class SessionSchool extends AbstractEntity
 {
-	/**
-	 * @ORM\Id @ORM\Column(name="id", type="integer", nullable=false)
-	 * @ORM\GeneratedValue(strategy="IDENTITY")
-	 */
-	private $id;
-
     /**
-     * @ORM\ManyToOne(targetEntity="Application\Entity\User\User")
-     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     * @ORM\Id @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-	private $user;
+    private $id;
 
     /**
      * @ORM\OneToOne(targetEntity="Application\Entity\Event\Event")
@@ -38,49 +40,28 @@ class WorkshopSubscription extends AbstractEntity
      */
     private $registration;
 
-    /**
-     * @ORM\OneToOne(targetEntity="Application\Entity\Programing\Programing")
-     * @ORM\JoinColumn(name="session_id", referencedColumnName="id")
-     */
-    private $session;
+    /** @ORM\Column(name="name", type="string", nullable=true) */
+    private $name;
+
+    /** @ORM\Column(name="age_range", type="string", nullable=true) */
+    private $ageRange;
 
     /**
-     * @ORM\OneToOne(targetEntity="Application\Entity\Institution\Institution", cascade={"ALL"})
-     * @ORM\JoinColumn(name="instituition_id", referencedColumnName="id")
+     * @ORM\ManyToMany(targetEntity="Application\Entity\Movie\Movie")
+     * @ORM\JoinTable(name="session_school_has_movies",
+     *   joinColumns={@ORM\JoinColumn(name="session_school_id", referencedColumnName="id")},
+     *   inverseJoinColumns={@ORM\JoinColumn(name="movie_id", referencedColumnName="id")}
+     * )
      */
-    private $instituition;
+    private $movies;
 
-    /** @ORM\Column(name="instituition_direction", type="string", nullable=true) */
-    private $instituitionDirection;
+    private $programing;
 
-    /** @ORM\Column(name="instituition_direction_email", type="string", nullable=true) */
-    private $instituitionDirectionEmail;
-
-    /** @ORM\Column(name="instituition_direction_phone", type="string", nullable=true) */
-    private $instituition_direction_phone;
-
-    /** @ORM\Column(name="responsible", type="string", nullable=true) */
-    private $responsible;
-
-    /** @ORM\Column(name="responsible_office", type="string", nullable=true) */
-    private $responsibleOffice;
-
-    /** @ORM\Column(name="responsible_phone", type="string", nullable=true) */
-    private $responsiblePhone;
-
-    /** @ORM\Column(name="responsible_mobile_phone", type="string", nullable=true) */
-    private $responsibleMobilePhone;
-
-    /** @ORM\Column(name="participants", type="integer", nullable=true) */
-    private $participants;
-
-    private $seriesAge;
-
-    /** @ORM\Column(name="created_at", type="datetime", nullable=true) */
-    private $createdAt;
-
-    /** @ORM\Column(name="updated_at", type="datetime", nullable=true) */
-    private $updatedAt;
+    public function __construct()
+    {
+        $this->movies = new ArrayCollection();
+        $this->programing = new ArrayCollection();
+    }
 
     /**
      * @return mixed
@@ -96,22 +77,6 @@ class WorkshopSubscription extends AbstractEntity
     public function setId($id)
     {
         $this->id = $id;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getUser()
-    {
-        return $this->user;
-    }
-
-    /**
-     * @param mixed $user
-     */
-    public function setUser($user)
-    {
-        $this->user = $user;
     }
 
     /**
@@ -149,208 +114,71 @@ class WorkshopSubscription extends AbstractEntity
     /**
      * @return mixed
      */
-    public function getSession()
+    public function getName()
     {
-        return $this->session;
+        return $this->name;
     }
 
     /**
-     * @param mixed $session
+     * @param mixed $name
      */
-    public function setSession($session)
+    public function setName($name)
     {
-        $this->session = $session;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getInstituition()
-    {
-        return $this->instituition;
-    }
-
-    /**
-     * @param mixed $instituition
-     */
-    public function setInstituition($instituition)
-    {
-        $this->instituition = $instituition;
+        $this->name = $name;
     }
 
     /**
      * @return mixed
      */
-    public function getInstituitionDirection()
+    public function getAgeRange()
     {
-        return $this->instituitionDirection;
+        return $this->ageRange;
     }
 
     /**
-     * @param mixed $instituitionDirection
+     * @param mixed $ageRange
      */
-    public function setInstituitionDirection($instituitionDirection)
+    public function setAgeRange($ageRange)
     {
-        $this->instituitionDirection = $instituitionDirection;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getInstituitionDirectionEmail()
-    {
-        return $this->instituitionDirectionEmail;
-    }
-
-    /**
-     * @param mixed $instituitionDirectionEmail
-     */
-    public function setInstituitionDirectionEmail($instituitionDirectionEmail)
-    {
-        $this->instituitionDirectionEmail = $instituitionDirectionEmail;
+        $this->ageRange = $ageRange;
     }
 
     /**
      * @return mixed
      */
-    public function getInstituitionDirectionPhone()
+    public function getMovies()
     {
-        return $this->instituition_direction_phone;
+        return $this->movies;
     }
 
     /**
-     * @param mixed $instituition_direction_phone
+     * @param mixed $movies
      */
-    public function setInstituitionDirectionPhone($instituition_direction_phone)
+    public function setMovies($movies)
     {
-        $this->instituition_direction_phone = $instituition_direction_phone;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getResponsible()
-    {
-        return $this->responsible;
-    }
-
-    /**
-     * @param mixed $responsible
-     */
-    public function setResponsible($responsible)
-    {
-        $this->responsible = $responsible;
+        $this->movies = $movies;
     }
 
     /**
      * @return mixed
      */
-    public function getResponsibleOffice()
+    public function getPrograming()
     {
-        return $this->responsibleOffice;
+        return $this->programing;
     }
 
     /**
-     * @param mixed $responsibleOffice
+     * @ORM\PostLoad
+     * @ORM\PostPersist
      */
-    public function setResponsibleOffice($responsibleOffice)
+    public function setPrograming(LifecycleEventArgs $event)
     {
-        $this->responsibleOffice = $responsibleOffice;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getResponsiblePhone()
-    {
-        return $this->responsiblePhone;
-    }
-
-    /**
-     * @param mixed $responsiblePhone
-     */
-    public function setResponsiblePhone($responsiblePhone)
-    {
-        $this->responsiblePhone = $responsiblePhone;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getResponsibleMobilePhone()
-    {
-        return $this->responsibleMobilePhone;
-    }
-
-    /**
-     * @param mixed $responsibleMobilePhone
-     */
-    public function setResponsibleMobilePhone($responsibleMobilePhone)
-    {
-        $this->responsibleMobilePhone = $responsibleMobilePhone;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getParticipants()
-    {
-        return $this->participants;
-    }
-
-    /**
-     * @param mixed $participants
-     */
-    public function setParticipants($participants)
-    {
-        $this->participants = $participants;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getSeriesAge()
-    {
-        return $this->seriesAge;
-    }
-
-    /**
-     * @param mixed $seriesAge
-     */
-    public function setSeriesAge($seriesAge)
-    {
-        $this->seriesAge = $seriesAge;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getCreatedAt()
-    {
-        return $this->createdAt;
-    }
-
-    /**
-     * @param mixed $createdAt
-     */
-    public function setCreatedAt($createdAt)
-    {
-        $this->createdAt = $createdAt;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getUpdatedAt()
-    {
-        return $this->updatedAt;
-    }
-
-    /**
-     * @param mixed $updatedAt
-     */
-    public function setUpdatedAt($updatedAt)
-    {
-        $this->updatedAt = $updatedAt;
+        $this->programing = $event
+            ->getEntityManager()
+            ->getRepository(Programing::class)
+            ->findBy([
+                'type' => Type::SESSION_SCHOOL,
+                'objectId' => $this->id
+            ]);
     }
 }

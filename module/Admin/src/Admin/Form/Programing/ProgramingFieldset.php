@@ -18,6 +18,11 @@ class ProgramingFieldset extends Fieldset
         parent::__construct($name, $options);
 
         $this->add([
+            'name' => 'id',
+            'type' => 'hidden'
+        ]);
+
+        $this->add([
             'name' => 'date',
             'type' => DatePicker::class,
             'options' => [
@@ -85,6 +90,19 @@ class ProgramingFieldset extends Fieldset
             ],
             'attributes' => [
             ]
+        ]);
+
+        $this->add([
+            'type' => 'number',
+            'name' => 'available_places',
+            'options' => [
+                'label' => 'Vagas',
+                'twb-layout' => 'horizontal',
+                'column-size' => 'md-4',
+                'label_attributes' => [
+                    'class' => 'col-md-4'
+                ]
+            ],
         ]);
     }
 

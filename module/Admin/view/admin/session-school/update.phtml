@@ -1,0 +1,38 @@
+<div class="row post news">
+	<div class="col-md-12">
+
+		<div class="portlet light portlet-fit bordered">
+			<div class="portlet-title">
+				<div class="caption">
+					<?php if($this->session->getId()): ?>
+					<i class="fa fa-edit"></i>
+					Editar sessão
+					<?php else: ?>
+					<i class="fa fa-file-o"></i>
+					Cadastrar sessão
+					<?php endif; ?>
+				</div>
+				<div class="actions">
+					<a href="<?php echo $this->url('admin/default', ['controller'=>'session-school']); ?>"
+					   class="btn btn-default">
+						<i class="icon-action-undo"></i>
+						<span class="hidden-xs"> Voltar </span>
+					</a>
+                    <a href="<?php echo $this->url('admin/default', ['controller'=>'session-school', 'action'=>'create']); ?>"
+                       class="btn blue btn-lg">
+                        <i class="fa fa-plus"></i>
+                        <span class="hidden-xs"> Nova sessão  </span>
+                    </a>
+				</div>
+			</div>
+			<div class="portlet-body">
+                <?php echo $this->partial('admin/session-school/_form.phtml', [
+                    'form' => $this->form,
+                    'session'=>$this->session,
+                    'programingForm' => $this->programingForm,
+                ]); ?>
+			</div>
+		</div>
+
+	</div>
+</div>
