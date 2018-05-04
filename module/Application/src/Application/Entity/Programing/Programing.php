@@ -2,6 +2,7 @@
 namespace Application\Entity\Programing;
 
 use Application\Entity\Art\Art;
+use Application\Entity\Event\Place;
 use Application\Entity\Movie\Movie;
 use Application\Entity\Seminar\Debate;
 use Application\Entity\SessionSchool\SessionSchool;
@@ -126,7 +127,7 @@ class Programing extends AbstractEntity
     }
 
     /**
-     * @return mixed
+     * @return Place
      */
     public function getPlace()
     {

@@ -17,6 +17,7 @@ use Application\Entity\Programing\Programing;
 use Application\Entity\Programing\Type;
 use Application\Entity\Registration\Registration;
 use Application\Entity\SessionSchool\SessionSchool;
+use Application\Entity\SessionSchool\SessionSchoolMovies;
 use Doctrine\Common\Collections\ArrayCollection;
 
 class SessionSchoolController extends AbstractAdminController
@@ -72,6 +73,8 @@ class SessionSchoolController extends AbstractAdminController
             $reg = $this
                 ->getRepository(Registration::class)
                 ->find($this->params()->fromPost('registration'));
+        } else {
+            $reg = $session->getRegistration();
         }
 
         $form = new SessionSchoolForm($this->getEntityManager(), $reg);
@@ -102,27 +105,35 @@ class SessionSchoolController extends AbstractAdminController
                         $session->setTitle(null);
                     }
 
-                    $movies = new ArrayCollection();
+                    foreach ($session->getMovies() as $m) {
+                        $this->getEntityManager()->remove($m);
+                    }
+                    $session->getMovies()->clear();
                     if(!empty($data['movies'])) {
-                        foreach ($data['movies'] as $mId) {
-                            $movie = $this->getRepository(Movie::class)->find($mId);
-                            $movies->add($movie);
+                        $moviesId = json_decode($data['movies'], true);
+                        $count = 1;
+                        foreach ($moviesId as $mId) {
+                            $sessionMovie = new SessionSchoolMovies();
+                            $movie = $this->getRepository(Movie::class)->find($mId['id']);
+                            $sessionMovie->setMovie($movie);
+                            $sessionMovie->setSession($session);
+                            $sessionMovie->setOrder($count++);
+
+                            $session->getMovies()->add($sessionMovie);
                         }
                     }
-                    $session->setMovies($movies);
 
                     $this->getEntityManager()->persist($session);
                     $this->getEntityManager()->flush();
 
-
                     //programação
                     $oldProg = [];
-                    foreach ($session->getPrograming() as $c) {
+                    foreach ($session->getProgramming() as $c) {
                         $oldProg[$c->getId()] = $c;
                     }
                     $programing = [];
-                    if(!empty($data['programing'])) {
-                        $programing = $data['programing'];
+                    if(!empty($data['programming'])) {
+                        $programing = $data['programming'];
                     }
                     foreach ($programing as $prog) {
                         $sessProg = null;

@@ -84,6 +84,8 @@ jQuery(document).ready(function() {
 
     $('.movie-session').movieSession();
 
+    $('.nestable-serialize').nestableSerialize();
+
     $('.table-programing').tablePrograming();
 
     $('.table-order').tableOrder();

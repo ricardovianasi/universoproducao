@@ -47,20 +47,16 @@ class SessionSchool extends AbstractEntity
     private $ageRange;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Application\Entity\Movie\Movie")
-     * @ORM\JoinTable(name="session_school_has_movies",
-     *   joinColumns={@ORM\JoinColumn(name="session_school_id", referencedColumnName="id")},
-     *   inverseJoinColumns={@ORM\JoinColumn(name="movie_id", referencedColumnName="id")}
-     * )
+     * @ORM\OneToMany(targetEntity="SessionSchoolMovies", mappedBy="session", cascade={"ALL"})
      */
     private $movies;
 
-    private $programing;
+    private $programming;
 
     public function __construct()
     {
         $this->movies = new ArrayCollection();
-        $this->programing = new ArrayCollection();
+        $this->programming = new ArrayCollection();
     }
 
     /**
@@ -144,7 +140,7 @@ class SessionSchool extends AbstractEntity
     }
 
     /**
-     * @return mixed
+     * @return ArrayCollection
      */
     public function getMovies()
     {
@@ -162,18 +158,18 @@ class SessionSchool extends AbstractEntity
     /**
      * @return mixed
      */
-    public function getPrograming()
+    public function getProgramming()
     {
-        return $this->programing;
+        return $this->programming;
     }
 
     /**
      * @ORM\PostLoad
      * @ORM\PostPersist
      */
-    public function setPrograming(LifecycleEventArgs $event)
+    public function setProgramming(LifecycleEventArgs $event)
     {
-        $this->programing = $event
+        $this->programming = $event
             ->getEntityManager()
             ->getRepository(Programing::class)
             ->findBy([

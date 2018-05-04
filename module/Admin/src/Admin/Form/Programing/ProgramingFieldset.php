@@ -8,14 +8,24 @@
 
 namespace Admin\Form\Programing;
 
+use Application\Entity\Event\Event;
+use Application\Entity\Event\EventType;
+use Application\Entity\Event\Place;
 use TwbBundle\Form\Element\DatePicker;
 use Zend\Form\Fieldset;
 
 class ProgramingFieldset extends Fieldset
 {
-    public function __construct($name = null, array $options = [])
+    private $entityManager;
+    private $event;
+
+    public function __construct($name = null, array $options = [], $entityManager = null)
     {
         parent::__construct($name, $options);
+
+        if($entityManager) {
+            $this->entityManager = $entityManager;
+        }
 
         $this->add([
             'name' => 'id',
@@ -28,14 +38,10 @@ class ProgramingFieldset extends Fieldset
             'options' => [
                 'label' => 'Data',
                 'placeholder' => 'Data',
-                'twb-layout' => 'horizontal',
-                'column-size' => 'md-4',
-                'label_attributes' => [
-                    'class' => 'col-md-4'
-                ]
             ],
             'attributes' => [
                 'required' => 'required',
+                'class' => 'programming_date',
                 'placeholder' => 'Data',
                 'data-inputmask' => "'alias': 'date'",
             ]
@@ -45,14 +51,10 @@ class ProgramingFieldset extends Fieldset
             'name' => 'start_time',
             'options' => [
                 'label' => 'Hora de início',
-                'twb-layout' => 'horizontal',
-                'column-size' => 'md-4',
-                'label_attributes' => [
-                    'class' => 'col-md-4'
-                ]
             ],
             'attributes' => [
                 'required' => 'required',
+                'class' => 'programming_start_time',
                 'data-inputmask' => "'alias': 'hh:mm:ss'",
                 'placeholder' => 'Hora início'
             ],
@@ -62,14 +64,8 @@ class ProgramingFieldset extends Fieldset
             'name' => 'end_time',
             'options' => [
                 'label' => 'Hora de término',
-                'twb-layout' => 'horizontal',
-                'column-size' => 'md-4',
-                'label_attributes' => [
-                    'class' => 'col-md-4'
-                ]
             ],
             'attributes' => [
-                'required' => 'required',
                 'data-inputmask' => "'alias': 'hh:mm:ss'",
                 'placeholder' => 'Hora término'
             ],
@@ -81,12 +77,7 @@ class ProgramingFieldset extends Fieldset
             'options' => [
                 'label' => 'Local',
                 'empty_option' => 'Selecione',
-                'value_options' => [],
-                'twb-layout' => 'horizontal',
-                'column-size' => 'md-4',
-                'label_attributes' => [
-                    'class' => 'col-md-4'
-                ]
+                'value_options' => $this->populatePlace(),
             ],
             'attributes' => [
             ]
@@ -97,13 +88,90 @@ class ProgramingFieldset extends Fieldset
             'name' => 'available_places',
             'options' => [
                 'label' => 'Vagas',
-                'twb-layout' => 'horizontal',
-                'column-size' => 'md-4',
-                'label_attributes' => [
-                    'class' => 'col-md-4'
-                ]
             ],
         ]);
     }
 
+    /**
+     * @return mixed
+     */
+    public function getEntityManager()
+    {
+        return $this->entityManager;
+    }
+
+    /**
+     * @param mixed $entityManager
+     */
+    public function setEntityManager($entityManager)
+    {
+        $this->entityManager = $entityManager;
+    }
+
+    public function populatePlace()
+    {
+        $places = [];
+        if($this->getEvent()) {
+            foreach ($this->getEvent()->getPlaces() as $p) {
+                $places[$p->getId()] = $p->getName();
+            }
+        } elseif($this->getEntityManager()) {
+            $allPlaces = $this
+                ->getEntityManager()
+                ->getRepository(Place::class)
+                ->findBy([], ['name'=>'ASC']);
+
+            foreach ($allPlaces as $p) {
+                if(!key_exists($p->getEventType(), $places)) {
+                    $places[$p->getEventType()] = [
+                        'label' => EventType::get($p->getEventType()),
+                        'options' => []
+                    ];
+                }
+                $places[$p->getEventType()]['options'][$p->getId()] = $p->getName();
+            }
+        }
+
+        return $places;
+    }
+
+    public function populateEvents()
+    {
+        $options = [];
+
+        if($this->getEntityManager()) {
+            $events = $this
+                ->getEntityManager()
+                ->getRepository(Event::class)
+                ->findBy([], ['startDate'=>'DESC']);
+
+            foreach ($events as $p) {
+                if(!key_exists($p->getType(), $options)) {
+                    $options[$p->getType()] = [
+                        'label' => EventType::get($p->getType()),
+                        'options' => []
+                    ];
+                }
+                $options[$p->getType()]['options'][$p->getId()] = $p->getShortName();
+            }
+        }
+
+        return $options;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getEvent()
+    {
+        return $this->event;
+    }
+
+    /**
+     * @param mixed $event
+     */
+    public function setEvent($event)
+    {
+        $this->event = $event;
+    }
 }
