@@ -79,7 +79,9 @@
                         <div class="col-md-3 programming-portlet">
                             <div class="portlet light bordered">
                                 <div class="portlet-title">
-                                    <div class="caption"></div>
+                                    <div class="caption">
+                                        <?php echo $prog->get('date')->getValue() . ' - ' . $prog->get('start_time')->getValue(); ?>
+                                    </div>
                                     <div class="tools">
                                         <button type="button" class="btn btn-circle btn-sm red portlet-remove">Remover</button>
                                     </div>
