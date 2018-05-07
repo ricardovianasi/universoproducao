@@ -100,6 +100,12 @@ class SessionSchoolController extends AbstractAdminController
                         $session->setAgeRange(null);
                     }
 
+                    if(!empty($data['order'])) {
+                        $session->setOrder($data['order']);
+                    } else {
+                        $session->setOrder(null);
+                    }
+
                     if(!empty($data['name'])) {
                         $session->setName($data['name']);
                     } else {

@@ -59,7 +59,7 @@ class SessionSchoolController extends AbstractMeuUniversoRegisterController
 
         $sessions = $this->getRepository(SessionSchool::class)->findBy([
             'registration' => $reg->getId(),
-        ], ['ageRange'=>'ASC']);
+        ], ['order'=>'ASC']);
 
         $sessionSchoolRepository = $this->getRepository(SessionSchool::class);
         return [

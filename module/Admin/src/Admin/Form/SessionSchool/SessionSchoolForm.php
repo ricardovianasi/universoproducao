@@ -74,6 +74,14 @@ class SessionSchoolForm extends Form
         ]);
 
         $this->add([
+            'type' => 'number',
+            'name' => 'order',
+            'options' => [
+                'label' => 'Posição',
+            ],
+        ]);
+
+        $this->add([
             'name' => 'movie',
             'type' => 'select',
             'options' => [

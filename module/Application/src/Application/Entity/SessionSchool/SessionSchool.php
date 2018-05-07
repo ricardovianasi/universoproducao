@@ -46,6 +46,9 @@ class SessionSchool extends AbstractEntity
     /** @ORM\Column(name="age_range", type="string", nullable=true) */
     private $ageRange;
 
+    /** @ORM\Column(name="`order`", type="string", nullable=true) */
+    private $order;
+
     /**
      * @ORM\OneToMany(targetEntity="SessionSchoolMovies", mappedBy="session", cascade={"ALL"})
      */
@@ -161,6 +164,22 @@ class SessionSchool extends AbstractEntity
     public function getProgramming()
     {
         return $this->programming;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getOrder()
+    {
+        return $this->order;
+    }
+
+    /**
+     * @param mixed $order
+     */
+    public function setOrder($order)
+    {
+        $this->order = $order;
     }
 
     /**

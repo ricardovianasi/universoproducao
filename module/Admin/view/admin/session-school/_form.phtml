@@ -18,6 +18,10 @@
             </div>
 
             <div class="row">
+                <div class="col-md-4"><?php echo $this->formRow($form->get('order')); ?></div>
+            </div>
+
+            <div class="row">
                 <div class="col-md-4 nestable-serialize">
                     <?php echo $this->formElement($form->get('movies')); ?>
                     <div class="form-group">
