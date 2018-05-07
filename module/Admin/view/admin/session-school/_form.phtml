@@ -39,7 +39,7 @@
                         <div class="dd">
                             <ol class="dd-list">
                                 <?php foreach ($this->session->getMovies() as $m): ?>
-                                    <li class="dd-item" data-id="<?php echo $m->getId(); ?>">
+                                    <li class="dd-item" data-id="<?php echo $m->getMovie()->getId(); ?>">
                                         <div class="item-controls">
                                             <a class="nestable-serialize-remove" role="button">excluir</a>
                                         </div>
