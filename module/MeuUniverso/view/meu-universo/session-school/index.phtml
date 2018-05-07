@@ -6,11 +6,52 @@
         <div class="portlet-body">
             <div class="panel-group accordion" id="workshop_list">
                 <?php foreach ($this->sessions as $session): ?>
-                <?php echo $this->partial('meu-universo/session-school/_session.phtml', [
-                        'session' => $session,
-                        'registration' => $this->registration,
-                        'show_register_link' => true
-                    ]); ?>
+                    <div class="portlet workshop">
+                        <div class="portlet-title">
+                            <div class="caption font-dark">
+                                <h2 class="main-title"><?php echo $session->getName(); ?></h2>
+                            </div>
+                        </div>
+                        <div class="portlet-body">
+                            <p><?php foreach ($session->getMovies() as $m): ?>
+                                <strong><?php echo $m->getMovie()->getTitle(); ?></strong><br />
+                            <?php endforeach; ?></p>
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Data/Hora</th>
+                                        <th>Local</th>
+                                        <th>Vagas</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                <?php foreach ($session->getProgramming() as $prog): ?>
+                                    <?php $urlSub = $this->url('meu-universo/session_school', [
+                                            'action'=>'inscricao',
+                                            'id_reg' => $this->registration->getHash(),
+                                            'id' => $prog->getId()
+                                    ]); ?>
+                                    <tr>
+                                        <td><?php echo $prog->getDate()->format('d/m/Y').' | '.$prog->getStartTime()->format('H\hi'); ?></td>
+                                        <td><?php echo $prog->getPlace()->getName(); ?></td>
+                                        <td><?php echo $prog->getAvailablePlaces(); ?></td>
+                                        <td>
+                                            <?php if($this->sessionSchoolRepository->hasAvailableSubscriptions($prog->getId())): ?>
+                                            <a style="margin-left: 15px; color: #000;" href="<?php echo $urlSub; ?>">Fazer inscrição
+                                                <i style="font-size: 13px;" class="icon-arrow-right4"></i>
+                                            </a>
+                                            <?php else: ?>
+                                            Inscrições esgotadas
+                                            <?php endif; ?>
+                                        </td>
+                                    </tr>
+                                <?php endforeach; ?>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <hr>
                 <?php endforeach; ?>
             </div>
         </div>

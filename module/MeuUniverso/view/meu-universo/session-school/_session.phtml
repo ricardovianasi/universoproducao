@@ -9,13 +9,7 @@
 <div class="portlet workshop">
     <div class="portlet-title">
         <div class="caption font-dark">
-            <h2 class="main-title">
-                <?php if($sessionName = $session->hasMeta('session_title')) {
-                    echo $sessionName->getValue();
-                } else {
-                    echo "Sessão Cine-escola";
-                } ?>
-            </h2>
+            <h2 class="main-title"><?php echo $session->getName(); ?></h2>
             <span class="caption-helper">Faixa etária: <?php echo $session->getAgeRange(); ?></span>
         </div>
 
@@ -28,7 +22,7 @@
             <strong>Faixa etária: </strong> <?php echo $session->getAgeRange(); ?>
         </p>
         <p>
-            <b>Número de vagas:</b> <?php echo $session->getAvailablePlaces(); ?>
+            <b>Número de vagas:</b>
         </p>
 
     </div>

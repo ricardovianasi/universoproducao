@@ -65,6 +65,27 @@ class InstituitionFieldset extends Fieldset
         ]);
 
         $this->add([
+            'name' => 'cep',
+            'options' => [
+                'label' => 'Cep'
+            ],
+        ]);
+
+        $this->add([
+            'name' => 'uf',
+            'options' => [
+                'label' => 'UF'
+            ],
+        ]);
+
+        $this->add([
+            'name' => 'city',
+            'options' => [
+                'label' => 'Cidade'
+            ],
+        ]);
+
+        $this->add([
             'name' => 'legal_representative',
             'options' => [
                 'label' => 'Representante legal'

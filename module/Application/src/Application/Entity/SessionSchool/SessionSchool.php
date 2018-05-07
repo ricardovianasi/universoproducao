@@ -177,4 +177,6 @@ class SessionSchool extends AbstractEntity
                 'objectId' => $this->id
             ]);
     }
+
+
 }

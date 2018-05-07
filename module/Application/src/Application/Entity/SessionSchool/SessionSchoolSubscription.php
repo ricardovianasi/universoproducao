@@ -8,7 +8,7 @@ use Util\Entity\AbstractEntity;
  * @ORM\Table(name="session_school_subscription")
  * @ORM\Entity
  */
-class WorkshopSubscription extends AbstractEntity
+class SessionSchoolSubscription extends AbstractEntity
 {
 	/**
 	 * @ORM\Id @ORM\Column(name="id", type="integer", nullable=false)
@@ -35,10 +35,16 @@ class WorkshopSubscription extends AbstractEntity
     private $registration;
 
     /**
-     * @ORM\OneToOne(targetEntity="Application\Entity\Programing\Programing")
-     * @ORM\JoinColumn(name="session_id", referencedColumnName="id")
+     * @ORM\OneToOne(targetEntity="SessionSchool")
+     * @ORM\JoinColumn(name="session_school_id", referencedColumnName="id")
      */
     private $session;
+
+    /**
+     * @ORM\OneToOne(targetEntity="Application\Entity\Programing\Programing")
+     * @ORM\JoinColumn(name="session_school_prog", referencedColumnName="id")
+     */
+    private $sessionProgramming;
 
     /**
      * @ORM\OneToOne(targetEntity="Application\Entity\Institution\Institution", cascade={"ALL"})
@@ -70,6 +76,7 @@ class WorkshopSubscription extends AbstractEntity
     /** @ORM\Column(name="participants", type="integer", nullable=true) */
     private $participants;
 
+    /** @ORM\Column(name="series_age", type="integer", nullable=true) */
     private $seriesAge;
 
     /** @ORM\Column(name="created_at", type="datetime", nullable=true) */
@@ -348,5 +355,21 @@ class WorkshopSubscription extends AbstractEntity
     public function setUpdatedAt($updatedAt)
     {
         $this->updatedAt = $updatedAt;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSessionProgramming()
+    {
+        return $this->sessionProgramming;
+    }
+
+    /**
+     * @param mixed $sessionProgramming
+     */
+    public function setSessionProgramming($sessionProgramming)
+    {
+        $this->sessionProgramming = $sessionProgramming;
     }
 }

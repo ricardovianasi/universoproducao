@@ -10,7 +10,7 @@ namespace Admin\Form\SessionSchool;
 use Admin\Form\Instituition\InstituitionFieldset;
 use Zend\Form\Form;
 
-class SessionSchoolSubscription extends Form
+class SessionSchoolSubscriptionForm extends Form
 {
     private $entityManager;
     private $registration;
@@ -26,6 +26,9 @@ class SessionSchoolSubscription extends Form
         }
 
         parent::__construct('session-school-form');
+        $this->setAttributes([
+            'id' => 'submit_form'
+        ]);
 
         $this->add([
             'type' => 'hidden',
@@ -36,10 +39,27 @@ class SessionSchoolSubscription extends Form
             ]
         ]);
 
-        $this->add([
-            'type' => InstituitionFieldset::class,
-            'name' => 'instituition'
-        ]);
+        $instituitionFieldset = new InstituitionFieldset('instituition');
+        $instituitionFieldset->get('social_name')
+            ->setLabel('Nome da escola');
+        $instituitionFieldset->get('address')
+            ->setLabel('Endereço completo da Instituição')
+            ->setOption('help-block', 'Incluir nome do bairro');
+        $instituitionFieldset->get('cep')
+            ->setOption('help-block', 'Somente números')
+            ->setAttribute('required', 'required');
+        $instituitionFieldset->get('city')
+            ->setAttribute('required', 'required');
+        $instituitionFieldset->get('uf')
+            ->setAttribute('required', 'required');
+        $instituitionFieldset->get('phone')
+            ->setOption('label', 'Telefone fixo')
+            ->setAttribute('required', 'required');
+        $instituitionFieldset->get('mobile_phone')
+            ->setLabel('Telefone celular de contato')
+            ->setAttribute('required', false);
+
+        $this->add($instituitionFieldset);
 
         $this->add([
             'name' => 'instituition_direction',

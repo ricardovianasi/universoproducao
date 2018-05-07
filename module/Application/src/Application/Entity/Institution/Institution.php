@@ -36,6 +36,15 @@ class Institution extends AbstractEntity
     /** @ORM\Column(type="string", nullable=true) */
     private $address;
 
+    /** @ORM\Column(type="string", nullable=true) */
+    private $cep;
+
+    /** @ORM\Column(type="string", nullable=true) */
+    private $uf;
+
+    /** @ORM\Column(type="string", nullable=true) */
+    private $city;
+
     /** @ORM\Column(name="legal_representative", type="string", nullable=true) */
     private $legalRepresentative;
 
@@ -228,5 +237,53 @@ class Institution extends AbstractEntity
     public function setDescription($description)
     {
         $this->description = $description;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCep()
+    {
+        return $this->cep;
+    }
+
+    /**
+     * @param mixed $cep
+     */
+    public function setCep($cep)
+    {
+        $this->cep = $cep;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getUf()
+    {
+        return $this->uf;
+    }
+
+    /**
+     * @param mixed $uf
+     */
+    public function setUf($uf)
+    {
+        $this->uf = $uf;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCity()
+    {
+        return $this->city;
+    }
+
+    /**
+     * @param mixed $city
+     */
+    public function setCity($city)
+    {
+        $this->city = $city;
     }
 }

@@ -9,22 +9,14 @@
 namespace MeuUniverso\Controller;
 
 
-use Admin\Form\Workshop\WorkshopRegistration;
-use Application\Entity\Form\Form as EntityForm;
+use Application\Entity\Institution\Institution;
 use Application\Entity\Programing\Programing;
-use Application\Entity\Registration\Options;
 use Application\Entity\Registration\Registration;
 use Application\Entity\Registration\Status;
 use Application\Entity\Registration\Type;
-use Application\Entity\User\User;
-use Application\Entity\Workshop\Workshop;
-use Application\Entity\Workshop\WorkshopSubscription;
-use Application\Entity\Workshop\WorkshopSubscriptionAnswerForm;
-use Doctrine\Common\Collections\ArrayCollection;
-use MeuUniverso\Form\WorkshopForm;
-use Zend\Validator\Between;
-use Zend\Validator\GreaterThan;
-use Zend\Validator\LessThan;
+use Application\Entity\SessionSchool\SessionSchool;
+use Application\Entity\SessionSchool\SessionSchoolSubscription;
+use MeuUniverso\Form\SessionSchoolSubscriptionForm;
 
 class SessionSchoolController extends AbstractMeuUniversoRegisterController
 {
@@ -64,19 +56,15 @@ class SessionSchoolController extends AbstractMeuUniversoRegisterController
             ]]);
         }
 
-        $sessions = $this->getRepository(Programing::class)->findBy([
-            'type' => Type::SESSION_SCHOOL,
-            'event' => $reg->getEvent()->getId(),
+        $sessions = $this->getRepository(SessionSchool::class)->findBy([
+            'registration' => $reg->getId(),
         ], ['ageRange'=>'ASC']);
 
-        $sessionsByMovie = [];
-        foreach ($sessions as $sess) {
-
-        }
-
+        $sessionSchoolRepository = $this->getRepository(SessionSchool::class);
         return [
             'sessions' => $sessions,
-            'registration' => $reg
+            'registration' => $reg,
+            'sessionSchoolRepository' => $sessionSchoolRepository
         ];
     }
 
@@ -108,161 +96,82 @@ class SessionSchoolController extends AbstractMeuUniversoRegisterController
             ]]);
         }
 
-        $idWorkshop = $this->params()->fromRoute('id');
-        if(!$idWorkshop) {
+        $idSessionProg = $this->params()->fromRoute('id');
+        if(!$idSessionProg) {
             return $this->redirect()->toRoute('meu-universo/default', [], ['query'=>[
                 'code' => self::ERROR_REG_NOT_FOUND,
-                'id_reg' => $idWorkshop
+                'id_reg' => $idReg
             ]]);
         }
 
         //valida se a oficina existe e se existe vaga
-        /** @var Workshop $workshop */
-        $workshop = $this->getRepository(Workshop::class)->findOneBy([
-            'id' => $idWorkshop,
-            'registration' => $reg->getId()
+        /** @var Programing $sessionProg */
+        $sessionProg = $this->getRepository(Programing::class)->findOneBy([
+            'id' => $idSessionProg
         ]);
 
-        if(!$workshop) {
+        if(!$sessionProg) {
             return $this->redirect()->toRoute('meu-universo/default', [], ['query'=>[
-                'code' => self::ERROR_WORKSHOP_NOT_FOUNT,
-                'id' => $idWorkshop
+                'code' => self::ERROR_REG_NOT_FOUND,
+                'id' => $idSessionProg
+            ]]);
+        }
+
+        /** @var SessionSchool $session */
+        $session = $this->getRepository(SessionSchool::class)->findOneBy([
+            'id' => $sessionProg->getObjectId(),
+            'registration' => $reg->getId()
+        ]);
+        if(!$session) {
+            return $this->redirect()->toRoute('meu-universo/default', [], ['query'=>[
+                'code' => self::ERROR_REG_NOT_FOUND,
+                'id' => $idSessionProg
             ]]);
         }
 
         //Verifica se existe vaga
-        if(!$workshop->hasAvailableSubscriptions()) {
+        $sessionSchoolRepository = $this->getRepository(SessionSchool::class);
+        if($sessionSchoolRepository->hasAvailableSubscriptions($sessionProg->getId())) {
             return $this->redirect()->toRoute('meu-universo/default', [], ['query'=>[
-                'code' => self::ERROR_WORKSHOP_NO_SUBSCRIPTION,
-                'id' => $idWorkshop
+                'code' => self::ERROR_SESSION_NO_SUBSCRIPTION,
+                'id' => $idSessionProg
             ]]);
         }
 
         $user = $this->getAuthenticationService()->getIdentity();
-        $form = new WorkshopForm($user, $this->getEntityManager(), $reg);
+        $form = new SessionSchoolSubscriptionForm($this->getEntityManager(), $reg);
 
         if($this->getRequest()->isPost()) {
             $data = $this->getRequest()->getPost();
             $form->setData($data);
-
-            /** @var User $userSubs */
-            $userSubs = null;
-            if(!empty($data['user'])) {
-                $userSubs = $this
-                    ->getAuthenticationService()
-                    ->getIdentity();
-            } else {
-                $idUserSub = $data['user'];
-                if($idUserSub && $idUserSub != $this->getAuthenticationService()->getIdentity()->getId()) {
-                    $userSubs = $this
-                        ->getRepository(User::class)
-                        ->findOneBy([
-                            'id' => $user->getId(),
-                            'parent' => $idUserSub
-                        ]);
-                } else {
-                    $userSubs = $this
-                        ->getAuthenticationService()
-                        ->getIdentity();
-                }
-            }
-
-            //Verifica se o usuário já efetuou a inscrição
-            $existSubscription = $this->getRepository(WorkshopSubscription::class)->findBy([
-                'event' => $workshop->getEvent()->getId(),
-                'user' => $userSubs->getId()
-            ]);
-            if($existSubscription && count($existSubscription)) {
-                return $this->redirect()->toRoute('meu-universo/default', ['action'=>'erro'], ['query'=>[
-                    'code' => self::ERROR_WORKSHOP_MULTIPLES_SUBSCRIPTION,
-                    'id' => $idWorkshop
-                ]]);
-            }
-
-            //Validação da faixa etária
-            $extraValidations = true;
-            $ageUserSub = $userSubs->getBirthDate()->diff(new \DateTime('now'))->y;
-            if($workshop->getMinimumAge() && $workshop->getMaximumAge()) {
-                $validatorOpt['inclusive'] = true;
-                $validatorOpt['min'] = $workshop->getMinimumAge();
-                $validatorOpt['max'] = $workshop->getMaximumAge();
-
-                $validatorOpt['messages'] = [
-                    Between::NOT_BETWEEN_STRICT => "A sua faixa etária não está dentro da permitida para essa oficina. Por favor, escolher outra opção."
-                ];
-
-                $validator = new Between($validatorOpt);
-                if(!$validator->isValid($ageUserSub)) {
-                    $messages = $validator->getMessages();
-                    $form->setMessages(['user'=>$messages]);
-                    $extraValidations = false;
-                }
-            } elseif($workshop->getMinimumAge()) {
-                $validator = new GreaterThan([
-                    'min'       => $workshop->getMinimumAge(),
-                    'inclusive' => true,
-                    'messages' => [
-                        GreaterThan::NOT_GREATER_INCLUSIVE => "A sua faixa etária não está dentro da permitida para essa oficina. Por favor, escolher outra opção."
-                    ]
-                ]);
-                if(!$validator->isValid($ageUserSub)) {
-                    $messages = $validator->getMessages();
-                    $form->setMessages(['user'=>$messages]);
-                    $extraValidations = false;
-                }
-            } elseif($workshop->getMaximumAge()) {
-                $validator = new LessThan([
-                    'max'       => $workshop->getMaximumAge(),
-                    'inclusive' => true,
-                    'messages' => [
-                        LessThan::NOT_LESS_INCLUSIVE => "A faixa etária tem que ser acima de '%max%' anos"
-                    ]
-                ]);
-                if(!$validator->isValid($ageUserSub)) {
-                    $messages = $validator->getMessages();
-                    $form->setMessages(['user'=>$messages]);
-                    $extraValidations = false;
-                }
-            }
-
-            if($extraValidations && $form->isValid()) {
-
-                $subscription = new WorkshopSubscription();
-                $subscription->setEvent($workshop->getEvent());
-                $subscription->setWorkshop($workshop);
-                $subscription->setUser($userSubs);
+            if($form->isValid()) {
+                $subscription = new SessionSchoolSubscription();
+                $subscription->setEvent($session->getEvent());
                 $subscription->setRegistration($reg);
+                $subscription->setUser($user);
+                $subscription->setSession($session);
+                $subscription->setSessionProgramming($sessionProg);
 
-                $formAnswer = new ArrayCollection();
-                if(!empty($data['form_answer'])) {
-                    $formOption = $reg->getOption(Options::WORKSHOP_FORM);
-                    $workshopForm = $form = $this
-                        ->getEntityManager()
-                        ->getRepository(EntityForm::class)
-                        ->find($formOption->getValue());
-
-                    foreach ($data['form_answer'] as $key=>$fA) {
-                        $workshopAnswerForm = new WorkshopSubscriptionAnswerForm();
-                        $workshopAnswerForm->setSubscription($subscription);
-                        $workshopAnswerForm->setForm($workshopForm);
-                        $workshopAnswerForm->setQuestion($key);
-                        $workshopAnswerForm->setAnswer($fA);
-
-                        $formAnswer->add($workshopAnswerForm);
-                    }
+                $instituition = null;
+                if(!empty($data['instituition'])) {
+                    $instituition = new Institution();
+                    $instituition->setData($data['instituition']);
                 }
-                $subscription->setFormAnswers($formAnswer);
+                $subscription->setInstituition($instituition);
+                unset($data['instituition']);
+
+                $subscription->setData($data);
 
                 $this->getEntityManager()->persist($subscription);
                 $this->getEntityManager()->flush();
 
                 //Enviar email de confirmação
-                $msg = '<p>Olá <strong>'.$userSubs->getName().'</strong>!</p>';
-                $msg.= "<p>Agradecemos seu interesse em participar da <strong>21ª Mostra de Cinema de Tiradentes.</strong>.</p>";
-                $msg.= "<p>Informamos que recebemos sua inscrição para participar da Oficina: ".$workshop->getName().". Até o dia 05/01/2018, entraremos em contato para divulgação dos selecionados.</p>";
+                $msg = '<p>Olá <strong>'.$user->getName().'</strong>!</p>';
+                $msg.= "<p>Agradecemos seu interesse em participar da <strong>13ª Mostra de Cinema de Ouro Preto</strong>.</p>";
+                $msg.= "<p>Informamos que recebemos sua inscrição para participar da sessão: ".$session->getName()." foi realizada com sucesso.</p>";
 
                 $to[$user->getName()] = $user->getEmail();
-                $this->mailService()->simpleSendEmail($to, "Confirmação de inscrição oficina ", $msg);
+                $this->mailService()->simpleSendEmail($to, "Confirmação de inscrição Cine-Expressão ", $msg);
 
                 $this->meuUniversoMessages()->flashSuccess($msg);
                 return $this->redirect()->toRoute('meu-universo/default');
@@ -272,82 +181,8 @@ class SessionSchoolController extends AbstractMeuUniversoRegisterController
         return [
             'form' => $form,
             'reg' => $reg,
-            'workshop' => $workshop
-        ];
-    }
-
-    public function confirmacaoAction()
-    {
-        return $this->redirect()->toRoute('meu-universo/default', [], ['query'=>[
-            'code' => self::ERROR_REG_NOT_FOUND,
-            'id_reg' => $idReg
-        ]]);
-
-        $idReg = $this->params()->fromRoute('id_reg');
-        if(!$idReg) {
-            return $this->redirect()->toRoute('meu-universo/default', [], ['query'=>[
-                'code' => self::ERROR_REG_NOT_FOUND,
-                'id_reg' => $idReg
-            ]]);
-        }
-
-        $reg = $this->getRepository(Registration::class)->findOneBy([
-            'hash' => $idReg
-        ]);
-
-        if(!$reg) {
-            return $this->redirect()->toRoute('meu-universo/default', [], ['query'=>[
-                'code' => self::ERROR_REG_NOT_FOUND,
-                'id_reg' => $idReg
-            ]]);
-        }
-
-        //Verificar se o prazo para confirmação está aberto
-        /*if(!$reg->isOpen()) {
-            return $this->redirect()->toRoute('meu-universo/default', [], ['query'=>[
-                'code' => self::ERROR_REG_IS_CLOSED,
-                'id_reg' => $idReg
-            ]]);
-        }*/
-
-        $user = $this->getAuthenticationService()->getIdentity();
-
-        $idWorkshopSubscription = $this->params()->fromRoute('id');
-        if(!$idWorkshopSubscription) {
-            return $this->redirect()->toRoute('meu-universo/default', [], ['query'=>[
-                'code' => self::ERROR_REG_NOT_FOUND,
-                'id_reg' => $idReg
-            ]]);
-        }
-
-        //Recuperar a inscrição do cara
-        /** @var WorkshopSubscription $subscription */
-        $subscription = $this->getRepository(WorkshopSubscription::class)->findOneBy([
-            'id' => $idWorkshopSubscription,
-            'registration' => $reg->getId(),
-            'user' => $user->getId()
-        ]);
-        if(!$subscription) {
-            return $this->redirect()->toRoute('meu-universo/default', [], ['query'=>[
-                'code' => self::ERROR_WORKSHOP_NOT_FOUNT,
-                'id_reg' => $idReg
-            ]]);
-        }
-
-        $confirmacao = $this->params()->fromQuery('confirmacao', null);
-        if($confirmacao == 'sim') {
-            $subscription->setStatus(Status::CONFIRMED);
-        } elseif($confirmacao == 'nao') {
-            $subscription->setStatus(Status::NOT_CONFIRMED);
-        }
-
-        $this->getEntityManager()->persist($subscription);
-        $this->getEntityManager()->flush();
-
-        return [
-            'reg' => $reg,
-            'subscription' => $subscription,
-            'confirmacao' => $confirmacao
+            'session' => $session,
+            'sessionSchoolRepository' => $sessionSchoolRepository
         ];
     }
 
@@ -371,14 +206,6 @@ class SessionSchoolController extends AbstractMeuUniversoRegisterController
                 'id_reg' => $idReg
             ]]);
         }
-
-        //Verificar se o prazo para confirmação está aberto
-        /*if(!$reg->isOpen()) {
-            return $this->redirect()->toRoute('meu-universo/default', [], ['query'=>[
-                'code' => self::ERROR_REG_IS_CLOSED,
-                'id_reg' => $idReg
-            ]]);
-        }*/
 
         $user = $this->getAuthenticationService()->getIdentity();
 
