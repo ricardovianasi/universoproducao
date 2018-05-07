@@ -125,8 +125,6 @@ class MovieController extends SiteController
         $format = $movie->getOption(OptionsType::FORMAT_COMPLETED);
         $duration = ($movie->getDuration()->format('H')*60)+($movie->getDuration()->format('i'));
 
-
-
         $breadcrumbs = [
             ['programacao' => 'Programação'],
             ['filmes' => 'Filmes']
