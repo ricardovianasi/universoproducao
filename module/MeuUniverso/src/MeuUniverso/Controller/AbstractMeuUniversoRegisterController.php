@@ -21,7 +21,7 @@ class AbstractMeuUniversoRegisterController extends AbstractMeuUniversoControlle
     protected $reportBasePath = __DIR__ ."/../../../../../data/reports";
     protected $reportOutputPath = __DIR__ ."/../../../../../public/reports";
 
-    public function prepareReport(array $items, $reportName, $format)
+    public function prepareReport(array $items, $reportName, $format, $returnFileName=false)
     {
         //Generate ID to report
         $report_id = time(false).'_'.mt_rand();
@@ -64,6 +64,15 @@ class AbstractMeuUniversoRegisterController extends AbstractMeuUniversoControlle
             $output,
             $options
         )->execute();
+
+        if($returnFileName) {
+            $reportFile =
+                $output
+                .DIRECTORY_SEPARATOR
+                .$reportName.".".$format;
+
+            return $reportFile;
+        }
 
         if($this->getRequest()->isXmlHttpRequest()) {
             $reportUrl = rtrim($this->url()->fromRoute('universoproducao'), '/');

@@ -20,7 +20,7 @@ class MailService extends AbstractPlugin
         return $this;
     }
 
-    public function simpleSendEmail(array $recipients, $subject="", $msg="", $attachment=null)
+    public function simpleSendEmail(array $recipients, $subject="", $msg="", $filename=null)
     {
         $to = new \SendGrid\Email(key($recipients), $recipients[key($recipients)]);
 
@@ -29,10 +29,16 @@ class MailService extends AbstractPlugin
         $mail = new \SendGrid\Mail($this->getDefaultFrom(), $subject, $to, $content);
         $mail->setTemplateId(self::TEMPLATE_ID);
 
-        if($attachment) {
-            $attach = new \SendGrid\Attachment();
-            $attach->setFilename($attachment);
-            $mail->addContent($attachment);
+        if($filename) {
+            if(file_exists($filename)) {
+                $attach = new \SendGrid\Attachment();
+                $attach->setDisposition("attachment");
+                $attach->setType("application/pdf");
+                $attach->setFilename(basename($filename));
+                $attach->setContent(base64_encode(file_get_contents($filename)));
+
+                $mail->addAttachment($attach);
+            }
         }
 
         $response = $this->getApiService()->client->mail()->send()->post($mail);
