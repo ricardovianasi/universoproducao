@@ -25,16 +25,14 @@
                                     <br />
                                     <div style="display: none;width:800px;min-height: 800px" id="moviemodal<?php echo $m->getMovie()->getId(); ?>">
                                         <h3 class="main-title"><?php echo $m->getMovie()->getTitle() ?></h3>
-                                        <p><?php echo mb_strtoupper(implode(', ', $m->getMovie()->getHighlights())); ?></p>
+                                        <?php echo mb_strtoupper(implode(', ', $m->getMovie()->getHighlights())); ?>
 
                                         <?php if(count($m->getMovie()->getMedias())): ?>
                                             <p>
-                                                <img src="<?php echo $this->thumbor()->url($this->fileManipulation()->url($m->getMovie()->getMedias()->first()->getSrc()))->resize(1140, 400); ?>" alt="">
+                                                <img width="100%" src="<?php echo $this->thumbor()->url($this->fileManipulation()->url($m->getMovie()->getMedias()->first()->getSrc()))->resize(1140, 400); ?>" alt="">
                                             </p>
                                         <?php endif; ?>
-
                                         <br>
-
                                         <p>
                                             <b>Direção: </b>
                                             <?php echo $m->getMovie()->getDirection(); ?>
