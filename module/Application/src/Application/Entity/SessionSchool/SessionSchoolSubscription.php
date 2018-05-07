@@ -41,6 +41,7 @@ class SessionSchoolSubscription extends AbstractEntity
     private $session;
 
     /**
+     *
      * @ORM\OneToOne(targetEntity="Application\Entity\Programing\Programing")
      * @ORM\JoinColumn(name="session_school_prog", referencedColumnName="id")
      */

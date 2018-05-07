@@ -5,6 +5,7 @@ use Application\Entity\EducationalProject\EducationalProject;
 use Application\Entity\Movie\Movie;
 use Application\Entity\Project\Project;
 use Application\Entity\Registration\Registration;
+use Application\Entity\SessionSchool\SessionSchoolSubscription;
 use Application\Entity\Workshop\WorkshopSubscription;
 
 class IndexController extends AbstractMeuUniversoController
@@ -40,12 +41,17 @@ class IndexController extends AbstractMeuUniversoController
             'user' => $this->getAuthenticationService()->getIdentity()->getId()
         ],['createdAt' => 'DESC']);
 
+        $sessionSchool = $this->getRepository(SessionSchoolSubscription::class)->findBy([
+            'user' => $this->getAuthenticationService()->getIdentity()->getId()
+        ], ['createdAt' => 'DESC']);
+
         return [
             'movies' => $movies,
             'educational_movies' => $educationalMovies,
             'workshops' => $workshops,
             'projects' => $projects,
-            'educationalProjects' => $educationalProjects
+            'educationalProjects' => $educationalProjects,
+            'sessionSchool' => $sessionSchool
         ];
     }
 

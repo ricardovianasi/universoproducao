@@ -66,5 +66,19 @@
                 </div>
             </div>
         <?php endif; ?>
+
+        <?php if(count($this->sessionSchool)): ?>
+            <div class="portlet box blue-hoki">
+                <div class="portlet-title">
+                    <div class="caption">
+                        <i class="fa fa-gift"></i>Sessão Cine-Expressão</div>
+                    <div class="actions">
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    <?php echo $this->meuUniversoSessionSchool($this->sessionSchool); ?>
+                </div>
+            </div>
+        <?php endif; ?>
     </div>
 </div>
