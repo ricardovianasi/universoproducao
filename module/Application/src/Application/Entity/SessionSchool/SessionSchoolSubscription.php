@@ -8,7 +8,7 @@ use Util\Entity\AbstractEntity;
 
 /**
  * @ORM\Table(name="session_school_subscription")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Application\Repository\SessionSchool\SessionSchoolSubscription")
  */
 class SessionSchoolSubscription extends AbstractEntity
 {

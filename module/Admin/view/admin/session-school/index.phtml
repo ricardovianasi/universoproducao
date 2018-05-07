@@ -47,7 +47,19 @@
 							?>
 							<tr>
                                 <td></td>
-                                <td><?php echo $i->getName() ?></td>
+                                <td>
+                                    <div class="margin-bottom-5"><?php echo $i->getName() ?></div>
+                                    <table class="table  table-in-td">
+                                        <?php foreach ($i->getProgramming() as $p): ?>
+                                        <tr>
+                                            <td><?php echo $p->getDate()->format('d/m/Y').' | '.$p->getStartTime()->format('H:i') ?></td>
+                                            <td><?php echo $p->getAvailablePlaces() ?></td>
+                                            <td></td>
+                                            <td><a class="btn btn-sm btn-default">Inscrições</a></td>
+                                        </tr>
+                                        <?php endforeach; ?>
+                                    </table>
+                                </td>
                                 <td><?php echo $i->getEvent()->getShortName(); ?></td>
 								<td>
                                     <a href="<?php echo  $updateUrl; ?>" class="btn btn-sm btn-default">
