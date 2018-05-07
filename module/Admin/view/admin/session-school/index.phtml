@@ -48,16 +48,18 @@
 							<tr>
                                 <td></td>
                                 <td>
-                                    <div class="margin-bottom-5"><?php echo $i->getName() ?></div>
-                                    <table class="table  table-in-td">
+                                    <div class="margin-bottom-20"><strong><?php echo $i->getName() ?></strong></div>
+                                    <table class="table table-in-td">
+                                        <tbody>
                                         <?php foreach ($i->getProgramming() as $p): ?>
-                                        <tr>
-                                            <td><?php echo $p->getDate()->format('d/m/Y').' | '.$p->getStartTime()->format('H:i') ?></td>
-                                            <td><?php echo $p->getAvailablePlaces() ?></td>
-                                            <td></td>
-                                            <td><a class="btn btn-sm btn-default">Inscrições</a></td>
-                                        </tr>
+                                            <tr>
+                                                <td><?php echo $p->getDate()->format('d/m/Y').' | '.$p->getStartTime()->format('H:i') ?></td>
+                                                <td>Vagas: <?php echo $p->getAvailablePlaces() ?></td>
+                                                <td>Inscritos: <?php echo $this->repository->getTotalSubscriptionsSession($p->getId()) ?></td>
+                                                <td><a class="btn btn-sm btn-default"><i class="fa fa-filter"></i> Inscrições</a></td>
+                                            </tr>
                                         <?php endforeach; ?>
+                                        </tbody>
                                     </table>
                                 </td>
                                 <td><?php echo $i->getEvent()->getShortName(); ?></td>

@@ -36,8 +36,7 @@ class SessionSchool extends AbstractRepository
 
     public function getTotalSubscriptionsSession($idSessionProg)
     {
-
-        return $this
+        $total = $this
             ->getEntityManager()
             ->getRepository(SessionSchoolSubscription::class)
             ->createQueryBuilder('s')
@@ -46,5 +45,7 @@ class SessionSchool extends AbstractRepository
             ->setParameter('idSessionProg', $idSessionProg)
             ->getQuery()
             ->getSingleScalarResult();
+
+        return (integer) $total;
     }
 }

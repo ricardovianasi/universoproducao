@@ -10,6 +10,8 @@ namespace Admin\Controller;
 
 use Admin\Form\SessionSchool\SessionSchoolForm;
 use Admin\Form\SessionSchool\SessionSchoolProgramingForm;
+use Admin\Form\SessionSchool\SessionSchoolSubscriptionForm;
+use Admin\Form\SessionSchool\SessionSchoolSubscriptionSearchForm;
 use Application\Entity\Event\Event;
 use Application\Entity\Event\Place;
 use Application\Entity\Movie\Movie;
@@ -18,24 +20,29 @@ use Application\Entity\Programing\Type;
 use Application\Entity\Registration\Registration;
 use Application\Entity\SessionSchool\SessionSchool;
 use Application\Entity\SessionSchool\SessionSchoolMovies;
+use Application\Entity\SessionSchool\SessionSchoolSubscription;
 use Doctrine\Common\Collections\ArrayCollection;
 
-class SessionSchoolController extends AbstractAdminController
+class SessionSchoolSubscriptionsController extends AbstractAdminController
     implements CrudInterface
 {
     public function indexAction()
     {
-        $searchForm = new SessionSchoolForm($this->getEntityManager());
         $dataAttr = $this->params()->fromQuery();
+
+        $event = null;
+        if(!empty($dataAttr['event'])) {
+            $event = $dataAttr['event'];
+        }
+
+        $searchForm = new SessionSchoolSubscriptionSearchForm($this->getEntityManager(), $event);
         $searchForm->setData($dataAttr);
 
         if(!$searchForm->isValid()) {
             $teste = $searchForm->getMessages();
         }
 
-        $data = $searchForm->getData();
-
-        $items = $this->search(SessionSchool::class, $data);
+        $items = $this->search(SessionSchoolSubscription::class, $dataAttr);
 
         $this->getViewModel()->setVariables([
             'items' => $items,
@@ -58,7 +65,19 @@ class SessionSchoolController extends AbstractAdminController
 
     public function deleteAction($id)
     {
-        // TODO: Implement deleteAction() method.
+        $subscription = $this
+            ->getRepository(SessionSchoolSubscription::class)
+            ->find($id);
+
+        $this->getEntityManager()->remove($subscription);
+        $this->getEntityManager()->flush();
+
+        $this->messages()->flashSuccess('Inscrição excluída com sucesso.');
+
+        return $this->redirect()->toRoute('admin/default', [
+            'controller' => 'session-school-subscriptions',
+            'action' => 'index'
+        ]);
     }
 
     public function persist($data, $id = null)
