@@ -17,6 +17,7 @@ use Application\Entity\Registration\Type;
 use Application\Entity\SessionSchool\SessionSchool;
 use Application\Entity\SessionSchool\SessionSchoolSubscription;
 use MeuUniverso\Form\SessionSchoolSubscriptionForm;
+use Zend\Validator\LessThan;
 
 class SessionSchoolController extends AbstractMeuUniversoRegisterController
 {
@@ -144,7 +145,22 @@ class SessionSchoolController extends AbstractMeuUniversoRegisterController
         if($this->getRequest()->isPost()) {
             $data = $this->getRequest()->getPost();
             $form->setData($data);
-            if($form->isValid()) {
+            $extraValidations = true;
+
+            $participantsValidator = new LessThan([
+                'max' => ($sessionProg->getAvailablePlaces() - $sessionSchoolRepository->getTotalSubscriptionsSession($sessionProg->getId())),
+                'inclusive' => true,
+                'messages' => [
+                    LessThan::NOT_LESS_INCLUSIVE => "Existem '%max%' vagas restantes"
+                ]
+            ]);
+            if(!$participantsValidator->isValid($data['participants'])) {
+                $messages = $participantsValidator->getMessages();
+                $form->setMessages(['participants'=>$messages]);
+                $extraValidations = false;
+            }
+
+            if($form->isValid() && $extraValidations) {
                 $subscription = new SessionSchoolSubscription();
                 $subscription->setEvent($session->getEvent());
                 $subscription->setRegistration($reg);

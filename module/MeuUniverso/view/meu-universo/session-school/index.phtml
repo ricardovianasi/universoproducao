@@ -13,8 +13,11 @@
                             </div>
                         </div>
                         <div class="portlet-body">
+                            <?php if(count($session->getMovies()) > 1): ?>
+                                <span style="display: block; text-transform: uppercase; font-style: italic; margin-bottom: 8px">Sessão de curtas:</span>
+                            <?php endif; ?>
                             <p><?php foreach ($session->getMovies() as $m): ?>
-                                <strong><?php echo $m->getMovie()->getTitle(); ?></strong><br />
+                                <strong><?php echo mb_strtoupper($m->getMovie()->getTitle()); ?></strong><br />
                             <?php endforeach; ?></p>
                             <table class="table">
                                 <thead>

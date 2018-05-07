@@ -190,7 +190,7 @@
 				<text><![CDATA[Nome do Diretor:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="197" width="220" height="18" uuid="b424f3c6-b1d2-43c6-b49a-ee5eeb019e03"/>
+				<reportElement x="0" y="197" width="300" height="18" uuid="b424f3c6-b1d2-43c6-b49a-ee5eeb019e03"/>
 				<box>
 					<bottomPen lineWidth="1.0"/>
 				</box>
