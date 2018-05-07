@@ -66,12 +66,12 @@ class AbstractMeuUniversoRegisterController extends AbstractMeuUniversoControlle
         )->execute();
 
         if($returnFileName) {
-            $reportFile =
-                $output
-                .DIRECTORY_SEPARATOR
-                .$reportName.".".$format;
+            $reportUrl = rtrim($this->url()->fromRoute('universoproducao'), '/');
+            $reportUrl.= '/reports/'
+                . $report_id
+                . '/' . $reportName.".".$format;
 
-            return $reportFile;
+            return $reportUrl;
         }
 
         if($this->getRequest()->isXmlHttpRequest()) {
