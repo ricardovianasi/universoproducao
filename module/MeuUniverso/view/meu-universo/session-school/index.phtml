@@ -35,7 +35,7 @@
                                     <tr>
                                         <td><?php echo $prog->getDate()->format('d/m/Y').' | '.$prog->getStartTime()->format('H\hi'); ?></td>
                                         <td><?php echo $prog->getPlace()->getName(); ?></td>
-                                        <td><?php echo $prog->getAvailablePlaces(); ?></td>
+                                        <td><?php echo ($prog->getAvailablePlaces() - $this->sessionSchoolRepository->getTotalSubscriptionsSession($prog->getId())); ?></td>
                                         <td>
                                             <?php if($this->sessionSchoolRepository->hasAvailableSubscriptions($prog->getId())): ?>
                                             <a style="margin-left: 15px; color: #000;" href="<?php echo $urlSub; ?>">Fazer inscrição

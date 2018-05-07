@@ -20,16 +20,28 @@ class MailService extends AbstractPlugin
         return $this;
     }
 
-    public function simpleSendEmail(array $recipients, $subject="", $msg="")
+    public function simpleSendEmail(array $recipients, $subject="", $msg="", $attachment=null)
     {
         $to = new \SendGrid\Email(key($recipients), $recipients[key($recipients)]);
 
         $content = new \SendGrid\Content("text/html", $msg);
+
         $mail = new \SendGrid\Mail($this->getDefaultFrom(), $subject, $to, $content);
         $mail->setTemplateId(self::TEMPLATE_ID);
 
+        if($attachment) {
+            $attach = new \SendGrid\Attachment();
+            $attach->setFilename($attachment);
+            $mail->addContent($attachment);
+        }
+
         $response = $this->getApiService()->client->mail()->send()->post($mail);
         return $response;
+
+    }
+
+    public function getServiceMail()
+    {
 
     }
 
@@ -77,7 +89,7 @@ class MailService extends AbstractPlugin
         return $this->apiService;
     }
 
-    protected function getDefaultFrom()
+    public function getDefaultFrom()
     {
         return new \SendGrid\Email('Universo Produção', "no-replay@universoproducao.comn.br");
     }
