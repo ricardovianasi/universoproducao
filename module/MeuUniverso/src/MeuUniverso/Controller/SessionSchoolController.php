@@ -176,6 +176,8 @@ class SessionSchoolController extends AbstractMeuUniversoRegisterController
                     <li>Será considerada a ordem cronológica do recebimento do Termo de Compromisso assinado por sessão até que se complete a lotação da sala.</li>
                 </ul></p>";
 
+                $this->getEntityManager()->refresh($subscription);
+
                 $preparedItems = $this->prepareItemsForReports($subscription);
                 $confirmacao = $this->prepareReport($preparedItems, 'session-confirmation' ,'pdf',true);
 
