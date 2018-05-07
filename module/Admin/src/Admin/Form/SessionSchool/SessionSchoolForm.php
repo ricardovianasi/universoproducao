@@ -156,7 +156,7 @@ class SessionSchoolForm extends Form
                         'date' => $pro->getDate()?$pro->getDate()->format('d/m/Y'):'',
                         'start_time' => $pro->getStartTime()?$pro->getStartTime()->format('H:i:s'):'',
                         'end_time' => $pro->getEndTime()?$pro->getEndTime()->format('H:i:s'):'',
-                        'place' => $pro->getPlace() ? $pro->getPlace()->getName() : '',
+                        'place' => $pro->getPlace() ? $pro->getPlace()->getId() : '',
                         'available_places' => $pro->getAvailablePlaces()
 
                     ];

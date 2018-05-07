@@ -131,7 +131,7 @@ class SessionSchoolController extends AbstractMeuUniversoRegisterController
 
         //Verifica se existe vaga
         $sessionSchoolRepository = $this->getRepository(SessionSchool::class);
-        if($sessionSchoolRepository->hasAvailableSubscriptions($sessionProg->getId())) {
+        if(!$sessionSchoolRepository->hasAvailableSubscriptions($sessionProg->getId())) {
             return $this->redirect()->toRoute('meu-universo/default', [], ['query'=>[
                 'code' => self::ERROR_SESSION_NO_SUBSCRIPTION,
                 'id' => $idSessionProg
@@ -209,8 +209,8 @@ class SessionSchoolController extends AbstractMeuUniversoRegisterController
 
         $user = $this->getAuthenticationService()->getIdentity();
 
-        $idWorkshopSubscription = $this->params()->fromRoute('id');
-        if(!$idWorkshopSubscription) {
+        $idSessionSchoolSubscription = $this->params()->fromRoute('id');
+        if(!$idSessionSchoolSubscription) {
             return $this->redirect()->toRoute('meu-universo/default', [], ['query'=>[
                 'code' => self::ERROR_REG_NOT_FOUND,
                 'id_reg' => $idReg
@@ -219,8 +219,8 @@ class SessionSchoolController extends AbstractMeuUniversoRegisterController
 
         //Recuperar a inscrição do cara
         /** @var WorkshopSubscription $subscription */
-        $subscription = $this->getRepository(WorkshopSubscription::class)->findOneBy([
-            'id' => $idWorkshopSubscription,
+        $subscription = $this->getRepository(SessionSchoolSubscription::class)->findBy([
+            'id' => $idSessionSchoolSubscription,
             'registration' => $reg->getId(),
             'user' => $user->getId()
         ]);
@@ -231,17 +231,10 @@ class SessionSchoolController extends AbstractMeuUniversoRegisterController
             ]]);
         }
 
-        if($subscription->getStatus() != Status::CONFIRMED) {
-            return $this->redirect()->toRoute('meu-universo/default', [], ['query'=>[
-                'code' => self::ERROR_WORKSHOP_NOT_FOUNT,
-                'id_reg' => $idReg
-            ]]);
-        }
-
         //criar um arquivo json
         $preparedItems = $this->prepareItemsForReports($subscription);
 
-        return $this->prepareReport($preparedItems, 'workshop-confirmation' ,'pdf');
+        return $this->prepareReport($preparedItems, 'session-confirmation' ,'pdf');
     }
 
     protected function prepareItemsForReports($items)
@@ -252,30 +245,38 @@ class SessionSchoolController extends AbstractMeuUniversoRegisterController
 
         $preparedItems = [];
         foreach ($items as $obj) {
-            $workshopProgramation = $this->getRepository(Programing::class)->findBy([
-                'event' => $obj->getEvent()->getId(),
-                'type' => Type::WORKSHOP,
-                'objectId' => $obj->getWorkshop()->getId()
-            ]);
-            $workshopProgramationItems = [];
-            foreach ($workshopProgramation as $pro) {
-                $desc = $pro->getDate()->format('d/m/Y')
-                    . ' | ' . $pro->getStartTime()->format('H:i')
-                    . ' às '
-                    . $pro->getEndTime()->format('H:i');
-                $workshopProgramationItems[] = $desc;
+
+            /** @var SessionSchoolSubscription $obj */
+            $obj = $obj;
+
+            $sessionsMovies = [];
+            foreach ($obj->getSession()->getMovies() as $sm) {
+                $sessionsMovies[] = $sm->getMovie()->getTitle();
             }
 
             $preparedItems[]['object'] = [
                 'event_name' => $obj->getEvent()->getShortName(),
-                'user_name' => $obj->getUser()->getName(),
-                'user_identifier' => $obj->getUser()->getIdentifier(),
-                'user_birth_date' => $obj->getUser()->getBirthDate()->format('d/m/Y'),
-                'user_parent_name' => $obj->getUser()->getParent() ? $obj->getUser()->getParent()->getName() : "",
-                'user_parent_identifier' => $obj->getUser()->getParent() ? $obj->getUser()->getParent()->getIdentifier() : "",
-                'workshop_name' => $obj->getWorkshop()->getName(),
-                'workshop_programation' => implode(';', $workshopProgramationItems)
-
+                'instituition_social_name' => $obj->getInstituition()->getSocialName(),
+                'instituition_cnpj' => $obj->getInstituition()->getCnpj(),
+                'instituition_address' => $obj->getInstituition()->getAddress(),
+                'instituition_city' => $obj->getInstituition()->getCity(),
+                'instituition_uf' => $obj->getInstituition()->getUf(),
+                'instituition_cep' => $obj->getInstituition()->getCep(),
+                'instituition_phone' => $obj->getInstituition()->getPhone(),
+                'instituition_mobile_phone' => $obj->getInstituition()->getMobilePhone(),
+                'instituition_email' => $obj->getInstituition()->getEmail(),
+                'instituition_direction' => $obj->getInstituitionDirection(),
+                'responsible' => $obj->getResponsible(),
+                'responsible_phone' => $obj->getResponsiblePhone(),
+                'responsible_mobile_phone' => $obj->getResponsibleMobilePhone(),
+                'session_name' => $obj->getSession()->getName(),
+                'session_movies' => implode(' - ', $sessionsMovies),
+                'session_programming_date' => $obj->getSessionProgramming()->getDate()->format('d/m/Y'),
+                'session_programming_hour' => $obj->getSessionProgramming()->getStartTime()->format('H:i'),
+                'session_programming_place' => $obj->getSessionProgramming()->getPlace()->getName(),
+                'participants' => $obj->getParticipants(),
+                'serie' => $obj->getSeriesAge(),
+                'created_at' => $obj->getCreatedAt()->format('d/m/Y H:i:s')
             ];
         }
 

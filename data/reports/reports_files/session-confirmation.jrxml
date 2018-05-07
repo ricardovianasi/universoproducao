@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.5.1.final using JasperReports Library version 6.5.1  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="session-confirmation" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="43237193-b054-46ba-942c-d695cf711b71">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter (9)"/>
+	<queryString language="json">
+		<![CDATA[object]]>
+	</queryString>
+	<field name="event_name" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="event_name"/>
+		<fieldDescription><![CDATA[event_name]]></fieldDescription>
+	</field>
+	<field name="instituition_social_name" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="instituition_social_name"/>
+		<fieldDescription><![CDATA[instituition_social_name]]></fieldDescription>
+	</field>
+	<field name="instituition_cnpj" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="instituition_cnpj"/>
+		<fieldDescription><![CDATA[instituition_cnpj]]></fieldDescription>
+	</field>
+	<field name="instituition_address" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="instituition_address"/>
+		<fieldDescription><![CDATA[instituition_address]]></fieldDescription>
+	</field>
+	<field name="instituition_city" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="instituition_city"/>
+		<fieldDescription><![CDATA[instituition_city]]></fieldDescription>
+	</field>
+	<field name="instituition_uf" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="instituition_uf"/>
+		<fieldDescription><![CDATA[instituition_uf]]></fieldDescription>
+	</field>
+	<field name="instituition_cep" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="instituition_cep"/>
+		<fieldDescription><![CDATA[instituition_cep]]></fieldDescription>
+	</field>
+	<field name="instituition_phone" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="instituition_phone"/>
+		<fieldDescription><![CDATA[instituition_phone]]></fieldDescription>
+	</field>
+	<field name="instituition_mobile_phone" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="instituition_mobile_phone"/>
+		<fieldDescription><![CDATA[instituition_mobile_phone]]></fieldDescription>
+	</field>
+	<field name="instituition_email" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="instituition_email"/>
+		<fieldDescription><![CDATA[instituition_email]]></fieldDescription>
+	</field>
+	<field name="instituition_direction" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="instituition_direction"/>
+		<fieldDescription><![CDATA[instituition_direction]]></fieldDescription>
+	</field>
+	<field name="responsible" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="responsible"/>
+		<fieldDescription><![CDATA[responsible]]></fieldDescription>
+	</field>
+	<field name="responsible_phone" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="responsible_phone"/>
+		<fieldDescription><![CDATA[responsible_phone]]></fieldDescription>
+	</field>
+	<field name="responsible_mobile_phone" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="responsible_mobile_phone"/>
+		<fieldDescription><![CDATA[responsible_mobile_phone]]></fieldDescription>
+	</field>
+	<field name="session_name" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="session_name"/>
+		<fieldDescription><![CDATA[session_name]]></fieldDescription>
+	</field>
+	<field name="session_movies" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="session_movies"/>
+		<fieldDescription><![CDATA[session_movies]]></fieldDescription>
+	</field>
+	<field name="session_programming_date" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="session_programming_date"/>
+		<fieldDescription><![CDATA[session_programming_date]]></fieldDescription>
+	</field>
+	<field name="session_programming_hour" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="session_programming_hour"/>
+		<fieldDescription><![CDATA[session_programming_hour]]></fieldDescription>
+	</field>
+	<field name="session_programming_place" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="session_programming_place"/>
+		<fieldDescription><![CDATA[session_programming_place]]></fieldDescription>
+	</field>
+	<field name="participants" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="participants"/>
+		<fieldDescription><![CDATA[participants]]></fieldDescription>
+	</field>
+	<field name="serie" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="serie"/>
+		<fieldDescription><![CDATA[serie]]></fieldDescription>
+	</field>
+	<field name="created_at" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="created_at"/>
+		<fieldDescription><![CDATA[created_at]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

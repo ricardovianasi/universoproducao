@@ -1,6 +1,8 @@
 <?php
 namespace Application\Entity\SessionSchool;
 
+use Application\Entity\Institution\Institution;
+use Application\Entity\Programing\Programing;
 use Doctrine\ORM\Mapping as ORM;
 use Util\Entity\AbstractEntity;
 
@@ -151,7 +153,7 @@ class SessionSchoolSubscription extends AbstractEntity
     }
 
     /**
-     * @return mixed
+     * @return SessionSchool
      */
     public function getSession()
     {
@@ -167,7 +169,7 @@ class SessionSchoolSubscription extends AbstractEntity
     }
 
     /**
-     * @return mixed
+     * @return Institution
      */
     public function getInstituition()
     {
@@ -359,7 +361,7 @@ class SessionSchoolSubscription extends AbstractEntity
     }
 
     /**
-     * @return mixed
+     * @return Programing
      */
     public function getSessionProgramming()
     {
