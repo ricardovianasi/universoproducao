@@ -107,7 +107,7 @@
 		</band>
 	</pageHeader>
 	<detail>
-		<band height="708" splitType="Stretch">
+		<band height="677" splitType="Stretch">
 			<textField>
 				<reportElement key="" x="121" y="20" width="434" height="30" uuid="be37b787-ede5-4238-84cf-b240b7a65b43"/>
 				<box padding="5">
@@ -248,9 +248,9 @@ Assinatura]]></text>
 				<text><![CDATA[Endereço: 
 
 Secretaria da 13ª CineOP - Mostra de Cinema de Ouro Preto
-Centro Cultural Yves Alves
-Rua Direita, 168 – Centro Histórico
-Tiradentes - MG]]></text>
+2º andar - Hall do Centro de Convenções
+Diogo de Vasconcelos, 328 - Pilar
+Ouro Preto - MG]]></text>
 			</staticText>
 		</band>
 	</detail>
