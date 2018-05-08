@@ -66,7 +66,7 @@ class WorkshopRegistrationController extends AbstractMeuUniversoRegisterControll
 
         $workshops = $this->getRepository(Workshop::class)->findBy([
             'registration' => $reg->getId()
-        ], ['name'=>'DESC']);
+        ], ['name'=>'ASC']);
 
         return [
             'workshops' => $workshops,
