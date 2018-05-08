@@ -1,0 +1,41 @@
+<main class="main">
+    <?php if($this->breadcrumbs): ?>
+        <?php echo $this->partial('cineop2018/partials/_breadcrumbs.phtml', ['breadcrumbs'=>$this->breadcrumbs]); ?>
+    <?php endif; ?>
+    <div class="main-wrapper">
+        <section class="main-content">
+            <header class="main-header">
+                <h1 class="main-title"><?php echo $post->getTitle() ?></h1>
+            </header>
+            <div class="news-list">
+                <?php foreach ($this->workshopList as $workshop): ?>
+                    <div style="display: none;width:600px;min-height: 400px" id="manager_<?php echo $workshop->getManager()->getId(); ?>">
+                        <div class="padding" style="padding: 10px">
+                            <p><strong style="font-weight: bold"><?php echo $workshop->getManager()->getName(); ?></strong></p><br />
+                            <?php echo $workshop->getManager()->getDescription(); ?>
+                        </div>
+                    </div>
+
+                    <article class="news-item">
+                        <div style="display: inline-block">
+                            <header class="news-header">
+                                <h1 class="news-title"><?php  echo $workshop->getName(); ?></h1>
+                            </header>
+                            <strong>Instrutor(a): </strong>
+                            <a class="fancybox" data-fancybox style="color: #000;text-decoration: none" href="#manager_<?php echo $workshop->getManager()->getId(); ?>"><?php echo $workshop->getManager()->getName(); ?>
+                                <i style="margin-left: 2px; font-size: 13px;" class="icon-plus-circle"></i></a>
+                        </div>
+                        <?php if($workshop->getFile()): ?>
+                            <figure class="news-figure"><img src="<?php echo $this->thumbor()->url($workshop->getFile())->resize(180, 180); ?>" alt=""></figure>
+                        <?php endif; ?>
+                        <p class="news-desc"></p>
+                        <a href="<?php echo $this->url("cineop2018/workshop", ['id'=>$workshop->getId()]) ?>" class="btn"><span>Mais informações</span></a>
+                    </article>
+                    <br />
+                    <br />
+                    <hr>
+                <?php endforeach; ?>
+            </div>
+        </section>
+    </div>
+</main>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.5.1.final using JasperReports Library version 6.5.1  -->
+<!-- Created with Jaspersoft Studio version 6.4.0.final using JasperReports Library version 6.4.1  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="session-confirmation" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="43237193-b054-46ba-942c-d695cf711b71">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter (9)"/>
 	<queryString language="json">
@@ -253,7 +253,7 @@
 				<text><![CDATA[A Escola acima identificada compromete-se a participar do programa
 Cine-Expressão de acordo com as informações abaixo:]]></text>
 			</staticText>
-			<textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement x="0" y="390" width="100" height="30" uuid="9c5fc7b9-f7d8-4782-a257-911d051a98e7"/>
 				<box>
 					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
@@ -262,7 +262,7 @@ Cine-Expressão de acordo com as informações abaixo:]]></text>
 					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{session_movies}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{session_name}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="0" y="360" width="100" height="30" uuid="6f53ea07-cfba-4184-91a1-ded93574a58d"/>
@@ -277,7 +277,7 @@ Cine-Expressão de acordo com as informações abaixo:]]></text>
 				</textElement>
 				<text><![CDATA[Filme]]></text>
 			</staticText>
-			<textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement x="100" y="390" width="80" height="30" uuid="3b81ae78-4a35-4a1d-a785-88d57a86cab8"/>
 				<box>
 					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
@@ -301,7 +301,7 @@ Cine-Expressão de acordo com as informações abaixo:]]></text>
 				</textElement>
 				<text><![CDATA[Dia]]></text>
 			</staticText>
-			<textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement x="180" y="390" width="70" height="30" uuid="6af929d5-34c0-4f64-88d3-685cea584557"/>
 				<box>
 					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
@@ -325,7 +325,7 @@ Cine-Expressão de acordo com as informações abaixo:]]></text>
 				</textElement>
 				<text><![CDATA[Hora]]></text>
 			</staticText>
-			<textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement x="250" y="390" width="160" height="30" uuid="9a8de80d-dbd9-46a6-94ae-876fd85d2a63"/>
 				<box>
 					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
@@ -349,7 +349,7 @@ Cine-Expressão de acordo com as informações abaixo:]]></text>
 				</textElement>
 				<text><![CDATA[Local]]></text>
 			</staticText>
-			<textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement x="410" y="390" width="70" height="30" uuid="78ca66c1-801e-430e-96f3-a5a4bd9ffc14"/>
 				<box>
 					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
@@ -373,7 +373,7 @@ Cine-Expressão de acordo com as informações abaixo:]]></text>
 				</textElement>
 				<text><![CDATA[Nº Alunos]]></text>
 			</staticText>
-			<textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement x="480" y="390" width="70" height="30" uuid="d88181a2-f613-471c-86f0-04149bb21642"/>
 				<box>
 					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
