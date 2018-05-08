@@ -191,7 +191,7 @@
 				<text><![CDATA[Horário]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="1" y="210" width="554" height="30" uuid="3d9c4c47-3245-4af5-ace9-0751da3029b4"/>
+				<reportElement x="1" y="210" width="554" height="19" uuid="3d9c4c47-3245-4af5-ace9-0751da3029b4"/>
 				<textElement textAlignment="Center">
 					<font isBold="true"/>
 				</textElement>
