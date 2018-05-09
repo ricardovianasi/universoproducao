@@ -53,7 +53,7 @@ jQuery(document).ready(function() {
             remove_script_host : false
         });
 
-    $(":input").inputmask();
+    $("*[data-inputmask]").inputmask();
 
 	//inicia o plugin de opções de página
 	$(".post-sidebar-options").postStatus();

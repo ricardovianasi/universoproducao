@@ -1363,7 +1363,7 @@ jQuery(document).ready(function() {
         relative_urls: false,
         remove_script_host: false
     });
-    $(":input").inputmask();
+    $("*[data-inputmask]").inputmask();
     $(".post-sidebar-options").postStatus();
     $(".slug-container").slug();
     $(".post-list").postListStatus();
