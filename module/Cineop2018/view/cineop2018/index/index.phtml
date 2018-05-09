@@ -12,6 +12,47 @@
         </section>
     <?php endif; ?>
 
+    <?php if(count($this->program)): ?>
+        <section class="programation">
+            <header class="main-header">
+                <h1 class="main-title">Programação</h1>
+            </header>
+            <header class="header-mobile">
+                <p class="header-date">
+                    21 - 27 Junho
+                    <span>Programação Gratuita</span>
+                </p>
+            </header>
+            <div class="programation-highlights owl-carousel" id="programation-highlights">
+                <?php foreach ($this->program as $p): ?>
+                    <div class="programation-featured">
+                        <div class="bgc" style="background-image: url('<?php echo  $this->thumbor()->url($p->getPhoto())->resize(480, 460); ?>')">
+                            <a href="<?php echo $p->getUrl(); ?>">
+                                <div class="wrapper">
+                                    <p class="date"><?php echo $p->getDate()->format('d/m') ?></p>
+                                    <p class="title"><?php echo $p->getTitle(); ?></p>
+                                    <p class="place"><?php echo $p->getPlace(); ?></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+            <p class="programation-readmore">
+                <a href="<?php echo $this->url('cineop2017')?>/programacao/programacao-completa" class="btn"><span>Programação completa</span></a>
+            </p>
+        </section>
+    <?php else: ?>
+        <section class="programation">
+            <header class="header-mobile">
+                <p class="header-date">
+                    13 - 18 Junho 2018
+                    <span>Programação Gratuita</span>
+                </p>
+            </header>
+        </section>
+    <?php endif; ?>
+
     <section class="news">
         <div class="main-wrapper">
             <header class="main-header">
@@ -41,6 +82,65 @@
         </div>
     </section>
 
+    <?php if(count($this->gallery)>0): ?>
+        <section class="gallery">
+            <header class="main-header">
+                <h1 class="main-title">Galeria de imagens</h1>
+            </header>
+            <div class="gallery-items owl-carousel" id="gallery">
+                <?php foreach ($this->gallery as $img): ?>
+                    <div class="gallery-item">
+                        <img src="<?php echo $this->thumbor()->url($img->getMeta('_image'))->resize(781, 504); ?>" alt="">
+                        <div class="gallery-content">
+                            <p class="gallery-title"><?php echo $img->getTitle(); ?></p>
+                            <p class="gallery-subtitle"><?php echo $img->getMeta('_credits'); ?></p>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+            <div class="main-wrapper">
+                <p class="gallery-readmore">
+                    <a target="_blank" href="http://www.flickr.com/photos/universoproducao" class="btn"><span>Ver mais fotos no Flickr</span></a>
+                </p>
+            </div>
+        </section>
+    <?php endif; ?>
+
+    <section class="guide">
+        <div class="main-wrapper">
+            <header class="main-header">
+                <h1 class="main-title">Descubra ouro preto</h1>
+            </header>
+
+            <div class="guide-items">
+                <div class="guide-item">
+                    <a class="guide-link" href="<?php echo $this->url('cineop2018/default', ['slug'=>'como-chegar']) ?>">
+                        <span class="sprite sprite-como-chegar"></span>
+                        <span class="guide-title">Como chegar</span>
+                    </a>
+                </div>
+                <div class="guide-item">
+                    <a class="guide-link" href="<?php echo $this->url('cineop2018/default', ['slug'=>'restaurantes']) ?>">
+                        <span class="sprite sprite-restaurantes"></span>
+                        <span class="guide-title">Restaurantes</span>
+                    </a>
+                </div>
+                <div class="guide-item">
+                    <a class="guide-link" href="<?php echo $this->url('cineop2018/default', ['slug'=>'pousadas']) ?>">
+                        <span class="sprite sprite-hoteis"></span>
+                        <span class="guide-title">Hoteis e Acomodações</span>
+                    </a>
+                </div>
+                <div class="guide-item">
+                    <a class="guide-link" href="<?php echo $this->url('cineop2018/default', ['slug'=>'informacoes-e-turismo']) ?>">
+                        <span class="sprite sprite-turismo"></span>
+                        <span class="guide-title">Turismo e informações</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <?php if(count($this->eufacoamostra)>0): ?>
         <section class="eufacoamostra">
             <header class="main-header">
@@ -60,5 +160,29 @@
         </section>
     <?php endif; ?>
 
+    <section class="newsletter">
+        <div class="main-wrapper">
+            <header class="main-header">
+                <h1>Receba Nossos Informativos</h1>
+            </header>
+            <form action="<?php echo $this->url('cineop2017/newsletter') ?>" class="newsletter-form">
+                <input type="text" class="newsletter-input" placeholder="Nome" required>
+                <input type="text" class="newsletter-input" placeholder="Email" required>
+                <button type="submit" class="newsletter-submit">Cadastrar</button>
+            </form>
+        </div>
+    </section>
 
+    <section class="sitemap">
+        <div class="main-wrapper">
+            <?php $this
+                ->navigation('Cineop2018Navigation')
+                ->menu()->setPartial("cineop2018/partials/sitemap.phtml");
+
+            echo $this
+                ->navigation('Cineop2018Navigation')
+                ->menu()
+                ->render(); ?>
+        </div>
+    </section>
 </main>
