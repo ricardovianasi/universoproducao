@@ -21,7 +21,7 @@ $(document).ready(function () {
         });
     }
 
-    $(":input").inputmask();
+    $("*[data-inputmask]").inputmask();
 
     //Inicia o plugin que controla a busca de cep
     $(".cep").cep();
