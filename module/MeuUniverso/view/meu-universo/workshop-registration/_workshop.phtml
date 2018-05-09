@@ -7,7 +7,7 @@
     'id_reg' => $registration->getHash()
 ]); ?>
 
-<div style="display: none;min-width:400px;min-height: 400px" id="manager_<?php echo $workshop->getManager()->getId(); ?>">
+<div style="display: none;width:600px;min-height: 400px" id="manager_<?php echo $workshop->getManager()->getId(); ?>">
     <?php echo $workshop->getManager()->getDescription(); ?>
 </div>
 
@@ -28,7 +28,7 @@
             <?php endif; ?>
         </div>
         <div class="tools">
-            <a href="javascript:;" class="expand" data-original-title="" title=""> </a>
+            <a href="javascript:;" class="expand icon-arrow-down2" data-original-title="" title=""> </a>
         </div>
     </div>
     <div class="portlet-body form portlet-collapsed">

@@ -1269,7 +1269,32 @@ class Movie extends AbstractEntity
         } else {
             return $types;
         }
+    }
 
+    public function getHighlights()
+    {
+        $return = [];
 
+        $genre = $this->getOption(OptionsType::GENRE);
+        $color = $this->getOption(OptionsType::COLOR);
+        $format = $this->getOption(OptionsType::FORMAT_COMPLETED);
+        $duration = ($this->getDuration()->format('H')*60)+($this->getDuration()->format('i'));
+
+        if($genre) {
+            $return[] = $genre->getName();
+        }
+
+        if($color) {
+            $return[] = $color->getName();
+        }
+
+        if($format) {
+            $return[] = $format->getName();
+        }
+
+        $return[] = $duration.' min';
+        $return[] = $this->getEndDateYear();
+
+        return $return;
     }
 }

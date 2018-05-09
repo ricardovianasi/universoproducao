@@ -2,7 +2,7 @@
   "name": "generator-custom2",
   "private": true,
   "dependencies": {
-    "parsleyjs": "^2.7.2",
+    "parsleyjs": "^2.8.1",
     "bootstrap": "^3.3.7",
     "bootstrap-datepicker": "uxsolutions/bootstrap-datepicker#^1.7.1",
     "blockUI": "malsup/blockui",

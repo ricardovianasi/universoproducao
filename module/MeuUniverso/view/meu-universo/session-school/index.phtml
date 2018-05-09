@@ -16,9 +16,35 @@
                             <?php if(count($session->getMovies()) > 1): ?>
                                 <span style="display: block; text-transform: uppercase; font-style: italic; margin-bottom: 8px">Sessão de curtas:</span>
                             <?php endif; ?>
-                            <p><?php foreach ($session->getMovies() as $m): ?>
-                                <strong><?php echo mb_strtoupper($m->getMovie()->getTitle()); ?></strong><br />
-                            <?php endforeach; ?></p>
+
+                                <?php foreach ($session->getMovies() as $m): ?>
+                                    <a data-fancybox class="fancybox" style="color: #000; text-decoration: none" href="#moviemodal<?php echo $m->getMovie()->getId() ?>">
+                                        <strong><?php echo mb_strtoupper($m->getMovie()->getTitle()); ?></strong>
+                                        <i style="margin-left: 2px; font-size: 13px;" class="icon-plus-circle"></i>
+                                    </a>
+                                    <br />
+                                    <div style="display: none;width:800px;min-height: 800px" id="moviemodal<?php echo $m->getMovie()->getId(); ?>">
+                                        <h3 class="main-title"><?php echo $m->getMovie()->getTitle() ?></h3>
+                                        <?php echo mb_strtoupper(implode(', ', $m->getMovie()->getHighlights())); ?>
+
+                                        <?php if(count($m->getMovie()->getMedias())): ?>
+                                            <p>
+                                                <img width="100%" src="<?php echo $this->thumbor()->url($this->fileManipulation()->url($m->getMovie()->getMedias()->first()->getSrc()))->resize(1140, 400); ?>" alt="">
+                                            </p>
+                                        <?php endif; ?>
+                                        <br>
+                                        <p>
+                                            <strong style="font-weight: bold">Direção: </strong>
+                                            <?php echo $m->getMovie()->getDirection(); ?>
+                                        </p>
+                                        <br>
+                                        <p>
+                                            <strong style="font-weight: bold">Sinopse: </strong>
+                                            <?php echo $m->getMovie()->getSynopsis(); ?>
+                                        </p>
+
+                                    </div>
+                                <?php endforeach; ?>
                             <table class="table">
                                 <thead>
                                     <tr>
@@ -37,7 +63,7 @@
                                     ]); ?>
                                     <tr>
                                         <td><?php echo $prog->getDate()->format('d/m/Y').' | '.$prog->getStartTime()->format('H\hi'); ?></td>
-                                        <td><?php echo $prog->getPlace()->getName(); ?></td>
+                                        <td><?php echo $prog->getPlace()?$prog->getPlace()->getName():""; ?></td>
                                         <td><?php echo ($prog->getAvailablePlaces() - $this->sessionSchoolRepository->getTotalSubscriptionsSession($prog->getId())); ?></td>
                                         <td>
                                             <?php if($this->sessionSchoolRepository->hasAvailableSubscriptions($prog->getId())): ?>
