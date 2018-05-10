@@ -27,6 +27,7 @@
                                 <th width="20%">Sessão</th>
 								<th width="15%">Nº Alunos</th>
 								<th width="15%">Série</th>
+								<th width="15%">Data</th>
 								<th width="15%">Ações</th>
 							</tr>
                             <tr role="row" class="filter">
@@ -35,6 +36,7 @@
                                 <td><?php echo $this->formElement($form->get('instituition_social_name')); ?></td>
                                 <td><?php echo $this->formElement($form->get('event')); ?></td>
                                 <td><?php echo $this->formElement($form->get('session')); ?></td>
+                                <td></td>
                                 <td></td>
                                 <td></td>
                                 <td>
@@ -70,6 +72,7 @@
                                 </td>
                                 <td><?php echo $i->getParticipants(); ?></td>
                                 <td><?php echo $i->getSeriesAge(); ?></td>
+                                <td><?php echo $i->getCreatedAt()->format('d/m/Y H:i:s') ?></td>
 								<td>
                                     <a href="<?php echo  $updateUrl; ?>" class="btn btn-sm btn-default">
                                         <i class="fa fa-edit"></i> Editar
