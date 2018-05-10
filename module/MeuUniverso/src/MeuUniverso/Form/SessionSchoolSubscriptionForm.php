@@ -12,7 +12,7 @@ use Admin\Form\SessionSchool\SessionSchoolSubscriptionForm as AdminSessionSchool
 
 class SessionSchoolSubscriptionForm extends AdminSessionSchoolSubscriptionForm
 {
-    public function __construct($user, $em, $registration=null)
+    public function __construct($em, $registration=null)
     {
         parent::__construct($em, $registration);
 

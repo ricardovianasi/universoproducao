@@ -140,7 +140,7 @@ class SessionSchoolController extends AbstractMeuUniversoRegisterController
         }
 
         $user = $this->getAuthenticationService()->getIdentity();
-        $form = new SessionSchoolSubscriptionForm($this->getEntityManager(), $reg);
+        $form = new SessionSchoolSubscriptionForm($this->getEntityManager());
 
         if($this->getRequest()->isPost()) {
             $data = $this->getRequest()->getPost();
@@ -200,8 +200,8 @@ class SessionSchoolController extends AbstractMeuUniversoRegisterController
                 $to[$user->getName()] = $user->getEmail();
                 $this->mailService()->simpleSendEmail($to, "Confirmação de inscrição Cine-Expressão ", $msg, $confirmacao);
 
-                $copy['Cine-Escola'] = 'cine-escola@universoproducao.com.br';
-                $this->mailService()->simpleSendEmail($copy, "Confirmação de inscrição Cine-Expressão ", $msg, $confirmacao);
+                $cc['Cine-Escola'] = 'cine-escola@universoproducao.com.br';
+                $this->mailService()->simpleSendEmail($cc, "Inscrição Cine-Expressão - CineOP", $msg, $confirmacao);
 
                 $this->meuUniversoMessages()->flashSuccess($msg);
                 return $this->redirect()->toRoute('meu-universo/default');
