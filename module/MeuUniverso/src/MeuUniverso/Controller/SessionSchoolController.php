@@ -200,9 +200,8 @@ class SessionSchoolController extends AbstractMeuUniversoRegisterController
                 $to[$user->getName()] = $user->getEmail();
                 $this->mailService()->simpleSendEmail($to, "Confirmação de inscrição Cine-Expressão ", $msg, $confirmacao);
 
-                $to = [];
-                $to['Cine-Escola'] = 'cine-escola@universoproducao.com.br';
-                $this->mailService()->simpleSendEmail($to, "Confirmação de inscrição Cine-Expressão ", $msg, $confirmacao);
+                $copy['Cine-Escola'] = 'cine-escola@universoproducao.com.br';
+                $this->mailService()->simpleSendEmail($copy, "Confirmação de inscrição Cine-Expressão ", $msg, $confirmacao);
 
                 $this->meuUniversoMessages()->flashSuccess($msg);
                 return $this->redirect()->toRoute('meu-universo/default');
