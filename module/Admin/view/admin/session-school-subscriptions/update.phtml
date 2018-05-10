@@ -4,32 +4,45 @@
 		<div class="portlet light portlet-fit bordered">
 			<div class="portlet-title">
 				<div class="caption">
-					<?php if($this->session->getId()): ?>
+					<?php if($this->sub->getId()): ?>
 					<i class="fa fa-edit"></i>
-					Editar sessão
+					Editar inscrição
 					<?php else: ?>
 					<i class="fa fa-file-o"></i>
-					Cadastrar sessão
+					Nova inscrição
 					<?php endif; ?>
 				</div>
 				<div class="actions">
-					<a href="<?php echo $this->url('admin/default', ['controller'=>'session-school']); ?>"
+					<a href="<?php echo $this->url('admin/default', ['controller'=>'session-school-subscriptions']); ?>"
 					   class="btn btn-default">
 						<i class="icon-action-undo"></i>
 						<span class="hidden-xs"> Voltar </span>
 					</a>
-                    <a href="<?php echo $this->url('admin/default', ['controller'=>'session-school', 'action'=>'create']); ?>"
+                    <div class="btn-group">
+                        <a class="btn btn-default dropdown-toggle" href="javascript:;" data-toggle="dropdown">
+                            <i class="fa fa-share"></i>
+                            <span class="hidden-xs"> Opções </span>
+                            <i class="fa fa-angle-down"></i>
+                        </a>
+                        <div class="dropdown-menu pull-right">
+                            <li>
+                                <a class="report-link"
+                                   data-url="<?php echo $this->url('admin/default', ['controller'=>'session-school-subscriptions', 'action'=>'term-sheet', 'id'=>$this->sub->getId()]) ?>"
+                                   href="#"> Termo de compromisso </a>
+                            </li>
+                        </div>
+                    </div>
+                    <a href="<?php echo $this->url('admin/default', ['controller'=>'session-school-subscriptions', 'action'=>'create']); ?>"
                        class="btn blue btn-lg">
                         <i class="fa fa-plus"></i>
-                        <span class="hidden-xs"> Nova sessão  </span>
+                        <span class="hidden-xs"> Incluir inscrição  </span>
                     </a>
 				</div>
 			</div>
 			<div class="portlet-body">
-                <?php echo $this->partial('admin/session-school/_form.phtml', [
+                <?php echo $this->partial('admin/session-school-subscriptions/_form.phtml', [
                     'form' => $this->form,
-                    'session'=>$this->session,
-                    'programingForm' => $this->programingForm,
+                    'sub'=>$this->sub
                 ]); ?>
 			</div>
 		</div>

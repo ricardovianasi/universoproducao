@@ -1,5 +1,4 @@
 <?php $form = $this->form; ?>
-<?php $programingForm = $this->programingForm; ?>
 <div class="portlet">
     <div class="portlet-body form">
         <?php $form->prepare(); echo $this->form(null, null)->openTag($form) ?>
@@ -10,90 +9,77 @@
             </div>
 
             <div class="row">
-                <div class="col-md-4"><?php echo $this->formRow($form->get('name')); ?></div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-4"><?php echo $this->formRow($form->get('age_range')); ?></div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-4 nestable-serialize">
-                    <?php echo $this->formElement($form->get('movies')); ?>
+                <div class="col-md-4">
                     <div class="form-group">
-                        <label for="">Filmes</label>
+                        <?php
+                            $userName = $this->sub->getUser()?$this->sub->getUser()->getName():"";
+                            $userId = $this->sub->getUser()?$this->sub->getUser()->getId():""; ?>
+                        <label>Usuário</label>
                         <div class="input-group">
-                            <?php
-                            $movieEl = $form->get('movie');
-                            $movieEl->setAttribute('required', '');
-                            echo $this->formElement($movieEl);
-                            ?>
+                            <input readonly type="text" id="authorName" class="form-control" value="<?php echo $userName ?>">
                             <span class="input-group-btn">
-                                <button class="btn nestable-serialize-add" type="button">
-                                    <i class="fa fa-plus"></i>
-                                </button>
-                            </span>
+                            <button
+                                    class="btn user-modal"
+                                    type="button"
+                                    data-user-id="<?php echo $userId; ?>"
+                                    data-select-id-to="#author"
+                                    data-select-name-to="#authorName">
+                                <i class="fa fa-search"></i>
+                            </button>f
+                        </span>
                         </div>
                     </div>
-                    <div class="portlet-body">
-                        <div class="dd">
-                            <ol class="dd-list">
-                                <?php foreach ($this->session->getMovies() as $m): ?>
-                                    <li class="dd-item" data-id="<?php echo $m->getId(); ?>">
-                                        <div class="item-controls">
-                                            <a class="nestable-serialize-remove" role="button">excluir</a>
-                                        </div>
-                                        <div class="dd-handle">
-                                            <span class="item-title">
-                                                <?php echo $m->getMovie()->getTitle(); ?>
-                                            </span>
-                                        </div>
-                                    </li>
-                                <?php endforeach; ?>
-                            </ol>
-                        </div>
-                    </div>
+                    <?php echo $this->formElement($form->get("user")); ?>
                 </div>
             </div>
-        </div>
 
-        <div class="portlet-body form programming">
-            <h3 class="form-section">Programação</h3>
-
-            <div class="form-actions top">
-                <div class="row">
-                    <div class="col-md-9">
-                        <button class="btn btn-success programing-add" type="button">
-                            <i class="fa fa-plus"></i> Adicionar</button>
-                    </div>
+            <h3 class="form-section">Instituição</h3>
+            <?php $instituitionFieldset = $form->get('instituition'); ?>
+            <?php echo $this->formElement($instituitionFieldset->get('id')) ?>
+            <div class="row">
+                <div class="col-md-8"><?php echo $this->formRow($instituitionFieldset->get('social_name')) ?></div>
+                <div class="col-md-4"><?php echo $this->formRow($instituitionFieldset->get('cnpj')) ?></div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <?php echo $this->formRow($instituitionFieldset->get('address')) ?>
                 </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4"><?php echo $this->formRow($instituitionFieldset->get('cep')) ?></div>
+                <div class="col-md-4"><?php echo $this->formRow($instituitionFieldset->get('city')) ?></div>
+                <div class="col-md-4"><?php echo $this->formRow($instituitionFieldset->get('uf')) ?></div>
+            </div>
+            <div class="row">
+                <div class="col-md-4"><?php echo $this->formRow($instituitionFieldset->get('phone')) ?></div>
+                <div class="col-md-4"><?php echo $this->formRow($instituitionFieldset->get('mobile_phone')) ?></div>
+                <div class="col-md-4"><?php echo $this->formRow($instituitionFieldset->get('email')) ?></div>
+            </div>
+
+            <h3 class="form-section">Direção da Instituição</h3>
+            <div class="row">
+                <div class="col-md-12"><?php echo $this->formRow($form->get('instituition_direction')) ?></div>
+                <div class="col-md-6"><?php echo $this->formRow($form->get('instituition_direction_phone')) ?></div>
+                <div class="col-md-6"><?php echo $this->formRow($form->get('instituition_direction_email')) ?></div>
+            </div>
+
+            <h3 class="form-section">Responsável pela inscrição</h3>
+            <div class="row">
+                <div class="col-md-12"><?php echo $this->formRow($form->get('responsible')) ?></div>
+                <div class="col-md-4"><?php echo $this->formRow($form->get('responsible_office')) ?></div>
+                <div class="col-md-4"><?php echo $this->formRow($form->get('responsible_phone')) ?></div>
+                <div class="col-md-4"><?php echo $this->formRow($form->get('responsible_mobile_phone')) ?></div>
+            </div>
+
+            <h3 class="form-section">Inscrição</h3>
+            <div class="row">
+                <div class="col-md-4"><?php echo $this->formRow($form->get('participants')) ?></div>
             </div>
 
             <div class="row">
-                <?php
-                $programming = $form->get('programming');
-                echo $this->formCollection()->renderTemplate($programming);
-                ?>
-                <div class="programming-list">
-                    <?php foreach ($programming as $prog): ?>
-                        <div class="col-md-3 programming-portlet">
-                            <div class="portlet light bordered">
-                                <div class="portlet-title">
-                                    <div class="caption">
-                                        <?php echo $prog->get('date')->getValue() . ' - ' . $prog->get('start_time')->getValue(); ?>
-                                    </div>
-                                    <div class="tools">
-                                        <button type="button" class="btn btn-circle btn-sm red portlet-remove">Remover</button>
-                                    </div>
-                                </div>
-                                <div class="portlet-body">
-                                    <?php echo $this->formCollection($prog); ?>
-                                </div>
-                            </div>
-                        </div>
-                    <?php endforeach; ?>
-                </div>
+                <div class="col-md-4"><?php echo $this->formRow($form->get('series_age')) ?></div>
             </div>
+
         </div>
 
         <div class="form-actions">
@@ -107,84 +93,3 @@
         <?php echo $this->form()->closeTag() ?>
     </div>
 </div>
-
-<?php $this->inlineScript()->captureStart();
-echo <<<JS
-$( document ).ready(function() {
-    $(document).on('keyup', '.programming_date, .programming_start_time', function() {
-        var el = $(this),
-            portlet = el.parents('.programming-portlet'),
-            date = '',
-            startTime = '',
-            title = '';
-        
-        date = portlet.find('.programming_date').val();
-        startTime = portlet.find('.programming_start_time').val();
-        
-        if(date) {
-            title = date;
-            if(startTime) {
-                title = title + ' - ' + startTime;
-         }
-        } else if(startTime) {
-            title = startTime;
-        }
-        
-        $(this)
-            .parents('.portlet-body')
-            .first()
-            .siblings('.portlet-title')
-            .children('.caption')
-            .text(title)
-    });
-    
-    $('.programing-add').on('click', function(e) {
-        e.preventDefault();
-        
-        var template = $('span[data-template]', '.programming').data('template'),
-            index = Math.floor(Date.now() / 1000);
-        
-        template = template.replace(/__index__/g, index);
-        var item = $('<div class="col-md-3 programming-portlet"><div class="portlet light bordered">' +
-             '<div class="portlet-title">' +
-              '<div class="caption"></div>' +
-              '<div class="tools"><button type="button" class="btn btn-circle btn-sm red portlet-remove">Remover</button></div>' + 
-             '</div>' +
-             '<div class="portlet-body">' + template + '</div>' +
-              '</div></div>');
-        
-        $('.programming-list').append(item);
-        $(":input").inputmask();
-    });
-    
-    $(document).on('click', '.programming-portlet .portlet-remove', function(e) {
-        e.preventDefault();
-        var portlet = $(this).parents('.programming-portlet');
-        bootbox.dialog({
-            message: "Todas as incrições realizadas para essa sessão serão excluídas!",
-            title: "Atenção",
-            buttons: {
-                success: {
-                    label: "Deletar programação e as inscrições",
-                    className: "red",
-                    callback: function() {
-                        portlet.fadeOut("slow", function() {
-                            portlet.remove();
-                        });
-                        return;
-                    }
-                },
-                danger: {
-                    label: "Cancelar",
-                    className: "blue",
-                    callback: function() {
-                        return;
-                    }
-                }
-            }
-        });
-    });
-     
-});
-JS;
-$this->inlineScript()->captureEnd(); ?>

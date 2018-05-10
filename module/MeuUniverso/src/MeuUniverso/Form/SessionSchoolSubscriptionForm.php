@@ -16,6 +16,9 @@ class SessionSchoolSubscriptionForm extends AdminSessionSchoolSubscriptionForm
     {
         parent::__construct($em, $registration);
 
+        $this->remove('user')
+            ->remove('registration');
+
         $this->add([
             'type' => 'Checkbox',
             'name' => 'accept_regulation',

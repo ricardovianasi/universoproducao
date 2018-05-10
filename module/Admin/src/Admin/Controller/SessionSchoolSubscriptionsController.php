@@ -14,6 +14,7 @@ use Admin\Form\SessionSchool\SessionSchoolSubscriptionForm;
 use Admin\Form\SessionSchool\SessionSchoolSubscriptionSearchForm;
 use Application\Entity\Event\Event;
 use Application\Entity\Event\Place;
+use Application\Entity\Institution\Institution;
 use Application\Entity\Movie\Movie;
 use Application\Entity\Programing\Programing;
 use Application\Entity\Programing\Type;
@@ -21,6 +22,7 @@ use Application\Entity\Registration\Registration;
 use Application\Entity\SessionSchool\SessionSchool;
 use Application\Entity\SessionSchool\SessionSchoolMovies;
 use Application\Entity\SessionSchool\SessionSchoolSubscription;
+use Application\Entity\User\User;
 use Doctrine\Common\Collections\ArrayCollection;
 
 class SessionSchoolSubscriptionsController extends AbstractAdminController
@@ -83,22 +85,12 @@ class SessionSchoolSubscriptionsController extends AbstractAdminController
     public function persist($data, $id = null)
     {
         if($id) {
-            $session = $this->getRepository(SessionSchool::class)->find($id);
+            $sub = $this->getRepository(SessionSchoolSubscription::class)->find($id);
         } else {
-            $session = new SessionSchool();
+            $sub = new SessionSchoolSubscription();
         }
 
-        $reg = null;
-        if($this->params()->fromPost('registration')) {
-            $reg = $this
-                ->getRepository(Registration::class)
-                ->find($this->params()->fromPost('registration'));
-        } else {
-            $reg = $session->getRegistration();
-        }
-
-        $form = new SessionSchoolForm($this->getEntityManager(), $reg);
-        $programingForm = new SessionSchoolProgramingForm($this->getEntityManager());
+        $form = new SessionSchoolSubscriptionForm($this->getEntityManager());
 
         $noValidate = $this->params()->fromPost('no-validate', false);
         if($this->getRequest()->isPost()) {
@@ -110,106 +102,118 @@ class SessionSchoolSubscriptionsController extends AbstractAdminController
                     if(!empty($data['registration'])) {
                         $registration = $this->getRepository(Registration::class)->find($data['registration']);
                     }
-                    $session->setEvent($registration->getEvent());
-                    $session->setRegistration($registration);
+                    $sub->setEvent($registration->getEvent());
+                    $sub->setRegistration($registration);
+                    unset($data['registration']);
 
-                    if(!empty($data['age_range'])) {
-                        $session->setAgeRange($data['age_range']);
-                    } else {
-                        $session->setAgeRange(null);
+                    $user = null;
+                    if(!empty($data['user'])) {
+                        $user = $this
+                            ->getRepository(User::class)
+                            ->find($data['user']);
                     }
+                    $sub->setUser($user);
+                    unset($data['user']);
 
-                    if(!empty($data['name'])) {
-                        $session->setName($data['name']);
-                    } else {
-                        $session->setTitle(null);
-                    }
-
-                    foreach ($session->getMovies() as $m) {
-                        $this->getEntityManager()->remove($m);
-                    }
-                    $session->getMovies()->clear();
-                    if(!empty($data['movies'])) {
-                        $moviesId = json_decode($data['movies'], true);
-                        $count = 1;
-                        foreach ($moviesId as $mId) {
-                            $sessionMovie = new SessionSchoolMovies();
-                            $movie = $this->getRepository(Movie::class)->find($mId['id']);
-                            $sessionMovie->setMovie($movie);
-                            $sessionMovie->setSession($session);
-                            $sessionMovie->setOrder($count++);
-
-                            $session->getMovies()->add($sessionMovie);
-                        }
-                    }
-
-                    $this->getEntityManager()->persist($session);
-                    $this->getEntityManager()->flush();
-
-                    //programação
-                    $oldProg = [];
-                    foreach ($session->getProgramming() as $c) {
-                        $oldProg[$c->getId()] = $c;
-                    }
-                    $programing = [];
-                    if(!empty($data['programming'])) {
-                        $programing = $data['programming'];
-                    }
-                    foreach ($programing as $prog) {
-                        $sessProg = null;
-                        if(!empty($prog['id'])) {
-                            $sessProg = $this->getRepository(Programing::class)->find($prog['id']);
-                        }
-                        if(!$sessProg) {
-                            $sessProg = new Programing();
-                        }
-
-                        $sessProg->setEvent($session->getEvent());
-                        $sessProg->setType(Type::SESSION_SCHOOL);
-                        $sessProg->setObjectId($session->getId());
-                        if(!empty($prog['place'])) {
-                            $place = $this
-                                ->getRepository(Place::class)
-                                ->find($prog['place']);
-
-                            $prog['place'] = $place;
+                    $instituition = null;
+                    if(!empty($data['instituition'])) {
+                        if(!empty($data['instituition']['id'])) {
+                            $instituition = $this
+                                ->getRepository(Institution::class)
+                                ->find($data['instituition']['id']);
                         } else {
-                            unset($prog['place']);
+                            $instituition = new Institution();
                         }
-
-                        $sessProg->setData($prog);
-
-                        $this->getEntityManager()->persist($sessProg);
-                        unset($oldProg[$sessProg->getId()]);
+                        $instituition->setData($data['instituition']);
                     }
-                    foreach ($oldProg as $op) {
-                        $this->getEntityManager()->remove($op);
-                    }
+                    $sub->setInstituition($instituition);
+                    unset($data['instituition']);
 
+                    $sub->setData($data);
+
+                    $this->getEntityManager()->persist($sub);
                     $this->getEntityManager()->flush();
-                    $this->getEntityManager()->refresh($session);
 
 
                     if($id) {
-                        $this->messages()->success("Sessão atualizada com sucesso!");
+                        $this->messages()->success("Inscrição atualizada com sucesso!");
                     } else {
-                        $this->messages()->flashSuccess("Sessão criada com sucesso!");
+                        $this->messages()->flashSuccess("Inscrição criada com sucesso!");
                         return $this->redirect()->toRoute('admin/default', [
-                            'controller' => 'session-school',
+                            'controller' => 'session-school-subscription',
                             'action' => 'update',
-                            'id' => $session->getId()
+                            'id' => $sub->getId()
                         ]);
                     }
                 }
             }
         } else {
-            $form->setData($session->toArray());
+            $form->setData($sub->toArray());
         }
 
         return $this->getViewModel()->setVariables([
             'form' => $form,
-            'session' => $session,
-            'programingForm' => $programingForm
+            'sub' => $sub
         ]);
+    }
+
+    public function termSheetAction()
+    {
+        //recupera os itens
+        $dataAttr = $this->params()->fromQuery();
+        $id = $this->params()->fromRoute('id');
+        $item = $this->getRepository(SessionSchoolSubscription::class)->find($id);
+
+        //criar um arquivo json
+        $preparedItems = $this->prepareItemsForReports($item);
+
+        return $this->prepareReport($preparedItems, 'session-confirmation' ,'pdf');
+
+    }
+
+    protected function prepareItemsForReports($items)
+    {
+        if(!is_array($items)) {
+            $items = [$items];
+        }
+
+        $preparedItems = [];
+        foreach ($items as $obj) {
+
+            /** @var SessionSchoolSubscription $obj */
+            $obj = $obj;
+
+            $sessionsMovies = [];
+            foreach ($obj->getSession()->getMovies() as $sm) {
+                $sessionsMovies[] = $sm->getMovie()->getTitle();
+            }
+
+            $preparedItems[]['object'] = [
+                'event_name' => $obj->getEvent()->getShortName(),
+                'instituition_social_name' => $obj->getInstituition()->getSocialName(),
+                'instituition_cnpj' => $obj->getInstituition()->getCnpj(),
+                'instituition_address' => $obj->getInstituition()->getAddress(),
+                'instituition_city' => $obj->getInstituition()->getCity(),
+                'instituition_uf' => $obj->getInstituition()->getUf(),
+                'instituition_cep' => $obj->getInstituition()->getCep(),
+                'instituition_phone' => $obj->getInstituition()->getPhone(),
+                'instituition_mobile_phone' => $obj->getInstituition()->getMobilePhone(),
+                'instituition_email' => $obj->getInstituition()->getEmail(),
+                'instituition_direction' => $obj->getInstituitionDirection(),
+                'responsible' => $obj->getResponsible(),
+                'responsible_phone' => $obj->getResponsiblePhone(),
+                'responsible_mobile_phone' => $obj->getResponsibleMobilePhone(),
+                'session_name' => $obj->getSession()->getName(),
+                'session_movies' => implode(' - ', $sessionsMovies),
+                'session_programming_date' => $obj->getSessionProgramming()->getDate()->format('d/m/Y'),
+                'session_programming_hour' => $obj->getSessionProgramming()->getStartTime()->format('H:i'),
+                'session_programming_place' => $obj->getSessionProgramming()->getPlace()->getName(),
+                'participants' => $obj->getParticipants(),
+                'serie' => $obj->getSeriesAge(),
+                'created_at' => $obj->getCreatedAt()->format('d/m/Y H:i:s')
+            ];
+        }
+
+        return $preparedItems;
     }
 }
