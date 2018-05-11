@@ -419,7 +419,7 @@ abstract class AbstractAdminController extends AbstractController
 
 		if(isset($data['slug'])) {
 			$slug = !empty($data['slug']) ? $data['slug'] : 'sem-titulo';
-			$slug = $this->slugify()->create($slug, true, $entity, $postId);
+			$slug = $this->slugify()->create($slug, true, $entity, $this->getSiteIdFromUri(), $postId);
 			$data['slug'] = $slug;
 		}
 
