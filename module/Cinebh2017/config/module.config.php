@@ -12,8 +12,8 @@ return array(
         'routes' => array(
             'cinebh2017' => array(
                 'type'    => Hostname::class,
-                'type' => 'Hostname'
-,                'options' => array(
+                'type' => 'Hostname',
+                'options' => array(
                     'route'    => '[www.][:locale.]2017.cinebh.com.br',
                     'defaults' => array(
                         'controller'    => Controller\IndexController::class,
