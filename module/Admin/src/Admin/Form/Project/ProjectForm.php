@@ -199,7 +199,7 @@ class ProjectForm extends Form
             ],
             'attributes' => [
                 'maxlength' => 3500,
-                'rows' => '6',
+                'rows' => '15',
                 'required' => 'required',
             ]
         ]);
@@ -214,6 +214,7 @@ class ProjectForm extends Form
             'attributes' => [
                 'maxlength' => 500,
                 'required' => 'required',
+                'rows' => '6',
             ]
         ]);
 
@@ -227,6 +228,7 @@ class ProjectForm extends Form
             'attributes' => [
                 'maxlength' => 500,
                 'required' => 'required',
+                'rows' => '6',
             ]
         ]);
 
@@ -239,7 +241,7 @@ class ProjectForm extends Form
             ],
             'attributes' => [
                 'maxlength' => 1500,
-                'rows' => '4',
+                'rows' => '15',
                 'required' => 'required',
             ]
         ]);
@@ -253,7 +255,7 @@ class ProjectForm extends Form
             ],
             'attributes' => [
                 'maxlength' => 10000,
-                'rows' => '4',
+                'rows' => '30',
                 'required' => 'required',
             ]
         ]);
@@ -267,7 +269,7 @@ class ProjectForm extends Form
             ],
             'attributes' => [
                 'maxlength' => 10000,
-                'rows' => '6',
+                'rows' => '30',
                 'required' => 'required',
             ]
         ]);
@@ -281,7 +283,7 @@ class ProjectForm extends Form
             ],
             'attributes' => [
                 'maxlength' => 5000,
-                'rows' => '6',
+                'rows' => '10',
                 'required' => 'required',
             ]
         ]);
@@ -411,7 +413,7 @@ class ProjectForm extends Form
             ],
             'attributes' => [
                 'required' => 'required',
-                'rows' => 5
+                'rows' => 10
             ]
         ]);
 
@@ -423,7 +425,7 @@ class ProjectForm extends Form
             ],
             'attributes' => [
                 'required' => 'required',
-                'rows' => 5
+                'rows' => 10
             ]
         ]);
 
@@ -435,6 +437,7 @@ class ProjectForm extends Form
             ],
             'attributes' => [
                 'required' => 'required',
+                'rows' => 10
             ]
         ]);
 

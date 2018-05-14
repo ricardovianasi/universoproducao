@@ -635,7 +635,7 @@
 	<detail>
 		<band height="30" splitType="Stretch">
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement stretchType="RelativeToTallestObject" x="250" y="0" width="100" height="30" uuid="9aacc89e-99dc-49d3-bd3e-82fd220bce58">
+				<reportElement positionType="Float" x="250" y="0" width="100" height="30" uuid="9aacc89e-99dc-49d3-bd3e-82fd220bce58">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="45b9f0c9-2f63-4072-a53d-fac3a5b97a30"/>
 				</reportElement>
 				<box padding="5">
@@ -644,7 +644,7 @@
 				<textFieldExpression><![CDATA[$F{status}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement stretchType="RelativeToTallestObject" x="0" y="0" width="60" height="30" uuid="34018774-ff63-473c-a442-f9707bd0d486">
+				<reportElement positionType="Float" x="0" y="0" width="60" height="30" uuid="34018774-ff63-473c-a442-f9707bd0d486">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ec438f89-bae6-4381-be95-b7668530bab0"/>
 				</reportElement>
 				<box padding="5">
@@ -654,7 +654,7 @@
 				<textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement stretchType="RelativeToTallestObject" x="150" y="0" width="100" height="30" uuid="f8886578-5854-46ce-9808-40bd610331a3">
+				<reportElement positionType="Float" x="150" y="0" width="100" height="30" uuid="f8886578-5854-46ce-9808-40bd610331a3">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="14d86675-31b0-4be3-835e-1e16adb0270c"/>
 				</reportElement>
 				<box padding="5">
@@ -663,7 +663,7 @@
 				<textFieldExpression><![CDATA[$F{event_name}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement stretchType="RelativeToTallestObject" x="60" y="0" width="90" height="30" uuid="e1862ad8-86b2-4e88-963a-c869ee2d25fb">
+				<reportElement positionType="Float" x="60" y="0" width="90" height="30" uuid="e1862ad8-86b2-4e88-963a-c869ee2d25fb">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="6156ca63-3c13-4dfd-9931-4ca088adb1e0"/>
 				</reportElement>
 				<box padding="5">
@@ -673,7 +673,7 @@
 				<textFieldExpression><![CDATA[$F{created_at}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement x="350" y="0" width="100" height="30" uuid="95b5e567-5bbe-44d7-8e9e-527ba90de0ba">
+				<reportElement positionType="Float" x="350" y="0" width="100" height="30" uuid="95b5e567-5bbe-44d7-8e9e-527ba90de0ba">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="25e34b46-ec78-4bba-8e50-05e89d26da86"/>
 				</reportElement>
 				<box padding="5">
@@ -682,7 +682,7 @@
 				<textFieldExpression><![CDATA[$F{title}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement x="450" y="0" width="100" height="30" uuid="f5e621e3-adda-4dbc-a74a-e5142790006d">
+				<reportElement positionType="Float" x="450" y="0" width="100" height="30" uuid="f5e621e3-adda-4dbc-a74a-e5142790006d">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f6928cda-9f27-4975-a3ad-bb004d491125"/>
 				</reportElement>
 				<box padding="5">
@@ -691,7 +691,7 @@
 				<textFieldExpression><![CDATA[$F{english_title}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement x="550" y="0" width="100" height="30" uuid="278c809a-39e9-4c00-a2db-548c23095d26">
+				<reportElement positionType="Float" x="550" y="0" width="100" height="30" uuid="278c809a-39e9-4c00-a2db-548c23095d26">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="3e22cd51-4201-4f7f-b14b-d97e7bbac108"/>
 				</reportElement>
 				<box padding="5">
@@ -700,7 +700,7 @@
 				<textFieldExpression><![CDATA[$F{state_production}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement x="650" y="0" width="100" height="30" uuid="eee150e9-f048-4f97-b54e-5a9b4651b48a">
+				<reportElement positionType="Float" x="650" y="0" width="100" height="30" uuid="eee150e9-f048-4f97-b54e-5a9b4651b48a">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="e59f965c-3ca9-4e42-808a-3e508000c3eb"/>
 				</reportElement>
 				<box padding="5">
@@ -709,7 +709,7 @@
 				<textFieldExpression><![CDATA[$F{opt_category}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement x="750" y="0" width="100" height="30" uuid="0b0de136-ee9f-439c-86f2-a6e8baaac37d">
+				<reportElement positionType="Float" x="750" y="0" width="100" height="30" uuid="0b0de136-ee9f-439c-86f2-a6e8baaac37d">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="cf6ba4e5-0b28-47bd-a3da-a3a12418f2e4"/>
 				</reportElement>
 				<box padding="5">
@@ -718,7 +718,7 @@
 				<textFieldExpression><![CDATA[$F{opt_phase}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement x="850" y="0" width="100" height="30" uuid="908fac0e-2b98-4ccb-8ec5-4ca303a62533">
+				<reportElement positionType="Float" x="850" y="0" width="100" height="30" uuid="908fac0e-2b98-4ccb-8ec5-4ca303a62533">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ee80b2e0-6429-4892-a60a-a07b678f16bb"/>
 				</reportElement>
 				<box padding="5">
@@ -727,7 +727,7 @@
 				<textFieldExpression><![CDATA[$F{institution_social_name}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement x="950" y="0" width="100" height="30" uuid="5c554499-e726-4034-9ce4-bef28cc5c7ab">
+				<reportElement positionType="Float" x="950" y="0" width="100" height="30" uuid="5c554499-e726-4034-9ce4-bef28cc5c7ab">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="9aab702a-7163-4fbf-b2cd-5af148c30403"/>
 				</reportElement>
 				<box padding="5">
@@ -736,7 +736,7 @@
 				<textFieldExpression><![CDATA[$F{institution_fantasy_name}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement x="1050" y="0" width="100" height="30" uuid="88d977cd-141c-4961-92b4-e45a2cdb1b9b">
+				<reportElement positionType="Float" x="1050" y="0" width="100" height="30" uuid="88d977cd-141c-4961-92b4-e45a2cdb1b9b">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="2823c611-8661-4bd3-8ff0-3c1ed15ad097"/>
 				</reportElement>
 				<box padding="5">
@@ -745,7 +745,7 @@
 				<textFieldExpression><![CDATA[$F{institution_cnpj}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement x="1150" y="0" width="100" height="30" uuid="cb7a1701-fbde-4c16-b327-0f455bd374b6">
+				<reportElement positionType="Float" x="1150" y="0" width="100" height="30" uuid="cb7a1701-fbde-4c16-b327-0f455bd374b6">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="6d2ea111-c759-4fa9-ba68-b5509026a9ba"/>
 				</reportElement>
 				<box padding="5">
@@ -754,7 +754,7 @@
 				<textFieldExpression><![CDATA[$F{institution_legal_representative}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement x="1250" y="0" width="100" height="30" uuid="22a505f9-8e68-44b9-91d1-23f523e2b4c1">
+				<reportElement positionType="Float" x="1250" y="0" width="100" height="30" uuid="22a505f9-8e68-44b9-91d1-23f523e2b4c1">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="12c9aab8-b868-41c5-b119-3a975b29b84a"/>
 				</reportElement>
 				<box padding="5">
@@ -763,7 +763,7 @@
 				<textFieldExpression><![CDATA[$F{institution_address}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement x="1350" y="0" width="100" height="30" uuid="fae03782-5043-4813-ba20-3726fbd09964">
+				<reportElement positionType="Float" x="1350" y="0" width="100" height="30" uuid="fae03782-5043-4813-ba20-3726fbd09964">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="36f2d155-a9c0-45f9-9dac-f8a1f75340c2"/>
 				</reportElement>
 				<box padding="5">
@@ -772,7 +772,7 @@
 				<textFieldExpression><![CDATA[$F{institution_phone}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement x="1450" y="0" width="100" height="30" uuid="ad4577a0-b2e4-455d-af7d-bafd17f77d5e">
+				<reportElement positionType="Float" x="1450" y="0" width="100" height="30" uuid="ad4577a0-b2e4-455d-af7d-bafd17f77d5e">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="2d15b2c9-e8f0-4925-a58f-a959da918e5a"/>
 				</reportElement>
 				<box padding="5">
@@ -781,7 +781,7 @@
 				<textFieldExpression><![CDATA[$F{institution_mobile_phone}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement x="1550" y="0" width="100" height="30" uuid="1d000dac-2d78-44ea-89b7-2df55c7ecf9b">
+				<reportElement positionType="Float" x="1550" y="0" width="100" height="30" uuid="1d000dac-2d78-44ea-89b7-2df55c7ecf9b">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="473f7fd5-3c43-4cc5-a377-2a817b761a9c"/>
 				</reportElement>
 				<box padding="5">
@@ -790,7 +790,7 @@
 				<textFieldExpression><![CDATA[$F{institution_site}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement x="1650" y="0" width="100" height="30" uuid="6becb825-a80c-48f2-a1e8-303fb03a728a">
+				<reportElement positionType="Float" x="1650" y="0" width="100" height="30" uuid="6becb825-a80c-48f2-a1e8-303fb03a728a">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="cb1c72c4-c1ac-4749-803f-05cc4cb20d83"/>
 				</reportElement>
 				<box padding="5">
@@ -799,7 +799,7 @@
 				<textFieldExpression><![CDATA[$F{institution_email}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement x="1750" y="0" width="100" height="30" uuid="0ee6ada5-1b14-445d-a90e-a54faf7ab8b7">
+				<reportElement positionType="Float" x="1750" y="0" width="100" height="30" uuid="0ee6ada5-1b14-445d-a90e-a54faf7ab8b7">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="20b6d527-a665-4cb7-b02a-5797b00f87d2"/>
 				</reportElement>
 				<box padding="5">
@@ -808,7 +808,7 @@
 				<textFieldExpression><![CDATA[$F{institution_description}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement x="1850" y="0" width="100" height="30" uuid="2cceedce-ac75-4ccc-a235-8bf3f58259fe">
+				<reportElement positionType="Float" x="1850" y="0" width="100" height="30" uuid="2cceedce-ac75-4ccc-a235-8bf3f58259fe">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="5ec44f6f-1574-4c36-8d21-f40486d84cba"/>
 				</reportElement>
 				<box padding="5">
@@ -817,7 +817,7 @@
 				<textFieldExpression><![CDATA[$F{producers}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement x="1950" y="0" width="100" height="30" uuid="ea81872a-c718-4fe2-8bb1-ebddd7ebd21e">
+				<reportElement positionType="Float" x="1950" y="0" width="100" height="30" uuid="ea81872a-c718-4fe2-8bb1-ebddd7ebd21e">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="9047ddbc-6f3e-4b23-be29-d08f66fdb692"/>
 				</reportElement>
 				<box padding="5">
@@ -826,7 +826,7 @@
 				<textFieldExpression><![CDATA[$F{directors}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement x="2050" y="0" width="100" height="30" uuid="6c9e4fd8-611b-49d9-82bc-815c51a81c6d">
+				<reportElement positionType="Float" x="2050" y="0" width="100" height="30" uuid="6c9e4fd8-611b-49d9-82bc-815c51a81c6d">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d2d2b2bc-c753-40c4-b697-2f7bc3c6e100"/>
 				</reportElement>
 				<box padding="5">
@@ -835,7 +835,7 @@
 				<textFieldExpression><![CDATA[$F{has_protocol_registration_law}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement x="2150" y="0" width="100" height="30" uuid="cfd2a083-2c29-4616-91e3-0c9583788770">
+				<reportElement positionType="Float" x="2150" y="0" width="100" height="30" uuid="cfd2a083-2c29-4616-91e3-0c9583788770">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="807708b8-af67-44e5-bd69-2af4431bc1f0"/>
 				</reportElement>
 				<box padding="5">
@@ -844,7 +844,7 @@
 				<textFieldExpression><![CDATA[$F{protocol_registration_law}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement x="2250" y="0" width="100" height="30" uuid="ec5a8d4c-9898-4b88-8e92-bf1a9eab1a1f">
+				<reportElement positionType="Float" x="2250" y="0" width="100" height="30" uuid="ec5a8d4c-9898-4b88-8e92-bf1a9eab1a1f">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="46215be5-0c33-4fd3-8c6e-b6c1abafc042"/>
 				</reportElement>
 				<box padding="5">
@@ -853,7 +853,7 @@
 				<textFieldExpression><![CDATA[$F{presentation}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement x="2350" y="0" width="100" height="30" uuid="c3ca8c13-3f74-41d6-af0e-fa6e34c631bd">
+				<reportElement positionType="Float" x="2350" y="0" width="100" height="30" uuid="c3ca8c13-3f74-41d6-af0e-fa6e34c631bd">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="afe02d9e-a06b-4693-be67-59178688dfaf"/>
 				</reportElement>
 				<box padding="5">
@@ -862,7 +862,7 @@
 				<textFieldExpression><![CDATA[$F{short_sinopse}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement x="2450" y="0" width="100" height="30" uuid="cf6ce68d-d5f4-480f-8704-4865c1c3ced7">
+				<reportElement positionType="Float" x="2450" y="0" width="100" height="30" uuid="cf6ce68d-d5f4-480f-8704-4865c1c3ced7">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="db2bcfd4-4dd9-41d5-b85e-bd8452cf5384"/>
 				</reportElement>
 				<box padding="5">
@@ -871,7 +871,7 @@
 				<textFieldExpression><![CDATA[$F{short_sinopse_english}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement x="2550" y="0" width="100" height="30" uuid="72fd2e49-5cd3-4dd9-91ec-b4add8703656">
+				<reportElement positionType="Float" x="2550" y="0" width="100" height="30" uuid="72fd2e49-5cd3-4dd9-91ec-b4add8703656">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="3506e79d-8553-4e25-b8df-f643e9c0c1a9"/>
 				</reportElement>
 				<box padding="5">
@@ -880,7 +880,7 @@
 				<textFieldExpression><![CDATA[$F{long_sinopse}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement x="2650" y="0" width="100" height="30" uuid="1f5175b2-183f-4214-8a35-def9df143348">
+				<reportElement positionType="Float" x="2650" y="0" width="100" height="30" uuid="1f5175b2-183f-4214-8a35-def9df143348">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="6a230cc2-9a80-4c92-b233-1f98feded2a8"/>
 				</reportElement>
 				<box padding="5">
@@ -889,7 +889,7 @@
 				<textFieldExpression><![CDATA[$F{argument}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement x="2750" y="0" width="100" height="30" uuid="8510b048-552f-4b28-9847-27c4f482985d">
+				<reportElement positionType="Float" x="2750" y="0" width="100" height="30" uuid="8510b048-552f-4b28-9847-27c4f482985d">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="8646578e-fde3-4f78-b939-426a12d2daef"/>
 				</reportElement>
 				<box padding="5">
@@ -898,7 +898,7 @@
 				<textFieldExpression><![CDATA[$F{director_notes}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement x="2850" y="0" width="100" height="30" uuid="50b73952-e5cc-4569-84c9-853d0ee48b63">
+				<reportElement positionType="Float" x="2850" y="0" width="100" height="30" uuid="50b73952-e5cc-4569-84c9-853d0ee48b63">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f3da2e24-ef27-46ea-8a4e-ec5879b1aef5"/>
 				</reportElement>
 				<box padding="5">
@@ -907,7 +907,7 @@
 				<textFieldExpression><![CDATA[$F{producer_notes}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement x="2950" y="0" width="100" height="30" uuid="a7b30792-392f-4304-83b7-a068f51993e8">
+				<reportElement positionType="Float" x="2950" y="0" width="100" height="30" uuid="a7b30792-392f-4304-83b7-a068f51993e8">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f0ebabf0-5375-45c9-b4c8-86745465538e"/>
 				</reportElement>
 				<box padding="5">
@@ -916,7 +916,7 @@
 				<textFieldExpression><![CDATA[$F{movie_length}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement x="3050" y="0" width="100" height="30" uuid="671ca5b8-9dac-4b79-8dd1-e3e12159ac75">
+				<reportElement positionType="Float" x="3050" y="0" width="100" height="30" uuid="671ca5b8-9dac-4b79-8dd1-e3e12159ac75">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f982abc9-b48a-4885-ab81-9cec7f34f457"/>
 				</reportElement>
 				<box padding="5">
@@ -925,7 +925,7 @@
 				<textFieldExpression><![CDATA[$F{opt_genre}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement x="3150" y="0" width="100" height="30" uuid="b45168d0-c2dd-439d-9e97-53f00cd4e5d0">
+				<reportElement positionType="Float" x="3150" y="0" width="100" height="30" uuid="b45168d0-c2dd-439d-9e97-53f00cd4e5d0">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="6caaf197-ea90-41f8-92cd-6f0204619cbb"/>
 				</reportElement>
 				<box padding="5">
@@ -934,7 +934,7 @@
 				<textFieldExpression><![CDATA[$F{opt_format}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement x="3250" y="0" width="100" height="30" uuid="70f77612-34db-4d67-9848-8b8aaad4fc27">
+				<reportElement positionType="Float" x="3250" y="0" width="100" height="30" uuid="70f77612-34db-4d67-9848-8b8aaad4fc27">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="1882c86c-54b5-4113-a957-f0ebe4222317"/>
 				</reportElement>
 				<box padding="5">
@@ -943,7 +943,7 @@
 				<textFieldExpression><![CDATA[$F{opt_display_format}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement x="3350" y="0" width="100" height="30" uuid="00bb3afb-96ca-46c4-a24b-473479e08f5f">
+				<reportElement positionType="Float" x="3350" y="0" width="100" height="30" uuid="00bb3afb-96ca-46c4-a24b-473479e08f5f">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="cebd6e40-507d-4b84-bf44-3cde1666aed0"/>
 				</reportElement>
 				<box padding="5">
@@ -952,7 +952,7 @@
 				<textFieldExpression><![CDATA[$F{estimated_time_filming}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement x="3450" y="0" width="100" height="30" uuid="bc9edb51-acbe-4ce9-b78c-bc702873dfc3">
+				<reportElement positionType="Float" x="3450" y="0" width="100" height="30" uuid="bc9edb51-acbe-4ce9-b78c-bc702873dfc3">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="390edde7-213d-4f13-82f3-1cb1d9a5e7e8"/>
 				</reportElement>
 				<box padding="5">
@@ -961,7 +961,7 @@
 				<textFieldExpression><![CDATA[$F{locations}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement x="3550" y="0" width="100" height="30" uuid="2119c733-fcc7-4eea-be2d-6b98edb28bd5">
+				<reportElement positionType="Float" x="3550" y="0" width="100" height="30" uuid="2119c733-fcc7-4eea-be2d-6b98edb28bd5">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="5bb578fa-d6d9-4a78-b0e8-a840a5db729b"/>
 				</reportElement>
 				<box padding="5">
@@ -970,7 +970,7 @@
 				<textFieldExpression><![CDATA[$F{estimated_value}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement x="3650" y="0" width="100" height="30" uuid="2838ec7a-097c-4cd9-ae72-2017855c119b">
+				<reportElement positionType="Float" x="3650" y="0" width="100" height="30" uuid="2838ec7a-097c-4cd9-ae72-2017855c119b">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="68054aa4-f1ec-40fa-817f-de74d0ad1c3f"/>
 				</reportElement>
 				<box padding="5">
@@ -979,7 +979,7 @@
 				<textFieldExpression><![CDATA[$F{related_partners}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement x="3750" y="0" width="100" height="30" uuid="4afe0d6b-6670-48c8-8a1c-4aaf8a34317f">
+				<reportElement positionType="Float" x="3750" y="0" width="100" height="30" uuid="4afe0d6b-6670-48c8-8a1c-4aaf8a34317f">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="61c8797b-c67d-43eb-b3b2-019ff643dd3e"/>
 				</reportElement>
 				<box padding="5">
@@ -988,7 +988,7 @@
 				<textFieldExpression><![CDATA[$F{value_captured_resources}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement x="3850" y="0" width="100" height="30" uuid="4675debd-265e-49d7-8c4a-ab2140a3fbdf">
+				<reportElement positionType="Float" x="3850" y="0" width="100" height="30" uuid="4675debd-265e-49d7-8c4a-ab2140a3fbdf">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="fe42b2d6-9266-4033-a787-9835e689ac0b"/>
 				</reportElement>
 				<box padding="5">
@@ -997,7 +997,7 @@
 				<textFieldExpression><![CDATA[$F{value_captured_services}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement x="3950" y="0" width="100" height="30" uuid="0eabb1d2-b31f-4df1-a286-ea53133e2e1a">
+				<reportElement positionType="Float" x="3950" y="0" width="100" height="30" uuid="0eabb1d2-b31f-4df1-a286-ea53133e2e1a">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="03710c82-3b88-4e99-9519-2dabe86ffbb6"/>
 				</reportElement>
 				<box padding="5">
@@ -1006,7 +1006,7 @@
 				<textFieldExpression><![CDATA[$F{opt_written_script}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement x="4050" y="0" width="100" height="30" uuid="7e6b7bd8-af63-4574-9edf-0742e48acae0">
+				<reportElement positionType="Float" x="4050" y="0" width="100" height="30" uuid="7e6b7bd8-af63-4574-9edf-0742e48acae0">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="6128ccae-139b-4a3a-bbca-8539db468530"/>
 				</reportElement>
 				<box padding="5">
@@ -1015,7 +1015,7 @@
 				<textFieldExpression><![CDATA[$F{opt_first_or_second_project}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement x="4150" y="0" width="100" height="30" uuid="1459143e-4a08-45d4-b604-0fe072c1c8b9">
+				<reportElement positionType="Float" x="4150" y="0" width="100" height="30" uuid="1459143e-4a08-45d4-b604-0fe072c1c8b9">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="34c213a5-0746-4494-9640-ca5655c04f0c"/>
 				</reportElement>
 				<box padding="5">
@@ -1033,7 +1033,7 @@
 				<text><![CDATA[Telefones do usuário]]></text>
 			</staticText>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement stretchType="RelativeToTallestObject" x="4250" y="0" width="60" height="30" uuid="0473d110-b4c0-4907-8da0-466712c8483a">
+				<reportElement positionType="Float" x="4250" y="0" width="60" height="30" uuid="0473d110-b4c0-4907-8da0-466712c8483a">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b00433bc-8e5b-415d-ad60-1f2ddbb181be"/>
 				</reportElement>
 				<box padding="5">
@@ -1042,7 +1042,7 @@
 				<textFieldExpression><![CDATA[$F{user_id}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement stretchType="RelativeToTallestObject" x="4310" y="0" width="140" height="30" uuid="9baedaf5-5e87-420b-beed-0fa8de8d183a">
+				<reportElement positionType="Float" x="4310" y="0" width="140" height="30" uuid="9baedaf5-5e87-420b-beed-0fa8de8d183a">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="03214008-ecd0-4dc7-a064-b1e0e4f28b02"/>
 				</reportElement>
 				<box padding="5">
@@ -1051,7 +1051,7 @@
 				<textFieldExpression><![CDATA[$F{user_name}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement stretchType="RelativeToTallestObject" x="4450" y="0" width="200" height="30" uuid="91f5e9f7-13e1-4a57-82d5-343d25e1bd19">
+				<reportElement positionType="Float" x="4450" y="0" width="200" height="30" uuid="91f5e9f7-13e1-4a57-82d5-343d25e1bd19">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="34f65d88-f05c-4941-afab-e0ad6da10dd7"/>
 				</reportElement>
 				<box padding="5">
@@ -1060,7 +1060,7 @@
 				<textFieldExpression><![CDATA[$F{user_email}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement stretchType="RelativeToTallestObject" x="4650" y="0" width="150" height="30" uuid="51ee3074-41e6-4614-a4c5-71dd85edb69b">
+				<reportElement positionType="Float" x="4650" y="0" width="150" height="30" uuid="51ee3074-41e6-4614-a4c5-71dd85edb69b">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ea0bee22-03b9-4a63-adf8-8873029cf4bb"/>
 				</reportElement>
 				<box padding="5">
@@ -1069,7 +1069,7 @@
 				<textFieldExpression><![CDATA[$F{user_address}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement stretchType="RelativeToTallestObject" x="4800" y="0" width="150" height="30" uuid="a2de219a-221f-4ccd-8c88-16b486605a49">
+				<reportElement positionType="Float" x="4800" y="0" width="150" height="30" uuid="a2de219a-221f-4ccd-8c88-16b486605a49">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="3a6b3d55-61cd-4736-aa83-79ea8d22ade5"/>
 				</reportElement>
 				<box padding="5">
