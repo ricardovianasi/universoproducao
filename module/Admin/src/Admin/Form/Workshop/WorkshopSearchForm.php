@@ -16,6 +16,9 @@ class WorkshopSearchForm extends WorkshopForm
     public function __construct($em = null)
     {
         parent::__construct($em);
+        $this->setAttributes([
+            'method' => 'get'
+        ]);
 
         $this->add([
             'type' => 'select',

@@ -71,15 +71,19 @@
 								'action'=>'delete',
 								'id'=>$i->getId()
 							]);
+
+							$subscriptionUrl = $this->url('admin/default', [
+							    'controller' => 'workshop-registration',
+                            ], ['query'=>[
+                                'event' => $i->getEvent()?$i->getEvent()->getId():'',
+                                'workshop' => $i->getId()
+                            ]]);
+
 							?>
 							<tr>
 								<td></td>
 								<td><a href="<?php echo $updateUrl; ?>"><?php echo $i->getName(); ?></a></td>
-								<td>
-                                    <?php foreach ($events as $e): ?>
-                                        <?php echo $e->getShortName(); ?>
-                                    <?php endforeach; ?>
-                                </td>
+								<td><?php echo $i->getEvent()?$i->getEvent()->getShortName():""; ?></td>
                                 <td>
                                     <table class="table table-in-td">
                                         <tbody>
@@ -94,7 +98,11 @@
                                         </tbody>
                                     </table>
                                 </td>
-                                <td><?php echo $i->getSubscriptions()->count(); ?></td>
+                                <td><?php echo $i->getSubscriptions()->count(); ?>
+                                    <a href="<?php echo $subscriptionUrl; ?>" class="btn btn-sm btn-default">
+                                        <i class="fa fa-filter"></i> Inscrições
+                                    </a>
+                                </td>
 								<td>
 									<a href="<?php echo  $updateUrl; ?>" class="btn btn-sm btn-default">
 										<i class="fa fa-edit"></i> Editar

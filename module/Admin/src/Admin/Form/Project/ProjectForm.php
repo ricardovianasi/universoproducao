@@ -14,6 +14,7 @@ use Application\Entity\Institution\Institution;
 use Application\Entity\Project\Options;
 use Application\Entity\Project\People;
 use Application\Entity\Registration\Registration;
+use Application\Entity\Registration\Status;
 use Application\Entity\Registration\Type;
 use Application\Entity\State;
 use Application\Entity\User\User;
@@ -58,6 +59,16 @@ class ProjectForm extends Form
             'attributes' => [
                 'id' => 'registration',
             ]
+        ]);
+
+        $this->add([
+            'type' => 'Select',
+            'name' => 'status',
+            'options' => [
+                'label' => 'Status',
+                'empty_option' => 'Selecione o status',
+                'value_options' => Status::toArray()
+            ],
         ]);
 
         $this->add([
@@ -495,6 +506,11 @@ class ProjectForm extends Form
             ],
             'registration' => [
                 'name'       => 'registration',
+                'required'   => false,
+                'allow_empty' => true
+            ],
+            'status' => [
+                'name'       => 'status',
                 'required'   => false,
                 'allow_empty' => true
             ],

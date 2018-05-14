@@ -29,7 +29,7 @@ class WorkshopRegistrationController extends AbstractAdminController
 
         $dataAttr = $this->params()->fromQuery();
         if(empty($dataAttr)) {
-            $dataAttr['event'] = $this->getDefaultEvent()->getId();
+            $dataAttr['event'] = $this->getDefaultEvent()?$this->getDefaultEvent()->getId():null;
         }
 
         $searchForm = new WorkshopRegistrationForm($this->getEntityManager(), $registration);

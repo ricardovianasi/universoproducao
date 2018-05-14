@@ -15,12 +15,10 @@ use Application\Entity\Registration\Options;
 use Application\Entity\Registration\Registration;
 use Application\Entity\Registration\Status;
 use Application\Entity\Registration\Type;
-use Application\Entity\Workshop\PontuationItems;
 use Application\Entity\Workshop\Workshop;
 use Zend\Form\Fieldset;
 use Zend\Form\Form;
 use Zend\InputFilter\Factory as InputFilterFactory;
-use Zend\Validator\Between;
 
 class WorkshopRegistrationForm extends Form
 {
@@ -117,6 +115,7 @@ class WorkshopRegistrationForm extends Form
                 'id' => 'event'
             ]
         ]);
+
         $this->add([
             'type' => 'Select',
             'name' => 'workshop',

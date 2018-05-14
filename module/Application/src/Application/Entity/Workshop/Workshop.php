@@ -32,6 +32,12 @@ class Workshop extends AbstractEntity
     private $registration;
 
     /**
+     * @ORM\OneToOne(targetEntity="Application\Entity\Event\Event")
+     * @ORM\JoinColumn(name="event_id", referencedColumnName="id")
+     */
+    private $event;
+
+    /**
      * @ORM\ManyToOne(targetEntity="Manager")
      * @ORM\JoinColumn(name="workshop_manager_id", referencedColumnName="id")
      */
@@ -265,20 +271,19 @@ class Workshop extends AbstractEntity
     }
 
     /**
-     * @return Event
+     * @return mixed
      */
     public function getEvent()
     {
-        if(!$this->getRegistration()) {
-            return null;
-        }
+        return $this->event;
+    }
 
-        $events = $this->getRegistration()->getEvents();
-        if(!count($events)) {
-            return null;
-        }
-
-        return $events[0];
+    /**
+     * @param mixed $event
+     */
+    public function setEvent($event)
+    {
+        $this->event = $event;
     }
 
     /**

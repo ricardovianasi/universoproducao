@@ -9,8 +9,10 @@
 namespace Admin\Form\Project;
 
 use Application\Entity\Event\Event;
+use Application\Entity\Event\EventType;
 use Application\Entity\Registration\Status;
 use Zend\Form\Form;
+use Zend\InputFilter\Factory as InputFilterFactory;
 
 class ProjectSearchForm extends Form
 {
@@ -18,13 +20,30 @@ class ProjectSearchForm extends Form
 
     public function __construct($entityManager=null)
     {
+        if($entityManager) {
+            $this->entityManager = $entityManager;
+        }
+
         parent::__construct('project-search-form');
+        $this->setAttributes([
+            'method' => 'get'
+        ]);
+
+        $this->add([
+            'name' => 'id',
+            'attributes' => [
+                'class' => 'input-sm',
+            ]
+        ]);
 
         $this->add([
             'name' => 'title',
             'options' => [
                 'label' => 'Título original'
             ],
+            'attributes' => [
+                'class' => 'input-sm',
+            ]
         ]);
 
         $this->add([
@@ -32,18 +51,21 @@ class ProjectSearchForm extends Form
             'options' => [
                 'label' => 'Usuário'
             ],
+            'attributes' => [
+                'class' => 'input-sm',
+            ]
         ]);
 
         $this->add([
             'type' => 'Select',
             'name' => 'event',
             'options' => [
-                'empty_option' => 'Selecione o evento',
+                'empty_option' => 'Selecione',
                 'value_options' => $this->populateEvents()
             ],
             'attributes' => [
-                'class' => 'input-sm',
                 'data-label' => 'Evento',
+                'class' => 'input-sm',
                 'id' => 'event'
             ]
         ]);
@@ -60,6 +82,38 @@ class ProjectSearchForm extends Form
                 'data-label' => 'Status'
             ]
         ]);
+
+        $this->add([
+            'name' => 'dateInit',
+            'attributes' => [
+                'placeholder' => 'De',
+                'class' => 'input-sm',
+                'data-inputmask' => "'alias': 'dd/mm/yyyy'"
+            ]
+        ]);
+
+        $this->add([
+            'name' => 'dateEnd',
+            'attributes' => [
+                'placeholder' => 'Até',
+                'class' => 'input-sm',
+                'data-inputmask' => "'alias': 'dd/mm/yyyy'"
+            ]
+        ]);
+
+        $this->add([
+            'name' => 'selected',
+            'type' => 'hidden'
+        ]);
+
+        //Validações
+        $this->setInputFilter((new InputFilterFactory)->createInputFilter([
+            'event' => [
+                'name' => 'event',
+                'required'   => false,
+                'allow_empty' => true
+            ]
+        ]));
 
     }
 
@@ -86,7 +140,6 @@ class ProjectSearchForm extends Form
 
         return $options;
     }
-
 
     public function getEntityManager()
     {

@@ -38,25 +38,46 @@
 					<table class="table table-striped table-bordered table-hover">
 						<thead>
 							<tr role="row" class="heading">
-								<th width="2%">#</th>
+                                <th width="2%"> </th>
+								<th width="3%">ID</th>
 								<th width="20%">Título</th>
                                 <th width="15%">Usuário</th>
-                                <th width="20%">Evento</th>
-                                <th width="20%">Status</th>
-                                <th width="15%">Data de cadastro</th>
-
+                                <th width="15%">Evento</th>
+                                <th width="15%">Status</th>
+                                <th width="10%">Data de cadastro</th>
                                 <th width="10%"></th>
 							</tr>
                             <tr role="row" class="filter">
                                 <?php $form->prepare(); echo $this->form()->openTag($form); ?>
-                                <td></td>
+                                <td>
+                                    <input type="checkbox" class="icheck select-all" name="id_select_all" value="">
+                                    <?php echo $this->formElement($form->get('selected')); ?>
+                                </td>
+                                <td><?php echo $this->formelement($form->get('id')); ?></td>
                                 <td><?php echo $this->formelement($form->get('title')); ?></td>
                                 <td><?php echo $this->formelement($form->get('user')); ?></td>
                                 <td><?php echo $this->formelement($form->get('event')); ?></td>
                                 <td><?php echo $this->formelement($form->get('status')); ?></td>
-                                <td></td>
                                 <td>
-                                    <button class="btn btn-sm blue filter-submit margin-bottom"><i class="fa fa-search"></i> Pesquisar</button>
+                                    <div class="input-group date date-picker margin-bottom-5" data-date-format="dd/mm/yyyy">
+                                        <?php echo $this->formelement($form->get('dateInit')); ?>
+                                        <span class="input-group-btn">
+                                            <button class="btn btn-sm default" type="button">
+                                                <i class="fa fa-calendar"></i>
+                                            </button>
+                                        </span>
+                                    </div>
+                                    <div class="input-group date date-picker" data-date-format="dd/mm/yyyy">
+                                        <?php echo $this->formelement($form->get('dateEnd')); ?>
+                                        <span class="input-group-btn">
+                                            <button class="btn btn-sm default" type="button">
+                                                <i class="fa fa-calendar"></i>
+                                            </button>
+                                        </span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="margin-bottom-5"><button class="btn btn-sm blue filter-submit margin-bottom"><i class="fa fa-search"></i> Pesquisar</button></div>
                                     <button class="btn btn-sm btn-default filter-cancel"><i class="fa fa-times"></i> Limpar</button>
                                 </td>
                                 <?php echo $this->form()->closeTag(); ?>
@@ -75,9 +96,11 @@
 								'action'=>'delete',
 								'id'=>$i->getId()
 							]);
+
 							?>
 							<tr>
-								<td></td>
+                                <td><input type="checkbox" class="icheck" name="id[]" value="<?php echo $i->getId() ?>"></td>
+								<td><?php echo $i->getId(); ?></td>
 								<td><a href="<?php echo $updateUrl; ?>"><?php echo $i->getTitle(); ?></a></td>
                                 <td><?php echo $i->getUser() ? $i->getUser()->getName() : ""; ?></td>
                                 <td><?php echo $i->getEvent() ? $i->getEvent()->getShortName() : ""; ?></td>

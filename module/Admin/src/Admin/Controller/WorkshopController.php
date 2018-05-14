@@ -19,13 +19,7 @@ class WorkshopController extends AbstractAdminController implements CrudInterfac
         $dataAttr = $this->params()->fromQuery();
         $searchForm->setData($dataAttr);
 
-        if(!$searchForm->isValid()) {
-            $teste = $searchForm->getMessages();
-        }
-
-        $data = $searchForm->getData();
-
-		$items = $this->search(Workshop::class, $data);
+		$items = $this->search(Workshop::class, $dataAttr);
 
 		$this->getViewModel()->setVariables([
 			'items' => $items,
@@ -85,6 +79,7 @@ class WorkshopController extends AbstractAdminController implements CrudInterfac
                     $registration = $this->getRepository(Registration::class)->find($data['registration']);
                 }
                 $workshop->setRegistration($registration);
+                $workshop->setEvent($registration->getEvent());
                 unset($data['registration']);
 
                 $programing = [];

@@ -222,6 +222,7 @@ class WorkshopForm extends Form
             $registration = $data['registration'];
             if(is_object($registration)) {
                 $data['registration'] = $registration->getId();
+                $data['event'] = $registration->geEvent()->getId();
             }
         }
 
