@@ -16,7 +16,12 @@ class WorkshopController extends AbstractAdminController implements CrudInterfac
 	public function indexAction()
 	{
         $searchForm = new WorkshopSearchForm($this->getEntityManager(), $this->getDefaultEvent());
+
         $dataAttr = $this->params()->fromQuery();
+        if(empty($dataAttr)) {
+            $dataAttr['event'] = $this->getDefaultEvent()?$this->getDefaultEvent()->getId():null;
+        }
+
         $searchForm->setData($dataAttr);
 
 		$items = $this->search(Workshop::class, $dataAttr);
