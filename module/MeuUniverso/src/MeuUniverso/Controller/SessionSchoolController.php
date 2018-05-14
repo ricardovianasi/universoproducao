@@ -90,7 +90,7 @@ class SessionSchoolController extends AbstractMeuUniversoRegisterController
             ]]);
         }
 
-        if(!$reg->isOpen()) {
+         if(!$reg->isOpen()) {
             return $this->redirect()->toRoute('meu-universo/default', [], ['query'=>[
                 'code' => self::ERROR_REG_IS_CLOSED,
                 'id_reg' => $idReg

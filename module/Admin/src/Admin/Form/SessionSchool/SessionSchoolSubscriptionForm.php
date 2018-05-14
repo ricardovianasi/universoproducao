@@ -180,9 +180,11 @@ class SessionSchoolSubscriptionForm extends Form
                 'name' => 'participants',
                 'required' => true,
                 'validators' => [
-                    'name' => 'GreaterThan',
-                    'options' => [
-                        'min' => 1
+                    [
+                        'name' => 'GreaterThan',
+                        'options' => [
+                            'min' => 1
+                        ]
                     ]
                 ]
             ]
