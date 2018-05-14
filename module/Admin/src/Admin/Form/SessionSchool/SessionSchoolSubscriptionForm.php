@@ -13,6 +13,7 @@ use Application\Entity\Registration\Registration;
 use Application\Entity\Registration\Type;
 use Application\Entity\User\User;
 use Zend\Form\Form;
+use Zend\InputFilter\Factory as InputFilterFactory;
 
 class SessionSchoolSubscriptionForm extends Form
 {
@@ -160,6 +161,7 @@ class SessionSchoolSubscriptionForm extends Form
             ],
             'attributes' => [
                 'required' => 'required',
+                'min' => '1'
             ]
         ]);
 
@@ -172,6 +174,19 @@ class SessionSchoolSubscriptionForm extends Form
                 'required' => 'required',
             ]
         ]);
+
+        $this->setInputFilter((new InputFilterFactory)->createInputFilter([
+            'participants' => [
+                'name' => 'participants',
+                'required' => true,
+                'validators' => [
+                    'name' => 'GreaterThan',
+                    'options' => [
+                        'min' => 1
+                    ]
+                ]
+            ]
+        ]));
     }
 
     public function populateRegulations()
