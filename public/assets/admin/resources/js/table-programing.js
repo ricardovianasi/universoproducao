@@ -39,12 +39,13 @@
 					place = _that.$element.find('select[name="place"]')
 					availablePlaces = _that.$element.find('input[name="available_places"]');
 
+				console.log(availablePlaces);
 
 				var tr = $('<tr data-row="'+id+'"></tr>');
 				tr.append('<td>'+date.val()+'</td>');
 				tr.append('<td>'+start.val()+'</td>');
 				tr.append('<td>'+end.val()+'</td>');
-				if(availablePlaces){
+				if(availablePlaces.length){
 					tr.append('<td>'+availablePlaces.val()+'</td>');
 				}
 				tr.append('<td>'+place.find('option:selected').text()+'</td>');
@@ -54,7 +55,7 @@
 					.append('<input type="hidden" name="programing['+id+'][start_time]" value="'+start.val()+'">')
 					.append('<input type="hidden" name="programing['+id+'][end_time]" value="'+end.val()+'">')
 					.append('<input type="hidden" name="programing['+id+'][place]" value="'+place.val()+'">')
-					.append('<input type="hidden" name="programing['+id+'][available_places]" value="'+(availablePlaces?availablePlaces.val():'')+'">')				);
+					.append('<input type="hidden" name="programing['+id+'][available_places]" value="'+(availablePlaces.length?availablePlaces.val():'')+'">')				);
 
 				_that.$element.find('tbody > tr:last').before(tr);
 
@@ -62,7 +63,7 @@
 				end.val('').attr('style', '')
 				start.val('').attr('style', '');
 				place.val('').attr('style', '');
-				if(availablePlaces){
+				if(availablePlaces.length){
 					availablePlaces.val('').attr('style', '');
 				}
 			});

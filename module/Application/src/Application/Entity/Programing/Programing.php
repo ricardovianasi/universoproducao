@@ -82,8 +82,8 @@ class Programing extends AbstractEntity
     /** @ORM\Column(name="`age_range`", type="string") */
 	private $ageRange;
 
-    /** @ORM\Column(name="`available_places`", type="string") */
-    private $availablePlaces;
+    /** @ORM\Column(name="`available_places`", type="integer") */
+    private $availablePlaces = null;
 
     /** @ORM\Column(name="`title`", type="text") */
     private $title;

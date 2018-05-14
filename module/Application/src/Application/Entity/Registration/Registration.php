@@ -79,6 +79,7 @@ class Registration extends AbstractEntity
         $this->hash = Crypt::makePassword(80, true, true, "-_.");
     }
 
+    /** @return Options */
     public function getOption($option)
     {
         foreach ($this->options as $op) {

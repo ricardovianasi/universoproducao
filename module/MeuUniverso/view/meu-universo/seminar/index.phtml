@@ -1,0 +1,60 @@
+<div class="container">
+    <div class="col-md-12">
+        <p class="meuuniverso-brand meuuniverso-brand--center"><strong>Meu</strong>Universo | Debates</p>
+    </div>
+    <div class="portlet light">
+        <div class="portlet-body">
+            <div class="panel-group accordion" id="workshop_list">
+                <?php foreach ($this->debates as $debate): ?>
+                    <div class="portlet workshop">
+                        <div class="portlet-title">
+                            <div class="caption font-dark">
+                                <h2 class="main-title"><?php echo $debate->getTitle(); ?></h2>
+                            </div>
+                            <div class="tools">
+                                <a href="javascript:;" class="expand icon-arrow-down2" data-original-title="" title=""> </a>
+                            </div>
+                        </div>
+                        <div class="portlet-body portlet-collapsed">
+                            <p>
+                                <strong style="font-weight: bold">Temática: </strong>
+                                <?php echo $debate->getThematic()->getName(); ?>
+                            </p>
+                            <p><?php echo $debate->getDescription(); ?></p>
+                            <p><strong style="font-weight: bold">Programação: </strong></p>
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th>Data/Hora</th>
+                                    <th>Local</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <?php foreach ($debate->getPrograming() as $prog): ?>
+                                    <tr>
+                                        <td><?php echo $prog->getDate()->format('d/m/Y').' | '.$prog->getStartTime()->format('H\hi'); ?></td>
+                                        <td><?php echo $prog->getPlace()?$prog->getPlace()->getName():""; ?></td>
+                                    </tr>
+                                <?php endforeach; ?>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <hr>
+                <?php endforeach; ?>
+                <?php $urlSub = $this->url('meu-universo/seminar', [
+                    'action' => 'inscricao',
+                    'id_reg' => $registration->getHash()
+                ]); ?>
+
+                <?php if(!$this->subscriptions_over): ?>
+                <div class="">
+                    <a href="<?php echo $urlSub; ?>" class="btn green button-submit">Fazer inscrição</a>
+                </div>
+                <?php else: ?>
+                <p>Inscrições esgotadas</p>
+                <?php endif; ?>
+            </div>
+        </div>
+    </div>
+</div>

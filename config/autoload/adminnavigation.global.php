@@ -62,6 +62,20 @@ return [
                         'icon' => 'icon-doc',
 
                     ],
+                    [
+                        'label' => 'Categoria',
+                        'route' => 'admin/default',
+                        'controller' => 'seminar-category',
+                        'icon' => 'icon-doc',
+
+                    ],
+                    [
+                        'label' => 'Inscrições',
+                        'route' => 'admin/default',
+                        'controller' => 'seminar-subscription',
+                        'icon' => 'icon-doc',
+
+                    ],
                 ]
 
             ],

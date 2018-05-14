@@ -149,6 +149,19 @@ return array(
                             ),
                         ),
                     ),
+                    'seminar' => array(
+                        'type'    => 'Segment',
+                        'options' => array(
+                            'route'    => '/seminar/:id_reg/[:action[/:id]]',
+                            'constraints' => array(
+                                'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
+                            ),
+                            'defaults' => array(
+                                'controller' => Controller\SeminarController::class,
+                                'action' => 'index',
+                            ),
+                        ),
+                    ),
                     'project' => array(
                         'type'    => 'Segment',
                         'options' => array(

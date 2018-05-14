@@ -9,6 +9,7 @@ namespace Admin\Controller;
 
 use Admin\Form\Registration\MovieRegistrationForm;
 use Admin\Form\Registration\RegistrationForm;
+use Admin\Form\Registration\SeminarRegistrationForm;
 use Admin\Form\Registration\WorkshopRegistrationForm;
 use Application\Entity\Event\Event;
 use Application\Entity\Registration\Options;
@@ -91,6 +92,9 @@ class RegistrationController extends AbstractAdminController
                 break;
             case Type::WORKSHOP:
                 $form = new WorkshopRegistrationForm($this->getEntityManager());
+                break;
+            case Type::SEMINAR:
+                $form = new SeminarRegistrationForm($this->getEntityManager());
                 break;
             default:
                 $form = new RegistrationForm($this->getEntityManager());

@@ -1,5 +1,5 @@
 <?php
-namespace Application\Entity\Workshop;
+namespace Application\Entity\Seminar;
 
 use Admin\View\Helper\RegistrationStatus;
 use Application\Entity\Event\Event;

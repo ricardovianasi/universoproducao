@@ -7,10 +7,9 @@
  */
 namespace Admin\Form\Seminar;
 
-use Admin\Form\Programing\ProgramingFieldset;
-use Application\Entity\Art\Category;
 use Application\Entity\Event\Event;
 use Application\Entity\Event\EventType;
+use Application\Entity\Seminar\Category;
 use Application\Entity\Seminar\Thematic;
 use Zend\Form\Form;
 
@@ -47,6 +46,20 @@ class SeminarDebateForm extends Form
             'name' => 'thematic',
             'options' => [
                 'label' => 'Temática',
+                'empty_option' => 'Selecione',
+                'value_options' => $this->populateThematic(),
+
+            ],
+            'attributes' => [
+                'required' => 'required',
+            ]
+        ]);
+
+        $this->add([
+            'type' => 'Select',
+            'name' => 'category',
+            'options' => [
+                'label' => 'Categoria',
                 'empty_option' => 'Selecione',
                 'value_options' => $this->populateCategories(),
 
@@ -91,6 +104,11 @@ class SeminarDebateForm extends Form
             $data['thematic'] = $thematic->getId();
         }
 
+        if(!empty($data['category']) && is_object($data['category'])) {
+            $category = $data['category'];
+            $data['category'] = $category->getId();
+        }
+
         if(!empty($data['event']) && is_object($data['event'])) {
             $event = $data['event'];
             $data['event'] = $event->getId();
@@ -123,13 +141,29 @@ class SeminarDebateForm extends Form
         return $options;
     }
 
-    public function populateCategories()
+    public function populateThematic()
     {
         $options = [];
         if($this->getEntityManager()) {
             $ops = $this
                 ->getEntityManager()
                 ->getRepository(Thematic::class)
+                ->findBy([], ['name'=>'Desc']);
+
+            foreach ($ops as $o) {
+                $options[$o->getId()] = $o->getName();
+            }
+        }
+        return $options;
+    }
+
+    public function populateCategories()
+    {
+        $options = [];
+        if($this->getEntityManager()) {
+            $ops = $this
+                ->getEntityManager()
+                ->getRepository(Category::class)
                 ->findBy([], ['name'=>'Desc']);
 
             foreach ($ops as $o) {

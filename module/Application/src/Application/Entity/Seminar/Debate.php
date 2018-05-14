@@ -34,6 +34,12 @@ class Debate extends AbstractEntity
     private $thematic;
 
     /**
+     * @ORM\ManyToOne(targetEntity="Category")
+     * @ORM\JoinColumn(name="seminar_category_id", referencedColumnName="id")
+     */
+    private $category;
+
+    /**
      * @ORM\ManyToOne(targetEntity="Application\Entity\Event\Event")
      * @ORM\JoinColumn(name="event_id", referencedColumnName="id")
      */
@@ -173,5 +179,21 @@ class Debate extends AbstractEntity
     public function setFiles($files)
     {
         $this->files = $files;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCategory()
+    {
+        return $this->category;
+    }
+
+    /**
+     * @param mixed $category
+     */
+    public function setCategory($category)
+    {
+        $this->category = $category;
     }
 }

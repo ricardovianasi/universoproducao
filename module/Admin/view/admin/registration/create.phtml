@@ -87,7 +87,6 @@
                         echo $this->formRow($form->get('position')); ?>
 
                         <?php if($this->registration->getType() == \Application\Entity\Registration\Type::MOVIE): ?>
-
                             <div class="portlet light bordered">
                                 <div class="portlet-title">
                                     <div class="caption">Configurações da inscrição de <?php echo \Application\Entity\Registration\Type::get($this->registration->getType()); ?></div>
@@ -165,7 +164,20 @@
                                 </div>
                             </div>
                         </div>
+                        <?php elseif($this->registration->getType() == \Application\Entity\Registration\Type::SEMINAR): ?>
+                            <div class="portlet light bordered">
+                                <div class="portlet-title">
+                                    <div class="caption">Configurações da inscrição de <?php echo \Application\Entity\Registration\Type::get($this->registration->getType()); ?></div>
+                                </div>
+                                <div class="portlet-body form">
+                                    <div class="form-body">
+                                        <?php echo $this->formRow($form->get('options['.\Application\Entity\Registration\Options::SEMINAR_CATEGORY.']'));?>
+                                        <?php echo $this->formRow($form->get('options['.\Application\Entity\Registration\Options::SEMINAR_AVALIABLE.']'));?>
+                                    </div>
+                                </div>
+                            </div>
                         <?php endif;?>
+
 
                         <?php
                             echo $this->formRow($form->get('regulation'));

@@ -8,11 +8,8 @@
 
 namespace Admin\Controller;
 
-use Admin\Form\Art\ArtCategoryForm;
 use Admin\Form\Seminar\SeminarCategoryForm;
-use Admin\Form\Seminar\SeminarThematicForm;
-use Application\Entity\Art\Category;
-use Application\Entity\Seminar\Thematic;
+use Application\Entity\Seminar\Category;
 
 class SeminarCategoryController extends AbstractAdminController
 {

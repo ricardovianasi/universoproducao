@@ -7,6 +7,7 @@ use Application\Entity\Event\Event;
 use Application\Entity\Event\Place;
 use Application\Entity\Programing\Programing;
 use Application\Entity\Programing\Type;
+use Application\Entity\Seminar\Category;
 use Application\Entity\Seminar\Debate;
 use Application\Entity\Seminar\Thematic;
 
@@ -86,6 +87,13 @@ class SeminarDebateController extends AbstractAdminController
                 $debate->setThematic($thematic);
                 unset($data['thematic']);
 
+                $category = null;
+                if(!empty($data['category'])) {
+                    $category = $this->getRepository(Category::class)->find($data['category']);
+                }
+                $debate->setCategory($category);
+                unset($data['category']);
+
                 $programing = [];
                 if(!empty($data['programing'])) {
                     $programing = $data['programing'];
@@ -112,6 +120,12 @@ class SeminarDebateController extends AbstractAdminController
                             ->find($pro['place']);
 
                         $pro['place'] = $place;
+                    }
+
+                    if(!empty($pro['available_places'])) {
+                        $pro['available_places'] = (int) $pro['available_places'];
+                    } else {
+                        unset($pro['available_places']);
                     }
 
                     $debateProg->setData($pro);

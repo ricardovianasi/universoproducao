@@ -34,6 +34,9 @@ class Options extends AbstractEntity
     const WORKSHOP_FORM                             = 'workshop_form';
     CONST WORKSHOP_PONTUATION                       = 'workshop_pontuation';
 
+    const SEMINAR_CATEGORY                          = 'seminar_category';
+    const SEMINAR_AVALIABLE                         = 'seminar_avaliable';
+
 
     /**
      * @ORM\Id @ORM\Column(name="id", type="integer", nullable=false)
