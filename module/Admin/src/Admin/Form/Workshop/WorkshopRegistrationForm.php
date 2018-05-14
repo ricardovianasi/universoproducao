@@ -24,8 +24,9 @@ class WorkshopRegistrationForm extends Form
 {
     private $entityManager;
     private $registration;
+    private $event;
 
-    public function __construct($em, $registration=null)
+    public function __construct($em, $registration=null, $event=null)
     {
         if($em) {
             $this->entityManager = $em;
@@ -33,6 +34,10 @@ class WorkshopRegistrationForm extends Form
 
         if($registration) {
             $this->registration = $registration;
+        }
+
+        if($event) {
+            $this->event = $event;
         }
 
         parent::__construct('workshop-registration-form');
@@ -241,6 +246,17 @@ class WorkshopRegistrationForm extends Form
             foreach ($items as $c) {
                 $options[$c->getId()] = $c->getName();
             }
+        } elseif($this->getEntityManager() && $this->getEvent()) {
+            $items = $this
+                ->getEntityManager()
+                ->getRepository(Workshop::class)
+                ->findBy([
+                    'event' => $this->getEvent()
+                ]);
+
+            foreach ($items as $c) {
+                $options[$c->getId()] = $c->getName();
+            }
         }
 
         return $options;
@@ -317,5 +333,21 @@ class WorkshopRegistrationForm extends Form
     public function setRegistration($registration)
     {
         $this->registration = $registration;
+    }
+
+    /**
+     * @return null
+     */
+    public function getEvent()
+    {
+        return $this->event;
+    }
+
+    /**
+     * @param null $event
+     */
+    public function setEvent($event)
+    {
+        $this->event = $event;
     }
 }

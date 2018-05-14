@@ -34,6 +34,9 @@ class WorkshopStatusModalForm extends Form
                 'empty_option' => 'Selecione',
                 'value_options' => Status::toArray(),
                 'label' => 'Status',
+            ],
+            'attributes' => [
+                'id' => 'event'
             ]
         ]);
 

@@ -178,6 +178,21 @@
 	</div>
 </div>
 
+<?php $this->inlineScript()->captureStart();
+echo <<<JS
+$( document ).ready(function() {
+   $('#event').on('change', function(e) {
+       App.blockUI({
+           cenrerY: true,
+           animate: true
+       });
+       var form = $('#submit_form');
+       form.submit();
+   });
+});
+JS;
+$this->inlineScript()->captureEnd(); ?>
+
 <?php echo $this->partial('admin/workshop-registration/_modal-status.phtml', [
     'statusModalForm' => $this->statusModalForm
 ]); ?>

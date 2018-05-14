@@ -23,16 +23,18 @@ class WorkshopRegistrationController extends AbstractAdminController
     public function indexAction()
     {
         $statusModalForm = new WorkshopStatusModalForm($this->getEntityManager());
-        $registration = $this->getRepository(Registration::class)->findOneBy([
-            'type' => Type::WORKSHOP
-        ]);
+
+        $event = null;
 
         $dataAttr = $this->params()->fromQuery();
-        if(empty($dataAttr)) {
-            $dataAttr['event'] = $this->getDefaultEvent()?$this->getDefaultEvent()->getId():null;
+        if(!empty($dataAttr['event'])) {
+            $event = $dataAttr['event'];
+        } else {
+            $event = $this->getDefaultEvent()?$this->getDefaultEvent()->getId():null;
         }
+        $dataAttr['event'] = $event;
 
-        $searchForm = new WorkshopRegistrationForm($this->getEntityManager(), $registration);
+        $searchForm = new WorkshopRegistrationForm($this->getEntityManager(), null, $event);
         $searchForm->setData($dataAttr);
         if(!$searchForm->isValid()) {
             $teste = $searchForm->getMessages();
