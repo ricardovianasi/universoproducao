@@ -132,6 +132,7 @@ return [
                 'label' => 'Oficinas',
                 'uri' => '#',
                 'icon' => 'icon-book-open',
+                'workshop' => true,
                 'pages' => [
                     [
                         'label' => 'Responsáveis',
@@ -145,12 +146,14 @@ return [
                         'route' => 'admin/default',
                         'controller' => 'workshop',
                         'icon' => 'icon-doc',
+                        'workshop' => true,
                     ],
                     [
                         'label' => 'Inscrições',
                         'route' => 'admin/default',
                         'controller' => 'workshop-registration',
                         'icon' => 'icon-doc',
+                        'workshop' => true,
                     ],
                     [
                         'label' => 'Configurações',
