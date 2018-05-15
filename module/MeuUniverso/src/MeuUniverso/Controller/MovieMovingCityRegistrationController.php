@@ -249,7 +249,7 @@ class MovieMovingCityRegistrationController extends AbstractMeuUniversoRegisterC
 
         } else {
             $movie = new Movie();
-            //$movie->setRegistration($reg);
+            $movie->setType(Movie::TYPE_MOTION_CITY_MOVIE);
             $movie->setAuthor($this->getAuthenticationService()->getIdentity());
         }
 
@@ -394,7 +394,7 @@ class MovieMovingCityRegistrationController extends AbstractMeuUniversoRegisterC
                     }
                     $msg.= '<p><ul>'.$mostras.'</ul></p>';
 
-                    $msg.= '<p>O resultado para a seleção da 13ª CineOP está previsto para 14 de maio, e o da 12ª CineBH para 01 de agosto. Os resultados serão enviados pelo email cadastrado.</p>';
+                    $msg.= '<p>O resultado para a seleção da 12ª CineBH para 01 de agosto. Os resultados serão enviados pelo email cadastrado.</p>';
                     $msg.= '<p>Pedimos a gentileza de manter os dados do seu cadastro sempre atualizados para garantir a eficácia em nossa comunicação!</p>';
 
                     $to[$user->getName()] = $user->getEmail();
