@@ -9,6 +9,7 @@
 namespace Admin\Form\Registration;
 
 
+use Application\Entity\Movie\Movie;
 use Application\Entity\Registration\Options;
 
 class MovieRegistrationForm extends RegistrationForm
@@ -16,6 +17,21 @@ class MovieRegistrationForm extends RegistrationForm
     public function __construct($em = null)
     {
         parent::__construct($em);
+
+        $this->add([
+            'type' => 'select',
+            'name' => 'options['.Options::MOVIE_TYPE.']',
+            'options' => [
+                'label' => 'Tipo do filme',
+                'value_options' => Movie::getMovieTypes(),
+                'empty_option' => 'Selecione',
+                'twb-layout' => 'horizontal',
+                'column-size' => 'md-2',
+                'label_attributes' => [
+                    'class' => 'col-md-4'
+                ]
+            ]
+        ]);
 
         $this->add([
             'type' => 'select',

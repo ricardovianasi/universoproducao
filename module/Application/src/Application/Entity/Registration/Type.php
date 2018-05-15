@@ -11,6 +11,7 @@ class Type
     const EDUCATIONAL_PROJECT   = 'educational_project';
     const EDUCATIONAL_MOVIE     = 'educational_movie';
     const SESSION_SCHOOL        = 'session_school';
+    const MOTION_CITY_MOVIE     = 'motion_city_movie';
 
 	static public function toArray() {
 		return array(
@@ -21,7 +22,8 @@ class Type
             self::PROJECT_CINEMUNDI     => 'Projetos Brasil CineMundi',
             self::EDUCATIONAL_PROJECT   => 'Projetos audiovisuaus educativos',
             self::EDUCATIONAL_MOVIE     => 'Filmes Mostra Educação',
-            self::SESSION_SCHOOL        => 'Sessão Cine escola'
+            self::SESSION_SCHOOL        => 'Sessão Cine escola',
+            self::MOTION_CITY_MOVIE     => 'Filmes Mostra Cidade em Movimento'
 		);
 	}
 

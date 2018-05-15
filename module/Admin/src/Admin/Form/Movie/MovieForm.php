@@ -264,6 +264,19 @@ class MovieForm extends Form
 
         $this->add([
             'type' => 'select',
+            'name' => 'options[general_category]',
+            'options' => [
+                'label' => 'Categoria',
+                'value_options' => $this->populateOptions(OptionsType::GENERAL_CATEGORY),
+                'empty_option' => 'Selecione',
+            ],
+            'attributes' => [
+//                'required' => 'required'
+            ],
+        ]);
+
+        $this->add([
+            'type' => 'select',
             'name' => 'options[format_completed]',
             'options' => [
                 'label' => 'Formato em que o filme foi finalizado',

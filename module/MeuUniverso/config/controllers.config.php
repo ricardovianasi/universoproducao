@@ -12,6 +12,7 @@ return [
         Controller\RegisterController::class                        => InvokableFactory::class,
         Controller\DependentsController::class                      => InvokableFactory::class,
         Controller\MovieRegistrationController::class               => InvokableFactory::class,
+        Controller\MovieMovingCityRegistrationController::class     => InvokableFactory::class,
         Controller\WorkshopRegistrationController::class            => InvokableFactory::class,
         Controller\ProjectRegistrationController::class             => InvokableFactory::class,
         Controller\ErrorController::class                           => InvokableFactory::class,

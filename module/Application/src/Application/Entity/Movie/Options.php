@@ -31,6 +31,9 @@ class Options extends AbstractEntity
     /** @ORM\Column(name="`type`", type="string") */
     private $type;
 
+    /** @ORM\Column(name="`help_block`", type="string") */
+    private $helpBlock;
+
     /** @ORM\Column(name="`status`", type="integer") */
     private $status = self::STATUS_ENABLED;
 
@@ -106,5 +109,21 @@ class Options extends AbstractEntity
     public function _toArray()
     {
         return $this->toArray();
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getHelpBlock()
+    {
+        return $this->helpBlock;
+    }
+
+    /**
+     * @param mixed $helpBlock
+     */
+    public function setHelpBlock($helpBlock)
+    {
+        $this->helpBlock = $helpBlock;
     }
 }

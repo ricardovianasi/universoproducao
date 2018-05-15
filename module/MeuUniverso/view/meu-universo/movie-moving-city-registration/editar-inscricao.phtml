@@ -1,0 +1,40 @@
+<div class="container">
+    <p class="meuuniverso-brand meuuniverso-brand--center"><strong>Meu</strong>Universo | Inscrição de filmes</p>
+    <div class="portlet-body form">
+        <?php $subUrl = $this->url('meu-universo/movie', [
+            'id_reg'=>$this->reg->getHash(),
+            'action'=>'editar-inscricao'
+        ], ['query'=>[
+            'event' => $this->event->getId(),
+            'movie' => $this->movie->getId()
+        ]]); ?>
+        <form action="<?php echo $subUrl ?>" method="POST">
+            <h3 class="h3 block">Regulamento</h3>
+            <?php echo $this->regulation($this->reg); ?>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="movie-multi-check">
+                        <div class="checkbox">
+                            <label>
+                                <input required type="checkbox" name="accept_regulation" value="1">
+                                Eu li e estou de acordo com as condições descritas no regulamento de inscrições de filmes
+                                e autorizo a inscrição do filme <strong><?php echo $this->movie->getTitle() ?></strong>
+                                para a seleção da <strong><?php echo $this->event->getFullName() ?></strong>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="class-md-12">
+                    <button type="submit" class="btn btn-lg green button-submit"> Cadastrar
+                        <i class="glyphicon glyphicon-ok"></i>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+</div>

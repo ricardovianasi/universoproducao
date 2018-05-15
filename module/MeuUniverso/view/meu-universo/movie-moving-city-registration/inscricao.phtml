@@ -1,0 +1,74 @@
+<?php
+/** @var \Application\Entity\Movie\Movie $movie */
+$movie = $this->movie;
+?>
+
+<div class="container">
+    <p class="meuuniverso-brand meuuniverso-brand--center"><strong>Meu</strong>Universo | Inscrição de filmes</p>
+
+    <div class="portlet light" id="form_wizard_1">
+        <div class="portlet-body form">
+            <form class="form-horizontal form-bordered" action="">
+                <div class="form-body">
+                    <p>Filmes cadastros que podem ser inscritos nesse processo de seleção: <br><br></p>
+                </div>
+
+                <table class="table table-hover table-light table-movie">
+                    <thead>
+                    <tr>
+                        <th> ID </th>
+                        <th> Título </th>
+                        <th width="20%"> Data de cadastro </th>
+                        <th width="30%"> Status </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <?php foreach ($this->movies as $m): ?>
+                        <tr>
+                            <td><?php echo $m->getId(); ?></td>
+                            <td><?php echo $m->getTitle(); ?></td>
+                            <td><?php echo $m->getCreatedAt()->format('d/m/Y \à\s H:i') ?></td>
+                            <td>
+                                <table class="table table-in-td">
+                                    <tbody>
+                                    <?php $eventsSubs = []; foreach ($m->getSubscriptions() as $sub): ?>
+                                        <?php  $eventsSubs[] = $sub->getEvent()->getId() ?>
+                                        <tr>
+                                            <td><?php echo $sub->getEvent()->getShortName(); ?></td>
+                                            <td><?php echo $this->labelStatus($sub->getStatus()); ?></td>
+                                        </tr>
+                                    <?php endforeach; ?>
+
+                                    <?php foreach ($this->reg->getEvents() as $e): ?>
+                                        <?php if(!in_array($e->getId(), $eventsSubs)): ?>
+                                            <tr>
+                                                <td><?php echo $e->getShortName(); ?></td>
+                                                <td>
+                                                    <?php $subUrl = $this->url('meu-universo/movie', [
+                                                        'id_reg'=>$this->reg->getHash(),
+                                                        'action'=>'editar-inscricao'
+                                                    ], ['query'=>[
+                                                            'event' => $e->getId(),
+                                                            'movie' => $m->getId()
+                                                    ]]); ?>
+                                                    <a class="btn btn-default" href="<?php echo $subUrl ?>">Fazer inscrição</a>
+                                                </td>
+                                            </tr>
+                                        <?php endif; ?>
+                                    <?php endforeach; ?>
+
+                                    </tbody>
+                                </table>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                    </tbody>
+                </table>
+                <a href="<?php echo $this->url('meu-universo/movie', ['id_reg'=>$reg->getHash(), 'action'=>'novo']);?>" class="btn btn-lg green">Nova inscrição</a>
+            </form>
+
+
+        </div>
+    </div>
+
+</div>

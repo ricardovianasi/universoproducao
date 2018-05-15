@@ -23,6 +23,7 @@ class Movie extends AbstractEntity
 
     const TYPE_MOVIE = 'movie';
     const TYPE_EDUCATIONAL_MOVIE = 'educational_movie';
+    const TYPE_MOTION_CITY_MOVIE = 'motion_city';
 
     /** @var ObjectManager */
     protected $objectManager;
@@ -1257,7 +1258,8 @@ class Movie extends AbstractEntity
     {
         $types = [
             self::TYPE_MOVIE => 'Filmes',
-            self::TYPE_EDUCATIONAL_MOVIE => 'Mostra Educação'
+            self::TYPE_EDUCATIONAL_MOVIE => 'Mostra Educação',
+            self::TYPE_MOTION_CITY_MOVIE => 'Mostra Cidadem em Movimento'
         ];
 
         if($typeOp) {
@@ -1278,7 +1280,7 @@ class Movie extends AbstractEntity
         $genre = $this->getOption(OptionsType::GENRE);
         $color = $this->getOption(OptionsType::COLOR);
         $format = $this->getOption(OptionsType::FORMAT_COMPLETED);
-        $duration = ($this->getDuration()->format('H')*60)+($this->getDuration()->format('i'));
+        $duration = $this->getDuration() ? ($this->getDuration()->format('H')*60)+($this->getDuration()->format('i')):"";
 
         if($genre) {
             $return[] = $genre->getName();

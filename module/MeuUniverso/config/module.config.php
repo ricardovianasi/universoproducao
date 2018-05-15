@@ -111,6 +111,19 @@ return array(
                             ),
                         ),
                     ),
+                    'moving_city_movie' => array(
+                        'type'    => 'Segment',
+                        'options' => array(
+                            'route'    => '/filme-cidade-em-movimento/:id_reg/:action[/:id]',
+                            'constraints' => array(
+                                'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
+                            ),
+                            'defaults' => array(
+                                'controller' => Controller\MovieMovingCityRegistrationController::class,
+                                'action' => 'index',
+                            ),
+                        ),
+                    ),
                     'educational_movie' => array(
                         'type'    => 'Segment',
                         'options' => array(

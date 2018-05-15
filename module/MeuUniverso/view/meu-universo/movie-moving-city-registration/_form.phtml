@@ -1,0 +1,272 @@
+<div class="portlet light" id="form_wizard_1">
+    <div class="portlet-body form">
+        <?php $form = $this->form;
+        $form->prepare();
+        echo $this->form(null, null)->openTag($form); ?>
+
+        <?php if($form->getMessages()): ?>
+
+            <div class="portlet box red">
+                <div class="portlet-title">
+                    <div class="caption">Atenção, os seguintes erros foram encontrados </div>
+                </div>
+                <div class="portlet-body">
+                    <?php foreach ($form->getMessages() as $field=>$message): ?>
+                        <h4 class="h4">Campo <?php echo $form->get($field)->getLabel(); ?></h4>
+                        <div style="padding-left: 20px">
+                        <?php foreach ($message as $key=>$m): ?>
+                            <p class=""><?php echo $m ?></p>
+                        <?php endforeach; ?>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+
+        <?php endif; ?>
+
+        <div class="form-wizard">
+            <div class="form-body">
+                <ul class="nav nav-pills nav-justified steps">
+                    <li>
+                        <a href="#tab_regulation" data-toggle="tab" class="step">
+                            <span class="number"> 1 </span>
+                            <span class="desc"><i class="glyphicon glyphicon-ok"></i> Regulamento </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#tab2" data-toggle="tab" class="step">
+                            <span class="number"> 2 </span>
+                            <span class="desc"><i class="glyphicon glyphicon-ok"></i> Ficha técnica </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#tab3" data-toggle="tab" class="step">
+                            <span class="number"> 3 </span>
+                            <span class="desc"><i class="glyphicon glyphicon-ok"></i> Produção/Direção </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#tab4" data-toggle="tab" class="step">
+                            <span class="number"> 4 </span>
+                            <span class="desc"><i class="glyphicon glyphicon-ok"></i> Multimídia </span>
+                        </a>
+                    </li>
+                </ul>
+                <div id="bar" class="progress progress-striped" role="progressbar">
+                    <div class="progress-bar progress-bar-success"> </div>
+                </div>
+
+                <div class="tab-content">
+                    <div class="tab-pane active" id="tab_regulation">
+                        <h3 class="h3 block">Regulamento</h3>
+                        <?php echo $this->regulation($this->reg); ?>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="movie-multi-check">
+                                    <?php echo $this->formRow($form->get('accept_regulation')); ?>
+                                </div>
+                            </div>
+                        </div>
+
+                        <h3 class="h3 form-section">Mostras</h3>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="movie-multi-check">
+                                    <?php echo $this->formRow($form->get('events')) ?>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="tab-pane" id="tab2">
+                        <?php echo $this->formRow($form->get('title')) ?>
+                        <?php echo $this->formRow($form->get('title_english')) ?>
+                        <?php echo $this->formRow($form->get('production_state')) ?>
+                        <?php echo $this->formRow($form->get('end_date_year')) ?>
+                        <?php echo $this->formRow($form->get('end_date_month')) ?>
+                        <?php echo $this->formRow($form->get('duration')) ?>
+                        <?php echo $this->formRow($form->get('has_cpb')) ?>
+
+                        <?php
+                            $showCpb = false;
+                            if(!empty($form->get('cpb')->getValue())) {
+                                $showCpb = true;
+                            }
+                        ?>
+
+                        <div style="display: <?php echo $showCpb ? "block" : "none"; ?>" id="has_cpb">
+                            <?php echo $this->formRow($form->get('cpb')) ?>
+                        </div>
+                        <?php echo $this->formRow($form->get('has_official_classification')) ?>
+
+                        <?php
+                            $showClassification = false;
+                            $labelClassification = "";
+                            if($form->get('has_official_classification')->getValue() === '1') {
+                                $labelClassification = "Classificação indicativa";
+                                $showClassification = true;
+                            } elseif($form->get('has_official_classification')->getValue() === '0' ) {
+                                $showClassification = true;
+                                $labelClassification = "Indique a classificação indicativa sugerida";
+                            } else {
+                                $showClassification = false;
+                            }
+                            $form->get('options[classification]')->setOption('label', $labelClassification);
+                        ?>
+
+                        <div id="classification" style="display: <?php echo $showClassification ? "block" : "none" ?>">
+                            <?php echo $this->formRow($form->get('options[classification]')) ?>
+                        </div>
+
+                        <?php
+                            $showContentScenes = false;
+                            if($categoryOpt = $this->movie->getOption('classification')) {
+                                if(strtolower($categoryOpt->getName()) != 'livre') {
+                                    $showContentScenes = true;
+                                }
+                            }
+                        ?>
+
+                        <div id="content_scenes" style="display: <?php echo $showContentScenes ? "block" : "none"; ?>;">
+                            <?php echo $this->formRow($form->get('content_scenes')) ?>
+                        </div>
+
+                        <?php echo $this->formRow($form->get('options[general_category]')) ?>
+                        <?php echo $this->formRow($form->get('options[format_completed]')) ?>
+                        <?php echo $this->formRow($form->get('options[window]')) ?>
+                        <?php echo $this->formRow($form->get('options[sound]')) ?>
+                        <?php echo $this->formRow($form->get('options[color]')) ?>
+                        <?php echo $this->formRow($form->get('options[genre]')) ?>
+                        <?php echo $this->formRow($form->get('options[accessibility]')) ?>
+
+
+                        <?php
+                            $show_conversations_languages = false;
+                            if($form->get('has_conversations_languages')->getValue() == 1) {
+                                $show_conversations_languages = true;
+                            }
+                        ?>
+                        <?php echo $this->formRow($form->get('has_conversations_languages')) ?>
+                        <div id="conversations_languages" style="display: <?php echo $show_conversations_languages ? "block" : "none" ?>">
+                            <?php echo $this->formRow($form->get('conversations_languages')) ?>
+                        </div>
+
+                        <?php
+                            $show_subtitles_languages = false;
+                            if($form->get('has_subtitles_languages')->getValue() == 1) {
+                                $show_subtitles_languages = true;
+                            }
+                        ?>
+                        <?php echo $this->formRow($form->get('has_subtitles_languages')) ?>
+                        <div id="subtitles_languages" style="display: <?php echo $show_subtitles_languages ? "block" : "none" ?>">
+                            <?php echo $this->formRow($form->get('subtitles_languages')) ?>
+                        </div>
+
+                        <?php
+                            $show_conversations_list_languages = false;
+                            if($form->get('has_conversations_list_languages')->getValue() == 1) {
+                                $show_conversations_list_languages = true;
+                            }
+                        ?>
+                        <?php echo $this->formRow($form->get('has_conversations_list_languages')) ?>
+                        <div id="conversations_list_languages" style="display: <?php echo $show_conversations_list_languages ? "block" : "none" ?>">
+                            <?php echo $this->formRow($form->get('conversations_list_languages')) ?>
+                        </div>
+
+
+                        <?php echo $this->formRow($form->get('has_participated_other_festivals')) ?>
+                        <?php
+                        $showOtherFestivals = false;
+                        if($form->get('has_participated_other_festivals')->getValue() == 1) {
+                            $showOtherFestivals = true;
+                        }
+                        ?>
+
+                        <div id="other_festivals" style="display: <?php echo $showOtherFestivals ? "block" : "none"; ?>;">
+                            <?php echo $this->formRow($form->get('other_festivals')) ?>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="tab3">
+                        <?php echo $this->formRow($form->get('direction')) ?>
+                        <?php echo $this->formRow($form->get('filmography_director')) ?>
+                        <?php echo $this->formRow($form->get('script')) ?>
+                        <?php echo $this->formRow($form->get('production_company')) ?>
+                        <?php echo $this->formRow($form->get('co_production')) ?>
+                        <?php echo $this->formRow($form->get('executive_production')) ?>
+                        <?php echo $this->formRow($form->get('direction_production')) ?>
+                        <?php echo $this->formRow($form->get('editing_assembly')) ?>
+                        <?php echo $this->formRow($form->get('photography')) ?>
+                        <?php echo $this->formRow($form->get('direction_art')) ?>
+                        <?php echo $this->formRow($form->get('soundtrack')) ?>
+                        <?php echo $this->formRow($form->get('mixing')) ?>
+                        <?php echo $this->formRow($form->get('direct_sound')) ?>
+                        <?php echo $this->formRow($form->get('sound_editing')) ?>
+                        <?php echo $this->formRow($form->get('scenography')) ?>
+                        <?php echo $this->formRow($form->get('costume')) ?>
+                        <?php echo $this->formRow($form->get('cast')) ?>
+                        <?php echo $this->formRow($form->get('synopsis')) ?>
+                        <?php echo $this->formRow($form->get('synopsis_english')) ?>
+                    </div>
+                    <div class="tab-pane" id="tab4">
+                        <?php echo $this->formRow($form->get('movie_link')) ?>
+                        <?php echo $this->formRow($form->get('movie_password')) ?>
+                        <?php echo $this->formRow($form->get('movie_divulgation')) ?>
+
+                        <?php $mediaFieldsets = $form->get('medias')->getFieldsets(); ?>
+                        <?php $mediaFieldset = $mediaFieldsets[0];  ?>
+
+                        <div class="form-group <?php echo !empty($mediaFieldset->get("file")->getMessages()) ? "has-error" : ""; ?> ">
+                            <label class="control-label col-md-4">Imagem</label>
+                            <div class="col-md-6">
+                                <?php
+                                $mediaSrc = null;
+                                if($mediaFieldset->has("src")) {
+                                    $mediaSrc = $mediaFieldset->get("src")->getValue();
+                                }
+                                ?>
+                                <div class="fileinput <?php echo $mediaSrc ? "fileinput-exists" : "fileinput-new" ?> " data-provides="fileinput">
+                                    <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;">
+                                        <?php if($mediaSrc):  ?>
+                                            <img src="<?php echo $this->fileManipulation()->url($mediaSrc); ?>" alt="">
+                                        <?php endif; ?>
+                                    </div>
+                                    <div>
+                                        <span class="btn red btn-outline btn-file">
+                                            <span class="fileinput-new"> Selecionar imagem </span>
+                                            <span class="fileinput-exists"> Alterar </span>
+                                            <?php echo $this->formElement($mediaFieldset->get("file")); ?>
+                                            <?php echo $this->formElement($mediaFieldset->get("id")); ?>
+                                            <?php echo $this->formElement($mediaFieldset->get("src")); ?>
+                                        </span>
+                                        <a href="javascript:;" class="btn red fileinput-exists" data-dismiss="fileinput"> Remover </a>
+                                    </div>
+                                    <?php echo $this->formElement($mediaFieldset->get("caption")) ?>
+                                    <p class="help-block">Formatos válidos: JPG ou PNG. Tamanho mínimo de 800KB e máximo de 2MB</p>
+                                </div>
+                                <?php echo $this->formElementErrors($mediaFieldset->get("file")); ?>
+                                <?php echo $this->formElementErrors($mediaFieldset->get("caption")); ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-actions">
+                <div class="row">
+                    <div class="col-md-offset-3 col-md-9">
+                        <a href="javascript:;" class="btn default button-previous">
+                            <i class="glyphicon glyphicon-chevron-left"></i> Voltar </a>
+                        <a href="javascript:;" class="btn btn-outline green button-next"> Continuar
+                            <i class="glyphicon glyphicon-chevron-right"></i>
+                        </a>
+                        <button type="submit" class="btn green button-submit"> Cadastrar
+                            <i class="glyphicon glyphicon-ok"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <?php echo $this->form()->closeTag() ?>
+    </div>
+</div>

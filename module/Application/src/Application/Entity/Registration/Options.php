@@ -18,6 +18,7 @@ use Util\Entity\AbstractEntity;
 class Options extends AbstractEntity
 {
     //Movies Options
+    const MOVIE_TYPE                                = 'movie_type';
     const MOVIE_ALLOW_INTERNATIONAL_REGISTRATION    = 'movie_allow_international_registration';
     const MOVIE_ALLOW_FINISHED_FROM                 = 'movie_allow_finished_from';
     const MOVIE_ALLOW_FINISHED_TO                   = 'movie_allow_finished_to';

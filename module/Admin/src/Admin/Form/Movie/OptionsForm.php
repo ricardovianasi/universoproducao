@@ -35,6 +35,17 @@ class OptionsForm extends Form
         ]);
 
         $this->add([
+            'type' => 'Textarea',
+            'name' => 'help_block',
+            'options' => [
+                'label' => 'Texto de ajuda'
+            ],
+            'attributes' => [
+                'rows' => '5'
+            ]
+        ]);
+
+        $this->add([
             'type' => 'select',
             'name' => 'status',
             'options' => [

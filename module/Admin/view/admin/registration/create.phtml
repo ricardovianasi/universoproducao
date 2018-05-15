@@ -93,6 +93,7 @@
                                 </div>
                                 <div class="portlet-body form">
                                     <div class="form-body">
+                                        <?php echo $this->formRow($form->get('options['.\Application\Entity\Registration\Options::MOVIE_TYPE.']'));?>
                                         <?php echo $this->formRow($form->get('options['.\Application\Entity\Registration\Options::MOVIE_ALLOW_INTERNATIONAL_REGISTRATION.']')); ?>
                                         <div class="form-group">
                                             <label class="control-label col-md-4">Permitir filmes finalizados a partir de</label>

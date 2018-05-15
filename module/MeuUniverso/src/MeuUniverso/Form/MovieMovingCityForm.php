@@ -5,7 +5,7 @@ use Admin\Form\Movie\MovieForm as AdminMovieForm;
 use Application\Entity\Movie\Options;
 use Zend\Form\Element;
 
-class MovieForm extends AdminMovieForm
+class MovieMovingCityForm extends AdminMovieForm
 {
     public function __construct($entityManager, $registration=null)
     {
@@ -70,7 +70,7 @@ class MovieForm extends AdminMovieForm
         $this->get('has_conversations_list_languages')->setAttribute('required', 'required');
         $this->get('subtitles_languages')->setAttribute('required', 'required');
         $this->get('conversations_list_languages')->setAttribute('required', 'required');
-        $this->get('options[format_completed]')->setAttribute('required', 'required');
+        $this->get('options[general_category]')->setAttribute('required', 'required');
         $this->get('options[format_completed]')->setAttribute('required', 'required');
         $this->get('options[window]')->setAttribute('required', 'required');
         $this->get('options[sound]')->setAttribute('required', 'required');
@@ -108,6 +108,7 @@ class MovieForm extends AdminMovieForm
         $this->getInputFilter()->get('has_conversations_languages')->setRequired(true);
         $this->getInputFilter()->get('has_subtitles_languages')->setRequired(true);
         $this->getInputFilter()->get('options[format_completed]')->setRequired(true);
+        $this->getInputFilter()->get('options[general_category]')->setRequired(true);
         $this->getInputFilter()->get('options[window]')->setRequired(true);
         $this->getInputFilter()->get('options[sound]')->setRequired(true);
         $this->getInputFilter()->get('options[color]')->setRequired(true);
