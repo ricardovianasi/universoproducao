@@ -74,7 +74,7 @@ class AdminNavigation extends AbstractHelper
                 if($item->get('projetoseducativos') != true) {
                     return '';
                 }
-            } elseif($user->getEmail() == 'workshop@workshop') {
+            } elseif($user->getEmail() == 'workshop@workshop.com.br') {
                 if($item->get('workshop') != true) {
                     return '';
                 }
