@@ -12,7 +12,7 @@ class MovieMovingCityForm extends AdminMovieForm
         parent::__construct($entityManager, Options::STATUS_ENABLED, $registration);
 
         $this->remove('events');
-        $this->remove('end_date_year');
+        //$this->remove('end_date_year');
         $this->remove('type');
 
         $this->add([
@@ -27,7 +27,7 @@ class MovieMovingCityForm extends AdminMovieForm
             ]
         ]);
 
-        $this->add([
+        /*$this->add([
            'type' => 'select',
            'name' => 'end_date_year',
             'options' => [
@@ -38,7 +38,7 @@ class MovieMovingCityForm extends AdminMovieForm
             'attributes' => [
                 'required' => 'required',
             ]
-        ]);
+        ]);*/
 
         $this->add([
             'type' => 'Checkbox',

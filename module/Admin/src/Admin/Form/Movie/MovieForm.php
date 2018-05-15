@@ -940,7 +940,7 @@ class MovieForm extends Form
         $op = $this
             ->getEntityManager()
             ->getRepository(Options::class)
-            ->findBy(['status'=>$this->optionsDefaultStatus]);
+            ->findBy(['status'=>$this->optionsDefaultStatus], ['name'=>'ASC']);
 
        $arrayOP = [];
         foreach ($op as $o) {
