@@ -10,6 +10,7 @@ return [
 				'class' => 'start',
                 'brasilcinemundi' => true,
                 'projetoseducativos' => true,
+                'workshop' => true,
 			],
 			[
 				'label' => 'Usuários',
