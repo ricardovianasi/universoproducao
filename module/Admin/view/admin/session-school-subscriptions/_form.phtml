@@ -22,7 +22,7 @@
                                     class="btn user-modal"
                                     type="button"
                                     data-user-id="<?php echo $userId; ?>"
-                                    data-select-id-to="#author"
+                                    data-select-id-to="#user"
                                     data-select-name-to="#authorName">
                                 <i class="fa fa-search"></i>
                             </button>f
@@ -72,6 +72,11 @@
             </div>
 
             <h3 class="form-section">Inscrição</h3>
+            <div class="row">
+                <div class="col-md-4">
+                    <?php echo $this->formRow($form->get('session_programming')) ?>
+                </div>
+            </div>
             <div class="row">
                 <div class="col-md-4"><?php echo $this->formRow($form->get('participants')) ?></div>
             </div>

@@ -9,8 +9,10 @@ namespace Admin\Form\SessionSchool;
 
 use Admin\Form\Instituition\InstituitionFieldset;
 use Application\Entity\Institution\Institution;
+use Application\Entity\Programing\Programing;
 use Application\Entity\Registration\Registration;
 use Application\Entity\Registration\Type;
+use Application\Entity\SessionSchool\SessionSchool;
 use Application\Entity\User\User;
 use Zend\Form\Form;
 use Zend\InputFilter\Factory as InputFilterFactory;
@@ -33,7 +35,7 @@ class SessionSchoolSubscriptionForm extends Form
         parent::__construct('session-school-form');
         $this->setAttributes([
             'id' => 'submit_form',
-            'class' => 'default-form-actions'
+            'class' => 'default-form-actions form-reload'
         ]);
 
         $this->add([
@@ -55,7 +57,20 @@ class SessionSchoolSubscriptionForm extends Form
             ],
             'attributes' => [
                 'required' => 'required',
-                'class' => 'trigger-form-reload'
+                'class' => 'trigger-form-reload',
+            ]
+        ]);
+
+        $this->add([
+            'type' => 'Select',
+            'name' => 'session_programming',
+            'options' => [
+                'label' => 'Sessão',
+                'value_options' => $this->populateSessions(),
+                'empty_option' => 'Selecione'
+            ],
+            'attributes' => [
+                'required' => 'required',
             ]
         ]);
 
@@ -176,6 +191,11 @@ class SessionSchoolSubscriptionForm extends Form
         ]);
 
         $this->setInputFilter((new InputFilterFactory)->createInputFilter([
+            'session_programming' => [
+                'name' => 'session_programming',
+                'required' => false,
+                'allow_empty' => true
+            ],
             'participants' => [
                 'name' => 'participants',
                 'required' => true,
@@ -209,11 +229,44 @@ class SessionSchoolSubscriptionForm extends Form
         return $regulations;
     }
 
+    public function populateSessions()
+    {
+        $items = [];
+        if($this->getEntityManager() && $this->getRegistration()) {
+            $coll = $this
+                ->getEntityManager()
+                ->getRepository(SessionSchool::class)
+                ->findBy([
+                    'registration' => $this->getRegistration()->getId()
+                ], ['order'=>'ASC']);
+
+            foreach ($coll as $c) {
+                if(!key_exists($c->getId(), $items)) {
+                    $items[$c->getId()] = [
+                        'label' => $c->getName(),
+                        'options' => []
+                    ];
+                }
+
+                foreach ($c->getProgramming() as $p) {
+                    $name = $p->getDate()->format('d/m/Y').' | '.$p->getStartTime()->format('H:i');
+                    $items[$c->getId()]['options'][$p->getId()] = $name;
+                }
+            }
+        }
+        return $items;
+    }
+
     public function setData($data)
     {
         if (!empty($data['registration']) && $data['registration'] instanceof Registration) {
             $reg = $data['registration'];
             $data['registration'] = $reg->getId();
+        }
+
+        if (!empty($data['session_programming']) && $data['session_programming'] instanceof Programing) {
+            $sessP = $data['session_programming'];
+            $data['session_programming'] = $sessP->getId();
         }
 
         if(!empty($data['instituition'])) {
@@ -249,5 +302,19 @@ class SessionSchoolSubscriptionForm extends Form
         $this->entityManager = $entityManager;
     }
 
+    /**
+     * @return null
+     */
+    public function getRegistration()
+    {
+        return $this->registration;
+    }
 
+    /**
+     * @param null $registration
+     */
+    public function setRegistration($registration)
+    {
+        $this->registration = $registration;
+    }
 }

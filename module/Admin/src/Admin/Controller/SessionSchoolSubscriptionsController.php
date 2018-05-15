@@ -90,7 +90,14 @@ class SessionSchoolSubscriptionsController extends AbstractAdminController
             $sub = new SessionSchoolSubscription();
         }
 
-        $form = new SessionSchoolSubscriptionForm($this->getEntityManager());
+        $registration = null;
+        if($regID = $this->params()->fromPost('registration')) {
+            $registration = $this->getRepository(Registration::class)->find($regID);
+        } else {
+            $registration = $sub->getRegistration();
+        }
+
+        $form = new SessionSchoolSubscriptionForm($this->getEntityManager(), $registration);
 
         $noValidate = $this->params()->fromPost('no-validate', false);
         if($this->getRequest()->isPost()) {
@@ -105,6 +112,16 @@ class SessionSchoolSubscriptionsController extends AbstractAdminController
                     $sub->setEvent($registration->getEvent());
                     $sub->setRegistration($registration);
                     unset($data['registration']);
+
+                    $sessionP = null;
+                    if(!empty($data['session_programming'])) {
+                        $sessionP = $this
+                            ->getRepository(Programing::class)
+                            ->find($data['session_programming']);
+                        $sub->setSessionProgramming($sessionP);
+                        $sub->setSession($sessionP->getObject());
+                    }
+                    unset($data['session_programming']);
 
                     $user = null;
                     if(!empty($data['user'])) {
@@ -140,7 +157,7 @@ class SessionSchoolSubscriptionsController extends AbstractAdminController
                     } else {
                         $this->messages()->flashSuccess("Inscrição criada com sucesso!");
                         return $this->redirect()->toRoute('admin/default', [
-                            'controller' => 'session-school-subscription',
+                            'controller' => 'session-school-subscriptions',
                             'action' => 'update',
                             'id' => $sub->getId()
                         ]);
