@@ -5,6 +5,7 @@ use Application\Entity\EducationalProject\EducationalProject;
 use Application\Entity\Movie\Movie;
 use Application\Entity\Project\Project;
 use Application\Entity\Registration\Registration;
+use Application\Entity\Seminar\SeminarSubscription;
 use Application\Entity\SessionSchool\SessionSchoolSubscription;
 use Application\Entity\Workshop\WorkshopSubscription;
 
@@ -45,13 +46,21 @@ class IndexController extends AbstractMeuUniversoController
             'user' => $this->getAuthenticationService()->getIdentity()->getId()
         ], ['createdAt' => 'DESC']);
 
+        $seminarQb = $this->getRepository(SeminarSubscription::class)->createQueryBuilder('w');
+        $seminars = $seminarQb
+            ->andWhere($seminarQb->expr()->in('w.user', ':idUserAndDependents'))
+            ->setParameter('idUserAndDependents', $idUserAndDependents)
+            ->getQuery()
+            ->getResult();
+
         return [
             'movies' => $movies,
             'educational_movies' => $educationalMovies,
             'workshops' => $workshops,
             'projects' => $projects,
             'educationalProjects' => $educationalProjects,
-            'sessionSchool' => $sessionSchool
+            'sessionSchool' => $sessionSchool,
+            'seminars' => $seminars
         ];
     }
 

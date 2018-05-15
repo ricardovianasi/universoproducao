@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.5.1.final using JasperReports Library version 6.5.1  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="seminar-confirmation" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="b287cc87-cf2f-4f2f-96c9-b02346e5a358">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter (10)"/>
+	<queryString language="json">
+		<![CDATA[object]]>
+	</queryString>
+	<field name="seminar" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="seminar"/>
+		<fieldDescription><![CDATA[seminar]]></fieldDescription>
+	</field>
+	<field name="event_name" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="event_name"/>
+		<fieldDescription><![CDATA[event_name]]></fieldDescription>
+	</field>
+	<field name="event_full_name" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="event_full_name"/>
+		<fieldDescription><![CDATA[event_full_name]]></fieldDescription>
+	</field>
+	<field name="user_name" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="user_name"/>
+		<fieldDescription><![CDATA[user_name]]></fieldDescription>
+	</field>
+	<field name="user_identifier" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="user_identifier"/>
+		<fieldDescription><![CDATA[user_identifier]]></fieldDescription>
+	</field>
+	<field name="user_birth_date" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="user_birth_date"/>
+		<fieldDescription><![CDATA[user_birth_date]]></fieldDescription>
+	</field>
+	<field name="user_parent_name" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="user_parent_name"/>
+		<fieldDescription><![CDATA[user_parent_name]]></fieldDescription>
+	</field>
+	<field name="user_parent_identifier" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="user_parent_identifier"/>
+		<fieldDescription><![CDATA[user_parent_identifier]]></fieldDescription>
+	</field>
+	<field name="created_at" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="created_at"/>
+		<fieldDescription><![CDATA[created_at]]></fieldDescription>
+	</field>
+	<pageHeader>
+		<band height="40" splitType="Stretch">
+			<image>
+				<reportElement x="0" y="0" width="50" height="40" uuid="c2450a96-42b8-4726-a59f-9ed2954ed5d9"/>
+				<imageExpression><![CDATA["http://universoproducao.com.br/assets/universoproducao/dist/images/universo-producao.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="60" y="0" width="490" height="20" uuid="26b3bccc-e2e6-4ddc-9874-487181cdb17d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CONFIRMAÇÃO DE INSCRIÇÃO]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="60" y="20" width="490" height="20" uuid="9a2955e6-dbe1-48b1-b616-24bb0815a94c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{seminar}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="708" splitType="Stretch">
+			<textField>
+				<reportElement key="" x="121" y="60" width="434" height="30" uuid="21e82a07-2a6d-47e0-b3d9-b2c893a40dcb"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{user_name}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement key="" x="1" y="60" width="120" height="30" uuid="487394a8-7547-4a4c-a55c-4d919dba3521"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Nome]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement key="" x="121" y="90" width="434" height="30" uuid="fe8b370b-192b-4e17-bae3-117efe6f2322"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{user_birth_date}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement key="" x="1" y="90" width="120" height="30" uuid="3520b460-2656-4394-95ba-f3d4984e790d"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Data de nascimento]]></text>
+			</staticText>
+			<textField>
+				<reportElement key="" x="121" y="120" width="434" height="30" uuid="7de36bd4-f114-456a-b13d-f5df14834485"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{user_identifier}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement key="" x="1" y="120" width="120" height="30" uuid="353907d5-ef2e-450d-bb27-3bdd54aeaf32"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Identificador]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="" x="1" y="150" width="120" height="30" uuid="2de45422-82f1-4ba8-b0d0-77a850d9d1d1"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Data de inscrição]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="121" y="150" width="434" height="30" uuid="3558e6e4-ea8b-4168-9ade-3f7e2135121c"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{created_at}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement key="" x="0" y="210" width="554" height="60" uuid="fd74abba-53a4-4e28-af3c-931b2794e801"/>
+				<text><![CDATA[Credenciamento: Apresentar este comprovante de inscrição assinado e um documento original com foto
+para retirar sua credencial no dia 14 de junho – quinta, de 13h às 16h, ou no dia 15 de junho – sexta, de
+9h às 11h, no balcão de credenciamento localizado no hall do Centro de Convenções (Rua Diogo de
+Vasconcelos, 328 – Bairro Pilar em Ouro Preto - MG). ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="290" width="552" height="30" uuid="5278a376-9da5-4ae4-b163-ec27b12db478"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[AUTORIZAÇÃO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="340" width="554" height="40" uuid="0a956f96-d5dd-4b46-a927-4b1de70134e3"/>
+				<text><![CDATA[1.    Autorizo a ter minhas imagem e voz veiculadas por meio de internet, jornais, informes e/ou qualquer meio de  publicação/comunicação pública ou privada, para fins exclusivos de divulgação da CineOP – Mostra de Cinema de Ouro Preto, destinados ao público em geral ou para a comunicação institucional.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="400" width="554" height="20" uuid="0a323e22-fd06-4ef4-bfee-31e9af67342c"/>
+				<text><![CDATA[2.    A presente autorização é concedida a título gratuito e livre de qualquer ônus.]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="440" width="554" height="30" uuid="8677fb47-01c2-4d30-abac-638094a12fd4"/>
+				<textFieldExpression><![CDATA["3.    Eu, "+$F{user_name}+", estou ciente e de acordo com todas as informações e condições descritas no regulamento da inscrição para participação do "+$F{seminar}+" , bem como as informações mencionadas neste"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="1" y="520" width="554" height="80" uuid="6bd7ba34-f8ad-4699-b511-13cfc8da217f"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Ouro Preto, Junho de 2018
+
+
+
+_________________________________________________________________
+Assinatura]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="1" y="30" width="554" height="30" uuid="dade3a71-5ba7-4c06-b8c5-16fd83ae320a"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{seminar}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<staticText>
+				<reportElement x="50" y="19" width="504" height="31" uuid="6badcba3-7b72-4da2-9567-acd0d25a0156"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Rua Pirapetinga, 567  Serra  Belo Horizonte  MG  30220-150  (31) 3282 2366  www.mostratiradentes.com.br]]></text>
+			</staticText>
+			<image>
+				<reportElement x="0" y="14" width="50" height="40" uuid="acedce43-399f-4987-8d93-0de5a1fc7dfc"/>
+				<imageExpression><![CDATA["http://universoproducao.com.br/assets/universoproducao/dist/images/universo-producao.png"]]></imageExpression>
+			</image>
+		</band>
+	</pageFooter>
+</jasperReport>

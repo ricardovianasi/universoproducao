@@ -80,5 +80,19 @@
                 </div>
             </div>
         <?php endif; ?>
+
+        <?php if(count($this->seminars)): ?>
+            <div class="portlet box blue-hoki">
+                <div class="portlet-title">
+                    <div class="caption">
+                        <i class="fa fa-gift"></i>Debates</div>
+                    <div class="actions">
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    <?php echo $this->meuUniversoSeminars($this->seminars); ?>
+                </div>
+            </div>
+        <?php endif; ?>
     </div>
 </div>

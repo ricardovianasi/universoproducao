@@ -232,8 +232,8 @@ class SeminarController extends AbstractMeuUniversoRegisterController
 
         $user = $this->getAuthenticationService()->getIdentity();
 
-        $idSessionSchoolSubscription = $this->params()->fromRoute('id');
-        if(!$idSessionSchoolSubscription) {
+        $idSessionSeminarSubscription = $this->params()->fromRoute('id');
+        if(!$idSessionSeminarSubscription) {
             return $this->redirect()->toRoute('meu-universo/default', [], ['query'=>[
                 'code' => self::ERROR_REG_NOT_FOUND,
                 'id_reg' => $idReg
@@ -241,9 +241,9 @@ class SeminarController extends AbstractMeuUniversoRegisterController
         }
 
         //Recuperar a inscrição do cara
-        /** @var WorkshopSubscription $subscription */
-        $subscription = $this->getRepository(SessionSchoolSubscription::class)->findBy([
-            'id' => $idSessionSchoolSubscription,
+        /** @var SeminarSubscription $subscription */
+        $subscription = $this->getRepository(SeminarSubscription::class)->findBy([
+            'id' => $idSessionSeminarSubscription,
             'registration' => $reg->getId(),
             'user' => $user->getId()
         ]);
@@ -257,7 +257,7 @@ class SeminarController extends AbstractMeuUniversoRegisterController
         //criar um arquivo json
         $preparedItems = $this->prepareItemsForReports($subscription);
 
-        return $this->prepareReport($preparedItems, 'session-confirmation' ,'pdf');
+        return $this->prepareReport($preparedItems, 'seminar-confirmation' ,'pdf');
     }
 
     protected function prepareItemsForReports($items)
@@ -269,36 +269,18 @@ class SeminarController extends AbstractMeuUniversoRegisterController
         $preparedItems = [];
         foreach ($items as $obj) {
 
-            /** @var SessionSchoolSubscription $obj */
+            /** @var SeminarSubscription $obj */
             $obj = $obj;
 
-            $sessionsMovies = [];
-            foreach ($obj->getSession()->getMovies() as $sm) {
-                $sessionsMovies[] = $sm->getMovie()->getTitle();
-            }
-
             $preparedItems[]['object'] = [
+                'seminar' => $obj->getSeminarCategory()->getName(),
                 'event_name' => $obj->getEvent()->getShortName(),
-                'instituition_social_name' => $obj->getInstituition()->getSocialName(),
-                'instituition_cnpj' => $obj->getInstituition()->getCnpj(),
-                'instituition_address' => $obj->getInstituition()->getAddress(),
-                'instituition_city' => $obj->getInstituition()->getCity(),
-                'instituition_uf' => $obj->getInstituition()->getUf(),
-                'instituition_cep' => $obj->getInstituition()->getCep(),
-                'instituition_phone' => $obj->getInstituition()->getPhone(),
-                'instituition_mobile_phone' => $obj->getInstituition()->getMobilePhone(),
-                'instituition_email' => $obj->getInstituition()->getEmail(),
-                'instituition_direction' => $obj->getInstituitionDirection(),
-                'responsible' => $obj->getResponsible(),
-                'responsible_phone' => $obj->getResponsiblePhone(),
-                'responsible_mobile_phone' => $obj->getResponsibleMobilePhone(),
-                'session_name' => $obj->getSession()->getName(),
-                'session_movies' => implode(' - ', $sessionsMovies),
-                'session_programming_date' => $obj->getSessionProgramming()->getDate()->format('d/m/Y'),
-                'session_programming_hour' => $obj->getSessionProgramming()->getStartTime()->format('H:i'),
-                'session_programming_place' => $obj->getSessionProgramming()->getPlace()->getName(),
-                'participants' => $obj->getParticipants(),
-                'serie' => $obj->getSeriesAge(),
+                'event_full_name' => $obj->getEvent()->getFullName(),
+                'user_name' => $obj->getUser()->getName(),
+                'user_identifier' => $obj->getUser()->getIdentifier(),
+                'user_birth_date' => $obj->getUser()->getBirthDate() ? $obj->getUser()->getBirthDate()->format('d/m/Y') : "",
+                'user_parent_name' => $obj->getUser()->getParent() ? $obj->getUser()->getParent()->getName() : "",
+                'user_parent_identifier' => $obj->getUser()->getParent() ? $obj->getUser()->getParent()->getIdentifier() : "",
                 'created_at' => $obj->getCreatedAt()->format('d/m/Y H:i:s')
             ];
         }

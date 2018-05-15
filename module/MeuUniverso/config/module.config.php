@@ -7,6 +7,7 @@ use MeuUniverso\View\Helper\UserEducationalProjects;
 use MeuUniverso\View\Helper\UserMenu;
 use MeuUniverso\View\Helper\UserMovies;
 use MeuUniverso\View\Helper\UserProjects;
+use MeuUniverso\View\Helper\UserSeminar;
 use MeuUniverso\View\Helper\UserSessionSchool;
 use MeuUniverso\View\Helper\UserWorkshops;
 use Util\Security\Crypt;
@@ -225,6 +226,7 @@ return array(
             'meuUniversoEducationalProjects'    => UserEducationalProjects::class,
             'meuUniversoWorkshops'              => UserWorkshops::class,
             'meuUniversoSessionSchool'          => UserSessionSchool::class,
+            'meuUniversoSeminars'               => UserSeminar::class,
             'regulation'                        => RegistrationRegulation::class,
             'labelStatus'                       => LabelStatus::class
         ],

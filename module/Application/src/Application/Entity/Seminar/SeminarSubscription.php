@@ -44,7 +44,7 @@ class SeminarSubscription extends AbstractEntity
 
     /**
      * @ORM\OneToOne(targetEntity="Application\Entity\Seminar\Category")
-     * @ORM\JoinColumn(name="event_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="seminar_category_id", referencedColumnName="id")
      */
     private $seminarCategory;
 
