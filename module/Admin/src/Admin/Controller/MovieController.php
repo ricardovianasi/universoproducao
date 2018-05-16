@@ -596,9 +596,11 @@ class MovieController extends AbstractAdminController
             ->innerJoin('m.subscriptions', 's')
             ->andWhere('s.status = :status')
             ->andWhere('m.comunicadoEnviado = :comunicadoEnviado')
+            ->andWhere('m.event = :idEvent')
             ->setParameters([
                 'status' => 'not_selected',
-                'comunicadoEnviado' => 0
+                'comunicadoEnviado' => 0,
+                'event' => 1085
             ])
             ->getQuery()
             ->getResult();
@@ -609,23 +611,27 @@ class MovieController extends AbstractAdminController
             //$item = new Movie();
 
             $msg = "<p>Prezado (a) ".$item->getAuthor()->getName().",</p>";
-            $msg.= "<p>Comunicamos que o filme <strong>".$item->getTitle()."</strong> não foi selecionado para a 21ª Mostra de Cinema de Tiradentes.</p>";
+            $msg.= "<p>Comunicamos que o filme <strong>".$item->getTitle()."</strong> não foi selecionado para a 13ª CineOP - Mostra de Cinema de Ouro Preto.</p>";
             $msg.= "<p>Esclarecemos que os critérios que baseiam a seleção de filmes para festivais são múltiplos e podem variar de acordo com o perfil do evento, a safra anual e a composição formal das grades. Tentamos abarcar o maior número de filmes inscritos, tentando diversificar ao máximo propostas estéticas e temáticas, sempre pensando no público de cada mostra e numa seleção que dê conta do estado atual da produção audiovisual nacional. </p>";
-            $msg.= "<p>Se algum filme não pertence à lista final de selecionados, é porque não se enquadrou nesses critérios e/ou por falta de espaço de exibição e limitação do período de duração do evento.</p>";
-            $msg.= "<p><strong>Se você optou por participar também da seleção de filmes para a 13ª CineOP - Mostra de Cinema de Ouro Preto, informamos que o filme passará por novo processo de seleção próximo à data de realização do evento.</strong></p>";
+            $msg.= "<p>Se algum filme não pertence à lista final de selecionados, é porque não se enquadrou nesses critérios e/ou por falta de espaço de exibição e limitação do período de duração do evento. </p>";
+            $msg.= "<p><strong>Se você optou por participar também da seleção de filmes para a 12ª CineBH – Mostra de Cinema de Belo Horizonte, informamos que o filme passará por novo processo de seleção próximo à data de realização do evento. </strong></p>";
             $msg.= "<p>Agradecemos seu interesse e esperamos contar com sua participação nas próximas edições.</p>";
-            $msg.= "<p>A programação da Mostra de Cinema de Tiradentes é gratuita e, estará disponível no site <a href='http://www.mostratiradentes.com.br'>www.mostratiradentes.com.br</a> a partir do dia 10 de janeiro.</p>";
-            $msg.= "<p>Atenciosamente,<br />Coordenação - Mostra Tiradentes</p>";
+            $msg.= "<p>A programação da CineOP é gratuita e, estará disponível no site <a href='http://www.cineop.com.br'>www.cineop.com.br</a> a partir do dia 23 de maio. Aproveitamos para convidá-lo à participar das outras atividades da 13ª CineOP – debates, shows, cortejos e rodas de conversa.</p>";
+            $msg.= "<p>Atenciosamente,<br />Coordenação – CineOP</p>";
 
             //$to[$item->getAuthor()->getName()] = 'ricardovianasi@gmail.com';
             $this->mailService()->simpleSendEmail(
-                [$item->getAuthor()->getName()=>$item->getAuthor()->getEmail()],
-                'Filmes - 21ª Mostra de Cinema de Tiradentes', $msg);
+                //[$item->getAuthor()->getName()=>$item->getAuthor()->getEmail()],
+                [$item->getAuthor()->getName()=>'ricardovianasi@gmail.com'],
+                'Filmes - 13ª CineOP - Mostra de Cinema de Ouro Preto', $msg);
 
             $count++;
             echo "$count - Nome: " . $item->getAuthor()->getName();
             echo "<br />Email: " . $item->getAuthor()->getEmail();
             echo "<br />Filme: " . $item->getTitle() . '<br /><br />';
+
+            break;
+            exit();
         }
 
         return $this->getViewModel();
