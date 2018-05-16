@@ -8,6 +8,7 @@
 
 namespace Admin\Controller;
 
+use Admin\Form\Seminar\SeminarSubscriptionSearchForm;
 use Admin\Form\SessionSchool\SessionSchoolForm;
 use Admin\Form\SessionSchool\SessionSchoolProgramingForm;
 use Admin\Form\SessionSchool\SessionSchoolSubscriptionForm;
@@ -19,6 +20,7 @@ use Application\Entity\Movie\Movie;
 use Application\Entity\Programing\Programing;
 use Application\Entity\Programing\Type;
 use Application\Entity\Registration\Registration;
+use Application\Entity\Seminar\SeminarSubscription;
 use Application\Entity\SessionSchool\SessionSchool;
 use Application\Entity\SessionSchool\SessionSchoolMovies;
 use Application\Entity\SessionSchool\SessionSchoolSubscription;
@@ -32,24 +34,18 @@ class SeminarSubscriptionController extends AbstractAdminController
     {
         $dataAttr = $this->params()->fromQuery();
 
-        $event = null;
-        if(!empty($dataAttr['event'])) {
-            $event = $dataAttr['event'];
-        }
-
-        $searchForm = new SessionSchoolSubscriptionSearchForm($this->getEntityManager(), $event);
+        $searchForm = new SeminarSubscriptionSearchForm($this->getEntityManager());
         $searchForm->setData($dataAttr);
 
         if(!$searchForm->isValid()) {
             $teste = $searchForm->getMessages();
         }
 
-        $items = $this->search(SessionSchoolSubscription::class, $dataAttr);
+        $items = $this->search(SeminarSubscription::class, $dataAttr);
 
         $this->getViewModel()->setVariables([
             'items' => $items,
-            'searchForm' => $searchForm,
-            'repository' => $this->getRepository(SessionSchool::class)
+            'searchForm' => $searchForm
         ]);
 
         return $this->getViewModel();
