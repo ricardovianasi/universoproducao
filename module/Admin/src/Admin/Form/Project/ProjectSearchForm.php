@@ -26,6 +26,7 @@ class ProjectSearchForm extends Form
 
         parent::__construct('project-search-form');
         $this->setAttributes([
+            'id' => 'project-search-form',
             'method' => 'get'
         ]);
 
