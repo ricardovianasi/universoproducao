@@ -11,6 +11,7 @@ use Admin\Form\EntityManagerTrait;
 use Admin\Form\Project\FileFieldset;
 use Application\Entity\EducationalProject\Category;
 use Application\Entity\Registration\Registration;
+use Application\Entity\Registration\Status;
 use Application\Entity\Registration\Type;
 use Application\Entity\State;
 use Application\Entity\User\User;
@@ -47,6 +48,24 @@ class EducationalProjectForm extends Form
                 $this->registration = $this->getRepository(Registration::class)->findOneBy(['hash'=>$registration]);
             }
         }
+
+        $this->add([
+            'type' => 'Select',
+            'name' => 'status',
+            'options' => [
+                'label' => 'Status',
+                'empty_option' => 'Selecione o status',
+                'value_options' => Status::toArray(),
+                'twb-layout' => 'horizontal',
+                'column-size' => 'md-6',
+                'label_attributes' => [
+                    'class' => 'col-md-4'
+                ]
+            ],
+            'attributes' => [
+                'data-label' => 'Status'
+            ]
+        ]);
 
         $this->add([
             'type' => 'hidden',
@@ -336,6 +355,11 @@ class EducationalProjectForm extends Form
             'user' => [
                 'name'       => 'user',
                 'required'   => false,
+            ],
+            'status' => [
+                'name'       => 'status',
+                'required'   => false,
+                'allow_empty' => true
             ],
             'registration' => [
                 'name'       => 'registration',

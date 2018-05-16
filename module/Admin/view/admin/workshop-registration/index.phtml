@@ -9,7 +9,7 @@
 			<div class="portlet-title">
 				<div class="caption">
 					<i class="fa fa-th-list"></i>
-					Filmes
+					Inscrição de oficinas
 				</div>
 				<div class="actions">
 					<a href="<?php echo $this->url('admin/default', ['controller'=>'workshop-registration', 'action'=>'create']); ?>"
@@ -131,7 +131,7 @@
 							<tr>
                                 <td><input type="checkbox" class="icheck" name="id[]" value="<?php echo $item->getId() ?>"></td>
 								<td><?php echo $item->getId() ?></td>
-								<td><?php echo $item->getEvent()->getShortName(); ?></td>
+								<td><?php echo $item->getEvent()?$item->getEvent()->getShortName():""; ?></td>
                                 <td><?php echo $item->getWorkshop()->getName(); ?></td>
 								<td>
                                     <?php echo $item->getUser()->getName(); ?> <br />

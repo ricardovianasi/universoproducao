@@ -9,6 +9,8 @@
 namespace Admin\Controller;
 
 use Admin\Form\EducationalProject\EducationalProjectForm;
+use Admin\Form\EducationalProject\EducationalProjectSearchForm;
+use Admin\Form\EducationalProject\StatusModalForm;
 use Application\Entity\EducationalProject\Category;
 use Application\Entity\EducationalProject\EducationalProject;
 use Application\Entity\File\File;
@@ -22,7 +24,9 @@ class EducationalProjectController extends AbstractAdminController
 {
     public function indexAction()
     {
-        $searchForm = new EducationalProjectForm($this->getEntityManager());
+        $statusModalForm = new StatusModalForm();
+
+        $searchForm = new EducationalProjectSearchForm($this->getEntityManager());
         $dataAttr = $this->params()->fromQuery();
         $searchForm->setData($dataAttr);
 
@@ -37,6 +41,9 @@ class EducationalProjectController extends AbstractAdminController
         $this->getViewModel()->setVariables([
             'items' => $items,
             'searchForm' => $searchForm,
+            'searchData' => $dataAttr,
+            'isFiltered' => !empty($data) ? true : false,
+            'statusModalForm' => $statusModalForm,
             'canEdit' => $this->getAuthenticationService()->getIdentity()->getEmail() == 'projetoseducativos@projetoseducativos.com.br'?false:true
         ]);
 
@@ -258,5 +265,86 @@ class EducationalProjectController extends AbstractAdminController
             $preparedItems[] = ['object'=>$itemArray];
         }
         return $preparedItems;
+    }
+
+    public function statusAction()
+    {
+        if(!$this->getRequest()->isPost()) {
+            $this->messages()->flashError("Erro ao processar solicitação.");
+            return $this->redirect()->toRoute('admin/default', [
+                'controller' => 'educational-project',
+                'action' => 'index'
+            ]);
+        }
+
+        $data = $this->getRequest()->getPost()->toArray();
+        if(empty($data['status'])) {
+            $this->messages()->flashError("Erro ao processar solicitação.");
+            return $this->redirect()->toRoute('admin/default', [
+                'controller' => 'educational-project',
+                'action' => 'index'
+            ]);
+        }
+
+        if(empty($data['filter'])) {
+            $this->messages()->flashError("Erro ao processar solicitação.");
+            return $this->redirect()->toRoute('admin/default', [
+                'controller' => 'educational-project',
+                'action' => 'index'
+            ]);
+        }
+
+        $status = $data['status'];
+        parse_str(urldecode($data['filter']), $filter);
+
+        if(empty($filter['selected'])) {
+            $this->messages()->flashError("Erro ao processar solicitação.");
+            return $this->redirect()->toRoute('admin/default', [
+                'controller' => 'educational-project',
+                'action' => 'index'
+            ]);
+        }
+
+        $selectedItens = [];
+        if($filter['selected'] == 'all') {
+            $selectedItens = $this->search(EducationalProject::class, $filter, [], true);
+        } else {
+            $selected = explode(',', $filter['selected']);
+            if(!$selected) {
+                $this->messages()->flashError("Erro ao processar solicitação.");
+                return $this->redirect()->toRoute('admin/default', [
+                    'controller' => 'educational-project',
+                    'action' => 'index'
+                ]);
+            }
+
+            $qb = $this
+                ->getRepository(EducationalProject::class)
+                ->createQueryBuilder('m');
+
+            $selectedItens = $qb
+                ->andWhere($qb->expr()->in('m.id', ':arrayId'))
+                ->setParameter('arrayId', $selected)
+                ->getQuery()
+                ->getResult();
+        }
+
+        $contItensChange = 0;
+        foreach ($selectedItens as $subscription) {
+            if($subscription) {
+                $subscription->setStatus($status);
+                $this->getEntityManager()->persist($subscription);
+
+                $contItensChange++;
+            }
+        }
+
+        $this->getEntityManager()->flush();
+        $this->messages()->flashSuccess("Status alterado com suscesso!");
+        return $this->redirect()->toRoute('admin/default', [
+            'controller' => 'educational-project',
+            'action' => 'index',
+        ], ['query'=>$filter]);
+
     }
 }
