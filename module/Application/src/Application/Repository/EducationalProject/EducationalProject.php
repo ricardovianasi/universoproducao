@@ -16,6 +16,12 @@ class EducationalProject extends AbstractRepository
     {
         $qb = $this->createQueryBuilder('p');
 
+        if(!empty($criteria['title'])) {
+            $qb
+                ->andWhere('p.title like :title')
+                ->setParameter('title', '%'.$criteria['title'].'%');
+        }
+
         if(!empty($criteria['id'])) {
             $qb->andWhere('id = :id')
                 ->setParameter('p.id', $criteria['id']);
