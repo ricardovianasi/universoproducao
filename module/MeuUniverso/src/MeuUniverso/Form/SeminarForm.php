@@ -35,7 +35,7 @@ class SeminarForm extends SeminarSubscriptionForm
                 'unchecked_value' => '0'
             ),
             'attributes ' => [
-                'required' => true
+                'required' => 'required'
             ]
         ]);
 

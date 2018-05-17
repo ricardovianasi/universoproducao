@@ -185,18 +185,17 @@ class SeminarController extends AbstractMeuUniversoRegisterController
                 //Enviar email de confirmação
                 $msg = '<p>Olá <strong>'.$user->getName().'</strong>!</p>';
                 $msg.= "<p>Agradecemos seu interesse em participar da <strong>13ª Mostra de Cinema de Ouro Preto</strong>.</p>";
-                $msg.= "<p>Informamos que recebemos sua inscrição para participar do ????????????: .</p>";
-                $msg.= "<p>Favor imprimir, assinar e enviar este documento via fax (31.3282.2366) ou via email (??????????????) até 48 horas após o preenchimento da inscrição no site. </p>";
+                $msg.= "<p>Informamos que recebemos sua inscrição para participar do <strong>".$category->getName()."</strong> .</p>";
                 $msg.= "<p><strong>ATENÇÃO: </strong></p>";
-                $msg.= "<p><ul>
-                    <li>As vagas na sessão só serão garantidas após o recebimento do Termo de Compromisso, conforme item anterior.</li>
-                    <li>Será considerada a ordem cronológica do recebimento do Termo de Compromisso assinado por sessão até que se complete a lotação da sala.</li>
-                </ul></p>";
+                $msg.= "<p>Você deverá apresentar documento original com foto e o comprovante de inscrição (anexo) impresso e assinado para retirar sua credencial no dia 14 de junho – quinta, de 13h às 16h, ou no dia 15 de junho – sexta, de 9h às 11h, no balcão de credenciamento localizado no hall do Centro de Convenções.</p>";
 
                 $this->getEntityManager()->refresh($subscription);
 
+                $preparedItems = $this->prepareItemsForReports($subscription);
+                $confirmacao = $this->prepareReport($preparedItems, 'seminar-confirmation' ,'pdf',true);
+
                 $to[$user->getName()] = $user->getEmail();
-                $this->mailService()->simpleSendEmail($to, "Confirmação de inscrição Cine-Expressão ", $msg);
+                $this->mailService()->simpleSendEmail($to, "Debates - Confirmação de inscrição ", $msg, $confirmacao);
 
                 $this->meuUniversoMessages()->flashSuccess($msg);
                 return $this->redirect()->toRoute('meu-universo/default');

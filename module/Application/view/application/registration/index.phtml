@@ -61,7 +61,7 @@
                                     $url = $this->url('meu-universo/session_school', ['id_reg'=>$reg->getHash()]);
                                     break;
                                 case \Application\Entity\Registration\Type::SEMINAR:
-                                    $url = $this->url('meu-universo/seminar', ['id_reg'=>$reg->getHash()]);
+                                    $url = $this->url('meu-universo/seminar', ['id_reg'=>$reg->getHash(), 'action'=>'inscricao']);
                                     break;
                                 default:
                                     $url = "#";

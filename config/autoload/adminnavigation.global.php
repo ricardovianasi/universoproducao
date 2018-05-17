@@ -140,6 +140,7 @@ return [
                         'route' => 'admin/default',
                         'controller' => 'workshop-manager',
                         'icon' => 'icon-doc',
+                        'workshop' => true,
 
                     ],
                     [
@@ -147,6 +148,7 @@ return [
                         'route' => 'admin/default',
                         'controller' => 'workshop',
                         'icon' => 'icon-doc',
+                        'workshop' => true,
                     ],
                     [
                         'label' => 'Inscrições',
