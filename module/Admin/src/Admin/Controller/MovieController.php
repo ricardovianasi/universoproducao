@@ -27,15 +27,15 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Zend\View\Model\JsonModel;
 
 class MovieController extends AbstractAdminController
-	implements CrudInterface, PostInterface
+    implements CrudInterface, PostInterface
 {
-	/**
-	 * @return ViewModel
-	 */
-	public function indexAction()
-	{
-	    $movieStatusModalForm = new MovieStatusModalForm($this->getEntityManager());
-	    $searchForm = new MovieFormSearch($this->getEntityManager());
+    /**
+     * @return ViewModel
+     */
+    public function indexAction()
+    {
+        $movieStatusModalForm = new MovieStatusModalForm($this->getEntityManager());
+        $searchForm = new MovieFormSearch($this->getEntityManager());
         $dataAttr = $this->params()->fromQuery();
         $searchForm->setData($dataAttr);
 
@@ -53,9 +53,9 @@ class MovieController extends AbstractAdminController
         ]);
 
         return $this->getViewModel();
-	}
+    }
 
-	public function exportAction()
+    public function exportAction()
     {
         //recupera os itens
         $dataAttr = $this->params()->fromQuery();
@@ -68,7 +68,7 @@ class MovieController extends AbstractAdminController
         return $this->prepareReport($preparedItems, 'movie' ,'pdf');
     }
 
-	public function exportListAction()
+    public function exportListAction()
     {
         //recupera os itens
         $dataAttr = $this->params()->fromQuery();
@@ -199,15 +199,15 @@ class MovieController extends AbstractAdminController
         return $preparedItems;
     }
 
-	public function createAction($data)
-	{
-		return $this->persist($data);
-	}
+    public function createAction($data)
+    {
+        return $this->persist($data);
+    }
 
-	public function updateAction($id, $data)
-	{
-		$return = $this->persist($data, $id);
-		/** @var Movie $movie */
+    public function updateAction($id, $data)
+    {
+        $return = $this->persist($data, $id);
+        /** @var Movie $movie */
         $movie = $return->getVariable('movie');
 
         $movieSubscriptionForm = new MovieSubscriptionForm($movie);
@@ -215,10 +215,10 @@ class MovieController extends AbstractAdminController
         $return->subscriptionForm = $movieSubscriptionForm;
 
         return $return;
-	}
+    }
 
-	public function deleteAction($id)
-	{
+    public function deleteAction($id)
+    {
         $op = $this->getRepository(Movie::class)->find($id);
         $this->getEntityManager()->remove($op);
         $this->getEntityManager()->flush();
@@ -226,10 +226,10 @@ class MovieController extends AbstractAdminController
         $this->messages()->flashSuccess('Opção excluída com sucesso.');
 
         return $this->redirect()->toRoute('admin/default', ['controller'=>'movie-options']);
-	}
+    }
 
-	public function persist($data, $id = null)
-	{
+    public function persist($data, $id = null)
+    {
         $form = new MovieForm($this->getEntityManager(), Options::STATUS_ENABLED);
 
         if($id) {
@@ -248,7 +248,7 @@ class MovieController extends AbstractAdminController
             foreach ($registrationParam as $subP) {
                 $reg = $this->getRepository(Registration::class)->find($subP);
                 if(key_exists($reg->getId(), $registrationEvents))
-                   continue;
+                    continue;
 
                 $events = [];
                 foreach ($reg->getEvents() as $e) {
@@ -317,7 +317,7 @@ class MovieController extends AbstractAdminController
                                 //if exist
                                 $sub = $movie->getSubscriptionByRegistrationEvent($regId, $eventId);
                                 if($sub) {
-                                   unset($subscriptionsToRemove[$sub->getId()]);
+                                    unset($subscriptionsToRemove[$sub->getId()]);
                                 } else {
                                     $sub = new MovieSubscription();
                                     $sub->setRegistration($registration);
@@ -426,19 +426,19 @@ class MovieController extends AbstractAdminController
                     }
                 }
             }
-		} else {
-			$form->setData($movie->toArray());
-		}
+        } else {
+            $form->setData($movie->toArray());
+        }
 
-		return $this->getViewModel()->setVariables([
-			'form' => $form,
-			'movie' => $movie,
+        return $this->getViewModel()->setVariables([
+            'form' => $form,
+            'movie' => $movie,
             'registrationEvents' => $registrationEvents,
             'programingForm' => $programingForm
-		]);
-	}
+        ]);
+    }
 
-	public function movieSubscriptionsAction()
+    public function movieSubscriptionsAction()
     {
         if($this->getRequest()->isPost()) {
             $data = $this->getRequest()->getPost()->toArray();
@@ -596,19 +596,20 @@ class MovieController extends AbstractAdminController
             ->innerJoin('m.subscriptions', 's')
             ->andWhere('s.status = :status')
             ->andWhere('m.comunicadoEnviado = :comunicadoEnviado')
-            ->andWhere('m.event = :idEvent')
+            ->andWhere('s.event = :idEvent')
             ->setParameters([
                 'status' => 'not_selected',
                 'comunicadoEnviado' => 0,
-                'event' => 1085
+                'idEvent' => 1085
             ])
             ->getQuery()
             ->getResult();
 
-        //var_dump(count($items)); exit();
+        var_dump(count($items)); exit();
         $count = 0;
         foreach ($items as $item) {
-            //$item = new Movie();
+            /** @var Movie $item */
+            $item = new Movie();
 
             $msg = "<p>Prezado (a) ".$item->getAuthor()->getName().",</p>";
             $msg.= "<p>Comunicamos que o filme <strong>".$item->getTitle()."</strong> não foi selecionado para a 13ª CineOP - Mostra de Cinema de Ouro Preto.</p>";
@@ -620,18 +621,26 @@ class MovieController extends AbstractAdminController
             $msg.= "<p>Atenciosamente,<br />Coordenação – CineOP</p>";
 
             //$to[$item->getAuthor()->getName()] = 'ricardovianasi@gmail.com';
-            $this->mailService()->simpleSendEmail(
-                //[$item->getAuthor()->getName()=>$item->getAuthor()->getEmail()],
-                [$item->getAuthor()->getName()=>'ricardovianasi@gmail.com'],
+            /** @var \SendGrid\Response $return */
+            $return = $this->mailService()->simpleSendEmail(
+            [$item->getAuthor()->getName()=>$item->getAuthor()->getEmail()],
+                //[$item->getAuthor()->getName()=>'ricardovianasi@gmail.com'],
                 'Filmes - 13ª CineOP - Mostra de Cinema de Ouro Preto', $msg);
 
             $count++;
             echo "$count - Nome: " . $item->getAuthor()->getName();
             echo "<br />Email: " . $item->getAuthor()->getEmail();
-            echo "<br />Filme: " . $item->getTitle() . '<br /><br />';
+            echo "<br />Filme: " . $item->getTitle();
+            if($return->statusCode() == 202) {
+                echo "<br /><b>******************-SUCESSO-******************</b><br /><br />";
+                $item->setComunicadoEnviado(1);
+                $this->getEntityManager()->persist($item);
+                $this->getEntityManager()->flush();
 
-            break;
-            exit();
+            } else {
+                echo "<b>******************-ERRO-******************</b><br /><br />";
+                $item->setComunicadoEnviado(0);
+            }
         }
 
         return $this->getViewModel();

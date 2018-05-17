@@ -347,4 +347,56 @@ class EducationalProjectController extends AbstractAdminController
         ], ['query'=>$filter]);
 
     }
+
+    public function comunicadosAction()
+    {
+        $this->getViewModel()->setTerminal(true);
+
+        $items = $this
+            ->getRepository(EducationalProject::class)
+            ->createQueryBuilder('m')
+            ->andWhere('m.event = :idEvent')
+            ->setParameters([
+                'status' => 'not_selected',
+                'idEvent' => 1085
+            ])
+            ->getQuery()
+            ->getResult();
+
+        var_dump(count($items)); exit();
+        $count = 0;
+        foreach ($items as $item) {
+            /** @var Movie $item */
+            $item = new EducationalProject();
+
+            $msg = "<p>Prezado (a) ".$item->getUser()->getName().",</p>";
+            $msg.= "<p>Comunicamos que o projeto  <strong>".$item->getTitle() ."</strong> não foi selecionado para a 13ª CineOP - Mostra de Cinema de Ouro Preto.</p>";
+            $msg.= "<p>Esclarecemos que os critérios que baseiam a seleção de projetos são múltiplos e podem variar de acordo com o perfil e tema abordado no evento.</p>";
+            $msg.= "<p>Se algum projeto não pertence à lista final de selecionados, é porque não se enquadrou nos critérios e/ou por falta de espaço na grade de programação devido a limitação do período de duração do evento. </p>";
+            $msg.= "<p>Agradecemos seu interesse e esperamos contar com sua participação nas próximas edições.</p>";
+            $msg.= "<p>A programação da CineOP é gratuita e estará disponível no site <a href='http://www.cineop.com.br'>www.cineop.com.br</a>, a partir do dia 23 de maio. Aproveitamos para convidá-lo à participar das outras atividades da 13ª CineOP – debates, shows, cortejos e rodas de conversa.</p>";
+            $msg.= "<p>Atenciosamente,<br />Coordenação – CineOP</p>";
+
+            //$to[$item->getAuthor()->getName()] = 'ricardovianasi@gmail.com';
+            /** @var \SendGrid\Response $return */
+            $return = $this->mailService()->simpleSendEmail(
+                //[$item->getUser()->getName()=>$item->getUser()->getEmail()],
+                [$item->getAuthor()->getName()=>'ricardovianasi@gmail.com'],
+                'Projetos - 13ª CineOP - Mostra de Cinema de Ouro Preto', $msg);
+
+            $count++;
+            echo "$count - Nome: " . $item->getUser()->getName();
+            echo "<br />Email: " . $item->getUser()->getEmail();
+            echo "<br />Projeto: " . $item->getTitle();
+            if($return->statusCode() == 202) {
+                echo "<br /><b>******************-SUCESSO-******************</b><br /><br />";
+
+            } else {
+                echo "<b>******************-ERRO-******************</b><br /><br />";
+                $item->setComunicadoEnviado(0);
+            }
+        }
+
+        return $this->getViewModel();
+    }
 }
