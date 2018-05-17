@@ -968,13 +968,15 @@ class MovieForm extends Form
     {
         $regulations = [];
         if($this->getEntityManager()) {
-            $coll = $this
+            $qb = $this
                 ->getEntityManager()
                 ->getRepository(Registration::class)
-                ->findBy([
-                    'type' => Type::MOVIE
-                ], ['startDate'=>'DESC']);
+                ->createQueryBuilder('m');
+            $qb
+                ->andWhere($qb->expr()->in('m.type', ':types'))
+                ->setParameter('types', [Type::MOTION_CITY_MOVIE, Type::MOVIE, Type::EDUCATIONAL_MOVIE]);
 
+            $coll = $qb->getQuery()->getResult();
             foreach ($coll as $c) {
                 $regulations[$c->getId()] = $c->getName();
             }
