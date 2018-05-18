@@ -70,7 +70,7 @@ class MediaFieldset extends Fieldset implements InputFilterProviderInterface
                         'name' => Size::class,
                         'options' => [
                             'max' => '2MB',
-                            'min' => '800KB',
+                            'min' => '800kB',
                             'messages' => [
                                 Size::TOO_SMALL => "O tamanho mínimo do arquivo é 800KB",
                                 Size::TOO_BIG => "O tamanho máximo do arquivo é 2MB"

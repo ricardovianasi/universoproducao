@@ -80,7 +80,7 @@ return array(
                                 'id' => '[a-zA-Z0-9_-]*',
                             ],
                             'defaults' => array(
-                                'controller' => Controller\ProgramationController::class,
+                                'controller' => Controller\MovieController::class,
                                 'action' => 'movie',
                             ),
                         ),
@@ -94,13 +94,13 @@ return array(
                                 'id' => '[a-zA-Z0-9_-]*',
                             ],
                             'defaults' => array(
-                                'controller' => Controller\ProgramationController::class,
-                                'action' => 'seminar',
+                                'controller' => Controller\SeminarController::class,
+                                'action' => 'details',
                             ),
                         ),
                         'priority' => '99999'
                     ),
-                    'arte' => array(
+                    'art' => array(
                         'type' => Segment::class,
                         'options' => array(
                             'route' => '/programacao/arte/:id',
@@ -108,8 +108,8 @@ return array(
                                 'id' => '[a-zA-Z0-9_-]*',
                             ],
                             'defaults' => array(
-                                'controller' => Controller\ProgramationController::class,
-                                'action' => 'arte',
+                                'controller' => Controller\ArtController::class,
+                                'action' => 'details',
                             ),
                         ),
                         'priority' => '99999'

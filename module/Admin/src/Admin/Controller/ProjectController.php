@@ -109,6 +109,7 @@ class ProjectController extends AbstractAdminController
                         ->find($data['registration']);
                 }
                 $project->setRegistration($registration);
+                $project->setEvent($registration->getEvent());
                 unset($data['registration']);
 
                 //options

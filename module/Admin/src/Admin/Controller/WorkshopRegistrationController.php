@@ -55,7 +55,7 @@ class WorkshopRegistrationController extends AbstractAdminController
     public function createAction($data)
     {
         $result = $this->persist($data);
-        $result->setTemplate('admin/workshop-registration/update.phtml');
+        //$result->setTemplate('admin/workshop-registration/update.phtml');
         return $result;
     }
 
@@ -93,6 +93,18 @@ class WorkshopRegistrationController extends AbstractAdminController
             $reg = $workshopSubscription->getRegistration();
         }
 
+        $user = null;
+        if($this->getRequest()->isPost()) {
+            if (!empty($data['user'])) {
+                $user = $this
+                    ->getRepository(User::class)
+                    ->find($data['user']);
+            }
+        } elseif($workshopSubscription->getUser()) {
+            $user = $workshopSubscription->getUser();
+        }
+        $workshopSubscription->setUser($user);
+
         $form = new WorkshopRegistrationForm($this->getEntityManager(), $reg);
 
         $pontuationItems = [];
@@ -107,95 +119,99 @@ class WorkshopRegistrationController extends AbstractAdminController
             }
         }
 
+        $noValidate = $this->params()->fromPost('no-validate', false);
         if($this->getRequest()->isPost()) {
             $data = $this->getRequest()->getPost()->toArray();
             $form->setData($data);
-            if($form->isValid()) {
+            if(!$noValidate) {
+                if ($form->isValid()) {
 
-                $user = null;
-                if (!empty($data['user'])) {
-                    $user = $this
-                        ->getRepository(User::class)
-                        ->find($data['user']);
-                }
-                $workshopSubscription->setUser($user);
-                unset($data['user']);
-
-                $registration = null;
-                if(!empty($data['registration'])) {
-                    $registration = $this
-                        ->getRepository(Registration::class)
-                        ->find($data['registration']);
-                }
-                $workshopSubscription->setRegistration($registration);
-                unset($data['registration']);
-
-                $workshop = null;
-                if(!empty($data['workshop'])) {
-                    $workshop = $this
-                        ->getRepository(Workshop::class)
-                        ->find($data['workshop']);
-                }
-                $workshopSubscription->setWorkshop($workshop);
-                $workshopSubscription->setEvent($workshop->getEvent());
-                unset($data['workshop']);
-
-                $formAnswer = new ArrayCollection();
-                foreach ($workshopSubscription->getFormAnswers() as $fA) {
-                    $this->getEntityManager()->remove($fA);
-                }
-                if(!empty($data['form_answer'])) {
-                    $formOption = $reg->getOption(Options::WORKSHOP_FORM);
-                    $workshopForm = $this
-                        ->getEntityManager()
-                        ->getRepository(Form::class)
-                        ->find($formOption->getValue());
-
-                    foreach ($data['form_answer'] as $key=>$fA) {
-                        $workshopAnswerForm = new WorkshopSubscriptionAnswerForm();
-                        $workshopAnswerForm->setSubscription($workshopSubscription);
-                        $workshopAnswerForm->setForm($workshopForm);
-                        $workshopAnswerForm->setQuestion($key);
-                        $workshopAnswerForm->setAnswer($fA);
-
-                        $formAnswer->add($workshopAnswerForm);
+                    $user = null;
+                    if (!empty($data['user'])) {
+                        $user = $this
+                            ->getRepository(User::class)
+                            ->find($data['user']);
                     }
-                }
-                $workshopSubscription->setFormAnswers($formAnswer);
+                    $workshopSubscription->setUser($user);
+                    unset($data['user']);
 
-                if(!empty($data['status'])) {
-                    $workshopSubscription->setStatus($data['status']);
-                }
-
-                $pontuations = new ArrayCollection();
-                if(!empty($data['pontuation'])) {
-                    foreach ($data['pontuation'] as $key=>$value) {
-                        $pontuation = $this
-                            ->getRepository(PontuationItems::class)
-                            ->find($value);
-
-                        $pontuations->add($pontuation);
+                    $registration = null;
+                    if (!empty($data['registration'])) {
+                        $registration = $this
+                            ->getRepository(Registration::class)
+                            ->find($data['registration']);
                     }
-                }
-                $workshopSubscription->setPontuations($pontuations);
+                    $workshopSubscription->setRegistration($registration);
+                    $workshopSubscription->setEvent($registration->getEvent());
+                    unset($data['registration']);
 
-                $this->getEntityManager()->persist($workshopSubscription);
-                $this->getEntityManager()->flush();
+                    $workshop = null;
+                    if (!empty($data['workshop'])) {
+                        $workshop = $this
+                            ->getRepository(Workshop::class)
+                            ->find($data['workshop']);
+                    }
+                    $workshopSubscription->setWorkshop($workshop);
+                    unset($data['workshop']);
 
-                if($id) {
-                    $this->messages()->success("Inscrição atualizada com sucesso!");
-                } else {
-                    $this->messages()->flashSuccess("Inscrição incluída com sucesso!");
-                    return $this->redirect()->toRoute('admin/default', [
-                        'controller' => 'workshop-registration',
-                        'action' => 'update',
-                        'id' => $id,
-                    ]);
+                    $formAnswer = new ArrayCollection();
+                    foreach ($workshopSubscription->getFormAnswers() as $fA) {
+                        $this->getEntityManager()->remove($fA);
+                    }
+                    if (!empty($data['form_answer'])) {
+                        $formOption = $reg->getOption(Options::WORKSHOP_FORM);
+                        $workshopForm = $this
+                            ->getEntityManager()
+                            ->getRepository(Form::class)
+                            ->find($formOption->getValue());
+
+                        foreach ($data['form_answer'] as $key => $fA) {
+                            $workshopAnswerForm = new WorkshopSubscriptionAnswerForm();
+                            $workshopAnswerForm->setSubscription($workshopSubscription);
+                            $workshopAnswerForm->setForm($workshopForm);
+                            $workshopAnswerForm->setQuestion($key);
+                            $workshopAnswerForm->setAnswer($fA);
+
+                            $formAnswer->add($workshopAnswerForm);
+                        }
+                    }
+                    $workshopSubscription->setFormAnswers($formAnswer);
+
+                    if (!empty($data['status'])) {
+                        $workshopSubscription->setStatus($data['status']);
+                    }
+
+                    $pontuations = new ArrayCollection();
+                    if (!empty($data['pontuation'])) {
+                        foreach ($data['pontuation'] as $key => $value) {
+                            $pontuation = $this
+                                ->getRepository(PontuationItems::class)
+                                ->find($value);
+
+                            $pontuations->add($pontuation);
+                        }
+                    }
+                    $workshopSubscription->setPontuations($pontuations);
+
+                    $this->getEntityManager()->persist($workshopSubscription);
+                    $this->getEntityManager()->flush();
+
+                    if ($id) {
+                        $this->messages()->success("Inscrição atualizada com sucesso!");
+                    } else {
+                        $this->messages()->flashSuccess("Inscrição incluída com sucesso!");
+                        return $this->redirect()->toRoute('admin/default', [
+                            'controller' => 'workshop-registration',
+                            'action' => 'update',
+                            'id' => $workshopSubscription->getId(),
+                        ]);
+                    }
                 }
             }
         } else {
             $form->setData($workshopSubscription->toArray());
         }
+
 
         return $this->getViewModel()->setVariables([
             'form' => $form,

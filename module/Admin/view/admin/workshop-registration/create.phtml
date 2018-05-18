@@ -1,37 +1,57 @@
 <div class="row post news">
-	<div class="col-md-12">
+    <div class="col-md-12">
 
-		<div class="portlet light portlet-fit bordered">
-			<div class="portlet-title">
-				<div class="caption">
-					<?php if($this->workshop->getId()): ?>
-					<i class="fa fa-edit"></i>
-					Editar inscrição
-					<?php else: ?>
-					<i class="fa fa-file-o"></i>
-					Adicionar inscrição
-					<?php endif; ?>
-				</div>
-				<div class="actions">
-					<a href="<?php echo $this->url('admin/default', ['controller'=>'workshop']); ?>"
-					   class="btn btn-default">
-						<i class="icon-action-undo"></i>
-						<span class="hidden-xs"> Voltar </span>
-					</a>
-                    <a href="<?php echo $this->url('admin/default', ['controller'=>'workshop', 'action'=>'create']); ?>"
+        <div class="portlet light portlet-fit bordered">
+            <div class="portlet-title">
+                <div class="caption">
+                    <?php if($this->workshopSubscription->getId()): ?>
+                        <i class="fa fa-edit"></i>
+                        Editar Inscrição
+                    <?php else: ?>
+                        <i class="fa fa-file-o"></i>
+                        Incluir Inscrição
+                    <?php endif; ?>
+                </div>
+                <div class="actions">
+                    <a href="<?php echo $this->url('admin/default', ['controller'=>'workshop-registration']); ?>"
+                       class="btn btn-default">
+                        <i class="icon-action-undo"></i>
+                        <span class="hidden-xs"> Voltar </span>
+                    </a>
+                    <a href="<?php echo $this->url('admin/default', ['controller'=>'workshop-registration', 'action'=>'create']); ?>"
                        class="btn blue btn-lg">
                         <i class="fa fa-plus"></i>
-                        <span class="hidden-xs"> Nova Oficina  </span>
+                        <span class="hidden-xs"> Incluir Inscrição  </span>
                     </a>
-				</div>
-			</div>
-			<div class="portlet-body">
-                <?php echo $this->partial('admin/workshop-registration/_form.phtml', [
-                    'form' => $this->form,
-                    'subscription' => $this->workshopSubscription
-                ]); ?>
-			</div>
-		</div>
+                </div>
+            </div>
+            <div class="portlet-body">
+                <?php $form->prepare(); echo $this->form(null, null)->openTag($form) ?>
+                <div class="form-body">
+                    <?php echo $this->partial('admin/workshop-registration/_form.phtml', [
+                        'form' => $this->form,
+                        'subscription' => $this->workshopSubscription
+                    ]); ?>
+                </div>
+                <hr>
+                <div class="form-body">
+                    <?php echo $this->partial('admin/workshop-registration/_pontuation.phtml', [
+                        'form' => $this->form,
+                        'pontuationItems' => $this->pontuationItems,
+                        'subscription' => $this->workshopSubscription
+                    ]); ?>
+                </div>
+                <div class="form-actions">
+                    <div class="row">
+                        <div class="col-md-offset-3 col-md-9">
+                            <button type="submit" class="btn blue btn-lg action-save">Salvar</button>
+                            <a href="#" class="btn red btn-lg action cancel">Descartar</a>
+                        </div>
+                    </div>
+                </div>
+                <?php echo $this->form()->closeTag() ?>
+            </div>
+        </div>
 
-	</div>
+    </div>
 </div>

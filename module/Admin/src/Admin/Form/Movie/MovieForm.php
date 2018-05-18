@@ -815,6 +815,11 @@ class MovieForm extends Form
                'required'   => false,
                'allow_empty' => true
             ],
+            'options[general_category]' => [
+               'name'       => 'options[short_movie_category]',
+               'required'   => false,
+               'allow_empty' => true
+            ],
             'production_state' => [
                 'name'       => 'production_state',
                 'required'   => false,
