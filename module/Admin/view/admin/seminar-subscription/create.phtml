@@ -13,12 +13,12 @@
                     <?php endif; ?>
                 </div>
                 <div class="actions">
-                    <a href="<?php echo $this->url('admin/default', ['controller'=>'session-school-subscriptions']); ?>"
+                    <a href="<?php echo $this->url('admin/default', ['controller'=>'seminar-subscription']); ?>"
                        class="btn btn-default">
                         <i class="icon-action-undo"></i>
                         <span class="hidden-xs"> Voltar </span>
                     </a>
-                    <a href="<?php echo $this->url('admin/default', ['controller'=>'session-school-subscriptions', 'action'=>'create']); ?>"
+                    <a href="<?php echo $this->url('admin/default', ['controller'=>'seminar-subscription', 'action'=>'create']); ?>"
                        class="btn blue btn-lg">
                         <i class="fa fa-plus"></i>
                         <span class="hidden-xs"> Incluir inscrição  </span>
@@ -26,7 +26,7 @@
                 </div>
             </div>
             <div class="portlet-body">
-                <?php echo $this->partial('admin/session-school-subscriptions/_form.phtml', [
+                <?php echo $this->partial('admin/seminar-subscription/_form.phtml', [
                     'form' => $this->form,
                     'sub'=>$this->sub
                 ]); ?>

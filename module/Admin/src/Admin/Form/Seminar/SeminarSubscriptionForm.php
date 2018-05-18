@@ -42,7 +42,6 @@ class SeminarSubscriptionForm extends Form
 
         parent::__construct('seminar-subscription-form');
         $this->setAttributes([
-            'class' => 'form-horizontal',
         ]);
 
         $this->add([
@@ -55,103 +54,18 @@ class SeminarSubscriptionForm extends Form
         ]);
 
         $this->add([
-            'type' => 'text',
-            'name' => 'user_search',
-        ]);
-
-        $this->add([
-            'name' => 'id',
-            'attributes' => [
-            ]
-        ]);
-
-        $this->add([
             'type' => 'Select',
             'name' => 'registration',
             'options' => [
                 'label' => 'Regulamento',
                 'empty_option' => 'Selecione',
                 'value_options' => $this->populateRegulations(),
-                'twb-layout' => 'horizontal',
-                'column-size' => 'md-4',
-                'label_attributes' => [
-                    'class' => 'col-md-4'
-                ]
             ],
             'attributes' => [
-                'id' => 'registration',
                 'required' => true
             ]
         ]);
 
-        $this->add([
-            'name' => 'dateInit',
-            'attributes' => [
-                'placeholder' => 'De',
-                'class' => 'input-sm',
-                'data-inputmask' => "'alias': 'dd/mm/yyyy'"
-            ]
-        ]);
-
-        $this->add([
-            'name' => 'dateEnd',
-            'attributes' => [
-                'placeholder' => 'Até',
-                'class' => 'input-sm',
-                'data-inputmask' => "'alias': 'dd/mm/yyyy'"
-            ]
-        ]);
-
-        $this->add([
-            'name' => 'selected',
-            'type' => 'hidden'
-        ]);
-
-        $this->add([
-            'type' => 'Select',
-            'name' => 'event',
-            'options' => [
-                'empty_option' => 'Selecione',
-                'value_options' => $this->populateEvents()
-            ],
-            'attributes' => [
-                'data-label' => 'Evento',
-                'id' => 'event'
-            ]
-        ]);
-
-        //Validações
-        $this->setInputFilter((new InputFilterFactory)->createInputFilter([
-            'event' => [
-                'name' => 'event',
-                'required'   => false,
-                'allow_empty' => true
-            ]
-        ]));
-    }
-
-    public function populateEvents()
-    {
-        $options = [];
-
-        if($this->getEntityManager()) {
-            $events = $this
-                ->getEntityManager()
-                ->getRepository(Event::class)
-                ->findBy([], ['startDate'=>'DESC']);
-
-            foreach ($events as $p) {
-                if(!key_exists($p->getType(), $options)) {
-                    $options[$p->getType()] = [
-                        'label' => EventType::get($p->getType()),
-                        'options' => []
-                    ];
-                }
-                $options[$p->getType()]['options'][$p->getId()] = $p->getShortName();
-            }
-        }
-
-        return $options;
     }
 
     public function populateRegulations()
@@ -162,7 +76,7 @@ class SeminarSubscriptionForm extends Form
                 ->getEntityManager()
                 ->getRepository(Registration::class)
                 ->findBy([
-                    'type' => Type::WORKSHOP
+                    'type' => Type::SEMINAR
                 ], ['startDate'=>'DESC']);
 
             foreach ($coll as $c) {

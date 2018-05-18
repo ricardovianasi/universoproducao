@@ -5,10 +5,6 @@
         <div class="form-body">
 
             <div class="row">
-                <div class="col-md-4"><?php echo $this->formRow($form->get('registration')); ?></div>
-            </div>
-
-            <div class="row">
                 <div class="col-md-4">
                     <div class="form-group">
                         <?php
@@ -33,58 +29,9 @@
                 </div>
             </div>
 
-            <h3 class="form-section">Instituição</h3>
-            <?php $instituitionFieldset = $form->get('instituition'); ?>
-            <?php echo $this->formElement($instituitionFieldset->get('id')) ?>
             <div class="row">
-                <div class="col-md-8"><?php echo $this->formRow($instituitionFieldset->get('social_name')) ?></div>
-                <div class="col-md-4"><?php echo $this->formRow($instituitionFieldset->get('cnpj')) ?></div>
+                <div class="col-md-4"><?php echo $this->formRow($form->get('registration')); ?></div>
             </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <?php echo $this->formRow($instituitionFieldset->get('address')) ?>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-4"><?php echo $this->formRow($instituitionFieldset->get('cep')) ?></div>
-                <div class="col-md-4"><?php echo $this->formRow($instituitionFieldset->get('city')) ?></div>
-                <div class="col-md-4"><?php echo $this->formRow($instituitionFieldset->get('uf')) ?></div>
-            </div>
-            <div class="row">
-                <div class="col-md-4"><?php echo $this->formRow($instituitionFieldset->get('phone')) ?></div>
-                <div class="col-md-4"><?php echo $this->formRow($instituitionFieldset->get('mobile_phone')) ?></div>
-                <div class="col-md-4"><?php echo $this->formRow($instituitionFieldset->get('email')) ?></div>
-            </div>
-
-            <h3 class="form-section">Direção da Instituição</h3>
-            <div class="row">
-                <div class="col-md-12"><?php echo $this->formRow($form->get('instituition_direction')) ?></div>
-                <div class="col-md-6"><?php echo $this->formRow($form->get('instituition_direction_phone')) ?></div>
-                <div class="col-md-6"><?php echo $this->formRow($form->get('instituition_direction_email')) ?></div>
-            </div>
-
-            <h3 class="form-section">Responsável pela inscrição</h3>
-            <div class="row">
-                <div class="col-md-12"><?php echo $this->formRow($form->get('responsible')) ?></div>
-                <div class="col-md-4"><?php echo $this->formRow($form->get('responsible_office')) ?></div>
-                <div class="col-md-4"><?php echo $this->formRow($form->get('responsible_phone')) ?></div>
-                <div class="col-md-4"><?php echo $this->formRow($form->get('responsible_mobile_phone')) ?></div>
-            </div>
-
-            <h3 class="form-section">Inscrição</h3>
-            <div class="row">
-                <div class="col-md-4">
-                    <?php echo $this->formRow($form->get('session_programming')) ?>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-4"><?php echo $this->formRow($form->get('participants')) ?></div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-4"><?php echo $this->formRow($form->get('series_age')) ?></div>
-            </div>
-
         </div>
 
         <div class="form-actions">
