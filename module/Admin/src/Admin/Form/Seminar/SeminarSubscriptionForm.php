@@ -42,6 +42,7 @@ class SeminarSubscriptionForm extends Form
 
         parent::__construct('seminar-subscription-form');
         $this->setAttributes([
+            'id' => 'seminar-subscription-search'
         ]);
 
         $this->add([

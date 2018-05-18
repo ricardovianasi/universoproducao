@@ -10,25 +10,12 @@ namespace Admin\Controller;
 
 use Admin\Form\Seminar\SeminarSubscriptionForm;
 use Admin\Form\Seminar\SeminarSubscriptionSearchForm;
-use Admin\Form\SessionSchool\SessionSchoolForm;
-use Admin\Form\SessionSchool\SessionSchoolProgramingForm;
-use Admin\Form\SessionSchool\SessionSchoolSubscriptionForm;
-use Admin\Form\SessionSchool\SessionSchoolSubscriptionSearchForm;
-use Application\Entity\Event\Event;
-use Application\Entity\Event\Place;
-use Application\Entity\Institution\Institution;
-use Application\Entity\Movie\Movie;
-use Application\Entity\Programing\Programing;
-use Application\Entity\Programing\Type;
 use Application\Entity\Registration\Options;
 use Application\Entity\Registration\Registration;
 use Application\Entity\Seminar\Category;
 use Application\Entity\Seminar\SeminarSubscription;
-use Application\Entity\SessionSchool\SessionSchool;
-use Application\Entity\SessionSchool\SessionSchoolMovies;
 use Application\Entity\SessionSchool\SessionSchoolSubscription;
 use Application\Entity\User\User;
-use Doctrine\Common\Collections\ArrayCollection;
 
 class SeminarSubscriptionController extends AbstractAdminController
     implements CrudInterface
@@ -156,6 +143,17 @@ class SeminarSubscriptionController extends AbstractAdminController
 
     }
 
+    public function exportListAction()
+    {
+        $dataAttr = $this->params()->fromQuery();
+        $items = $this->search(SeminarSubscription::class, $dataAttr, ['createdAt' => 'DESC'], true);
+
+        //criar um arquivo json
+        $preparedItems = $this->prepareItemsForReports($items);
+        return $this->prepareReport($preparedItems, 'seminar-subscription-list' ,'xlsx');
+    }
+
+
     protected function prepareItemsForReports($items)
     {
         if(!is_array($items)) {
@@ -169,6 +167,7 @@ class SeminarSubscriptionController extends AbstractAdminController
             $obj = $obj;
 
             $preparedItems[]['object'] = [
+                'id' => $obj->getID(),
                 'seminar' => $obj->getSeminarCategory()->getName(),
                 'event_name' => $obj->getEvent()->getShortName(),
                 'event_full_name' => $obj->getEvent()->getFullName(),
@@ -177,6 +176,9 @@ class SeminarSubscriptionController extends AbstractAdminController
                 'user_birth_date' => $obj->getUser()->getBirthDate() ? $obj->getUser()->getBirthDate()->format('d/m/Y') : "",
                 'user_parent_name' => $obj->getUser()->getParent() ? $obj->getUser()->getParent()->getName() : "",
                 'user_parent_identifier' => $obj->getUser()->getParent() ? $obj->getUser()->getParent()->getIdentifier() : "",
+                'user_address' => $obj->getUser()->getFullAddress(),
+                'user_phones' => $obj->getUser()->getFullPhones(),
+                'user_email' => $obj->getUser()->getEmail(),
                 'created_at' => $obj->getCreatedAt()->format('d/m/Y H:i:s')
             ];
         }

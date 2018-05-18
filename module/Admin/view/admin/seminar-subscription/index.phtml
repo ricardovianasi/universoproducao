@@ -13,6 +13,21 @@
 						<i class="fa fa-plus"></i>
 						<span class="hidden-xs"> Incluir inscrição </span>
 					</a>
+                    <div class="btn-group">
+                        <a class="btn btn-default dropdown-toggle" href="javascript:;" data-toggle="dropdown">
+                            <i class="fa fa-share"></i>
+                            <span class="hidden-xs"> Opções </span>
+                            <i class="fa fa-angle-down"></i>
+                        </a>
+                        <div class="dropdown-menu pull-right">
+                            <li>
+                                <a class="report-link"
+                                   data-form="#seminar-subscription-search"
+                                   data-url="<?php echo $this->url('admin/default', ['controller'=>'seminar-subscription', 'action'=>'export-list']) ?>"
+                                   href="#"> Exportar para Excel </a>
+                            </li>
+                        </div>
+                    </div>
 				</div>
 			</div>
 
