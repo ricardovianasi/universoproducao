@@ -176,7 +176,7 @@ class SeminarController extends AbstractMeuUniversoRegisterController
                 $subscription->setUser($user);
 
                 $categoryOp = $reg->getOption(Options::SEMINAR_CATEGORY);
-                $category = $this->getRepository(Category::class)->find($categoryOp);
+                $category = $this->getRepository(Category::class)->find($categoryOp->getValue());
                 $subscription->setSeminarCategory($category);
 
                 $this->getEntityManager()->persist($subscription);

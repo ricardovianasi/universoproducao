@@ -66,6 +66,7 @@ class WorkshopSubscription extends AbstractEntity
     public function __construct()
     {
         $this->pontuations = new ArrayCollection();
+        $this->formAnswers = new ArrayCollection();
     }
 
     /**
