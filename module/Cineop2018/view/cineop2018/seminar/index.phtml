@@ -15,7 +15,9 @@
                         <header class="news-header">
                             <h1 class="news-title"><?php  echo $item->getTitle(); ?></h1>
                         </header>
-                        <a href="<?php echo $this->url("cineop2018/seminar", ['id'=>$item->getId()]) ?>" class="btn">Maiores informações</a>
+                        <p class="news-readmore" style="position: relative; z-index: 9999">
+                            <a href="<?php echo $this->url("cineop2018/seminar", ['id'=>$item->getId()]) ?>" class="btn"><span>Maiores informações</span></a>
+                        </p>
                     </article>
                 <?php endforeach; ?>
             </div>
