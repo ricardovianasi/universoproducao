@@ -135,13 +135,6 @@ class MovieController extends SiteController
             'medias' => $movieMedias,
             'breadcrumbs' => $breadcrumbs,
             'event' => $site->getEvent(),
-            'movie_details' => [
-                $genre->getName(),
-                $color->getName(),
-                $format->getName(),
-                $duration.' min',
-                $movie->getEndDateYear()
-            ]
         ]);
     }
 }
