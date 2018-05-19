@@ -3136,6 +3136,7 @@ table:not(.diferent) td {
 }
 
 .movie-title {
+    display: block;
     font-size: 1.1111111111em;
     line-height: .9em;
     color: #282828
@@ -3151,8 +3152,10 @@ table:not(.diferent) td {
 }
 
 .movie-director {
+    display: block;
+    margin-top: 10px;
     font-size: .8888888889em;
-    line-height: 2.25em;
+    line-height: 1em;
     color: #282828;
     font-style: italic
 }
