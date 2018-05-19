@@ -3116,6 +3116,7 @@ table:not(.diferent) td {
 }
 
 .movie-link {
+    text-decoration: none;
     position: relative;
     display: block
 }
