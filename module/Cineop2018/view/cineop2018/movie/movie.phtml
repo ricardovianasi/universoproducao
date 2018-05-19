@@ -14,7 +14,7 @@
             </header>
 
 
-            <p class="movie-classification"><?php echo $this->post->getHighlights(); ?></p>
+            <p class="movie-classification"><?php echo implode(', ', $this->post->getHighlights()); ?></p>
 
             <?php if(!empty($this->medias)): ?>
                 <div class="movie-media">
