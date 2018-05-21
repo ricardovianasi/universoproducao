@@ -83,7 +83,8 @@
 							array(
 								'route'=>'admin/default',
 								'route_options' => [
-                                    'controller' => 'seminar-debate'
+                                    'controller' => 'seminar-debate',
+                                    'route_query_options' => ['query'=>$this->searchData]
                                 ]
 							)
 						); ?>
