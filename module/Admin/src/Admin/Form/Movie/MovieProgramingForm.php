@@ -188,6 +188,11 @@ class MovieProgramingForm extends ProgramingForm
                 'name' => 'programing_type',
                 'required' => false,
                 'allow_empry' => true
+            ],
+            'available_places' => [
+                'name' => 'available_places',
+                'required' => false,
+                'allow_empry' => true
             ]
         ]));
     }

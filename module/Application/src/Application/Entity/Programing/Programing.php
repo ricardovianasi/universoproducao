@@ -410,7 +410,7 @@ class Programing extends AbstractEntity
      */
     public function setAvailablePlaces($availablePlaces)
     {
-        $this->availablePlaces = $availablePlaces;
+        $this->availablePlaces = (int) $availablePlaces;
     }
 
     /**
