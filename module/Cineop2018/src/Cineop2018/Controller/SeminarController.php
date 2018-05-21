@@ -23,9 +23,15 @@ class SeminarController extends SiteController
         $post = $this->params('post');
         $site = $this->getRepository(Site::class)->find(self::SITE_ID);
 
+        $catId = $this->params()->fromQuery('category', null);
+
         $qb = $this->getRepository(Debate::class)->createQueryBuilder('w');
         $qb->andWhere('w.event = :idEvent')
             ->setParameter('idEvent', $site->getEvent()->getId());
+        if($catId) {
+            $qb->andWhere('w.category = :idCategory')
+                ->setParameter('idCategory', $catId);
+        }
 
         $list = $qb->getQuery()->getResult();
 
@@ -35,6 +41,7 @@ class SeminarController extends SiteController
             'list' => $list,
             'post' => $post,
             'categories' => $categories,
+            'category' => $catId,
             'breadcrumbs' => $post->getBreadcrumbs()
         ]);
     }

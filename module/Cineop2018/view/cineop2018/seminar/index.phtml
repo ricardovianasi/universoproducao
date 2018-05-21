@@ -11,10 +11,10 @@
 
             <div class="movie-filter filter">
                 <form method="GET" name="programing-form" class="filter-form">
-                    <select name="sub_event" class="filter-input form-control">
+                    <select name="category" class="filter-input form-control">
                         <option value="">Categoria</option>
                         <?php foreach ($this->categories as $cat): ?>
-                            <option value="<?php echo $cat->getId(); ?>"><?php echo $cat->getName(); ?></option>
+                            <option <?php echo ($cat->getId() == $this->category)   ?"selected":""; ?> value="<?php echo $cat->getId(); ?>"><?php echo $cat->getName(); ?></option>
                         <?php endforeach; ?>
                     </select>
                     <button type="submit" class="filter-submit">Buscar</button>
