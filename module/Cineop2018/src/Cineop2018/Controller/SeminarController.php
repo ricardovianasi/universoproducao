@@ -5,6 +5,7 @@ use Application\Controller\SiteController;
 use Application\Entity\Post\Post;
 use Application\Entity\Post\PostStatus;
 use Application\Entity\Post\PostType;
+use Application\Entity\Seminar\Category;
 use Application\Entity\Seminar\Debate;
 use Application\Entity\Site\Site;
 use Application\Entity\Workshop\Workshop;
@@ -28,9 +29,12 @@ class SeminarController extends SiteController
 
         $list = $qb->getQuery()->getResult();
 
+        $categories = $this->getRepository(Category::class)->findAll();
+
         return new ViewModel([
             'list' => $list,
             'post' => $post,
+            'categories' => $categories,
             'breadcrumbs' => $post->getBreadcrumbs()
         ]);
     }
