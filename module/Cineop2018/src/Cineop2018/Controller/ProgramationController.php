@@ -47,6 +47,8 @@ class ProgramationController extends SiteController
             ->createQueryBuilder('p')
             ->andWhere('p.parent is NULL')
             ->andWhere('p.type != :type')
+            ->andWhere('p.event = :idEvent')
+            ->setParameter('idEvent', $site->getEvent()->getId())
             ->setParameter('type', Type::WORKSHOP)
             ->addOrderBy('p.date', 'ASC')
             ->addOrderBy('p.order', 'ASC')
