@@ -39,7 +39,7 @@ class RegistrationController extends AbstractAdminController
         $this->getViewModel()->setVariables([
             'items' => $items,
             'searchForm' => $searchForm
-        ], ['id'=>'DESC']);
+        ]);
 
         return $this->getViewModel();
 	}
