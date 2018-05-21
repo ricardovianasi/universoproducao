@@ -1,0 +1,165 @@
+<?php
+$dbh=mysql_connect ("162.243.253.29", "universoprod2", "ag51www");
+//$dbh=mysql_connect ("127.0.0.1", "root", "");
+if (!$dbh) {
+    echo "Não foi possível conectar ao banco de dados: " . mysql_error();
+    exit;
+}
+if (!mysql_select_db("universoprod2")) {
+    echo "Não foi possível selecionar universoproducao: " . mysql_error();
+    exit;
+}
+function databr($valor)
+{
+    $valor = substr($valor,8,2) . "/" . substr($valor,5,2) . "/" . substr($valor,0,4);
+    return $valor;
+}
+
+function databr2($valor)
+{
+    $valor = substr($valor,8,2) . "." . substr($valor,5,2) . "." . substr($valor,0,4);
+    return $valor;
+}
+
+function data_USA($valor1){
+    $valor1 = substr($valor1,6,4) . "-" . substr($valor1,3,2) . "-" . substr($valor1,0,2);
+    return $valor1;
+}
+function hora($valor)
+{
+    if ($valor == '00:00:00') {
+        $texto = "";
+    } else {
+        $texto = date('H:i', strtotime($valor));
+        $texto = str_replace(':','h',$texto);
+        $texto = str_replace('h00','h',$texto);
+    }
+    return $texto;
+}
+function formata_data_extenso($strDate)
+{
+    // Array com os dia da semana em português;
+    $arrDaysOfWeek = array('domingo', 'segunda', 'terça', 'quarta', 'quinta', 'sexta', 'sábado');
+    // Array com os meses do ano em português;
+    $arrMonthsOfYear = array(1 => '01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12');
+    // Descobre o dia da semana
+    $intDayOfWeek = date('w',strtotime($strDate));
+    // Descobre o dia do mês
+    $intDayOfMonth = date('d',strtotime($strDate));
+    // Descobre o mês
+    $intMonthOfYear = date('n',strtotime($strDate));
+    // Descobre o ano
+    $intYear = date('Y',strtotime($strDate));
+    // Formato a ser retornado
+    return $arrDaysOfWeek[$intDayOfWeek];
+}
+function is_utf8($str)
+{
+    $c=0; $b=0;
+    $bits=0;
+    $len=strlen($str);
+    for($i=0; $i<$len; $i++)
+    {
+        $c=ord($str[$i]);
+        if($c > 128)
+        {
+            if(($c >= 254)) return false;
+            elseif($c >= 252) $bits=6;
+            elseif($c >= 248) $bits=5;
+            elseif($c >= 240) $bits=4;
+            elseif($c >= 224) $bits=3;
+            elseif($c >= 192) $bits=2;
+            else return false;
+            if(($i+$bits) > $len) return false;
+            while($bits > 1)
+            {
+                $i++;
+                $b=ord($str[$i]);
+                if($b < 128 || $b > 191) return false;
+                $bits--;
+            }
+        }
+    }
+    return true;
+}
+
+function utf8($string)
+{
+    if (is_utf8($string))
+    {
+        return $string;
+    } else {
+        return utf8_encode($string);
+    }
+}
+
+$mostra = 1075;
+$lg = '';
+$url = '';
+$fc = $fl = $sub = $subMostra = $fSub1 = $fSub2 = $fSub3 = '';
+//$limitCurta = 0;
+$Dir = "Direção";
+
+
+$CodSem	= $this->seminarId;
+
+$result	= mysql_query("select codSeminario, tituloSeminario, tituloSeminarioIng, descricaoSeminario, descricaoSeminarioIng, tematica, codTematica, titTematica, CodItemProg, CategoriaProg, Local, Data, HoraManhaInicial, HoraTardeInicial, HoraManhaFinal from tb_seminarios, tb_programacaoevento, tb_tematica where codSeminario = $CodSem and tb_seminarios.codSeminario = tb_programacaoevento.CodItemProg and tb_programacaoevento.CategoriaProg = 'SE' and tb_tematica.codTematica = tb_seminarios.tematica");
+$TituloSem	= mb_convert_encoding(mysql_result($result,0,"tituloSeminario"), "UTF-8", "ISO-8859-1");
+$DescSem	= mb_convert_encoding(mysql_result($result,0,"descricaoSeminario"), "UTF-8", "ISO-8859-1");
+$dataOrig	= mysql_result($result,0,"Data");
+$local	= mysql_result($result,0,"Local");
+$HoraManhaInicial	= mysql_result($result,0,"HoraManhaInicial");
+$HoraManhaFinal	= mysql_result($result,0,"HoraManhaFinal");
+
+$titPagInt = "Seminário > ".$TituloSem;
+$parLang = "";
+$titPag = "Programação > ".$titPagInt;
+
+$Tematica	= mb_convert_encoding(mysql_result($result,0,"titTematica"), "UTF-8", "ISO-8859-1");
+
+
+
+$data = databr($dataOrig);
+$data2 = explode("/", $data);
+
+if ($lg=='Ing'){
+    $dataFinal = $data2[1]."-".$data2[0];
+    $horaInicio = horaIng($HoraManhaInicial);
+    $horaFim = horaIng($HoraManhaFinal);
+    $diaSemana = utf8(formata_data_extensoIng(".$dataOrig."));
+} else {
+    $dataFinal = $data2[0]."/".$data2[1];
+    $horaInicio = hora($HoraManhaInicial);
+    $horaFim = hora($HoraManhaFinal);
+    $diaSemana = utf8(formata_data_extenso(".$dataOrig."));
+}
+
+
+if ($local != "") {
+    $SqlLoc = "SELECT TitLocal, TitLocalIng FROM tb_local WHERE CodLocal = $local";
+    $resultLoc  = mysql_query($SqlLoc);
+    $linhas = mysql_num_rows($resultLoc);
+    if ( $linhas > 0 ){
+        $local	= utf8(mysql_result($resultLoc,0,"TitLocal".$lg.""));
+    }
+}
+
+?>
+
+<section class="main-wrapper main-content">
+    <header class="main-header">
+        <h1 class="main-title"><?php echo $titPagInt; ?></h1>
+    </header>
+
+    <h2><?php echo $TituloSem?><br /><span style="font-size: 10px;"><?php echo utf8($Tematica)?></span><br /><br />
+        <span class="subItemLista"><?php echo $lg=='Ing' ? "Date" : "Data"; ?>: <?php echo $dataFinal?> | <?php echo $diaSemana?> <br />
+            <?php if ($horaFim != "") { ?>
+                <?php echo $lg=='Ing' ? "Time: " : "Hora: de "; ?><?php echo $horaInicio?> <?php echo $lg=='Ing' ? "-" : "às"; ?> <?php echo $horaFim?><br />
+            <? }else{ ?>
+                <?php echo $lg=='Ing' ? "Time" : "Hora"; ?>: <?php echo $horaInicio?><br />
+            <?php } ?>
+            <?php echo $lg=='Ing' ? "Spots" : "Local"; ?>: <?php echo $local?></span>
+    </h2>
+
+    <?php echo $DescSem?>
+</section>
