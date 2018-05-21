@@ -35,7 +35,7 @@ class RegistrationController extends AbstractAdminController
 
         $data = $searchForm->getData();
 
-        $items = $this->search(Registration::class, $data);
+        $items = $this->search(Registration::class, $data, ['startDate'=>'DESC']);
         $this->getViewModel()->setVariables([
             'items' => $items,
             'searchForm' => $searchForm
