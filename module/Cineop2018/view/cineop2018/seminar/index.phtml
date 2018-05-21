@@ -24,7 +24,7 @@
 
             <div class="seminar">
                 <div class="seminar-list">
-                    <?php foreach ($this->list as $item): ?>
+                    <?php foreach ($this->debates as $item): ?>
                         <article class="seminar-item">
                             <a class="seminar-link" href="<?php echo $this->url("cineop2018/seminar", ['id'=>$item->getId()]) ?>">
                                 <?php if($item->getThematic()): ?>

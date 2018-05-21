@@ -34,11 +34,23 @@ class SeminarController extends SiteController
         }
 
         $list = $qb->getQuery()->getResult();
+        $debates = [];
+        foreach ($list as $l) {
+            $prog = $l->getPrograming();
+            $prog = current($prog);
+            $d = $prog->getDate()->format('dmY');
+            $d.= $prog->getStartTime()->format('His');
+            $d.= $l->getId();
+
+            $debates[$d] = $l;
+        }
+        sort($debates);
 
         $categories = $this->getRepository(Category::class)->findAll();
 
         return new ViewModel([
             'list' => $list,
+            'debates' => $debates,
             'post' => $post,
             'categories' => $categories,
             'category' => $catId,
