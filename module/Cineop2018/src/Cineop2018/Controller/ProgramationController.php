@@ -126,10 +126,14 @@ class ProgramationController extends SiteController
                     ];
                 }
 
-                if($prog->hasMeta(Meta::NATIONAL_PREMIERE)) {
-                    $titleItem.= self::SEPARATOR . 'pré-estreia-nacional';
-                } elseif ($prog->hasMeta(Meta::WORLD_PREMIERE)) {
-                    $titleItem.= self::SEPARATOR . 'pré-estreia-mundial';
+                if($natPre = $prog->hasMeta(Meta::NATIONAL_PREMIERE)) {
+                    if($natPre->getValue() == 'sim') {
+                        $titleItem.= self::SEPARATOR . 'pré-estreia-nacional';
+                    }
+                } elseif ($worPre = $prog->hasMeta(Meta::WORLD_PREMIERE)) {
+                    if($worPre->getValue() == 'sim') {
+                        $titleItem.= self::SEPARATOR . 'pré-estreia-mundial';
+                    }
                 }
 
             } elseif ($prog->getType() == Type::SEMINAR_DEBATE) {
@@ -198,6 +202,7 @@ class ProgramationController extends SiteController
                 'type' => $prog->getType(),
                 'place' => $prog->getPlace() ? $prog->getPlace()->getName() : "",
                 'title' => $titleItem,
+                'age_range' => $prog->getAgeRange(),
                 'info' => $prog->hasMeta(Meta::ADDITIONAL_INFO) ? $prog->hasMeta(Meta::ADDITIONAL_INFO)->getValue() : "",
                 'events' => $events
             ];

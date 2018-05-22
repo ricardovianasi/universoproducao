@@ -306,6 +306,7 @@ class Programing extends AbstractEntity
         $this->meta = $meta;
     }
 
+    /** @return Meta */
     public function hasMeta($metaName)
     {
         foreach ($this->getMeta() as $meta) {
