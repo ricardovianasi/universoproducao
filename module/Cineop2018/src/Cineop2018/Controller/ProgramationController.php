@@ -102,7 +102,7 @@ class ProgramationController extends SiteController
             }
 
             $events = [];
-
+            $ageRange = "";
             //Tipo do evento
             $titleItem = "";
             if ($prog->getType() == Type::MOVIE || $prog->getType() == Type::SESSION) {
@@ -184,6 +184,7 @@ class ProgramationController extends SiteController
             } elseif ($prog->getType() == Type::SESSION_SCHOOL) {
                 $titleItem = "Sessão cine-escola";
                 if($prog->getObject()) {
+                    $ageRange = $prog->getObject()->getAgeRange();
                     foreach ($prog->getObject()->getMovies() as $m) {
                         $movie = $m->getMovie();
                         $events[] = [
@@ -202,7 +203,7 @@ class ProgramationController extends SiteController
                 'type' => $prog->getType(),
                 'place' => $prog->getPlace() ? $prog->getPlace()->getName() : "",
                 'title' => $titleItem,
-                'age_range' => $prog->getAgeRange(),
+                'age_range' => $ageRange?$ageRange:$prog->getAgeRange(),
                 'info' => $prog->hasMeta(Meta::ADDITIONAL_INFO) ? $prog->hasMeta(Meta::ADDITIONAL_INFO)->getValue() : "",
                 'events' => $events
             ];
