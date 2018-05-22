@@ -134,13 +134,15 @@ class ProgramationController extends SiteController
 
             } elseif ($prog->getType() == Type::SEMINAR_DEBATE) {
                 $titleItem = "Seminário";
-                if($prog->getObject()->getThematic()) {
-                    $titleItem.= self::SEPARATOR . $prog->getObject()->getThematic()->getName();
+                if($prog->getObject()) {
+                    if($prog->getObject()->getThematic()) {
+                        $titleItem.= self::SEPARATOR . $prog->getObject()->getThematic()->getName();
+                    }
+                    $events[] = [
+                        'title' => $prog->getObject()->getTitle(),
+                        'id' => $prog->getObject()->getId()
+                    ];
                 }
-                $events[] = [
-                    'title' => $prog->getObject()->getTitle(),
-                    'id' => $prog->getObject()->getId()
-                ];
             } elseif ($prog->getType() == Type::WORKSHOP) {
                 $titleItem = "Oficina";
                 $events[] = [
@@ -175,6 +177,8 @@ class ProgramationController extends SiteController
                 $events[] = [
                     'description' => $prog->getObject()->getDescription()
                 ];
+            } elseif ($prog->getType() == Type::SESSION_SCHOOL) {
+                $titleItem = "Sessão cine-escola";
             }
 
             $programing[$dateKey]['items'][] = [
