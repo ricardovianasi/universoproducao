@@ -232,6 +232,7 @@ class MovieMovingCityRegistrationController extends AbstractMeuUniversoRegisterC
         }
 
         $form = new MovieMovingCityForm($this->getEntityManager(), $reg);
+        $form->get('production_state')->setValue('Minas Gerais');
 
         $id = $this->params()->fromRoute('id');
         if($id) {
@@ -376,6 +377,7 @@ class MovieMovingCityRegistrationController extends AbstractMeuUniversoRegisterC
                 unset($data['medias']);
 
                 $movie->setData($data);
+                $movie->setProductionState('Minas Gerais');
 
                 $this->getEntityManager()->persist($movie);
                 $this->getEntityManager()->flush();
@@ -409,7 +411,7 @@ class MovieMovingCityRegistrationController extends AbstractMeuUniversoRegisterC
                 }
             }
         } else {
-            $form->setData($movie->toArray());
+            //$form->setData($movie->toArray());
         }
 
         $viewModel = new ViewModel();

@@ -11,6 +11,7 @@ class MovieMovingCityForm extends AdminMovieForm
     {
         parent::__construct($entityManager, Options::STATUS_ENABLED, $registration);
 
+        $this->remove('production_state');
         $this->remove('events');
         //$this->remove('end_date_year');
         $this->remove('type');
@@ -24,6 +25,21 @@ class MovieMovingCityForm extends AdminMovieForm
             ],
             'attributes' => [
                 'required' => true
+            ]
+        ]);
+
+        $this->add([
+
+            'name' => 'production_state',
+            'options' => [
+                'label' => 'Estado de produção',
+                'empty_option' => 'Selecione',
+                'help-block' => 'Poderão ser inscritos filmes brasileiros produzidos dentro da Região Metropolitana de Belo Horizonte'
+            ],
+            'attributes' => [
+//                'required' => 'required',
+                'readonly' => 'readonly',
+                'value' => 'Minas Gerais',
             ]
         ]);
 
@@ -56,7 +72,6 @@ class MovieMovingCityForm extends AdminMovieForm
 
         $this->get('title')->setAttribute('required', 'required');
         $this->get('title_english')->setAttribute('required', 'required');
-        $this->get('production_state')->setAttribute('required', 'required');
         $this->get('end_date_year')->setAttribute('required', 'required');
         $this->get('end_date_month')->setAttribute('required', 'required');
         $this->get('duration')->setAttribute('required', 'required');
@@ -99,7 +114,6 @@ class MovieMovingCityForm extends AdminMovieForm
         $this->getInputFilter()->get('movie_link')->setRequired(true);
         $this->getInputFilter()->get('title')->setRequired(true);
         $this->getInputFilter()->get('title_english')->setRequired(true);
-        $this->getInputFilter()->get('production_state')->setRequired(true);
         $this->getInputFilter()->get('end_date_year')->setRequired(true);
         $this->getInputFilter()->get('end_date_month')->setRequired(true);
         $this->getInputFilter()->get('duration')->setRequired(true);
