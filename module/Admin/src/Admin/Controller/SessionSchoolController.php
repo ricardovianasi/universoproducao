@@ -156,16 +156,16 @@ class SessionSchoolController extends AbstractAdminController
                         foreach ($sessProg->getMeta() as $m) {
                             $this->getEntityManager()->remove($m);
                         }
-                        if(!empty($data[Meta::ADDITIONAL_INFO])) {
+                        if(!empty($prog[Meta::ADDITIONAL_INFO])) {
                             $metaDescription = new Meta();
                             $metaDescription->setPrograming($sessProg);
                             $metaDescription->setName(Meta::ADDITIONAL_INFO);
-                            $metaDescription->setValue($data[Meta::ADDITIONAL_INFO]);
+                            $metaDescription->setValue($prog[Meta::ADDITIONAL_INFO]);
 
                             $metaColl->add($metaDescription);
                         }
                         $sessProg->setMeta($metaColl);
-                        unset($data[Meta::ADDITIONAL_INFO]);
+                        unset($prog[Meta::ADDITIONAL_INFO]);
 
                         $sessProg->setEvent($session->getEvent());
                         $sessProg->setType(Type::SESSION_SCHOOL);
