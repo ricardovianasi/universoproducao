@@ -72,6 +72,7 @@
                                             $url = "";
                                             switch ($item['type']) {
                                                 case "session":
+                                                case "session_school":
                                                 case "movie":
                                                     $url = $this->url('cineop2018/movie', ['id'=>$event['id']]);
                                                     break;
