@@ -12,6 +12,7 @@ namespace Admin\Form\SessionSchool;
 use Admin\Form\Programing\ProgramingFieldset;
 use Application\Entity\Movie\Movie;
 use Application\Entity\Movie\MovieEventStatus;
+use Application\Entity\Programing\Meta;
 use Application\Entity\Programing\Programing;
 use Application\Entity\Programing\Type;
 use Application\Entity\Registration\Registration;
@@ -119,6 +120,10 @@ class SessionSchoolForm extends Form
                 'name' => 'movie',
                 'required' => false,
                 'allow_empty' => true
+            ],
+            'order' => [
+                'name' => 'order',
+                'required' => false
             ]
         ]));
     }
@@ -165,7 +170,8 @@ class SessionSchoolForm extends Form
                         'start_time' => $pro->getStartTime()?$pro->getStartTime()->format('H:i:s'):'',
                         'end_time' => $pro->getEndTime()?$pro->getEndTime()->format('H:i:s'):'',
                         'place' => $pro->getPlace() ? $pro->getPlace()->getId() : '',
-                        'available_places' => $pro->getAvailablePlaces()
+                        'available_places' => $pro->getAvailablePlaces(),
+                        Meta::ADDITIONAL_INFO => $pro->hasMeta(Meta::ADDITIONAL_INFO)?$pro->hasMeta(Meta::ADDITIONAL_INFO)->getValue():""
 
                     ];
                 } else {
