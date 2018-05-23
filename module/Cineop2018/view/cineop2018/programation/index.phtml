@@ -93,7 +93,7 @@
                                     <?php endforeach; ?>
 
                                     <?php if(isset($item['info'])): ?>
-                                        <span class="programing-info"><?php echo $item['info']; ?></span>
+                                        <span class="programing-info"><?php echo nl2br($item['info']); ?></span>
                                     <?php endif; ?>
 
                                     <?php if(isset($item['age_range'])): ?>
