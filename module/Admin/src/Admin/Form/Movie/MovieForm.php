@@ -720,42 +720,11 @@ class MovieForm extends Form
             ]
         ]);
 
-        /*$this->add([
-            'type' => 'file',
-            'name' => 'media_file_1',
-            'attributes' => [
-                'accept' => 'image/*'
-            ],
-            'options' => [
-                'label' => 'Imagem 1'
-            ],
-        ]);
-
-        $this->add([
-            'type' => 'text',
-            'name' => 'media_caption_1',
-            'options' => [
-                'label' => 'Créditos da foto'
-            ],
-            'attributes' => [
-                'placeholder' => 'Créditos da foto'
-            ]
-        ]);
-
-        $this->add([
-            'type' => 'hidden',
-            'name' => 'media_id_1',
-        ]);
-
-        $this->add([
-            'type' => 'hidden',
-            'name' => 'media_src_1',
-        ]);*/
-
         $this->add([
             'type' => 'Collection',
             'name' => 'medias',
             'options' => [
+                'label' => 'Imagem',
                 'count' => 1,
                 'should_create_template' => false,
                 'target_element' => [
@@ -765,20 +734,12 @@ class MovieForm extends Form
 
         ]);
 
-        /*$this->add([
-            'type' => 'MultiCheckbox',
-            'name' => 'events',
-            'options' => [
-                'label' => 'Autorizo a inscrição do filme para a seleção da',
-                'value_options' => $this->populateEvents()
-            ],
-            'attributes ' => [
-                'required' => true
-            ]
-        ]);*/
-
         //Validações
         $this->setInputFilter((new InputFilterFactory)->createInputFilter([
+            'medias' => [
+                'name' => 'medias',
+                'required' => true
+            ],
             'registration' => [
                 'name'       => 'registration',
                 'required'   => false,
@@ -1040,12 +1001,15 @@ class MovieForm extends Form
                             'src' => $m->getSrc()
                         ];
                     } else {
-                        $medias[] = [
-                            'id' => isset($m['id'])?$m['id']:'',
-                            'caption' => isset($m['caption'])?$m['caption']:'',
-                            'src' => isset($m['src'])?$m['src']:'',
-                            'file' => isset($m['file'])?$m['file']:[]
-                        ];
+                        if(!empty($m['file']['name'])) {
+                            $medias[] = [
+                                'id' => isset($m['id'])?$m['id']:'',
+                                'caption' => isset($m['caption'])?$m['caption']:'',
+                                'src' => isset($m['src'])?$m['src']:'',
+                                'file' => isset($m['file'])?$m['file']:[]
+                            ];
+                        }
+
                     }
                     /*$data["media_id_$count"] = $m->getId();
                     $data["media_caption_$count"] = $m->getCredits();
