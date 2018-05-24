@@ -31,7 +31,7 @@ class SeminarSubscriptionController extends AbstractAdminController
             $teste = $searchForm->getMessages();
         }
 
-        $items = $this->search(SeminarSubscription::class, $searchForm->getData());
+        $items = $this->search(SeminarSubscription::class, $dataAttr);
 
         $this->getViewModel()->setVariables([
             'items' => $items,
