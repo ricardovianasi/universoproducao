@@ -31,11 +31,12 @@ class SeminarSubscriptionController extends AbstractAdminController
             $teste = $searchForm->getMessages();
         }
 
-        $items = $this->search(SeminarSubscription::class, $dataAttr);
+        $items = $this->search(SeminarSubscription::class, $searchForm->getData());
 
         $this->getViewModel()->setVariables([
             'items' => $items,
-            'searchForm' => $searchForm
+            'searchForm' => $searchForm,
+            'searchData' => $dataAttr,
         ]);
 
         return $this->getViewModel();
@@ -54,7 +55,7 @@ class SeminarSubscriptionController extends AbstractAdminController
     public function deleteAction($id)
     {
         $subscription = $this
-            ->getRepository(SessionSchoolSubscription::class)
+            ->getRepository(SeminarSubscription::class)
             ->find($id);
 
         $this->getEntityManager()->remove($subscription);
@@ -63,7 +64,7 @@ class SeminarSubscriptionController extends AbstractAdminController
         $this->messages()->flashSuccess('Inscrição excluída com sucesso.');
 
         return $this->redirect()->toRoute('admin/default', [
-            'controller' => 'session-school-subscriptions',
+            'controller' => 'seminar-subscription',
             'action' => 'index'
         ]);
     }
