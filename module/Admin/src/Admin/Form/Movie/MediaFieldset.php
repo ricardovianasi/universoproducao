@@ -37,7 +37,7 @@ class MediaFieldset extends Fieldset implements InputFilterProviderInterface
                 'accept' => 'image/*',
             ],
             'options' => [
-                'label' => 'Imagem'
+                'label' => 'Imagem',
             ],
         ]);
 
@@ -63,7 +63,7 @@ class MediaFieldset extends Fieldset implements InputFilterProviderInterface
         return [
             'file' => [
                 'name' => 'file',
-                'required' => false,
+                'required' => true,
                 'validators' => [
                     new MimeType('image/png,image/jpg,image/jpeg'),
                     [

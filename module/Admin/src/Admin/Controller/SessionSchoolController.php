@@ -13,6 +13,7 @@ use Admin\Form\SessionSchool\SessionSchoolProgramingForm;
 use Application\Entity\Event\Event;
 use Application\Entity\Event\Place;
 use Application\Entity\Movie\Movie;
+use Application\Entity\Programing\Meta;
 use Application\Entity\Programing\Programing;
 use Application\Entity\Programing\Type;
 use Application\Entity\Registration\Registration;
@@ -150,6 +151,21 @@ class SessionSchoolController extends AbstractAdminController
                         if(!$sessProg) {
                             $sessProg = new Programing();
                         }
+
+                        $metaColl = new ArrayCollection();
+                        foreach ($sessProg->getMeta() as $m) {
+                            $this->getEntityManager()->remove($m);
+                        }
+                        if(!empty($prog[Meta::ADDITIONAL_INFO])) {
+                            $metaDescription = new Meta();
+                            $metaDescription->setPrograming($sessProg);
+                            $metaDescription->setName(Meta::ADDITIONAL_INFO);
+                            $metaDescription->setValue($prog[Meta::ADDITIONAL_INFO]);
+
+                            $metaColl->add($metaDescription);
+                        }
+                        $sessProg->setMeta($metaColl);
+                        unset($prog[Meta::ADDITIONAL_INFO]);
 
                         $sessProg->setEvent($session->getEvent());
                         $sessProg->setType(Type::SESSION_SCHOOL);

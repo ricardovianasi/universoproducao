@@ -115,7 +115,8 @@
                                 'route'=>'admin/default',
                                 'route_options' => [
                                     'controller' => 'seminar-subscription'
-                                ]
+                                ],
+                                'route_query_options' => ['query'=>$this->searchData]
                             )
                         ); ?>
                     </div>
@@ -124,18 +125,3 @@
 		</div>
 	</div>
 </div>
-
-<?php $this->inlineScript()->captureStart();
-echo <<<JS
-$( document ).ready(function() {
-   $('#event').on('change', function(e) {
-       App.blockUI({
-           cenrerY: true,
-           animate: true
-       });
-       var form = $('#session-school-subscription-search');
-       form.submit();
-   });
-});
-JS;
-$this->inlineScript()->captureEnd(); ?>

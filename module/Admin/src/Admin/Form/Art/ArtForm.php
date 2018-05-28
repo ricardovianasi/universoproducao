@@ -24,7 +24,6 @@ class ArtForm extends Form
 
         parent::__construct('art-form');
         $this->setAttributes([
-            'methor' => 'POST',
             'class' => 'default-form-actions enable-validators'
         ]);
 

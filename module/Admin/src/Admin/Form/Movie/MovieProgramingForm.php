@@ -84,7 +84,8 @@ class MovieProgramingForm extends ProgramingForm
                     Type::CLOSING => 'Encerramento',
                     Type::ART => 'Arte',
                     Type::MOVIE => 'Filmes',
-                    Type::SEMINAR_DEBATE => 'Seminário'
+                    Type::SEMINAR_DEBATE => 'Seminário',
+                    Type::SESSION_SCHOOL => 'Sessão Cine-Escola'
 
                 ],
                 'twb-layout' => 'horizontal',
@@ -186,6 +187,11 @@ class MovieProgramingForm extends ProgramingForm
             ],
             'programing_type' => [
                 'name' => 'programing_type',
+                'required' => false,
+                'allow_empry' => true
+            ],
+            'available_places' => [
+                'name' => 'available_places',
                 'required' => false,
                 'allow_empry' => true
             ]

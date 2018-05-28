@@ -30,6 +30,7 @@ class SeminarDebateController extends AbstractAdminController
 
 		$this->getViewModel()->setVariables([
 			'items' => $items,
+            'searchData' => $dataAttr,
             'searchForm' => $searchForm
 		]);
 

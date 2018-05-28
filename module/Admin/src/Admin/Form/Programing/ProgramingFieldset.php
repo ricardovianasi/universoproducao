@@ -11,6 +11,7 @@ namespace Admin\Form\Programing;
 use Application\Entity\Event\Event;
 use Application\Entity\Event\EventType;
 use Application\Entity\Event\Place;
+use Application\Entity\Programing\Meta;
 use TwbBundle\Form\Element\DatePicker;
 use Zend\Form\Fieldset;
 
@@ -89,6 +90,14 @@ class ProgramingFieldset extends Fieldset
             'options' => [
                 'label' => 'Vagas',
             ],
+        ]);
+
+        $this->add([
+            'name' => Meta::ADDITIONAL_INFO,
+            'type' => 'Textarea',
+            'options' => [
+                'label' => 'Informações adicionais',
+            ]
         ]);
     }
 

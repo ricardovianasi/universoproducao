@@ -28,58 +28,7 @@ class SeminarController extends AbstractMeuUniversoRegisterController
     const ERROR_WORKSHOP_NO_SUBSCRIPTION = 'x2005';
     const ERROR_WORKSHOP_MULTIPLES_SUBSCRIPTION = 'x2006';
 
-    public function indexAction()
-    {
-        $idReg = $this->params()->fromRoute('id_reg');
-        if(!$idReg) {
-            return $this->redirect()->toRoute('meu-universo/default', [], ['query'=>[
-                'code' => self::ERROR_REG_NOT_FOUND,
-                'id_reg' => $idReg
-            ]]);
-        }
-
-        /** @var Registration $reg */
-        $reg = $this->getRepository(Registration::class)->findOneBy([
-            'hash' => $idReg
-        ]);
-
-        if(!$reg) {
-            return $this->redirect()->toRoute('meu-universo/default', [], ['query'=>[
-                'code' => self::ERROR_REG_NOT_FOUND,
-                'id_reg' => $idReg
-            ]]);
-        }
-
-        if(!$reg->isOpen()) {
-            return $this->redirect()->toRoute('meu-universo/default', [], ['query'=>[
-                'code' => self::ERROR_REG_IS_CLOSED,
-                'id_reg' => $idReg
-            ]]);
-        }
-
-        $categoryOp = $reg->getOption(Options::SEMINAR_CATEGORY);
-        $debates = $this->getRepository(Debate::class)->findBy([
-            'event' => $reg->getEvent()->getId(),
-            'category' => $categoryOp->getValue()
-        ]);
-
-        //Vagas
-        $avaliable = 0;
-
-        //Total de vagas
-        $totalSub = $this->getRepository(SeminarSubscription::class)->getTotalSubscription($reg->getId());
-
-        $avOp = $reg->getOption(Options::SEMINAR_AVALIABLE);
-        if($avOp) {
-            $avaliable = (int) $avOp->getValue();
-        }
-
-        return [
-            'debates' => $debates,
-            'registration' => $reg,
-            'subscriptions_over' => ($totalSub >= $avaliable)
-        ];
-    }
+    const ERROR_SEMINAR_MULTIPLES_SUBSCRIPTION = 'x3006';
 
     public function inscricaoAction()
     {
@@ -160,7 +109,7 @@ class SeminarController extends AbstractMeuUniversoRegisterController
 
             //Verifica se o usuário já efetuou a inscrição
             $existSubscription = $this->getRepository(SeminarSubscription::class)->findBy([
-                'event' => $reg,
+                'event' => $reg->getEvent()->getId(),
                 'user' => $userSubs->getId()
             ]);
             if($existSubscription && count($existSubscription)) {
@@ -173,7 +122,7 @@ class SeminarController extends AbstractMeuUniversoRegisterController
                 $subscription = new SeminarSubscription();
                 $subscription->setRegistration($reg);
                 $subscription->setEvent($reg->getEvent());
-                $subscription->setUser($user);
+                $subscription->setUser($userSubs);
 
                 $categoryOp = $reg->getOption(Options::SEMINAR_CATEGORY);
                 $category = $this->getRepository(Category::class)->find($categoryOp->getValue());

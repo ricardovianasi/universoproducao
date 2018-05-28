@@ -107,6 +107,8 @@ class MovieProgramingController extends AbstractAdminController
             if(!$noValidate) {
                 if ($form->isValid()) {
 
+                    unset($data['available_places']);
+
                     $event = null;
                     if (!empty($data['event'])) {
                         $event = $this->getRepository(Event::class)->find($data['event']);

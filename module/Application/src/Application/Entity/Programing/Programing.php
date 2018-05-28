@@ -306,6 +306,7 @@ class Programing extends AbstractEntity
         $this->meta = $meta;
     }
 
+    /** @return Meta */
     public function hasMeta($metaName)
     {
         foreach ($this->getMeta() as $meta) {
@@ -410,7 +411,7 @@ class Programing extends AbstractEntity
      */
     public function setAvailablePlaces($availablePlaces)
     {
-        $this->availablePlaces = $availablePlaces;
+        $this->availablePlaces = (int) $availablePlaces;
     }
 
     /**

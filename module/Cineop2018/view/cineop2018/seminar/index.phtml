@@ -9,17 +9,36 @@
                 <h1 class="main-title"><?php echo $post->getTitle() ?></h1>
             </header>
 
-            <div class="news-list">
-                <?php foreach ($this->list as $item): ?>
-                    <article class="news-item">
-                        <header class="news-header">
-                            <h1 class="news-title"><?php  echo $item->getTitle(); ?></h1>
-                        </header>
-                        <p class="news-readmore" style="position: relative; z-index: 9999">
-                            <a href="<?php echo $this->url("cineop2018/seminar", ['id'=>$item->getId()]) ?>" class="btn"><span>Maiores informações</span></a>
-                        </p>
-                    </article>
-                <?php endforeach; ?>
+            <div class="movie-filter filter">
+                <form method="GET" name="programing-form" class="filter-form">
+                    <select name="category" class="filter-input form-control">
+                        <option value="">Categoria</option>
+                        <?php foreach ($this->categories as $cat): ?>
+                            <option <?php echo ($cat->getId() == $this->category)   ?"selected":""; ?> value="<?php echo $cat->getId(); ?>"><?php echo $cat->getName(); ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                    <button type="submit" class="filter-submit">Buscar</button>
+                </form>
+            </div>
+
+            <div class="seminar">
+                <div class="seminar-list">
+                    <?php foreach ($this->debates as $item): ?>
+                        <article class="seminar-item">
+                            <a class="seminar-link" href="<?php echo $this->url("cineop2018/seminar", ['id'=>$item->getId()]) ?>">
+                                <?php if($item->getThematic()): ?>
+                                    <span class="seminar-cat"><?php echo $item->getThematic()->getName(); ?></span>
+                                <?php endif; ?>
+                                <?php if($item->getCategory()): ?>
+                                    <span class="seminar-cat"><?php echo $item->getCategory()->getName(); ?></span>
+                                <?php endif; ?>
+                                <header class="seminar-header">
+                                    <h1 class="seminar-title"><?php  echo $item->getTitle(); ?></h1>
+                                </header>
+                            </a>
+                        </article>
+                    <?php endforeach; ?>
+                </div>
             </div>
         </section>
     </div>
