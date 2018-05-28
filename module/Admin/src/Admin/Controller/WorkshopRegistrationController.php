@@ -284,7 +284,7 @@ class WorkshopRegistrationController extends AbstractAdminController
                 'event_name' => $obj->getEvent()->getShortName(),
                 'user_name' => $obj->getUser()->getName(),
                 'user_identifier' => $obj->getUser()->getIdentifier(),
-                'user_birth_date' => $obj->getUser()->getBirthDate()->format('d/m/Y'),
+                'user_birth_date' => $obj->getUser()->getBirthDate()?$obj->getUser()->getBirthDate()->format('d/m/Y'):"",
                 'user_parent_name' => $obj->getUser()->getParent() ? $obj->getUser()->getParent()->getName() : "",
                 'user_parent_identifier' => $obj->getUser()->getParent() ? $obj->getUser()->getParent()->getIdentifier() : "",
                 'user_email' => $obj->getUser()->getEmail(),
