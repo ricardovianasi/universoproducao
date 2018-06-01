@@ -36,13 +36,15 @@ class SeminarController extends SiteController
         $list = $qb->getQuery()->getResult();
         $debates = [];
         foreach ($list as $l) {
-            $prog = $l->getPrograming();
-            $prog = current($prog);
-            $d = $prog->getDate()->format('dmY');
-            $d.= $prog->getStartTime()->format('His');
-            $d.= $l->getId();
+            if($l->getPrograming()) {
+                $prog = $l->getPrograming();
+                $prog = current($prog);
+                $d = $prog->getDate()?$prog->getDate()->format('dmY'):"";
+                $d.= $prog->getStartTime()->format('His');
+                $d.= $l->getId();
 
-            $debates[$d] = $l;
+                $debates[$d] = $l;
+            }
         }
         sort($debates);
 

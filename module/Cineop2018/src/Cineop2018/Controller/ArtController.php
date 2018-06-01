@@ -25,6 +25,7 @@ class ArtController extends SiteController
 
         $qb = $this->getRepository(Art::class)->createQueryBuilder('w');
         $qb->andWhere('w.event = :idEvent')
+            ->orderBy('w.title', 'ASC')
             ->setParameter('idEvent', $site->getEvent()->getId());
 
         $list = $qb->getQuery()->getResult();
