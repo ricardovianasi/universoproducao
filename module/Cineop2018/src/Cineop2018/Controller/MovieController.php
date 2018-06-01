@@ -120,11 +120,6 @@ class MovieController extends SiteController
             ];
         }
 
-        $genre = $movie->getOption(OptionsType::GENRE);
-        $color = $movie->getOption(OptionsType::COLOR);
-        $format = $movie->getOption(OptionsType::FORMAT_COMPLETED);
-        $duration = ($movie->getDuration()->format('H')*60)+($movie->getDuration()->format('i'));
-
         $breadcrumbs = [
             ['programacao' => 'Programação'],
             ['filmes' => 'Filmes']
