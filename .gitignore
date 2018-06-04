@@ -26,3 +26,5 @@ data/annotations
 data/DoctrineORMModule
 data/metadata
 public/reports
+bower_components/*
+public/assets/cineop2018/bower_components/

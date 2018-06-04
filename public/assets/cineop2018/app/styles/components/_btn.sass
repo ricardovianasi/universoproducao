@@ -1,0 +1,27 @@
+.btn
+  display: inline-block
+  font-family: $font-family-alternate
+  font-weight: 700
+  text-transform: uppercase
+  text-decoration: none
+  background-color: $color-2
+  color: $color-2
+  padding: 6px
+  box-shadow: 16px 16px 18px 0px rgba(0,0,0,0.22)
+  transition: $transition-default
+  border: none
+  cursor: pointer
+  span
+    display: block
+    background-color: white
+    +padding-trailer(1)
+    +padding-leader(1)
+    padding-left: 18px
+    padding-right: 18px
+    transition: $transition-default
+  &:hover
+    color: white
+    span
+      background-color: $color-2
+
+

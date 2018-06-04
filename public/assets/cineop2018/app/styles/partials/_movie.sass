@@ -1,0 +1,152 @@
+.movie
+
+  .main-title
+    +trailer(0)
+
+  &-filter
+    +trailer(1)
+
+    .filter-input
+      +column(2/7, $cycle:4)
+    .filter-submit
+      +column(1/7, $cycle:4)
+
+
+
+  position: relative
+  width: 100%
+  &-list
+    display: inline-block
+    +trailer(3)
+  &-item
+    +column(1/4, $cycle:4)
+    +trailer(1.5)
+    +media("<=tablet")
+      +column(2/4, $cycle:2)
+    +media("<=420px")
+      +column(1/1, $cycle:1)
+
+  &-figure
+    margin-bottom: 0!important
+    padding: 0
+    line-height: 0
+    position: relative
+    overflow: hidden
+    img
+      width: 100%
+      transition: $transition-default
+
+  &-link
+    position: relative
+    display: block
+    text-decoration: none
+    &:hover
+      .movie-figure
+        img
+          transform: scale(1.05)
+      .movie-highlight
+        opacity: 1
+
+  &-cover
+    position: relative
+    line-height: 0
+    +trailer(.5)
+
+  &-title
+    +adjust-font-size-to(20px, 1)
+    //+trailer(.4, 20px)
+    color: $color-txt
+    &--sub
+      +adjust-font-size-to(26px, 1)
+      +trailer(1, 26px)
+      font-weight: 700
+      font-style: italic
+      color: #999999
+
+  &-director
+    +adjust-font-size-to(16px)
+    color: $color-txt
+    font-style: italic
+
+
+  &-highlight
+    opacity: 0
+    position: absolute
+    top: 0
+    left: 0
+    bottom: 0
+    right: 0
+    width: 100%
+    height: 100%
+    background: rgba(0,0,0,0.7)
+    transition: $transition-default
+
+    .hightlight-wrapper
+      padding: 20px
+      position: absolute
+      width: 100%
+      top: 50%
+      transform: translateY(-50%)
+      box-sizing: border-box
+    p
+      color: white
+      text-align: center
+    .hightlight-title
+      +adjust-font-size-to(24px)
+      +trailer(0)
+      font-weight: 700
+      border-bottom: 1px solid white
+      padding-bottom: 10px
+      margin-bottom: 10px
+    .hightlight-date
+      +adjust-font-size-to(20px, 1.2)
+      +trailer(0)
+    .hightlight-place
+      +adjust-font-size-to(18px, 1)
+      +trailer(0)
+    .highlight-item
+      padding-bottom: 10px
+      margin-bottom: 10px
+      border-bottom: 1px solid white
+
+
+  &-classification
+    +adjust-font-size-to(16px, 1)
+    text-transform: uppercase
+    font-style: italic
+
+  &-media
+    background: black
+    +leader(1)
+    +expand
+
+    &-caption
+      position: absolute
+      bottom: 0
+      right: 0
+      color: #fff !important
+      padding: 10px
+      font-style: italic
+      background-color: rgba(0,0,0,.5)
+      margin-bottom: 0
+      //+adjust-font-size-to(12px, .5)
+      font-size: .6666666667em !important
+
+    &-wrapper
+      +center()
+      height: 400px
+      position: relative
+
+    &-item
+      position: relative
+      height: 400px
+
+  &-detail
+    +center(960px)
+    +leader(1)
+
+  .owl-carousel 
+    .owl-video-play-icon
+      background: url('../images/owl.video.play.png') no-repeat
+
+

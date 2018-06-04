@@ -1,0 +1,42 @@
+.main
+
+  &-wrapper
+    +center($pad:18px)
+
+  &-title
+    +adjust-font-size-to(48px)
+    font-family: $font-family-alternate
+    font-weight: 700
+    color: $color-2
+
+  &-subtitle
+    color: $color-txt
+
+  &-content
+    +leader(4)
+    +trailer(4)
+
+    .main-title
+      +trailer(3, 48px)
+
+    h2
+      +adjust-font-size-to(24px)
+      +trailer(1.5)
+      font-family: $font-family-alternate
+      font-weight: 700
+      color: $color-txt
+
+    p
+      +adjust-font-size-to(18px, 1.4)
+      +trailer(1.5)
+      color: $color-txt
+
+    a
+      color: $color-txt
+      &:hover
+        color: $color-3
+
+    b,strong
+      font-family: $font-family-alternate
+      font-weight: 700
+

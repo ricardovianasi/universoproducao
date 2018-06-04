@@ -1,0 +1,82 @@
+.footer
+  +padding-leader(3)
+  background-color: $color-3
+
+  &-wrapper
+    +center($pad:20px)
+
+  &-contact
+    +media(">900px")
+      width: 60%
+      float: left
+    +media("<=900px")
+      width: 100%
+      text-align: center
+      display: block
+      float: none
+      +trailer(2)
+
+  &-social
+    +media(">900px")
+      width: 40%
+      float: left
+    +media("<900px")
+      width: 100%
+      text-align: center
+      display: block
+      float: none
+
+  &-clear
+    display: block
+    overflow: hidden
+    +trailer(4)
+
+  &-copy
+    display: block
+    text-align: center
+    +padding-leader(1.5, 12px)
+    +trailer(1.5, 12px)
+    border-top: 1px solid black
+
+  &-title
+    +trailer(1.5, 14px)
+    +adjust-font-size-to(14px)
+    font-family: $font-family-alternate
+    color: black
+    text-transform: uppercase
+    letter-spacing: 0.1em
+
+  .icon-universo-producao
+    color: black
+    font-size: 80px
+    display: inline-block
+    vertical-align: top
+
+  &-add
+    +adjust-font-size-to(14px)
+    color: black
+    text-transform: uppercase
+    letter-spacing: 0.1em
+    vertical-align: top
+    +media(">=900px")
+      margin-left: 40px
+      display: inline-block
+    +media("<900px")
+      display: block
+      +leader(1)
+
+  &-socialitems
+    display: block
+    overflow: hidden
+
+  &-socialitem
+    +column(1/5)
+
+  &-socialink
+    +adjust-font-size-to(30px, 2)
+    text-decoration: none
+    color: black
+    transition: $transition-default
+    &:hover
+      color: $color-txt
+

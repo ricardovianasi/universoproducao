@@ -1,0 +1,273 @@
+.header
+  display: block
+  width: 100%
+
+  &-wrapper
+    display: block
+    width: 100%
+    padding-left: 135px
+    padding-right: 135px
+    margin-right: auto
+    margin-left: auto
+    box-sizing: border-box
+    overflow: hidden
+    &-mobile
+      display: none
+
+  &-top
+    background-color: black
+    background-image: url("../images/2018/header-bg.png")
+    background-position: center center
+    background-repeat: no-repeat
+
+  &-col
+    float: left
+    &:nth-child(1),
+    &:nth-child(3)
+      width: 20%
+    &:nth-child(2)
+      width: 60%
+      //max-width: 790px
+
+  &-date
+    font-family: $font-family-alternate
+    font-weight: 400
+    text-transform: uppercase
+    color: white
+    +adjust-font-size-to(34px, 2)
+    +trailer(5, 36px)
+    +leader(5, 36px)
+
+    span
+      display: block
+      color: $color-1
+      text-transform: uppercase
+      text-align: right
+      font-weight: bold
+      +adjust-font-size-to(19px, 2, 34px)
+
+  &-brand
+    position: relative
+    text-align: center
+    +padding-trailer(6)
+    +padding-leader(6)
+    left: -30px
+    margin-left: auto
+    margin-right: auto
+    background-image: url("../images/2018/brand-color.png")
+    background-position: center bottom
+    background-repeat: no-repeat
+    a
+      display: block
+      width: 100%
+      height: 100%
+    span
+      color: white
+      display: block
+
+      &.brand-icon
+        font-size: 90px
+        line-height: 90px
+
+  .social
+    //max-width: 140px
+    float: right
+    +leader(4.5)
+    +trailer(4.5)
+
+    &-list
+      text-align: right
+    &-item
+      display: inline-block
+      margin-right: 18px
+      +trailer(.5)
+      +leader(.5)
+
+    &-link
+      display: block
+      width: 36px
+      color: white
+      text-decoration: none
+      text-align: center
+      padding-top: 7px
+      padding-bottom: 7px
+      border: 1px solid white
+      border-radius: 50%
+      box-sizing: border-box
+      background-color: black
+      i
+        font-size: 18px
+        line-height: 18px
+
+  .mainmenu-mobile-btn
+    position: relative
+    +adjust-font-size-to(36px, 2)
+    +trailer(1)
+    +leader(1)
+    color: white
+    text-align: right
+    text-decoration: none
+    z-index: 9999999999999
+    float: right
+
+  .brand-icon-mobile
+    display: inline-block
+    height: 112px
+    width: 200px
+    background-image: url("../images/2018/brand-color.png")
+    background-position: center bottom
+    background-repeat: no-repeat
+    background-size: cover
+
+  &-navigation
+    width: 100%
+    display: block
+    position: relative
+    transition: $transition-default
+    &:after
+      content: ""
+      display: block
+      position: absolute
+      top: 100%
+      left: 0
+      width: 100%
+      height: 20px
+      background: linear-gradient(to top,rgba(0, 0, 0, 0) 20%, rgba(0,0,0,.1))
+      z-index: 9
+
+    .mainmenu
+      &-list
+        text-align: center
+        background-repeat: no-repeat
+        background-size: cover
+        background-position: center
+        &--sub
+          display: none
+          position: absolute
+          width: 100%
+          left: 0
+          background-color: $color-2
+          transition: $transition-default
+          z-index: 999
+          .mainmenu-item
+            margin-right: 15px
+            margin-left: 15px
+          .mainmenu-link
+            padding-right: 0
+            padding-left: 0
+            &:hover
+              color: white
+
+      &-item
+        display: inline-block
+        &.has-submenu
+          &:hover
+            .mainmenu-list--sub
+              display: block
+            &>.mainmenu-link
+              &:after
+                content: ''
+                position: absolute
+                bottom: 0
+                left: 50%
+                margin-left: -8px
+                border-bottom: 8px solid $color-palette-2
+                border-right: 8px solid transparent
+                border-left: 8px solid transparent
+
+      &-link
+        display: block
+        position: relative
+        +adjust-font-size-to(18px, 1.5)
+        +padding-trailer(1.5)
+        +padding-leader(1.5)
+        padding-right: 70px
+        padding-left: 70px
+        font-family: $font-family-alternate
+        font-weight: 700
+        color: $color-palette-1
+        text-decoration: none
+        text-transform: uppercase
+        transition: $transition-default
+        &:hover
+          color: $color-2
+          //&:after
+          //  content: ''
+          //  position: absolute
+          //  bottom: 0
+          //  left: 50%
+          //  margin-left: -8px
+          //  border-bottom: 8px solid $color-palette-2
+          //  border-right: 8px solid transparent
+          //  border-left: 8px solid transparent
+
+
++media("<=1280px")
+  .header
+    &-col
+      float: left
+      &:nth-child(1),
+      &:nth-child(3)
+        width: 30%
+      &:nth-child(2)
+        width: 40%
+
+    &-brand
+      span
+        &.brand-icon
+          font-size: 50px
+          line-height: 90px
+
+    &-navigation
+      .mainmenu
+        &-link
+          padding-right: 30px
+          padding-left: 30px
+
++media("<=900px")
+  .header
+    &-wrapper
+      padding-left: 16px
+      padding-right: 16px
+      &-mobile
+        display: block
+
+    &-col
+      display: none
+
+    &-navigation
+      opacity: 0
+      visibility: hidden
+      position: absolute
+      top: 0
+      padding-top: 76px
+      z-index: 99999
+      background-color: $color-2
+
+      .mainmenu
+        &-list
+          background: none
+          &--sub
+            position: relative
+            background-color: $color-3
+
+        &-item
+          display: block
+          &.has-submenu
+          &:hover
+            &>.mainmenu-link
+              &:after
+                border-bottom: 8px solid $color-3 !important
+        &-link
+          color: black
+          &:hover
+            color: white
+
+.mainmenu-mobile-active
+  .header-navigation
+    opacity: 1
+    visibility: visible
+  .mainmenu-mobile-btn
+    span
+      &:before
+        content: "\ed6d" !important
