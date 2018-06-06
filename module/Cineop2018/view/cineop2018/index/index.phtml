@@ -13,7 +13,7 @@
     <?php endif; ?>
 
     <?php if(count($this->program)): ?>
-        <!--<section class="programation">
+        <section class="programation">
             <header class="main-header">
                 <h1 class="main-title">Programação</h1>
             </header>
@@ -24,24 +24,24 @@
                 </p>
             </header>
             <div class="programation-highlights owl-carousel" id="programation-highlights">
-                <?php /*foreach ($this->program as $p): */?>
+                <?php foreach ($this->program as $p): ?>
                     <div class="programation-featured">
-                        <div class="bgc" style="background-image: url('<?php /*echo  $this->thumbor()->url($p->getPhoto())->resize(480, 460); */?>')">
-                            <a href="<?php /*echo $p->getUrl(); */?>">
+                        <div class="bgc" style="background-image: url('<?php echo  $this->thumbor()->url($p->getPhoto())->resize(480, 460); ?>')">
+                            <a href="<?php echo $p->getUrl(); ?>">
                                 <div class="wrapper">
-                                    <p class="date"><?php /*echo $p->getDate()->format('d/m') */?></p>
-                                    <p class="title"><?php /*echo $p->getTitle(); */?></p>
-                                    <p class="place"><?php /*echo $p->getPlace(); */?></p>
+                                    <p class="date"><?php echo $p->getDate()->format('d/m') ?></p>
+                                    <p class="title"><?php echo $p->getTitle(); ?></p>
+                                    <p class="place"><?php echo $p->getPlace(); ?></p>
                                 </div>
                             </a>
                         </div>
                     </div>
-                <?php /*endforeach; */?>
+                <?php endforeach; ?>
             </div>
             <p class="programation-readmore">
-                <a href="<?php /*echo $this->url('cineop2018')*/?>/programacao/programacao-completa" class="btn"><span>Programação completa</span></a>
+                <a href="http://cineop.com.br/programacao-4/programacao-completa-4" class="btn"><span>Programação completa</span></a>
             </p>
-        </section>-->
+        </section>
     <?php else: ?>
         <section class="programation">
             <header class="header-mobile">
@@ -255,6 +255,7 @@
                         <li class="sponsorship-item"><span class="sprite sprite-globo-minas"></span></li>
                         <li class="sponsorship-item"><span class="sprite sprite-institut-francais"></span></li>
                         <li class="sponsorship-item"><span class="sprite sprite-franca"></span></li>
+                        <li class="sponsorship-item"><span class="sprite sprite-cinema-brasil"></span></li>
                         <li class="sponsorship-item"><span class="sprite sprite-fundacao-cultural"></span></li>
                         <li class="sponsorship-item"><span class="sprite sprite-bahia"></span></li>
                         <li class="sponsorship-item"><span class="sprite sprite-tv-escola"></span></li>
