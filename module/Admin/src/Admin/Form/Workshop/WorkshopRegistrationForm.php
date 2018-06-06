@@ -42,7 +42,7 @@ class WorkshopRegistrationForm extends Form
 
         parent::__construct('workshop-registration-form');
         $this->setAttributes([
-            'class' => 'form-horizontal movie-form',
+            'class' => 'form-horizontal movie-form workshop-registration-form',
             'id' => 'submit_form'
         ]);
 

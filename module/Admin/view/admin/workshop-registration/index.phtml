@@ -26,13 +26,13 @@
                         <div class="dropdown-menu pull-right">
                             <li>
                                 <a class="report-link"
-                                   data-form="#workshop-registration-form"
+                                   data-form=".workshop-registration-form"
                                    data-url="<?php echo $this->url('admin/default', ['controller'=>'workshop-registration', 'action'=>'export-list']) ?>"
                                    href="#"> Exportar para Excel </a>
                             </li>
                             <li>
                                 <a class="report-link"
-                                   data-form="#workshop-registration-form"
+                                   data-form=".workshop-registration-form"
                                    data-url="<?php echo $this->url('admin/default', ['controller'=>'workshop-registration', 'action'=>'export-details-list']) ?>"
                                    href="#"> Exportar currículos </a>
                             </li>
@@ -45,7 +45,7 @@
 
 				<div class="table-container post-list list-actions"
                      data-total="<?php echo $this->items->getTotalItemCount(); ?>"
-                     data-form="#workshop-registration-form">
+                     data-form=".workshop-registration-form">
 
                     <div class="row">
                         <div class="col-md-12 col-sm-12 margin-bottom-10">
