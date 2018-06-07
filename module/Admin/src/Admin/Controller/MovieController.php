@@ -158,6 +158,12 @@ class MovieController extends AbstractAdminController
             }
             $itemArray['opt_genre'] = $opt_genre?$opt_genre:"";
 
+            $opt_cat = null;
+            if($opt_cat = $obj->getOption('general_category')) {
+                $opt_cat = $opt_cat->getName();
+            }
+            $itemArray['opt_general_category'] = $opt_cat?$opt_cat:"";
+
             $opt_accessibility = null;
             if($opt_accessibility = $obj->getOption('accessibility')) {
                 $opt_accessibility_concat = [];
