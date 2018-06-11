@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.5.1.final using JasperReports Library version 6.5.1  -->
+<!-- Created with Jaspersoft Studio version 6.4.0.final using JasperReports Library version 6.4.1  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="workshop_details" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="a19b18f3-73c7-42c5-839e-583fffa83e53">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="workshop_details_adapter"/>
 	<queryString language="json">
@@ -129,52 +129,13 @@
 				</textElement>
 				<text><![CDATA[Participante]]></text>
 			</staticText>
-			<textField>
-				<reportElement x="100" y="140" width="454" height="30" uuid="03f7f783-8f80-4986-84f6-cdef5c17c31a"/>
-				<box padding="3"/>
-				<textFieldExpression><![CDATA[$F{user_email}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="0" y="140" width="100" height="30" uuid="ad6040a7-c62f-4aaa-9f0b-d21c40b757c5"/>
-				<box padding="3"/>
-				<textElement>
-					<font isBold="true"/>
-				</textElement>
-				<text><![CDATA[E-mail]]></text>
-			</staticText>
-			<textField>
-				<reportElement x="100" y="170" width="454" height="30" uuid="d3a5be3f-2d56-4ad2-b674-4bda5171de81"/>
-				<box padding="3"/>
-				<textFieldExpression><![CDATA[$F{user_phones}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="0" y="170" width="100" height="30" uuid="c9666748-cdf0-4a99-8ede-07afadcf32e1"/>
-				<box padding="3"/>
-				<textElement>
-					<font isBold="true"/>
-				</textElement>
-				<text><![CDATA[Telefones]]></text>
-			</staticText>
-			<textField>
-				<reportElement x="100" y="110" width="454" height="30" uuid="e09ad08b-6262-427d-941a-4af6ab8dfb90"/>
-				<box padding="3"/>
-				<textFieldExpression><![CDATA[$F{user_identifier}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="0" y="110" width="100" height="30" uuid="bb46862d-94e0-4703-8517-0da1f5109245"/>
-				<box padding="3"/>
-				<textElement>
-					<font isBold="true"/>
-				</textElement>
-				<text><![CDATA[Identificador]]></text>
-			</staticText>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement positionType="Float" x="0" y="230" width="554" height="30" uuid="6ae8f1a0-77d6-41fd-9c70-24a8f5436718"/>
+				<reportElement positionType="Float" x="0" y="140" width="554" height="30" uuid="6ae8f1a0-77d6-41fd-9c70-24a8f5436718"/>
 				<box padding="3"/>
 				<textFieldExpression><![CDATA[$F{formacao_academica}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="0" y="200" width="554" height="30" uuid="881f9d7e-d4d0-42a3-a830-554077e1d02d"/>
+				<reportElement x="0" y="110" width="554" height="30" uuid="881f9d7e-d4d0-42a3-a830-554077e1d02d"/>
 				<box padding="3"/>
 				<textElement>
 					<font isBold="true"/>
@@ -182,12 +143,12 @@
 				<text><![CDATA[Formação acadêmica]]></text>
 			</staticText>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement positionType="Float" x="0" y="290" width="554" height="30" uuid="62c3676b-a2f1-4597-9626-0d49f5045a4d"/>
+				<reportElement positionType="Float" x="0" y="200" width="554" height="30" uuid="62c3676b-a2f1-4597-9626-0d49f5045a4d"/>
 				<box padding="3"/>
 				<textFieldExpression><![CDATA[$F{experiencia_profissional}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement positionType="Float" x="0" y="260" width="554" height="30" uuid="dc8b8b79-4196-443e-a2fc-b14ef6657d2c"/>
+				<reportElement positionType="Float" x="0" y="170" width="554" height="30" uuid="dc8b8b79-4196-443e-a2fc-b14ef6657d2c"/>
 				<box padding="3"/>
 				<textElement>
 					<font isBold="true"/>
@@ -195,12 +156,12 @@
 				<text><![CDATA[Experiência profissional]]></text>
 			</staticText>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement positionType="Float" x="0" y="350" width="554" height="30" uuid="fde1373d-e110-4314-90f1-909022135cdd"/>
+				<reportElement positionType="Float" x="0" y="260" width="554" height="30" uuid="fde1373d-e110-4314-90f1-909022135cdd"/>
 				<box padding="3"/>
 				<textFieldExpression><![CDATA[$F{motivo_interesse}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement positionType="Float" x="0" y="320" width="554" height="30" uuid="6ccf58ec-7ebb-4875-9c4c-44966b85dedd"/>
+				<reportElement positionType="Float" x="0" y="230" width="554" height="30" uuid="6ccf58ec-7ebb-4875-9c4c-44966b85dedd"/>
 				<box padding="3"/>
 				<textElement>
 					<font isBold="true"/>
@@ -208,12 +169,12 @@
 				<text><![CDATA[Motivo do interesse em participar da oficina escolhida]]></text>
 			</staticText>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement positionType="Float" x="0" y="410" width="554" height="30" uuid="a1124c2d-320e-4343-9fd6-b7594a3ebbec"/>
+				<reportElement positionType="Float" x="0" y="320" width="554" height="30" uuid="a1124c2d-320e-4343-9fd6-b7594a3ebbec"/>
 				<box padding="3"/>
 				<textFieldExpression><![CDATA[$F{cursos_extra_curriculares}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement positionType="Float" x="0" y="380" width="554" height="30" uuid="428a01fa-bcc6-42c3-ad52-4eb9984177f7"/>
+				<reportElement positionType="Float" x="0" y="290" width="554" height="30" uuid="428a01fa-bcc6-42c3-ad52-4eb9984177f7"/>
 				<box padding="3"/>
 				<textElement>
 					<font isBold="true"/>
