@@ -237,6 +237,7 @@ class MovieController extends AbstractAdminController
     public function persist($data, $id = null)
     {
         $form = new MovieForm($this->getEntityManager(), Options::STATUS_ENABLED);
+        $form->getInputFilter()->remove('medias');
 
         if($id) {
             $movie = $this->getRepository(Movie::class)->find($id);
