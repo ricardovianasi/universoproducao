@@ -183,7 +183,7 @@ class SessionSchoolController extends AbstractMeuUniversoRegisterController
 
                 //Enviar email de confirmação
                 $msg = '<p>Olá <strong>'.$user->getName().'</strong>!</p>';
-                $msg.= "<p>Agradecemos seu interesse em participar da <strong>13ª Mostra de Cinema de Ouro Preto</strong>.</p>";
+                $msg.= "<p>Agradecemos seu interesse em participar da <strong>12ª CineBH</strong>.</p>";
                 $msg.= "<p>Informamos que recebemos sua inscrição para participar da sessão: ".$session->getName().".</p>";
                 $msg.= "<p>Favor imprimir, assinar e enviar este documento via fax (31.3282.2366) ou via email (cine-escola@universoproducao.com.br) até 48 horas após o preenchimento da inscrição no site. </p>";
                 $msg.= "<p><strong>ATENÇÃO: </strong></p>";
@@ -201,7 +201,7 @@ class SessionSchoolController extends AbstractMeuUniversoRegisterController
                 $this->mailService()->simpleSendEmail($to, "Confirmação de inscrição Cine-Expressão ", $msg, $confirmacao);
 
                 $cc['Cine-Escola'] = 'cine-escola@universoproducao.com.br';
-                $this->mailService()->simpleSendEmail($cc, "Inscrição Cine-Expressão - CineOP", $msg, $confirmacao);
+                $this->mailService()->simpleSendEmail($cc, "Inscrição Cine-Expressão - CineBH", $msg, $confirmacao);
 
                 $this->meuUniversoMessages()->flashSuccess($msg);
                 return $this->redirect()->toRoute('meu-universo/default');
