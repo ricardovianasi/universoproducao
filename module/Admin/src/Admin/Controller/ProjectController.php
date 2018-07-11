@@ -573,4 +573,66 @@ class ProjectController extends AbstractAdminController
 
     }
 
+    public function comunicadosAction()
+    {
+        $this->getViewModel()->setTerminal(true);
+
+        $items = $this
+            ->getRepository(Project::class)
+            ->createQueryBuilder('p')
+            ->andWhere('p.status = :status')
+            ->andWhere('p.event = :idEvent')
+            ->setParameters([
+                'status' => 'not_selected',
+                'idEvent' => 1088
+            ])
+            ->getQuery()
+            ->getResult();
+
+        var_dump(count($items)); exit();
+        $count = 0;
+        foreach ($items as $item) {
+            /** @var Movie $item */
+            $item = new Movie();
+
+            $msg = "<p>Prezado (a) ".$item->getAuthor()->getName().",</p>";
+            $msg.= "<p>Agradecemos a inscrição do projeto <strong>".$item->getTitle()."</strong> para participar do 9 Brasil CineMundi, mas infelizmente ele não foi selecionado entre os projetos que irão integrar a programação dos meetings – rodada de negócios.</p>";
+            $msg.= "<p>Inscrever o projeto para análise no Brasil CineMundi, para nós, representa uma manifestação de interesse em participar deste evento de 
+                mercado que oferece também uma programação ampla que inclui debates, workshops, encontros, agenda de relacionamento,  ações de intercâmbio e troca 
+                de informações. <br> Desta forma, oferecemos aos representantes do projeto inscrito o credenciamento para atendimento personalizado que dará direito:</p>";
+
+            $msg.="<p><ul>
+                <li>acesso às dependências do Brasil CineMundi</li>
+                <li>programação do evento de forma diferenciada e personalizada</li>
+                <li>vaga para debates, workshops</li>
+            </ul></p>";
+
+            $msg.= "<p><strong>O BRASIL CINEMUNDI É O EVENTO DE MERCADO MAIS PRÓXIMO DE VOCÊ!<br>É O EVENTO DE MERCADO DO CINEMA BRASILEIRO</strong></p>";
+
+            $msg.= "<p>Se for do seu interesse, faz-se necessário solicitar credenciamento pelo email projetos@brasilcinemundi.com.br até o dia 20 de julho, para recebimento das orientações necessárias para que seu credenciamento seja efetivado.</p>";
+            $msg.= "<p>Agradecemos sua inscrição no 9º Brasil CineMundi e aguardamos sua manifestação na expectativa de contar com sua presença no evento.</p>";
+            $msg.= "<p>Atenciosamente,<br />Coordenação Mostra CineBH - Brasil CineMundi</p>";
+
+            //$to[$item->getAuthor()->getName()] = 'ricardovianasi@gmail.com';
+            /** @var \SendGrid\Response $return */
+            $return = $this->mailService()->simpleSendEmail(
+                //[$item->getAuthor()->getName()=>$item->getAuthor()->getEmail()],
+                [$item->getAuthor()->getName()=>'ricardovianasi@gmail.com'],
+                'Projetos - Brasil CineMundi', $msg);
+
+            $count++;
+            echo "$count - Nome: " . $item->getAuthor()->getName();
+            echo "<br />Email: " . $item->getAuthor()->getEmail();
+            echo "<br />Filme: " . $item->getTitle();
+            if($return->statusCode() == 202) {
+                echo "<br /><b>******************-SUCESSO-******************</b><br /><br />";
+
+            } else {
+                echo "<b>******************-ERRO-******************</b><br /><br />";
+            }
+        }
+
+        return $this->getViewModel();
+    }
+
 }
