@@ -532,7 +532,7 @@ class ProjectController extends AbstractAdminController
 
         $selectedItens = [];
         if($filter['selected'] == 'all') {
-            $selectedItens = $this->search(EducationalProject::class, $filter, [], true);
+            $selectedItens = $this->search(Project::class, $filter, [], true);
         } else {
             $selected = explode(',', $filter['selected']);
             if(!$selected) {
