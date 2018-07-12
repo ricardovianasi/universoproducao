@@ -40,6 +40,64 @@
     </div>
 <?php endif; ?>
 
+<section class="tv">
+    <div class="main-wrapper">
+        <header class="main-header">
+            <h1 class="main-title"><?php echo $this->translate("Vídeos") ?></h1>
+        </header>
+        <div class="tv-wrapper">
+            <div class="tv-highlight">
+                <div class="tv-featured">
+                    <div class="tv-bg" style="background-image: url('<?php echo $this->basePath('assets/cinebh2017/dist') ?>/images/tva.jpg')">
+                        <a data-fancybox class="tv-link" href="https://youtu.be/IXPYnUPNmls"><span class="icon-play4"></span></a>
+                    </div>
+                    <div class="tv-content">
+                        <p class="tv-title">CineBH - Mostra de Cinema de Belo Horizonte</p>
+                    </div>
+                </div>
+            </div>
+            <?php if(count($this->videos)): ?>
+                <div class="tv-highlight">
+                    <?php foreach ($this->videos as $v): ?>
+                        <div class="tv-featured">
+                            <div class="tv-bg" style="background-image: url('<?php echo $this->thumbor()->url($v->getThumb())->resize(260, 180); ?>')">
+                                <a data-fancybox class="tv-link" href="<?php echo $v->getYoutube(); ?>"><span class="icon-play4"></span></a>
+                            </div>
+                            <div class="tv-content">
+                                <p class="tv-title"><?php echo $v->getCaption(); ?></p>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+            <?php endif; ?>
+        </div>
+        <p class="news-readmore">
+            <a href="https://www.youtube.com/channel/UCaikc9czwiws39fvlHX-RpA" target="_blank" class="btn">
+                <span><?php echo $this->translate("Ver todos os vídeos") ?></span>
+            </a>
+        </p>
+    </div>
+</section>
+
+<?php if(count($this->gallery)>0): ?>
+    <section class="gallery home-effect">
+        <header class="main-header programation-header">
+            <h1 class="main-title">Galeria</h1>
+        </header>
+        <div class="owl-carousel">
+            <?php foreach ($this->gallery as $img): ?>
+                <div class="gallery-item">
+                    <img src="<?php echo $this->thumbor()->url($img->getMeta('_image'))->resize(1920, 600); ?>" alt="">
+                    <p class="gallery-caption"><?php echo $img->getMeta('_credits'); ?></p>
+                </div>
+            <?php endforeach; ?>
+        </div>
+        <div class="main-wrapper">
+            <a class="readmore-link" href="http://www.flickr.com/photos/universoproducao" target="_blank"><?php echo $this->translate("Ver mais imagens") ?> &gt;</a>
+        </div>
+    </section>
+<?php endif; ?>
+
 <?php if(count($this->eufacoamostra)>0): ?>
     <section class="eufacoamostra">
         <header class="main-header">
@@ -58,3 +116,65 @@
         </ul>
     </section>
 <?php endif; ?>
+
+<section class="guide">
+    <div class="guide-bg" data-image-src="<?php echo $this->basePath('assets/cinebh2017/dist') ?>/images/cidade.jpg"></div>
+    <div class="main-wrapper">
+        <header class="main-header">
+            <h1 class="main-title"><?php echo $this->translate("A cidade em movimento") ?></h1>
+        </header>
+
+        <div class="guide-items">
+            <div class="guide-item">
+                <a class="guide-link" href="<?php echo $this->url('cinebh/default', ['slug'=>'locais']) ?>">
+                    <span class="sprite sprite-locais"></span>
+                    <span class="guide-title"><?php echo $this->translate("Locais"); ?></span>
+                </a>
+            </div>
+            <div class="guide-item">
+                <a class="guide-link" href="<?php echo $this->url('cinebh/default', ['slug'=>'restaurantes']) ?>">
+                    <span class="sprite sprite-restaurantes"></span>
+                    <span class="guide-title"><?php echo $this->translate("Restaurantes"); ?></span>
+                </a>
+            </div>
+            <div class="guide-item">
+                <a class="guide-link" href="<?php echo $this->url('cinebh/default', ['slug'=>'hoteis']) ?>">
+                    <span class="sprite sprite-hoteis"></span>
+                    <span class="guide-title"><?php echo $this->translate("Hoteis e acomodações"); ?></span>
+                </a>
+            </div>
+            <div class="guide-item">
+                <a class="guide-link" href="<?php echo $this->url('cinebh/default', ['slug'=>'turismo-e-informacoes']) ?>">
+                    <span class="sprite sprite-turismo"></span>
+                    <span class="guide-title"><?php echo $this->translate("Turismo e Informações"); ?></span>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="newsletter">
+    <div class="main-wrapper">
+        <header class="main-header">
+            <h1><?php echo $this->translate("Receba nossos informativos") ?></h1>
+        </header>
+        <form action="<?php echo $this->url('cinebh/newsletter') ?>" class="newsletter-form">
+            <p><input required class="newsletter-input" placeholder="<?php echo $this->translate("Nome") ?>"></p>
+            <p><input required class="newsletter-input" placeholder="<?php echo $this->translate("E-mail") ?>"></p>
+            <p><button type="submit" class="newsletter-submit"><?php echo $this->translate("Cadastrar") ?></button></p>
+        </form>
+    </div>
+</section>
+
+<section class="sitemap">
+    <div class="main-wrapper">
+        <?php $this
+            ->navigation('CinebhNavigation')
+            ->menu()->setPartial("cinebh/partials/sitemap.phtml");
+
+        echo $this
+            ->navigation('CinebhNavigation')
+            ->menu()
+            ->render(); ?>
+    </div>
+</section>
