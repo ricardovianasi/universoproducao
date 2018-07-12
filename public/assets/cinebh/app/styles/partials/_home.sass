@@ -11,7 +11,7 @@
       position: absolute
       width: 100%
       height: 230px
-      background-color: $color-palette-1
+      background-color: #000
       z-index: 1000
     &:before
       transform: skewY(3deg)
@@ -61,12 +61,15 @@
     width: 100%
     display: block
     position: relative
+    background-color: #000
     z-index: 100
 
     &-header
       position: relative
       top: -36px
       +center($pad:20px)
+      .main-title
+        color: #fac02a
 
     &-highlight
       display: inline-block
@@ -112,7 +115,7 @@
 
       .bgc
         background-color: black
-        opacity: 0.3
+        opacity: 0.75
 
       .wrapper
         position: absolute
@@ -160,6 +163,10 @@
     +padding-trailer(6)
     +trailer(6)
     border-bottom: 1px solid black
+    
+    .main-header
+      .main-title
+        color: #f15d53
 
     &.top
       margin-top: 36px !important
@@ -186,12 +193,19 @@
         width: 100%
         +trailer(1)
 
+    .btn
+      background-color: #38c2d4
+
 
   .tv
     +trailer(10)
     &-wrapper
       display: block
       overflow: hidden
+
+    .main-header
+      .main-title
+        color: #38c2d4
 
     &-highlight
       float: left
@@ -253,6 +267,7 @@
 
     &-title
       font-weight: 700
+      color: #38c2d4
 
     &-bg
       background-repeat: no-repeat
@@ -277,11 +292,36 @@
         top: 0
         left: 0
 
+    .btn
+      background-color: #38c2d4
+
   .gallery
     width: 100%
     display: block
     position: relative
     z-index: 100
+    background-color: #f15e7c
+
+    &.home-effect
+      &:after,
+      &:before
+        background-color: #f15e7c
+
+      &:before
+        background-image: url(../images/2018/shape-gallery-left.png)
+        background-repeat: no-repeat
+        background-position: left
+
+      &:after
+        background-image: url(../images/2018/shape-gallery-right.png)
+        background-repeat: no-repeat
+        background-position: right
+
+
+    .programation-header
+      .main-title
+        color: #fff
+
     .owl-carousel
       transform: skewY(-4deg)
       z-index: 10000
@@ -307,7 +347,7 @@
           cursor: pointer
           height: 60px
           font-size: 60px
-          color: $color-palette-1
+          color: #f15e7c
           position: absolute
           top: 50%
           transform: translateY(-50%)
@@ -326,6 +366,7 @@
       position: absolute
       right: 8px
       z-index: 100000
+      color: #fff
 
     &-caption
       +adjust-font-size-to(14px)
@@ -339,6 +380,7 @@
 
   .eufacoamostra
     position: relative
+    +leader(10)
 
     .main-header
       position: relative
@@ -449,6 +491,9 @@
       width: 100%
       height: 100%
       background-color: black
+      background-image: url("../images/2018/shape-newsletter-left.png"), url("../images/2018/shape-newsletter-right.png")
+      background-repeat: no-repeat, no-repeat
+      background-position: left, right
       transform: skewY(-4deg)
       z-index: 100
 
@@ -491,7 +536,7 @@
       box-sizing: border-box
 
     &-input
-      color: $color-txt
+      color: #000
       background-color: white
       +apply-side-rhythm-border(all, 1px, 1, 18px, solid #fff)
       &::-webkit-input-placeholder
@@ -504,7 +549,7 @@
         color: $color-palette-2
     &-submit
       +apply-side-rhythm-border(all, 1px, 1, 18px, solid $color-palette-2)
-      background-color: $color-palette-2
+      background-color: #38c2d4
       color: white
       cursor: pointer
       transition: $transition-default
@@ -522,7 +567,7 @@
       left: 0
       width: 100%
       height: 100%
-      background-color: $color-palette-3
+      background-color: #f15d53
       transform: skewY(-4deg)
       transform: skewY(-4deg)
 

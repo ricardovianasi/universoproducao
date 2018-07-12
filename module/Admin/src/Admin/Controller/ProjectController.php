@@ -593,9 +593,9 @@ class ProjectController extends AbstractAdminController
         $count = 0;
         foreach ($items as $item) {
             /** @var Movie $item */
-            $item = new Movie();
+            $item = new Project();
 
-            $msg = "<p>Prezado (a) ".$item->getAuthor()->getName().",</p>";
+            $msg = "<p>Prezado (a) ".$item->getUser()->getName().",</p>";
             $msg.= "<p>Agradecemos a inscrição do projeto <strong>".$item->getTitle()."</strong> para participar do 9 Brasil CineMundi, mas infelizmente ele não foi selecionado entre os projetos que irão integrar a programação dos meetings – rodada de negócios.</p>";
             $msg.= "<p>Inscrever o projeto para análise no Brasil CineMundi, para nós, representa uma manifestação de interesse em participar deste evento de 
                 mercado que oferece também uma programação ampla que inclui debates, workshops, encontros, agenda de relacionamento,  ações de intercâmbio e troca 
@@ -617,12 +617,12 @@ class ProjectController extends AbstractAdminController
             /** @var \SendGrid\Response $return */
             $return = $this->mailService()->simpleSendEmail(
                 //[$item->getAuthor()->getName()=>$item->getAuthor()->getEmail()],
-                [$item->getAuthor()->getName()=>'ricardovianasi@gmail.com'],
+                //[$item->getUser()->getName()=>'ricardovianasi@gmail.com'],
                 'Projetos - Brasil CineMundi', $msg);
 
             $count++;
-            echo "$count - Nome: " . $item->getAuthor()->getName();
-            echo "<br />Email: " . $item->getAuthor()->getEmail();
+            echo "$count - Nome: " . $item->getUser()->getName();
+            echo "<br />Email: " . $item->getUser()->getEmail();
             echo "<br />Filme: " . $item->getTitle();
             if($return->statusCode() == 202) {
                 echo "<br /><b>******************-SUCESSO-******************</b><br /><br />";
