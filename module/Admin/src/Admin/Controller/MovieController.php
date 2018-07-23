@@ -98,18 +98,20 @@ class MovieController extends AbstractAdminController
 
             //Author
             $author = [
-                'author_id' => $obj->getAuthor()->getId(),
-                'author_name' => $obj->getAuthor()->getName(),
-                'author_email' => $obj->getAuthor()->getEmail(),
-                'author_address' => $obj->getAuthor()->getFullAddress()
+                'author_id' => $obj->getAuthor() ? $obj->getAuthor()->getId() : "",
+                'author_name' => $obj->getAuthor() ? $obj->getAuthor()->getName() : "",
+                'author_email' => $obj->getAuthor() ? $obj->getAuthor()->getEmail() : "",
+                'author_address' => $obj->getAuthor() ? $obj->getAuthor()->getFullAddress() : ""
             ];
             $phones = [];
-            foreach ($obj->getAuthor()->getPhones() as $phone) {
-                $phones[] = implode('|', $phone->_toArray());
-            }
-            $author['author_phones'] = implode(';', $phones);
+            if($obj->getAuthor()) {
+                foreach ($obj->getAuthor()->getPhones() as $phone) {
+                    $phones[] = implode('|', $phone->_toArray());
+                }
+                $author['author_phones'] = implode(';', $phones);
 
-            $itemArray = $itemArray+$author;
+                $itemArray = $itemArray+$author;
+            }
             unset($itemArray['author']);
 
             //Events
