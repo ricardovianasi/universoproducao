@@ -89,7 +89,7 @@ class SiteNavigation extends DefaultNavigationFactory
         $navigation = [];
         foreach ($items as $item) {
             $target = $item->getTargetBlank() ? 'target="_blanck"' : '';
-            $label = $item->getLabel() ? $item->getLabel() : $item->getPost()->getTitle();
+            $label = $item->getLabel() ? $item->getLabel() : ($item->getPost() ? $item->getPost()->getTitle():"");
             $navigation[$item->getId()] = [
                 'label' => $label
             ];
