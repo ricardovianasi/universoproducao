@@ -26,6 +26,13 @@ class SeminarForm extends SeminarSubscriptionForm
         $inputFilterFactory = new Factory();
 
         $this->add([
+            'name' => 'debates[]',
+            'options' => [
+                'label' => 'Debates'
+            ]
+        ]);
+
+        $this->add([
             'type' => 'Checkbox',
             'name' => 'accept_regulation',
             'options' => array(

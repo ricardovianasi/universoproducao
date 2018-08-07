@@ -37,6 +37,7 @@ class Options extends AbstractEntity
 
     const SEMINAR_CATEGORY                          = 'seminar_category';
     const SEMINAR_AVALIABLE                         = 'seminar_avaliable';
+    const SEMINAR_TYPE                              = 'seminar_type';
 
 
     /**

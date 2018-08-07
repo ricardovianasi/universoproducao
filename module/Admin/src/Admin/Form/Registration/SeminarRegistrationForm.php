@@ -51,6 +51,25 @@ class SeminarRegistrationForm extends RegistrationForm
                 'min' => 1
             ]
         ]);
+
+        $this->add([
+            'type' => 'select',
+            'name' => 'options['.Options::SEMINAR_TYPE.']',
+            'options' => [
+                'label' => 'Tipo de inscrição',
+                'value_options' => [
+                    'full' => 'Semiário completo',
+                    'selected' =>  'Debates selecionados'
+                ],
+                'empty_option' => 'Selecione',
+                'twb-layout' => 'horizontal',
+                'column-size' => 'md-6',
+                'label_attributes' => [
+                    'class' => 'col-md-4'
+                ]
+            ]
+        ]);
+
         //Validações
         $this->setInputFilter((new InputFilterFactory)->createInputFilter([
             Options::SEMINAR_CATEGORY => [

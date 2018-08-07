@@ -8,6 +8,7 @@
 
 namespace Application\Repository\Seminar;
 
+use Doctrine\ORM\Query\ResultSetMapping;
 use Util\Repository\AbstractRepository;
 
 class SeminarSubscription extends AbstractRepository
@@ -22,6 +23,18 @@ class SeminarSubscription extends AbstractRepository
             ->getSingleScalarResult();
 
         return (int) $count;
+    }
+
+    public function getTotalSubscriptionByDebate($debateId)
+    {
+        $rsm = new ResultSetMapping();
+        $rsm->addScalarResult('total', 'total');
+        $query = $this
+            ->getEntityManager()
+            ->createNativeQuery('SELECT count(*) as total FROM seminar_subscription_has_debate WHERE seminar_debate_id = ?', $rsm);
+        $query->setParameter(1, $debateId);
+
+        return $query->getSingleScalarResult();
     }
 
     public function prepareSearch($criteria = [], $orderBy = [])

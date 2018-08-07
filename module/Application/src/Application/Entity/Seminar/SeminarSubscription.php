@@ -43,6 +43,15 @@ class SeminarSubscription extends AbstractEntity
     private $event;
 
     /**
+     * @ORM\ManyToMany(targetEntity="Debate")
+     * @ORM\JoinTable(name="seminar_subscription_has_debate",
+     *      joinColumns={@ORM\JoinColumn(name="seminar_subscription_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="seminar_debate_id", referencedColumnName="id")}
+     *      )
+     */
+    private $debates;
+
+    /**
      * @ORM\OneToOne(targetEntity="Application\Entity\Seminar\Category")
      * @ORM\JoinColumn(name="seminar_category_id", referencedColumnName="id")
      */
@@ -50,6 +59,11 @@ class SeminarSubscription extends AbstractEntity
 
     /** @ORM\Column(name="created_at", type="datetime", nullable=true) */
     private $createdAt;
+
+    public function __construct()
+    {
+        $this->debates = new ArrayCollection();
+    }
 
     /**
      * @return mixed
@@ -145,5 +159,21 @@ class SeminarSubscription extends AbstractEntity
     public function setCreatedAt($createdAt)
     {
         $this->createdAt = $createdAt;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDebates()
+    {
+        return $this->debates;
+    }
+
+    /**
+     * @param mixed $debates
+     */
+    public function setDebates($debates)
+    {
+        $this->debates = $debates;
     }
 }

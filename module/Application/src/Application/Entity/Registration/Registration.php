@@ -80,7 +80,7 @@ class Registration extends AbstractEntity
     }
 
     /** @return Options */
-    public function getOption($option)
+    public function getOption($option, $default=null)
     {
         foreach ($this->options as $op) {
             if($op->getName() == $option) {
@@ -88,7 +88,7 @@ class Registration extends AbstractEntity
             }
         }
 
-        return false;
+        return $default;
     }
 
     /**

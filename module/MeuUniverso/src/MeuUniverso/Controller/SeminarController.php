@@ -59,35 +59,63 @@ class SeminarController extends AbstractMeuUniversoRegisterController
             ]]);
         }
 
-        //valida se a oficina existe e se existe vaga
-        //Vagas
         $avaliable = 0;
-
-        //Total de vagas
-        $totalSub = $this->getRepository(SeminarSubscription::class)->getTotalSubscription($reg->getId());
-
         $avOp = $reg->getOption(Options::SEMINAR_AVALIABLE);
         if($avOp) {
             $avaliable = (int) $avOp->getValue();
         }
 
-        if($totalSub >= $avaliable) {
-            return $this->redirect()->toRoute('meu-universo/default', [], ['query'=>[
-                'code' => self::ERROR_WORKSHOP_NO_SUBSCRIPTION,
-                'id_reg' => $idReg
-            ]]);
+        //Tipo do seminário: completo ou lista
+        $seminarType = $reg->getOption(Options::SEMINAR_TYPE, 'full');
+        $debates = [];
+        if($seminarType == 'selected') {
+            $debates = $this
+                ->getRepository(Debate::class)
+                ->findBy([
+                    'event' => $reg->getEvent()->getId()
+                ]);
+
+        } else {
+            //Vagas
+            //Total de vagas
+            $totalSub = $this->getRepository(SeminarSubscription::class)->getTotalSubscription($reg->getId());
+
+            if($totalSub >= $avaliable) {
+                return $this->redirect()->toRoute('meu-universo/default', [], ['query'=>[
+                    'code' => self::ERROR_WORKSHOP_NO_SUBSCRIPTION,
+                    'id_reg' => $idReg
+                ]]);
+            }
         }
 
         $user = $this->getAuthenticationService()->getIdentity();
         $form = new SeminarForm($user, $this->getEntityManager(), $reg);
 
         if($this->getRequest()->isPost()) {
-            $data = $this->getRequest()->getPost();
+            $data = (array)$this->getRequest()->getPost();
             $form->setData($data);
+
+            $extraValidations = false;
+            if($seminarType == 'selected') {
+                //confere se tem vaga para os debates selecionados
+                if($this->getRequest()->isPost()) {
+                    $selectedDebates = $this->params()->fromPost('debates');
+                    foreach ($selectedDebates as $d) {
+                        $totalSubDeb = $this
+                            ->getRepository(SeminarSubscription::class)
+                            ->getTotalSubscriptionByDebate($d);
+
+                        if($totalSubDeb >= $avaliable) {
+                            $form->setMessages(['debates[]'=>['erro'=>'Não há vagas para os debates escolhidos']]);
+                            $extraValidations = true;
+                        }
+                    }
+                }
+            }
 
             /** @var User $userSubs */
             $userSubs = null;
-            if(!empty($data['user'])) {
+            if(empty($data['user'])) {
                 $userSubs = $this
                     ->getAuthenticationService()
                     ->getIdentity();
@@ -118,7 +146,7 @@ class SeminarController extends AbstractMeuUniversoRegisterController
                 ]]);
             }
 
-            if($form->isValid()) {
+            if(!$extraValidations && $form->isValid()) {
                 $subscription = new SeminarSubscription();
                 $subscription->setRegistration($reg);
                 $subscription->setEvent($reg->getEvent());
@@ -128,15 +156,21 @@ class SeminarController extends AbstractMeuUniversoRegisterController
                 $category = $this->getRepository(Category::class)->find($categoryOp->getValue());
                 $subscription->setSeminarCategory($category);
 
+                if($seminarType == 'selected') {
+                    foreach ($data['debates'] as $d) {
+                        $deb = $this->getRepository(Debate::class)->find($d);
+                        $subscription->getDebates()->add($deb);
+                    }
+                }
+
                 $this->getEntityManager()->persist($subscription);
                 $this->getEntityManager()->flush();
 
                 //Enviar email de confirmação
                 $msg = '<p>Olá <strong>'.$user->getName().'</strong>!</p>';
-                $msg.= "<p>Agradecemos seu interesse em participar da <strong>13ª Mostra de Cinema de Ouro Preto</strong>.</p>";
-                $msg.= "<p>Informamos que recebemos sua inscrição para participar do <strong>".$category->getName()."</strong> .</p>";
+                $msg.= "<p>Agradecemos seu interesse em participar do Programa de Formação Audiovisual da <strong>12ª CineBH</strong> e <strong>e 9º Braisl CineMundi</strong>.</p>";
                 $msg.= "<p><strong>ATENÇÃO: </strong></p>";
-                $msg.= "<p>Você deverá apresentar documento original com foto e o comprovante de inscrição (anexo) impresso e assinado para retirar sua credencial no dia 14 de junho – quinta, de 13h às 16h, ou no dia 15 de junho – sexta, de 9h às 11h, no balcão de credenciamento localizado no hall do Centro de Convenções.</p>";
+                $msg.= "<p>Você deverá apresentar documento original com foto e o comprovante de inscrição impresso e assinado para retirar sua credencial no dia 29 de agosto – quarta, de 10h às 13h, no balcão de credenciamento localizado no Jardim Externo do Palácio das Artes (piso inferior).</p>";
 
                 $this->getEntityManager()->refresh($subscription);
 
@@ -152,8 +186,11 @@ class SeminarController extends AbstractMeuUniversoRegisterController
         }
 
         return [
+            'type' => $seminarType,
+            'debates' => $debates,
             'form' => $form,
             'reg' => $reg,
+            'repository' => $this->getRepository(SeminarSubscription::class)
         ];
     }
 
@@ -220,6 +257,11 @@ class SeminarController extends AbstractMeuUniversoRegisterController
             /** @var SeminarSubscription $obj */
             $obj = $obj;
 
+            $debates = [];
+            foreach ($obj->getDebates() as $debate) {
+                $debates[] = $debate->getTitle();
+            }
+
             $preparedItems[]['object'] = [
                 'seminar' => $obj->getSeminarCategory()->getName(),
                 'event_name' => $obj->getEvent()->getShortName(),
@@ -229,7 +271,8 @@ class SeminarController extends AbstractMeuUniversoRegisterController
                 'user_birth_date' => $obj->getUser()->getBirthDate() ? $obj->getUser()->getBirthDate()->format('d/m/Y') : "",
                 'user_parent_name' => $obj->getUser()->getParent() ? $obj->getUser()->getParent()->getName() : "",
                 'user_parent_identifier' => $obj->getUser()->getParent() ? $obj->getUser()->getParent()->getIdentifier() : "",
-                'created_at' => $obj->getCreatedAt()->format('d/m/Y H:i:s')
+                'created_at' => $obj->getCreatedAt()->format('d/m/Y H:i:s'),
+                'debates' => implode(', ', $debates)
             ];
         }
 

@@ -55,6 +55,28 @@
                 </div>
             </div>
 
+            <?php if(count($this->debates) && $this->type == 'selected'): ?>
+                <h3 class="h3 block">Debates</h3>
+                <table>
+                    <?php foreach ($this->debates as $d):  ?>
+
+                        <div style="display: none;width:600px;min-height: 400px" id="debate_<?php echo $d->getId(); ?>">
+                            <?php echo $d->getDescription(); ?>
+                        </div>
+
+                    <tr>
+                        <td>
+                            <a style="color: #000;" data-fancybox data-src="#debate_<?php echo $d->getId(); ?>" data-modal="true"  href="javascript:;">
+                                <?php echo $d->getTitle(); ?> <i class="fa fa-file"></i>
+                            </a>
+                        </td>
+                        <td><input type="checkbox" name="debates[]" value="<?php echo $d->getId(); ?>"></td>
+                    </tr>
+                    <?php endforeach; ?>
+                </table>
+            <?php endif; ?>
+
+
             <div class="form-actions">
                 <div class="row">
                     <div class="col-md-offset-3 col-md-9">
