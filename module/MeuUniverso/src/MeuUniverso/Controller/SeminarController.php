@@ -174,11 +174,11 @@ class SeminarController extends AbstractMeuUniversoRegisterController
 
                 $this->getEntityManager()->refresh($subscription);
 
-                $preparedItems = $this->prepareItemsForReports($subscription);
-                $confirmacao = $this->prepareReport($preparedItems, 'seminar-confirmation' ,'pdf',true);
+                /*$preparedItems = $this->prepareItemsForReports($subscription);
+                $confirmacao = $this->prepareReport($preparedItems, 'seminar-confirmation' ,'pdf',true);*/
 
                 $to[$user->getName()] = $user->getEmail();
-                $this->mailService()->simpleSendEmail($to, "Debates - Confirmação de inscrição ", $msg, $confirmacao);
+                $this->mailService()->simpleSendEmail($to, "Debates - Confirmação de inscrição ", $msg);
 
                 $this->meuUniversoMessages()->flashSuccess($msg);
                 return $this->redirect()->toRoute('meu-universo/default');
