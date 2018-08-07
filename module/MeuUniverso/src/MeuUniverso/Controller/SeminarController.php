@@ -174,11 +174,11 @@ class SeminarController extends AbstractMeuUniversoRegisterController
 
                 $this->getEntityManager()->refresh($subscription);
 
-                /*$preparedItems = $this->prepareItemsForReports($subscription);
-                $confirmacao = $this->prepareReport($preparedItems, 'seminar-confirmation' ,'pdf',true);*/
+                $preparedItems = $this->prepareItemsForReports($subscription);
+                $confirmacao = $this->prepareReport($preparedItems, 'seminar-confirmation' ,'pdf',true);
 
                 $to[$user->getName()] = $user->getEmail();
-                $this->mailService()->simpleSendEmail($to, "Debates - Confirmação de inscrição ", $msg);
+                $this->mailService()->simpleSendEmail($to, "Debates - Confirmação de inscrição", $msg, $confirmacao);
 
                 $this->meuUniversoMessages()->flashSuccess($msg);
                 return $this->redirect()->toRoute('meu-universo/default');
@@ -257,11 +257,6 @@ class SeminarController extends AbstractMeuUniversoRegisterController
             /** @var SeminarSubscription $obj */
             $obj = $obj;
 
-            $debates = [];
-            foreach ($obj->getDebates() as $debate) {
-                $debates[] = $debate->getTitle();
-            }
-
             $preparedItems[]['object'] = [
                 'seminar' => $obj->getSeminarCategory()->getName(),
                 'event_name' => $obj->getEvent()->getShortName(),
@@ -271,8 +266,7 @@ class SeminarController extends AbstractMeuUniversoRegisterController
                 'user_birth_date' => $obj->getUser()->getBirthDate() ? $obj->getUser()->getBirthDate()->format('d/m/Y') : "",
                 'user_parent_name' => $obj->getUser()->getParent() ? $obj->getUser()->getParent()->getName() : "",
                 'user_parent_identifier' => $obj->getUser()->getParent() ? $obj->getUser()->getParent()->getIdentifier() : "",
-                'created_at' => $obj->getCreatedAt()->format('d/m/Y H:i:s'),
-                'debates' => implode(', ', $debates)
+                'created_at' => $obj->getCreatedAt()->format('d/m/Y H:i:s')
             ];
         }
 
