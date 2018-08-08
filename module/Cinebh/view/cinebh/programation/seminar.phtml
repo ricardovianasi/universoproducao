@@ -1,7 +1,3 @@
-<?php if($this->breadcrumbs): ?>
-    <?php echo $this->partial('cinebh2017/partials/_breadcrumbs.phtml', ['breadcrumbs'=>$this->breadcrumbs]); ?>
-<?php endif; ?>
-
 <?php
 $dbh=mysql_connect ("162.243.253.29", "universoprod2", "ag51www");
 //$dbh=mysql_connect ("127.0.0.1", "root", "");
@@ -24,32 +20,7 @@ function databr2($valor)
     $valor = substr($valor,8,2) . "." . substr($valor,5,2) . "." . substr($valor,0,4);
     return $valor;
 }
-function horaIng($valor)
-{
-    if ($valor == '00:00:00') {
-        $texto = "";
-    } else {
-        $texto = date('h:i A', strtotime($valor));
-    }
-    return $texto;
-}
-function formata_data_extensoIng($strDate)
-{
-    // Array com os dia da semana em português;
-    $arrDaysOfWeek = array('Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday');
-    // Array com os meses do ano em português;
-    $arrMonthsOfYear = array(1 => '01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12');
-    // Descobre o dia da semana
-    $intDayOfWeek = date('w',strtotime($strDate));
-    // Descobre o dia do mês
-    $intDayOfMonth = date('d',strtotime($strDate));
-    // Descobre o mês
-    $intMonthOfYear = date('n',strtotime($strDate));
-    // Descobre o ano
-    $intYear = date('Y',strtotime($strDate));
-    // Formato a ser retornado
-    return $arrDaysOfWeek[$intDayOfWeek];
-}
+
 function data_USA($valor1){
     $valor1 = substr($valor1,6,4) . "-" . substr($valor1,3,2) . "-" . substr($valor1,0,2);
     return $valor1;
@@ -122,19 +93,19 @@ function utf8($string)
     }
 }
 
-$mostra = 1078;
-$lg = ($this->lg=='en') ? 'Ing' : '';
+$mostra = 1075;
+$lg = '';
 $url = '';
 $fc = $fl = $sub = $subMostra = $fSub1 = $fSub2 = $fSub3 = '';
 //$limitCurta = 0;
-$Dir = $lg=='Ing' ? "Director(s)" : "Direçao";
+$Dir = "Direção";
 
 
 $CodSem	= $this->seminarId;
 
 $result	= mysql_query("select codSeminario, tituloSeminario, tituloSeminarioIng, descricaoSeminario, descricaoSeminarioIng, tematica, codTematica, titTematica, CodItemProg, CategoriaProg, Local, Data, HoraManhaInicial, HoraTardeInicial, HoraManhaFinal from tb_seminarios, tb_programacaoevento, tb_tematica where codSeminario = $CodSem and tb_seminarios.codSeminario = tb_programacaoevento.CodItemProg and tb_programacaoevento.CategoriaProg = 'SE' and tb_tematica.codTematica = tb_seminarios.tematica");
-$TituloSem	= mb_convert_encoding(mysql_result($result,0,"tituloSeminario$lg"), "UTF-8", "ISO-8859-1");
-$DescSem	= mb_convert_encoding(mysql_result($result,0,"descricaoSeminario$lg"), "UTF-8", "ISO-8859-1");
+$TituloSem	= mb_convert_encoding(mysql_result($result,0,"tituloSeminario"), "UTF-8", "ISO-8859-1");
+$DescSem	= mb_convert_encoding(mysql_result($result,0,"descricaoSeminario"), "UTF-8", "ISO-8859-1");
 $dataOrig	= mysql_result($result,0,"Data");
 $local	= mysql_result($result,0,"Local");
 $HoraManhaInicial	= mysql_result($result,0,"HoraManhaInicial");
@@ -175,23 +146,20 @@ if ($local != "") {
 
 ?>
 
-<div class="main-wrapper">
-    <section class="main-content">
-        <header class="main-header">
-        </header>
+<section class="main-wrapper main-content">
+    <header class="main-header">
+        <h1 class="main-title"><?php echo $titPagInt; ?></h1>
+    </header>
 
-        <h2><?php echo $TituloSem?></h2>
-        <br /><span><strong><?php echo utf8($Tematica)?></strong></span><br /><br />
-        <span class="subItemLista cxBaixa">
-            <strong><?php echo $lg=='Ing' ? "Date" : "Data"; ?></strong>: <?php echo $dataFinal?> | <?php echo $diaSemana?> <br />
+    <h2><?php echo $TituloSem?><br /><span style="font-size: 10px;"><?php echo utf8($Tematica)?></span><br /><br />
+        <span class="subItemLista"><?php echo $lg=='Ing' ? "Date" : "Data"; ?>: <?php echo $dataFinal?> | <?php echo $diaSemana?> <br />
             <?php if ($horaFim != "") { ?>
-                <strong><?php echo $lg=='Ing' ? "Time: " : "Hora: de "; ?></strong><?php echo $horaInicio?> <?php echo $lg=='Ing' ? "-" : "às"; ?> <?php echo $horaFim?><br />
+                <?php echo $lg=='Ing' ? "Time: " : "Hora: de "; ?><?php echo $horaInicio?> <?php echo $lg=='Ing' ? "-" : "às"; ?> <?php echo $horaFim?><br />
             <? }else{ ?>
-                <strong><?php echo $lg=='Ing' ? "Time" : "Hora"; ?></strong>: <?php echo $horaInicio?><br />
+                <?php echo $lg=='Ing' ? "Time" : "Hora"; ?>: <?php echo $horaInicio?><br />
             <?php } ?>
-            <strong><?php echo $lg=='Ing' ? "Spots" : "Local"; ?></strong>: <?php echo $local?></span>
+            <?php echo $lg=='Ing' ? "Spots" : "Local"; ?>: <?php echo $local?></span>
+    </h2>
 
-
-        <?php echo $DescSem?>
-    </section>
-</div>
+    <?php echo $DescSem?>
+</section>

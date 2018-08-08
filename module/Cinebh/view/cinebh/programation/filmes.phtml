@@ -1,349 +1,319 @@
-<?php if($this->breadcrumbs): ?>
-    <?php echo $this->partial('cinebh2017/partials/_breadcrumbs.phtml', ['breadcrumbs'=>$this->breadcrumbs]); ?>
-<?php endif; ?>
-<div class="main-wrapper">
-    <section class="main-content">
-        <header class="main-header">
-            <h1 class="main-title"><?php echo $this->post->getTitle(); ?></h1>
-        </header>
+<section class="main-wrapper main-content">
+    <header class="main-header">
+        <h1 class="main-title"><?php echo $this->post->getTitle(); ?></h1>
+    </header>
 
-        <?php
-        $dbh=mysql_connect ("162.243.253.29", "universoprod2", "ag51www");
-        //$dbh=mysql_connect ("127.0.0.1", "root", "");
-        if (!$dbh) {
-            echo "Não foi possível conectar ao banco de dados: " . mysql_error();
-            exit;
-        }
-        if (!mysql_select_db("universoprod2")) {
-            echo "Não foi possível selecionar universoproducao: " . mysql_error();
-            exit;
-        }
-        function databr($valor)
-        {
-            $valor = substr($valor,8,2) . "/" . substr($valor,5,2) . "/" . substr($valor,0,4);
-            return $valor;
-        }
+    <?php
+    $dbh=mysql_connect ("162.243.253.29", "universoprod2", "ag51www");
+    //$dbh=mysql_connect ("127.0.0.1", "root", "");
+    if (!$dbh) {
+        echo "Não foi possível conectar ao banco de dados: " . mysql_error();
+        exit;
+    }
+    if (!mysql_select_db("universoprod2")) {
+        echo "Não foi possível selecionar universoproducao: " . mysql_error();
+        exit;
+    }
+    function databr($valor)
+    {
+        $valor = substr($valor,8,2) . "/" . substr($valor,5,2) . "/" . substr($valor,0,4);
+        return $valor;
+    }
 
-        function databr2($valor)
-        {
-            $valor = substr($valor,8,2) . "." . substr($valor,5,2) . "." . substr($valor,0,4);
-            return $valor;
+    function databr2($valor)
+    {
+        $valor = substr($valor,8,2) . "." . substr($valor,5,2) . "." . substr($valor,0,4);
+        return $valor;
+    }
+
+    function data_USA($valor1){
+        $valor1 = substr($valor1,6,4) . "-" . substr($valor1,3,2) . "-" . substr($valor1,0,2);
+        return $valor1;
+    }
+    function hora($valor)
+    {
+        if ($valor == '00:00:00') {
+            $texto = "";
+        } else {
+            $texto = date('H:i', strtotime($valor));
+            $texto = str_replace(':','h',$texto);
+            $texto = str_replace('h00','h',$texto);
         }
-        function horaIng($valor)
+        return $texto;
+    }
+    function formata_data_extenso($strDate)
+    {
+        // Array com os dia da semana em português;
+        $arrDaysOfWeek = array('domingo', 'segunda', 'terça', 'quarta', 'quinta', 'sexta', 'sábado');
+        // Array com os meses do ano em português;
+        $arrMonthsOfYear = array(1 => '01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12');
+        // Descobre o dia da semana
+        $intDayOfWeek = date('w',strtotime($strDate));
+        // Descobre o dia do mês
+        $intDayOfMonth = date('d',strtotime($strDate));
+        // Descobre o mês
+        $intMonthOfYear = date('n',strtotime($strDate));
+        // Descobre o ano
+        $intYear = date('Y',strtotime($strDate));
+        // Formato a ser retornado
+        return $arrDaysOfWeek[$intDayOfWeek];
+    }
+    function is_utf8($str)
+    {
+        $c=0; $b=0;
+        $bits=0;
+        $len=strlen($str);
+        for($i=0; $i<$len; $i++)
         {
-            if ($valor == '00:00:00') {
-                $texto = "";
-            } else {
-                $texto = date('h:i A', strtotime($valor));
-            }
-            return $texto;
-        }
-        function formata_data_extensoIng($strDate)
-        {
-            // Array com os dia da semana em português;
-            $arrDaysOfWeek = array('Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday');
-            // Array com os meses do ano em português;
-            $arrMonthsOfYear = array(1 => '01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12');
-            // Descobre o dia da semana
-            $intDayOfWeek = date('w',strtotime($strDate));
-            // Descobre o dia do mês
-            $intDayOfMonth = date('d',strtotime($strDate));
-            // Descobre o mês
-            $intMonthOfYear = date('n',strtotime($strDate));
-            // Descobre o ano
-            $intYear = date('Y',strtotime($strDate));
-            // Formato a ser retornado
-            return $arrDaysOfWeek[$intDayOfWeek];
-        }
-        function data_USA($valor1){
-            $valor1 = substr($valor1,6,4) . "-" . substr($valor1,3,2) . "-" . substr($valor1,0,2);
-            return $valor1;
-        }
-        function hora($valor)
-        {
-            if ($valor == '00:00:00') {
-                $texto = "";
-            } else {
-                $texto = date('H:i', strtotime($valor));
-                $texto = str_replace(':','h',$texto);
-                $texto = str_replace('h00','h',$texto);
-            }
-            return $texto;
-        }
-        function formata_data_extenso($strDate)
-        {
-            // Array com os dia da semana em português;
-            $arrDaysOfWeek = array('domingo', 'segunda', 'terça', 'quarta', 'quinta', 'sexta', 'sábado');
-            // Array com os meses do ano em português;
-            $arrMonthsOfYear = array(1 => '01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12');
-            // Descobre o dia da semana
-            $intDayOfWeek = date('w',strtotime($strDate));
-            // Descobre o dia do mês
-            $intDayOfMonth = date('d',strtotime($strDate));
-            // Descobre o mês
-            $intMonthOfYear = date('n',strtotime($strDate));
-            // Descobre o ano
-            $intYear = date('Y',strtotime($strDate));
-            // Formato a ser retornado
-            return $arrDaysOfWeek[$intDayOfWeek];
-        }
-        function is_utf8($str)
-        {
-            $c=0; $b=0;
-            $bits=0;
-            $len=strlen($str);
-            for($i=0; $i<$len; $i++)
+            $c=ord($str[$i]);
+            if($c > 128)
             {
-                $c=ord($str[$i]);
-                if($c > 128)
+                if(($c >= 254)) return false;
+                elseif($c >= 252) $bits=6;
+                elseif($c >= 248) $bits=5;
+                elseif($c >= 240) $bits=4;
+                elseif($c >= 224) $bits=3;
+                elseif($c >= 192) $bits=2;
+                else return false;
+                if(($i+$bits) > $len) return false;
+                while($bits > 1)
                 {
-                    if(($c >= 254)) return false;
-                    elseif($c >= 252) $bits=6;
-                    elseif($c >= 248) $bits=5;
-                    elseif($c >= 240) $bits=4;
-                    elseif($c >= 224) $bits=3;
-                    elseif($c >= 192) $bits=2;
-                    else return false;
-                    if(($i+$bits) > $len) return false;
-                    while($bits > 1)
-                    {
-                        $i++;
-                        $b=ord($str[$i]);
-                        if($b < 128 || $b > 191) return false;
-                        $bits--;
-                    }
+                    $i++;
+                    $b=ord($str[$i]);
+                    if($b < 128 || $b > 191) return false;
+                    $bits--;
                 }
             }
-            return true;
         }
+        return true;
+    }
 
-        function utf8($string)
+    function utf8($string)
+    {
+        if (is_utf8($string))
         {
-            if (is_utf8($string))
-            {
-                return $string;
-            } else {
-                return utf8_encode($string);
-            }
+            return $string;
+        } else {
+            return utf8_encode($string);
         }
+    }
 
-        $mostra = 1078;
-        $lg = ($this->lg=='en') ? 'Ing' : '';
-        $url = '';
-        $fc = $fl = $sub = $subMostra = $fSub1 = $fSub2 = $fSub3 = '';
-        //$limitCurta = 0;
-        $Dir = $lg=='Ing' ? "Director(s)" : "Direçao";
-        ?>
+    $mostra = 1075;
+    $lg = '';
+    $url = '';
+    $fc = $fl = $sub = $subMostra = $fSub1 = $fSub2 = $fSub3 = '';
+    //$limitCurta = 0;
+    $Dir = "Direção";
+    ?>
+
+    <?php
+    $nomeTipoFilme = "";
+    $tipoFilme = isset($_POST['tipoFilme']) ? $_POST['tipoFilme'] : "";
+    if($tipoFilme != "") {
+        $tiposFilme = array(
+            '1' => 'Longa',
+            '2' => 'Media',
+            '3' => 'Curta'
+        );
+        $nomeTipoFilme = $tiposFilme[$tipoFilme];
+    }
+
+
+    $nomeSubMostra = "";
+    $descSubMostra = "";
+    $codSubMostra = isset($_POST['subMostra']) ? $_POST['subMostra'] : "";
+    if($codSubMostra != "") {
+        $resultNomeSubMostra = mysql_query("select * from tb_cat_filme where CodCat = $codSubMostra");
+        $nomeSubMostra = mysql_result($resultNomeSubMostra,0,"NomeHom".$lg);
+        $descSubMostra = mysql_result($resultNomeSubMostra,0,"DescHom".$lg);
+
+        $nomeSubMostra = mb_convert_encoding($nomeSubMostra, "UTF-8", "ISO-8859-1");
+    }
+
+    $sqlTipoFilmeSql1 = $sqlTipoFilmeSql2 = $sqlSubMostraSql1 = $sqlSubMostraSql2  = "";
+    if($tipoFilme != "") {
+        switch ($tipoFilme) {
+            case 1:
+                $tipoFilmeName = 'Longa';
+                break;
+            case 2:
+                $tipoFilmeName = 'Media';
+                break;
+            case 3:
+                $tipoFilmeName = 'Curta';
+                break;
+        }
+        $sqlTipoFilmeSql1 = " AND O.CategoriaConvidado = '$tipoFilmeName' ";
+        $sqlTipoFilmeSql2 = " AND O.classeObra = $tipoFilme ";
+    }
+    if($codSubMostra != "") {
+        $sqlSubMostraSql1 .= " AND O.SubMostra = ".$codSubMostra;
+        $sqlSubMostraSql2 .= " AND FI.SubMostra = ".$codSubMostra;
+    }
+
+    $sql1 = "select 1 as Rank, O.codObra, O.TituloObra, O.TituloObraIng, O.classeObra, O.DirecaoObra 
+      from tb_obras O 
+      where O.EdicaoMostra = $mostra AND O.FilmeConvidado = 1 AND O.ProgramacaoOficial = 1 $sqlTipoFilmeSql1 $sqlSubMostraSql1";
+
+    $sql12 = "select 2 as RANK,  O.codObra, O.TituloObra, O.TituloObraIng, O.classeObra, O.DirecaoObra 
+      from tb_obras O inner join tb_filmemostra FI ON FI.CodFilme = O.codObra 
+      where FI.CodMostra = $mostra AND FI.Selecionado = 1 $sqlTipoFilmeSql2 $sqlSubMostraSql2";
+
+    $sqlPesquisa = "select * from ($sql1 UNION ALL $sql12) a ORDER BY TituloObra";
+//    echo $sqlPesquisa;
+
+
+    if($tipoFilme != "") {
+
+        $tiposFilme = array(
+            '1' => 'Longa',
+            '2' => 'Media',
+            '3' => 'Curta'
+        );
+
+    }
+
+    ?>
+
+    <form class="form-filtro" action="" method="post">
+        <select class="form__input" class="form__input" name="tipoFilme" id="tipoFilme">
+            <?php
+            if ($lg == 'Ing') {
+                ?>
+                <option <?php echo $tipoFilme == "" ? "selected='selected'" : "";?> value="">&nbsp;&nbsp;-- CATEGORY --&nbsp;&nbsp;</option>
+                <option <?php echo $tipoFilme == "" ? "selected='selected'" : "";?> value="">&nbsp;&nbsp;-- ALL --&nbsp;&nbsp;</option>
+                <option <?php echo $tipoFilme == "1" ? "selected='selected'" : "";?> value="1">FEATURES</option>
+                <option <?php echo $tipoFilme == "3" ? "selected='selected'" : "";?> value="3">SHORTS</option>
+
+                <?php
+            } else {
+                ?>
+                <option <?php echo $tipoFilme == "" ? "selected='selected'" : "";?> value="">CATEGORIA</option>
+                <option value="">TODOS</option>
+                <option <?php echo $tipoFilme == "1" ? "selected='selected'" : "";?> value="1">LONGAS</option>
+                <option <?php echo $tipoFilme == "2" ? "selected='selected'" : "";?> value="2">MÉDIAS</option>
+                <option <?php echo $tipoFilme == "3" ? "selected='selected'" : "";?> value="3">CURTAS</option>
+                <?php
+            }
+            ?>
+        </select>
 
         <?php
-        $nomeTipoFilme = "";
-        $tipoFilme = isset($_POST['tipoFilme']) ? $_POST['tipoFilme'] : "";
-        if($tipoFilme != "") {
-            $tiposFilme = array(
-                '1' => 'Longa',
-                '2' => 'Media',
-                '3' => 'Curta'
-            );
-            $nomeTipoFilme = $tiposFilme[$tipoFilme];
-        }
-
-
-        $nomeSubMostra = "";
-        $descSubMostra = "";
-        $codSubMostra = isset($_POST['subMostra']) ? $_POST['subMostra'] : "";
-        if($codSubMostra != "") {
-            $resultNomeSubMostra = mysql_query("select * from tb_cat_filme where CodCat = $codSubMostra");
-            $nomeSubMostra = mysql_result($resultNomeSubMostra,0,"NomeHom".$lg);
-            $descSubMostra = mysql_result($resultNomeSubMostra,0,"DescHom".$lg);
-
-            $nomeSubMostra = mb_convert_encoding($nomeSubMostra, "UTF-8", "ISO-8859-1");
-        }
-
-        $sqlTipoFilmeSql1 = $sqlTipoFilmeSql2 = $sqlSubMostraSql1 = $sqlSubMostraSql2  = "";
-        if($tipoFilme != "") {
-            switch ($tipoFilme) {
-                case 1:
-                    $tipoFilmeName = 'Longa';
-                    break;
-                case 2:
-                    $tipoFilmeName = 'Media';
-                    break;
-                case 3:
-                    $tipoFilmeName = 'Curta';
-                    break;
-            }
-            $sqlTipoFilmeSql1 = " AND O.CategoriaConvidado = '$tipoFilmeName' ";
-            $sqlTipoFilmeSql2 = " AND O.classeObra = $tipoFilme ";
-        }
-        if($codSubMostra != "") {
-            $sqlSubMostraSql1 .= " AND O.SubMostra = ".$codSubMostra;
-            $sqlSubMostraSql2 .= " AND FI.SubMostra = ".$codSubMostra;
-        }
-
-        $sql1 = "select 1 as Rank, O.codObra, O.TituloObra, O.TituloObraIng, O.classeObra, O.DirecaoObra 
-          from tb_obras O 
-          where O.EdicaoMostra = $mostra AND O.FilmeConvidado = 1 AND O.ProgramacaoOficial = 1 $sqlTipoFilmeSql1 $sqlSubMostraSql1";
-
-        $sql12 = "select 2 as RANK,  O.codObra, O.TituloObra, O.TituloObraIng, O.classeObra, O.DirecaoObra 
-          from tb_obras O inner join tb_filmemostra FI ON FI.CodFilme = O.codObra 
-          where FI.CodMostra = $mostra AND FI.Selecionado = 1 $sqlTipoFilmeSql2 $sqlSubMostraSql2";
-
-        $sqlPesquisa = "select * from ($sql1 UNION ALL $sql12) a ORDER BY TituloObra";
-    //    echo $sqlPesquisa;
-
-
-        if($tipoFilme != "") {
-
-            $tiposFilme = array(
-                '1' => 'Longa',
-                '2' => 'Media',
-                '3' => 'Curta'
-            );
-
-        }
-
+        $sqlSubMostra = "SELECT * FROM tb_cat_filme CA WHERE CA.CodMostra = $mostra ORDER BY CA.posicao";
+        $resultSubMostra = mysql_query($sqlSubMostra);
         ?>
 
-        <form class="form-filtro" action="" method="post">
-            <select class="form__input" class="form__input" name="tipoFilme" id="tipoFilme">
-                <?php
-                if ($lg == 'Ing') {
-                    ?>
-                    <option <?php echo $tipoFilme == "" ? "selected='selected'" : "";?> value="">&nbsp;&nbsp;-- CATEGORY --&nbsp;&nbsp;</option>
-                    <option <?php echo $tipoFilme == "" ? "selected='selected'" : "";?> value="">&nbsp;&nbsp;-- ALL --&nbsp;&nbsp;</option>
-                    <option <?php echo $tipoFilme == "1" ? "selected='selected'" : "";?> value="1">FEATURES</option>
-                    <option <?php echo $tipoFilme == "3" ? "selected='selected'" : "";?> value="3">SHORTS</option>
-
-                    <?php
-                } else {
-                    ?>
-                    <option <?php echo $tipoFilme == "" ? "selected='selected'" : "";?> value="">CATEGORIA</option>
-                    <option value="">TODOS</option>
-                    <option <?php echo $tipoFilme == "1" ? "selected='selected'" : "";?> value="1">LONGAS</option>
-                    <option <?php echo $tipoFilme == "2" ? "selected='selected'" : "";?> value="2">MÉDIAS</option>
-                    <option <?php echo $tipoFilme == "3" ? "selected='selected'" : "";?> value="3">CURTAS</option>
-                    <?php
-                }
-                ?>
-            </select>
-
+        <select class="form__input"  name="subMostra" id="subMostra" >
             <?php
-            $sqlSubMostra = "SELECT * FROM tb_cat_filme CA WHERE CA.CodMostra = $mostra ORDER BY CA.posicao";
-            $resultSubMostra = mysql_query($sqlSubMostra);
-            ?>
-
-            <select class="form__input"  name="subMostra" id="subMostra" >
+            if ($lg == 'Ing') {
+                ?>
+                <option value="">SUB-MOSTRA</option>
+                <option value="">ALL</option>
                 <?php
-                if ($lg == 'Ing') {
-                    ?>
-                    <option value="">SUB-MOSTRA</option>
-                    <option value="">ALL</option>
-                    <?php
-                    while ($subMostra = mysql_fetch_object($resultSubMostra)) {
+                while ($subMostra = mysql_fetch_object($resultSubMostra)) {
 
-                        if($subMostra->NomeHomIng != "") {
-                            ?>
-                            <option <?php echo $codSubMostra == $subMostra->CodCat ? "selected='selected'" : "";?>
-                                value="<?php echo $subMostra->CodCat;?>"><?php echo $subMostra->NomeHomIng?></option>
-                            <?php
-                        }
-                    }
-                }
-                else {
-                    ?>
-                    <option value="">SUB-MOSTRA</option>
-                    <option value="">TODOS</option>
-                    <?php
-                    while ($subMostra = mysql_fetch_object($resultSubMostra)) {
+                    if($subMostra->NomeHomIng != "") {
                         ?>
-
                         <option <?php echo $codSubMostra == $subMostra->CodCat ? "selected='selected'" : "";?>
-                            value="<?php echo $subMostra->CodCat;?>"><?php echo utf8($subMostra->NomeHom);?></option>
-
+                            value="<?php echo $subMostra->CodCat;?>"><?php echo $subMostra->NomeHomIng?></option>
                         <?php
                     }
                 }
+            }
+            else {
                 ?>
-            </select>
-            <button type="submit" class="form__button" class="form__button">Filtrar</button>
-        </form>
+                <option value="">SUB-MOSTRA</option>
+                <option value="">TODOS</option>
+                <?php
+                while ($subMostra = mysql_fetch_object($resultSubMostra)) {
+                    ?>
 
-        <br />
-        <br />
+                    <option <?php echo $codSubMostra == $subMostra->CodCat ? "selected='selected'" : "";?>
+                        value="<?php echo $subMostra->CodCat;?>"><?php echo utf8($subMostra->NomeHom);?></option>
 
-        <?php
-
-
-        echo "<!-- SQL: ".$sqlPesquisa." -->";
-        mysql_query("SET SQL_BIG_SELECTS=1"); # AMÉM
-        $result = mysql_query($sqlPesquisa);
-        ?>
-
-        <?php
-        if($descSubMostra != "" && $nomeSubMostra != "") {
+                    <?php
+                }
+            }
             ?>
-            <h2><?=$nomeTipoFilme != "" ? " $nomeTipoFilme • " : "";?>  <?=$nomeSubMostra;?></h2>
+        </select>
+        <button type="submit" class="form__button" class="form__button">Filtrar</button>
+    </form>
 
-            <div class="txtSubMostra">
-                <?=$descSubMostra;?>
+    <br />
+    <br />
 
-            </div>
+    <?php
 
 
-            <?php
-        }
+    echo "<!-- SQL: ".$sqlPesquisa." -->";
+    mysql_query("SET SQL_BIG_SELECTS=1"); # AMÉM
+    $result = mysql_query($sqlPesquisa);
+    ?>
+
+    <?php
+    if($descSubMostra != "" && $nomeSubMostra != "") {
         ?>
+        <h2><?=$nomeTipoFilme != "" ? " $nomeTipoFilme • " : "";?>  <?=$nomeSubMostra;?></h2>
+
+        <div class="txtSubMostra">
+            <?=$descSubMostra;?>
+
+        </div>
 
 
-        <ul class="listafilme" <?=$descSubMostra != "" && $nomeSubMostra != "" ? " style='width: 290px; float: right;'" : "";?>>
-            <?php
-            if(mysql_num_rows($result) > 0) {
-                while( $row = mysql_fetch_object($result) ) {
+        <?php
+    }
+    ?>
 
-                    $CodFilme = $row->codObra;
-                    //$TitObra = $lg=='Ing' ? "TituloObraIng" : "TituloObra";
-                    $diretor = utf8_encode($row->DirecaoObra);
 
-                    if ($lg=='Ing') {
-                        $diretor = str_replace(' e ',' and ',$diretor);
+    <ul class="listafilme" <?=$descSubMostra != "" && $nomeSubMostra != "" ? " style='width: 290px; float: right;'" : "";?>>
+        <?php
+        if(mysql_num_rows($result) > 0) {
+            while( $row = mysql_fetch_object($result) ) {
 
-                        if($row->TituloObraIng != "") {
-                            $tituloObra = $row->TituloObraIng;
-                        } else {
-                            $tituloObra = $row->TituloObra;
-                        }
+                $CodFilme = $row->codObra;
+                //$TitObra = $lg=='Ing' ? "TituloObraIng" : "TituloObra";
+                $diretor = utf8_encode($row->DirecaoObra);
+
+                if ($lg=='Ing') {
+                    $diretor = str_replace(' e ',' and ',$diretor);
+
+                    if($row->TituloObraIng != "") {
+                        $tituloObra = $row->TituloObraIng;
                     } else {
                         $tituloObra = $row->TituloObra;
                     }
-
-                    ?>
-                    <li class="cxAlta">
-                        <a href="<?php echo $this->url('cinebh2017/movie', ['id'=>$CodFilme, 'locale'=>$this->lg]); ?>">
-                            <strong>
-                                <?php
-
-                                ?>
-                                <?php echo utf8_encode($tituloObra)?>
-                                <?php
-                                if($CodFilme == 13085) echo " - Filme de Abertura";
-                                ?>
-                            </strong><br />
-
-                            <span class="subItemListaMenor" style="font-size: 10px; font-style: italic;">
-                        <?php echo $Dir?>: <?php echo $diretor?>
-                    </span>
-                        </a>
-                    </li>
-                    <?php
+                } else {
+                    $tituloObra = $row->TituloObra;
                 }
-            } else {
+
                 ?>
-                <li class="cxAlta">Nenhum filme encontrado</li>
+                <li class="cxAlta">
+                    <a href="<?php echo $this->url('mostratiradentes/movie', ['id'=>$CodFilme]); ?>">
+                        <strong>
+                            <?php
+
+                            ?>
+                            <?php echo utf8_encode($tituloObra)?>
+                            <?php
+                            if($CodFilme == 13085) echo " - Filme de Abertura";
+                            ?>
+                        </strong><br />
+
+                        <span class="subItemListaMenor" style="font-size: 10px; font-style: italic;">
+	        		<?php echo $Dir?>: <?php echo $diretor?>
+	        	</span>
+                    </a>
+                </li>
                 <?php
             }
+        } else {
             ?>
-            <br class="clearfloat" />
-        </ul>
+            <li class="cxAlta">Nenhum filme encontrado</li>
+            <?php
+        }
+        ?>
+        <br class="clearfloat" />
+    </ul>
 
-    </section>
-</div>
+</section>

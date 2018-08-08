@@ -12,8 +12,8 @@ return array(
         'routes' => array(
             'cinebh' => array(
                 'type'    => Hostname::class,
-                'type' => 'Hostname'
-,                'options' => array(
+                'type' => 'Hostname',
+                'options' => array(
                     'route'    => '[www.][:locale.]cinebh.com.br',
                     'defaults' => array(
                         'controller'    => Controller\IndexController::class,
@@ -71,6 +71,20 @@ return array(
                         ),
                         'priority' => '99999'
                     ),
+                    'workshop' => array(
+                        'type' => Segment::class,
+                        'options' => array(
+                            'route' => '/programacao/oficina/:id',
+                            'constraints' => [
+                                'id' => '[a-zA-Z0-9_-]*',
+                            ],
+                            'defaults' => array(
+                                'controller' => Controller\WorkshopController::class,
+                                'action' => 'details',
+                            ),
+                        ),
+                        'priority' => '99999'
+                    ),
                     'movie' => array(
                         'type' => Segment::class,
                         'options' => array(
@@ -79,7 +93,7 @@ return array(
                                 'id' => '[a-zA-Z0-9_-]*',
                             ],
                             'defaults' => array(
-                                'controller' => Controller\ProgramationController::class,
+                                'controller' => Controller\MovieController::class,
                                 'action' => 'movie',
                             ),
                         ),
@@ -93,8 +107,22 @@ return array(
                                 'id' => '[a-zA-Z0-9_-]*',
                             ],
                             'defaults' => array(
-                                'controller' => Controller\ProgramationController::class,
-                                'action' => 'seminar',
+                                'controller' => Controller\SeminarController::class,
+                                'action' => 'details',
+                            ),
+                        ),
+                        'priority' => '99999'
+                    ),
+                    'art' => array(
+                        'type' => Segment::class,
+                        'options' => array(
+                            'route' => '/programacao/arte/:id',
+                            'constraints' => [
+                                'id' => '[a-zA-Z0-9_-]*',
+                            ],
+                            'defaults' => array(
+                                'controller' => Controller\ArtController::class,
+                                'action' => 'details',
                             ),
                         ),
                         'priority' => '99999'

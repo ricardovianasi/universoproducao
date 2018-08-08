@@ -1,0 +1,57 @@
+.programing
+  &-grid
+    width: 100%
+    tr
+      td
+        padding-bottom: 10px
+        padding-top: 10px
+
+  &-item
+    border-bottom: 1px solid black
+    &--left
+      vertical-align: middle
+      padding-right: 25px
+      border-right: 1px solid black
+    &--right
+      padding-left: 25px
+
+  &-date
+    +adjust-font-size-to(28px)
+    font-weight: 700
+    text-transform: uppercase
+    color: #38c2d4
+    span
+      display: block
+      padding-bottom: 15px
+      padding-top: 15px
+
+  &-time,
+  &-item-title
+    display: block
+    +adjust-font-size-to(20px)
+    font-weight: 700
+    text-transform: uppercase
+    letter-spacing: .05em
+    color: #38c2d4
+
+  &-item-title
+    +trailer(.7)
+
+  &-event
+    text-transform: uppercase
+    text-decoration: none
+    display: block
+    color: $color-txt
+    +trailer(.7)
+    &:hover
+      color: $color-palette-1
+
+
+  &-direction
+    +adjust-font-size-to(14px)
+
+  &-info
+    +adjust-font-size-to(12px)
+    font-weight: 700
+    text-transform: uppercase
+    font-style: italic

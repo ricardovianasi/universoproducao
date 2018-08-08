@@ -1,222 +1,206 @@
-<?php if($this->breadcrumbs): ?>
-    <?php echo $this->partial('cinebh2017/partials/_breadcrumbs.phtml', ['breadcrumbs'=>$this->breadcrumbs]); ?>
-<?php endif; ?>
-
-<div class="main-wrapper">
-    <section class="main-content">
-        <header class="main-header">
-            <h1 class="main-title"><?php echo $this->post->getTitle(); ?></h1>
-        </header>
+<section class="main-wrapper main-content">
+    <header class="main-header">
+        <h1 class="main-title"><?php echo $this->post->getTitle(); ?></h1>
+    </header>
 
 
-        <div class="seminarioslist">
+    <div class="seminarioslist">
 
-            <?php
-//            $dbh=mysql_connect ("162.243.253.29", "universoprod2", "ag51www");
-            $dbh=mysql_connect ("127.0.0.1", "root", "root");
-            if (!$dbh) {
-                echo "Não foi possível conectar ao banco de dados: " . mysql_error();
-                exit;
-            }
-            if (!mysql_select_db("universoprod2")) {
-                echo "Não foi possível selecionar universoproducao: " . mysql_error();
-                exit;
-            }
-            function databr($valor)
-            {
-                $valor = substr($valor,8,2) . "/" . substr($valor,5,2) . "/" . substr($valor,0,4);
-                return $valor;
-            }
+        <?php
+        $dbh=mysql_connect ("162.243.253.29", "universoprod2", "ag51www");
+        //$dbh=mysql_connect ("127.0.0.1", "root", "");
+        if (!$dbh) {
+            echo "Não foi possível conectar ao banco de dados: " . mysql_error();
+            exit;
+        }
+        if (!mysql_select_db("universoprod2")) {
+            echo "Não foi possível selecionar universoproducao: " . mysql_error();
+            exit;
+        }
+        function databr($valor)
+        {
+            $valor = substr($valor,8,2) . "/" . substr($valor,5,2) . "/" . substr($valor,0,4);
+            return $valor;
+        }
 
-            function databr2($valor)
-            {
-                $valor = substr($valor,8,2) . "." . substr($valor,5,2) . "." . substr($valor,0,4);
-                return $valor;
-            }
+        function databr2($valor)
+        {
+            $valor = substr($valor,8,2) . "." . substr($valor,5,2) . "." . substr($valor,0,4);
+            return $valor;
+        }
 
-            function data_USA($valor1){
-                $valor1 = substr($valor1,6,4) . "-" . substr($valor1,3,2) . "-" . substr($valor1,0,2);
-                return $valor1;
+        function data_USA($valor1){
+            $valor1 = substr($valor1,6,4) . "-" . substr($valor1,3,2) . "-" . substr($valor1,0,2);
+            return $valor1;
+        }
+        function hora($valor)
+        {
+            if ($valor == '00:00:00') {
+                $texto = "";
+            } else {
+                $texto = date('H:i', strtotime($valor));
+                $texto = str_replace(':','h',$texto);
+                $texto = str_replace('h00','h',$texto);
             }
-            function hora($valor)
+            return $texto;
+        }
+        function formata_data_extenso($strDate)
+        {
+            // Array com os dia da semana em português;
+            $arrDaysOfWeek = array('domingo', 'segunda', 'terça', 'quarta', 'quinta', 'sexta', 'sábado');
+            // Array com os meses do ano em português;
+            $arrMonthsOfYear = array(1 => '01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12');
+            // Descobre o dia da semana
+            $intDayOfWeek = date('w',strtotime($strDate));
+            // Descobre o dia do mês
+            $intDayOfMonth = date('d',strtotime($strDate));
+            // Descobre o mês
+            $intMonthOfYear = date('n',strtotime($strDate));
+            // Descobre o ano
+            $intYear = date('Y',strtotime($strDate));
+            // Formato a ser retornado
+            return $arrDaysOfWeek[$intDayOfWeek];
+        }
+        function is_utf8($str)
+        {
+            $c=0; $b=0;
+            $bits=0;
+            $len=strlen($str);
+            for($i=0; $i<$len; $i++)
             {
-                if ($valor == '00:00:00') {
-                    $texto = "";
-                } else {
-                    $texto = date('H:i', strtotime($valor));
-                    $texto = str_replace(':','h',$texto);
-                    $texto = str_replace('h00','h',$texto);
-                }
-                return $texto;
-            }
-            function horaIng($valor)
-            {
-                if ($valor == '00:00:00') {
-                    $texto = "";
-                } else {
-                    $texto = date('h:i A', strtotime($valor));
-                }
-                return $texto;
-            }
-            function formata_data_extenso($strDate)
-            {
-                // Array com os dia da semana em português;
-                $arrDaysOfWeek = array('domingo', 'segunda', 'terça', 'quarta', 'quinta', 'sexta', 'sábado');
-                // Array com os meses do ano em português;
-                $arrMonthsOfYear = array(1 => '01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12');
-                // Descobre o dia da semana
-                $intDayOfWeek = date('w',strtotime($strDate));
-                // Descobre o dia do mês
-                $intDayOfMonth = date('d',strtotime($strDate));
-                // Descobre o mês
-                $intMonthOfYear = date('n',strtotime($strDate));
-                // Descobre o ano
-                $intYear = date('Y',strtotime($strDate));
-                // Formato a ser retornado
-                return $arrDaysOfWeek[$intDayOfWeek];
-            }
-            function formata_data_extensoIng($strDate)
-            {
-                // Array com os dia da semana em português;
-                $arrDaysOfWeek = array('Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday');
-                // Array com os meses do ano em português;
-                $arrMonthsOfYear = array(1 => '01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12');
-                // Descobre o dia da semana
-                $intDayOfWeek = date('w',strtotime($strDate));
-                // Descobre o dia do mês
-                $intDayOfMonth = date('d',strtotime($strDate));
-                // Descobre o mês
-                $intMonthOfYear = date('n',strtotime($strDate));
-                // Descobre o ano
-                $intYear = date('Y',strtotime($strDate));
-                // Formato a ser retornado
-                return $arrDaysOfWeek[$intDayOfWeek];
-            }
-            function is_utf8($str)
-            {
-                $c=0; $b=0;
-                $bits=0;
-                $len=strlen($str);
-                for($i=0; $i<$len; $i++)
+                $c=ord($str[$i]);
+                if($c > 128)
                 {
-                    $c=ord($str[$i]);
-                    if($c > 128)
+                    if(($c >= 254)) return false;
+                    elseif($c >= 252) $bits=6;
+                    elseif($c >= 248) $bits=5;
+                    elseif($c >= 240) $bits=4;
+                    elseif($c >= 224) $bits=3;
+                    elseif($c >= 192) $bits=2;
+                    else return false;
+                    if(($i+$bits) > $len) return false;
+                    while($bits > 1)
                     {
-                        if(($c >= 254)) return false;
-                        elseif($c >= 252) $bits=6;
-                        elseif($c >= 248) $bits=5;
-                        elseif($c >= 240) $bits=4;
-                        elseif($c >= 224) $bits=3;
-                        elseif($c >= 192) $bits=2;
-                        else return false;
-                        if(($i+$bits) > $len) return false;
-                        while($bits > 1)
-                        {
-                            $i++;
-                            $b=ord($str[$i]);
-                            if($b < 128 || $b > 191) return false;
-                            $bits--;
-                        }
+                        $i++;
+                        $b=ord($str[$i]);
+                        if($b < 128 || $b > 191) return false;
+                        $bits--;
                     }
                 }
-                return true;
             }
+            return true;
+        }
 
-            function utf8($string)
+        function utf8($string)
+        {
+            if (is_utf8($string))
             {
-                if (is_utf8($string))
-                {
-                    return $string;
+                return $string;
+            } else {
+                return utf8_encode($string);
+            }
+        }
+
+        $mostra = 1075;
+        $lg = '';
+        $url = '';
+        $fc = $fl = $sub = $subMostra = $fSub1 = $fSub2 = $fSub3 = '';
+        //$limitCurta = 0;
+        $Dir = "Direção";
+        ?>
+
+        <?php
+        $consulta ="select codSeminario, 
+   tituloSeminario, 
+   tituloSeminarioIng, 
+   descricaoSeminario, 
+   descricaoSeminarioIng, 
+   tipoSeminario, 
+   tematica, 
+   codTematica, 
+   titTematica, 
+   CodItemProg, 
+   CategoriaProg, 
+   Local, 
+   Data, 
+   HoraManhaInicial, 
+   HoraManhaFinal 
+from tb_seminarios
+inner join tb_programacaoevento on tb_seminarios.codSeminario = tb_programacaoevento.CodItemProg
+left join tb_tematica on tb_tematica.codTematica = tb_seminarios.tematica 
+where tb_seminarios.codMostra = 1075
+ and tb_programacaoevento.CategoriaProg = 'SE' 
+order by Data, HoraManhaInicial, tituloSeminario";
+        $result = mysql_query($consulta);
+        if (!$result) {
+            echo "Não foi possível executar a consulta ($sql) no banco de dados:<br /> " . mysql_error();
+            exit;
+        }
+        ?>
+        <?php
+        $linhas = mysql_num_rows($result);
+        if ( $linhas > 0 ){
+            $i=0;
+            while ($row = mysql_fetch_object($result)) {
+                $CodSem = $row->codSeminario;
+
+                $TitSem = $lg=='Ing' ? "tituloSeminarioIng" : "tituloSeminario";
+                $DesSem = $lg=='Ing' ? "descricaoSeminarioIng" : "descricaoSeminario";
+
+                $tituloSeminario = mb_convert_encoding($row->$TitSem, "UTF-8", "ISO-8859-1");
+
+                $dataOrig = $row->Data;
+                $data = databr($dataOrig);
+                $data2 = explode("/", $data);
+
+                if ($lg=='Ing'){
+                    $dataFinal = $data2[1]."-".$data2[0];
+                    $horaInicio = horaIng($row->HoraManhaInicial);
+                    $horaFim = horaIng($row->HoraManhaFinal);
+                    $diaSemana = utf8(formata_data_extensoIng(".$dataOrig."));
                 } else {
-                    return utf8_encode($string);
+                    $dataFinal = $data2[0]."/".$data2[1];
+                    $horaInicio = hora($row->HoraManhaInicial);
+                    $horaFim = hora($row->HoraManhaFinal);
+                    $diaSemana = utf8(formata_data_extenso(".$dataOrig."));
                 }
-            }
 
-            $mostra = 1078;
-            $lg = ($this->lg=='en') ? 'Ing' : '';
-            $url = '';
-            $fc = $fl = $sub = $subMostra = $fSub1 = $fSub2 = $fSub3 = '';
-            //$limitCurta = 0;
-            $Dir = $lg=='Ing' ? "Director(s)" : "Direçao";
-            ?>
-
-            <?php
-            $consulta ="select codSeminario, tituloSeminario, tituloSeminarioIng, descricaoSeminario, descricaoSeminarioIng, tipoSeminario, tematica, codTematica, titTematica, CodItemProg, CategoriaProg, Local, Data, HoraManhaInicial, HoraManhaFinal from tb_seminarios, tb_programacaoevento, tb_tematica where tb_seminarios.codMostra = $mostra and tb_seminarios.codSeminario = tb_programacaoevento.CodItemProg and tb_programacaoevento.CategoriaProg = 'SE' and tb_tematica.codTematica = tb_seminarios.tematica order by Data, HoraManhaInicial, tituloSeminario";
-            $result = mysql_query($consulta);
-            if (!$result) {
-                echo "Não foi possível executar a consulta ($sql) no banco de dados:<br /> " . mysql_error();
-                exit;
-            }
-            ?>
-            <?php
-            $linhas = mysql_num_rows($result);
-            if ( $linhas > 0 ){
-                $i=0;
-                while ($row = mysql_fetch_object($result)) {
-                    $CodSem = $row->codSeminario;
-
-                    $TitSem = $lg=='Ing' ? "tituloSeminarioIng" : "tituloSeminario";
-                    $DesSem = $lg=='Ing' ? "descricaoSeminarioIng" : "descricaoSeminario";
-
-                    $tituloSeminario = mb_convert_encoding($row->$TitSem, "UTF-8", "ISO-8859-1");
-
-                    $dataOrig = $row->Data;
-                    $data = databr($dataOrig);
-                    $data2 = explode("/", $data);
-
-                    if ($lg=='Ing'){
-                        $dataFinal = $data2[1]."-".$data2[0];
-                        $horaInicio = horaIng($row->HoraManhaInicial);
-                        $horaFim = horaIng($row->HoraManhaFinal);
-                        $diaSemana = utf8(formata_data_extensoIng(".$dataOrig."));
-                    } else {
-                        $dataFinal = $data2[0]."/".$data2[1];
-                        $horaInicio = hora($row->HoraManhaInicial);
-                        $horaFim = hora($row->HoraManhaFinal);
-                        $diaSemana = utf8(formata_data_extenso(".$dataOrig."));
+                $local = $row->Local;
+                if ($local != "") {
+                    $SqlLoc = "SELECT TitLocal, TitLocalIng FROM tb_local WHERE CodLocal = $local";
+                    $resultLoc  = mysql_query($SqlLoc);
+                    $linhas = mysql_num_rows($resultLoc);
+                    if ( $linhas > 0 ){
+                        $local	= utf8(mysql_result($resultLoc,0,"TitLocal".$lg.""));
                     }
-
-
-                    $local = $row->Local;
-                    if ($local != "") {
-                        $SqlLoc = "SELECT TitLocal, TitLocalIng FROM tb_local WHERE CodLocal = $local";
-                        $resultLoc  = mysql_query($SqlLoc);
-                        $linhas = mysql_num_rows($resultLoc);
-                        if ( $linhas > 0 ){
-                            $local	= utf8(mysql_result($resultLoc,0,"TitLocal".$lg.""));
-                        }
-                    }
-
-                    ?>
-
-
-
-                    <h2 style="font-size: 18px; margin-bottom: 0"><?php echo $tituloSeminario?></h2>
-
-                    <br /><span ><strong><?php echo utf8($row->titTematica)?></strong></span><br /><br />
-                    <span class="subItemLista cxBaixa">
-                        <strong><?php echo $lg=='Ing' ? "Date" : "Data"; ?></strong>: <?php echo $dataFinal?> | <?php echo $diaSemana?> <br />
-                    <?php if ($horaFim != "") { ?>
-                        <strong><?php echo $lg=='Ing' ? "Time: " : "Hora: de "; ?></strong><?php echo $horaInicio?> <?php echo $lg=='Ing' ? "-" : "às"; ?> <?php echo $horaFim?><br />
-                    <?php }else{ ?>
-                        <strong><?php echo $lg=='Ing' ? "Time" : "Hora"; ?></strong>: <?php echo $horaInicio?><br />
-                    <?php } ?>
-                        <strong><?php echo $lg=='Ing' ? "Spots" : "Local"; ?></strong>: <?php echo $local?></span> <br /><br />
-
-
-                    <?php echo $row->$DesSem?>
-                    <div class="pontHor">&nbsp;</div>
-                    <p></p>
-
-                    <?php
                 }
-            }else{
-                echo "<li>Nenhum seminario cadastrado</li>";
+
+                ?>
+
+
+
+                <h2><?php echo $tituloSeminario?><br /><span style="font-size: 12px;"><?php echo utf8($row->titTematica)?></span><br /><br />
+                    <span class="subItemLista cxBaixa"><?php echo $lg=='Ing' ? "Date" : "Data"; ?>: <?php echo $dataFinal?> | <?php echo $diaSemana?> <br />
+                        <?php if ($horaFim != "") { ?>
+                            <?php echo $lg=='Ing' ? "Time: " : "Hora: de "; ?><?php echo $horaInicio?> <?php echo $lg=='Ing' ? "-" : "às"; ?> <?php echo $horaFim?><br />
+                        <?php }else{ ?>
+                            <?php echo $lg=='Ing' ? "Time" : "Hora"; ?>: <?php echo $horaInicio?><br />
+                        <?php } ?>
+                        <?php echo $lg=='Ing' ? "Spots" : "Local"; ?>: <?php echo $local?></span>
+                </h2>
+
+                <?php echo $row->$DesSem?>
+                <div class="pontHor">&nbsp;</div>
+                <p></p>
+
+                <?php
             }
-            mysql_free_result($result);
-            ?>
+        }else{
+            echo "<li>Nenhum seminario cadastrado</li>";
+        }
+        mysql_free_result($result);
+        ?>
 
-        </div>
+    </div>
 
-    </section>
-</div>
+</section>
