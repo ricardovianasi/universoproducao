@@ -41,7 +41,9 @@
         <td><?php echo $i->getEvent()->getShortName() ?></td>
         <td>
             <?php if($i->getType() == 'movie') {
-                echo $i->getObject()->getTitle();
+                if($i->getObject()) {
+                    echo $i->getObject()->getTitle();
+                }
             } elseif($i->getType() == 'session' && $i->hasMeta('session_title')) {
                 echo 'Sessão de Filmes: ' . $i->hasMeta('session_title')->getValue();
             } ?>
