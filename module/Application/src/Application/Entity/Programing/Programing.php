@@ -250,8 +250,7 @@ class Programing extends AbstractEntity
 
         $queryBuilder = $event
             ->getEntityManager()
-            ->createQueryBuilder()
-            ->select('q');
+            ->createQueryBuilder();
 
         switch ($this->type) {
             case Type::SESSION_SCHOOL:
@@ -283,10 +282,16 @@ class Programing extends AbstractEntity
         }
 
         $queryBuilder
+            ->select('q')
             ->andWhere('q.id = :objectId')
             ->setParameter('objectId', $this->objectId);
 
-        $this->object = $queryBuilder->getQuery()->getOneOrNullResult();
+        try {
+            $this->object = $queryBuilder->getQuery()->getOneOrNullResult();
+        } catch (\Exception $e) {
+            $e = $e;
+        }
+
         return $this->object;
     }
 
