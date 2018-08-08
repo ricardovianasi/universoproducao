@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.6.0.final using JasperReports Library version 6.6.0  -->
+<!-- Created with Jaspersoft Studio version 6.4.0.final using JasperReports Library version 6.4.1  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="seminar-confirmation" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="b287cc87-cf2f-4f2f-96c9-b02346e5a358">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter (10)"/>
 	<queryString language="json">
@@ -132,7 +132,7 @@
 			<staticText>
 				<reportElement key="" x="0" y="230" width="554" height="60" uuid="fd74abba-53a4-4e28-af3c-931b2794e801"/>
 				<textElement textAlignment="Justified"/>
-				<text><![CDATA[Credenciamento: Apresentar este comprovante de inscrição assinado e um documento original com foto para retirar sua credencial no dia 29 de agosto – quarta, de 10h às 13h no balcão de credenciamento localizado no Jardim Externo do Palácio das Artes(piso inferior). ]]></text>
+				<text><![CDATA[Credenciamento: Apresentar este comprovante de inscrição assinado e um documento original com foto para retirar sua credencial no dia 29 de agosto – quarta, de 10h às 13h no balcão de credenciamento localizado no Jardim Externo do Palácio das Artes(piso inferior).]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="1" y="290" width="552" height="30" uuid="5278a376-9da5-4ae4-b163-ec27b12db478"/>
@@ -144,7 +144,9 @@
 			<staticText>
 				<reportElement x="1" y="340" width="554" height="40" uuid="0a956f96-d5dd-4b46-a927-4b1de70134e3"/>
 				<textElement textAlignment="Justified"/>
-				<text><![CDATA[1.    Autorizo a ter minhas imagem e voz veiculadas por meio de internet, jornais, informes e/ou qualquer meio de  publicação/comunicação pública ou privada, para fins exclusivos de divulgação da CineOP – Mostra de Cinema de Ouro Preto, destinados ao público em geral ou para a comunicação institucional.]]></text>
+				<text><![CDATA[1.    Autorizo a ter minhas imagem e voz veiculadas por meio de internet, jornais, informes e/ou
+qualquer meio de publicação/comunicação pública ou privada, para fins exclusivos de divulgação
+da CineBH – Mostra de Cinema de Belo Horizonte e Brasil CineMundi - International Coproduction Meeting, destinados ao público em geral ou para a comunicação institucional.]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="1" y="400" width="554" height="20" uuid="0a323e22-fd06-4ef4-bfee-31e9af67342c"/>
@@ -153,7 +155,7 @@
 			<textField>
 				<reportElement x="0" y="440" width="554" height="30" uuid="8677fb47-01c2-4d30-abac-638094a12fd4"/>
 				<textElement textAlignment="Justified"/>
-				<textFieldExpression><![CDATA["3.    Eu, "+$F{user_name}+", estou ciente e de acordo com todas as informações e condições descritas no regulamento da inscrição para participação do "+$F{seminar}+" , bem como as informações mencionadas neste"]]></textFieldExpression>
+				<textFieldExpression><![CDATA["3.    Eu, "+$F{user_name}+"estou ciente e de acordo com todas as informações e condições descritas no regulamento da inscrição para participação do Programa de Formação Audiovisual, bem como as informações mencionadas neste"]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="1" y="520" width="554" height="80" uuid="6bd7ba34-f8ad-4699-b511-13cfc8da217f"/>
