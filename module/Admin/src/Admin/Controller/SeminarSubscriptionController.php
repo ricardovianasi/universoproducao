@@ -13,6 +13,7 @@ use Admin\Form\Seminar\SeminarSubscriptionSearchForm;
 use Application\Entity\Registration\Options;
 use Application\Entity\Registration\Registration;
 use Application\Entity\Seminar\Category;
+use Application\Entity\Seminar\Debate;
 use Application\Entity\Seminar\SeminarSubscription;
 use Application\Entity\SessionSchool\SessionSchoolSubscription;
 use Application\Entity\User\User;
@@ -77,6 +78,22 @@ class SeminarSubscriptionController extends AbstractAdminController
             $sub = new SeminarSubscription();
         }
 
+        $registration = null;
+        if($regID = $this->params()->fromPost('registration')) {
+            $registration = $this->getRepository(Registration::class)->find($regID);
+        } else {
+            $registration = $sub->getRegistration();
+        }
+
+        $debates =[];
+        if($registration) {
+            $debates = $this
+                ->getRepository(Debate::class)
+                ->findBy([
+                    'event' => $registration->getEvent()->getId()
+                ]);
+        }
+
         $form = new SeminarSubscriptionForm($this->getEntityManager());
         if($this->getRequest()->isPost()) {
             $form->setData($data);
@@ -119,15 +136,21 @@ class SeminarSubscriptionController extends AbstractAdminController
                         'id' => $sub->getId()
                     ]);
                 }
-
             }
         } else {
             $form->setData($sub->toArray());
         }
 
+        $selectedDebates = [];
+        foreach ($sub->getDebates() as $d) {
+            $selectedDebates[] = $d->getId();
+        }
+
         return $this->getViewModel()->setVariables([
-            'form' => $form,
-            'sub' => $sub
+            'form'      => $form,
+            'sub'       => $sub,
+            'debates'   => $debates,
+            'selectedDebates' => $selectedDebates
         ]);
     }
 

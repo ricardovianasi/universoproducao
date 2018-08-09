@@ -42,7 +42,9 @@
 			<div class="portlet-body">
                 <?php echo $this->partial('admin/seminar-subscription/_form.phtml', [
                     'form' => $this->form,
-                    'sub'=>$this->sub
+                    'sub'=>$this->sub,
+                    'debates'=>$this->debates,
+                    'selectedDebates' => $this->selectedDebates
                 ]); ?>
 			</div>
 		</div>

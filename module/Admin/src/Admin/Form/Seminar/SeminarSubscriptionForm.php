@@ -42,7 +42,8 @@ class SeminarSubscriptionForm extends Form
 
         parent::__construct('seminar-subscription-form');
         $this->setAttributes([
-            'id' => 'seminar-subscription-search'
+            'id' => 'seminar-subscription-search',
+            'class' => 'default-form-actions form-reload'
         ]);
 
         $this->add([
@@ -55,6 +56,11 @@ class SeminarSubscriptionForm extends Form
         ]);
 
         $this->add([
+            'type' => 'hidden',
+            'name' => 'debates[]',
+        ]);
+
+        $this->add([
             'type' => 'Select',
             'name' => 'registration',
             'options' => [
@@ -63,7 +69,8 @@ class SeminarSubscriptionForm extends Form
                 'value_options' => $this->populateRegulations(),
             ],
             'attributes' => [
-                'required' => true
+                'required' => true,
+                'class' => 'trigger-form-reload',
             ]
         ]);
 
