@@ -9,9 +9,14 @@
             </header>
             <div class="news-items">
                 <?php foreach ($this->workshopList as $workshop): ?>
-                    
+                    <div style="display: none;width:600px;min-height: 400px" id="manager_<?php echo $workshop->getManager()->getId(); ?>">
+                        <div class="padding" style="padding: 10px">
+                            <p><strong style="font-weight: bold"><?php echo $workshop->getManager()->getName(); ?></strong></p><br />
+                            <?php echo $workshop->getManager()->getDescription(); ?>
+                        </div>
+                    </div>
 
-                    <article class="news-item">
+                    <article class="news-itemblock">
                         <div style="display: inline-block">
                             <header class="news-header">
                                 <h1 class="news-title"><?php  echo $workshop->getName(); ?></h1>
