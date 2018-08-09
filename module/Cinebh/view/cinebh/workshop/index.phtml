@@ -16,7 +16,7 @@
                         </div>
                     </div>
 
-                    <article class="news-item">
+                    <article class="">
                         <div style="display: inline-block">
                             <header class="news-header">
                                 <h1 class="news-title"><?php  echo $workshop->getName(); ?></h1>
@@ -31,6 +31,9 @@
                         <p class="news-desc"></p>
                         <a href="<?php echo $this->url("cinebh/workshop", ['id'=>$workshop->getId()]) ?>" class="btn"><span>Mais informações</span></a>
                     </article>
+                    <br>
+                    <br>
+                    <hr>
 
                 <?php endforeach; ?>
             </div>
