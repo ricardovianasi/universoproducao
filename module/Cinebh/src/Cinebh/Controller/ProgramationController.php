@@ -123,10 +123,12 @@ class ProgramationController extends SiteController
                         }
                     }
                 } else {
-                    $events[] = [
-                        'title' => $prog->getObject()->getTitle()." | <span class=\"programing-direction\">Direção: ".$prog->getObject()->getDirection()."</span>",
-                        'id' => $prog->getObject()->getId()
-                    ];
+                    if($prog->getObject()) {
+                        $events[] = [
+                            'title' => $prog->getObject()->getTitle()." | <span class=\"programing-direction\">Direção: ".$prog->getObject()->getDirection()."</span>",
+                            'id' => $prog->getObject()->getId()
+                        ];
+                    }
                 }
 
                 if($natPre = $prog->hasMeta(Meta::NATIONAL_PREMIERE)) {
