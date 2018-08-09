@@ -7,7 +7,7 @@
             <header class="main-header">
                 <h1 class="main-title"><?php echo $post->getTitle() ?></h1>
             </header>
-            <div class="news-list">
+            <div class="news-list" >
                 <?php foreach ($this->workshopList as $workshop): ?>
                     <div style="display: none;width:600px;min-height: 400px" id="manager_<?php echo $workshop->getManager()->getId(); ?>">
                         <div class="padding" style="padding: 10px">
@@ -16,7 +16,7 @@
                         </div>
                     </div>
 
-                    <article class="news-item">
+                    <article class="news-list">
                         <div style="display: inline-block">
                             <header class="news-header">
                                 <h1 class="news-title"><?php  echo $workshop->getName(); ?></h1>
