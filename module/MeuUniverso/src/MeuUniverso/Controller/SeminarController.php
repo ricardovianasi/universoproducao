@@ -257,6 +257,11 @@ class SeminarController extends AbstractMeuUniversoRegisterController
             /** @var SeminarSubscription $obj */
             $obj = $obj;
 
+            $debates = [];
+            foreach ($obj->getDebates() as $d) {
+                $debates[] = $d->getTitle();
+            }
+
             $preparedItems[]['object'] = [
                 'seminar' => $obj->getSeminarCategory()->getName(),
                 'event_name' => $obj->getEvent()->getShortName(),
@@ -266,7 +271,8 @@ class SeminarController extends AbstractMeuUniversoRegisterController
                 'user_birth_date' => $obj->getUser()->getBirthDate() ? $obj->getUser()->getBirthDate()->format('d/m/Y') : "",
                 'user_parent_name' => $obj->getUser()->getParent() ? $obj->getUser()->getParent()->getName() : "",
                 'user_parent_identifier' => $obj->getUser()->getParent() ? $obj->getUser()->getParent()->getIdentifier() : "",
-                'created_at' => $obj->getCreatedAt()->format('d/m/Y H:i:s')
+                'created_at' => $obj->getCreatedAt()->format('d/m/Y H:i:s'),
+                'debates' => implode(', ', $debates)
             ];
         }
 

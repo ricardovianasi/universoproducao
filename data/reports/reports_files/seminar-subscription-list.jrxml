@@ -67,6 +67,7 @@
 	<field name="id" class="java.lang.String">
 		<fieldDescription><![CDATA[id]]></fieldDescription>
 	</field>
+	<field name="debates" class="java.lang.String"/>
 	<columnHeader>
 		<band height="30" splitType="Stretch">
 			<staticText>
@@ -90,7 +91,7 @@
 				<text><![CDATA[Categoria]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="260" y="0" width="100" height="30" uuid="e57fa390-cb04-40b1-9e1d-c94866ab3a6e"/>
+				<reportElement x="420" y="0" width="100" height="30" uuid="e57fa390-cb04-40b1-9e1d-c94866ab3a6e"/>
 				<box padding="3">
 					<pen lineWidth="0.5"/>
 				</box>
@@ -100,7 +101,7 @@
 				<text><![CDATA[Nome]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="560" y="0" width="100" height="30" uuid="2994a98f-7b1a-4458-b765-92076e85de0e"/>
+				<reportElement x="720" y="0" width="100" height="30" uuid="2994a98f-7b1a-4458-b765-92076e85de0e"/>
 				<box padding="3">
 					<pen lineWidth="0.5"/>
 				</box>
@@ -110,7 +111,7 @@
 				<text><![CDATA[Id. Responsável]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="460" y="0" width="100" height="30" uuid="abf120cd-b478-4a83-a778-23d7d39ef691"/>
+				<reportElement x="620" y="0" width="100" height="30" uuid="abf120cd-b478-4a83-a778-23d7d39ef691"/>
 				<box padding="3">
 					<pen lineWidth="0.5"/>
 				</box>
@@ -120,7 +121,7 @@
 				<text><![CDATA[Responsável]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="360" y="0" width="100" height="30" uuid="79bea67e-a692-457f-997e-f50174fd7181"/>
+				<reportElement x="520" y="0" width="100" height="30" uuid="79bea67e-a692-457f-997e-f50174fd7181"/>
 				<box padding="3">
 					<pen lineWidth="0.5"/>
 				</box>
@@ -130,7 +131,7 @@
 				<text><![CDATA[CPF]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="860" y="0" width="100" height="30" uuid="6e1bb98c-79a7-4167-a8b3-acf1eddac3f7"/>
+				<reportElement x="1020" y="0" width="100" height="30" uuid="6e1bb98c-79a7-4167-a8b3-acf1eddac3f7"/>
 				<box padding="3">
 					<pen lineWidth="0.5"/>
 				</box>
@@ -140,7 +141,7 @@
 				<text><![CDATA[E-mail]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="660" y="0" width="100" height="30" uuid="d252d5c3-00b9-42ed-ae9e-b4ce60bee3ff"/>
+				<reportElement x="820" y="0" width="100" height="30" uuid="d252d5c3-00b9-42ed-ae9e-b4ce60bee3ff"/>
 				<box padding="3">
 					<pen lineWidth="0.5"/>
 				</box>
@@ -150,7 +151,7 @@
 				<text><![CDATA[Data Nascimento]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="760" y="0" width="100" height="30" uuid="83b2d923-3f3d-4745-89b9-98b111364f76"/>
+				<reportElement x="920" y="0" width="100" height="30" uuid="83b2d923-3f3d-4745-89b9-98b111364f76"/>
 				<box padding="3">
 					<pen lineWidth="0.5"/>
 				</box>
@@ -168,6 +169,16 @@
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[Data do cadastro]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="260" y="0" width="160" height="30" uuid="f68d61b2-0e39-489b-9522-eae2443dacf3"/>
+				<box padding="3">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Debates]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
@@ -188,7 +199,7 @@
 				<textFieldExpression><![CDATA[$F{seminar}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="260" y="0" width="100" height="30" uuid="013641a7-aacf-4c4a-900e-203b35de8fd9"/>
+				<reportElement x="420" y="0" width="100" height="30" uuid="013641a7-aacf-4c4a-900e-203b35de8fd9"/>
 				<box padding="3">
 					<pen lineWidth="0.5"/>
 				</box>
@@ -198,7 +209,7 @@
 				<textFieldExpression><![CDATA[$F{user_name}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="360" y="0" width="100" height="30" uuid="6380dfaa-6f30-4bd1-8418-02ea5b8f0957"/>
+				<reportElement x="520" y="0" width="100" height="30" uuid="6380dfaa-6f30-4bd1-8418-02ea5b8f0957"/>
 				<box padding="3">
 					<pen lineWidth="0.5"/>
 				</box>
@@ -208,7 +219,7 @@
 				<textFieldExpression><![CDATA[$F{user_identifier}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="660" y="0" width="100" height="30" uuid="f9edebf6-8b78-47d5-ad3a-7fbf621cfa32"/>
+				<reportElement x="820" y="0" width="100" height="30" uuid="f9edebf6-8b78-47d5-ad3a-7fbf621cfa32"/>
 				<box padding="3">
 					<pen lineWidth="0.5"/>
 				</box>
@@ -218,7 +229,7 @@
 				<textFieldExpression><![CDATA[$F{user_birth_date}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="860" y="0" width="100" height="30" uuid="3297ea76-a436-498a-a7aa-98a7df793abb"/>
+				<reportElement x="1020" y="0" width="100" height="30" uuid="3297ea76-a436-498a-a7aa-98a7df793abb"/>
 				<box padding="3">
 					<pen lineWidth="0.5"/>
 				</box>
@@ -228,7 +239,7 @@
 				<textFieldExpression><![CDATA[$F{user_email}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="560" y="0" width="100" height="30" uuid="d195c447-70d7-46ac-9fec-6d5d5393cf4b"/>
+				<reportElement x="720" y="0" width="100" height="30" uuid="d195c447-70d7-46ac-9fec-6d5d5393cf4b"/>
 				<box padding="3">
 					<pen lineWidth="0.5"/>
 				</box>
@@ -238,7 +249,7 @@
 				<textFieldExpression><![CDATA[$F{user_parent_identifier}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="760" y="0" width="100" height="30" uuid="43d54ac6-b126-4750-b9ab-3eb2eec1838b"/>
+				<reportElement x="920" y="0" width="100" height="30" uuid="43d54ac6-b126-4750-b9ab-3eb2eec1838b"/>
 				<box padding="3">
 					<pen lineWidth="0.5"/>
 				</box>
@@ -248,7 +259,7 @@
 				<textFieldExpression><![CDATA[$F{user_phones}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="460" y="0" width="100" height="30" uuid="74b3a9c5-667e-4619-847d-42fbb4d513fa"/>
+				<reportElement x="620" y="0" width="100" height="30" uuid="74b3a9c5-667e-4619-847d-42fbb4d513fa"/>
 				<box padding="3">
 					<pen lineWidth="0.5"/>
 				</box>
@@ -263,6 +274,13 @@
 					<pen lineWidth="0.5"/>
 				</box>
 				<textFieldExpression><![CDATA[$F{created_at}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="260" y="0" width="160" height="30" uuid="e7480069-e398-46a7-bbd4-7bf4548d783b"/>
+				<box padding="3">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{debates}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>

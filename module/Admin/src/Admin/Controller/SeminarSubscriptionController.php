@@ -122,6 +122,12 @@ class SeminarSubscriptionController extends AbstractAdminController
                 $sub->setUser($user);
                 unset($data['user']);
 
+                foreach ($data['debates'] as $d) {
+                    $deb = $this->getRepository(Debate::class)->find($d);
+                    $sub->getDebates()->add($deb);
+                }
+                unset($data['debates']);
+
                 $this->getEntityManager()->persist($sub);
                 $this->getEntityManager()->flush();
 
@@ -190,6 +196,12 @@ class SeminarSubscriptionController extends AbstractAdminController
             /** @var SeminarSubscription $obj */
             $obj = $obj;
 
+
+            $debates = [];
+            foreach ($obj->getDebates() as $d) {
+                $debates[] = $d->getTitle();
+            }
+
             $preparedItems[]['object'] = [
                 'id' => $obj->getID(),
                 'seminar' => $obj->getSeminarCategory()->getName(),
@@ -203,7 +215,8 @@ class SeminarSubscriptionController extends AbstractAdminController
                 'user_address' => $obj->getUser()->getFullAddress(),
                 'user_phones' => $obj->getUser()->getFullPhones(),
                 'user_email' => $obj->getUser()->getEmail(),
-                'created_at' => $obj->getCreatedAt()->format('d/m/Y H:i:s')
+                'created_at' => $obj->getCreatedAt()->format('d/m/Y H:i:s'),
+                'debates' => implode('; ', $debates)
             ];
         }
 
