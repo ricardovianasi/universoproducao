@@ -74,7 +74,7 @@ class SeminarController extends SiteController
         }
 
         $breadcrumbs = [
-            ['seminario' => 'Seminários'],
+            ['seminario' => 'Programa de formação'],
         ];
 
         return new ViewModel([
