@@ -57,7 +57,7 @@ class SessionSchool extends AbstractRepository
             ->andWhere('s.event = :eventId')
             ->andWhere('m.movie = :movieId')
             ->setParameters([
-                'event' => $eventId,
+                'eventId' => $eventId,
                 'movieId' => $movieId
             ])
             ->getQuery()
