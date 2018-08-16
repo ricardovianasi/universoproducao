@@ -4,6 +4,8 @@ namespace Application\Entity\Movie;
 use Application\Entity\Programing\Programing;
 use Application\Entity\Registration\Registration;
 use Application\Entity\Registration\Type;
+use Application\Entity\SessionSchool\SessionSchool;
+use Application\Entity\SessionSchool\SessionSchoolMovies;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\ORM\Event\LifecycleEventArgs;
@@ -1186,6 +1188,21 @@ class Movie extends AbstractEntity
             ->getObjectManager()
             ->getRepository(Programing::class)
             ->findBy($args, ['date'=>'ASC']);
+
+
+        //Se não achar o filme, verifica a lista de filmes das sessoes cine-escola
+        if(empty($programing)) {
+
+            /** @var SessionSchool $session */
+            $session = $this
+                ->getObjectManager()
+                ->getRepository(SessionSchool::class)
+                ->findSessionByMovie($this->getId(), $event);
+
+            if($session) {
+                return $session->getProgramming();
+            }
+        }
 
         return $programing;
     }

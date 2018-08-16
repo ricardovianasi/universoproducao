@@ -48,4 +48,20 @@ class SessionSchool extends AbstractRepository
 
         return (integer) $total;
     }
+
+    public function findSessionByMovie($movieId, $eventId)
+    {
+        $this
+            ->getEntityManager()
+            ->createQueryBuilder('s')
+            ->innerJoin('Application\Entity\SessionSchool\SessionSchoolMovies', 'm')
+            ->andWhere('s.event = :eventId')
+            ->andWhere('m.movie = :movieId')
+            ->setParameters([
+                'event' => $eventId,
+                'movieId' => $movieId
+            ])
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
 }
