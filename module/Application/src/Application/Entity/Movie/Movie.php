@@ -1308,7 +1308,7 @@ class Movie extends AbstractEntity
         }
 
         if($format) {
-            $return[] = $format->getName();
+            $return[] = str_replace('(H264)', '', $format->getName());
         }
 
         $return[] = $duration.' min';
