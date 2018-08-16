@@ -52,7 +52,6 @@ class SessionSchool extends AbstractRepository
     public function findSessionByMovie($movieId, $eventId)
     {
         $this
-            ->getEntityManager()
             ->createQueryBuilder('s')
             ->innerJoin('s.movies', 'm')
             ->andWhere('s.event = :eventId')
