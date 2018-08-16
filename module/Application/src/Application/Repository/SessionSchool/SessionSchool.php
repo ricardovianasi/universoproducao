@@ -54,7 +54,7 @@ class SessionSchool extends AbstractRepository
         $this
             ->getEntityManager()
             ->createQueryBuilder('s')
-            ->innerJoin('Application\Entity\SessionSchool\SessionSchoolMovies', 'm')
+            ->innerJoin('s.movies', 'm')
             ->andWhere('s.event = :eventId')
             ->andWhere('m.movie = :movieId')
             ->setParameters([
