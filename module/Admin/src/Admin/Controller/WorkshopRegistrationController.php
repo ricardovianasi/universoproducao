@@ -397,36 +397,38 @@ class WorkshopRegistrationController extends AbstractAdminController
             ->getQuery()
             ->getResult();
 
-        var_dump(count($items)); exit();
+        /*var_dump(count($items)); exit();*/
         $count = 0;
         foreach ($items as $item) {
-            /** @var Movie $item */
-            $item = new Movie();
+            /** @var WorkshopSubscription $item */
+            //$item = new WorkshopSubscription();
 
-            $msg = "<p>Prezado (a) ".$item->getAuthor()->getName().",</p>";
-            $msg.= "<p>Agradecemos seu interesse em participar do Programa de Formação da 12ª CineBH – Mostra de Cinema de Belo Horizonte.</p>";
-            $msg.= "<p>Informamos que você não foi selecionado (a) para a oficina XXXXXXXXX.</p>";
+            $msg = "<p>Prezado (a) ".$item->getUser()->getName().",</p>";
+            $msg.= "<p>Agradecemos seu interesse em participar do Programa de Formação da <strong>12ª CineBH – Mostra de Cinema de Belo Horizonte</strong>.</p>";
+            $msg.= "<p>Informamos que você não foi selecionado (a) para a oficina ".$item->getWorkshop()->getName().".</p>";
             $msg.= "<p>Convidamos você para participar das outras atividades do evento: sessões de filmes, debates, shows e rodas de conversa.</p>";
 
-            $msg.= "<p>A programação é gratuita e está disponível no site <a href='http://www.cinebh.com.br'>www.cinebh.com.br</a> .</p>";
             $msg.= "<p>Atenciosamente,<br />Programa de Formação – 12ª CineBH e 9º Brasil CineMundi</p>";
 
             //$to[$item->getAuthor()->getName()] = 'ricardovianasi@gmail.com';
             /** @var \SendGrid\Response $return */
             $return = $this->mailService()->simpleSendEmail(
-                [$item->getAuthor()->getName()=>$item->getAuthor()->getEmail()],
-                //[$item->getAuthor()->getName()=>'ricardovianasi@gmail.com'],
-                'Filmes - 13ª CineOP - Mostra de Cinema de Ouro Preto', $msg);
+            //[$item->getUser()->getName()=>$item->getUser()->getEmail()],
+                [$item->getUser()->getName()=>'ricardovianasi@gmail.com'],
+                'Programa de Formação - 12ª CineBH e 9º Brasil CineMundi', $msg);
 
             $count++;
-            echo "$count - Nome: " . $item->getAuthor()->getName();
-            echo "<br />Email: " . $item->getAuthor()->getEmail();
-            echo "<br />Filme: " . $item->getTitle();
+            echo "$count - Nome: " . $item->getUser()->getName();
+            echo "<br />Email: " . $item->getUser()->getEmail();
+            echo "<br />Oficina: " . $item->getName();
             if($return->statusCode() == 202) {
                 echo "<br /><b>******************-SUCESSO-******************</b><br /><br />";
             } else {
                 echo "<b>******************-ERRO-******************</b><br /><br />";
             }
+
+            break;
+            exit();
         }
 
         return $this->getViewModel();
