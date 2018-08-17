@@ -44,7 +44,7 @@
             <div class="movie-list">
                 <?php foreach ($this->movies as $movie): ?>
                     <article class="movie-item">
-                        <a href="<?php echo $this->url('cinebh/movie', ['id'=>$movie->getId()]) ?>" class="movie-link">
+                        <a href="<?php echo $this->url('cinebh/movie', ['id'=>$movie->getId(), 'locale'=>$this->locale]) ?>" class="movie-link">
                             <div class="movie-cover">
                             <?php if($movie->getMedias()->first()): $media = $movie->getMedias()->first(); ?>
                                 <figure class="movie-figure">
