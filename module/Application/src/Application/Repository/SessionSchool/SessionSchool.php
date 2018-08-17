@@ -51,7 +51,7 @@ class SessionSchool extends AbstractRepository
 
     public function findSessionByMovie($movieId, $eventId)
     {
-        $this
+        $qb = $this
             ->createQueryBuilder('s')
             ->innerJoin('s.movies', 'm')
             ->andWhere('s.event = :eventId')
@@ -59,8 +59,8 @@ class SessionSchool extends AbstractRepository
             ->setParameters([
                 'eventId' => $eventId,
                 'movieId' => $movieId
-            ])
-            ->getQuery()
-            ->getOneOrNullResult();
+            ]);
+
+        return $qb->getQuery()->getOneOrNullResult();
     }
 }
