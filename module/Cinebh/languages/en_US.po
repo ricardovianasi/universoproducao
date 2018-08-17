@@ -1,140 +1,217 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Cinebh\n"
-"POT-Creation-Date: 2017-08-17 10:57-0300\n"
-"PO-Revision-Date: 2017-08-17 10:58-0300\n"
+"POT-Creation-Date: 2018-08-17 09:29-0300\n"
+"PO-Revision-Date: 2018-08-17 09:34-0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.8\n"
+"X-Generator: Poedit 2.1.1\n"
 "X-Poedit-Basepath: ../view\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-KeywordsList: translate\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: cinebh2017/index/index.phtml:21
-msgid "Programação"
-msgstr "Programming"
-
-#: cinebh2017/index/index.phtml:40
-msgid "programação completa"
-msgstr "full programming"
-
-#: cinebh2017/index/index.phtml:49
+#: cinebh/index/index.phtml:22
 msgid "Notícias"
 msgstr "News"
 
-#: cinebh2017/index/index.phtml:65
+#: cinebh/index/index.phtml:38
 msgid "Ver todas as Notícias"
 msgstr "All news"
 
-#: cinebh2017/index/index.phtml:73
+#: cinebh/index/index.phtml:46
 msgid "Vídeos"
 msgstr "Videos"
 
-#: cinebh2017/index/index.phtml:103
+#: cinebh/index/index.phtml:76
 msgid "Ver todos os vídeos"
 msgstr "All videos"
 
-#: cinebh2017/index/index.phtml:123
+#: cinebh/index/index.phtml:96
 msgid "Ver mais imagens"
 msgstr "All photos"
 
-#: cinebh2017/index/index.phtml:132
+#: cinebh/index/index.phtml:105
 msgid "Compartilhe e publique suas imagens usando a #eufaçoaMostra"
 msgstr "Share and publish your images using #eufaçoaMostra"
 
-#: cinebh2017/index/index.phtml:151
+#: cinebh/index/index.phtml:124
 msgid "A cidade em movimento"
 msgstr "The city in motion"
 
-#: cinebh2017/index/index.phtml:158
+#: cinebh/index/index.phtml:131
 msgid "Locais"
 msgstr "Places"
 
-#: cinebh2017/index/index.phtml:164
+#: cinebh/index/index.phtml:137
 msgid "Restaurantes"
 msgstr "Restaurants"
 
-#: cinebh2017/index/index.phtml:170
+#: cinebh/index/index.phtml:143
 msgid "Hoteis e acomodações"
 msgstr "Accommodation"
 
-#: cinebh2017/index/index.phtml:176
+#: cinebh/index/index.phtml:149
 msgid "Turismo e Informações"
 msgstr "Tourism and Information"
 
-#: cinebh2017/index/index.phtml:186
+#: cinebh/index/index.phtml:159
 msgid "Receba nossos informativos"
 msgstr "Receive our newsletter"
 
-#: cinebh2017/index/index.phtml:189
+#: cinebh/index/index.phtml:162
 msgid "Nome"
 msgstr "Name"
 
-#: cinebh2017/index/index.phtml:190
+#: cinebh/index/index.phtml:163
 msgid "E-mail"
 msgstr "E-mail"
 
-#: cinebh2017/index/index.phtml:191
+#: cinebh/index/index.phtml:164
 msgid "Cadastrar"
 msgstr "Register"
 
-#: cinebh2017/partials/navigation.phtml:21
-msgid "Início"
-msgstr "Home"
+#: cinebh/movie/index.phtml:39
+msgid "Buscar"
+msgstr "Search"
 
-#: cinebh2017/programation/movie.phtml:318
-msgid "Faixa etária sugerida"
-msgstr "Classification"
+#: cinebh/movie/index.phtml:58 cinebh/movie/movie.phtml:58
+msgid "Exibições"
+msgstr "Exhibitions"
 
-#: cinebh2017/programation/movie.phtml:324
-msgid "Foto"
-msgstr "Photo"
+#: cinebh/movie/index.phtml:90 cinebh/movie/movie.phtml:44
+msgid "Direção"
+msgstr "Direction"
 
-#: cinebh2017/programation/movie.phtml:335
+#: cinebh/movie/movie.phtml:48
+msgid "Sinopse"
+msgstr "Synopsis"
+
+#: cinebh/movie/movie.phtml:80
+msgid "Roteiro"
+msgstr "Script"
+
+#: cinebh/movie/movie.phtml:81
+#, fuzzy
+#| msgid "Empresa Produtora"
+msgid "Empresa produtora"
+msgstr "Producer"
+
+#: cinebh/movie/movie.phtml:82
+msgid "Co-produção"
+msgstr "Co-production"
+
+#: cinebh/movie/movie.phtml:83
+msgid "Produção executiva"
+msgstr "Executive production"
+
+#: cinebh/movie/movie.phtml:84
+msgid "Direção de produção"
+msgstr "Production Director"
+
+#: cinebh/movie/movie.phtml:85
+msgid "Montagem"
+msgstr "Assembly"
+
+#: cinebh/movie/movie.phtml:86
+msgid "Fotografia"
+msgstr "Photography"
+
+#: cinebh/movie/movie.phtml:87
+msgid "Direção de arte"
+msgstr "Art direction"
+
+#: cinebh/movie/movie.phtml:88
+msgid "Trilha sonora"
+msgstr "Soundtrack"
+
+#: cinebh/movie/movie.phtml:89
+msgid "Mixagem"
+msgstr "Mixing"
+
+#: cinebh/movie/movie.phtml:90
+msgid "Som direto"
+msgstr "Direct sound"
+
+#: cinebh/movie/movie.phtml:91
+msgid "Edição de som"
+msgstr "Sound Editing"
+
+#: cinebh/movie/movie.phtml:92
+msgid "Cenografia"
+msgstr "Set design"
+
+#: cinebh/movie/movie.phtml:93
+msgid "Figurino"
+msgstr "Costume"
+
+#: cinebh/movie/movie.phtml:94
 msgid "Elenco"
 msgstr "Cast"
 
-#: cinebh2017/programation/movie.phtml:339
-msgid "Empresa Produtora"
-msgstr "Producer"
+#: cinebh/news/index.phtml:25
+#, fuzzy
+#| msgid "Leia Mais"
+msgid "Leia mais +"
+msgstr "Read More"
 
-#: cinebh2017/programation/movie.phtml:379
-msgid "EXIBIÇÃO"
-msgstr "EXHIBITION"
+#: cinebh/partials/navigation.phtml:21
+msgid "Início"
+msgstr "Home"
 
-#: cinebh2017/programation/movie.phtml:387
-msgid "EXIBIÇÕES"
-msgstr "EXHIBITIONS"
-
-#: layout/layout.phtml:9
-msgid "CineBH - 11ª Mostra de Cinema de Belo Horizonte"
-msgstr "CineBH - International film festival"
-
-#: layout/layout.phtml:39
-msgid "22-27 agosto 2017"
-msgstr "22-27 august"
-
-#: layout/layout.phtml:39
-msgid "Programação gratuita"
+#: cinebh/programation/index.phtml:43
+#, fuzzy
+#| msgid "Programação gratuita"
+msgid "Programação por data"
 msgstr "Free Programming"
 
-#: layout/layout.phtml:70
+#: cinebh/programation/index.phtml:46
+msgid "Dia"
+msgstr "Day"
+
+#: layout/layout.phtml:9
+#, fuzzy
+#| msgid "CineBH - 11ª Mostra de Cinema de Belo Horizonte"
+msgid "CineBH - 12ª Mostra de Cinema de Belo Horizonte"
+msgstr "CineBH - International film festival"
+
+#: layout/layout.phtml:61
 msgid "Contate-nos"
 msgstr "Contact Us"
 
-#: layout/layout.phtml:78
+#: layout/layout.phtml:69
 msgid "Siga-nos"
 msgstr "Follow us"
 
-#: layout/layout.phtml:89
+#: layout/layout.phtml:80
 msgid "Todos os direitos reservados"
 msgstr "All rights reserved"
+
+#~ msgid "Programação"
+#~ msgstr "Programming"
+
+#~ msgid "programação completa"
+#~ msgstr "full programming"
+
+#~ msgid "Faixa etária sugerida"
+#~ msgstr "Classification"
+
+#~ msgid "Foto"
+#~ msgstr "Photo"
+
+#~ msgid "EXIBIÇÃO"
+#~ msgstr "EXHIBITION"
+
+#~ msgid "EXIBIÇÕES"
+#~ msgstr "EXHIBITIONS"
+
+#~ msgid "22-27 agosto 2017"
+#~ msgstr "22-27 august"
 
 #~ msgid "Descubra ouro preto"
 #~ msgstr "Discover Ouro Preto City"
@@ -144,9 +221,6 @@ msgstr "All rights reserved"
 
 #~ msgid "Todas as Notícias"
 #~ msgstr "All News"
-
-#~ msgid "Leia Mais"
-#~ msgstr "Read More"
 
 #~ msgid "Galeria"
 #~ msgstr "Gallery"
