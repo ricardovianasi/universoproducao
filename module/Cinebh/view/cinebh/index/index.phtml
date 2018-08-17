@@ -29,7 +29,7 @@
                                 <img src="<?php echo  $this->thumbor()->url($news->getMeta('_thumb'))->resize(300, 214); ?>" alt="">
                             </div>
                             <p class="news-title"><?php echo $news->getTitle(); ?></p>
-                            <p class="news-subtitle"><?php echo $news->getSubtitle(); ?></p>
+                            <p class="news-subtitle"><?php echo $this->truncate($news->getSubtitle()); ?></p>
                             <p class="news-readmore">Leia mais +</p>
                         </a>
                     </div>
