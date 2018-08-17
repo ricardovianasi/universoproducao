@@ -100,7 +100,7 @@ $(document).ready(function () {
         ],*/
         dots: true,
         mouseDrag: false,
-        lazyLoad: false,
+        lazyLoad: true,
         loop: true,
         center: true,
         autoplay: true,
