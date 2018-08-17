@@ -12,7 +12,7 @@ use Util\Entity\AbstractEntity;
 
 /**
  * @ORM\Table(name="artistic_proposal_categories")
- * @ORM\Entity(repositoryClass="Application\Repository\Proposal")
+ * @ORM\Entity
  */
 class ArtisticProposalCategory extends AbstractEntity
 {

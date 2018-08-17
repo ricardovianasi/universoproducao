@@ -13,7 +13,7 @@ use Util\Entity\AbstractEntity;
 
 /**
  * @ORM\Table(name="workshop_proposal")
- * @ORM\Entity(repositoryClass="Application\Repository\Proposal")
+ * @ORM\Entity(repositoryClass="Application\Repository\Proposal\WorkshopProposal")
  */
 class WorkshopProposal extends AbstractEntity
 {
@@ -23,47 +23,67 @@ class WorkshopProposal extends AbstractEntity
      */
     private $id;
 
+    /** @ORM\Column(type="text", nullable=true) */
     private $name;
 
+    /** @ORM\Column(type="text", nullable=true) */
     private $objectives;
 
+    /** @ORM\Column(name="program_content", type="text", nullable=true) */
     private $programContent;
 
+    /** @ORM\Column(type="string", nullable=true) */
     private $offer;
 
+    /** @ORM\Column(type="string", nullable=true) */
     private $hours;
 
+    /** @ORM\Column(name="hour_class", type="string", nullable=true) */
     private $hourClass;
 
+    /** @ORM\Column(name="days_duration", type="string", nullable=true) */
     private $daysDuration;
 
+    /** @ORM\Column(type="string", nullable=true) */
     private $shift;
 
+    /** @ORM\Column(name="participant_prerequisites", type="text", nullable=true) */
     private $participantPrerequisites;
 
+    /** @ORM\Column(name="didactic_resources", type="text", nullable=true) */
     private $didacticResources;
 
+    /** @ORM\Column(name="necessary_equipments", type="text", nullable=true) */
     private $necessaryEquipments;
 
+    /** @ORM\Column(name="final_product", type="text", nullable=true) */
     private $finalProduct;
 
+    /** @ORM\Column(name="value_hour_class", type="string", nullable=true) */
     private $valueHourClass;
 
+    /** @ORM\Column(name="instructors_curriculum", type="text", nullable=true) */
     private $instructorsCurriculum;
 
     /** @ORM\Column(name="contact_name", type="string", nullable=true) */
     private $contactName;
 
+    /** @ORM\Column(type="string", nullable=true) */
     private $email;
 
+    /** @ORM\Column(type="string", nullable=true) */
     private $phones;
 
+    /** @ORM\Column(type="string", nullable=true) */
     private $address;
 
+    /** @ORM\Column(type="string", nullable=true) */
     private $cep;
 
+    /** @ORM\Column(type="string", nullable=true) */
     private $city;
 
+    /** @ORM\Column(type="text", nullable=true) */
     private $comments;
 
     /** @ORM\Column(name="created_at", type="datetime", nullable=true) */

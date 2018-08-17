@@ -230,18 +230,6 @@ Assinatura]]></text>
 				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA["Responsável: "+$F{user_parent_name}]]></textFieldExpression>
 			</textField>
-			<staticText>
-				<reportElement x="0" y="520" width="554" height="30" uuid="a75ae71e-9248-4cad-a1fb-32c83d4bb2c8"/>
-				<textElement textAlignment="Center">
-					<font isBold="true"/>
-				</textElement>
-				<text><![CDATA[Atenção]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="0" y="550" width="555" height="49" uuid="c68985f0-73fc-4e03-b08c-1640cc63af3f"/>
-				<textElement textAlignment="Center"/>
-				<text><![CDATA[Este documento é indispensável para a retirada de sua credencial e material na secretaria do evento. Apresente este comprovante assinado e um documento com foto no dia de início da oficina.]]></text>
-			</staticText>
 		</band>
 	</detail>
 	<pageFooter>

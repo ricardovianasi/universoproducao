@@ -12,7 +12,7 @@ use Util\Entity\AbstractEntity;
 
 /**
  * @ORM\Table(name="artistic_proposal")
- * @ORM\Entity(repositoryClass="Application\Repository\Proposal")
+ * @ORM\Entity(repositoryClass="Application\Repository\Proposal\ArtisticProposal")
  */
 class ArtisticProposal extends AbstractEntity
 {
@@ -25,26 +25,40 @@ class ArtisticProposal extends AbstractEntity
     /** @ORM\Column(name="artist_name", type="string", nullable=true) */
     private $artistName;
 
+    /** @ORM\Column(name="show_name", type="string", nullable=true) */
     private $showName;
 
+    /** @ORM\Column(type="string", nullable=true) */
     private $genre;
 
+    /** @ORM\Column(type="string", nullable=true) */
     private $duration;
 
+    /** @ORM\Column(name="target_public", type="string", nullable=true) */
     private $targetPublic;
 
+    /** @ORM\Column(name="suggested_cache", type="string", nullable=true) */
     private $suggestedCache;
 
+    /** @ORM\Column(name="staff_quantity", type="string", nullable=true) */
     private $staffQuantity;
 
+    /** @ORM\Column(name="incentive_law", type="boolean", nullable=true) */
     private $incentiveLaw;
 
+    /** @ORM\Column(type="text", nullable=true) */
     private $links;
 
+    /** @ORM\Column(type="text", nullable=true) */
     private $description;
 
+    /** @ORM\Column(type="text", nullable=true) */
     private $comments;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="ArtisticProposalCategory")
+     * @ORM\JoinColumn(name="category_id", referencedColumnName="id")
+     */
     private $category;
 
     /** @ORM\Column(name="created_at", type="datetime", nullable=true) */
