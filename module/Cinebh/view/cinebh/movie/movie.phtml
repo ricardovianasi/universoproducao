@@ -9,7 +9,7 @@
             <header class="main-header">
 
 
-                <?php if($this->locale == 'en' && !empty($movie->getTitleEnglish())): ?>
+                <?php if($this->locale == 'en' && !empty($this->post->getTitleEnglish())): ?>
                     <h1 class="main-title"><?php echo $this->post->getTitleEnglish(); ?></h1>
                     <h2 class="movie-title--sub"><?php echo $this->post->getTitle(); ?></h2>
                 <?php else: ?>
