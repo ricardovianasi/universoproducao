@@ -18,6 +18,7 @@ class MovieController extends SiteController
 
     public function indexAction()
     {
+        $locale = $this->params('locale','pt');
         $post = $this->params('post');
         $site = $this->getRepository(Site::class)->find(self::SITE_ID);
         $formFilter = new MovieProgramingForm($this->getEntityManager(), $site->getEvent());
@@ -72,12 +73,14 @@ class MovieController extends SiteController
             'post' => $post,
             'breadcrumbs' => $post->getBreadcrumbs(),
             'form' => $formFilter->setData($data),
-            'event' => $site->getEvent()
+            'event' => $site->getEvent(),
+            'locale' => $locale
         ]);
     }
 
     public function movieAction()
     {
+        $locale = $this->params('locale','pt');
         $site = $this->getRepository(Site::class)->find(self::SITE_ID);
 
         $id = $this->params()->fromRoute('id');
@@ -130,6 +133,7 @@ class MovieController extends SiteController
             'medias' => $movieMedias,
             'breadcrumbs' => $breadcrumbs,
             'event' => $site->getEvent(),
+            'locale' => $locale
         ]);
     }
 }

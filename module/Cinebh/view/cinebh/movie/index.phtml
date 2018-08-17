@@ -36,7 +36,7 @@
                         ->setAttribute('required', '')->setOption('empty_option','Local');
                     echo $this->formElement($this->form->get('place'))
                 ?>
-                <button type="submit" class="filter-submit">Buscar</button>
+                <button type="submit" class="filter-submit"><?php echo $this->translate('Buscar') ?></button>
 
                 <?php echo $this->form()->closeTag(); ?>
             </div>
@@ -55,7 +55,7 @@
                                 <?php if(count($movie->getPrograming($this->event->getId()))): ?>
                                 <div class="movie-highlight">
                                     <div class="hightlight-wrapper">
-                                        <p class="hightlight-title">Exibições</p>
+                                        <p class="hightlight-title"><?php echo $this->translate('Exibições') ?></p>
                                         <?php foreach ($movie->getPrograming($this->event->getId()) as $pro): ?>
                                             <?php
                                             $progObj = null;
@@ -78,8 +78,16 @@
                                 <?php endif; ?>
                             <?php endif; ?>
                             </div>
-                            <h1 class="movie-title"><?php echo $movie->getTitle(); ?></h1>
-                            <span class="movie-director">Direção: <?php echo $movie->getDirection(); ?></span>
+                            <h1 class="movie-title">
+                                <?php
+                                    if($this->locale == 'en' && !empty($movie->getTitleEnglish())) {
+                                        echo $movie->getTitleEnglish();
+                                    } else {
+                                        echo $movie->getTitle();
+                                    }
+                                ?>
+                            </h1>
+                            <span class="movie-director"><?php echo $this->translate('Direção') ?>: <?php echo $movie->getDirection(); ?></span>
                         </a>
                     </article>
                 <?php endforeach; ?>
