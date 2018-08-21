@@ -1,0 +1,84 @@
+<?php $form = $this->form; ?>
+<div class="row post news">
+	<div class="col-md-12">
+		<?php $form->prepare(); echo $this->form(null, null)->openTag($form) ?>
+		<div class="portlet light portlet-fit bordered">
+			<div class="portlet-title">
+				<div class="caption">
+					<?php if($this->proposal->getId()): ?>
+					<i class="fa fa-edit"></i>
+					Cadastrar proposta
+					<?php else: ?>
+					<i class="fa fa-file-o"></i>
+					Editar proposta
+					<?php endif; ?>
+				</div>
+				<div class="actions">
+					<a href="<?php echo $this->url('admin/default', ['controller'=>'artistic-proposal']); ?>"
+					   class="btn btn-default">
+						<i class="icon-action-undo"></i>
+						<span class="hidden-xs"> Voltar </span>
+					</a>
+				</div>
+			</div>
+			<div class="portlet-body">
+				<div class="portlet">
+					<div class="portlet-body form">
+						<div class="form-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <?php echo $this->formRow($form->get('artist_name')); ?>
+                                </div>
+                                <div class="col-md-6">
+                                    <?php echo $this->formRow($form->get('show_name')); ?>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <?php echo $this->formRow($form->get('category')); ?>
+                                </div>
+                                <div class="col-md-4">
+                                    <?php echo $this->formRow($form->get('duration')); ?>
+                                </div>
+                                <div class="col-md-4">
+                                    <?php echo $this->formRow($form->get('target_public')); ?>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <?php echo $this->formRow($form->get('suggested_cache')); ?>
+                                </div>
+                                <div class="col-md-4">
+                                    <?php echo $this->formRow($form->get('staff_quantity')); ?>
+                                </div>
+                                <div class="col-md-4">
+                                    <?php echo $this->formRow($form->get('incentive_law')); ?>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <?php echo $this->formRow($form->get('links')); ?>
+                                </div>
+                                <div class="col-md-6">
+                                    <?php echo $this->formRow($form->get('comments')); ?>
+                                </div>
+
+                            </div>
+                        </div>
+
+						<div class="form-actions">
+							<div class="row">
+								<div class="col-md-offset-3 col-md-9">
+									<button type="submit" class="btn blue btn-lg action-save">Salvar</button>
+									<a href="#" class="btn red btn-lg action cancel">Descartar</a>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+		<?php echo $this->form()->closeTag() ?>
+	</div>
+</div>

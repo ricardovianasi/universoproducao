@@ -269,6 +269,26 @@ return [
                     ],
                 ]
             ],
+            [
+                'label' => 'Propostas',
+                'uri' => '#',
+                'icon' => 'icon-book-open',
+                'pages' => [
+                    [
+                        'label' => 'Propostas artísticas',
+                        'route' => 'admin/default',
+                        'controller' => 'artistic-proposal',
+                        'icon' => 'icon-doc',
+                    ],
+                    [
+                        'label' => 'Propostas de oficinas',
+                        'route' => 'admin/default',
+                        'controller' => 'workshop-proposal',
+                        'icon' => 'icon-doc',
+                    ],
+                ]
+
+            ],
 			[
 				'label' => 'Portais',
 				'uri' => '#',
