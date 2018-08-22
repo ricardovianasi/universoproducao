@@ -8,19 +8,19 @@ relative_assets = true
 # CSS and Sass
 css_dir = "./dist/styles/"
 sass_dir = "./app/styles/"
-
+images_dir = "./images/"
 
 # Images
 http_images_path = "../images" # Default: http_path + "/" + images_dir
-images_dir = "./images/"
-images_path = "app/images" # Default: <project_path>/<images_dir>
+# images_dir = "app/images"
+images_path = "./app/images" # Default: <project_path>/<images_dir>
 # generated_images_dir = images_dir
 
 # Fonts
 fonts_dir = "dist/fonts/"
 
 # JavaScript
-javascripts_dir = "./dist/scripts/"
+javascripts_dir = "./app/scripts/"
 
 # Sprites
 #sprite_load_path = "./app/images/"

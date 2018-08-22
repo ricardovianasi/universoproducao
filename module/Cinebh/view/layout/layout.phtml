@@ -27,7 +27,8 @@
 </head>
     <body class="<?php echo $this->placeholder("home-class") ?>">
 
-    <header class="header">
+    <?php if($this->locale == 'pt'): ?><header class="header"><?php endif; ?>
+    <?php if($this->locale == 'en'): ?><header class="header" style="background-image: url('<?php echo $this->basePath("assets/cinebh/dist/images/2018/header-en.png") ?>') !important;"><?php endif; ?>
         <div class="header-wrapper">
             <div class="header-actions">
                 <?php if($this->locale == 'pt'): ?>
