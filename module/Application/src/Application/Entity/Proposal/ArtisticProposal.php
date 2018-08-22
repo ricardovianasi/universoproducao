@@ -43,7 +43,7 @@ class ArtisticProposal extends AbstractEntity
     /** @ORM\Column(name="staff_quantity", type="string", nullable=true) */
     private $staffQuantity;
 
-    /** @ORM\Column(name="incentive_law", type="boolean", nullable=true) */
+    /** @ORM\Column(name="incentive_law", type="string", nullable=true) */
     private $incentiveLaw;
 
     /** @ORM\Column(type="text", nullable=true) */

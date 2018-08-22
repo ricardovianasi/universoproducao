@@ -8,27 +8,21 @@
 
 namespace Admin\Controller;
 
-use Admin\Form\Proposal\ArtisticProposalForm;
-use Admin\Form\User\ResetPasswordForm;
-use Admin\Form\User\UserForm;
-use Admin\Form\User\UserSearch;
-use Application\Entity\AdminUser\User;
-use Application\Entity\Proposal\ArtisticProposal;
-use Application\Entity\Proposal\ArtisticProposalCategory;
-use Util\Security\Crypt;
+use Admin\Form\Proposal\WorkshopProposalForm;
+use Application\Entity\Proposal\WorkshopProposal;
 
-class ArtisticProposalController extends AbstractAdminController
+class WorkshopProposalController extends AbstractAdminController
 	implements CrudInterface
 
 {
 	public function indexAction()
 	{
-		$searchForm = new ArtisticProposalForm();
+		$searchForm = new WorkshopProposalForm();
 		$dataAttr = $this->params()->fromQuery();
 		$searchForm->setData($dataAttr);
 		$searchForm->isValid();
 
-		$items = $this->search(ArtisticProposal::class, $searchForm->getData());
+		$items = $this->search(WorkshopProposal::class, $searchForm->getData());
 
 		$this->getViewModel()->setVariables([
 			'searchForm' => $searchForm,
@@ -46,46 +40,36 @@ class ArtisticProposalController extends AbstractAdminController
 	public function updateAction($id, $data)
 	{
         $result = $this->persist($data, $id);
-        $result->setTemplate('admin/artistic-proposal/create.phtml');
+        $result->setTemplate('admin/workshop-proposal/create.phtml');
         return $result;
 	}
 
 	public function deleteAction($id)
 	{
-		$proposal = $this->getRepository(ArtisticProposal::class)->find($id);
+		$proposal = $this->getRepository(WorkshopProposal::class)->find($id);
 
 		$this->getEntityManager()->remove($proposal);
 		$this->getEntityManager()->flush();
 
 		$this->messages()->flashSuccess('Proposta excluída com sucesso.');
 
-		return $this->redirect()->toRoute('admin/default', ['controller'=>'artistic-proposal']);
+		return $this->redirect()->toRoute('admin/default', ['controller'=>'workshop-proposal']);
 	}
 
 	public function persist($data, $id = null)
 	{
-		$form = new ArtisticProposalForm($this->getEntityManager());
+		$form = new WorkshopProposalForm($this->getEntityManager());
 		if($id) {
-			$proposal = $this->getRepository(ArtisticProposal::class)->find($id);
+			$proposal = $this->getRepository(WorkshopProposal::class)->find($id);
 		} else {
-            $proposal = new ArtisticProposal();
+            $proposal = new WorkshopProposal();
         }
 
 		if($this->getRequest()->isPost()) {
 			$form->setData($data);
 			if($form->isValid()) {
 				$validData = $form->getData();
-
-				if(!empty($validData['category'])) {
-				    $cat = $this
-                        ->getRepository(ArtisticProposalCategory::class)
-                        ->find($validData['category']);
-				    $proposal->setCategory($cat);
-                }
-                unset($validData['category']);
-
 				$proposal->setData($validData);
-
 				$this->getEntityManager()->persist($proposal);
 				$this->getEntityManager()->flush();
 
@@ -94,7 +78,7 @@ class ArtisticProposalController extends AbstractAdminController
 				} else {
 					$this->messages()->flashSuccess("Proposta criado com sucesso!");
 					return $this->redirect()->toRoute('admin/default', [
-						'controller' => 'artistic-proposal',
+						'controller' => 'workshop-proposal',
 						'action' => 'update',
 						'id' => $proposal->getId()
 					]);

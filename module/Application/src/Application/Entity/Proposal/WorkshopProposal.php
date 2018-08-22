@@ -59,8 +59,14 @@ class WorkshopProposal extends AbstractEntity
     /** @ORM\Column(name="final_product", type="text", nullable=true) */
     private $finalProduct;
 
+    /** @ORM\Column(name="display_final_product", type="text", nullable=true) */
+    private $displayFinalProduct;
+
     /** @ORM\Column(name="value_hour_class", type="string", nullable=true) */
     private $valueHourClass;
+
+    /** @ORM\Column(name="total_value", type="string", nullable=true) */
+    private $totalValue;
 
     /** @ORM\Column(name="instructors_curriculum", type="text", nullable=true) */
     private $instructorsCurriculum;
@@ -475,5 +481,38 @@ class WorkshopProposal extends AbstractEntity
     {
         $this->updatedAt = $updatedAt;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getDisplayFinalProduct()
+    {
+        return $this->displayFinalProduct;
+    }
+
+    /**
+     * @param mixed $displayFinalProduct
+     */
+    public function setDisplayFinalProduct($displayFinalProduct)
+    {
+        $this->displayFinalProduct = $displayFinalProduct;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTotalValue()
+    {
+        return $this->totalValue;
+    }
+
+    /**
+     * @param mixed $totalValue
+     */
+    public function setTotalValue($totalValue)
+    {
+        $this->totalValue = $totalValue;
+    }
+
 
 }

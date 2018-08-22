@@ -270,75 +270,75 @@ class WorkshopRegistrationController extends AbstractMeuUniversoRegisterControll
         ];
     }
 
-    public function confirmacaoAction()
-    {
-        $idReg = $this->params()->fromRoute('id_reg');
-        if(!$idReg) {
-            return $this->redirect()->toRoute('meu-universo/default', [], ['query'=>[
-                'code' => self::ERROR_REG_NOT_FOUND,
-                'id_reg' => $idReg
-            ]]);
-        }
-
-        $reg = $this->getRepository(Registration::class)->findOneBy([
-            'hash' => $idReg
-        ]);
-
-        if(!$reg) {
-            return $this->redirect()->toRoute('meu-universo/default', [], ['query'=>[
-                'code' => self::ERROR_REG_NOT_FOUND,
-                'id_reg' => $idReg
-            ]]);
-        }
-
-        //Verificar se o prazo para confirmação está aberto
-        /*if(!$reg->isOpen()) {
-            return $this->redirect()->toRoute('meu-universo/default', [], ['query'=>[
-                'code' => self::ERROR_REG_IS_CLOSED,
-                'id_reg' => $idReg
-            ]]);
-        }*/
-
-        $user = $this->getAuthenticationService()->getIdentity();
-
-        $idWorkshopSubscription = $this->params()->fromRoute('id');
-        if(!$idWorkshopSubscription) {
-            return $this->redirect()->toRoute('meu-universo/default', [], ['query'=>[
-                'code' => self::ERROR_REG_NOT_FOUND,
-                'id_reg' => $idReg
-            ]]);
-        }
-
-        //Recuperar a inscrição do cara
-        /** @var WorkshopSubscription $subscription */
-        $subscription = $this->getRepository(WorkshopSubscription::class)->findOneBy([
-            'id' => $idWorkshopSubscription,
-            'registration' => $reg->getId(),
-            'user' => $user->getId()
-        ]);
-        if(!$subscription) {
-            return $this->redirect()->toRoute('meu-universo/default', [], ['query'=>[
-                'code' => self::ERROR_WORKSHOP_NOT_FOUNT,
-                'id_reg' => $idReg
-            ]]);
-        }
-
-        $confirmacao = $this->params()->fromQuery('confirmacao', null);
-        if($confirmacao == 'sim') {
-            $subscription->setStatus(Status::CONFIRMED);
-        } elseif($confirmacao == 'nao') {
-            $subscription->setStatus(Status::NOT_CONFIRMED);
-        }
-
-        $this->getEntityManager()->persist($subscription);
-        $this->getEntityManager()->flush();
-
-        return [
-            'reg' => $reg,
-            'subscription' => $subscription,
-            'confirmacao' => $confirmacao
-        ];
-    }
+//    public function confirmacaoAction()
+//    {
+//        $idReg = $this->params()->fromRoute('id_reg');
+//        if(!$idReg) {
+//            return $this->redirect()->toRoute('meu-universo/default', [], ['query'=>[
+//                'code' => self::ERROR_REG_NOT_FOUND,
+//                'id_reg' => $idReg
+//            ]]);
+//        }
+//
+//        $reg = $this->getRepository(Registration::class)->findOneBy([
+//            'hash' => $idReg
+//        ]);
+//
+//        if(!$reg) {
+//            return $this->redirect()->toRoute('meu-universo/default', [], ['query'=>[
+//                'code' => self::ERROR_REG_NOT_FOUND,
+//                'id_reg' => $idReg
+//            ]]);
+//        }
+//
+//        //Verificar se o prazo para confirmação está aberto
+//        /*if(!$reg->isOpen()) {
+//            return $this->redirect()->toRoute('meu-universo/default', [], ['query'=>[
+//                'code' => self::ERROR_REG_IS_CLOSED,
+//                'id_reg' => $idReg
+//            ]]);
+//        }*/
+//
+//        $user = $this->getAuthenticationService()->getIdentity();
+//
+//        $idWorkshopSubscription = $this->params()->fromRoute('id');
+//        if(!$idWorkshopSubscription) {
+//            return $this->redirect()->toRoute('meu-universo/default', [], ['query'=>[
+//                'code' => self::ERROR_REG_NOT_FOUND,
+//                'id_reg' => $idReg
+//            ]]);
+//        }
+//
+//        //Recuperar a inscrição do cara
+//        /** @var WorkshopSubscription $subscription */
+//        $subscription = $this->getRepository(WorkshopSubscription::class)->findOneBy([
+//            'id' => $idWorkshopSubscription,
+//            'registration' => $reg->getId(),
+//            'user' => $user->getId()
+//        ]);
+//        if(!$subscription) {
+//            return $this->redirect()->toRoute('meu-universo/default', [], ['query'=>[
+//                'code' => self::ERROR_WORKSHOP_NOT_FOUNT,
+//                'id_reg' => $idReg
+//            ]]);
+//        }
+//
+//        $confirmacao = $this->params()->fromQuery('confirmacao', null);
+//        if($confirmacao == 'sim') {
+//            $subscription->setStatus(Status::CONFIRMED);
+//        } elseif($confirmacao == 'nao') {
+//            $subscription->setStatus(Status::NOT_CONFIRMED);
+//        }
+//
+//        $this->getEntityManager()->persist($subscription);
+//        $this->getEntityManager()->flush();
+//
+//        return [
+//            'reg' => $reg,
+//            'subscription' => $subscription,
+//            'confirmacao' => $confirmacao
+//        ];
+//    }
 
     public function comprovanteAction()
     {
