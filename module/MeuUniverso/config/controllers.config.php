@@ -20,6 +20,8 @@ return [
         Controller\EducationalMovieRegistrationController::class    => InvokableFactory::class,
         Controller\SessionSchoolController::class                   => InvokableFactory::class,
         Controller\SeminarController::class                         => InvokableFactory::class,
+        Controller\WorkshopProposalController::class                => InvokableFactory::class,
+        Controller\ArtisticProposalController::class                => InvokableFactory::class,
     ],
     'initializers' => [
         function($instance, $sm) {

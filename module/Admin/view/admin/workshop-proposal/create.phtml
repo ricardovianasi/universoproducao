@@ -19,102 +19,51 @@
 						<i class="icon-action-undo"></i>
 						<span class="hidden-xs"> Voltar </span>
 					</a>
+                    <?php if($this->proposal->getId()): ?>
+                        <div class="btn-group">
+                            <a class="btn btn-default dropdown-toggle" href="javascript:;" data-toggle="dropdown">
+                                <i class="fa fa-share"></i>
+                                <span class="hidden-xs"> Opções </span>
+                                <i class="fa fa-angle-down"></i>
+                            </a>
+                            <div class="dropdown-menu pull-right">
+                                <li>
+                                    <a class="report-link"
+                                       data-url="<?php echo $this->url('admin/default', ['controller'=>'workshop-proposal', 'action'=>'export', 'id'=>$this->proposal->getId()]) ?>"
+                                       href="#"> Gerar ficha de cadastro </a>
+                                </li>
+                            </div>
+                        </div>
+                    <?php endif; ?>
 				</div>
 			</div>
 			<div class="portlet-body">
 				<div class="portlet">
 					<div class="portlet-body form">
 						<div class="form-body">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <?php echo $this->formRow($form->get('name')); ?>
-                                </div>
-                                <div class="col-md-6">
-                                    <?php echo $this->formRow($form->get('offer')); ?>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <?php echo $this->formRow($form->get('objectives')); ?>
-                                </div>
-                                <div class="col-md-6">
-                                    <?php echo $this->formRow($form->get('program_content')); ?>
-                                </div>
-
-                            </div>
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <?php echo $this->formRow($form->get('hours')); ?>
-                                </div>
-                                <div class="col-md-3">
-                                    <?php echo $this->formRow($form->get('hour_class')); ?>
-                                </div>
-                                <div class="col-md-3">
-                                    <?php echo $this->formRow($form->get('days_duration')); ?>
-                                </div>
-                                <div class="col-md-3">
-                                    <?php echo $this->formRow($form->get('shift')); ?>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <?php echo $this->formRow($form->get('participant_prerequisites')); ?>
-                                </div>
-                                <div class="col-md-4">
-                                    <?php echo $this->formRow($form->get('didactic_resources')); ?>
-                                </div>
-                                <div class="col-md-4">
-                                    <?php echo $this->formRow($form->get('necessary_equipments')); ?>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <?php echo $this->formRow($form->get('final_product')); ?>
-                                </div>
-                                <div class="col-md-4">
-                                    <?php echo $this->formRow($form->get('display_final_product')); ?>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <?php echo $this->formRow($form->get('value_hour_class')); ?>
-                                </div>
-                                <div class="col-md-4">
-                                    <?php echo $this->formRow($form->get('total_value')); ?>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <?php echo $this->formRow($form->get('instructors_curriculum')); ?>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <?php echo $this->formRow($form->get('contact_name')); ?>
-                                </div>
-                                <div class="col-md-4">
-                                    <?php echo $this->formRow($form->get('email')); ?>
-                                </div>
-                                <div class="col-md-4">
-                                    <?php echo $this->formRow($form->get('phones')); ?>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <?php echo $this->formRow($form->get('address')); ?>
-                                </div>
-                                <div class="col-md-4">
-                                    <?php echo $this->formRow($form->get('cep')); ?>
-                                </div>
-                                <div class="col-md-4">
-                                    <?php echo $this->formRow($form->get('city')); ?>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <?php echo $this->formRow($form->get('comments')); ?>
-                                </div>
-                            </div>
+                            <?php echo $this->formRow($form->get('name')) ?>
+                            <?php echo $this->formRow($form->get('offer')) ?>
+                            <?php echo $this->formRow($form->get('objectives')) ?>
+                            <?php echo $this->formRow($form->get('program_content')) ?>
+                            <?php echo $this->formRow($form->get('hours')) ?>
+                            <?php echo $this->formRow($form->get('hour_class')) ?>
+                            <?php echo $this->formRow($form->get('days_duration')) ?>
+                            <?php echo $this->formRow($form->get('shift')) ?>
+                            <?php echo $this->formRow($form->get('participant_prerequisites')) ?>
+                            <?php echo $this->formRow($form->get('didactic_resources')) ?>
+                            <?php echo $this->formRow($form->get('necessary_equipments')) ?>
+                            <?php echo $this->formRow($form->get('final_product')) ?>
+                            <?php echo $this->formRow($form->get('display_final_product')) ?>
+                            <?php echo $this->formRow($form->get('value_hour_class')) ?>
+                            <?php echo $this->formRow($form->get('total_value')) ?>
+                            <?php echo $this->formRow($form->get('instructors_curriculum')) ?>
+                            <?php echo $this->formRow($form->get('contact_name')) ?>
+                            <?php echo $this->formRow($form->get('email')) ?>
+                            <?php echo $this->formRow($form->get('phones')) ?>
+                            <?php echo $this->formRow($form->get('address')) ?>
+                            <?php echo $this->formRow($form->get('cep')) ?>
+                            <?php echo $this->formRow($form->get('city')) ?>
+                            <?php echo $this->formRow($form->get('comments')) ?>
                         </div>
 
 						<div class="form-actions">

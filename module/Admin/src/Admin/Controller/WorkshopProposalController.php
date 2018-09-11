@@ -93,4 +93,42 @@ class WorkshopProposalController extends AbstractAdminController
 			'proposal' => $proposal
 		]);
 	}
+
+    public function exportAction()
+    {
+        //recupera os itens
+        $id = $this->params()->fromRoute('id');
+        $item = $this->getRepository(WorkshopProposal::class)->find($id);
+
+        //criar um arquivo json
+        $preparedItems = $this->prepareItemsForReports($item);
+
+        return $this->prepareReport($preparedItems, 'workshop-proposal' ,'pdf');
+    }
+
+    protected function prepareItemsForReports($items)
+    {
+        if(!is_array($items)) {
+            $items = [$items];
+        }
+
+        $preparedItems = [];
+        foreach ($items as $obj) {
+            //$obj = new ArtisticProposal();
+            $array = $obj->toArray();
+            unset($array['updated_at']);
+            unset($array['default_input_filters']);
+
+            //Created At
+            $createdAt = "";
+            if($obj->getCreatedAt() instanceof \DateTime) {
+                $createdAt = $obj->getCreatedAt()->format('d/m/Y H:i:s');
+            }
+            $array['created_at'] = $createdAt;
+
+            $preparedItems[]['object'] = $array;
+        }
+
+        return $preparedItems;
+    }
 }

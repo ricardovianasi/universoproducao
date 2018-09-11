@@ -19,6 +19,22 @@
 						<i class="icon-action-undo"></i>
 						<span class="hidden-xs"> Voltar </span>
 					</a>
+                    <?php if($this->proposal->getId()): ?>
+                        <div class="btn-group">
+                            <a class="btn btn-default dropdown-toggle" href="javascript:;" data-toggle="dropdown">
+                                <i class="fa fa-share"></i>
+                                <span class="hidden-xs"> Opções </span>
+                                <i class="fa fa-angle-down"></i>
+                            </a>
+                            <div class="dropdown-menu pull-right">
+                                <li>
+                                    <a class="report-link"
+                                       data-url="<?php echo $this->url('admin/default', ['controller'=>'artistic-proposal', 'action'=>'export', 'id'=>$this->proposal->getId()]) ?>"
+                                       href="#"> Gerar ficha de cadastro </a>
+                                </li>
+                            </div>
+                        </div>
+                    <?php endif; ?>
 				</div>
 			</div>
 			<div class="portlet-body">
@@ -26,43 +42,16 @@
 					<div class="portlet-body form">
 						<div class="form-body">
                             <div class="row">
-                                <div class="col-md-6">
-                                    <?php echo $this->formRow($form->get('artist_name')); ?>
-                                </div>
-                                <div class="col-md-6">
-                                    <?php echo $this->formRow($form->get('show_name')); ?>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <?php echo $this->formRow($form->get('category')); ?>
-                                </div>
-                                <div class="col-md-4">
-                                    <?php echo $this->formRow($form->get('duration')); ?>
-                                </div>
-                                <div class="col-md-4">
-                                    <?php echo $this->formRow($form->get('target_public')); ?>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <?php echo $this->formRow($form->get('suggested_cache')); ?>
-                                </div>
-                                <div class="col-md-4">
-                                    <?php echo $this->formRow($form->get('staff_quantity')); ?>
-                                </div>
-                                <div class="col-md-4">
-                                    <?php echo $this->formRow($form->get('incentive_law')); ?>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <?php echo $this->formRow($form->get('links')); ?>
-                                </div>
-                                <div class="col-md-6">
-                                    <?php echo $this->formRow($form->get('comments')); ?>
-                                </div>
-
+                                <?php echo $this->formRow($form->get('artist_name')) ?>
+                                <?php echo $this->formRow($form->get('show_name')) ?>
+                                <?php echo $this->formRow($form->get('category')) ?>
+                                <?php echo $this->formRow($form->get('duration')) ?>
+                                <?php echo $this->formRow($form->get('target_public')) ?>
+                                <?php echo $this->formRow($form->get('suggested_cache')) ?>
+                                <?php echo $this->formRow($form->get('staff_quantity')) ?>
+                                <?php echo $this->formRow($form->get('incentive_law')) ?>
+                                <?php echo $this->formRow($form->get('links')) ?>
+                                <?php echo $this->formRow($form->get('comments')) ?>
                             </div>
                         </div>
 

@@ -1,0 +1,37 @@
+<?php $form = $this->form; ?>
+
+<div class="container">
+    <p class="meuuniverso-brand meuuniverso-brand--center"><strong>Meu</strong>Universo | Proposta de oficina</p>
+        <div class="row">
+            <?php $form->prepare(); echo $this->form(null, null)->openTag($form); ?>
+
+            <?php echo $this->formRow($form->get('name')) ?>
+            <?php echo $this->formRow($form->get('offer')) ?>
+            <?php echo $this->formRow($form->get('objectives')) ?>
+            <?php echo $this->formRow($form->get('program_content')) ?>
+            <?php echo $this->formRow($form->get('hours')) ?>
+            <?php echo $this->formRow($form->get('hour_class')) ?>
+            <?php echo $this->formRow($form->get('days_duration')) ?>
+            <?php echo $this->formRow($form->get('shift')) ?>
+            <?php echo $this->formRow($form->get('participant_prerequisites')) ?>
+            <?php echo $this->formRow($form->get('didactic_resources')) ?>
+            <?php echo $this->formRow($form->get('necessary_equipments')) ?>
+            <?php echo $this->formRow($form->get('final_product')) ?>
+            <?php echo $this->formRow($form->get('display_final_product')) ?>
+            <?php echo $this->formRow($form->get('value_hour_class')) ?>
+            <?php echo $this->formRow($form->get('total_value')) ?>
+            <?php echo $this->formRow($form->get('instructors_curriculum')) ?>
+            <?php echo $this->formRow($form->get('contact_name')) ?>
+            <?php echo $this->formRow($form->get('email')) ?>
+            <?php echo $this->formRow($form->get('phones')) ?>
+            <?php echo $this->formRow($form->get('address')) ?>
+            <?php echo $this->formRow($form->get('cep')) ?>
+            <?php echo $this->formRow($form->get('city')) ?>
+            <?php echo $this->formRow($form->get('comments')) ?>
+
+            <div class="form-group">
+                <div class="col-md-offset-3 col-md-5"><button class="btn btn-success" type="submit">Cadastrar</button></div>
+            </div>
+            <?php echo $this->form()->closeTag() ?>
+        </div>
+</div>

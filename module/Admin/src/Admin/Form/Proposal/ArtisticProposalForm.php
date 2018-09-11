@@ -23,13 +23,18 @@ class ArtisticProposalForm extends Form
         parent::__construct('artistic-proposal-form');
         $this->setAttributes([
             'method' => 'POST',
-            'class' => 'default-form-actions enable-validators'
+            'class' => 'default-form-actions enable-validators form-horizontal'
         ]);
 
         $this->add([
             'name' => 'artist_name',
             'options' => [
-                'label' => 'Artista/Banda/Companhia'
+                'label' => 'Artista/Banda/Companhia',
+                'twb-layout' => 'horizontal',
+                'column-size' => 'md-5',
+                'label_attributes' => [
+                    'class' => 'col-md-3'
+                ]
             ],
             'attributes' => [
                 'placeholder' => 'Artista/Banda/Companhia',
@@ -40,7 +45,12 @@ class ArtisticProposalForm extends Form
         $this->add([
             'name' => 'show_name',
             'options' => [
-                'label' => 'Nome do show ou espetáculo'
+                'label' => 'Nome do show ou espetáculo',
+                'twb-layout' => 'horizontal',
+                'column-size' => 'md-5',
+                'label_attributes' => [
+                    'class' => 'col-md-3'
+                ]
             ],
             'attributes' => [
                 'placeholder' => 'Nome do show ou espetáculo',
@@ -51,7 +61,12 @@ class ArtisticProposalForm extends Form
         $this->add([
             'name' => 'duration',
             'options' => [
-                'label' => 'Duração'
+                'label' => 'Duração',
+                'twb-layout' => 'horizontal',
+                'column-size' => 'md-5',
+                'label_attributes' => [
+                    'class' => 'col-md-3'
+                ]
             ],
             'attributes' => [
                 'placeholder' => 'Duração',
@@ -65,6 +80,11 @@ class ArtisticProposalForm extends Form
                 'label' => 'Segmento',
                 'value_options' => $this->populateSegments(),
                 'empty_option' => 'Selecione',
+                'twb-layout' => 'horizontal',
+                'column-size' => 'md-5',
+                'label_attributes' => [
+                    'class' => 'col-md-3'
+                ]
             ],
             'attributes' => [
 //                'required' => 'required',
@@ -75,13 +95,18 @@ class ArtisticProposalForm extends Form
             'type' => 'Select',
             'name' => 'target_public',
             'options' => [
-                'label' => 'Segmento',
+                'label' => 'Público alvo',
                 'value_options' => [
                     'Adulto' => 'Aduto',
                     'Infantil' => 'Infantil',
                     'Não se aplica' => 'Não se aplica'
                 ],
                 'empty_option' => 'Selecione',
+                'twb-layout' => 'horizontal',
+                'column-size' => 'md-5',
+                'label_attributes' => [
+                    'class' => 'col-md-3'
+                ]
             ],
             'attributes' => [
 //                'required' => 'required',
@@ -91,7 +116,12 @@ class ArtisticProposalForm extends Form
         $this->add([
             'name' => 'suggested_cache',
             'options' => [
-                'label' => 'Cache sugerido'
+                'label' => 'Cache sugerido',
+                'twb-layout' => 'horizontal',
+                'column-size' => 'md-5',
+                'label_attributes' => [
+                    'class' => 'col-md-3'
+                ]
             ],
             'attributes' => [
                 'placeholder' => 'Nome do show ou espetáculo',
@@ -102,7 +132,12 @@ class ArtisticProposalForm extends Form
             'name' => 'staff_quantity',
             'options' => [
                 'label' => 'Equipe',
-                'help-block' => 'Nº de pessoas incluindo artistas, banda, técnica, etc'
+                'help-block' => 'Nº de pessoas incluindo artistas, banda, técnica, etc',
+                'twb-layout' => 'horizontal',
+                'column-size' => 'md-5',
+                'label_attributes' => [
+                    'class' => 'col-md-3'
+                ]
             ],
             'attributes' => [
             ]
@@ -118,6 +153,12 @@ class ArtisticProposalForm extends Form
                     'Não' => 'Não'
                 ],
                 'empty_option' => 'Selecione',
+
+                'twb-layout' => 'horizontal',
+                'column-size' => 'md-5',
+                'label_attributes' => [
+                    'class' => 'col-md-3'
+                ]
             ],
             'attributes' => [
 //                'required' => 'required',
@@ -129,7 +170,12 @@ class ArtisticProposalForm extends Form
             'name' => 'links',
             'options' => [
                 'label' => 'Links de refêrencia',
-                'help-block' => 'Facebook, site, etc'
+                'help-block' => 'Facebook, site, etc',
+                'twb-layout' => 'horizontal',
+                'column-size' => 'md-5',
+                'label_attributes' => [
+                    'class' => 'col-md-3'
+                ]
             ],
             'attributes' => [
                 'rows' => 10
@@ -141,6 +187,11 @@ class ArtisticProposalForm extends Form
             'name' => 'comments',
             'options' => [
                 'label' => 'Comentários/Observações',
+                'twb-layout' => 'horizontal',
+                'column-size' => 'md-5',
+                'label_attributes' => [
+                    'class' => 'col-md-3'
+                ]
             ],
             'attributes' => [
                 'rows' => 10

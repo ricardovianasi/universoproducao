@@ -63,6 +63,12 @@
                                 case \Application\Entity\Registration\Type::SEMINAR:
                                     $url = $this->url('meu-universo/seminar', ['id_reg'=>$reg->getHash(), 'action'=>'inscricao']);
                                     break;
+                                case \Application\Entity\Registration\Type::WORKSHOP_PROPOSAL:
+                                    $url = $this->url('meu-universo/workshop_proposal');
+                                    break;
+                                case \Application\Entity\Registration\Type::ARTISTIC_PROPOSAL:
+                                    $url = $this->url('meu-universo/artistic_proposal', ['id_reg'=>$reg->getHash(), 'action'=>'inscricao']);
+                                    break;
                                 default:
                                     $url = "#";
 
@@ -71,7 +77,7 @@
                         <p><a href="<?php echo $url ?>" class="registration-btn submit">Fazer inscrição</a></p>
                     <?php endif; ?>
 
-                    <div style="display: none">
+                    <div style="display: none;">
                         <div class="registration-modal" id="regulation-<?php echo $reg->getId();?>">
                             <h2><?php echo $reg->getName(); ?></h2>
                             <?php echo $reg->getRegulation(); ?>

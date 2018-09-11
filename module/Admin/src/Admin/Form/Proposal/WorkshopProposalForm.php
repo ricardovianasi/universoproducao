@@ -17,13 +17,18 @@ class WorkshopProposalForm extends Form
         parent::__construct('workshop-proposal-form');
         $this->setAttributes([
             'method' => 'POST',
-            'class' => 'default-form-actions enable-validators'
+            'class' => 'default-form-actions enable-validators form-horizontal'
         ]);
 
         $this->add([
             'name' => 'name',
             'options' => [
-                'label' => 'Nome da oficina'
+                'label' => 'Nome da oficina',
+                'twb-layout' => 'horizontal',
+                'column-size' => 'md-5',
+                'label_attributes' => [
+                    'class' => 'col-md-3'
+                ]
             ],
             'attributes' => [
                 'placeholder' => 'Nome da oficina',
@@ -35,7 +40,12 @@ class WorkshopProposalForm extends Form
             'type' => 'Textarea',
             'name' => 'objectives',
             'options' => [
-                'label' => 'Objetivo geral da oficina'
+                'label' => 'Objetivo geral da oficina',
+                'twb-layout' => 'horizontal',
+                'column-size' => 'md-5',
+                'label_attributes' => [
+                    'class' => 'col-md-3'
+                ]
             ],
             'attributes' => [
                 'rows' => 10,
@@ -47,7 +57,12 @@ class WorkshopProposalForm extends Form
             'type' => 'Textarea',
             'name' => 'program_content',
             'options' => [
-                'label' => 'Conteúdo programático por dia/aula'
+                'label' => 'Conteúdo programático por dia/aula',
+                'twb-layout' => 'horizontal',
+                'column-size' => 'md-5',
+                'label_attributes' => [
+                    'class' => 'col-md-3'
+                ]
             ],
             'attributes' => [
                 'rows' => 10,
@@ -58,7 +73,12 @@ class WorkshopProposalForm extends Form
         $this->add([
             'name' => 'offer',
             'options' => [
-                'label' => 'Número de vagas'
+                'label' => 'Número de vagas',
+                'twb-layout' => 'horizontal',
+                'column-size' => 'md-5',
+                'label_attributes' => [
+                    'class' => 'col-md-3'
+                ]
             ],
             'attributes' => [
                 'placeholder' => 'Número de vagas',
@@ -69,18 +89,29 @@ class WorkshopProposalForm extends Form
         $this->add([
             'name' => 'hours',
             'options' => [
-                'label' => 'Carga horária'
+                'label' => 'Carga horária',
+                'twb-layout' => 'horizontal',
+                'column-size' => 'md-5',
+                'label_attributes' => [
+                    'class' => 'col-md-3'
+                ]
             ],
             'attributes' => [
                 'placeholder' => 'Carga horária',
                 'required' => 'required',
+
             ]
         ]);
 
         $this->add([
             'name' => 'hour_class',
             'options' => [
-                'label' => 'Horas/Aula'
+                'label' => 'Horas/Aula',
+                'twb-layout' => 'horizontal',
+                'column-size' => 'md-5',
+                'label_attributes' => [
+                    'class' => 'col-md-3'
+                ]
             ],
             'attributes' => [
                 'placeholder' => 'Horas/Aula',
@@ -91,7 +122,12 @@ class WorkshopProposalForm extends Form
         $this->add([
             'name' => 'days_duration',
             'options' => [
-                'label' => 'Duração em dias'
+                'label' => 'Duração em dias',
+                'twb-layout' => 'horizontal',
+                'column-size' => 'md-5',
+                'label_attributes' => [
+                    'class' => 'col-md-3'
+                ]
             ],
             'attributes' => [
                 'placeholder' => 'Duração em dias',
@@ -109,6 +145,11 @@ class WorkshopProposalForm extends Form
                     'Noite' => 'Noite'
                 ],
                 'empty_option' => 'Selecione',
+                'twb-layout' => 'horizontal',
+                'column-size' => 'md-5',
+                'label_attributes' => [
+                    'class' => 'col-md-3'
+                ]
             ],
             'attributes' => [
                 'required' => 'required',
@@ -119,7 +160,13 @@ class WorkshopProposalForm extends Form
             'type' => 'Textarea',
             'name' => 'participant_prerequisites',
             'options' => [
-                'label' => 'Pré-requisitos dos alunos'
+                'label' => 'Pré-requisitos dos alunos',
+                'twb-layout' => 'horizontal',
+                'column-size' => 'md-5',
+                'label_attributes' => [
+                    'class' => 'col-md-3'
+                ]
+
             ],
             'attributes' => [
                 'rows' => 10,
@@ -132,7 +179,13 @@ class WorkshopProposalForm extends Form
             'name' => 'didactic_resources',
             'options' => [
                 'label' => 'Recursos didáticos',
-                'help-block' => 'xerox de apostila, filmes em dvd, folhas, etc'
+                'help-block' => 'xerox de apostila, filmes em dvd, folhas, etc',
+                'twb-layout' => 'horizontal',
+                'column-size' => 'md-5',
+                'label_attributes' => [
+                    'class' => 'col-md-3'
+                ]
+
             ],
             'attributes' => [
                 'rows' => 10,
@@ -145,7 +198,12 @@ class WorkshopProposalForm extends Form
             'name' => 'necessary_equipments',
             'options' => [
                 'label' => 'Equipamentos necessários',
-                'help-block' => 'tv, dvd, datashow, câmera, ilha de edição, etc'
+                'help-block' => 'tv, dvd, datashow, câmera, ilha de edição, etc',
+                'twb-layout' => 'horizontal',
+                'column-size' => 'md-5',
+                'label_attributes' => [
+                    'class' => 'col-md-3'
+                ]
             ],
             'attributes' => [
                 'rows' => 10,
@@ -163,6 +221,11 @@ class WorkshopProposalForm extends Form
                     'Não' => 'Não'
                 ],
                 'empty_option' => 'Selecione',
+                'twb-layout' => 'horizontal',
+                'column-size' => 'md-5',
+                'label_attributes' => [
+                    'class' => 'col-md-3'
+                ]
             ],
             'attributes' => [
                 'required' => 'required',
@@ -179,6 +242,11 @@ class WorkshopProposalForm extends Form
                     'Não' => 'Não'
                 ],
                 'empty_option' => 'Selecione',
+                'twb-layout' => 'horizontal',
+                'column-size' => 'md-5',
+                'label_attributes' => [
+                    'class' => 'col-md-3'
+                ]
             ],
             'attributes' => [
                 'required' => 'required',
@@ -188,7 +256,12 @@ class WorkshopProposalForm extends Form
         $this->add([
             'name' => 'value_hour_class',
             'options' => [
-                'label' => 'Valor hora aula'
+                'label' => 'Valor hora aula',
+                'twb-layout' => 'horizontal',
+                'column-size' => 'md-5',
+                'label_attributes' => [
+                    'class' => 'col-md-3'
+                ]
             ],
             'attributes' => [
                 'placeholder' => 'R$ ',
@@ -198,7 +271,12 @@ class WorkshopProposalForm extends Form
         $this->add([
             'name' => 'total_value',
             'options' => [
-                'label' => 'Valor total da oficina'
+                'label' => 'Valor total da oficina',
+                'twb-layout' => 'horizontal',
+                'column-size' => 'md-5',
+                'label_attributes' => [
+                    'class' => 'col-md-3'
+                ]
             ],
             'attributes' => [
                 'placeholder' => 'R$ ',
@@ -210,7 +288,12 @@ class WorkshopProposalForm extends Form
             'name' => 'instructors_curriculum',
             'options' => [
                 'label' => 'Breve currículo do instrutor',
-                'help-block' => 'máximo 500 caracteres'
+                'help-block' => 'máximo 500 caracteres',
+                'twb-layout' => 'horizontal',
+                'column-size' => 'md-5',
+                'label_attributes' => [
+                    'class' => 'col-md-3'
+                ]
             ],
             'attributes' => [
                 'rows' => 10,
@@ -222,7 +305,12 @@ class WorkshopProposalForm extends Form
         $this->add([
             'name' => 'contact_name',
             'options' => [
-                'label' => 'Nome para contato'
+                'label' => 'Nome para contato',
+                'twb-layout' => 'horizontal',
+                'column-size' => 'md-5',
+                'label_attributes' => [
+                    'class' => 'col-md-3'
+                ]
             ],
             'attributes' => [
                 'placeholder' => 'Nome para contato',
@@ -233,7 +321,12 @@ class WorkshopProposalForm extends Form
         $this->add([
             'name' => 'email',
             'options' => [
-                'label' => 'E-mail'
+                'label' => 'E-mail',
+                'twb-layout' => 'horizontal',
+                'column-size' => 'md-5',
+                'label_attributes' => [
+                    'class' => 'col-md-3'
+                ]
             ],
             'attributes' => [
                 'placeholder' => 'E-mail',
@@ -244,7 +337,12 @@ class WorkshopProposalForm extends Form
         $this->add([
             'name' => 'phones',
             'options' => [
-                'label' => 'Telefone/Celular'
+                'label' => 'Telefone/Celular',
+                'twb-layout' => 'horizontal',
+                'column-size' => 'md-5',
+                'label_attributes' => [
+                    'class' => 'col-md-3'
+                ]
             ],
             'attributes' => [
                 'placeholder' => 'Telefone/Celular',
@@ -255,7 +353,12 @@ class WorkshopProposalForm extends Form
         $this->add([
             'name' => 'address',
             'options' => [
-                'label' => 'Endereço'
+                'label' => 'Endereço',
+                'twb-layout' => 'horizontal',
+                'column-size' => 'md-5',
+                'label_attributes' => [
+                    'class' => 'col-md-3'
+                ]
             ],
             'attributes' => [
                 'placeholder' => 'Endereço',
@@ -266,7 +369,12 @@ class WorkshopProposalForm extends Form
         $this->add([
             'name' => 'cep',
             'options' => [
-                'label' => 'Cep'
+                'label' => 'Cep',
+                'twb-layout' => 'horizontal',
+                'column-size' => 'md-5',
+                'label_attributes' => [
+                    'class' => 'col-md-3'
+                ]
             ],
             'attributes' => [
                 'placeholder' => 'Cep',
@@ -277,7 +385,12 @@ class WorkshopProposalForm extends Form
         $this->add([
             'name' => 'city',
             'options' => [
-                'label' => 'Cidade'
+                'label' => 'Cidade',
+                'twb-layout' => 'horizontal',
+                'column-size' => 'md-5',
+                'label_attributes' => [
+                    'class' => 'col-md-3'
+                ]
             ],
             'attributes' => [
                 'placeholder' => 'Cidade',
@@ -290,6 +403,11 @@ class WorkshopProposalForm extends Form
             'name' => 'comments',
             'options' => [
                 'label' => 'Comentários/Observações',
+                'twb-layout' => 'horizontal',
+                'column-size' => 'md-5',
+                'label_attributes' => [
+                    'class' => 'col-md-3'
+                ]
             ],
             'attributes' => [
                 'rows' => 10

@@ -64,7 +64,7 @@ class MvcRouteListener extends AbstractListenerAggregate
 		$mvcEvent->getTarget();
 
         $routeName = $mvcEvent->getRouteMatch()->getMatchedRouteName();
-        if($routeName == 'meu-universo/auth') {
+        if($routeName == 'meu-universo/auth' || $routeName == 'meu-universo/workshop_proposal' || $routeName == 'meu-universo/artistic_proposal') {
             return;
         }
 

@@ -71,6 +71,7 @@ return array(
                             ),
                         ),
                     ),
+
                     'dependents' => array(
                         'type'    => 'Segment',
                         'options' => array(
@@ -198,6 +199,32 @@ return array(
                             ),
                             'defaults' => array(
                                 'controller' => Controller\EducationalProjectController::class,
+                                'action' => 'index',
+                            ),
+                        ),
+                    ),
+                    'workshop_proposal' => array(
+                        'type'    => 'Segment',
+                        'options' => array(
+                            'route'    => '/proposta-oficina[/:action]',
+                            'constraints' => array(
+                                'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
+                            ),
+                            'defaults' => array(
+                                'controller' => Controller\WorkshopProposalController::class,
+                                'action' => 'index',
+                            ),
+                        ),
+                    ),
+                    'artistic_proposal' => array(
+                        'type'    => 'Segment',
+                        'options' => array(
+                            'route'    => '/proposta-artistica[/:action]',
+                            'constraints' => array(
+                                'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
+                            ),
+                            'defaults' => array(
+                                'controller' => Controller\ArtisticProposalController::class,
                                 'action' => 'index',
                             ),
                         ),

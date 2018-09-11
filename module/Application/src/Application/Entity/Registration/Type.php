@@ -12,6 +12,8 @@ class Type
     const EDUCATIONAL_MOVIE     = 'educational_movie';
     const SESSION_SCHOOL        = 'session_school';
     const MOTION_CITY_MOVIE     = 'motion_city_movie';
+    const ARTISTIC_PROPOSAL     = 'artistic_proposal';
+    const WORKSHOP_PROPOSAL     = 'workshop_proposal';
 
 	static public function toArray() {
 		return array(
@@ -23,7 +25,9 @@ class Type
             self::EDUCATIONAL_PROJECT   => 'Projetos audiovisuaus educativos',
             self::EDUCATIONAL_MOVIE     => 'Filmes Mostra Educação',
             self::SESSION_SCHOOL        => 'Sessão Cine escola',
-            self::MOTION_CITY_MOVIE     => 'Filmes Mostra Cidade em Movimento'
+            self::MOTION_CITY_MOVIE     => 'Filmes Mostra Cidade em Movimento',
+            self::WORKSHOP_PROPOSAL     => 'Proposta de oficina',
+            self::ARTISTIC_PROPOSAL     => 'Proposta artística'
 		);
 	}
 
