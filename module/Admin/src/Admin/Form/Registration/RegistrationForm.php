@@ -150,7 +150,6 @@ class RegistrationForm extends Form
                 'multiple' => 'multiple',
                 'type'=>'select',
                 'class' => 'form-control multi-select',
-                'required' => 'required'
             ],
 
         ]);
@@ -192,6 +191,14 @@ class RegistrationForm extends Form
                 'label' => 'Imagem'
             ]
         ]);
+
+        $this->setInputFilter((new InputFilterFactory)->createInputFilter([
+            [
+                'events' => 'events',
+                'required' => false,
+                'allow_empty' => true,
+            ],
+        ]));
     }
 
     public function setData($data)
