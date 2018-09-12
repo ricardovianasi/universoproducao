@@ -18,6 +18,9 @@ class SeminarDebateController extends AbstractAdminController
 	{
         $searchForm = new SeminarDebateForm($this->getEntityManager());
         $dataAttr = $this->params()->fromQuery();
+        if(empty($dataAttr)) {
+            $dataAttr['event'] = $this->getDefaultEvent()?$this->getDefaultEvent()->getId():null;
+        }
         $searchForm->setData($dataAttr);
 
         if(!$searchForm->isValid()) {

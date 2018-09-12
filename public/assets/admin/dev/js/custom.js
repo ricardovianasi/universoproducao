@@ -1379,6 +1379,21 @@ jQuery(document).ready(function() {
     $(".nestable-serialize").nestableSerialize();
     $(".table-programing").tablePrograming();
     $(".table-order").tableOrder();
+    $(document).on("click", ".change-event", function(e) {
+        e.preventDefault();
+        var opt = $('select[name="change-event-option"] option:selected').val(), siteURL = $('input[name="change-event-url"]').val();
+        if (!opt) {
+            $(".change-event-group").addClass("has-error");
+            return;
+        } else {
+            App.blockUI({
+                cenrerY: true,
+                animate: true
+            });
+            siteURL = siteURL.replace("__siteid__", opt);
+            document.location.replace(siteURL);
+        }
+    });
     if (jQuery().datepicker) {
         $(".date-picker").datepicker({
             rtl: App.isRTL(),

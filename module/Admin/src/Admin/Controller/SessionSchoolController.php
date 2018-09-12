@@ -10,7 +10,7 @@ namespace Admin\Controller;
 
 use Admin\Form\SessionSchool\SessionSchoolForm;
 use Admin\Form\SessionSchool\SessionSchoolProgramingForm;
-use Application\Entity\Event\Event;
+use Admin\Form\SessionSchool\SessionSchoolSearchForm;
 use Application\Entity\Event\Place;
 use Application\Entity\Movie\Movie;
 use Application\Entity\Programing\Meta;
@@ -26,8 +26,11 @@ class SessionSchoolController extends AbstractAdminController
 {
     public function indexAction()
     {
-        $searchForm = new SessionSchoolForm($this->getEntityManager());
+        $searchForm = new SessionSchoolSearchForm($this->getEntityManager());
         $dataAttr = $this->params()->fromQuery();
+        if(empty($dataAttr)) {
+            $dataAttr['event'] = $this->getDefaultEvent()?$this->getDefaultEvent()->getId():null;
+        }
         $searchForm->setData($dataAttr);
 
         if(!$searchForm->isValid()) {

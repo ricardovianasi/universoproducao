@@ -22,11 +22,11 @@ $phoneForm->prepare(); ?>
                     </label>
                     <div class="input-group date date-picker" data-date-format="dd/mm/yyyy">
                         <?php echo $this->formElement($form->get('birth_date'));?>
-                        <span class="input-group-btn">
-                                    <button type="button" name="btn-date" class="btn default">
-                                        <span class="glyphicon glyphicon-calendar"></span>
-                                    </button>
-                                </span>
+                        <span class="input-group-btn" style="vertical-align: top">
+                            <button type="button" name="btn-date" class="btn default">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </button>
+                        </span>
                     </div>
                     <?php echo $this->formElementErrors($form->get('birth_date')); ?>
                 </div>
@@ -49,10 +49,10 @@ $phoneForm->prepare(); ?>
                      data-url-cep="<?php echo $this->url('util/cep'); ?>"
                      data-form=".user-form">
                     <?php echo $this->formElement($form->get('cep')); ?>
-                    <span class="input-group-btn">
-                                    <button id="searchcep" class="btn btn-primary " type="button">
-                                    <i class="fa fa fa-search fa-fw"></i> Buscar</button>
-                            </span>
+                    <span class="input-group-btn" style="vertical-align: top">
+                            <button id="searchcep" class="btn btn-primary " type="button">
+                            <i class="fa fa fa-search fa-fw"></i> Buscar</button>
+                    </span>
                 </div>
                 <?php echo $this->formElementErrors($form->get('cep')); ?>
             </div>
@@ -128,6 +128,14 @@ $phoneForm->prepare(); ?>
         <div class="col-md-6"><?php echo $this->formRow($form->get('facebook')); ?></div>
         <div class="col-md-6"><?php echo $this->formRow($form->get('twitter')); ?></div>
     </div>
+
+    <?php if(isset($this->allowPass) && $this->allowPass): ?>
+        <h3 class="h3 form-section">Senha</h3>
+        <div class="row">
+            <div class="col-md-6"><?php echo $this->formRow($form->get('password')); ?></div>
+            <div class="col-md-6"><?php echo $this->formRow($form->get('confirm_password')); ?></div>
+        </div>
+    <?php endif; ?>
 
     <div class="form-actions">
         <div class="btn-set pull-right">

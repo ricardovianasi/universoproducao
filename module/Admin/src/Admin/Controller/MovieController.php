@@ -37,6 +37,9 @@ class MovieController extends AbstractAdminController
         $movieStatusModalForm = new MovieStatusModalForm($this->getEntityManager());
         $searchForm = new MovieFormSearch($this->getEntityManager());
         $dataAttr = $this->params()->fromQuery();
+        if(empty($dataAttr)) {
+            $dataAttr['events'] = $this->getDefaultEvent()?$this->getDefaultEvent()->getId():null;
+        }
         $searchForm->setData($dataAttr);
 
         $searchForm->isValid();

@@ -1,0 +1,49 @@
+<?php $form = $this->form; ?>
+
+<div class="container">
+    <p class="meuuniverso-brand meuuniverso-brand--center"><strong>Meu</strong>Universo | Cadastrar</p>
+
+    <?php if(isset($this->success) && isset($this->user)): ?>
+        <div class="row">
+            <div class="note note-info">
+                <h4 class="block">Tudo certo!</h4>
+                <p>Seu cadastro foi realizado com sucesso.</p>
+                <p>Um link de ativação foi enviado para <strong><?php echo $this->user->getEmail(); ?></strong>.
+                    Caso não encontre nosso e-mail, verifique sua caixa de SPAM</p>
+            </div>
+        </div>
+    <?php else: ?>
+        <div class="row">
+            <?php
+                $form->prepare(); echo $this->form(null, null)->openTag($form);
+                $error_messages = $form->getMessages();
+                if(isset($error_messages['identifier']['objectFound'])
+                    || isset($error_messages['email']['objectFound'])): ?>
+
+                    <div class="note note-danger">
+                        <h4 class="block">Ocorreu um erro</h4>
+                        <?php
+                        if(isset($error_messages['identifier']['objectFound'])) {
+                            $msg = "identificador <strong>".$form->get('identifier')->getValue()."</strong>";
+                        } else {
+                            $msg = "e-mail <strong>".$form->get('email')->getValue()."</strong>";
+                        }
+                        ?>
+                        <p>Verificamos que o <?php echo $msg; ?> já existe em nossa base de dados.</p>
+                        <p><a class="btn blue" href="<?php echo $this->url('meu-universo/auth') ?>">Efetuar login</a></p>
+                    </div>
+            <?php endif; ?>
+
+            <?php echo $this->formRow($form->get('identifier')) ?>
+            <?php echo $this->formRow($form->get('email')) ?>
+            <?php echo $this->formRow($form->get('name')) ?>
+            <?php echo $this->formRow($form->get('password')) ?>
+            <?php echo $this->formRow($form->get('confirm_password')) ?>
+
+            <div class="form-group">
+                <div class="col-md-offset-3 col-md-5"><button class="btn btn-success" type="submit">Cadastrar</button></div>
+            </div>
+            <?php echo $this->form()->closeTag() ?>
+        </div>
+    <?php endif; ?>
+</div>

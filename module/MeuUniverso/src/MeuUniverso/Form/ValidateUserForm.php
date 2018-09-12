@@ -2,25 +2,121 @@
 namespace MeuUniverso\Form;
 
 use Application\Entity\User\User;
+use DoctrineModule\Validator\NoObjectExists;
+use Util\Validator\Identifier;
+use Zend\I18n\Filter\Alnum;
+use Zend\InputFilter\Factory as InputFilterFactory;
+use Zend\Validator\EmailAddress;
+use Zend\Validator\Identical;
+use Zend\Validator\Regex;
+use Zend\Validator\StringLength;
 
 class ValidateUserForm extends \Admin\Form\ExternalUser\UserForm
 {
-    public function __construct($em, $type=User::TYPE_PESSOA_FISICA)
+    public function __construct($em)
     {
-        parent::__construct($em, $type);
+        parent::__construct($em);
 
         $this->setAttribute('data-js-validate', '');
 
-        $this->get('identifier')->setAttributes([
-            'disabled' => 'disabled',
-            'required' => false
+        $this->add([
+            'name' => 'password',
+            'required' => true,
+            'type' => 'Password',
+            'options' => [
+                'label' => 'Senha',
+                'help-block' => 'Mínimo de 8 caracteres. Necessário incluir 1 número e 1 letra',
+            ],
+            'attributes' => [
+                'required' => 'required',
+                'id' => 'password',
+                'data-parsley-minlength' => "8",
+                'data-parsley-number' => "1",
+                'data-parsley-special' => "1",
+            ],
         ]);
-        $this->getInputFilter()->get('identifier')->setRequired(false);
 
-        $this->get('email')->setAttributes([
-            'disabled' => 'disabled',
-            'required' => false
+        $this->add([
+            'type' => 'password',
+            'name' => 'confirm_password',
+            'required' => true,
+            'type' => 'Password',
+            'options' => [
+                'label' => 'Confirme a senha',
+            ],
+            'attributes' => [
+                'required' => 'required',
+                'data-parsley-equalto' => '#password'
+            ],
         ]);
-        $this->getInputFilter()->get('email')->setRequired(false);
+
+        $this->setInputFilter((new InputFilterFactory)->createInputFilter([
+            'identifier' => [
+                'name'       => 'identifier',
+                'required'   => true,
+                'validators' => [
+                    new Identifier(),
+                    [
+                        'name' => NoObjectExists::class,
+                        'options' => [
+                            'object_repository' => $this->getEntityManager()->getRepository(User::class),
+                            'fields'            => 'identifier',
+                            'messages' => [
+                                'objectFound' => 'Este identificador já existe em nossa base de dados',
+                            ],
+                        ]
+                    ]
+                ],
+                'filters' => [
+                    new Alnum()
+                ]
+            ],
+            'email' => [
+                'name'       => 'email',
+                'required'   => true,
+                'validators' => [
+                    new EmailAddress(),
+                    [
+                        'name' => NoObjectExists::class,
+                        'options' => [
+                            'object_repository' => $this->getEntityManager()->getRepository(User::class),
+                            'fields'            => 'email',
+                            'messages' => [
+                                'objectFound' => 'E-mail já existe em nossa base de dados',
+                            ],
+                        ]
+
+                    ]
+                ]
+            ],
+            'password' => [
+                'name'       => 'password',
+                'required'   => true,
+                'validators' => [
+                    new StringLength(8),
+                    new Regex('/[a-zA-z]/'),
+                    new Regex('/[0-9]/')
+                ]
+            ],
+            'confirm_password' => [
+                'name'       => 'confirm_password',
+                'required'   => true,
+                'validators' => [
+                    [
+                        'name'    => Identical::class,
+                        'options' => [
+                            'token' => 'password',
+                        ],
+                    ],
+                ]
+            ],
+            [
+                'name' => 'gender',
+                'required' => false,
+                'allow_empty' => true,
+
+            ]
+        ]));
+
     }
 }

@@ -29,11 +29,10 @@ class MovieProgramingController extends AbstractAdminController
 	public function indexAction()
 	{
         $searchForm = new MovieProgramingForm($this->getEntityManager(), $this->getDefaultEvent());
-        if($this->getDefaultEvent()) {
-            $searchForm->setData(['event'=>$this->getDefaultEvent()->getId()]);
-        }
-
         $dataAttr = $this->params()->fromQuery();
+        if(empty($dataAttr)) {
+            $dataAttr['event'] = $this->getDefaultEvent()?$this->getDefaultEvent()->getId():null;
+        }
         $searchForm->setData($dataAttr);
 
         if(!$searchForm->isValid()) {

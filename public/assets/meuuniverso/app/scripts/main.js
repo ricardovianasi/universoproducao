@@ -117,14 +117,3 @@ window.Parsley.addValidator('special', {
   }
 });
 
-window.Parsley.addValidator('char', {
-  requirementType: 'string',
-  validateString: function(value, requirement) {
-    var specials = value.match(/[^a-zA-Z0-9]/g) || [];
-    return specials.length >= requirement;
-  },
-  messages: {
-    en: 'Your password must contain at least (%s) special characters.',
-    'pt-br': 'É ncessário conter ao menos %s caracter especial.'
-  }
-});

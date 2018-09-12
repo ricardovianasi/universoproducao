@@ -27,7 +27,7 @@ class RegisterController extends AbstractMeuUniversoController
         return [];
     }
 
-    public function novoAction()
+    /*public function novoAction()
     {
         $return = [];
         $form = $this->getNewUserForm();
@@ -76,7 +76,7 @@ class RegisterController extends AbstractMeuUniversoController
         $return['form'] = $form;
 
         return $return;
-    }
+    }*/
 
     public function reEnviarLinkAction()
     {
@@ -201,97 +201,63 @@ class RegisterController extends AbstractMeuUniversoController
         ];
     }
 
-    public function validarAction()
+    public function novoAction()
     {
-        $hash = $this->params()->fromRoute('id');
+        //Formulários
+        $form = new ValidateUserForm($this->getEntityManager());
+        $phoneForm = new PhoneForm();
+        $user = new User;
+        if ($this->getRequest()->isPost()) {
+            $data = $this->getRequest()->getPost()->toArray();
+            $form->setData($data);
+            if ($form->isValid()) {
+                $validData = $form->getData();
 
-        /** @var Hash $exist */
-        $exist = $this->getEntityManager()->getRepository(Hash::class)->findOneBy([
-            'hash' => $hash
-        ]);
+                $phones = new ArrayCollection();
+                if(!empty($validData['phones'])) {
+                    foreach ($validData['phones'] as $ph) {
+                        $phone = new Phone($ph);
+                        $phone->setUser($user);
+                        $phones->add($phone);
+                    }
+                }
+                unset($validData['phones']);
+                $user->setPhones($phones);
 
-        if($exist) {
-            //Hash existe - verificar a validade
-            $now = new \DateTime('now');
-            if($now <= $exist->getValidUntil()) {
-                $user = $this
-                    ->getEntityManager()
-                    ->getRepository(User::class)
-                    ->find($exist->getUser()->getId());
-
-                if(!$user) {
-                    return ['validate' => false];
+                if(isset($validData['city'])) {
+                    $city = $this->getRepository(City::Class)->find($validData['city']);
+                    $validData['city'] = $city;
                 }
 
+                $user->setPassword(Crypt::getInstance()->generateEncryptPass($validData['password']));
+                unset($validData['password']);
+
                 $user->setConfirmedRegister(true);
+                $user->setUpdateRegisterRequired(false);
+                $user->setData($validData);
+
                 $this->getEntityManager()->persist($user);
                 $this->getEntityManager()->flush();
 
-                //Formulários
-                $form = new ValidateUserForm($this->getEntityManager(), $user->getType());
-                $phoneForm = new PhoneForm();
+                //Enviar email de confirmação
+                $msg = '<p>Olá <strong>'.$user->getName().'</strong>!</p>';
+                $msg.= '<p>Seu cadastro foi realizado com sucesso!</p>';
 
-                if ($this->getRequest()->isPost()) {
+                $to[$user->getName()] = $user->getEmail();
+                $this->mailService()->simpleSendEmail($to, "Confirmação de cadastro", $msg);
 
-                    $data = $this->getRequest()->getPost()->toArray();
-                    $data['identifier'] = $user->getIdentifier();
-                    $data['email'] = $user->getEmail();
-
-                    $form->setData($data);
-                    if ($form->isValid()) {
-                        $validData = $form->getData();
-
-                        unset($validData['email']);
-                        unset($validData['identifier']);
-
-                        $phones = new ArrayCollection();
-                        foreach ($user->getPhones() as $ph) {
-                            $this->getEntityManager()->remove($ph);
-                        }
-                        if(!empty($validData['phones'])) {
-                            foreach ($validData['phones'] as $ph) {
-                                $phone = new Phone($ph);
-                                $phone->setUser($user);
-                                $phones->add($phone);
-                            }
-                        }
-                        unset($validData['phones']);
-                        $user->setPhones($phones);
-
-                        if(isset($validData['city'])) {
-                            $city = $this->getRepository(City::Class)->find($validData['city']);
-                            $validData['city'] = $city;
-                        }
-
-                        $user->setConfirmedRegister(true);
-                        $user->setUpdateRegisterRequired(false);
-                        $user->setData($validData);
-
-                        $this->getEntityManager()->persist($user);
-                        $this->getEntityManager()->remove($exist);
-                        $this->getEntityManager()->flush();
-
-                        return [
-                            'validate' => 'validated'
-                        ];
-                    }
-                } else {
-                    $form->setData($user->toArray());
-                }
-
-                return [
-                    'form' => $form,
-                    'phoneForm' => $phoneForm,
-                    'user' => $user,
-                    'validate' => true
-                ];
-
-            } else {
-                return ['validate'=>false];
             }
+        } else {
+            $form->setData($user->toArray());
         }
 
-        return ['validate'=>false];
+        return [
+            'form' => $form,
+            'phoneForm' => $phoneForm,
+            'user' => $user,
+            'validate' => true,
+            'allowPass' => true
+        ];
     }
 
     public function dependentesAction()

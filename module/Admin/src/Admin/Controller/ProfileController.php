@@ -9,9 +9,7 @@
 namespace Admin\Controller;
 
 use Admin\Form\User\ProfileForm;
-use Application\Entity\User\Action;
-use Application\Entity\User\Controller;
-use Application\Entity\User\Profile;
+use Application\Entity\AdminUser\Profile;
 use Doctrine\Common\Collections\ArrayCollection;
 
 class ProfileController extends AbstractAdminController

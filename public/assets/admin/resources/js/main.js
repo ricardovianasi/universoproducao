@@ -55,6 +55,7 @@ jQuery(document).ready(function() {
 
     $("*[data-inputmask]").inputmask();
 
+
 	//inicia o plugin de opções de página
 	$(".post-sidebar-options").postStatus();
 
@@ -89,6 +90,23 @@ jQuery(document).ready(function() {
     $('.table-programing').tablePrograming();
 
     $('.table-order').tableOrder();
+
+    $(document).on('click', '.change-event', function (e) {
+        e.preventDefault();
+        var opt = $('select[name="change-event-option"] option:selected').val(),
+            siteURL = $('input[name="change-event-url"]').val();
+        if(!opt) {
+            $('.change-event-group').addClass('has-error');
+            return;
+        } else {
+            App.blockUI({
+                cenrerY: true,
+                animate: true
+            });
+            siteURL = siteURL.replace('__siteid__', opt);
+            document.location.replace(siteURL);
+        }
+    })
 
     //$(".nav-tabs li a").tabSelection();
 

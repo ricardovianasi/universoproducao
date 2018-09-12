@@ -5,6 +5,7 @@ use Admin\Form\Page\PageSearchForm;
 use Application\Entity\Post\Post;
 use Application\Entity\Post\PostStatus;
 use Application\Entity\Post\PostType;
+use Application\Entity\Site\Site;
 use Application\Entity\Tag;
 use Zend\View\Model\ViewModel;
 use Admin\Form\Page\PageForm;
@@ -36,10 +37,18 @@ class PageController extends AbstractAdminController
 
 		$pages = $this->search(Post::class, $search);
 
+		//Outhers Sites
+        $currentSite = $this->getCurrentSite();
+        $sites = $this
+            ->getRepository(Site::class)
+            ->getSitesByEventType($currentSite->getEvent()->getType());
+
 		$this->getViewModel()->setVariables([
             'searchForm' => $searchForm,
 			'pages' => $pages,
-			'site' => $this->getSiteIdFromUri()
+			'site' => $this->getSiteIdFromUri(),
+            'sites' => $sites,
+            'currentSite' => $this->getCurrentSite()
 		]);
 
 		return $this->getViewModel();

@@ -31,6 +31,9 @@ class SessionSchoolSubscriptionsController extends AbstractAdminController
     public function indexAction()
     {
         $dataAttr = $this->params()->fromQuery();
+        if(empty($dataAttr)) {
+            $dataAttr['event'] = $this->getDefaultEvent()?$this->getDefaultEvent()->getId():null;
+        }
 
         $event = null;
         if(!empty($dataAttr['event'])) {

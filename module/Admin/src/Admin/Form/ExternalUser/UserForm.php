@@ -49,7 +49,7 @@ class UserForm extends Form
 			'required' => true,
 			'options' => [
 				'label' => 'Nome completo',
-                'help-block' => 'Pessoa física ou jurídica'
+                'help-block' => 'O nome pode ser de uma Pessoa Física ou Pessoa Jurídica'
 			],
 			'attributes' => [
 				'required' => 'required'
@@ -254,7 +254,6 @@ class UserForm extends Form
                 ],
                 'attributes' => [
                     'data-inputmask' => "'alias': 'dd/mm/yyyy', 'placeholder':'_'",
-                    'required' => true
                 ]
             ]);
             $this->getInputFilter()->add([

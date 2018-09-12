@@ -31,6 +31,9 @@ class ProjectController extends AbstractAdminController
 
         $searchForm = new ProjectSearchForm($this->getEntityManager());
         $dataAttr = $this->params()->fromQuery();
+        if(empty($dataAttr)) {
+            $dataAttr['event'] = $this->getDefaultEvent()?$this->getDefaultEvent()->getId():null;
+        }
         $searchForm->setData($dataAttr);
 
         if(!$searchForm->isValid()) {

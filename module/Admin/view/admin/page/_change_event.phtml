@@ -1,0 +1,32 @@
+<div class="modal fade" id="change-event" tabindex="-1" role="basic" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                <h4 class="modal-title">Alterar Evento</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group change-event-group">
+                            <label class="control-label" for="">Selecione um Evento</label>
+                            <select name="change-event-option" class="form-control" id="">
+                                <option value="">Selecione</option>
+                                <?php foreach ($this->sites as $s): ?>
+                                    <option value="<?php echo $s->getId() ?>"><?php echo $s->getEvent()->getShortName(); ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                            <input type="text" name="change-event-url" class="hidden" value="<?php echo $this->url('admin/page', ['site'=>'__siteid__']); ?>">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn dark btn-outline" data-dismiss="modal">Cancelar</button>
+                <button type="button " class="change-event btn green">Aplicar</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
