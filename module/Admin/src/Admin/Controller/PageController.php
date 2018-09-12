@@ -15,9 +15,6 @@ class PageController extends AbstractAdminController
 {
 	protected $pageForm;
 
-	/**
-	 * @return ViewModel
-	 */
 	public function indexAction()
 	{
 		$searchForm = new PageSearchForm();
@@ -39,9 +36,13 @@ class PageController extends AbstractAdminController
 
 		//Outhers Sites
         $currentSite = $this->getCurrentSite();
-        $sites = $this
-            ->getRepository(Site::class)
-            ->getSitesByEventType($currentSite->getEvent()->getType());
+        $sites = [];
+        if($currentSite->getEvent()) {
+            $sites = $this
+                ->getRepository(Site::class)
+                ->getSitesByEventType($currentSite->getEvent()->getType());
+        }
+
 
 		$this->getViewModel()->setVariables([
             'searchForm' => $searchForm,

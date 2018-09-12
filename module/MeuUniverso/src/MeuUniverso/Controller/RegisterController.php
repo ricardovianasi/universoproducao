@@ -7,15 +7,12 @@ use Application\Entity\City;
 use Application\Entity\Phone\Phone;
 use Application\Entity\User\Hash;
 use Application\Entity\User\User;
-use Application\Service\EntityManagerAwareInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use MeuUniverso\Form\NewUserForm;
 use MeuUniverso\Form\UserForm;
 use MeuUniverso\Form\ValidateUserForm;
-use Util\Controller\AbstractController;
 use Util\Security\Crypt;
 use Zend\I18n\Filter\Alnum;
-use Zend\View\Model\ViewModel;
 
 class RegisterController extends AbstractMeuUniversoController
 {

@@ -5,7 +5,7 @@
 			<div class="portlet-title">
 				<div class="caption">
 					<i class="fa fa-th-list"></i>
-					Lista de Páginas - <?php echo $this->currentSite->getEvent()->getShortName(); ?>
+					Lista de Páginas <?php echo $this->currentSite->getEvent() ? ' - '.$this->currentSite->getEvent()->getShortName() : ""; ?>
 				</div>
 				<div class="actions">
 					<a href="<?php echo $this->url('admin/page', ['site'=>$this->site, 'action'=>'create']); ?>"
@@ -149,4 +149,7 @@
 		</div>
 	</div>
 </div>
-<?php echo $this->partial('admin/page/_change_event.phtml', ['currentSite'=>$this->currentSite, 'sites'=>$this->sites]); ?>
+
+<?php if($this->currentSite->getEvent()): ?>
+    <?php echo $this->partial('admin/page/_change_event.phtml', ['currentSite'=>$this->currentSite, 'sites'=>$this->sites]); ?>
+<?php endif; ?>
