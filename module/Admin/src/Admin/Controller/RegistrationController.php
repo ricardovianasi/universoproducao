@@ -106,9 +106,11 @@ class RegistrationController extends AbstractAdminController
 			if(!$noValidate) {
                 if($form->isValid()) {
                     $events = new ArrayCollection();
-                    foreach ($data['events'] as $e) {
-                        $event = $this->getRepository(Event::class)->find($e);
-                        $events->add($event);
+                    if(!empty($data['events'])) {
+                        foreach ($data['events'] as $e) {
+                            $event = $this->getRepository(Event::class)->find($e);
+                            $events->add($event);
+                        }
                     }
                     $registration->setEvents($events);
                     unset($data['events']);

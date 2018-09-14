@@ -13,6 +13,7 @@ Use Application\Entity\Event\Event;
 use Application\Entity\Registration\Options;
 use Application\Entity\Registration\Type;
 use Zend\Form\Form;
+use Zend\InputFilter\Factory as InputFilterFactory;
 
 class RegistrationForm extends Form
 {
@@ -194,7 +195,7 @@ class RegistrationForm extends Form
 
         $this->setInputFilter((new InputFilterFactory)->createInputFilter([
             [
-                'events' => 'events',
+                'name' => 'events',
                 'required' => false,
                 'allow_empty' => true,
             ],
