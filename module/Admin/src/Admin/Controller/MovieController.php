@@ -421,6 +421,11 @@ class MovieController extends AbstractAdminController
                     }
                     unset($data['producing_institution']);
 
+                    $duration = $data['duration']; //im minutes -change to DateTime object
+                    $durationObj = \DateTime::createFromFormat('i', $duration);
+                    $data['duration'] = $durationObj;
+
+
                     $movie->setData($data);
                     $this->getEntityManager()->persist($movie);
                     $this->getEntityManager()->flush();

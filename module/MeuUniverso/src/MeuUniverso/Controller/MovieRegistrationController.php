@@ -360,6 +360,7 @@ class MovieRegistrationController extends AbstractMeuUniversoRegisterController
                     'min' => (30*60),
                     'max' => (60*60),
                     'inclusive' => false,
+                    'date-time-format' => 'i',
                     'messages' => [
                         Duration::ERROR_IS_NOT_MARCH => 'Para Mostra Tiradentes não é permitido inscrição de filmes média'
                     ]
@@ -440,6 +441,10 @@ class MovieRegistrationController extends AbstractMeuUniversoRegisterController
                 }
                 $movie->setMedias($newMedias);
                 unset($data['medias']);
+
+                $duration = $data['duration']; //im minutes -change to DateTime object
+                $durationObj = \DateTime::createFromFormat('i', $duration);
+                $data['duration'] = $durationObj;
 
                 $movie->setData($data);
 

@@ -11,8 +11,9 @@ use Application\Entity\Registration\Type;
 use Application\Entity\State;
 use Application\Entity\User\User;
 use Zend\Form\Form;
+use Zend\I18n\Validator\IsInt;
 use Zend\InputFilter\Factory as InputFilterFactory;
-use Zend\Validator\Date;
+use Zend\Validator\GreaterThan;
 
 class MovieForm extends Form
 {
@@ -199,13 +200,14 @@ class MovieForm extends Form
 
         $this->add([
             'name' => 'duration',
+            'type' => 'Number',
             'options' => [
-                'label' => 'Duração exata',
-                'help-block' => 'Formato do campo: hh:mm:seg <br />'.nl2br($this->getDurationHelpBlock())
+                'label' => 'Duração em minutos',
+                'help-block' => nl2br($this->getDurationHelpBlock())
             ],
             'attributes' => [
 //                'required' => 'required',
-                'data-inputmask' => "'alias': 'hh:mm:ss'"
+                'data-inputmask' => "'min': '0'"
             ],
         ]);
 
@@ -760,9 +762,12 @@ class MovieForm extends Form
                'required' => true,
                'validators' => [
                    [
-                       'name' => Date::class,
+                       'name' => IsInt::class
+                   ],
+                   [
+                        'name' => GreaterThan::class,
                        'options' => [
-                           'format' => 'H:i:s'
+                           'min' => 0
                        ]
                    ]
                ]
@@ -995,7 +1000,9 @@ class MovieForm extends Form
         if(!empty($data['duration'])) {
             if(is_object($data['duration'])) {
                 $duration = $data['duration'];
-                $data['duration'] = $duration->format('H:i:s');
+                $hour = $duration->format('H');
+                $minutes = $duration->format('i');
+                $data['duration'] = ($hour*60)+$minutes;
             }
         }
 
