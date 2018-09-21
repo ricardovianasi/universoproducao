@@ -127,6 +127,16 @@ class MovieForm extends Form
         ]);
 
         $this->add([
+            'name' => 'production_city',
+            'options' => [
+                'label' => 'Cidade de produção',
+            ],
+            'attributes' => [
+//                'required' => 'required',
+            ]
+        ]);
+
+        $this->add([
             'name' => 'production_country',
             'options' => [
                 'label' => 'País de produção',

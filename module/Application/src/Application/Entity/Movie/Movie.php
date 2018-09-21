@@ -60,6 +60,9 @@ class Movie extends AbstractEntity
     /** @ORM\Column(name="production_state", type="string", nullable=true) */
     private $productionState;
 
+    /** @ORM\Column(name="production_city", type="string", nullable=true) */
+    private $productionCity;
+
     /** @ORM\Column(name="duration", type="time", nullable=true) */
     private $duration;
 
@@ -1315,5 +1318,21 @@ class Movie extends AbstractEntity
         $return[] = $this->getEndDateYear();
 
         return $return;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getProductionCity()
+    {
+        return $this->productionCity;
+    }
+
+    /**
+     * @param mixed $productionCity
+     */
+    public function setProductionCity($productionCity)
+    {
+        $this->productionCity = $productionCity;
     }
 }

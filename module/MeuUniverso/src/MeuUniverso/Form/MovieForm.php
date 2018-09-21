@@ -57,6 +57,7 @@ class MovieForm extends AdminMovieForm
         $this->get('title')->setAttribute('required', 'required');
         $this->get('title_english')->setAttribute('required', 'required');
         $this->get('production_state')->setAttribute('required', 'required');
+        $this->get('production_city')->setAttribute('required', 'required');
         $this->get('end_date_year')->setAttribute('required', 'required');
         $this->get('end_date_month')->setAttribute('required', 'required');
         $this->get('duration')->setAttribute('required', 'required');
