@@ -377,7 +377,7 @@ class MovieForm extends Form
             'type' => 'select',
             'name' => 'options[short_movie_category]',
             'options' => [
-                'label' => 'Indique se ele se enquadra em uma das categorias',
+                'label' => 'Indique se o filme se enquadra em uma das categorias',
                 'value_options' => $this->populateOptions(OptionsType::SHORT_MOVIE_CATEGORY),
                 'empty_option' => 'Selecione',
                 'help-block' => 'marcar uma das categorias NÃO exclui o processo de seleção para participar da mostra principal'
