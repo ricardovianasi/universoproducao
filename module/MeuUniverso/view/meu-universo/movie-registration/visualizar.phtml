@@ -385,7 +385,9 @@ $movie = $this->movie;
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label class="control-label col-md-3">Roteiro:</label>
-                                <p class="form-control-static"> <?php echo $movie->getScript() ?> </p>
+                                <div class="col-md-9">
+                                     <?php echo $movie->getScript() ?>
+                                </div>
                             </div>
                         </div>
                     </div>
