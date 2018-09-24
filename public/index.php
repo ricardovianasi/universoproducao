@@ -6,13 +6,16 @@ date_default_timezone_set('America/Sao_Paulo');
 defined('APPLICATION_ENV') || define('APPLICATION_ENV', (getenv('APPLICATION_ENV') ? getenv('APPLICATION_ENV') : 'production'));
 $env = getenv('APPLICATION_ENV');
 
-if ($env == 'development') {
+ini_set("display_errors", 1);
+error_reporting(E_ALL);
+
+/*if ($env == 'development') {
     ini_set("display_errors", 1);
     error_reporting(E_ALL);
 } else {
     ini_set("display_errors", 0);
     error_reporting(0);
-}
+}*/
 
 /**
  * This makes our life easier when dealing with paths. Everything is relative

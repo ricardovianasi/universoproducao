@@ -59,13 +59,15 @@ class Duration extends AbstractValidator
 
     public function isValid($value)
     {
-        $time = \DateTime::createFromFormat($this->dateTimeFormat, $value);
+        /*$time = \DateTime::createFromFormat($this->dateTimeFormat, $value);
 
         $hours = (int) $time->format('H');
         $minutes = (int) $time->format('i');
-        $seconds = (int) $time->format('s');
+        $seconds = (int) $time->format('s');*/
 
-        $totalSeconds = (($hours*60)*60) + ($minutes*60) + $seconds;
+//        $totalSeconds = (($hours*60)*60) + ($minutes*60) + $seconds;
+
+        $totalSeconds = $value*60;
 
         if($this->inclusive) {
             /*if(!($totalSeconds >= $this->min && $totalSeconds <= $this->max)) {
