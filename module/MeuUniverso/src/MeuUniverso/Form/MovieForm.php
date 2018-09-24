@@ -73,8 +73,8 @@ class MovieForm extends AdminMovieForm
         $this->get('conversations_list_languages')->setAttribute('required', 'required');
         $this->get('options[format_completed]')->setAttribute('required', 'required');
         $this->get('options[format_completed]')->setAttribute('required', 'required');
-        $this->get('options[window]')->setAttribute('required', 'required');
-        $this->get('options[sound]')->setAttribute('required', 'required');
+//        $this->get('options[window]')->setAttribute('required', 'required');
+//        $this->get('options[sound]')->setAttribute('required', 'required');
         $this->get('options[color]')->setAttribute('required', 'required');
         $this->get('options[genre]')->setAttribute('required', 'required');
         $this->get('direction')->setAttribute('required', 'required');
@@ -109,8 +109,8 @@ class MovieForm extends AdminMovieForm
         $this->getInputFilter()->get('has_conversations_languages')->setRequired(true);
         $this->getInputFilter()->get('has_subtitles_languages')->setRequired(true);
         $this->getInputFilter()->get('options[format_completed]')->setRequired(true);
-        $this->getInputFilter()->get('options[window]')->setRequired(true);
-        $this->getInputFilter()->get('options[sound]')->setRequired(true);
+//        $this->getInputFilter()->get('options[window]')->setRequired(false)->setAllowEmpty(true);
+//        $this->getInputFilter()->get('options[sound]')->setRequired(false)->setAllowEmpty(true);
         $this->getInputFilter()->get('options[color]')->setRequired(true);
         $this->getInputFilter()->get('options[genre]')->setRequired(true);
         $this->getInputFilter()->get('direction')->setRequired(true);
