@@ -443,7 +443,7 @@ class MovieRegistrationController extends AbstractMeuUniversoRegisterController
                 unset($data['medias']);
 
                 $duration = $data['duration']; //im minutes -change to DateTime object
-                $durationObj = \DateTime::createFromFormat('i', $duration);
+                $durationObj = \DateTime::createFromFormat('U', $duration*60);
                 $data['duration'] = $durationObj;
 
                 $movie->setData($data);
@@ -465,9 +465,9 @@ class MovieRegistrationController extends AbstractMeuUniversoRegisterController
                     }
                     $msg.= '<p><ul>'.$mostras.'</ul></p>';
 
-                    $msg.= '<p>O resultado para a seleção da 22ª Mostra Tiradentes está previsto para |segunda quinzena de dezembro de 2018, e o da 14ª CineOP para maio de 2019. Os resultados serão enviados pelo email cadastrado.</p>';
-                    $msg.= '<p>O resultado para a seleção da 22ª Mostra Tiradentes está previsto para |segunda quinzena de dezembro de 2018, e o da 14ª CineOP para maio de 2019. Os resultados serão enviados pelo email cadastrado.</p>';
-                    $msg.= '<p>Pedimos a gentileza de manter os dados do seu cadastro sempre atualizados para garantir a eficácia em nossa comunicação!</p>';
+                    $msg.= '<p>O resultado para a seleção da 22ª Mostra Tiradentes está previsto para a segunda quinzena de dezembro de 2018, e o da 14ª CineOP para maio de 2019. Os resultados serão enviados para o cadastrado.</p>';
+                    $msg.= '<p>Pedimos a gentileza de manter os dados do seu cadastro sempre atualizados para garantir a eficácia em nossa comunicação.</p>';
+                    $msg.= '<p>Agradecemos a participação!</p>';
 
                     $to[$user->getName()] = $user->getEmail();
                     $this->mailService()->simpleSendEmail($to, "Confirmação de inscrição de filme", $msg);

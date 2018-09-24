@@ -207,7 +207,8 @@ class MovieForm extends Form
             ],
             'attributes' => [
 //                'required' => 'required',
-                'data-inputmask' => "'min': '0'"
+                'data-inputmask' => "'min': '0'",
+                'maxlength' => 3
             ],
         ]);
 
@@ -567,6 +568,7 @@ class MovieForm extends Form
             ],
             'attributes' => [
                 'rows' => 7,
+                'maxlength' => 700
 //                'required' => 'required',
             ]
         ]);
@@ -751,7 +753,7 @@ class MovieForm extends Form
             'type' => 'Textarea',
             'name' => 'movie_divulgation',
             'options' => [
-                'label' => 'Link de divulgação',
+                'label' => 'Link com trecho de divulgação ou trailer do filme',
                 'help-block' => 'Inserir link do Vimeo ou Youtube (link aberto)',
             ],
             'attributes' => [
