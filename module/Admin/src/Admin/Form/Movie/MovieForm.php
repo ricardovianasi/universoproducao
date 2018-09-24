@@ -376,7 +376,7 @@ class MovieForm extends Form
             'type' => 'select',
             'name' => 'options[short_movie_category]',
             'options' => [
-                'label' => 'Para curta, indique se ele se enquadra em uma das categorias',
+                'label' => 'Indique se ele se enquadra em uma das categorias',
                 'value_options' => $this->populateOptions(OptionsType::SHORT_MOVIE_CATEGORY),
                 'empty_option' => 'Selecione',
                 'help-block' => 'marcar uma das categorias NÃO exclui o processo de seleção para participar da mostra principal'
@@ -421,6 +421,7 @@ class MovieForm extends Form
             'name' => 'production_company',
             'options' => [
                 'label' => 'Empresa produtora',
+                'help-block' => 'Se não houver, digite N/A'
             ],
             'attributes' => [
             ]
@@ -562,6 +563,7 @@ class MovieForm extends Form
             'name' => 'synopsis',
             'options' => [
                 'label' => 'Sinopse',
+                'help-block' => 'Máximo 700 caracteres com espaço'
             ],
             'attributes' => [
                 'rows' => 7,
@@ -585,7 +587,52 @@ class MovieForm extends Form
             'type' => 'Textarea',
             'name' => 'filmography_director',
             'options' => [
-                'label' => 'Filmografia do diretor',
+                'label' => 'Filmografia da(s) diretora(s) ou do(s) diretor(es)',
+            ],
+            'attributes' => [
+                'rows' => 5,
+            ]
+        ]);
+
+        $this->add([
+            'type' => 'Textarea',
+            'name' => 'director_age',
+            'options' => [
+                'label' => 'Idade da(s) diretora(s) ou do(s) diretor(es)',
+            ],
+            'attributes' => [
+                'rows' => 5,
+            ]
+        ]);
+
+        $this->add([
+            'type' => 'Textarea',
+            'name' => 'director_gender_identity',
+            'options' => [
+                'label' => 'Identidade de gênero da(s) diretora(s) ou do(s) diretor(es)',
+            ],
+            'attributes' => [
+                'rows' => 5,
+            ]
+        ]);
+
+        $this->add([
+            'type' => 'Textarea',
+            'name' => 'director_ethnicity',
+            'options' => [
+                'label' => 'Raça/etnia da(s) diretora(s) ou do(s) diretor(es)',
+            ],
+            'attributes' => [
+                'rows' => 5,
+            ]
+        ]);
+
+        $this->add([
+            'type' => 'Textarea',
+            'name' => 'distributor',
+            'options' => [
+                'label' => 'Distribuidora',
+                'help-block' => 'Se não houver, digite N/A'
             ],
             'attributes' => [
                 'rows' => 5,
@@ -677,7 +724,7 @@ class MovieForm extends Form
             'type' => 'select',
             'name' => 'has_participated_other_festivals',
             'options' => [
-                'label' => 'O filme já participou de outros festivais',
+                'label' => 'O filme já foi exibido publicamente ou tem exibição prevista para 2018?',
                 'value_options' => [
                     '1' => 'Sim',
                     '0' => 'Não'
@@ -693,6 +740,7 @@ class MovieForm extends Form
             'type' => 'Textarea',
             'name' => 'other_festivals',
             'options' => [
+                'label' => 'Onde foi ou será exibido? Cite também os festivais e eventuais prêmios recebidos',
                 'help-block' => '',
             ],
             'attributes' => [
@@ -1118,9 +1166,9 @@ class MovieForm extends Form
             $sec = (int) $time->format('s');
 
             $description.=(($hour*60)+$mim);
-            if($sec) {
-                $description.="'".str_pad($sec, '2', '0', STR_PAD_LEFT);
-            }
+//            if($sec) {
+//                $description.="'".str_pad($sec, '2', '0', STR_PAD_LEFT);
+//            }
 
             $time = \DateTime::createFromFormat('H:i:s', $durationMediaTo->getValue());
             $hour = (int) $time->format('H');
@@ -1128,9 +1176,9 @@ class MovieForm extends Form
             $sec = (int) $time->format('s');
 
             $description.= " e ".(($hour*60)+$mim);
-            if($sec) {
-                $description.="'".str_pad($sec, '2', '0', STR_PAD_LEFT);
-            }
+//            if($sec) {
+//                $description.="'".str_pad($sec, '2', '0', STR_PAD_LEFT);
+//            }
             $description.= " minutos;<br/>";
         }
 

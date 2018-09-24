@@ -82,7 +82,7 @@
                     </div>
                     <div class="tab-pane" id="tab2">
                         <?php echo $this->formRow($form->get('title')) ?>
-                        <?php echo $this->formRow($form->get('title_english')) ?>
+<!--                        --><?php //echo $this->formRow($form->get('title_english')) ?>
                         <?php echo $this->formRow($form->get('production_state')) ?>
                         <?php echo $this->formRow($form->get('production_city')) ?>
                         <?php echo $this->formRow($form->get('end_date_year')) ?>
@@ -135,8 +135,8 @@
                         </div>
 
                         <?php echo $this->formRow($form->get('options[format_completed]')) ?>
-                        <?php echo $this->formRow($form->get('options[window]')) ?>
-                        <?php echo $this->formRow($form->get('options[sound]')) ?>
+                        <?php /*echo $this->formRow($form->get('options[window]')) */?><!--
+                        --><?php /*echo $this->formRow($form->get('options[sound]')) */?>
                         <?php echo $this->formRow($form->get('options[color]')) ?>
                         <?php echo $this->formRow($form->get('options[genre]')) ?>
                         <?php echo $this->formRow($form->get('options[accessibility]')) ?>
@@ -192,11 +192,20 @@
                     <div class="tab-pane" id="tab3">
                         <?php echo $this->formRow($form->get('direction')) ?>
                         <?php echo $this->formRow($form->get('filmography_director')) ?>
-                        <?php echo $this->formRow($form->get('script')) ?>
+
+                        <?php echo $this->formRow($form->get('director_age')) ?>
+                        <?php echo $this->formRow($form->get('director_gender_identity')) ?>
+                        <?php echo $this->formRow($form->get('director_ethnicity')) ?>
+
+
                         <?php echo $this->formRow($form->get('production_company')) ?>
+                        <?php echo $this->formRow($form->get('distributor')) ?>
+
+
                         <?php echo $this->formRow($form->get('co_production')) ?>
                         <?php echo $this->formRow($form->get('executive_production')) ?>
                         <?php echo $this->formRow($form->get('direction_production')) ?>
+                        <?php echo $this->formRow($form->get('script')) ?>
                         <?php echo $this->formRow($form->get('editing_assembly')) ?>
                         <?php echo $this->formRow($form->get('photography')) ?>
                         <?php echo $this->formRow($form->get('direction_art')) ?>
@@ -208,7 +217,7 @@
                         <?php echo $this->formRow($form->get('costume')) ?>
                         <?php echo $this->formRow($form->get('cast')) ?>
                         <?php echo $this->formRow($form->get('synopsis')) ?>
-                        <?php echo $this->formRow($form->get('synopsis_english')) ?>
+<!--                        --><?php //echo $this->formRow($form->get('synopsis_english')) ?>
                     </div>
                     <div class="tab-pane" id="tab4">
                         <?php echo $this->formRow($form->get('movie_link')) ?>
@@ -219,7 +228,7 @@
                         <?php $mediaFieldset = $mediaFieldsets[0];  ?>
 
                         <div class="form-group <?php echo !empty($mediaFieldset->get("file")->getMessages()) ? "has-error" : ""; ?> ">
-                            <label class="control-label col-md-4">Imagem</label>
+                            <label class="control-label col-md-4">Imagem de divulgação do filme (caso selecionado, essa imagem será usada no catálogo e no site do evento)</label>
                             <div class="col-md-6">
                                 <?php
                                 $mediaSrc = null;

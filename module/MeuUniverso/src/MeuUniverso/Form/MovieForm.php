@@ -55,7 +55,7 @@ class MovieForm extends AdminMovieForm
         ]);
 
         $this->get('title')->setAttribute('required', 'required');
-        $this->get('title_english')->setAttribute('required', 'required');
+//        $this->get('title_english')->setAttribute('required', 'required');
         $this->get('production_state')->setAttribute('required', 'required');
         $this->get('production_city')->setAttribute('required', 'required');
         $this->get('end_date_year')->setAttribute('required', 'required');
@@ -79,7 +79,7 @@ class MovieForm extends AdminMovieForm
         $this->get('options[genre]')->setAttribute('required', 'required');
         $this->get('direction')->setAttribute('required', 'required');
         $this->get('filmography_director')->setAttribute('required', 'required');
-        $this->get('synopsis_english')->setAttribute('required', 'required');
+//        $this->get('synopsis_english')->setAttribute('required', 'required');
         $this->get('synopsis')->setAttribute('required', 'required');
         $this->get('has_participated_other_festivals')->setAttribute('required', 'required');
         $this->get('movie_link')->setAttribute('required', 'required');
@@ -99,7 +99,7 @@ class MovieForm extends AdminMovieForm
 
         $this->getInputFilter()->get('movie_link')->setRequired(true);
         $this->getInputFilter()->get('title')->setRequired(true);
-        $this->getInputFilter()->get('title_english')->setRequired(true);
+        $this->getInputFilter()->get('title_english')->setRequired(false);
         $this->getInputFilter()->get('production_state')->setRequired(true);
         $this->getInputFilter()->get('end_date_year')->setRequired(true);
         $this->getInputFilter()->get('end_date_month')->setRequired(true);
@@ -115,7 +115,7 @@ class MovieForm extends AdminMovieForm
         $this->getInputFilter()->get('options[genre]')->setRequired(true);
         $this->getInputFilter()->get('direction')->setRequired(true);
         $this->getInputFilter()->get('filmography_director')->setRequired(true);
-        $this->getInputFilter()->get('synopsis_english')->setRequired(true);
+        $this->getInputFilter()->get('synopsis_english')->setRequired(false);
         $this->getInputFilter()->get('synopsis')->setRequired(true);
         $this->getInputFilter()->get('has_participated_other_festivals')->setRequired(true);
         $this->getInputFilter()->get('movie_link')->setRequired(true);

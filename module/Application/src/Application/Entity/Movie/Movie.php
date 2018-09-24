@@ -87,6 +87,15 @@ class Movie extends AbstractEntity
     /** @ORM\Column(name="direction_production", type="string", nullable=true) */
     private $directionProduction;
 
+    /** @ORM\Column(name="director_age", type="text", nullable=true) */
+    private $directorAge;
+
+    /** @ORM\Column(name="director_gender_identity", type="text", nullable=true) */
+    private $directorGenderIdentity;
+
+    /** @ORM\Column(name="director_ethnicity", type="text", nullable=true) */
+    private $directorEthnicity;
+
     /** @ORM\Column(name="photography", type="string", nullable=true) */
     private $photography;
 
@@ -155,6 +164,9 @@ class Movie extends AbstractEntity
 
     /** @ORM\Column(name="co_production", type="string", nullable=true) */
     private $coProduction;
+
+    /** @ORM\Column(name="distributor", type="text", nullable=true) */
+    private $distributor;
 
     /** @ORM\Column(name="executive_production", type="string", nullable=true) */
     private $executiveProduction;
@@ -1334,5 +1346,69 @@ class Movie extends AbstractEntity
     public function setProductionCity($productionCity)
     {
         $this->productionCity = $productionCity;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDirectorAge()
+    {
+        return $this->directorAge;
+    }
+
+    /**
+     * @param mixed $directorAge
+     */
+    public function setDirectorAge($directorAge)
+    {
+        $this->directorAge = $directorAge;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDirectorGenderIdentity()
+    {
+        return $this->directorGenderIdentity;
+    }
+
+    /**
+     * @param mixed $directorGenderIdentity
+     */
+    public function setDirectorGenderIdentity($directorGenderIdentity)
+    {
+        $this->directorGenderIdentity = $directorGenderIdentity;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDirectorEthnicity()
+    {
+        return $this->directorEthnicity;
+    }
+
+    /**
+     * @param mixed $directorEthnicity
+     */
+    public function setDirectorEthnicity($directorEthnicity)
+    {
+        $this->directorEthnicity = $directorEthnicity;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDistributor()
+    {
+        return $this->distributor;
+    }
+
+    /**
+     * @param mixed $distributor
+     */
+    public function setDistributor($distributor)
+    {
+        $this->distributor = $distributor;
     }
 }
