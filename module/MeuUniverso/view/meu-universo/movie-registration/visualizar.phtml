@@ -46,14 +46,14 @@ $movie = $this->movie;
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-12">
+                        <!--<div class="col-md-12">
                             <div class="form-group">
                                 <label class="control-label col-md-3">Título em inglês:</label>
                                 <div class="col-md-9">
-                                    <p class="form-control-static"> <?php echo $movie->getTitleEnglish(); ?> </p>
+                                    <p class="form-control-static"> <?php /*echo $movie->getTitleEnglish(); */?> </p>
                                 </div>
                             </div>
-                        </div>
+                        </div>-->
                     </div>
 
                     <div class="row">
@@ -68,6 +68,14 @@ $movie = $this->movie;
                                 <label class="control-label col-md-3">Estado de produção:</label>
                                 <div class="col-md-9">
                                     <p class="form-control-static"> <?php echo $movie->getProductionState(); ?> </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="control-label col-md-3">Cidade de produção:</label>
+                                <div class="col-md-9">
+                                    <p class="form-control-static"> <?php echo $movie->getProductionCity(); ?> </p>
                                 </div>
                             </div>
                         </div>
@@ -175,33 +183,33 @@ $movie = $this->movie;
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-12">
+                        <!--<div class="col-md-12">
                             <div class="form-group">
                                 <label class="control-label col-md-3">Janela final para exibição:</label>
                                 <div class="col-md-9">
                                     <p class="form-control-static">
-                                        <?php if($win = $movie->getOption(\Application\Entity\Movie\OptionsType::WINDOW)) {
+                                        <?php /*if($win = $movie->getOption(\Application\Entity\Movie\OptionsType::WINDOW)) {
                                             echo $win->getName();
-                                        } ?>
+                                        } */?>
                                     </p>
                                 </div>
                             </div>
-                        </div>
+                        </div>-->
                     </div>
 
                     <div class="row">
-                        <div class="col-md-12">
+                        <!--<div class="col-md-12">
                             <div class="form-group">
                                 <label class="control-label col-md-3">Som:</label>
                                 <div class="col-md-9">
                                     <p class="form-control-static">
-                                        <?php if($sou = $movie->getOption(\Application\Entity\Movie\OptionsType::SOUND)) {
+                                        <?php /*if($sou = $movie->getOption(\Application\Entity\Movie\OptionsType::SOUND)) {
                                             echo $sou->getName();
-                                        } ?>
+                                        } */?>
                                     </p>
                                 </div>
                             </div>
-                        </div>
+                        </div>-->
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label class="control-label col-md-3">Cor:</label>
@@ -267,7 +275,7 @@ $movie = $this->movie;
                         </div>
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label class="control-label col-md-3">Para curta, indique se ele se enquadra em uma das categorias:</label>
+                                <label class="control-label col-md-3">Indique se ele se enquadra em uma das categorias:</label>
                                 <div class="col-md-9">
                                     <p class="form-control-static">
                                         <?php if($short = $movie->getOption(\Application\Entity\Movie\OptionsType::SHORT_MOVIE_CATEGORY)) {
@@ -345,7 +353,7 @@ $movie = $this->movie;
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label class="control-label col-md-3">O filme já participou de outros festivais?</label>
+                                <label class="control-label col-md-3">O filme já foi exibido publicamente ou tem exibição prevista para 2018?</label>
                                 <div class="col-md-9">
                                     <p class="form-control-static"> <?php echo $movie->getHasParticipatedOtherFestivals()==1 ? "Sim" : "Não"; ?> </p>
                                 </div>
@@ -354,7 +362,7 @@ $movie = $this->movie;
                         <?php if($movie->getHasParticipatedOtherFestivals()): ?>
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <label class="control-label col-md-3">Cite os festivais e prêmios recebidos:</label>
+                                    <label class="control-label col-md-3">Onde foi ou será exibido? Cite também os festivais e eventuais prêmios recebidos:</label>
                                     <div class="col-md-9">
                                         <p class="form-control-static"> <?php echo $movie->getOtherFestivals(); ?> </p>
                                     </div>
@@ -388,6 +396,12 @@ $movie = $this->movie;
                                 <label class="control-label col-md-3">Empresa produtora:</label>
                                 <div class="col-md-9">
                                     <p class="form-control-static"> <?php echo $movie->getProductionCompany() ?> </p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3">Distribuidora:</label>
+                                <div class="col-md-9">
+                                    <p class="form-control-static"> <?php echo $movie->getDistributor() ?> </p>
                                 </div>
                             </div>
                         </div>
@@ -529,9 +543,34 @@ $movie = $this->movie;
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label class="control-label col-md-3">Filmografia do diretor:</label>
+                                <label class="control-label col-md-3">Filmografia da(s) diretora(s) ou do(s) diretor(es):</label>
                                 <div class="col-md-9">
                                     <p class="form-control-static"> <?php echo $movie->getFilmographyDirector() ?> </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="control-label col-md-3">Idade da(s) diretora(s) ou do(s) diretor(es):</label>
+                                <div class="col-md-9">
+                                    <p class="form-control-static"> <?php echo $movie->getDirectorAge() ?> </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="control-label col-md-3">Identidade de gênero da(s) diretora(s) ou do(s) diretor(es):</label>
+                                <div class="col-md-9">
+                                    <p class="form-control-static"> <?php echo $movie->getDirectorGenderIdentity() ?> </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="control-label col-md-3">Raça/etnia da(s) diretora(s) ou do(s) diretor(es):</label>
+                                <div class="col-md-9">
+                                    <p class="form-control-static"> <?php echo $movie->getDirectorEthnicity() ?> </p>
                                 </div>
                             </div>
                         </div>

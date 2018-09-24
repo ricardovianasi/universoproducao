@@ -465,7 +465,7 @@ class MovieRegistrationController extends AbstractMeuUniversoRegisterController
                     }
                     $msg.= '<p><ul>'.$mostras.'</ul></p>';
 
-                    $msg.= '<p>O resultado para a seleção da 13ª CineOP está previsto para 14 de maio, e o da 12ª CineBH para 01 de agosto. Os resultados serão enviados pelo email cadastrado.</p>';
+                    $msg.= '<p>O resultado para a seleção da 22ª Mostra Tiradentes está previsto para |segunda quinzena de dezembro de 2018, e o da 14ª CineOP para maio de 2019. Os resultados serão enviados pelo email cadastrado.</p>';
                     $msg.= '<p>Pedimos a gentileza de manter os dados do seu cadastro sempre atualizados para garantir a eficácia em nossa comunicação!</p>';
 
                     $to[$user->getName()] = $user->getEmail();

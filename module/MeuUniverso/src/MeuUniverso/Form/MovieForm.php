@@ -58,6 +58,8 @@ class MovieForm extends AdminMovieForm
 //        $this->get('title_english')->setAttribute('required', 'required');
         $this->get('production_state')->setAttribute('required', 'required');
         $this->get('production_city')->setAttribute('required', 'required');
+        $this->get('production_company')->setAttribute('required', 'required');
+        $this->get('distributor')->setAttribute('required', 'required');
         $this->get('end_date_year')->setAttribute('required', 'required');
         $this->get('end_date_month')->setAttribute('required', 'required');
         $this->get('duration')->setAttribute('required', 'required');
@@ -99,6 +101,8 @@ class MovieForm extends AdminMovieForm
 
         $this->getInputFilter()->get('movie_link')->setRequired(true);
         $this->getInputFilter()->get('title')->setRequired(true);
+        $this->getInputFilter()->get('production_company')->setRequired(true);
+        $this->getInputFilter()->get('distributor')->setRequired(true);
         $this->getInputFilter()->get('title_english')->setRequired(false);
         $this->getInputFilter()->get('production_state')->setRequired(true);
         $this->getInputFilter()->get('end_date_year')->setRequired(true);
