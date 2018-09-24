@@ -200,7 +200,7 @@ class MovieForm extends Form
 
         $this->add([
             'name' => 'duration',
-            'type' => 'Number',
+            'type' => 'text',
             'options' => [
                 'label' => 'Duração em minutos',
                 'help-block' => nl2br($this->getDurationHelpBlock())

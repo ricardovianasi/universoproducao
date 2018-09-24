@@ -465,7 +465,7 @@ class MovieRegistrationController extends AbstractMeuUniversoRegisterController
                     }
                     $msg.= '<p><ul>'.$mostras.'</ul></p>';
 
-                    $msg.= '<p>O resultado para a seleção da 22ª Mostra Tiradentes está previsto para a segunda quinzena de dezembro de 2018, e o da 14ª CineOP para maio de 2019. Os resultados serão enviados para o cadastrado.</p>';
+                    $msg.= '<p>O resultado para a seleção da 22ª Mostra Tiradentes está previsto para a segunda quinzena de dezembro de 2018, e o da 14ª CineOP para maio de 2019. Os resultados serão enviados para o e-mail cadastrado.</p>';
                     $msg.= '<p>Pedimos a gentileza de manter os dados do seu cadastro sempre atualizados para garantir a eficácia em nossa comunicação.</p>';
                     $msg.= '<p>Agradecemos a participação!</p>';
 

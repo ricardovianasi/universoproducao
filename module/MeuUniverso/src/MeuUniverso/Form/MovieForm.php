@@ -62,7 +62,7 @@ class MovieForm extends AdminMovieForm
         $this->get('distributor')->setAttribute('required', 'required');
         $this->get('end_date_year')->setAttribute('required', 'required');
         $this->get('end_date_month')->setAttribute('required', 'required');
-        $this->get('duration')->setAttribute('required', 'required');
+        $this->get('duration')->setAttribute('required', 'required')->setAttribute('maxlength', '3');
 //        $this->get('cpb')->setAttribute('required', 'required');
         $this->get('has_cpb')->setAttribute('required', 'required');
         $this->get('has_official_classification')->setAttribute('required', 'required');
