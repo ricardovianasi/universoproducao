@@ -5,9 +5,11 @@
         <?php if(count($this->bannerImages) > 0):
             foreach ($this->bannerImages as $banner): ?>
                 <div class="banner-slide owl-slide" style="background-image: url('<?php echo $this->thumbor()->url($banner->getMeta('_image'))->resize(1920, 746); ?>')">
-                    <?php if($banner->getSubtitle()): ?>
-                        <span class="banner-copy"><?php echo $banner->getSubtitle(); ?></span>
-                    <?php endif; ?>
+                    <a href="<?php echo $banner->getMeta('_link') ?>">
+                        <?php if($banner->getSubtitle()): ?>
+                            <span class="banner-copy"><?php echo $banner->getSubtitle(); ?></span>
+                        <?php endif; ?>
+                    </a>
                 </div>
             <?php endforeach; ?>
         <?php else: ?>
