@@ -421,9 +421,9 @@ class MovieController extends AbstractAdminController
                     }
                     unset($data['producing_institution']);
 
-                    /*$duration = $data['duration']; //im minutes -change to DateTime object
-                    $durationObj = \DateTime::createFromFormat('i', $duration);
-                    $data['duration'] = $durationObj;*/
+                    $duration = $data['duration']; //im minutes -change to DateTime object
+                    $durationObj = \DateTime::createFromFormat('U', $duration*60);
+                    $data['duration'] = $durationObj;
 
 
                     $movie->setData($data);
