@@ -40,6 +40,16 @@ class BannerForm extends Form
 		]);
 
         $this->add([
+            'type' => 'Number',
+            'name' => 'order',
+            'attributes' => [
+            ],
+            'options' => [
+                'label' => 'Posição'
+            ]
+        ]);
+
+        $this->add([
             'name' => 'content',
             'type' => 'textarea',
             'attributes' => [
