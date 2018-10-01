@@ -40,7 +40,7 @@
                         <?php
                             switch ($reg->getType()) {
                                 case \Application\Entity\Registration\Type::MOVIE:
-                                    $url = $this->url('meu-universo/movie', ['id_reg'=>$reg->getHash(), 'action'=>'novo']);
+                                    $url = $this->url('meu-universo/movie', ['id_reg'=>$reg->getHash(), 'action'=>'inscricao']);
                                     break;
                                 case \Application\Entity\Registration\Type::MOTION_CITY_MOVIE:
                                     $url = $this->url('meu-universo/moving_city_movie', ['id_reg'=>$reg->getHash(), 'action'=>'novo']);
