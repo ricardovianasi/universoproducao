@@ -70,7 +70,7 @@
                                     $url = $this->url('meu-universo/workshop_proposal');
                                     break;
                                 case \Application\Entity\Registration\Type::ARTISTIC_PROPOSAL:
-                                    $url = $this->url('meu-universo/artistic_proposal', ['id_reg'=>$reg->getHash(), 'action'=>'inscricao']);
+                                    $url = $this->url('meu-universo/artistic_proposal', ['id_reg'=>$reg->getHash()]);
                                     break;
                                 default:
                                     $url = "#";
