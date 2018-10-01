@@ -121,6 +121,8 @@ class RegistrationController extends AbstractAdminController
 
                     if(!empty($data['end_date']) && !empty($data['hour_end'])) {
                         $data['end_date'] = $data['end_date'].' '.$data['hour_end'];
+                    } else {
+                        $data['end_date'] = null;
                     }
 
                     $optionsCollection = new ArrayCollection();
