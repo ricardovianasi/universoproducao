@@ -44,7 +44,7 @@
                                 <span class="label label-sm label-info"><?php echo $cat->getName(); ?></span>
                             <?php endforeach; ?>
                         </td>
-                        <td><?php echo $item->getDate() ? $item->getDate()->format('d/mY') : ""; ?></td>
+                        <td><?php echo $item->getDate() ? $item->getDate()->format('d/m/Y') : ""; ?></td>
 						<td>
 							<a href="<?php echo  $updateUrl; ?>" class="btn btn-sm btn-default">
 								<i class="fa fa-edit"></i> Editar

@@ -11,7 +11,7 @@ class ChannelController extends AbstractAdminController
 {
 	public function indexAction()
 	{
-        $items = $this->search(Video::class);
+        $items = $this->search(Video::class, [], ['date' => 'DESC']);
         $this->getViewModel()->setVariables([
             'items' => $items
         ]);
