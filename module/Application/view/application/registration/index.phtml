@@ -30,11 +30,14 @@
                         $strData = sprintf("De %s a %s(até %s horas - horário de Brasília)", $dataInicio, $dataTermino, $horaFim);
                     } elseif($reg->getStartDate()) {
                         $dataInicio = $this->dateFormat($reg->getStartDate(), null, null, "pt_BR", "d 'de' MMMM");
-                        $strData = sprintf("A partir de %s", $dataInicio);
+                        //$strData = sprintf("A partir de %s", $dataInicio);
+                        $strData = "";
                     } ?>
                     <?php if($strData): ?><p class="date"><?php echo $strData ?></p><?php endif; ?>
                     <?php if($reg->getInfo()): ?><p><?php echo $reg->getInfo(); ?></p><?php endif; ?>
-                    <p><a class="registration-link" data-fancybox data-src="#regulation-<?php echo $reg->getId(); ?>" href="javascript:;">Confira o regulamento</a></p>
+                    <?php if($reg->getRegulation()): ?>
+                        <p><a class="registration-link" data-fancybox data-src="#regulation-<?php echo $reg->getId(); ?>" href="javascript:;">Confira o regulamento</a></p>
+                    <?php endif; ?>
 
                     <?php $url = "#"; if($reg->isOpen()): ?>
                         <?php
