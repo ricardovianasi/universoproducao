@@ -29,7 +29,7 @@ class WorkshopProposalController extends AbstractMeuUniversoController
 
                 //Enviar o email para a universo
 
-                return $this->redirect()->toRoute('meu-universo/workshop_proposal', ['action'=>'confirmação']);
+                return $this->redirect()->toRoute('meu-universo/workshop_proposal', ['action'=>'confirmacao']);
             }
         }
 
