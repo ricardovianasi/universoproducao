@@ -70,6 +70,7 @@ class ArtisticProposalForm extends Form
             ],
             'attributes' => [
                 'placeholder' => 'Duração',
+                'required' => 'required',
             ]
         ]);
 
@@ -87,7 +88,7 @@ class ArtisticProposalForm extends Form
                 ]
             ],
             'attributes' => [
-//                'required' => 'required',
+                'required' => 'required',
             ]
         ]);
 
@@ -109,7 +110,7 @@ class ArtisticProposalForm extends Form
                 ]
             ],
             'attributes' => [
-//                'required' => 'required',
+                'required' => 'required',
             ]
         ]);
 
@@ -140,6 +141,7 @@ class ArtisticProposalForm extends Form
                 ]
             ],
             'attributes' => [
+                'required' => 'required',
             ]
         ]);
 
@@ -161,7 +163,7 @@ class ArtisticProposalForm extends Form
                 ]
             ],
             'attributes' => [
-//                'required' => 'required',
+                'required' => 'required',
             ]
         ]);
 
@@ -178,7 +180,25 @@ class ArtisticProposalForm extends Form
                 ]
             ],
             'attributes' => [
-                'rows' => 10
+                'rows' => 10,
+                'required' => 'required',
+            ]
+        ]);
+
+        $this->add([
+            'type' => 'Textarea',
+            'name' => 'short_presentation',
+            'options' => [
+                'label' => 'Breve apresentação da atração',
+                'twb-layout' => 'horizontal',
+                'column-size' => 'md-5',
+                'label_attributes' => [
+                    'class' => 'col-md-3'
+                ]
+            ],
+            'attributes' => [
+                'rows' => 10,
+                'required' => 'required',
             ]
         ]);
 
@@ -194,7 +214,8 @@ class ArtisticProposalForm extends Form
                 ]
             ],
             'attributes' => [
-                'rows' => 10
+                'rows' => 10,
+//                'required' => 'required',
             ]
         ]);
 
@@ -219,7 +240,7 @@ class ArtisticProposalForm extends Form
 
         //Validações
         $this->setInputFilter((new InputFilterFactory)->createInputFilter([
-            'incentive_law' => [
+            /*'incentive_law' => [
                 'name' => 'incentive_law',
                 'required' => false,
                 'allow_empty' => true
@@ -233,7 +254,7 @@ class ArtisticProposalForm extends Form
                 'name' => 'category',
                 'required' => false,
                 'allow_empty' => true
-            ]
+            ]*/
         ]));
 
     }
