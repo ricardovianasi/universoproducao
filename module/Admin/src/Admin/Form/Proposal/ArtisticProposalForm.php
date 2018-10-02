@@ -125,7 +125,7 @@ class ArtisticProposalForm extends Form
                 ]
             ],
             'attributes' => [
-                'placeholder' => 'Nome do show ou espetáculo',
+                'required' => 'required',
             ]
         ]);
 
