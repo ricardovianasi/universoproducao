@@ -23,6 +23,12 @@ class WorkshopProposal extends AbstractEntity
      */
     private $id;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Application\Entity\User\User")
+     * @ORM\JoinColumn(name="author_id", referencedColumnName="id")
+     */
+    private $author;
+
     /** @ORM\Column(type="text", nullable=true) */
     private $name;
 
@@ -514,5 +520,19 @@ class WorkshopProposal extends AbstractEntity
         $this->totalValue = $totalValue;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getAuthor()
+    {
+        return $this->author;
+    }
 
+    /**
+     * @param mixed $author
+     */
+    public function setAuthor($author)
+    {
+        $this->author = $author;
+    }
 }

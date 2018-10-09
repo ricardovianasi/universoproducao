@@ -41,6 +41,28 @@
 				<div class="portlet">
 					<div class="portlet-body form">
 						<div class="form-body">
+                            <div class="form-group ">
+                                <?php
+                                $userName = $this->proposal->getAuthor()?$this->proposal->getAuthor()->getName():"";
+                                $userId = $this->proposal->getAuthor()?$this->proposal->getAuthor()->getId():"";
+                                ?>
+                                <label class="col-md-3 control-label">Usuário<span class="required"> * </span></label>
+                                <div class=" col-md-4">
+                                    <div class="input-group">
+                                        <input readonly type="text" id="userName" class="form-control" value="<?php echo $userName ?>">
+                                        <span class="input-group-btn">
+                                                <button
+                                                        class="btn user-modal"
+                                                        type="button"
+                                                        data-user-id="<?php echo $userId; ?>"
+                                                        data-select-id-to="#user"
+                                                        data-select-name-to="#userName">
+                                                    <i class="fa fa-search"></i>
+                                                </button>
+                                            </span>
+                                    </div>
+                                </div>
+                            </div>
                             <?php echo $this->formRow($form->get('name')) ?>
                             <?php echo $this->formRow($form->get('offer')) ?>
                             <?php echo $this->formRow($form->get('objectives')) ?>
@@ -57,12 +79,6 @@
                             <?php echo $this->formRow($form->get('value_hour_class')) ?>
                             <?php echo $this->formRow($form->get('total_value')) ?>
                             <?php echo $this->formRow($form->get('instructors_curriculum')) ?>
-                            <?php echo $this->formRow($form->get('contact_name')) ?>
-                            <?php echo $this->formRow($form->get('email')) ?>
-                            <?php echo $this->formRow($form->get('phones')) ?>
-                            <?php echo $this->formRow($form->get('address')) ?>
-                            <?php echo $this->formRow($form->get('cep')) ?>
-                            <?php echo $this->formRow($form->get('city')) ?>
                             <?php echo $this->formRow($form->get('comments')) ?>
                         </div>
 

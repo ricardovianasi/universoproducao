@@ -17,6 +17,8 @@ class WorkshopProposalController extends AbstractMeuUniversoController
     public function indexAction()
     {
         $proposal = new WorkshopProposal();
+        $proposal->setAuthor($this->getAuthenticationService()->getIdentity());
+
         $return = [];
         $form = new WorkshopProposalForm($this->getEntityManager());
         if($this->getRequest()->isPost()) {

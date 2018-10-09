@@ -27,6 +27,15 @@ class ArtisticProposalForm extends Form
         ]);
 
         $this->add([
+            'type' => 'hidden',
+            'name' => 'user',
+            'attributes' => [
+                'class' => 'input-sm',
+                'id' => 'user'
+            ]
+        ]);
+
+        $this->add([
             'name' => 'artist_name',
             'options' => [
                 'label' => 'Artista/Banda/Companhia',

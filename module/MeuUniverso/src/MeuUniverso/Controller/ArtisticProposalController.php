@@ -18,6 +18,7 @@ class ArtisticProposalController extends AbstractMeuUniversoController
     public function indexAction()
     {
         $proposal = new ArtisticProposal();
+        $proposal->setAuthor($this->getAuthenticationService()->getIdentity());
         $return = [];
         $form = new ArtisticProposalForm($this->getEntityManager());
         if($this->getRequest()->isPost()) {

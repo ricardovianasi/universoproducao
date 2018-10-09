@@ -69,6 +69,18 @@ class WorkshopProposalController extends AbstractAdminController
 			$form->setData($data);
 			if($form->isValid()) {
 				$validData = $form->getData();
+
+                $user = null;
+                if($this->getRequest()->isPost()) {
+                    if (!empty($validData['user'])) {
+                        $user = $this
+                            ->getRepository(\Application\Entity\User\User::class)
+                            ->find($validData['user']);
+                    }
+                }
+                $proposal->setAuthor($user);
+                unset($validData['user']);
+
 				$proposal->setData($validData);
 				$this->getEntityManager()->persist($proposal);
 				$this->getEntityManager()->flush();

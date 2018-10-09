@@ -21,6 +21,15 @@ class WorkshopProposalForm extends Form
         ]);
 
         $this->add([
+            'type' => 'hidden',
+            'name' => 'user',
+            'attributes' => [
+                'class' => 'input-sm',
+                'id' => 'user'
+            ]
+        ]);
+
+        $this->add([
             'name' => 'name',
             'options' => [
                 'label' => 'Nome da oficina',
@@ -314,7 +323,6 @@ class WorkshopProposalForm extends Form
             ],
             'attributes' => [
                 'placeholder' => 'Nome para contato',
-                'required' => 'required',
             ]
         ]);
 
@@ -330,7 +338,6 @@ class WorkshopProposalForm extends Form
             ],
             'attributes' => [
                 'placeholder' => 'E-mail',
-                'required' => 'required',
             ]
         ]);
 
@@ -346,7 +353,6 @@ class WorkshopProposalForm extends Form
             ],
             'attributes' => [
                 'placeholder' => 'Telefone/Celular',
-                'required' => 'required',
             ]
         ]);
 
@@ -362,7 +368,6 @@ class WorkshopProposalForm extends Form
             ],
             'attributes' => [
                 'placeholder' => 'Endereço',
-                'required' => 'required',
             ]
         ]);
 
@@ -378,7 +383,6 @@ class WorkshopProposalForm extends Form
             ],
             'attributes' => [
                 'placeholder' => 'Cep',
-                'required' => 'required',
             ]
         ]);
 
@@ -394,7 +398,6 @@ class WorkshopProposalForm extends Form
             ],
             'attributes' => [
                 'placeholder' => 'Cidade',
-                'required' => 'required',
             ]
         ]);
 

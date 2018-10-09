@@ -34,9 +34,10 @@
 						<tr role="row" class="heading">
 							<th width="2%">#</th>
 							<th width="30%">Artista/Banda/Companhia</th>
-							<th width="30%">Nome do show/espetáculo</th>
-							<th width="20%">Categoria</th>
-							<th width="20%">Recebido em</th>
+							<th width="25%">Nome do show/espetáculo</th>
+							<th width="15%">Categoria</th>
+							<th width="15%">Usuário</th>
+							<th width="15%">Recebido em</th>
 							<th width="10%">Ações</th>
 						</tr>
 						<tr role="row" class="filter">
@@ -45,6 +46,7 @@
 							<td><?php echo $this->formelement($form->get('artist_name')); ?></td>
 							<td><?php echo $this->formelement($form->get('show_name')); ?></td>
 							<td><?php echo $this->formelement($form->get('category')); ?></td>
+                            <td></td>
                             <td>
                                 <div class="input-group date date-picker margin-bottom-5" data-date-format="dd/mm/yyyy">
                                     <?php echo $this->formelement($form->get('startDate')); ?>
@@ -90,7 +92,8 @@
 								<td><a href="<?php echo $updateUrl; ?>"><?php echo $item->getArtistName(); ?></a></td>
 								<td><?php echo $item->getShowName(); ?></td>
 								<td><?php echo $item->getCategory() ? $item->getCategory()->getName() : ""; ?></td>
-								<td><?php echo $item->getCreatedAt()->format('d/m/Y H:i'); ?></td>
+                                <td><?php echo $item->getAuthor() ? $item->getAuthor()->getName() : "" ?></td>
+                                <td><?php echo $item->getCreatedAt()->format('d/m/Y H:i'); ?></td>
 								<td>
 									<a href="<?php echo  $updateUrl; ?>" class="btn btn-sm btn-default margin-bottom-5">
 										<i class="fa fa-edit"></i> Editar

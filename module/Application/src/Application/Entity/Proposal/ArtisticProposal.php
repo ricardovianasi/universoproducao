@@ -22,6 +22,12 @@ class ArtisticProposal extends AbstractEntity
      */
     private $id;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Application\Entity\User\User")
+     * @ORM\JoinColumn(name="author_id", referencedColumnName="id")
+     */
+    private $author;
+
     /** @ORM\Column(name="artist_name", type="string", nullable=true) */
     private $artistName;
 
@@ -305,5 +311,21 @@ class ArtisticProposal extends AbstractEntity
     public function setUpdatedAt($updatedAt)
     {
         $this->updatedAt = $updatedAt;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAuthor()
+    {
+        return $this->author;
+    }
+
+    /**
+     * @param mixed $author
+     */
+    public function setAuthor($author)
+    {
+        $this->author = $author;
     }
 }

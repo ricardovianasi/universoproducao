@@ -76,7 +76,19 @@ class ArtisticProposalController extends AbstractAdminController
 			if($form->isValid()) {
 				$validData = $form->getData();
 
-				if(!empty($validData['category'])) {
+                $user = null;
+                if($this->getRequest()->isPost()) {
+                    if (!empty($data['user'])) {
+                        $user = $this
+                            ->getRepository(\Application\Entity\User\User::class)
+                            ->find($data['user']);
+                    }
+                }
+                $proposal->setAuthor($user);
+                unset($validData['user']);
+
+
+                if(!empty($validData['category'])) {
 				    $cat = $this
                         ->getRepository(ArtisticProposalCategory::class)
                         ->find($validData['category']);
