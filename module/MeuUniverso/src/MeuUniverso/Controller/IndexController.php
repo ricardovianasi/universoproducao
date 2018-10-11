@@ -4,6 +4,8 @@ namespace MeuUniverso\Controller;
 use Application\Entity\EducationalProject\EducationalProject;
 use Application\Entity\Movie\Movie;
 use Application\Entity\Project\Project;
+use Application\Entity\Proposal\ArtisticProposal;
+use Application\Entity\Proposal\WorkshopProposal;
 use Application\Entity\Registration\Registration;
 use Application\Entity\Seminar\SeminarSubscription;
 use Application\Entity\SessionSchool\SessionSchoolSubscription;
@@ -53,6 +55,15 @@ class IndexController extends AbstractMeuUniversoController
             ->getQuery()
             ->getResult();
 
+        $artisticProposal = $this->getRepository(ArtisticProposal::class)->findBy([
+            'author' => $this->getAuthenticationService()->getIdentity()->getId()
+        ], ['createdAt' => 'DESC']);
+
+        $workshopProposal = $this->getRepository(WorkshopProposal::class)->findBy([
+            'author' => $this->getAuthenticationService()->getIdentity()->getId()
+        ], ['createdAt' => 'DESC']);
+
+
         return [
             'movies' => $movies,
             'educational_movies' => $educationalMovies,
@@ -60,7 +71,10 @@ class IndexController extends AbstractMeuUniversoController
             'projects' => $projects,
             'educationalProjects' => $educationalProjects,
             'sessionSchool' => $sessionSchool,
-            'seminars' => $seminars
+            'seminars' => $seminars,
+            'artisticProposal' => $artisticProposal,
+            'workshopProposal' => $workshopProposal
+
         ];
     }
 

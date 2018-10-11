@@ -9,13 +9,8 @@
 namespace Admin\Controller;
 
 use Admin\Form\Proposal\ArtisticProposalForm;
-use Admin\Form\User\ResetPasswordForm;
-use Admin\Form\User\UserForm;
-use Admin\Form\User\UserSearch;
-use Application\Entity\AdminUser\User;
 use Application\Entity\Proposal\ArtisticProposal;
 use Application\Entity\Proposal\ArtisticProposalCategory;
-use Util\Security\Crypt;
 
 class ArtisticProposalController extends AbstractAdminController
 	implements CrudInterface

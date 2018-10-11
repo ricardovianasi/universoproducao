@@ -94,5 +94,63 @@
                 </div>
             </div>
         <?php endif; ?>
+
+        <?php if(count($this->artisticProposal)): ?>
+            <div class="portlet box blue-hoki">
+                <div class="portlet-title">
+                    <div class="caption">
+                        <i class="fa fa-gift"></i>Propostas Artísticas</div>
+                    <div class="actions">
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    <table class="table table-hover table-light table-movie">
+                        <thead>
+                        <tr>
+                            <th width="20%"> Nome do show/espetáculo </th>
+                            <th width="20%"> Data de cadastro </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <?php foreach ($this->artisticProposal as $ap): ?>
+                            <tr>
+                                <td><?php echo $ap->getShowName()?></td>
+                                <td><?php echo $ap->getCreatedAt()->format('d/m/Y H:i'); ?></td>
+                            </tr>
+                        <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        <?php endif; ?>
+
+        <?php if(count($this->workshopProposal)): ?>
+            <div class="portlet box blue-hoki">
+                <div class="portlet-title">
+                    <div class="caption">
+                        <i class="fa fa-gift"></i>Propostas de Oficinas</div>
+                    <div class="actions">
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    <table class="table table-hover table-light table-movie">
+                        <thead>
+                        <tr>
+                            <th width="20%"> Nome da oficina </th>
+                            <th width="20%"> Data de cadastro </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <?php foreach ($this->workshopProposal as $wp): ?>
+                            <tr>
+                                <td><?php echo $wp->getName(); ?></td>
+                                <td><?php echo $wp->getCreatedAt()->format('d/m/Y H:i'); ?></td>
+                            </tr>
+                        <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        <?php endif; ?>
     </div>
 </div>
