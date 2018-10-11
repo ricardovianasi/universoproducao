@@ -107,7 +107,7 @@ class ArtisticProposalForm extends Form
             'options' => [
                 'label' => 'Público alvo',
                 'value_options' => [
-                    'Adulto' => 'Aduto',
+                    'Adulto' => 'Adulto',
                     'Infantil' => 'Infantil',
                     'Não se aplica' => 'Não se aplica'
                 ],
