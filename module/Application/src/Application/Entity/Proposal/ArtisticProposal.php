@@ -46,6 +46,9 @@ class ArtisticProposal extends AbstractEntity
     /** @ORM\Column(name="suggested_cache", type="string", nullable=true) */
     private $suggestedCache;
 
+    /** @ORM\Column(name="short_presentation", type="string", nullable=true) */
+    private $shortPresentation;
+
     /** @ORM\Column(name="staff_quantity", type="string", nullable=true) */
     private $staffQuantity;
 
@@ -327,5 +330,21 @@ class ArtisticProposal extends AbstractEntity
     public function setAuthor($author)
     {
         $this->author = $author;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getShortPresentation()
+    {
+        return $this->shortPresentation;
+    }
+
+    /**
+     * @param mixed $shortPresentation
+     */
+    public function setShortPresentation($shortPresentation)
+    {
+        $this->shortPresentation = $shortPresentation;
     }
 }
