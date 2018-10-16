@@ -107,7 +107,11 @@
 						</tbody>
 					</table>
 					<div class="table-paginator">
-						<?php echo $this->paginationcontrol($this->items, 'sliding', 'admin/partials/paginator.phtml'); ?>
+						<?php echo $this->paginationcontrol($this->items, 'sliding', 'admin/partials/paginator.phtml', array(
+                            'route'=>'admin/default',
+                            'route_options' => array('controller'=>'artistic-proposal'),
+                            'route_query_options' => ['query'=>$this->searchData]
+                        )); ?>
 					</div>
 
 				</div>
