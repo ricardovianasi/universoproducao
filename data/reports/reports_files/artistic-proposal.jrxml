@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.4.0.final using JasperReports Library version 6.4.1  -->
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="artistic-proposal" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e0087836-be2b-4159-b647-254e8cb27bfc">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="artistic-proposal" pageWidth="595" pageHeight="1100" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e0087836-be2b-4159-b647-254e8cb27bfc">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter "/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
 	<queryString language="json">
 		<![CDATA[object]]>
 	</queryString>
@@ -61,6 +62,26 @@
 		<property name="net.sf.jasperreports.json.field.expression" value="created_at"/>
 		<fieldDescription><![CDATA[created_at]]></fieldDescription>
 	</field>
+	<field name="author_id" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="author_id"/>
+		<fieldDescription><![CDATA[author_id]]></fieldDescription>
+	</field>
+	<field name="author_name" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="author_name"/>
+		<fieldDescription><![CDATA[author_name]]></fieldDescription>
+	</field>
+	<field name="author_email" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="author_email"/>
+		<fieldDescription><![CDATA[author_email]]></fieldDescription>
+	</field>
+	<field name="author_address" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="author_address"/>
+		<fieldDescription><![CDATA[author_address]]></fieldDescription>
+	</field>
+	<field name="author_phones" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="author_phones"/>
+		<fieldDescription><![CDATA[author_phones]]></fieldDescription>
+	</field>
 	<pageHeader>
 		<band height="40" splitType="Stretch">
 			<image>
@@ -77,7 +98,8 @@
 		</band>
 	</pageHeader>
 	<detail>
-		<band height="721" splitType="Stretch">
+		<band height="979" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement positionType="Float" x="0" y="70" width="554" height="30" uuid="2c0d6650-86eb-40c2-89c3-8bd2428b851b"/>
 				<box padding="5">
@@ -353,6 +375,98 @@
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[Projeto de lei de incentivo]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="Float" x="0" y="865" width="555" height="30" uuid="50258883-ff75-4b0b-9524-1df72d474ace"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{author_address}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="835" width="555" height="30" uuid="f1311368-a0c6-4599-b6af-f454bb5478b1"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Endereço]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="715" width="90" height="30" uuid="6f9f849d-9218-471f-ae0e-c43eb01527e6"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[ID]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="Float" x="90" y="715" width="465" height="30" uuid="db9403d6-7f58-4cb1-a019-9b6d74b4e801"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{author_id}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="Float" x="90" y="745" width="465" height="30" uuid="6095307f-a659-4d32-8b56-0b3eca7f8408"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{author_name}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="745" width="90" height="30" uuid="bf8762ff-efc7-46a3-b8e5-74da75d89aab"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nome]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="775" width="90" height="30" uuid="bd63a21f-b9ee-4a85-9603-83f8d437bf3b"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[E-mail]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="Float" x="90" y="805" width="465" height="30" uuid="eeb255af-e118-4487-88f0-9448b2ab3d78"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{author_phones}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="805" width="90" height="30" uuid="c6729221-09c1-4dc7-86b3-df7aeb7b8953"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Telefone]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="Float" x="90" y="775" width="465" height="30" uuid="053031e0-0c6a-4a1e-ae67-326140f9cbc2"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{author_email}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="670" width="190" height="30" uuid="5fb085f2-c8e2-4b21-9a43-37cee36ed7d7"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Dados do usuário]]></text>
 			</staticText>
 		</band>
 	</detail>

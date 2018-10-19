@@ -144,6 +144,24 @@ class ArtisticProposalController extends AbstractAdminController
 
             $array['category'] = $obj->getCategory()?$obj->getCategory()->getName() : "";
 
+            //Author
+            $author = [
+                'author_id' => $obj->getAuthor() ? $obj->getAuthor()->getId() : "",
+                'author_name' => $obj->getAuthor() ? $obj->getAuthor()->getName() : "",
+                'author_email' => $obj->getAuthor() ? $obj->getAuthor()->getEmail() : "",
+                'author_address' => $obj->getAuthor() ? $obj->getAuthor()->getFullAddress() : ""
+            ];
+            $phones = [];
+            if($obj->getAuthor()) {
+                foreach ($obj->getAuthor()->getPhones() as $phone) {
+                    $phones[] = implode('|', $phone->_toArray());
+                }
+                $author['author_phones'] = implode(';', $phones);
+
+                $array = $array+$author;
+            }
+            unset($array['author']);
+
             //Created At
             $createdAt = "";
             if($obj->getCreatedAt() instanceof \DateTime) {
