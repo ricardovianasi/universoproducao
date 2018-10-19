@@ -1,4 +1,5 @@
-/seminar-subscription-list.jasper
+/bin/
+/artistic-proposal.jasper
 /educational_project.jasper
 /educational_project_list.jasper
 /movie.jasper
@@ -6,9 +7,9 @@
 /project.jasper
 /project_list.jasper
 /seminar-confirmation.jasper
+/seminar-subscription-list.jasper
 /session-confirmation.jasper
 /workshop-confirmation.jasper
+/workshop-proposal.jasper
 /workshop_details.jasper
 /workshop_subscription.jasper
-/artistic-proposal.jasper
-/workshop-proposal.jasper
