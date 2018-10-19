@@ -269,98 +269,6 @@
 				</textElement>
 				<text><![CDATA[Conteúdo programático por dia/aula]]></text>
 			</staticText>
-			<textField>
-				<reportElement positionType="Float" x="150" y="280" width="130" height="30" uuid="63d7b40b-45de-4189-beb5-a29c70c5c75b"/>
-				<box padding="5">
-					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-				</box>
-				<textFieldExpression><![CDATA[$F{hours}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement positionType="Float" x="0" y="280" width="150" height="30" uuid="fa536b15-c675-4449-88fd-f16cdc97e4af"/>
-				<box padding="5">
-					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-				</box>
-				<textElement>
-					<font isBold="true"/>
-				</textElement>
-				<text><![CDATA[Carga horária]]></text>
-			</staticText>
-			<textField>
-				<reportElement positionType="Float" x="380" y="280" width="174" height="30" uuid="b1d205a9-78e2-4976-8ffe-09360bea07a5"/>
-				<box padding="5">
-					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-				</box>
-				<textFieldExpression><![CDATA[$F{hour_class}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement positionType="Float" x="280" y="280" width="100" height="30" uuid="8b9fde01-0557-4e86-b1b7-38ea0649a483"/>
-				<box padding="5">
-					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-				</box>
-				<textElement>
-					<font isBold="true"/>
-				</textElement>
-				<text><![CDATA[Horas/Aula]]></text>
-			</staticText>
-			<textField>
-				<reportElement positionType="Float" x="150" y="310" width="130" height="30" uuid="62708e77-ecc3-4ce5-b2ee-9baf1eb9bb3a"/>
-				<box padding="5">
-					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-				</box>
-				<textFieldExpression><![CDATA[$F{days_duration}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement positionType="Float" x="0" y="310" width="150" height="30" uuid="86636c51-6ab3-4436-a8f6-427df0d635a4"/>
-				<box padding="5">
-					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-				</box>
-				<textElement>
-					<font isBold="true"/>
-				</textElement>
-				<text><![CDATA[Duração em dias]]></text>
-			</staticText>
-			<textField>
-				<reportElement positionType="Float" x="380" y="310" width="174" height="30" uuid="459f5b3e-bd43-4e9c-97a9-326aa0fc32fb"/>
-				<box padding="5">
-					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-				</box>
-				<textFieldExpression><![CDATA[$F{shift}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement positionType="Float" x="280" y="310" width="100" height="30" uuid="dc71cb76-86b4-484c-81dd-881e019afe04"/>
-				<box padding="5">
-					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-				</box>
-				<textElement>
-					<font isBold="true"/>
-				</textElement>
-				<text><![CDATA[Turno]]></text>
-			</staticText>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement positionType="Float" x="0" y="370" width="554" height="30" uuid="f2c00167-b4b6-4a61-83f1-598fa9f3ba6b"/>
 				<box padding="5">
@@ -706,6 +614,101 @@
 				</textElement>
 				<text><![CDATA[Comentários/Observações]]></text>
 			</staticText>
+			<frame>
+				<reportElement positionType="Float" x="0" y="280" width="554" height="59" uuid="cdc1906f-4931-451c-8ba2-bd29f216591d"/>
+				<staticText>
+					<reportElement positionType="Float" x="0" y="0" width="150" height="30" uuid="fa536b15-c675-4449-88fd-f16cdc97e4af"/>
+					<box padding="5">
+						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[Carga horária]]></text>
+				</staticText>
+				<staticText>
+					<reportElement positionType="Float" x="0" y="30" width="150" height="30" uuid="86636c51-6ab3-4436-a8f6-427df0d635a4"/>
+					<box padding="5">
+						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[Duração em dias]]></text>
+				</staticText>
+				<textField>
+					<reportElement positionType="Float" x="150" y="0" width="130" height="30" uuid="63d7b40b-45de-4189-beb5-a29c70c5c75b"/>
+					<box padding="5">
+						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textFieldExpression><![CDATA[$F{hours}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement positionType="Float" x="150" y="30" width="130" height="30" uuid="62708e77-ecc3-4ce5-b2ee-9baf1eb9bb3a"/>
+					<box padding="5">
+						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textFieldExpression><![CDATA[$F{days_duration}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement positionType="Float" x="280" y="0" width="100" height="30" uuid="8b9fde01-0557-4e86-b1b7-38ea0649a483"/>
+					<box padding="5">
+						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[Horas/Aula]]></text>
+				</staticText>
+				<staticText>
+					<reportElement positionType="Float" x="280" y="30" width="100" height="30" uuid="dc71cb76-86b4-484c-81dd-881e019afe04"/>
+					<box padding="5">
+						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[Turno]]></text>
+				</staticText>
+				<textField>
+					<reportElement positionType="Float" x="380" y="0" width="174" height="30" uuid="b1d205a9-78e2-4976-8ffe-09360bea07a5"/>
+					<box padding="5">
+						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textFieldExpression><![CDATA[$F{hour_class}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement positionType="Float" x="380" y="30" width="174" height="30" uuid="459f5b3e-bd43-4e9c-97a9-326aa0fc32fb"/>
+					<box padding="5">
+						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textFieldExpression><![CDATA[$F{shift}]]></textFieldExpression>
+				</textField>
+			</frame>
 		</band>
 	</detail>
 	<pageFooter>
