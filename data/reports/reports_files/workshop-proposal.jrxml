@@ -224,7 +224,7 @@
 				<text><![CDATA[Número de vagas]]></text>
 			</staticText>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement stretchType="RelativeToTallestObject" x="0" y="190" width="554" height="30" uuid="42515dbd-082d-4f53-8ff4-3cbb658ce55b"/>
+				<reportElement positionType="Float" x="0" y="190" width="554" height="30" uuid="42515dbd-082d-4f53-8ff4-3cbb658ce55b"/>
 				<box padding="5">
 					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
