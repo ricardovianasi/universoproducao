@@ -430,7 +430,7 @@
 				</textElement>
 				<text><![CDATA[Valor total da oficina]]></text>
 			</staticText>
-			<textField>
+			<textField isStretchWithOverflow="true">
 				<reportElement positionType="Float" x="0" y="610" width="554" height="30" uuid="3a9674b3-84c0-4998-9c68-219840f2562e"/>
 				<box padding="5">
 					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
