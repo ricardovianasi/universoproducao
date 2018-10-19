@@ -150,7 +150,7 @@
 		</band>
 	</pageHeader>
 	<detail>
-		<band height="916" splitType="Stretch">
+		<band height="956" splitType="Stretch">
 			<textField>
 				<reportElement positionType="Float" x="100" y="10" width="180" height="30" uuid="a13146b6-b6c1-4c01-b42e-02fd26ca9a02"/>
 				<box padding="5">
@@ -591,98 +591,101 @@
 					<textFieldExpression><![CDATA[$F{shift}]]></textFieldExpression>
 				</textField>
 			</frame>
-			<staticText>
-				<reportElement x="0" y="821" width="90" height="30" uuid="9590f9c4-2d84-4080-90a4-2b865a9730d8"/>
-				<box padding="5">
-					<pen lineWidth="0.5"/>
-				</box>
-				<textElement>
-					<font isBold="true"/>
-				</textElement>
-				<text><![CDATA[Telefone]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="0" y="731" width="90" height="30" uuid="f4c9cb50-8cac-43a1-8a39-cef9b6e0d859"/>
-				<box padding="5">
-					<pen lineWidth="0.5"/>
-				</box>
-				<textElement>
-					<font isBold="true"/>
-				</textElement>
-				<text><![CDATA[ID]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="0" y="761" width="90" height="30" uuid="b33d9c55-9a32-42cb-96a4-77cb6ea4f7ed"/>
-				<box padding="5">
-					<pen lineWidth="0.5"/>
-				</box>
-				<textElement>
-					<font isBold="true"/>
-				</textElement>
-				<text><![CDATA[Nome]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="0" y="791" width="90" height="30" uuid="d832f016-6fa7-415c-b82c-d18a2ce651f0"/>
-				<box padding="5">
-					<pen lineWidth="0.5"/>
-				</box>
-				<textElement>
-					<font isBold="true"/>
-				</textElement>
-				<text><![CDATA[E-mail]]></text>
-			</staticText>
-			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="0" y="881" width="555" height="30" uuid="118b4434-1579-47f3-b7dd-a47dd69c7398"/>
-				<box padding="5">
-					<pen lineWidth="0.5"/>
-				</box>
-				<textFieldExpression><![CDATA[$F{author_address}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="0" y="851" width="555" height="30" uuid="f34b61dd-6246-4403-8aae-cd92e753f515"/>
-				<box padding="5">
-					<pen lineWidth="0.5"/>
-				</box>
-				<textElement>
-					<font isBold="true"/>
-				</textElement>
-				<text><![CDATA[Endereço]]></text>
-			</staticText>
-			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="90" y="761" width="465" height="30" uuid="55e0bfe0-286a-4d26-b79d-05acc5c218d3"/>
-				<box padding="5">
-					<pen lineWidth="0.5"/>
-				</box>
-				<textFieldExpression><![CDATA[$F{author_name}]]></textFieldExpression>
-			</textField>
-			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="90" y="731" width="465" height="30" uuid="44b88857-ed2a-4f14-85d1-8630603dbd8f"/>
-				<box padding="5">
-					<pen lineWidth="0.5"/>
-				</box>
-				<textFieldExpression><![CDATA[$F{author_id}]]></textFieldExpression>
-			</textField>
-			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="90" y="821" width="465" height="30" uuid="f5516522-e185-48a0-9749-399436d85cce"/>
-				<box padding="5">
-					<pen lineWidth="0.5"/>
-				</box>
-				<textFieldExpression><![CDATA[$F{author_phones}]]></textFieldExpression>
-			</textField>
-			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="90" y="791" width="465" height="30" uuid="816ea52e-cf13-4248-b352-bf8e2035722f"/>
-				<box padding="5">
-					<pen lineWidth="0.5"/>
-				</box>
-				<textFieldExpression><![CDATA[$F{author_email}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="1" y="709" width="190" height="20" uuid="f783a160-d0e5-4de4-ab5d-b6b44b68f398"/>
-				<textElement>
-					<font size="14"/>
-				</textElement>
-				<text><![CDATA[Dados do usuário]]></text>
-			</staticText>
+			<frame>
+				<reportElement positionType="Float" x="0" y="709" width="555" height="202" uuid="96fdb927-2c34-4482-9c46-61152854afb4"/>
+				<staticText>
+					<reportElement x="0" y="112" width="90" height="30" uuid="9590f9c4-2d84-4080-90a4-2b865a9730d8"/>
+					<box padding="5">
+						<pen lineWidth="0.5"/>
+					</box>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[Telefone]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="22" width="90" height="30" uuid="f4c9cb50-8cac-43a1-8a39-cef9b6e0d859"/>
+					<box padding="5">
+						<pen lineWidth="0.5"/>
+					</box>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[ID]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="52" width="90" height="30" uuid="b33d9c55-9a32-42cb-96a4-77cb6ea4f7ed"/>
+					<box padding="5">
+						<pen lineWidth="0.5"/>
+					</box>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[Nome]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="82" width="90" height="30" uuid="d832f016-6fa7-415c-b82c-d18a2ce651f0"/>
+					<box padding="5">
+						<pen lineWidth="0.5"/>
+					</box>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[E-mail]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="true">
+					<reportElement positionType="Float" x="0" y="172" width="555" height="30" uuid="118b4434-1579-47f3-b7dd-a47dd69c7398"/>
+					<box padding="5">
+						<pen lineWidth="0.5"/>
+					</box>
+					<textFieldExpression><![CDATA[$F{author_address}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="0" y="142" width="555" height="30" uuid="f34b61dd-6246-4403-8aae-cd92e753f515"/>
+					<box padding="5">
+						<pen lineWidth="0.5"/>
+					</box>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[Endereço]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="true">
+					<reportElement positionType="Float" x="90" y="52" width="465" height="30" uuid="55e0bfe0-286a-4d26-b79d-05acc5c218d3"/>
+					<box padding="5">
+						<pen lineWidth="0.5"/>
+					</box>
+					<textFieldExpression><![CDATA[$F{author_name}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement positionType="Float" x="90" y="22" width="465" height="30" uuid="44b88857-ed2a-4f14-85d1-8630603dbd8f"/>
+					<box padding="5">
+						<pen lineWidth="0.5"/>
+					</box>
+					<textFieldExpression><![CDATA[$F{author_id}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement positionType="Float" x="90" y="112" width="465" height="30" uuid="f5516522-e185-48a0-9749-399436d85cce"/>
+					<box padding="5">
+						<pen lineWidth="0.5"/>
+					</box>
+					<textFieldExpression><![CDATA[$F{author_phones}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement positionType="Float" x="90" y="82" width="465" height="30" uuid="816ea52e-cf13-4248-b352-bf8e2035722f"/>
+					<box padding="5">
+						<pen lineWidth="0.5"/>
+					</box>
+					<textFieldExpression><![CDATA[$F{author_email}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="1" y="0" width="190" height="20" uuid="f783a160-d0e5-4de4-ab5d-b6b44b68f398"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<text><![CDATA[Dados do usuário]]></text>
+				</staticText>
+			</frame>
 		</band>
 	</detail>
 	<pageFooter>
