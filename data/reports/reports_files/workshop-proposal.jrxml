@@ -150,7 +150,7 @@
 		</band>
 	</pageHeader>
 	<detail>
-		<band height="956" splitType="Stretch">
+		<band height="911" splitType="Stretch">
 			<textField>
 				<reportElement positionType="Float" x="100" y="10" width="180" height="30" uuid="a13146b6-b6c1-4c01-b42e-02fd26ca9a02"/>
 				<box padding="5">
