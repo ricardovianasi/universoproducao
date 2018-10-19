@@ -72,10 +72,10 @@ class WorkshopProposalController extends AbstractAdminController
 
                 $user = null;
                 if($this->getRequest()->isPost()) {
-                    if (!empty($validData['user'])) {
+                    if (!empty($validData['author'])) {
                         $user = $this
                             ->getRepository(\Application\Entity\User\User::class)
-                            ->find($validData['user']);
+                            ->find($validData['author']);
                     }
                 }
                 $proposal->setAuthor($user);
