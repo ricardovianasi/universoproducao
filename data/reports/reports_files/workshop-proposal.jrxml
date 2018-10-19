@@ -257,7 +257,7 @@
 				<textFieldExpression><![CDATA[$F{program_content}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement stretchType="RelativeToTallestObject" x="0" y="220" width="554" height="30" uuid="c208d301-cc8f-419a-bec3-9b66d844e19e"/>
+				<reportElement positionType="Float" x="0" y="220" width="554" height="30" uuid="c208d301-cc8f-419a-bec3-9b66d844e19e"/>
 				<box padding="5">
 					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
