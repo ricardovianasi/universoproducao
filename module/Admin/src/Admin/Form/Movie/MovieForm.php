@@ -815,10 +815,20 @@ class MovieForm extends Form
                        'name' => IsInt::class
                    ],
                    [
-                        'name' => GreaterThan::class,
+                       'name' => GreaterThan::class,
                        'options' => [
                            'min' => 0
                        ]
+                   ]
+               ],
+               'filters' => [
+                   0 => [
+                       'name' => \Zend\I18n\Filter\Alnum::class,
+                       'options' => array(),
+                   ],
+                   1 => [
+                       'name' => \Zend\Filter\ToInt::class,
+                       'options' => array(),
                    ]
                ]
            ],
