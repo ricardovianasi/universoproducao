@@ -61,10 +61,12 @@
       background-color: black
 
     &-content
-      width: 100%
-      min-height: 100px
-      +trailer(1)
-      //background-color: black
+      background: rgba(0,0,0,.8)
+      position: absolute
+      bottom: 20px
+      max-width: 650px
+      left: 50%
+      transform: translateX(-50%)
 
     &-wrapper
       +center($pad:116px)
@@ -72,8 +74,11 @@
 
     &-title
       position: relative
-      +adjust-font-size-to(24px, 1)
+      +adjust-font-size-to(24px, 1.1)
       +padding-leader(1)
+      +padding-trailer(1)
+      padding-right: 20px
+      padding-left: 20px
       font-weight: 700
       color: white
       letter-spacing: .04em
