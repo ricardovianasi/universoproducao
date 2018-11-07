@@ -18,7 +18,7 @@ class ArtisticProposalController extends AbstractAdminController
 {
 	public function indexAction()
 	{
-		$searchForm = new ArtisticProposalForm();
+		$searchForm = new ArtisticProposalForm($this->getEntityManager());
 		$dataAttr = $this->params()->fromQuery();
 		$searchForm->setData($dataAttr);
 		$searchForm->isValid();
