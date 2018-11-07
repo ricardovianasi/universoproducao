@@ -6,8 +6,8 @@
             foreach ($this->bannerImages as $banner): ?>
                 <div class="banner-slide owl-slide" style="background-image: url('<?php echo $this->thumbor()->url($banner->getMeta('_image'))->resize(1920, 746); ?>')">
                     <a style="position: absolute; width: 100%; height: 100%" href="<?php echo $banner->getMeta('_link') ?>">
-                        <?php if($banner->getSubtitle()): ?>
-                            <span class="banner-copy"><?php echo $banner->getSubtitle(); ?></span>
+                        <?php if($banner->getTitle()): ?>
+                            <span class="banner-copy"><?php echo $banner->getTitle(); ?></span>
                         <?php endif; ?>
                     </a>
                 </div>
