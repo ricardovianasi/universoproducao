@@ -31,8 +31,9 @@ class ArtisticProposal extends AbstractRepository
 
         if(!empty($criteria['category'])) {
             $qb
-                ->andWhere('p.category = :category')
-                ->setParameter('category', '%'.$criteria['category'].'%');
+                ->innerJoin('p.category', 'c')
+                ->andWhere('c.id = :category')
+                ->setParameter('category', $criteria['category']);
         }
 
 
