@@ -39,7 +39,6 @@ class ArtisticProposalForm extends Form
         $this->add([
             'name' => 'author',
             'attributes' => [
-                'class' => 'input-sm'
             ]
         ]);
 

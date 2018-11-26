@@ -33,7 +33,6 @@ class WorkshopProposalForm extends Form
         $this->add([
             'name' => 'author',
             'attributes' => [
-                'class' => 'input-sm'
             ]
         ]);
 
