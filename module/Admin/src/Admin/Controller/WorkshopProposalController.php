@@ -118,6 +118,17 @@ class WorkshopProposalController extends AbstractAdminController
         return $this->prepareReport($preparedItems, 'workshop-proposal' ,'pdf');
     }
 
+    public function exportListAction()
+    {
+        //recupera os itens
+        $dataAttr = $this->params()->fromQuery();
+        $items = $this->search(Movie::class, $dataAttr, ['createdAt' => 'DESC'], true);
+
+        //criar um arquivo json
+        $preparedItems = $this->prepareItemsForReports($items);
+        return $this->prepareReport($preparedItems, 'workshop-proposal-list' ,'xlsx');
+    }
+
     protected function prepareItemsForReports($items)
     {
         if(!is_array($items)) {

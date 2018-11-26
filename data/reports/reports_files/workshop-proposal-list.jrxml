@@ -1,0 +1,483 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.4.0.final using JasperReports Library version 6.4.1  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="workshop-proposal-list" pageWidth="2500" pageHeight="500" orientation="Landscape" columnWidth="2500" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" isIgnorePagination="true" uuid="fb6cf6c0-3ab6-495b-8d84-af8b6944cd24">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="net.sf.jasperreports.print.keep.full.text" value="true"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="id" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="id"/>
+		<fieldDescription><![CDATA[id]]></fieldDescription>
+	</field>
+	<field name="name" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="name"/>
+		<fieldDescription><![CDATA[name]]></fieldDescription>
+	</field>
+	<field name="objectives" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="objectives"/>
+		<fieldDescription><![CDATA[objectives]]></fieldDescription>
+	</field>
+	<field name="program_content" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="program_content"/>
+		<fieldDescription><![CDATA[program_content]]></fieldDescription>
+	</field>
+	<field name="offer" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="offer"/>
+		<fieldDescription><![CDATA[offer]]></fieldDescription>
+	</field>
+	<field name="hours" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="hours"/>
+		<fieldDescription><![CDATA[hours]]></fieldDescription>
+	</field>
+	<field name="hour_class" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="hour_class"/>
+		<fieldDescription><![CDATA[hour_class]]></fieldDescription>
+	</field>
+	<field name="days_duration" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="days_duration"/>
+		<fieldDescription><![CDATA[days_duration]]></fieldDescription>
+	</field>
+	<field name="shift" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="shift"/>
+		<fieldDescription><![CDATA[shift]]></fieldDescription>
+	</field>
+	<field name="participant_prerequisites" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="participant_prerequisites"/>
+		<fieldDescription><![CDATA[participant_prerequisites]]></fieldDescription>
+	</field>
+	<field name="didactic_resources" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="didactic_resources"/>
+		<fieldDescription><![CDATA[didactic_resources]]></fieldDescription>
+	</field>
+	<field name="necessary_equipments" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="necessary_equipments"/>
+		<fieldDescription><![CDATA[necessary_equipments]]></fieldDescription>
+	</field>
+	<field name="final_product" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="final_product"/>
+		<fieldDescription><![CDATA[final_product]]></fieldDescription>
+	</field>
+	<field name="value_hour_class" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="value_hour_class"/>
+		<fieldDescription><![CDATA[value_hour_class]]></fieldDescription>
+	</field>
+	<field name="instructors_curriculum" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="instructors_curriculum"/>
+		<fieldDescription><![CDATA[instructors_curriculum]]></fieldDescription>
+	</field>
+	<field name="contact_name" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="contact_name"/>
+		<fieldDescription><![CDATA[contact_name]]></fieldDescription>
+	</field>
+	<field name="email" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="email"/>
+		<fieldDescription><![CDATA[email]]></fieldDescription>
+	</field>
+	<field name="phones" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="phones"/>
+		<fieldDescription><![CDATA[phones]]></fieldDescription>
+	</field>
+	<field name="address" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="address"/>
+		<fieldDescription><![CDATA[address]]></fieldDescription>
+	</field>
+	<field name="cep" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="cep"/>
+		<fieldDescription><![CDATA[cep]]></fieldDescription>
+	</field>
+	<field name="city" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="city"/>
+		<fieldDescription><![CDATA[city]]></fieldDescription>
+	</field>
+	<field name="comments" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="comments"/>
+		<fieldDescription><![CDATA[comments]]></fieldDescription>
+	</field>
+	<field name="created_at" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="created_at"/>
+		<fieldDescription><![CDATA[created_at]]></fieldDescription>
+	</field>
+	<field name="display_final_product" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="display_final_product"/>
+		<fieldDescription><![CDATA[display_final_product]]></fieldDescription>
+	</field>
+	<field name="total_value" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="total_value"/>
+		<fieldDescription><![CDATA[total_value]]></fieldDescription>
+	</field>
+	<field name="author_id" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="author_id"/>
+		<fieldDescription><![CDATA[author_id]]></fieldDescription>
+	</field>
+	<field name="author_name" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="author_name"/>
+		<fieldDescription><![CDATA[author_name]]></fieldDescription>
+	</field>
+	<field name="author_email" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="author_email"/>
+		<fieldDescription><![CDATA[author_email]]></fieldDescription>
+	</field>
+	<field name="author_address" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="author_address"/>
+		<fieldDescription><![CDATA[author_address]]></fieldDescription>
+	</field>
+	<field name="author_phones" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="author_phones"/>
+		<fieldDescription><![CDATA[author_phones]]></fieldDescription>
+	</field>
+	<columnHeader>
+		<band height="32" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="32" uuid="e5f39e0a-8e9a-49b1-a186-94741933123b"/>
+				<box padding="3">
+					<pen lineWidth="0.5"/>
+				</box>
+				<text><![CDATA[ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="0" width="100" height="32" uuid="f44dd985-76c9-4c1f-b3f0-e2a9470997bd"/>
+				<box padding="3">
+					<pen lineWidth="0.5"/>
+				</box>
+				<text><![CDATA[Nome da oficina]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="200" y="0" width="100" height="32" uuid="b531e4b1-6c98-4467-a38b-efc44b27e564"/>
+				<box padding="3">
+					<pen lineWidth="0.5"/>
+				</box>
+				<text><![CDATA[Número de vagas]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="300" y="0" width="100" height="32" uuid="bbb52f10-09c7-4a41-8de1-5ec909e44c3d"/>
+				<box padding="3">
+					<pen lineWidth="0.5"/>
+				</box>
+				<text><![CDATA[Objetivo geral da oficina]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="400" y="0" width="100" height="32" uuid="9e7dec63-233d-4f25-94dc-b23bc6c6ec10"/>
+				<box padding="3">
+					<pen lineWidth="0.5"/>
+				</box>
+				<text><![CDATA[Conteúdo programático por dia/aula]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="500" y="0" width="100" height="32" uuid="890dac5e-b57b-462d-9915-73a6d6305d26"/>
+				<box padding="3">
+					<pen lineWidth="0.5"/>
+				</box>
+				<text><![CDATA[Carga horária]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="600" y="0" width="100" height="32" uuid="c0de1b17-899f-4fb9-a090-d13fdc4b2ef3"/>
+				<box padding="3">
+					<pen lineWidth="0.5"/>
+				</box>
+				<text><![CDATA[Horas/Aula]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="700" y="0" width="100" height="32" uuid="686ba682-f732-41cc-b6aa-0304291e8a73"/>
+				<box padding="3">
+					<pen lineWidth="0.5"/>
+				</box>
+				<text><![CDATA[Duração em dias]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="800" y="0" width="100" height="32" uuid="fbfe3757-abd8-492f-9a35-71200ba718f7"/>
+				<box padding="3">
+					<pen lineWidth="0.5"/>
+				</box>
+				<text><![CDATA[Turno]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="900" y="0" width="100" height="32" uuid="eb53aa37-2cae-4f63-aa58-7d79c3109e9b"/>
+				<box padding="3">
+					<pen lineWidth="0.5"/>
+				</box>
+				<text><![CDATA[Pré-requisitos dos alunos]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1000" y="0" width="100" height="32" uuid="f2f47c1d-8640-41d7-ab79-2b2881f17a97"/>
+				<box padding="3">
+					<pen lineWidth="0.5"/>
+				</box>
+				<text><![CDATA[Recursos didáticos ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1100" y="0" width="100" height="32" uuid="a6ca5402-5e13-412f-9e4d-2a73b18760c7"/>
+				<box padding="3">
+					<pen lineWidth="0.5"/>
+				</box>
+				<text><![CDATA[Equipamentos necessários]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1200" y="0" width="100" height="32" uuid="3dd4a947-a5f1-4831-bc87-4aa145eab310"/>
+				<box padding="3">
+					<pen lineWidth="0.5"/>
+				</box>
+				<text><![CDATA[Esta oficina terá produto final?]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1300" y="0" width="100" height="32" uuid="5c04536e-23ee-4669-ae40-bf693bb37272"/>
+				<box padding="3">
+					<pen lineWidth="0.5"/>
+				</box>
+				<text><![CDATA[Se sim, poderá ser exibido?]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1400" y="0" width="100" height="32" uuid="88a7e1c7-8bdc-49e6-8de1-c864c090d8ab"/>
+				<box padding="3">
+					<pen lineWidth="0.5"/>
+				</box>
+				<text><![CDATA[Valor hora aula]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1600" y="0" width="100" height="32" uuid="84541207-7ba5-4fbb-b27c-cba6f65e80e4"/>
+				<box padding="3">
+					<pen lineWidth="0.5"/>
+				</box>
+				<text><![CDATA[Breve currículo do instrutor]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1800" y="0" width="60" height="32" uuid="40aafa07-bd37-4337-ba77-ee6acfaeae79">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="447bf463-ed5b-4fdc-b92d-0ff4bb50a935"/>
+				</reportElement>
+				<box padding="3">
+					<pen lineWidth="0.5"/>
+				</box>
+				<text><![CDATA[ID do usuário]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1860" y="0" width="100" height="32" uuid="b1388842-4d99-469a-a8d7-38a0453f87b6">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d6eb30bb-152e-4c3b-8ded-d0587881c6e2"/>
+				</reportElement>
+				<box padding="3">
+					<pen lineWidth="0.5"/>
+				</box>
+				<text><![CDATA[Nome do usuário]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2186" y="0" width="100" height="32" uuid="c486417f-d470-4bd3-a010-00cbee50b78a">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="52602d2d-bf5a-4515-a96f-aaeaa52ddef7"/>
+				</reportElement>
+				<box padding="3">
+					<pen lineWidth="0.5"/>
+				</box>
+				<text><![CDATA[Telefones do usuário]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1960" y="0" width="100" height="32" uuid="1cae457f-85cb-4fa7-a4c8-ffdfa83a5aa6">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="54c061f6-4fbf-4d40-a06b-4320772a2d29"/>
+				</reportElement>
+				<box padding="3">
+					<pen lineWidth="0.5"/>
+				</box>
+				<text><![CDATA[Email do usuáio]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2060" y="0" width="126" height="32" uuid="277a877a-2a3c-4983-a2ed-ad42674a01dd"/>
+				<box padding="3">
+					<pen lineWidth="0.5"/>
+				</box>
+				<text><![CDATA[Endereço do usuário]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1500" y="0" width="100" height="32" uuid="6c3824b7-a81b-4cf3-9ed2-ec1de67bdba9"/>
+				<box padding="3">
+					<pen lineWidth="0.5"/>
+				</box>
+				<text><![CDATA[Valor total da oficina]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1700" y="0" width="100" height="32" uuid="9b1833ff-ffe2-4b45-bf25-3d6bf00c70f1"/>
+				<box padding="3">
+					<pen lineWidth="0.5"/>
+				</box>
+				<text><![CDATA[Comentários/Observações]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="30" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="100" height="30" uuid="c501d75d-de6c-4596-a8d4-a7b18dfefcc4"/>
+				<box padding="3">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="100" y="0" width="100" height="30" uuid="9cbfbac2-3de3-4b6b-ae11-38e0c8bcf48e"/>
+				<box padding="3">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="200" y="0" width="100" height="30" uuid="4406ad4d-307f-4670-ae1a-1d2f7d581387"/>
+				<box padding="3">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{offer}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="300" y="0" width="100" height="30" uuid="14d5dd07-3b87-4498-9b62-d60995b06f9b"/>
+				<box padding="3">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{objectives}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="400" y="0" width="100" height="30" uuid="fc239d88-c2f1-4260-bf6e-0a4b2a005363"/>
+				<box padding="3">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{program_content}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="500" y="0" width="100" height="30" uuid="891a4b01-a5d0-4e3f-9f1a-3c2c8e26462e"/>
+				<box padding="3">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{hours}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="600" y="0" width="100" height="30" uuid="ad7cee2d-19be-4ae9-ad53-0ae5208ce5aa"/>
+				<box padding="3">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{hour_class}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="700" y="0" width="100" height="30" uuid="6e9cb01f-c6b8-4232-86f8-286a2f1c673c"/>
+				<box padding="3">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{days_duration}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="800" y="0" width="100" height="30" uuid="52520dfc-80e9-43db-83cc-9daf78e8a100"/>
+				<box padding="3">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{shift}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="900" y="0" width="100" height="30" uuid="8d2a5820-5c80-464c-88f1-3c18f4d1f0b1"/>
+				<box padding="3">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{participant_prerequisites}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1000" y="0" width="100" height="30" uuid="47fa0cf4-3fe3-4cd3-b58c-48795f66c3ff"/>
+				<box padding="3">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{didactic_resources}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1100" y="0" width="100" height="30" uuid="03ea12ea-1652-4036-8a75-ba59dfb95e35"/>
+				<box padding="3">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{necessary_equipments}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1200" y="0" width="100" height="30" uuid="bd953249-861a-42d1-8200-d7f70cfff89d"/>
+				<box padding="3">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{final_product}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1300" y="0" width="100" height="30" uuid="6f556e6a-dbd1-4ad9-a8f5-cd5aff540d51"/>
+				<box padding="3">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{display_final_product}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1400" y="0" width="100" height="30" uuid="f244fd1b-2270-4610-8e35-96196eeeff0f"/>
+				<box padding="3">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{value_hour_class}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1500" y="0" width="100" height="30" uuid="e77b8ae6-546b-428d-995d-53c43b5d91e8"/>
+				<box padding="3">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{total_value}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1600" y="0" width="100" height="30" uuid="a4c3c564-40b0-4af5-83a6-3814857cfbd7"/>
+				<box padding="3">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{instructors_curriculum}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1700" y="0" width="100" height="30" uuid="05f384a8-abee-4aac-bc3c-8a5df5e91af7"/>
+				<box padding="3">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{comments}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement x="1800" y="0" width="60" height="30" uuid="821cf105-60f2-453f-8317-657982d22d0f">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="447bf463-ed5b-4fdc-b92d-0ff4bb50a935"/>
+				</reportElement>
+				<box padding="3">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement markup="none"/>
+				<textFieldExpression><![CDATA[$F{author_id}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement x="1860" y="0" width="100" height="30" uuid="83f82975-1b0a-44e5-b985-f86f4366eeb4">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d6eb30bb-152e-4c3b-8ded-d0587881c6e2"/>
+				</reportElement>
+				<box padding="3">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement markup="none"/>
+				<textFieldExpression><![CDATA[$F{author_name}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement x="1960" y="0" width="100" height="30" uuid="11527223-c36b-4e79-ab6a-23e58c435f45">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="54c061f6-4fbf-4d40-a06b-4320772a2d29"/>
+				</reportElement>
+				<box padding="3">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement markup="none"/>
+				<textFieldExpression><![CDATA[$F{author_email}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement x="2060" y="0" width="126" height="30" uuid="fc810a4f-9bc8-48f8-9178-fa995610320f">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="2b9944b0-bd44-471f-8ad7-d561d68f73bb"/>
+				</reportElement>
+				<box padding="3">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement markup="none"/>
+				<textFieldExpression><![CDATA[$F{author_address}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement x="2186" y="0" width="100" height="30" uuid="61df8aa5-37cc-416e-b536-72ab4a771ea8">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="52602d2d-bf5a-4515-a96f-aaeaa52ddef7"/>
+				</reportElement>
+				<box padding="3">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement markup="none"/>
+				<textFieldExpression><![CDATA[$F{author_phones}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

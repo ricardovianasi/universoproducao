@@ -1,0 +1,355 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.4.0.final using JasperReports Library version 6.4.1  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="artistic-proposal-list" pageWidth="1700" pageHeight="1595" orientation="Landscape" columnWidth="1700" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="81b63a91-fd4a-4505-8b5b-9bdadf0aa9e2">
+	<property name="net.sf.jasperreports.print.keep.full.text" value="true"/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="id" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="id"/>
+		<fieldDescription><![CDATA[id]]></fieldDescription>
+	</field>
+	<field name="artist_name" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="artist_name"/>
+		<fieldDescription><![CDATA[artist_name]]></fieldDescription>
+	</field>
+	<field name="show_name" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="show_name"/>
+		<fieldDescription><![CDATA[show_name]]></fieldDescription>
+	</field>
+	<field name="genre" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="genre"/>
+		<fieldDescription><![CDATA[genre]]></fieldDescription>
+	</field>
+	<field name="duration" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="duration"/>
+		<fieldDescription><![CDATA[duration]]></fieldDescription>
+	</field>
+	<field name="target_public" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="target_public"/>
+		<fieldDescription><![CDATA[target_public]]></fieldDescription>
+	</field>
+	<field name="suggested_cache" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="suggested_cache"/>
+		<fieldDescription><![CDATA[suggested_cache]]></fieldDescription>
+	</field>
+	<field name="staff_quantity" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="staff_quantity"/>
+		<fieldDescription><![CDATA[staff_quantity]]></fieldDescription>
+	</field>
+	<field name="incentive_law" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="incentive_law"/>
+		<fieldDescription><![CDATA[incentive_law]]></fieldDescription>
+	</field>
+	<field name="links" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="links"/>
+		<fieldDescription><![CDATA[links]]></fieldDescription>
+	</field>
+	<field name="description" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="description"/>
+		<fieldDescription><![CDATA[description]]></fieldDescription>
+	</field>
+	<field name="comments" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="comments"/>
+		<fieldDescription><![CDATA[comments]]></fieldDescription>
+	</field>
+	<field name="category" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="category"/>
+		<fieldDescription><![CDATA[category]]></fieldDescription>
+	</field>
+	<field name="created_at" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="created_at"/>
+		<fieldDescription><![CDATA[created_at]]></fieldDescription>
+	</field>
+	<field name="author_id" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="author_id"/>
+		<fieldDescription><![CDATA[author_id]]></fieldDescription>
+	</field>
+	<field name="author_name" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="author_name"/>
+		<fieldDescription><![CDATA[author_name]]></fieldDescription>
+	</field>
+	<field name="author_email" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="author_email"/>
+		<fieldDescription><![CDATA[author_email]]></fieldDescription>
+	</field>
+	<field name="author_address" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="author_address"/>
+		<fieldDescription><![CDATA[author_address]]></fieldDescription>
+	</field>
+	<field name="author_phones" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="author_phones"/>
+		<fieldDescription><![CDATA[author_phones]]></fieldDescription>
+	</field>
+	<field name="short_presentation" class="java.lang.String"/>
+	<columnHeader>
+		<band height="30" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="30" uuid="07e8142f-14c9-4fb0-ba71-fcb67c18f91d"/>
+				<box padding="2">
+					<pen lineWidth="0.5"/>
+				</box>
+				<text><![CDATA[ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="0" width="100" height="30" uuid="d2b10727-cd5c-463c-a6c3-c0f4140739c6"/>
+				<box padding="2">
+					<pen lineWidth="0.5"/>
+				</box>
+				<text><![CDATA[Artista/Banda/Companhia]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="200" y="0" width="100" height="30" uuid="e41891ee-32de-4d7c-9ac7-8b1e7ae59503"/>
+				<box padding="2">
+					<pen lineWidth="0.5"/>
+				</box>
+				<text><![CDATA[Nome do show ou espetáculo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="400" y="0" width="100" height="30" uuid="5d75b5ae-2abf-4eea-84c3-71be32fa216d"/>
+				<box padding="2">
+					<pen lineWidth="0.5"/>
+				</box>
+				<text><![CDATA[Duração ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="500" y="0" width="100" height="30" uuid="24524212-09d0-4014-97a5-a5fe7c1dbb65"/>
+				<box padding="2">
+					<pen lineWidth="0.5"/>
+				</box>
+				<text><![CDATA[Público alvo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="600" y="0" width="100" height="30" uuid="5371ae20-eaf3-4528-970c-1abd1de19917"/>
+				<box padding="2">
+					<pen lineWidth="0.5"/>
+				</box>
+				<text><![CDATA[Cache sugerido ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="700" y="0" width="100" height="30" uuid="3e613409-072c-4738-920b-9d976e1b54ca"/>
+				<box padding="2">
+					<pen lineWidth="0.5"/>
+				</box>
+				<text><![CDATA[Equipe ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="800" y="0" width="100" height="30" uuid="00ef8d21-77d4-4685-aa36-1a123bb8c4b4"/>
+				<box padding="2">
+					<pen lineWidth="0.5"/>
+				</box>
+				<text><![CDATA[Projeto de lei de incentivo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="900" y="0" width="100" height="30" uuid="d557f7e8-b726-4fd9-b25f-49074d336f19"/>
+				<box padding="2">
+					<pen lineWidth="0.5"/>
+				</box>
+				<text><![CDATA[Links de refêrencia]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1000" y="0" width="100" height="30" uuid="d45bf5dd-b4ba-445a-a0dc-8869a32522e0"/>
+				<box padding="2">
+					<pen lineWidth="0.5"/>
+				</box>
+				<text><![CDATA[Breve apresentação da atração]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1100" y="0" width="100" height="30" uuid="29fb4310-9938-4ae1-b810-18f0ed3ee09c"/>
+				<box padding="2">
+					<pen lineWidth="0.5"/>
+				</box>
+				<text><![CDATA[Comentários/Observações]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1200" y="0" width="70" height="30" uuid="51273b81-bba0-4eee-817a-a43e9179d980">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="447bf463-ed5b-4fdc-b92d-0ff4bb50a935"/>
+				</reportElement>
+				<box padding="2">
+					<pen lineWidth="0.5"/>
+				</box>
+				<text><![CDATA[ID do usuário]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1370" y="0" width="100" height="30" uuid="d07421c2-853a-43eb-99fe-44d715d44dd3">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="54c061f6-4fbf-4d40-a06b-4320772a2d29"/>
+				</reportElement>
+				<box padding="2">
+					<pen lineWidth="0.5"/>
+				</box>
+				<text><![CDATA[Email do usuáio]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1470" y="0" width="126" height="30" uuid="6ad2c230-7337-4839-b4e1-3213c854d2d4"/>
+				<box padding="2">
+					<pen lineWidth="0.5"/>
+				</box>
+				<text><![CDATA[Endereço do usuário]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="300" y="0" width="100" height="30" uuid="b27ecaa1-8bd6-43a2-a5ef-442a0c472403"/>
+				<box padding="2">
+					<pen lineWidth="0.5"/>
+				</box>
+				<text><![CDATA[Segmento ]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="30" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="100" height="30" uuid="78364f65-6c26-44fd-80c0-d9922ea1c865"/>
+				<box padding="2">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="100" y="0" width="100" height="30" uuid="950fd6c3-722c-4fb0-9b08-991c769be47b"/>
+				<box padding="2">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{artist_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="200" y="0" width="100" height="30" uuid="193992e3-af05-4cbf-aca5-7835d19b4a0d"/>
+				<box padding="2">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{show_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="400" y="0" width="100" height="30" uuid="3eb4ce37-25fc-44a5-a87e-b7b1a557fde8"/>
+				<box padding="2">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{duration}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="500" y="0" width="100" height="30" uuid="d775aa51-c43b-43d0-8dad-ad701999e3cf"/>
+				<box padding="2">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{target_public}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="600" y="0" width="100" height="30" uuid="0048bb92-8d1a-4f9f-a9d9-fb29bbaea836"/>
+				<box padding="2">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{suggested_cache}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="700" y="0" width="100" height="30" uuid="398129ef-5c24-42fe-b214-fe631d1971a9"/>
+				<box padding="2">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{staff_quantity}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="800" y="0" width="100" height="30" uuid="baa8f6e9-7a47-4e88-b706-d2b9fc32dcd2"/>
+				<box padding="2">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{incentive_law}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="900" y="0" width="100" height="30" uuid="04fa5af1-caee-4988-ba31-04ffac192308"/>
+				<box padding="2">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{links}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1000" y="0" width="100" height="30" uuid="869aafdf-5dda-46c9-a232-97ceeff12ac8"/>
+				<box padding="2">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{short_presentation}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1100" y="0" width="100" height="30" uuid="357d8c19-f410-4e84-be99-e2c7c81bb5b1"/>
+				<box padding="2">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{comments}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="1270" y="-30" width="100" height="30" uuid="58596e92-88ab-4164-917e-4a48d626c513">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d6eb30bb-152e-4c3b-8ded-d0587881c6e2"/>
+				</reportElement>
+				<box padding="2">
+					<pen lineWidth="0.5"/>
+				</box>
+				<text><![CDATA[Nome do usuário]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1596" y="-30" width="104" height="30" uuid="881a595a-4cb7-40f8-a910-9841c5813123">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="52602d2d-bf5a-4515-a96f-aaeaa52ddef7"/>
+				</reportElement>
+				<box padding="2">
+					<pen lineWidth="0.5"/>
+				</box>
+				<text><![CDATA[Telefones do usuário]]></text>
+			</staticText>
+			<textField isBlankWhenNull="false">
+				<reportElement x="1270" y="0" width="100" height="30" uuid="8b5885eb-9469-4826-9092-e8b2cbbf101f">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d6eb30bb-152e-4c3b-8ded-d0587881c6e2"/>
+				</reportElement>
+				<box padding="2">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement markup="none"/>
+				<textFieldExpression><![CDATA[$F{author_name}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement x="1370" y="0" width="100" height="30" uuid="46f5faaf-25b2-4dd3-91c1-23111864c9c5">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="54c061f6-4fbf-4d40-a06b-4320772a2d29"/>
+				</reportElement>
+				<box padding="2">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement markup="none"/>
+				<textFieldExpression><![CDATA[$F{author_email}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement x="1470" y="0" width="126" height="30" uuid="e27d71e5-49da-4356-821e-ae474bad2fc5">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="2b9944b0-bd44-471f-8ad7-d561d68f73bb"/>
+				</reportElement>
+				<box padding="2">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement markup="none"/>
+				<textFieldExpression><![CDATA[$F{author_address}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement x="1596" y="0" width="104" height="30" uuid="2b5eed08-c038-4da1-bf14-c393a9713a44">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="52602d2d-bf5a-4515-a96f-aaeaa52ddef7"/>
+				</reportElement>
+				<box padding="2">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement markup="none"/>
+				<textFieldExpression><![CDATA[$F{author_phones}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement x="1200" y="0" width="70" height="30" uuid="8cfe4719-6c14-4ba2-8cef-07afb30cc7b9">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="447bf463-ed5b-4fdc-b92d-0ff4bb50a935"/>
+				</reportElement>
+				<box padding="2">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement markup="none"/>
+				<textFieldExpression><![CDATA[$F{author_id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="300" y="0" width="100" height="30" uuid="0bd4f2b9-d86c-45c7-8b8b-c584aa3abd83"/>
+				<box padding="2">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{category}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

@@ -36,7 +36,6 @@ class ArtisticProposal extends AbstractRepository
                 ->setParameter('category', $criteria['category']);
         }
 
-
         if(!empty($criteria['startDate'])) {
             $startDate = \DateTime::createFromFormat('d/m/Y', $criteria['startDate']);
             $startDate->setTime(0, 0, 0);
