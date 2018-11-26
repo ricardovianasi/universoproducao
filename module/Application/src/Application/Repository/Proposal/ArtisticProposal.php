@@ -52,6 +52,14 @@ class ArtisticProposal extends AbstractRepository
                 ->setParameter('endDate', $endDate);
         }
 
+        if(!empty($criteria['author'])) {
+            $qb
+                ->innerJoin('p.author', 'a')
+                ->andWhere('a.name like :authorName')
+                ->setParameter('authorName', '%'.$criteria['author'].'%');
+        }
+
+
         return $qb;
     }
 

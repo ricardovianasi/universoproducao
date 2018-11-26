@@ -37,6 +37,13 @@ class ArtisticProposalForm extends Form
         ]);
 
         $this->add([
+            'name' => 'author',
+            'attributes' => [
+                'class' => 'input-sm'
+            ]
+        ]);
+
+        $this->add([
             'name' => 'artist_name',
             'options' => [
                 'label' => 'Artista/Banda/Companhia',

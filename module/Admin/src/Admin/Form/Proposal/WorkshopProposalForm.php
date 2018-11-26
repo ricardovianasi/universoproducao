@@ -31,6 +31,13 @@ class WorkshopProposalForm extends Form
         ]);
 
         $this->add([
+            'name' => 'author',
+            'attributes' => [
+                'class' => 'input-sm'
+            ]
+        ]);
+
+        $this->add([
             'name' => 'name',
             'options' => [
                 'label' => 'Nome da oficina',
