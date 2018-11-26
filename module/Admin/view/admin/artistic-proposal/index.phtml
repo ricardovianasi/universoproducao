@@ -51,11 +51,11 @@
 						</tr>
 						<tr role="row" class="filter">
 							<?php $form->prepare(); echo $this->form(null, null)->openTag($form); ?>
-							<td><?php echo $this->formelement($form->get('author')); ?></td>
+							<td></td>
 							<td><?php echo $this->formelement($form->get('artist_name')); ?></td>
 							<td><?php echo $this->formelement($form->get('show_name')); ?></td>
 							<td><?php echo $this->formelement($form->get('category')); ?></td>
-                            <td></td>
+                            <td><?php echo $this->formelement($form->get('author')); ?></td>
                             <td>
                                 <div class="input-group date date-picker margin-bottom-5" data-date-format="dd/mm/yyyy">
                                     <?php echo $this->formelement($form->get('startDate')); ?>
