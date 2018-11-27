@@ -177,13 +177,13 @@ return array(
     ),
     'view_manager' => array(
         'template_map' => array(
-            'mostratiradentes/layout' => __DIR__ . '/../view/layout/layout.phtml',
+            'mostratiradentes2017/layout' => __DIR__ . '/../view/layout/layout.phtml',
         ),
         'template_path_stack' => array(
             __DIR__ . '/../view',
         ),
     ),
     'module_layouts' => [
-        __NAMESPACE__ => 'mostratiradentes/layout'
+        __NAMESPACE__ => 'mostratiradentes2017/layout'
     ]
 );
