@@ -40,7 +40,7 @@ return array(
                             'route' => '/',
                             'defaults' => array(
                                 'controller'    => Controller\IndexController::class,
-                                'action'        => 'index-sp',
+                                'action'        => 'index',
                             ),
                         )
                     ),

@@ -1,0 +1,20 @@
+<div class="main-wrapper main-content">
+    <header class="main-header">
+        <h1 class="main-title"><?php echo $post->getTitle() ?></h1>
+    </header>
+
+    <div class="news-list">
+        <?php foreach ($this->newsList as $news): ?>
+            <article class="news-item">
+                <header class="news-header">
+                    <h1 class="news-title"><?php  echo $news->getTitle(); ?></h1>
+                </header>
+                <?php if($news->getMeta('_thumb')): ?>
+                    <figure class="news-figure"><img src="<?php echo $this->thumbor()->url($news->getMeta('_thumb'))->resize(270, 180); ?>" alt=""></figure>
+                <?php endif; ?>
+                <p class="news-desc"><?php  echo $this->truncate($news->getContent(), 350); ?></p>
+                <a href="<?php echo $this->url("mostratiradentes/news", ['slug'=>$news->getSlug()]) ?>" class="button-readmore">Leia a notícia completa</a>
+            </article>
+        <?php endforeach; ?>
+    </div>
+</div>

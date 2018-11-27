@@ -1,0 +1,53 @@
+<div class="main-wrapper main-content">
+    <header class="main-header">
+        <h1 class="main-title"><?php echo $this->post->getName(); ?></h1>
+    </header>
+    <?php $workshop = $this->post; ?>
+
+    <div style="display: none;min-width:400px;min-height: 400px" id="manager_<?php echo $workshop->getManager()->getId(); ?>">
+        <div class="padding" style="padding: 10px">
+            <?php echo $workshop->getManager()->getDescription(); ?>
+        </div>
+    </div>
+
+    <p>
+        <strong>Instrutor(a):</strong>
+        <a class="fancybox" style="color: #000;" href="#manager_<?php echo $workshop->getManager()->getId(); ?>"><?php echo $workshop->getManager()->getName(); ?>
+            <i style="margin-left: 2px; font-size: 13px;" class="icon-plus-circle"></i></a>
+    </p>
+    <p>
+        <strong>Faixa etária: </strong>
+        <?php
+        if($workshop->getMinimumAge()) {
+            if($workshop->getMaximumAge()) {
+                echo "De " . $workshop->getMinimumAge() . ' a ' . $workshop->getMaximumAge() . ' anos';
+            } else {
+                echo "A partir de " . $workshop->getMinimumAge() . 'anos';
+            }
+        } elseif($workshop->getMaximumAge()) {
+            echo 'Até ' . $workshop->getMaximumAge();
+        } else {
+            echo "Livre";
+        }
+        ?>
+    </p>
+    <p>
+        <strong>Carga horária:</strong>
+        <?php echo $workshop->getDuration(); ?>
+    </p>
+    <p>
+        <b>Número de vagas:</b>
+        <?php echo $workshop->getAvailableSubscriptions(); ?>
+    </p>
+    <p>
+        <strong>Conteúdo programático:</strong> <br />
+        <div><?php echo $workshop->getDescription(); ?></div>
+    </p>
+
+    <p>
+        <strong>Pré-requisitos:</strong> <br />
+        <div><?php echo $workshop->getRequirements(); ?></div>
+    </p>
+
+    <?php echo $this->partial("application/partials/share.phtml", ['title'=>$post->getName()]); ?>
+</div>

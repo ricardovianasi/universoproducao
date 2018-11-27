@@ -1,0 +1,713 @@
+.home
+  .section
+    &-title
+      +adjust-font-size-to(48px, 2)
+      +trailer(1)
+      font-weight: 700
+      color: white
+      text-transform: uppercase
+
+  .banner
+    position: relative
+    width: 100%
+    background-color: black
+    +media("<tablet")
+
+    &-caption
+      position: absolute
+      bottom: 0
+      right: 0
+      color: #fff
+      padding: 10px
+      font-style: italic
+      background-color: rgba(0,0,0,.5)
+      margin-bottom: 0
+      +adjust-font-size-to(12px, .5)
+
+  .notice
+    position: relative
+    width: 100%
+    text-align: center
+    background-color: $color-palette-1
+    +padding-trailer(3)
+    +padding-leader(3)
+
+
+    &-text
+      +adjust-font-size-to(28px, 1.6)
+      font-weight: 700
+      color: white
+      text-transform: uppercase
+
+  .prog, .news, .tv, .gallery
+    .main-header
+      +padding-leader(3)
+      background-size: 100%
+      background-repeat: no-repeat
+      .section-title
+        text-align: center
+        img
+          vertical-align: middle
+          margin-right: 80px
+
+  .prog
+    position: relative
+    width: 100%
+    background-color: #3dbc9f
+    .main-header
+      background-image: url("../images/2019/prog-top.png")
+      .section-title
+        color: #064a3a
+
+    &-item
+      position: relative
+      box-sizing: border-box
+      border-right: 1px solid #3dbc9f
+      +media(">=1680px")
+        +column(1/4, $gutter:0)
+      +media("<1680px")
+        +column(2/4, $gutter:0)
+      +media("<tablet")
+        +column(4/4, $gutter:0)
+        .prog-content
+          top: 50%
+          left: 50%
+          transform: translate(-50%, -50%)
+          max-width: 100%
+          text-align: center
+
+
+    &-items
+      display: inline-block
+      width: 100%
+      position: relative
+
+    &-figure
+      line-height: 0
+      &:before
+        content: ""
+        position: absolute
+        width: 100%
+        height: 100%
+        top: 0
+        left: 0
+        background-color: rgba(0,0,0,.25)
+      img
+        width: 100%
+        line-height: 0
+        //filter: brightness(90%) contrast(90%) grayscale(100%)
+
+    &-content
+      position: absolute
+      top: 50%
+      left: 50%
+      transform: translate(-50%, -50%)
+      max-width: 166px
+      box-sizing: border-box
+
+    &-day
+      +adjust-font-size-to(60px)
+      +trailer(0)
+      font-weight: bold
+      color: #3dbc9f
+      small
+        display: block
+        +adjust-font-size-to(72px, 4, 110px)
+        margin-top: -10px
+
+    &-title
+      color: white
+      text-transform: uppercase
+      +trailer(0)
+      +adjust-font-size-to(24px, 1.5)
+      +trailer(.5, 18px)
+
+    &-text
+      +padding-trailer(2)
+      +padding-leader(2)
+      background-image: url("../images/2019/prog-bottom.png")
+      background-size: 100%
+      background-repeat: no-repeat
+      text-align: center
+
+    &-cat
+      +adjust-font-size-to(16px, 1)
+      +trailer(.5, 16px)
+      color: white
+
+    &-place
+      +adjust-font-size-to(16px, 1)
+      color: white
+
+  .news
+    position: relative
+    width: 100%
+    background-image: url("../images/2019/news-back.png")
+    +padding-trailer(4)
+    +padding-leader(4)
+
+    .main-header
+      .section-title
+        color: #47aec9
+
+    &-header
+      text-align: center
+      h1
+        +adjust-font-size-to(24px)
+        font-weight: 700
+        color: $color-palette-1
+        text-transform: uppercase
+        +trailer(2)
+
+    &-items
+      display: inline-block
+      +trailer(3)
+
+    &-item
+      +column(1/3, $cycle:3)
+      +trailer(1)
+      +padding-trailer(0)
+      border: none
+      +media("<tablet")
+        +column(1/1)
+        +trailer(2)
+
+    &-title
+      +adjust-font-size-to(22px, 1.3)
+      +trailer(0)
+      color: #3eabc7
+      font-weight: bold
+      text-transform: uppercase
+      letter-spacing: .05em
+      +leader(1)
+      +trailer(1)
+
+    &-sub
+      color: #545454
+
+    &-readmore
+      +adjust-font-size-to(17px)
+      font-weight: bold
+      text-align: right
+      a
+        color: #3eabc7
+
+    &-wrapper
+      padding-left: 8px
+      padding-right: 8px
+
+
+    &-figure
+      overflow: hidden
+      float: none
+      padding: 0
+      margin: 0
+      img
+        width: 100%
+        transition: $transition-default
+        color: white
+
+    &-all
+      text-align: center
+      .button-readmore
+        color: #3eabc7
+        border: 5px solid #3eabc7
+
+    &-link
+      &:hover
+        .news-figure
+          img
+            transform: scale(1.05)
+
+
+  .tv
+    background: url("../images/2019/video-back.jpg") no-repeat top left
+    background-size: cover
+    +padding-leader(3)
+    +padding-trailer(3)
+
+    .main-header
+      .section-title
+        color: #6c522c
+
+    &-items
+      display: inline-block
+      position: relative
+      width: 100%
+      overflow: hidden
+      +trailer(4)
+
+    &-figure,
+    &-content
+      float: left
+
+    &-figure
+      width: 60%
+
+    &-content
+      width: 40%
+
+    &-item
+      box-sizing: border-box
+      position: relative
+      &:first-child
+        +media(">=tablet")
+          +column(2.25/4, $gutter:0)
+          padding-right: 16px
+          border-right: 1px solid $color-palette-1
+          .tv-content
+            position: absolute
+            bottom: -72px
+        +media("<=tablet")
+          +column(4/4, $gutter:0)
+
+        .tv-figure,
+        .tv-content
+          float: none
+          width: 100%
+
+      &:nth-child(2),
+      &:nth-child(3)
+        +media(">=tablet")
+          +column(1.75/4, $gutter:0)
+          padding-left: 16px
+          .tv-figure
+            padding-right: 12px
+        +media("<tablet")
+          +column(1/2, $gutter:0)
+          .tv-figure,
+          .tv-content
+            width: 100%
+
+        .tv-title,
+        .tv-subtitle
+          +adjust-font-size-to(14px, 1)
+
+      &:nth-child(2)
+        +media(">=tablet")
+          padding-bottom: 8px
+        +media("<tablet")
+          padding-right: 4px
+      &:nth-child(3)
+        +media(">=tablet")
+          padding-top: 8px
+        +media("<tablet")
+          padding-left: 4px
+
+    &-figure
+      line-height: 0
+      box-sizing: border-box
+      position: relative
+      &:before
+        position: absolute
+        top: 50%
+        left: 50%
+        transform: translate(-50%, -50%)
+        content: "\ed85"
+        font-family: 'mostratiradentes' !important
+        speak: none
+        font-style: normal
+        font-weight: normal
+        font-variant: normal
+        font-size: 85px
+        text-transform: none
+        line-height: 1
+        -webkit-font-smoothing: antialiased
+        color: red
+        opacity: .7
+        z-index: 99
+      img
+        display: block
+        height: auto
+        border: none
+        width: 100%
+
+    &-title
+      color: #6c522c
+      text-transform: uppercase
+      font-weight: bold
+
+    &-subtitle
+      color: #6c522c
+
+    &-all
+      display: block
+      text-align: center
+      .button-readmore
+        color: #6c522c
+        border: 5px solid #6c522c
+
+  .gallery
+    position: relative
+    width: 100%
+    background-color: #5ac9e5
+    background-image: url("../images/2019/gallery-back.png")
+    +padding-trailer(3)
+
+    .main-header
+      +padding-leader(4)
+      +trailer(2)
+      .section-title
+        color: #22606b
+
+    &-wrapper
+      +center(1524px)
+
+    &-all
+      +leader(2)
+      text-align: center
+      .button-readmore
+        color: #22606b
+        border: 5px solid #22606b
+
+    &-item
+      display: inline-block
+      //width: 780px
+      position: relative
+
+    &-desc
+      position: relative
+      height: 90px
+      background-color: $color-palette-5
+      box-sizing: border-box
+      padding: 20px
+
+    &-title
+      +adjust-font-size-to(18px, 1.5)
+      span
+        +adjust-font-size-to(14px, 1, 18px)
+        font-style: italic
+        display: block
+
+    //&-figure
+    //  img
+    //    display: block
+    //    width: 100%
+
+    //.owl-item
+    //  .gallery-desc
+    //    text-indent: -100%
+    //    white-space: nowrap
+    //    overflow: hidden
+    //  .gallery-figure
+    //    position: relative
+    //    &:before
+    //      content: ""
+    //      position: absolute
+    //      width: 100%
+    //      height: 100%
+    //      top: 0
+    //      left: 0
+    //      bottom: 0
+    //      background: rgba(0, 0, 0, .6)
+    //      z-index: 9
+    //
+    //.owl-item.center
+    //  .gallery-desc
+    //    background-color: $color-palette-1
+    //    text-indent: inherit
+    //    white-space: inherit
+    //    overflow: inherit
+    //  .gallery-figure
+    //    &:before
+    //      background: rgba(0, 0, 0, 0)
+    //
+    .owl-nav
+      position: absolute
+      bottom: 90px
+      top: 50%
+      transform: translateY(-50%)
+      width: 100%
+      .owl-next,
+      .owl-prev
+        font-size: 100px
+      .owl-next
+        right: -50px
+      .owl-prev
+        left: -50px
+
+
+  .guide
+    +padding-leader(3)
+    +padding-trailer(3)
+    position: relative
+    width: 100%
+    background-image: url("../images/2019/news-back.png")
+    &-header
+      text-align: center
+      h1
+        +adjust-font-size-to(48px, 2)
+        font-weight: bold
+        color: #ea493f
+        text-transform: uppercase
+        +trailer(4)
+
+    &-items
+      display: inline-block
+      width: 100%
+      text-align: center
+
+    &-item
+      +media(">=tablet")
+        +column(1/4)
+      +media("<tablet")
+        +column(2/4, $cycle: 2)
+      +media("<phone")
+        +column(4/4)
+
+    &-title
+      color: #595050
+      text-transform: uppercase
+      +leader(1)
+      letter-spacing: .05em
+
+    .sprite
+      display: inline-block
+
+  .eufacoamostra
+    display: inline-block
+    width: 100%
+    background-color: #fef485
+    background-image: url("../images/2019/eufacoamostra-back.png")
+    +padding-leader(5)
+    +padding-trailer(3)
+
+    &-header
+      text-align: center
+      +trailer(3)
+      h1
+        +adjust-font-size-to(72px)
+        font-weight: 700
+        color: #8c7018
+        text-transform: uppercase
+        +trailer(2, 56px)
+
+        +media("<=480px")
+          +adjust-font-size-to(50px)
+      p
+        +adjust-font-size-to(18px, 1.5)
+        letter-spacing: .05em
+        color: #8c7018
+        padding-left: 8px
+        padding-right: 8px
+
+    &-items
+      display: inline-block
+      position: relative
+      width: 100%
+      +trailer(3)
+
+    &-item
+      position: relative
+      +media(">=1600px")
+        +column(1/8, $gutter:0)
+      +media("<1600px")
+        +column(1/6, $gutter:0)
+      +media("<1280px")
+        +column(1/4, $gutter:0)
+      +media("<480px")
+        +column(1/2, $gutter:0)
+      img
+        max-width: 100%
+        height: auto
+        display: block
+        background: #ccc
+        border: none
+        //filter: grayscale(100%)
+      &--video
+        .eufacoamostra-figure
+          &:before
+            position: absolute
+            top: 50%
+            left: 50%
+            transform: translate(-50%, -50%)
+            content: "\ed85"
+            font-family: 'mostratiradentes' !important
+            speak: none
+            font-style: normal
+            font-weight: normal
+            font-variant: normal
+            font-size: 85px
+            text-transform: none
+            line-height: 1
+            -webkit-font-smoothing: antialiased
+            color: #8c7018
+            opacity: .7
+            z-index: 99
+
+    &-link
+      display: inline
+
+    .news-all
+      .button-readmore
+        color: #856812
+        border: 5px solid #b0973f
+
+  .newsletter
+    display: inline-block
+    width: 100%
+    background-color: #3dbc9f
+    +padding-leader(3)
+    +padding-trailer(3)
+    //+trailer(4)
+
+    &-header
+      text-align: center
+      h1
+        color: white
+        text-transform: uppercase
+        font-weight: 700
+        +trailer(1)
+
+    &-form
+      display: inline-block
+      width: 100%
+
+    &-input,
+    &-submit
+      box-sizing: border-box
+      +adjust-font-size-to(14px, 1)
+      outline: none
+      text-transform: uppercase
+      +apply-side-rhythm-border(all, 1px, 1, 18px, solid #fff)
+      letter-spacing: .05em
+
+    &-input
+      +media(">=tablet")
+        width: 40%
+        float: left
+        border-right: none
+      +media("<tablet")
+        width: 100%
+        border-bottom: none
+      color: #fff
+      background-color: transparent
+      &::-webkit-input-placeholder
+        color: #fff
+        font-weight: bold
+      &::-moz-placeholder
+        color: #fff
+        font-weight: bold
+      &:-ms-input-placeholder
+        color: #fff
+        font-weight: bold
+      &:-moz-placeholder
+        color: #fff
+        font-weight: bold
+    &-submit
+      +media(">=tablet")
+        width: 20%
+        float: left
+      +media("<tablet")
+        width: 100%
+
+      background-color: white
+      color: #2091a2
+      font-weight: bold
+      transition: $transition-default
+      cursor: pointer
+
+  .sponsorship
+    +trailer(.5)
+    +leader(4)
+    &-list
+      display: inline-block
+      width: 100%
+
+    &-block
+      display: inline-block
+      float: left
+      box-sizing: border-box
+      +trailer(2.5)
+      margin-right: 120px
+      &--full
+        width: 100%
+        margin-right: 0
+      &--center
+        text-align: center
+      &--20
+        width: 20%
+      &--80
+        width: calc(80% - 120px)
+        margin-right: 0
+
+
+    &-item
+      display: inline-block
+      box-sizing: border-box
+      vertical-align: middle
+      margin-right: 40px
+      +trailer(2)
+      &:first-child
+        margin-left: 0px
+      &:last-child
+        margin-right: 0px
+
+    &-title
+      +adjust-font-size-to(14px, 1.5)
+      letter-spacing: .05em
+      text-transform: uppercase
+      color: #000
+      border-bottom: 1px solid #000
+      +trailer(1,16px)
+      padding-left: 2px
+      padding-right: 2px
+      position: relative
+      &:before
+        content: " "
+        position: absolute
+        left: 0
+        width: 1px
+        height: 10px
+        background-color: black
+        bottom: -5px
+      &:after
+        content: " "
+        position: absolute
+        right: 0
+        width: 1px
+        height: 10px
+        background-color: black
+        bottom: -5px
+
+  .sitemap
+    +padding-leader(3)
+    +padding-trailer(3)
+    background-color: #e6673b
+
+    &-items
+      display: inline-block
+      width: 100%
+
+    &-item
+      text-align: center
+      +media(">=tablet")
+        +column(1/4)
+      +media("<tablet")
+        +column(2/4, $cycle: 2)
+      +media("<480px")
+        +column(1/1)
+      & >.sitemap-items
+        +leader(.5)
+        +trailer(1)
+        .sitemap-item
+          display: block
+          width: 100%
+        .sitemap-link
+          +adjust-font-size-to(16px, 1)
+          +trailer(1)
+          font-weight: normal
+          letter-spacing: .05em
+
+    &-link
+      display: block
+      color: white
+      text-transform: uppercase
+      font-weight: 700
+      +adjust-font-size-to(18px, 1)
+      +trailer(2)
+      letter-spacing: .05em
+      &:hover
+        text-decoration: underline
+        color: $color-palette-1
+

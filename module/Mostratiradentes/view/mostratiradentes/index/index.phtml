@@ -80,14 +80,17 @@ $program = $this->program;
 
 <section class="news">
     <div class="main-wrapper">
-        <header class="news-header">
-            <h1>acompanhe tudo o que acontece na 21ª mostra de Tiradentes</h1>
+        <header class="main-header">
+            <div class="main-wrapper">
+                <h1 class="section-title">
+                    <img src="<?php echo $this->basePath('assets/tiradentes2019/dist'); ?>/images/2019/news-icon.png" alt="">Notícias</h1>
+            </div>
         </header>
         <div class="news-items">
             <?php foreach ($this->news as $news): ?>
             <article class="news-item">
                 <a href="<?php echo $this->url("mostratiradentes/news", ['slug'=>$news->getSlug()]) ?>" class="news-link">
-                    <figure class="news-figure"><img src="<?php echo  $this->thumbor()->url($news->getMeta('_thumb'))->resize(240, 331); ?>" alt=""></figure>
+                    <figure class="news-figure"><img src="<?php echo  $this->thumbor()->url($news->getMeta('_thumb'))->resize(482, 360); ?>" alt=""></figure>
                     <p class="news-title"><?php echo $news->getTitle(); ?></p>
                 </a>
             </article>
@@ -101,7 +104,9 @@ $program = $this->program;
 <?php if(count($this->videos)): ?>
 <section class="tv">
     <div class="main-wrapper">
-        <header class="main-header"><h1 class="section-title">TV Mostra</h1></header>
+        <header class="main-header">
+            <h1 class="section-title"><img src="<?php echo $this->basePath('assets/tiradentes2019/dist'); ?>/images/2019/prog-video.png" alt="">Videos</h1>
+        </header>
 
         <div class="tv-items">
             <?php foreach ($this->videos as $v): ?>
@@ -116,26 +121,35 @@ $program = $this->program;
                 </a>
             </article>
             <?php endforeach; ?>
-            <p class="tv-all"><a href="https://www.youtube.com/channel/UCaikc9czwiws39fvlHX-RpA">Assista todos os vídeos <span class="icon icon-plus-circle"></span></a></p>
         </div>
-
+        <p class="tv-all"><a class="button-readmore" href="https://www.youtube.com/channel/UCaikc9czwiws39fvlHX-RpA">Ver todos os vídeos</a></p>
     </div>
 </section>
 <?php endif; ?>
 
 <section class="gallery">
-    <div class="gallery-list owl-carousel">
-        <?php foreach ($this->gallery as $img): ?>
-            <div class="gallery-item">
-                <figure class="gallery-figure">
-                    <img src="<?php echo $this->thumbor()->url($img->getMeta('_image'))->resize(479, 310); ?>" alt="">
-                </figure>
-                <div class="gallery-desc">
-                    <p class="gallery-title"><?php echo $img->getTitle(); ?>
-                        <span><?php echo $img->getMeta('_credits'); ?></span></p>
+
+    <header class="main-header">
+        <div class="main-wrapper">
+            <h1 class="section-title">
+                <img src="<?php echo $this->basePath('assets/tiradentes2019/dist'); ?>/images/2019/gal-icon.png  " alt="">Galeria de imagens</h1>
+        </div>
+    </header>
+
+    <div class="gallery-wrapper">
+        <div class="gallery-list owl-carousel">
+            <?php foreach ($this->gallery as $img): ?>
+                <div class="gallery-item">
+                    <figure class="gallery-figure">
+                        <img src="<?php echo $this->thumbor()->url($img->getMeta('_image'))->resize(382, 362); ?>" alt="">
+                    </figure>
+                    <!--<div class="gallery-desc">
+                        <p class="gallery-title"><?php /*echo $img->getTitle(); */?>
+                            <span><?php /*echo $img->getMeta('_credits'); */?></span></p>
+                    </div>-->
                 </div>
-            </div>
-        <?php endforeach; ?>
+            <?php endforeach; ?>
+        </div>
     </div>
     <p class="gallery-all"><a target="_blank" href="https://www.flickr.com/photos/universoproducao/" class="button-readmore">Galeria Completa</a></p>
 </section>
@@ -143,804 +157,35 @@ $program = $this->program;
 <section class="guide">
     <div class="main-wrapper">
         <header class="guide-header">
-            <h1>se renda aos encantos de uma das cidades históricas mais importantes do brasil <br>e aprecie a sétima arte em uma mostra singular</h1>
+            <h1>Descubra Tiradentes</h1>
         </header>
         <ul class="guide-items">
             <li class="guide-item">
                 <a href="<?php echo $this->url("mostratiradentes/default", ['slug'=>'como-chegar']) ?>" class="guide-link">
-                    <span class="sprite sprite-como-chegar"></span>
+                    <img src="<?php echo $this->basePath('assets/tiradentes2019/dist'); ?>/images/2019/como-chegar.png" alt="">
                     <p class="guide-title">Como Chegar</p>
                 </a>
             </li>
             <li class="guide-item">
                 <a href="<?php echo $this->url("mostratiradentes/default", ['slug'=>'turismo-e-informacoes']) ?>" class="guide-link">
-                    <span class="sprite sprite-turismo"></span>
+                    <img src="<?php echo $this->basePath('assets/tiradentes2019/dist'); ?>/images/2019/turismo.png" alt="">
                     <p class="guide-title">Turismo e Informações</p>
                 </a>
             </li>
             <li class="guide-item">
                 <a href="<?php echo $this->url("mostratiradentes/default", ['slug'=>'restaurantes']) ?>" class="guide-link">
-                    <span class="sprite sprite-restaurantes"></span>
+                    <img src="<?php echo $this->basePath('assets/tiradentes2019/dist'); ?>/images/2019/restaurantes.png" alt="">
                     <p class="guide-title">Restaurantes</p>
                 </a>
             </li>
             <li class="guide-item">
                 <a href="<?php echo $this->url("mostratiradentes/default", ['slug'=>'hoteis-e-acomodacoes']) ?>" class="guide-link">
-                    <span class="sprite sprite-hospedagem"></span>
+                    <img src="<?php echo $this->basePath('assets/tiradentes2019/dist'); ?>/images/2019/hoteis.png" alt="">
                     <p class="guide-title">hotéis e acomodações</p>
                 </a>
             </li>
         </ul>
     </div>
-</section>
-
-<section class="timeline">
-    <div class="timeline-header">
-        <h1>Mostra Tiradentes, <br>20 anos de história</h1>
-        <p>Há 20 anos, temos o prazer de celebrar o maior festival de cinema de Minas Gerais e um dos mais relevantes do Brasil,
-            20 anos de orgulho, história e emoção! <strong>Clique e conheça a nossa trajetória</strong></p>
-        <div class="timeline-button">
-            <a id="timeline-active" class="circle-button" href="">
-                <i class="icon icon-arrow-right4"></i></a>
-        </div>
-    </div>
-
-    <div class="timeline-navigation">
-    </div>
-
-    <div class="timeline-container">
-        <div class="timeline-body">
-            <div class="timeline-wrapper">
-                <div class="timeline-events">
-                    <div class="events">
-                        <div class="event">
-                            <p class="event-year squere-font">1998</p>
-                            <p class="event-title">O começo</p>
-                            <div class="event-content">
-                                <p class="event-subtitle">Homenagens</p>
-                                <div class="event-text">
-                                    <p>À cineasta Carla Camurati e ao ator Paulo José</p>
-                                    <ul class="event-actions">
-                                        <li><a class="circle-button plus" href="<?php echo $this->basepath("assets/mostratiradentes/dist/images/timeline")?>/cartaz1.jpg"><i class="icon icon-plus3"></i></a></li>
-                                    </ul>
-                                </div>
-                                <ul>
-                                    <li><span class="squere-font">87</span> filmes</li>
-                                    <li><span class="squere-font">21</span> sessões</li>
-                                    <li><span class="squere-font">17</span> longas</li>
-                                    <li><span class="squere-font">06</span> curtas</li>
-                                    <li><span class="squere-font">64</span> vídeos</li>
-                                    <li><span class="squere-font">03</span> oficinas</li>
-                                    <li><span class="squere-font">90</span> alunos certificados</li>
-                                    <li><span class="squere-font">7.500</span> público estimado</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="event">
-                            <p class="event-year squere-font">1999</p>
-                            <div class="event-figure">
-                                <img src="<?php echo $this->basePath("assets/mostratiradentes/dist") ?>/images/1998.jpg" alt="">
-                                <ul class="event-actions">
-                                    <li><a class="circle-button plus" href="<?php echo $this->basepath("assets/mostratiradentes/dist/images/timeline") ?>/cartaz2.jpg"><i class="icon icon-plus3"></i></a></li>
-                                </ul>
-                            </div>
-                            <div class="event-content">
-                                <p class="event-thema">Tema</p>
-                                <p class="event-title">aprendendo a caminhar</p>
-                                <p class="event-subtitle">Homenagens</p>
-                                <p>Ao cineasta Denoy de Oliveira (in memorian),
-                                    ao cineasta Helvécio Ratton
-                                    e à atriz Patrícia Pillar</p>
-                                <ul>
-                                    <li><span class="squere-font">82</span> filmes</li>
-                                    <li><span class="squere-font">40</span> sessões</li>
-                                    <li><span class="squere-font">22</span> longas</li>
-                                    <li><span class="squere-font">27</span> curtas</li>
-                                    <li><span class="squere-font">33</span> vídeos</li>
-                                    <li><span class="squere-font">04</span> oficinas</li>
-                                    <li><span class="squere-font">148</span> alunos certificados</li>
-                                    <li><span class="squere-font">25.000</span> público estimado</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="event">
-                            <p class="event-year squere-font">2000</p>
-                            <div class="event-figure">
-                                <img src="<?php echo $this->basePath("assets/mostratiradentes/dist") ?>/images/2000.jpg" alt="">
-                                <ul class="event-actions">
-                                    <li><a class="circle-button plus" href="<?php echo $this->basepath("assets/mostratiradentes/dist/images/timeline")?>/cartaz3.jpg"><i class="icon icon-plus3"></i></a></li>
-                                    <li><a class="circle-button winners" href="#winners2000"><i class="icon icon-trophy"></i></a></li>
-                                </ul>
-                                <div class="event-winners" id="winners2000" style="display: none; overflow: hidden; width: 400px;">
-                                    <p><strong>Melhor Longa</strong>NÓS QUE AQUI ESTAMOS POR VÓS ESPERAMOS, de Marcelo Masagão</p>
-                                    <p><strong>Melhor Curta</strong>O OITAVO SELO , de Tomás Enrique Creus</p>
-                                    <p><strong>Melhor Vídeo</strong>ÁGUA BENDA, FÉ ARDENTE, AGUA ARDENTE, FÉ BENDA, de João Luiz Dornelas e Armando Mendz</p>
-                                </div>
-                            </div>
-                            <div class="event-content">
-                                <p class="event-thema">Tema</p>
-                                <p class="event-title">o cinema na praça</p>
-                                <p class="event-subtitle">Homenagens</p>
-                                <p>Ao cineasta Carlos Reichenbach</p>
-                                <ul>
-                                    <li><span class="squere-font">110</span> filmes</li>
-                                    <li><span class="squere-font">49</span> sessões</li>
-                                    <li><span class="squere-font">29</span> longas</li>
-                                    <li><span class="squere-font">42</span> curtas</li>
-                                    <li><span class="squere-font">39</span> vídeos</li>
-                                    <li><span class="squere-font">05</span> oficinas</li>
-                                    <li><span class="squere-font">180</span> alunos certificados</li>
-                                    <li><span class="squere-font">30.000</span> público estimado</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="event">
-                            <p class="event-year squere-font">2001</p>
-                            <div class="event-figure">
-                                <img src="<?php echo $this->basePath("assets/mostratiradentes/dist") ?>/images/2001.jpg" alt="">
-                                <ul class="event-actions">
-                                    <li><a class="circle-button plus" href="<?php echo $this->basepath("assets/mostratiradentes/dist/images/timeline")?>/cartaz4.jpg"><i class="icon icon-plus3"></i></a></li>
-                                    <li><a class="circle-button winners" href="#winners2001"><i class="icon icon-trophy"></i></a></li>
-                                </ul>
-                                <div class="event-winners" id="winners2001" style="display: none; overflow: hidden; width: 400px;">
-                                    <p><strong>Melhor Longa</strong>O AUTO DA COMPADECIDA, de Guel Arraes</p>
-                                    <p><strong>Melhor Curta</strong>A INVENÇÃO DA INFÂNCIA, de Liliana Sulzbach</p>
-                                    <p><strong>Melhor Vídeo</strong>SECOS E MOLHADOS, de Armando Mendz</p>
-                                </div>
-                            </div>
-                            <div class="event-content">
-                                <p class="event-thema">Tema</p>
-                                <p class="event-title">Mulheres em cena</p>
-                                <p class="event-subtitle">Homenagens</p>
-                                <p>À cineasta Ana Carolina, à atriz Odete Lara
-                                    e ao videoartista Carlos Nader</p>
-                                <ul>
-                                    <li><span class="squere-font">123</span> filmes</li>
-                                    <li><span class="squere-font">38</span> sessões</li>
-                                    <li><span class="squere-font">30</span> longas</li>
-                                    <li><span class="squere-font">41</span> curtas</li>
-                                    <li><span class="squere-font">52</span> vídeos</li>
-                                    <li><span class="squere-font">11</span> oficinas</li>
-                                    <li><span class="squere-font">330</span> alunos certificados</li>
-                                    <li><span class="squere-font">32.270</span> público estimado</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="event">
-                            <p class="event-year squere-font">2002</p>
-                            <div class="event-figure">
-                                <img src="<?php echo $this->basePath("assets/mostratiradentes/dist") ?>/images/2002.jpg" alt="">
-                                <ul class="event-actions">
-                                    <li><a class="circle-button plus" href="<?php echo $this->basepath("assets/mostratiradentes/dist/images/timeline")?>/cartaz5.jpg"><i class="icon icon-plus3"></i></a></li>
-                                    <li><a class="circle-button winners" href="#winners2002"><i class="icon icon-trophy"></i></a></li>
-                                </ul>
-                                <div class="event-winners" id="winners2002" style="display: none; overflow: hidden; width: 400px;">
-                                    <p><strong>Melhor Longa</strong>LAVOURA ARCAICA, de Luiz Fernando Carvalho</p>
-                                    <p><strong>Melhor Curta</strong>ONDE ANDARÁ PETRÚCIO FELKER?, de Allan Sieber</p>
-                                    <p><strong>Melhor Vídeo</strong>OSCAR ARARIPE, de César Tolentin</p>
-                                </div>
-                            </div>
-                            <div class="event-content">
-                                <p class="event-thema">Tema</p>
-                                <p class="event-title">Cinema de ator e de autor</p>
-                                <p class="event-subtitle">Homenagens</p>
-                                <p>Ao cineasta Júlio Bressane,
-                                    ao ator José Lewgoy
-                                    e ao videoartista Kiko Goifman</p>
-                                <ul>
-                                    <li><span class="squere-font">121</span> filmes</li>
-                                    <li><span class="squere-font">39</span> sessões</li>
-                                    <li><span class="squere-font">26</span> longas</li>
-                                    <li><span class="squere-font">02</span> médias</li>
-                                    <li><span class="squere-font">42</span> curtas</li>
-                                    <li><span class="squere-font">51</span> vídeos</li>
-                                    <li><span class="squere-font">13</span> oficinas</li>
-                                    <li><span class="squere-font">327</span> alunos certificados</li>
-                                    <li><span class="squere-font">33.780</span> público estimado</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="event">
-                            <p class="event-year squere-font">2003</p>
-                            <div class="event-figure">
-                                <img src="<?php echo $this->basePath("assets/mostratiradentes/dist") ?>/images/2003.jpg" alt="">
-                                <ul class="event-actions">
-                                    <li><a class="circle-button plus" href="<?php echo $this->basepath("assets/mostratiradentes/dist/images/timeline")?>/cartaz6.jpg"><i class="icon icon-plus3"></i></a></li>
-                                    <li><a class="circle-button winners" href="#winners2003"><i class="icon icon-trophy"></i></a></li>
-                                </ul>
-                                <div class="event-winners" id="winners2003" style="display: none; overflow: hidden; width: 400px;">
-                                    <p><strong>Melhor Longa</strong>SEPARAÇÕES, de Domingos de Oliveira</p>
-                                    <p><strong>Melhor Curta</strong>A LASANHA ASSASSINA, de Ale McHaddo</p>
-                                    <p><strong>Melhor Vídeo</strong>O CICLONE LENTO E SUTIL, trabalho coletivo</p>
-                                </div>
-                            </div>
-                            <div class="event-content">
-                                <p class="event-thema">Tema</p>
-                                <p class="event-title">Heróis do cotidiano
-                                    no cinema brasileiro</p>
-                                <p class="event-subtitle">Homenagens</p>
-                                <p>Ao cineasta Eduardo Coutinho,
-                                    ao ator Gianfrancesco Guarnieri
-                                    e à videoartista Inês Cardoso</p>
-                                <ul>
-                                    <li><span class="squere-font">118</span> filmes</li>
-                                    <li><span class="squere-font">35</span> sessões</li>
-                                    <li><span class="squere-font">25</span> longas</li>
-                                    <li><span class="squere-font">42</span> curtas</li>
-                                    <li><span class="squere-font">51</span> vídeos</li>
-                                    <li><span class="squere-font">13</span> oficinas</li>
-                                    <li><span class="squere-font">330</span> alunos certificados</li>
-                                    <li><span class="squere-font">35.000</span> público estimado</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="event">
-                            <p class="event-year squere-font">2004</p>
-                            <div class="event-figure">
-                                <img src="<?php echo $this->basePath("assets/mostratiradentes/dist") ?>/images/2004.jpg" alt="">
-                                <ul class="event-actions">
-                                    <li><a class="circle-button plus" href="<?php echo $this->basepath("assets/mostratiradentes/dist/images/timeline")?>/cartaz7.jpg"><i class="icon icon-plus3"></i></a></li>
-                                    <li><a class="circle-button winners" href="#winners2004"><i class="icon icon-trophy"></i></a></li>
-                                </ul>
-                                <div class="event-winners" id="winners2004" style="display: none; overflow: hidden; width: 400px;">
-                                    <p><strong>Melhor Longa</strong>O PREÇO DA PAZ, de Paulo Morelli</p>
-                                    <p><strong>Melhor Curta</strong>CEGA SECA, de Sofia Federico</p>
-                                    <p><strong>Melhor Vídeo</strong>THE SAME OLD CHOICE, de Ricardo Portilho, Joana Meniconi, Francisca Caporalli e Rafael Morado</p>
-                                </div>
-                            </div>
-                            <div class="event-content">
-                                <p class="event-thema">Tema</p>
-                                <p class="event-title">Modos narrativos do
-                                    cinema brasileiro</p>
-                                <p class="event-subtitle">Homenagens</p>
-                                <p>Ào cineasta Nelson Pereira dos Santos,
-                                    ao ator Paulo César Pereio
-                                    e ao videoartista Marcelo Tas</p>
-                                <ul>
-                                    <li><span class="squere-font">119</span> filmes</li>
-                                    <li><span class="squere-font">34</span> sessões</li>
-                                    <li><span class="squere-font">24</span> longas</li>
-                                    <li><span class="squere-font">41</span> curtas</li>
-                                    <li><span class="squere-font">54</span> vídeos</li>
-                                    <li><span class="squere-font">13</span> oficinas</li>
-                                    <li><span class="squere-font">450</span> alunos certificados</li>
-                                    <li><span class="squere-font">35.000</span> público estimado</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="event">
-                            <p class="event-year squere-font">2005</p>
-                            <div class="event-figure">
-                                <img src="<?php echo $this->basePath("assets/mostratiradentes/dist") ?>/images/2005.jpg" alt="">
-                                <ul class="event-actions">
-                                    <li><a class="circle-button plus" href="<?php echo $this->basepath("assets/mostratiradentes/dist/images/timeline")?>/cartaz8.jpg"><i class="icon icon-plus3"></i></a></li>
-                                    <li><a class="circle-button winners" href="#winners2005"><i class="icon icon-trophy"></i></a></li>
-                                </ul>
-                                <div class="event-winners" id="winners2005" style="display: none; overflow: hidden; width: 400px;">
-                                    <p><strong>Melhor Longa</strong>FILHAS DO VENTO, de Joel Zito Araújo</p>
-                                    <p><strong>Melhor Curta</strong>O ÚLTIMO RAIO DE SOL, de Bruno Torres</p>
-                                    <p><strong>Melhor Vídeo</strong>TV MURO, de Fábio Britto e Simone Lara</p>
-                                </div>
-                            </div>
-                            <div class="event-content">
-                                <p class="event-thema">Tema</p>
-                                <p class="event-title">O primeiro cinema</p>
-                                <p class="event-subtitle">Homenagens</p>
-                                <p>Ao cineasta Walter Lima Jr.
-                                    e ao videoartista Cao Guimarães</p>
-                                <ul>
-                                    <li><span class="squere-font">149</span> filmes</li>
-                                    <li><span class="squere-font">40</span> sessões</li>
-                                    <li><span class="squere-font">22</span> longas</li>
-                                    <li><span class="squere-font">58</span> curtas</li>
-                                    <li><span class="squere-font">69</span> vídeos</li>
-                                    <li><span class="squere-font">13</span> oficinas</li>
-                                    <li><span class="squere-font">400</span> alunos certificados</li>
-                                    <li><span class="squere-font">35.000</span> público estimado</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="event">
-                            <p class="event-year squere-font">2006</p>
-                            <div class="event-figure">
-                                <img src="<?php echo $this->basePath("assets/mostratiradentes/dist") ?>/images/2006.jpg" alt="">
-                                <ul class="event-actions">
-                                    <li><a class="circle-button plus" href="<?php echo $this->basepath("assets/mostratiradentes/dist/images/timeline")?>/cartaz9.jpg"><i class="icon icon-plus3"></i></a></li>
-                                    <li><a class="circle-button winners" href="#winners2006"><i class="icon icon-trophy"></i></a></li>
-                                </ul>
-                                <div class="event-winners" id="winners2006" style="display: none; overflow: hidden; width: 400px;">
-                                    <p><strong>Melhor Longa</strong>DEPOIS DAQUELE BAILE, de Roberto Bomtempo</p>
-                                    <p><strong>Melhor Curta</strong>ELETRODOMÉSTICA, de Kléber Mendonça Filho</p>
-                                    <p><strong>Melhor Vídeo</strong>BEQUADRO, de Simon Pedro Brethé</p>
-                                </div>
-                            </div>
-                            <div class="event-content">
-                                <p class="event-thema">Tema</p>
-                                <p class="event-title">Livre pensar</p>
-                                <p class="event-subtitle">Homenagens</p>
-                                <p>Ao cineasta Ruy Guerra
-                                    e ao videoartista Eder Santos</p>
-                                <ul>
-                                    <li><span class="squere-font">173</span> filmes</li>
-                                    <li><span class="squere-font">47</span> sessões</li>
-                                    <li><span class="squere-font">24</span> longas</li>
-                                    <li><span class="squere-font">60</span> curtas</li>
-                                    <li><span class="squere-font">89</span> vídeos</li>
-                                    <li><span class="squere-font">13</span> oficinas</li>
-                                    <li><span class="squere-font">430</span> alunos certificados</li>
-                                    <li><span class="squere-font">37.400</span> público estimado</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="event">
-                            <p class="event-year squere-font">2007</p>
-                            <div class="event-figure">
-                                <img src="<?php echo $this->basePath("assets/mostratiradentes/dist") ?>/images/2007.jpg" alt="">
-                                <ul class="event-actions">
-                                    <li><a class="circle-button plus" href="<?php echo $this->basepath("assets/mostratiradentes/dist/images/timeline")?>/cartaz10.jpg"><i class="icon icon-plus3"></i></a></li>
-                                    <li><a class="circle-button winners" href="#winners2007"><i class="icon icon-trophy"></i></a></li>
-                                </ul>
-                                <div class="event-winners" id="winners2007" style="display: none; overflow: hidden; width: 400px;">
-                                    <p><strong>Melhor Longa</strong>NOEL - POETA DA VILA, de Ricardo Van Steen</p>
-                                    <p><strong>Melhor Curta</strong>VIDA MARIA, de Márcio Ramos</p>
-                                    <p><strong>Melhor Vídeo</strong>MAURO SHAMPOO - JOGADOR, CABELEIREIRO E HOMEM, de Paulo Henrique Fontenelle e Leonardo Cunha</p>
-                                </div>
-                            </div>
-                            <div class="event-content">
-                                <p class="event-thema">Tema</p>
-                                <p class="event-title">Vitalidade do cinema
-                                    brasileiro</p>
-                                <p class="event-subtitle">Homenagens</p>
-                                <p>Ao cineasta Beto Brant,
-                                    ao videoartista Fábio Carvalho e aos atores
-                                    Lazaro Ramos e Matheus Nachtergaele</p>
-                                <ul>
-                                    <li><span class="squere-font">219</span> filmes</li>
-                                    <li><span class="squere-font">55</span> sessões</li>
-                                    <li><span class="squere-font">26</span> longas</li>
-                                    <li><span class="squere-font">59</span> curtas</li>
-                                    <li><span class="squere-font">134</span> vídeos</li>
-                                    <li><span class="squere-font">13</span> oficinas</li>
-                                    <li><span class="squere-font">444</span> alunos certificados</li>
-                                    <li><span class="squere-font">40.000</span> público estimado</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="event">
-                            <p class="event-year squere-font">2008</p>
-                            <div class="event-figure">
-                                <img src="<?php echo $this->basePath("assets/mostratiradentes/dist") ?>/images/2008.jpg" alt="">
-                                <ul class="event-actions">
-                                    <li><a class="circle-button plus" href="<?php echo $this->basepath("assets/mostratiradentes/dist/images/timeline")?>/cartaz11.jpg"><i class="icon icon-plus3"></i></a></li>
-                                    <li><a class="circle-button winners" href="#winners2008"><i class="icon icon-trophy"></i></a></li>
-                                </ul>
-                                <div class="event-winners" id="winners2008" style="display: none; overflow: hidden; width: 400px;">
-                                    <p><strong>Júri Popular</strong>
-                                        <span>Melhor Vídeo:</span> A HORA DO PRIMEIRO TIRO, de Gustavo Jardim<br />
-                                        <span>Melhor Curta:</span> CÂMARA VIAJANTE, de Joe Pimentel<br />
-                                        <span>Melhor Longa:</span> O SENHOR DO CASTELO, de Marcus Vilar
-                                    </p>
-                                    <p><strong>Mostra Aurora - Júri da Crítica</strong>
-                                        <span>Destaque Livre:</span> O GRAÃO, de Petrus Cariry<br />
-                                        <span>Melhor Filme:</span> MEU NOME É DINDI, de Bruno Safadi
-                                    </p>
-                                    <p><strong>Júri Jovem</strong>
-                                        <span>Destaque Livre:</span> O PLANO SEQUENCIA do filme ‘AINDA ORANGOTANTOS, de Gustavo Spolidoro<br />
-                                        <span>Melhor Filme:</span> SÁBADO À NOITE, de Ivo Lopes Araújo</p>
-                                </div>
-                            </div>
-                            <div class="event-content">
-                                <p class="event-thema">Tema</p>
-                                <p class="event-title">Juventude em
-                                    trânsito</p>
-                                <p class="event-subtitle">Homenagens</p>
-                                <p>À atriz Rosane Mulholand
-                                    e ao ator João Miguel</p>
-                                <ul>
-                                    <li><span class="squere-font">126</span> filmes</li>
-                                    <li><span class="squere-font">48</span> sessões</li>
-                                    <li><span class="squere-font">27</span> longas</li>
-                                    <li><span class="squere-font">35</span> curtas</li>
-                                    <li><span class="squere-font">64</span> vídeos</li>
-                                    <li><span class="squere-font">13</span> oficinas</li>
-                                    <li><span class="squere-font">390</span> alunos certificados</li>
-                                    <li><span class="squere-font">40.000</span> público estimado</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="event">
-                            <p class="event-year squere-font">2009</p>
-                            <div class="event-figure">
-                                <img src="<?php echo $this->basePath("assets/mostratiradentes/dist") ?>/images/2009.jpg" alt="">
-                                <ul class="event-actions">
-                                    <li><a class="circle-button plus" href="<?php echo $this->basepath("assets/mostratiradentes/dist/images/timeline")?>/cartaz12.jpg"><i class="icon icon-plus3"></i></a></li>
-                                    <li><a class="circle-button winners" href="#winners2009"><i class="icon icon-trophy"></i></a></li>
-                                </ul>
-                                <div class="event-winners" id="winners2009" style="display: none; overflow: hidden; width: 400px;">
-                                    <p><strong>Júri Popular</strong>
-                                        <span>Melhor Curta Digital:</span> NO TEMPO DE MILTINHO, de André Weller <br>
-                                        <span>Melhor Curta Película:</span> DOSSIÊ REBORDOSA, de César Cabral<br>
-                                        <span>Melhor Longa:</span> TITÂS: A VIDA ATÉ PARECE UMA FESTA, de Branco Mello e Oscar Rodrigues Alves
-                                    </p>
-                                    <p><strong>Mostra Aurora - Júri da Crítica</strong>
-                                        <span>Melhor Filme:</span> A FUGA, A RAIVA, A DANÇA, A BUNDA, A BOCA, A CALMA, A VIDA DA MULHER GORILA, direção de Marina Meliande e Felipe Bragança<br>
-                                        <span>Menção Honrosa:</span> A CASA DE SANDRO, de Gustavo Beck
-                                    </p>
-                                    <p><strong>Júri Jovem</strong>
-                                        <span>Melhor Filme:</span> A FUGA, A RAIVA, A DANÇA, A BUNDA, A BOCA, A CALMA, A VIDA DA MULHER GORILA, direção de Marina Meliande e Felipe Bragança</p>
-                                </div>
-                            </div>
-                            <div class="event-content">
-                                <p class="event-thema">Tema</p>
-                                <p class="event-title">o personagem
-                                    e seu lugar</p>
-                                <p class="event-subtitle">Homenagens</p>
-                                <p>Ao cineasta José Eduardo Belmonte </p>
-                                <ul>
-                                    <li><span class="squere-font">121</span> filmes</li>
-                                    <li><span class="squere-font">50</span> sessões</li>
-                                    <li><span class="squere-font">28</span> longas</li>
-                                    <li><span class="squere-font">32</span> curtas película</li>
-                                    <li><span class="squere-font">61</span> curtas digitais</li>
-                                    <li><span class="squere-font">10</span> oficinas</li>
-                                    <li><span class="squere-font">300</span> alunos certificados</li>
-                                    <li><span class="squere-font">40.000</span> público estimado</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="event">
-                            <p class="event-year squere-font">2010</p>
-                            <div class="event-figure">
-                                <img src="<?php echo $this->basePath("assets/mostratiradentes/dist") ?>/images/2010.jpg" alt="">
-                                <ul class="event-actions">
-                                    <li><a class="circle-button plus" href="<?php echo $this->basepath("assets/mostratiradentes/dist/images/timeline")?>/cartaz13.jpg"><i class="icon icon-plus3"></i></a></li>
-                                    <li><a class="circle-button winners" href="#winners2010"><i class="icon icon-trophy"></i></a></li>
-                                </ul>
-                                <div class="event-winners" id="winners2010" style="display: none; overflow: hidden; width: 400px;">
-                                    <p><strong>Júri Popular</strong>
-                                        <span>Melhor Curta - Mostra Foco:</span> OBRA-PRIMA, de Andréa Midori Simão e Thiago Faelli <br>
-                                        <span>Melhor Curta - Mostra Panorama:</span> RECIFE FRIO, de Kleber Mendonça Filho <br>
-                                        <span>Melhor Longa:</span> HERBERT DE PERTO, de Roberto Berliner e Pedro Bronz
-                                    </p>
-                                    <p><strong>Mostra Aurora - Júri da Critica</strong>
-                                        <span>Melhor Filme:</span> ESTRADA PARA YTHACA, de Guto Parente, Luiz Pretti, Pedro Diogenes e Ricardo Pretti
-                                    </p>
-                                    <p><strong>Júri Jovem</strong>
-                                        <span>Menção Honrosa:</span> MULHER À TARDE, de Affonso Uchoa (MG) <br>
-                                        <span>Melhor Filme:</span> ESTRADA PARA YTHACA, de Guto Parente, Luiz Pretti, Pedro Diogenes e Ricardo Pretti </p>
-                                </div>
-                            </div>
-                            <div class="event-content">
-                                <p class="event-thema">Tema</p>
-                                <p class="event-title">paradoxos do
-                                    contemporâneo</p>
-                                <p class="event-subtitle">Homenagens</p>
-                                <p>Ao cineasta Karim Ainouz</p>
-                                <ul>
-                                    <li><span class="squere-font">128</span> filmes</li>
-                                    <li><span class="squere-font">48</span> sessões</li>
-                                    <li><span class="squere-font">29</span> longas</li>
-                                    <li><span class="squere-font">99</span> curtas</li>
-                                    <li><span class="squere-font">12</span> oficinas</li>
-                                    <li><span class="squere-font">310</span> alunos certificados</li>
-                                    <li><span class="squere-font">40.000</span> público estimado</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="event">
-                            <p class="event-year squere-font">2011</p>
-                            <div class="event-figure">
-                                <img src="<?php echo $this->basePath("assets/mostratiradentes/dist") ?>/images/2011.jpg" alt="">
-                                <ul class="event-actions">
-                                    <li><a class="circle-button plus" href="<?php echo $this->basepath("assets/mostratiradentes/dist/images/timeline")?>/cartaz14.jpg"><i class="icon icon-plus3"></i></a></li>
-                                    <li><a class="circle-button winners" href="#winners2011"><i class="icon icon-trophy"></i></a></li>
-                                </ul>
-                                <div class="event-winners" id="winners2011" style="display: none; overflow: hidden; width: 400px;">
-                                    <p><strong>Júri Popular</strong>
-                                        <span>Melhor Curta:</span> TRAZ OUTRO AMIGO TAMBÉM, de Frederico Cabral (RS) <br>
-                                        <span>Melhor Longa:</span> SOLIDÃO E FÉ, de Tatiana Lohmann (SP)
-                                    </p>
-                                    <p><strong>Mostra Aurora - Júri da Critica</strong>
-                                        <span>Melhor Longa:</span> OS RESIDENTES, de Tiago Mata Machado (MG) <br>
-                                        <span>Melhor Curta:</span> VÓ MARIA, de Tomás Von der Osten (PR)
-                                    </p>
-                                    <p><strong>Júri Jovem</strong>
-                                        <span>Melhor Longa:</span> OS RESIDENTES, de Tiago Mata Machado (MG)</p>
-                                </div>
-                            </div>
-                            <div class="event-content">
-                                <p class="event-thema">Tema</p>
-                                <p class="event-title">inquietações políticas</p>
-                                <p class="event-subtitle">Homenagens</p>
-                                <p>Ao cineasta Paulo Cezar Saraceni
-                                    e ao ator Irandhir Santos</p>
-                                <ul>
-                                    <li><span class="squere-font">134</span> filmes</li>
-                                    <li><span class="squere-font">49</span> sessões</li>
-                                    <li><span class="squere-font">30</span> longas</li>
-                                    <li><span class="squere-font">104</span> curtas</li>
-                                    <li><span class="squere-font">12</span> oficinas</li>
-                                    <li><span class="squere-font">310</span> alunos certificados</li>
-                                    <li><span class="squere-font">40.000</span> público estimado</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="event">
-                            <p class="event-year squere-font">2012</p>
-                            <div class="event-figure">
-                                <img src="<?php echo $this->basePath("assets/mostratiradentes/dist") ?>/images/2012.jpg" alt="">
-                                <ul class="event-actions">
-                                    <li><a class="circle-button plus" href="<?php echo $this->basepath("assets/mostratiradentes/dist/images/timeline")?>/cartaz15.jpg"><i class="icon icon-plus3"></i></a></li>
-                                    <li><a class="circle-button winners" href="#winners2012"><i class="icon icon-trophy"></i></a></li>
-                                </ul>
-                                <div class="event-winners" id="winners2012" style="display: none; overflow: hidden; width: 400px;">
-                                    <p><strong>Júri Popular</strong>
-                                        <span>Melhor Curta:</span> L, de Thais Fujinaga  (SP) <br>
-                                        <span>Melhor Longa:</span> O MINEIRO E O QUEIJO, de Helvécio Ratton  (MG)</p>
-                                    <p><strong>Mostra Aurora</strong>
-                                        <span>Júri da Critica - Melhor Longa:</span> A CIDADE É UMA SÓ, de Adirley Queirós  -  DF <br>
-                                        <span>Júri Jovem - Melhor Longa:</span> HU, de Pedro Urano e Joana Traub Cseko  -  RJ</p>
-                                    <p><strong>Mostra Foco</strong>
-                                        <span>Melhor Curta:</span> QUANDO MORREMOS À NOITE, de Eduardo Morotó  -  RJ</p>
-                                </div>
-                            </div>
-                            <div class="event-content">
-                                <p class="event-thema">Tema</p>
-                                <p class="event-title">ao ator em expansão</p>
-                                <p class="event-subtitle">Homenagens</p>
-                                <p>Ao ator, produtor, roteirista e diretor
-                                    Selton Mello</p>
-                                <ul>
-                                    <li><span class="squere-font">116</span> filmes</li>
-                                    <li><span class="squere-font">50</span> sessões</li>
-                                    <li><span class="squere-font">31</span> longas</li>
-                                    <li><span class="squere-font">84</span> curtas</li>
-                                    <li><span class="squere-font">1</span> média</li>
-                                    <li><span class="squere-font">12</span> oficinas</li>
-                                    <li><span class="squere-font">310</span> alunos certificados</li>
-                                    <li><span class="squere-font">40.000</span> público estimado</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="event">
-                            <p class="event-year squere-font">2013</p>
-                            <div class="event-figure">
-                                <img src="<?php echo $this->basePath("assets/mostratiradentes/dist") ?>/images/2013.jpg" alt="">
-                                <ul class="event-actions">
-                                    <li><a class="circle-button plus" href="<?php echo $this->basepath("assets/mostratiradentes/dist/images/timeline")?>/cartaz16.jpg"><i class="icon icon-plus3"></i></a></li>
-                                    <li><a class="circle-button winners" href="#winners2013"><i class="icon icon-trophy"></i></a></li>
-                                </ul>
-                                <div class="event-winners" id="winners2013" style="display: none; overflow: hidden; width: 400px;">
-                                    <p><strong>Júri Popular</strong>
-                                        <span>Melhor Curta:</span> A ONDA TRAZ, O VENTO LEVA, de Gabriel Mascaro - PE <br>
-                                        <span>Melhor Longa:</span> DOSSIÊ JANGO, de Paulo Henrique Fontenelle - RJ</p>
-                                    <p><strong>Mostra Aurora</strong>
-                                        <span>Júri da Critica - Melhor Longa:</span> OS DIAS COM ELE, de Maria Clara Escobar  -  SP <br>
-                                        <span>Júri Jovem - Melhor Longa:</span> OS DIAS COM ELE, de Maria Clara Escobar  -  SP
-                                    </p>
-                                    <p><strong>Mostra Foco</strong>
-                                        <span>Júri da Crítica - Melhor Curta:</span> MEU AMIGO MINEIRO, de Victor Furtado e Gabriel Martins - CE
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="event-content">
-                                <p class="event-thema">Tema</p>
-                                <p class="event-title">Fora de centro</p>
-                                <p class="event-subtitle">Homenagens</p>
-                                <p>À atriz cinematográfica Simone Spoladore</p>
-                                <ul>
-                                    <li><span class="squere-font">131</span> filmes</li>
-                                    <li><span class="squere-font">54</span> sessões</li>
-                                    <li><span class="squere-font">34</span> longas</li>
-                                    <li><span class="squere-font">97</span> curtas</li>
-                                    <li><span class="squere-font">01</span> média</li>
-                                    <li><span class="squere-font">12</span> oficinas</li>
-                                    <li><span class="squere-font">335</span> alunos certificados</li>
-                                    <li><span class="squere-font">35.000</span> público estimado</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="event">
-                            <p class="event-year squere-font">2014</p>
-                            <div class="event-figure">
-                                <img src="<?php echo $this->basePath("assets/mostratiradentes/dist") ?>/images/2014.jpg" alt="">
-                                <ul class="event-actions">
-                                    <li><a class="circle-button plus" href="<?php echo $this->basepath("assets/mostratiradentes/dist/images/timeline")?>/cartaz17.jpg"><i class="icon icon-plus3"></i></a></li>
-                                    <li><a class="circle-button winners" href="#winners2014"><i class="icon icon-trophy"></i></a></li>
-                                </ul>
-                                <div class="event-winners" id="winners2014" style="display: none; overflow: hidden; width: 400px;">
-                                    <p><strong>Júri Popular</strong>
-                                        <span>Melhor Curta:</span> DIÁRIOS DALTÔNICOS, de Patrícia Monegatto – SC <br>
-                                        <span>Melhor Longa:</span> CIDADE DE DEUS – 10 ANOS DEPOIS, de Cavi Borges e Luciano Vidigal -  RJ
-                                    </p>
-                                    <p><strong>Mostra Aurora</strong>
-                                        <span>Júri da Critica - Melhor Longa:</span> A VIZINHANÇA DO TIGRE, de Affonso Uchoa – MG<br>
-                                        <span>Júri Jovem - Melhor Longa:</span> A VIZINHANÇA DO TIGRE, de Affonso Uchoa – MG
-                                    </p>
-                                    <p><strong>Mostra Foco</strong>
-                                        <span>Júri da Crítica - Melhor Curta:</span> E, de Alexandre Wahrhaftig, Helena Ungaretti e Miguel Antunes Ramos – SP</p>
-                                </div>
-                            </div>
-                            <div class="event-content">
-                                <p class="event-thema">Tema</p>
-                                <p class="event-title">Processos audiovisuais de criação</p>
-                                <p class="event-subtitle">Homenagens</p>
-                                <p>Ao ator Marat Descartes</p>
-                                <ul>
-                                    <li><span class="squere-font">134</span> filmes</li>
-                                    <li><span class="squere-font">54</span> sessões</li>
-                                    <li><span class="squere-font">29</span> longas</li>
-                                    <li><span class="squere-font">101</span> curtas</li>
-                                    <li><span class="squere-font">04</span> médias</li>
-                                    <li><span class="squere-font">11</span> oficinas</li>
-                                    <li><span class="squere-font">330</span> alunos certificados</li>
-                                    <li><span class="squere-font">35.000</span> público estimado</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="event">
-                            <p class="event-year squere-font">2015</p>
-                            <div class="event-figure">
-                                <img src="<?php echo $this->basePath("assets/mostratiradentes/dist") ?>/images/2015.jpg" alt="">
-                                <ul class="event-actions">
-                                    <li><a class="circle-button plus" href="<?php echo $this->basepath("assets/mostratiradentes/dist/images/timeline")?>/cartaz18.jpg"><i class="icon icon-plus3"></i></a></li>
-                                    <li><a class="circle-button winners" href="#winners2015"><i class="icon icon-trophy"></i></a></li>
-                                </ul>
-                                <div class="event-winners" id="winners2015" style="display: none; overflow: hidden; width: 400px;">
-                                    <p><strong>Júri Popular</strong>
-                                        <span>Melhor Curta:</span> DE CASTIGO, de Helena Ungaretti – SP <br>
-                                        <span>Melhor Longa:</span> O DIA DO GALO, de Cris Azzi e Luiz Felipe Fernandes -  MG</p>
-                                    <p><strong>Mostra Aurora</strong>
-                                        <span>Júri da Critica - Melhor Longa:</span> MAIS DO QUE EU POSSA ME RECONHECER, de Allan Ribeiro – RJ</p>
-                                    <p><strong>Mostra Transições</strong>
-                                        <span>Júri Jovem - Melhor Longa:</span> O TEMPO NÃO EXISTE NO LUGAR EM QUE ESTAMOS, de Dellani Lima – MG</p>
-                                    <p><strong>Mostra Foco</strong>
-                                        <span>Júri da Crítica - Melhor Curta:</span> ESTÁTUA!, de Gabriela Amaral Almeida – SP <br>
-                                        <span>Canal Brasil - Melhor Curta:</span> OUTUBRO ACABOU, de Karen Akerman e Miguel Seabra Lopes (RJ).</p>
-                                </div>
-                            </div>
-                            <div class="event-content">
-                                <p class="event-thema">Tema</p>
-                                <p class="event-title">Qual o lugar do cinema?</p>
-                                <p class="event-subtitle">Homenagens</p>
-                                <p>À atriz Dira Paes</p>
-                                <ul>
-                                    <li><span class="squere-font">128</span> filmes</li>
-                                    <li><span class="squere-font">59</span> sessões</li>
-                                    <li><span class="squere-font">37</span> longas</li>
-                                    <li><span class="squere-font">91</span> curtas</li>
-                                    <li><span class="squere-font">10</span> oficinas</li>
-                                    <li><span class="squere-font">270</span> alunos certificados</li>
-                                    <li><span class="squere-font">35.000</span> público estimado</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="event">
-                            <p class="event-year squere-font">2016</p>
-                            <div class="event-figure">
-                                <img src="<?php echo $this->basePath("assets/mostratiradentes/dist") ?>/images/2016.jpg" alt="">
-                                <ul class="event-actions">
-                                    <li><a class="circle-button plus" href="<?php echo $this->basepath("assets/mostratiradentes/dist/images/timeline")?>/cartaz19.jpg"><i class="icon icon-plus3"></i></a></li>
-                                    <li><a class="circle-button winners" href="#winners2016"><i class="icon icon-trophy"></i></a></li>
-                                </ul>
-                                <div class="event-winners" id="winners2016" style="display: none; overflow: hidden; width: 400px;">
-                                    <p><strong>Júri Popular</strong>
-                                        <span>Melhor Curta:</span> MADREPÉROLA, de Deise Hauenstein – RS <br>
-                                        <span>Melhor Longa:</span> GERALDINOS, de Pedro Asbeg e Renato Martins - RJ</p>
-                                    <p><strong>Mostra Aurora</strong>
-                                        <span>Júri da Critica - Melhor Longa:</span> JOVENS INFELIZES OU UM HOMEM QUE GRITA NÃO É UM URSO QUE DANÇA, de Thiago B. Mendonça - SP</p>
-                                    <p><strong>Mostra Transições</strong>
-                                        <span>Júri Jovem - Melhor Longa:</span> TROPYKAOS, de Daniel Lisboa - BA</p>
-                                    <p><strong>Mostra Foco</strong>Júri da Crítica
-                                        <span>Melhor Curta:</span> NOITE ESCURA DE SÃO NUNCA, de Samuel Lobo - RJ</p>
-                                    <p><strong>Canal Brasil</strong>
-                                        <span>Melhor Curta:</span> ECLIPSE SOLAR, de Rodrigo de Oliveira - ES</p>
-                                </div>
-                            </div>
-                            <div class="event-content">
-                                <p class="event-thema">Tema</p>
-                                <p class="event-title">Espaços em conflito</p>
-                                <p class="event-subtitle">Homenagens</p>
-                                <p>Ao cineasta Andrea Tonacci</p>
-                                <ul>
-                                    <li><span class="squere-font">117</span> filmes</li>
-                                    <li><span class="squere-font">57</span> sessões</li>
-                                    <li><span class="squere-font">35</span> longas</li>
-                                    <li><span class="squere-font">82</span> curtas</li>
-                                    <li><span class="squere-font">10</span> oficinas</li>
-                                    <li><span class="squere-font">280</span> alunos certificados</li>
-                                    <li><span class="squere-font">35.000</span> público estimado</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="event">
-                            <p class="event-year squere-font">2017</p>
-                            <div class="event-figure">
-                                <img src="<?php echo $this->basePath("assets/mostratiradentes/dist") ?>/images/2017.jpg" alt="">
-                                <ul class="event-actions">
-                                    <li><a class="circle-button plus" href="<?php echo $this->basepath("assets/mostratiradentes/dist/images/timeline")?>/cartaz20.jpg"><i class="icon icon-plus3"></i></a></li>
-                                    <li><a class="circle-button winners" href="#winners2017"><i class="icon icon-trophy"></i></a></li>
-                                </ul>
-                                <div class="event-winners" id="winners2017" style="display: none; overflow: hidden; width: 400px;">
-                                    <p><strong>Júri Popular</strong>
-                                        <span>Melhor Curta:</span>  Procura-se Irenice (SP), de Marcos Escrivão e Thiago B. Mendonça</p>
-
-                                    <p><strong>Mostra Aurora</strong>
-                                        <span>Júri da Critica - Melhor Longa:</span> Baronesa (MG), de Juliana Antunes</p>
-
-                                    <p><strong>Mostra Olhos Livres</strong>
-                                        <span>Júri Jovem -  Prêmio Carlos Reichenbach: - Melhor Longa:</span> Lamparina da Aurora (MA), de Frederico Machado. </p>
-
-                                    <p><strong>Mostra Foco</strong>
-                                        <span>Júri da Crítica:</span> Vando Vulgo Vedita (CE), de Andréia Pires e Leonardo Mouramateus</p>
-
-                                    <p><strong>Prêmio Helena Ignez</strong>
-                                        <span>Destaque Feminino:</span> Fernanda de Sena, diretora de fotografia de Baronesa (MG)</p>
-                                </div>
-                            </div>
-                            <div class="event-content">
-                                <p class="event-thema">Tema</p>
-                                <p class="event-title">Cinema em reação, cinema em reinvenção</p>
-                                <p class="event-subtitle">Homenagens</p>
-                                <p>Ás atrizes, produtoras e diretoras Helena Ignez e Leandra Leal</p>
-                                <ul>
-                                    <li><span class="squere-font">108</span> filmes</li>
-                                    <li><span class="squere-font">34</span> longas</li>
-                                    <li><span class="squere-font">02</span> médias</li>
-                                    <li><span class="squere-font">72</span> curtas</li>
-                                    <li><span class="squere-font">10</span> oficinas</li>
-                                    <li><span class="squere-font">240</span> alunos certificados</li>
-                                    <li><span class="squere-font">37.000</span> público estimado</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="event">
-                            <p class="event-year squere-font">2018</p>
-                            <div class="event-figure">
-                                <!--<img src="--><?php //echo $this->basePath("assets/mostratiradentes/dist") ?><!--/images/2016.jpg" alt="">-->
-                                <ul class="event-actions">
-                                    <li><a class="circle-button plus" href="<?php echo $this->basepath("assets/mostratiradentes/dist/images/timeline")?>/cartaz20.jpg"><i class="icon icon-plus3"></i></a></li>
-                                    <li><a class="circle-button winners" href="#winners2017"><i class="icon icon-trophy"></i></a></li>
-                                </ul>
-                                <div class="event-winners" id="winners2017" style="display: none; overflow: hidden; width: 400px;">
-                                    <!--<p><strong>Júri Popular</strong>
-                                        <span>Melhor Curta:</span>  Procura-se Irenice (SP), de Marcos Escrivão e Thiago B. Mendonça</p>
-
-                                    <p><strong>Mostra Aurora</strong>
-                                        <span>Júri da Critica - Melhor Longa:</span> Baronesa (MG), de Juliana Antunes</p>
-
-                                    <p><strong>Mostra Olhos Livres</strong>
-                                        <span>Júri Jovem -  Prêmio Carlos Reichenbach: - Melhor Longa:</span> Lamparina da Aurora (MA), de Frederico Machado. </p>
-
-                                    <p><strong>Mostra Foco</strong>
-                                        <span>Júri da Crítica:</span> Vando Vulgo Vedita (CE), de Andréia Pires e Leonardo Mouramateus</p>
-
-                                    <p><strong>Prêmio Helena Ignez</strong>
-                                        <span>Destaque Feminino:</span> Fernanda de Sena, diretora de fotografia de Baronesa (MG)</p>-->
-                                </div>
-                            </div>
-                            <div class="event-content">
-                                <!--<p class="event-thema">Tema</p>
-                                <p class="event-title">Cinema em reação, cinema em reinvenção</p>
-                                <p class="event-subtitle">Homenagens</p>
-                                <p>Ás atrizes, produtoras e diretoras Helena Ignez e Leandra Leal</p>
-                                <ul>
-                                    <li><span class="squere-font">108</span> filmes</li>
-                                    <li><span class="squere-font">34</span> longas</li>
-                                    <li><span class="squere-font">02</span> médias</li>
-                                    <li><span class="squere-font">72</span> curtas</li>
-                                    <li><span class="squere-font">10</span> oficinas</li>
-                                    <li><span class="squere-font">240</span> alunos certificados</li>
-                                    <li><span class="squere-font">37.000</span> público estimado</li>
-                                </ul>-->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
 </section>
 
 <section class="eufacoamostra">
@@ -974,7 +219,7 @@ $program = $this->program;
     </div>
 </section>
 
-<section class="sponsorship">
+<!--<section class="sponsorship">
     <div class="main-wrapper">
         <ul class="sponsorship-list">
             <li class="sponsorship-block sponsorship-block--full">
@@ -1054,7 +299,7 @@ $program = $this->program;
 
         </ul>
     </div>
-</section>
+</section>-->
 
 <section class="sitemap">
     <div class="main-wrapper">

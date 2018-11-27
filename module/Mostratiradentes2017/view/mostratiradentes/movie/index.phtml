@@ -1,0 +1,80 @@
+<div class="main-wrapper main-content">
+    <header class="main-header">
+        <h1 class="main-title"><?php echo $post->getTitle() ?></h1>
+    </header>
+
+    <div class="movie-filter filter">
+        <?php
+        $this->form->setAttribute('method', 'GET')->setAttribute('class','filter-form');
+        $this->form->prepare();
+        echo $this->form(null, null)->openTag($this->form) ?>
+
+        <?php
+            $subEvent = $this->form->get("sub_event");
+            $subEvent->setAttribute('class','filter-input')
+                ->setAttribute('required', '')->setOption('empty_option','Sub-mostra');
+            echo $this->formElement($subEvent)
+        ?>
+        <?php
+            $category = $this->form->get("category");
+            $category->setAttribute('class','filter-input')
+                ->setAttribute('required', '')
+                ->setOption('empty_option','Categoria');
+
+            echo $this->formElement($category)
+        ?>
+        <?php
+            $place = $this->form->get("place");
+            $place->setAttribute('class','filter-input')
+                ->setAttribute('required', '')->setOption('empty_option','Local');
+            echo $this->formElement($this->form->get('place'))
+        ?>
+        <button type="submit" class="filter-submit">Buscar</button>
+
+        <?php echo $this->form()->closeTag(); ?>
+    </div>
+
+    <div class="movie-list">
+        <?php foreach ($this->movies as $movie): ?>
+            <article class="movie-item">
+                <a href="<?php echo $this->url('mostratiradentes/movie', ['id'=>$movie->getId()]) ?>" class="movie-link">
+                    <div class="movie-cover">
+                    <?php if($movie->getMedias()->first()): $media = $movie->getMedias()->first(); ?>
+                        <figure class="movie-figure">
+                            <img src="<?php echo $this->thumbor()->url($this->fileManipulation()->url($media->getSrc()))->resize(400, 600); ?>" alt="">
+<!--                            <img src="http://162.243.253.29:8888/unsafe/400x600/http://universoproducao.com.br/repository/5/9/e/2/59e2a4a21721e380ce8205c8f44a90ab_15084421060265_1115908104.jpg" alt="">-->
+                        </figure>
+
+                        <?php if(count($movie->getPrograming($this->event->getId()))): ?>
+                        <div class="movie-highlight">
+                            <div class="hightlight-wrapper">
+                                <p class="hightlight-title">Exibições</p>
+                                <?php foreach ($movie->getPrograming($this->event->getId()) as $pro): ?>
+                                    <?php
+                                    $progObj = null;
+                                    if($pro->getParent()) {
+                                        $progObj = $pro->getParent();
+                                    } else {
+                                        $progObj = $pro;
+                                    }
+                                    $date = $progObj->getDate()->format('d/m');
+                                    $hour = $progObj->getStartTime()->format('H\hi');
+                                    $place = $progObj->getPlace()?$progObj->getPlace()->getName():"";
+                                    ?>
+                                    <div class="highlight-item">
+                                        <p class="hightlight-date"><?php echo "$date - $hour"; ?></p>
+                                        <p class="hightlight-place"><?php echo $place ?></p>
+                                    </div>
+                                <?php endforeach; ?>
+                            </div>
+                        </div>
+                        <?php endif; ?>
+                    <?php endif; ?>
+                    </div>
+                    <h1 class="movie-title"><?php echo $movie->getTitle(); ?></h1>
+                    <span class="movie-director">Direção: <?php echo $movie->getDirection(); ?></span>
+                </a>
+            </article>
+        <?php endforeach; ?>
+    </div>
+</div>

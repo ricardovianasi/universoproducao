@@ -1,0 +1,62 @@
+.footer
+  +padding-leader(3)
+  background-image: url("../images/2019/news-back.png")
+
+  &-wrapper
+    +center($pad:8px)
+
+  &-contact
+    +media(">=tablet")
+      width: 60%
+      float: left
+    +media("<tablet")
+      width: 100%
+
+  &-social
+    +media(">=tablet")
+      width: 40%
+      float: left
+    +media("<tablet")
+      width: 100%
+
+  &-copy
+    clear: both
+    text-align: center
+    +padding-leader(1.5, 12px)
+    +trailer(1.5, 12px)
+    border-top: 1px solid black
+
+  &-title
+    +adjust-font-size-to(14px)
+    font-weight: bold
+    +trailer(2, 14px)
+    color: #000
+    text-transform: uppercase
+    letter-spacing: 0.1em
+
+  .icon-universo-brand
+    color: #000
+    font-size: 110px
+    display: inline-block
+    vertical-align: top
+
+  &-add
+    +adjust-font-size-to(14px)
+    color: #000
+    text-transform: uppercase
+    letter-spacing: 0.1em
+    vertical-align: top
+    +media(">=480px")
+      margin-left: 40px
+      display: inline-block
+    +media("<480px")
+      display: block
+
+  &-socialitem
+    +column(1/5)
+
+  &-socialink
+    +adjust-font-size-to(27px, 2)
+    color: #000
+    &:hover
+      color: $color-palette-2

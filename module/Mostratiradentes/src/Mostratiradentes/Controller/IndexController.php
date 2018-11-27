@@ -31,7 +31,7 @@ class IndexController extends SiteController
         //news
         $qb = $this->getRepository(Post::class)->findNewsQb(self::SITE_ID);
         $qb->orderBy('n.postDate', 'DESC');
-        $qb->setMaxResults(4);
+        $qb->setMaxResults(3);
         $news = $qb->getQuery()->getResult();
 
         //programation
