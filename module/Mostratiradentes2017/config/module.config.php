@@ -10,10 +10,10 @@ return array(
     'router' => array(
         'router_class' => 'Zend\Mvc\Router\Http\TranslatorAwareTreeRouteStack',
         'routes' => array(
-            'mostratiradentes' => array(
+            'mostratiradentes2017' => array(
                 'type'    => Hostname::class,
                 'options' => array(
-                    'route'    => '[www.]mostratiradentes.com.br',
+                    'route'    => '[www.]2017.mostratiradentes.com.br',
                     'defaults' => array(
                         'controller'    => Controller\IndexController::class,
                         'action'        => 'index'
