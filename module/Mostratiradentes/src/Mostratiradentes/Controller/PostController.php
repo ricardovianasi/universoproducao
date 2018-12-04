@@ -280,7 +280,7 @@ class PostController extends SiteController
             $msgFormulario .= "</tr>";
 
             $msgFormulario .= "<tr>";
-            $msgFormulario .= "<td align='right' valign='top'>Logistica:</td>";
+            $msgFormulario .= "<td align='right' valign='top'>Informações adicionais:</td>";
             $msgFormulario .= "<td>".$logistica."</td>";
             $msgFormulario .= "</tr>";
 
