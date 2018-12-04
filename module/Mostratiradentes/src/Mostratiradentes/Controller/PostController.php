@@ -14,7 +14,7 @@ use Zend\View\Model\ViewModel;
 
 class PostController extends SiteController
 {
-    const SITE_ID = 14;
+    const SITE_ID = 10;
 
     protected $breadcrumbs = [];
 
@@ -136,7 +136,7 @@ class PostController extends SiteController
             $logistica		 				= $postData['logistica'];
 
             //Envia a mensagem de confirmação para a pessoa cadastrada no formulario
-            $msgConfirmacaoCadastro = "Informamos que sua solicitação de credenciamento de imprensa para a 21ª Mostra Tiradentes foi enviada com sucesso.";
+            $msgConfirmacaoCadastro = "Informamos que sua solicitação de credenciamento de imprensa para a 22ª Mostra Tiradentes foi enviada com sucesso.";
             $msgConfirmacaoCadastro .= "<br /><br />";
             $msgConfirmacaoCadastro .= "Em breve a equipe da assessoria entrará em contato.";
             $msgConfirmacaoCadastro .= "<br /><br />";
@@ -280,7 +280,7 @@ class PostController extends SiteController
             $msgFormulario .= "</tr>";
 
             $msgFormulario .= "<tr>";
-            $msgFormulario .= "<td align='right' valign='top'>Informações adicionais:</td>";
+            $msgFormulario .= "<td align='right' valign='top'>Logistica:</td>";
             $msgFormulario .= "<td>".$logistica."</td>";
             $msgFormulario .= "</tr>";
 
