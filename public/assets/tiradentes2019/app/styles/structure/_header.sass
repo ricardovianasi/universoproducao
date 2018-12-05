@@ -2,6 +2,41 @@
   position: relative
   width: 100%
   background-color: #0d0d10
+
+  &-mobile
+    background-image: url("../images/2019/header-bg.jpg")
+    background-repeat: no-repeat
+    background-size: cover
+    padding-left: 8px
+    padding-right: 8px
+    padding-top: 24px
+    padding-bottom: 24px
+    text-align: center
+    +media(">=tablet")
+      display: none
+    +media("<tablet")
+      display: block
+    img
+      vertical-align: middle
+      &:nth-child(1)
+        max-width: 180px
+        margin-right: 50px
+      &:nth-child(2)
+        max-width: 68px
+      &:nth-child(3)
+        margin-top: 15px
+        max-width: 250px
+        display: block
+        margin-left: auto
+        margin-right: auto
+
+  &-desk
+    +media(">=tablet")
+      display: block
+    +media("<tablet")
+      display: none
+
+
   //&-bgc
   //  background: url("../images/header-bg.jpg") no-repeat top left
   //  background-size: 100% 100%

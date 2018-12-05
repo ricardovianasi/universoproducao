@@ -65,6 +65,9 @@ $(document).ready(function () {
         responsiveClass:true,
         responsive:{
             0:{
+                items:1,
+            },
+            728:{
                 items:2,
             },
             1024:{
