@@ -61,9 +61,23 @@ $(document).ready(function () {
     });
 
     $(".gallery-list").owlCarousel({
-        items: 4,
+        //items: 2,
+        responsiveClass:true,
+        responsive:{
+            0:{
+                items:2,
+            },
+            1024:{
+                items:3,
+            },
+            1900:{
+                items:4,
+            }
+        },
         autoWidth: true,
+        autoHeight: true,
         nav: true,
+        margin: 1,
         navText: [
             "<button class='owl-prev'><span class='icon icon-arrow-left4'></span></button>",
             "<button class='owl-next'><span class='icon icon-arrow-right4'></span></button>"
@@ -71,7 +85,7 @@ $(document).ready(function () {
         dots: false,
         mouseDrag: false,
         loop: true,
-        center: false,
+        center: true,
         autoplay: false,
         autoplayTimeout: 7000,
         lazyLoad: false,
