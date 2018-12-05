@@ -29,8 +29,6 @@
     position: relative
     width: 100%
     background-color: black
-    +media("<tablet")
-      display: none
     &-caption
       position: absolute
       bottom: 0
@@ -41,6 +39,9 @@
       background-color: rgba(0,0,0,.5)
       margin-bottom: 0
       +adjust-font-size-to(12px, .5)
+    +media("<tablet")
+      .owl-dots
+        bottom: -25px
 
   .notice
     position: relative
