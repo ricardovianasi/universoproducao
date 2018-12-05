@@ -153,7 +153,8 @@ class PostController extends SiteController
 
             $mailConfirmacao = new Message();
             $mailConfirmacao->setBody($miniMessage);
-            $mailConfirmacao->setFrom('no-reply@universoproducao.com.br', 'Universo Producao');
+//            $mailConfirmacao->setFrom('no-reply@universoproducao.com.br', 'Universo Producao');
+            $mailConfirmacao->setFrom('ricardovianasi@gmail.com', 'Universo Producao');
             $mailConfirmacao->setTo($email);
             $mailConfirmacao->setSubject('Credenciamento imprensa - 22 Mostra Tiradentes ');
             $transport->send($mailConfirmacao);
