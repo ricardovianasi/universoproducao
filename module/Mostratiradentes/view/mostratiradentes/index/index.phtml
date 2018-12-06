@@ -93,7 +93,7 @@ $program = $this->program;
                     <figure class="news-figure"><img src="<?php echo  $this->thumbor()->url($news->getMeta('_thumb'))->resize(482, 360); ?>" alt=""></figure>
                     <p class="news-title"><?php echo $news->getTitle(); ?></p>
                     <p class="news-sub"><?php echo $this->truncate($news->getSubtitle()); ?></p>
-                    <p class="news-readmore">Leia mais +</p>
+                    <p class="news-readmore" style="color: #3eabc7">Leia mais +</p>
                 </a>
             </article>
             <?php endforeach; ?>
