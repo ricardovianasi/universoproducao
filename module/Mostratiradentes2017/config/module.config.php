@@ -13,7 +13,7 @@ return array(
             'mostratiradentes2017' => array(
                 'type'    => Hostname::class,
                 'options' => array(
-                    'route'    => '[www.]2017.mostratiradentes.com.br',
+                    'route'    => '[www.]2018.mostratiradentes.com.br',
                     'defaults' => array(
                         'controller'    => Controller\IndexController::class,
                         'action'        => 'index'
