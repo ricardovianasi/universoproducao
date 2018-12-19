@@ -96,6 +96,14 @@ class WorkshopController extends AbstractAdminController implements CrudInterfac
                     $this->getEntityManager()->remove($p);
                 }
 
+                if(empty($data['maximum_age'])) {
+                    $data['maximum_age'] = null;
+                }
+
+                if(empty($data['minimum_age'])) {
+                    $data['minimum_age'] = null;
+                }
+
                 $workshop->setData($data);
 
 				$this->getEntityManager()->persist($workshop);
