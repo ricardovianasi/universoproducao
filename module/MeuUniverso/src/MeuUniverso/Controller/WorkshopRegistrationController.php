@@ -175,14 +175,17 @@ class WorkshopRegistrationController extends AbstractMeuUniversoRegisterControll
 
             //Validação da faixa etária
             $extraValidations = true;
-            $ageUserSub = $userSubs->getBirthDate()->diff(new \DateTime('now'))->y;
+            $ageUserSub = 0;
+            if($userSubs->getBirthDate() && $userSubs->getBirthDate() instanceof \DateTime) {
+                $ageUserSub = $userSubs->getBirthDate()->diff(new \DateTime('now'))->y;
+            }
             if($workshop->getMinimumAge() && $workshop->getMaximumAge()) {
                 $validatorOpt['inclusive'] = true;
                 $validatorOpt['min'] = $workshop->getMinimumAge();
                 $validatorOpt['max'] = $workshop->getMaximumAge();
 
                 $validatorOpt['messages'] = [
-                    Between::NOT_BETWEEN_STRICT => "A sua faixa etária não está dentro da permitida para essa oficina. Por favor, escolher outra opção."
+                    Between::NOT_BETWEEN_STRICT => "A sua faixa etária não está dentro do permitida para essa oficina. Por favor, escolher outra opção."
                 ];
 
                 $validator = new Between($validatorOpt);
