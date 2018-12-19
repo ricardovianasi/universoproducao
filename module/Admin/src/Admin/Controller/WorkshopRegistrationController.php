@@ -67,7 +67,7 @@ class WorkshopRegistrationController extends AbstractAdminController
 
     public function deleteAction($id)
     {
-        $workshop = $this->getRepository(Workshop::class)->find($id);
+        $workshop = $this->getRepository(WorkshopSubscription::class)->find($id);
         $this->getEntityManager()->remove($workshop);
         $this->getEntityManager()->flush();
 
