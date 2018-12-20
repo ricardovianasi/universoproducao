@@ -49,5 +49,24 @@
         <div><?php echo $workshop->getRequirements(); ?></div>
     </p>
 
+    <p><strong>Programação</strong></p>
+    <?php foreach ($this->post->getPrograming() as $pro): ?>
+        <?php
+        $progObj = null;
+        if($pro->getParent()) {
+            $progObj = $pro->getParent();
+        } else {
+            $progObj = $pro;
+        }
+        $date =  str_replace('-feira', '', $this->dateFormat($progObj->getDate(), null, null, "pt_BR", "dd/MM | cccc"));
+        $hour = $progObj->getStartTime()->format('H\hi');
+        $place = $progObj->getPlace()?$progObj->getPlace()->getName():"";
+        ?>
+        <div class="highlight-item">
+            <p class="hightlight-date"><?php echo "$date - $hour"; ?></p>
+            <p class="hightlight-place"><?php echo $place ?></p>
+        </div>
+    <?php endforeach; ?>
+
     <?php echo $this->partial("application/partials/share.phtml", ['title'=>$post->getName()]); ?>
 </div>
