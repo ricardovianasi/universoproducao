@@ -14,6 +14,7 @@ use Admin\Form\Movie\MovieStatusModalForm;
 use Admin\Form\Movie\MovieSubscriptionForm;
 use Admin\Form\Programing\ProgramingForm;
 use Application\Entity\Event\Event;
+use Application\Entity\Movie\Category;
 use Application\Entity\Movie\Media;
 use Application\Entity\Movie\Movie;
 use Application\Entity\Movie\MovieSubscription;
@@ -612,37 +613,38 @@ class MovieController extends AbstractAdminController
             ->createQueryBuilder('m')
             ->innerJoin('m.subscriptions', 's')
             ->andWhere('s.status = :status')
-            ->andWhere('m.comunicadoEnviado = :comunicadoEnviado')
             ->andWhere('s.event = :idEvent')
             ->setParameters([
                 'status' => 'not_selected',
-                'comunicadoEnviado' => 0,
-                'idEvent' => 1085
+                'idEvent' => 1089
             ])
             ->getQuery()
             ->getResult();
 
-        var_dump(count($items)); exit();
         $count = 0;
         foreach ($items as $item) {
             /** @var Movie $item */
-            $item = new Movie();
+            //$item = new Movie();
+
+            if($item->getCategory() != Category::CURTA) {
+                break;
+            }
 
             $msg = "<p>Prezado (a) ".$item->getAuthor()->getName().",</p>";
-            $msg.= "<p>Comunicamos que o filme <strong>".$item->getTitle()."</strong> não foi selecionado para a 13ª CineOP - Mostra de Cinema de Ouro Preto.</p>";
-            $msg.= "<p>Esclarecemos que os critérios que baseiam a seleção de filmes para festivais são múltiplos e podem variar de acordo com o perfil do evento, a safra anual e a composição formal das grades. Tentamos abarcar o maior número de filmes inscritos, tentando diversificar ao máximo propostas estéticas e temáticas, sempre pensando no público de cada mostra e numa seleção que dê conta do estado atual da produção audiovisual nacional. </p>";
-            $msg.= "<p>Se algum filme não pertence à lista final de selecionados, é porque não se enquadrou nesses critérios e/ou por falta de espaço de exibição e limitação do período de duração do evento. </p>";
-            $msg.= "<p><strong>Se você optou por participar também da seleção de filmes para a 12ª CineBH – Mostra de Cinema de Belo Horizonte, informamos que o filme passará por novo processo de seleção próximo à data de realização do evento. </strong></p>";
-            $msg.= "<p>Agradecemos seu interesse e esperamos contar com sua participação nas próximas edições.</p>";
-            $msg.= "<p>A programação da CineOP é gratuita e, estará disponível no site <a href='http://www.cineop.com.br'>www.cineop.com.br</a> a partir do dia 23 de maio. Aproveitamos para convidá-lo à participar das outras atividades da 13ª CineOP – debates, shows, cortejos e rodas de conversa.</p>";
-            $msg.= "<p>Atenciosamente,<br />Coordenação – CineOP</p>";
+            $msg.= "<p>Comunicamos que o filme <strong>".$item->getTitle()."</strong> para a 22ª Mostra de Cinema de Tiradentes.</p>";
+            $msg.= "<p>Esclarecemos que as edições da Mostra de Cinema de Tiradentes contam com uma equipe curatorial responsável pela seleção de filmes e que os critérios para as escolhas são múltiplos e podem variar de acordo com a temática, o conjunto da produção atual e a composição formal das grades. Tentamos abarcar o maior número de filmes inscritos visando exibir a diversidade da produção contemporânea brasileira com propostas estéticas e temáticas das mais variadas oriundas de 13 estados do Brasil.</p>";
+            $msg.= "<p>No entanto, o número de filmes inscritos – mais de 800 curtas -  foi grande e, além do conceito curatorial,  temos a questão do limite de espaço para exibição e limitação do período de duração do evento.</p>";
+            $msg.= "<p>Agradecemos seu interesse e esperamos contar com sua participação nas próximas edições e convidamos você para marcar presença no evento, curtir a programação que é abrangente e gratuita.</p>";
+            $msg.= "<p>Você pode acompanhar a programação e divulgação da Mostra de Cinema de Tiradentes no site <a href='www.mostratiradentes.com.br'>www.mostratiradentes.com.br</a>.</p>";
+            $msg.= "<p><strong>Se você optou por participar também da seleção de filmes para a 14ª CineOP – Mostra de Cinema de Ouro Preto, informamos que o filme passará por novo processo de seleção próximo à data de realização do evento.</strong></p>";
+            $msg.= "<p>Atenciosamente,<br />Coordenação – Mostra Tiradentes</p>";
 
             //$to[$item->getAuthor()->getName()] = 'ricardovianasi@gmail.com';
             /** @var \SendGrid\Response $return */
             $return = $this->mailService()->simpleSendEmail(
-            [$item->getAuthor()->getName()=>$item->getAuthor()->getEmail()],
-                //[$item->getAuthor()->getName()=>'ricardovianasi@gmail.com'],
-                'Filmes - 13ª CineOP - Mostra de Cinema de Ouro Preto', $msg);
+                //[$item->getAuthor()->getName()=>$item->getAuthor()->getEmail()],
+                [$item->getAuthor()->getName()=>'ricardovianasi@gmail.com'],
+                'Filmes - 22ª Mostra de Cinema de Tiradentes', $msg);
 
             $count++;
             echo "$count - Nome: " . $item->getAuthor()->getName();
@@ -650,14 +652,11 @@ class MovieController extends AbstractAdminController
             echo "<br />Filme: " . $item->getTitle();
             if($return->statusCode() == 202) {
                 echo "<br /><b>******************-SUCESSO-******************</b><br /><br />";
-                $item->setComunicadoEnviado(1);
-                $this->getEntityManager()->persist($item);
-                $this->getEntityManager()->flush();
-
             } else {
                 echo "<b>******************-ERRO-******************</b><br /><br />";
-                $item->setComunicadoEnviado(0);
             }
+
+            break;
         }
 
         return $this->getViewModel();
