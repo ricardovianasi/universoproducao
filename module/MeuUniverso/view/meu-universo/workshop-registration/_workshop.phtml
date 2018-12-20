@@ -64,6 +64,25 @@
             <?php echo $workshop->getRequirements(); ?>
         </p>
 
+        <p><strong>Programação</strong></p>
+        <?php foreach ($workshop->getPrograming() as $pro): ?>
+            <?php
+            $progObj = null;
+            if($pro->getParent()) {
+                $progObj = $pro->getParent();
+            } else {
+                $progObj = $pro;
+            }
+            $date =  str_replace('-feira', '', $this->dateFormat($progObj->getDate(), null, null, "pt_BR", "dd/MM | cccc"));
+            $hour = $progObj->getStartTime()->format('H\hi');
+            $place = $progObj->getPlace()?$progObj->getPlace()->getName():"";
+            ?>
+            <div class="highlight-item">
+                <p class="hightlight-date"><?php echo "$date - $hour"; ?></p>
+                <p class="hightlight-place"><?php echo $place ?></p>
+            </div>
+        <?php endforeach; ?>
+
         <?php if($this->show_register_link): ?>
             <?php if($this->workshop->hasAvailableSubscriptions()): ?>
             <div class="">
