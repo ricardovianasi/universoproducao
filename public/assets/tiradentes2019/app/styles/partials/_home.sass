@@ -155,6 +155,10 @@
     +padding-trailer(4)
     +padding-leader(4)
 
+    +media("<tablet")
+      +padding-trailer(1.1)
+      +padding-leader(1.1)
+
     .main-header
       .section-title
         color: #47aec9
@@ -171,6 +175,8 @@
     &-items
       display: inline-block
       +trailer(3)
+      +media("<tablet")
+        +trailer(1)
 
     &-item
       +column(1/3, $cycle:3)
@@ -179,7 +185,7 @@
       border: none
       +media("<tablet")
         +column(1/1)
-        +trailer(2)
+        +trailer(1)
       p
         padding-right: 20px
         padding-left: 20px
@@ -193,9 +199,15 @@
       letter-spacing: .05em
       +leader(1)
       +trailer(1)
+      +media("<tablet")
+        +adjust-font-size-to(20px, 1)
+        +leader(.5)
+        +trailer(.5)
 
     &-sub
       color: #545454
+      +media("<tablet")
+        +adjust-font-size-to(18px, 1)
 
     &-readmore
       +adjust-font-size-to(17px)
@@ -238,6 +250,9 @@
     background-size: cover
     +padding-leader(3)
     +padding-trailer(3)
+    +media("<tablet")
+      +padding-trailer(1.1)
+      +padding-leader(1.1)
 
     .main-header
       .section-title
@@ -356,6 +371,8 @@
     background-color: #5ac9e5
     background-image: url("../images/2019/gallery-back.png")
     +padding-trailer(3)
+    +media("<tablet")
+      +padding-trailer(1.1)
 
     .main-header
       +padding-leader(4)
@@ -495,6 +512,9 @@
     background-image: url("../images/2019/eufacoamostra-back.png")
     +padding-leader(5)
     +padding-trailer(3)
+    +media("<tablet")
+      +padding-trailer(1.1)
+      +padding-leader(1.1)
 
     &-header
       text-align: center
