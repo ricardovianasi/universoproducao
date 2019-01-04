@@ -142,23 +142,24 @@ class WorkshopRegistrationController extends AbstractMeuUniversoRegisterControll
             /** @var User $userSubs */
             $userSubs = null;
             if(!empty($data['user'])) {
-                $userSubs = $this
-                    ->getAuthenticationService()
-                    ->getIdentity();
-            } else {
                 $idUserSub = $data['user'];
                 if($idUserSub && $idUserSub != $this->getAuthenticationService()->getIdentity()->getId()) {
                     $userSubs = $this
                         ->getRepository(User::class)
                         ->findOneBy([
-                            'id' => $user->getId(),
-                            'parent' => $idUserSub
+                            'id' => $idUserSub,
+                            'parent' => $user->getId(),
                         ]);
                 } else {
                     $userSubs = $this
                         ->getAuthenticationService()
                         ->getIdentity();
                 }
+
+            } else {
+                $userSubs = $this
+                    ->getAuthenticationService()
+                    ->getIdentity();
             }
 
             //Verifica se o usuário já efetuou a inscrição

@@ -626,7 +626,7 @@ class MovieController extends AbstractAdminController
             /** @var Movie $item */
             //$item = new Movie();
 
-            if($item->getCategory() != Category::CURTA) {
+            if($item->getCategory() != Category::LONGA) {
                 break;
             }
 
