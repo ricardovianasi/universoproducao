@@ -210,12 +210,12 @@
 			<textField>
 				<reportElement x="1" y="350" width="554" height="50" uuid="638d63e4-5956-4387-b5eb-2746a0370272"/>
 				<textElement textAlignment="Justified"/>
-				<textFieldExpression><![CDATA["3. Eu, "+$F{user_name}+", estou ciente e de acordo com todas as informações e condições descritas no regulamento da inscrição para participação do Programa de Formação Audiovisual, bem como as informações mencionadas neste"]]></textFieldExpression>
+				<textFieldExpression><![CDATA["3. Eu, "+$F{user_name}+", portador do CPF "+$F{user_identifier}+" estou ciente e de acordo com todas as informações e condições descritas no regulamento da inscrição para participação, bem como as informações mencionadas neste documento."]]></textFieldExpression>
 			</textField>
 			<textField pattern="MMMMM dd, yyyy">
 				<reportElement x="0" y="410" width="548" height="30" uuid="50201216-6eae-4aff-ba99-a67d8f82e274"/>
 				<textElement textAlignment="Center"/>
-				<textFieldExpression><![CDATA["Belo Horizonte, agosto de "+YEAR((new java.util.Date()))]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Tiradentes,  ______/Janeiro/"+YEAR((new java.util.Date()))]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="0" y="440" width="554" height="30" uuid="53e19e02-4776-43ef-ad16-8ff5e9814f02"/>
@@ -230,6 +230,29 @@ Assinatura]]></text>
 				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA["Responsável: "+$F{user_parent_name}]]></textFieldExpression>
 			</textField>
+			<staticText>
+				<reportElement x="1" y="510" width="554" height="30" uuid="56c30942-2c3c-413b-8f9f-e9f144a77d20"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Atenção]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-2" y="530" width="552" height="30" uuid="eba59bba-46fe-4475-b5d6-cdcdd1903429"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Este documento é indispensável para a retirada de sua credencial e material na secretaria do evento.
+Apresente este comprovante assinado e um documento com foto no dia de início da oficina.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="576" width="554" height="80" uuid="55bd9f74-ba2e-4ee8-82d7-97c314dcdfe8"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Endereço: 
+
+Secretaria da 22ª Mostra de Cinema de Tiradentes
+Centro Cultural SESIMINAS Yves Alves
+Rua Direita, 168 – Centro Histórico
+Tiradentes - MG]]></text>
+			</staticText>
 		</band>
 	</detail>
 	<pageFooter>
