@@ -392,7 +392,7 @@ class WorkshopRegistrationController extends AbstractAdminController
             ->andWhere('m.event = :idEvent')
             ->setParameters([
                 'status' => 'not_selected',
-                'idEvent' => 1088
+                'idEvent' => 1089
             ])
             ->getQuery()
             ->getResult();
@@ -404,18 +404,19 @@ class WorkshopRegistrationController extends AbstractAdminController
             //$item = new WorkshopSubscription();
 
             $msg = "<p>Prezado (a) ".$item->getUser()->getName().",</p>";
-            $msg.= "<p>Agradecemos seu interesse em participar do Programa de Formação da <strong>12ª CineBH – Mostra de Cinema de Belo Horizonte</strong>.</p>";
-            $msg.= "<p>Informamos que você não foi selecionado (a) para a oficina ".$item->getWorkshop()->getName().".</p>";
-            $msg.= "<p>Convidamos você para participar das outras atividades do evento: sessões de filmes, debates, shows e rodas de conversa.</p>";
+            $msg.= "<p>Agradecemos seu interesse em participar da <strong>22ª Mostra de Cinema de Tiradentes</strong>.</p>";
+            $msg.= "<p>Informamos que você não foi selecionado(a) para a oficina ".$item->getWorkshop()->getName().".</p>";
+            $msg.= "<p>Convidamos você para participar das outras atividades do evento: sessões de filmes, debates, cortejo e shows.</p>";
+            $msg.= "<p>A programação é gratuita e, estará disponível no site <a href='www.mostratiradentes.com.br'>www.mostratiradentes.com.br</a> a partir do dia 9 de janeiro..</p>";
 
-            $msg.= "<p>Atenciosamente,<br />Programa de Formação – 12ª CineBH e 9º Brasil CineMundi</p>";
+            $msg.= "<p>Atenciosamente,<br />Coordenação Oficinas – 22ª Mostra de Cinema de Tiradentes</p>";
 
             //$to[$item->getAuthor()->getName()] = 'ricardovianasi@gmail.com';
             /** @var \SendGrid\Response $return */
             $return = $this->mailService()->simpleSendEmail(
             //[$item->getUser()->getName()=>$item->getUser()->getEmail()],
                 [$item->getUser()->getName()=>'ricardovianasi@gmail.com'],
-                'Programa de Formação - 12ª CineBH e 9º Brasil CineMundi', $msg);
+                'Comunicado oficina - 22ª Mostra de Cinema de Tiradentes', $msg);
 
             $count++;
             echo "$count - Nome: " . $item->getUser()->getName();
