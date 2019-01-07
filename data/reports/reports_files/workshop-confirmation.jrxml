@@ -203,12 +203,12 @@
 				<text><![CDATA[1. Autorizo a ter minhas imagem e voz veiculadas por meio de internet, jornais, informes e/ou qualquer meio de publicação/comunicação pública ou privada, para fins exclusivos de divulgação da Mostra de Cinema de Tiradentes, destinados ao público em geral ou para a comunicação institucional.]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="1" y="320" width="554" height="30" uuid="f4c95b51-d7c5-4db8-bd60-1340ae67d0e3"/>
+				<reportElement x="1" y="315" width="554" height="30" uuid="f4c95b51-d7c5-4db8-bd60-1340ae67d0e3"/>
 				<textElement textAlignment="Justified"/>
 				<text><![CDATA[2. A presente autorização é concedida a título gratuito e livre de qualquer ônus.]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="1" y="350" width="554" height="50" uuid="638d63e4-5956-4387-b5eb-2746a0370272"/>
+				<reportElement x="1" y="346" width="554" height="50" uuid="638d63e4-5956-4387-b5eb-2746a0370272"/>
 				<textElement textAlignment="Justified"/>
 				<textFieldExpression><![CDATA["3. Eu, "+$F{user_name}+", portador do CPF "+$F{user_identifier}+" estou ciente e de acordo com todas as informações e condições descritas no regulamento da inscrição para participação, bem como as informações mencionadas neste documento."]]></textFieldExpression>
 			</textField>

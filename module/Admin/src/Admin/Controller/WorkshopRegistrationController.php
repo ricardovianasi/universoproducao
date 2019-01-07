@@ -391,7 +391,7 @@ class WorkshopRegistrationController extends AbstractAdminController
             ->andWhere('m.status = :status')
             ->andWhere('m.event = :idEvent')
             ->setParameters([
-                'status' => 'not_selected',
+                'status' => 'selected',
                 'idEvent' => 1089
             ])
             ->getQuery()
@@ -403,25 +403,75 @@ class WorkshopRegistrationController extends AbstractAdminController
             /** @var WorkshopSubscription $item */
             //$item = new WorkshopSubscription();
 
-            $msg = "<p>Prezado (a) ".$item->getUser()->getName().",</p>";
-            $msg.= "<p>Agradecemos seu interesse em participar da <strong>22ª Mostra de Cinema de Tiradentes</strong>.</p>";
-            $msg.= "<p>Informamos que você não foi selecionado(a) para a oficina ".$item->getWorkshop()->getName().".</p>";
-            $msg.= "<p>Convidamos você para participar das outras atividades do evento: sessões de filmes, debates, cortejo e shows.</p>";
-            $msg.= "<p>A programação é gratuita e, estará disponível no site <a href='www.mostratiradentes.com.br'>www.mostratiradentes.com.br</a> a partir do dia 9 de janeiro..</p>";
+            $msg = "<p>Prezado(a) ".$item->getUser()->getName().",</p>";
+            $msg.= "<p>PARABÉNS!</p>";
 
+            $msg.= "<p>Você foi selecionado (a) para participar da Oficina ".$item->getWorkshop()->getName()." que será realizada durante a programação da 22ª Mostra de Cinema de Tiradentes, nos dias e horários a seguir:</p>";
+
+
+            $workshopProgramation = $this->getRepository(Programing::class)->findBy([
+                'event' => $item->getEvent()->getId(),
+                'type' => Type::WORKSHOP,
+                'objectId' => $item->getWorkshop()->getId()
+            ]);
+            $workshopProgramationItems = [];
+            foreach ($workshopProgramation as $pro) {
+                $desc = $pro->getDate()->format('d/m/Y')
+                    . ' | ' . $pro->getStartTime()->format('H:i')
+                    . ' às '
+                    . $pro->getEndTime()->format('H:i');
+                $workshopProgramationItems[] = $desc;
+            }
+
+            $msg.="<p>Data e hora de realização:<br />";
+            $msg.=implode(';', $workshopProgramationItems);
+            $msg.="<br />Local para credenciamento: Centro Cultural SESIMINAS Yves Alves
+            <br />Rua Direita, 168 – Tiradentes - MG</p>";
+
+            $msg.="<p><strong>Atenção:
+            <br />- Prazo de confirmação: até às 20 horas (horário de Brasília), do dia 09/01/2019 - quarta-feira.
+            <br />- Caso não confirme sua presença no prazo estipulado sua inscrição será considerada como DESISTÊNCIA.</strong></p>";
+
+            $confirmacao  = $this->url()->fromRoute('meu-universo/workshop', array(
+                'controller' => 'workshop-registration',
+                'action' => 'confirmacao',
+                'id_reg' => $item->getRegistration()->getHash(),
+                'id' => $item->getWorkshop()->getId()
+            ));
+
+            $msg.= "<p>Para confirmar ou não sua participação, clique em uma das opções abaixo:</p>";
+            $msg.= "<p><ul>
+                <li><a href='".$confirmacao.'?confirmacao=sim'."'>Confirmo minha participação / Imprimir Documento de Inscrição de selecionado >> </a></li>
+                <li><a href='".$confirmacao.'?confirmacao=nao'."'> Não confirmo minha participação >> </a></li>
+            </ul></p>";
+
+            $msg.= "<p><strong>Observação</strong>: Caso não consiga acessar os links acima, siga o procedimento abaixo:</p>";
+            $msg.= "<ul>
+                <li>1) Acesse: <a href='www.universoproducao.com.br'>www.universoproducao.com.br</a> </li>
+                <li>2) Clique em Menu do Usuário (Ícone no lado superior direito do Menu principal)</li>
+                <li>3) Informe seu email e senha cadastrada)</li>
+                <li>4) Clique em Minhas Inscrições (Ícone no lado superior direito do Menu principal)</li>
+                <li>5) Clique em Confirmar Presença ou Não Confirmar Presença</li>
+                <li>6) Qualquer dúvida entre em contato: oficinas@universoproducao.com.br </li>
+            </ul>";
+
+            $msg.= "<p><strong>Apresente o comprovante de confirmação impresso</strong> e um documento com foto para retirar a credencial e o material na secretaria do evento no dia de início da oficina no seguinte endereço:<br />Centro Cultural SESIMINAS Yves Alves<br />Rua Direita, 168 – Tiradentes - MG</p>";
+
+            $msg.= "<p>Convidamos você para participar também das outras atividades do evento.</p>";
+            $msg.= "<p>A programação é gratuita e, estará disponível no site <a href='www.mostratiradentes.com.br'>www.mostratiradentes.com.br</a> a partir do dia 9 de janeiro.</p>";
             $msg.= "<p>Atenciosamente,<br />Coordenação Oficinas – 22ª Mostra de Cinema de Tiradentes</p>";
 
             //$to[$item->getAuthor()->getName()] = 'ricardovianasi@gmail.com';
             /** @var \SendGrid\Response $return */
             $return = $this->mailService()->simpleSendEmail(
-            //[$item->getUser()->getName()=>$item->getUser()->getEmail()],
+                //[$item->getUser()->getName()=>$item->getUser()->getEmail()],
                 [$item->getUser()->getName()=>'ricardovianasi@gmail.com'],
                 'Comunicado oficina - 22ª Mostra de Cinema de Tiradentes', $msg);
 
             $count++;
             echo "$count - Nome: " . $item->getUser()->getName();
             echo "<br />Email: " . $item->getUser()->getEmail();
-            echo "<br />Oficina: " . $item->getName();
+            echo "<br />Oficina: " . $item->getWorkshop()->getName();
             if($return->statusCode() == 202) {
                 echo "<br /><b>******************-SUCESSO-******************</b><br /><br />";
             } else {
