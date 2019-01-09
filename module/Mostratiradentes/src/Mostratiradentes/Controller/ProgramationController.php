@@ -106,7 +106,12 @@ class ProgramationController extends SiteController
             //Tipo do evento
             $titleItem = "";
             if ($prog->getType() == Type::MOVIE || $prog->getType() == Type::SESSION) {
-                $titleItem = "Filme";
+
+                if($prog->getType() == Type::SESSION) {
+                    $titleItem = "Sessão";
+                } else {
+                    $titleItem = "Filme";
+                }
                 if ($prog->getSubEvent()) {
                     $titleItem .= self::SEPARATOR . $prog->getSubEvent()->getName();
                 }
