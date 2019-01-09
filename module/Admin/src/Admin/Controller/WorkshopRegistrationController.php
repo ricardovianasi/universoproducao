@@ -424,7 +424,7 @@ class WorkshopRegistrationController extends AbstractAdminController
             }
 
             $msg.="<p>Data e hora de realização:<br />";
-            $msg.=implode(';', $workshopProgramationItems);
+            $msg.=implode('<br />', $workshopProgramationItems);
             $msg.="<br />Local para credenciamento: Centro Cultural SESIMINAS Yves Alves
             <br />Rua Direita, 168 – Tiradentes - MG</p>";
 

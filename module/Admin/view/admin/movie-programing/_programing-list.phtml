@@ -49,7 +49,7 @@
             } ?>
         </td>
         <td><?php echo $i->getDate()->format('d/m/Y'); ?></td>
-        <td><?php echo $i->getStartTime()->format('H:i:s'); ?></td>
+        <td><?php echo $i->getStartTime() ? $i->getStartTime()->format('H:i:s') : ""; ?></td>
         <td><?php echo $i->getEndTime() ? $i->getEndTime()->format('H:i:s') : ""; ?></td>
         <td><?php echo $i->getPlace()?$i->getPlace()->getName():""; ?></td>
         <td>
