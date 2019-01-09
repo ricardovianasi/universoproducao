@@ -77,7 +77,7 @@
                                     <td><?php echo $i->getEvent()->getShortName() ?></td>
                                     <td><?php echo \Application\Entity\Programing\Type::get($i->getType()); ?></td>
                                     <td><?php echo $i->getDate()->format('d/m/Y') ?></td>
-                                    <td><?php echo $i->getStartTime()->format('H:i') ?></td>
+                                    <td><?php echo $i->getStartTime() ? $i->getStartTime()->format('H:i') : "" ?></td>
                                     <td><?php echo $i->getEndTime()?$i->getEndTime()->format('H:i'):"" ?></td>
                                     <td><?php echo $i->getPlace()?$i->getPlace()->getName():"" ?></td>
                                     <td>
