@@ -132,7 +132,7 @@ class ProgramationController extends SiteController
                     $titleItem.= self::SEPARATOR . 'pré-estreia-mundial';
                 }
 
-            } elseif ($prog->getType() == Type::SEMINAR_DEBATE) {
+            } elseif ($prog->getType() == Type::SEMINAR_DEBATE &&  $prog->getObject()) {
                 $titleItem = "Seminário" . self::SEPARATOR . $prog->getObject()->getThematic()->getName();
                 $events[] = [
                     'title' => $prog->getObject()->getTitle(),
