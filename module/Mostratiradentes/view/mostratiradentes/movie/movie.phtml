@@ -41,7 +41,7 @@
             <p><?php echo $this->post->getSynopsis(); ?></p>
 
             <p><strong>Exibições</strong></p>
-            <?php foreach ($this->post->getPrograming() as $pro): ?>
+            <?php foreach ($this->post->getPrograming($this->event->getId()) as $pro): ?>
                 <?php
                 $progObj = null;
                 if($pro->getParent()) {
