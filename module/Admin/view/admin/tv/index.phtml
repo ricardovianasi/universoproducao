@@ -73,7 +73,16 @@
 						</tbody>
 					</table>
 					<div class="table-paginator">
-						<?php echo $this->paginationcontrol($this->videos, 'sliding', 'admin/partials/paginator.phtml'); ?>
+						
+                        <?php echo $this->paginationcontrol(
+                            $this->videos,
+                            'sliding',
+                            'admin/partials/paginator.phtml',
+                            array(
+                                'route'=>'admin/tv',
+                                'route_options' => array('site'=>$this->site)
+                            )
+                        ); ?>
 					</div>
 
 				</div>
