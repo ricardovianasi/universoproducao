@@ -99,14 +99,14 @@
         <div class="news-items">
             <?php foreach ($this->news as $news): ?>
             <article class="news-item">
-                <a href="<?php echo $this->url("mostratiradentessp/news", ['slug'=>$news->getSlug()]) ?>" class="news-link">
+                <a href="<?php echo $this->url("mostratiradentessp2018/news", ['slug'=>$news->getSlug()]) ?>" class="news-link">
                     <figure class="news-figure"><img src="<?php echo  $this->thumbor()->url($news->getMeta('_thumb'))->resize(532, 331); ?>" alt=""></figure>
                     <p class="news-title"><?php echo $news->getTitle(); ?></p>
                 </a>
             </article>
             <?php endforeach; ?>
         </div>
-        <p class="news-all"><a class="button-readmore" href="<?php echo $this->url("mostratiradentessp/default", ['slug'=>'noticias']); ?>">Todas as Notícias</a></p>
+        <p class="news-all"><a class="button-readmore" href="<?php echo $this->url("mostratiradentessp2018/default", ['slug'=>'noticias']); ?>">Todas as Notícias</a></p>
     </div>
 </section>
 
@@ -157,29 +157,29 @@
     <div class="main-wrapper">
         <header class="guide-header">
             <p>&nbsp;</p>
-            <h1>aprecie a sétima arte em uma mostra singular. <br /> <a href="<?php echo $this->url("mostratiradentessp/default", ['slug'=>'local-de-realizacao-1']) ?>">veja como chegar</a></h1>
+            <h1>aprecie a sétima arte em uma mostra singular. <br /> <a href="<?php echo $this->url("mostratiradentessp2018/default", ['slug'=>'local-de-realizacao-1']) ?>">veja como chegar</a></h1>
         </header>
         <!--<ul class="guide-items">
             <li class="guide-item">
-                <a href="<?php /*echo $this->url("mostratiradentessp/default", ['slug'=>'como-chegar']) */?>" class="guide-link">
+                <a href="<?php /*echo $this->url("mostratiradentessp2018/default", ['slug'=>'como-chegar']) */?>" class="guide-link">
                     <span class="sprite sprite-como-chegar"></span>
                     <p class="guide-title">Como Chegar</p>
                 </a>
             </li>
             <li class="guide-item">
-                <a href="<?php /*echo $this->url("mostratiradentessp/default", ['slug'=>'turismo-e-informacoes']) */?>" class="guide-link">
+                <a href="<?php /*echo $this->url("mostratiradentessp2018/default", ['slug'=>'turismo-e-informacoes']) */?>" class="guide-link">
                     <span class="sprite sprite-turismo"></span>
                     <p class="guide-title">Turismo e Informações</p>
                 </a>
             </li>
             <li class="guide-item">
-                <a href="<?php /*echo $this->url("mostratiradentessp/default", ['slug'=>'restaurantes']) */?>" class="guide-link">
+                <a href="<?php /*echo $this->url("mostratiradentessp2018/default", ['slug'=>'restaurantes']) */?>" class="guide-link">
                     <span class="sprite sprite-restaurantes"></span>
                     <p class="guide-title">Restaurantes</p>
                 </a>
             </li>
             <li class="guide-item">
-                <a href="<?php /*echo $this->url("mostratiradentessp/default", ['slug'=>'hoteis-e-acomodacoes']) */?>" class="guide-link">
+                <a href="<?php /*echo $this->url("mostratiradentessp2018/default", ['slug'=>'hoteis-e-acomodacoes']) */?>" class="guide-link">
                     <span class="sprite sprite-hospedagem"></span>
                     <p class="guide-title">hotéis e acomodações</p>
                 </a>
@@ -211,7 +211,7 @@
         <header class="newsletter-header">
             <h1>Receba Nossos Informativos</h1>
         </header>
-        <form action="<?php echo $this->url("mostratiradentessp/newsletter") ?>" method="post" class="newsletter-form">
+        <form action="<?php echo $this->url("mostratiradentessp2018/newsletter") ?>" method="post" class="newsletter-form">
             <input required type="text" class="newsletter-input" placeholder="Nome">
             <input required type="text" class="newsletter-input" placeholder="Email">
             <button type="submit" class="newsletter-submit">Cadastrar</button>
@@ -300,11 +300,11 @@
 <section class="sitemap">
     <div class="main-wrapper">
         <?php $this
-            ->navigation('MostratiradentesSpNavigation')
-            ->menu()->setPartial("mostratiradentes-sp/partials/sitemap.phtml");
+            ->navigation('MostratiradentesSpNavigation2018')
+            ->menu()->setPartial("mostratiradentes-sp2018/partials/sitemap.phtml");
 
         echo $this
-            ->navigation('MostratiradentesSpNavigation')
+            ->navigation('MostratiradentesSpNavigation2018')
             ->menu()
             ->render(); ?>
     </div>
