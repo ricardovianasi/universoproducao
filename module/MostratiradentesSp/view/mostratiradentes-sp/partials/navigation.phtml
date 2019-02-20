@@ -2,14 +2,15 @@
     <a href="#" id="menu-button" class="menu-button"><span class="icon icon-menu7"></span></a>
     <ul class="menu-list menu-bar">
         <li class="menu-item">
-            <a class="menu-link" href="<?php echo $this->url('mostratiradentessp') ?>">
+            <a class="menu-link" href="<?php echo $this->url('mostratiradentes/index') ?>">
                 <span>Início</span>
             </a>
         </li>
         <?php foreach ($this->container as $page):
-            /** @var Zend\Navigation\Page\AbstractPage $page */ ?>
+            /** @var Zend\Navigation\Page\AbstractPage $page */
+            $url = $page->hasPages() ? '#' : rawurldecode($page->getHref()); ?>
             <li class="menu-item">
-                <a class="menu-link" href="" target="<?php echo $page->getTarget() ?>">
+                <a class="menu-link" href="<?php echo $url; ?>" target="<?php echo $page->getTarget() ?>">
                     <span><?php echo $page->getLabel() ?></span>
                 </a>
                 <?php if ($page->hasPages()): ?>

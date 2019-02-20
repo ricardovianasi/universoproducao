@@ -37,7 +37,7 @@
     <div class="movie-list">
         <?php foreach ($this->movies as $movie): ?>
             <article class="movie-item">
-                <a href="<?php echo $this->url('mostratiradentessp/movie', ['id'=>$movie->getId()]) ?>" class="movie-link">
+                <a href="<?php echo $this->url('mostratiradentes/movie', ['id'=>$movie->getId()]) ?>" class="movie-link">
                     <div class="movie-cover">
                     <?php if($movie->getMedias()->first()): $media = $movie->getMedias()->first(); ?>
                         <figure class="movie-figure">
@@ -71,7 +71,7 @@
                         <?php endif; ?>
                     <?php endif; ?>
                     </div>
-                    <h1 class="movie-title"><?php echo $movie->getTitle(); ?></h1>
+                    <h1 class="movie-title" style="text-transform: uppercase"><?php echo $movie->getTitle(); ?></h1>
                     <span class="movie-director">Direção: <?php echo $movie->getDirection(); ?></span>
                 </a>
             </article>

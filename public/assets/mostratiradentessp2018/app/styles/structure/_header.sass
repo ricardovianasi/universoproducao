@@ -1,0 +1,59 @@
+.header
+  position: relative
+  width: 100%
+  background-color: #0d0d10
+  //&-bgc
+  //  background: url("../images/header-bg.jpg") no-repeat top left
+  //  background-size: 100% 100%
+
+  &-wrapper
+    +center
+    text-align: center
+
+  .brand
+    line-height: 0
+    //vertical-align: middle
+    //+padding-trailer(2)
+    //+padding-leader(2)
+    &-link
+      display: inline-block
+      color: white
+      img
+        width: 100%
+
+    +media("<tablet")
+      text-align: center
+      +padding-leader(1)
+      +padding-trailer(1)
+
+  .name
+    +adjust-font-size-to(30px, 1.5)
+    font-weight: 700
+    text-transform: uppercase
+    color: white
+    vertical-align: middle
+    & > span
+      +adjust-font-size-to(22px, 1, 30px)
+      +leader(.5, 22px)
+      display: block
+      font-weight: normal !important
+    
+  .social
+    +leader(1)
+    &-item
+      display: inline-block
+      margin-right: 19px
+      text-align: center
+      &:last-child
+        margin-right: 0
+
+    &-link
+      display: block
+      width: 36px
+      height: 36px
+      border-radius: 50%
+      background-color: white
+      +adjust-font-size-to(18px, 2)
+      span
+        color: $color-palette-4
+        line-height: inherit

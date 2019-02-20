@@ -1,0 +1,311 @@
+<?php $this->placeholder("home-class")->set("home"); ?>
+
+
+<section class="banner">
+    <div class="banner-items owl-carousel">
+        <?php foreach ($this->bannerImages as $banner): ?>
+            <div class="banner-item">
+                <a target="_blank" href="<?php echo $banner->getMeta('_link') ?>">
+                    <img src="<?php echo $this->thumbor()->url($banner->getMeta('_image'))->resize(1920, 648); ?>" alt="">
+                    <p class="banner-caption"><?php echo $banner->getSubtitle(); ?></p>
+                </a>
+            </div>
+        <?php endforeach; ?>
+    </div>
+</section>
+
+<!-- Info -->
+<!--<section class="notice">
+    <div class="main-wrapper">
+        <p class="notice-text"> Inscrições abertas para oficinas na 20ª Mostra de Cinema de Tiradentes
+            de tiradentes</p>
+        <a href="http://www.universoproducao.com.br/site/inscricoes.php?menu=ins" class="button-readmore">Inscreva-se</a>
+    </div>
+</section>-->
+
+<!-- PRogramação -->
+<!--<section class="prog">
+    <div class="main-wrapper">
+        <header class="main-header"><h1 class="section-title">Programação</h1></header>
+    </div>
+    <div class="prog-items">
+        <article class="prog-item prog-item--high">
+            <figure class="prog-figure">
+                <img src="images/prog1.jpg" alt="">
+            </figure>
+            <div class="prog-content">
+                <p class="prog-day">20 <small>sex</small></p>
+                <p class="prog-title">Tantinho -memória em verde e rosa</p>
+                <p class="prog-cat">Mostra Pré-estreia</p>
+                <p class="prog-place">Centro Histórico - 15h</p>
+            </div>
+        </article>
+        <article class="prog-item">
+            <figure class="prog-figure">
+                <img src="images/prog5.jpg" alt="">
+            </figure>
+            <div class="prog-content">
+                <p class="prog-day">20 <small>sex</small></p>
+                <p class="prog-title">Tantinho -memória em verde e rosa</p>
+                <p class="prog-cat">Mostra Pré-estreia</p>
+                <p class="prog-place">Centro Histórico - 15h</p>
+            </div>
+        </article>
+        <article class="prog-item">
+            <figure class="prog-figure">
+                <img src="images/prog2.jpg" alt="">
+            </figure>
+            <div class="prog-content">
+                <p class="prog-day">20 <small>sex</small></p>
+                <p class="prog-title">Tantinho -memória em verde e rosa</p>
+                <p class="prog-cat">Mostra Pré-estreia</p>
+                <p class="prog-place">Centro Histórico - 15h</p>
+            </div>
+        </article>
+        <article class="prog-item">
+            <figure class="prog-figure">
+                <img src="images/prog3.jpg" alt="">
+            </figure>
+            <div class="prog-content">
+                <p class="prog-day">20 <small>sex</small></p>
+                <p class="prog-title">Tantinho -memória em verde e rosa</p>
+                <p class="prog-cat">Mostra Pré-estreia</p>
+                <p class="prog-place">Centro Histórico - 15h</p>
+            </div>
+        </article>
+        <article class="prog-item">
+            <figure class="prog-figure">
+                <img src="images/prog4.jpg" alt="">
+            </figure>
+            <div class="prog-content">
+                <p class="prog-day">20 <small>sex</small></p>
+                <p class="prog-title">Tantinho -memória em verde e rosa</p>
+                <p class="prog-title">Mostra Pré-estreia</p>
+                <p class="prog-place">Centro Histórico - 15h</p>
+            </div>
+        </article>
+    </div>
+    <div class="main-wrapper">
+        <p class="prog-text">De 20 a 28 de janeiro, você estará em sintonia com o cinema em Tiradentes. São exposições, exibições de curtas e longas, debates, seminários e oficinas com grandes nomes da sétima arte
+            <br /><a href="" class="button-readmore">Programação Completa</a></p>
+    </div>
+</section>-->
+
+<section class="news">
+    <div class="main-wrapper">
+        <header class="news-header">
+            <h1>acompanhe tudo o que acontece na Mostra Tiradentes | SP 2018</h1>
+        </header>
+        <div class="news-items">
+            <?php foreach ($this->news as $news): ?>
+            <article class="news-item">
+                <a href="<?php echo $this->url("mostratiradentessp/news", ['slug'=>$news->getSlug()]) ?>" class="news-link">
+                    <figure class="news-figure"><img src="<?php echo  $this->thumbor()->url($news->getMeta('_thumb'))->resize(532, 331); ?>" alt=""></figure>
+                    <p class="news-title"><?php echo $news->getTitle(); ?></p>
+                </a>
+            </article>
+            <?php endforeach; ?>
+        </div>
+        <p class="news-all"><a class="button-readmore" href="<?php echo $this->url("mostratiradentessp/default", ['slug'=>'noticias']); ?>">Todas as Notícias</a></p>
+    </div>
+</section>
+
+<!-- TV -->
+<?php if(count($this->videos)): ?>
+    <section class="tv">
+        <div class="main-wrapper">
+            <header class="main-header"><h1 class="section-title">TV Mostra</h1></header>
+
+            <div class="tv-items">
+                <?php foreach ($this->videos as $v): ?>
+                    <article class="tv-item">
+                        <a  data-fancybox class="tv-link" href="<?php echo $v->getYoutube(); ?>">
+                            <figure class="tv-figure">
+                                <img src="<?php echo $this->thumbor()->url($v->getThumb())->resize(640, 396); ?>" alt="">
+                            </figure>
+                            <div class="tv-content">
+                                <p class="tv-title"><?php echo $v->getCaption(); ?></p>
+                            </div>
+                        </a>
+                    </article>
+                <?php endforeach; ?>
+                <p class="tv-all"><a href="https://www.youtube.com/channel/UCaikc9czwiws39fvlHX-RpA">Assista todos os vídeos <span class="icon icon-plus-circle"></span></a></p>
+            </div>
+
+        </div>
+    </section>
+<?php endif; ?>
+
+<section class="gallery">
+    <div class="gallery-list owl-carousel">
+        <?php foreach ($this->gallery as $img): ?>
+            <div class="gallery-item">
+                <figure class="gallery-figure">
+                    <img src="<?php echo $this->thumbor()->url($img->getMeta('_image'))->resize(780, 505); ?>" alt="">
+                </figure>
+                <div class="gallery-desc">
+                    <p class="gallery-title"><?php echo $img->getTitle(); ?>
+                        <span><?php echo $img->getMeta('_credits'); ?></span></p>
+                </div>
+            </div>
+        <?php endforeach; ?>
+    </div>
+    <p class="gallery-all"><a target="_blank" href="https://www.flickr.com/photos/universoproducao/" class="button-readmore">Galeria Completa</a></p>
+</section>
+
+<section class="guide">
+    <div class="main-wrapper">
+        <header class="guide-header">
+            <p>&nbsp;</p>
+            <h1>aprecie a sétima arte em uma mostra singular. <br /> <a href="<?php echo $this->url("mostratiradentessp/default", ['slug'=>'local-de-realizacao-1']) ?>">veja como chegar</a></h1>
+        </header>
+        <!--<ul class="guide-items">
+            <li class="guide-item">
+                <a href="<?php /*echo $this->url("mostratiradentessp/default", ['slug'=>'como-chegar']) */?>" class="guide-link">
+                    <span class="sprite sprite-como-chegar"></span>
+                    <p class="guide-title">Como Chegar</p>
+                </a>
+            </li>
+            <li class="guide-item">
+                <a href="<?php /*echo $this->url("mostratiradentessp/default", ['slug'=>'turismo-e-informacoes']) */?>" class="guide-link">
+                    <span class="sprite sprite-turismo"></span>
+                    <p class="guide-title">Turismo e Informações</p>
+                </a>
+            </li>
+            <li class="guide-item">
+                <a href="<?php /*echo $this->url("mostratiradentessp/default", ['slug'=>'restaurantes']) */?>" class="guide-link">
+                    <span class="sprite sprite-restaurantes"></span>
+                    <p class="guide-title">Restaurantes</p>
+                </a>
+            </li>
+            <li class="guide-item">
+                <a href="<?php /*echo $this->url("mostratiradentessp/default", ['slug'=>'hoteis-e-acomodacoes']) */?>" class="guide-link">
+                    <span class="sprite sprite-hospedagem"></span>
+                    <p class="guide-title">hotéis e acomodações</p>
+                </a>
+            </li>
+        </ul>-->
+    </div>
+</section>
+
+<section class="eufacoamostra">
+    <div class="main-wrapper">
+        <header class="eufacoamostra-header">
+            <h1><span class="icon icon-eufacoamostra"></span></h1>
+            <p class="eufacoamostra-subtitle">Compartilhe e publique suas imagens usando a #eufaçoaMostra</p>
+        </header>
+    </div>
+    <div class="eufacoamostra-items">
+        <?php foreach ($this->eufacoamostra as $eu): ?>
+            <div class="eufacoamostra-item <?php echo !empty($eu->getVideo) ? "eufacoamostra-item--video" : ""; ?>">
+                <?php $href = $eu->getVideo() ? $this->youtubeEmbed($eu->getVideo()) : $this->thumbor()->url($eu->getThumb())->resize(700, 700); ?>
+                <a title="<?php echo $eu->getDescription(); ?>" rel="eufacoamostra" href="<?php echo $href ?>" class="eufacoamostra-link fancybox <?php echo !empty($eu->getVideo) ? "fancybox.iframe" : ""; ?>">
+                    <figure class="eufacoamostra-figure"><img class="grayscale grayscale-fade" src="<?php echo $this->thumbor()->url($eu->getThumb())->resize(700, 700); ?>" alt=""></figure></a></div>
+        <?php endforeach; ?>
+    </div>
+    <p class="news-all"><a target="_blank" href="https://www.flickr.com/photos/universoproducao/" class="button-readmore">Veja Mais Galerias</a></p>
+</section>
+
+<section class="newsletter">
+    <div class="main-wrapper">
+        <header class="newsletter-header">
+            <h1>Receba Nossos Informativos</h1>
+        </header>
+        <form action="<?php echo $this->url("mostratiradentessp/newsletter") ?>" method="post" class="newsletter-form">
+            <input required type="text" class="newsletter-input" placeholder="Nome">
+            <input required type="text" class="newsletter-input" placeholder="Email">
+            <button type="submit" class="newsletter-submit">Cadastrar</button>
+        </form>
+    </div>
+</section>
+
+<!--<section class="sponsorship">
+    <div class="main-wrapper">
+        <ul class="sponsorship-list">
+            <li class="sponsorship-block sponsorship-block--full">
+                <ul class="sponsorship-items">
+                    <li class="sponsorship-item"><span class="sprite sprite-lei-incentivo"></span></li>
+                    <li class="sponsorship-item"><span class="sprite sprite-lei-estadual-cultura"></span></li>
+                </ul>
+            </li>
+            <li class="sponsorship-block sponsorship-block--full">
+                <p class="sponsorship-title">Patrocínio</p>
+                <ul class="sponsorship-items">
+                    <li class="sponsorship-item"><span class="sprite sprite-bndes"></span></li>
+                    <li class="sponsorship-item"><span class="sprite sprite-oi"></span></li>
+                    <li class="sponsorship-item"><span class="sprite sprite-cemig"></span></li>
+                    <li class="sponsorship-item"><span class="sprite sprite-itau"></span></li>
+                    <li class="sponsorship-item"><span class="sprite sprite-copasa"></span></li>
+                    <li class="sponsorship-item"><span class="sprite sprite-materdei"></span></li>
+                    <li class="sponsorship-item"><span class="sprite sprite-sesi"></span></li>
+                </ul>
+            </li>
+
+            <li class="sponsorship-block">
+                <p class="sponsorship-title">PARCERIA CULTURAL</p>
+                <ul class="sponsorship-items">
+                    <li class="sponsorship-item"><span class="sprite sprite-sesc"></span></li>
+                </ul>
+            </li>
+            <li class="sponsorship-block">
+                <p class="sponsorship-title">Fomento</p>
+                <ul class="sponsorship-items">
+                    <li class="sponsorship-item"><span class="sprite sprite-codemig"></span></li>
+                </ul>
+            </li>
+
+            <li class="sponsorship-block sponsorship-block--full">
+                <p class="sponsorship-title">Apoio</p>
+                <ul class="sponsorship-items">
+                    <li class="sponsorship-item"><span class="sprite sprite-oi-futuro"></span></li>
+                    <li class="sponsorship-item"><span class="sprite sprite-universo-cultural"></span></li>
+                    <li class="sponsorship-item"><span class="sprite sprite-tres"></span></li>
+                    <li class="sponsorship-item"><span class="sprite sprite-bohemia"></span></li>
+                    <li class="sponsorship-item"><span class="sprite sprite-fecomercio"></span></li>
+                    <li class="sponsorship-item"><span class="sprite sprite-cinema-brasil"></span></li>
+                    <li class="sponsorship-item"><span class="sprite sprite-dot"></span></li>
+                    <li class="sponsorship-item"><span class="sprite sprite-mistuka"></span></li>
+                    <li class="sponsorship-item"><span class="sprite sprite-cta"></span></li>
+                    <li class="sponsorship-item"><span class="sprite sprite-naymar"></span></li>
+                    <li class="sponsorship-item"><span class="sprite sprite-cinema"></span></li>
+                    <li class="sponsorship-item"><span class="sprite sprite-cinecolor"></span></li>
+                    <li class="sponsorship-item"><span class="sprite sprite-o2pos"></span></li>
+                    <li class="sponsorship-item"><span class="sprite sprite-globo-minas"></span></li>
+                    <li class="sponsorship-item"><span class="sprite sprite-canal-brasil"></span></li>
+                    <li class="sponsorship-item"><span class="sprite sprite-policia"></span></li>
+                    <li class="sponsorship-item"><span class="sprite sprite-bombeiros"></span></li>
+                    <li class="sponsorship-item"><span class="sprite sprite-prefeitura-tiradentes"></span></li>
+                    <li class="sponsorship-item"><span class="sprite sprite-nova-era"></span></li>
+                </ul>
+            </li>
+
+            <li class="sponsorship-block sponsorship-block--20">
+                <p class="sponsorship-title">Incentivo</p>
+                <ul class="sponsorship-items">
+                    <li class="sponsorship-item"><span class="sprite sprite-secretaria-cultura"></span></li>
+                </ul>
+            </li>
+
+            <li class="sponsorship-block sponsorship-block--80">
+                <p class="sponsorship-title">Realização</p>
+                <ul class="sponsorship-items">
+                    <li class="sponsorship-item"><span class="sprite sprite-universo-producao"></span></li>
+                    <li class="sponsorship-item" style="float: right;"><span class="sprite sprite-ministerio-cultura"></span></li>
+                </ul>
+            </li>
+
+        </ul>
+    </div>
+</section>-->
+<section class="sitemap">
+    <div class="main-wrapper">
+        <?php $this
+            ->navigation('MostratiradentesSpNavigation')
+            ->menu()->setPartial("mostratiradentes-sp/partials/sitemap.phtml");
+
+        echo $this
+            ->navigation('MostratiradentesSpNavigation')
+            ->menu()
+            ->render(); ?>
+    </div>
+</section>

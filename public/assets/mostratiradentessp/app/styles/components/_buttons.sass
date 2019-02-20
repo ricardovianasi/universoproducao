@@ -2,21 +2,19 @@
   &-readmore
     display: inline-block
     +adjust-font-size-to(18px, 1)
-    +padding-trailer(.5)
-    +padding-leader(.5)
+    +padding-trailer(1)
+    +padding-leader(1)
     padding-left: 40px
     padding-right: 40px
-    background-color: $color-palette-2
-    color: white
+    background-color: white
+    color: #249c81
     text-transform: uppercase
-    font-family: 'Share Tech Mono', monospace
-    box-shadow: -5px 5px 0px 0px $color-palette-3
+    font-weight: bold
     transition: $transition-default
+    border: 5px solid #199679
     &:hover
-      background-color: #871E2C
-    &:active
-      background-color: #691722
-      box-shadow: -3px 3px 0px 0px $color-palette-3
+      background-color: #199679
+      color: white
 
 .circle-button
   display: inline-block

@@ -42,6 +42,8 @@
         </ul>
     </div>
 
+    <a style="width: auto; margin-bottom: 20px; display: inline-block" class="filter-submit" target="_blank" href="http://universoproducao.com.br/source/22_Tiradentes/folder.pdf">Download da programação</a>
+
     <div class="programing">
         <table class="programing-grid diferent" style="width: 100%">
             <?php foreach ($this->programing as $pro): ?>
@@ -67,13 +69,13 @@
                                     switch ($item['type']) {
                                         case "session":
                                         case "movie":
-                                            $url = $this->url('mostratiradentessp/movie', ['id'=>$event['id']]);
+                                            $url = $this->url('mostratiradentes/movie', ['id'=>$event['id']]);
                                             break;
                                         case "seminar_debate":
-                                            $url = $this->url('mostratiradentessp/seminar', ['id'=>$event['id']]);
+                                            $url = $this->url('mostratiradentes/seminar', ['id'=>$event['id']]);
                                             break;
                                         case "art":
-                                            $url = $this->url('mostratiradentessp/art', ['id'=>$event['id']]);
+                                            $url = $this->url('mostratiradentes/art', ['id'=>$event['id']]);
                                             break;
                                     }
                                     ?>

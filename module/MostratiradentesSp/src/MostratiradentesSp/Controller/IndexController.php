@@ -14,7 +14,7 @@ use Zend\View\Model\ViewModel;
 
 class IndexController extends SiteController
 {
-    const SITE_ID = 11;
+    const SITE_ID = 15;
 
     public function indexAction()
     {
@@ -31,7 +31,7 @@ class IndexController extends SiteController
         //news
         $qb = $this->getRepository(Post::class)->findNewsQb(self::SITE_ID);
         $qb->orderBy('n.postDate', 'DESC');
-        $qb->setMaxResults(4);
+        $qb->setMaxResults(3);
         $news = $qb->getQuery()->getResult();
 
         //programation
@@ -78,5 +78,14 @@ class IndexController extends SiteController
             'videos' => $videos,
             'eufacoamostra' => $eufacoamostra
         ]);
+    }
+
+    public function indexSpAction()
+    {
+        $viewModel = new ViewModel();
+        $viewModel->setVariables(array('key' => 'value'))
+            ->setTerminal(true);
+
+        return $viewModel;
     }
 }

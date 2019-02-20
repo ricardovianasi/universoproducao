@@ -1,0 +1,48 @@
+<?php $item = $this->post; ?>
+<div class="main-wrapper main-content">
+    <div class="movie">
+        <header class="main-header">
+            <h1 class="main-title"><?php echo $item->getTitle(); ?></h1>
+        </header>
+
+        <?php if(!empty($this->post->getFiles())): ?>
+            <div class="movie-media">
+                <div class="owl-carousel movie-carousel">
+                    <?php foreach ($this->post->getFiles() as $media): ?>
+                        <div class="movie-media-item">
+                            <div class="movie-media-wrapper">
+                                <img src="<?php echo $this->thumbor()->url($media->getSrc())->resize(1140, 400); ?>" alt="">
+                                <p class="movie-media-caption"><?php echo $media->getDescription(); ?></p>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+        <?php endif; ?>
+
+        <div class="movie-detail">
+            <p><strong>Descrição</strong></p>
+            <?php echo $item->getDescription() ?>
+
+            <p><strong>Exibições</strong></p>
+            <?php foreach ($this->post->getPrograming() as $pro): ?>
+                <?php
+                $progObj = null;
+                if($pro->getParent()) {
+                    $progObj = $pro->getParent();
+                } else {
+                    $progObj = $pro;
+                }
+                $date =  str_replace('-feira', '', $this->dateFormat($progObj->getDate(), null, null, "pt_BR", "dd/MM | cccc"));
+                $hour = $progObj->getStartTime()->format('H\hi');
+                $place = $progObj->getPlace()?$progObj->getPlace()->getName():"";
+                ?>
+                <div class="highlight-item">
+                    <p class="hightlight-date"><?php echo "$date - $hour"; ?></p>
+                    <p class="hightlight-place"><?php echo $place ?></p>
+                </div>
+            <?php endforeach; ?>
+        </div>
+    </div>
+    <?php echo $this->partial("application/partials/share.phtml", ['title'=>$item->getTitle()]); ?>
+</div>

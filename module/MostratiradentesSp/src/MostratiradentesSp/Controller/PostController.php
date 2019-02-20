@@ -14,7 +14,7 @@ use Zend\View\Model\ViewModel;
 
 class PostController extends SiteController
 {
-    const SITE_ID = 11;
+    const SITE_ID = 15;
 
     protected $breadcrumbs = [];
 
@@ -33,7 +33,8 @@ class PostController extends SiteController
         ]);
 
         if(!$post) {
-            //tela de erro 404
+            $this->getResponse()->setStatusCode(404);
+            return;
         }
 
         //Custon Action
@@ -136,11 +137,11 @@ class PostController extends SiteController
             $logistica		 				= $postData['logistica'];
 
             //Envia a mensagem de confirmação para a pessoa cadastrada no formulario
-            $msgConfirmacaoCadastro = "Informamos que sua solicitação de credenciamento de imprensa para a 20ª Mostra Tiradentes foi enviada com sucesso.";
+            $msgConfirmacaoCadastro = "Informamos que sua solicita&ccedil;&atilde;o de credenciamento de imprensa para a 22&ordf; Mostra Tiradentes foi enviada com sucesso.";
             $msgConfirmacaoCadastro .= "<br /><br />";
-            $msgConfirmacaoCadastro .= "Em breve a equipe da assessoria entrará em contato.";
+            $msgConfirmacaoCadastro .= "Em breve a equipe da assessoria entrar&aacute; em contato.";
             $msgConfirmacaoCadastro .= "<br /><br />";
-            $msgConfirmacaoCadastro .= "Qualquer dúvida, estamos à disposição pelo telefone (31) 3282 2366 ou e-mail imprensa@universoproducao.com.br";
+            $msgConfirmacaoCadastro .= "Qualquer d&uacute;vida, estamos &agrave; disposi&ccedil;&atilde;o pelo telefone (31) 3282 2366 ou e-mail imprensa@universoproducao.com.br";
             $msgConfirmacaoCadastro .= "<br /><br />";
             $msgConfirmacaoCadastro .= "Atenciosamente,<br />";
             $msgConfirmacaoCadastro .= "Equipe Imprensa<br />";
@@ -155,7 +156,7 @@ class PostController extends SiteController
             $mailConfirmacao->setBody($miniMessage);
             $mailConfirmacao->setFrom('no-reply@universoproducao.com.br', 'Universo Producao');
             $mailConfirmacao->setTo($email);
-            $mailConfirmacao->setSubject('Solicitação de credenciamento – 20a Mostra Tiradentes');
+            $mailConfirmacao->setSubject('Credenciamento imprensa - 22 Mostra Tiradentes ');
             $transport->send($mailConfirmacao);
 
             $msgFormulario  = "<h1>FORMUL&Aacute;RIO DE CREDENCIAMENTO</h1>";
@@ -243,7 +244,7 @@ class PostController extends SiteController
             $msgFormulario .= "</tr>";
 
             $msgFormulario .= "<tr>";
-            $msgFormulario .= "Email:";
+            $msgFormulario .= "<td align='right'>Email:</td>";
             $msgFormulario .= "<td>".$email."</td>";
             $msgFormulario .= "</tr>";
 

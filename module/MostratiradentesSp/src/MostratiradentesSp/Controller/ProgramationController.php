@@ -17,7 +17,7 @@ use Zend\Paginator\Paginator;
 
 class ProgramationController extends SiteController
 {
-    const SITE_ID = 11;
+    const SITE_ID = 15;
     const SEPARATOR = ' • ';
 
     public function indexAction()
@@ -48,11 +48,11 @@ class ProgramationController extends SiteController
             ->andWhere('p.parent is NULL')
             ->andWhere('p.type != :type')
             ->andWhere('p.event = :idEvent')
+            ->setParameter('idEvent', $site->getEvent()->getId())
             ->setParameter('type', Type::WORKSHOP)
             ->addOrderBy('p.date', 'ASC')
             ->addOrderBy('p.order', 'ASC')
-            ->addOrderBy('p.startTime', 'ASC')
-            ->setParameter('idEvent', $site->getEvent()->getId());
+            ->addOrderBy('p.startTime', 'ASC');
 
         if(!empty($data['sub_event'])) {
             $qb->andWhere('p.subEvent = :idSubEvent')
@@ -76,6 +76,8 @@ class ProgramationController extends SiteController
         }
 
         $items = $qb->getQuery()->getResult();
+
+
         foreach ($items as $prog) {
 
             /** @var Programing $prog */
@@ -104,7 +106,12 @@ class ProgramationController extends SiteController
             //Tipo do evento
             $titleItem = "";
             if ($prog->getType() == Type::MOVIE || $prog->getType() == Type::SESSION) {
-                $titleItem = "Filme";
+
+                if($prog->getType() == Type::SESSION) {
+                    $titleItem = "Sessão";
+                } else {
+                    $titleItem = "Filme";
+                }
                 if ($prog->getSubEvent()) {
                     $titleItem .= self::SEPARATOR . $prog->getSubEvent()->getName();
                 }
@@ -117,27 +124,20 @@ class ProgramationController extends SiteController
                             'id' => $sess->getObject()->getId()
                         ];
                     }
-                } elseif($prog->getObject()) {
-
+                } else {
                     $events[] = [
                         'title' => $prog->getObject()->getTitle()." | <span class=\"programing-direction\">Direção: ".$prog->getObject()->getDirection()."</span>",
                         'id' => $prog->getObject()->getId()
                     ];
                 }
 
-                if($meta = $prog->hasMeta(Meta::NATIONAL_PREMIERE)) {
-                    if($meta->getValue() == 2) {
-                        $titleItem.= self::SEPARATOR . 'pré-estreia-nacional';
-                    }
+                if($prog->hasMeta(Meta::NATIONAL_PREMIERE)) {
+                    $titleItem.= self::SEPARATOR . 'pré-estreia-nacional';
+                } elseif ($prog->hasMeta(Meta::WORLD_PREMIERE)) {
+                    $titleItem.= self::SEPARATOR . 'pré-estreia-mundial';
                 }
 
-                if ($meta = $prog->hasMeta(Meta::WORLD_PREMIERE)) {
-                    if($meta->getValue() == 2) {
-                        $titleItem .= self::SEPARATOR . 'pré-estreia-mundial';
-                    }
-                }
-
-            } elseif ($prog->getType() == Type::SEMINAR_DEBATE) {
+            } elseif ($prog->getType() == Type::SEMINAR_DEBATE &&  $prog->getObject()) {
                 $titleItem = "Seminário" . self::SEPARATOR . $prog->getObject()->getThematic()->getName();
                 $events[] = [
                     'title' => $prog->getObject()->getTitle(),
@@ -190,6 +190,8 @@ class ProgramationController extends SiteController
                 'events' => $events
             ];
         }
+
+
 
         return new ViewModel([
             'programing' => $programing,

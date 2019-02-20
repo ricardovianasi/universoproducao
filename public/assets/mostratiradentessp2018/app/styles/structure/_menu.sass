@@ -1,0 +1,72 @@
+.menu
+  position: relative
+  &-button
+    font-size: 36px
+    line-height: inherit
+    +padding-leader(.5)
+    +padding-trailer(.5)
+    text-align: center
+    cursor: pointer
+    color: black
+    box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.3)
+    +media(">tablet")
+      display: none
+    +media("<=tablet")
+      display: block
+
+  &-container
+    background-color: $color-palette-1
+    width: 100vw
+    position: relative
+    margin-left: -50vw
+    left: 50%
+
+  &-list
+    +center
+    text-align: center
+
+  &-bar
+    transition: $transition-default
+    +media("<=tablet")
+      display: none
+
+  &-open
+    .menu-bar
+      display: block
+    .menu-item, .menu-item>.menu-container .menu-item
+      width: 100%
+      float: none
+      display: block
+      padding-left: 0
+      padding-right: 0
+
+  &-item
+    +column(1/5, $gutter: 0)
+    & >.menu-container
+      display: none
+      position: absolute
+      z-index: 999
+      background-color: $color-palette-2
+      .menu-item
+        width: auto
+        padding-right: 50px
+        &:first-child
+          padding-left: 0
+        &:last-child
+          padding-right: 0
+    &:hover
+      >.menu-link
+        color: white
+        text-decoration: underline
+        background-color: $color-palette-2
+      >.menu-container
+        display: block
+
+  &-link
+    display: block
+    +adjust-font-size-to(18px, 2)
+    +padding-leader(1)
+    +padding-trailer(1)
+    font-weight: 700
+    text-transform: uppercase
+    color: black

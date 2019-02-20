@@ -8,7 +8,7 @@
                 <header class="news-header">
                     <h1 class="news-title"><?php echo $event->getFullName(); ?></h1>
                 </header>
-                <a href="<?php echo $this->url("mostratiradentessp/edition", ['id'=>$event->getId()]) ?>" class="button-readmore readmore-2">Leia mais</a>
+                <a href="<?php echo $this->url("mostratiradentes/edition", ['id'=>$event->getId()]) ?>" class="button-readmore readmore-2">Leia mais</a>
             </article>
         <?php endforeach; ?>
     </div>

@@ -14,7 +14,7 @@ use Zend\View\Model\ViewModel;
 
 class MovieController extends SiteController
 {
-    const SITE_ID = 11;
+    const SITE_ID = 15;
 
     public function indexAction()
     {
@@ -125,25 +125,37 @@ class MovieController extends SiteController
         $format = $movie->getOption(OptionsType::FORMAT_COMPLETED);
         $duration = ($movie->getDuration()->format('H')*60)+($movie->getDuration()->format('i'));
 
-
-
         $breadcrumbs = [
             ['programacao' => 'Programação'],
             ['filmes' => 'Filmes']
         ];
+
+        $movieDetails = [];
+
+        if($genre) {
+            $movieDetails[] = $genre->getName();
+        }
+
+        if($color) {
+            $movieDetails[] = $color->getName();
+        }
+
+        if($format) {
+            $movieDetails[] = $format->getName();
+        }
+
+        $movieDetails[] = $duration.' min';
+
+        if($movie) {
+            $movieDetails[] = $movie->getEndDateYear();
+        }
 
         return new ViewModel([
             'post' => $movie,
             'medias' => $movieMedias,
             'breadcrumbs' => $breadcrumbs,
             'event' => $site->getEvent(),
-            'movie_details' => [
-                $genre->getName(),
-                $color->getName(),
-                $format->getName(),
-                $duration.' min',
-                $movie->getEndDateYear()
-            ]
+            'movie_details' => $movieDetails
         ]);
     }
 }

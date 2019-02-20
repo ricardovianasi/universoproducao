@@ -44,6 +44,16 @@ return array(
                             ),
                         )
                     ),
+                    'index' => array(
+                        'type' => Literal::class,
+                        'options' => array(
+                            'route' => '/inicio',
+                            'defaults' => array(
+                                'controller'    => Controller\IndexController::class,
+                                'action'        => 'index',
+                            ),
+                        )
+                    ),
                     'news' => array(
                         'type' => Segment::class,
                         'options' => array(
@@ -54,6 +64,20 @@ return array(
                             'defaults' => array(
                                 'controller' => Controller\NewsController::class,
                                 'action' => 'news',
+                            ),
+                        ),
+                        'priority' => '99999'
+                    ),
+                    'workshop' => array(
+                        'type' => Segment::class,
+                        'options' => array(
+                            'route' => '/programacao/oficina/:id',
+                            'constraints' => [
+                                'id' => '[a-zA-Z0-9_-]*',
+                            ],
+                            'defaults' => array(
+                                'controller' => Controller\WorkshopController::class,
+                                'action' => 'details',
                             ),
                         ),
                         'priority' => '99999'
@@ -86,7 +110,7 @@ return array(
                         ),
                         'priority' => '99999'
                     ),
-                    'arte' => array(
+                    'art' => array(
                         'type' => Segment::class,
                         'options' => array(
                             'route' => '/programacao/arte/:id',
@@ -94,8 +118,8 @@ return array(
                                 'id' => '[a-zA-Z0-9_-]*',
                             ],
                             'defaults' => array(
-                                'controller' => Controller\ProgramationController::class,
-                                'action' => 'arte',
+                                'controller' => Controller\ArtController::class,
+                                'action' => 'details',
                             ),
                         ),
                         'priority' => '99999'

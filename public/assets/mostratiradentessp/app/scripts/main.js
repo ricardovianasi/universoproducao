@@ -26,7 +26,6 @@ $(document).ready(function () {
 
     $(".banner-items").owlCarousel({
         items: 1,
-        autoHeight:true,
         nav: false,
         navText: [
             "<button class='gallery__arrow gallery__arrow--left'><span class='icon icon-arrow-left'></span></button>",
@@ -35,7 +34,7 @@ $(document).ready(function () {
         dots: true,
         mouseDrag: false,
         lazyLoad: false,
-        loop: true,
+        loop: false,
         center: true,
         autoplay: true,
         autoplayTimeout: 7000,
@@ -62,9 +61,26 @@ $(document).ready(function () {
     });
 
     $(".gallery-list").owlCarousel({
-        items: 1,
+        //items: 2,
+        responsiveClass:true,
+        responsive:{
+            0:{
+                items:1,
+            },
+            728:{
+                items:2,
+            },
+            1024:{
+                items:3,
+            },
+            1900:{
+                items:4,
+            }
+        },
         autoWidth: true,
+        autoHeight: true,
         nav: true,
+        margin: 1,
         navText: [
             "<button class='owl-prev'><span class='icon icon-arrow-left4'></span></button>",
             "<button class='owl-next'><span class='icon icon-arrow-right4'></span></button>"

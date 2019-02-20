@@ -3,8 +3,8 @@ use Application\Navigation;
 
 return [
     'factories' => [
-        'MostratiradentesSpNavigation' => function($e) {
-            $navigation = new Navigation\SiteNavigation(11, 'mostratiradentessp/default');
+        'MostratiradentesNavigationSp' => function($e) {
+            $navigation = new Navigation\SiteNavigation(15, 'mostratiradentessp/default');
             return $navigation->createService($e);
         },
     ],
