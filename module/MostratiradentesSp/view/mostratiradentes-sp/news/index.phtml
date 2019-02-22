@@ -13,7 +13,7 @@
                     <figure class="news-figure"><img src="<?php echo $this->thumbor()->url($news->getMeta('_thumb'))->resize(270, 180); ?>" alt=""></figure>
                 <?php endif; ?>
                 <p class="news-desc"><?php  echo $this->truncate($news->getContent(), 350); ?></p>
-                <a href="<?php echo $this->url("mostratiradentes/news", ['slug'=>$news->getSlug()]) ?>" class="button-readmore">Leia a notícia completa</a>
+                <a href="<?php echo $this->url("mostratiradentessp/news", ['slug'=>$news->getSlug()]) ?>" class="button-readmore">Leia a notícia completa</a>
             </article>
         <?php endforeach; ?>
     </div>
