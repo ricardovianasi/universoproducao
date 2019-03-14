@@ -22,6 +22,9 @@ class ArtisticProposal extends AbstractEntity
      */
     private $id;
 
+    /** @ORM\Column(type="string", nullable=true) */
+    private $email;
+
     /**
      * @ORM\ManyToOne(targetEntity="Application\Entity\User\User")
      * @ORM\JoinColumn(name="author_id", referencedColumnName="id")
@@ -346,5 +349,21 @@ class ArtisticProposal extends AbstractEntity
     public function setShortPresentation($shortPresentation)
     {
         $this->shortPresentation = $shortPresentation;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    /**
+     * @param mixed $email
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
     }
 }

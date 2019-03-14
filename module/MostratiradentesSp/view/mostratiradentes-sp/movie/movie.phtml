@@ -63,21 +63,21 @@
 
     <div style="display: none;min-width:600px;min-height: 400px" id="moreinfo">
         <div class="padding" style="padding: 20px">
-            <p><strong>Roteiro:</strong> <?php echo $this->post->getScript(); ?></p>
-            <p><strong>Empresa produtora:</strong> <?php echo $this->post->getProductionCompany(); ?></p>
-            <p><strong>Co-produção:</strong> <?php echo $this->post->getCoProduction(); ?></p>
-            <p><strong>Produção executiva:</strong> <?php echo $this->post->getExecutiveProduction(); ?></p>
-            <p><strong>Direção de produção:</strong> <?php echo $this->post->getDirectionProduction(); ?></p>
-            <p><strong>Montagem:</strong> <?php echo $this->post->getEditingAssembly(); ?></p>
-            <p><strong>Fotografia:</strong> <?php echo $this->post->getPhotography(); ?></p>
-            <p><strong>Direção de arte:</strong> <?php echo $this->post->getDirectionArt(); ?></p>
-            <p><strong>Trilha sonora:</strong> <?php echo $this->post->getSoundtrack(); ?></p>
-            <p><strong>Mixagem:</strong> <?php echo $this->post->getMixing(); ?></p>
-            <p><strong>Som direto:</strong> <?php echo $this->post->getDirectSound(); ?></p>
-            <p><strong>Edição de som:</strong> <?php echo $this->post->getSoundEditing(); ?></p>
-            <p><strong>Cenografia:</strong> <?php echo $this->post->getScenography(); ?></p>
-            <p><strong>Figurino:</strong> <?php echo $this->post->getCostume(); ?></p>
-            <p><strong>Elenco:</strong> <?php echo $this->post->getCast(); ?></p>
+            <?php if(!empty($this->post->getScript())): ?><p><strong>Roteiro:</strong> <?php echo $this->post->getScript(); ?></p><?php endif; ?>
+            <?php if(!empty($this->post->getProductionCompany())): ?><p><strong>Empresa produtora:</strong> <?php echo $this->post->getProductionCompany(); ?></p><?php endif; ?>
+            <?php if(!empty($this->post->getCoProduction())): ?><p><strong>Co-produção:</strong> <?php echo $this->post->getCoProduction(); ?></p><?php endif; ?>
+            <?php if(!empty($this->post->getExecutiveProduction())): ?><p><strong>Produção executiva:</strong> <?php echo $this->post->getExecutiveProduction(); ?></p><?php endif; ?>
+            <?php if(!empty($this->post->getDirectionProduction())): ?><p><strong>Direção de produção:</strong> <?php echo $this->post->getDirectionProduction(); ?></p><?php endif; ?>
+            <?php if(!empty($this->post->getEditingAssembly())): ?><p><strong>Montagem:</strong> <?php echo $this->post->getEditingAssembly(); ?></p><?php endif; ?>
+            <?php if(!empty( $this->post->getPhotography())): ?><p><strong>Fotografia:</strong> <?php echo $this->post->getPhotography(); ?></p><?php endif; ?>
+            <?php if(!empty($this->post->getDirectionArt())): ?><p><strong>Direção de arte:</strong> <?php echo $this->post->getDirectionArt(); ?></p><?php endif; ?>
+            <?php if(!empty($this->post->getSoundtrack())): ?><p><strong>Trilha sonora:</strong> <?php echo $this->post->getSoundtrack(); ?></p><?php endif; ?>
+            <?php if(!empty($this->post->getMixing())): ?><p><strong>Mixagem:</strong> <?php echo $this->post->getMixing(); ?></p><?php endif; ?>
+            <?php if(!empty($this->post->getDirectSound())): ?><p><strong>Som direto:</strong> <?php echo $this->post->getDirectSound(); ?></p><?php endif; ?>
+            <?php if(!empty($this->post->getSoundEditing())): ?><p><strong>Edição de som:</strong> <?php echo $this->post->getSoundEditing(); ?></p><?php endif; ?>
+            <?php if(!empty($this->post->getScenography())): ?><p><strong>Cenografia:</strong> <?php echo $this->post->getScenography(); ?></p><?php endif; ?>
+            <?php if(!empty($this->post->getCostume())): ?><p><strong>Figurino:</strong> <?php echo $this->post->getCostume(); ?></p><?php endif; ?>
+            <?php if(!empty($this->post->getCast())): ?><p><strong>Elenco:</strong> <?php echo $this->post->getCast(); ?></p><?php endif; ?>
         </div>
     </div>
 

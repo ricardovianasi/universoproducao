@@ -109,6 +109,21 @@ class ArtisticProposalForm extends Form
         ]);
 
         $this->add([
+            'name' => 'email',
+            'options' => [
+                'label' => 'E-mail',
+                'twb-layout' => 'horizontal',
+                'column-size' => 'md-5',
+                'label_attributes' => [
+                    'class' => 'col-md-3'
+                ]
+            ],
+            'attributes' => [
+                'placeholder' => 'E-mail',
+            ]
+        ]);
+
+        $this->add([
             'type' => 'Select',
             'name' => 'target_public',
             'options' => [
