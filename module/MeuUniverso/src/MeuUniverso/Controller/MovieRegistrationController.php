@@ -75,7 +75,7 @@ class MovieRegistrationController extends AbstractMeuUniversoRegisterController
         ];
     }
 
-    public function inscricaoAction()
+    /*public function inscricaoAction()
     {
         $idReg = $this->params()->fromRoute('id_reg');
         if(!$idReg) {
@@ -137,7 +137,7 @@ class MovieRegistrationController extends AbstractMeuUniversoRegisterController
                 'id_reg' => $idReg
             ]);
         }
-    }
+    }*/
 
     public function novoAction()
     {
