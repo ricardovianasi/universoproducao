@@ -37,7 +37,7 @@ class ProducingInstitutionFieldset extends Fieldset
                 ]*/
             ],
             'attributes' => [
-                'required' => 'required'
+//                'required' => 'required'
             ]
         ]);
 
@@ -52,7 +52,7 @@ class ProducingInstitutionFieldset extends Fieldset
                 ]*/
             ],
             'attributes' => [
-                'required' => 'required'
+//                'required' => 'required'
             ]
         ]);
 
@@ -67,7 +67,7 @@ class ProducingInstitutionFieldset extends Fieldset
                 ]*/
             ],
             'attributes' => [
-                'required' => 'required'
+//                'required' => 'required'
             ]
         ]);
 
@@ -82,7 +82,7 @@ class ProducingInstitutionFieldset extends Fieldset
                 ]*/
             ],
             'attributes' => [
-                'required' => 'required'
+//                'required' => 'required'
             ]
         ]);
 
@@ -97,7 +97,7 @@ class ProducingInstitutionFieldset extends Fieldset
                 ]*/
             ],
             'attributes' => [
-                'required' => 'required'
+//                'required' => 'required'
             ]
         ]);
 
@@ -112,7 +112,7 @@ class ProducingInstitutionFieldset extends Fieldset
                 ]*/
             ],
             'attributes' => [
-                'required' => 'required'
+//                'required' => 'required'
             ]
         ]);
 
@@ -127,7 +127,7 @@ class ProducingInstitutionFieldset extends Fieldset
                 ]*/
             ],
             'attributes' => [
-                'required' => 'required'
+//                'required' => 'required'
             ]
         ]);
     }
@@ -137,27 +137,27 @@ class ProducingInstitutionFieldset extends Fieldset
         return [
             'name' => [
                 'name' => 'name',
-                'required' => true,
+                'required' => false,
             ],
             'address' => [
                 'name' => 'address',
-                'required' => true,
+                'required' => false,
             ],
             'uf' => [
                 'name' => 'uf',
-                'required' => true,
+                'required' => false,
             ],
             'phone' => [
                 'name' => 'phone',
-                'required' => true,
+                'required' => false,
             ],
             'mobile_phone' => [
                 'name' => 'mobile_phone',
-                'required' => true,
+                'required' => false,
             ],
             'email' => [
                 'name' => 'email',
-                'required' => true,
+                'required' => false,
             ],
         ];
     }

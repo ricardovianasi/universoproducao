@@ -112,8 +112,8 @@ class EducationalMovieForm extends AdminMovieForm
         $this->getInputFilter()->get('has_conversations_languages')->setRequired(true);
         $this->getInputFilter()->get('has_subtitles_languages')->setRequired(true);
         $this->getInputFilter()->get('options[format_completed]')->setRequired(true);
-//        $this->getInputFilter()->get('options[window]')->setRequired(true);
-//        $this->getInputFilter()->get('options[sound]')->setRequired(true);
+        $this->getInputFilter()->get('options[window]')->setRequired(false);
+        $this->getInputFilter()->get('options[sound]')->setRequired(false);
         $this->getInputFilter()->get('options[color]')->setRequired(true);
         $this->getInputFilter()->get('options[genre]')->setRequired(true);
         $this->getInputFilter()->get('direction')->setRequired(true);
