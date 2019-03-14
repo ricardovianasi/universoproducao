@@ -31,6 +31,13 @@ class EducationalMovieForm extends AdminMovieForm
                     1 => '01',
                     2 => '02',
                     3 => '03',
+                    4 => '04',
+                    5 => '05',
+                    6 => '06',
+                    7 => '07',
+                    8 => '08',
+                    9 => '09',
+                    10 => '10',
                 ],
                 'empty_option' => 'Minutos',
             ],
@@ -77,8 +84,8 @@ class EducationalMovieForm extends AdminMovieForm
         $this->get('subtitles_languages')->setAttribute('required', 'required');
         $this->get('conversations_list_languages')->setAttribute('required', 'required');
         $this->get('options[format_completed]')->setAttribute('required', 'required');
-        $this->get('options[window]')->setAttribute('required', 'required');
-        $this->get('options[sound]')->setAttribute('required', 'required');
+//        $this->get('options[window]')->setAttribute('required', 'required');
+//        $this->get('options[sound]')->setAttribute('required', 'required');
         $this->get('options[color]')->setAttribute('required', 'required');
         $this->get('options[genre]')->setAttribute('required', 'required');
         $this->get('direction')->setAttribute('required', 'required');
@@ -105,8 +112,8 @@ class EducationalMovieForm extends AdminMovieForm
         $this->getInputFilter()->get('has_conversations_languages')->setRequired(true);
         $this->getInputFilter()->get('has_subtitles_languages')->setRequired(true);
         $this->getInputFilter()->get('options[format_completed]')->setRequired(true);
-        $this->getInputFilter()->get('options[window]')->setRequired(true);
-        $this->getInputFilter()->get('options[sound]')->setRequired(true);
+//        $this->getInputFilter()->get('options[window]')->setRequired(true);
+//        $this->getInputFilter()->get('options[sound]')->setRequired(true);
         $this->getInputFilter()->get('options[color]')->setRequired(true);
         $this->getInputFilter()->get('options[genre]')->setRequired(true);
         $this->getInputFilter()->get('direction')->setRequired(true);

@@ -37,7 +37,7 @@ class ProducingInstitutionFieldset extends Fieldset
                 ]*/
             ],
             'attributes' => [
-//                'required' => 'required'
+                'required' => 'required'
             ]
         ]);
 
@@ -52,7 +52,7 @@ class ProducingInstitutionFieldset extends Fieldset
                 ]*/
             ],
             'attributes' => [
-//                'required' => 'required'
+                'required' => 'required'
             ]
         ]);
 
@@ -66,6 +66,9 @@ class ProducingInstitutionFieldset extends Fieldset
                     'class' => 'col-md-4'
                 ]*/
             ],
+            'attributes' => [
+                'required' => 'required'
+            ]
         ]);
 
         $this->add([
@@ -79,7 +82,7 @@ class ProducingInstitutionFieldset extends Fieldset
                 ]*/
             ],
             'attributes' => [
-//                'required' => 'required'
+                'required' => 'required'
             ]
         ]);
 
@@ -94,7 +97,7 @@ class ProducingInstitutionFieldset extends Fieldset
                 ]*/
             ],
             'attributes' => [
-//                'required' => 'required'
+                'required' => 'required'
             ]
         ]);
 
@@ -109,7 +112,7 @@ class ProducingInstitutionFieldset extends Fieldset
                 ]*/
             ],
             'attributes' => [
-//                'required' => 'required'
+                'required' => 'required'
             ]
         ]);
 
@@ -124,7 +127,7 @@ class ProducingInstitutionFieldset extends Fieldset
                 ]*/
             ],
             'attributes' => [
-//                'required' => 'required'
+                'required' => 'required'
             ]
         ]);
     }
@@ -132,7 +135,7 @@ class ProducingInstitutionFieldset extends Fieldset
     public function getInputFilterSpecification()
     {
         return [
-            /*'name' => [
+            'name' => [
                 'name' => 'name',
                 'required' => true,
             ],
@@ -155,7 +158,7 @@ class ProducingInstitutionFieldset extends Fieldset
             'email' => [
                 'name' => 'email',
                 'required' => true,
-            ],*/
+            ],
         ];
     }
 
