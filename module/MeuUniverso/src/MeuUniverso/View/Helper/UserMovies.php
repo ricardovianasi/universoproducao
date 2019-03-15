@@ -63,7 +63,7 @@ class UserMovies extends AbstractHelper implements ServiceLocatorAwareInterface
     {
         $td = '<tr><td>'.$movie->getId().'</td>';
         $td.= '<td>'.$movie->getTitle().'</td>';
-        $td.= '<td>'.$movie->getCreatedAt()->format('d/mY \à\s H:i').'</td>';
+        $td.= '<td>'.$movie->getCreatedAt()->format('d/m/Y \à\s H:i').'</td>';
 
         $events = "";
         foreach ($movie->getSubscriptions() as $event) {
@@ -92,7 +92,11 @@ class UserMovies extends AbstractHelper implements ServiceLocatorAwareInterface
         }*/
 
         //visualizar
-        $viewUrl = $urlHelper('meu-universo/movie_view', ['id'=>$movie->getId()]);
+        if($movie->getType() == Movie::TYPE_EDUCATIONAL_MOVIE) {
+            $viewUrl = $urlHelper('meu-universo/educational_movie_view', ['id'=>$movie->getId()]);
+        } else {
+            $viewUrl = $urlHelper('meu-universo/movie_view', ['id'=>$movie->getId()]);
+        }
         $btnView = '<a href="'.$viewUrl.'" type="button" class="btn btn-circle btn-default btn-sm"><i class="glyphicon glyphicon-list-alt"></i> Visualizar</a>';
 
         $td.= '<td>'.$btnView.'</td></tr>';

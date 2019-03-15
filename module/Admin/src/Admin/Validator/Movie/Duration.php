@@ -67,18 +67,22 @@ class Duration extends AbstractValidator
 
 //        $totalSeconds = (($hours*60)*60) + ($minutes*60) + $seconds;
 
-        $totalSeconds = $value*60;
+        if (preg_match ('/^\d{1,2}\:\d{1,2}\:\d{1,2}$/', $value)) {
+            $time = \DateTime::createFromFormat($this->dateTimeFormat, $value);
+
+            $hours = (int) $time->format('H');
+            $minutes = (int) $time->format('i');
+            $seconds = (int) $time->format('s');
+
+            $totalSeconds = (($hours*60)*60) + ($minutes*60) + $seconds;
+        } elseif(is_integer($value)) {
+            $totalSeconds = $value*60;
+        }
 
         if($this->inclusive) {
-            /*if(!($totalSeconds >= $this->min && $totalSeconds <= $this->max)) {
+            if($totalSeconds < $this->min || $totalSeconds > $this->max) {
                 $this->error(self::ERROR_IS_NOT_MARCH, $value);
                 return false;
-            }*/
-            if($totalSeconds >= $this->min) {
-                if($totalSeconds <= $this->max) {
-                    $this->error(self::ERROR_IS_NOT_MARCH, $value);
-                    return false;
-                }
             }
         } else {
             /*if(!($totalSeconds > $this->min && $totalSeconds < $this->max)) {
@@ -86,11 +90,9 @@ class Duration extends AbstractValidator
                 return false;
             }*/
 
-            if($totalSeconds > $this->min) {
-                if($totalSeconds < $this->max) {
-                    $this->error(self::ERROR_IS_NOT_MARCH, $value);
-                    return false;
-                }
+            if($totalSeconds <= $this->min || $totalSeconds >= $this->max) {
+                $this->error(self::ERROR_IS_NOT_MARCH, $value);
+                return false;
             }
         }
 

@@ -242,10 +242,10 @@ class EducationalMovieRegistrationController extends AbstractMeuUniversoRegister
             $durationInputFilter = $form->getInputFilter()->get('duration');
             $durationInputFilter->getValidatorChain()->attach(new Duration([
                 'min' => (1), //1 segundo
-                'max' => (3*60), //3 minutos
+                'max' => (10*60), //3 minutos
                 'inclusive' => true,
                 'messages' => [
-                    Duration::ERROR_IS_NOT_MARCH => 'O tempo de duração é de no máximo 03 minutos'
+                    Duration::ERROR_IS_NOT_MARCH => 'O tempo de duração é de no máximo 10 minutos'
                 ]
             ]));
 
@@ -273,8 +273,8 @@ class EducationalMovieRegistrationController extends AbstractMeuUniversoRegister
                 unset($validData['institution']);
 
                 $options = new ArrayCollection();
-                if(!empty($validData['options'])) {
-                    foreach ($validData['options'] as $opt) {
+                if(!empty($data['options'])) {
+                    foreach ($data['options'] as $opt) {
                         if(!empty($opt)) {
                             if(is_string($opt)) {
                                 $optEntity = $this->getRepository(MovieOptions::class)->find($opt);
@@ -293,6 +293,7 @@ class EducationalMovieRegistrationController extends AbstractMeuUniversoRegister
                     }
                 }
                 $movie->setOptions($options);
+                unset($data['options']);
                 unset($validData['options']);
 
                 //Upload das fotos
@@ -332,7 +333,7 @@ class EducationalMovieRegistrationController extends AbstractMeuUniversoRegister
                     $user = $this->getAuthenticationService()->getIdentity();
                     $msg = '<p>Olá <strong>'.$user->getName().'</strong>!</p>';
                     $msg.= '<p>Informamos que o filme <strong>'.$movie->getTitle().'</strong>
-                    foi inscrito com sucesso para participar da seleção da:</p>';
+                    foi inscrito com sucesso para participar da seleção da Mostra Edução da :</p>';
 
                     $mostras = "";
                     foreach ($movie->getSubscriptions() as $e) {
@@ -340,7 +341,7 @@ class EducationalMovieRegistrationController extends AbstractMeuUniversoRegister
                     }
                     $msg.= '<p><ul>'.$mostras.'</ul></p>';
 
-                    $msg.= '<p>O resultado para a seleção está previsto para ser divulgado até o dia 14 de maio</p>';
+                    $msg.= '<p>O resultado para a seleção está previsto para ser divulgado até maio de 2019</p>';
                     $msg.= '<p>Pedimos a gentileza de manter os dados do seu cadastro sempre atualizados para garantir a eficácia em nossa comunicação!</p>';
 
                     $to[$user->getName()] = $user->getEmail();

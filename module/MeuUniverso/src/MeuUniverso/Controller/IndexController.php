@@ -16,7 +16,8 @@ class IndexController extends AbstractMeuUniversoController
     public function indexAction()
     {
         $movies = $this->getRepository(Movie::class)->findBy([
-           'author' => $this->getAuthenticationService()->getIdentity()->getId()
+           'author' => $this->getAuthenticationService()->getIdentity()->getId(),
+           'type' => Movie::TYPE_MOVIE
         ],['createdAt' => 'DESC']);
 
         $educationalMovies = $this->getRepository(Movie::class)->findBy([

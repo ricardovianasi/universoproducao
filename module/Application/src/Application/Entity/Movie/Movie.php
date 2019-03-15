@@ -1255,7 +1255,7 @@ class Movie extends AbstractEntity
     }
 
     /**
-     * @return mixed
+     * @return ProducingInstitution
      */
     public function getProducingInstitution()
     {
