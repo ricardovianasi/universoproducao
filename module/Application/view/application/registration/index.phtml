@@ -77,16 +77,14 @@
 
                             }
                         ?>
-                        <div style="display: none;" class="registration-modal" id="regulation-<?php echo $reg->getId();?>">
-                            <div>
-                                <h2><?php echo $reg->getName(); ?></h2>
-                                <?php echo $reg->getRegulation(); ?>
-                            </div>
-                        </div>
+                        <p><a href="<?php echo $url ?>" class="registration-btn submit">Fazer inscrição</a></p>
                     <?php endif; ?>
 
 
-                        <p><a href="<?php echo $url ?>" class="registration-btn submit">Fazer inscrição</a></p>
+                    <div style="display: none;" class="registration-modal" id="regulation-<?php echo $reg->getId();?>">
+                        <h2><?php echo $reg->getName(); ?></h2>
+                        <?php echo $reg->getRegulation(); ?>
+                    </div>
 
 
                 </div>
