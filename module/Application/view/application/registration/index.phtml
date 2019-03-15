@@ -36,7 +36,7 @@
                     <?php if($strData): ?><p class="date"><?php echo $strData ?></p><?php endif; ?>
                     <?php if($reg->getInfo()): ?><p><?php echo $reg->getInfo(); ?></p><?php endif; ?>
                     <?php if($reg->getRegulation()): ?>
-                        <p><a class="registration-link" data-touch="false" data-fancybox data-src="#regulation-<?php echo $reg->getId(); ?>" href="javascript:;">Confira o regulamento</a></p>
+                        <p><a class="registration-link" data-touch="false" data-selectable="true" data-fancybox data-src="#regulation-<?php echo $reg->getId(); ?>" href="javascript:;">Confira o regulamento</a></p>
                     <?php endif; ?>
 
                     <?php $url = "#"; if($reg->isOpen()): ?>
