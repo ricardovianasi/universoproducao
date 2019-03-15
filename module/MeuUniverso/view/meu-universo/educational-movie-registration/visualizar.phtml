@@ -266,27 +266,6 @@ $months = [
                         <?php endif; ?>
                     </div>
 
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label class="control-label col-md-3">O filme já foi exibido publicamente ou tem exibição prevista para 2018?</label>
-                                <div class="col-md-9">
-                                    <p class="form-control-static"> <?php echo $movie->getHasParticipatedOtherFestivals()==1 ? "Sim" : "Não"; ?> </p>
-                                </div>
-                            </div>
-                        </div>
-                        <?php if($movie->getHasParticipatedOtherFestivals()): ?>
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label class="control-label col-md-3">Onde foi ou será exibido? Cite também os festivais e eventuais prêmios recebidos:</label>
-                                    <div class="col-md-9">
-                                        <p class="form-control-static"> <?php echo $movie->getOtherFestivals(); ?> </p>
-                                    </div>
-                                </div>
-                            </div>
-                        <?php endif; ?>
-                    </div>
-
                     <h3 class="h3 form-section">Produção/Direção</h3>
 
                     <div class="row">
