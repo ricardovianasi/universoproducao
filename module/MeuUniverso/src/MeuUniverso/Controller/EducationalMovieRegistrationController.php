@@ -333,7 +333,7 @@ class EducationalMovieRegistrationController extends AbstractMeuUniversoRegister
                     $user = $this->getAuthenticationService()->getIdentity();
                     $msg = '<p>Olá <strong>'.$user->getName().'</strong>!</p>';
                     $msg.= '<p>Informamos que o filme <strong>'.$movie->getTitle().'</strong>
-                    foi inscrito com sucesso para participar da seleção da Mostra Edução da :</p>';
+                    foi inscrito com sucesso para participar da seleção da Mostra Educação da :</p>';
 
                     $mostras = "";
                     foreach ($movie->getSubscriptions() as $e) {

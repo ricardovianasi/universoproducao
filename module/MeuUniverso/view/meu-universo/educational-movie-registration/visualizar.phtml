@@ -155,21 +155,6 @@ $months = [
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label class="control-label col-md-3">Formato em que o filme foi finalizado:</label>
-                                <div class="col-md-9">
-                                    <p class="form-control-static">
-                                        <?php if($for = $movie->getOption(\Application\Entity\Movie\OptionsType::FORMAT_COMPLETED)) {
-                                            echo $for->getName();
-                                        } ?>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="form-group">
                                 <label class="control-label col-md-3">Cor:</label>
                                 <div class="col-md-9">
                                     <p class="form-control-static">
