@@ -80,12 +80,12 @@
                         <p><a href="<?php echo $url ?>" class="registration-btn submit">Fazer inscrição</a></p>
                     <?php endif; ?>
 
-                    <div style="display: none;">
-                        <div class="registration-modal" id="regulation-<?php echo $reg->getId();?>">
+
+                        <div style="display: none;" class="registration-modal" id="regulation-<?php echo $reg->getId();?>">
                             <h2><?php echo $reg->getName(); ?></h2>
                             <?php echo $reg->getRegulation(); ?>
                         </div>
-                    </div>
+                    
 
                 </div>
             </article>
