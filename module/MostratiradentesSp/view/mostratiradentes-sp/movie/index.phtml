@@ -49,7 +49,7 @@
                         </figure>
 
                         <?php if(count($movie->getPrograming($this->event->getId()))): ?>
-                        <div class="movie-highlight">
+                        <div class="movie-highlight" <?php echo !$media->getSrc() ? "style='opacity: 1'" : "" ?>>
                             <div class="hightlight-wrapper">
                                 <p class="hightlight-title">Exibições</p>
                                 <?php foreach ($movie->getPrograming($this->event->getId()) as $pro): ?>
