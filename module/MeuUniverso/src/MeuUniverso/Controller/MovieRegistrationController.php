@@ -96,7 +96,7 @@ class MovieRegistrationController extends AbstractMeuUniversoRegisterController
                 'id_reg' => $idReg
             ]]);
         }
-        
+
         $finishedFrom = $reg->getOption(Options::MOVIE_ALLOW_FINISHED_FROM);
         $finishedTo = $reg->getOption(Options::MOVIE_ALLOW_FINISHED_TO);
         if(!($finishedFrom && $finishedTo)) {
