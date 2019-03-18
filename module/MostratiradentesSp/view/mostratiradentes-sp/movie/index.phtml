@@ -44,7 +44,7 @@
                             <?php if($media->getSrc()): ?>
                                 <img src="<?php echo $this->thumbor()->url($this->fileManipulation()->url($media->getSrc()))->resize(400, 600); ?>" alt="">
                             <?php else: ?>
-                                <img src="https://via.placeholder.com/400x600/000000" alt="">
+                                <img src="https://via.placeholder.com/400x600/000000?text= " alt="">
                             <?php endif; ?>
                         </figure>
 
