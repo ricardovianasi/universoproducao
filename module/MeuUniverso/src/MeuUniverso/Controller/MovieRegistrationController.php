@@ -75,7 +75,7 @@ class MovieRegistrationController extends AbstractMeuUniversoRegisterController
         ];
     }
 
-    /*public function inscricaoAction()
+    public function inscricaoAction()
     {
         $idReg = $this->params()->fromRoute('id_reg');
         if(!$idReg) {
@@ -85,6 +85,7 @@ class MovieRegistrationController extends AbstractMeuUniversoRegisterController
             ]]);
         }
 
+        /** @var Registration $reg */
         $reg = $this->getRepository(Registration::class)->findOneBy([
             'hash' => $idReg
         ]);
@@ -95,8 +96,7 @@ class MovieRegistrationController extends AbstractMeuUniversoRegisterController
                 'id_reg' => $idReg
             ]]);
         }
-
-
+        
         $finishedFrom = $reg->getOption(Options::MOVIE_ALLOW_FINISHED_FROM);
         $finishedTo = $reg->getOption(Options::MOVIE_ALLOW_FINISHED_TO);
         if(!($finishedFrom && $finishedTo)) {
@@ -124,6 +124,20 @@ class MovieRegistrationController extends AbstractMeuUniversoRegisterController
             ->getQuery()
             ->getResult();
 
+        $regEventsType = [];
+        foreach ($reg->getEvents() as $ev) {
+            $regEventsType[] = $ev->getType();
+        }
+
+        foreach ($movies as $key => $m) {
+            foreach ($m->getSubscriptions() as $sub) {
+                $sub = $sub;
+                if(in_array($sub->getEvent()->getType(), $regEventsType)) {
+                    unset($movies[$key]);
+                }
+            }
+        }
+
         if(count($movies)) {
             $viewModel = new ViewModel();
             return $viewModel->setVariables([
@@ -137,7 +151,7 @@ class MovieRegistrationController extends AbstractMeuUniversoRegisterController
                 'id_reg' => $idReg
             ]);
         }
-    }*/
+    }
 
     public function novoAction()
     {

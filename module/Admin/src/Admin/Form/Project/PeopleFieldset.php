@@ -84,7 +84,6 @@ class PeopleFieldset extends Fieldset
             'name' => 'image',
             'options' => [
                 'label' => 'Foto',
-                'help-block' => 'mínimo 800kb e máximo de 2mb'
             ],
             'attributes' => [
                 'accept' => 'image/*',

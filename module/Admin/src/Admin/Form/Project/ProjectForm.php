@@ -421,7 +421,7 @@ class ProjectForm extends Form
             'type' => 'Textarea',
             'name' => 'value_captured_resources',
             'options' => [
-                'label' => 'Porcentagem do valor total de projetos já captada em recursos',
+                'label' => 'Porcentagem do valor total do projeto já captada em recursos',
             ],
             'attributes' => [
                 'required' => 'required',
@@ -433,7 +433,7 @@ class ProjectForm extends Form
             'type' => 'Textarea',
             'name' => 'value_captured_services',
             'options' => [
-                'label' => 'Porcentagem do valor total de projetos já captada em serviços',
+                'label' => 'Porcentagem do valor total do projeto já captada em serviços',
             ],
             'attributes' => [
                 'required' => 'required',
@@ -445,7 +445,7 @@ class ProjectForm extends Form
             'type' => 'select',
             'name' => 'options[written_script]',
             'options' => [
-                'label' => 'O filme já tem roteiro escrito?',
+                'label' => 'O Projeto já tem roteiro escrito?',
                 'value_options' => $this->populateOptions(Options::WRITTEN_SCRIPT),
                 'empty_option' => 'Selecione',
             ],
@@ -458,7 +458,7 @@ class ProjectForm extends Form
             'type' => 'select',
             'name' => 'options[first_or_second_project]',
             'options' => [
-                'label' => 'Este é o primeiro ou segundo projeto de longa do diretor? ',
+                'label' => 'Este é o primeiro ou segundo projeto de longa do(a) diretor(a)? ',
                 'value_options' => $this->populateOptions(Options::FIRST_OR_SECOND_PROJECT),
                 'empty_option' => 'Selecione',
             ],
@@ -471,7 +471,7 @@ class ProjectForm extends Form
             'type' => ImageFieldset::class,
             'name' => 'image',
             'options' => [
-                'label' => 'Extra - Imagem do filme '
+                'label' => 'Extra - Imagem do Projeto '
             ],
             'attributes' => [
                 'required' => 'required'

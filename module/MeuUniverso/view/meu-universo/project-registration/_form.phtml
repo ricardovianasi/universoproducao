@@ -87,7 +87,7 @@
                         <?php echo $this->formRow($instituitionFieldset->get('description')) ?>
 
                         <div class="project-producers form-group">
-                            <h3 class="h3 block">Produtor(es)</h3>
+                            <h3 class="h3 block">Produtor(a/es)</h3>
                             <?php echo $this->formCollection()->renderTemplate($form->get('producers')); ?>
                             <div class="list">
                                 <?php $prodColl = $form->get('producers')->getFieldsets(); ?>
@@ -112,12 +112,12 @@
                                     </div>
                                 <?php endforeach; ?>
                             </div>
-                            <a href="#" class="btn btn-default add">Adicionar produtor <i class="glyphicon glyphicon-plus"></i></a>
+                            <a href="#" class="btn btn-default add">Adicionar produtor(a) <i class="glyphicon glyphicon-plus"></i></a>
                         </div>
                         <hr>
 
                         <div class="project-directors form-group">
-                            <h3 class="h3 block">Diretor(es)</h3>
+                            <h3 class="h3 block">Diretor(a/es)</h3>
                             <?php echo $this->formCollection()->renderTemplate($form->get('directors')); ?>
                             <div class="list">
                                 <?php $dirColl = $form->get('directors')->getFieldsets(); ?>
@@ -142,7 +142,7 @@
                                     </div>
                                 <?php endforeach; ?>
                             </div>
-                            <a href="#" class="btn btn-default add">Adicionar diretor <i class="glyphicon glyphicon-plus"></i></a>
+                            <a href="#" class="btn btn-default add">Adicionar diretor(a) <i class="glyphicon glyphicon-plus"></i></a>
                         </div>
 
                         <h3 class="h3 block">Projeto</h3>
@@ -189,7 +189,7 @@
 
                         <?php $image = $form->get('image'); ?>
                         <div class="form-group <?php echo count($image->getMessages())?"has-error":"" ?>">
-                            <label class="">Extra - Imagem do filme <span class="required" aria-required="true"> * </span></label> <br>
+                            <label class="">Extra - Imagem do Projeto <span class="required" aria-required="true"> * </span></label> <br>
                             <div class="fileinput fileinput-new" data-provides="fileinput">
                                 <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;"> </div>
                                 <div>
@@ -201,7 +201,7 @@
                                     <a href="javascript:;" class="btn red fileinput-exists" data-dismiss="fileinput"> Remover </a>
                                 </div>
                             </div>
-                            <p class="help-block">Anexar uma imagem que ilustre o projeto (mínimo 800kb e máximo de 2mb)</p>
+                            <p class="help-block">Anexar uma imagem que ilustre o Projeto (mínimo 800kb e máximo de 2mb)</p>
                             <div id="image_file_error"></div>
                             <?php echo $this->formElementErrors($image->get('file')); ?>
                         </div>
