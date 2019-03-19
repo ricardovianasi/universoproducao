@@ -187,6 +187,7 @@ class ProgramationController extends SiteController
                 'place' => $prog->getPlace() ? $prog->getPlace()->getName() : "",
                 'title' => $titleItem,
                 'info' => $prog->hasMeta(Meta::ADDITIONAL_INFO) ? $prog->hasMeta(Meta::ADDITIONAL_INFO)->getValue() : "",
+                'age_range' => $prog->getAgeRange(),
                 'events' => $events
             ];
         }
