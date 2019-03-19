@@ -5,6 +5,9 @@
   background-repeat: no-repeat
   background-size: cover
 
+  &-mobile
+    display: none
+
   &-wrapper
     +center(1760px, $pad:20px)
 
@@ -87,20 +90,34 @@
 +media("<=765px")
   .header
     text-align: center
+    background-color: #ff5d52
+    background-image: none
+    padding-top: 15px
+    padding-bottom: 15px
+    display: block
+    height: auto
+    &-mobile
+      display: block
+      .brand
+        img
+          width: 100%
+        .cinebh
+          max-width: 200px
+        .brasil
+          max-width: 206px
+      p
+        margin-top: 10px
+        text-transform: uppercase
+        color: white
+
+
+
     &-brand, &-info, &-actions
       width: 100%
       display: block
       float: none
-    &-brand
-      +padding-leader(2)
-      +padding-trailer(1)
-      .brand-cinebh
-        border: none
-        width: 200px
-        margin-right: 0
-        padding-right: 0
-      .brand-brasilcinemundi
-        width: 200px
+
+
 
     &-info
       +padding-trailer(2)
