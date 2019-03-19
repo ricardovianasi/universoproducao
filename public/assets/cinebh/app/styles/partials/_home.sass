@@ -304,6 +304,21 @@
     .btn
       background-color: #38c2d4
 
+    +media('<=500px')
+      .tv-highlight
+        width: 100%
+        float: none
+        border: none
+        padding: 0
+        .tv-featured, .tv-content, .tv-bg
+          width: 100%
+          float: none
+          display: block
+          position: relative
+          max-width: 100%
+          padding: 0
+
+
   .gallery
     width: 100%
     display: block
@@ -403,6 +418,9 @@
     .main-title
       +adjust-font-size-to(72px)
       +trailer(2, 72px)
+      +media("<480px")
+        +adjust-font-size-to(36px)
+
 
     &-items
       display: block
@@ -448,6 +466,8 @@
         display: block
         background: #ccc
         border: none
+
+
 
   .guide
     +padding-leader(13)
