@@ -124,25 +124,37 @@ class MovieRegistrationController extends AbstractMeuUniversoRegisterController
             ->getQuery()
             ->getResult();
 
-        $regEventsType = [];
-        foreach ($reg->getEvents() as $ev) {
-            $regEventsType[] = $ev->getType();
+        $typeEventReg = [];
+        foreach ($reg->getEvents() as $e) {
+            $typeEventReg[$e->getType()] = $e;
         }
 
+        $moviesEnableForRegister = [];
+
         foreach ($movies as $key => $m) {
+            /** @var Movie $m */
+            $m = $m;
+            $eventsForThisMovie = $typeEventReg;
             foreach ($m->getSubscriptions() as $sub) {
+                /** @var MovieSubscription $sub */
                 $sub = $sub;
-                if(in_array($sub->getEvent()->getType(), $regEventsType)) {
-                    unset($movies[$key]);
+                if(array_key_exists($sub->getEvent()->getType(), $eventsForThisMovie)) {
+                   unset($eventsForThisMovie[$sub->getEvent()->getType()]);
                 }
+            }
+            if(!empty($eventsForThisMovie)) {
+                $moviesEnableForRegister[] = [
+                    'movie' => $m,
+                    'events' => $eventsForThisMovie
+                ];
             }
         }
 
-        if(count($movies)) {
+        if(count($moviesEnableForRegister)) {
             $viewModel = new ViewModel();
             return $viewModel->setVariables([
                 'reg' => $reg,
-                'movies' => $movies
+                'movies' => $moviesEnableForRegister
             ]);
 
         } else {
