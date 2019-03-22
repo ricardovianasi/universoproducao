@@ -87,7 +87,6 @@ class PeopleFieldset extends Fieldset
             ],
             'attributes' => [
                 'accept' => 'image/*',
-                'required' => 'required'
             ],
         ]);
     }
