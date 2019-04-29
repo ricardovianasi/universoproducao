@@ -16,18 +16,19 @@
 
   &-top
     background-color: black
-    background-image: url("../images/2018/header-bg.png")
+    background-image: url("../images/2019/header-bgc.png")
     background-position: center center
     background-repeat: no-repeat
 
   &-col
     float: left
-    &:nth-child(1),
-    &:nth-child(3)
-      width: 20%
-    &:nth-child(2)
-      width: 60%
-      //max-width: 790px
+    width: 33.33%
+    padding-top: 60px
+    padding-bottom: 60px
+    &.center
+      text-align: center
+    &.right
+      text-align: right
 
   &-date
     font-family: $font-family-alternate
@@ -234,6 +235,9 @@
       padding-right: 16px
       &-mobile
         display: block
+        img
+          width: 175px
+          padding-top: 20px
 
     &-col
       display: none

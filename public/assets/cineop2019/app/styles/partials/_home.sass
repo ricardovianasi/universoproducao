@@ -119,88 +119,181 @@
       display: block
       overflow: hidden
 
-    &-highlight
-      float: left
-      width: 50%
-      box-sizing: border-box
+    //&-highlight
+    //  float: left
+    //  width: 50%
+    //  box-sizing: border-box
+    //  position: relative
+    //  &:nth-child(1)
+    //    padding-right: 20px
+    //    .tv-bg
+    //      padding-right: 18px
+    //    .tv-link
+    //      +padding-trailer(9, 54px)
+    //      +padding-leader(9, 54px)
+    //    .tv-content
+    //      +leader(1)
+    //
+    //  &:nth-child(2)
+    //    padding-left: 19px
+    //    border-left: 1px solid white
+    //    .tv-bg
+    //      max-width: 260px
+    //      float: left
+    //    .tv-link
+    //      +padding-trailer(3.5, 54px)
+    //      +padding-leader(3.5, 54px)
+    //    .tv-featured
+    //      &:last-of-type
+    //        +leader(1)
+    //    .tv-content
+    //      padding-left: 15px
+    //      position: absolute
+    //      max-width: 260px
+    //
+    //    .tv-title
+    //      +trailer(1, 16px)
+    //    .tv-title,
+    //    .tv-subtitle
+    //      +adjust-font-size-to(16px, 1.1, 18px)
+    //
+    //&-featured
+    //  display: block
+    //  overflow: hidden
+    //  position: relative
+    //
+    //&-content
+    //  display: inline-block
+    //
+    //
+    //&-title,
+    //&-subtitle
+    //  font-family: $font-family-alternate
+    //  color: white
+    //
+    //&-title
+    //  font-weight: 700
+    //
+    //&-bg
+    //  background-repeat: no-repeat
+    //  background-size: cover
+    //  background-position: center
+    //  text-align: center
+    //  width: 100%
+    //
+    //&-link
+    //  display: block
+    //  text-decoration: none
+    //  +adjust-font-size-to(54px, 3)
+    //  color: #10bbef
+    //  position: relative
+    //  &:after
+    //    content: ""
+    //    width: 100%
+    //    height: 100%
+    //    background-color: black
+    //    opacity: .3
+    //    position: absolute
+    //    top: 0
+    //    left: 0
+    //
+    //  span
+    //    display: block
+    //    position: relative
+    //    z-index: 9999
+
+    &-items
+      display: inline-block
       position: relative
-      &:nth-child(1)
-        padding-right: 20px
-        .tv-bg
-          padding-right: 18px
-        .tv-link
-          +padding-trailer(9, 54px)
-          +padding-leader(9, 54px)
-        .tv-content
-          +leader(1)
-
-      &:nth-child(2)
-        padding-left: 19px
-        border-left: 1px solid white
-        .tv-bg
-          max-width: 260px
-          float: left
-        .tv-link
-          +padding-trailer(3.5, 54px)
-          +padding-leader(3.5, 54px)
-        .tv-featured
-          &:last-of-type
-            +leader(1)
-        .tv-content
-          padding-left: 15px
-          position: absolute
-          max-width: 260px
-
-        .tv-title
-          +trailer(1, 16px)
-        .tv-title,
-        .tv-subtitle
-          +adjust-font-size-to(16px, 1.1, 18px)
-
-    &-featured
-      display: block
+      width: 100%
       overflow: hidden
-      position: relative
+      +trailer(4)
+
+    &-figure,
+    &-content
+      float: left
+
+    &-figure
+      width: 60%
 
     &-content
-      display: inline-block
+      width: 40%
 
+    &-item
+      box-sizing: border-box
+      position: relative
+      &:first-child
+        +media(">=tablet")
+          +column(2.25/4, $gutter:0)
+          padding-right: 16px
+          border-right: 1px solid white
+          .tv-content
+            position: absolute
+            bottom: -72px
+        +media("<=tablet")
+          +column(4/4, $gutter:0)
 
-    &-title,
-    &-subtitle
-      font-family: $font-family-alternate
-      color: white
+        .tv-figure,
+        .tv-content
+          float: none
+          width: 100%
+
+      &:nth-child(2),
+      &:nth-child(3)
+        +media(">=tablet")
+          +column(1.75/4, $gutter:0)
+          padding-left: 16px
+          .tv-figure
+            padding-right: 12px
+        +media("<tablet")
+          +column(1/2, $gutter:0)
+          .tv-figure,
+          .tv-content
+            width: 100%
+
+        .tv-title,
+        .tv-subtitle
+          +adjust-font-size-to(14px, 1)
+
+      &:nth-child(2)
+        +media(">=tablet")
+          padding-bottom: 8px
+        +media("<tablet")
+          padding-right: 4px
+      &:nth-child(3)
+        +media(">=tablet")
+          padding-top: 8px
+        +media("<tablet")
+          padding-left: 4px
+
+    &-figure
+      line-height: 0
+      box-sizing: border-box
+      position: relative
+      img
+        display: block
+        height: auto
+        border: none
+        width: 100%
 
     &-title
-      font-weight: 700
-
-    &-bg
-      background-repeat: no-repeat
-      background-size: cover
-      background-position: center
-      text-align: center
-      width: 100%
+      color: white
+      text-transform: uppercase
+      font-weight: bold
 
     &-link
-      display: block
-      text-decoration: none
-      +adjust-font-size-to(54px, 3)
-      color: #10bbef
       position: relative
-      &:after
-        content: ""
-        width: 100%
-        height: 100%
-        background-color: black
-        opacity: .3
-        position: absolute
-        top: 0
-        left: 0
 
-      span
-        display: block
-        position: relative
-        z-index: 9999
+    &-play
+      position: absolute
+      font-size: 65px
+      color: #10bbef
+      left: 50%
+      top: 50%
+      transform: translate(-50%, -50%)
+
+    &-subtitle
+      color: white
 
     .news-readmore
       .btn

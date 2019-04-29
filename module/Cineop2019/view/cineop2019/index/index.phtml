@@ -84,41 +84,34 @@
         </div>
     </section>
 
-    <section class="tv">
-        <div class="main-wrapper">
-            <header class="main-header">
-                <h1 class="main-title">Vídeos</h1>
-            </header>
-            <div class="tv-wrapper">
-                <div class="tv-highlight">
-                    <div class="tv-featured">
-                        <div class="tv-bg" style="background-image: url('<?php echo $this->basePath('assets/cineop2019/dist') ?>/images/tv.jpg')">
-                            <a data-fancybox class="tv-link" href="https://youtu.be/TTt-VgXZG8w"><span class="icon-play4"></span></a>
-                        </div>
-                        <div class="tv-content">
-                            <p class="tv-title">CineOP - Mostra de Cinema de Ouro Preto</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="tv-highlight">
+    <!-- TV -->
+    <?php if(count($this->videos)): ?>
+        <section class="tv">
+            <div class="main-wrapper">
+                <header class="main-header">
+                    <h1 class="main-title">Vídeos</h1>
+                </header>
+
+                <div class="tv-items">
                     <?php foreach ($this->videos as $v): ?>
-                        <div class="tv-featured">
-                            <div class="tv-bg" style="background-image: url('<?php echo $this->thumbor()->url($v->getThumb())->resize(260, 180); ?>')">
-                                <a data-fancybox class="tv-link" href="<?php echo $v->getYoutube(); ?>"><span class="icon-play4"></span></a>
-                            </div>
-                            <div class="tv-content">
-                                <p class="tv-title"><?php echo $v->getCaption(); ?></p>
-                                <!--<p class="tv-subtitle">Filmes nacionais estreiam em grande estilo na Mostra Tiradentes. Confira como foi o primeiro dia</p>-->
-                            </div>
-                        </div>
+                        <article class="tv-item">
+                            <a  data-fancybox class="tv-link" href="<?php echo $v->getYoutube(); ?>">
+                                <figure class="tv-figure">
+                                    <img src="<?php echo $this->thumbor()->url($v->getThumb())->resize(640, 396); ?>" alt="">
+                                </figure>
+                                <div class="tv-content">
+                                    <p class="tv-title"><?php echo $v->getCaption(); ?></p>
+                                </div>
+                            </a>
+                        </article>
                     <?php endforeach; ?>
                 </div>
+                <p class="news-readmore">
+                    <a href="https://www.youtube.com/channel/UCaikc9czwiws39fvlHX-RpA" target="_blank" class="btn"><span>Ver todos os Vídeos</span></a>
+                </p>
             </div>
-            <p class="news-readmore">
-                <a href="https://www.youtube.com/channel/UCaikc9czwiws39fvlHX-RpA" target="_blank" class="btn"><span>Ver todos os Vídeos</span></a>
-            </p>
-        </div>
-    </section>
+        </section>
+    <?php endif; ?>
 
     <?php if(count($this->gallery)>0): ?>
         <section class="gallery">
