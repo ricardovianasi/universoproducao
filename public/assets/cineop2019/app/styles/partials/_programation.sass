@@ -1,0 +1,56 @@
+
+.programation
+  position: relative
+  width: 100%
+
+  &-highlights
+    position: relative
+    display: block
+    overflow: hidden
+
+  &-featured
+    //+column(1/4, $cycle:4, $gutter:0)
+    width: 100%
+    .bgc
+      background-size: cover
+      background-position: center
+      background-repeat: no-repeat
+      width: 100%
+      height: 350px
+
+    .wrapper
+      //position: absolute
+      //top: 50%
+      //transform: translateY(-50%)
+      padding-left: 15px
+      padding-right: 15px
+      +padding-trailer(5)
+      +padding-leader(5)
+      text-align: center
+      background-color: rgba(0,0,0,.4)
+      height: 100%
+
+    .date,
+    .title,
+    .place
+      font-family: $font-family-alternate
+      text-transform: uppercase
+      max-width: 250px
+      width: 100%
+      display: inline-block
+
+    .date
+      +adjust-font-size-to(60px)
+      +trailer(1, 60px)
+      font-weight: 700
+      color: #00a78e
+
+    .title
+      +adjust-font-size-to(24px, 1.5)
+      +trailer(1, 24px)
+      color: white
+
+    .place
+      +adjust-font-size-to(12px)
+      font-weight: 700
+      color: white

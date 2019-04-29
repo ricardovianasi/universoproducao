@@ -1,0 +1,29 @@
+{
+  "name": "generator-custom2",
+  "private": true,
+  "dependencies": {
+    "jquery": "~2.1.4",
+    "include-media": "~1.4.2",
+    "jeet": "^7.1.0",
+    "owl.carousel": "^2.2.1",
+    "gray": "^1.5.0",
+    "fancybox": "^3.0.47"
+  },
+  "overrides": {
+    "owl-carousel": {
+      "main": [
+        "dist/owl.carousel.js"
+      ]
+    },
+    "fancybox": {
+      "main": [
+        "dist/jquery.fancybox.css",
+        "dist/jquery.fancybox.js"
+      ]
+    }
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.3.0"
+  }
+}

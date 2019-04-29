@@ -1,0 +1,671 @@
+.home
+  .main
+    &-header
+      text-align: center
+
+    &-title
+      text-transform: uppercase
+
+  .banner
+    position: relative
+    width: 100%
+    &-caption
+      +adjust-font-size-to(14px)
+      font-style: italic
+      position: absolute
+      bottom: 0
+      right: 0
+      padding: 10px
+      color: white
+      background-color: black
+      opacity: .4
+    .owl-dots
+      position: absolute
+      bottom: 0
+
+  .programation
+    background-color: #292929
+    background-image: url("../images/2019/bgc-prog.png")
+    background-size: 100%
+    background-position: center center
+
+    .main-header
+      background-size: cover
+      background-repeat: no-repeat
+      background-position: top left
+      +padding-trailer(9)
+      +padding-leader(9)
+      .main-title
+        color: #00a78e
+        text-shadow: 2px 2px 0px rgba(255, 255, 255, 1)
+    .header-mobile
+      display: none
+
+    .main-title
+      color: white
+
+    .owl-dots
+      +leader(1.5)
+
+    &-readmore
+      text-align: center
+      +leader(2.5)
+      +padding-trailer(2.5)
+
+  .news
+
+    background-image: url("../images/2019/bgc-news.jpg")
+    background-repeat: no-repeat
+    background-position: bottom
+    background-size: cover
+    position: relative
+    &:after,
+    &:before
+      content: ""
+      display: block
+      position: absolute
+      left: 0
+      width: 100%
+      height: 60px
+      z-index: 9
+    &:after
+      background: linear-gradient(to bottom,rgba(0, 0, 0, 0) 20%, rgba(0,0,0,.1))
+      bottom: 0
+    &:before
+      top: 0
+      background: linear-gradient(to top,rgba(0, 0, 0, 0) 20%, rgba(0,0,0,.1))
+
+    .main-header
+      +padding-leader(4)
+      +trailer(4)
+      .main-title
+        text-shadow: 2px 2px 0px rgba(135, 135, 135, 1)
+
+    &-highlight
+      +trailer(4)
+
+    &-readmore
+      text-align: center
+      +leader(3)
+      +padding-trailer(3)
+      .btn
+        box-shadow: 3px 3px 0px 0px rgba(135,135,135,1)
+      span,.btn
+        background-color: #eb5b54
+
+    &-wrapper
+      display: block
+      text-align: center
+      margin: 0 auto
+      max-width: 300px
+
+  .tv
+    background-color: #292929
+    background-image: url("../images/2019/bgc-prog.png")
+    background-size: 100%
+    background-position: center center
+    background-size: cover
+    .main-header
+      +padding-leader(4)
+      +trailer(4)
+      .main-title
+        color: #10bbef
+        text-shadow: 2px 2px 0px rgba(255, 255, 255, 1)
+
+    .main-title
+      color: white
+
+    &-wrapper
+      display: block
+      overflow: hidden
+
+    &-highlight
+      float: left
+      width: 50%
+      box-sizing: border-box
+      position: relative
+      &:nth-child(1)
+        padding-right: 20px
+        .tv-bg
+          padding-right: 18px
+        .tv-link
+          +padding-trailer(9, 54px)
+          +padding-leader(9, 54px)
+        .tv-content
+          +leader(1)
+
+      &:nth-child(2)
+        padding-left: 19px
+        border-left: 1px solid white
+        .tv-bg
+          max-width: 260px
+          float: left
+        .tv-link
+          +padding-trailer(3.5, 54px)
+          +padding-leader(3.5, 54px)
+        .tv-featured
+          &:last-of-type
+            +leader(1)
+        .tv-content
+          padding-left: 15px
+          position: absolute
+          max-width: 260px
+
+        .tv-title
+          +trailer(1, 16px)
+        .tv-title,
+        .tv-subtitle
+          +adjust-font-size-to(16px, 1.1, 18px)
+
+    &-featured
+      display: block
+      overflow: hidden
+      position: relative
+
+    &-content
+      display: inline-block
+
+
+    &-title,
+    &-subtitle
+      font-family: $font-family-alternate
+      color: white
+
+    &-title
+      font-weight: 700
+
+    &-bg
+      background-repeat: no-repeat
+      background-size: cover
+      background-position: center
+      text-align: center
+      width: 100%
+
+    &-link
+      display: block
+      text-decoration: none
+      +adjust-font-size-to(54px, 3)
+      color: #10bbef
+      position: relative
+      &:after
+        content: ""
+        width: 100%
+        height: 100%
+        background-color: black
+        opacity: .3
+        position: absolute
+        top: 0
+        left: 0
+
+      span
+        display: block
+        position: relative
+        z-index: 9999
+
+    .news-readmore
+      .btn
+        box-shadow: 3px 3px 0px 0px rgba(255,255,255,1)
+      span,.btn
+        background-color: #10bbef
+
+
+  .gallery
+    background-image: url("../images/2019/bgc-news.jpg")
+    background-repeat: no-repeat
+    background-position: bottom
+    background-size: cover
+    position: relative
+    width: 100%
+    z-index: 99
+
+    .main-header
+      +padding-leader(4)
+      +padding-trailer(4)
+      background-repeat: no-repeat
+      position: relative
+    .main-title
+      color: #ec619f
+      position: relative
+      z-index: 999
+      text-shadow: 2px 2px 0px rgba(135, 135, 135, 1)
+
+    .owl-item.active.center
+      .gallery-content
+        visibility: visible
+        display: block
+      .gallery-item
+        box-shadow: 40px 10px 49px 0px rgba(0,0,0,1)
+        &:after
+          opacity: 0
+
+    .owl-theme .owl-nav [class*='owl-'],
+    .owl-theme .owl-nav [class*='owl-']:hover
+      background: none
+      pading: 0
+      margin: 0
+      border-radius: none
+
+    .owl-nav
+      position: absolute
+      width: 100%
+      max-width: 781px
+      top: 50%
+      left: 50%
+      transform: translateX(-50%)
+      .owl-next,
+      .owl-prev
+        position: absolute
+        button
+          background-color: transparent
+          background-repeat: no-repeat
+          overflow: hidden
+          outline: none
+          border: none
+          cursor: pointer
+          height: 60px
+          font-size: 60px
+          color: #ec619f
+
+      .owl-next
+        right: -92px
+      .owl-prev
+        left: -92px
+
+
+    &-item
+      position: relative
+      display: inline-block
+      width: 780px
+      img
+        display: block
+        width: 100%
+      &:after
+        content: ""
+        width: 100%
+        height: 100%
+        position: absolute
+        left: 0
+        top: 0
+        background-color: black
+        opacity: .6
+
+    &-content
+      visibility: hidden
+      display: none
+      position: absolute
+      width: 100%
+      z-index: 999
+      bottom: 0
+      padding: 20px
+      background-color: rgba(0,0,0,.7)
+
+    &-title,
+    &-subtitle
+      color: white
+
+    &-subtitle
+      +adjust-font-size-to(14px)
+      font-style: italic
+
+    &-readmore
+      text-align: center
+      +leader(3)
+      +padding-trailer(1)
+      .btn
+        box-shadow: 3px 3px 0px 0px rgba(135,135,135,1)
+      span,.btn
+        background-color: #ec619f
+
+  .guide
+    +padding-leader(7)
+    +padding-trailer(7)
+    background-color: #292929
+    background-image: url("../images/2019/bgc-prog.png")
+    background-size: 100%
+    background-position: center center
+    background-size: cover
+    position: relative
+    z-index: 9
+    .main-header
+      +padding-trailer(4)
+      .main-title
+        color: #00a78e
+        text-shadow: 2px 2px 0px rgba(255, 255, 255, 1)
+
+    &-items
+      display: block
+      overflow: hidden
+
+    &-item
+      +column(1/4, $cycle:4)
+      text-align: center
+
+    &-link
+      text-decoration: none
+      .sprite
+        margin: 0 auto
+        +trailer(1)
+
+    &-title
+      font-family: $font-family-alternate
+      text-transform: uppercase
+      color: #00a78e
+
+  .eufacoamostra
+    position: relative
+    background-image: url("../images/2019/bgc-news.jpg")
+    background-repeat: no-repeat
+    background-position: bottom
+    background-size: cover
+    position: relative
+
+
+    .main-header
+      position: relative
+      +padding-leader(4)
+      +padding-trailer(4)
+      z-index: 99
+      p
+        font-family: $font-family-alternate
+        color: #10bbef
+
+      .icon-eufacoamostra
+        &:before
+          text-shadow: 2px 2px 0px rgba(135, 135, 135, 1)
+
+
+    .main-title
+      +adjust-font-size-to(65px)
+      +trailer(1.5, 65px)
+      color: #10bbef
+
+    &-items
+      display: block
+      overflow: hidden
+      position: relative
+      z-index: 99
+
+    &-item
+      position: relative
+      +media(">=1600px")
+        +column(1/8, $gutter:0)
+      +media("<1600px")
+        +column(1/6, $gutter:0)
+      +media("<1280px")
+        +column(1/4, $gutter:0)
+      +media("<480px")
+        +column(1/2, $gutter:0)
+
+    &-link
+      display: block
+      &.video
+        &:after
+          position: absolute
+          top: 50%
+          left: 50%
+          transform: translate(-50%, -50%)
+          content: "\ed85"
+          font-family: 'Universoproducao' !important
+          speak: none
+          font-style: normal
+          font-weight: normal
+          font-variant: normal
+          font-size: 85px
+          text-transform: none
+          line-height: 1
+          -webkit-font-smoothing: antialiased
+          color: #10bbef
+          opacity: .8
+
+      img
+        max-width: 100%
+        width: 100%
+        height: auto
+        display: block
+        background: #ccc
+        border: none
+
+  .newsletter
+    +padding-trailer(4)
+    background-color: #292929
+    background-image: url("../images/2019/bgc-prog.png")
+
+    .main-header
+      +padding-leader(4)
+      +padding-trailer(2)
+      h1
+        color: white
+        font-family: $font-family-alternate
+        font-weight: 700
+        text-transform: uppercase
+
+    &-form
+      display: inline-block
+      width: 100%
+
+    &-input,
+    &-submit
+      box-sizing: border-box
+      +adjust-font-size-to(14px, 1)
+      outline: none
+      text-transform: uppercase
+      font-family: $font-family-alternate
+      font-weight: 700
+      +apply-side-rhythm-border(all, 1px, 1, 18px, solid #fff)
+      letter-spacing: .05em
+
+    &-input
+      color: #fff
+      background-color: transparent
+      +media(">=tablet")
+        width: 40%
+        float: left
+        border-right: none
+      +media("<tablet")
+        width: 100%
+        border-bottom: none
+      &::-webkit-input-placeholder
+        color: #fff
+      &::-moz-placeholder
+        color: #fff
+      &:-ms-input-placeholder
+        color: #fff
+      &:-moz-placeholder
+        color: #fff
+    &-submit
+      background-color: #fff
+      color: #292929
+      cursor: pointer
+      transition: $transition-default
+      &:hover
+        background-color: #292929
+        color: white
+
+      +media(">=tablet")
+        width: 20%
+        float: left
+      +media("<tablet")
+        width: 100%
+
+  .sitemap
+    background-color: #292929
+    background-image: url("../images/2019/bgc-prog.png")
+    +padding-leader(4)
+    +padding-trailer(4)
+
+    &-items
+      display: inline-block
+      width: 100%
+
+    &-item
+      text-align: center
+      +media(">=tablet")
+        +column(1/4)
+      +media("<tablet")
+        +column(2/4, $cycle: 2)
+      +media("<480px")
+        +column(1/1)
+      & >.sitemap-items
+        +leader(.5)
+        +trailer(.5)
+        .sitemap-item
+          display: block
+          width: 100%
+        .sitemap-link
+          +adjust-font-size-to(14px, 1)
+          +trailer(1, 14px)
+          font-weight: 400
+          font-family: $font-family-base
+          text-transform: none
+          color: white
+          letter-spacing: .05em
+          &:hover
+            color: $color-3
+
+    &-link
+      display: block
+      color: white
+      text-transform: uppercase
+      text-decoration: none
+      +adjust-font-size-to(16px, 1)
+      font-family: $font-family-alternate
+      +trailer(1, 16px)
+      letter-spacing: .05em
+      transition: $transition-default
+      &:hover
+        color: $color-3
+
+  .sponsorship
+    +padding-leader(4)
+    +padding-trailer(8)
+    background-repeat: no-repeat
+    background-position: -145px 117%
+    position: relative
+    &-list
+      display: inline-block
+      width: 100%
+      &--80
+        max-width: 85%
+
+
+    &-block
+      display: inline-block
+      float: left
+      box-sizing: border-box
+      +trailer(2.5)
+      &--full
+        width: 100%
+      &--center
+        text-align: center
+      &--right
+        float: right
+
+    &-item
+      display: inline-block
+      box-sizing: border-box
+      vertical-align: middle
+      margin-right: 42px
+      +trailer(1)
+      &--mobile
+        display: none
+      &:first-child
+        margin-left: 0px
+      &:last-child
+        margin-right: 0px
+
+    &-title
+      +adjust-font-size-to(12px, 2)
+      font-family: $font-family-alternate
+      font-weight: bold
+      text-transform: uppercase
+      color: #000
+      border-bottom: 1px solid #000
+      +trailer(2)
+
+
+  +media("<=900px")
+    .banner
+      display: none
+      &-item
+        text-align: center
+        img
+          text-align: center
+          width: auto !important
+          height: 324px
+      .owl-dots
+        bottom: 20px
+
+    .programation
+      .main-header
+        display: none
+      .header-mobile
+        display: block
+        width: 100%
+        padding-right: 16px
+        padding-left: 16px
+        box-sizing: border-box
+        text-align: center
+        .brand
+          +adjust-font-size-to(54px, 3)
+          +padding-leader(1.5, 54px)
+          color: white
+        .header-date
+          +adjust-font-size-to(27px, 1.5)
+          +padding-trailer(1.5, 27px)
+          +padding-leader(1.5, 27px)
+          margin-top: 0
+          margin-bottom: 0
+          span
+            +adjust-font-size-to(18px, 1.5, 27px)
+            text-align: center
+            color: white
+      &-readmore
+        +leader(1)
+
+    .news
+      &-wrapper
+        max-width: 250px
+      .owl-dots
+        opacity: 1
+        .owl-dot
+          background-color: $color-palette-2
+          &.active
+            background-color: $color-palette-3
+      &-readmore
+        +leader(1)
+
+    .gallery
+      &-readmore
+        +leader(1)
+      &-item
+        &:after
+          opacity: 0
+      .owl-dots
+        +leader(1.5)
+
+    .guide
+      &-item
+        text-align: center !important
+        +column(1/2, $cycle:2)
+        +trailer(1)
+
+    .sitemap
+      display: none
+
+    .sponsorship
+      &-list
+        width: 100%
+      &--80
+        max-width: 100%
+
+      &-block
+        &--center
+          text-align: center
+        &--right
+          float: left
+
+      &-item
+        &--mobile
+          display: block
+        &--desktop
+          display: none

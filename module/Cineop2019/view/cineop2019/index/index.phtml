@@ -1,0 +1,296 @@
+<main class="main home">
+    <?php if(count($this->bannerImages)): ?>
+        <section class="banner">
+            <div class="owl-carousel" id="banner-home">
+                <?php foreach ($this->bannerImages as $banner): ?>
+                    <div class="banner-item">
+                        <a href="<?php echo $banner->getMeta('_link') ?>">
+                            <img src="<?php echo $this->thumbor()->url($banner->getMeta('_image'))->resize(1920, 630); ?>" alt="">
+                            <p class="banner-caption"><?php echo $banner->getSubtitle(); ?></p>
+                        </a>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+        </section>
+    <?php endif; ?>
+
+    <?php if(count($this->program)): ?>
+        <section class="programation">
+            <header class="main-header">
+                <h1 class="main-title">Programação</h1>
+            </header>
+            <header class="header-mobile">
+                <p class="header-date">
+                    13 - 18 Junho 2018
+                    <span>Programação Gratuita</span>
+                </p>
+            </header>
+            <div class="programation-highlights owl-carousel" id="programation-highlights">
+                <?php foreach ($this->program as $p): ?>
+                    <div class="programation-featured">
+                        <div class="bgc" style="background-image: url('<?php echo  $this->thumbor()->url($p->getPhoto())->resize(480, 460); ?>')">
+                            <a href="<?php echo $p->getUrl(); ?>">
+                                <div class="wrapper">
+                                    <p class="date"><?php echo $p->getDate()->format('d/m') ?></p>
+                                    <p class="title"><?php echo $p->getTitle(); ?></p>
+                                    <p class="place"><?php echo $p->getPlace(); ?></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+            <p class="programation-readmore">
+                <a href="http://cineop.com.br/programacao-4/programacao-completa-4" class="btn"><span>Programação completa</span></a>
+            </p>
+        </section>
+    <?php else: ?>
+        <section class="programation">
+            <header class="header-mobile">
+                <p class="header-date">
+                    13 - 18 Junho 2018
+                    <span>Programação Gratuita</span>
+                </p>
+            </header>
+        </section>
+    <?php endif; ?>
+
+    <section class="news">
+        <div class="main-wrapper">
+            <header class="main-header">
+                <h1 class="main-title">Notícias</h1>
+            </header>
+            <div class="news-highlight owl-carousel" id="news-highlight">
+                <?php foreach ($this->news as $news): ?>
+                    <div class="news-featured">
+                        <div class="news-wrapper">
+                            <a href="<?php echo $this->url("cineop2019/news", ['slug'=>$news->getSlug()]) ?>" class="news-link">
+                                <div class="news-bg">
+                                    <figure class="news-figure">
+                                        <img src="<?php echo  $this->thumbor()->url($news->getMeta('_thumb'))->resize(240, 240); ?>" alt="">
+                                    </figure>
+                                </div>
+                                <p class="news-title"><?php echo $news->getTitle(); ?></p>
+                                <p class="news-subtitle"><?php echo $news->getSubtitle(); ?></p>
+                                <p class="news-seemore">Veja +</p>
+                            </a>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+            <p class="news-readmore">
+                <a href="<?php echo $this->url("cineop2019/default", ['slug'=>'noticias']); ?>" class="btn"><span>Ver todas as notícias</span></a>
+            </p>
+        </div>
+    </section>
+
+    <section class="tv">
+        <div class="main-wrapper">
+            <header class="main-header">
+                <h1 class="main-title">Vídeos</h1>
+            </header>
+            <div class="tv-wrapper">
+                <div class="tv-highlight">
+                    <div class="tv-featured">
+                        <div class="tv-bg" style="background-image: url('<?php echo $this->basePath('assets/cineop2019/dist') ?>/images/tv.jpg')">
+                            <a data-fancybox class="tv-link" href="https://youtu.be/TTt-VgXZG8w"><span class="icon-play4"></span></a>
+                        </div>
+                        <div class="tv-content">
+                            <p class="tv-title">CineOP - Mostra de Cinema de Ouro Preto</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="tv-highlight">
+                    <?php foreach ($this->videos as $v): ?>
+                        <div class="tv-featured">
+                            <div class="tv-bg" style="background-image: url('<?php echo $this->thumbor()->url($v->getThumb())->resize(260, 180); ?>')">
+                                <a data-fancybox class="tv-link" href="<?php echo $v->getYoutube(); ?>"><span class="icon-play4"></span></a>
+                            </div>
+                            <div class="tv-content">
+                                <p class="tv-title"><?php echo $v->getCaption(); ?></p>
+                                <!--<p class="tv-subtitle">Filmes nacionais estreiam em grande estilo na Mostra Tiradentes. Confira como foi o primeiro dia</p>-->
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+            <p class="news-readmore">
+                <a href="https://www.youtube.com/channel/UCaikc9czwiws39fvlHX-RpA" target="_blank" class="btn"><span>Ver todos os Vídeos</span></a>
+            </p>
+        </div>
+    </section>
+
+    <?php if(count($this->gallery)>0): ?>
+        <section class="gallery">
+            <header class="main-header">
+                <h1 class="main-title">Galeria de imagens</h1>
+            </header>
+            <div class="gallery-items owl-carousel" id="gallery">
+                <?php foreach ($this->gallery as $img): ?>
+                    <div class="gallery-item">
+                        <img src="<?php echo $this->thumbor()->url($img->getMeta('_image'))->resize(781, 504); ?>" alt="">
+                        <div class="gallery-content">
+                            <p class="gallery-title"><?php echo $img->getTitle(); ?></p>
+                            <p class="gallery-subtitle"><?php echo $img->getMeta('_credits'); ?></p>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+            <div class="main-wrapper">
+                <p class="gallery-readmore">
+                    <a target="_blank" href="http://www.flickr.com/photos/universoproducao" class="btn"><span>Ver mais fotos no Flickr</span></a>
+                </p>
+            </div>
+        </section>
+    <?php endif; ?>
+
+    <section class="guide">
+        <div class="main-wrapper">
+            <header class="main-header">
+                <h1 class="main-title">Descubra ouro preto</h1>
+            </header>
+
+            <div class="guide-items">
+                <div class="guide-item">
+                    <a class="guide-link" href="<?php echo $this->url('cineop2019/default', ['slug'=>'como-chegar']) ?>">
+                        <span class="sprite sprite-como-chegar"></span>
+                        <span class="guide-title">Como chegar</span>
+                    </a>
+                </div>
+                <div class="guide-item">
+                    <a class="guide-link" href="<?php echo $this->url('cineop2019/default', ['slug'=>'restaurantes']) ?>">
+                        <span class="sprite sprite-restaurantes"></span>
+                        <span class="guide-title">Restaurantes</span>
+                    </a>
+                </div>
+                <div class="guide-item">
+                    <a class="guide-link" href="<?php echo $this->url('cineop2019/default', ['slug'=>'pousadas']) ?>">
+                        <span class="sprite sprite-hoteis"></span>
+                        <span class="guide-title">Hoteis e Acomodações</span>
+                    </a>
+                </div>
+                <div class="guide-item">
+                    <a class="guide-link" href="<?php echo $this->url('cineop2019/default', ['slug'=>'informacoes-e-turismo']) ?>">
+                        <span class="sprite sprite-turismo"></span>
+                        <span class="guide-title">Turismo e informações</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <?php if(count($this->eufacoamostra)>0): ?>
+        <section class="eufacoamostra">
+            <header class="main-header">
+                <h1 class="main-title"><span class="icon-eufacoamostra"></span></h1>
+                <p>Compartilhe e publique suas imagens usando a #eufaçoaMostra</p>
+            </header>
+            <ul class="eufacoamostra-items">
+                <?php foreach ($this->eufacoamostra as $eu): ?>
+                    <li class="eufacoamostra-item">
+                        <?php $href = $eu->getVideo() ? $eu->getVideo() : $this->thumbor()->url($eu->getThumb())->resize(700, 700); ?>
+                        <a title="<?php echo $eu->getDescription(); ?>" href="<?php echo $href; ?>" class="eufacoamostra-link <?php echo $eu->getVideo() ? "video" : ""; ?>" data-fancybox="gallery">
+                            <img src="<?php echo $this->thumbor()->url($eu->getThumb())->resize(700, 700); ?>" alt="" class="grayscale grayscale-fade">
+                        </a>
+                    </li>
+                <?php endforeach; ?>
+            </ul>
+            <p class="news-readmore" style="position: relative; z-index: 9999">
+                <a href="https://www.flickr.com/photos/universoproducao/" class="btn"><span>Ver mais fotos</span></a>
+            </p>
+        </section>
+    <?php endif; ?>
+
+    <section class="newsletter">
+        <div class="main-wrapper">
+            <header class="main-header">
+                <h1>Receba Nossos Informativos</h1>
+            </header>
+            <form action="<?php echo $this->url('cineop2019/newsletter') ?>" class="newsletter-form">
+                <input type="text" class="newsletter-input" placeholder="Nome" required>
+                <input type="text" class="newsletter-input" placeholder="Email" required>
+                <button type="submit" class="newsletter-submit">Cadastrar</button>
+            </form>
+        </div>
+    </section>
+
+
+    <section class="sponsorship">
+        <div class="main-wrapper">
+            <ul class="sponsorship-list sponsorship-list--80">
+                <li class="sponsorship-block sponsorship-block--full">
+                    <ul class="sponsorship-items">
+                        <li class="sponsorship-item"><span class="sprite sprite-lei"></span></li>
+                    </ul>
+                </li>
+                <li class="sponsorship-block sponsorship-block--full">
+                    <p class="sponsorship-title">Patrocínio</p>
+                    <ul class="sponsorship-items">
+                        <li class="sponsorship-item"><span class="sprite sprite-taesa"></span></li>
+                        <li class="sponsorship-item"><span class="sprite sprite-cbmm"></span></li>
+                        <li class="sponsorship-item"><span class="sprite sprite-itau"></span></li>
+                    </ul>
+                </li>
+                <li class="sponsorship-block">
+                    <p class="sponsorship-title">Parceria Cultural</p>
+                    <ul class="sponsorship-items">
+                        <li class="sponsorship-item"><span class="sprite sprite-sesc"></span></li>
+                        <li class="sponsorship-item"><span class="sprite sprite-ufop"></span></li>
+                    </ul>
+                </li>
+                <li class="sponsorship-block sponsorship-block--right">
+                    <p class="sponsorship-title">Fomento</p>
+                    <ul class="sponsorship-items">
+                        <li class="sponsorship-item"><span class="sprite sprite-codemig"></span></li>
+                        <li class="sponsorship-item"><span class="sprite sprite-minas-gerais"></span></li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="sponsorship-list">
+                <li class="sponsorship-block sponsorship-block--full">
+                    <p class="sponsorship-title">Apoio</p>
+                    <ul class="sponsorship-items">
+                        <li class="sponsorship-item"><span class="sprite sprite-instituto"></span></li>
+                        <li class="sponsorship-item"><span class="sprite sprite-oi"></span></li>
+                        <li class="sponsorship-item"><span class="sprite sprite-tres"></span></li>
+                        <li class="sponsorship-item"><span class="sprite sprite-canal-brasil"></span></li>
+                        <li class="sponsorship-item"><span class="sprite sprite-globo-minas"></span></li>
+                        <li class="sponsorship-item"><span class="sprite sprite-institut-francais"></span></li>
+                        <li class="sponsorship-item"><span class="sprite sprite-franca"></span></li>
+                        <li class="sponsorship-item"><span class="sprite sprite-cinema-do-brasil"></span></li>
+                        <li class="sponsorship-item"><span class="sprite sprite-fundacao-cultural"></span></li>
+                        <li class="sponsorship-item"><span class="sprite sprite-bahia"></span></li>
+                        <li class="sponsorship-item"><span class="sprite sprite-tv-escola"></span></li>
+                        <li class="sponsorship-item"><span class="sprite sprite-roquette-pinto"></span></li>
+                        <li class="sponsorship-item"><span class="sprite sprite-ministerio-educacao"></span></li>
+                        <li class="sponsorship-item"><span class="sprite sprite-ouro-preto"></span></li>
+                        <li class="sponsorship-item"><span class="sprite sprite-parque-metalurgico"></span></li>
+                        <li class="sponsorship-item"><span class="sprite sprite-adop"></span></li>
+                    </ul>
+                </li>
+                <li class="sponsorship-block sponsorship-block--full">
+                    <p class="sponsorship-title">realização</p>
+                    <ul class="sponsorship-items">
+                        <li class="sponsorship-item"><span class="sprite sprite-universo"></span></li>
+                        <li class="sponsorship-item sponsorship-item--desktop" style="float: right;"><span class="sprite sprite-ministerio-cultura"></span></li>
+                        <li class="sponsorship-item sponsorship-item--mobile"><span class="sprite sprite-brasil-mobile"></span></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+
+    <section class="sitemap">
+        <div class="main-wrapper">
+            <?php $this
+                ->navigation('Cineop2019Navigation')
+                ->menu()->setPartial("cineop2019/partials/sitemap.phtml");
+
+            echo $this
+                ->navigation('Cineop2019Navigation')
+                ->menu()
+                ->render(); ?>
+        </div>
+    </section>
+</main>

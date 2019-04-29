@@ -1,0 +1,30 @@
+<ul class="mainmenu-list">
+
+    <li class="mainmenu-item">
+        <a class="mainmenu-link" href="<?php echo $this->url('cineop2019'); ?>">
+            Início
+        </a>
+    </li>
+
+    <?php foreach ($this->container as $page):
+        /** @var Zend\Navigation\Page\AbstractPage $page */
+        ?>
+        <li class="mainmenu-item <?php echo $page->hasPages() ? "has-submenu" : "" ?>">
+            <a class="mainmenu-link" href="<?php echo !$page->hasPages() ? rawurldecode($page->getHref()) : ""; ?>" target="<?php echo $page->getTarget() ?>">
+                <?php echo $page->getLabel() ?>
+            </a>
+            <?php if ($page->hasPages()): ?>
+                <ul class="mainmenu-list--sub">
+                    <?php foreach ($page->getPages() as $child):
+                        /** @var Zend\Navigation\Page\AbstractPage $child */ ?>
+                        <li class="mainmenu-item">
+                            <a class="mainmenu-link" href="<?php echo rawurldecode($child->getHref()); ?>">
+                                <?php echo $child->getLabel() ?>
+                            </a>
+                        </li>
+                    <?php endforeach; ?>
+                </ul>
+            <?php endif; ?>
+        </li>
+    <?php endforeach; ?>
+</ul>

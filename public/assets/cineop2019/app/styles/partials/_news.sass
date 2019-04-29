@@ -1,0 +1,52 @@
+.news
+  &-highlight
+    display: block
+    overflow: hidden
+
+  &-featured
+    +column(1/3, $cycle:3)
+    width: 100%
+  &-bg
+    position: relative
+    //max-width: 250px
+    margin: 0 auto
+
+  &-figure
+    //+trailer(1)
+    //width: 240px
+    //height: 240px
+    width: 100%
+    img
+      width: 100%
+
+  &-link
+    text-decoration: none
+    &:hover
+      .news-bg
+        &:before,
+        &:after
+          transform: rotate(-5deg)
+
+  &-content
+    padding-left: 16px
+    padding-right: 16px
+
+  &-title
+    +adjust-font-size-to(22px, 1.5)
+    +trailer(.5, 22px)
+    font-family: $font-family-alternate
+    font-weight: 700
+    color: $color-2
+    text-align: left
+
+  &-subtitle
+    +trailer(1, 18px)
+    color: $color-txt
+    text-align: left
+
+  &-seemore
+    +trailer(1, 18px)
+    font-family: $font-family-alternate
+    font-weight: 700
+    color: $color-2
+    text-align: right

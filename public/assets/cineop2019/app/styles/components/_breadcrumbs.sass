@@ -1,0 +1,38 @@
+.breadcrumbs
+  width: 100%
+  background-color: $color-palette-2
+  //background-image: url("../images/bgc-header.jpg")
+  //background-size: cover
+  //background-position: center
+  //background-repeat: no-repeat
+
+  &-items
+    +center($pad: 20px)
+
+  &-item
+    display: inline-block
+    +padding-trailer(.5)
+    +padding-leader(.5)
+    max-width: 230px
+    text-overflow: ellipsis
+    white-space: nowrap
+    overflow: hidden
+    &:last-child
+      a:after
+        display: none
+
+  &-link
+    +adjust-font-size-to(16px)
+    font-family: $font-family-alternate
+    color: #fefefe
+    text-decoration: none
+    text-transform: uppercase
+    transition: $transition-default
+    &:after
+      content: ">"
+      padding-left: 10px
+      padding-right: 10px
+      color: #fefefe
+    &:hover
+      color: $color-txt
+
