@@ -13,7 +13,7 @@ return array(
             'cineop2019' => array(
                 'type'    => Hostname::class,
                 'options' => array(
-                    'route'    => '[www.]2019.cineop.com.br',
+                    'route'    => '[www.]cineop.com.br',
                     'defaults' => array(
                         'controller'    => Controller\IndexController::class,
                         'action'        => 'index'
