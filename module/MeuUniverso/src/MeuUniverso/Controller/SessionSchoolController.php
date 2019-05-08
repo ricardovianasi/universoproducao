@@ -183,9 +183,9 @@ class SessionSchoolController extends AbstractMeuUniversoRegisterController
 
                 //Enviar email de confirmação
                 $msg = '<p>Olá <strong>'.$user->getName().'</strong>!</p>';
-                $msg.= "<p>Agradecemos seu interesse em participar da <strong>12ª CineBH</strong>.</p>";
+                $msg.= "<p>Agradecemos seu interesse em participar da <strong>14ª CineOP</strong>.</p>";
                 $msg.= "<p>Informamos que recebemos sua inscrição para participar da sessão: ".$session->getName().".</p>";
-                $msg.= "<p>Favor imprimir, assinar e enviar este documento via fax (31.3282.2366) ou via email (cine-escola@universoproducao.com.br) até 48 horas após o preenchimento da inscrição no site. </p>";
+                $msg.= "<p>Favor imprimir, assinar e enviar o comprovante de participação disponível para download no botão abaixo via fax (31.3282.2366) ou via email (cine-escola@universoproducao.com.br) até 48 horas após o preenchimento da inscrição no site.</p>";
                 $msg.= "<p><strong>ATENÇÃO: </strong></p>";
                 $msg.= "<p><ul>
                     <li>As vagas na sessão só serão garantidas após o recebimento do Termo de Compromisso, conforme item anterior.</li>
