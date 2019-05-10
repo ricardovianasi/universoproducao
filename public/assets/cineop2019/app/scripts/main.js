@@ -20,8 +20,8 @@ $(document).ready(function() {
                 autoHeight: true
             },
             900: {
-                autoHeight: false,
-                autoWidth: false
+                // autoHeight: false,
+                // autoWidth: false
             }
         }
     });
