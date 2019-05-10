@@ -15,15 +15,7 @@ $(document).ready(function() {
         loop: true,
         nav: false,
         navigation: false,
-        responsive: {
-            1024: {
-                autoHeight: true
-            },
-            900: {
-                // autoHeight: false,
-                // autoWidth: false
-            }
-        }
+        
     });
 
     $('#programation-highlights').owlCarousel({
