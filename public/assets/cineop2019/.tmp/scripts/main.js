@@ -16,8 +16,16 @@ $(document).ready(function () {
         items: 1,
         loop: true,
         nav: false,
-        navigation: false
-
+        navigation: false,
+        responsive: {
+            1024: {
+                autoHeight: true
+            },
+            900: {
+                autoHeight: true,
+                autoWidth: true
+            }
+        }
     });
 
     $('#programation-highlights').owlCarousel({
