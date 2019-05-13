@@ -280,7 +280,7 @@ class PostController extends SiteController
             $msgFormulario .= "</tr>";
 
             $msgFormulario .= "<tr>";
-            $msgFormulario .= "<td align='right' valign='top'>Logistica:</td>";
+            $msgFormulario .= "<td align='right' valign='top'>Informações Adicionais:</td>";
             $msgFormulario .= "<td>".$logistica."</td>";
             $msgFormulario .= "</tr>";
 
@@ -295,7 +295,7 @@ class PostController extends SiteController
             $mailConfirmacaoForm->setBody($miniMessage);
             $mailConfirmacaoForm->setFrom('no-reply@universoproducao.com.br', 'Universo Producao');
             $mailConfirmacaoForm->setTo('imprensa@universoproducao.com.br');
-            $mailConfirmacaoForm->setSubject('Credenciamento de Imprensa - 13ª CineOP');
+            $mailConfirmacaoForm->setSubject('Credenciamento de Imprensa - 14ª CineOP');
 //            $mailConfirmacaoForm->addBcc('ricardovianasi@gmail.com');
             //$transport->send($mailConfirmacaoForm);
 
