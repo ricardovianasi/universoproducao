@@ -63,7 +63,7 @@
                         <div style="display: none;width:600px;min-height: 400px" id="debate_<?php echo $d->getId(); ?>">
                             <?php echo $d->getDescription(); ?>
 
-                            <h2>Programação</h2>
+                            <p style="margin-bottom: 15px;margin-top: 15px;font-weight: bold;"><strong>Programação</strong></p>
                             <?php foreach ($d->getPrograming($this->reg->getEvent()->getId()) as $pro): ?>
                                 <?php
                                 $progObj = null;
