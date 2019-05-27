@@ -63,7 +63,7 @@
 		</band>
 	</pageHeader>
 	<detail>
-		<band height="708" splitType="Stretch">
+		<band height="600" splitType="Stretch">
 			<textField>
 				<reportElement key="" x="121" y="60" width="434" height="30" uuid="21e82a07-2a6d-47e0-b3d9-b2c893a40dcb"/>
 				<box padding="5">
@@ -144,12 +144,12 @@
 			<staticText>
 				<reportElement x="1" y="340" width="554" height="40" uuid="0a956f96-d5dd-4b46-a927-4b1de70134e3"/>
 				<textElement textAlignment="Justified"/>
-				<text><![CDATA[1.   Autorizo a ter minhas imagem e voz veiculadas por meio de internet, jornais, informes e/ou qualquer meio de publicação/comunicação pública ou privada, para fins exclusivos  de  divulgação  da CineOP – Mostra de Cinema de Ouro Preto, destinados ao público em geral ou para a comunicação institucional.
+				<text><![CDATA[1.    Autorizo a ter minhas imagem e voz veiculadas por meio de internet, jornais, informes e/ou qualquer meio de publicação/comunicação pública ou privada, para fins exclusivos  de  divulgação  da CineOP – Mostra de Cinema de Ouro Preto, destinados ao público em geral ou para a comunicação institucional.
 da CineBH – Mostra de Cinema de Belo Horizonte e Brasil CineMundi - International Coproduction Meeting, destinados ao público em geral ou para a comunicação institucional.]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="1" y="400" width="554" height="20" uuid="0a323e22-fd06-4ef4-bfee-31e9af67342c"/>
-				<text><![CDATA[2.	A presente autorização é concedida a título gratuito e livre de qualquer ônus.]]></text>
+				<text><![CDATA[2.    A presente autorização é concedida a título gratuito e livre de qualquer ônus.]]></text>
 			</staticText>
 			<textField>
 				<reportElement x="0" y="440" width="554" height="30" uuid="8677fb47-01c2-4d30-abac-638094a12fd4"/>
@@ -178,7 +178,7 @@ Assinatura]]></text>
 				<reportElement stretchType="RelativeToTallestObject" x="0" y="180" width="555" height="30" uuid="81ca7a5d-9154-497c-a8a8-9146d639437d">
 					<printWhenExpression><![CDATA[!($F{debates}.isEmpty())]]></printWhenExpression>
 				</reportElement>
-				<textField>
+				<textField isStretchWithOverflow="true">
 					<reportElement stretchType="RelativeToTallestObject" x="121" y="0" width="434" height="30" uuid="e9d15e5b-17ce-4f32-a57b-264347dfe2fb"/>
 					<box padding="5">
 						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
