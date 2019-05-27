@@ -64,7 +64,7 @@
                             <?php echo $d->getDescription(); ?>
 
                             <h2>Programação</h2>
-                            <?php foreach ($d->getPrograming($this->reg->event->getId()) as $pro): ?>
+                            <?php foreach ($d->getPrograming($this->reg->getEvent()->getId()) as $pro): ?>
                                 <?php
                                 $progObj = null;
                                 if($pro->getParent()) {
