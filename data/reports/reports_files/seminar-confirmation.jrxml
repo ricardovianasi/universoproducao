@@ -130,38 +130,36 @@
 				<textFieldExpression><![CDATA[$F{created_at}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement key="" x="0" y="230" width="554" height="60" uuid="fd74abba-53a4-4e28-af3c-931b2794e801"/>
+				<reportElement key="" x="0" y="290" width="554" height="60" uuid="fd74abba-53a4-4e28-af3c-931b2794e801"/>
 				<textElement textAlignment="Justified"/>
 				<text><![CDATA[Credenciamento: Apresentar este comprovante de inscrição assinado e um documento original com foto para retirar sua credencial no dia 06 de junho – quinta, de 13h às 15h, ou no dia 07 de junho – sexta, de 9h às 10h, no balcão de credenciamento localizado no hall do Centro de Convenções (Rua Diogo de Vasconcelos, 328 – Bairro Pilar  em Ouro Preto - MG).]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="1" y="290" width="552" height="30" uuid="5278a376-9da5-4ae4-b163-ec27b12db478"/>
+				<reportElement x="1" y="350" width="552" height="30" uuid="5278a376-9da5-4ae4-b163-ec27b12db478"/>
 				<textElement textAlignment="Center">
 					<font size="14" isBold="true"/>
 				</textElement>
 				<text><![CDATA[AUTORIZAÇÃO]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="1" y="340" width="554" height="40" uuid="0a956f96-d5dd-4b46-a927-4b1de70134e3"/>
+				<reportElement x="1" y="400" width="554" height="40" uuid="0a956f96-d5dd-4b46-a927-4b1de70134e3"/>
 				<textElement textAlignment="Justified"/>
 				<text><![CDATA[1.    Autorizo a ter minhas imagem e voz veiculadas por meio de internet, jornais, informes e/ou qualquer meio de publicação/comunicação pública ou privada, para fins exclusivos  de  divulgação  da CineOP – Mostra de Cinema de Ouro Preto, destinados ao público em geral ou para a comunicação institucional.
 da CineBH – Mostra de Cinema de Belo Horizonte e Brasil CineMundi - International Coproduction Meeting, destinados ao público em geral ou para a comunicação institucional.]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="1" y="400" width="554" height="20" uuid="0a323e22-fd06-4ef4-bfee-31e9af67342c"/>
+				<reportElement x="1" y="460" width="554" height="20" uuid="0a323e22-fd06-4ef4-bfee-31e9af67342c"/>
 				<text><![CDATA[2.    A presente autorização é concedida a título gratuito e livre de qualquer ônus.]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="0" y="440" width="554" height="30" uuid="8677fb47-01c2-4d30-abac-638094a12fd4"/>
+				<reportElement x="0" y="500" width="554" height="30" uuid="8677fb47-01c2-4d30-abac-638094a12fd4"/>
 				<textElement textAlignment="Justified"/>
 				<textFieldExpression><![CDATA["3.    Eu, "+$F{user_name}+" estou ciente e de acordo com todas as informações e condições descritas no regulamento da inscrição para participação do "+$F{seminar}+", bem como as informações mencionadas neste "]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="1" y="520" width="554" height="80" uuid="6bd7ba34-f8ad-4699-b511-13cfc8da217f"/>
+				<reportElement x="1" y="550" width="554" height="50" uuid="6bd7ba34-f8ad-4699-b511-13cfc8da217f"/>
 				<textElement textAlignment="Center"/>
 				<text><![CDATA[Ouro Preto,  junho de 2019
-
-
 
 _________________________________________________________________
 Assinatura]]></text>
@@ -176,6 +174,7 @@ Assinatura]]></text>
 			</textField>
 			<frame>
 				<reportElement stretchType="RelativeToTallestObject" x="0" y="180" width="555" height="30" uuid="81ca7a5d-9154-497c-a8a8-9146d639437d">
+					<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.FreeLayout"/>
 					<printWhenExpression><![CDATA[!($F{debates}.isEmpty())]]></printWhenExpression>
 				</reportElement>
 				<textField isStretchWithOverflow="true">
@@ -189,7 +188,7 @@ Assinatura]]></text>
 					<textFieldExpression><![CDATA[$F{debates}]]></textFieldExpression>
 				</textField>
 				<staticText>
-					<reportElement x="0" y="0" width="121" height="30" uuid="beb2f81a-e707-4050-bdaa-ef6328f2b349"/>
+					<reportElement stretchType="ElementGroupHeight" x="0" y="0" width="121" height="30" uuid="beb2f81a-e707-4050-bdaa-ef6328f2b349"/>
 					<box padding="5">
 						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
