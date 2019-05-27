@@ -69,10 +69,12 @@ class SeminarController extends AbstractMeuUniversoRegisterController
         $seminarType = $reg->getOption(Options::SEMINAR_TYPE, 'full');
         $debates = [];
         if($seminarType == 'selected') {
+            $seminarCategory = $reg->getOption(Options::SEMINAR_CATEGORY);
             $debates = $this
                 ->getRepository(Debate::class)
                 ->findBy([
-                    'event' => $reg->getEvent()->getId()
+                    'event' => $reg->getEvent()->getId(),
+                    'category' => $seminarCategory->getValue()
                 ]);
 
         } else {
