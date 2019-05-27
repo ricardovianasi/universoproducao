@@ -130,7 +130,7 @@
 				<textFieldExpression><![CDATA[$F{created_at}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement key="" x="0" y="290" width="554" height="60" uuid="fd74abba-53a4-4e28-af3c-931b2794e801"/>
+				<reportElement key="" x="0" y="220" width="554" height="130" uuid="fd74abba-53a4-4e28-af3c-931b2794e801"/>
 				<textElement textAlignment="Justified"/>
 				<text><![CDATA[Credenciamento: Apresentar este comprovante de inscrição assinado e um documento original com foto para retirar sua credencial no dia 06 de junho – quinta, de 13h às 15h, ou no dia 07 de junho – sexta, de 9h às 10h, no balcão de credenciamento localizado no hall do Centro de Convenções (Rua Diogo de Vasconcelos, 328 – Bairro Pilar  em Ouro Preto - MG).]]></text>
 			</staticText>
@@ -172,32 +172,6 @@ Assinatura]]></text>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{seminar}]]></textFieldExpression>
 			</textField>
-			<frame>
-				<reportElement stretchType="RelativeToTallestObject" x="0" y="180" width="555" height="30" uuid="81ca7a5d-9154-497c-a8a8-9146d639437d">
-					<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.FreeLayout"/>
-					<printWhenExpression><![CDATA[!($F{debates}.isEmpty())]]></printWhenExpression>
-				</reportElement>
-				<textField isStretchWithOverflow="true">
-					<reportElement stretchType="RelativeToTallestObject" x="121" y="0" width="434" height="30" uuid="e9d15e5b-17ce-4f32-a57b-264347dfe2fb"/>
-					<box padding="5">
-						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					</box>
-					<textFieldExpression><![CDATA[$F{debates}]]></textFieldExpression>
-				</textField>
-				<staticText>
-					<reportElement stretchType="ElementGroupHeight" x="0" y="0" width="121" height="30" uuid="beb2f81a-e707-4050-bdaa-ef6328f2b349"/>
-					<box padding="5">
-						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					</box>
-					<text><![CDATA[Debates]]></text>
-				</staticText>
-			</frame>
 		</band>
 	</detail>
 	<pageFooter>
