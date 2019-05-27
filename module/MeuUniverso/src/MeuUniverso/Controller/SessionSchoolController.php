@@ -95,7 +95,7 @@ class SessionSchoolController extends AbstractMeuUniversoRegisterController
                 'code' => self::ERROR_REG_IS_CLOSED,
                 'id_reg' => $idReg
             ]]);
-        }
+         }
 
         $idSessionProg = $this->params()->fromRoute('id');
         if(!$idSessionProg) {
