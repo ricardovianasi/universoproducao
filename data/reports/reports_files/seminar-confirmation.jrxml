@@ -132,7 +132,7 @@
 			<staticText>
 				<reportElement key="" x="0" y="230" width="554" height="60" uuid="fd74abba-53a4-4e28-af3c-931b2794e801"/>
 				<textElement textAlignment="Justified"/>
-				<text><![CDATA[Credenciamento: Apresentar este comprovante de inscrição assinado e um documento original com foto para retirar sua credencial no dia 29 de agosto – quarta, de 10h às 13h no balcão de credenciamento localizado no Jardim Externo do Palácio das Artes(piso inferior).]]></text>
+				<text><![CDATA[Credenciamento: Apresentar este comprovante de inscrição assinado e um documento original com foto para retirar sua credencial no dia 06 de junho – quinta, de 13h às 15h, ou no dia 07 de junho – sexta, de 9h às 10h, no balcão de credenciamento localizado no hall do Centro de Convenções (Rua Diogo de Vasconcelos, 328 – Bairro Pilar  em Ouro Preto - MG).]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="1" y="290" width="552" height="30" uuid="5278a376-9da5-4ae4-b163-ec27b12db478"/>
@@ -144,23 +144,22 @@
 			<staticText>
 				<reportElement x="1" y="340" width="554" height="40" uuid="0a956f96-d5dd-4b46-a927-4b1de70134e3"/>
 				<textElement textAlignment="Justified"/>
-				<text><![CDATA[1.    Autorizo a ter minhas imagem e voz veiculadas por meio de internet, jornais, informes e/ou
-qualquer meio de publicação/comunicação pública ou privada, para fins exclusivos de divulgação
+				<text><![CDATA[1.   Autorizo a ter minhas imagem e voz veiculadas por meio de internet, jornais, informes e/ou qualquer meio de publicação/comunicação pública ou privada, para fins exclusivos  de  divulgação  da CineOP – Mostra de Cinema de Ouro Preto, destinados ao público em geral ou para a comunicação institucional.
 da CineBH – Mostra de Cinema de Belo Horizonte e Brasil CineMundi - International Coproduction Meeting, destinados ao público em geral ou para a comunicação institucional.]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="1" y="400" width="554" height="20" uuid="0a323e22-fd06-4ef4-bfee-31e9af67342c"/>
-				<text><![CDATA[2.    A presente autorização é concedida a título gratuito e livre de qualquer ônus.]]></text>
+				<text><![CDATA[2.	A presente autorização é concedida a título gratuito e livre de qualquer ônus.]]></text>
 			</staticText>
 			<textField>
 				<reportElement x="0" y="440" width="554" height="30" uuid="8677fb47-01c2-4d30-abac-638094a12fd4"/>
 				<textElement textAlignment="Justified"/>
-				<textFieldExpression><![CDATA["3.    Eu, "+$F{user_name}+"estou ciente e de acordo com todas as informações e condições descritas no regulamento da inscrição para participação do Programa de Formação Audiovisual, bem como as informações mencionadas neste"]]></textFieldExpression>
+				<textFieldExpression><![CDATA["3.    Eu, "+$F{user_name}+" estou ciente e de acordo com todas as informações e condições descritas no regulamento da inscrição para participação do "+$F{seminar}+", bem como as informações mencionadas neste "]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="1" y="520" width="554" height="80" uuid="6bd7ba34-f8ad-4699-b511-13cfc8da217f"/>
 				<textElement textAlignment="Center"/>
-				<text><![CDATA[Belo Horizonte,   ____ de agosto de 2018
+				<text><![CDATA[Ouro Preto,  junho de 2019
 
 
 
