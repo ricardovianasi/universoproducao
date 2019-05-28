@@ -12,7 +12,7 @@
             <div class="movie-list" style="width: 100%;">
                 <?php foreach ($this->list as $item): ?>
                     <article class="movie-item">
-                        <a href="<?php echo $this->url("cineop2018/art", ['action'=>'details', 'id'=>$item->getId()]) ?>" class="movie-link">
+                        <a href="<?php echo $this->url("cineop2019/art", ['action'=>'details', 'id'=>$item->getId()]) ?>" class="movie-link">
                             <div class="movie-cover">
                                 <?php if($item->getFiles()->first()): $media = $item->getFiles()->first(); ?>
                                     <figure class="movie-figure">
