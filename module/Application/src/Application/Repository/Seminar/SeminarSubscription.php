@@ -52,7 +52,7 @@ class SeminarSubscription extends AbstractRepository
         }
 
         if(!empty($criteria['category'])) {
-            $qb->andWhere('p.category = :idcategory')
+            $qb->andWhere('p.seminar-category = :idcategory')
                 ->setParameter('idcategory', $criteria['category']);
         }
 
