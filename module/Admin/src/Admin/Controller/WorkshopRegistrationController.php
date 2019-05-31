@@ -271,7 +271,8 @@ class WorkshopRegistrationController extends AbstractAdminController
                 $desc = $pro->getDate()->format('d/m/Y')
                     . ' | ' . $pro->getStartTime()->format('H:i')
                     . ' às '
-                    . $pro->getEndTime()->format('H:i');
+                    . $pro->getEndTime() ? $pro->getEndTime()->format('H:i') : ' * ';
+
                 $workshopProgramationItems[] = $desc;
             }
 
