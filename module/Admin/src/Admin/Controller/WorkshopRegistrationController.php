@@ -466,8 +466,8 @@ class WorkshopRegistrationController extends AbstractAdminController
             //$to[$item->getAuthor()->getName()] = 'ricardovianasi@gmail.com';
             /** @var \SendGrid\Response $return */
             $return = $this->mailService()->simpleSendEmail(
-            //[$item->getUser()->getName()=>$item->getUser()->getEmail()],
-                [$item->getUser()->getName()=>'ricardovianasi@gmail.com'],
+                [$item->getUser()->getName()=>$item->getUser()->getEmail()],
+                //[$item->getUser()->getName()=>'ricardovianasi@gmail.com'],
                 'Comunicado oficina - 14ª CineOP', $msg);
 
             $count++;
@@ -480,8 +480,63 @@ class WorkshopRegistrationController extends AbstractAdminController
                 echo "<b>******************-ERRO-******************</b><br /><br />";
             }
 
-            break;
-            exit();
+            //break;
+            //exit();
+        }
+
+        return $this->getViewModel();
+    }
+
+    public function comunicadosNaoSelecionadosAction()
+    {
+        $this->getViewModel()->setTerminal(true);
+
+        $items = $this
+            ->getRepository(WorkshopSubscription::class)
+            ->createQueryBuilder('m')
+            ->andWhere('m.status = :status')
+            ->andWhere('m.event = :idEvent')
+            ->setParameters([
+                'status' => 'not_selected',
+                'idEvent' => 1090
+            ])
+            ->getQuery()
+            ->getResult();
+
+        /*var_dump(count($items)); exit();*/
+        $count = 0;
+        foreach ($items as $item) {
+            /** @var WorkshopSubscription $item */
+            //$item = new WorkshopSubscription();
+
+            $msg = "<p>Prezado(a) ".$item->getUser()->getName().",</p>";
+
+            $msg.= "<p>Agradecemos seu interesse em participar da 14ª CineOP - Mostra de Cinema de Ouro Preto.
+Informamos que você não foi selecionado(a) para a oficina ".$item->getWorkshop()->getName().".</p>";
+
+            $msg.= "<p>Convidamos você para participar das outras atividades do evento: sessões de filmes, debates, cortejo, shows e rodas de conversa.</p>";
+            $msg.= "<p>A programação é gratuita e pode ser conferida no site <a href='www.cineop.com.br'>www.cineop.com.br</a>.</p>";
+            $msg.= "<p>Atenciosamente,<br />Coordenação Oficinas – 14ª CineOP</p>";
+
+            //$to[$item->getAuthor()->getName()] = 'ricardovianasi@gmail.com';
+            /** @var \SendGrid\Response $return */
+            $return = $this->mailService()->simpleSendEmail(
+                [$item->getUser()->getName()=>$item->getUser()->getEmail()],
+                //[$item->getUser()->getName()=>'ricardovianasi@gmail.com'],
+                'Comunicado oficina - 14ª CineOP', $msg);
+
+            $count++;
+            echo "$count - Nome: " . $item->getUser()->getName();
+            echo "<br />Email: " . $item->getUser()->getEmail();
+            echo "<br />Oficina: " . $item->getWorkshop()->getName();
+            if($return->statusCode() == 202) {
+                echo "<br /><b>******************-SUCESSO-******************</b><br /><br />";
+            } else {
+                echo "<b>******************-ERRO-******************</b><br /><br />";
+            }
+
+            //break;
+            //exit();
         }
 
         return $this->getViewModel();
