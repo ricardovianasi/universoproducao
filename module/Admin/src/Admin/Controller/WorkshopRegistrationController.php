@@ -392,7 +392,7 @@ class WorkshopRegistrationController extends AbstractAdminController
             ->andWhere('m.event = :idEvent')
             ->setParameters([
                 'status' => 'selected',
-                'idEvent' => 1089
+                'idEvent' => 1090
             ])
             ->getQuery()
             ->getResult();
@@ -406,10 +406,11 @@ class WorkshopRegistrationController extends AbstractAdminController
             $msg = "<p>Prezado(a) ".$item->getUser()->getName().",</p>";
             $msg.= "<p>PARABÉNS!</p>";
 
-            $msg.= "<p>Você foi selecionado (a) para participar da Oficina ".$item->getWorkshop()->getName()." que será realizada durante a programação da 22ª Mostra de Cinema de Tiradentes, nos dias e horários a seguir:</p>";
+            $msg.= "<p>Você foi selecionado (a) para participar da Oficina ".$item->getWorkshop()->getName()." que será realizada 
+			durante a programação da 14ª CineOP - Mostra de Cinema de Ouro Preto.</p>";
 
 
-            $workshopProgramation = $this->getRepository(Programing::class)->findBy([
+            /*$workshopProgramation = $this->getRepository(Programing::class)->findBy([
                 'event' => $item->getEvent()->getId(),
                 'type' => Type::WORKSHOP,
                 'objectId' => $item->getWorkshop()->getId()
@@ -426,10 +427,10 @@ class WorkshopRegistrationController extends AbstractAdminController
             $msg.="<p>Data e hora de realização:<br />";
             $msg.=implode('<br />', $workshopProgramationItems);
             $msg.="<br />Local para credenciamento: Centro Cultural SESIMINAS Yves Alves
-            <br />Rua Direita, 168 – Tiradentes - MG</p>";
+            <br />Rua Direita, 168 – Tiradentes - MG</p>";*/
 
             $msg.="<p><strong>Atenção:
-            <br />- Prazo de confirmação: até às 20 horas (horário de Brasília), do dia 09/01/2019 - quarta-feira.
+            <br />- Prazo de confirmação: até às 20 horas (horário de Brasília), do dia 01/06/2019 - sábado.
             <br />- Caso não confirme sua presença no prazo estipulado sua inscrição será considerada como DESISTÊNCIA.</strong></p>";
 
             $confirmacao  = $this->url()->fromRoute('meu-universo/workshop', array(
@@ -455,18 +456,19 @@ class WorkshopRegistrationController extends AbstractAdminController
                 <li>6) Qualquer dúvida entre em contato: oficinas@universoproducao.com.br </li>
             </ul>";
 
-            $msg.= "<p><strong>Apresente o comprovante de confirmação impresso</strong> e um documento com foto para retirar a credencial e o material na secretaria do evento no dia de início da oficina no seguinte endereço:<br />Centro Cultural SESIMINAS Yves Alves<br />Rua Direita, 168 – Tiradentes - MG</p>";
+            $msg.= "<p><strong>Apresente o comprovante de confirmação impresso</strong> e um documento com foto para retirar a credencial e o material na secretaria do evento no dia de início da oficina no seguinte endereço:
+			<br /><br />Centro de Artes e Convenções<br />Diogo de Vasconcelos, 328 - Pilar, Ouro Preto - MG</p>";
 
             $msg.= "<p>Convidamos você para participar também das outras atividades do evento.</p>";
-            $msg.= "<p>A programação é gratuita e, estará disponível no site <a href='www.mostratiradentes.com.br'>www.mostratiradentes.com.br</a> a partir do dia 9 de janeiro.</p>";
-            $msg.= "<p>Atenciosamente,<br />Coordenação Oficinas – 22ª Mostra de Cinema de Tiradentes</p>";
+            $msg.= "<p>A programação é gratuita e pode ser conferida no site <a href='www.cineop.com.br'>www.cineop.com.br</a>.</p>";
+            $msg.= "<p>Atenciosamente,<br />Coordenação Oficinas – 14ª CineOP</p>";
 
             //$to[$item->getAuthor()->getName()] = 'ricardovianasi@gmail.com';
             /** @var \SendGrid\Response $return */
             $return = $this->mailService()->simpleSendEmail(
-                //[$item->getUser()->getName()=>$item->getUser()->getEmail()],
+            //[$item->getUser()->getName()=>$item->getUser()->getEmail()],
                 [$item->getUser()->getName()=>'ricardovianasi@gmail.com'],
-                'Comunicado oficina - 22ª Mostra de Cinema de Tiradentes', $msg);
+                'Comunicado oficina - 14ª CineOP', $msg);
 
             $count++;
             echo "$count - Nome: " . $item->getUser()->getName();
