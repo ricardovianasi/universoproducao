@@ -268,12 +268,15 @@ class WorkshopRegistrationController extends AbstractAdminController
             ]);
             $workshopProgramationItems = [];
             foreach ($workshopProgramation as $pro) {
-                $desc = ($pro->getDate() ? $pro->getDate()->format('d/m/Y') : " * ")
-                    . ' | ' . ($pro->getStartTime() ? $pro->getStartTime()->format('H:i') : " * ")
-                    . ' às '
-                    . $pro->getEndTime() ? $pro->getEndTime()->format('H:i') : ' * ';
 
-                $workshopProgramationItems[] = $desc;
+                if($pro->getDate() && $pro->getDate() instanceof \DateTime) {
+                    $desc = ($pro->getDate() ? $pro->getDate()->format('d/m/Y') : " * ")
+                        . ' | ' . ($pro->getStartTime() ? $pro->getStartTime()->format('H:i') : " * ")
+                        . ' às '
+                        . ($pro->getEndTime() ? $pro->getEndTime()->format('H:i') : ' * ');
+
+                    $workshopProgramationItems[] = $desc;
+                }
             }
 
             $answers = [];
