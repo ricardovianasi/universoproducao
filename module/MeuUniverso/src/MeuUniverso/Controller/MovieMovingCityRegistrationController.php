@@ -325,6 +325,11 @@ class MovieMovingCityRegistrationController extends AbstractMeuUniversoRegisterC
                 }
                 unset($data['events']);
 
+                //duration minutes to time
+                $minutes = $data['duration'];
+                $minutesToTime = \DateTime::createFromFormat('i', $minutes);
+                $data['duration'] = $minutesToTime;
+
                 $options = new ArrayCollection();
                 if(!empty($data['options'])) {
                     foreach ($data['options'] as $opt) {
