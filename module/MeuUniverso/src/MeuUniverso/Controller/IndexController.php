@@ -20,6 +20,11 @@ class IndexController extends AbstractMeuUniversoController
            'type' => Movie::TYPE_MOVIE
         ],['createdAt' => 'DESC']);
 
+        $moviesMotionCity = $this->getRepository(Movie::class)->findBy([
+            'author' => $this->getAuthenticationService()->getIdentity()->getId(),
+            'type' => Movie::TYPE_MOTION_CITY_MOVIE
+        ],['createdAt' => 'DESC']);
+
         $educationalMovies = $this->getRepository(Movie::class)->findBy([
             'author' => $this->getAuthenticationService()->getIdentity()->getId(),
             'type' => Movie::TYPE_EDUCATIONAL_MOVIE
@@ -67,6 +72,7 @@ class IndexController extends AbstractMeuUniversoController
 
         return [
             'movies' => $movies,
+            'motion_movies' => $moviesMotionCity,
             'educational_movies' => $educationalMovies,
             'workshops' => $workshops,
             'projects' => $projects,

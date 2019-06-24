@@ -67,6 +67,20 @@
             </div>
         <?php endif; ?>
 
+        <?php if(count($this->motion_movies)): ?>
+            <div class="portlet box blue-hoki">
+                <div class="portlet-title">
+                    <div class="caption">
+                        <i class="fa fa-gift"></i>Filmes Cidade em Movimento</div>
+                    <div class="actions">
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    <?php echo $this->meuUniversoMovies($this->motion_movies); ?>
+                </div>
+            </div>
+        <?php endif; ?>
+
         <?php if(count($this->sessionSchool)): ?>
             <div class="portlet box blue-hoki">
                 <div class="portlet-title">

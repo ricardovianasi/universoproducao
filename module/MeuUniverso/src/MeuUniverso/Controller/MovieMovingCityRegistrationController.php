@@ -401,7 +401,7 @@ class MovieMovingCityRegistrationController extends AbstractMeuUniversoRegisterC
                     }
                     $msg.= '<p><ul>'.$mostras.'</ul></p>';
 
-                    $msg.= '<p>O resultado da seleção está previsto para 01 de agosto. Os resultados serão enviados pelo email cadastrado.</p>';
+                    $msg.= '<p>O resultado da seleção está previsto para agosto. Os resultados serão enviados pelo email cadastrado.</p>';
                     $msg.= '<p>Pedimos a gentileza de manter os dados do seu cadastro sempre atualizados para garantir a eficácia em nossa comunicação!</p>';
 
                     $to[$user->getName()] = $user->getEmail();
