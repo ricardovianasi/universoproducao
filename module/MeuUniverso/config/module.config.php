@@ -125,6 +125,20 @@ return array(
                             ),
                         ),
                     ),
+                    'moving_city_movie_view' => array(
+                        'type'    => 'Segment',
+                        'options' => array(
+                            'route'    => '/filme-cidade-em-movimento/visualizar/:id',
+                            'constraints' => array(
+                                'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
+                            ),
+                            'defaults' => array(
+                                'controller' => Controller\MovieMovingCityRegistrationController::class,
+                                'action' => 'visualizar',
+                            ),
+                        ),
+                        'priority' => '100'
+                    ),
                     'educational_movie' => array(
                         'type'    => 'Segment',
                         'options' => array(

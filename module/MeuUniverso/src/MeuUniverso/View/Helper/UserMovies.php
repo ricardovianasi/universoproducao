@@ -94,6 +94,8 @@ class UserMovies extends AbstractHelper implements ServiceLocatorAwareInterface
         //visualizar
         if($movie->getType() == Movie::TYPE_EDUCATIONAL_MOVIE) {
             $viewUrl = $urlHelper('meu-universo/educational_movie_view', ['id'=>$movie->getId()]);
+        } elseif($movie->getType() == Movie::TYPE_MOTION_CITY_MOVIE) {
+            $viewUrl = $urlHelper('meu-universo/moving_city_movie_view', ['id'=>$movie->getId()]);
         } else {
             $viewUrl = $urlHelper('meu-universo/movie_view', ['id'=>$movie->getId()]);
         }
