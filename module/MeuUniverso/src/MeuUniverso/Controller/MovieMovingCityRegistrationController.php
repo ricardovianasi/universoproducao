@@ -263,7 +263,7 @@ class MovieMovingCityRegistrationController extends AbstractMeuUniversoRegisterC
 
 
             //Validação do título do filme
-            $movieTitleValidationOptions = [
+            /*$movieTitleValidationOptions = [
                 'object_manager' => $this->getRepository(Movie::class),
                 'user_context' => $this->getAuthenticationService()->getIdentity()->getId(),
                 'messages' => [
@@ -276,7 +276,7 @@ class MovieMovingCityRegistrationController extends AbstractMeuUniversoRegisterC
 
             $titleExist = new Unique($movieTitleValidationOptions);
             $titleInputFilter = $form->getInputFilter()->get('title');
-            $titleInputFilter->getValidatorChain()->attach($titleExist);
+            $titleInputFilter->getValidatorChain()->attach($titleExist);*/
 
             //Validação dos médias para mostra tiradentes
             $hasTiradentesSubscribe = false;
