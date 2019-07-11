@@ -76,7 +76,7 @@ class MovieMovingCityForm extends AdminMovieForm
         $this->get('end_date_month')->setAttribute('required', 'required');
         $this->get('duration')->setAttributes([
             'required' => 'required',
-            'data-inputmask' => "'alias': 'integer'; 'rightAlign': 'false'",
+            'data-inputmask' => "'alias': 'integer', 'rightAlign': 'false'",
         ]);
         $this->get('duration')->setAttribute('required', 'required');
 //        $this->get('cpb')->setAttribute('required', 'required');
