@@ -21,6 +21,7 @@ use Application\Entity\Registration\Options;
 use Application\Entity\Registration\Registration;
 use Doctrine\Common\Collections\ArrayCollection;
 use MeuUniverso\Form\MovieMovingCityForm;
+use Zend\Validator\Digits;
 use Zend\View\Model\ViewModel;
 
 class MovieMovingCityRegistrationController extends AbstractMeuUniversoRegisterController
@@ -299,10 +300,10 @@ class MovieMovingCityRegistrationController extends AbstractMeuUniversoRegisterC
                         Duration::ERROR_IS_NOT_MARCH => 'Para Mostra Tiradentes não é permitido inscrição de filmes média'
                     ]
                 ]));
+                $durationInputFilter->getValidatorChain()->attach(New Digits());
             }
 
             if($form->isValid()) {
-
                 if($id) {
                     $movieEvents = $this->getRepository(MovieSubscription::class)->findBy([
                         'movie' => $movie->getId()
