@@ -1,0 +1,625 @@
+<!doctype html>
+<html lang="">
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>generator custom2</title>
+
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <!-- Place favicon.ico in the root directory -->
+
+    <!-- build:css styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- endbuild -->
+
+    <!-- build:css styles/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="/bower_components/owl.carousel/dist/assets/owl.carousel.css" />
+    <link rel="stylesheet" href="/bower_components/owl.carousel/dist/assets/owl.theme.default.css" />
+    <link rel="stylesheet" href="/bower_components/gray/css/gray.css" />
+    <link rel="stylesheet" href="/bower_components/fancybox/dist/jquery.fancybox.min.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
+
+
+  </head>
+  <body class="home">
+    <!--[if lt IE 10]>
+      <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <header class="header">
+      <div class="header-wrapper">
+        <div class="header-desktop">
+          <div class="header-left header-block">
+            <img src="images/2019/letter.png" alt="">
+          </div>
+          <div class="header-center header-block">
+            <img src="images/2019/assinatura.png" alt="">
+          </div>
+          <div class="header-right header-block">
+            <img src="images/2019/brand.png" alt="">
+          </div>
+        </div>
+        <div class="header-actions">
+          <div class="action menu-button" id="menu-button" data-src="#navigation-modal">
+            <div class="circle">
+              <div class="burger">
+                <span class="b"></span>
+                <span class="b"></span>
+                <span class="b"></span>
+                <span class="b"></span>
+              </div>
+            </div>
+          </div>
+          <a href="#" class="action langselector"><span>ENGLISH</span></a>
+        </div>
+        <div class="header-mobile">
+          <div class="header-mobile-center">
+            <div class="center">
+              <img src="images/2019/assinatura.png" alt="">
+            </div>
+            <div class="right">
+              <img src="images/2019/brand.png" alt="">
+              <img src="images/2019/letter.png" alt="">
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="main">
+      <section class="banner">
+        <div class="owl-carousel">
+          <div class="item">
+            <img src="images/banner1.jpg" alt="">
+            <p class="banner-caption">Foto: Ricardo Viana</p>
+          </div>
+          <div class="item">
+            <img src="images/banner2.jpg" alt="">
+            <p class="banner-caption">Foto: Ricardo Viana</p>
+          </div>
+          <div class="item">
+            <img src="images/banner3.jpg" alt="">
+            <p class="banner-caption">Ricardo Viana</p>
+          </div>
+        </div>
+      </section>
+
+      <!--<section class="programation home-effect">
+        <header class="main-header programation-header">
+          <h1 class="main-title">Programação</h1>
+        </header>
+        <div class="programation-highlight owl-carousel" id="programation-highlight">
+          <article class="programation-item">
+            <a href="#" class="link">
+              <div class="bgi" style="background-image: url('images/prog1.jpg');"></div>
+              <div class="bgc"></div>
+              <div class="wrapper">
+                <p class="date">22/08</p>
+                <p class="title">Entre o trágico e o patético</p>
+                <p class="subtitle">Mostra Retrospectiva</p>
+                <p class="place">Cine santa tereza|20:00 h</p>
+              </div>
+            </a>
+          </article>
+          <article class="programation-item">
+            <a href="" class="link">
+              <div class="bgi" style="background-image: url('images/prog2.jpg');"></div>
+              <div class="bgc"></div>
+              <div class="wrapper">
+                <p class="date">23/08</p>
+                <p class="title">A canção do pôr do sol (sunset song)</p>
+                <p class="subtitle">Filme</p>
+                <p class="place">Cine santa tereza|20:00 h</p>
+              </div>
+            </a>
+          </article>
+          <article class="programation-item">
+            <a href="" class="link">
+              <div class="bgi" style="background-image: url('images/prog1.jpg');"></div>
+              <div class="bgc"></div>
+              <div class="wrapper">
+                <p class="date">24/08</p>
+                <p class="title">Chico de paula - A cidade em movimento</p>
+                <p class="subtitle">Mostra Retrospectiva</p>
+                <p class="place">Cine santa tereza|20:00 h</p>
+              </div>
+            </a>
+          </article>
+          <article class="programation-item">
+            <a href="" class="link">
+              <div class="bgi" style="background-image: url('images/prog2.jpg');"></div>
+              <div class="bgc"></div>
+              <div class="wrapper">
+                <p class="date">26/08</p>
+                <p class="title">Antes o tempo não acabava</p>
+                <p class="subtitle">Mostra Retrospectiva</p>
+                <p class="place">Cine santa tereza|20:00 h</p>
+              </div>
+            </a>
+          </article>
+        </div>
+        <div class="main-wrapper">
+          <a class="readmore-link" href="#">proramação completa &gt;</a>
+        </div>
+      </section>-->
+
+      <div class="main-wrapper">
+        <section class="news">
+          <header class="main-header">
+            <h1 class="main-title">Notícias</h1>
+          </header>
+          <div class="news-items">
+            <div class="news-item">
+              <a href="#" class="news-link">
+                <div class="news-figure"><img src="images/news.jpg" alt=""></div>
+                <p class="news-title">Mostra Cine BH: últimos dias para inscrição nos cursos gratuitos</p>
+                <p class="news-subtitle">São oferecidas seis modalidades de curso – três oficinas, dois workshops e uma masterclass – em três sessões com instrutores brasileiros e internacionais, num total de 280 vagas</p>
+                <p class="news-readmore">Leia mais +</p>
+              </a>
+            </div>
+            <div class="news-item">
+              <a href="#" class="news-link">
+                <div class="news-figure"><img src="images/news.jpg" alt=""></div>
+                <p class="news-title">Mostra Cine BH: últimos dias para inscrição nos cursos gratuitos</p>
+                <p class="news-subtitle">São oferecidas seis modalidades de curso – três oficinas, dois workshops e uma masterclass – em três sessões com instrutores brasileiros e internacionais, num total de 280 vagas</p>
+                <p class="news-readmore">Leia mais +</p>
+              </a>
+            </div>
+          </div>
+          <a href="#" class="btn">Veja todas as notícias</a>
+        </section>
+      </div>
+
+      <section class="tv">
+        <div class="main-wrapper">
+          <header class="main-header">
+            <h1 class="main-title">Vídeos</h1>
+          </header>
+
+          <div class="tv-wrapper">
+            <div class="tv-highlight">
+              <div class="tv-featured">
+                <div class="tv-bg" style="background-image: url('images/tv1.jpg')">
+                  <a class="tv-link" href="#"><span class="icon-play4"></span></a>
+                </div>
+                <div class="tv-content">
+                  <p class="tv-title">Estreia do longa comboio de sal</p>
+                </div>
+              </div>
+            </div>
+            <div class="tv-highlight">
+              <div class="tv-featured">
+                <div class="tv-bg" style="background-image: url('images/tv1.jpg')">
+                  <a class="tv-link" href="#"><span class="icon-play4"></span></a>
+                </div>
+                <div class="tv-content">
+                  <p class="tv-title">Estréia de longas nacionais é desta que na 20ª mostra de cinema de tiradentes</p>
+                  <p class="tv-subtitle">Filmes nacionais estreiam em grande estilo na Mostra Tiradentes. Confira como foi o primeiro dia</p>
+                </div>
+              </div>
+              <div class="tv-featured">
+                <div class="tv-bg" style="background-image: url('images/tv1.jpg')">
+                  <a class="tv-link" href="#"><span class="icon-play4"></span></a>
+                </div>
+                <div class="tv-content">
+                  <p class="tv-title">estréia de longas  nacionais é destaque na 20ª mostra de cinema de tiradentes</p>
+                  <p class="tv-subtitle">Filmes nacionais estreiam em grande estilo na Mostra Tiradentes. Confira como foi o primeiro dia</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <p class="news-readmore">
+            <a href="#" class="btn"><span>Ver todos os Vídeos</span></a>
+          </p>
+        </div>
+      </section>
+
+      <section class="gallery">
+        <div class="gallery-header">
+          <header class="main-header programation-header">
+            <h1 class="main-title">Galeria</h1>
+          </header>
+        </div>
+        <div class="owl-carousel">
+          <div class="gallery-item">
+            <img src="images/2019/imagem1.jpg" alt="">
+            <p class="gallery-caption">Foto: Ricardo Viana</p>
+          </div>
+          <div class="gallery-item">
+            <img src="images/2019/imagem1.jpg" alt="">
+            <p class="gallery-caption">Foto: Ricardo Viana</p>
+          </div>
+        </div>
+
+        <div class="gallery-footer">
+          <div class="main-wrapper">
+            <a class="readmore-link" href="#">veja mais imagens &gt;</a>
+          </div>
+        </div>
+
+      </section>
+
+      <section class="eufacoamostra">
+        <header class="main-header">
+          <h1 class="main-title"><span class="icon-eufacoamostra"></span></h1>
+          <p>Compartilhe e publique suas imagens usando a #eufaçoaMostra</p>
+        </header>
+        <ul class="eufacoamostra-items">
+          <li class="eufacoamostra-item">
+            <a href="images/eu1.jpg" rel="eufacoamostra" class="eufacoamostra-link fancybox fancybox.iframe">
+              <img src="images/eu1.jpg" alt="" class="grayscale grayscale-fade">
+            </a>
+          </li>
+          <li class="eufacoamostra-item">
+            <a href="images/eu1.jpg" rel="eufacoamostra" class="eufacoamostra-link fancybox fancybox.iframe">
+              <img src="images/eu2.jpg" alt="" class="grayscale grayscale-fade">
+            </a>
+          </li>
+          <li class="eufacoamostra-item">
+            <a href="images/eu1.jpg" rel="eufacoamostra" class="eufacoamostra-link fancybox fancybox.iframe">
+              <img src="images/eu1.jpg" alt="" class="grayscale grayscale-fade">
+            </a>
+          </li>
+          <li class="eufacoamostra-item">
+            <a href="images/eu1.jpg" rel="eufacoamostra" class="eufacoamostra-link fancybox fancybox.iframe">
+              <img src="images/eu2.jpg" alt="" class="grayscale grayscale-fade">
+            </a>
+          </li>
+          <li class="eufacoamostra-item">
+            <a href="images/eu1.jpg" rel="eufacoamostra" class="eufacoamostra-link fancybox fancybox.iframe">
+              <img src="images/eu1.jpg" alt="" class="grayscale grayscale-fade">
+            </a>
+          </li>
+          <li class="eufacoamostra-item">
+            <a href="images/eu1.jpg" rel="eufacoamostra" class="eufacoamostra-link fancybox fancybox.iframe">
+              <img src="images/eu2.jpg" alt="" class="grayscale grayscale-fade">
+            </a>
+          </li>
+          <li class="eufacoamostra-item">
+            <a href="images/eu1.jpg" rel="eufacoamostra" class="eufacoamostra-link fancybox fancybox.iframe">
+              <img src="images/eu1.jpg" alt="" class="grayscale grayscale-fade">
+            </a>
+          </li>
+          <li class="eufacoamostra-item">
+            <a href="images/eu1.jpg" rel="eufacoamostra" class="eufacoamostra-link fancybox fancybox.iframe">
+              <img src="images/eu2.jpg" alt="" class="grayscale grayscale-fade">
+            </a>
+          </li>
+          <li class="eufacoamostra-item">
+            <a href="images/eu1.jpg" rel="eufacoamostra" class="eufacoamostra-link fancybox fancybox.iframe">
+              <img src="images/eu1.jpg" alt="" class="grayscale grayscale-fade">
+            </a>
+          </li>
+          <li class="eufacoamostra-item">
+            <a href="images/eu1.jpg" rel="eufacoamostra" class="eufacoamostra-link fancybox fancybox.iframe">
+              <img src="images/eu2.jpg" alt="" class="grayscale grayscale-fade">
+            </a>
+          </li>
+          <li class="eufacoamostra-item">
+            <a href="images/eu1.jpg" rel="eufacoamostra" class="eufacoamostra-link fancybox fancybox.iframe">
+              <img src="images/eu1.jpg" alt="" class="grayscale grayscale-fade">
+            </a>
+          </li>
+          <li class="eufacoamostra-item">
+            <a href="images/eu1.jpg" rel="eufacoamostra" class="eufacoamostra-link fancybox fancybox.iframe">
+              <img src="images/eu2.jpg" alt="" class="grayscale grayscale-fade">
+            </a>
+          </li>
+          <li class="eufacoamostra-item">
+            <a href="images/eu1.jpg" rel="eufacoamostra" class="eufacoamostra-link fancybox fancybox.iframe">
+              <img src="images/eu1.jpg" alt="" class="grayscale grayscale-fade">
+            </a>
+          </li>
+          <li class="eufacoamostra-item">
+            <a href="images/eu1.jpg" rel="eufacoamostra" class="eufacoamostra-link fancybox fancybox.iframe">
+              <img src="images/eu2.jpg" alt="" class="grayscale grayscale-fade">
+            </a>
+          </li>
+          <li class="eufacoamostra-item">
+            <a href="images/eu1.jpg" rel="eufacoamostra" class="eufacoamostra-link fancybox fancybox.iframe">
+              <img src="images/eu1.jpg" alt="" class="grayscale grayscale-fade">
+            </a>
+          </li>
+          <li class="eufacoamostra-item">
+            <a href="images/eu1.jpg" rel="eufacoamostra" class="eufacoamostra-link fancybox fancybox.iframe">
+              <img src="images/eu2.jpg" alt="" class="grayscale grayscale-fade">
+            </a>
+          </li>
+          <li class="eufacoamostra-item">
+            <a href="images/eu1.jpg" rel="eufacoamostra" class="eufacoamostra-link fancybox fancybox.iframe">
+              <img src="images/eu1.jpg" alt="" class="grayscale grayscale-fade">
+            </a>
+          </li>
+          <li class="eufacoamostra-item">
+            <a href="images/eu1.jpg" rel="eufacoamostra" class="eufacoamostra-link fancybox fancybox.iframe">
+              <img src="images/eu2.jpg" alt="" class="grayscale grayscale-fade">
+            </a>
+          </li>
+        </ul>
+      </section>
+
+      <section class="guide">
+        <div class="guide-bg" data-image-src="/images/cidade.jpg"></div>
+        <div class="main-wrapper">
+          <header class="main-header">
+            <h1 class="main-title">A cidade em movimento</h1>
+          </header>
+
+          <div class="guide-items">
+            <div class="guide-item">
+              <a class="guide-link" href="">
+                <img class="guide-image" src="images/2019/locais.png" alt="">
+                <span class="guide-title">Como chegar</span>
+              </a>
+            </div>
+            <div class="guide-item">
+              <a class="guide-link" href="">
+                <img class="guide-image" src="images/2019/restaurantes.png" alt="">
+                <span class="guide-title">Restaurantes</span>
+              </a>
+            </div>
+            <div class="guide-item">
+              <a class="guide-link" href="">
+                <img class="guide-image" src="images/2019/hoteis.png" alt="">
+                <span class="guide-title">Hoteis e<br /> Acomodações</span>
+              </a>
+            </div>
+            <div class="guide-item">
+              <a class="guide-link" href="">
+                <img class="guide-image" src="images/2019/turismo.png" alt="">
+                <span class="guide-title">Turismo e<br />informações</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="newsletter">
+        <div class="main-wrapper">
+          <header class="main-header">
+            <h1>Receba Nossos Informativos</h1>
+          </header>
+          <form action="" class="newsletter-form">
+            <p><input type="text" class="newsletter-input" placeholder="Nome"></p>
+            <p><input type="text" class="newsletter-input" placeholder="Email"></p>
+            <p><button type="submit" class="newsletter-submit">Cadastrar</button></p>
+          </form>
+        </div>
+      </section>
+
+
+      <section class="sponsorship">
+        <div class="main-wrapper">
+          <ul class="sponsorship-list sponsorship-list--80">
+            <li class="sponsorship-block sponsorship-block--33">
+              <ul class="sponsorship-items">
+                <li class="sponsorship-item"><span class="sprite sprite-lei"></span></li>
+              </ul>
+            </li>
+            <li class="sponsorship-block sponsorship-block--67">
+              <p class="sponsorship-title">Patrocínio</p>
+              <ul class="sponsorship-items">
+                <li class="sponsorship-item"><span class="sprite sprite-copasa"></span></li>
+                <li class="sponsorship-item"><span class="sprite sprite-cemig"></span></li>
+                <li class="sponsorship-item"><span class="sprite sprite-mg"></span></li>
+              </ul>
+            </li>
+            <li class="sponsorship-block sponsorship-block--45">
+              <p class="sponsorship-title">Parceria Cultural</p>
+              <ul class="sponsorship-items">
+                <li class="sponsorship-item"><span class="sprite sprite-sesc"></span></li>
+                <li class="sponsorship-item"><span class="sprite sprite-max"></span></li>
+              </ul>
+            </li>
+            <li class="sponsorship-block sponsorship-block--45 sponsorship-block--right">
+              <p class="sponsorship-title">Fomento</p>
+              <ul class="sponsorship-items">
+                <li class="sponsorship-item"><span class="sprite sprite-codemig"></span></li>
+                <li class="sponsorship-item"><span class="sprite sprite-mg"></span></li>
+              </ul>
+            </li>
+          </ul>
+          <ul class="sponsorship-list">
+            <li class="sponsorship-block sponsorship-block--full">
+              <p class="sponsorship-title">Apoio</p>
+              <ul class="sponsorship-items">
+                <li class="sponsorship-item"><span class="sprite sprite-universo-cultural"></span></li>
+                <li class="sponsorship-item"><span class="sprite sprite-inhotim"></span></li>
+                <li class="sponsorship-item"><span class="sprite sprite-globo-minas"></span></li>
+                <li class="sponsorship-item"><span class="sprite sprite-hoteis-othon"></span></li>
+                <li class="sponsorship-item"><span class="sprite sprite-fcs"></span></li>
+                <li class="sponsorship-item"><span class="sprite sprite-minas-gerais"></span></li>
+              </ul>
+            </li>
+            <li class="sponsorship-block sponsorship-block">
+              <p class="sponsorship-title">patrocínio brasil cinemundi</p>
+              <ul class="sponsorship-items">
+                <li class="sponsorship-item"><span class="sprite sprite-sesi"></span></li>
+              </ul>
+            </li>
+            <li class="sponsorship-block sponsorship-block--70 sponsorship-block--right">
+              <p class="sponsorship-title">cooperação brasil cinemundi</p>
+              <ul class="sponsorship-items">
+                <li class="sponsorship-item"><span class="sprite sprite-tfl"></span></li>
+                <li class="sponsorship-item"><span class="sprite sprite-vs2017"></span></li>
+                <li class="sponsorship-item"><span class="sprite sprite-doc"></span></li>
+                <li class="sponsorship-item"><span class="sprite sprite-docsp"></span></li>
+              </ul>
+            </li>
+            <li class="sponsorship-block sponsorship-block--full">
+              <p class="sponsorship-title">Apoio brasil cinemundi</p>
+              <ul class="sponsorship-items">
+                <li class="sponsorship-item"><span class="sprite sprite-ministerio-relacoes"></span></li>
+                <li class="sponsorship-item"><span class="sprite sprite-naymar"></span></li>
+                <li class="sponsorship-item"><span class="sprite sprite-institut-france"></span></li>
+                <li class="sponsorship-item"><span class="sprite sprite-goethe"></span></li>
+                <li class="sponsorship-item"><span class="sprite sprite-dot"></span></li>
+                <li class="sponsorship-item"><span class="sprite sprite-mistika"></span></li>
+                <li class="sponsorship-item"><span class="sprite sprite-parati"></span></li>
+                <li class="sponsorship-item"><span class="sprite sprite-cinema-brasil"></span></li>
+                <li class="sponsorship-item"><span class="sprite sprite-apex"></span></li>
+                <li class="sponsorship-item"><span class="sprite sprite-ctw"></span></li>
+                <li class="sponsorship-item"><span class="sprite sprite-cinecolor"></span></li>
+              </ul>
+            </li>
+            <li class="sponsorship-block sponsorship-block--full">
+              <p class="sponsorship-title">realização</p>
+              <ul class="sponsorship-items">
+                <li class="sponsorship-item"><span class="sprite sprite-universo-producao"></span></li>
+                <li class="sponsorship-item sponsorship-item--desktop" style="float: right;"><span class="sprite sprite-ministerio-cultura"></span></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="sitemap">
+        <div class="main-wrapper">
+          <ul class="sitemap-items">
+            <li class="sitemap-item">
+              <a href="" class="sitemap-link">A Mostra</a>
+              <ul class="sitemap-items">
+                <li class="sitemap-item"><a href="" class="sitemap-link">20 Mostra Tiradentes</a></li>
+                <li class="sitemap-item"><a href="" class="sitemap-link">Temática Central</a></li>
+                <li class="sitemap-item"><a href="" class="sitemap-link">Edições Anteriores</a></li>
+                <li class="sitemap-item"><a href="" class="sitemap-link">Guias</a></li>
+              </ul>
+            </li>
+            <li class="sitemap-item">
+              <a href="" class="sitemap-link">Brasilcinemundi</a>
+              <ul class="sitemap-items">
+                <li class="sitemap-item"><a href="" class="sitemap-link">20 Mostra Tiradentes</a></li>
+                <li class="sitemap-item"><a href="" class="sitemap-link">Temática Central</a></li>
+                <li class="sitemap-item"><a href="" class="sitemap-link">Edições Anteriores</a></li>
+                <li class="sitemap-item"><a href="" class="sitemap-link">Guias</a></li>
+              </ul>
+            </li>
+            <li class="sitemap-item">
+              <a href="" class="sitemap-link">Programaçao</a>
+              <ul class="sitemap-items">
+                <li class="sitemap-item"><a href="" class="sitemap-link">Homenagens</a></li>
+                <li class="sitemap-item"><a href="" class="sitemap-link">Filmes</a></li>
+                <li class="sitemap-item"><a href="" class="sitemap-link">Programação</a></li>
+                <li class="sitemap-item"><a href="" class="sitemap-link">Oficina</a></li>
+              </ul>
+            </li>
+            <li class="sitemap-item">
+              <a href="" class="sitemap-link">Comunicação</a>
+              <ul class="sitemap-items">
+                <li class="sitemap-item"><a href="" class="sitemap-link">Noticiuas</a></li>
+                <li class="sitemap-item"><a href="" class="sitemap-link">Credenciamento</a></li>
+                <li class="sitemap-item"><a href="" class="sitemap-link">Imprensa</a></li>
+              </ul>
+            </li>
+            <li class="sitemap-item">
+              <a href="" class="sitemap-link">Inscrições</a>
+              <ul class="sitemap-items">
+                <li class="sitemap-item"><a href="" class="sitemap-link">Filmes</a></li>
+                <li class="sitemap-item"><a href="" class="sitemap-link">Oficinas</a></li>
+                <li class="sitemap-item"><a href="" class="sitemap-link">Seminários</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-wrapper">
+        <div class="footer-clear">
+          <div class="footer-contact">
+            <p class="footer-title">Contate-nos:</p>
+            <span class="icon icon-universo-producao"></span>
+            <span class="footer-add">+ 55 31 3282-2366<br />
+                            up@universoproducao.com.br<br />
+                            Rua Pirapetinga, 567 - Serra<br />
+                            30220-150, Belo Horizonte | MG</span>
+          </div>
+          <div class="footer-social">
+            <p class="footer-title">Siga-nos:</p>
+            <ul class="footer-socialitems">
+              <li class="footer-socialitem"><a class="footer-socialink" href=""><span class="icon icon-facebook"></span></a></li>
+              <li class="footer-socialitem"><a class="footer-socialink" href=""><span class="icon icon-twitter"></span></a></li>
+              <li class="footer-socialitem"><a class="footer-socialink" href=""><span class="icon icon-instagram"></span></a></li>
+              <li class="footer-socialitem"><a class="footer-socialink" href=""><span class="icon icon-flickr"></span></a></li>
+              <li class="footer-socialitem"><a class="footer-socialink" href=""><span class="icon icon-youtube"></span></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <p class="footer-copy">Copyright © 2017. Universo Produção - Todos os direitos reservados.</p>
+    </footer>
+
+    <div class="navigation navigation-modal" style="display: none" id="navigation-modal">
+      <div class="navigation-bg"></div>
+      <div class="navigation-wrapper">
+        <div class="navigation-header">
+          <div class="navigation-brand">
+            <img src="images/2019/logomarca-black.png" alt="">
+          </div>
+          <div class="navigation-actions">
+           <div class="item search">
+             <a href="#" class="action"><span class="icon-search"></span></a>
+           </div>
+            <div class="item close">
+              <a data-fancybox-close href="#" class="action"><span class="icon-cross2"></span></a>
+            </div>
+          </div>
+        </div>
+        <div class="navigation-menu">
+          <ul class="navigation-items">
+            <li class="navigation-item"><a class="navigation-link" href="">Início</a></li>
+            <li class="navigation-item">
+              <a class="navigation-link" href="">O Festival</a>
+              <ul class="navigation-subitems">
+                <li class="navigation-subitem"><a class="navigation-link" href="">CineBH</a></li>
+                <li class="navigation-subitem"><a class="navigation-link" href="">Créditos</a></li>
+                <li class="navigation-subitem"><a class="navigation-link" href="">Parceiros</a></li>
+                <li class="navigation-subitem"><a class="navigation-link" href="">Locais</a></li>
+              </ul>
+            </li>
+            <li class="navigation-item"><a class="navigation-link" href="">Programação</a></li>
+            <li class="navigation-item"><a class="navigation-link" href="">Comunicação</a></li>
+            <li class="navigation-item"><a class="navigation-link" href="">Inscrições</a></li>
+            <li class="navigation-item"><a class="navigation-link" href="">Brasilcinemundi</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="/bower_components/jquery/dist/jquery.min.js"><\/script>')</script>
+
+
+    <!-- build:js scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="/bower_components/owl.carousel/dist/owl.carousel.js"></script>
+    <script src="/bower_components/ev-emitter/ev-emitter.js"></script>
+    <script src="/bower_components/imagesloaded/imagesloaded.js"></script>
+    <script src="/bower_components/gray/js/jquery.gray.min.js"></script>
+    <script src="/bower_components/fancybox/dist/jquery.fancybox.min.js"></script>
+    <script src="/bower_components/parallax.js/parallax.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:js scripts/main.js -->
+    <!-- inject:js -->
+    <script src="scripts/main.js"></script>
+    <!-- endinject -->
+    <!-- Place inline scripts here -->
+
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+    <script>
+      (function(c,u,s,t,o,m){c.GoogleAnalyticsObject=t;c[t]||(c[t]=
+      function(){(c[t].q=c[t].q||[]).push(arguments)});c[t].l=+new Date;
+      o=u.createElement(s);m=u.getElementsByTagName(s)[0];
+      o.src='https://www.google-analytics.com/analytics.js';
+      m.parentNode.insertBefore(o,m)}(window,document,'script','ga'));
+      ga('create','UA-XXXXX-X');ga('send','pageview');
+    </script>
+    <!-- endbuild -->
+  </body>
+</html>

@@ -1,0 +1,99 @@
+<main class="main">
+    <?php if($this->breadcrumbs): ?>
+        <?php echo $this->partial('cinebh2019/partials/_breadcrumbs.phtml', ['breadcrumbs'=>$this->breadcrumbs]); ?>
+    <?php endif; ?>
+
+    <div class="main-wrapper">
+        <section class="main-content">
+            <div class="movie">
+            <header class="main-header">
+
+
+                <?php if($this->locale == 'en' && !empty($this->post->getTitleEnglish())): ?>
+                    <h1 class="main-title"><?php echo $this->post->getTitleEnglish(); ?></h1>
+                    <h2 class="movie-title--sub"><?php echo $this->post->getTitle(); ?></h2>
+                <?php else: ?>
+                    <h1 class="main-title"><?php echo $this->post->getTitle(); ?></h1>
+                <?php endif; ?>
+            </header>
+
+
+            <p class="movie-classification"><?php echo implode(', ', $this->post->getHighlights()); ?></p>
+
+            <?php if(!empty($this->medias)): ?>
+                <div class="movie-media">
+                    <div class="owl-carousel movie-carousel">
+                        <?php foreach ($this->medias as $media): ?>
+                            <div class="movie-media-item">
+                                <div class="movie-media-wrapper">
+                                    <?php if($media['type'] == 'video'): ?>
+                                        <a class="owl-video" href="<?php echo $media['src'] ?>"></a>
+                                    <?php else: ?>
+                                        <img style="width: auto; text-align: center; margin: 0 auto;" src="<?php echo $this->thumbor()->url($this->fileManipulation()->url($media['src']))->resize(0, 400); ?>" alt="">
+                                    <?php endif; ?>
+                                </div>
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
+                </div>
+            <?php endif; ?>
+
+
+            <div class="movie-detail">
+                <p>
+                    <strong><?php echo $this->translate('Direção')?>: </strong>
+                    <a class="fancybox" style="color: #000;" href="#moreinfo"><?php echo $this->post->getDirection(); ?>
+                        <i style="margin-left: 2px; font-size: 13px;" class="icon-plus-circle"></i></a>
+                </p>
+                <p class="movie-detail-title"><strong><?php echo $this->translate('Sinopse')?></strong></p>
+                <p>
+                    <?php if($this->locale == 'en' && !empty($this->post->getSynopsisEnglish())) {
+                        echo $this->post->getSynopsisEnglish();
+                    }  else {
+                        echo $this->post->getSynopsis();
+                    }
+                    ?>
+                </p>
+
+                <p><strong><?php echo $this->translate('Exibições')?></strong></p>
+                <?php foreach ($this->post->getPrograming($this->event->getId()) as $pro): ?>
+                    <?php
+                    $progObj = null;
+                    if($pro->getParent()) {
+                        $progObj = $pro->getParent();
+                    } else {
+                        $progObj = $pro;
+                    }
+                    $date =  str_replace('-feira', '', $this->dateFormat($progObj->getDate(), null, null, "pt_BR", "dd/MM | cccc"));
+                    $hour = $progObj->getStartTime()->format('H\hi');
+                    $place = $progObj->getPlace()?$progObj->getPlace()->getName():"";
+                    ?>
+                    <div class="highlight-item">
+                        <p class="hightlight-date"><?php echo "$date - $hour"; ?></p>
+                        <p class="hightlight-place"><?php echo $place ?></p>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+        </div>
+            <div style="display: none;min-width:600px;min-height: 400px" id="moreinfo">
+            <div class="padding" style="padding: 20px">
+                <p><strong style="font-weight: bold"><?php echo $this->translate('Roteiro')?>:</strong> <?php echo $this->post->getScript(); ?></p>
+                <p><strong style="font-weight: bold"><?php echo $this->translate('Empresa produtora')?>:</strong> <?php echo $this->post->getProductionCompany(); ?></p>
+                <p><strong style="font-weight: bold"><?php echo $this->translate('Co-produção')?>:</strong> <?php echo $this->post->getCoProduction(); ?></p>
+                <p><strong style="font-weight: bold"> <?php echo $this->translate('Produção executiva')?>:</strong> <?php echo $this->post->getExecutiveProduction(); ?></p>
+                <p><strong style="font-weight: bold"><?php echo $this->translate('Direção de produção')?>:</strong> <?php echo $this->post->getDirectionProduction(); ?></p>
+                <p><strong style="font-weight: bold"><?php echo $this->translate('Montagem')?>:</strong> <?php echo $this->post->getEditingAssembly(); ?></p>
+                <p><strong style="font-weight: bold"><?php echo $this->translate('Fotografia')?>:</strong> <?php echo $this->post->getPhotography(); ?></p>
+                <p><strong style="font-weight: bold"><?php echo $this->translate('Direção de arte')?>:</strong> <?php echo $this->post->getDirectionArt(); ?></p>
+                <p><strong style="font-weight: bold"><?php echo $this->translate('Trilha sonora')?>:</strong> <?php echo $this->post->getSoundtrack(); ?></p>
+                <p><strong style="font-weight: bold"><?php echo $this->translate('Mixagem')?>:</strong> <?php echo $this->post->getMixing(); ?></p>
+                <p><strong style="font-weight: bold"><?php echo $this->translate('Som direto')?>:</strong> <?php echo $this->post->getDirectSound(); ?></p>
+                <p><strong style="font-weight: bold"><?php echo $this->translate('Edição de som')?>:</strong> <?php echo $this->post->getSoundEditing(); ?></p>
+                <p><strong style="font-weight: bold"><?php echo $this->translate('Cenografia')?>:</strong> <?php echo $this->post->getScenography(); ?></p>
+                <p><strong style="font-weight: bold"><?php echo $this->translate('Figurino')?>:</strong> <?php echo $this->post->getCostume(); ?></p>
+                <p><strong style="font-weight: bold"><?php echo $this->translate('Elenco')?>:</strong> <?php echo $this->post->getCast(); ?></p>
+            </div>
+        </div>
+        </section>
+    </div>
+</main>

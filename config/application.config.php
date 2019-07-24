@@ -13,7 +13,7 @@ $modules = [
     'Cineop2018',
     'Cineop2019',
     'Cinebh',
-    'Cinebh2017',
+    'Cinebh2019',
     'Mostratiradentes',
     'Mostratiradentes2017',
     'MostratiradentesSp2018',

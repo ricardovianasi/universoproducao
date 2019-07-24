@@ -1,0 +1,749 @@
+.home
+
+  .main-header
+    +trailer(0)
+
+  .readmore-link
+    +leader(3)
+    position: absolute
+    right: 0
+    z-index: 100000
+
+  .banner
+    width: 100%
+    position: relative
+    z-index: 100
+    &-caption
+      +adjust-font-size-to(14px)
+      font-style: italic
+      position: absolute
+      top: 0
+      right: 10px
+      padding: 10px
+      color: white
+      background-color: rgba(0,0,0,.4)
+
+    .owl-dots
+      position: absolute
+      bottom: 40px
+      left: 50%
+      transform: translateX(-50%)
+      opacity: 1
+      .owl-dot
+        display: inline-block
+        width: 18px
+        height: 18px
+        background-color: white
+        border-radius: 50%
+        margin-right: 12px
+        margin-left: 12px
+        &.active
+          background-color: $color-palette-1
+
+  .programation
+    width: 100%
+    display: block
+    position: relative
+    background-color: #000
+    z-index: 100
+    +padding-leader(8)
+
+    &-header
+      +trailer(3)
+      position: relative
+      //top: -36px
+      +center($pad:20px)
+      .main-title
+        color: #fac02a
+
+    &-highlight
+      display: inline-block
+      position: relative
+      width: 100%
+      overflow: hidden
+      z-index: 10000
+      //transform: skewY(-4deg)
+
+    &-item
+      position: relative
+      float: left
+      width: 100%
+      height: 811px
+      //transform: skewY(4deg)
+      //&:nth-child(1)
+      //  .wrapper
+      //    margin-top: -95px
+      //&:nth-child(2)
+      //  .wrapper
+      //    margin-top: -65px
+      //&:nth-child(3)
+      //  .wrapper
+      //    margin-top: -30px
+
+      .link
+        display: block
+        width: 100%
+        height: 100%
+        text-decoration: none
+      .bgi,
+      .bgc
+        position: absolute
+        top: 0
+        left: 0
+        width: 100%
+        height: 100%
+        background-repeat: no-repeat
+        background-size: cover
+        transform: scale(1.1)
+        +media("<=765px")
+          left: 5%
+
+      .bgc
+        background-color: black
+        opacity: 0.75
+
+      .wrapper
+        position: absolute
+        top: 50%
+        left: 50%
+        transform: translateY(-50%) translateX(-50%)
+        width: 100%
+        max-width: 300px
+        padding: 10px
+        text-align: center
+        z-index: 999
+
+      .title,
+      .subtitle,
+      .date,
+      .place
+        font-family: $font-family-title
+        text-transform: uppercase
+
+      .date
+        +adjust-font-size-to(72px)
+        +trailer(3, 72px)
+        font-weight: 700
+        color: $color-palette-1
+
+
+      .title
+        +adjust-font-size-to(30px)
+        +trailer(1, 30px)
+        font-weight: 600
+        color: white
+
+      .subtitle
+        color: white
+
+      .place
+        +adjust-font-size-to(14px, 2)
+        font-weight: 700
+        color: $color-palette-1
+
+    .readmore-link
+      position: relative
+      display: block
+      text-align: right
+      +padding-trailer(3)
+      +padding-leader(3)
+
+  .news
+    display: block
+    width: 100%
+    +leader(3)
+    +trailer(6)
+    .main-header
+      .main-title
+        color: #ea5049
+
+    &.top
+      margin-top: 36px !important
+
+    &-items
+      +leader(3)
+      +trailer(3)
+
+    &-item
+      +media(">765px")
+        +column(1/2, $cycle:2)
+      +media("<=765px")
+        +column(1/1, $cycle:1)
+        +trailer(2)
+      padding-left: 0
+      padding-right: 0
+
+    &-figure
+      float: left
+      margin-right: 20px
+      +media("<=765px")
+        float: none
+        display: block
+        width: 100%
+        +trailer(1)
+
+    .btn
+      background-color: #ea5049
+
+  .tv
+    +padding-leader(3)
+    +padding-trailer(4)
+    background-color: #15838a
+    &-wrapper
+      display: block
+      overflow: hidden
+    .main-header
+      .main-title
+        color: white
+    &-highlight
+      float: left
+      width: 50%
+      box-sizing: border-box
+      position: relative
+      +leader(3)
+      +trailer(3)
+      &--full
+        width: 100%
+      &:nth-child(1)
+        padding-right: 70px
+        .tv-bg
+          padding-right: 18px
+        .tv-link
+          +padding-trailer(9, 54px)
+          +padding-leader(9, 54px)
+        .tv-content
+          +leader(1)
+      &:nth-child(2)
+        padding-left: 70px
+        border-left: 1px solid white
+        .tv-bg
+          max-width: 260px
+          float: left
+        .tv-link
+          +padding-trailer(3.5, 54px)
+          +padding-leader(3.5, 54px)
+        .tv-featured
+          &:last-of-type
+            +leader(1)
+        .tv-content
+          padding-left: 15px
+          position: absolute
+          max-width: 260px
+        .tv-title
+          +trailer(1, 16px)
+        .tv-title,
+        .tv-subtitle
+          +adjust-font-size-to(16px, 1.1, 18px)
+          color: white
+      +media('<=765px')
+        width: 100%
+        float: none
+        &:nth-child(1)
+          padding-right: 0
+        &:nth-child(2)
+          padding-left: 0
+          border-left: none
+          width: 100%
+          float: none
+
+    &-featured
+      display: block
+      overflow: hidden
+      position: relative
+
+    &-content
+      display: inline-block
+
+    &-title,
+    &-subtitle
+      font-family: $font-family-title
+
+    &-title
+      font-weight: 700
+      color: white
+
+    &-bg
+      background-repeat: no-repeat
+      background-size: cover
+      background-position: center
+      text-align: center
+      width: 100%
+
+    &-link
+      display: block
+      text-decoration: none
+      +adjust-font-size-to(54px, 3)
+      color: $color-palette-1
+      position: relative
+      &:after
+        content: ""
+        width: 100%
+        height: 100%
+        background-color: black
+        opacity: .3
+        position: absolute
+        top: 0
+        left: 0
+
+    .btn
+      background-color: white
+      color: #15838a
+
+    +media('<=500px')
+      .tv-highlight
+        width: 100%
+        float: none
+        border: none
+        padding: 0
+        .tv-featured, .tv-content, .tv-bg
+          width: 100%
+          float: none
+          display: block
+          position: relative
+          max-width: 100%
+          padding: 0
+
+  .gallery
+    width: 100%
+    display: block
+    position: relative
+    z-index: 100
+    &-header
+      position: absolute
+      width: 100%
+      top: 0
+    &-footer
+      position: absolute
+      width: 100%
+      bottom: 0
+      text-align: right
+      +padding-trailer(2)
+
+    .owl-nav
+      position: absolute
+      width: 100%
+      height: 100%
+      top: 0
+      left: 0
+      .owl-next,
+      .owl-prev
+        position: absolute
+        height: 100%
+        width: 230px
+        text-align: center
+        button
+          background-color: transparent
+          background-repeat: no-repeat
+          overflow: hidden
+          outline: none
+          border: none
+          cursor: pointer
+          height: 60px
+          font-size: 60px
+          color: white
+          position: absolute
+          top: 50%
+          transform: translateY(-50%)
+      .owl-next
+        right: 0
+        button
+          right: 50px
+        //background: linear-gradient(to left, black , rgba(0,0,0,0))
+      .owl-prev
+        left: 0
+        button
+          left: 50px
+        //background: linear-gradient(to right, black , rgba(0,0,0,0))
+
+    .programation-header
+      +leader(3.5)
+      .main-title
+        color: #fff
+
+    .readmore-link
+      +leader(3)
+      z-index: 100000
+      color: #fff
+      position: relative
+
+    &-caption
+      +adjust-font-size-to(14px)
+      font-style: italic
+      position: absolute
+      top: 0
+      right: 10px
+      padding: 10px
+      color: white
+      background-color: rgba(0,0,0,.3)
+
+  .eufacoamostra
+    position: relative
+    .main-header
+      position: relative
+      +padding-leader(4)
+      +padding-trailer(4)
+      text-align: center
+      z-index: 99
+      p
+        font-family: $font-family-title
+
+    .main-title
+      +adjust-font-size-to(72px)
+      +trailer(2, 72px)
+      +media("<480px")
+        +adjust-font-size-to(36px)
+
+
+    &-items
+      display: block
+      overflow: hidden
+      position: relative
+      z-index: 99
+
+    &-item
+      position: relative
+      +media(">=1600px")
+        +column(1/6, $gutter:0)
+      +media("<1600px")
+        +column(1/6, $gutter:0)
+      +media("<1280px")
+        +column(1/4, $gutter:0)
+      +media("<480px")
+        +column(1/2, $gutter:0)
+
+    &-link
+      display: block
+      &.video
+        &:after
+          position: absolute
+          top: 50%
+          left: 50%
+          transform: translate(-50%, -50%)
+          content: "\ed85"
+          font-family: 'Universoproducao' !important
+          speak: none
+          font-style: normal
+          font-weight: normal
+          font-variant: normal
+          font-size: 85px
+          text-transform: none
+          line-height: 1
+          -webkit-font-smoothing: antialiased
+          color: $color-palette-2
+          opacity: .8
+
+      img
+        max-width: 100%
+        height: auto
+        display: block
+        background: #ccc
+        border: none
+
+
+
+  .guide
+    +padding-leader(5)
+    +padding-trailer(8)
+    position: relative
+    z-index: 9
+    &-bg
+      position: absolute
+      top: 0
+      left: 0
+      bottom: 0
+      right: 0
+      width: 100%
+      height: 100%
+    .main-header
+      +padding-trailer(6)
+      text-align: center
+
+    &-items
+      display: block
+      width: 100%
+
+    &-item
+      display: inline-block
+      text-align: center
+      width: 24.5%
+
+    &-link
+      text-decoration: none
+      display: inline-block
+      .sprite
+        margin: 0 auto
+        +trailer(1.5)
+
+    &-title
+      +adjust-font-size-to(18px, 1.4)
+      font-family: $font-family-title
+      font-weight: 700
+      text-transform: uppercase
+      color: $color-txt
+      display: block
+    &-image
+      display: inline-block
+      +trailer(1)
+
+  .newsletter
+    position: relative
+    +padding-leader(7)
+    +padding-trailer(7)
+    &:before
+      content: ''
+      position: absolute
+      top: 0
+      left: 0
+      width: 100%
+      height: 100%
+      background-color: black
+      background-repeat: no-repeat, no-repeat
+      background-position: left, right
+      z-index: 100
+
+    .main-header
+      +trailer(1)
+      text-align: center
+      h1
+        color: white
+        +adjust-font-size-to(18px)
+        font-family: $font-family-title
+        font-weight: 700
+        text-transform: uppercase
+        letter-spacing: .05em
+
+    &-form
+      display: inline-block
+      width: 100%
+      position: relative
+      z-index: 9999999
+      p
+        float: left
+        box-sizing: border-box
+        &:nth-child(1)
+          padding-right: 20px
+        &:nth-child(1),
+        &:nth-child(2)
+          width: 40%
+        &:nth-child(3)
+          padding-left: 20px
+          width: 20%
+
+    &-input,
+    &-submit
+      width: 100%
+      +adjust-font-size-to(14px, 1)
+      text-transform: uppercase
+      font-family: $font-family-title
+      letter-spacing: .05em
+      outline: none
+      box-sizing: border-box
+
+    &-input
+      color: #000
+      background-color: white
+      +apply-side-rhythm-border(all, 1px, 1, 18px, solid #fff)
+      &::-webkit-input-placeholder
+        color: $color-palette-2
+      &::-moz-placeholder
+        color: $color-palette-2
+      &:-ms-input-placeholder
+        color: $color-palette-2
+      &:-moz-placeholder
+        color: $color-palette-2
+    &-submit
+      +apply-side-rhythm-border(all, 1px, 1, 18px, solid $color-palette-2)
+      background-color: #398c91
+      color: white
+      cursor: pointer
+      transition: $transition-default
+      font-weight: 700
+
+  .sitemap
+    position: relative
+    +padding-leader(8)
+    +padding-trailer(8)
+    &:before
+      content: ''
+      position: absolute
+      top: 0
+      left: 0
+      width: 100%
+      height: 100%
+      background-color: #f15d53
+
+    &-items
+      display: inline-block
+      width: 100%
+      position: relative
+      z-index: 99999
+
+    &-item
+      text-align: center
+      +media(">=tablet")
+        +column(1/5)
+      +media("<tablet")
+        +column(2/4, $cycle: 2)
+      +media("<480px")
+        +column(1/1)
+      & >.sitemap-items
+        +leader(.5)
+        +trailer(.5)
+        .sitemap-item
+          display: block
+          width: 100%
+        .sitemap-link
+          +adjust-font-size-to(14px, 1)
+          +trailer(1, 14px)
+          font-weight: 400
+          font-family: $font-family-title
+          text-transform: none
+          color: white
+          letter-spacing: .05em
+          &:hover
+            color: $color-palette-2
+
+    &-link
+      display: block
+      color: $color-txt
+      text-transform: uppercase
+      text-decoration: none
+      +adjust-font-size-to(16px, 1)
+      font-family: $font-family-title
+      font-weight: 700
+      +trailer(1, 16px)
+      letter-spacing: .05em
+      transition: $transition-default
+      &:hover
+        color: $color-palette-2
+
+  .sponsorship
+    +padding-leader(4)
+    +padding-trailer(8)
+    position: relative
+    &-list
+      display: inline-block
+      width: 100%
+      &--80
+        max-width: 85%
+
+    &-block
+      display: inline-block
+      float: left
+      box-sizing: border-box
+      +trailer(2.5)
+      &--full
+        width: 100%
+      &--30
+        width: 30%
+      &--33
+        width: 33%
+      &--40
+        width: 40%
+      &--45
+        width: 45%
+      &--50
+        width: 50%
+      &--70
+        width: 70%
+      &--60
+        width: 60%
+      &--67
+        width: 67%
+      &--center
+        text-align: center
+      &--right
+        float: right
+
+    &-item
+      display: inline-block
+      box-sizing: border-box
+      vertical-align: middle
+      margin-right: 80px
+      +trailer(1.5)
+      &--mobile
+        display: none
+      &:first-child
+        margin-left: 0px
+      &:last-child
+        margin-right: 0px
+
+    &-title
+      +adjust-font-size-to(12px, 2, 18px)
+      font-family: $font-family-title
+      font-weight: bold
+      text-transform: uppercase
+      color: #000
+      border-bottom: 1px solid #000
+      +trailer(2)
+
+
++media("<=900px")
+  .banner
+    &-item
+      text-align: center
+      img
+        text-align: center
+        width: 100% !important
+    .owl-dots
+      bottom: 5px !important
+
++media("<=765px")
+  .home
+    .sponsorship
+      &-list
+        width: 100%
+      &--80
+        max-width: 100% !important
+
+      &-block
+        width: 100% !important
+        &--center
+          text-align: center
+        &--right
+          float: left
+
+      &-item
+        +trailer(1)
+        &--mobile
+          display: block
+        &--desktop
+          display: none
+
+    .newsletter
+      +padding-leader(3)
+      +padding-trailer(3)
+      &-form
+        p
+          &:nth-child(1)
+            padding-right: 0
+          &:nth-child(1),
+          &:nth-child(2)
+            width: 100%
+          &:nth-child(3)
+            padding-left: 0
+            width: 100%
+    .guide
+      &-item
+        width: 49.5%
+        +trailer(1.5)
+
+    .gallery
+      .gallery-item
+        img
+          width: 100%
+      .programation-header
+        +leader(1)
+      .owl-nav
+        .owl-next,
+        .owl-prev
+          width: 80px
+          button
+            height: 20px
+            font-size: 20px
+        .owl-next
+          button
+            right: 15px
+        .owl-prev
+          button
+            left: 15px
