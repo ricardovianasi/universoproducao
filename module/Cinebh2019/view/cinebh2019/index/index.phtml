@@ -85,7 +85,7 @@
                 <div class="tv-highlight">
                     <div class="tv-featured">
                         <div class="tv-bg" style="background-image: url('<?php echo $this->thumbor()->url($videoDestaque->getThumb())->resize(640, 396); ?>')">
-                            <a class="tv-link" href="<?php echo $videoDestaque->getYoutube(); ?>"><span class="icon-play4"></span></a>
+                            <a target="_blank" class="tv-link" href="<?php echo $videoDestaque->getYoutube(); ?>"><span class="icon-play4"></span></a>
                         </div>
                         <div class="tv-content">
                             <p class="tv-title"><?php echo $videoDestaque->getCaption(); ?></p>
@@ -97,7 +97,7 @@
                         <div class="tv-highlight">
                             <div class="tv-featured">
                                 <div class="tv-bg" style="background-image: url('<?php echo $this->thumbor()->url($v->getThumb())->resize(640, 396); ?>')">
-                                    <a class="tv-link" href="<?php echo $v->getYoutube(); ?>"><span class="icon-play4"></span></a>
+                                    <a target="_blank" class="tv-link" href="<?php echo $v->getYoutube(); ?>"><span class="icon-play4"></span></a>
                                 </div>
                                 <div class="tv-content">
                                     <p class="tv-title"><?php echo $v->getCaption(); ?></p>
