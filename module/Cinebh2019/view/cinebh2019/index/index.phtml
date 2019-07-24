@@ -77,14 +77,14 @@
                 <h1 class="main-title">Vídeos</h1>
             </header>
                     <?php
-                        $videoDestaque = $this->videos[0];
-                        unset($this->videos[0]);
+                        $videoDestaque = current($this->videos);
+                        next($this->videos);
                     ?>
             <div class="tv-wrapper">
                 <div class="tv-highlight">
                     <div class="tv-featured">
                         <div class="tv-bg" style="background-image: url('<?php echo $this->thumbor()->url($videoDestaque->getThumb())->resize(640, 396); ?>')">
-                            <a class="tv-link" href="<?php echo $videoDestaque->getCaption(); ?>"><span class="icon-play4"></span></a>
+                            <a class="tv-link" href="<?php echo $videoDestaque->getYoutube(); ?>"><span class="icon-play4"></span></a>
                         </div>
                         <div class="tv-content">
                             <p class="tv-title"><?php echo $videoDestaque->getCaption(); ?></p>
@@ -96,10 +96,10 @@
                         <div class="tv-highlight">
                             <div class="tv-featured">
                                 <div class="tv-bg" style="background-image: url('<?php echo $this->thumbor()->url($v->getThumb())->resize(640, 396); ?>')">
-                                    <a class="tv-link" href="<?php echo $v->getCaption(); ?>"><span class="icon-play4"></span></a>
+                                    <a class="tv-link" href="<?php echo $v->getYoutube(); ?>"><span class="icon-play4"></span></a>
                                 </div>
                                 <div class="tv-content">
-                                    <p class="tv-title"><?php echo $v->getYoutube(); ?></p>
+                                    <p class="tv-title"><?php echo $v->getCaption(); ?></p>
                                 </div>
                             </div>
                         </div>
