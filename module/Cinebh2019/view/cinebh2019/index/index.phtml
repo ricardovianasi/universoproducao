@@ -6,7 +6,7 @@
         <?php foreach ($this->bannerImages as $banner): ?>
             <div class="item">
                 <a href="<?php echo $banner->getMeta('_link')?$banner->getMeta('_link'):"" ?>" target="_blank">
-                    <img src="<?php echo $this->thumbor()->url($banner->getMeta('_image'))->resize(1920, 700); ?>" alt="">
+                    <img src="<?php echo $this->thumbor()->url($banner->getMeta('_image'))->resize(1920, 750); ?>" alt="">
                     <p class="banner-caption"><?php echo $banner->getSubtitle(); ?></p>
                 </a>
             </div>
@@ -123,7 +123,7 @@
         <div class="owl-carousel">
             <?php foreach ($this->gallery as $img): ?>
                 <div class="gallery-item">
-                    <img src="<?php echo $this->thumbor()->url($img->getMeta('_image'))->resize(1920, 600); ?>" alt="">
+                    <img src="<?php echo $this->thumbor()->url($img->getMeta('_image'))->resize(1920, 900); ?>" alt="">
                     <p class="gallery-caption"><?php echo $img->getMeta('_credits'); ?></p>
                 </div>
             <?php endforeach; ?>

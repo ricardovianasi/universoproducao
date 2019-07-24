@@ -727,6 +727,8 @@
       &-item
         width: 49.5%
         +trailer(1.5)
+      .guide-bg
+        opacity: .2
 
     .gallery
       .gallery-item
@@ -747,3 +749,10 @@
         .owl-prev
           button
             left: 15px
+
++media("<=500px")
+  .home
+    .guide
+      &-item
+        width: 100%
+        +trailer(1.5)
