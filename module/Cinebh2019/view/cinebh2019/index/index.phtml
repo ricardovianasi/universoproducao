@@ -76,21 +76,37 @@
             <header class="main-header">
                 <h1 class="main-title">Vídeos</h1>
             </header>
-
-            <div class="tv-items">
-                <?php foreach ($this->videos as $v): ?>
-                    <article class="tv-item">
-                        <a  data-fancybox class="tv-link" href="<?php echo $v->getYoutube(); ?>">
-                            <figure class="tv-figure">
-                                <img src="<?php echo $this->thumbor()->url($v->getThumb())->resize(640, 396); ?>" alt="">
-                            </figure>
-                            <div class="tv-content">
-                                <p class="tv-title"><?php echo $v->getCaption(); ?></p>
+                    <?php
+                        $videoDestaque = $this->videos[0];
+                        unset($this->videos[0]);
+                    ?>
+            <div class="tv-wrapper">
+                <div class="tv-highlight">
+                    <div class="tv-featured">
+                        <div class="tv-bg" style="background-image: url('<?php echo $this->thumbor()->url($videoDestaque->getThumb())->resize(640, 396); ?>')">
+                            <a class="tv-link" href="<?php echo $videoDestaque->getCaption(); ?>"><span class="icon-play4"></span></a>
+                        </div>
+                        <div class="tv-content">
+                            <p class="tv-title"><?php echo $videoDestaque->getCaption(); ?></p>
+                        </div>
+                    </div>
+                </div>
+                <?php if(count($this->videos)): ?>
+                    <?php foreach ($this->videos as $v): ?>
+                        <div class="tv-highlight">
+                            <div class="tv-featured">
+                                <div class="tv-bg" style="background-image: url('<?php echo $this->thumbor()->url($v->getThumb())->resize(640, 396); ?>')">
+                                    <a class="tv-link" href="<?php echo $v->getCaption(); ?>"><span class="icon-play4"></span></a>
+                                </div>
+                                <div class="tv-content">
+                                    <p class="tv-title"><?php echo $v->getYoutube(); ?></p>
+                                </div>
                             </div>
-                        </a>
-                    </article>
-                <?php endforeach; ?>
+                        </div>
+                    <?php endforeach; ?>
+                <?php endif; ?>
             </div>
+
             <p class="news-readmore">
                 <a href="https://www.youtube.com/channel/UCaikc9czwiws39fvlHX-RpA" target="_blank" class="btn"><span>Ver todos os Vídeos</span></a>
             </p>
