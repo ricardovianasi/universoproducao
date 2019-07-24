@@ -71,7 +71,7 @@ class IndexController extends SiteController
             'program' => $program,
             'gallery' => $gallery,
             'guides' => $guides,
-            'videos' => $videos,
+            'videos' => (array) $videos,
             'eufacoamostra' => $eufacoamostra
         ]);
     }
