@@ -63,7 +63,7 @@ class IndexController extends SiteController
             ['order'=>'ASC']
         );
 
-        $eufacoamostra = $this->getRepository(Eufacoamostra::class)->findBy(['site' => self::SITE_ID], [], 24);
+        $eufacoamostra = $this->getRepository(Eufacoamostra::class)->findBy(['site' => self::SITE_ID], [], 18);
 
         return new ViewModel([
             'bannerImages' => $bannerImages,
