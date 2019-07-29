@@ -117,9 +117,11 @@
 
 <?php if(count($this->gallery)>0): ?>
     <section class="gallery home-effect">
-        <header class="main-header programation-header">
-            <h1 class="main-title">Galeria</h1>
-        </header>
+        <div class="gallery-header">
+            <header class="main-header programation-header">
+                <h1 class="main-title">Galeria</h1>
+            </header>
+        </div>
         <div class="owl-carousel">
             <?php foreach ($this->gallery as $img): ?>
                 <div class="gallery-item">
