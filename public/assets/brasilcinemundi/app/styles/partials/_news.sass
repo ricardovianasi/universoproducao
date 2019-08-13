@@ -1,0 +1,62 @@
+.news
+  &-items
+    display: block
+    width: 100%
+    overflow: hidden
+
+  &-item
+    +column(1/4, $cycle:4)
+    //padding-left: 15px
+    //padding-right: 15px
+    box-sizing: border-box
+    &:first-child
+      padding-left: 0
+    &:last-child
+      padding-right: 0
+
+  &-itemblock
+    display: block
+    +trailer(2)
+    .news-figure
+      +leader(1)
+      img
+        width: auto !important
+
+    .btn
+      margin-left: 0
+      margin-right: 0
+
+      background-color: #386391
+      color: white !important
+
+  &-figure
+    display: block
+    position: relative
+    overflow: hidden
+    line-height: 0
+    img
+      width: 100%
+      transition: $transition-default
+
+  &-title
+    font-family: $font-family-title
+    font-weight: 700
+    color: #386391
+    +trailer(1)
+
+  &-subtitle
+    +adjust-font-size-to(16px, 1, 18px)
+    +trailer(1, 16px)
+
+  &-readmore
+    font-family: $font-family-title
+    font-weight: 700
+
+  &-link
+    text-decoration: none
+    color: $color-txt
+    transition: $transition-default
+    &:hover
+      color: $color-palette-2 !important
+      img
+        transform: scale(1.1)

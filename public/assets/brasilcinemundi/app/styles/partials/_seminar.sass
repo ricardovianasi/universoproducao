@@ -1,0 +1,30 @@
+.seminar
+  +leader(3)
+  &-item
+    display: block
+    +trailer(1)
+    +padding-trailer(1)
+    border-bottom: 1px solid black
+    &:last-of-type
+      border-bottom: none
+
+
+  &-link
+    text-decoration: none
+    &:hover
+      color: #38c2d4
+      .seminar-header
+        .seminar-title
+          color: #38c2d4
+
+  &-title
+    +adjust-font-size-to(20px, 1.5)
+    font-weight: bold
+    text-transform: uppercase
+    color: $color-txt
+
+  &-cat
+    display: block
+    +adjust-font-size-to(16px, 1.3)
+    text-transform: uppercase
+    font-style: italic

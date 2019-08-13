@@ -1,0 +1,30 @@
+<main class="main">
+    <?php if($this->breadcrumbs): ?>
+        <?php echo $this->partial('brasilcinemundi/partials/_breadcrumbs.phtml', ['breadcrumbs'=>$this->breadcrumbs]); ?>
+    <?php endif; ?>
+
+    <div class="main-wrapper">
+        <section class="main-content">
+            <header class="main-header">
+                <h1 class="main-title"><?php echo $post->getTitle() ?></h1>
+            </header>
+
+            <div class="movie-list">
+                <?php foreach ($this->list as $item): ?>
+                    <article class="movie-item">
+                        <a href="<?php echo $this->url("brasilcinemundi/art", ['action'=>'details', 'id'=>$item->getId()]) ?>" class="movie-link">
+                            <div class="movie-cover">
+                                <?php if($item->getFiles()->first()): $media = $item->getFiles()->first(); ?>
+                                    <figure class="movie-figure">
+                                        <img src="<?php echo $this->thumbor()->url($media->getSrc())->resize(400, 400); ?>" alt="">
+                                    </figure>
+                                <?php endif; ?>
+                            </div>
+                            <h1 class="movie-title"><?php echo $item->getTitle(); ?></h1>
+                        </a>
+                    </article>
+                <?php endforeach; ?>
+            </div>
+        </section>
+    </div>
+</main>

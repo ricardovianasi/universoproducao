@@ -341,6 +341,69 @@ return [
                     ],
 				]
 			],
+            [
+                'label' => 'Brasilcinemundi',
+                'uri' => '#',
+                'icon' => ' icon-globe',
+                'pages' => [
+                    [
+                        'label' => 'Páginas',
+                        'route' => 'admin/page',
+                        'icon' => 'icon-doc',
+                        'params' => [
+                            'site' => 18
+                        ]
+                    ],
+                    [
+                        'label' => 'Guia',
+                        'route' => 'admin/guide',
+                        'icon' => 'icon-doc',
+                        'params' => [
+                            'site' => 18
+                        ]
+                    ],
+                    [
+                        'label' => 'Menu',
+                        'route' => 'admin/menu',
+                        'icon' => 'icon-list',
+                        'params' => [
+                            'site' => 18
+                        ]
+                    ],
+                    [
+                        'label' => 'Banner',
+                        'route' => 'admin/banner',
+                        'icon' => 'fa fa-image',
+                        'params' => [
+                            'site' => 18
+                        ]
+                    ],
+                    [
+                        'label' => 'Galeria',
+                        'route' => 'admin/gallery',
+                        'icon' => 'fa fa-image',
+                        'params' => [
+                            'site' => 18
+                        ]
+                    ],
+                    [
+                        'label' => 'TV',
+                        'route' => 'admin/tv',
+                        'icon' => 'fa fa-image',
+                        'params' => [
+                            'site' => 18
+                        ]
+                    ],
+                    [
+                        'label' => 'Eu Faço a Mostra',
+                        'route' => 'admin/eufacoamostra',
+                        'icon' => 'icon-book-open',
+                        'params' => [
+                            'site' => 18
+                        ]
+                    ]
+                ]
+            ],
 			[
 				'label' => 'CineOP',
 				'uri' => '#',

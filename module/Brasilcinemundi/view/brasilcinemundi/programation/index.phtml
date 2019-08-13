@@ -1,0 +1,111 @@
+<main class="main">
+    <?php if($this->breadcrumbs): ?>
+        <?php echo $this->partial('cinebh2019/partials/_breadcrumbs.phtml', ['breadcrumbs'=>$this->breadcrumbs]); ?>
+    <?php endif; ?>
+
+    <div class="main-wrapper main-content">
+        <section class="main-content">
+            <header class="main-header">
+                <h1 class="main-title"><?php echo $post->getTitle() ?></h1>
+            </header>
+
+            <div class="movie-filter filter">
+                <?php
+                $this->form->setAttribute('method', 'GET')->setAttribute('class','filter-form');
+                $this->form->prepare();
+                echo $this->form(null, null)->openTag($this->form) ?>
+
+                <?php
+                $subEvent = $this->form->get("sub_event");
+                $subEvent->setAttribute('class','filter-input')
+                    ->setAttribute('required', '')->setOption('empty_option','Sub-mostra');
+                echo $this->formElement($subEvent)
+                ?>
+                <?php
+                $category = $this->form->get("programing_type");
+                $category->setAttribute('class','filter-input')
+                    ->setAttribute('required', '')
+                    ->setOption('empty_option','Tipo');
+
+                echo $this->formElement($category)
+                ?>
+                <?php
+                $place = $this->form->get("place");
+                $place->setAttribute('class','filter-input')
+                    ->setAttribute('required', '')->setOption('empty_option','Local');
+                echo $this->formElement($this->form->get('place'))
+                ?>
+                <button type="submit" class="filter-submit">Buscar</button>
+                <?php echo $this->form()->closeTag(); ?>
+            </div>
+
+            <div class="filter-days">
+                <p><?php echo $this->translate('Programação por data')?></p>
+                <ul>
+                    <?php foreach($this->eventDays as $date): $day = explode('-', $date['date']); ?>
+                        <li><a href="?day=<?php echo $date['date']; ?>"><?php echo $this->translate('Dia')?> <?php echo end($day) ?></a></li>
+                    <?php endforeach; ?>
+                </ul>
+            </div>
+
+            <div class="programing">
+                <table class="programing-grid diferent" style="width: 100%">
+                    <?php foreach ($this->programing as $pro): ?>
+                        <tr class="programing-item programing-item--title">
+                            <td colspan="2" class="programing-date">
+                                <span>
+                                    <?php echo str_replace('-feira', '', $this->dateFormat($pro['date'], null, null, "pt_BR", "dd/MM | cccc")); ?>
+                                </span>
+                            </td>
+                        </tr>
+                        <?php foreach ($pro['items'] as $item): ?>
+                            <tr class="programing-item">
+                                <td class="programing-item--left">
+                                    <span class="programing-time"><?php echo $item['time']; ?></span>
+                                    <span class="programing-place"><?php echo $item['place']; ?></span>
+                                </td>
+                                <td class="programing-item--right">
+                                    <span class="programing-item-title"><?php echo $item['title']; ?></span>
+                                    <?php foreach ($item['events'] as $event): ?>
+                                        <?php if(isset($event['title'])): ?>
+                                            <?php
+                                            $url = "";
+                                            switch ($item['type']) {
+                                                case "session":
+                                                case "session_school":
+                                                case "movie":
+                                                    $url = $this->url('cinebh2019/movie', ['id'=>$event['id']]);
+                                                    break;
+                                                case "seminar_debate":
+                                                    $url = $this->url('cinebh2019/seminar', ['id'=>$event['id']]);
+                                                    break;
+                                                case "art":
+                                                    $url = $this->url('cinebh2019/art', ['id'=>$event['id']]);
+                                                    break;
+                                            }
+                                            ?>
+                                            <a class="programing-event" href="<?php echo $url;?>"><?php echo $event['title']; ?></a>
+                                        <?php elseif(isset($event['description'])): ?>
+                                            <div class="programation-desc">
+                                                <?php echo $event['description'] ?>
+                                            </div>
+                                        <?php endif; ?>
+                                    <?php endforeach; ?>
+
+                                    <?php if(isset($item['info'])): ?>
+                                        <span class="programing-info"><?php echo nl2br($item['info']); ?></span>
+                                    <?php endif; ?>
+
+                                    <?php if(isset($item['age_range'])): ?>
+                                        <span style="display: block" class="programing-info">Classificação: <?php echo $item['age_range']; ?></span>
+                                    <?php endif; ?>
+
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    <?php endforeach; ?>
+                </table>
+            </div>
+        </section>
+    </div>
+</main>

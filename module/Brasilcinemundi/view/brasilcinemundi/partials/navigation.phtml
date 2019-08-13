@@ -1,0 +1,43 @@
+<div class="navigation navigation-modal" style="display: none" id="navigation-modal">
+    <div class="navigation-bg"></div>
+    <div class="navigation-wrapper">
+        <div class="navigation-header">
+            <div class="navigation-brand">
+                <img src="<?php echo $this->basePath("assets/brasilcinemundi/dist") ?>/images/2019/logomarca-black.png" alt="">
+            </div>
+            <div class="navigation-actions">
+                <div class="item search">
+                    <a href="#" class="action"><span class="icon-search"></span></a>
+                </div>
+                <div class="item close">
+                    <a data-fancybox-close href="#" class="action"><span class="icon-cross2"></span></a>
+                </div>
+            </div>
+        </div>
+        <div class="navigation-menu">
+            <ul class="navigation-items">
+                <li class="navigation-item">
+                    <a class="navigation-link" href="<?php echo $this->url('brasilcinemundi'); ?>"><?php echo $this->translate('Início') ?></a>
+                </li>
+                <?php foreach ($this->container as $page): ?>
+                    <li class="navigation-item">
+                        <a class="navigation-link" target="<?php echo $page->getTarget() ?>" href="<?php echo !$page->hasPages() ? rawurldecode($page->getHref()) : ""; ?>">
+                            <?php echo $page->getLabel() ?>
+                        </a>
+                        <?php if ($page->hasPages()): ?>
+                            <ul class="navigation-subitems">
+                                <?php foreach ($page->getPages() as $child): ?>
+                                    <li class="navigation-subitem">
+                                        <a class="navigation-link" href="<?php echo rawurldecode($child->getHref()); ?>">
+                                            <?php echo $child->getLabel() ?>
+                                        </a>
+                                    </li>
+                                <?php endforeach; ?>
+                            </ul>
+                        <?php endif; ?>
+                    </li>
+                <?php endforeach; ?>
+            </ul>
+        </div>
+    </div>
+</div>

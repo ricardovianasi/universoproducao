@@ -8,6 +8,7 @@ $modules = [
     'Util',
     'Admin',
     'Application',
+    'Brasilcinemundi',
     'MeuUniverso',
     'Arquivoemcartaz',
     'Cineop2018',

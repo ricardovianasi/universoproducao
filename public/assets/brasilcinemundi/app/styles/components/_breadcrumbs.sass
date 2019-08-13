@@ -1,0 +1,27 @@
+.breadcrumbs
+  width: 100%
+  background-color: $color-palette-1
+
+  &-items
+    +center($pad: 20px)
+
+  &-item
+    display: inline-block
+    +padding-trailer(.5)
+    +padding-leader(.5)
+    &:last-child
+      a:after
+        display: none
+
+  &-link
+    +adjust-font-size-to(16px)
+    font-family: $font-family-title
+    color: $color-txt
+    text-decoration: none
+    text-transform: uppercase
+    transition: $transition-default
+    &:after
+      content: ">"
+      padding-left: 10px
+      padding-right: 10px
+      color: $color-txt

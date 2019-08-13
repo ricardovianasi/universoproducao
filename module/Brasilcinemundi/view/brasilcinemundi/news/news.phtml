@@ -1,0 +1,17 @@
+<?php if($this->breadcrumbs): ?>
+    <?php echo $this->partial('brasilcinemundi/partials/_breadcrumbs.phtml', ['breadcrumbs'=>$this->breadcrumbs]); ?>
+<?php endif; ?>
+
+<div class="main-wrapper">
+    <section class="main-content">
+        <header class="main-header">
+            <h1 class="main-title"><?php echo $this->post->getTitle(); ?></h1>
+        </header>
+
+        <?php if($this->post->getSubtitle()): ?>
+            <h2><?php echo $this->post->getSubtitle(); ?></h2>
+        <?php endif; ?>
+
+        <?php echo $this->thumborize($post->getContent()); ?>
+    </section>
+</div>
