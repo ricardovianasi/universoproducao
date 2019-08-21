@@ -17,25 +17,25 @@
                 <table width="100%" border="0" cellspacing="0" class="tabelaForm">
                     <tr>
                         <td align="right" bgcolor="#FFF9F0"><strong>Nome do Ve&iacute;culo<span class="obrigatorio">*</span>:</strong></td>
-                        <td bgcolor="#FFF9F0"><input name="NomeVeiculo" type="text" class="w350" id="NomeVeiculo" value=""/></td>
+                        <td bgcolor="#FFF9F0"><input name="NomeVeiculo" type="text" class="w350" id="NomeVeiculo" required value=""/></td>
                     </tr>
                     <tr>
                         <td align="right"><strong>Endere&ccedil;o<span class="obrigatorio">*</span>:</strong></td>
-                        <td><input name="Endereco" type="text" class="w350" id="Endereco" /></td>
+                        <td><input name="Endereco" required type="text" class="w350" id="Endereco" /></td>
                     </tr>
                     <tr>
                         <td align="right" bgcolor="#FFF9F0"><strong>Cidade<span class="obrigatorio">*</span>:</strong></td>
-                        <td bgcolor="#FFF9F0"><input name="Cidade" type="text" class="w256" id="Cidade" />
+                        <td bgcolor="#FFF9F0"><input required name="Cidade" type="text" class="w256" id="Cidade" />
                             &nbsp;&nbsp;UF<span class="obrigatorio">*</span>:
-                            <input name="UF" type="text" class="w50" id="UF" /></td>
+                            <input name="UF" type="text" required class="w50" id="UF" /></td>
                     </tr>
                     <tr>
                         <td align="right"><strong>Cep<span class="obrigatorio">*</span>:</strong></td>
-                        <td><input name="CEP" type="text" class="w100" id="CEP" /></td>
+                        <td><input name="CEP" required type="text" class="w100" id="CEP" /></td>
                     </tr>
                     <tr>
                         <td align="right"><strong>Website<span class="obrigatorio">*</span>:</strong></td>
-                        <td><input name="Website" type="text" class="w350" id="Endereco" /></td>
+                        <td><input required name="Website" type="text" class="w350" id="Endereco" /></td>
                     </tr>
                     <tr>
                         <td height="50" align="right" bgcolor="#FFF9F0"><strong>Tipo<span class="obrigatorio">*</span>: </strong></td>
@@ -87,7 +87,7 @@
                                 <tr>
                                     <td><input name="Periodicidade" type="radio" class="semBorda" id="Periodicidade" value="Mensal" />
                                         Mensal </td>
-                                    <td colspan="2"><input name="Periodicidade" type="radio" class="semBorda" id="Periodicidade" value="Outros" />
+                                    <td colspan="2"><input required name="Periodicidade" type="radio" class="semBorda" id="Periodicidade" value="Outros" />
                                         Outros (Detalhar)
                                         <input name="PeriodicidadeOutros" type="text" class="w100" id="PeriodicidadeOutros" /></td>
                                 </tr>
@@ -95,15 +95,15 @@
                     </tr>
                     <tr>
                         <td align="right"><strong>Alcance/Tiragem*:</strong></td>
-                        <td><input name="alcance" type="text" class="w350" id="alcance" /></td>
+                        <td><input name="alcance" required type="text" class="w350" id="alcance" /></td>
                     </tr>
                     <tr bgcolor="#FFF9F0">
                         <td align="right"><strong>Ano de Fundação*:</strong></td>
-                        <td><input name="anoFundacao" type="text" class="w350" id="anoFundacao" /></td>
+                        <td><input name="anoFundacao" required  type="text" class="w350" id="anoFundacao" /></td>
                     </tr>
                     <tr>
                         <td align="right"><strong>Editoria*:</strong></td>
-                        <td><input name="editoria" type="text" class="w350" id="editoria" /></td>
+                        <td><input name="editoria" required type="text" class="w350" id="editoria" /></td>
                     </tr>
                     <tr bgcolor="#FFF9F0">
                         <td width="23%" align="right"><strong>Nome do redator chefe:</strong></td>
@@ -111,11 +111,11 @@
                     </tr>
                     <tr>
                         <td align="right"><strong>Nome do respons&aacute;vel pelo credenciamento<span class="obrigatorio">*</span>:</strong></td>
-                        <td><input name="NomeResponsavelCredenciamento" type="text" class="w350" id="NomeResponsavelCredenciamento" /></td>
+                        <td><input required name="NomeResponsavelCredenciamento" type="text" class="w350" id="NomeResponsavelCredenciamento" /></td>
                     </tr>
                     <tr bgcolor="#FFF9F0">
                         <td align="right"><strong>Cargo<span class="obrigatorio">*</span>:</strong></td>
-                        <td><input name="Cargo" type="text" class="w350" id="Cargo" /></td>
+                        <td><input required name="Cargo" type="text" class="w350" id="Cargo" /></td>
                     </tr>
                     <tr>
                         <td align="right"><strong>Telefone fixo do ve&iacute;culo:</strong></td>
@@ -123,7 +123,7 @@
                     </tr>
                     <tr bgcolor="#FFF9F0">
                         <td align="right"><strong>Telefone celular<span class="obrigatorio">*</span>:</strong></td>
-                        <td><input name="TelefoneCelular" type="text" class="w100" id="TelefoneCelular" /></td>
+                        <td><input required name="TelefoneCelular" type="text" class="w100" id="TelefoneCelular" /></td>
                     </tr>
                     <tr>
 
@@ -148,7 +148,7 @@
                     </tr>
                     <tr>
                         <td align="right" valign="top"><strong>Justificativa<span class="obrigatorio">*</span>:</strong></td>
-                        <td><textarea name="TipoCorbeturaJustificativa" rows="5" class="w350" id="TipoCorbeturaJustificativa"></textarea></td>
+                        <td><textarea required name="TipoCorbeturaJustificativa" rows="5" class="w350" id="TipoCorbeturaJustificativa"></textarea></td>
                     </tr>
                     <tr>
                         <td height="50" align="right" bgcolor="#FFF9F0"><strong>Foco Principal<span class="obrigatorio">*</span>:</strong></td>
@@ -172,7 +172,7 @@
                             </table></td>
                     </tr>
                     <tr>
-                        <td align="right" valign="top"><strong>Número de Publicações/Inserções previstas (especificar por editoria/programa):</strong></td>
+                        <td align="right" valign="top"><strong>Número de Publicações/Inserções previstas (especificar por editoria/programa)*:</strong></td>
                         <td><textarea required minlength="1" name="publicacoes" rows="5" class="w350" id="publicacoes"></textarea></td>
                     </tr>
                     <tr>
