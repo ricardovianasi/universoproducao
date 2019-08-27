@@ -256,8 +256,8 @@ class WorkshopRegistrationController extends AbstractMeuUniversoRegisterControll
 
                 //Enviar email de confirmação
                 $msg = '<p>Olá <strong>'.$userSubs->getName().'</strong>!</p>';
-                $msg.= "<p>Agradecemos seu interesse em participar do Programa de Oficinas da 14ª CineOP.</p>";
-                $msg.= "<p>Informamos que recebemos sua inscrição para participar da oficina: ".$workshop->getName().". Até o dia 31/05/2019, entraremos em contato para divulgação dos selecionados.</p>";
+                $msg.= "<p>Agradecemos seu interesse em participar do Programa de Formação da 13ª CineBH e 10º Brasil CineMundi.</p>";
+                $msg.= "<p>Informamos que recebemos sua inscrição para participar da oficina: ".$workshop->getName().". Até o dia 11/09/2019, entraremos em contato para divulgação dos selecionados.</p>";
 
                 $to[$user->getName()] = $user->getEmail();
                 $this->mailService()->simpleSendEmail($to, "Confirmação de inscrição oficina ", $msg);
