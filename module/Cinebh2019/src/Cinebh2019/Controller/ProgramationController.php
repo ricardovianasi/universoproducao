@@ -132,7 +132,6 @@ class ProgramationController extends SiteController
                 }
 
                 if($natPre = $prog->hasMeta(Meta::NATIONAL_PREMIERE)) {
-//                    var_dump($natPre->getValue()); exit();
                     if($natPre->getValue() == "2") {
                         $titleItem.= self::SEPARATOR . 'pré-estreia-nacional';
                     }
