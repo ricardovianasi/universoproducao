@@ -95,7 +95,7 @@ class ProgramationController extends SiteController
             $timeLabel = "";
             if ($prog->getEndTime()) {
                 $timeLabel =
-                    $prog->getStartTime()->format('H\hi')
+                    $prog->getStartTime() ? $prog->getStartTime()->format('H\hi') : ""
                     . ' às '
                     . $prog->getEndTime()->format('H\hi');
             } else {
