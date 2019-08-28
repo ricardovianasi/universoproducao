@@ -99,7 +99,7 @@ class ProgramationController extends SiteController
                     . ' às '
                     . $prog->getEndTime()->format('H\hi');
             } else {
-                $timeLabel = $prog->getStartTime()->format('H\hi');
+                $timeLabel = $prog->getStartTime() ? $prog->getStartTime()->format('H\hi') : "";
             }
 
             $events = [];
