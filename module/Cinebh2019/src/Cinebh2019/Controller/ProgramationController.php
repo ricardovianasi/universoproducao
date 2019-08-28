@@ -95,11 +95,11 @@ class ProgramationController extends SiteController
             $timeLabel = "";
             if ($prog->getEndTime()) {
                 $timeLabel =
-                    $prog->getStartTime() ? $prog->getStartTime()->format('H\hi') : ""
+                    $prog->getStartTime()->format('H\hi')
                     . ' às '
                     . $prog->getEndTime()->format('H\hi');
             } else {
-                $timeLabel = $prog->getStartTime() ? $prog->getStartTime()->format('H\hi') : "";
+                $timeLabel = $prog->getStartTime()->format('H\hi');
             }
 
             $events = [];
@@ -132,12 +132,11 @@ class ProgramationController extends SiteController
                 }
 
                 if($natPre = $prog->hasMeta(Meta::NATIONAL_PREMIERE)) {
-                    
-                    if($natPre->getValue() == 'sim') {
+                    if($natPre->getValue() == 2) {
                         $titleItem.= self::SEPARATOR . 'pré-estreia-nacional';
                     }
                 } elseif ($worPre = $prog->hasMeta(Meta::WORLD_PREMIERE)) {
-                    if($worPre->getValue() == 'sim') {
+                    if($worPre->getValue() == 2) {
                         $titleItem.= self::SEPARATOR . 'pré-estreia-mundial';
                     }
                 }
