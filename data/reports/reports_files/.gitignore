@@ -1,1 +1,13 @@
 /bin/
+/movie.jasper
+/movie_list.jasper
+/project.jasper
+/project_list.jasper
+/seminar-confirmation.jasper
+/seminar-subscription-list.jasper
+/session-confirmation.jasper
+/workshop-confirmation.jasper
+/workshop-proposal-list.jasper
+/workshop-proposal.jasper
+/workshop_details.jasper
+/workshop_subscription.jasper

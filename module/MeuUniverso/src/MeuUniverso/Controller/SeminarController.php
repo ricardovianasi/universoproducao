@@ -170,10 +170,10 @@ class SeminarController extends AbstractMeuUniversoRegisterController
 
                 //Enviar email de confirmação
                 $msg = '<p>Olá <strong>'.$user->getName().'</strong>!</p>';
-                $msg.= "<p>Agradecemos seu interesse em participar da 14ª Mostra de Cinema de Ouro Preto.</p>";
+                $msg.= "<p>Agradecemos seu interesse em participar da 13ª CineBH e 10º Brasil CineMundi.</p>";
                 $msg.= "<p>Informamos que recebemos sua inscrição para participar do ".$category->getName().".</p>";
                 $msg.= "<p><strong>ATENÇÃO: </strong></p>";
-                $msg.= "<p>Você deverá apresentar documento original com foto e o comprovante de inscrição (anexo/ disponível para download) impresso e assinado para retirar sua credencial no dia 06 de junho – quinta, de 13h às 15h, ou no dia 07 de junho – sexta, de 9h às 10h, no balcão de credenciamento localizado no hall do Centro de Convenções.</p>";
+                $msg.= "<p>Você deverá apresentar documento original com foto e o comprovante de inscrição (anexo/ disponível para download) impresso e assinado para retirar sua credencial no dia 18 de setembro – quarta, de 10h às 13h, no balcão de credenciamento localizado no Jardim Externo do Palácio das Artes (piso inferior).</p>";
 
                 $this->getEntityManager()->refresh($subscription);
 
