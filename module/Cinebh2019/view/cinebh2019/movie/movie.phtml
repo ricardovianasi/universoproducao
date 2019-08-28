@@ -77,21 +77,21 @@
         </div>
             <div style="display: none;min-width:600px;min-height: 400px" id="moreinfo">
             <div class="padding" style="padding: 20px">
-                <p><strong style="font-weight: bold"><?php echo $this->translate('Roteiro')?>:</strong> <?php echo $this->post->getScript(); ?></p>
-                <p><strong style="font-weight: bold"><?php echo $this->translate('Empresa produtora')?>:</strong> <?php echo $this->post->getProductionCompany(); ?></p>
-                <p><strong style="font-weight: bold"><?php echo $this->translate('Co-produção')?>:</strong> <?php echo $this->post->getCoProduction(); ?></p>
-                <p><strong style="font-weight: bold"> <?php echo $this->translate('Produção executiva')?>:</strong> <?php echo $this->post->getExecutiveProduction(); ?></p>
-                <p><strong style="font-weight: bold"><?php echo $this->translate('Direção de produção')?>:</strong> <?php echo $this->post->getDirectionProduction(); ?></p>
-                <p><strong style="font-weight: bold"><?php echo $this->translate('Montagem')?>:</strong> <?php echo $this->post->getEditingAssembly(); ?></p>
-                <p><strong style="font-weight: bold"><?php echo $this->translate('Fotografia')?>:</strong> <?php echo $this->post->getPhotography(); ?></p>
-                <p><strong style="font-weight: bold"><?php echo $this->translate('Direção de arte')?>:</strong> <?php echo $this->post->getDirectionArt(); ?></p>
-                <p><strong style="font-weight: bold"><?php echo $this->translate('Trilha sonora')?>:</strong> <?php echo $this->post->getSoundtrack(); ?></p>
-                <p><strong style="font-weight: bold"><?php echo $this->translate('Mixagem')?>:</strong> <?php echo $this->post->getMixing(); ?></p>
-                <p><strong style="font-weight: bold"><?php echo $this->translate('Som direto')?>:</strong> <?php echo $this->post->getDirectSound(); ?></p>
-                <p><strong style="font-weight: bold"><?php echo $this->translate('Edição de som')?>:</strong> <?php echo $this->post->getSoundEditing(); ?></p>
-                <p><strong style="font-weight: bold"><?php echo $this->translate('Cenografia')?>:</strong> <?php echo $this->post->getScenography(); ?></p>
-                <p><strong style="font-weight: bold"><?php echo $this->translate('Figurino')?>:</strong> <?php echo $this->post->getCostume(); ?></p>
-                <p><strong style="font-weight: bold"><?php echo $this->translate('Elenco')?>:</strong> <?php echo $this->post->getCast(); ?></p>
+                <?php if(!empty($this->post->getScript())): ?><p><strong style="font-weight: bold"><?php echo $this->translate('Roteiro')?>:</strong> <?php echo $this->post->getScript(); ?></p><?php endif; ?>
+                <?php if(!empty($this->post->getScript())): ?><p><strong style="font-weight: bold"><?php echo $this->translate('Empresa produtora')?>:</strong> <?php echo $this->post->getProductionCompany(); ?></p><?php endif; ?>
+                <?php if(!empty($this->post->getScript())): ?><p><strong style="font-weight: bold"><?php echo $this->translate('Co-produção')?>:</strong> <?php echo $this->post->getCoProduction(); ?></p><?php endif; ?>
+                <?php if(!empty($this->post->getScript())): ?><p><strong style="font-weight: bold"> <?php echo $this->translate('Produção executiva')?>:</strong> <?php echo $this->post->getExecutiveProduction(); ?></p><?php endif; ?>
+                <?php if(!empty($this->post->getScript())): ?><p><strong style="font-weight: bold"><?php echo $this->translate('Direção de produção')?>:</strong> <?php echo $this->post->getDirectionProduction(); ?></p><?php endif; ?>
+                <?php if(!empty($this->post->getScript())): ?><p><strong style="font-weight: bold"><?php echo $this->translate('Montagem')?>:</strong> <?php echo $this->post->getEditingAssembly(); ?></p><?php endif; ?>
+                <?php if(!empty($this->post->getScript())): ?><p><strong style="font-weight: bold"><?php echo $this->translate('Fotografia')?>:</strong> <?php echo $this->post->getPhotography(); ?></p><?php endif; ?>
+                <?php if(!empty($this->post->getScript())): ?><p><strong style="font-weight: bold"><?php echo $this->translate('Direção de arte')?>:</strong> <?php echo $this->post->getDirectionArt(); ?></p><?php endif; ?>
+                <?php if(!empty($this->post->getScript())): ?><p><strong style="font-weight: bold"><?php echo $this->translate('Trilha sonora')?>:</strong> <?php echo $this->post->getSoundtrack(); ?></p><?php endif; ?>
+                <?php if(!empty($this->post->getScript())): ?><p><strong style="font-weight: bold"><?php echo $this->translate('Mixagem')?>:</strong> <?php echo $this->post->getMixing(); ?></p><?php endif; ?>
+                <?php if(!empty($this->post->getScript())): ?><p><strong style="font-weight: bold"><?php echo $this->translate('Som direto')?>:</strong> <?php echo $this->post->getDirectSound(); ?></p><?php endif; ?>
+                <?php if(!empty($this->post->getScript())): ?><p><strong style="font-weight: bold"><?php echo $this->translate('Edição de som')?>:</strong> <?php echo $this->post->getSoundEditing(); ?></p><?php endif; ?>
+                <?php if(!empty($this->post->getScript())): ?><p><strong style="font-weight: bold"><?php echo $this->translate('Cenografia')?>:</strong> <?php echo $this->post->getScenography(); ?></p><?php endif; ?>
+                <?php if(!empty($this->post->getScript())): ?><p><strong style="font-weight: bold"><?php echo $this->translate('Figurino')?>:</strong> <?php echo $this->post->getCostume(); ?></p><?php endif; ?>
+                <?php if(!empty($this->post->getScript())): ?><p><strong style="font-weight: bold"><?php echo $this->translate('Elenco')?>:</strong> <?php echo $this->post->getCast(); ?></p><?php endif; ?>
             </div>
         </div>
         </section>
