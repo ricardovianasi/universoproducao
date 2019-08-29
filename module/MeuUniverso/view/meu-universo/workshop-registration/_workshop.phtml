@@ -76,6 +76,9 @@
             }
             $date =  str_replace('-feira', '', $this->dateFormat($progObj->getDate(), null, null, "pt_BR", "dd/MM | cccc"));
             $hour = $progObj->getStartTime()->format('H\hi');
+            if( $progObj->getEndTime()) {
+                $hour.= " às " . $progObj->getEndTime()->format('H\hi');
+            }
             $place = $progObj->getPlace()?$progObj->getPlace()->getName():"";
             ?>
             <div class="highlight-item">
