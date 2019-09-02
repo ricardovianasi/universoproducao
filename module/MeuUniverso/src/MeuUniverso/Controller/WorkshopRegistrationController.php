@@ -164,7 +164,8 @@ class WorkshopRegistrationController extends AbstractMeuUniversoRegisterControll
 
             //Verifica se o usuário já efetuou a inscrição
             $existSubscription = $this->getRepository(WorkshopSubscription::class)->findBy([
-                'event' => $workshop->getEvent()->getId(),
+                //'event' => $workshop->getEvent()->getId(),
+                'registration' => $reg->getId(),
                 'user' => $userSubs->getId()
             ]);
             if($existSubscription && count($existSubscription)) {
