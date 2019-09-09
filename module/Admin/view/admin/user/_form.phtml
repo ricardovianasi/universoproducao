@@ -9,12 +9,24 @@
 		<?php $form->prepare(); echo $this->form(null, null)->openTag($form) ?>
 
 		<div class="form-body">
-			<?php $messageHide = count($form->getMessages()) ? '' : 'display-hide';
-				echo $this->messages(null)
-				->danger(
-					'Alguns erros foram encontrados. Por favor, efetue a correção.',
-					'Atenção!',
-					['class'=>"$messageHide alert-form-errors"]); ?>
+			<?php
+                $messageHide = count($form->getMessages()) ? '' : 'display-hide';
+			    if(count($form->getMessages())) {
+
+			        var_dump($form->getMessages()); exit();
+
+			        $messages = [];
+			        foreach ($form->getMessages() as $m) {
+
+                    }
+
+                    echo $this->messages(null)
+                        ->danger(
+                            'Alguns erros foram encontrados. Por favor, efetue a correção.',
+                            'Atenção!',
+                            ['class'=>"$messageHide alert-form-errors"]);
+                }
+			?>
 
 			<h4 class="form-section">Informações Pessoais</h4>
 			<div class="row">
