@@ -197,7 +197,10 @@ class UserForm extends Form
 
 		$this->add([
 		    'type' => 'hidden',
-            'name' => 'phones'
+            'name' => 'phones',
+            'options' => [
+                'label' => 'Telefones',
+            ],
         ]);
 
         $this->add([
