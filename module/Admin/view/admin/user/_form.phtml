@@ -90,7 +90,9 @@
 			</div>
 
             <h4 class="form-section">Contatos</h4>
-
+            <div class="form-group <?php echo $form->get('phones')->getMessages() ? "has-error" : ""; ?>">
+                <?php echo $this->formElementErrors($form->get('phones')); ?>
+            </div>
             <div class="row">
                 <div class="col-md-12">
                     <table class="table table-hover table-light admin-phone">
