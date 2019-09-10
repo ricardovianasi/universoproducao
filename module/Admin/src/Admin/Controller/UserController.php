@@ -123,7 +123,7 @@ class UserController extends AbstractAdminController implements CrudInterface
                     $validData['city'] = $city;
                 }
 
-                $user->setData($user);
+                $user->setData($validData);
 
                 try {
                     $this->getEntityManager()->persist($user);
