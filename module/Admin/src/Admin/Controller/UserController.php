@@ -125,8 +125,12 @@ class UserController extends AbstractAdminController implements CrudInterface
 
                 $user->setData($user);
 
-				$this->getEntityManager()->persist($user);
-				$this->getEntityManager()->flush();
+                try {
+                    $this->getEntityManager()->persist($user);
+                    $this->getEntityManager()->flush();
+                } catch (\Exception $e) {
+                    var_dump($e); exit();
+                }
 
 				if($id) {
 					$this->messages()->success("Usuário atualizado com sucesso!");
