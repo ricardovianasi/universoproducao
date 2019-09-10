@@ -31,7 +31,7 @@ class UserController extends AbstractAdminController implements CrudInterface
 		$searchForm->setData($dataAttr);
 		$searchForm->isValid();
 
-		$users = $this->search(User::class, $searchForm->getData(), ['name'=>'DESC']);
+		$users = $this->search(User::class, $searchForm->getData(), ['name'=>'ASC']);
 
 		$this->getViewModel()->setVariables([
 			'searchForm' => $searchForm,
