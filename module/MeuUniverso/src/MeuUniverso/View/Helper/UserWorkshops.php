@@ -118,6 +118,7 @@ class UserWorkshops extends AbstractHelper
                 break;
             case Status::SELECTED:
             case Status::CONFIRMED:
+            case Status::NOT_CONFIRMED:
                 $color = 'label-success';
                 break;
         }
