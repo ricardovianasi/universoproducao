@@ -394,24 +394,33 @@ class WorkshopRegistrationController extends AbstractAdminController
             ->createQueryBuilder('m')
             ->andWhere('m.status = :status')
             ->andWhere('m.event = :idEvent')
+            ->andWhere('m.workshop IN (:workshops)')
             ->setParameters([
                 'status' => 'selected',
-                'idEvent' => 1090
+                'idEvent' => 1092,
+                'workshops' => array(43, 44)
             ])
             ->getQuery()
             ->getResult();
 
-        /*var_dump(count($items)); exit();*/
+        //var_dump(count($items)); exit();
         $count = 0;
         foreach ($items as $item) {
             /** @var WorkshopSubscription $item */
             //$item = new WorkshopSubscription();
 
-            $msg = "<p>Prezado(a) ".$item->getUser()->getName().",</p>";
-            $msg.= "<p>PARABÉNS!</p>";
+            $msg = "<p>Olá ".$item->getUser()->getName().",</p>";
 
-            $msg.= "<p>Você foi selecionado (a) para participar da Oficina ".$item->getWorkshop()->getName()." que será realizada 
-			durante a programação da 14ª CineOP - Mostra de Cinema de Ouro Preto.</p>";
+            $msg.= "<p>Agradecemos seu interesse em participar da 13ª CineBH e 10º Brasil CineMundi. 
+			Informamos que recebemos sua inscrição para participar do ".$item->getWorkshop()->getName()."</p>";
+
+            $msg.="<p><strong>ATENÇÃO:</strong></p>";
+            $msg.="<p>Você deverá apresentar documento original com foto e o comprovante de inscrição (anexo/ disponível para download) impresso e assinado para retirar sua credencial no dia da atividade, no balcão de credenciamento localizado no Jardim Externo do Palácio das Artes (piso inferior).</p>";
+            $msg.="<p>É necessário <strong>CONFIRMAR SUA PRESENÇA até 18h (horário de Brasília) do dia 12/09</strong>, entrando no seu Menu do Usuário (<a href='http://meu-universo.universoproducao.com.br/autenticacao'>http://meu-universo.universoproducao.com.br/autenticacao</a>) com o email e senha cadastrada. </p>";
+            $msg.="<p>- <strong>NÃO RESPONDA ESSE EMAIL</strong>. Qualquer dúvida ou problema entre em contato através do email oficinas@universoproducao.com.br ou pelo telefone: (31) 3282-2366.</p>";
+            $msg.="<p>Atenciosamente, <br />
+			Programa de Formação <br />
+			13ª CineBH e 10º Brasil CineMundi</p>";
 
 
             /*$workshopProgramation = $this->getRepository(Programing::class)->findBy([
@@ -431,7 +440,7 @@ class WorkshopRegistrationController extends AbstractAdminController
             $msg.="<p>Data e hora de realização:<br />";
             $msg.=implode('<br />', $workshopProgramationItems);
             $msg.="<br />Local para credenciamento: Centro Cultural SESIMINAS Yves Alves
-            <br />Rua Direita, 168 – Tiradentes - MG</p>";*/
+            <br />Rua Direita, 168 – Tiradentes - MG</p>";
 
             $msg.="<p><strong>Atenção:
             <br />- Prazo de confirmação: até às 20 horas (horário de Brasília), do dia 01/06/2019 - sábado.
@@ -464,15 +473,14 @@ class WorkshopRegistrationController extends AbstractAdminController
 			<br /><br />Centro de Artes e Convenções<br />Diogo de Vasconcelos, 328 - Pilar, Ouro Preto - MG</p>";
 
             $msg.= "<p>Convidamos você para participar também das outras atividades do evento.</p>";
-            $msg.= "<p>A programação é gratuita e pode ser conferida no site <a href='www.cineop.com.br'>www.cineop.com.br</a>.</p>";
-            $msg.= "<p>Atenciosamente,<br />Coordenação Oficinas – 14ª CineOP</p>";
+            $msg.= "<p>A programação é gratuita e pode ser conferida no site <a href='www.cineop.com.br'>www.cineop.com.br</a>.</p>";*/
 
             //$to[$item->getAuthor()->getName()] = 'ricardovianasi@gmail.com';
             /** @var \SendGrid\Response $return */
             $return = $this->mailService()->simpleSendEmail(
                 [$item->getUser()->getName()=>$item->getUser()->getEmail()],
                 //[$item->getUser()->getName()=>'ricardovianasi@gmail.com'],
-                'Comunicado oficina - 14ª CineOP', $msg);
+                'Programa de Formação - 13ª CineBH e 10º Brasil CineMundi', $msg);
 
             $count++;
             echo "$count - Nome: " . $item->getUser()->getName();
@@ -502,7 +510,7 @@ class WorkshopRegistrationController extends AbstractAdminController
             ->andWhere('m.event = :idEvent')
             ->setParameters([
                 'status' => 'not_selected',
-                'idEvent' => 1090
+                'idEvent' => 1092
             ])
             ->getQuery()
             ->getResult();
@@ -515,19 +523,19 @@ class WorkshopRegistrationController extends AbstractAdminController
 
             $msg = "<p>Prezado(a) ".$item->getUser()->getName().",</p>";
 
-            $msg.= "<p>Agradecemos seu interesse em participar da 14ª CineOP - Mostra de Cinema de Ouro Preto.
-Informamos que você não foi selecionado(a) para a oficina ".$item->getWorkshop()->getName().".</p>";
+            $msg.= "<p>Agradecemos seu interesse em participar da 13ª CineBH e 10º Brasil CineMundi. 
+			<br /><br />Informamos que você não foi selecionado(a) para a atividade ".$item->getWorkshop()->getName().".</p>";
 
-            $msg.= "<p>Convidamos você para participar das outras atividades do evento: sessões de filmes, debates, cortejo, shows e rodas de conversa.</p>";
-            $msg.= "<p>A programação é gratuita e pode ser conferida no site <a href='www.cineop.com.br'>www.cineop.com.br</a>.</p>";
-            $msg.= "<p>Atenciosamente,<br />Coordenação Oficinas – 14ª CineOP</p>";
+            $msg.= "<p>Convidamos você para participar das outras atividades do evento: sessões de filmes, debates, rodas de conversa e atrações artísticas.</p>";
+            $msg.= "<p>A programação é gratuita e, está disponível no site <a href='www.cinebh.com.br'>www.cinebh.com.br</a>.</p>";
+            $msg.= "<p>Atenciosamente,<br />Programa de Formação - 13ª CineBH e 10º Brasil CineMundi</p>";
 
             //$to[$item->getAuthor()->getName()] = 'ricardovianasi@gmail.com';
             /** @var \SendGrid\Response $return */
             $return = $this->mailService()->simpleSendEmail(
                 [$item->getUser()->getName()=>$item->getUser()->getEmail()],
                 //[$item->getUser()->getName()=>'ricardovianasi@gmail.com'],
-                'Comunicado oficina - 14ª CineOP', $msg);
+                'Programa de Formação - 13ª CineBH e 10º Brasil CineMundi', $msg);
 
             $count++;
             echo "$count - Nome: " . $item->getUser()->getName();
