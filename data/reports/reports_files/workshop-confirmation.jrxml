@@ -200,10 +200,7 @@
 			<staticText>
 				<reportElement x="1" y="240" width="554" height="70" uuid="b1a5f5db-5eb9-41b7-bbbc-9a02c9b9db93"/>
 				<textElement textAlignment="Justified"/>
-				<text><![CDATA[1. Autorizo a ter minhas imagem e voz veiculadas por meio de internet, jornais, informes e/ou
-qualquer meio de publicação/comunicação pública ou privada, para fins exclusivos de divulgação
-da 13ª CineBH e 10º Brasil CineMundi, destinados ao público em geral ou para a comunicação
-institucional.]]></text>
+				<text><![CDATA[1. Autorizo a ter minhas imagem e voz veiculadas por meio de internet, jornais, informes e/ou qualquer meio de publicação/comunicação pública ou privada, para fins exclusivos de divulgação da 13ª CineBH e 10º Brasil ineMundi, destinados ao público em geral ou para a comunicação institucional.]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="1" y="315" width="554" height="30" uuid="f4c95b51-d7c5-4db8-bd60-1340ae67d0e3"/>
