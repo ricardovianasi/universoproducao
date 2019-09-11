@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.4.0.final using JasperReports Library version 6.4.1  -->
+<!-- Created with Jaspersoft Studio version 6.5.1.final using JasperReports Library version 6.5.1  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="workshop-confirmation" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="817edf5c-77c1-4405-91f7-f6ab26d5c946">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="workshop2.xml"/>
 	<style name="Table_TH" mode="Opaque" backcolor="#F0F8FF">
@@ -102,7 +102,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="12" isBold="true"/>
 				</textElement>
-				<text><![CDATA[CONFIRMAÇÃO DE PARTICIPAÇÃO EM OFICINA]]></text>
+				<text><![CDATA[CONFIRMAÇÃO DE PARTICIPAÇÃO - PROGRAMA DE FORMAÇÃO]]></text>
 			</staticText>
 		</band>
 	</pageHeader>
@@ -200,7 +200,10 @@
 			<staticText>
 				<reportElement x="1" y="240" width="554" height="70" uuid="b1a5f5db-5eb9-41b7-bbbc-9a02c9b9db93"/>
 				<textElement textAlignment="Justified"/>
-				<text><![CDATA[1. Autorizo a ter minhas imagem e voz veiculadas por meio de internet, jornais, informes e/ou qualquer meio de publicação/comunicação pública ou privada, para  fins  exclusivos  de  divulgação da 14ª CineOP - Mostra de Cinema de Ouro Preto, destinados ao público em geral ou para a comunicação institucional.]]></text>
+				<text><![CDATA[Autorizo a ter minhas imagem e voz veiculadas por meio de internet, jornais, informes e/ou
+qualquer meio de publicação/comunicação pública ou privada, para fins exclusivos de divulgação
+da 13ª CineBH e 10º Brasil CineMundi, destinados ao público em geral ou para a comunicação
+institucional.]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="1" y="315" width="554" height="30" uuid="f4c95b51-d7c5-4db8-bd60-1340ae67d0e3"/>
@@ -215,7 +218,7 @@
 			<textField pattern="MMMMM dd, yyyy">
 				<reportElement x="0" y="410" width="548" height="30" uuid="50201216-6eae-4aff-ba99-a67d8f82e274"/>
 				<textElement textAlignment="Center"/>
-				<textFieldExpression><![CDATA["Ouro Preto, junho de "+YEAR((new java.util.Date()))]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Belo Horizonte, setembro de "+YEAR((new java.util.Date()))]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="0" y="440" width="554" height="30" uuid="53e19e02-4776-43ef-ad16-8ff5e9814f02"/>
@@ -249,10 +252,10 @@ Apresente este comprovante assinado e um documento com foto no dia de início da
 				<textElement textAlignment="Center"/>
 				<text><![CDATA[Endereço: 
 
-Secretaria da 14ª CineOP - Mostra de Cinema de Ouro Preto
-Centro de Artes e Convenções
-Diogo de Vasconcelos, 328 - Pilar, Ouro Preto – MG
-]]></text>
+Secretaria da 13ª CineBH - BH International Film Festival
+Palácio das Artes | Fundação Clóvis Salgado
+Jardim Externo | Piso inferior
+Av. Afonso Pena, 1537. Centro. Belo Horizonte/MG]]></text>
 			</staticText>
 		</band>
 	</detail>
