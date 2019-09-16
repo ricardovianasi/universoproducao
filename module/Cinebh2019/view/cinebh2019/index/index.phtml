@@ -93,18 +93,18 @@
                     </div>
                 </div>
                 <?php if(count($tvs)): ?>
+                    <div class="tv-highlight">
                     <?php foreach ($tvs as $v): ?>
-                        <div class="tv-highlight">
-                            <div class="tv-featured">
-                                <div class="tv-bg" style="background-image: url('<?php echo $this->thumbor()->url($v->getThumb())->resize(640, 396); ?>')">
-                                    <a target="_blank" class="tv-link" href="<?php echo $v->getYoutube(); ?>"><span class="icon-play4"></span></a>
-                                </div>
-                                <div class="tv-content">
-                                    <p class="tv-title"><?php echo $v->getCaption(); ?></p>
-                                </div>
+                        <div class="tv-featured">
+                            <div class="tv-bg" style="background-image: url('<?php echo $this->thumbor()->url($v->getThumb())->resize(640, 396); ?>')">
+                                <a target="_blank" class="tv-link" href="<?php echo $v->getYoutube(); ?>"><span class="icon-play4"></span></a>
+                            </div>
+                            <div class="tv-content">
+                                <p class="tv-title"><?php echo $v->getCaption(); ?></p>
                             </div>
                         </div>
                     <?php endforeach; ?>
+                    </div>
                 <?php endif; ?>
             </div>
 
