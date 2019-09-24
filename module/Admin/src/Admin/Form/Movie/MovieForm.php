@@ -726,7 +726,7 @@ class MovieForm extends Form
             'type' => 'select',
             'name' => 'has_participated_other_festivals',
             'options' => [
-                'label' => 'O filme já foi exibido publicamente ou tem exibição prevista para '.date('Y').'?',
+                'label' => 'O filme já foi exibido publicamente ou tem exibição prevista para 2020?',
                 'value_options' => [
                     '1' => 'Sim',
                     '0' => 'Não'
