@@ -85,15 +85,15 @@ class Duration extends AbstractValidator
                 return false;
             }
         } else {
-            /*if(!($totalSeconds > $this->min && $totalSeconds < $this->max)) {
-                $this->error(self::ERROR_IS_NOT_MARCH, $value);
-                return false;
-            }*/
-
-            if($totalSeconds <= $this->min || $totalSeconds >= $this->max) {
+            if(!($totalSeconds > $this->min && $totalSeconds < $this->max)) {
                 $this->error(self::ERROR_IS_NOT_MARCH, $value);
                 return false;
             }
+
+            /*if($totalSeconds <= $this->min || $totalSeconds >= $this->max) {
+                $this->error(self::ERROR_IS_NOT_MARCH, $value);
+                return false;
+            }*/
         }
 
         return true;
