@@ -143,7 +143,7 @@ return array(
                         'options' => [
                             'route' => '/site/:site/banner[/:action[/:id]]',
                             'constraints' => [
-                                'site' => '[a-zA-Z0-9_-]*',
+                                'site' => '[0-9]*',
                             ],
                             'defaults' => [
                                 'controller'   => 'Banner',
