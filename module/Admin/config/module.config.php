@@ -152,6 +152,20 @@ return array(
                         ],
                         'priority' => 999
                     ],
+                    'banner2' => [
+                        'type' => 'Segment',
+                        'options' => [
+                            'route' => '/site/:site/banner2[/:action[/:id]]',
+                            'constraints' => [
+                                'site' => '[a-zA-Z0-9_-]*',
+                            ],
+                            'defaults' => [
+                                'controller'   => 'Banner',
+                                'action'       => 'index'
+                            ],
+                        ],
+                        'priority' => 999
+                    ],
                     'gallery' => [
                         'type' => 'Segment',
                         'options' => [
