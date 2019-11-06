@@ -20,9 +20,12 @@ use Zend\InputFilter\InputFilterInterface;
  */
 class User extends AbstractEntity
 {
-    const TYPE_PESSOA_FISICA = 'pf';
-    const TYPE_PESSOA_JURIDICA = 'pj';
-    const TYPE_CADASTRO_INTERNACIONAL = 'pi';
+    const TYPE_PESSOA_FISICA            = 'pf';
+    const TYPE_PESSOA_JURIDICA          = 'pj';
+    const TYPE_CADASTRO_INTERNACIONAL   = 'pi';
+
+    const ORIGIN_MEUUNIVERSO    = 'meuuniverso';
+    const ORIGIN_CONTATO        = 'contato';
 
 	/**
 	 * @ORM\Column(name="id", type="integer", nullable=false)
@@ -67,6 +70,8 @@ class User extends AbstractEntity
 	/** @ORM\Column(name="cep", type="string") */
 	private $cep;
 
+    private $state;
+
 	/**
 	 * @ORM\ManyToOne(targetEntity="Application\Entity\City")
 	 * @ORM\JoinColumn(name="city_id", referencedColumnName="id")
@@ -81,6 +86,9 @@ class User extends AbstractEntity
 
 	/** @ORM\Column(name="twitter", type="string") */
 	private $twitter;
+
+    /** @ORM\Column(name="instagram", type="string") */
+    private $instagram;
 
 	/** @ORM\Column(name="confirmed_register", type="boolean") */
 	private $confirmedRegister = false;
@@ -114,6 +122,33 @@ class User extends AbstractEntity
 
 	/** @ORM\Column(name="updated_at", type="datetime", nullable=true) */
 	private $updatedAt;
+
+    /** @ORM\Column(name="`status`", type="boolean", nullable=true) */
+    private $status;
+
+    /** @ORM\Column(name="`tag`", type="boolean", nullable=true) */
+    private $tag;
+
+    /** @ORM\Column(name="`variable_field`", nullable=true) */
+    private $variableField;
+
+    /** @ORM\Column(name="`origin`", nullable=true) */
+    private $origin;
+
+    /** @ORM\Column(name="`occupation`", nullable=true) */
+    private $occupation;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Application\Entity\User\Category")
+     * @ORM\JoinColumn(name="category_id", referencedColumnName="id")
+     */
+    private $category;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Application\Entity\User\Category")
+     * @ORM\JoinColumn(name="subcategory_id", referencedColumnName="id")
+     */
+    private $subcategory;
 
 	public function __construct()
 	{
@@ -270,6 +305,26 @@ class User extends AbstractEntity
 	{
 		$this->cep = $cep;
 	}
+
+    /**
+     * @return mixed
+     */
+    public function getState()
+    {
+        if($this->getCity()) {
+            $this->state = $this->getCity()->getState();
+        }
+
+        return $this->state;
+    }
+
+    /**
+     * @param mixed $state
+     */
+    public function setState($state)
+    {
+        $this->state = $state;
+    }
 
 	/**
 	 * @return mixed
@@ -605,5 +660,133 @@ class User extends AbstractEntity
     public function setParent($parent)
     {
         $this->parent = $parent;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getInstagram()
+    {
+        return $this->instagram;
+    }
+
+    /**
+     * @param mixed $instagram
+     */
+    public function setInstagram($instagram)
+    {
+        $this->instagram = $instagram;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    /**
+     * @param mixed $status
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTag()
+    {
+        return $this->tag;
+    }
+
+    /**
+     * @param mixed $tag
+     */
+    public function setTag($tag)
+    {
+        $this->tag = $tag;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getVariableField()
+    {
+        return $this->variableField;
+    }
+
+    /**
+     * @param mixed $variableField
+     */
+    public function setVariableField($variableField)
+    {
+        $this->variableField = $variableField;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getOrigin()
+    {
+        return $this->origin;
+    }
+
+    /**
+     * @param mixed $origin
+     */
+    public function setOrigin($origin)
+    {
+        $this->origin = $origin;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCategory()
+    {
+        return $this->category;
+    }
+
+    /**
+     * @param mixed $category
+     */
+    public function setCategory($category)
+    {
+        $this->category = $category;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSubcategory()
+    {
+        return $this->subcategory;
+    }
+
+    /**
+     * @param mixed $subcategory
+     */
+    public function setSubcategory($subcategory)
+    {
+        $this->subcategory = $subcategory;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getOccupation()
+    {
+        return $this->occupation;
+    }
+
+    /**
+     * @param mixed $occupation
+     */
+    public function setOccupation($occupation)
+    {
+        $this->occupation = $occupation;
     }
 }

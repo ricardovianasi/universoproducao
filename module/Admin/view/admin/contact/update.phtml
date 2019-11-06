@@ -1,0 +1,26 @@
+<div class="row post page">
+<div class="col-md-12">
+	<div class="portlet light portlet-fit bordered">
+		<div class="portlet-title">
+			<div class="caption">
+				<i class="fa fa-file-o"></i>Editar Usuário
+			</div>
+			<div class="actions">
+				<a href="<?php echo $this->url('admin/default', ['controller'=>'contact']); ?>"
+				   class="btn btn-default">
+					<i class="icon-action-undo"></i>
+					<span class="hidden-xs"> Voltar </span>
+				</a>
+			</div>
+		</div>
+		<div class="portlet-body">
+            <?php echo $this->partial('admin/contact/_form.phtml', [
+                'form' => $this->form,
+                'user'=>$this->user,
+                'phoneForm'=>$this->phoneForm,
+                'dependentForm' => $this->dependentForm
+            ]); ?>
+		</div>
+	</div>
+</div>
+</div>

@@ -10,6 +10,7 @@ namespace Admin\Form\ExternalUser;
 
 use Application\Entity\City;
 use Application\Entity\State;
+use Application\Entity\User\Category;
 use Application\Entity\User\User;
 use Util\Validator\Identifier;
 use Zend\Form\Form;
@@ -27,7 +28,7 @@ class UserForm extends Form
 		parent::__construct('user-form');
 		$this->setAttributes([
 			'method' => 'POST',
-			'class' => 'user-form default-form-actions enable-validators',
+			'class' => 'user-form default-form-actions enable-validators form-reload',
 			'id' => 'post-form'
 		]);
 
@@ -159,7 +160,9 @@ class UserForm extends Form
 			],
 			'attributes' => [
 				'required' => 'required',
-				'id' => 'state'
+				'id' => 'state',
+                'class' => 'form-reload-trigger',
+                //'data-form-reload-trigger' => ''
 			]
 		]);
 
@@ -186,6 +189,24 @@ class UserForm extends Form
 			],
 		]);
 
+        $this->add([
+            'name' => 'instagram',
+            'required' => false,
+            'type' => 'text',
+            'options' => [
+                'label' => 'Instagram',
+            ],
+        ]);
+
+        $this->add([
+            'name' => 'occupation',
+            'required' => false,
+            'type' => 'text',
+            'options' => [
+                'label' => 'Cargo',
+            ],
+        ]);
+
 		$this->add([
 			'name' => 'twitter',
 			'required' => false,
@@ -200,6 +221,78 @@ class UserForm extends Form
             'name' => 'phones',
             'options' => [
                 'label' => 'Telefones',
+            ],
+        ]);
+
+        $this->add([
+            'name' => 'category',
+            'type' => 'select',
+            'options' => [
+                'label' => 'Categoria',
+                'empty_option' => 'Selecione',
+                'value_options' => $this->populateCategory()
+            ],
+            'attributes' => [
+                'id' => 'category'
+            ]
+        ]);
+
+        $this->add([
+            'name' => 'subcategory',
+            'type' => 'select',
+            'options' => [
+                'label' => 'Subcategoria',
+                'empty_option' => 'Selecione',
+                'value_options' => []
+            ],
+            'attributes' => [
+                'id' => 'subcategory'
+            ]
+        ]);
+
+        $this->add([
+            'name' => 'status',
+            'type' => 'select',
+            'options' => [
+                'label' => 'Ativo',
+                'empty_option' => 'Selecione',
+                'value_options' => [
+                    1 => 'Sim',
+                    0 => 'Não',
+                ]
+            ],
+        ]);
+
+        $this->add([
+            'name' => 'tag',
+            'type' => 'select',
+            'options' => [
+                'label' => 'Etiqueta',
+                'empty_option' => 'Selecione',
+                'value_options' => [
+                    1 => 'Sim',
+                    0 => 'Não',
+                ]
+            ],
+        ]);
+
+        $this->add([
+            'name' => 'variable_field',
+            'options' => [
+                'label' => 'Campo variável',
+            ],
+        ]);
+
+        $this->add([
+            'name' => 'origin',
+            'type' => 'select',
+            'options' => [
+                'label' => 'Tipo/Origem do cadastro',
+                'empty_option' => 'Todos',
+                'value_options' => [
+                    'meuuniverso' => 'Meu Universo',
+                    'contato' => 'SGC'
+                ]
             ],
         ]);
 
@@ -246,7 +339,32 @@ class UserForm extends Form
             [
                 'name' => 'phones',
                 'required' => true,
-            ]
+            ],
+            [
+                'name' => 'origin',
+                'required'   => false,
+                'allow_empty' => true
+            ],
+            [
+                'name' => 'status',
+                'required'   => false,
+                'allow_empty' => true
+            ],
+            [
+                'name' => 'tag',
+                'required'   => false,
+                'allow_empty' => true
+            ],
+            [
+                'name' => 'category',
+                'required'   => false,
+                'allow_empty' => true
+            ],
+            [
+                'name' => 'subcategory',
+                'required'   => false,
+                'allow_empty' => true
+            ],
         ]));
 
         if($type == 'all' || $type == User::TYPE_PESSOA_FISICA || $type == User::TYPE_CADASTRO_INTERNACIONAL) {
@@ -261,7 +379,7 @@ class UserForm extends Form
             ]);
             $this->getInputFilter()->add([
                 'name' => 'birth_date',
-                'required' => true,
+                'required' => false,
                 'validators' => [
                     new Date(['format'=>'d/m/Y'])
                 ]
@@ -309,33 +427,75 @@ class UserForm extends Form
 		return $array;
 	}
 
+    protected function findCities($stateId)
+    {
+        $cities = $this->getEntityManager()
+            ->getRepository(City::class)
+            ->findBy(['state'=>$stateId], ['name'=>'ASC']);
+
+        $array = [];
+        foreach($cities as $es) {
+            $array[$es->getId()] = $es->getName();
+        }
+
+        return $array;
+    }
+
+	protected function populateCategory($parentId = null)
+    {
+        $categories = $this->entityManager
+            ->getRepository(Category::class)
+            ->findBy(['parent'=>$parentId], ['name'=>'asc']);
+
+        $array = [];
+        foreach($categories as $pr) {
+            $array[$pr->getId()] = $pr->getName();
+        }
+
+        return $array;
+    }
+
 	public function setData($data)
 	{
-		if(!empty($data['city'])) {
+	    if(!empty($data['category'])) {
+            $category = $data['category'];
+            if(is_object($category) && method_exists($category, 'getId')) {
+                $category = $category->getId();
+            }
 
-			if(is_object($data['city'])) {
-				$city = $data['city'];
-			} elseif(is_scalar($data['city'])) {
-				$city = $this->getEntityManager()->getRepository(City::class)->find($data['city']);
-			}
+            //populate subcategory
+            $this->get('subcategory')->setValueOptions($this->populateCategory($category));
 
-			$data['city'] = $city->getId();
+            $data['category'] = $category;
+        }
 
-			$stateId = $city->getState()->getId();
-			if(empty($data['state'])) {
-				$data['state'] = $stateId;
-			}
+        if(!empty($data['subcategory'])) {
+            $subcategory = $data['subcategory'];
+            if(is_object($subcategory) && method_exists($subcategory, 'getId')) {
+                $subcategory = $subcategory->getId();
+            }
+            $data['subcategory'] = $subcategory;
+        }
 
-			$cities = $this->getEntityManager()
-				->getRepository(City::class)
-				->findBy(['state'=>$stateId], ['name'=>'ASC']);
+	    if(!empty($data['state'])) {
+	        $state = $data['state'];
+	        if(is_object($state) && method_exists($state, 'getId')) {
+	            $state = $state->getId();
+            }
 
-			$citiesArray = [];
-			foreach($cities as $c) {
-				$citiesArray[$c->getId()] = $c->getName();
-			}
-			$this->get('city')->setValueOptions($citiesArray);
-		}
+            $this->get('city')->setValueOptions($this->findCities($state));
+
+	        $data['state'] = $state;
+        }
+
+	    if(!empty($data['city'])) {
+	        $city = $data['city'];
+            if(is_object($city) && method_exists($city, 'getId')) {
+                $city = $city->getId();
+            }
+            $data['city'] = $city;
+        }
+
 
 		if(!empty($data['birth_date'])) {
 		    if($data['birth_date'] instanceof \DateTime) {

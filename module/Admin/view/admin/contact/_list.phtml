@@ -1,0 +1,104 @@
+<?php $form = $this->form; ?>
+<?php $form->prepare(); echo $this->form(null, null)->openTag($form); ?>
+
+<div class="portlet light portlet-fit portlet-datatable bordered">
+    <div class="portlet-title">
+        <div class="caption">Filtro</div>
+        <div class="tools">
+            <a href="" class="collapse" data-original-title="" title=""> </a>
+        </div>
+    </div>
+    <div class="portlet-body">
+        <div class="form">
+            <div class="form-body">
+                <div class="row">
+                    <div class="col-md-3"><?php echo $this->formRow($form->get('identifier')); ?></div>
+                    <div class="col-md-3"><?php echo $this->formRow($form->get('name')); ?></div>
+                    <div class="col-md-3"><?php echo $this->formRow($form->get('email')); ?></div>
+                    <div class="col-md-3"><?php echo $this->formRow($form->get('origin')); ?></div>
+                </div>
+                <div class="row  user-category"
+                     data-url="<?php echo $this->url('admin/default', ['controller'=>'contact', 'action'=>'subcategory']); ?>"
+                     data-category-element="#category"
+                     data-subcategory-element="#subcategory">
+                    <div class="col-md-3"><?php echo $this->formRow($form->get('category')); ?></div>
+                    <div class="col-md-3"><?php echo $this->formRow($form->get('subcategory')); ?></div>
+                    <div class="col-md-3"><?php echo $this->formRow($form->get('status')); ?></div>
+                    <div class="col-md-3"><?php echo $this->formRow($form->get('tag')); ?></div>
+                </div>
+                <div class="row state-cities"
+                     data-url="<?php echo $this->url('util/cities'); ?>"
+                     data-state-element="#state"
+                     data-city-element="#city">
+                    <div class="col-md-3"><?php echo $this->formRow($form->get('state')); ?></div>
+                    <div class="col-md-3"><?php echo $this->formRow($form->get('city')); ?></div>
+                    <div class="col-md-3"><?php echo $this->formRow($form->get('variable_field')); ?></div>
+                </div>
+            </div>
+            <div class="form-actions right">
+                <button type="submit" class="btn blue"><i class="fa fa-search"></i> Pesquisar </button>
+                <button type="button" class="btn default">Limpar </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<table class="table table-striped table-bordered table-hover">
+    <thead>
+    <tr role="row" class="heading">
+        <th width="2%">ID</th>
+        <th width="12%">CPF, CNPJ ou Passaporte</th>
+        <th width="27%">Nome</th>
+        <th width="26%">Email</th>
+        <th width="20%">Origem do cadastro</th>
+        <th width="13%">Ações</th>
+    </tr>
+    </thead>
+    <tbody>
+    <?php foreach ($this->users as $user):
+        $updateUrl = $this->url('admin/default', [
+            'controller' => 'contact',
+            'action'=>'update',
+            'id'=>$user->getId()
+        ]);
+
+        $removeUrl = $this->url('admin/default', [
+            'controller' => 'contact',
+            'action'=>'delete',
+            'id'=>$user->getId(),
+        ]);
+        ?>
+        <tr>
+            <td><?php echo $user->getId() ?></td>
+            <td><a href="<?php echo $updateUrl; ?>"><?php echo $user->getIdentifier(); ?></a></td>
+            <td><?php echo $user->getName() ?></td>
+            <td><?php echo $user->getEmail(); ?></td>
+            <td>
+                <?php echo $user->getOrigin()=='meuuniverso' ? "MeuUniverso" : "SGC"; ?>
+            </td>
+            <td>
+                <a href="<?php echo  $updateUrl; ?>" class="btn btn-sm btn-default">
+                    <i class="fa fa-edit"></i> Editar
+                </a>
+                <a href="<?php echo $removeUrl; ?>" class="btn btn-sm btn-default post-list-remove">
+                    <i class="fa fa-close"></i> Excluir
+                </a>
+            </td>
+        </tr>
+    <?php endforeach; ?>
+    </tbody>
+</table>
+
+<?php echo $this->form()->closeTag(); ?>
+
+<div class="table-paginator">
+    <?php echo $this->paginationcontrol(
+        $this->users,
+        'sliding',
+        'admin/partials/paginator.phtml',
+        array(
+            'route'=>'admin/default',
+            'route_options' => array('controller'=>'contact'),
+            'route_query_options' => ['query'=>$this->searchData])
+    ); ?>
+</div>

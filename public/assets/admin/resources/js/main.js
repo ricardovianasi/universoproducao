@@ -76,6 +76,8 @@ jQuery(document).ready(function() {
     //Inicia o plugin que controla a busca de cidades
     $(".state-cities").cities();
 
+    $(".user-category").usercategory();
+
     //gerador de password
     $(".password-generator").passwordGenerator();
 
@@ -299,6 +301,19 @@ jQuery(document).ready(function() {
             cenrerY: true,
             animate: true
         });
+    });
+
+    $("[data-form-reload-trigger]").on('change', function (e) {
+        e.preventDefault();
+
+        App.blockUI({
+            cenrerY: true,
+            animate: true
+        });
+
+        var $form = $('form.form-reload');
+        $form.append("<input type='hidden' name='form-reloaded'>");
+        $form.submit();
     })
 });
 

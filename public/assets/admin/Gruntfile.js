@@ -329,12 +329,12 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-cssmin');
 	grunt.loadNpmTasks('grunt-contrib-htmlmin');
-	grunt.loadNpmTasks('grunt-contrib-imagemin');
+	// grunt.loadNpmTasks('grunt-contrib-imagemin');
 	grunt.loadNpmTasks('grunt-contrib-compass');
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-contrib-copy');
 
-	grunt.registerTask('default', ['copy:dev', 'uglify:dev', 'uglify:maindev', 'uglify:maindistseparated', 'cssmin:dev', 'imagemin:dev', 'compass:dev']);
+	grunt.registerTask('default', ['copy:dev', 'uglify:dev', 'uglify:maindev', 'uglify:maindistseparated', 'cssmin:dev', 'compass:dev']);
 
 	grunt.registerTask('w', ['watch']);
 

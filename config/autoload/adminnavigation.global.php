@@ -806,6 +806,29 @@ return [
 					],
 				]
 			],
+            [
+                'label' => 'Gestão de contatos',
+                'uri' => '#',
+                'heading' => true
+            ],
+            [
+                'label' => 'Contatos',
+                'route' => 'admin/default',
+                'controller' => 'contact',
+                'icon' => 'icon-envelope-open',
+            ],
+            [
+                'label' => 'Categoria',
+                'route' => 'admin/default',
+                'controller' => 'user-category',
+                'icon' => 'icon-envelope-open',
+            ],
+            [
+                'label' => 'Sub categoria',
+                'route' => 'admin/default',
+                'controller' => 'user-sub-category',
+                'icon' => 'icon-envelope-open',
+            ],
 		]
 	],
 ];
