@@ -806,7 +806,7 @@ return [
 					],
 				]
 			],
-            [
+            /*[
                 'label' => 'Gestão de contatos',
                 'uri' => '#',
                 'heading' => true
@@ -828,7 +828,7 @@ return [
                 'route' => 'admin/default',
                 'controller' => 'user-sub-category',
                 'icon' => 'icon-envelope-open',
-            ],
+            ],*/
 		]
 	],
 ];
