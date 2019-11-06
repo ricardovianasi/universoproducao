@@ -249,7 +249,7 @@ class RegisterController extends AbstractMeuUniversoController
         }
 
         return [
-            'form' => $form,
+            'form' => $form->getMessages(),
             'phoneForm' => $phoneForm,
             'user' => $user,
             'validate' => true,

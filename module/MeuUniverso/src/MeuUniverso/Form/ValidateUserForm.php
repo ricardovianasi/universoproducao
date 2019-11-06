@@ -115,7 +115,32 @@ class ValidateUserForm extends \Admin\Form\ExternalUser\UserForm
                 'required' => false,
                 'allow_empty' => true,
 
-            ]
+            ],
+            [
+                'name' => 'status',
+                'required'   => false,
+                'allow_empty' => true
+            ],
+            [
+                'name' => 'tag',
+                'required'   => false,
+                'allow_empty' => true
+            ],
+            [
+                'name' => 'category',
+                'required'   => false,
+                'allow_empty' => true
+            ],
+            [
+                'name' => 'subcategory',
+                'required'   => false,
+                'allow_empty' => true
+            ],
+            [
+                'name' => 'origin',
+                'required'   => false,
+                'allow_empty' => true
+            ],
         ]));
 
     }
