@@ -39,14 +39,13 @@ return array(
                             'route' => '/',
                             'defaults' => array(
                                 'controller'    => Controller\IndexController::class,
-                                'action'        => 'index-sp',
                             ),
                         )
                     ),
                     'index' => array(
                         'type' => Literal::class,
                         'options' => array(
-                            'route' => '/inicio',
+                            'route' => '/',
                             'defaults' => array(
                                 'controller'    => Controller\IndexController::class,
                                 'action'        => 'index',
