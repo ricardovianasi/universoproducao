@@ -1,0 +1,100 @@
+<div class="main-wrapper main-content">
+    <header class="main-header">
+        <h1 class="main-title"><?php echo $post->getTitle() ?></h1>
+    </header>
+
+    <div class="movie-filter filter">
+        <?php
+        $this->form->setAttribute('method', 'GET')->setAttribute('class','filter-form');
+        $this->form->prepare();
+        echo $this->form(null, null)->openTag($this->form) ?>
+
+        <?php
+        $subEvent = $this->form->get("sub_event");
+        $subEvent->setAttribute('class','filter-input')
+            ->setAttribute('required', '')->setOption('empty_option','Sub-mostra');
+        echo $this->formElement($subEvent)
+        ?>
+        <?php
+        $category = $this->form->get("programing_type");
+        $category->setAttribute('class','filter-input')
+            ->setAttribute('required', '')
+            ->setOption('empty_option','Tipo');
+
+        echo $this->formElement($category)
+        ?>
+        <?php
+        $place = $this->form->get("place");
+        $place->setAttribute('class','filter-input')
+            ->setAttribute('required', '')->setOption('empty_option','Local');
+        echo $this->formElement($this->form->get('place'))
+        ?>
+        <button type="submit" class="filter-submit">Buscar</button>
+        <?php echo $this->form()->closeTag(); ?>
+    </div>
+
+    <div class="filter-days">
+        <p>Programação por data</p>
+        <ul>
+            <?php foreach($this->eventDays as $date): $day = explode('-', $date['date']); ?>
+                <li><a href="?day=<?php echo $date['date']; ?>">Dia <?php echo end($day) ?></a></li>
+            <?php endforeach; ?>
+        </ul>
+    </div>
+
+    <a style="width: auto; margin-bottom: 20px; display: inline-block" class="filter-submit" target="_blank" href="http://universoproducao.com.br/source/22_Tiradentes/folder.pdf">Download da programação</a>
+
+    <div class="programing">
+        <table class="programing-grid diferent" style="width: 100%">
+            <?php foreach ($this->programing as $pro): ?>
+                <tr class="programing-item programing-item--title">
+                    <td colspan="2" class="programing-date">
+                        <span>
+                            <?php echo str_replace('-feira', '', $this->dateFormat($pro['date'], null, null, "pt_BR", "dd/MM | cccc")); ?>
+                        </span>
+                    </td>
+                </tr>
+                <?php foreach ($pro['items'] as $item): ?>
+                    <tr class="programing-item">
+                        <td class="programing-item--left">
+                            <span class="programing-time"><?php echo $item['time']; ?></span>
+                            <span class="programing-place"><?php echo $item['place']; ?></span>
+                        </td>
+                        <td class="programing-item--right">
+                            <span class="programing-item-title"><?php echo $item['title']; ?></span>
+                            <?php foreach ($item['events'] as $event): ?>
+                                <?php if(isset($event['title'])): ?>
+                                    <?php
+                                    $url = "";
+                                    switch ($item['type']) {
+                                        case "session":
+                                        case "movie":
+                                            $url = $this->url('mostratiradentes2020/movie', ['id'=>$event['id']]);
+                                            break;
+                                        case "seminar_debate":
+                                            $url = $this->url('mostratiradentes2020/seminar', ['id'=>$event['id']]);
+                                            break;
+                                        case "art":
+                                            $url = $this->url('mostratiradentes2020/art', ['id'=>$event['id']]);
+                                            break;
+                                    }
+                                    ?>
+                                    <a class="programing-event" href="<?php echo $url;?>"><?php echo $event['title']; ?></a>
+                                <?php elseif(isset($event['description'])): ?>
+                                    <div class="programation-desc">
+                                        <?php echo $event['description'] ?>
+                                    </div>
+                                <?php endif; ?>
+                            <?php endforeach; ?>
+
+                            <?php if(isset($item['info'])): ?>
+                                <span class="programing-info"><?php echo $item['info']; ?></span>
+                            <?php endif; ?>
+
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+            <?php endforeach; ?>
+        </table>
+    </div>
+</div>
