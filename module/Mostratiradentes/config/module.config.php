@@ -13,10 +13,9 @@ return array(
             'mostratiradentes' => array(
                 'type'    => Hostname::class,
                 'options' => array(
-                    'route'    => '[www.]mostratiradentes.com.br',
+                    'route'    => '[www.]2019.mostratiradentes.com.br',
                     'defaults' => array(
                         'controller'    => Controller\IndexController::class,
-                        'action'        => 'index-sp'
                     ),
                 ),
                 'may_terminate' => true,

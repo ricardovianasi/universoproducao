@@ -16,9 +16,9 @@ $modules = [
     'Cinebh2019',
     'Cinebh',
     'Mostratiradentes',
-    'Mostratiradentes2017',
-    'MostratiradentesSp2018',
     'MostratiradentesSp',
+    'Mostratiradentes2020',
+
 ];
 
 if($env == 'development') {
