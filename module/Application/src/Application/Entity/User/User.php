@@ -639,7 +639,7 @@ class User extends AbstractEntity
             'name' => $this->getName(),
             'identifier' => $this->getIdentifier(),
             'email' => $this->getEmail(),
-            'type' => $this->getType(),
+            'type' =>$this->getType(),
             'phones' => $phonesArray
         ];
 
