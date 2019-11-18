@@ -3,7 +3,7 @@
         <h1 class="main-title"><?php echo $this->post->getTitle(); ?></h1>
     </header>
     <div class="news-list">
-        <?php foreach ($this->events as $event): ?>
+        <?php $events = array_unshift($this->events); foreach ($events as $event): ?>
             <article class="news-item">
                 <header class="news-header">
                     <h1 class="news-title"><?php echo $event->getFullName(); ?></h1>
