@@ -24,7 +24,7 @@ class PreviousEditionsController extends SiteController
         $post = $this->params('post');
 
         $events = $this->getRepository(Event::class)->findBy([
-            'type' => 'mostratiradentes2020'
+            'type' => 'mostratiradentes'
         ], ['edition' => 'DESC']);
 
         $viewModel->post = $post;
@@ -41,7 +41,7 @@ class PreviousEditionsController extends SiteController
         $idEdition = $this->params('id');
         $edition = $this->getRepository(Event::class)->findOneBy([
             'id' => $idEdition,
-            'type' => 'mostratiradentes2020'
+            'type' => 'mostratiradentes'
         ]);
 
         $post->setTitle($edition->getFullName());
