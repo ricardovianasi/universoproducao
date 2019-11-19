@@ -3,9 +3,6 @@
   width: 100%
 
   &-mobile
-    background-image: url("../images/2020/header-mobile.jpg")
-    background-repeat: no-repeat
-    background-size: cover
     padding-left: 8px
     padding-right: 8px
     padding-top: 24px
@@ -15,14 +12,13 @@
       display: none
     +media("<tablet")
       display: block
+      padding-left: 0
+      padding-right: 0
+      padding-top: 0
+      padding-bottom: 0
     img
       vertical-align: middle
-      &:nth-child(1)
-        max-width: 170px
-        margin-right: 25px
-      &:nth-child(2)
-        max-width: 165px
-        text-align: right
+      width: 100%
 
   &-desk
     +media(">=tablet")
@@ -54,7 +50,7 @@
     width: 100%
     line-height: 0
     +media("<tablet")
-      width: calc(100% - 72px)
+      width: 100%
 
     img
       width: 100%
