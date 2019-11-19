@@ -60,38 +60,40 @@ $(document).ready(function () {
         animateOut: 'fadeOut'
     });
 
-    $(".gallery-list").owlCarousel({
-        //items: 2,
-        responsiveClass:true,
-        responsive:{
-            0:{
-                items:1,
+    $(".gallery-list").imagesLoaded( function() {
+        $(".gallery-list").owlCarousel({
+            //items: 2,
+            responsiveClass:true,
+            responsive:{
+                0:{
+                    items:1,
+                },
+                728:{
+                    items:2,
+                },
+                1024:{
+                    items:3,
+                },
+                1900:{
+                    items:4,
+                }
             },
-            728:{
-                items:2,
-            },
-            1024:{
-                items:3,
-            },
-            1900:{
-                items:4,
-            }
-        },
-        autoWidth: true,
-        autoHeight: true,
-        nav: true,
-        margin: 1,
-        navText: [
-            "<button class='owl-prev'><span class='icon icon-arrow-left4'></span></button>",
-            "<button class='owl-next'><span class='icon icon-arrow-right4'></span></button>"
-        ],
-        dots: false,
-        mouseDrag: false,
-        loop: true,
-        center: true,
-        autoplay: false,
-        autoplayTimeout: 7000,
-        lazyLoad: true,
+            autoWidth: true,
+            autoHeight: true,
+            nav: true,
+            margin: 1,
+            navText: [
+                "<button class='owl-prev'><span class='icon icon-arrow-left4'></span></button>",
+                "<button class='owl-next'><span class='icon icon-arrow-right4'></span></button>"
+            ],
+            dots: false,
+            mouseDrag: false,
+            loop: true,
+            center: true,
+            autoplay: false,
+            autoplayTimeout: 7000,
+            lazyLoad: true,
+        });
     });
 
     var timeline = $(".events").owlCarousel({
