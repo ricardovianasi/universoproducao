@@ -93,30 +93,6 @@ class ContactController extends AbstractAdminController
                     $dependentsToRemove[$depRemove->getId()] = $depRemove;
                 }
 
-                $dependents = new ArrayCollection();
-                if(!empty($validData['dependents'])) {
-                    foreach ($validData['dependents'] as $d) {
-                        if(isset($d['id']) && isset($dependentsToRemove[$d['id']])) {
-                            $dep = $dependentsToRemove[$d['id']];
-                            unset($dependentsToRemove[$d['id']]);
-                        } else {
-                            $dep = new User($d);
-                            $dep->setParent($user);
-                        }
-                        $dep->setName($d['name']);
-                        $dep->setIdentifier($d['identifier']);
-                        $dep->setBirthDate($d['birth_date']);
-                        $dep->setGender($d['gender']);
-
-                        $dependents->add($dep);
-                    }
-                }
-                $user->setDependents($dependents);
-                foreach ($dependentsToRemove as $depRemove) {
-                    $this->getEntityManager()->remove($depRemove);
-                }
-                unset($validData['dependents']);
-
                 if(isset($validData['city'])) {
                     $city = $this->getRepository(City::Class)->find($validData['city']);
                     $validData['city'] = $city;
