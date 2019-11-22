@@ -11,6 +11,7 @@ namespace Admin\Controller;
 use Admin\Form\ExternalUser\CompanyForm;
 use Admin\Form\ExternalUser\DependentForm;
 use Admin\Form\ExternalUser\PhoneForm;
+use Admin\Form\ExternalUser\UserContactForm;
 use Admin\Form\ExternalUser\UserContactFormSearch;
 use Admin\Form\ExternalUser\UserForm;
 use Application\Entity\City;
@@ -56,7 +57,7 @@ class ContactController extends AbstractAdminController
 
 	public function persist($data, $id = null)
 	{
-		$form = new UserForm($this->getEntityManager());
+		$form = new UserContactForm($this->getEntityManager());
 		$phoneForm = new PhoneForm();
 		$dependentForm = new DependentForm();
 
@@ -133,12 +134,8 @@ class ContactController extends AbstractAdminController
 
                 $user->setData($validData);
 
-                try {
-                    $this->getEntityManager()->persist($user);
-                    $this->getEntityManager()->flush();
-                } catch (\Exception $e) {
-                    var_dump($e); exit();
-                }
+                $this->getEntityManager()->persist($user);
+                $this->getEntityManager()->flush();
 
 				if($id) {
 					$this->messages()->success("Usuário atualizado com sucesso!");
