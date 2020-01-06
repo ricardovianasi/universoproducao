@@ -133,7 +133,7 @@ class User extends AbstractEntity
     private $variableField;
 
     /** @ORM\Column(name="`origin`", nullable=true) */
-    private $origin;
+    private $origin = 'meuuniverso';
 
     /** @ORM\Column(name="`occupation`", nullable=true) */
     private $occupation;

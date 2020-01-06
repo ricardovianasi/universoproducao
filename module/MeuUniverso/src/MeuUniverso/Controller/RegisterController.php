@@ -204,6 +204,7 @@ class RegisterController extends AbstractMeuUniversoController
         $form = new ValidateUserForm($this->getEntityManager());
         $phoneForm = new PhoneForm();
         $user = new User;
+        $user->setOrigin(User::ORIGIN_MEUUNIVERSO);
         if ($this->getRequest()->isPost()) {
             $data = $this->getRequest()->getPost()->toArray();
             $form->setData($data);
