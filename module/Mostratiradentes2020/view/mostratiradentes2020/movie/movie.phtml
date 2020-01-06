@@ -49,6 +49,15 @@
                 } else {
                     $progObj = $pro;
                 }
+
+                if(!$progObj) {
+                    continue;
+                }
+
+                if(!$progObj->getDate() || !$progObj->getStartTime() || !$progObj->getPlace()) {
+                    continue;
+                }
+
                 $date =  str_replace('-feira', '', $this->dateFormat($progObj->getDate(), null, null, "pt_BR", "dd/MM | cccc"));
                 $hour = $progObj->getStartTime()->format('H\hi');
                 $place = $progObj->getPlace()?$progObj->getPlace()->getName():"";
