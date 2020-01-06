@@ -57,6 +57,15 @@
                                     } else {
                                         $progObj = $pro;
                                     }
+
+                                    if(!$progObj) {
+                                        continue;
+                                    }
+
+                                    if(!$progObj->getDate()) {
+                                        continue;
+                                    }
+                                    
                                     $date = $progObj->getDate()->format('d/m');
                                     $hour = $progObj->getStartTime()->format('H\hi');
                                     $place = $progObj->getPlace()?$progObj->getPlace()->getName():"";
