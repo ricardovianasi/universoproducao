@@ -92,13 +92,15 @@ class ProgramationController extends SiteController
 
             //Hora do evento
             $timeLabel = "";
-            if ($prog->getEndTime()) {
-                $timeLabel =
-                    $prog->getStartTime()->format('H\hi')
-                    . ' às '
-                    . $prog->getEndTime()->format('H\hi');
-            } else {
-                $timeLabel = $prog->getStartTime()->format('H\hi');
+            if($prog->getStartTime()) {
+                if ($prog->getEndTime()) {
+                    $timeLabel =
+                        $prog->getStartTime()->format('H\hi')
+                        . ' às '
+                        . $prog->getEndTime()->format('H\hi');
+                } else {
+                    $timeLabel = $prog->getStartTime()->format('H\hi');
+                }
             }
 
             $events = [];
