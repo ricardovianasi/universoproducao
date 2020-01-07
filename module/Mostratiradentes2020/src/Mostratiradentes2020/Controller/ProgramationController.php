@@ -104,6 +104,7 @@ class ProgramationController extends SiteController
             }
 
             $events = [];
+            $ageRange = "";
 
             //Tipo do evento
             $titleItem = "";
@@ -179,6 +180,18 @@ class ProgramationController extends SiteController
                 $events[] = [
                     'description' => $prog->getObject()->getDescription()
                 ];
+            } elseif ($prog->getType() == Type::SESSION_SCHOOL) {
+                $titleItem = "Sessão cine-escola";
+                if($prog->getObject()) {
+                    $ageRange = $prog->getObject()->getAgeRange();
+                    foreach ($prog->getObject()->getMovies() as $m) {
+                        $movie = $m->getMovie();
+                        $events[] = [
+                            'title' => $movie->getTitle()." | <span class=\"programing-direction\">Direção: ".$movie->getDirection()."</span>",
+                            'id' => $movie->getId()
+                        ];
+                    }
+                }
             }
 
             $programing[$dateKey]['items'][] = [
@@ -188,6 +201,7 @@ class ProgramationController extends SiteController
                 'type' => $prog->getType(),
                 'place' => $prog->getPlace() ? $prog->getPlace()->getName() : "",
                 'title' => $titleItem,
+                'age_range' => $ageRange?$ageRange:$prog->getAgeRange(),
                 'info' => $prog->hasMeta(Meta::ADDITIONAL_INFO) ? $prog->hasMeta(Meta::ADDITIONAL_INFO)->getValue() : "",
                 'events' => $events
             ];

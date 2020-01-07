@@ -195,7 +195,6 @@ class ProgramationController extends SiteController
                         ];
                     }
                 }
-
             }
 
             $programing[$dateKey]['items'][] = [

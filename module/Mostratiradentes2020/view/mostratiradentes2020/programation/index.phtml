@@ -91,6 +91,10 @@
                                 <span class="programing-info"><?php echo $item['info']; ?></span>
                             <?php endif; ?>
 
+                            <?php if(isset($item['age_range'])): ?>
+                                <span style="display: block" class="programing-info">Classificação: <?php echo $item['age_range']; ?></span>
+                            <?php endif; ?>
+
                         </td>
                     </tr>
                 <?php endforeach; ?>
