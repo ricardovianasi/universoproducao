@@ -71,7 +71,7 @@ class UserWorkshops extends AbstractHelper
         $urlHelper = $this->getServiceLocator()->get('url');
 
         $btnConfirmParticipation = "";
-        if($workshop->getStatus() == Status::SELECTED && $workshop->getEvent()->getId() == 1092) {
+        if($workshop->getStatus() == Status::SELECTED && $workshop->getEvent()->getId() == 1094) {
             $confirmedUrl = $urlHelper('meu-universo/workshop', [
                 'controller' => 'workshop-registration',
                 'action' => 'confirmacao',
