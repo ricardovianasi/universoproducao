@@ -100,7 +100,7 @@ class UserWorkshops extends AbstractHelper
                     <i class="glyphicon glyphicon-list-alt"></i> Comprovante de participação</a>';
         }
 
-        $td.= "<td>$btnConfirmParticipation $btnComprovante</td></tr>";
+        $td.= "<td>$btnComprovante</td></tr>";
         return $td;
     }
 
