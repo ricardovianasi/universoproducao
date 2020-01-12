@@ -85,7 +85,7 @@ class UserWorkshops extends AbstractHelper
                     <i class="glyphicon glyphicon-list-alt"></i> Confirmar participação</a>';
         }
 
-        //$btnComprovante = "";
+        $btnComprovante = $btnConfirmParticipation;
         if($workshop->getStatus() == Status::CONFIRMED) {
             $comproveUrl = $urlHelper('meu-universo/workshop', [
                 'controller' => 'workshop-registration',
