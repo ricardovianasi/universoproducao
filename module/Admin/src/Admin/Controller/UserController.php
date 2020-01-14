@@ -69,6 +69,7 @@ class UserController extends AbstractAdminController implements CrudInterface
 			//$user->setPassword(Crypt::getInstance()->generateEncryptPass());
 			$user->setChangePasswordRequired(true);
 			$user->setConfirmedRegister(false);
+			$user->setOrigin(User::ORIGIN_MEUUNIVERSO);
 		}
 
 		if($this->getRequest()->isPost()) {
@@ -125,6 +126,8 @@ class UserController extends AbstractAdminController implements CrudInterface
                     $city = $this->getRepository(City::Class)->find($validData['city']);
                     $validData['city'] = $city;
                 }
+
+                unset($validData['origin']);
 
                 $user->setData($validData);
 

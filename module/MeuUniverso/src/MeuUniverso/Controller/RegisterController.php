@@ -211,6 +211,8 @@ class RegisterController extends AbstractMeuUniversoController
             if ($form->isValid()) {
                 $validData = $form->getData();
 
+                unset($validData['origin']);
+
                 $phones = new ArrayCollection();
                 if(!empty($validData['phones'])) {
                     foreach ($validData['phones'] as $ph) {
