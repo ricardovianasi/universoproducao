@@ -103,7 +103,7 @@
                             <td>
                                 <?php echo $u->getName() ?>
                                 <?php if($u->hasDependents()): ?>
-                                <br/><i>Dependentes:</i>
+                                <br/><br/><i>Dependentes:</i>
                                 <?php foreach ($u->getDependents() as $dep): ?>
                                     <span style="display: block"><?php echo $dep->getName() ?>
                                     <a href="#"
