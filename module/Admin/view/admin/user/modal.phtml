@@ -100,7 +100,25 @@
                     <?php foreach ($this->users as $u): ?>
                         <tr>
                             <td><?php echo $u->getIdentifier(); ?></td>
-                            <td><?php echo $u->getName() ?></td>
+                            <td>
+                                <?php echo $u->getName() ?>
+                                <?php if($u->hasDependents()): ?>
+                                <br/><b>Dependentes:</b>
+                                <?php foreach ($u->getDependents() as $dep): ?>
+                                    <tr>
+                                        <td>
+                                            <?php echo $dep->getName() ?>
+                                            <a href="#"
+                                               data-id="<?php echo $dep->getId(); ?>"
+                                               data-name="<?php echo $dep->getName()  ?>"
+                                               class="btn btn-sm user-modal-select">
+                                                <i class="fa fa-edit"></i> Selecionar
+                                            </a>
+                                        </td>
+                                    </tr>
+                                <?php endforeach; ?>
+                                <?php ?>
+                            </td>
                             <td><?php echo $u->getEmail(); ?></td>
                             <td>
                                 <a
