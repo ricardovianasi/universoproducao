@@ -103,9 +103,9 @@
                             <td>
                                 <?php echo $u->getName() ?>
                                 <?php if($u->hasDependents()): ?>
-                                <br/><b>Dependentes:</b>
+                                <br/><i>Dependentes:</i>
                                 <?php foreach ($u->getDependents() as $dep): ?>
-                                    <span><?php echo $dep->getName() ?>
+                                    <span style="display: block"><?php echo $dep->getName() ?>
                                     <a href="#"
                                        data-id="<?php echo $dep->getId(); ?>"
                                        data-name="<?php echo $dep->getName()  ?>"
