@@ -105,17 +105,13 @@
                                 <?php if($u->hasDependents()): ?>
                                 <br/><b>Dependentes:</b>
                                 <?php foreach ($u->getDependents() as $dep): ?>
-                                    <tr>
-                                        <td>
-                                            <?php echo $dep->getName() ?>
-                                            <a href="#"
-                                               data-id="<?php echo $dep->getId(); ?>"
-                                               data-name="<?php echo $dep->getName()  ?>"
-                                               class="btn btn-sm user-modal-select">
-                                                <i class="fa fa-edit"></i> Selecionar
-                                            </a>
-                                        </td>
-                                    </tr>
+                                    <span><?php echo $dep->getName() ?>
+                                    <a href="#"
+                                       data-id="<?php echo $dep->getId(); ?>"
+                                       data-name="<?php echo $dep->getName()  ?>"
+                                       class="btn btn-sm user-modal-select">
+                                        <i class="fa fa-edit"></i> Selecionar
+                                    </a></span>
                                 <?php endforeach; ?>
                                 <?php endif; ?>
                             </td>
