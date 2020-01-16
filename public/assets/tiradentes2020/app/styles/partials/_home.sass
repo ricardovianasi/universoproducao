@@ -674,6 +674,20 @@
         width: calc(85% - 90px)
         margin-right: 0
 
+    +media("<=575px")
+      .sponsorship-block--full,
+      .sponsorship-block--center
+      .sponsorship-block--15,
+      .sponsorship-block--10,
+      .sponsorship-block--20,
+      .sponsorship-block--80,
+      .sponsorship-block--85
+        width: 100%
+        margin-right: 0
+        margin-left: 0
+
+
+
 
     &-item
       display: inline-block
@@ -685,6 +699,8 @@
         margin-left: 0px
       &:last-child
         margin-right: 0px
+      +media("<=575px")
+        display: block
 
     &-title
       +adjust-font-size-to(14px, 1.5)
