@@ -49,7 +49,8 @@ class IndexController extends SiteController
                 'site' => self::SITE_ID,
                 'type' => PostType::GALLERY
             ],
-            ['order'=>'ASC']
+            ['order'=>'ASC'],
+            10
         );
 
         $videos = $this->getRepository(Tv::class)->findBy(['site' => self::SITE_ID], [
