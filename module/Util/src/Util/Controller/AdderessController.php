@@ -41,7 +41,7 @@ class AdderessController extends AbstractController implements EntityManagerAwar
 					$cities = $this->getEntityManager()
 						->getRepository(City::class)
 						->findBy(['state' => $state->getId()], ['name'=>'ASC']);
-					$citiesArray[] = '<option>Selecione</option>';
+					$citiesArray[] = '<option value="">Selecione</option>';
 					foreach($cities as $c) {
 						$citiesArray[] = '<option value="'.$c->getId().'">'.$c->getName().'</option>';
 					}
@@ -84,7 +84,7 @@ class AdderessController extends AbstractController implements EntityManagerAwar
 			}
 
 			$cities = $this->getRepository(City::class)->findBy(['state'=>$state], ['name'=>'ASC']);
-			$citiesArray[] = '<option>Selecione</option>';
+			$citiesArray[] = '<option value="">Selecione</option>';
 			foreach($cities as $c) {
 				$citiesArray[] = '<option value="'.$c->getId().'">'.$c->getName().'</option>';
 			}

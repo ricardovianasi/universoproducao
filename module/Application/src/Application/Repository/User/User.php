@@ -59,7 +59,10 @@ class User extends AbstractRepository
         }
 
         if(!empty($criteria['state'])) {
-
+            $qb
+                ->innerJoin('p.city', 'c')
+                ->andWhere('c.state = :idState')
+                ->setParameter('idState', $criteria['state']);
         }
 
         if(!empty($criteria['city'])) {

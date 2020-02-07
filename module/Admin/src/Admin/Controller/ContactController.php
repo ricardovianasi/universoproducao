@@ -169,7 +169,7 @@ class ContactController extends AbstractAdminController
 
 		$this->messages()->flashSuccess('O usuário foi excluído com sucesso.');
 
-		return $this->redirect()->toRoute('admin/default', ['controller'=>'user']);
+		return $this->redirect()->toRoute('admin/default', ['controller'=>'contact']);
 	}
 
 
@@ -186,7 +186,7 @@ class ContactController extends AbstractAdminController
             }
 
             $subcategory = $this->getRepository(Category::class)->findBy(['parent'=>$category], ['name'=>'ASC']);
-            $subcategoryArray[] = '<option>Selecione</option>';
+            $subcategoryArray[] = '<option value="">Selecione</option>';
             foreach($subcategory as $c) {
                 $subcategoryArray[] = '<option value="'.$c->getId().'">'.$c->getName().'</option>';
             }
