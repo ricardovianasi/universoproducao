@@ -119,20 +119,25 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php foreach ($this->user->getPhones() as $phone): ?>
-                                <tr data-row="<?php echo $phone->getId(); ?>">
-                                    <td><?php echo $phone->getDDD(); ?></td>
-                                    <td><?php echo $phone->getNumber(); ?></td>
-                                    <td><?php echo $phone->getContactName(); ?></td>
-                                    <td><?php echo \Application\Entity\Phone\PhoneType::get($phone->getType()); ?></td>
+                            <?php $phones = !empty($data['phones'])
+                                ? $data['phones']
+                                : $this->user->getPhones();
+
+                            foreach ($phones as $phone): if(is_object($phone)) { $phone = $phone->_toArray(); }
+                                $phoneid = isset($phone['id']) ? $phone['id'] : time().rand(); ?>
+                                <tr data-row="<?php echo $phoneid; ?>">
+                                    <td><?php echo $phone['ddd']; ?></td>
+                                    <td><?php echo $phone['number']; ?></td>
+                                    <td><?php echo $phone['contact_name']; ?></td>
+                                    <td><?php echo \Application\Entity\Phone\PhoneType::get($phone['type']); ?></td>
                                     <td>
-                                        <a href="#" class="btn btn-sm btn-default admin-phone-remove" data-remove="<?php echo $phone->getId(); ?>">
+                                        <a href="#" class="btn btn-sm btn-default admin-phone-remove" data-remove="<?php echo $phoneid ?>">
                                             <i class="fa fa-close"></i>
                                         </a>
-                                        <input type="hidden" name="phones[<?php echo $phone->getId() ?>][ddd]" value="<?php echo $phone->getDDD(); ?>">
-                                        <input type="hidden" name="phones[<?php echo $phone->getId() ?>][number]" value="<?php echo $phone->getNumber(); ?>">
-                                        <input type="hidden" name="phones[<?php echo $phone->getId() ?>][contact_name]" value="<?php echo $phone->getContactName(); ?>">
-                                        <input type="hidden" name="phones[<?php echo $phone->getId() ?>][type]" value="<?php echo $phone->getType(); ?>">
+                                        <input type="hidden" name="phones[<?php echo $phoneid ?>][ddd]" value="<?php echo $phone['ddd']; ?>">
+                                        <input type="hidden" name="phones[<?php echo $phoneid ?>][number]" value="<?php echo $phone['number']; ?>">
+                                        <input type="hidden" name="phones[<?php echo $phoneid ?>][contact_name]" value="<?php echo $phone['contact_name']; ?>">
+                                        <input type="hidden" name="phones[<?php echo $phoneid ?>][type]" value="<?php echo $phone['type']; ?>">
 
                                     </td>
                                 </tr>

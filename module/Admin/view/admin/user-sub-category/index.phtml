@@ -3,15 +3,15 @@
     <div class="portlet-title">
         <div class="caption">
             <i class="fa fa-edit"></i>
-            Categoria de arte
+            Sub categoria do Contato
         </div>
     </div>
 
     <div class="portlet-body form">
         <?php $form->prepare(); echo $this->form()->openTag($form); ?>
         <div class="form-body">
-            <?php  echo $this->formRow($form->get('name')); ?>
             <?php  echo $this->formRow($form->get('parent')); ?>
+            <?php  echo $this->formRow($form->get('name')); ?>
             <div class="row">
                 <div class="col-md-9">
                     <button type="submit" class="btn blue action-save pull-right">Salvar</button>

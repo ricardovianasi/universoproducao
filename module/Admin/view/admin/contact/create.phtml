@@ -5,10 +5,10 @@
 				<div class="caption">
 					<?php if($this->user->getId()): ?>
 					<i class="fa fa-edit"></i>
-					Editar Usuário
+					Editar Contato
 					<?php else: ?>
 					<i class="fa fa-file-o"></i>
-					Cadastrar Usuário
+					Cadastrar Contato
 					<?php endif; ?>
 				</div>
 				<div class="actions">
@@ -17,6 +17,11 @@
 						<i class="icon-action-undo"></i>
 						<span class="hidden-xs"> Voltar </span>
 					</a>
+                    <a href="<?php echo $this->url('admin/default', ['controller'=>'contact', 'action'=>'create']); ?>"
+                       class="btn btn-default">
+                        <i class="fa fa-plus"></i>
+                        <span class="hidden-xs"> Novo contato </span>
+                    </a>
 				</div>
 			</div>
 			<div class="portlet-body">
@@ -24,7 +29,8 @@
                     'form' => $this->form,
                     'user'=>$this->user,
                     'phoneForm'=>$this->phoneForm,
-                    'dependentForm' => $this->dependentForm
+                    'dependentForm' => $this->dependentForm,
+                    'data' => $this->data
                 ]); ?>
 			</div>
 		</div>

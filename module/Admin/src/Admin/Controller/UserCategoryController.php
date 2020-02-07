@@ -34,10 +34,13 @@ class UserCategoryController extends AbstractAdminController
                 $this->getEntityManager()->flush();
                 if($this->params()->fromRoute('id')) {
                     $this->messages()->flashSuccess("Categoria atualizada com sucesso!");
-                    return $this->redirect()->toRoute('admin/default', ['controller'=>'art-category']);
+                    return $this->redirect()->toRoute('admin/default', ['controller'=>'user-category']);
                 } else {
-                    $this->messages()->success("Categoria criada com sucesso!");
+                    $this->messages()->flashSuccess("Categoria criada com sucesso!");
+                    return $this->redirect()->toRoute('admin/default', ['controller'=>'user-category']);
                 }
+
+                $form->setData([]);
             }
         } elseif($id = $this->params()->fromRoute('id')) {
             $category = $this

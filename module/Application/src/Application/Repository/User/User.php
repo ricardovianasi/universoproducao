@@ -76,6 +76,11 @@ class User extends AbstractRepository
 
         $qb->andWhere('p.parent is NULL');
 
+        foreach($orderBy as $name=>$order) {
+            $qb->addOrderBy("p.$name", $order);
+        }
+
+
         return $qb;
     }
 }
