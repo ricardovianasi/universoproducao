@@ -29,6 +29,11 @@ class Module implements AutoloaderProviderInterface
             $events
         );
 
+        /*$events->attach(MvcEvent::EVENT_ROUTE, array(
+            \Admin\Controller\AbstractAdminController::class,
+            'preDispatch'
+        ), 100);*/
+
         /*$events->attach(
             MvcAuthEvent::EVENT_AUTHENTICATION,
             $this->services->get('Admin\Auth\Authentication\DefaultAuthenticationListener')
