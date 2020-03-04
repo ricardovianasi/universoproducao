@@ -13,7 +13,7 @@ return array(
             'mostratiradentessp' => array(
                 'type'    => Hostname::class,
                 'options' => array(
-                    'route'    => '[www.]mostratiradentessp.com.br',
+                    'route'    => '[www.]2019.mostratiradentessp.com.br',
                     'defaults' => array(
                         'controller'    => Controller\IndexController::class,
                         'action'        => 'index'
