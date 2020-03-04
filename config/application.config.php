@@ -17,6 +17,7 @@ $modules = [
     'Cinebh',
     'Mostratiradentes',
     'MostratiradentesSp',
+    'Mostratiradentessp2020',
     'Mostratiradentes2020',
 
 ];

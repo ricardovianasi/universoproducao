@@ -1,0 +1,111 @@
+.menu
+  position: relative
+  background-color: black
+  z-index: 9999999
+  +media("<=tablet")
+    background-color: transparent
+    position: absolute
+    width: 100%
+    top: 0
+
+  &-button
+    font-size: 36px
+    line-height: inherit
+    +padding-leader(.5)
+    +padding-trailer(.5)
+    text-align: center
+    cursor: pointer
+    color: black
+    box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.3)
+    +media(">tablet")
+      display: none
+    +media("<=tablet")
+      box-shadow: none
+      display: inline-block
+      color: white
+      width: 72px
+
+  &-container
+    width: 100vw
+    position: relative
+    margin-left: -50vw
+    left: 50%
+    +media(">=tablet")
+      background-color: black
+    +media("<tablet")
+      text-align: right
+      background-color: transparent
+
+  &-list
+    +center
+    text-align: center
+    background-color: black
+
+  &-bar
+    transition: $transition-default
+    +media("<=tablet")
+      display: none
+
+  &-open
+    .menu-bar
+      display: block
+    .menu-item, .menu-item>.menu-container .menu-item
+      width: 100%
+      float: none
+      display: block
+      padding-left: 0
+      padding-right: 0
+
+  &-item
+    cursor: pointer
+    +column(1/5, $gutter: 0)
+    & >.menu-container
+      display: none
+      position: absolute
+      z-index: 999
+      background-color: #ed8300 !important
+      .menu-list
+        background-color: #ed8300
+      .menu-item
+        width: auto
+        padding-right: 50px
+        .menu-link
+          color: black
+          &:before
+            display: none
+        &:first-child
+          padding-left: 0
+        &:last-child
+          padding-right: 0
+    &:hover
+      >.menu-link
+        text-decoration: underline
+        position: relative
+        &:before
+          content: ""
+          position: absolute
+          bottom: 0
+          left: 50%
+          transform: translateX(-50%)
+          display: inline-block
+          vertical-align: middle
+          margin-right: 20px
+          width: 0
+          height: 0
+          border-left: 10px solid transparent
+          border-right: 10px solid transparent
+          border-bottom: 10px solid #ed8300
+      >.menu-container
+        display: block
+
+
+
+  &-link
+    display: block
+    +adjust-font-size-to(18px, 2)
+    +padding-leader(1)
+    +padding-trailer(1)
+    font-weight: 700
+    text-transform: uppercase
+    color: #ed8300
+    cursor: pointer

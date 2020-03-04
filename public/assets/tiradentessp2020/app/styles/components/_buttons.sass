@@ -1,0 +1,30 @@
+.button
+  &-readmore
+    display: inline-block
+    +adjust-font-size-to(18px, 1)
+    +padding-trailer(1)
+    +padding-leader(1)
+    padding-left: 40px
+    padding-right: 40px
+    background-color: white
+    color: #249c81
+    text-transform: uppercase
+    font-weight: bold
+    transition: $transition-default
+    border: 5px solid #199679
+    &:hover
+      background-color: #199679
+      color: white
+
+.circle-button
+  display: inline-block
+  width: 72px
+  height: 72px
+  border-radius: 100%
+  color: $color-palette-1
+  font-size: 40px
+  line-height: 72px
+  text-align: center
+  vertical-align: middle
+  i
+    line-height: inherit
