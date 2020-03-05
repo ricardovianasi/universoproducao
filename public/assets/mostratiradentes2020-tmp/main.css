@@ -68,3 +68,15 @@ body {
 
     }
 }
+
+@media only screen and (max-width: 400px) {
+    .left a,
+    .right a {
+        display: inline-block;
+    }
+
+    .left img,
+    .right img {
+        width: 100%;
+    }
+}
