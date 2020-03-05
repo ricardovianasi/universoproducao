@@ -1085,6 +1085,13 @@ class MovieForm extends Form
                                 'src' => isset($m['src'])?$m['src']:'',
                                 'file' => isset($m['file'])?$m['file']:[]
                             ];
+                        } elseif(!empty($m['src'])) {
+                            $medias[] = [
+                                'id' => isset($m['id'])?$m['id']:'',
+                                'caption' => isset($m['caption'])?$m['caption']:'',
+                                'src' => isset($m['src'])?$m['src']:'',
+                                'file' => isset($m['file'])?$m['file']:[]
+                            ];
                         }
 
                     }
