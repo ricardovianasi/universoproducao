@@ -115,12 +115,9 @@ class MovieForm extends Form
         ]);
 
         $this->add([
-            'type' => 'Select',
             'name' => 'production_state',
             'options' => [
-                'label' => 'Estado de produção',
-                'value_options' => $this->populateStates(),
-                'empty_option' => 'Selecione',
+                'label' => 'UF(s) de produção',
             ],
             'attributes' => [
 //                'required' => 'required',
@@ -130,7 +127,7 @@ class MovieForm extends Form
         $this->add([
             'name' => 'production_city',
             'options' => [
-                'label' => 'Cidade de produção',
+                'label' => 'Cidade(s) de produção',
             ],
             'attributes' => [
 //                'required' => 'required',
