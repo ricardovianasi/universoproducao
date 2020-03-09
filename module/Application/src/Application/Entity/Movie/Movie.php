@@ -165,6 +165,9 @@ class Movie extends AbstractEntity
     /** @ORM\Column(name="co_production", type="string", nullable=true) */
     private $coProduction;
 
+    /** @ORM\Column(name="production_assistant", type="string", nullable=true) */
+    private $productionAssistant;
+
     /** @ORM\Column(name="distributor", type="text", nullable=true) */
     private $distributor;
 
@@ -1410,5 +1413,21 @@ class Movie extends AbstractEntity
     public function setDistributor($distributor)
     {
         $this->distributor = $distributor;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getProductionAssistant()
+    {
+        return $this->productionAssistant;
+    }
+
+    /**
+     * @param mixed $productionAssistant
+     */
+    public function setProductionAssistant($productionAssistant)
+    {
+        $this->productionAssistant = $productionAssistant;
     }
 }

@@ -158,12 +158,17 @@
 
         <div class="row">
             <div class="col-md-4"><?php echo $this->formRow($form->get('script')) ?></div>
-            <div class="col-md-4"><?php echo $this->formRow($form->get('production_company')) ?></div>
-            <div class="col-md-4"><?php echo $this->formRow($form->get('distributor')) ?></div>
         </div>
 
         <div class="row">
+
+            <div class="col-md-4"><?php echo $this->formRow($form->get('production_company')) ?></div>
+            <div class="col-md-4"><?php echo $this->formRow($form->get('distributor')) ?></div>
             <div class="col-md-4"><?php echo $this->formRow($form->get('co_production')) ?></div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4"><?php echo $this->formRow($form->get('production_assistant')) ?></div>
             <div class="col-md-4"><?php echo $this->formRow($form->get('executive_production')) ?></div>
             <div class="col-md-4"><?php echo $this->formRow($form->get('direction_production')) ?></div>
         </div>

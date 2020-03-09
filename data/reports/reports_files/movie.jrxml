@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.4.0.final using JasperReports Library version 6.4.1  -->
+<!-- Created with Jaspersoft Studio version 6.5.1.final using JasperReports Library version 6.5.1  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="movie" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="7db8d1d6-a97e-4968-9b6b-d0c06495d638">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="DataAdapter.xml"/>
 	<queryString language="json">
@@ -242,6 +242,7 @@
 		<fieldDescription><![CDATA[opt_short_movie_category]]></fieldDescription>
 	</field>
 	<field name="opt_general_category" class="java.lang.String"/>
+	<field name="production_assistant" class="java.lang.String"/>
 	<group name="id">
 		<groupExpression><![CDATA[$F{id}]]></groupExpression>
 	</group>
@@ -1259,7 +1260,7 @@
 				<text><![CDATA[Empresa produtora]]></text>
 			</staticText>
 			<staticText>
-				<reportElement positionType="Float" x="0" y="258" width="555" height="30" uuid="eff01924-6efc-4c21-b49c-b28827c76793"/>
+				<reportElement positionType="Float" x="0" y="258" width="280" height="30" uuid="eff01924-6efc-4c21-b49c-b28827c76793"/>
 				<box padding="5">
 					<pen lineWidth="0.5"/>
 				</box>
@@ -1279,7 +1280,7 @@
 				<text><![CDATA[Produção executiva]]></text>
 			</staticText>
 			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="0" y="288" width="555" height="30" uuid="f1f592e8-f31f-494f-b7be-2d092c586277"/>
+				<reportElement positionType="Float" x="0" y="288" width="280" height="30" uuid="f1f592e8-f31f-494f-b7be-2d092c586277"/>
 				<box padding="5">
 					<pen lineWidth="0.5"/>
 				</box>
@@ -1377,6 +1378,23 @@
 				</textElement>
 				<textFieldExpression><![CDATA[$F{other_festivals}]]></textFieldExpression>
 			</textField>
+			<textField>
+				<reportElement x="280" y="288" width="275" height="30" uuid="f7619dd2-a9cd-43a2-90f6-adf6c845211c"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{production_assistant}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="280" y="258" width="275" height="30" uuid="af6d31f2-c4f5-428a-b241-0acae9112b6a"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Assistente de produção]]></text>
+			</staticText>
 		</band>
 		<band height="706">
 			<textField isStretchWithOverflow="true">

@@ -450,6 +450,16 @@ class MovieForm extends Form
 
         $this->add([
             'type' => 'Textarea',
+            'name' => 'production_assistant',
+            'options' => [
+                'label' => 'Assistente de produção',
+            ],
+            'attributes' => [
+            ]
+        ]);
+
+        $this->add([
+            'type' => 'Textarea',
             'name' => 'executive_production',
             'options' => [
                 'label' => 'Produção executiva',
