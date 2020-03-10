@@ -1071,6 +1071,42 @@ class MovieForm extends Form
             }
         }
 
+        $medias = [];
+        if(isset($data['medias'])) {
+            if(count($data['medias'])) {
+                $count = 1;
+                foreach ($data['medias'] as $key=>$m) {
+                    if(is_object($m)) {
+                        $medias[] = [
+                            'id' => $m->getId(),
+                            'caption' => $m->getCredits(),
+                            'src' => $m->getSrc()
+                        ];
+                    } else {
+                        if(!empty($m['file']['name'])) {
+                            $medias[] = [
+                                'id' => isset($m['id'])?$m['id']:'',
+                                'caption' => isset($m['caption'])?$m['caption']:'',
+                                'src' => isset($m['src'])?$m['src']:'',
+                                'file' => isset($m['file'])?$m['file']:[]
+                            ];
+                        } elseif(!empty($m['src'])) {
+                            $medias[] = [
+                                'id' => isset($m['id'])?$m['id']:'',
+                                'caption' => isset($m['caption'])?$m['caption']:'',
+                                'src' => isset($m['src'])?$m['src']:'',
+                                'file' => isset($m['file'])?$m['file']:[]
+                            ];
+                        }
+
+                    }
+                    /*$data["media_id_$count"] = $m->getId();
+                    $data["media_caption_$count"] = $m->getCredits();
+                    $data["media_src_$count"] = $m->getSrc();*/
+                }
+            }
+        }
+        $data['medias'] = $medias;
 
         if(!empty($data['subscriptions'])) {
             $events = [];
