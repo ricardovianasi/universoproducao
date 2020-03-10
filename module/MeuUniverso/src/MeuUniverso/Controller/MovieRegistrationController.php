@@ -400,7 +400,6 @@ class MovieRegistrationController extends AbstractMeuUniversoRegisterController
             }
 
             if($form->isValid()) {
-
                 if($id) {
                     $movieEvents = $this->getRepository(MovieSubscription::class)->findBy([
                         'movie' => $movie->getId()

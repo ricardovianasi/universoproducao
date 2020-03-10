@@ -11,7 +11,9 @@ use Application\Entity\Registration\Type;
 use Application\Entity\State;
 use Application\Entity\User\User;
 use Zend\Form\Form;
+use Zend\Form\FormInterface;
 use Zend\I18n\Validator\IsInt;
+use Zend\InputFilter\CollectionInputFilter;
 use Zend\InputFilter\Factory as InputFilterFactory;
 use Zend\Validator\GreaterThan;
 
@@ -197,7 +199,7 @@ class MovieForm extends Form
 
         $this->add([
             'name' => 'duration',
-            'type' => 'text',
+            'type' => 'number',
             'options' => [
                 'label' => 'Duração em minutos',
                 'help-block' => nl2br($this->getDurationHelpBlock())
@@ -449,7 +451,7 @@ class MovieForm extends Form
             'type' => 'Textarea',
             'name' => 'production_assistant',
             'options' => [
-                'label' => 'Assistente de produção',
+                'label' => 'Assistente de direção',
             ],
             'attributes' => [
             ]
@@ -800,15 +802,10 @@ class MovieForm extends Form
                     'type' => MediaFieldset::class
                 ]
             ]
-
         ]);
 
         //Validações
         $this->setInputFilter((new InputFilterFactory)->createInputFilter([
-            'medias' => [
-                'name' => 'medias',
-                'required' => true
-            ],
             'registration' => [
                 'name'       => 'registration',
                 'required'   => false,
@@ -943,8 +940,9 @@ class MovieForm extends Form
                 'required'   => false,
                 'allow_empty' => true
             ],
-
         ]));
+
+        $this->setValidationGroup(FormInterface::VALIDATE_ALL);
     }
 
     protected function populateOptions($type)
@@ -1073,42 +1071,6 @@ class MovieForm extends Form
             }
         }
 
-        $medias = [];
-        if(isset($data['medias'])) {
-            if(count($data['medias'])) {
-                $count = 1;
-                foreach ($data['medias'] as $key=>$m) {
-                    if(is_object($m)) {
-                        $medias[] = [
-                            'id' => $m->getId(),
-                            'caption' => $m->getCredits(),
-                            'src' => $m->getSrc()
-                        ];
-                    } else {
-                        if(!empty($m['file']['name'])) {
-                            $medias[] = [
-                                'id' => isset($m['id'])?$m['id']:'',
-                                'caption' => isset($m['caption'])?$m['caption']:'',
-                                'src' => isset($m['src'])?$m['src']:'',
-                                'file' => isset($m['file'])?$m['file']:[]
-                            ];
-                        } elseif(!empty($m['src'])) {
-                            $medias[] = [
-                                'id' => isset($m['id'])?$m['id']:'',
-                                'caption' => isset($m['caption'])?$m['caption']:'',
-                                'src' => isset($m['src'])?$m['src']:'',
-                                'file' => isset($m['file'])?$m['file']:[]
-                            ];
-                        }
-
-                    }
-                    /*$data["media_id_$count"] = $m->getId();
-                    $data["media_caption_$count"] = $m->getCredits();
-                    $data["media_src_$count"] = $m->getSrc();*/
-                }
-            }
-        }
-        $data['medias'] = $medias;
 
         if(!empty($data['subscriptions'])) {
             $events = [];
