@@ -16,6 +16,7 @@ use Zend\I18n\Validator\IsInt;
 use Zend\InputFilter\CollectionInputFilter;
 use Zend\InputFilter\Factory as InputFilterFactory;
 use Zend\Validator\GreaterThan;
+use Zend\Validator\NotEmpty;
 
 class MovieForm extends Form
 {
