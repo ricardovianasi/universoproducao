@@ -108,6 +108,8 @@ class MovieForm extends AdminMovieForm
         $this->remove('author');
         $this->remove('registration');
 
+        $this->getInputFilter()->remove('type');
+
         $this->getInputFilter()->get('movie_link')->setRequired(true);
         $this->getInputFilter()->get('title')->setRequired(true);
         $this->getInputFilter()->get('production_company')->setRequired(true);

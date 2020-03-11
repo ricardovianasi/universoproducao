@@ -22,6 +22,7 @@ use Application\Entity\Registration\Registration;
 use Doctrine\Common\Collections\ArrayCollection;
 use DoctrineModule\Validator\UniqueObject;
 use MeuUniverso\Form\MovieForm;
+use Zend\Form\FormInterface;
 use Zend\View\Model\ViewModel;
 use Zend\View\View;
 
@@ -398,7 +399,7 @@ class MovieRegistrationController extends AbstractMeuUniversoRegisterController
                     ]
                 ]));
             }
-
+            $form->setValidationGroup(FormInterface::VALIDATE_ALL);
             if($form->isValid()) {
                 if($id) {
                     $movieEvents = $this->getRepository(MovieSubscription::class)->findBy([

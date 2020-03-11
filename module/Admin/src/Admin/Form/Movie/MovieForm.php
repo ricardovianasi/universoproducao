@@ -942,7 +942,7 @@ class MovieForm extends Form
             ],
         ]));
 
-        $this->setValidationGroup(FormInterface::VALIDATE_ALL);
+        $this->getInputFilter()->get('medias')->setIsRequired(true);
     }
 
     protected function populateOptions($type)
