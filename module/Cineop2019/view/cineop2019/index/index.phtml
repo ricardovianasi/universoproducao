@@ -6,7 +6,9 @@
                     <div class="banner-item">
                         <a href="<?php echo $banner->getMeta('_link') ?>">
                             <img src="<?php echo $this->thumbor()->url($banner->getMeta('_image'))->resize(1920, 630); ?>" alt="">
-                            <p class="banner-caption"><?php echo $banner->getSubtitle(); ?></p>
+                            <?php if(!empty($banner->getSubtitle())): ?>
+                                <p class="banner-caption"><?php echo $banner->getSubtitle(); ?></p>
+                            <?php endif; ?>
                         </a>
                     </div>
                 <?php endforeach; ?>
