@@ -375,11 +375,12 @@ class UserForm extends Form
                 ],
                 'attributes' => [
                     'data-inputmask' => "'alias': 'dd/mm/yyyy', 'placeholder':'_'",
+                    'required' => 'required'
                 ]
             ]);
             $this->getInputFilter()->add([
                 'name' => 'birth_date',
-                'required' => false,
+                'required' => true,
                 'validators' => [
                     new Date(['format'=>'d/m/Y'])
                 ]
