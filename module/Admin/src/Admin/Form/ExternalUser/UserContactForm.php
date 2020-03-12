@@ -15,6 +15,7 @@ class UserContactForm extends UserForm
         $this->get('subcategory')->setAttribute('required', 'required');
 
         $this->getInputFilter()->get('identifier')->setRequired(false);
+        $this->getInputFilter()->get('birth_date')->setRequired(false);
         $this->getInputFilter()->get('phones')->setRequired(false);
         $this->getInputFilter()->get('email')->setRequired(false);
         $this->getInputFilter()->get('origin')->setRequired(true);

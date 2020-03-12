@@ -13,6 +13,10 @@ class UserForm extends \Admin\Form\ExternalUser\UserForm
             'disabled' => 'disabled',
             'required' => false
         ]);
+        $this->get('birth_date')->setAttributes([
+            'required' => 'required'
+        ]);
         $this->getInputFilter()->get('identifier')->setRequired(false);
+        $this->getInputFilter()->get('birth_date')->setRequired(true);
     }
 }
