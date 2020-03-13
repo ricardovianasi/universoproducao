@@ -14,11 +14,22 @@
     &-mobile
       display: none
 
-  &-top
-    background-color: black
-    background-image: url("../images/2019/header-bgc.png")
-    background-position: center center
-    background-repeat: no-repeat
+  &-bgc
+    img
+      width: 100%
+
+  &-mobile
+    +media(">=tablet")
+      display: none
+    +media("<tablet")
+      display: block
+
+  &-desk
+    +media(">=tablet")
+      display: block
+    +media("<tablet")
+      display: none
+
 
   &-col
     float: left

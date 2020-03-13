@@ -27,8 +27,13 @@
 </head>
     <body class="<?php echo $this->placeholder("home-class") ?>">
 
-    <?php if($this->locale == 'pt'): ?><header class="header"><?php endif; ?>
-    <?php if($this->locale == 'en'): ?><header class="header" style="background-image: url('<?php echo $this->basePath("assets/cinebh/dist/images/2018/header-en.png") ?>') !important;"><?php endif; ?>
+    <header class="header">
+        <div class="header-bgc header-desk">
+            <img src="<?php echo $this->basePath("assets/cinebh/dist") ?>/images/2019/header-image.jpg" alt="">
+        </div>
+        <div class="header-bgc header-mobile">
+            <img src="<?php echo $this->basePath("assets/cinebh/dist") ?>/images/2019/header-image-mobile.jpg" alt="">
+        </div>
         <div class="header-wrapper">
             <div class="header-actions">
                 <?php if($this->locale == 'pt'): ?>
@@ -47,11 +52,6 @@
                     </div>
                     <span>menu</span>
                 </div>
-            </div>
-            <div class="header-mobile">
-                <div class="brand"><img class="cinebh" src="<?php echo $this->basePath("assets/cinebh/dist") ?>/images/2018/logo.jpg" alt=""></div>
-                <div class="brand"><img class="brasil" src="<?php echo $this->basePath("assets/cinebh/dist") ?>/images/2018/brasilcinemundi.jpg" alt=""></div>
-                <p>17 - 22 SET - 2019</p>
             </div>
         </div>
     </header>
