@@ -141,6 +141,10 @@ class ValidateUserForm extends \Admin\Form\ExternalUser\UserForm
                 'required'   => false,
                 'allow_empty' => true
             ],
+            'phones' => [
+                'name' => 'phones',
+                'required' => true,
+            ],
         ]));
 
     }
