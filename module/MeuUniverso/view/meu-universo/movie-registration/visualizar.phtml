@@ -65,7 +65,7 @@ $movie = $this->movie;
                         </div>-->
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label class="control-label col-md-3">Estado de produção:</label>
+                                <label class="control-label col-md-3">UF(s) de produção:</label>
                                 <div class="col-md-9">
                                     <p class="form-control-static"> <?php echo $movie->getProductionState(); ?> </p>
                                 </div>
@@ -73,7 +73,7 @@ $movie = $this->movie;
                         </div>
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label class="control-label col-md-3">Cidade de produção:</label>
+                                <label class="control-label col-md-3">Cidade(s) de produção:</label>
                                 <div class="col-md-9">
                                     <p class="form-control-static"> <?php echo $movie->getProductionCity(); ?> </p>
                                 </div>
@@ -412,6 +412,14 @@ $movie = $this->movie;
                                 <label class="control-label col-md-3">Co-produção:</label>
                                 <div class="col-md-9">
                                     <p class="form-control-static"> <?php echo $movie->getCoProduction() ?> </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="control-label col-md-3">Assistente de direção:</label>
+                                <div class="col-md-9">
+                                    <p class="form-control-static"> <?php echo $movie->getProductionAssistant() ?> </p>
                                 </div>
                             </div>
                         </div>

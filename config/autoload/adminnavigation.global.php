@@ -690,7 +690,7 @@ return [
                         'route' => 'admin/eufacoamostra',
                         'icon' => 'icon-book-open',
                         'params' => [
-                            'site' => 15
+                            'site' => 20
                         ]
                     ],
                     [
@@ -698,7 +698,7 @@ return [
                         'route' => 'admin/page',
                         'icon' => 'icon-doc',
                         'params' => [
-                            'site' => 15
+                            'site' => 20
                         ]
                     ],
                     [
@@ -706,7 +706,7 @@ return [
                         'route' => 'admin/guide',
                         'icon' => 'icon-doc',
                         'params' => [
-                            'site' => 15
+                            'site' => 20
                         ]
                     ],
                     [
@@ -714,7 +714,7 @@ return [
                         'route' => 'admin/menu',
                         'icon' => 'icon-list',
                         'params' => [
-                            'site' => 15
+                            'site' => 20
                         ]
                     ],
                     [
@@ -722,7 +722,7 @@ return [
                         'route' => 'admin/banner',
                         'icon' => 'fa fa-image',
                         'params' => [
-                            'site' => 15
+                            'site' => 20
                         ]
                     ],
                     [
@@ -730,7 +730,7 @@ return [
                         'route' => 'admin/gallery',
                         'icon' => 'fa fa-image',
                         'params' => [
-                            'site' => 15
+                            'site' => 20
                         ]
                     ],
                     [
@@ -738,7 +738,7 @@ return [
                         'route' => 'admin/tv',
                         'icon' => 'fa fa-image',
                         'params' => [
-                            'site' => 15
+                            'site' => 20
                         ]
                     ],
                     [
@@ -746,7 +746,7 @@ return [
                         'route' => 'admin/programation',
                         'icon' => 'fa fa-image',
                         'params' => [
-                            'site' => 15
+                            'site' => 20
                         ]
                     ],
                 ]

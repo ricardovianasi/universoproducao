@@ -27,7 +27,8 @@ class ArtisticProposalController extends AbstractAdminController
 
 		$this->getViewModel()->setVariables([
 			'searchForm' => $searchForm,
-			'items' => $items
+			'items' => $items,
+            'searchData' => $dataAttr,
 		]);
 
 		return $this->getViewModel();

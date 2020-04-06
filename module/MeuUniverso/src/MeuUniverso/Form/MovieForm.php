@@ -14,6 +14,15 @@ class MovieForm extends AdminMovieForm
         $this->remove('events');
         $this->remove('end_date_year');
         $this->remove('type');
+        //$this->remove('medias');
+
+        /*$this->add([
+            'type' => 'Admin\Form\Movie\MediaFieldset',
+            'name' => 'medias',
+            'options' => array(
+                'label' => 'Imagem',
+            ),
+        ]);*/
 
         $this->add([
             'type' => 'MultiCheckbox',
@@ -98,6 +107,8 @@ class MovieForm extends AdminMovieForm
 
         $this->remove('author');
         $this->remove('registration');
+
+        $this->getInputFilter()->remove('type');
 
         $this->getInputFilter()->get('movie_link')->setRequired(true);
         $this->getInputFilter()->get('title')->setRequired(true);

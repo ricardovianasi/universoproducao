@@ -1,0 +1,118 @@
+.header
+  position: relative
+  width: 100%
+
+  &-mobile
+    padding-left: 8px
+    padding-right: 8px
+    padding-top: 24px
+    padding-bottom: 24px
+    //text-align: center
+    +media(">=tablet")
+      display: none
+    +media("<tablet")
+      display: block
+      padding-left: 0
+      padding-right: 0
+      padding-top: 0
+      padding-bottom: 0
+    img
+      vertical-align: middle
+      width: 100%
+
+  &-desk
+    +media(">=tablet")
+      display: block
+    +media("<tablet")
+      display: none
+
+
+  //&-bgc
+  //  background: url("../images/header-bg.jpg") no-repeat top left
+  //  background-size: 100% 100%
+
+  &-wrapper
+    +center
+    //background: url("../images/header-bg-wrapper.png") no-repeat center center
+
+  //.brand,
+  //.brand-right
+  //  float: left
+  //  width: 50%
+  //  padding-left: 10%
+  //  padding-right: 10%
+  //  box-sizing: border-box
+  //  +media("<tablet")
+  //    float: none
+  //    width: 100%
+
+  .brand
+    width: 100%
+    line-height: 0
+    +media("<tablet")
+      width: 100%
+
+    img
+      width: 100%
+    //vertical-align: middle
+    //padding-left: 20%
+    //+padding-trailer(2)
+    //+padding-leader(2)
+    //&-link
+    //  color: white
+    //.icon-brand
+    //  display: block
+    //  float: left
+    //  font-size: 144px
+    //
+    //+media("<tablet")
+    //  text-align: center
+    //  +padding-leader(1)
+    //  +padding-trailer(1)
+    //  .brand-link
+    //    float: none
+    //    display: inline-block
+    //  .icon-brand
+    //    font-size: 100px
+
+  .brand-right
+    vertical-align: middle
+    text-align: right
+    +trailer(3)
+    +leader(3)
+    +media("<tablet")
+      text-align: center
+      +leader(1)
+      +trailer(1)
+
+  .name
+    +adjust-font-size-to(30px, 1.5)
+    font-weight: 700
+    text-transform: uppercase
+    color: white
+    vertical-align: middle
+    & > span
+      +adjust-font-size-to(22px, 1, 30px)
+      +leader(.5, 22px)
+      display: block
+      font-weight: normal !important
+    
+  .social
+    +leader(1)
+    &-item
+      display: inline-block
+      margin-right: 19px
+      text-align: center
+      &:last-child
+        margin-right: 0
+
+    &-link
+      display: block
+      width: 36px
+      height: 36px
+      border-radius: 50%
+      background-color: white
+      +adjust-font-size-to(18px, 2)
+      span
+        color: $color-palette-4
+        line-height: inherit

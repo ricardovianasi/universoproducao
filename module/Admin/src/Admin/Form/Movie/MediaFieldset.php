@@ -11,6 +11,7 @@ namespace Admin\Form\Movie;
 use Zend\Form\Fieldset;
 use Zend\InputFilter\Factory as InputFilterFactory;
 use Zend\InputFilter\InputFilterProviderInterface;
+use Zend\Validator\File\Extension;
 use Zend\Validator\File\MimeType;
 use Zend\Validator\File\Size;
 
@@ -35,9 +36,11 @@ class MediaFieldset extends Fieldset implements InputFilterProviderInterface
             'name' => 'file',
             'attributes' => [
                 'accept' => 'image/*',
+                'required' => 'required'
             ],
             'options' => [
                 'label' => 'Imagem',
+                'required' => 'required'
             ],
         ]);
 
@@ -60,12 +63,13 @@ class MediaFieldset extends Fieldset implements InputFilterProviderInterface
 
     public function getInputFilterSpecification()
     {
-        return [
+        return array(
             'file' => [
                 'name' => 'file',
                 'required' => true,
                 'validators' => [
                     new MimeType('image/png,image/jpg,image/jpeg'),
+                    new Extension('jpeg,jpg,png'),
                     [
                         'name' => Size::class,
                         'options' => [
@@ -83,7 +87,7 @@ class MediaFieldset extends Fieldset implements InputFilterProviderInterface
                 'name'       => 'caption',
                 'required'   => false,
             ],
-        ];
+        );
     }
 
 

@@ -14,11 +14,22 @@
     &-mobile
       display: none
 
-  &-top
-    background-color: black
-    background-image: url("../images/2019/header-bgc.png")
-    background-position: center center
-    background-repeat: no-repeat
+  &-bgc
+    img
+      width: 100%
+
+  &-mobile
+    +media(">=tablet")
+      display: none
+    +media("<tablet")
+      display: block
+
+  &-desk
+    +media(">=tablet")
+      display: block
+    +media("<tablet")
+      display: none
+
 
   &-col
     float: left
@@ -101,24 +112,15 @@
         line-height: 18px
 
   .mainmenu-mobile-btn
-    position: relative
+    position: absolute
     +adjust-font-size-to(36px, 2)
-    +trailer(1)
-    +leader(1)
-    color: white
+    color: black
     text-align: right
     text-decoration: none
     z-index: 9999999999999
-    float: right
+    top: 18px
+    left: 18px
 
-  .brand-icon-mobile
-    display: inline-block
-    height: 112px
-    width: 200px
-    background-image: url("../images/2018/brand-color.png")
-    background-position: center bottom
-    background-repeat: no-repeat
-    background-size: cover
 
   &-navigation
     width: 100%

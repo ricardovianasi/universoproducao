@@ -2,28 +2,25 @@
 namespace Admin\Controller;
 
 use Admin\Form\PostForm;
+use Application\Entity\AdminUser\Profile;
+use Application\Entity\City;
 use Application\Entity\Event\Event;
 use Application\Entity\Post\Post;
 use Application\Entity\Post\PostMeta;
 use Application\Entity\Post\PostSite;
-use Application\Entity\Post\PostType;
 use Application\Entity\Site\Language;
-use Application\Entity\AdminUser\Profile;
-use Application\Entity\Tag;
-use Application\Entity\City;
 use Application\Entity\Site\Site;
+use Application\Entity\Tag;
 use Doctrine\Common\Annotations\AnnotationReader;
 use Doctrine\Common\Collections\ArrayCollection;
 use JasperPHP\JasperPHP;
-use JMS\Serializer\SerializerBuilder;
 use Util\Controller\AbstractController;
 use Zend\Authentication\AuthenticationService;
-use Zend\Http\Header\SetCookie;
 use Zend\Http\Headers;
 use Zend\Http\Response\Stream;
 use Zend\Mvc\MvcEvent;
+use Zend\Session\Container;
 use Zend\View\Model\JsonModel;
-use Zend\View\Model\ModelInterface;
 use Zend\View\Model\ViewModel;
 
 abstract class AbstractAdminController extends AbstractController
@@ -163,6 +160,28 @@ abstract class AbstractAdminController extends AbstractController
 			: $this->currentPage;
 	}
 
+	public function preDispatch(MvcEvent $e)
+    {
+        $session = new Container();
+
+        $routeMatch = $e->getRouteMatch();
+        $controller = strtolower($routeMatch->getParam('__CONTROLLER__', false));
+        $action  = $routeMatch->getParam('action', false);
+
+        if(empty($queryParans) && $session->offsetExists('query_filter')) {
+            $sess = $session->offsetGet('query_filter');
+            if(!empty($sess['controller'])
+                && !empty($sess['action'])
+                && !empty($sess['query'])) {
+                if($sess['controller'] == $controller && $sess['action'] == $action) {
+                    foreach ($sess['query'] as $key=>$value) {
+                        $routeMatch->setParam($key, $value);
+                    }
+                }
+            }
+        }
+    }
+
 	public function onDispatch(MvcEvent $e)
 	{
 		$routeMatch = $e->getRouteMatch();
@@ -181,13 +200,36 @@ abstract class AbstractAdminController extends AbstractController
 		// Was an "action" requested?
 		$action  = $routeMatch->getParam('action', false);
 		if ($action) {
+            $session = new Container();
 			switch ($action) {
 				case 'index':
 				case 'list':
 					$this->getEntityManager()->beginTransaction();
 					try {
-						$result = $this->indexAction();
+                        $queryParans = $this->getRequest()->getQuery()->toArray();
+
+                        if(empty($queryParans) && $session->offsetExists('last_url')) {
+                            $sess = $session->offsetGet('last_url');
+                            if(!empty($sess['controller'])
+                                && !empty($sess['action'])
+                                && !empty($sess['uri'])
+                                && !empty($sess['query'])) {
+                                if($sess['controller'] == $controller && $sess['action'] == $action) {
+                                    return $this->redirect()->toUrl($sess['uri']);
+                                }
+                            }
+                        }
+
+                        $result = $this->indexAction();
 						$this->getEntityManager()->commit();
+
+                        $session->offsetSet('last_url', [
+                            'query'         => $queryParans,
+                            'controller'    => $controller,
+                            'action'        => $action,
+                            'uri'           => $this->getRequest()->getUriString()
+                        ]);
+
 					} catch (\Exception $ex) {
 						$result = $ex;
 						$this->getEntityManager()->rollback();

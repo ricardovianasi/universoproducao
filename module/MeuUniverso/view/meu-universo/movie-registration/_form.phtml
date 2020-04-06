@@ -15,7 +15,13 @@
                         <h4 class="h4">Campo <?php echo $form->get($field)->getLabel(); ?></h4>
                         <div style="padding-left: 20px">
                         <?php foreach ($message as $key=>$m): ?>
-                            <p class=""><?php echo $m ?></p>
+                            <?php if(is_array($m)): ?>
+                                <?php foreach ($m as $m2): ?>
+                                    <p class=""><?php echo is_array($m2) ? implode('<br />', $m2) : $m2 ?></p>
+                                <?php endforeach; ?>
+                            <?php else: ?>
+                                <p class=""><?php echo $m ?></p>
+                            <?php endif; ?>
                         <?php endforeach; ?>
                         </div>
                     <?php endforeach; ?>
@@ -203,6 +209,7 @@
 
 
                         <?php echo $this->formRow($form->get('co_production')) ?>
+                        <?php echo $this->formRow($form->get('production_assistant')) ?>
                         <?php echo $this->formRow($form->get('executive_production')) ?>
                         <?php echo $this->formRow($form->get('direction_production')) ?>
                         <?php echo $this->formRow($form->get('script')) ?>

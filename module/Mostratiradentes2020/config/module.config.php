@@ -16,7 +16,7 @@ return array(
                     'route'    => '[www.]mostratiradentes.com.br',
                     'defaults' => array(
                         'controller'    => Controller\IndexController::class,
-                        //'action'        => 'index-sp'
+                        'action'        => 'index-sp'
                     ),
                 ),
                 'may_terminate' => true,
@@ -37,7 +37,7 @@ return array(
                     'home' => array(
                         'type' => Literal::class,
                         'options' => array(
-                            'route' => '/',
+                            'route' => '/inicio',
                             'defaults' => array(
                                 'controller'    => Controller\IndexController::class,
                                 'action'        => 'index',
@@ -50,7 +50,7 @@ return array(
                             'route' => '/',
                             'defaults' => array(
                                 'controller'    => Controller\IndexController::class,
-                                'action'        => 'index',
+                                'action'        => 'index-sp',
                             ),
                         )
                     ),

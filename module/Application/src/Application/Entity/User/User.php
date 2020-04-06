@@ -6,11 +6,6 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Util\Entity\AbstractEntity;
 use Util\Validator\Identifier;
-use Zend\InputFilter\Factory;
-use Zend\InputFilter\Input;
-use Zend\InputFilter\InputFilter;
-use Zend\InputFilter\InputFilterAwareInterface;
-use Zend\InputFilter\InputFilterInterface;
 
 /**
  * User

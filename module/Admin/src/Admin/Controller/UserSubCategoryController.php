@@ -38,11 +38,15 @@ class UserSubCategoryController extends AbstractAdminController
                 $this->getEntityManager()->flush();
                 if($this->params()->fromRoute('id')) {
                     $this->messages()->flashSuccess("Categoria atualizada com sucesso!");
-                    return $this->redirect()->toRoute('admin/default', ['controller'=>'art-category']);
+                    return $this->redirect()->toRoute('admin/default', ['controller'=>'user-sub-category']);
                 } else {
                     $this->messages()->success("Categoria criada com sucesso!");
                 }
             }
+
+            $form->get('name')->setValue('');
+//            $form->get('id')->setValue('');
+
         } elseif($id = $this->params()->fromRoute('id')) {
             $category = $this
                 ->getRepository(Category::class)

@@ -1,0 +1,13 @@
+<div class="main-wrapper main-content">
+    <header class="main-header">
+        <h1 class="main-title"><?php echo $this->post->getTitle(); ?></h1>
+    </header>
+
+    <?php if(!empty($this->post->getSubtitle())): ?>
+        <h2 class="news-sub"><?php echo $this->post->getSubtitle() ?></h2>
+    <?php endif; ?>
+
+    <?php echo $this->thumborize($post->getContent()); ?>
+
+    <?php echo $this->partial("application/partials/share.phtml", ['title'=>$post->getTitle()]); ?>
+</div>

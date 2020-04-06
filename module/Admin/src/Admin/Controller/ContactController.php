@@ -19,6 +19,7 @@ use Application\Entity\Phone\Phone;
 use Application\Entity\User\Category;
 use Application\Entity\User\User;
 use Doctrine\Common\Collections\ArrayCollection;
+use DoctrineModule\Validator\NoObjectExists;
 use Zend\View\Model\JsonModel;
 
 class ContactController extends AbstractAdminController
@@ -69,7 +70,27 @@ class ContactController extends AbstractAdminController
 		}
 
 		if($this->getRequest()->isPost()) {
+
+		    //Validação de cpf/cnpj
+            $userId = $user->getIdentifier();
+            $newId = $data['identifier'];
+            if($userId != $newId) {
+                $identifierValidator = new NoObjectExists([
+                    'object_repository' => $this->getEntityManager()->getRepository(User::class),
+                    'fields'            => 'identifier',
+                    'messages' => [
+                        'objectFound' => 'Este identificador já existe em nossa base de dados',
+                    ],
+                ]);
+                $form
+                    ->getInputFilter()
+                    ->get('identifier')
+                    ->getValidatorChain()
+                    ->attach($identifierValidator);
+            }
+
 			$form->setData($data);
+
 			if($form->isValid()) {
 			    //Salva o usuário
 				$validData = $form->getData();
@@ -134,7 +155,8 @@ class ContactController extends AbstractAdminController
 			'form' => $form,
             'phoneForm' => $phoneForm,
 			'dependentForm' => $dependentForm,
-			'user' => $user
+			'user' => $user,
+            'data' => $data
 		]);
 	}
 
@@ -147,7 +169,7 @@ class ContactController extends AbstractAdminController
 
 		$this->messages()->flashSuccess('O usuário foi excluído com sucesso.');
 
-		return $this->redirect()->toRoute('admin/default', ['controller'=>'user']);
+		return $this->redirect()->toRoute('admin/default', ['controller'=>'contact']);
 	}
 
 
@@ -164,7 +186,7 @@ class ContactController extends AbstractAdminController
             }
 
             $subcategory = $this->getRepository(Category::class)->findBy(['parent'=>$category], ['name'=>'ASC']);
-            $subcategoryArray[] = '<option>Selecione</option>';
+            $subcategoryArray[] = '<option value="">Selecione</option>';
             foreach($subcategory as $c) {
                 $subcategoryArray[] = '<option value="'.$c->getId().'">'.$c->getName().'</option>';
             }

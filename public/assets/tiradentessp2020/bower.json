@@ -1,0 +1,38 @@
+{
+  "name": "generator-custom2",
+  "private": true,
+  "dependencies": {
+    "jquery": "~2.1.4",
+    "modernizr": "~2.8.1",
+    "perfect-scrollbar": "~0.6.8",
+    "include-media": "~1.4.2",
+    "jeet": "~7.1.0",
+    "owl.carousel": "^2.2.0",
+    "fancyBox": "^2.1.5",
+    "gray": "^1.5.0",
+    "imagesloaded": "^4.1.3"
+  },
+  "overrides": {
+    "modernizr": {
+      "main": [
+        "modernizr.js"
+      ]
+    },
+    "perfect-scrollbar": {
+      "main": [
+        "js/perfect-scrollbar.jquery.js",
+        "src/css/main.scss"
+      ]
+    },
+    "fancyBox": {
+      "main": [
+        "source/jquery.fancybox.css",
+        "source/jquery.fancybox.pack.js"
+      ]
+    }
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.1.2"
+  }
+}

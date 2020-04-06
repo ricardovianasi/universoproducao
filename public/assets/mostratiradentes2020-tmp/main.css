@@ -1,0 +1,82 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.wrapper {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background-image: url("bgc.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.left,
+.right {
+    width: 50%;
+    position: absolute;
+}
+
+.left {
+    left: 0;
+    text-align: right;
+    top: 280px;
+
+}
+
+.right {
+    right: 0;
+    bottom: 160px;
+}
+
+@media only screen and (max-width: 800px) {
+    .wrapper {
+        background-image: none;
+    }
+
+    .left,
+    .right {
+        width: 100%;
+        height: 50vh;
+        display: block;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        float: none;
+        position: relative;
+        top: auto;
+        left: auto;
+        right: auto;
+        bottom: auto;
+        text-align: center;
+        padding: 50px;
+        box-sizing: border-box;
+    }
+
+    .left {
+        background-image: url("bgc-tiradentes.jpg");
+    }
+
+    .right {
+        background-image: url("bgc-sp.jpg");
+    }
+
+    .left img,
+    .right img {
+
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    .left a,
+    .right a {
+        display: inline-block;
+    }
+
+    .left img,
+    .right img {
+        width: 100%;
+    }
+}

@@ -59,7 +59,10 @@ class User extends AbstractRepository
         }
 
         if(!empty($criteria['state'])) {
-
+            $qb
+                ->innerJoin('p.city', 'c')
+                ->andWhere('c.state = :idState')
+                ->setParameter('idState', $criteria['state']);
         }
 
         if(!empty($criteria['city'])) {
@@ -75,6 +78,11 @@ class User extends AbstractRepository
         }
 
         $qb->andWhere('p.parent is NULL');
+
+        foreach($orderBy as $name=>$order) {
+            $qb->addOrderBy("p.$name", $order);
+        }
+
 
         return $qb;
     }

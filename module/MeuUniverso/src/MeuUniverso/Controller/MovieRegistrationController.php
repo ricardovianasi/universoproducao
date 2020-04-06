@@ -22,6 +22,7 @@ use Application\Entity\Registration\Registration;
 use Doctrine\Common\Collections\ArrayCollection;
 use DoctrineModule\Validator\UniqueObject;
 use MeuUniverso\Form\MovieForm;
+use Zend\Form\FormInterface;
 use Zend\View\Model\ViewModel;
 use Zend\View\View;
 
@@ -398,9 +399,8 @@ class MovieRegistrationController extends AbstractMeuUniversoRegisterController
                     ]
                 ]));
             }
-
+            $form->setValidationGroup(FormInterface::VALIDATE_ALL);
             if($form->isValid()) {
-
                 if($id) {
                     $movieEvents = $this->getRepository(MovieSubscription::class)->findBy([
                         'movie' => $movie->getId()
@@ -497,7 +497,7 @@ class MovieRegistrationController extends AbstractMeuUniversoRegisterController
                     }
                     $msg.= '<p><ul>'.$mostras.'</ul></p>';
 
-                    $msg.= '<p>O resultado para a seleção da 23ª Mostra Tiradentes está previsto para a primeira quinzena de janeiro de 2020, e o da 15ª CineOP para a primeira quinzena de junho de 2020. Os resultados serão enviados para o e-mail cadastrado.</p>';
+                    $msg.= '<p>O resultado para a seleção da 15ª CineOP para a primeira quinzena de junho de 2020 e da 14ª CineBH para a primeira quinzena de setembro de 2020. Os resultados serão enviados para o e-mail cadastrado.</p>';
                     $msg.= '<p>Pedimos a gentileza de manter os dados do seu cadastro sempre atualizados para garantir a eficácia em nossa comunicação.</p>';
                     $msg.= '<p>Agradecemos a participação!</p>';
 

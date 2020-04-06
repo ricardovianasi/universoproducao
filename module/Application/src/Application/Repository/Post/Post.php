@@ -33,12 +33,13 @@ class Post extends AbstractRepository
             ->andWhere('n.type = :type')
             ->andWhere('n.status = :status')
             ->andWhere('m.key = :key')
-            ->andWhere('JSON_CONTAINS(m.value, :site) = 1')
+            ->andWhere('JSON_CONTAINS(m.value, :site) = 1 OR JSON_CONTAINS(m.value, :site2) = 1')
             ->setParameters([
                 'type' => PostType::NEWS,
                 'status' => PostStatus::PUBLISHED,
                 'key' => PostMeta::SITES,
-                'site' => '{"'.$siteId.'":"false"}'
+                'site' => '{"'.$siteId.'":"false"}',
+                'site2' => '{"'.$siteId.'":null}'
             ]);
 
         return $qb;

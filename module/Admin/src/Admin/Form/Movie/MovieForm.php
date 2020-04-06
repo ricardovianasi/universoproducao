@@ -11,9 +11,12 @@ use Application\Entity\Registration\Type;
 use Application\Entity\State;
 use Application\Entity\User\User;
 use Zend\Form\Form;
+use Zend\Form\FormInterface;
 use Zend\I18n\Validator\IsInt;
+use Zend\InputFilter\CollectionInputFilter;
 use Zend\InputFilter\Factory as InputFilterFactory;
 use Zend\Validator\GreaterThan;
+use Zend\Validator\NotEmpty;
 
 class MovieForm extends Form
 {
@@ -115,12 +118,9 @@ class MovieForm extends Form
         ]);
 
         $this->add([
-            'type' => 'Select',
             'name' => 'production_state',
             'options' => [
-                'label' => 'Estado de produção',
-                'value_options' => $this->populateStates(),
-                'empty_option' => 'Selecione',
+                'label' => 'UF(s) de produção',
             ],
             'attributes' => [
 //                'required' => 'required',
@@ -130,7 +130,7 @@ class MovieForm extends Form
         $this->add([
             'name' => 'production_city',
             'options' => [
-                'label' => 'Cidade de produção',
+                'label' => 'Cidade(s) de produção',
             ],
             'attributes' => [
 //                'required' => 'required',
@@ -200,7 +200,7 @@ class MovieForm extends Form
 
         $this->add([
             'name' => 'duration',
-            'type' => 'text',
+            'type' => 'number',
             'options' => [
                 'label' => 'Duração em minutos',
                 'help-block' => nl2br($this->getDurationHelpBlock())
@@ -443,6 +443,16 @@ class MovieForm extends Form
             'name' => 'co_production',
             'options' => [
                 'label' => 'Co-produção',
+            ],
+            'attributes' => [
+            ]
+        ]);
+
+        $this->add([
+            'type' => 'Textarea',
+            'name' => 'production_assistant',
+            'options' => [
+                'label' => 'Assistente de direção',
             ],
             'attributes' => [
             ]
@@ -793,15 +803,10 @@ class MovieForm extends Form
                     'type' => MediaFieldset::class
                 ]
             ]
-
         ]);
 
         //Validações
         $this->setInputFilter((new InputFilterFactory)->createInputFilter([
-            'medias' => [
-                'name' => 'medias',
-                'required' => true
-            ],
             'registration' => [
                 'name'       => 'registration',
                 'required'   => false,
@@ -936,8 +941,9 @@ class MovieForm extends Form
                 'required'   => false,
                 'allow_empty' => true
             ],
-
         ]));
+
+        $this->getInputFilter()->get('medias')->setIsRequired(true);
     }
 
     protected function populateOptions($type)
@@ -1079,6 +1085,13 @@ class MovieForm extends Form
                         ];
                     } else {
                         if(!empty($m['file']['name'])) {
+                            $medias[] = [
+                                'id' => isset($m['id'])?$m['id']:'',
+                                'caption' => isset($m['caption'])?$m['caption']:'',
+                                'src' => isset($m['src'])?$m['src']:'',
+                                'file' => isset($m['file'])?$m['file']:[]
+                            ];
+                        } elseif(!empty($m['src'])) {
                             $medias[] = [
                                 'id' => isset($m['id'])?$m['id']:'',
                                 'caption' => isset($m['caption'])?$m['caption']:'',

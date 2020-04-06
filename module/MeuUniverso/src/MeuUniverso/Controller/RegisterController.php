@@ -24,57 +24,6 @@ class RegisterController extends AbstractMeuUniversoController
         return [];
     }
 
-    /*public function novoAction()
-    {
-        $return = [];
-        $form = $this->getNewUserForm();
-        if($this->getRequest()->isPost()) {
-            $form->setData($this->getRequest()->getPost());
-            if($form->isValid()) {
-                $data = $form->getData();
-
-                //Salva o usuário
-                $user = new User();
-                $user->setIdentifier($data['identifier']);
-                $user->setEmail($data['email']);
-                $user->setName($data['name']);
-                $user->setPassword(Crypt::getInstance()->generateEncryptPass($data['password']));
-                $user->setConfirmedRegister(false);
-                $user->getUpdateRegisterRequired(true);
-
-                $this->getEntityManager()->persist($user);
-
-                //Cria a hash de confirmação
-                $hash = new Hash();
-                $hash->setUser($user);
-                $hash->setType(Hash::TYPE_EMAIL_VALIDATION);
-                $this->getEntityManager()->persist($hash);
-
-                $this->getEntityManager()->flush();
-
-                $link = $this->url()->fromRoute('meu-universo/register', ['action'=>'validar', 'id'=>$hash->getHash()]);
-
-                //Enviar email de confirmação
-                $msg = '<p>Olá <strong>'.$user->getName().'</strong>!</p>';
-                $msg.= '<p>Seu cadastro foi realizado com sucesso. 
-                    Por favor, clique no link a seguir para validar seu e-mail:</p>';
-                $msg.= '<p><a href="'.$link.'">'.$link.'</a></p>';
-                $msg.= '<p>Você também pode copiar o endereço e colar diretamente na barra de endereço do seu navegador.</p>';
-
-                $to[$user->getName()] = $user->getEmail();
-                $this->mailService()->simpleSendEmail($to, "Confirmação de cadastro", $msg);
-
-                //Envia email de confirmação
-                $return['success'] = true;
-                $return['user'] = $user;
-            }
-        }
-
-        $return['form'] = $form;
-
-        return $return;
-    }*/
-
     public function reEnviarLinkAction()
     {
         $return = [];
@@ -210,6 +159,9 @@ class RegisterController extends AbstractMeuUniversoController
         if ($this->getRequest()->isPost()) {
             $data = $this->getRequest()->getPost()->toArray();
             $form->setData($data);
+
+
+
             if ($form->isValid()) {
                 $validData = $form->getData();
 

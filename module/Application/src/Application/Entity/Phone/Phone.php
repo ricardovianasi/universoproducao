@@ -142,7 +142,8 @@ class Phone extends AbstractEntity
             'ddd' => $this->getDdd(),
             'number' => $this->getNumber(),
             'contact_name' => $this->getContactName(),
-            'type_name' => PhoneType::get($this->getType())
+            'type_name' => PhoneType::get($this->getType()),
+            'type' => $this->getType()
         ];
     }
 }

@@ -19,6 +19,7 @@ $phoneForm->prepare(); ?>
                 <div class="form-group <?php echo $form->get('birth_date')->getMessages() ? "has-error" : ""; ?>">
                     <label class="control-label">
                         <?php echo $form->get('birth_date')->getLabel();  ?>
+                        <span class="required"> * </span>
                     </label>
                     <div class="input-group date date-picker" data-date-format="dd/mm/yyyy">
                         <?php echo $this->formElement($form->get('birth_date'));?>

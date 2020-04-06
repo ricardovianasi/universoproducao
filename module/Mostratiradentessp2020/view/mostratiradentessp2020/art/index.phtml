@@ -1,0 +1,22 @@
+<div class="main-wrapper main-content">
+    <header class="main-header">
+        <h1 class="main-title"><?php echo $post->getTitle() ?></h1>
+    </header>
+
+    <div class="movie-list">
+        <?php foreach ($this->list as $item): ?>
+            <article class="movie-item">
+                <a href="<?php echo $this->url("mostratiradentessp2020/art", ['action'=>'details', 'id'=>$item->getId()]) ?>" class="movie-link">
+                    <div class="movie-cover">
+                        <?php if($item->getFiles()->first()): $media = $item->getFiles()->first(); ?>
+                            <figure class="movie-figure">
+                                <img src="<?php echo $this->thumbor()->url($media->getSrc())->resize(400, 400); ?>" alt="">
+                            </figure>
+                        <?php endif; ?>
+                    </div>
+                    <h1 class="movie-title"><?php echo $item->getTitle(); ?></h1>
+                </a>
+            </article>
+        <?php endforeach; ?>
+    </div>
+</div>
