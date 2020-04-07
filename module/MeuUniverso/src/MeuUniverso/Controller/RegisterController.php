@@ -127,6 +127,8 @@ class RegisterController extends AbstractMeuUniversoController
                 $user->setUpdateRegisterRequired(false);
                 $user->setData($validData);
 
+                $user->setOrigin(User::ORIGIN_MEUUNIVERSO);
+
                 $this->getEntityManager()->persist($user);
                 $this->getEntityManager()->flush();
 
@@ -187,6 +189,8 @@ class RegisterController extends AbstractMeuUniversoController
                 $user->setConfirmedRegister(true);
                 $user->setUpdateRegisterRequired(false);
                 $user->setData($validData);
+
+                $user->setOrigin(User::ORIGIN_MEUUNIVERSO);
 
                 $this->getEntityManager()->persist($user);
                 $this->getEntityManager()->flush();
