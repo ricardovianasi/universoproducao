@@ -117,6 +117,14 @@ class PageForm extends PostForm
 			$data['parent'] = $parent->getId();
 		}
 
+        if(!empty($data['date']) && !empty($data['hour']) && !empty($data['post_date'])) {
+            $postDate = $data['post_date'];
+            $newDate = $data['date'].' '.$data['hour'];
+            if($postDate != $newDate) {
+                $data['post_date'] = $newDate;
+            }
+        }
+
 		return parent::setData($data);
 	}
 }
