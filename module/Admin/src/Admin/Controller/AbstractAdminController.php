@@ -488,6 +488,14 @@ abstract class AbstractAdminController extends AbstractController
         $language = $this->getRepository(Language::class)->find($data['language']);
         $data['language'] = $language;
 
+        if(!empty($data['date']) && !empty($data['hour']) && !empty($data['post_date'])) {
+            $postDate = $data['post_date'];
+            $newDate = $data['date'].' '.$data['hour'];
+            if($postDate != $newDate) {
+                $data['post_date'] = $newDate;
+            }
+        }
+
 		return $data;
 	}
 
