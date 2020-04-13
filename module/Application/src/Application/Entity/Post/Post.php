@@ -40,6 +40,7 @@ class Post extends AbstractEntity
 
 	/**
 	 * @ORM\OneToMany(targetEntity="Post", mappedBy="parent",  fetch="EXTRA_LAZY")
+     * @ORM\OrderBy({"postDate" = "ASC"})
 	 */
 	private $children;
 
