@@ -4,6 +4,7 @@ namespace MeuUniverso\Form;
 use Admin\Form\Movie\MovieForm as AdminMovieForm;
 use Application\Entity\Movie\Options;
 use Zend\Form\Element;
+use Zend\InputFilter\Factory;
 
 class EducationalMovieForm extends AdminMovieForm
 {
@@ -119,6 +120,19 @@ class EducationalMovieForm extends AdminMovieForm
         $this->getInputFilter()->get('direction')->setRequired(true);
         $this->getInputFilter()->get('synopsis')->setRequired(true);
         $this->getInputFilter()->get('movie_link')->setRequired(true);
+
+        $this->getInputFilter()->add((new Factory())->createInputFilter([
+            'duration_minutes' => [
+                'name'       => 'duration_minutes',
+                'required'   => true,
+            ],
+            'duration_seconds' => [
+                'name'       => 'duration_seconds',
+                'required'   => true,
+            ],
+
+        ]));
+
         $this->getInputFilter()->get('duration_minutes')->setRequired(true);
         $this->getInputFilter()->get('duration_seconds')->setRequired(true);
 
