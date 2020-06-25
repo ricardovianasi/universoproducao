@@ -121,20 +121,15 @@ class EducationalMovieForm extends AdminMovieForm
         $this->getInputFilter()->get('synopsis')->setRequired(true);
         $this->getInputFilter()->get('movie_link')->setRequired(true);
 
-        $this->getInputFilter()->add((new Factory())->createInputFilter([
-            'duration_minutes' => [
+        $this->getInputFilter()->add((new Factory())->createInputFilter(
+            [
                 'name'       => 'duration_minutes',
                 'required'   => true,
-            ],
-            'duration_seconds' => [
-                'name'       => 'duration_seconds',
-                'required'   => true,
-            ],
+            ]
+        ));
 
-        ]));
-
-        $this->getInputFilter()->get('duration_minutes')->setRequired(true);
-        $this->getInputFilter()->get('duration_seconds')->setRequired(true);
+        //$this->getInputFilter()->get('duration_minutes')->setRequired(true);
+        //$this->getInputFilter()->get('duration_seconds')->setRequired(true);
 
         $this->getInputFilter()->remove('duration');
         $this->getInputFilter()->add([
