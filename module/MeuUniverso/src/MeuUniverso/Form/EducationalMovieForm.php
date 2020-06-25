@@ -107,6 +107,7 @@ class EducationalMovieForm extends AdminMovieForm
         $this->remove('author');
         $this->remove('registration');
 
+
         $this->getInputFilter()->get('movie_link')->setRequired(true);
         $this->getInputFilter()->get('title')->setRequired(true);
         $this->getInputFilter()->get('end_date_year')->setRequired(true);
@@ -121,11 +122,12 @@ class EducationalMovieForm extends AdminMovieForm
         $this->getInputFilter()->get('direction')->setRequired(true);
         $this->getInputFilter()->get('synopsis')->setRequired(true);
         $this->getInputFilter()->get('movie_link')->setRequired(true);
-        
+
 
         //$this->getInputFilter()->get('duration_minutes')->setRequired(true);
         //$this->getInputFilter()->get('duration_seconds')->setRequired(true);
 
+        $this->getInputFilter()->remove('type');
         $this->getInputFilter()->remove('duration');
         $this->getInputFilter()->add([
             'name' => 'duration',
