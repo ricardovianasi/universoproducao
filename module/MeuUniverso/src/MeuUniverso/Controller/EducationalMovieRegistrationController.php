@@ -265,12 +265,14 @@ class EducationalMovieRegistrationController extends AbstractMeuUniversoRegister
                 $movieEvent->setRegistration($reg);
                 $movie->getSubscriptions()->add($movieEvent);
 
-                if(!empty($validData['institution'])) {
+                $instituition = null;
+                if(!empty($data['institution'])) {
                     $instituition = new ProducingInstitution();
-                    $instituition->setData($validData['institution']);
+                    $instituition->setData($data['institution']);
                 }
                 $movie->setProducingInstitution($instituition);
                 unset($validData['institution']);
+                unset($validData['producing_institution']);
 
                 $options = new ArrayCollection();
                 if(!empty($data['options'])) {
