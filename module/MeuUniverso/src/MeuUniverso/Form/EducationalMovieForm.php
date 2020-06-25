@@ -5,6 +5,7 @@ use Admin\Form\Movie\MovieForm as AdminMovieForm;
 use Application\Entity\Movie\Options;
 use Zend\Form\Element;
 use Zend\InputFilter\Factory;
+use Zend\InputFilter\InputFilter;
 
 class EducationalMovieForm extends AdminMovieForm
 {
@@ -120,13 +121,7 @@ class EducationalMovieForm extends AdminMovieForm
         $this->getInputFilter()->get('direction')->setRequired(true);
         $this->getInputFilter()->get('synopsis')->setRequired(true);
         $this->getInputFilter()->get('movie_link')->setRequired(true);
-
-        $this->getInputFilter()->add((new Factory())->createInputFilter(
-            [
-                'name'       => 'duration_minutes',
-                'required'   => true,
-            ]
-        ));
+        
 
         //$this->getInputFilter()->get('duration_minutes')->setRequired(true);
         //$this->getInputFilter()->get('duration_seconds')->setRequired(true);
