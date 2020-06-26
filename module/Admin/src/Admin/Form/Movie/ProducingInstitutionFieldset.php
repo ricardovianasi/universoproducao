@@ -89,7 +89,7 @@ class ProducingInstitutionFieldset extends Fieldset
         $this->add([
             'name' => 'phone',
             'options' => [
-                'label' => 'Telefone fixo',
+                'label' => 'Telefone para contato 1',
                 /*'twb-layout' => 'horizontal',
                 'column-size' => 'md-6',
                 'label_attributes' => [
@@ -104,7 +104,7 @@ class ProducingInstitutionFieldset extends Fieldset
         $this->add([
             'name' => 'mobile_phone',
             'options' => [
-                'label' => 'Telefone celular',
+                'label' => 'Telefone para contato 2',
                 /*'twb-layout' => 'horizontal',
                 'column-size' => 'md-6',
                 'label_attributes' => [

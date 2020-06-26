@@ -242,10 +242,10 @@ class EducationalMovieRegistrationController extends AbstractMeuUniversoRegister
             $durationInputFilter = $form->getInputFilter()->get('duration');
             $durationInputFilter->getValidatorChain()->attach(new Duration([
                 'min' => (1), //1 segundo
-                'max' => (10*60), //3 minutos
+                'max' => (3*60), //3 minutos
                 'inclusive' => true,
                 'messages' => [
-                    Duration::ERROR_IS_NOT_MARCH => 'O tempo de duração é de no máximo 10 minutos'
+                    Duration::ERROR_IS_NOT_MARCH => 'O tempo de duração é de no máximo 3 minutos'
                 ]
             ]));
 
@@ -343,7 +343,7 @@ class EducationalMovieRegistrationController extends AbstractMeuUniversoRegister
                     }
                     $msg.= '<p><ul>'.$mostras.'</ul></p>';
 
-                    $msg.= '<p>O resultado para a seleção está previsto para ser divulgado até maio de 2019</p>';
+                    $msg.= '<p>O resultado para a seleção está previsto para ser divulgado em agosto de 2020</p>';
                     $msg.= '<p>Pedimos a gentileza de manter os dados do seu cadastro sempre atualizados para garantir a eficácia em nossa comunicação!</p>';
 
                     $to[$user->getName()] = $user->getEmail();
