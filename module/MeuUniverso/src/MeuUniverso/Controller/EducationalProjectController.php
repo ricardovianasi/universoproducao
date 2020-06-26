@@ -116,7 +116,7 @@ class EducationalProjectController extends AbstractMeuUniversoRegisterController
                 $msg = '<p>Olá <strong>'.$user->getName().'</strong>!</p>';
                 $msg.= '<p>Informamos que o projeto <strong>'.$project->getTitle().'</strong> foi inscrito com sucesso 
                 para participar da seleção da  <strong>'.$reg->getEvent()->getFullName().'</strong></p>';
-                $msg.= '<p>O resultado da seleção está previsto para ser divulgado em <strong>maio de 2019</strong>, 
+                $msg.= '<p>O resultado da seleção está previsto para ser divulgado em <strong>agosto de 2020</strong>, 
                 pelo site <a href="www.cineop.com.br">www.cineop.com.br</a>.</p>';
                 $this->meuUniversoMessages()->flashSuccess($msg);
 

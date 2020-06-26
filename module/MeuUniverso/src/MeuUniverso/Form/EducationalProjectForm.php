@@ -21,7 +21,7 @@ class EducationalProjectForm extends \Admin\Form\EducationalProject\EducationalP
             'type' => 'Checkbox',
             'name' => 'accept_regulation',
             'options' => array(
-                'label' => 'Eu li e estou de acordo com as condições descritas no regulamento de inscrições de filmes',
+                'label' => 'Eu li e estou de acordo com as condições descritas no regulamento de inscrições de Projetos Audiovisuais Educativos',
                 'use_hidden_element' => false,
                 'checked_value' => '1',
                 'unchecked_value' => '0'

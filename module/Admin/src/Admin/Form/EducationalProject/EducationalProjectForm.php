@@ -295,9 +295,10 @@ class EducationalProjectForm extends Form
                 'label_attributes' => [
                     'class' => 'col-md-4'
                 ],
-                'help-block' => 'Histórico e justificativa, bases teórico-metodológicas utilizadas, principais 
-                ações e reflexões junto a comunidade, duas questões sobre a categoria escolhida para dinamizar 
-                a interlocução do trabalho com os participantes do seminário. <br />Limite de 4.000 caracteres, 
+                'help-block' => 'Histórico e justificativa(que não ultrapasse 500 caracteres), bases 
+                teórico-metodológicas utilizadas, principais ações e reflexões junto a comunidade, duas questões sobre 
+                a categoria escolhida para dinamizar a interlocução do trabalho com os participantes do seminário. 
+                <br />Limite de 4.000 caracteres, 
                 incluindo espaços.',
             ],
             'attributes' => [
