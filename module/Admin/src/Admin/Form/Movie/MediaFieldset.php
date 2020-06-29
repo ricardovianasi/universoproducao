@@ -27,7 +27,7 @@ class MediaFieldset extends Fieldset implements InputFilterProviderInterface
                 'label' => 'Créditos da foto'
             ],
             'attributes' => [
-                'placeholder' => 'Créditos da foto (caso não exista, favor incluir a palavra DIVULGAÇÃO)'
+                'placeholder' => 'Legenda (até 100 caracteres) e créditos da foto'
             ]
         ]);
 
