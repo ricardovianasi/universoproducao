@@ -69,6 +69,9 @@ class EducationalProject extends AbstractEntity
     /** @ORM\Column(name="institution_uf", type="string") */
     private $institutionUf;
 
+    /** @ORM\Column(name="institution_country", type="string") */
+    private $institutionCountry;
+
     /** @ORM\Column(name="institution_phone", type="string") */
     private $institutionPhone;
 
@@ -483,4 +486,22 @@ class EducationalProject extends AbstractEntity
     {
         $this->links = $links;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getInstitutionCountry()
+    {
+        return $this->institutionCountry;
+    }
+
+    /**
+     * @param mixed $institutionCountry
+     */
+    public function setInstitutionCountry($institutionCountry)
+    {
+        $this->institutionCountry = $institutionCountry;
+    }
+
+
 }

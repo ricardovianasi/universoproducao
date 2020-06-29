@@ -153,14 +153,27 @@ class EducationalProjectForm extends Form
             ],
         ]);
 
+        $this->add([
+            'type' => 'text',
+            'name' => 'institution_country',
+            'options' => [
+                'label' => 'País da Instituição:',
+                'twb-layout' => 'horizontal',
+                'column-size' => 'md-6',
+                'label_attributes' => [
+                    'class' => 'col-md-4'
+                ]
+            ],
+            'attributes' => [
+                'required' => 'required',
+            ]
+        ]);
 
         $this->add([
-            'type' => 'Select',
+            'type' => 'text',
             'name' => 'institution_uf',
             'options' => [
                 'label' => 'UF da Instituição:',
-                'value_options' => $this->populateStates(),
-                'empty_option' => 'Selecione',
                 'twb-layout' => 'horizontal',
                 'column-size' => 'md-6',
                 'label_attributes' => [
