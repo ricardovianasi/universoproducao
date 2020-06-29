@@ -326,6 +326,7 @@ class EducationalMovieRegistrationController extends AbstractMeuUniversoRegister
 
                 $movie->setData($validData);
 
+                $movie->setAuthor($this->getAuthenticationService()->getIdentity());
                 $this->getEntityManager()->persist($movie);
                 $this->getEntityManager()->flush();
 
