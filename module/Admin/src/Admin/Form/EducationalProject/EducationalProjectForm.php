@@ -289,7 +289,7 @@ class EducationalProjectForm extends Form
             'name' => 'complete_text',
             'type' => 'Textarea',
             'options' => [
-                'label' => 'Texto completo',
+                'label' => 'Histórico e justificativa',
                 'twb-layout' => 'horizontal',
                 'column-size' => 'md-8',
                 'label_attributes' => [
