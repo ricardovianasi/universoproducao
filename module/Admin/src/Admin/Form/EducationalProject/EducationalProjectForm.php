@@ -412,6 +412,10 @@ class EducationalProjectForm extends Form
                 'name'       => 'category',
                 'required'   => true,
             ],
+            'files' => [
+                'name'       => 'files',
+                'required'   => true,
+            ],
             'presentation' => [
                 'name'       => 'presentation',
                 'required'   => true,
