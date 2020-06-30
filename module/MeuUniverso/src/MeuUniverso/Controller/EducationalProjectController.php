@@ -87,7 +87,23 @@ class EducationalProjectController extends AbstractMeuUniversoRegisterController
                 $this->getRequest()->getFiles()->toArray()
             );
             $form->setData($data);
-            if($form->isValid()) {
+
+            $validFiles = false;
+            $files = $data['files'];
+            if($files) {
+                foreach ($files as $f) {
+                    if(empty(!$f['file']['name'])) {
+                        $validFiles = true;
+                        break;
+                    }
+                }
+            }
+
+            if(!$validFiles) {
+                $form->setMessages(['files'=>['erro'=>'Nenhuma imagem foi selecionada']]);
+            }
+
+            if($validFiles && $form->isValid()) {
 
                 if(!empty($data['category'])) {
                     $cat = $this->getRepository(Category::class)->find($data['category']);
