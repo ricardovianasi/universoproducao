@@ -71,7 +71,7 @@ class IndexController extends SiteController
         ]);
     }
 
-    public function indexSpAction()
+    public function indexhotAction()
     {
         $viewModel = new ViewModel();
         $viewModel->setVariables(array('key' => 'value'))

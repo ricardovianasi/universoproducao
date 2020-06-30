@@ -16,7 +16,7 @@ return array(
                     'route'    => '[www.]cineop.com.br',
                     'defaults' => array(
                         'controller'    => Controller\IndexController::class,
-                        'action'        => 'index'
+                        'action'        => 'index-hot'
                     ),
                 ),
                 'may_terminate' => true,
@@ -37,10 +37,20 @@ return array(
                     'home' => array(
                         'type' => Literal::class,
                         'options' => array(
-                            'route' => '/',
+                            'route' => '/inicio',
                             'defaults' => array(
                                 'controller'    => Controller\IndexController::class,
                                 'action'        => 'index',
+                            ),
+                        )
+                    ),
+                    'index' => array(
+                        'type' => Literal::class,
+                        'options' => array(
+                            'route' => '/',
+                            'defaults' => array(
+                                'controller'    => Controller\IndexController::class,
+                                'action'        => 'index-hot',
                             ),
                         )
                     ),
