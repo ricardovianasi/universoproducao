@@ -71,7 +71,8 @@ class AuthController extends AbstractMeuUniversoController
                 ->getEntityManager()
                 ->getRepository(User::class)
                 ->findOneBy([
-                    'email' => $data['login']
+                    'email' => $data['login'],
+                    'origin' => User::ORIGIN_MEUUNIVERSO
                 ]);
 
             if(!$user) {
