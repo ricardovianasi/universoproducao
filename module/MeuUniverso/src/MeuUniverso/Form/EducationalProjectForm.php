@@ -35,6 +35,8 @@ class EducationalProjectForm extends \Admin\Form\EducationalProject\EducationalP
             'class' => 'form-horizontal',
 
         ]);
+
+        $this->getInputFilter()->get('files')->setIsRequired(true);
     }
 
 }
