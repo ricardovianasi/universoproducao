@@ -36,7 +36,7 @@ class EducationalProjectForm extends \Admin\Form\EducationalProject\EducationalP
 
         ]);
 
-        $this->getInputFilter()->get('files')->setIsRequired(true);
+        //$this->getInputFilter()->get('files')->setIsRequired(true);
     }
 
 }
