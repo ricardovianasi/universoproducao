@@ -723,7 +723,7 @@ class Project extends AbstractEntity
     /**
      * @param mixed $script
      */
-    public function setScript($script): void
+    public function setScript($script)
     {
         $this->script = $script;
     }
@@ -739,7 +739,7 @@ class Project extends AbstractEntity
     /**
      * @param mixed $movieLink
      */
-    public function setMovieLink($movieLink): void
+    public function setMovieLink($movieLink)
     {
         $this->movieLink = $movieLink;
     }
@@ -755,7 +755,7 @@ class Project extends AbstractEntity
     /**
      * @param mixed $moviePass
      */
-    public function setMoviePass($moviePass): void
+    public function setMoviePass($moviePass)
     {
         $this->moviePass = $moviePass;
     }
@@ -771,7 +771,7 @@ class Project extends AbstractEntity
     /**
      * @param mixed $participatedOtherFestivals
      */
-    public function setParticipatedOtherFestivals($participatedOtherFestivals): void
+    public function setParticipatedOtherFestivals($participatedOtherFestivals)
     {
         $this->participatedOtherFestivals = $participatedOtherFestivals;
     }
