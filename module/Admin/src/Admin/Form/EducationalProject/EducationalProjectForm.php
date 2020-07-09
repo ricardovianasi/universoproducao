@@ -356,6 +356,7 @@ class EducationalProjectForm extends Form
             'type' => 'Collection',
             'name' => 'files',
             'options' => [
+                'label' => 'Imagens',
                 'count' => 2,
                 'should_create_template' => false,
                 'target_element' => [
