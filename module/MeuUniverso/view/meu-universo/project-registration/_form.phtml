@@ -208,7 +208,7 @@
 
                         <?php if($category == 20):
                             $script = $form->get('script');
-                            $file = $script->get('file')->setAttribute('accept', '.pdf'); ?>
+                            $file = $script->get('file')->setAttribute('accept', '.pdf')->setAttribute('required', 'required'); ?>
                             <div class="form-group <?php echo count($script->getMessages())?"has-error":"" ?>">
                                 <label class="">Anexo - Roteiro ou Pré-roteiro<span class="required" aria-required="true"> * </span></label> <br>
                                 <div class="fileinput fileinput-new" data-provides="fileinput">
@@ -224,6 +224,7 @@
                                         </span>
                                         <a href="javascript:;" class="input-group-addon btn red fileinput-exists" data-dismiss="fileinput"> Remove </a>
                                     </div>
+                                    <div id="script_file_error"></div>
                                     <?php echo $this->formElementErrors($script->get('file')); ?>
                                     <p class="help-block">Arquivo em PDF</p>
                                 </div>
