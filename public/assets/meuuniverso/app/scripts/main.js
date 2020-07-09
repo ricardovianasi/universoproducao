@@ -63,6 +63,17 @@ $(document).ready(function () {
 
       $(this).attr("data-initialized", "1");
   });
+
+    $(".project-category-reload #project_category").on("change", function () {
+      var form = $(".project-category-reload"),
+          validate = form.validate();
+
+      validate.destroy();
+
+      form.append($('<input type="hidden" name="no-validate" value="no-validate">'));
+      form.submit();
+
+    });
 });
 
 //has uppercase

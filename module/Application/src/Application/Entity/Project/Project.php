@@ -137,8 +137,26 @@ class Project extends AbstractEntity
      */
     private $image;
 
+    /**
+     * @ORM\OneToOne(targetEntity="Application\Entity\File\File", cascade={"ALL"})
+     * @ORM\JoinColumn(name="script_id", referencedColumnName="id")
+     */
+    private $script;
+
     /** @ORM\Column(name="links", type="text", nullable=true) */
     private $links;
+
+    /** @ORM\Column(name="movie_link", type="text", nullable=true) */
+    private $movieLink;
+
+    /** @ORM\Column(name="movie_pass", type="text", nullable=true) */
+    private $moviePass;
+
+    /** @ORM\Column(name="participated_other_festivals", type="text", nullable=true) */
+    private $participatedOtherFestivals;
+
+    /** @ORM\Column(name="year_of_participation", type="integer", nullable=true) */
+    private $yearOfParticipation;
 
     /** @ORM\Column(name="created_at", type="datetime", nullable=true) */
     private $createdAt;
@@ -677,5 +695,87 @@ class Project extends AbstractEntity
 
         return $opts;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getYearOfParticipation()
+    {
+        return $this->yearOfParticipation;
+    }
+
+    /**
+     * @param mixed $yearOfParticipation
+     */
+    public function setYearOfParticipation($yearOfParticipation)
+    {
+        $this->yearOfParticipation = $yearOfParticipation;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getScript()
+    {
+        return $this->script;
+    }
+
+    /**
+     * @param mixed $script
+     */
+    public function setScript($script): void
+    {
+        $this->script = $script;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMovieLink()
+    {
+        return $this->movieLink;
+    }
+
+    /**
+     * @param mixed $movieLink
+     */
+    public function setMovieLink($movieLink): void
+    {
+        $this->movieLink = $movieLink;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMoviePass()
+    {
+        return $this->moviePass;
+    }
+
+    /**
+     * @param mixed $moviePass
+     */
+    public function setMoviePass($moviePass): void
+    {
+        $this->moviePass = $moviePass;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getParticipatedOtherFestivals()
+    {
+        return $this->participatedOtherFestivals;
+    }
+
+    /**
+     * @param mixed $participatedOtherFestivals
+     */
+    public function setParticipatedOtherFestivals($participatedOtherFestivals): void
+    {
+        $this->participatedOtherFestivals = $participatedOtherFestivals;
+    }
+
+
 
 }

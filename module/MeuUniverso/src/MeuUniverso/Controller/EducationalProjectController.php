@@ -87,6 +87,9 @@ class EducationalProjectController extends AbstractMeuUniversoRegisterController
                 $this->getRequest()->getFiles()->toArray()
             );
             $form->setData($data);
+
+
+
             if($form->isValid()) {
 
                 if(!empty($data['category'])) {

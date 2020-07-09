@@ -78,27 +78,18 @@ class ProjectRegistrationController extends AbstractMeuUniversoRegisterControlle
                     'id_reg' => $idReg
                 ]]);
             }
-        } /*elseif($method == 'update') {
-            $now = new \DateTime();
+        }
 
-            $allowEditRegister = false;
-            $editUntil = $reg->getOption(Options::MOVIE_ALLOW_EDIT_REGISTRATION_TO);
-            if($editUntil) {
-                $editUntilDate = \DateTime::createFromFormat('d/m/Y', $editUntil);
-                if($now < $editUntilDate) {
-                    $allowEditRegister = true;
-                }
+        $projectCategory = null;
+        if($this->getRequest()->isPost()) {
+            $options = $this->getRequest()->getPost('options');
+            if(!empty($options['category'])) {
+                $projectCategory = $options['category'];
             }
+        }
+        var_dump($projectCategory);
 
-            if(!$allowEditRegister) {
-                return $this->redirect()->toRoute('meu-universo/default', [], ['query'=>[
-                    'code' => self::ERROR_REG_IS_NOT_EDIT,
-                    'id_reg' => $idReg
-                ]]);
-            }
-        }*/
-
-        $form = new ProjectForm($this->getEntityManager());
+        $form = new ProjectForm($this->getEntityManager(), $projectCategory);
         $id = $this->params()->fromRoute('id');
         if($id) {
             $project = $this->getRepository(Project::class)->findOneBy([
@@ -126,124 +117,132 @@ class ProjectRegistrationController extends AbstractMeuUniversoRegisterControlle
                 $this->getRequest()->getFiles()->toArray()
             );
             $form->setData($data);
-            if($form->isValid()) {
 
-                //options
-                $options = new ArrayCollection();
-                if(!empty($data['options'])) {
-                    foreach ($data['options'] as $opt) {
-                        if(!empty($opt)) {
-                            if(is_string($opt)) {
-                                $optEntity = $this->getRepository(Options::class)->find($opt);
-                                if($optEntity) {
-                                    $options->add($optEntity);
-                                }
-                            } elseif(is_array($opt)) {
-                                foreach ($opt as $oId) {
-                                    $optEntity = $this->getRepository(Options::class)->find($oId);
-                                    if($optEntity) {
+            if(!isset($data['no-validate'])) {
+                if ($form->isValid()) {
+                    //options
+                    $options = new ArrayCollection();
+                    if (!empty($data['options'])) {
+                        foreach ($data['options'] as $opt) {
+                            if (!empty($opt)) {
+                                if (is_string($opt)) {
+                                    $optEntity = $this->getRepository(Options::class)->find($opt);
+                                    if ($optEntity) {
                                         $options->add($optEntity);
+                                    }
+                                } elseif (is_array($opt)) {
+                                    foreach ($opt as $oId) {
+                                        $optEntity = $this->getRepository(Options::class)->find($oId);
+                                        if ($optEntity) {
+                                            $options->add($optEntity);
+                                        }
                                     }
                                 }
                             }
                         }
                     }
-                }
-                $project->setOptions($options);
-                unset($data['options']);
+                    $project->setOptions($options);
+                    unset($data['options']);
 
-                //estado
-                if(!empty($data['state_production'])) {
-                    $state = $this
-                        ->getRepository(State::class)
-                        ->find($data['state_production']);
+                    //estado
+                    if (!empty($data['state_production'])) {
+                        $state = $this
+                            ->getRepository(State::class)
+                            ->find($data['state_production']);
 
-                    $project->setStateProduction($state);
-                }
-                unset($data['state_production']);
-
-                //produtores
-                if(!empty($data['producers'])) {
-                    foreach ($data['producers'] as $prod) {
-                        $productor = $this->populatePeople($prod, People::TYPE_PRODUCER);
-                        $productor->setProject($project);
-                        $project->getPeoples()->add($productor);
+                        $project->setStateProduction($state);
                     }
-                }
-                unset($data['producers']);
+                    unset($data['state_production']);
 
-                //diretores
-                if(!empty($data['directors'])) {
-                    foreach ($data['directors'] as $dir) {
-                        $director = $this->populatePeople($dir, People::TYPE_DIRECTOR);
-                        $director->setProject($project);
-                        $project->getPeoples()->add($director);
+                    //produtores
+                    if (!empty($data['producers'])) {
+                        foreach ($data['producers'] as $prod) {
+                            $productor = $this->populatePeople($prod, People::TYPE_PRODUCER);
+                            $productor->setProject($project);
+                            $project->getPeoples()->add($productor);
+                        }
                     }
-                }
-                unset($data['directors']);
+                    unset($data['producers']);
 
-                //Tempo de duração
-                if(!empty($data['movie_length_hour'] && !empty($data['movie_length_minutes']))) {
-                    $time = new \DateTime();
-                    $time->setTime($data['movie_length_hour'], $data['movie_length_minutes']);
-                    $project->setMovieLength($time);
-                }
-                unset($data['movie_length_hour']);
-                unset($data['movie_length_minutes']);
-
-                if(!empty($data['instituition'])) {
-                    $instituition = new Institution();
-                    $instituition->setData($data['instituition']);
-                    $project->setInstituition($instituition);
-                }
-                unset($data['instituition']);
-
-
-                if(!empty($data['image'])) {
-                    $image = $this->populateFiles($data['image'], true);
-                    $project->setImage($image);
-                }
-
-                //Files
-                $files = new ArrayCollection();
-                if(!empty($data['files'])) {
-                    foreach ($data['files'] as $f) {
-                        $file = $this->populateFiles($f);
-                        $files->add($file);
+                    //diretores
+                    if (!empty($data['directors'])) {
+                        foreach ($data['directors'] as $dir) {
+                            $director = $this->populatePeople($dir, People::TYPE_DIRECTOR);
+                            $director->setProject($project);
+                            $project->getPeoples()->add($director);
+                        }
                     }
-                }
-                unset($data['image']);
-                unset($data['files']);
-                $project->setFiles($files);
+                    unset($data['directors']);
 
-                $project->setData($data);
+                    //Tempo de duração
+                    if (!empty($data['movie_length_hour'] && !empty($data['movie_length_minutes']))) {
+                        $time = new \DateTime();
+                        $time->setTime($data['movie_length_hour'], $data['movie_length_minutes']);
+                        $project->setMovieLength($time);
+                    }
+                    unset($data['movie_length_hour']);
+                    unset($data['movie_length_minutes']);
 
-                $this->getEntityManager()->persist($project);
-                $this->getEntityManager()->flush();
+                    if (!empty($data['instituition'])) {
+                        $instituition = new Institution();
+                        $instituition->setData($data['instituition']);
+                        $project->setInstituition($instituition);
+                    }
+                    unset($data['instituition']);
 
-                //Enviar o e-mail de confirmação em caso de nova inscrição
-                if(!$id) {
-                    //Enviar email de confirmação
-                    $user = $this->getAuthenticationService()->getIdentity();
-                    $msg = '<p>Olá <strong>'.$user->getName().'</strong>!</p>';
-                    $msg.= '<p>Informamos que o projeto <strong>'.$project->getTitle().'</strong> foi inscrito com sucesso 
+
+                    if (!empty($data['image'])) {
+                        $image = $this->populateFiles($data['image'], true);
+                        $project->setImage($image);
+                    }
+
+                    if(!empty($data['script'])) {
+                        $script = $this->populateFiles($data['script']);
+                        $project->setScript($script);
+                    }
+
+                    //Files
+                    $files = new ArrayCollection();
+                    if (!empty($data['files'])) {
+                        foreach ($data['files'] as $f) {
+                            $file = $this->populateFiles($f);
+                            $files->add($file);
+                        }
+                    }
+                    unset($data['image']);
+                    unset($data['files']);
+                    unset($data['script']);
+                    $project->setFiles($files);
+
+                    $project->setData($data);
+
+                    $this->getEntityManager()->persist($project);
+                    $this->getEntityManager()->flush();
+
+                    //Enviar o e-mail de confirmação em caso de nova inscrição
+                    if (!$id) {
+                        //Enviar email de confirmação
+                        $user = $this->getAuthenticationService()->getIdentity();
+                        $msg = '<p>Olá <strong>' . $user->getName() . '</strong>!</p>';
+                        $msg .= '<p>Informamos que o projeto <strong>' . $project->getTitle() . '</strong> foi inscrito com sucesso 
                        para participar da seleção de projetos do <strong>10º Brasil CineMundi</strong>, a ser realizado 
                        entre 27 de agosto e 01 de setembro de 2019, como parte integrante da programação da 13ª Mostra CineBH.</p>';
-                    $msg.= '<p>O resultado da seleção está previsto para ser divulgado em <strong>julho de 2019</strong>, 
+                        $msg .= '<p>O resultado da seleção está previsto para ser divulgado em <strong>julho de 2019</strong>, 
                     pelo site <a href="www.cinebh.com.br">www.cinebh.com.br</a>.</p>';
-                    $msg.= '<p>Pedimos a gentileza de manter os dados do seu cadastro sempre atualizados para garantir 
+                        $msg .= '<p>Pedimos a gentileza de manter os dados do seu cadastro sempre atualizados para garantir 
                         a eficácia em nossa comunicação.</p>';
 
-                    $msg.= '<p>Agradecemos sua participação!</p>';
+                        $msg .= '<p>Agradecemos sua participação!</p>';
 
-                    $to[$user->getName()] = $user->getEmail();
-                    $this->mailService()->simpleSendEmail($to, "Confirmação de inscrição de projeto", $msg);
+                        $to[$user->getName()] = $user->getEmail();
+                        $this->mailService()->simpleSendEmail($to, "Confirmação de inscrição de projeto", $msg);
 
-                    return $this->redirect()->toRoute('meu-universo/default');
-                } else {
-                    //$msg = '<p>O filme <strong>'.$project->getTitle().'</strong> foi atualizado com sucesso!';
-                    //$this->meuUniversoMessages()->flashSuccess($msg);
-                    return $this->redirect()->toRoute('meu-universo/default');
+                        return $this->redirect()->toRoute('meu-universo/default');
+                    } else {
+                        //$msg = '<p>O filme <strong>'.$project->getTitle().'</strong> foi atualizado com sucesso!';
+                        //$this->meuUniversoMessages()->flashSuccess($msg);
+                        return $this->redirect()->toRoute('meu-universo/default');
+                    }
                 }
             }
         } else {
@@ -255,7 +254,7 @@ class ProjectRegistrationController extends AbstractMeuUniversoRegisterControlle
         return $viewModel->setVariables([
             'form' => $form,
             'reg' => $reg,
-            'project' => $project
+            'project' => $project,
         ]);
     }
 

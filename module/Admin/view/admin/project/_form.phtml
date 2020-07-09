@@ -180,7 +180,8 @@
 
         <div class="row">
             <div class="col-md-4"><?php echo $this->formRow($form->get('has_protocol_registration_law')) ?></div>
-            <div class="col-md-6"><?php echo $this->formRow($form->get('protocol_registration_law')) ?></div>
+            <div class="col-md-4"><?php echo $this->formRow($form->get('protocol_registration_law')) ?></div>
+            <div class="col-md-4"><?php echo $this->formRow($form->get('year_of_participation')) ?></div>
         </div>
 
         <div class="row">
@@ -230,6 +231,40 @@
             <div class="col-md-4"><?php echo $this->formRow($form->get('options[written_script]')) ?></div>
             <div class="col-md-4"><?php echo $this->formRow($form->get('options[first_or_second_project]')) ?></div>
             <div class="col-md-4"><?php echo $this->formRow($form->get('links')) ?></div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4"><?php echo $this->formRow($form->get('participated_other_festivals')) ?></div>
+            <div class="col-md-4"><?php echo $this->formRow($form->get('movie_link')) ?></div>
+            <div class="col-md-4"><?php echo $this->formRow($form->get('movie_pass')) ?></div>
+        </div>
+
+        <?php $script = $form->get('script');
+            $file = $script->get('file')->setAttribute('accept', '.pdf');
+            ?>
+        <div class="form-group">
+            <label class="">Anexo - Roteiro ou Pré-roteiro</label> <br>
+
+            <?php $fileSrc = $script->get('src')->getValue(); ?>
+            <div class="fileinput <?php echo !empty($fileSrc)? "fileinput-exists" : "fileinput-new" ?>" data-provides="fileinput">
+                <div class="input-group input-large">
+                    <div class="form-control uneditable-input input-fixed input-medium" data-trigger="fileinput">
+                        <i class="fa fa-file fileinput-exists"></i>&nbsp;
+                        <span class="fileinput-filename"> </span>
+                    </div>
+                    <span class="input-group-addon btn default btn-file">
+                        <span class="fileinput-new"> Selecione um arquivo </span>
+                        <span class="fileinput-exists"> Alterar </span>
+                        <?php echo $this->formElement($script->get('file')); ?>
+                        <?php echo $this->formElement($script->get('id')); ?>
+                    </span>
+                    <a href="javascript:;" class="input-group-addon btn red fileinput-exists" data-dismiss="fileinput"> Remove </a>
+                    <a href="<?php echo $this->fileManipulation()->url($fileSrc); ?>" class="input-group-addon btn green fileinput-exists" target="_blank"> Download </a>
+                </div>
+                <?php echo $this->formElementErrors($script->get('file')); ?>
+            </div><br>
+
+            <p class="help-block">Arquivo em PDF</p>
         </div>
 
         <?php $image = $form->get('image'); ?>

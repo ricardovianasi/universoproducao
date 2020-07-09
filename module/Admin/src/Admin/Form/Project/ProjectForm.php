@@ -97,7 +97,7 @@ class ProjectForm extends Form
             'type' => 'Select',
             'name' => 'state_production',
             'options' => [
-                'label' => 'Estado de produção',
+                'label' => 'UF de produção',
                 'value_options' => $this->populateStates(),
                 'empty_option' => 'Selecione',
             ],
@@ -129,6 +129,7 @@ class ProjectForm extends Form
             ],
             'attributes' => [
                 'required' => 'required',
+                'id' => 'project_category'
             ],
         ]);
 
@@ -195,10 +196,10 @@ class ProjectForm extends Form
             'name' => 'presentation',
             'options' => [
                 'label' => 'Apresentação do projeto',
-                'help-block' => 'máximo de 3.500 caracteres'
+                'help-block' => 'máximo de 3.000 caracteres'
             ],
             'attributes' => [
-                'maxlength' => 3500,
+                'maxlength' => 3000,
                 'rows' => '15',
                 'required' => 'required',
             ]
@@ -236,11 +237,11 @@ class ProjectForm extends Form
             'type' => 'Textarea',
             'name' => 'long_sinopse',
             'options' => [
-                'label' => 'Sinopse longa',
-                'help-block' => 'máximo 1.500 caracteres'
+                'label' => 'Sinopse',
+                'help-block' => 'máximo 1.000 caracteres'
             ],
             'attributes' => [
-                'maxlength' => 1500,
+                'maxlength' => 1000,
                 'rows' => '15',
                 'required' => 'required',
             ]
@@ -265,11 +266,11 @@ class ProjectForm extends Form
             'name' => 'director_notes',
             'options' => [
                 'label' => 'Notas do(a) diretor(a) e conceito visual',
-                'help-block' => 'Descrição das referências técnicas e visuais que serão aplicadas à estética e linguagem do filme. Máximo 10.000 caracteres'
+                'help-block' => 'Descrição das referências técnicas e visuais que serão aplicadas à estética e linguagem do filme. Máximo 5.000 caracteres'
             ],
             'attributes' => [
-                'maxlength' => 10000,
-                'rows' => '30',
+                'maxlength' => 5000,
+                'rows' => '15',
                 'required' => 'required',
             ]
         ]);
@@ -412,7 +413,7 @@ class ProjectForm extends Form
                 'help-block' => 'Caso o projeto já esteja associado a algum tipo de parceria ou patrocínio, relacione quais os nomes e percentual desta participação em relação ao orçamento do seu projeto'
             ],
             'attributes' => [
-                'required' => 'required',
+
                 'rows' => 10
             ]
         ]);
@@ -425,7 +426,7 @@ class ProjectForm extends Form
             ],
             'attributes' => [
                 'required' => 'required',
-                'rows' => 10
+                'rows' => 5
             ]
         ]);
 
@@ -437,7 +438,7 @@ class ProjectForm extends Form
             ],
             'attributes' => [
                 'required' => 'required',
-                'rows' => 10
+                'rows' => 5
             ]
         ]);
 
@@ -468,10 +469,57 @@ class ProjectForm extends Form
         ]);
 
         $this->add([
+            'type' => 'Textarea',
+            'name' => 'movie_link',
+            'options' => [
+                'label' => 'Link do filme',
+            ],
+            'attributes' => [
+                'required' => 'required',
+                'rows' => 3
+            ]
+        ]);
+
+        $this->add([
+            'type' => 'Textarea',
+            'name' => 'movie_pass',
+            'options' => [
+                'label' => 'Senha de acesso ao link (se necessário)',
+            ],
+            'attributes' => [
+                'rows' => 3
+            ]
+        ]);
+
+        $this->add([
+            'type' => 'Textarea',
+            'name' => 'participated_other_festivals',
+            'options' => [
+                'label' => 'O filme já foi inscrito para participar de festivais (nacionais ou internacionais)?',
+                'help-block' => 'Incluir status de cada inscrição (em análise, selecionado ou não selecionado)'
+            ],
+            'attributes' => [
+                'rows' => 3,
+                'required' => 'required'
+            ]
+        ]);
+
+        $this->add([
             'type' => ImageFieldset::class,
             'name' => 'image',
             'options' => [
                 'label' => 'Extra - Imagem do Projeto '
+            ],
+            'attributes' => [
+                'required' => 'required'
+            ]
+        ]);
+
+        $this->add([
+            'type' => FileFieldset::class,
+            'name' => 'script',
+            'options' => [
+                'label' => 'Anexo - Roteiro ou Pré-roteiro'
             ],
             'attributes' => [
                 'required' => 'required'
@@ -499,6 +547,17 @@ class ProjectForm extends Form
                 'label' => 'Informar links e senhas, se houver, para acesso ao material audiovisual relacionado ao projeto (trailer, teaser, etc)',
             ],
             'attributes' => [
+            ]
+        ]);
+
+        $this->add([
+            'name' => 'year_of_participation',
+
+            'options' => [
+                'label' => 'Ano em que participou do Brasil CineMundi '
+            ],
+            'attributes' => [
+                'required' => 'required',
             ]
         ]);
 
@@ -560,7 +619,7 @@ class ProjectForm extends Form
         $op = $this
             ->getEntityManager()
             ->getRepository(Options::class)
-            ->findAll();
+            ->findBy(['status'=>true]);
 
         $arrayOP = [];
         foreach ($op as $o) {
@@ -656,6 +715,15 @@ class ProjectForm extends Form
         } elseif(!empty($data['image']['file'])) {
             $data['image'] = [
                 'file' => $data['image']['file']
+            ];
+        }
+
+        if(!empty($data['script']) && $data['script'] instanceof File) {
+            $script = $data['script'];
+            $data['script'] = $script->toArray();
+        } elseif(!empty($data['script']['file'])) {
+            $data['script'] = [
+                'file' => $data['script']['file']
             ];
         }
 

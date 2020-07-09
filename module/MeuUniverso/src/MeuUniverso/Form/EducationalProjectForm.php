@@ -10,6 +10,7 @@ namespace MeuUniverso\Form;
 
 
 use Doctrine\ORM\EntityManager;
+use Zend\InputFilter\CollectionInputFilter;
 
 class EducationalProjectForm extends \Admin\Form\EducationalProject\EducationalProjectForm
 {
@@ -35,6 +36,8 @@ class EducationalProjectForm extends \Admin\Form\EducationalProject\EducationalP
             'class' => 'form-horizontal',
 
         ]);
+
+
 
         //$this->getInputFilter()->get('files')->setIsRequired(true);
     }

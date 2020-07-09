@@ -46,6 +46,7 @@
                     </li>
 
                 </ul>
+                
                 <div id="bar" cla ss="progress progress-striped" role="progressbar">
                     <div class="progress-bar progress-bar-success"> </div>
                 </div>
@@ -63,18 +64,18 @@
                                 </div>
                             </div>
                         </div>
+                        <hr>
+                        <?php echo $this->formRow($form->get('options[category]')) ?>
 
                     </div>
                     <div class="tab-pane" id="tab2">
                         <?php echo $this->formRow($form->get('title')) ?>
                         <?php echo $this->formRow($form->get('english_title')) ?>
                         <?php echo $this->formRow($form->get('state_production')) ?>
-                        <?php echo $this->formRow($form->get('options[category]')) ?>
                         <?php echo $this->formRow($form->get('options[phase]')) ?>
 
                         <h3 class="h3 block">Empresa produtora</h3>
                         <?php $instituitionFieldset = $form->get('instituition'); ?>
-
                         <?php echo $this->formRow($instituitionFieldset->get('social_name')) ?>
                         <?php echo $this->formRow($instituitionFieldset->get('fantasy_name')) ?>
                         <?php echo $this->formRow($instituitionFieldset->get('cnpj')) ?>
@@ -146,19 +147,23 @@
                         </div>
 
                         <h3 class="h3 block">Projeto</h3>
-
-                        <?php echo $this->formRow($form->get('has_protocol_registration_law')) ?>
-                        <div class="has_protocol_registration_law" style="display: <?php echo $form->get('has_protocol_registration_law')->getValue()==1 ? "block" : "none" ?>">
-                            <?php echo $this->formRow($form->get('protocol_registration_law')) ?>
-                        </div>
+                        <?php
+                        // 20 - Projeto em desenvolvimento
+                        // 21 - Projeto em produção
+                        // 22 - Projeto finalizado
+                        $category = $form->get('options[category]')->getValue();
+                        ?>
 
                         <?php echo $this->formRow($form->get('presentation')) ?>
-                        <?php echo $this->formRow($form->get('short_sinopse')) ?>
-                        <?php echo $this->formRow($form->get('short_sinopse_english')) ?>
                         <?php echo $this->formRow($form->get('long_sinopse')) ?>
-                        <?php echo $this->formRow($form->get('argument')) ?>
-                        <?php echo $this->formRow($form->get('director_notes')) ?>
-                        <?php echo $this->formRow($form->get('producer_notes')) ?>
+
+                        <?php if($category == 21) {
+                            echo $this->formRow($form->get('year_of_participation'));
+                        } ?>
+
+                        <?php if($category == 20) {
+                            echo $this->formRow($form->get('director_notes'));
+                        } ?>
 
                         <h3 class="h3">Especificações do filme</h3>
                         <div class="form-group">
@@ -175,19 +180,65 @@
                         </div>
 
                         <?php echo $this->formRow($form->get('options[genre]')) ?>
-                        <?php echo $this->formRow($form->get('options[format]')) ?>
+                        <?php if($category == 20 || $category == 21) echo $this->formRow($form->get('options[format]')); ?>
                         <?php echo $this->formRow($form->get('options[display_format]')) ?>
-                        <?php echo $this->formRow($form->get('estimated_time_filming')) ?>
-                        <?php echo $this->formRow($form->get('locations')) ?>
-                        <?php echo $this->formRow($form->get('estimated_value')) ?>
-                        <?php echo $this->formRow($form->get('related_partners')) ?>
-                        <?php echo $this->formRow($form->get('value_captured_resources')) ?>
-                        <?php echo $this->formRow($form->get('value_captured_services')) ?>
-                        <?php echo $this->formRow($form->get('options[written_script]')) ?>
-                        <?php echo $this->formRow($form->get('options[first_or_second_project]')) ?>
-                        <?php echo $this->formRow($form->get('links')) ?>
 
-                        <?php $image = $form->get('image'); ?>
+                        <?php if($category == 20) {
+                            echo $this->formRow($form->get('estimated_time_filming'));
+                            echo $this->formRow($form->get('locations'));
+                        } ?>
+
+                        <?php if($category == 20 || $category == 21) {
+                            echo $this->formRow($form->get('estimated_value'));
+                        } ?>
+
+                        <?php echo $this->formRow($form->get('related_partners')) ?>
+
+
+                        <?php if($category == 20) {
+                            echo $this->formRow($form->get('options[first_or_second_project]'));
+                        } ?>
+
+                        <?php if($category == 20 || $category == 21) {
+                             echo $this->formRow($form->get('value_captured_resources'));
+                             echo $this->formRow($form->get('value_captured_services'));
+                             echo $this->formRow($form->get('links'));
+                        } ?>
+
+
+                        <?php if($category == 20):
+                            $script = $form->get('script');
+                            $file = $script->get('file')->setAttribute('accept', '.pdf'); ?>
+                            <div class="form-group <?php echo count($script->getMessages())?"has-error":"" ?>">
+                                <label class="">Anexo - Roteiro ou Pré-roteiro<span class="required" aria-required="true"> * </span></label> <br>
+                                <div class="fileinput fileinput-new" data-provides="fileinput">
+                                    <div class="input-group input-large">
+                                        <div class="form-control uneditable-input input-fixed input-medium" data-trigger="fileinput">
+                                            <i class="fa fa-file fileinput-exists"></i>&nbsp;
+                                            <span class="fileinput-filename"> </span>
+                                        </div>
+                                        <span class="input-group-addon btn default btn-file">
+                                            <span class="fileinput-new"> Selecione um arquivo </span>
+                                            <span class="fileinput-exists"> Alterar </span>
+                                            <?php echo $this->formElement($file); ?>
+                                        </span>
+                                        <a href="javascript:;" class="input-group-addon btn red fileinput-exists" data-dismiss="fileinput"> Remove </a>
+                                    </div>
+                                    <?php echo $this->formElementErrors($script->get('file')); ?>
+                                    <p class="help-block">Arquivo em PDF</p>
+                                </div>
+                            </div>
+                        <?php endif; ?>
+
+                        <?php if($category == 22) {
+                            echo $this->formRow($form->get('participated_other_festivals'));
+                            echo $this->formRow($form->get('movie_link'));
+                            echo $this->formRow($form->get('movie_pass'));
+                        } ?>
+
+                        <?php
+                            $image = $form->get('image');
+                        ?>
                         <div class="form-group <?php echo count($image->getMessages())?"has-error":"" ?>">
                             <label class="">Extra - Imagem do Projeto <span class="required" aria-required="true"> * </span></label> <br>
                             <div class="fileinput fileinput-new" data-provides="fileinput">
@@ -205,28 +256,30 @@
                             <?php echo $this->formElementErrors($image->get('file')); ?>
                         </div>
 
-                        <?php $files = $form->get('files')->getFieldsets(); ?>
-                        <div class="form-group">
-                            <label class="">Anexo - Extras</label> <br>
-                            <?php foreach ($files as $fieldset):  ?>
-                                <div class="fileinput fileinput-new" data-provides="fileinput">
-                                    <div class="input-group input-large">
-                                        <div class="form-control uneditable-input input-fixed input-medium" data-trigger="fileinput">
-                                            <i class="fa fa-file fileinput-exists"></i>&nbsp;
-                                            <span class="fileinput-filename"> </span>
+                        <?php if($category == 20 || $category == 21): ?>
+                            <?php $files = $form->get('files')->getFieldsets(); ?>
+                            <div class="form-group">
+                                <label class="">Anexo - Extras</label> <br>
+                                <?php foreach ($files as $fieldset):  ?>
+                                    <div class="fileinput fileinput-new" data-provides="fileinput">
+                                        <div class="input-group input-large">
+                                            <div class="form-control uneditable-input input-fixed input-medium" data-trigger="fileinput">
+                                                <i class="fa fa-file fileinput-exists"></i>&nbsp;
+                                                <span class="fileinput-filename"> </span>
+                                            </div>
+                                            <span class="input-group-addon btn default btn-file">
+                                                <span class="fileinput-new"> Selecione um arquivo </span>
+                                                <span class="fileinput-exists"> Alterar </span>
+                                                <?php echo $this->formElement($fieldset->get('file')); ?>
+                                            </span>
+                                            <a href="javascript:;" class="input-group-addon btn red fileinput-exists" data-dismiss="fileinput"> Remove </a>
                                         </div>
-                                        <span class="input-group-addon btn default btn-file">
-                                            <span class="fileinput-new"> Selecione um arquivo </span>
-                                            <span class="fileinput-exists"> Alterar </span>
-                                            <?php echo $this->formElement($fieldset->get('file')); ?>
-                                        </span>
-                                        <a href="javascript:;" class="input-group-addon btn red fileinput-exists" data-dismiss="fileinput"> Remove </a>
-                                    </div>
-                                    <?php echo $this->formElementErrors($fieldset->get('file')); ?>
-                                </div><br>
-                            <?php endforeach; ?>
-                            <p class="help-block">Anexar vídeos, imagens ou textos explicativos/ilustrativos ao projeto</p>
-                        </div>
+                                        <?php echo $this->formElementErrors($fieldset->get('file')); ?>
+                                    </div><br>
+                                <?php endforeach; ?>
+                                <p class="help-block">Anexar vídeos, imagens ou textos explicativos/ilustrativos ao projeto</p>
+                            </div>
+                        <?php endif; ?>
 
                     </div>
                 </div>
