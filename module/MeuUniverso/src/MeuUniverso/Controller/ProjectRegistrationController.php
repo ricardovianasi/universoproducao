@@ -87,7 +87,6 @@ class ProjectRegistrationController extends AbstractMeuUniversoRegisterControlle
                 $projectCategory = $options['category'];
             }
         }
-        var_dump($projectCategory);
 
         $form = new ProjectForm($this->getEntityManager(), $projectCategory);
         $id = $this->params()->fromRoute('id');
