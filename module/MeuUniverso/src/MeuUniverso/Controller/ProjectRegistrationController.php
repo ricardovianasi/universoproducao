@@ -227,7 +227,7 @@ class ProjectRegistrationController extends AbstractMeuUniversoRegisterControlle
                        para participar da seleção de projetos do <strong>11º Brasil CineMundi</strong>, a ser realizado 
                        entre 22 a 27 de outubro de 2020 em ambiente online, como parte integrante da programação da 14ª Mostra CineBH.</p>';
                         $msg .= '<p>O resultado da seleção está previsto para ser divulgado em <strong>setembro de 2020</strong>, 
-                        pelo site <a href="www.brasilcinemundi.com.br">www.brasilcinemundi.com.br</a>.</p>';
+                        pelo site <a href="http://www.brasilcinemundi.com.br">www.brasilcinemundi.com.br</a>.</p>';
                         $msg .= '<p>Pedimos a gentileza de manter os dados do seu cadastro sempre atualizados para garantir 
                         a eficácia em nossa comunicação.</p>';
 
