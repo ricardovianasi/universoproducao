@@ -61,9 +61,10 @@
             <div class="col-md-6"><?php echo $this->formRow($form->get('english_title')) ?></div>
         </div>
         <div class="row">
-            <div class="col-md-4"><?php echo $this->formRow($form->get('state_production')) ?></div>
-            <div class="col-md-4"><?php echo $this->formRow($form->get('options[category]')) ?></div>
-            <div class="col-md-4"><?php echo $this->formRow($form->get('options[phase]')) ?></div>
+            <div class="col-md-3"><?php echo $this->formRow($form->get('state_production')) ?></div>
+            <div class="col-md-3"><?php echo $this->formRow($form->get('options[category]')) ?></div>
+            <div class="col-md-3"><?php echo $this->formRow($form->get('options[phase]')) ?></div>
+            <div class="col-md-3"><?php echo $this->formRow($form->get('project_phase')) ?></div>
         </div>
 
         <h3 class="form-section">Empresa produtora</h3>
@@ -147,7 +148,7 @@
                                 <?php echo $this->formRow($dirItem->get('address')); ?>
                                 <?php echo $this->formRow($dirItem->get('phone')); ?>
                                 <?php echo $this->formRow($dirItem->get('email')); ?>
-                                
+
                                 <?php echo $this->formRow($dirItem->get('description')); ?>
                             </div>
                         </div>
