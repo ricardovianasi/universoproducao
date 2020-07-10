@@ -15,6 +15,8 @@ class DirectorFieldset extends PeopleFieldset
     {
         parent::__construct($name, $options);
 
+        $this->remove('image');
+
         $this->get('description')->setOptions([
             'label' => 'Biofilmografia',
             'help-block' => 'especificar na filmografia trabalhos em curta, média e longa-metragem, etc. incluir links para os trabalhos, se for o caso'

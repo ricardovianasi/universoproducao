@@ -8,6 +8,7 @@ $(document).ready(function () {
         errorsWrapper: '<span class="help-block"></span>',
         errorTemplate: '<span></span>'
     };
+
     $('form[data-js-validate]').parsley( parsleyOptions );
 
     if (jQuery().datepicker) {
@@ -66,7 +67,12 @@ $(document).ready(function () {
 
     $(".project-category-reload #project_category").on("change", function () {
       var form = $(".project-category-reload"),
-          validate = form.validate();
+          validate = form.parsley('destroy');
+
+      App.blockUI({
+        cenrerY: true,
+        animate: true
+      });
 
       validate.destroy();
 

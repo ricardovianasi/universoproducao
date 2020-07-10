@@ -15,7 +15,9 @@ class ProjectForm extends \Admin\Form\Project\ProjectForm
     {
         parent::__construct($enetityManager);
 
-        $this->setAttribute('class', 'project-category-reload');
+        $this->setAttribute('class', 'project-category-reload project-form');
+        $this->setAttribute('id', 'project-form');
+        $this->setAttribute('data-js-validate', '');
 
         $this->add([
             'type' => 'Checkbox',
@@ -67,6 +69,7 @@ class ProjectForm extends \Admin\Form\Project\ProjectForm
         $this->remove('argument');
         $this->remove('producer_notes');
         $this->remove('options[written_script]');
+        $this->remove('options[phase]');
 
         $this->getInputFilter()->remove('has_protocol_registration_law');
         $this->getInputFilter()->remove('short_sinopse');
@@ -74,6 +77,7 @@ class ProjectForm extends \Admin\Form\Project\ProjectForm
         $this->getInputFilter()->remove('argument');
         $this->getInputFilter()->remove('producer_notes');
         $this->getInputFilter()->remove('options[written_script]');
+        $this->getInputFilter()->remove('options[phase]');
 
     }
 }

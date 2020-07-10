@@ -14,6 +14,9 @@ class ProductorFieldset extends PeopleFieldset
     public function __construct($name = null, array $options = [])
     {
         parent::__construct($name, $options);
+
+        $this->remove('image');
+
         $this->get('description')->setOptions([
             'label' => 'Currículo',
             'help-block' => 'máximo 2.000 caracteres'

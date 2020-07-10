@@ -165,6 +165,7 @@ jQuery(document).ready(function () {
 });
 
 var FormWizard = function () {
+    console.log('form-wizard');
     return {
         //main function to initiate the module
         init: function init() {
@@ -233,7 +234,7 @@ var FormWizard = function () {
                 },
 
                 invalidHandler: function invalidHandler(event, validator) {
-                    //display error alert on form submit   
+                    //display error alert on form submit
                     success.hide();
                     error.show();
                     App.scrollTo(error, -200);

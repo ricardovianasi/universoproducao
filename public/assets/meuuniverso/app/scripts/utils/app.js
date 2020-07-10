@@ -159,11 +159,12 @@ var App = function() {
         },
 	}
 }();
-jQuery(document).ready(function() {    
+jQuery(document).ready(function() {
    App.init(); // init metronic core componets
 });
 
 var FormWizard = function () {
+    console.log('form-wizard');
     return {
         //main function to initiate the module
         init: function () {
@@ -227,7 +228,7 @@ var FormWizard = function () {
                     }
                 },
 
-                invalidHandler: function (event, validator) { //display error alert on form submit   
+                invalidHandler: function (event, validator) { //display error alert on form submit
                     success.hide();
                     error.show();
                     App.scrollTo(error, -200);
@@ -242,7 +243,7 @@ var FormWizard = function () {
                     $(element)
                         .closest('.form-group').removeClass('has-error'); // set error class to the control group
                 },
- 
+
                 success: function (label) {
                     if (label.attr("for") == "gender" || label.attr("for") == "payment[]") { // for checkboxes and radio buttons, no need to show OK icon
                         label
@@ -277,7 +278,7 @@ var FormWizard = function () {
                         $(this).html(input.attr("data-title"));
                     } else if ($(this).attr("data-display") == 'payment[]') {
                         var payment = [];
-                        $('[name="payment[]"]:checked', form).each(function(){ 
+                        $('[name="payment[]"]:checked', form).each(function(){
                             payment.push($(this).attr('data-title'));
                         });
                         $(this).html(payment.join("<br>"));
@@ -320,13 +321,13 @@ var FormWizard = function () {
                 'previousSelector': '.button-previous',
                 onTabClick: function (tab, navigation, index, clickedIndex) {
                     return false;
-                    
+
                     success.hide();
                     error.hide();
                     if (form.valid() == false) {
                         return false;
                     }
-                    
+
                     handleTitle(tab, navigation, clickedIndex);
                 },
                 onNext: function (tab, navigation, index) {

@@ -134,10 +134,12 @@ class InstituitionFieldset extends Fieldset
             'name' => 'description',
             'options' => [
                 'label' => 'Breve apresentação',
-                'help-block' => 'Máximo de 500 caracteres'
+                'help-block' => 'Máximo de 500 caracteres',
             ],
             'attributes' => [
-                'required' => 'required'
+                'required' => 'required',
+                'data-parsley-maxlength' => "500",
+                'data-parsley-trigger' => 'keyup'
             ]
         ]);
 

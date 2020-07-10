@@ -107,12 +107,19 @@ class ProjectForm extends Form
         ]);
 
         $this->add([
-            'type' => 'select',
+            'type' => 'Select',
             'name' => 'options[phase]',
             'options' => [
-                'label' => 'Fase em que o projeto se encontra',
+                'label' => 'Fase em que o projeto se encontra - Campo antigo',
                 'value_options' => $this->populateOptions(Options::PHASE),
                 'empty_option' => 'Selecione',
+            ],
+        ]);
+
+        $this->add([
+            'name' => 'project_phase',
+            'options' => [
+                'label' => 'Fase em que o projeto se encontra',
             ],
             'attributes' => [
                 'required' => 'required',
@@ -199,9 +206,10 @@ class ProjectForm extends Form
                 'help-block' => 'máximo de 3.000 caracteres'
             ],
             'attributes' => [
-                'maxlength' => 3000,
                 'rows' => '15',
                 'required' => 'required',
+                'data-parsley-maxlength' => "3000",
+                'data-parsley-trigger' => 'keyup'
             ]
         ]);
 
@@ -213,9 +221,10 @@ class ProjectForm extends Form
                 'help-block' => 'máximo de 500 caracteres'
             ],
             'attributes' => [
-                'maxlength' => 500,
                 'required' => 'required',
                 'rows' => '6',
+                'data-parsley-maxlength' => "500",
+                'data-parsley-trigger' => 'keyup'
             ]
         ]);
 
@@ -227,9 +236,10 @@ class ProjectForm extends Form
                 'help-block' => 'máximo de 500 caracteres'
             ],
             'attributes' => [
-                'maxlength' => 500,
                 'required' => 'required',
                 'rows' => '6',
+                'data-parsley-maxlength' => "500",
+                'data-parsley-trigger' => 'keyup'
             ]
         ]);
 
@@ -241,9 +251,10 @@ class ProjectForm extends Form
                 'help-block' => 'máximo 1.000 caracteres'
             ],
             'attributes' => [
-                'maxlength' => 1000,
                 'rows' => '15',
                 'required' => 'required',
+                'data-parsley-maxlength' => "1000",
+                'data-parsley-trigger' => 'keyup'
             ]
         ]);
 
@@ -255,9 +266,10 @@ class ProjectForm extends Form
                 'help-block' => 'máximo de 10.000 caracteres'
             ],
             'attributes' => [
-                'maxlength' => 10000,
                 'rows' => '30',
                 'required' => 'required',
+                'data-parsley-maxlength' => "10000",
+                'data-parsley-trigger' => 'keyup'
             ]
         ]);
 
@@ -269,9 +281,10 @@ class ProjectForm extends Form
                 'help-block' => 'Descrição das referências técnicas e visuais que serão aplicadas à estética e linguagem do filme. Máximo 5.000 caracteres'
             ],
             'attributes' => [
-                'maxlength' => 5000,
                 'rows' => '15',
                 'required' => 'required',
+                'data-parsley-maxlength' => "5000",
+                'data-parsley-trigger' => 'keyup'
             ]
         ]);
 
@@ -283,9 +296,10 @@ class ProjectForm extends Form
                 'help-block' => 'Descrição das referências, interesses e desafios na produção do filme. Máximo 5.000 caracteres'
             ],
             'attributes' => [
-                'maxlength' => 5000,
                 'rows' => '10',
                 'required' => 'required',
+                'data-parsley-maxlength' => "5000",
+                'data-parsley-trigger' => 'keyup'
             ]
         ]);
 
@@ -296,7 +310,8 @@ class ProjectForm extends Form
                 'label' => 'Hora',
                 'value_options' => [
                     '1' => '01',
-                    '2' => '02'
+                    '2' => '02',
+                    '3' => '03'
                 ],
                 'empty_option' => 'Selecione',
             ],
@@ -387,9 +402,10 @@ class ProjectForm extends Form
                 'help-block' => 'Citar se há cidades ou monumentos primordiais ao projeto. Máximo de 500 caracteres'
             ],
             'attributes' => [
-                'maxlength' => 500,
                 'required' => 'required',
-                'rows' => 7
+                'rows' => 7,
+                'data-parsley-maxlength' => "500",
+                'data-parsley-trigger' => 'keyup'
             ]
         ]);
 
@@ -576,6 +592,11 @@ class ProjectForm extends Form
                 'required'   => false,
                 'allow_empty' => true
             ],
+            'phase' => [
+                'name' => 'options[phase]',
+                'required'   => false,
+                'allow_empty' => true
+            ]
         ]));
     }
 

@@ -152,6 +152,9 @@ class Project extends AbstractEntity
     /** @ORM\Column(name="movie_pass", type="text", nullable=true) */
     private $moviePass;
 
+    /** @ORM\Column(name="project_phase", type="text", nullable=true) */
+    private $projectPhase;
+
     /** @ORM\Column(name="participated_other_festivals", type="text", nullable=true) */
     private $participatedOtherFestivals;
 
@@ -776,6 +779,20 @@ class Project extends AbstractEntity
         $this->participatedOtherFestivals = $participatedOtherFestivals;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getProjectPhase()
+    {
+        return $this->projectPhase;
+    }
 
+    /**
+     * @param mixed $projectPhase
+     */
+    public function setProjectPhase($projectPhase)
+    {
+        $this->projectPhase = $projectPhase;
+    }
 
 }
