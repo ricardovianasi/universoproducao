@@ -116,16 +116,7 @@
                                 <?php echo $this->formRow($proItem->get('address')); ?>
                                 <?php echo $this->formRow($proItem->get('phone')); ?>
                                 <?php echo $this->formRow($proItem->get('email')); ?>
-                                <div class="row">
-                                    <div class="col-md-6"><?php echo $this->formRow($proItem->get('image')->setAttribute('required', null)); ?></div>
-                                    <div class="col-md-6">
-                                        <?php if($proItem->get('image')->getValue()): ?>
-                                            <a href="<?php echo $this->fileManipulation()->url($proItem->get('image')->getValue()); ?>"
-                                               class="btn green"
-                                               target="_blank">Download</a>
-                                        <?php endif; ?>
-                                    </div>
-                                </div>
+
                                 <?php echo $this->formRow($proItem->get('description')); ?>
                             </div>
                         </div>
@@ -156,16 +147,7 @@
                                 <?php echo $this->formRow($dirItem->get('address')); ?>
                                 <?php echo $this->formRow($dirItem->get('phone')); ?>
                                 <?php echo $this->formRow($dirItem->get('email')); ?>
-                                <div class="row">
-                                    <div class="col-md-6"><?php echo $this->formRow($dirItem->get('image')->setAttribute('required', null)); ?></div>
-                                    <div class="col-md-6">
-                                        <?php if($dirItem->get('image')->getValue()): ?>
-                                            <a target="_blank"
-                                               href="<?php echo $this->fileManipulation()->url($dirItem->get('image')->getValue()); ?>"
-                                               class="btn green">Download</a>
-                                        <?php endif; ?>
-                                    </div>
-                                </div>
+                                
                                 <?php echo $this->formRow($dirItem->get('description')); ?>
                             </div>
                         </div>
