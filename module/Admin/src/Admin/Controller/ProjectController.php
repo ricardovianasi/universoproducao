@@ -212,6 +212,11 @@ class ProjectController extends AbstractAdminController
                 }
                 unset($data['image']);
 
+                if(!empty($data['script'])) {
+                    $script = $this->populateFiles($data['script']);
+                    $project->setScript($script);
+                }
+
                 //Files
                 $files = new ArrayCollection();
                 if(!empty($data['files'])) {
@@ -224,6 +229,7 @@ class ProjectController extends AbstractAdminController
                 }
                 unset($data['image']);
                 unset($data['files']);
+                unset($data['script']);
                 $project->setFiles($files);
 
                 $project->setData($data);
@@ -311,6 +317,19 @@ class ProjectController extends AbstractAdminController
         return $this->prepareReport($preparedItems, 'project' ,'pdf');
     }
 
+    public function exportv2Action()
+    {
+        //recupera os itens
+        $dataAttr = $this->params()->fromQuery();
+        $id = $this->params()->fromRoute('id');
+        $item = $this->getRepository(Project::class)->find($id);
+
+        //criar um arquivo json
+        $preparedItems = $this->prepareItemsForReports($item);
+
+        return $this->prepareReport($preparedItems, 'project_v2' ,'pdf');
+    }
+
     public function exportListAction()
     {
         //recupera os itens
@@ -338,10 +357,12 @@ class ProjectController extends AbstractAdminController
             unset($itemArray['default_input_filters']);
             unset($itemArray['event']);
             unset($itemArray['files']);
+            unset($itemArray['files']);
             unset($itemArray['peoples']);
             unset($itemArray['options']);
             unset($itemArray['instituition']);
             unset($itemArray['image']);
+            unset($itemArray['script']);
 
             //Author
             $author = [
@@ -427,11 +448,16 @@ class ProjectController extends AbstractAdminController
             }
             $itemArray['opt_phase'] = $opt_phase?$opt_phase:"";
 
-            $opt_category = "";
             if($opt_category = $obj->getOption('category')) {
-                $opt_category = $opt_category->getLabel();
+                if($opt_category->getLabel()) {
+                    $itemArray['opt_category'] = $opt_category->getLabel();
+                    $itemArray['opt_category_id'] = $opt_category->getId();
+                } else {
+                    $itemArray['opt_category'] = "";
+                    $itemArray['opt_category_id'] = "";
+                }
             }
-            $itemArray['opt_category'] = $opt_category?$opt_category:"";
+
 
             $opt_genre = "";
             if($opt_genre = $obj->getOption('genre')) {
