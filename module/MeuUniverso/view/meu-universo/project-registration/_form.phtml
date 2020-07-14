@@ -144,9 +144,7 @@
                     echo $this->formRow($form->get('year_of_participation'));
                 } ?>
 
-                <?php if($category == 21 || $category == 22) {
-                    echo $this->formRow($form->get('presentation'));
-                } else {
+                <?php if($category == 20) {
                     echo $this->formRow($form->get('argument'));
                 } ?>
 
@@ -219,7 +217,7 @@
                         ->setAttribute('required', 'required');
                 ?>
                 <div class="form-group <?php echo count($image->getMessages())?"has-error":"" ?>">
-                    <label class="">Extra - Imagem do Projeto <span class="required" aria-required="true"> * </span></label> <br>
+                    <label class="">Imagem do Projeto <span class="required" aria-required="true"> * </span></label> <br>
                     <div class="fileinput fileinput-new" data-provides="fileinput">
                         <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;"> </div>
                         <div>
@@ -233,6 +231,7 @@
                     </div>
                     <div id="image_file_error"></div>
                     <?php echo $this->formElementErrors($image->get('file')); ?>
+                    <p class="help-block">Formatos válidos: JPG ou PNG. Tamanho mínimo de 800KB e máximo de 2MB</p>
                 </div>
 
                 <?php if($category == 20):

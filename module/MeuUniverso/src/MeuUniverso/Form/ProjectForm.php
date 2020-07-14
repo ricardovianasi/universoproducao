@@ -52,9 +52,9 @@ class ProjectForm extends \Admin\Form\Project\ProjectForm
             $this->remove('director_notes');
             $this->remove('script');
             $this->remove('argument');
-        } else {
-            $this->remove('presentation');
         }
+
+        $this->remove('presentation');
 
         if($category == 22) {
             $this->remove('files');

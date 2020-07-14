@@ -529,7 +529,7 @@ class ProjectForm extends Form
             'type' => ImageFieldset::class,
             'name' => 'image',
             'options' => [
-                'label' => 'Extra - Imagem do Projeto '
+                'label' => 'Imagem do Projeto '
             ],
             'attributes' => [
                 'required' => 'required'

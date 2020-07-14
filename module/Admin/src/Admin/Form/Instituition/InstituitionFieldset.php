@@ -133,7 +133,7 @@ class InstituitionFieldset extends Fieldset
             'type' => 'textarea',
             'name' => 'description',
             'options' => [
-                'label' => 'Breve apresentação',
+                'label' => 'Breve apresentação da empresa',
                 'help-block' => 'Máximo de 500 caracteres',
             ],
             'attributes' => [
