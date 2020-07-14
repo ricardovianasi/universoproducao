@@ -9,6 +9,8 @@
 namespace Admin\Form\Project;
 
 use Admin\Form\MediaFieldset;
+use Zend\Validator\File\Extension;
+use Zend\Validator\File\MimeType;
 use Zend\Validator\File\Size;
 
 class ImageFieldset extends MediaFieldset
