@@ -121,7 +121,7 @@ class ProjectForm extends Form
             'name' => 'project_phase',
             'options' => [
                 'label' => 'Fase em que o projeto se encontra',
-                'help-block' => 'máximo de 1.500 caracteres',
+                'help-block' => 'Descreva de forma clara quais as etapas já concluídas do projeto e quais os próximos passos previstos <br /> máximo de 1.500 caracteres',
                 'rows' => '5'
             ],
             'attributes' => [
