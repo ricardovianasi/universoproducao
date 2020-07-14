@@ -266,7 +266,7 @@ class ProjectForm extends Form
                 'help-block' => 'máximo de 3.000 caracteres'
             ],
             'attributes' => [
-                'rows' => '30',
+                'rows' => '8',
                 'required' => 'required',
                 'data-parsley-maxlength' => "3000",
                 'data-parsley-trigger' => 'keyup'

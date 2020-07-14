@@ -19,7 +19,7 @@ class DirectorFieldset extends PeopleFieldset
 
         $this->get('description')->setOptions([
             'label' => 'Biofilmografia',
-            'help-block' => 'especificar na filmografia trabalhos em curta, média e longa-metragem, etc. incluir links para os trabalhos, se for o caso'
+            'help-block' => 'Especificar na filmografia trabalhos em curta, média e longa-metragem, etc. incluir links para os trabalhos, se for o caso'
         ]);
 
     }
