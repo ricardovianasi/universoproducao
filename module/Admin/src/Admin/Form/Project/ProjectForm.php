@@ -117,7 +117,7 @@ class ProjectForm extends Form
         ]);
 
         $this->add([
-            'type' => 'texarea',
+            'type' => 'textarea',
             'name' => 'project_phase',
             'options' => [
                 'label' => 'Fase em que o projeto se encontra',
