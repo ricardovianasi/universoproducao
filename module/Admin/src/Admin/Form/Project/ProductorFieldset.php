@@ -19,7 +19,7 @@ class ProductorFieldset extends PeopleFieldset
 
         $this->get('description')->setOptions([
             'label' => 'Currículo',
-            'help-block' => 'máximo 2.000 caracteres'
+            'help-block' => 'Citar longa(s) em que atuou como produtor <br /> Currículo  máximo 2.000 caracteres'
         ])->setAttribute('maxlength', 2000);
     }
 }

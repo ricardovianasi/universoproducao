@@ -51,8 +51,6 @@
             <?php echo $this->formRow($form->get('english_title')) ?>
             <?php echo $this->formRow($form->get('state_production')) ?>
 
-            <?php echo $this->formRow($form->get('project_phase')) ?>
-
             <h3 class="h3 block">Empresa produtora</h3>
             <?php $instituitionFieldset = $form->get('instituition'); ?>
             <?php echo $this->formRow($instituitionFieldset->get('social_name')) ?>
@@ -136,12 +134,28 @@
 
             <?php if(!empty($category)): ?>
                 <h3 class="h3 block">Projeto</h3>
-                <?php echo $this->formRow($form->get('presentation')) ?>
-                <?php echo $this->formRow($form->get('long_sinopse')) ?>
+
+                <?php echo $this->formRow($form->get('has_protocol_registration_law')) ?>
+                <div class="has_protocol_registration_law" style="display: <?php echo $form->get('has_protocol_registration_law')->getValue()==1 ? "block" : "none" ?>">
+                    <?php echo $this->formRow($form->get('protocol_registration_law')) ?>
+                </div>
 
                 <?php if($category == 21) {
                     echo $this->formRow($form->get('year_of_participation'));
                 } ?>
+
+                <?php if($category == 21 || $category == 22) {
+                    echo $this->formRow($form->get('presentation'));
+                } else {
+                    echo $this->formRow($form->get('argument'));
+                } ?>
+
+
+                <?php echo $this->formRow($form->get('short_sinopse')) ?>
+                <?php echo $this->formRow($form->get('long_sinopse')) ?>
+                <?php echo $this->formRow($form->get('project_phase')) ?>
+
+
 
                 <?php if($category == 20) {
                     echo $this->formRow($form->get('director_notes'));
@@ -174,6 +188,10 @@
                     echo $this->formRow($form->get('estimated_value'));
                 } ?>
 
+                <?php if($category == 21 || $category == 22) {
+                    $form->get('related_partners')->setAttribute('required', 'required');
+                } ?>
+
                 <?php echo $this->formRow($form->get('related_partners')) ?>
 
 
@@ -187,31 +205,6 @@
                      echo $this->formRow($form->get('links'));
                 } ?>
 
-
-                <?php if($category == 20):
-                    $script = $form->get('script');
-                    $file = $script->get('file')->setAttribute('accept', '.pdf')->setAttribute('required', 'required'); ?>
-                    <div class="form-group <?php echo count($script->getMessages())?"has-error":"" ?>">
-                        <label class="">Anexo - Roteiro ou Pré-roteiro<span class="required" aria-required="true"> * </span></label> <br>
-                        <div class="fileinput fileinput-new" data-provides="fileinput">
-                            <div class="input-group input-large">
-                                <div class="form-control uneditable-input input-fixed input-medium" data-trigger="fileinput">
-                                    <i class="fa fa-file fileinput-exists"></i>&nbsp;
-                                    <span class="fileinput-filename"> </span>
-                                </div>
-                                <span class="input-group-addon btn default btn-file">
-                                    <span class="fileinput-new"> Selecione um arquivo </span>
-                                    <span class="fileinput-exists"> Alterar </span>
-                                    <?php echo $this->formElement($file); ?>
-                                </span>
-                                <a href="javascript:;" class="input-group-addon btn red fileinput-exists" data-dismiss="fileinput"> Remove </a>
-                            </div>
-                            <div id="script_file_error"></div>
-                            <?php echo $this->formElementErrors($script->get('file')); ?>
-                            <p class="help-block">Arquivo em PDF</p>
-                        </div>
-                    </div>
-                <?php endif; ?>
 
                 <?php if($category == 22) {
                     echo $this->formRow($form->get('participated_other_festivals'));
@@ -241,6 +234,31 @@
                     <div id="image_file_error"></div>
                     <?php echo $this->formElementErrors($image->get('file')); ?>
                 </div>
+
+                <?php if($category == 20):
+                    $script = $form->get('script');
+                    $file = $script->get('file')->setAttribute('accept', '.pdf'); ?>
+                    <div class="form-group <?php echo count($script->getMessages())?"has-error":"" ?>">
+                        <label class="">Anexo - Roteiro ou Pré-roteiro<span class="required" aria-required="true"> * </span></label> <br>
+                        <div class="fileinput fileinput-new" data-provides="fileinput">
+                            <div class="input-group input-large">
+                                <div class="form-control uneditable-input input-fixed input-medium" data-trigger="fileinput">
+                                    <i class="fa fa-file fileinput-exists"></i>&nbsp;
+                                    <span class="fileinput-filename"> </span>
+                                </div>
+                                <span class="input-group-addon btn default btn-file">
+                                    <span class="fileinput-new"> Selecione um arquivo </span>
+                                    <span class="fileinput-exists"> Alterar </span>
+                                    <?php echo $this->formElement($file); ?>
+                                </span>
+                                <a href="javascript:;" class="input-group-addon btn red fileinput-exists" data-dismiss="fileinput"> Remove </a>
+                            </div>
+                            <div id="script_file_error"></div>
+                            <?php echo $this->formElementErrors($script->get('file')); ?>
+                            <p class="help-block">Arquivo em PDF</p>
+                        </div>
+                    </div>
+                <?php endif; ?>
 
                 <?php if($category == 20 || $category == 21): ?>
                     <?php $files = $form->get('files')->getFieldsets(); ?>

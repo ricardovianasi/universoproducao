@@ -247,13 +247,13 @@ class ProjectForm extends Form
             'type' => 'Textarea',
             'name' => 'long_sinopse',
             'options' => [
-                'label' => 'Sinopse',
-                'help-block' => 'máximo 1.000 caracteres'
+                'label' => 'Sinopse Longa',
+                'help-block' => 'máximo 1.500 caracteres'
             ],
             'attributes' => [
                 'rows' => '15',
                 'required' => 'required',
-                'data-parsley-maxlength' => "1000",
+                'data-parsley-maxlength' => "1500",
                 'data-parsley-trigger' => 'keyup'
             ]
         ]);
@@ -263,12 +263,12 @@ class ProjectForm extends Form
             'name' => 'argument',
             'options' => [
                 'label' => 'Argumento ',
-                'help-block' => 'máximo de 10.000 caracteres'
+                'help-block' => 'máximo de 3.000 caracteres'
             ],
             'attributes' => [
                 'rows' => '30',
                 'required' => 'required',
-                'data-parsley-maxlength' => "10000",
+                'data-parsley-maxlength' => "3000",
                 'data-parsley-trigger' => 'keyup'
             ]
         ]);
@@ -426,7 +426,7 @@ class ProjectForm extends Form
             'name' => 'related_partners',
             'options' => [
                 'label' => 'Relacionar Parceiros Associados ao Projeto',
-                'help-block' => 'Caso o projeto já esteja associado a algum tipo de parceria ou patrocínio, relacione quais os nomes e percentual desta participação em relação ao orçamento do seu projeto'
+                'help-block' => 'Informar parcerias ou patrocínios que estão associados ao projeto, relacionando quais os nomes e percentual desta participação em relação ao orçamento do total'
             ],
             'attributes' => [
 

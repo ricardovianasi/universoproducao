@@ -51,6 +51,9 @@ class ProjectForm extends \Admin\Form\Project\ProjectForm
             $this->remove('locations');
             $this->remove('director_notes');
             $this->remove('script');
+            $this->remove('argument');
+        } else {
+            $this->remove('presentation');
         }
 
         if($category == 22) {
@@ -63,16 +66,13 @@ class ProjectForm extends \Admin\Form\Project\ProjectForm
             $this->getInputFilter()->remove('options[format]');
         }
 
-        $this->remove('has_protocol_registration_law');
-        $this->remove('short_sinopse');
+
         $this->remove('short_sinopse_english');
-        $this->remove('argument');
+
         $this->remove('producer_notes');
         $this->remove('options[written_script]');
         $this->remove('options[phase]');
 
-        $this->getInputFilter()->remove('has_protocol_registration_law');
-        $this->getInputFilter()->remove('short_sinopse');
         $this->getInputFilter()->remove('short_sinopse_english');
         $this->getInputFilter()->remove('argument');
         $this->getInputFilter()->remove('producer_notes');
