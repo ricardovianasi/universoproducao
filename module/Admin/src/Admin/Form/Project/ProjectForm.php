@@ -117,12 +117,17 @@ class ProjectForm extends Form
         ]);
 
         $this->add([
+            'type' => 'texarea',
             'name' => 'project_phase',
             'options' => [
                 'label' => 'Fase em que o projeto se encontra',
+                'help-block' => 'máximo de 1.500 caracteres',
+                'rows' => '5'
             ],
             'attributes' => [
                 'required' => 'required',
+                'data-parsley-maxlength' => "1500",
+                'data-parsley-trigger' => 'keyup'
             ],
         ]);
 

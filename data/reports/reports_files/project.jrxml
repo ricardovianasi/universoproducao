@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.5.1.final using JasperReports Library version 6.5.1  -->
+<!-- Created with Jaspersoft Studio version 6.4.0.final using JasperReports Library version 6.4.1  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="project" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="bb8f50b9-f8e8-41f2-b817-41d5bd96dc27">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="DataAdapterProjectCinemundi.xml"/>
 	<queryString language="json">
@@ -1407,7 +1407,7 @@
 				<textElement textAlignment="Center">
 					<font size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA["Pag " + $V{PAGE_NUMBER} ]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Pag " + $V{PAGE_NUMBER}]]></textFieldExpression>
 			</textField>
 			<image>
 				<reportElement x="2" y="1" width="50" height="40" uuid="416da9ee-7fed-4238-b0de-312aecfd9d05"/>
