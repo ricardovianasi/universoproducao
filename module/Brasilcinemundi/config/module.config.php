@@ -17,7 +17,7 @@ return array(
                     'route'    => '[www.][:locale.]brasilcinemundi.com.br',
                     'defaults' => array(
                         'controller'    => Controller\IndexController::class,
-                        'action'        => 'index',
+                        'action'        => 'index-hot',
                         'locale'        => 'pt'
                     ),
                 ),
@@ -39,7 +39,7 @@ return array(
                     'home' => array(
                         'type' => Literal::class,
                         'options' => array(
-                            'route' => '/',
+                            'route' => '/inicio',
                             'defaults' => array(
                                 'controller'    => Controller\IndexController::class,
                                 'action'        => 'index',
@@ -49,10 +49,10 @@ return array(
                     'index' => array(
                         'type' => Literal::class,
                         'options' => array(
-                            'route' => '/inicio',
+                            'route' => '/',
                             'defaults' => array(
                                 'controller'    => Controller\IndexController::class,
-                                'action'        => 'index',
+                                'action'        => 'index-hot',
                             ),
                         ),
                         'priority' => '99999'

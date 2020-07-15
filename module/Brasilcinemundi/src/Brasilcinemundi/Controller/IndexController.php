@@ -76,11 +76,11 @@ class IndexController extends SiteController
         ]);
     }
 
-    public function hotsiteAction()
+    public function indexhotAction()
     {
         $viewModel = new ViewModel();
-        $viewModel->setTemplate(false);
-        $viewModel->setTerminal(true);
+        $viewModel->setVariables(array('key' => 'value'))
+            ->setTerminal(true);
 
         return $viewModel;
     }
