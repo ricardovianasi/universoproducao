@@ -66,6 +66,11 @@ class EducationalProjectController extends AbstractAdminController
     public function deleteAction($id)
     {
         $project = $this->getRepository(EducationalProject::class)->find($id);
+
+        foreach ($project->getFiles() as $file) {
+            $this->getEntityManager()->remove($file);
+        }
+
         $this->getEntityManager()->remove($project);
         $this->getEntityManager()->flush();
 
