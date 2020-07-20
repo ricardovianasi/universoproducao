@@ -65,13 +65,13 @@ class EducationalProjectController extends AbstractAdminController
 
     public function deleteAction($id)
     {
-        $cat = $this->getRepository(Category::class)->find($id);
-        $this->getEntityManager()->remove($cat);
+        $project = $this->getRepository(EducationalProject::class)->find($id);
+        $this->getEntityManager()->remove($project);
         $this->getEntityManager()->flush();
 
-        $this->messages()->flashSuccess('Categoria excluída com sucesso.');
+        $this->messages()->flashSuccess('Projeto excluído com sucesso.');
 
-        return $this->redirect()->toRoute('admin/default', ['controller'=>'educational-project-category']);
+        return $this->redirect()->toRoute('admin/default', ['controller'=>'educational-project']);
     }
 
     public function persist($data, $id = null)
