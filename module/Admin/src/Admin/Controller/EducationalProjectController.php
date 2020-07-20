@@ -69,6 +69,7 @@ class EducationalProjectController extends AbstractAdminController
 
         foreach ($project->getFiles() as $file) {
             $this->getEntityManager()->remove($file);
+            $this->getEntityManager()->flush();
         }
 
         $this->getEntityManager()->remove($project);
