@@ -32,10 +32,10 @@ class EducationalProject extends AbstractRepository
                 ->setParameter('idEvent', $criteria['event']);
         }
 
-        if(!empty($criteria['user_search'])) {
+        if(!empty($criteria['user'])) {
             $qb->innerJoin('p.user', 'u')
                 ->andWhere('u.name like :user')
-                ->setParameter('user', '%'.$criteria['user_search'].'%');
+                ->setParameter('user', '%'.$criteria['user'].'%');
         }
 
         if(!empty($criteria['status'])) {
