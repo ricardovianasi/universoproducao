@@ -155,10 +155,8 @@
                             'admin/partials/paginator.phtml',
                             array(
                                 'route'=>'admin/default',
-                                'route_options' => [
-                                    'controller' => 'educational-project',
-                                    'route_query_options' => ['query'=>$this->searchData]
-                                ]
+                                'route_options' => array('controller' => 'educational-project'),
+                                'route_query_options' => array('query'=>$this->searchData)
                             )
                         ); ?>
                     </div>
