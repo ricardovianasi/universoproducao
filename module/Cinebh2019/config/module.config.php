@@ -17,7 +17,7 @@ return array(
                     'route'    => '[www.][:locale.]cinebh.com.br',
                     'defaults' => array(
                         'controller'    => Controller\IndexController::class,
-                        'action'        => 'index',
+                        'action'        => 'hotsite',
                         'locale'        => 'pt'
                     ),
                 ),
@@ -42,7 +42,7 @@ return array(
                             'route' => '/',
                             'defaults' => array(
                                 'controller'    => Controller\IndexController::class,
-                                'action'        => 'index',
+                                'action'        => 'hotsite',
                             ),
                         )
                     ),
