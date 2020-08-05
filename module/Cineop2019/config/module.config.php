@@ -13,10 +13,10 @@ return array(
             'cineop2019' => array(
                 'type'    => Hostname::class,
                 'options' => array(
-                    'route'    => '[www.]cineop.com.br',
+                    'route'    => '[www.].2019.cineop.com.br',
                     'defaults' => array(
                         'controller'    => Controller\IndexController::class,
-                        'action'        => 'index-hot'
+                        'action'        => 'index'
                     ),
                 ),
                 'may_terminate' => true,
@@ -50,7 +50,7 @@ return array(
                             'route' => '/',
                             'defaults' => array(
                                 'controller'    => Controller\IndexController::class,
-                                'action'        => 'index-hot',
+                                'action'        => 'index',
                             ),
                         )
                     ),
