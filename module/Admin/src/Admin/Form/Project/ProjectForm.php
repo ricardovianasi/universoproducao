@@ -58,6 +58,7 @@ class ProjectForm extends Form
             ],
             'attributes' => [
                 'id' => 'registration',
+                'required' => 'required',
             ]
         ]);
 
