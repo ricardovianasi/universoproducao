@@ -58,41 +58,41 @@
 
         <div class="row">
             <div class="col-md-6"><?php echo $this->formRow($form->get('title')) ?></div>
-            <div class="col-md-6"><?php echo $this->formRow($form->get('english_title')) ?></div>
+            <div class="col-md-6"><?php echo $this->formRow($form->get('english_title')->setAttribute('required', '')) ?></div>
         </div>
         <div class="row">
-            <div class="col-md-3"><?php echo $this->formRow($form->get('state_production')) ?></div>
-            <div class="col-md-3"><?php echo $this->formRow($form->get('options[category]')) ?></div>
-            <div class="col-md-3"><?php echo $this->formRow($form->get('options[phase]')) ?></div>
-            <div class="col-md-3"><?php echo $this->formRow($form->get('project_phase')) ?></div>
+            <div class="col-md-3"><?php echo $this->formRow($form->get('state_production')->setAttribute('required', '')) ?></div>
+            <div class="col-md-3"><?php echo $this->formRow($form->get('options[category]')->setAttribute('required', '')) ?></div>
+            <div class="col-md-3"><?php echo $this->formRow($form->get('options[phase]')->setAttribute('required', '')) ?></div>
+            <div class="col-md-3"><?php echo $this->formRow($form->get('project_phase')->setAttribute('required', '')) ?></div>
         </div>
 
         <h3 class="form-section">Empresa produtora</h3>
         <?php $instituitionFieldset = $form->get('instituition'); ?>
 
         <div class="row">
-            <div class="col-md-6"><?php echo $this->formRow($instituitionFieldset->get('social_name')) ?></div>
-            <div class="col-md-6"><?php echo $this->formRow($instituitionFieldset->get('fantasy_name')) ?></div>
+            <div class="col-md-6"><?php echo $this->formRow($instituitionFieldset->get('social_name')->setAttribute('required', '')) ?></div>
+            <div class="col-md-6"><?php echo $this->formRow($instituitionFieldset->get('fantasy_name')->setAttribute('required', '')) ?></div>
         </div>
 
         <div class="row">
-            <div class="col-md-6"><?php echo $this->formRow($instituitionFieldset->get('cnpj')) ?></div>
-            <div class="col-md-6"><?php echo $this->formRow($instituitionFieldset->get('legal_representative')) ?></div>
+            <div class="col-md-6"><?php echo $this->formRow($instituitionFieldset->get('cnpj')->setAttribute('required', '')) ?></div>
+            <div class="col-md-6"><?php echo $this->formRow($instituitionFieldset->get('legal_representative')->setAttribute('required', '')) ?></div>
         </div>
 
         <div class="row">
-            <div class="col-md-4"><?php echo $this->formRow($instituitionFieldset->get('address')) ?></div>
-            <div class="col-md-4"><?php echo $this->formRow($instituitionFieldset->get('phone')) ?></div>
-            <div class="col-md-4"><?php echo $this->formRow($instituitionFieldset->get('mobile_phone')) ?></div>
+            <div class="col-md-4"><?php echo $this->formRow($instituitionFieldset->get('address')->setAttribute('required', '')) ?></div>
+            <div class="col-md-4"><?php echo $this->formRow($instituitionFieldset->get('phone')->setAttribute('required', '')) ?></div>
+            <div class="col-md-4"><?php echo $this->formRow($instituitionFieldset->get('mobile_phone')->setAttribute('required', '')) ?></div>
         </div>
 
         <div class="row">
-            <div class="col-md-6"><?php echo $this->formRow($instituitionFieldset->get('email')) ?></div>
-            <div class="col-md-6"><?php echo $this->formRow($instituitionFieldset->get('site')) ?></div>
+            <div class="col-md-6"><?php echo $this->formRow($instituitionFieldset->get('email')->setAttribute('required', '')) ?></div>
+            <div class="col-md-6"><?php echo $this->formRow($instituitionFieldset->get('site')->setAttribute('required', '')) ?></div>
         </div>
 
         <div class="row">
-            <div class="col-md-12"><?php echo $this->formRow($instituitionFieldset->get('description')) ?></div>
+            <div class="col-md-12"><?php echo $this->formRow($instituitionFieldset->get('description')->setAttribute('required', '')) ?></div>
         </div>
 
         <div class="row">
@@ -112,13 +112,13 @@
                                 </div>
                             </div>
                             <div class="portlet-body">
-                                <?php echo $this->formRow($proItem->get('id')); ?>
-                                <?php echo $this->formRow($proItem->get('name')); ?>
-                                <?php echo $this->formRow($proItem->get('address')); ?>
-                                <?php echo $this->formRow($proItem->get('phone')); ?>
-                                <?php echo $this->formRow($proItem->get('email')); ?>
+                                <?php echo $this->formRow($proItem->get('id')->setAttribute('required', '')); ?>
+                                <?php echo $this->formRow($proItem->get('name')->setAttribute('required', '')); ?>
+                                <?php echo $this->formRow($proItem->get('address')->setAttribute('required', '')); ?>
+                                <?php echo $this->formRow($proItem->get('phone')->setAttribute('required', '')); ?>
+                                <?php echo $this->formRow($proItem->get('email')->setAttribute('required', '')); ?>
 
-                                <?php echo $this->formRow($proItem->get('description')); ?>
+                                <?php echo $this->formRow($proItem->get('description')->setAttribute('required', '')); ?>
                             </div>
                         </div>
                     <?php endforeach; ?>
@@ -129,7 +129,7 @@
 
             <div class="col-md-6 project-directors">
                 <h3 class="form-section">Diretor(es)</h3>
-                <?php echo $this->formCollection()->renderTemplate($form->get('directors')); ?>
+                <?php echo $this->formCollection()->renderTemplate($form->get('directors')->setAttribute('required', '')); ?>
 
                 <div class="list">
                     <?php $dirColl = $form->get('directors')->getFieldsets(); ?>
@@ -143,13 +143,13 @@
                                 </div>
                             </div>
                             <div class="portlet-body">
-                                <?php echo $this->formRow($dirItem->get('id')); ?>
-                                <?php echo $this->formRow($dirItem->get('name')); ?>
-                                <?php echo $this->formRow($dirItem->get('address')); ?>
-                                <?php echo $this->formRow($dirItem->get('phone')); ?>
-                                <?php echo $this->formRow($dirItem->get('email')); ?>
+                                <?php echo $this->formRow($dirItem->get('id')->setAttribute('required', '')); ?>
+                                <?php echo $this->formRow($dirItem->get('name')->setAttribute('required', '')); ?>
+                                <?php echo $this->formRow($dirItem->get('address')->setAttribute('required', '')); ?>
+                                <?php echo $this->formRow($dirItem->get('phone')->setAttribute('required', '')); ?>
+                                <?php echo $this->formRow($dirItem->get('email')->setAttribute('required', '')); ?>
 
-                                <?php echo $this->formRow($dirItem->get('description')); ?>
+                                <?php echo $this->formRow($dirItem->get('description')->setAttribute('required', '')); ?>
                             </div>
                         </div>
                     <?php endforeach; ?>
@@ -162,19 +162,19 @@
         <h3 class="form-section">Projeto</h3>
 
         <div class="row">
-            <div class="col-md-4"><?php echo $this->formRow($form->get('has_protocol_registration_law')) ?></div>
-            <div class="col-md-4"><?php echo $this->formRow($form->get('protocol_registration_law')) ?></div>
-            <div class="col-md-4"><?php echo $this->formRow($form->get('year_of_participation')) ?></div>
+            <div class="col-md-4"><?php echo $this->formRow($form->get('has_protocol_registration_law')->setAttribute('required', '')) ?></div>
+            <div class="col-md-4"><?php echo $this->formRow($form->get('protocol_registration_law')->setAttribute('required', '')) ?></div>
+            <div class="col-md-4"><?php echo $this->formRow($form->get('year_of_participation')->setAttribute('required', '')) ?></div>
         </div>
 
         <div class="row">
-            <div class="col-md-12"><?php echo $this->formRow($form->get('presentation')) ?></div>
-            <div class="col-md-12"><?php echo $this->formRow($form->get('short_sinopse')) ?></div>
-            <div class="col-md-12"><?php echo $this->formRow($form->get('short_sinopse_english')) ?></div>
-            <div class="col-md-12"><?php echo $this->formRow($form->get('long_sinopse')) ?></div>
-            <div class="col-md-12"><?php echo $this->formRow($form->get('argument')) ?></div>
-            <div class="col-md-12"><?php echo $this->formRow($form->get('director_notes')) ?></div>
-            <div class="col-md-12"><?php echo $this->formRow($form->get('producer_notes')) ?></div>
+            <div class="col-md-12"><?php echo $this->formRow($form->get('presentation')->setAttribute('required', '')) ?></div>
+            <div class="col-md-12"><?php echo $this->formRow($form->get('short_sinopse')->setAttribute('required', '')) ?></div>
+            <div class="col-md-12"><?php echo $this->formRow($form->get('short_sinopse_english')->setAttribute('required', '')) ?></div>
+            <div class="col-md-12"><?php echo $this->formRow($form->get('long_sinopse')->setAttribute('required', '')) ?></div>
+            <div class="col-md-12"><?php echo $this->formRow($form->get('argument')->setAttribute('required', '')) ?></div>
+            <div class="col-md-12"><?php echo $this->formRow($form->get('director_notes')->setAttribute('required', '')) ?></div>
+            <div class="col-md-12"><?php echo $this->formRow($form->get('producer_notes')->setAttribute('required', '')) ?></div>
         </div>
 
         <h3 class="form-section">Especificações do filme</h3>
@@ -183,46 +183,46 @@
             <label>Tempo de duração do filme</label>
             <div class="row">
                 <div class="col-md-2">
-                    <?php echo $this->formRow($form->get('movie_length_hour')) ?>
+                    <?php echo $this->formRow($form->get('movie_length_hour')->setAttribute('required', '')) ?>
                 </div>
                 <div class="col-md-2">
-                    <?php echo $this->formRow($form->get('movie_length_minutes')) ?>
+                    <?php echo $this->formRow($form->get('movie_length_minutes')->setAttribute('required', '')) ?>
                 </div>
-                <div class="col-md-4"><?php echo $this->formRow($form->get('options[genre]')) ?></div>
-                <div class="col-md-4"><?php echo $this->formRow($form->get('options[format]')) ?></div>
+                <div class="col-md-4"><?php echo $this->formRow($form->get('options[genre]')->setAttribute('required', '')) ?></div>
+                <div class="col-md-4"><?php echo $this->formRow($form->get('options[format]')->setAttribute('required', '')) ?></div>
             </div>
 
         </div>
 
         <div class="row">
-            <div class="col-md-4"><?php echo $this->formRow($form->get('options[display_format]')) ?></div>
-            <div class="col-md-6"><?php echo $this->formRow($form->get('estimated_time_filming')) ?></div>
+            <div class="col-md-4"><?php echo $this->formRow($form->get('options[display_format]')->setAttribute('required', '')) ?></div>
+            <div class="col-md-6"><?php echo $this->formRow($form->get('estimated_time_filming')->setAttribute('required', '')) ?></div>
         </div>
 
         <div class="row">
-            <div class="col-md-6"><?php echo $this->formRow($form->get('locations')) ?></div>
-            <div class="col-md-6"><?php echo $this->formRow($form->get('estimated_value')) ?></div>
+            <div class="col-md-6"><?php echo $this->formRow($form->get('locations')->setAttribute('required', '')) ?></div>
+            <div class="col-md-6"><?php echo $this->formRow($form->get('estimated_value')->setAttribute('required', '')) ?></div>
         </div>
 
         <div class="row">
-            <div class="col-md-4"><?php echo $this->formRow($form->get('related_partners')) ?></div>
-            <div class="col-md-4"><?php echo $this->formRow($form->get('value_captured_resources')) ?></div>
-            <div class="col-md-4"><?php echo $this->formRow($form->get('value_captured_services')) ?></div>
+            <div class="col-md-4"><?php echo $this->formRow($form->get('related_partners')->setAttribute('required', '')) ?></div>
+            <div class="col-md-4"><?php echo $this->formRow($form->get('value_captured_resources')->setAttribute('required', '')) ?></div>
+            <div class="col-md-4"><?php echo $this->formRow($form->get('value_captured_services')->setAttribute('required', '')) ?></div>
         </div>
 
         <div class="row">
-            <div class="col-md-4"><?php echo $this->formRow($form->get('options[written_script]')) ?></div>
-            <div class="col-md-4"><?php echo $this->formRow($form->get('options[first_or_second_project]')) ?></div>
-            <div class="col-md-4"><?php echo $this->formRow($form->get('links')) ?></div>
+            <div class="col-md-4"><?php echo $this->formRow($form->get('options[written_script]')->setAttribute('required', '')) ?></div>
+            <div class="col-md-4"><?php echo $this->formRow($form->get('options[first_or_second_project]')->setAttribute('required', '')) ?></div>
+            <div class="col-md-4"><?php echo $this->formRow($form->get('links')->setAttribute('required', '')) ?></div>
         </div>
 
         <div class="row">
-            <div class="col-md-4"><?php echo $this->formRow($form->get('participated_other_festivals')) ?></div>
-            <div class="col-md-4"><?php echo $this->formRow($form->get('movie_link')) ?></div>
-            <div class="col-md-4"><?php echo $this->formRow($form->get('movie_pass')) ?></div>
+            <div class="col-md-4"><?php echo $this->formRow($form->get('participated_other_festivals')->setAttribute('required', '')) ?></div>
+            <div class="col-md-4"><?php echo $this->formRow($form->get('movie_link')->setAttribute('required', '')) ?></div>
+            <div class="col-md-4"><?php echo $this->formRow($form->get('movie_pass')->setAttribute('required', '')) ?></div>
         </div>
 
-        <?php $script = $form->get('script');
+        <?php $script = $form->get('script')->setAttribute('required', '');
             $file = $script->get('file')->setAttribute('accept', '.pdf');
             ?>
         <div class="form-group">
@@ -250,7 +250,7 @@
             <p class="help-block">Arquivo em PDF</p>
         </div>
 
-        <?php $image = $form->get('image'); ?>
+        <?php $image = $form->get('image')->setAttribute('required', ''); ?>
         <div class="form-group <?php echo count($image->getMessages())?"has-error":"" ?>">
             <label class="">Extra - Imagem do filme <span class="required" aria-required="true"> * </span></label> <br>
             <?php $imageSrc = $image->get('src')->getValue(); ?>
@@ -294,7 +294,7 @@
                         <span class="input-group-addon btn default btn-file">
                             <span class="fileinput-new"> Selecione um arquivo </span>
                             <span class="fileinput-exists"> Alterar </span>
-                            <?php echo $this->formElement($fieldset->get('file')); ?>
+                            <?php echo $this->formElement($fieldset->get('file')->setAttribute('required', '')); ?>
                             <?php echo $this->formElement($fieldset->get('id')); ?>
                         </span>
                         <a href="javascript:;" class="input-group-addon btn red fileinput-exists" data-dismiss="fileinput"> Remove </a>
