@@ -86,9 +86,9 @@ class ProjectController extends AbstractAdminController
         $form->getInputFilter()->remove('directors');
         $form->getInputFilter()->remove('producers');
         $this->getInputFilter()->remove('short_sinopse_english');
-        $this->getInputFilter()->remove('argument');
-        $this->getInputFilter()->remove('producer_notes');
-        $this->getInputFilter()->remove('options[written_script]');
+//        $this->getInputFilter()->remove('argument');
+//        $this->getInputFilter()->remove('producer_notes');
+//        $this->getInputFilter()->remove('options[written_script]');
 //        $this->getInputFilter()->remove('options[phase]');
 //        $this->getInputFilter()->remove('state_production');
 //        $this->getInputFilter()->remove('options[category]');
