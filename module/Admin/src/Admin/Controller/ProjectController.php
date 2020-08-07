@@ -80,6 +80,7 @@ class ProjectController extends AbstractAdminController
     public function persist($data, $id = null)
     {
         $form = new ProjectForm($this->getEntityManager($this->getEntityManager()));
+
         $form->getInputFilter()->remove('image');
         $form->getInputFilter()->remove('files');
         $form->getInputFilter()->remove('directors');
@@ -88,16 +89,16 @@ class ProjectController extends AbstractAdminController
         $this->getInputFilter()->remove('argument');
         $this->getInputFilter()->remove('producer_notes');
         $this->getInputFilter()->remove('options[written_script]');
-        $this->getInputFilter()->remove('options[phase]');
-        $this->getInputFilter()->remove('state_production');
-        $this->getInputFilter()->remove('options[category]');
-        $this->getInputFilter()->remove('has_protocol_registration_law');
-        $this->getInputFilter()->remove('movie_length_hour');
-        $this->getInputFilter()->remove('movie_length_minutes');
-        $this->getInputFilter()->remove('options[genre]');
-        $this->getInputFilter()->remove('options[format]');
-        $this->getInputFilter()->remove('options[written_script]');
-        $this->getInputFilter()->remove('options[first_or_second_project]');
+//        $this->getInputFilter()->remove('options[phase]');
+//        $this->getInputFilter()->remove('state_production');
+//        $this->getInputFilter()->remove('options[category]');
+//        $this->getInputFilter()->remove('has_protocol_registration_law');
+//        $this->getInputFilter()->remove('movie_length_hour');
+//        $this->getInputFilter()->remove('movie_length_minutes');
+//        $this->getInputFilter()->remove('options[genre]');
+//        $this->getInputFilter()->remove('options[format]');
+//        $this->getInputFilter()->remove('options[written_script]');
+//        $this->getInputFilter()->remove('options[first_or_second_project]');
 
 
         if($id) {
