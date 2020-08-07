@@ -97,6 +97,7 @@ class ProjectController extends AbstractAdminController
         $form->getInputFilter()->remove('movie_length_minutes');
         $form->getInputFilter()->remove('options[genre]');
         $form->getInputFilter()->remove('options[format]');
+        $form->getInputFilter()->remove('options[display_format]');
         $form->getInputFilter()->remove('options[written_script]');
         $form->getInputFilter()->remove('options[first_or_second_project]');
 
