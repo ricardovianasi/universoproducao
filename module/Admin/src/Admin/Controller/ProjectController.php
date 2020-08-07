@@ -84,6 +84,9 @@ class ProjectController extends AbstractAdminController
         $form->getInputFilter()->remove('files');
         $form->getInputFilter()->remove('directors');
         $form->getInputFilter()->remove('producers');
+        $form->setInputFilter([]);
+
+        $form->get('english_title')->setAttribute('required', '');
 
         if($id) {
             $project = $this->getRepository(Project::class)->find($id);
