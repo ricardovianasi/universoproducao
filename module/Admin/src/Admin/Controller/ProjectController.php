@@ -84,10 +84,21 @@ class ProjectController extends AbstractAdminController
         $form->getInputFilter()->remove('files');
         $form->getInputFilter()->remove('directors');
         $form->getInputFilter()->remove('producers');
+        $this->getInputFilter()->remove('short_sinopse_english');
+        $this->getInputFilter()->remove('argument');
+        $this->getInputFilter()->remove('producer_notes');
+        $this->getInputFilter()->remove('options[written_script]');
+        $this->getInputFilter()->remove('options[phase]');
+        $this->getInputFilter()->remove('state_production');
+        $this->getInputFilter()->remove('options[category]');
+        $this->getInputFilter()->remove('has_protocol_registration_law');
+        $this->getInputFilter()->remove('movie_length_hour');
+        $this->getInputFilter()->remove('movie_length_minutes');
+        $this->getInputFilter()->remove('options[genre]');
+        $this->getInputFilter()->remove('options[format]');
+        $this->getInputFilter()->remove('options[written_script]');
+        $this->getInputFilter()->remove('options[first_or_second_project]');
 
-
-
-        $form->get('english_title')->setAttribute('required', '');
 
         if($id) {
             $project = $this->getRepository(Project::class)->find($id);
