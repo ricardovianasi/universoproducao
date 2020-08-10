@@ -10,6 +10,7 @@ namespace Admin\Form\Project;
 
 use Application\Entity\Event\Event;
 use Application\Entity\Event\EventType;
+use Application\Entity\Project\Options;
 use Application\Entity\Registration\Status;
 use Zend\Form\Form;
 use Zend\InputFilter\Factory as InputFilterFactory;
@@ -68,6 +69,19 @@ class ProjectSearchForm extends Form
                 'data-label' => 'Evento',
                 'class' => 'input-sm',
                 'id' => 'event'
+            ]
+        ]);
+
+        $this->add([
+            'type' => 'Select',
+            'name' => 'category',
+            'options' => [
+                'empty_option' => 'Selecione a categoria',
+                'value_options' => $this->populateCotegories()
+            ],
+            'attributes' => [
+                'class' => 'input-sm',
+                'data-label' => 'Categoria'
             ]
         ]);
 
@@ -140,6 +154,24 @@ class ProjectSearchForm extends Form
         }
 
         return $options;
+    }
+
+    public function populateCotegories()
+    {
+        $op = $this
+            ->getEntityManager()
+            ->getRepository(Options::class)
+            ->findBy(['status'=>true]);
+
+        $arrayOP = [];
+        foreach ($op as $o) {
+            if($o->getName() == 'category') {
+                $arrayOP[$o->getId()] = $o->getLabel();
+            }
+        }
+
+        return $arrayOP;
+
     }
 
     public function getEntityManager()
