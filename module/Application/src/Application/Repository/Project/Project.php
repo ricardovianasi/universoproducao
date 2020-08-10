@@ -29,6 +29,12 @@ class Project extends AbstractRepository
                 ->setParameter('p.id', $criteria['id']);
         }
 
+        if(!empty($criteria['category'])) {
+            $qb->innerJoin('p.options', 'o')
+                ->andWhere('o.id = :catedoryId')
+                ->setParameter('catedoryId', $criteria['category']);
+        }
+
         if(!empty($criteria['event'])) {
             $qb->andWhere('p.event = :idEvent')
                 ->setParameter('idEvent', $criteria['event']);
