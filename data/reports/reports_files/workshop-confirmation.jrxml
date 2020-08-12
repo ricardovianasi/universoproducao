@@ -191,31 +191,31 @@
 				<text><![CDATA[Horário]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="1" y="209" width="554" height="19" uuid="3d9c4c47-3245-4af5-ace9-0751da3029b4"/>
+				<reportElement x="1" y="180" width="554" height="19" uuid="3d9c4c47-3245-4af5-ace9-0751da3029b4"/>
 				<textElement textAlignment="Center">
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[AUTORIZAÇÃO]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="1" y="240" width="554" height="70" uuid="b1a5f5db-5eb9-41b7-bbbc-9a02c9b9db93"/>
+				<reportElement x="0" y="199" width="554" height="41" uuid="b1a5f5db-5eb9-41b7-bbbc-9a02c9b9db93"/>
 				<textElement textAlignment="Justified"/>
-				<text><![CDATA[1. Autorizo a ter minhas imagem e voz veiculadas por meio de internet, jornais, informes e/ou qualquer meio de publicação/comunicação pública ou privada, para fins exclusivos de divulgação da Mostra de Cinema de Tiradentes, destinados ao público em geral ou para a comunicação institucional.]]></text>
+				<text><![CDATA[1. Autorizo a ter minhas imagem e voz veiculadas por meio de internet, jornais, informes e/ou qualquer meio de publicação/comunicação pública ou privada, para fins exclusivos de divulgação da 15ª CineOP - Mostra de Cinema de Ouro Preto, destinados ao público em geral ou para a comunicação institucional.]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="1" y="315" width="554" height="30" uuid="f4c95b51-d7c5-4db8-bd60-1340ae67d0e3"/>
+				<reportElement x="1" y="260" width="554" height="30" uuid="f4c95b51-d7c5-4db8-bd60-1340ae67d0e3"/>
 				<textElement textAlignment="Justified"/>
 				<text><![CDATA[2. A presente autorização é concedida a título gratuito e livre de qualquer ônus.]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="1" y="346" width="554" height="50" uuid="638d63e4-5956-4387-b5eb-2746a0370272"/>
+				<reportElement x="1" y="300" width="554" height="50" uuid="638d63e4-5956-4387-b5eb-2746a0370272"/>
 				<textElement textAlignment="Justified"/>
 				<textFieldExpression><![CDATA["3. Eu, "+$F{user_name}+", portador do CPF "+$F{user_identifier}+" estou ciente e de acordo com todas as informações e condições descritas no regulamento da inscrição para participação, bem como as informações mencionadas neste documento."]]></textFieldExpression>
 			</textField>
 			<textField pattern="MMMMM dd, yyyy">
-				<reportElement x="0" y="410" width="548" height="30" uuid="50201216-6eae-4aff-ba99-a67d8f82e274"/>
+				<reportElement x="1" y="370" width="548" height="30" uuid="50201216-6eae-4aff-ba99-a67d8f82e274"/>
 				<textElement textAlignment="Center"/>
-				<textFieldExpression><![CDATA["Tiradentes, janeiro de "+YEAR((new java.util.Date()))]]></textFieldExpression>
+				<textFieldExpression><![CDATA["_________________________________________________________, agosto de  "+YEAR((new java.util.Date()))]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="0" y="440" width="554" height="30" uuid="53e19e02-4776-43ef-ad16-8ff5e9814f02"/>
@@ -231,28 +231,18 @@ Assinatura]]></text>
 				<textFieldExpression><![CDATA["Responsável: "+$F{user_parent_name}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="1" y="510" width="554" height="30" uuid="56c30942-2c3c-413b-8f9f-e9f144a77d20"/>
+				<reportElement x="0" y="520" width="554" height="30" uuid="56c30942-2c3c-413b-8f9f-e9f144a77d20"/>
 				<textElement textAlignment="Center">
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[Atenção]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="1" y="530" width="554" height="30" uuid="eba59bba-46fe-4475-b5d6-cdcdd1903429"/>
+				<reportElement x="0" y="550" width="554" height="110" uuid="eba59bba-46fe-4475-b5d6-cdcdd1903429"/>
 				<textElement textAlignment="Center"/>
-				<text><![CDATA[Este documento é indispensável para a retirada de sua credencial e material na secretaria do evento.
-Apresente este comprovante assinado e um documento com foto no dia de início da oficina.
-]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="0" y="576" width="554" height="114" uuid="55bd9f74-ba2e-4ee8-82d7-97c314dcdfe8"/>
-				<textElement textAlignment="Center"/>
-				<text><![CDATA[Endereço: 
+				<text><![CDATA[A assinatura e envio deste documento é indispensável para garantir a sua vaga na oficina. Ele deve ser preenchido e enviado para o e-mail relacionamento@universoproducao.com.br em até 24 horas após a realização da inscrição.
 
-Secretaria da 23ª Mostra de Cinema de Tiradentes
-Centro Cultural SESIMINAS Yves Alves 
-Rua Direita, 168 - Centro Histórico
-Tiradentes - MG]]></text>
+Lembramos que é de responsabilidade do aluno ter um dispositivo eletrônico para acesso (smartphone, tablet, notebook, desktop) e conexão estável de internet para participar da oficina.]]></text>
 			</staticText>
 		</band>
 	</detail>
