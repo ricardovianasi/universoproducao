@@ -34,7 +34,7 @@ class WorkshopRegistrationController extends AbstractMeuUniversoRegisterControll
 
     const ERROR_WORKSHOP_NOT_FOUNT = 'x2004';
     const ERROR_WORKSHOP_NO_SUBSCRIPTION = 'x2005';
-    const ERROR_WORKSHOP_MULTIPLES_SUBSCRIPTION = 'x2006';
+    const ERROR_WORKSHOP_MULTIPLES_SUBSCRIPTION = 'x20006';
 
     public function indexAction()
     {

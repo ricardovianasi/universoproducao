@@ -19,6 +19,12 @@
             <p>
                 <a class="btn blue" href="<?php echo $this->url('meu-universo/default') ?>">Minhas inscrições</a>
             </p>
+        <?php elseif($this->code == 'x20006'): ?>
+            <p>Você já realizou uma inscrição de oficinas.</p>
+            <p>
+                <a class="btn blue" href="<?php echo $this->url('universoproducao/default', ['slug'=>'inscrições']) ?>">Inscrições disponíveis</a>
+                <a class="btn blue" href="<?php echo $this->url('meu-universo/default') ?>">Minhas inscrições</a>
+            </p>
         <?php else: ?>
             <p>Erro desconhecido. Por favor, tente novamente!</p>
             <p>
