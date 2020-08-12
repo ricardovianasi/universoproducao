@@ -11,11 +11,13 @@
             ]); ?>
 
             <?php if($this->confirmacao == 'sim'):  ?>
-                <p>Sua participação nesta oficina está confirmada. <a href="<?php echo $this->url('meu-universo/workshop', [
+                <p>Quase lá! Para completar a confirmação de sua participação nesta oficina você deve
+                    <a href="<?php echo $this->url('meu-universo/workshop', [
                         'action' => 'comprovante',
                         'id_reg' => $this->reg->getHash(),
                         'id' => $this->subscription->getId()
-                    ]) ?>">Imprimir o comprovante</a>, que  deve ser assinado e entregue no credenciamento, juntamente com um documento de identificação com foto. (O comprovante é obrigatório para a realização da oficina).</p>
+                    ]) ?>">imprimir o comprovante</a>, assiná-lo e enviar para o e-mail relacionamento@universoproducao.com.br
+                    em até 24h após a realização da inscrição.</p>
             <?php elseif($this->confirmacao == 'nao'): ?>
                 <p>Sua participação nesta oficina está cancelada.</p>
             <?php else: ?>
@@ -25,3 +27,5 @@
         </div>
     </div>
 </div>
+
+
