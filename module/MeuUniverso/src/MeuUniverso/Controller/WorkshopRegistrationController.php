@@ -324,7 +324,7 @@ class WorkshopRegistrationController extends AbstractMeuUniversoRegisterControll
 
     public function confirmacaoAction()
     {
-        return $this->redirect()->toRoute('meu-universo/default');
+        //return $this->redirect()->toRoute('meu-universo/default');
 
         $idReg = $this->params()->fromRoute('id_reg');
         if(!$idReg) {
