@@ -473,14 +473,37 @@ class WorkshopRegistrationController extends AbstractMeuUniversoRegisterControll
                 'type' => Type::WORKSHOP,
                 'objectId' => $obj->getWorkshop()->getId()
             ]);
-            $workshopProgramationItems = [];
+
+            $workshopProgramationItems = '';
+            if(count($workshopProgramation)) {
+                $prog_first = reset($workshopProgramation);
+                $prog_last = end($workshopProgramation);
+
+                if($prog_first->getDate()
+                    && $prog_first->getDate() instanceof \DateTime
+                    && $prog_last->getDate()
+                    && $prog_last->getDate() instanceof \DateTime) {
+
+                    $workshopProgramationItems =
+                        $prog_first->getDate()->format('d')
+                        . ' a '
+                        . $prog_last->getDate()->format('d/m')
+                        . ', de '
+                        . $prog_first->getStartTime()->format('H:i\h')
+                        . ' às '
+                        . $prog_last->getEndTime()->format('H:i\h');
+
+                }
+            }
+
+            /*$workshopProgramationItems = [];
             foreach ($workshopProgramation as $pro) {
                 $desc = $pro->getDate()->format('d/m/Y')
                     . ' | ' . $pro->getStartTime()->format('H:i')
                     . ' às '
                     . $pro->getEndTime()->format('H:i');
                 $workshopProgramationItems[] = $desc;
-            }
+            }*/
 
             $preparedItems[]['object'] = [
                 'event_name' => $obj->getEvent()->getShortName(),
@@ -490,7 +513,7 @@ class WorkshopRegistrationController extends AbstractMeuUniversoRegisterControll
                 'user_parent_name' => $obj->getUser()->getParent() ? $obj->getUser()->getParent()->getName() : "",
                 'user_parent_identifier' => $obj->getUser()->getParent() ? $obj->getUser()->getParent()->getIdentifier() : "",
                 'workshop_name' => $obj->getWorkshop()->getName(),
-                'workshop_programation' => implode(';', $workshopProgramationItems)
+                'workshop_programation' => $workshopProgramationItems
             ];
         }
 
