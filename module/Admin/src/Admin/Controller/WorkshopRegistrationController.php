@@ -283,7 +283,7 @@ class WorkshopRegistrationController extends AbstractAdminController
                         . ', de '
                         . $prog_first->getStartTime()->format('H:i\h')
                         . ' às '
-                        . $prog_last->getStartTime()->format('H:i\h');
+                        . $prog_last->getEndTime()->format('H:i\h');
 
                 }
             }
