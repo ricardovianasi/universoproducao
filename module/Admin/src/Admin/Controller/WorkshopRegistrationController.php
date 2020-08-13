@@ -266,8 +266,29 @@ class WorkshopRegistrationController extends AbstractAdminController
                 'type' => Type::WORKSHOP,
                 'objectId' => $obj->getWorkshop()->getId()
             ]);
-            $workshopProgramationItems = [];
-            foreach ($workshopProgramation as $pro) {
+            $workshopProgramationItems = '';
+            if(count($workshopProgramation)) {
+                $prog_first = reset($workshopProgramation);
+                $prog_last = end($workshopProgramation);
+
+                if($prog_first->getDate()
+                    && $prog_first->getDate() instanceof \DateTime
+                    && $prog_last->getDate()
+                    && $prog_last->getDate() instanceof \DateTime) {
+
+                    $workshopProgramationItems =
+                        $prog_first->getDate()->format('d')
+                        . ' a '
+                        . $prog_last->getDate()->format('d/m')
+                        . ', de '
+                        . $prog_first->getStartTime()->format('H:i\h')
+                        . ' às '
+                        . $prog_last->getStartTime()->format('H:i\h');
+
+                }
+            }
+
+            /*foreach ($workshopProgramation as $pro) {
 
                 if($pro->getDate() && $pro->getDate() instanceof \DateTime) {
                     $desc = ($pro->getDate() ? $pro->getDate()->format('d/m/Y') : " * ")
@@ -277,7 +298,7 @@ class WorkshopRegistrationController extends AbstractAdminController
 
                     $workshopProgramationItems[] = $desc;
                 }
-            }
+            }*/
 
             $answers = [];
             foreach ($obj->getFormAnswers() as $fw) {
@@ -295,7 +316,7 @@ class WorkshopRegistrationController extends AbstractAdminController
                 'user_address' => $obj->getUser()->getFullAddress(),
                 'user_phones' => $obj->getUser()->getFullPhones(),
                 'workshop_name' => $obj->getWorkshop()->getName(),
-                'workshop_programation' => implode(';', $workshopProgramationItems),
+                'workshop_programation' => $workshopProgramationItems,
                 'status' => Status::get($obj->getStatus()),
             ];
             $preparedItems[]['object'] = array_merge($item, $answers);
