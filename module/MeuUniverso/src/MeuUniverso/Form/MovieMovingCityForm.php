@@ -137,6 +137,7 @@ class MovieMovingCityForm extends AdminMovieForm
         $this->getInputFilter()->get('synopsis')->setRequired(true);
         $this->getInputFilter()->get('has_participated_other_festivals')->setRequired(true);
         $this->getInputFilter()->get('movie_link')->setRequired(true);
+        $this->getInputFilter()->get('type')->setRequired(false);
 
         $this->setAttributes([
             'class' => 'form-horizontal movie-form',
