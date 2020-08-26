@@ -13,6 +13,7 @@ class MovieMovingCityForm extends AdminMovieForm
 
         $this->remove('production_state');
         $this->remove('events');
+        $this->remove('options[general_category]');
         //$this->remove('end_date_year');
         //$this->remove('type');
 
@@ -89,7 +90,7 @@ class MovieMovingCityForm extends AdminMovieForm
         $this->get('has_conversations_list_languages')->setAttribute('required', 'required');
         $this->get('subtitles_languages')->setAttribute('required', 'required');
         $this->get('conversations_list_languages')->setAttribute('required', 'required');
-        $this->get('options[general_category]')->setAttribute('required', 'required');
+        //$this->get('options[general_category]')->setAttribute('required', 'required');
         $this->get('options[format_completed]')->setAttribute('required', 'required');
 //        $this->get('options[window]')->setAttribute('required', 'required');
 //        $this->get('options[sound]')->setAttribute('required', 'required');
@@ -126,7 +127,7 @@ class MovieMovingCityForm extends AdminMovieForm
         $this->getInputFilter()->get('has_conversations_languages')->setRequired(true);
         $this->getInputFilter()->get('has_subtitles_languages')->setRequired(true);
         $this->getInputFilter()->get('options[format_completed]')->setRequired(true);
-        $this->getInputFilter()->get('options[general_category]')->setRequired(true);
+        $this->getInputFilter()->get('options[general_category]')->setRequired(false);
         $this->getInputFilter()->get('options[window]')->setRequired(false);
         $this->getInputFilter()->get('options[sound]')->setRequired(false);
         $this->getInputFilter()->get('options[color]')->setRequired(true);
