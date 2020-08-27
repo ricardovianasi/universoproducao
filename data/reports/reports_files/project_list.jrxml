@@ -1164,7 +1164,7 @@
 				</box>
 				<textFieldExpression><![CDATA[$F{protocol_registration_law}]]></textFieldExpression>
 			</textField>
-			<textField isBlankWhenNull="false">
+			<textField isBlankWhenNull="true">
 				<reportElement key="" x="2405" y="0" width="100" height="30" uuid="ec5a8d4c-9898-4b88-8e92-bf1a9eab1a1f">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="46215be5-0c33-4fd3-8c6e-b6c1abafc042"/>
 				</reportElement>
@@ -1177,7 +1177,7 @@
 				</box>
 				<textFieldExpression><![CDATA[$F{presentation}]]></textFieldExpression>
 			</textField>
-			<textField isBlankWhenNull="false">
+			<textField isBlankWhenNull="true">
 				<reportElement key="" x="2505" y="0" width="100" height="30" uuid="c3ca8c13-3f74-41d6-af0e-fa6e34c631bd">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="afe02d9e-a06b-4693-be67-59178688dfaf"/>
 				</reportElement>
@@ -1190,7 +1190,7 @@
 				</box>
 				<textFieldExpression><![CDATA[$F{short_sinopse}]]></textFieldExpression>
 			</textField>
-			<textField isBlankWhenNull="false">
+			<textField isBlankWhenNull="true">
 				<reportElement key="" x="2605" y="0" width="100" height="30" uuid="cf6ce68d-d5f4-480f-8704-4865c1c3ced7">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="db2bcfd4-4dd9-41d5-b85e-bd8452cf5384"/>
 				</reportElement>
@@ -1203,7 +1203,7 @@
 				</box>
 				<textFieldExpression><![CDATA[$F{short_sinopse_english}]]></textFieldExpression>
 			</textField>
-			<textField isBlankWhenNull="false">
+			<textField isBlankWhenNull="true">
 				<reportElement key="" x="2705" y="0" width="100" height="30" uuid="72fd2e49-5cd3-4dd9-91ec-b4add8703656">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="3506e79d-8553-4e25-b8df-f643e9c0c1a9"/>
 				</reportElement>
@@ -1216,7 +1216,7 @@
 				</box>
 				<textFieldExpression><![CDATA[$F{long_sinopse}]]></textFieldExpression>
 			</textField>
-			<textField isBlankWhenNull="false">
+			<textField isBlankWhenNull="true">
 				<reportElement key="" x="2805" y="0" width="100" height="30" uuid="1f5175b2-183f-4214-8a35-def9df143348">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="6a230cc2-9a80-4c92-b233-1f98feded2a8"/>
 				</reportElement>
@@ -1229,7 +1229,7 @@
 				</box>
 				<textFieldExpression><![CDATA[$F{argument}]]></textFieldExpression>
 			</textField>
-			<textField isBlankWhenNull="false">
+			<textField isBlankWhenNull="true">
 				<reportElement key="" x="2905" y="0" width="100" height="30" uuid="8510b048-552f-4b28-9847-27c4f482985d">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="8646578e-fde3-4f78-b939-426a12d2daef"/>
 				</reportElement>
@@ -1242,7 +1242,7 @@
 				</box>
 				<textFieldExpression><![CDATA[$F{director_notes}]]></textFieldExpression>
 			</textField>
-			<textField isBlankWhenNull="false">
+			<textField isBlankWhenNull="true">
 				<reportElement key="" x="3005" y="0" width="100" height="30" uuid="50b73952-e5cc-4569-84c9-853d0ee48b63">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f3da2e24-ef27-46ea-8a4e-ec5879b1aef5"/>
 				</reportElement>
@@ -1255,7 +1255,7 @@
 				</box>
 				<textFieldExpression><![CDATA[$F{producer_notes}]]></textFieldExpression>
 			</textField>
-			<textField isBlankWhenNull="false">
+			<textField isBlankWhenNull="true">
 				<reportElement key="" x="3105" y="0" width="100" height="30" uuid="a7b30792-392f-4304-83b7-a068f51993e8">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f0ebabf0-5375-45c9-b4c8-86745465538e"/>
 				</reportElement>
@@ -1268,7 +1268,7 @@
 				</box>
 				<textFieldExpression><![CDATA[$F{movie_length}]]></textFieldExpression>
 			</textField>
-			<textField isBlankWhenNull="false">
+			<textField isBlankWhenNull="true">
 				<reportElement key="" x="3205" y="0" width="100" height="30" uuid="671ca5b8-9dac-4b79-8dd1-e3e12159ac75">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f982abc9-b48a-4885-ab81-9cec7f34f457"/>
 				</reportElement>
@@ -1281,7 +1281,7 @@
 				</box>
 				<textFieldExpression><![CDATA[$F{opt_genre}]]></textFieldExpression>
 			</textField>
-			<textField isBlankWhenNull="false">
+			<textField isBlankWhenNull="true">
 				<reportElement key="" x="3305" y="0" width="100" height="30" uuid="b45168d0-c2dd-439d-9e97-53f00cd4e5d0">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="6caaf197-ea90-41f8-92cd-6f0204619cbb"/>
 				</reportElement>
@@ -1294,7 +1294,7 @@
 				</box>
 				<textFieldExpression><![CDATA[$F{opt_format}]]></textFieldExpression>
 			</textField>
-			<textField isBlankWhenNull="false">
+			<textField isBlankWhenNull="true">
 				<reportElement key="" x="3405" y="0" width="100" height="30" uuid="70f77612-34db-4d67-9848-8b8aaad4fc27">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="1882c86c-54b5-4113-a957-f0ebe4222317"/>
 				</reportElement>
@@ -1307,7 +1307,7 @@
 				</box>
 				<textFieldExpression><![CDATA[$F{opt_display_format}]]></textFieldExpression>
 			</textField>
-			<textField isBlankWhenNull="false">
+			<textField isBlankWhenNull="true">
 				<reportElement key="" x="3505" y="0" width="100" height="30" uuid="00bb3afb-96ca-46c4-a24b-473479e08f5f">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="cebd6e40-507d-4b84-bf44-3cde1666aed0"/>
 				</reportElement>
@@ -1320,7 +1320,7 @@
 				</box>
 				<textFieldExpression><![CDATA[$F{estimated_time_filming}]]></textFieldExpression>
 			</textField>
-			<textField isBlankWhenNull="false">
+			<textField isBlankWhenNull="true">
 				<reportElement key="" x="3605" y="0" width="100" height="30" uuid="bc9edb51-acbe-4ce9-b78c-bc702873dfc3">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="390edde7-213d-4f13-82f3-1cb1d9a5e7e8"/>
 				</reportElement>
@@ -1333,7 +1333,7 @@
 				</box>
 				<textFieldExpression><![CDATA[$F{locations}]]></textFieldExpression>
 			</textField>
-			<textField isBlankWhenNull="false">
+			<textField isBlankWhenNull="true">
 				<reportElement key="" x="3705" y="0" width="100" height="30" uuid="2119c733-fcc7-4eea-be2d-6b98edb28bd5">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="5bb578fa-d6d9-4a78-b0e8-a840a5db729b"/>
 				</reportElement>
@@ -1346,7 +1346,7 @@
 				</box>
 				<textFieldExpression><![CDATA[$F{estimated_value}]]></textFieldExpression>
 			</textField>
-			<textField isBlankWhenNull="false">
+			<textField isBlankWhenNull="true">
 				<reportElement key="" x="3805" y="0" width="100" height="30" uuid="2838ec7a-097c-4cd9-ae72-2017855c119b">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="68054aa4-f1ec-40fa-817f-de74d0ad1c3f"/>
 				</reportElement>
@@ -1359,7 +1359,7 @@
 				</box>
 				<textFieldExpression><![CDATA[$F{related_partners}]]></textFieldExpression>
 			</textField>
-			<textField isBlankWhenNull="false">
+			<textField isBlankWhenNull="true">
 				<reportElement key="" x="3905" y="0" width="100" height="30" uuid="4afe0d6b-6670-48c8-8a1c-4aaf8a34317f">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="61c8797b-c67d-43eb-b3b2-019ff643dd3e"/>
 				</reportElement>
@@ -1372,7 +1372,7 @@
 				</box>
 				<textFieldExpression><![CDATA[$F{value_captured_resources}]]></textFieldExpression>
 			</textField>
-			<textField isBlankWhenNull="false">
+			<textField isBlankWhenNull="true">
 				<reportElement key="" x="4005" y="0" width="100" height="30" uuid="4675debd-265e-49d7-8c4a-ab2140a3fbdf">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="fe42b2d6-9266-4033-a787-9835e689ac0b"/>
 				</reportElement>
@@ -1385,7 +1385,7 @@
 				</box>
 				<textFieldExpression><![CDATA[$F{value_captured_services}]]></textFieldExpression>
 			</textField>
-			<textField isBlankWhenNull="false">
+			<textField isBlankWhenNull="true">
 				<reportElement key="" x="4105" y="0" width="100" height="30" uuid="0eabb1d2-b31f-4df1-a286-ea53133e2e1a">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="03710c82-3b88-4e99-9519-2dabe86ffbb6"/>
 				</reportElement>
@@ -1398,7 +1398,7 @@
 				</box>
 				<textFieldExpression><![CDATA[$F{opt_written_script}]]></textFieldExpression>
 			</textField>
-			<textField isBlankWhenNull="false">
+			<textField isBlankWhenNull="true">
 				<reportElement key="" x="4205" y="0" width="100" height="30" uuid="7e6b7bd8-af63-4574-9edf-0742e48acae0">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="6128ccae-139b-4a3a-bbca-8539db468530"/>
 				</reportElement>
@@ -1411,7 +1411,7 @@
 				</box>
 				<textFieldExpression><![CDATA[$F{opt_first_or_second_project}]]></textFieldExpression>
 			</textField>
-			<textField isBlankWhenNull="false">
+			<textField isBlankWhenNull="true">
 				<reportElement key="" x="4305" y="0" width="100" height="30" uuid="1459143e-4a08-45d4-b604-0fe072c1c8b9">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="34c213a5-0746-4494-9640-ca5655c04f0c"/>
 				</reportElement>
@@ -1506,28 +1506,28 @@
 				<reportElement x="850" y="0" width="150" height="30" uuid="74a76111-3c52-42c1-a1e9-306334792e82"/>
 				<textFieldExpression><![CDATA[$F{project_phase}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField isBlankWhenNull="true">
 				<reportElement x="4405" y="0" width="100" height="30" uuid="83f42c16-9554-44cf-a039-e724e9595e90"/>
 				<box padding="5">
 					<pen lineWidth="0.25"/>
 				</box>
 				<textFieldExpression><![CDATA[$F{participated_other_festivals}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField isBlankWhenNull="true">
 				<reportElement x="4505" y="0" width="100" height="30" uuid="67973b5b-78ce-4d3d-89b5-95486f21cf1d"/>
 				<box padding="5">
 					<pen lineWidth="0.25"/>
 				</box>
 				<textFieldExpression><![CDATA[$F{year_of_participation}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField isBlankWhenNull="true">
 				<reportElement x="4605" y="0" width="100" height="30" uuid="60842042-e7c8-4ca7-bbd1-39c0b1b0cc88"/>
 				<box padding="5">
 					<pen lineWidth="0.25"/>
 				</box>
 				<textFieldExpression><![CDATA[$F{movie_link}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField isBlankWhenNull="true">
 				<reportElement x="4705" y="0" width="100" height="30" uuid="05b78398-116f-46e9-bf9c-32f639066acc"/>
 				<box padding="5">
 					<pen lineWidth="0.25"/>
