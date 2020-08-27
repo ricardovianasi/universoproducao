@@ -354,11 +354,11 @@ class ProjectController extends AbstractAdminController
         $items = $this->search(Project::class, $dataAttr, ['createdAt' => 'DESC'], true);
 
         //criar um arquivo json
-        $preparedItems = $this->prepareItemsForReports($items);
+        $preparedItems = $this->prepareItemsForReports($items, 'list');
         return $this->prepareReport($preparedItems, 'project_list' ,'xlsx');
     }
 
-    protected function prepareItemsForReports($items)
+    protected function prepareItemsForReports($items, $type = 'pdf')
     {
         if(!is_array($items)) {
             $items = [$items];
@@ -419,31 +419,23 @@ class ProjectController extends AbstractAdminController
             $directors = "";
             foreach ($obj->getPeoples() as $p) {
                 if($p->getType() == People::TYPE_PRODUCER) {
-                    /*$peopleData = [
-                        'Nome: ' . $p->getName(),
-                        'Endereço: ' . $p->getAddress(),
-                        'Telefone: ' . $p->getPhone(),
-                        'E-mail: ' . $p->getEmail(),
-                        'Currículo: ' . $p->getDescription()
-                    ];
-                    $producers[] = implode(' | ', $peopleData);*/
-                    $producers.= $this->preparePeoplesToReport($p);
+                    if($type == 'list') {
+                        $producers.= $p->getName() . '; ';
+                    } else {
+                        $producers.= $this->preparePeoplesToReport($p);
+                    }
                 } elseif($p->getType() == People::TYPE_DIRECTOR) {
-                    /*$peopleData = [
-                        'Nome: ' . $p->getName(),
-                        'Endereço: ' . $p->getAddress(),
-                        'Telefone: ' . $p->getPhone(),
-                        'E-mail: ' . $p->getEmail(),
-                        'Biofilmografia: ' . $p->getDescription()
-                    ];
-                    $directors[] = implode(' | ', $peopleData);*/
-                    $directors.= $this->preparePeoplesToReport($p);
+                    if($type == 'list') {
+                        $directors.= $p->getName() . '; ';
+                    } else {
+                        $directors.= $this->preparePeoplesToReport($p);
+                    }
                 }
             }
             /*$itemArray['producers'] = implode(' ; ', $producers);
             $itemArray['directors'] = implode(' ; ', $producers);*/
-            $itemArray['producers'] = $producers;
-            $itemArray['directors'] = $directors;
+            $itemArray['producers'] = rtrim($producers, '; ');
+            $itemArray['directors'] = rtrim($directors, '; ');
 
             //instituition
             $itemArray['institution_social_name'] = $obj->getInstituition()->getSocialName();
