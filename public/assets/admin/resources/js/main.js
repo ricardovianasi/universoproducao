@@ -32,6 +32,7 @@ jQuery(document).ready(function() {
             remove_script_host : false,
             external_filemanager_path:"/filemanager/",
             filemanager_title:"Responsive Filemanager" ,
+            filemanager_access_key:"Un1v3rS0_Pr0dUcAo_Ag51_Sdni5fHgR2",
             external_plugins: {"filemanager" : "/filemanager/plugin.min.js"}
         });
 
