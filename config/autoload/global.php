@@ -31,6 +31,6 @@ return array(
         )
     ),
     'thumbor' => array(
-        'url' => 'http://162.243.253.29:8888'
+        'url' => 'https://thumbor.universoproducao.com.br'
     )
 );
