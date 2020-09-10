@@ -21,7 +21,9 @@ use Application\Entity\Registration\Options;
 use Application\Entity\Registration\Registration;
 use Doctrine\Common\Collections\ArrayCollection;
 use MeuUniverso\Form\MovieMovingCityForm;
+use Zend\I18n\Validator\IsInt;
 use Zend\Validator\Digits;
+use Zend\Validator\GreaterThan;
 use Zend\View\Model\ViewModel;
 
 class MovieMovingCityRegistrationController extends AbstractMeuUniversoRegisterController
@@ -301,6 +303,13 @@ class MovieMovingCityRegistrationController extends AbstractMeuUniversoRegisterC
                     ]
                 ]));
                 $durationInputFilter->getValidatorChain()->attach(New Digits());
+            } else {
+                $durationInputFilter = $form->getInputFilter()->get('duration');
+                $durationInputFilter->getValidatorChain()->attach(new GreaterThan([
+                    'min' => 1,
+                    'inclusive' => true
+                ]));
+                $durationInputFilter->getValidatorChain()->attach(New IsInt());
             }
 
             if($form->isValid()) {
