@@ -235,9 +235,9 @@ class MovieController extends AbstractAdminController
         $this->getEntityManager()->remove($op);
         $this->getEntityManager()->flush();
 
-        $this->messages()->flashSuccess('Opção excluída com sucesso.');
+        $this->messages()->flashSuccess('Filme excluído com sucesso.');
 
-        return $this->redirect()->toRoute('admin/default', ['controller'=>'movie-options']);
+        return $this->redirect()->toRoute('admin/default', ['controller'=>'movie']);
     }
 
     public function persist($data, $id = null)
