@@ -37,9 +37,9 @@ return [
 	'router' => [
 		'routes' => [
 		    'util' => [
-		        'type' => 'Hostname',
+		        'type' => 'Literal',
                 'options' => [
-                    'route' => 's.universoproducao.com.br',
+                    'route' => '/s',
                     'defaults' => [
                         '__NAMESPACE__' => 'Util\Controller'
                     ],
