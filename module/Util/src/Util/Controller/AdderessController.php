@@ -16,7 +16,7 @@ use Zend\View\Model\JsonModel;
 
 class AdderessController extends AbstractController implements EntityManagerAwareInterface
 {
-	public static $postmon = 'http://api.postmon.com.br/v1/cep/';
+	public static $postmon = 'https://api.postmon.com.br/v1/cep/';
 
 	public function cepAction()
 	{
