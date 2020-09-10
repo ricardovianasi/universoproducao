@@ -337,7 +337,7 @@ class MovieMovingCityRegistrationController extends AbstractMeuUniversoRegisterC
 
                 //duration minutes to time
                 $minutes = $data['duration'];
-                $minutesToTime = \DateTime::createFromFormat('i', $minutes);
+                $minutesToTime = \DateTime::createFromFormat('H:i', mktime(0, $minutes));
                 $data['duration'] = $minutesToTime;
 
                 $options = new ArrayCollection();
