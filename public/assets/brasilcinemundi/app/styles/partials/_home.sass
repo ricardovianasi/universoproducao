@@ -213,8 +213,12 @@
           +padding-leader(9, 54px)
         .tv-content
           +leader(1)
+      &:nth-child(2)
+        +trailer(3)
       &:nth-child(2),
       &:nth-child(3)
+        +leader(3)
+        +trailer(3)
         padding-left: 70px
         border-left: 1px solid white
         .tv-bg
@@ -223,9 +227,6 @@
         .tv-link
           +padding-trailer(3.5, 54px)
           +padding-leader(3.5, 54px)
-        .tv-featured
-          &:last-of-type
-            +leader(1)
         .tv-content
           padding-left: 15px
           position: absolute
