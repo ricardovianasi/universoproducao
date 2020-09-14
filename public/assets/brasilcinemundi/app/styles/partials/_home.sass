@@ -214,11 +214,13 @@
         .tv-content
           +leader(1)
       &:nth-child(2)
-        +trailer(3)
+        +trailer(1)
+        +leader(3)
+      &:nth-child(3)
+        +trailer(0)
+        +leader(0)
       &:nth-child(2),
       &:nth-child(3)
-        +leader(3)
-        +trailer(3)
         padding-left: 70px
         border-left: 1px solid white
         .tv-bg
