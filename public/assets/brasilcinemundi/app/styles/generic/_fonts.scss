@@ -1,20 +1,22 @@
 @import url('https://fonts.googleapis.com/css?family=Oswald:400,600,700|Roboto:400,700');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;700&display=swap');
 
 @font-face {
   font-family: 'Universoproducao';
-  src:  url('../fonts/Universoproducao.eot?nyi9q9');
-  src:  url('../fonts/Universoproducao.eot?nyi9q9#iefix') format('embedded-opentype'),
-  url('../fonts/Universoproducao.ttf?nyi9q9') format('truetype'),
-  url('../fonts/Universoproducao.woff?nyi9q9') format('woff'),
-  url('../fonts/Universoproducao.svg?nyi9q9#Universoproducao') format('svg');
+  src:  url('../fonts/Universoproducao.eot?gz5e0y');
+  src:  url('../fonts/Universoproducao.eot?gz5e0y#iefix') format('embedded-opentype'),
+  url('../fonts/Universoproducao.ttf?gz5e0y') format('truetype'),
+  url('../fonts/Universoproducao.woff?gz5e0y') format('woff'),
+  url('../fonts/Universoproducao.svg?gz5e0y#Universoproducao') format('svg');
   font-weight: normal;
   font-style: normal;
+  font-display: block;
 }
 
 [class^="icon-"], [class*=" icon-"] {
   /* use !important to prevent issues with browser extensions that change fonts */
   font-family: 'Universoproducao' !important;
-  speak: none;
+  speak: never;
   font-style: normal;
   font-weight: normal;
   font-variant: normal;
@@ -26,26 +28,47 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-brand:before {
-  content: "\e90a";
+.icon-youtube2:before {
+  content: "\e90d";
 }
-.icon-brasilcinemundi:before {
-  content: "\e90b";
+.icon-linkedin:before {
+  content: "\e900";
 }
-.icon-menu-round:before {
-  content: "\e908";
+.icon-user:before {
+  content: "\e901";
 }
-.icon-eufacoamostra:before {
-  content: "\e909";
+.icon-youtube:before {
+  content: "\e902";
 }
-.icon-user3:before {
-  content: "\e906";
+.icon-search:before {
+  content: "\e903";
 }
-.icon-user4:before {
-  content: "\e907";
+.icon-universo-producao:before {
+  content: "\e904";
+}
+.icon-mouse-bottom:before {
+  content: "\e905";
 }
 .icon-user2:before {
-  content: "\e905";
+  content: "\e906";
+}
+.icon-user3:before {
+  content: "\e907";
+}
+.icon-user4:before {
+  content: "\e908";
+}
+.icon-menu-round:before {
+  content: "\e909";
+}
+.icon-eufacoamostra:before {
+  content: "\e90a";
+}
+.icon-brand:before {
+  content: "\e90b";
+}
+.icon-brasilcinemundi:before {
+  content: "\e90c";
 }
 .icon-circle-down:before {
   content: "\ea43";
@@ -59,50 +82,23 @@
 .icon-user7:before {
   content: "\eb0e";
 }
-.icon-menu7:before {
-  content: "\ec72";
-}
-.icon-plus3:before {
-  content: "\ed5d";
-}
-.icon-plus-circle:before {
-  content: "\ed5f";
-}
-.icon-arrow-down2:before {
-  content: "\edc0";
-}
-.icon-arrow-down4:before {
-  content: "\edc2";
-}
-.icon-arrow-down7:before {
-  content: "\edd8";
-}
-.icon-circle-down6:before {
-  content: "\ee31";
-}
-.icon-universo-producao:before {
-  content: "\e903";
-}
-.icon-user:before {
-  content: "\e900";
-}
-.icon-mouse-bottom:before {
-  content: "\e904";
-}
-.icon-youtube:before {
-  content: "\e901";
-}
-.icon-search:before {
-  content: "\e902";
-}
 .icon-search3:before {
   content: "\eb36";
 }
 .icon-menu:before {
   content: "\ec71";
 }
+.icon-menu7:before {
+  content: "\ec72";
+}
 .icon-plus2:before {
   content: "\ed5b";
+}
+.icon-plus3:before {
+  content: "\ed5d";
+}
+.icon-plus-circle:before {
+  content: "\ed5f";
 }
 .icon-cross2:before {
   content: "\ed6d";
@@ -116,17 +112,29 @@
 .icon-arrow-right4:before {
   content: "\edbe";
 }
+.icon-arrow-down2:before {
+  content: "\edc0";
+}
+.icon-arrow-down4:before {
+  content: "\edc2";
+}
 .icon-arrow-left:before {
   content: "\edc3";
 }
 .icon-arrow-left4:before {
   content: "\edc6";
 }
+.icon-arrow-down7:before {
+  content: "\edd8";
+}
 .icon-arrow-left7:before {
   content: "\edda";
 }
 .icon-arrow-right8:before {
   content: "\edde";
+}
+.icon-circle-down6:before {
+  content: "\ee31";
 }
 .icon-facebook:before {
   content: "\eeef";
