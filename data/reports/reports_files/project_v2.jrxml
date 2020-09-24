@@ -97,9 +97,25 @@
 		<property name="net.sf.jasperreports.json.field.expression" value="links"/>
 		<fieldDescription><![CDATA[links]]></fieldDescription>
 	</field>
-	<field name="image" class="java.lang.String">
-		<property name="net.sf.jasperreports.json.field.expression" value="image"/>
-		<fieldDescription><![CDATA[image]]></fieldDescription>
+	<field name="year_of_participation" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="year_of_participation"/>
+		<fieldDescription><![CDATA[year_of_participation]]></fieldDescription>
+	</field>
+	<field name="movie_link" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="movie_link"/>
+		<fieldDescription><![CDATA[movie_link]]></fieldDescription>
+	</field>
+	<field name="movie_pass" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="movie_pass"/>
+		<fieldDescription><![CDATA[movie_pass]]></fieldDescription>
+	</field>
+	<field name="participated_other_festivals" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="participated_other_festivals"/>
+		<fieldDescription><![CDATA[participated_other_festivals]]></fieldDescription>
+	</field>
+	<field name="project_phase" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="project_phase"/>
+		<fieldDescription><![CDATA[project_phase]]></fieldDescription>
 	</field>
 	<field name="user_id" class="java.lang.String">
 		<property name="net.sf.jasperreports.json.field.expression" value="user_id"/>
@@ -181,6 +197,10 @@
 		<property name="net.sf.jasperreports.json.field.expression" value="opt_category"/>
 		<fieldDescription><![CDATA[opt_category]]></fieldDescription>
 	</field>
+	<field name="opt_category_id" class="java.lang.Integer">
+		<property name="net.sf.jasperreports.json.field.expression" value="opt_category_id"/>
+		<fieldDescription><![CDATA[opt_category_id]]></fieldDescription>
+	</field>
 	<field name="opt_genre" class="java.lang.String">
 		<property name="net.sf.jasperreports.json.field.expression" value="opt_genre"/>
 		<fieldDescription><![CDATA[opt_genre]]></fieldDescription>
@@ -201,12 +221,6 @@
 		<property name="net.sf.jasperreports.json.field.expression" value="opt_first_or_second_project"/>
 		<fieldDescription><![CDATA[opt_first_or_second_project]]></fieldDescription>
 	</field>
-	<field name="opt_category_id" class="java.lang.Integer"/>
-	<field name="year_of_participation" class="java.lang.String"/>
-	<field name="participated_other_festivals" class="java.lang.String"/>
-	<field name="movie_pass" class="java.lang.String"/>
-	<field name="movie_link" class="java.lang.String"/>
-	<field name="project_phase" class="java.lang.String"/>
 	<pageHeader>
 		<band height="46" splitType="Stretch">
 			<staticText>
@@ -231,7 +245,7 @@
 			</textField>
 			<image>
 				<reportElement x="2" y="0" width="50" height="35" uuid="5e936112-e5a8-44f9-aeb5-7f3fb7054b12"/>
-				<imageExpression><![CDATA["http://universoproducao.com.br/assets/universoproducao/dist/images/universo-producao.png"]]></imageExpression>
+				<imageExpression><![CDATA["https://universoproducao.com.br/assets/universoproducao/dist/images/universo-producao.png"]]></imageExpression>
 			</image>
 		</band>
 	</pageHeader>
@@ -1482,7 +1496,7 @@
 			</textField>
 			<image>
 				<reportElement x="2" y="11" width="50" height="40" uuid="416da9ee-7fed-4238-b0de-312aecfd9d05"/>
-				<imageExpression><![CDATA["http://universoproducao.com.br/assets/universoproducao/dist/images/universo-producao.png"]]></imageExpression>
+				<imageExpression><![CDATA["https://universoproducao.com.br/assets/universoproducao/dist/images/universo-producao.png"]]></imageExpression>
 			</image>
 		</band>
 	</pageFooter>

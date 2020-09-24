@@ -595,13 +595,10 @@ abstract class AbstractAdminController extends AbstractController
             ]
         ];
 
+        $jasper = new JasperPHP();
         try {
-            $jasper = new JasperPHP();
-            $jasper->process(
-                $input,
-                $output,
-                $options
-            )->execute();
+            $jasper->process( $input, $output, $options);
+            $jasper->execute();
         } catch (\Exception $e) {
             echo $e->getMessage();
         }

@@ -87,7 +87,7 @@
 		<band height="40" splitType="Stretch">
 			<image>
 				<reportElement x="2" y="5" width="50" height="35" uuid="279e354a-b906-4e2e-9fee-e606717eedf0"/>
-				<imageExpression><![CDATA["http://universoproducao.com.br/assets/universoproducao/dist/images/universo-producao.png"]]></imageExpression>
+				<imageExpression><![CDATA["https://universoproducao.com.br/assets/universoproducao/dist/images/universo-producao.png"]]></imageExpression>
 			</image>
 			<staticText>
 				<reportElement x="60" y="5" width="490" height="35" uuid="7c2948b1-f554-4807-bd19-3fbe8368b5d0"/>
@@ -504,7 +504,7 @@
 		<band height="41" splitType="Stretch">
 			<image>
 				<reportElement x="2" y="1" width="50" height="40" uuid="ef2db548-569e-4a95-a00e-b2d0b189533c"/>
-				<imageExpression><![CDATA["http://universoproducao.com.br/assets/universoproducao/dist/images/universo-producao.png"]]></imageExpression>
+				<imageExpression><![CDATA["https://universoproducao.com.br/assets/universoproducao/dist/images/universo-producao.png"]]></imageExpression>
 			</image>
 			<staticText>
 				<reportElement x="50" y="0" width="504" height="31" uuid="7da37edb-d35a-4fd0-a96a-12c2c225c1aa"/>
