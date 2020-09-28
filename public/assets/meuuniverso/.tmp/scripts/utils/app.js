@@ -213,6 +213,9 @@ var FormWizard = function () {
                     },
                     'image[file]': {
                         required: true
+                    },
+                    'synopsis': {
+                        maxlength: 700
                     }
                 },
                 errorPlacement: function errorPlacement(error, element) {

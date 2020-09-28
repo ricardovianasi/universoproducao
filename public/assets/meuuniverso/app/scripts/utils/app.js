@@ -212,6 +212,9 @@ var FormWizard = function () {
                     },
                     'image[file]': {
                         required: true
+                    },
+                    'synopsis': {
+                      maxlength: 700
                     }
                 },
                 errorPlacement: function (error, element) { // render error placement for each input type

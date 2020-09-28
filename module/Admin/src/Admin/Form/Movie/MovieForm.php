@@ -594,8 +594,6 @@ class MovieForm extends Form
                 'rows' => 7,
 //                'maxlength' => 700
 //                'required' => 'required',
-                'data-parsley-maxlength' => "700",
-                'data-parsley-trigger' => 'keyup'
             ]
         ]);
 
