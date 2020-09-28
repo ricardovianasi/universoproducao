@@ -88,6 +88,7 @@ class MovieForm extends AdminMovieForm
 //        $this->get('options[sound]')->setAttribute('required', 'required');
         $this->get('options[color]')->setAttribute('required', 'required');
         $this->get('options[genre]')->setAttribute('required', 'required');
+        $this->get('options[event_format]')->setAttribute('required', 'required');
         $this->get('direction')->setAttribute('required', 'required');
         $this->get('filmography_director')->setAttribute('required', 'required');
 //        $this->get('synopsis_english')->setAttribute('required', 'required');
@@ -128,6 +129,7 @@ class MovieForm extends AdminMovieForm
 //        $this->getInputFilter()->get('options[sound]')->setRequired(false)->setAllowEmpty(true);
         $this->getInputFilter()->get('options[color]')->setRequired(true);
         $this->getInputFilter()->get('options[genre]')->setRequired(true);
+        $this->getInputFilter()->get('options[event_format]')->setRequired(true);
         $this->getInputFilter()->get('direction')->setRequired(true);
         $this->getInputFilter()->get('filmography_director')->setRequired(true);
         $this->getInputFilter()->get('synopsis_english')->setRequired(false);

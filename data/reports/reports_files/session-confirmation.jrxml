@@ -104,7 +104,7 @@
 			</staticText>
 			<image>
 				<reportElement x="0" y="0" width="50" height="40" uuid="aea4dda4-d82a-432e-a212-861d770d300d"/>
-				<imageExpression><![CDATA["http://universoproducao.com.br/assets/universoproducao/dist/images/universo-producao.png"]]></imageExpression>
+				<imageExpression><![CDATA["https://universoproducao.com.br/assets/universoproducao/dist/images/universo-producao.png"]]></imageExpression>
 			</image>
 		</band>
 	</pageHeader>

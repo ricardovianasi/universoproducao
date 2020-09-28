@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.5.1.final using JasperReports Library version 6.5.1  -->
+<!-- Created with Jaspersoft Studio version 6.4.0.final using JasperReports Library version 6.4.1  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="movie" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="7db8d1d6-a97e-4968-9b6b-d0c06495d638">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="DataAdapter.xml"/>
 	<queryString language="json">
@@ -427,7 +427,7 @@
 		<band height="51" splitType="Stretch">
 			<image>
 				<reportElement x="0" y="0" width="50" height="50" printWhenGroupChanges="title" uuid="b50f848a-a086-4d5f-ad2a-5b66c68a8091"/>
-				<imageExpression><![CDATA["http://universoproducao.com.br/assets/universoproducao/dist/images/universo-producao.png"]]></imageExpression>
+				<imageExpression><![CDATA["https://universoproducao.com.br/assets/universoproducao/dist/images/universo-producao.png"]]></imageExpression>
 			</image>
 			<staticText>
 				<reportElement x="50" y="0" width="505" height="20" uuid="35b4e2e4-b9f5-45ad-9d00-0add2d6c0e77"/>
@@ -1684,7 +1684,7 @@
 		<band height="45" splitType="Stretch">
 			<image>
 				<reportElement x="0" y="11" width="50" height="32" uuid="1f949c18-1411-4947-be85-01442b1858cf"/>
-				<imageExpression><![CDATA["http://universoproducao.com.br/assets/universoproducao/dist/images/universo-producao.png"]]></imageExpression>
+				<imageExpression><![CDATA["https://universoproducao.com.br/assets/universoproducao/dist/images/universo-producao.png"]]></imageExpression>
 			</image>
 			<staticText>
 				<reportElement x="60" y="11" width="350" height="15" uuid="a6073510-0bd1-4af8-8cd1-be340e327ff2"/>

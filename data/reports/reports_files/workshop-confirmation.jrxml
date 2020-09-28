@@ -95,7 +95,7 @@
 		<band height="40" splitType="Stretch">
 			<image>
 				<reportElement x="0" y="0" width="50" height="40" uuid="2ca799e6-7db5-45a9-b547-35d9b6dc21bc"/>
-				<imageExpression><![CDATA["http://universoproducao.com.br/assets/universoproducao/dist/images/universo-producao.png"]]></imageExpression>
+				<imageExpression><![CDATA["https://universoproducao.com.br/assets/universoproducao/dist/images/universo-producao.png"]]></imageExpression>
 			</image>
 			<staticText>
 				<reportElement x="60" y="0" width="490" height="40" uuid="1bd353cb-3af0-44b3-a43b-2cb0865b64f5"/>
@@ -253,7 +253,7 @@ Lembramos que é de responsabilidade do aluno ter um dispositivo eletrônico par
 		<band height="54" splitType="Stretch">
 			<image>
 				<reportElement x="0" y="14" width="50" height="40" uuid="cdad899f-d7a9-422f-8a88-432ce7410e2d"/>
-				<imageExpression><![CDATA["http://universoproducao.com.br/assets/universoproducao/dist/images/universo-producao.png"]]></imageExpression>
+				<imageExpression><![CDATA["https://universoproducao.com.br/assets/universoproducao/dist/images/universo-producao.png"]]></imageExpression>
 			</image>
 			<staticText>
 				<reportElement x="50" y="19" width="504" height="31" uuid="8f8e23f3-20bf-402a-a87e-84d382c08c75"/>

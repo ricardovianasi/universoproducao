@@ -290,6 +290,20 @@ class MovieForm extends Form
 
         $this->add([
             'type' => 'select',
+            'name' => 'options[event_format]',
+            'options' => [
+                'label' => 'Categoria',
+                'value_options' => $this->populateOptions(OptionsType::EVENT_FORMAT),
+                'empty_option' => 'Selecione',
+            ],
+            'attributes' => [
+//                'required' => 'required'
+            ],
+        ]);
+
+
+        $this->add([
+            'type' => 'select',
             'name' => 'options[format_completed]',
             'options' => [
                 'label' => 'Formato em que o filme foi finalizado',
@@ -736,7 +750,7 @@ class MovieForm extends Form
             'type' => 'select',
             'name' => 'has_participated_other_festivals',
             'options' => [
-                'label' => 'O filme já foi exibido publicamente ou tem exibição prevista para 2020?',
+                'label' => 'O filme já foi exibido publicamente ou tem exibição prevista para 2020/ 2021?',
                 'value_options' => [
                     '1' => 'Sim',
                     '0' => 'Não'

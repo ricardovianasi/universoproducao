@@ -14,6 +14,7 @@ final class OptionsType
     const FEATURE_DIRECTED          = 'feature_directed';
     const SHORT_MOVIE_CATEGORY      = 'short_movie_category';
     const GENERAL_CATEGORY          = 'general_category';
+    const EVENT_FORMAT              = 'event_format';
 
 	static public function toArray() {
 		return array(
@@ -27,7 +28,8 @@ final class OptionsType
             self::ACCESSIBILITY => 'Acessibilidade',
             self::FEATURE_DIRECTED => 'Longas dirigidos',
             self::SHORT_MOVIE_CATEGORY => 'Categoria de curtas',
-            self::GENERAL_CATEGORY => 'Categoria geral'
+            self::GENERAL_CATEGORY => 'Categoria geral',
+            self::EVENT_FORMAT => 'Formato do evento'
 		);
 	}
 
