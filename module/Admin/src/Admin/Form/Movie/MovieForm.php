@@ -830,9 +830,11 @@ class MovieForm extends Form
            'synopsis' => [
                'name' => 'synopsis',
                'validators' => [
-                   'name' => StringLength::class,
-                   'options' => [
-                       'max' => 700
+                   [
+                       'name' => StringLength::class,
+                       'options' => [
+                           'max' => 700
+                       ]
                    ]
                ]
            ],
