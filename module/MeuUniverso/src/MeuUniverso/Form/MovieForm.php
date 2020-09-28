@@ -10,7 +10,7 @@ class MovieForm extends AdminMovieForm
     public function __construct($entityManager, $registration=null)
     {
         parent::__construct($entityManager, Options::STATUS_ENABLED, $registration);
-
+        $this->setAttribute('data-js-validate', '');
         $this->remove('events');
         $this->remove('end_date_year');
         $this->remove('type');
