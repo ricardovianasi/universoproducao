@@ -17,6 +17,7 @@ use Zend\InputFilter\CollectionInputFilter;
 use Zend\InputFilter\Factory as InputFilterFactory;
 use Zend\Validator\GreaterThan;
 use Zend\Validator\NotEmpty;
+use Zend\Validator\StringLength;
 
 class MovieForm extends Form
 {
@@ -826,6 +827,15 @@ class MovieForm extends Form
                 'required'   => false,
                 'allow_empty' => true
             ],
+           'synopsis' => [
+               'name' => 'synopsis',
+               'validators' => [
+                   'name' => StringLength::class,
+                   'options' => [
+                       'max' => 700
+                   ]
+               ]
+           ],
            'duration' => [
                'name' => 'duration',
                'required' => true,
