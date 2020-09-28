@@ -96,7 +96,7 @@ class MovieForm extends AdminMovieForm
         $this->get('has_participated_other_festivals')->setAttribute('required', 'required');
         $this->get('movie_link')->setAttribute('required', 'required');
 
-        $ignoreElements = ['events','accept_regulation'];
+        $ignoreElements = ['events','accept_regulation', 'options[event_format]'];
         foreach ($this->getElements() as $key=>$element) {
             if(!in_array($key, $ignoreElements)) {
                 /** @var Element $element */

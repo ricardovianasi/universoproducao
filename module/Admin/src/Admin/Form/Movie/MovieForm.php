@@ -292,7 +292,7 @@ class MovieForm extends Form
             'type' => 'select',
             'name' => 'options[event_format]',
             'options' => [
-                'label' => 'Categoria',
+                'label' => 'Formato do evento',
                 'value_options' => $this->populateOptions(OptionsType::EVENT_FORMAT),
                 'empty_option' => 'Selecione',
             ],
