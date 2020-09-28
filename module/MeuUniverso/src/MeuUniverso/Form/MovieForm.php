@@ -89,8 +89,7 @@ class MovieForm extends AdminMovieForm
         $this->get('options[color]')->setAttribute('required', 'required');
         $this->get('options[genre]')->setAttribute('required', 'required');
         $this->get('options[event_format]')
-            ->setAttribute('required', 'required')
-            ->setOption('label', 'Autorizo a inscrição do filme para:');
+            ->setAttribute('required', 'required')->setLabel('Autorizo a inscrição do filme para:');
         $this->get('direction')->setAttribute('required', 'required');
         $this->get('filmography_director')->setAttribute('required', 'required');
 //        $this->get('synopsis_english')->setAttribute('required', 'required');

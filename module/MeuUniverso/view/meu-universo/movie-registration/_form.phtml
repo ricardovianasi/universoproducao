@@ -90,7 +90,10 @@
                         <br>
                         <div style="display: block; overflow: hidden">
                             <div class="col-md-4">
-                                <?php echo $this->formRow($form->get('options[event_format]')); ?>
+                                <?php
+                                $eventFormat = $form->get('options[event_format]')->setLabel('Autorizo a inscrição do filme para:');
+                                echo $this->formRow($eventFormat);
+                                ?>
                             </div>
                         </div>
                     </div>
