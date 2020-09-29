@@ -158,6 +158,12 @@ class MovieController extends AbstractAdminController
             }
             $itemArray['opt_color'] = $opt_color?$opt_color:"";
 
+            $opt_event_format = null;
+            if($opt_event_format = $obj->getOption('event_format')) {
+                $opt_event_format = $opt_event_format->getName();
+            }
+            $itemArray['opt_event_format'] = $opt_event_format ? $opt_event_format : "";
+
             $opt_genre = null;
             if($opt_genre = $obj->getOption('genre')) {
                 $opt_genre = $opt_genre->getName();

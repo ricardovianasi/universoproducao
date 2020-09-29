@@ -243,6 +243,7 @@
 	</field>
 	<field name="opt_general_category" class="java.lang.String"/>
 	<field name="production_assistant" class="java.lang.String"/>
+	<field name="opt_event_format" class="java.lang.String"/>
 	<group name="id">
 		<groupExpression><![CDATA[$F{id}]]></groupExpression>
 	</group>
@@ -498,7 +499,7 @@
 				<text><![CDATA[Título em inglês]]></text>
 			</staticText>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement positionType="Float" x="30" y="10" width="80" height="30" uuid="e7a7f288-41d6-4947-8ba0-ef92479d542e"/>
+				<reportElement positionType="Float" x="30" y="0" width="50" height="40" uuid="e7a7f288-41d6-4947-8ba0-ef92479d542e"/>
 				<box padding="5">
 					<pen lineWidth="0.5"/>
 					<topPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
@@ -510,7 +511,7 @@
 				<textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement positionType="Float" x="0" y="10" width="30" height="30" uuid="d87214b4-287d-4cc7-bcd4-b398977d618b"/>
+				<reportElement positionType="Float" x="0" y="0" width="30" height="40" uuid="d87214b4-287d-4cc7-bcd4-b398977d618b"/>
 				<box padding="5">
 					<pen lineWidth="0.5"/>
 					<topPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
@@ -524,7 +525,7 @@
 				<text><![CDATA[ID]]></text>
 			</staticText>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement positionType="Float" x="230" y="10" width="325" height="30" uuid="4102f540-e4c5-4d55-8080-a25f3df1d490"/>
+				<reportElement positionType="Float" x="150" y="0" width="110" height="40" uuid="4102f540-e4c5-4d55-8080-a25f3df1d490"/>
 				<box padding="5">
 					<pen lineWidth="0.5"/>
 					<topPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
@@ -536,7 +537,7 @@
 				<textFieldExpression><![CDATA[$F{created_at}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement positionType="Float" x="110" y="10" width="120" height="30" uuid="aae0ba71-4652-49ef-8ab6-1287a39c9139"/>
+				<reportElement positionType="Float" x="80" y="0" width="70" height="40" uuid="aae0ba71-4652-49ef-8ab6-1287a39c9139"/>
 				<box padding="5">
 					<pen lineWidth="0.5"/>
 					<topPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
@@ -545,7 +546,7 @@
 					<rightPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
 				</box>
 				<textElement>
-					<font isBold="true"/>
+					<font size="10" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Data do cadastro]]></text>
 			</staticText>
@@ -1177,6 +1178,27 @@
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[Categoria/tipo]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="330" y="0" width="225" height="40" uuid="118b7b04-f44c-4a6f-bbce-758da33f841f"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{opt_event_format}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="260" y="0" width="70" height="40" uuid="d1901ca4-a4a6-4065-9292-ca7dd998d8f7"/>
+				<box padding="5">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Inscrição]]></text>
 			</staticText>
 		</band>
 		<band height="706">
