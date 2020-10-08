@@ -11,10 +11,9 @@ return array(
         'router_class' => 'Zend\Mvc\Router\Http\TranslatorAwareTreeRouteStack',
         'routes' => array(
             'cinebh2019' => array(
-                'type'    => Hostname::class,
-                'type' => 'Hostname',
+                'type' => 'Literal',
                 'options' => array(
-                    'route'    => '[www.][:locale.]cinebh.com.br',
+                    'route'    => '/cinebh2019',
                     'defaults' => array(
                         'controller'    => Controller\IndexController::class,
                         'action'        => 'hotsite',
