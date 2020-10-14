@@ -256,11 +256,9 @@ class WorkshopRegistrationController extends AbstractMeuUniversoRegisterControll
                 $this->getEntityManager()->persist($subscription);
                 $this->getEntityManager()->flush();
 
-                $tipoDoprograma = "";
+                $tipoDoprograma = 'do';
                 if( $workshop->getId() == 59 ) {
                     $tipoDoprograma = 'da oficina';
-                } else {
-                    $tipoDoprograma = 'do';
                 }
 
                 //Enviar email de confirmação
