@@ -309,7 +309,7 @@ class WorkshopRegistrationController extends AbstractMeuUniversoRegisterControll
                 $to[$user->getName()] = $user->getEmail();
                 $this->mailService()->simpleSendEmail($to, "Confirmação de inscrição oficina ", $msg);
 
-                $this->meuUniversoMessages()->flashSuccess($msg2);
+                $this->meuUniversoMessages()->flashSuccess($msg);
                 return $this->redirect()->toRoute('meu-universo/default');
             }
         }
