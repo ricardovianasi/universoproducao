@@ -187,7 +187,7 @@ class WorkshopRegistrationController extends AbstractMeuUniversoRegisterControll
                 $validatorOpt['max'] = $workshop->getMaximumAge();
 
                 $validatorOpt['messages'] = [
-                    Between::NOT_BETWEEN_STRICT => "A sua faixa etária não está dentro do permitida para essa oficina. Por favor, escolher outra opção."
+                    Between::NOT_BETWEEN_STRICT => "A faixa etária não está dentro do permitida para essa oficina. Por favor, escolher outra opção."
                 ];
 
                 $validator = new Between($validatorOpt);
@@ -201,7 +201,7 @@ class WorkshopRegistrationController extends AbstractMeuUniversoRegisterControll
                     'min'       => $workshop->getMinimumAge(),
                     'inclusive' => true,
                     'messages' => [
-                        GreaterThan::NOT_GREATER_INCLUSIVE => "A sua faixa etária não está dentro da permitida para essa oficina. Por favor, escolher outra opção."
+                        GreaterThan::NOT_GREATER_INCLUSIVE => "A faixa etária não está dentro da permitida para essa oficina. Por favor, escolher outra opção."
                     ]
                 ]);
                 if(!$validator->isValid($ageUserSub)) {
@@ -256,10 +256,17 @@ class WorkshopRegistrationController extends AbstractMeuUniversoRegisterControll
                 $this->getEntityManager()->persist($subscription);
                 $this->getEntityManager()->flush();
 
+                $tipoDoprograma = "";
+                if( $workshop->getId() == 59 ) {
+                    $tipoDoprograma = 'da oficina';
+                } else {
+                    $tipoDoprograma = 'do';
+                }
+
                 //Enviar email de confirmação
                 $msg = '<p>Olá <strong>'.$userSubs->getName().'</strong>!</p>';
                 $msg.= '<p>Agradecemos seu interesse em participar do Programa de Formação da 14ª CineBH e 11º Brasil CineMundi.</p>';
-                $msg.= '<p>Recebemos a sua inscrição para participar da Oficina: <strong>'.$workshop->getName().'</strong>. 
+                $msg.= '<p>Recebemos a sua inscrição para participar '.$tipoDoprograma.': <strong>'.$workshop->getName().'</strong>. 
                     Até o dia 22/10/2020, entraremos em contato para divulgação dos selecionados.</p>';
 
                 /*$msg.= '<p>Atenção: <br>
