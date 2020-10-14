@@ -231,7 +231,7 @@ class WorkshopRegistrationController extends AbstractMeuUniversoRegisterControll
                 $subscription->setWorkshop($workshop);
                 $subscription->setUser($userSubs);
                 $subscription->setRegistration($reg);
-                $subscription->setStatus(Status::SELECTED);
+                //$subscription->setStatus(Status::ON_EVALUATION);
 
                 $formAnswer = new ArrayCollection();
                 if(!empty($data['form_answer'])) {
@@ -257,13 +257,12 @@ class WorkshopRegistrationController extends AbstractMeuUniversoRegisterControll
                 $this->getEntityManager()->flush();
 
                 //Enviar email de confirmação
-                $msg = '<p>Prezado(a) <strong>'.$userSubs->getName().'</strong>!</p>';
-                $msg.= '<p>Recebemos a sua inscrição para participar da Oficina: '.$workshop->getName().', que será realizada online 
-                    durante a programação da <strong>15ª CineOP - Mostra de Cinema de Ouro Preto.</strong>
-                    Para garantir a sua vaga, você deve confirmar sua participação e enviar o comprovante de confirmação assinado.
-                    Siga os passos abaixo:</p>';
+                $msg = '<p>Olá <strong>'.$userSubs->getName().'</strong>!</p>';
+                $msg.= '<p>Agradecemos seu interesse em participar do Programa de Formação da 14ª CineBH e 11º Brasil CineMundi.</p>';
+                $msg.= '<p>Recebemos a sua inscrição para participar da Oficina: <strong>'.$workshop->getName().'</strong>. 
+                    Até o dia 22/10/2020, entraremos em contato para divulgação dos selecionados.</p>';
 
-                $msg.= '<p>Atenção: <br>
+                /*$msg.= '<p>Atenção: <br>
                 - Prazo de confirmação: até às 24 horas após o recebimento da inscrição pelo site. <br>
                 - O comprovante de confirmação deve ser assinado e enviado para e-mail  relacionamento@universoproducao.com.br <br>
                 - Caso não confirme sua presença no prazo estipulado sua inscrição será considerada como DESISTÊNCIA. <br></p>';
@@ -292,23 +291,23 @@ class WorkshopRegistrationController extends AbstractMeuUniversoRegisterControll
                 </ul>";
 
                 $msg.= "<p>Convidamos você para participar também das outras atividades do evento.</p>";
-                $msg.= "<p>A programação é gratuita e pode ser conferida no site <a href='www.cineop.com.br'>www.cineop.com.br</a>, a partir de 20 de agosto.</p>";
+                $msg.= "<p>A programação é gratuita e pode ser conferida no site <a href='www.cineop.com.br'>www.cineop.com.br</a>, a partir de 20 de agosto.</p>"; */
 
                 $msg.= "<p>Atenciosamente, <br>
                         Coordenação Oficinas <br>
-                        15ª CineOP</p>";
+                        CineBH</p>";
 
                 $msg2 = '<p>Olá <strong>'.$userSubs->getName().'</strong>! <br><br>
                 Agradecemos seu interesse em participar do Programa de Formação da 15ª CineOP. <br><br>
                 Informamos que recebemos sua inscrição para participar da oficina: '.$workshop->getName().'. 
                 Verifique seu e-mail e siga os passos para confirmar a sua participação.</p>';
 
-                $preparedItems = $this->prepareItemsForReports($subscription);
-                $confirmacao = $this->prepareReport($preparedItems, 'workshop-confirmation' ,'pdf',true);
+                //$preparedItems = $this->prepareItemsForReports($subscription);
+                //$confirmacao = $this->prepareReport($preparedItems, 'workshop-confirmation' ,'pdf',true);
 
 
                 $to[$user->getName()] = $user->getEmail();
-                $this->mailService()->simpleSendEmail($to, "Confirmação de inscrição oficina ", $msg, $confirmacao);
+                $this->mailService()->simpleSendEmail($to, "Confirmação de inscrição oficina ", $msg);
 
                 $this->meuUniversoMessages()->flashSuccess($msg2);
                 return $this->redirect()->toRoute('meu-universo/default');
