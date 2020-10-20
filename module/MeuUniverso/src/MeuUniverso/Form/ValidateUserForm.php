@@ -5,6 +5,7 @@ use Application\Entity\User\User;
 use DoctrineModule\Validator\NoObjectExists;
 use Util\Validator\Identifier;
 use Zend\I18n\Filter\Alnum;
+use Zend\Filter\StringTrim as StringTrim;
 use Zend\InputFilter\Factory as InputFilterFactory;
 use Zend\Validator\EmailAddress;
 use Zend\Validator\Identical;
@@ -87,6 +88,9 @@ class ValidateUserForm extends \Admin\Form\ExternalUser\UserForm
                         ]
 
                     ]
+                ],
+                'filters' => [
+                    new StringTrim()
                 ]
             ],
             'password' => [
