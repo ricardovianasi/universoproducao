@@ -13,7 +13,7 @@
         <?php endif; ?>
 
         <?php
-            if( $post->getId() != 4906 ) {
+            if( $post->getId() != 4906 && $post->getId() != 4907 && $post->getId() != 4908 ) {
                 echo $this->thumborize($post->getContent());
             } else {
                 echo $post->getContent();
