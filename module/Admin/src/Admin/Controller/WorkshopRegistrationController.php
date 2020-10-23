@@ -261,12 +261,14 @@ class WorkshopRegistrationController extends AbstractAdminController
 
         $preparedItems = [];
         foreach ($items as $obj) {
+
+            $workshopProgramationItems = '';
+
             $workshopProgramation = $this->getRepository(Programing::class)->findBy([
                 'event' => $obj->getEvent()->getId(),
                 'type' => Type::WORKSHOP,
                 'objectId' => $obj->getWorkshop()->getId()
             ]);
-            $workshopProgramationItems = '';
             if(count($workshopProgramation)) {
                 $prog_first = reset($workshopProgramation);
                 $prog_last = end($workshopProgramation);
@@ -284,8 +286,23 @@ class WorkshopRegistrationController extends AbstractAdminController
                         . $prog_first->getStartTime()->format('H:i\h')
                         . ' às '
                         . $prog_last->getEndTime()->format('H:i\h');
-
                 }
+            }
+
+
+            switch ( $obj->getWorkshop()->getId() ) {
+                case 59:
+                    $workshopProgramationItems = "30 out à 1º nov | 10 às 12h e 14 às 16hs";
+                    break;
+                case 60:
+                    $workshopProgramationItems = "29 out à 1 nov | 10 às 12h (quinta a sábado) e 10 às 13h (domingo)";
+                    break;
+                case 61:
+                    $workshopProgramationItems = "29 out à 1 nov | 15h às 17h (quinta a sábado) e 10 às 13h (domingo)";
+                    break;
+                case 62:
+                    $workshopProgramationItems = "30 out à 1 nov | 14 às 16h (sexta), 10 às 12h e 14 às 16h (sábado) e 10 às 13h (domingo)";
+                    break;
             }
 
             $answers = [];
