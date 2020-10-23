@@ -5,6 +5,8 @@ use Application\Controller\SiteController;
 use Application\Entity\Event\Event;
 use Application\Entity\Post\Post;
 use Application\Entity\Post\PostStatus;
+use Application\Entity\Project\Project;
+use Application\Entity\Registration\Status;
 use Application\Entity\Site\SiteMeta;
 use Zend\Mail\Message;
 use Zend\Mail\Transport\Smtp;
@@ -48,9 +50,42 @@ class PostController extends SiteController
             ]);
         }
 
+        if( strpos('[projeto_em_desenvolvimento]', $post->getContent()) ) {
+            $projects = $this->getProjects(20);
+            var_dump($projects);
+        }
+
+        if( strpos('[projeto_em_producao]', $post->getContent()) ) {
+            $projects = $this->getProjects(21);
+            var_dump($projects);
+        }
+
+        if( strpos('[projeto_finalizado]', $post->getContent()) ) {
+            $projects = $this->getProjects(22);
+            var_dump($projects);
+        }
+
         $viewModel->breadcrumbs = $post->getBreadcrumbs();
         $viewModel->post = $post;
         return $viewModel;
+    }
+
+    public function getProjects( $catedoryId )
+    {
+
+        $qb = $this->getRepository(Project::class)->createQueryBuilder('w');
+        $qb->andWhere('w.event = :idEvent')
+            ->andWhere('w.status = :status')
+            ->innerJoin('w.options', 'o')
+            ->andWhere('o.id = :catedoryId')
+            ->setParameters([
+                'event' => '1097',
+                'status' => Status::SELECTED,
+                'catedoryId' => $catedoryId
+            ]);
+
+        $projects = $qb->getQuery()->getResult();
+
     }
 
     public function newsletterAction()
