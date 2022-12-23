@@ -263,9 +263,9 @@ class WorkshopRegistrationController extends AbstractMeuUniversoRegisterControll
 
                 //Enviar email de confirmação
                 $msg = '<p>Olá <strong>'.$userSubs->getName().'</strong>!</p>';
-                $msg.= '<p>Agradecemos seu interesse em participar do Programa de Formação da 14ª CineBH e 11º Brasil CineMundi.</p>';
-                $msg.= '<p>Recebemos a sua inscrição para participar '.$tipoDoprograma.': <strong>'.$workshop->getName().'</strong>. 
-                    Até o dia 22/10/2020, entraremos em contato para divulgação dos selecionados.</p>';
+                $msg.= '<p>Agradecemos seu interesse em participar do Programa de Formação Audiovisual da 26ª Mostra de Cinema de Tiradentes.</p>';
+                $msg.= '<p>formamos que recebemos sua inscrição para participar da atividade: <strong>'.$workshop->getName().'</strong>.
+                    Até o dia 11/01/2023, entraremos em contato para divulgação dos selecionados.</p>';
 
                 /*$msg.= '<p>Atenção: <br>
                 - Prazo de confirmação: até às 24 horas após o recebimento da inscrição pelo site. <br>
@@ -299,13 +299,8 @@ class WorkshopRegistrationController extends AbstractMeuUniversoRegisterControll
                 $msg.= "<p>A programação é gratuita e pode ser conferida no site <a href='www.cineop.com.br'>www.cineop.com.br</a>, a partir de 20 de agosto.</p>"; */
 
                 $msg.= "<p>Atenciosamente, <br>
-                        Coordenação Oficinas <br>
-                        CineBH</p>";
-
-                $msg2 = '<p>Olá <strong>'.$userSubs->getName().'</strong>! <br><br>
-                Agradecemos seu interesse em participar do Programa de Formação da 15ª CineOP. <br><br>
-                Informamos que recebemos sua inscrição para participar da oficina: '.$workshop->getName().'. 
-                Verifique seu e-mail e siga os passos para confirmar a sua participação.</p>';
+                        Coordenação Programa de Formação <br>
+                        26ª Mostra de Cinema de Tiradentes</p>";
 
                 //$preparedItems = $this->prepareItemsForReports($subscription);
                 //$confirmacao = $this->prepareReport($preparedItems, 'workshop-confirmation' ,'pdf',true);
